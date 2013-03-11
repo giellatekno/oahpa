@@ -647,13 +647,21 @@ def ie8_instrux_json():
 
 @app.route('/read/update/', methods=['GET'])
 def reader_update():
+    from bookmarklet_code import bookmarklet_escaped
+    from urllib import quote_plus
+    bkmklt = bookmarklet_escaped.replace( 'sanit.oahpa.no'
+                                        , quote_plus(request.host)
+                                        )
+    # Force template into json response
+    has_callback = request.args.get('callback', False)
     return render_template('reader_update.html', bookmarklet=bkmklt)
 
 @app.route('/read/update/json/', methods=['GET'])
 def reader_update_json():
+    from urllib import quote_plus
     from bookmarklet_code import bookmarklet_escaped
     bkmklt = bookmarklet_escaped.replace( 'sanit.oahpa.no'
-                                        , 'localhost%3A5000'
+                                        , quote_plus(request.host)
                                         )
     # Force template into json response
     has_callback = request.args.get('callback', False)
