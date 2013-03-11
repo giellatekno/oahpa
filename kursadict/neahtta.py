@@ -713,12 +713,8 @@ def bookmarklet_configs():
     """ Compile a JSON response containing dictionary pairs,
     and internationalization strings.
     """
-    # see how rosetta gets all the strings
-    # for a particular language, etc.:
-    #     https://github.com/mbi/django-rosetta
-    from flaskext.babel import get_locale, get_translations, refresh, pgettext
+    from flaskext.babel import get_locale
     from language_names import NAMES
-    from flaskext.babel import gettext as _g
 
     has_callback = request.args.get('callback', False)
     sess_lang = request.args.get('language', get_locale())
