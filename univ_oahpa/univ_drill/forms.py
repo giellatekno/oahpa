@@ -779,14 +779,13 @@ def get_feedback(self, wordform, language):
 	### print 'compsuffix:' + wordform.word.compsuffix
 
 
-	### print self.feedback
+	### print 'feedback:' + self.feedback
 	### print '--'
 	### # NOTE: debug
 	### # print wordform.id
 	### # print wordform.feedback.all()
 	### # print feedbacks
 	### # print self.feedback
-	### # print '\n'
 
 def select_words(self, qwords, awords):
 	"""
@@ -1939,13 +1938,13 @@ class ContextMorfaQuestion(OahpaQuestion):
 		try:
 			answer_word_forms = Form.objects.filter(word__pk=answer_word,
 													tag=answer_tag_el)
-
+													
 			answer_word_forms = filter_set_by_dialect(answer_word_forms, self.dialect)
 												
-			answer_word_form = answer_word_form[0]
+			answer_word_form = answer_word_forms[0] 
 		except:
-			answer_word_form = False
-
+			answer_word_form = False 
+		
 		if answer_word_form:
 			self.get_feedback(answer_word_form, language)
 
