@@ -156,7 +156,6 @@ function reveal_feedback (event) {
 	                       , 'form select[name="possessive_case"]'
 	                       ] ;
 
-    morfas_elem = false;
     for (_i = 0, _len = morfas_type_form.length; _i < _len; _i++) {
         a = morfas_type_form[_i];
         if ($(a).length > 0) {
@@ -176,7 +175,6 @@ function reveal_feedback (event) {
 	                       , 'form select[name="possessive_case_context"]'
                            ] ;
 
-    morfac_elem = false;
     for (_i = 0, _len = morfac_type_form.length; _i < _len; _i++) {
         a = morfac_type_form[_i];
         if ($(a).length > 0) {
@@ -185,6 +183,7 @@ function reveal_feedback (event) {
     }
 
     if (typeof morfas_elem !== "undefined" && morfas_elem !== null) {
+        
         var game_type = morfas_elem.val()
           , game_name = "MorfaS"
           ;
