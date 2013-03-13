@@ -10,20 +10,48 @@ import sys
 # # #
 
 
+# TODO: Person-Number in tag? *9
+
 def count_activities():
-    from univ_drill.models import Question
+    from univ_drill.models import Question, Word
     from operator import mul
 
+    # TODO tags: 
     def count_question_obj(question):
+
+        criteria = []
+
         counts = []
         elems = []
+        _semtypes = []
+
+        _question_has_pn = False
+
         for element in question.qelement_set.all():
-            wqelems = element.wordqelement_set.all()
-            c = wqelems.count()
-            if c > 0:
-                elems.append(element.wordqelement_set.all())
-            counts.append(( element.syntax
-                          , c
+            if element.syntax in [syntax for syntax, _ in counts]:
+                continue
+
+            if element.semtype and element.semtype.semtype not in criteria:
+                ws = Word.objects.filter(semtype=element.semtype)
+                c = ws.count()
+                _semtypes.append(element.semtype)
+                if c > 0:
+                    elems.append(element.wordqelement_set.all())
+                criteria.append(element.semtype.semtype)
+                counts.append(( element.semtype.semtype
+                              , c
+                              ))
+            if not _question_has_pn:
+                if element.tags:
+                    has_pn = [ a.personnumber
+                               for a in element.tags.all()
+                               if a.personnumber.strip() ]
+                    if len(has_pn) > 0:
+                        _question_has_pn = True
+
+        if _question_has_pn:
+            counts.append(( "PERSON-NUMBER"
+                          , 9
                           ))
         return counts, elems
 
@@ -32,7 +60,10 @@ def count_activities():
         answer_counts, answer_elems = count_question_obj(question)
         question_counts, question_elems = count_question_obj(question.question)
 
-        q_counts = [len(e) for e in question_elems]
+
+        question_answer_counts = list(set(answer_counts + question_counts))
+
+        q_counts = [n for t, n in question_answer_counts]
         try:
             q_count = reduce(mul, q_counts)
         except TypeError:
@@ -43,7 +74,7 @@ def count_activities():
 
             print question.question.qid
             print "  question:"
-            for c in question_counts:
+            for c in question_answer_counts:
                 print "    %s - %d possibilities" % c
             print "  total possible questions: %d " % q_count
             totals.append(q_count)
