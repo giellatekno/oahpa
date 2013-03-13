@@ -68,7 +68,7 @@ def parse_tag(tag):
             tag_string.append(item)
 
     if len(tag_string) > 0:
-        return ['+'.join(item) for item in fill_out(tag_string)]
+        return ['+'.join(item).replace('++', '+') for item in fill_out(tag_string)]
     else:
         return False
 
