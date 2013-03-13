@@ -9,23 +9,20 @@ import sys
 #
 # # #
 
+from univ_drill.models import Question, Word
 
-# TODO: Person-Number in tag? *9
-
-def count_activities():
-    from univ_drill.models import Question, Word
+def count_activities(gametype='morfa'):
     from operator import mul
 
-    # TODO tags: 
     def count_question_obj(question):
 
         criteria = []
 
         counts = []
-        elems = []
         _semtypes = []
 
         _question_has_pn = False
+        _question_has_tense = False
 
         for element in question.qelement_set.all():
             if element.syntax in [syntax for syntax, _ in counts]:
@@ -34,32 +31,59 @@ def count_activities():
             if element.semtype and element.semtype.semtype not in criteria:
                 ws = Word.objects.filter(semtype=element.semtype)
                 c = ws.count()
+
                 _semtypes.append(element.semtype)
-                if c > 0:
-                    elems.append(element.wordqelement_set.all())
                 criteria.append(element.semtype.semtype)
                 counts.append(( element.semtype.semtype
                               , c
                               ))
+            if not _question_has_tense:
+                if element.tags:
+                    has_tense = [ a.tense
+                                for a in element.tags.all()
+                               if a.tense.strip() ]
+
+                    if 'Prs' in has_tense and 'Prt' in has_tense:
+                        _question_has_tense = True
+
             if not _question_has_pn:
                 if element.tags:
-                    has_pn = [ a.personnumber
+                    has_pn = set([ a.personnumber
                                for a in element.tags.all()
-                               if a.personnumber.strip() ]
-                    if len(has_pn) > 0:
+                               if a.personnumber.strip() ])
+
+                    if 'Sg1' in has_pn and 'Du1' in has_pn:
                         _question_has_pn = True
+
+        if len(_semtypes) == 0:
+            counts.append(( "SEMTYPE"
+                          , 1
+                          ))
 
         if _question_has_pn:
             counts.append(( "PERSON-NUMBER"
                           , 9
                           ))
-        return counts, elems
+        if _question_has_tense:
+            counts.append(( "TENSE"
+                          , 2
+                          ))
+        return counts
 
     totals = []
-    for question in Question.objects.filter(qatype='answer'):
-        answer_counts, answer_elems = count_question_obj(question)
-        question_counts, question_elems = count_question_obj(question.question)
 
+    inc = {
+        'question__gametype': gametype,
+        'qatype': 'answer'
+    }
+    exc = {
+        'question__qid__startswith': 'px'
+    }
+    for question in Question.objects.filter(**inc).exclude(**exc):
+        question_answer = question
+        question = question.question
+        answer_counts = count_question_obj(question_answer)
+        question_counts = count_question_obj(question)
 
         question_answer_counts = list(set(answer_counts + question_counts))
 
@@ -72,7 +96,7 @@ def count_activities():
         if q_count:
             q_c_str = '*'.join([str(b) for b in q_counts])
 
-            print question.question.qid
+            print question.qid
             print "  question:"
             for c in question_answer_counts:
                 print "    %s - %d possibilities" % c
@@ -91,14 +115,18 @@ def count_activities():
 class Command(BaseCommand):
     args = '--word'
     help = """
-    Print all of the relations for a word by the word's lemma (-w)
     """
     option_list = BaseCommand.option_list + (
-        # make_option("-w", "--word", dest="word_key", default=False,
-        #                   help="Tag element to search for"),
+        make_option("-t", "--type", dest="gametype", default=False,
+                          help="Gametype"),
     )
 
     def handle(self, *args, **options):
-        import os
-
-        count_activities()
+        if not options.get('gametype'):
+            print "Please specify a gametype with --type"
+            print "--type=cealkka, --type=morfa"
+        else:
+            if options.get('gametype') not in ['cealkka', 'morfa']:
+                print "Please specify a gametype with --type"
+                print "--type=cealkka, --type=morfa"
+            count_activities(options.get('gametype'))
