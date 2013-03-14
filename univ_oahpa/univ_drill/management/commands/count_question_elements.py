@@ -29,7 +29,10 @@ def count_activities(gametype='morfa'):
                 continue
 
             if element.semtype and element.semtype.semtype not in criteria:
-                ws = Word.objects.filter(semtype=element.semtype)
+                ws = element.wordqelement_set.filter(word__semtype=element.semtype)\
+                                 .exclude(word__language__in=['fin', 'nob', 'sma', 'swe'])\
+                                 .values_list('word__lemma', flat=True)\
+                                 .distinct()
                 c = ws.count()
 
                 _semtypes.append(element.semtype)
@@ -105,7 +108,7 @@ def count_activities(gametype='morfa'):
             print "    (%s)" % q_c_str
             print
         else:
-            print question.question.qid
+            print question.qid
             print "  question has no elements"
             print
 
