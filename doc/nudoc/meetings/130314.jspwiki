@@ -1,0 +1,188 @@
+
+Møtereferat - Morfa-artikkel-møte 14.3.2012
+
+Til stades: Heli, Ryan, Trond.
+
+Saksliste:
+* Arbeid sidan sist
+* Gjennomgang av artikkelen
+* Notatar
+* Deadline
+
+
+!!! Arbeid sidan sist
+
+Lene, Trond som i artikkel.
+
+Ryan har generert setningar (MorfaC 5 669 877; vasta 72 349) - æ e litt usikker på at disse tallene er riktige, æ skal se nærmere på dem. VastaS har jeg jobbet mye med i perioder, og jeg har syntes at det er for få oppgaver der, jeg kan vanskelig tro at det er over 70.000 
+Heli, leksikon
+
+!!! Gjennomgang av artikkelen
+
+!!Hva må gjøres
+
+* Artikkelen skal ha eit poeng
+* Oneliner, poeng
+* Koherens
+* Rydde opp lause trådar
+
+!!Kapittel for kapittel
+
+!Introduction
+ok no
+
+!Background
+Forkorte view og werti, skrive om andre som er ulike oss. Heli
+
+!Other systems within the same approach
+Trond.
+
+!The system
+blabla - intro
+
+!Finite state transducers
+Trond
+
+!Lexicon structure
+Heli, etter kvart også Lene.
+
+!Morphological exercises: Morfa S
+Trond.
+
+!Contextual Morfa: Matrices and agreement
+Ryan, etter kvart også Lene.
+
+!Feedback
+Lene.
+
+!Comparision to other systems
+* Den som har skildra systemet i kap 2 samanliknar no.
+* NB! Der systema er (for) ulike / irrelevante samanliknar vi ikkje.
+
+!Evaluation
+intro blabla
+
+!Evaluating the generated tasks
+Lene + ulike som arbeider med det no.
+
+!Logging usage / popularity / overall
+Google analytics = Ryan
+
+!Logging the answers
+Kanskje kutte denne?
+
+!Conclusion
+Til slutt.
+
+
+
+
+!!Arbeidsdeling, oss
+
+!Alle
+* Lese gjennom og sjå på heilheita
+
+!Heli
+* Skrive om system som er ulike vårt
+* Lexicon structure
+
+!Ryan
+* Språk (seinare)
+* Google analytics
+
+!Trond
+* fst
+* MorfaS
+
+!Lene:
+* 1) henvise til vår tidligere artikkel
+* 2) forkorte lexiconstructure
+* 3) forkorte/finpusse 3.4 MorfaC
+* 3.5 forbedre feedback - nytt img osv
+* 4.1 lage tabell osv med evatlation of generated tasks
+
+
+!!!Notatar
+
+two onliners (!)
+* students of m-rich languages need, and want, to master the m
+* fst combined with matrix generation makes this possible
+
+Notatar:
+
+* fst  = The core. (and already available from other work)
+* We have the lexicon, we classify according to stem type, semantics, etc.
+
+Fst then does two things
+# It generates the whole morphological space (all the forms)
+# Controls output and input
+
+Morfa S:
+* Output: possibility of differentiate wrt dialect
+* Input: The fst makes it possible to be tolerant wrt. a range of factors
+* It also opens up for error detection (fst with error modulation)
+
+Output Morfa C: We model sentence frames
+Mathematically, also a transducer:
+
+{{{
+Maid SUBJ MAINV luomus
+Root --> 338 frames
+frame vcond0 = Maid x SUBJ() x MAINV() 
+}}}
+
+
+* Engelskoppgåver er syntagmatisk (lær å bruke ein preposisjon i ulike kontekstar)
+** = Killerfiller
+* Våre oppgåver er paradigmatisk (lær å generere ulike verb i denne konteksten)
+** Konteksten vår er sjölvsagt generert, men under vår kontroll.
+
+Morfa S size:
+
+{{{
+	nouns			
+1187	2	1	1	2374
+1187	5	2	1	11870
+				
+	verbs			
+760	7	9	1	47880
+				
+	adjectives			
+304	3	1	3	2736
+304	5	2	3	9120
+				
+	pronouns			
+10	5	5	1	250
+				
+	numerals			
+12	1	1	2	24
+12	4	2	2	192
+				
+collective	numerals			
+10	1	1	1	10
+10	4	2	1	80
+				
+derivations				
+760	1	9	1	6840
+304	1	1	1	304
+				81680
+}}}
+
+
+
+!!!Deadline
+
+* Lene startar med tabell.
+* Heli startar med leksikon seint i kveld.
+* Trond går og syng, ser på sine ting seinare.
+
+
+__Fredag klokka 1600__:
+
+Klokka er 10.00 i USA og Ryan ser på språk.
+
+__Fredag klokka 2400__: 
+
+Siste frist er ute.
+
+
