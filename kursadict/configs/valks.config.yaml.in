@@ -5,6 +5,7 @@ ApplicationSettings:
   mobile_default_pair: false
   locales_available:
     - myv
+    - mdf
     - ru
     - fi
   meta_description: >
@@ -21,6 +22,16 @@ Morphology:
     tool: *LOOKUP
     file: [*OPT, '/myv/bin/myv.fst']
     inverse_file: [*OPT, '/myv/bin/imyv.fst']
+    format: 'xfst'
+    options:
+      compoundBoundary: "+Use/Circ#"
+      derivationMarker: "+Der"
+      tagsep: '+'
+      inverse_tagsep: '+'
+  mdf:
+    tool: *LOOKUP
+    file: [*OPT, '/mdf/bin/mdf.fst']
+    inverse_file: [*OPT, '/mdf/bin/imdf.fst']
     format: 'xfst'
     options:
       compoundBoundary: "+Use/Circ#"
@@ -44,6 +55,11 @@ Languages:
       eng: "Erzya Mordvin"
       nob: "Erzya Mordvin"
       fin: "Erzya Mordvin"
+  - iso: mdf
+    name:
+      eng: "Moksha"
+      nob: "Moksha"
+      fin: "Moksha"
   - iso: eng
     name:
       eng: "english"
@@ -73,6 +89,10 @@ Dictionaries:
     target: rus
     path: 'dicts/myv-all.xml'
 
+  - source: mdf
+    target: fin
+    path: 'dicts/mdf-all.xml'
+
 Paradigms:
   myv:
     PRON:
@@ -95,10 +115,44 @@ Paradigms:
       - "PrfPrc"
       - "Ger"
       - "VGen"
+  mdf:
+    PRON:
+      - "Pregenerate"
+    N:
+      - "Sg+Nom+Indef"
+      - "Gen+Indef"
+      - "Abl+Indef"
+      - "Dat+Indef"
+      - "Abe+Indef"
+      - "Comp+Indef"
+      - "Ine+Indef"
+      - "Ela+Indef"
+      - "Ill+Indef"
+      - "Prl+Indef"
+      - "Tra+Indef"
+      - "Sg+Nom+PxSg1"
+      - "Pl+Nom+PxSg1"
+    V:
+      - "Ind+Prs+ScSg1"
+      - "Ind+Prs+ScSg2"
+      - "Ind+Prs+ScSg3"
+      - "Ind+Prs+ScPl1"
+      - "Ind+Prs+ScPl2"
+      - "Ind+Prs+ScPl3"
+      - "Ind+Prt1+ScSg1"
+      - "Ind+Prt1+ScSg2"
+      - "Ind+Prt1+ScSg3"
+      - "Ind+Prt1+ScPl1"
+      - "Ind+Prt1+ScPl2"
+      - "Ind+Prt1+ScPl3"
+
 
 
 TagSets:
   myv:
+    pos: ["N", "V", "A", "Pr", "Po", "Num"]
+    type: ["NomAg", "G3", "aktor"]
+  mdf:
     pos: ["N", "V", "A", "Pr", "Po", "Num"]
     type: ["NomAg", "G3", "aktor"]
 
