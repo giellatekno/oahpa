@@ -24,6 +24,10 @@ NAMES = dict([
 
     # valks
     ('myv', _(u"Erzya Mordvin")),
+    ('mdf', _(u"Moksha")),
+
+    # muter
+    ('mrj', _(u"Western Mari")),
 
     # vada
     ('yrk', _(u"Nenets")),
@@ -51,8 +55,10 @@ LOCALISATION_NAMES_BY_LANGUAGE = dict([
     ('ru', u"Руский"),
     ('olo', u"Livvin kieli"), # TODO: flag
     ('no', u"Norsk"),
-    ('myv', u"Эрзянь кель"), # TODO: flag
-    ('yrk', u"Ненэць вада"), # TODO: flag
+    ('myv', u"Эрзянь кель"),
+    ('myv', u"Мокшень кяль"), # TODO: flag
+    ('mrj', u"Кырык мары йӹлмӹ"), # TODO: flag
+    ('yrk', u"Ненэць вада"),
     ('lv', u"Latviešu valoda"),
     ('liv', u"Līvõ kēļ"), # TODO: flag
     ('kpv', u"Коми кыв"), # TODO: flag
