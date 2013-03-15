@@ -24,7 +24,21 @@ def count_activities(gametype='morfa'):
         _question_has_pn = False
         _question_has_tense = False
 
+        _question_has_subj = False
+        _subj_is_pron = False
+        _subj_is_noun = False
+
         for element in question.qelement_set.all():
+            if element.syntax == 'SUBJ':
+                _question_has_subj = True
+                poses = element.tags.values_list('pos', flat=True).distinct()
+                if 'Pron' in poses and 'N' in poses:
+                    _subj_is_pron = True
+                elif 'Pron' in poses:
+                    _subj_is_pron = True
+                elif 'N' in poses:
+                    _subj_is_noun = True
+
             if element.syntax in [syntax for syntax, _ in counts]:
                 continue
 
@@ -63,10 +77,16 @@ def count_activities(gametype='morfa'):
                           , 1
                           ))
 
-        if _question_has_pn:
-            counts.append(( "PERSON-NUMBER"
-                          , 9
-                          ))
+        if _question_has_pn and _question_has_subj:
+            if _subj_is_pron:
+                counts.append(( "PERSON-NUMBER"
+                              , 9
+                              ))
+            elif _subj_is_noun:
+                counts.append(( "PERSON-NUMBER"
+                              , 2
+                              ))
+
         if _question_has_tense:
             counts.append(( "TENSE"
                           , 2
