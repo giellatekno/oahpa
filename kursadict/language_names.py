@@ -56,7 +56,7 @@ LOCALISATION_NAMES_BY_LANGUAGE = dict([
     ('olo', u"Livvin kieli"), # TODO: flag
     ('no', u"Norsk"),
     ('myv', u"Эрзянь кель"),
-    ('myv', u"Мокшень кяль"), # TODO: flag
+    ('mdf', u"Мокшень кяль"), # TODO: flag
     ('mrj', u"Кырык мары йӹлмӹ"), # TODO: flag
     ('yrk', u"Ненэць вада"),
     ('lv', u"Latviešu valoda"),
