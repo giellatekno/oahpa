@@ -10,7 +10,5 @@ echo "Compiling sma-nob.all.xml"
 java -Xmx2048m -cp ~/lib/saxon9.jar -Dfile.encoding=UTF8 net.sf.saxon.Transform -it:main $GTHOME/words/dicts/scripts/collect-dict-parts.xsl inDir=$GTHOME/words/dicts/smanob/src/ > sma-nob.all.xml
 echo "Compiling nob-sma.all.xml"
 java -Xmx2048m -cp ~/lib/saxon9.jar -Dfile.encoding=UTF8 net.sf.saxon.Transform -it:main $GTHOME/words/dicts/scripts/collect-dict-parts.xsl inDir=$GTHOME/words/dicts/nobsma/src/ > nob-sma.all.xml
-echo "Compiling kom-engfinrus.all.xml"
-java -Xmx2048m -cp ~/lib/saxon9.jar -Dfile.encoding=UTF8 net.sf.saxon.Transform -it:main $GTHOME/words/dicts/scripts/collect-dict-parts.xsl inDir=$GTHOME/words/dicts/kom2X/src/ > kom-engfinrus.all.xml
 
 echo "Done"
