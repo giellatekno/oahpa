@@ -130,7 +130,7 @@ $(document).ready( function() {
         {% for iso_pair, names in language_pairs.iteritems() %}
             <li class="visible-thin hidden-desktop hidden-tablet {%- if iso_pair[0] == _from and iso_pair[1] == _to %} active{% endif -%}">
                 <a href="/{{ iso_pair[0] }}/{{ iso_pair[1] }}/">
-                <span>{{ iso_pair[0]|iso_to_i18n }} ↔ {{ iso_pair[1]|iso_to_i18n }}</span>
+                <span>{{ iso_pair[0]|iso_to_i18n }} → {{ iso_pair[1]|iso_to_i18n }}</span>
                 </a></li>
         {% endfor %}
         <li class="visible-thin hidden-desktop hidden-tablet"><a href="/more/">{% trans %}Other dictionaries{% endtrans %}</a></li>
@@ -147,7 +147,7 @@ $(document).ready( function() {
                     {% if iso_pair[0] != "SoMe" %}
                         <li class="{%- if iso_pair[0] == _from and iso_pair[1] == _to %} active{% endif -%}">
                             <a href="/{{ iso_pair[0] }}/{{ iso_pair[1] }}/">
-                            <span>{{ iso_pair[0]|iso_to_i18n }} ↔ {{ iso_pair[1]|iso_to_i18n }}</span>
+                            <span>{{ iso_pair[0]|iso_to_i18n }} → {{ iso_pair[1]|iso_to_i18n }}</span>
                             </a>
                         </li>
                     {% endif %}
@@ -181,7 +181,7 @@ $(document).ready( function() {
             <div class="span8">
                 <h4 id="dict_title">{%- for iso_pair, names in language_pairs.iteritems() %}
                     {% if iso_pair[0] == _from and iso_pair[1] == _to %}
-                    <span>{{ iso_pair[0]|iso_to_i18n }} ↔ {{ iso_pair[1]|iso_to_i18n }}</span>
+                    <span>{{ iso_pair[0]|iso_to_i18n }} → {{ iso_pair[1]|iso_to_i18n }}</span>
                     {% endif %}
                     {% endfor -%}
                     <span style="font-size: 80%">(<a href="/{{ _to }}/{{ _from }}/">→ {% trans %}Swap{% endtrans %}</a>)</span></h4>
