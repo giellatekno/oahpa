@@ -184,7 +184,7 @@ $(document).ready( function() {
                     <span>{{ iso_pair[0]|iso_to_i18n }} → {{ iso_pair[1]|iso_to_i18n }}</span>
                     {% endif %}
                     {% endfor -%}
-                    <span style="font-size: 80%">(<a href="/{{ _to }}/{{ _from }}/">→ {% trans %}Swap{% endtrans %}</a>)</span></h4>
+                    <span style="font-size: 80%">(<a href="/{{ _to }}/{{ _from }}/">⇄ {% trans %}Swap{% endtrans %}</a>)</span></h4>
 
                 <form id="neahttasaanit" class="form-inline"
                     method="post"
