@@ -1,4 +1,4 @@
-#!/home/pasha/dev/oahpa/bin/python
+#!/opt/local/bin/python
 # -*- coding: utf-8 -*-
 
 import lxml.html
