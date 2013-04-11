@@ -28,13 +28,24 @@ class EntryNodeIterator(object):
         return lemma, pos, context, type, hid
 
     def tg_nodes(self, entry):
+        """ Select <tg /> nodes. If an entry has <tg /> nodes marked
+        with xml:lang attributes, then return only the entries matching
+        the target_lang, otherwise, if there are no xml:lang attributes
+        on any of the <tg /> nodes, then return all entries unfiltered.
+        """
+        # how to detect multi-format? problem is that behavior between
+        # pair format may be disrupted by disallowing fallback?
         target_lang = self.query_kwargs.get('target_lang', False)
 
-        if target_lang:
+        if not target_lang:
+            multi = False
+        else:
+            multi = len(entry.xpath("mg/tg/@xml:lang")) > 0 and True or False
+
+        if multi:
             ts = entry.xpath("mg/tg[@xml:lang='%s']/t" % target_lang)
             tgs = entry.xpath("mg/tg[@xml:lang='%s']" % target_lang)
-
-        if not target_lang or len(tgs) == 0:
+        else:
             ts = entry.findall('mg/tg/t')
             tgs = entry.findall('mg/tg')
 
