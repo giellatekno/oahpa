@@ -853,7 +853,7 @@ def about():
     try:
         return render_template('about.%s.html' % app.config.short_name)
     except TemplateNotFound:
-        print (
+        print >> sys.stderr, (
             ' * OBS! about.%s.html not found, '
             'falling back to about.sanit.html.' % app.config.short_name
         )
