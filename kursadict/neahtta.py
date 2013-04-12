@@ -849,7 +849,16 @@ def indexWithLangs(_from, _to):
 
 @app.route('/about/', methods=['GET'])
 def about():
-    return render_template('about.html')
+    from jinja2 import TemplateNotFound
+    try:
+        return render_template('about.%s.html' % app.config.short_name)
+    except TemplateNotFound:
+        print (
+            ' * OBS! about.%s.html not found, '
+            'falling back to about.sanit.html.' % app.config.short_name
+        )
+        return render_template('about.sanit.html')
+
 
 @app.route('/plugins/', methods=['GET'])
 def plugins():

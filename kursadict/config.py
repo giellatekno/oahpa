@@ -52,6 +52,17 @@ class Config(Config):
                                self.filename)
 
     @property
+    def short_name(self):
+        _p = self.yaml.get('ApplicationSettings', {})\
+                      .get('short_name', False)
+        if _p:
+            return _p
+        else:
+            raise RuntimeError('short_name not specified in '
+                               'config file %s, in ApplicationSettings.' %
+                               self.filename)
+
+    @property
     def default_locale(self):
         _p = self.yaml.get('ApplicationSettings', {})\
                       .get('default_locale', False)
