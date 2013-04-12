@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-03-14 20:47-0500\n"
+"POT-Creation-Date: 2013-04-11 20:00-0500\n"
 "PO-Revision-Date: 2013-02-01 01:55-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: sv <LL@li.org>\n"
@@ -85,11 +85,11 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-#: neahtta.py:356 templates/index.html:257
+#: neahtta.py:354 templates/index.html:258
 msgid " is a possible form of ... "
 msgstr " är en möjlig form av ... "
 
-#: neahtta.py:437
+#: neahtta.py:432
 msgid "Invalid format. Only json and html allowed."
 msgstr "Ogiltigt format. Bara json och html tillåtit"
 
@@ -101,7 +101,7 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: static/js/bookmarklet.js:1245 templates/about.html:65
+#: static/js/bookmarklet.js:1245 templates/about.sanit.html:65
 #: templates/base.html:135
 msgid "About"
 msgstr "Om oss"
@@ -168,19 +168,19 @@ msgstr ""
 msgid "Whoops! There was some kind of error."
 msgstr ""
 
-#: templates/about.html:75
+#: templates/about.sanit.html:75
 msgid "A dictionary that understands what you're looking for."
 msgstr "En ordbok som förstår vad du letar efter."
 
-#: templates/about.html:76
+#: templates/about.sanit.html:76
 msgid "(... And is mobile-friendly!)"
 msgstr ""
 
-#: templates/about.html:80
+#: templates/about.sanit.html:80
 msgid "Free"
 msgstr "Gratis"
 
-#: templates/about.html:81
+#: templates/about.sanit.html:81
 msgid ""
 "Everything (or, well, almost everything) that\n"
 "                    concerns minority languages should be free. Here\n"
@@ -191,11 +191,11 @@ msgstr ""
 "gäller minoritetsspråk borda vara gratis. Här\n"
 "hittar du gratis och fria ordböcker och andra analysverktyg."
 
-#: templates/about.html:87
+#: templates/about.sanit.html:87
 msgid "Open-Source"
 msgstr "Öppen källkod"
 
-#: templates/about.html:88
+#: templates/about.sanit.html:88
 msgid ""
 "Everything here is based on open-source tools. Do you\n"
 "                have an idea for an app or research project that needs\n"
@@ -212,11 +212,11 @@ msgstr ""
 "webbplats för information om hur du får tillgång till lexiconfiler och\n"
 "morfologiska och syntaktiska analysatorer."
 
-#: templates/about.html:96
+#: templates/about.sanit.html:96
 msgid "Linguistic basis"
 msgstr "Lingvistisk grund"
 
-#: templates/about.html:97
+#: templates/about.sanit.html:97
 msgid ""
 "Write what you wish, and the dictionary will analyze it to break apart "
 "compound words and find base forms."
@@ -224,37 +224,37 @@ msgstr ""
 "Skriv vilked ord du vill, och ordboken kommer att analysera den, ta isär "
 "sammansatta ord och hitta basformer."
 
-#: templates/about.html:103
+#: templates/about.sanit.html:103
 msgid "gå, dra, reise"
 msgstr "gå, dra, reise"
 
-#: templates/about.html:110
+#: templates/about.sanit.html:110
 msgid "Source material"
 msgstr ""
 
-#: templates/about.html:117
+#: templates/about.sanit.html:117
 msgid "sme ↔ nob"
 msgstr ""
 
-#: templates/about.html:118
+#: templates/about.sanit.html:118
 msgid ""
 "North Sámi → Norwegian builds on Nils Jernsletten's dictionary "
 "<em>Álgosátnegirji</em>, but here it has been more than doubled in "
 "content."
 msgstr ""
 
-#: templates/about.html:119
+#: templates/about.sanit.html:119
 msgid ""
 "Norwegian → North Sámi is a converted version of North Sámi → Norwegian, "
 "but we have also revised the content and added frequent words from "
 "Norwegian."
 msgstr ""
 
-#: templates/about.html:122
+#: templates/about.sanit.html:122
 msgid "sma ↔ nob"
 msgstr ""
 
-#: templates/about.html:123
+#: templates/about.sanit.html:123
 msgid ""
 "The dictionaries for South Sámi and Norwegian build on material prepared "
 "by Albert Jåma and Tove Brustad in the <a class=\"blue\" "
@@ -265,11 +265,11 @@ msgid ""
 "class=\"blue\" href=\"http://oahpa.no\">Oahpa</a>."
 msgstr ""
 
-#: templates/about.html:126
+#: templates/about.sanit.html:126
 msgid "sme ↔ fin"
 msgstr ""
 
-#: templates/about.html:127
+#: templates/about.sanit.html:127
 msgid ""
 "Dictionaries for North Sámi and Finnish are based on lexical material "
 "from the <a class=\"green\" href=\"http://kotus.fi\">Institute for the "
@@ -279,11 +279,11 @@ msgid ""
 "Finnish."
 msgstr ""
 
-#: templates/about.html:128
+#: templates/about.sanit.html:128
 msgid "Each of the dictionaries contains about 11,000 base words."
 msgstr ""
 
-#: templates/about.html:136
+#: templates/about.sanit.html:136
 msgid "More to come..."
 msgstr ""
 
@@ -339,27 +339,27 @@ msgstr ""
 msgid "Search"
 msgstr "Sök"
 
-#: templates/index.html:244
+#: templates/index.html:245
 msgid "Definition not found for:"
 msgstr ""
 
-#: templates/index.html:283
+#: templates/index.html:284
 #, python-format
 msgid "Word %(input)s not found."
 msgstr "Ord %(input)s hittades inte."
 
-#: templates/index.html:292
+#: templates/index.html:293
 msgid ""
 "If you are using a device without a Sámi keyboard, consider using <a "
 "href=\"/SoMe/nob/\">social media mode</a>, which allows you to type "
 "<em>acdnstz</em> for <em>áčđŋšŧž</em>."
 msgstr ""
 
-#: templates/index.html:296
+#: templates/index.html:297
 msgid "Search for a word, or a word form for a word analysis and definition."
 msgstr "Sök efter ett ord eller en ordform för en ordanalys och definition."
 
-#: templates/index.html:300
+#: templates/index.html:301
 msgid ""
 "You selected #SoMe, the variant for social media, which means that the "
 "letters acdnstz\n"
