@@ -1205,10 +1205,12 @@ jQuery(document).ready(function($) {
     */
 
     var localized;
-    localized = window.nds_opts.localization[string];
-    if (localized != null) {
-      if (localized) {
-        return localized;
+    if (window.nds_opts.localization != null) {
+      localized = window.nds_opts.localization[string];
+      if (localized != null) {
+        if (localized) {
+          return localized;
+        }
       }
     }
     return string;
@@ -1607,7 +1609,7 @@ jQuery(document).ready(function($) {
       return initializeWithSettings();
     };
     version_ok = false;
-    if (window.NDS_BOOKMARK_VERSION) {
+    if (window.NDS_BOOKMARK_VERSION != null) {
       version_ok = semver.gte(window.NDS_BOOKMARK_VERSION, EXPECT_BOOKMARKLET_VERSION);
     }
     uagent = navigator.userAgent;

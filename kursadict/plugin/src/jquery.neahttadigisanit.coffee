@@ -39,10 +39,11 @@ jQuery(document).ready ($) ->
         we assume the user does not really want to switch.
     ###
     
-    localized = window.nds_opts.localization[string]
-    if localized?
-      if localized
-        return localized
+    if window.nds_opts.localization?
+      localized = window.nds_opts.localization[string]
+      if localized?
+        if localized
+          return localized
     return string
 
   _ = fakeGetText
@@ -531,7 +532,7 @@ jQuery(document).ready ($) ->
 
     version_ok = false
 
-    if window.NDS_BOOKMARK_VERSION
+    if window.NDS_BOOKMARK_VERSION?
       version_ok = semver.gte( window.NDS_BOOKMARK_VERSION
                              , EXPECT_BOOKMARKLET_VERSION
                              )

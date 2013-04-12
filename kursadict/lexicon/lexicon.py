@@ -20,12 +20,32 @@ class LexiconOverrides(object):
     registered, allowing for language-specific conditional rules for
     filtering.
 
-    There is also a post-generation tag rewrite decorator registry function
+    There is also a post-generation tag rewrite decorator registry function.
     """
 
     ##
     ### Here are the functions that apply all the rules
     ##
+
+    def format_source(self, lang_iso, ui_lang, e, default_str):
+        """ Find the function decorated by
+                @overrides.entry_source_formatter(iso)
+            and run the function on an XML node.
+        """
+        if lang_iso in self.source_formatters:
+            return self.source_formatters.get(lang_iso)(ui_lang, e) \
+                or default_str
+        return default_str
+
+    def format_target(self, lang_iso, ui_lang, e, tg, default_str):
+        """ Find the function decorated by
+                @overrides.entry_source_formatter(iso)
+            and run the function on an XML node.
+        """
+        if lang_iso in self.target_formatters:
+            return self.target_formatters.get(lang_iso)(ui_lang, e, tg) \
+                or default_str
+        return default_str
 
     def process_prelookups(self, function):
         """ This runs the generator function, and applies all of the
@@ -47,6 +67,48 @@ class LexiconOverrides(object):
     ### Here are the decorators
     ##
 
+    def entry_source_formatter(self, language_iso):
+        """ Register a function for a language ISO.
+
+        Functions decorated by this registry decorator should take one
+        argument, an entry node, and return either a string or None. If
+        None is returned, then a default value will be returned instead.
+
+        The default value is passed to the function format_source, which
+        selects the registered function and executes it.
+
+        """
+        def wrapper(formatter_function):
+            if language_iso in self.source_formatters:
+                print ' * OBS! Source formatter already registered for %s.' % \
+                    language_iso
+                print '   ignoring redefinition on <%s>.' % \
+                    restrictor_function.__name__
+            else:
+                self.source_formatters[language_iso] = formatter_function
+                print '%s formatter: entry formatter for source - %s' %\
+                      ( language_iso
+                      , formatter_function.__name__
+                      )
+        return wrapper
+
+    def entry_target_formatter(self, language_iso):
+        """ Register a function for a language ISO
+        """
+        def wrapper(formatter_function):
+            if language_iso in self.target_formatters:
+                print ' * OBS! Target formatter already registered for %s.' % \
+                    language_iso
+                print '   ignoring redefinition on <%s>.' % \
+                    formatter_function.__name__
+            else:
+                self.target_formatters[language_iso] = formatter_function
+                print '%s formatter: entry formatter for target - %s' %\
+                      ( language_iso
+                      , restrictor_function.__name__
+                      )
+        return wrapper
+
     def pre_lookup_tag_rewrite_for_iso(self, language_iso):
         """ Register a function for a language ISO
         """
@@ -63,6 +125,8 @@ class LexiconOverrides(object):
         from collections import defaultdict
 
         self.prelookup_processors = defaultdict(list)
+        self.target_formatters = defaultdict(bool)
+        self.source_formatters = defaultdict(bool)
 
 lexicon_overrides = LexiconOverrides()
 

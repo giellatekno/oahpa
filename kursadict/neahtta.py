@@ -1,62 +1,12 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 """
-A service that provides JSON and RESTful lookups to webdict xml trie files.
+A service that provides JSON and RESTful lookups to webdict xml trie
+files.
 
-## Configuration
-
-Configuration settings for paths to FSTs, utility programs and
-dictionary files must be set in `app.config.yaml`. A sample file is
-checked in as `app.config.yaml.in`, so copy this file, edit the settings
-and then launch the service.
-
-## Testing via cURL
-
-### Submit post data with JSON
-
-    curl -X POST -H "Content-type: application/json" \
-         -d ' {"lookup": "fest" } ' \
-         http://localhost:5000/lookup/nob/sme/
-
-### Submit GET data with parameters, and JSON response
-
-    curl -X GET -H "Content-type: application/json" \
-           http://localhost:5000/detail/sme/nob/geađgi/
-
-## Installing
-
-See requirements.txt. Ideally, use virtualenv to create a new Python
-virtual environment, and use requirements.txt to automatically install
-all of the required packages.
-
-You can test that it's worked by running this file with python-- if you
-see no errors, and dictionaries are parsed, and autocomplete tries are
-prepared, things are working. Finally, the app will state which host and
-port it is running on. For developing locally, this is all you need.
-
-### Production environments
-
-There is a separate fcgi script (neahttadigisanit.fcgi) which is meant
-to be used with nginx for production environments.
-
-## Todos
-
-TODO: autocomplete from all left language lemmas, build cache and save
-      to pickle on each run, then use pickle
-
-## Compiling XML
-
-    java -Xmx2048m -Dfile.encoding=UTF8 net.sf.saxon.Transform \
-        -it:main /path/to/gtsvn/words/scripts/collect-dict-parts.xsl \
-        inDir=/path/to/gtsvn/words/dicts/smenob/src/ > OUTFILE.xml
-
-    may need to also include -cp ~/lib/saxon9.jar
-
-### Note about macs with saxon
-
-Can be installed by brew
-
-    brew install saxon
+This is the main file which handles initializing the app and providing
+endpoint functionality. Documentation on installing and maintaining
+config files is elsewhere.
 
 """
 
@@ -83,32 +33,44 @@ from   flaskext.babel                 import Babel
 from   flaskext.babel                 import gettext as _
 
 
-cache = SimpleCache()
-app = Flask(__name__,
-    static_url_path='/static',)
+def create_app():
+    """ Set up the Flask app, cache, read app configuration file, and
+    other things.
+    """
+    from morpho_lexicon import MorphoLexicon
 
-app.jinja_env.line_statement_prefix = '#'
-app.jinja_env.add_extension('jinja2.ext.i18n')
-app.config['cache'] = cache
+    cache = SimpleCache()
+    app = Flask(__name__,
+        static_url_path='/static',)
 
-app.config = Config('.', defaults=app.config)
-app.config.from_envvar('NDS_CONFIG')
+    app.jinja_env.line_statement_prefix = '#'
+    app.jinja_env.add_extension('jinja2.ext.i18n')
+    app.config['cache'] = cache
+    app.cache = cache
 
-from morpho_lexicon import MorphoLexicon
-app.morpholexicon = MorphoLexicon(app.config)
+    app.config = Config('.', defaults=app.config)
+    app.config.from_envvar('NDS_CONFIG')
 
-try:
-    with open('secret_key.do.not.check.in', 'r') as F:
-        key = F.readlines()[0].strip()
-    app.config['SECRET_KEY'] = key
-except IOError:
-    print >> sys.stderr, """
-    You need to generate a secret key, and store it in a file with the
-    following name: secret_key.do.not.check.in """
-    sys.exit()
+    app.morpholexicon = MorphoLexicon(app.config)
 
-babel = Babel(app)
-babel.init_app(app)
+    try:
+        with open('secret_key.do.not.check.in', 'r') as F:
+            key = F.readlines()[0].strip()
+        app.config['SECRET_KEY'] = key
+    except IOError:
+        print >> sys.stderr, """
+        You need to generate a secret key, and store it in a file with the
+        following name: secret_key.do.not.check.in """
+        sys.exit()
+
+    babel = Babel(app)
+    babel.init_app(app)
+
+    app.babel = babel
+
+    return app
+
+app = create_app()
 
 # Configure user_log
 user_log = getLogger("user_log")
@@ -116,20 +78,54 @@ useLogFile = logging.FileHandler('user_log.txt')
 user_log.addHandler(useLogFile)
 user_log.setLevel("INFO")
 
-from language_names import ISO_TRANSFORMS, LOCALISATION_NAMES_BY_LANGUAGE
-AVAILABLE_LOCALE_ISO_TRANSFORM = ISO_TRANSFORMS
-
-## These things are sort of a temporary fix for some of the localization
-## that runs off of CSS selectors, in order to include the 3 digit ISO
-## into the <body /> @lang attribute.
+###
+### Additional localization/internationalization setup, and locale helpers
+###
 
 def iso_filter(_iso):
-    return AVAILABLE_LOCALE_ISO_TRANSFORM.get(_iso, _iso)
+    """ These things are sort of a temporary fix for some of the
+    localization that runs off of CSS selectors, in order to include the
+    3 digit ISO into the <body /> @lang attribute.
+    """
+    from language_names import ISO_TRANSFORMS
+    return ISO_TRANSFORMS.get(_iso, _iso)
 
+@app.babel.localeselector
+def get_locale():
+    """ This function defines the behavior involved in selecting a
+    locale. """
+
+    locales = app.config.locales_available
+
+    # Does the locale exist already?
+    ses_lang = session.get('locale', None)
+    if ses_lang is not None:
+        return ses_lang
+    else:
+        # Is there a default locale specified in config file?
+        ses_lang = app.config.default_locale
+        if not app.config.default_locale:
+            # Guess the locale based on some magic that babel performs
+            # on request headers.
+            ses_lang = request.accept_languages.best_match(locales)
+        # Append to session
+        session.locale = ses_lang
+        app.jinja_env.globals['session'] = session
+
+    return ses_lang
+
+###
+### Additional template contexts
+###
 
 @app.before_request
 def append_session_globals():
+    """ Add two-character and three-char session locale to global
+    template contexts: session_locale, session_locale_long_iso.
+    """
+
     loc = get_locale()
+
     app.jinja_env.globals['session_locale'] = loc
     app.jinja_env.globals['session_locale_long_iso'] = iso_filter(loc)
 
@@ -149,28 +145,6 @@ def define_app_meta():
 def define_app_meta_keywords():
     return dict(app_meta_keywords=app.config.meta_keywords)
 
-@babel.localeselector
-def get_locale():
-    ses_lang = session.get('locale', None)
-    locales = app.config.locales_available
-    if ses_lang is not None:
-        return ses_lang
-    else:
-        ses_lang = app.config.default_locale
-        if not app.config.default_locale:
-            ses_lang = request.accept_languages.best_match(locales)
-        session.locale = ses_lang
-        app.jinja_env.globals['session'] = session
-    return ses_lang
-
-##
-##  Endpoints
-##
-##
-
-
-# language_pairs = app.config.lexicon.language_pairs
-# autocomplete_tries = app.config.lexicon.autocomplete_tries
 
 ##
 ## Template filters
@@ -178,6 +152,7 @@ def get_locale():
 
 @app.template_filter('iso_to_language_own_name')
 def iso_to_language_own_name(_iso):
+    from language_names import LOCALISATION_NAMES_BY_LANGUAGE
     return LOCALISATION_NAMES_BY_LANGUAGE.get(_iso, _iso)
 
 @app.template_filter('iso_to_i18n')
@@ -187,6 +162,8 @@ def append_language_names_i18n(s):
 
 @app.template_filter('to_xml_string')
 def to_xml_string(n):
+    """ Return a string from an lxml node within an entry result.
+    """
     from lxml import etree
     if 'entries' in n:
         if 'node' in n.get('entries'):
@@ -195,6 +172,24 @@ def to_xml_string(n):
             return _str.decode('utf-8')
     return ''
 
+@app.template_filter('sneak_in_link')
+def sneak_in_link(s, link_src):
+    """ Split a string at the first parenthesis, if the string contains
+    any, and wrap the first part in a link; otherwise wrap the whole
+    thing in a link.
+    """
+
+    target_word, paren, rest = s.partition('(')
+
+    if paren:
+        return '<a href="%s">%s</a> (%s' % ( link_src
+                                           , target_word
+                                           , rest
+                                           )
+    else:
+        return '<a href="%s">%s</a>' % ( link_src
+                                       , target_word
+                                       )
 
 @app.template_filter('tagfilter')
 def tagfilter(s, lang_iso, targ_lang):
@@ -233,6 +228,11 @@ def urlencode_filter(s):
     s = urllib.quote_plus(s)
     return Markup(s)
 
+##
+##  Error templates
+##
+##
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
@@ -240,6 +240,11 @@ def page_not_found(e):
 @app.errorhandler(500)
 def server_error(e, *args, **kwargs):
     return render_template('500.html', error=e), 500
+
+##
+##  Endpoints
+##
+##
 
 @app.route('/autocomplete/<from_language>/<to_language>/',
            methods=['GET'], endpoint="autocomplete")
@@ -265,13 +270,6 @@ def autocomplete(from_language, to_language):
     return Response(response=fmtForCallback(json.dumps(autos), has_callback),
                     status=200,
                     mimetype="application/json")
-
-# TODO: @app.route('/lookup/languages/')
-#
-#       for discovering available dictionaries for the reader plugin
-#       alternately, store this in a variable when the bookmarklet is
-#       downloaded; this needs to be available as soon as the plugin
-#       becomes available
 
 @app.route('/lookup/<from_language>/<to_language>/',
            methods=['GET'], endpoint="lookup")
@@ -372,9 +370,6 @@ def lookupWord(from_language, to_language):
                    , mimetype="application/json"
                    )
 
-
-# TODO: Keeping the old endpoints until all dependent apps are migrated
-#       to the new ones.
 @app.route('/detail/<from_language>/<to_language>/<wordform>.<format>',
            methods=['GET'], endpoint="detail")
 def wordDetail(from_language, to_language, wordform, format):
@@ -468,7 +463,7 @@ def wordDetail(from_language, to_language, wordform, format):
             abort(404)
 
     if app.caching_enabled:
-        cached_result = cache.get(entry_cache_key)
+        cached_result = app.cache.get(entry_cache_key)
     else:
         cached_result = None
 
@@ -579,7 +574,7 @@ def wordDetail(from_language, to_language, wordform, format):
             else:
                 _r['paradigms'] = False
 
-        cache.set(entry_cache_key, detailed_result)
+        app.cache.set(entry_cache_key, detailed_result)
     else:
         detailed_result = cached_result
 
@@ -766,10 +761,6 @@ def bookmarklet():
                           , language_pairs=app.config.pair_definitions
                           )
 
-##
-## Public pages
-##
-
 # For direct links, form submission.
 @app.route('/<_from>/<_to>/', methods=['GET', 'POST'])
 def indexWithLangs(_from, _to):
@@ -810,7 +801,11 @@ def indexWithLangs(_from, _to):
         analyses = [(lem.input, lem.lemma, [lem.pos] + lem.tag)
                     for lem in analyses]
 
-        fmtkwargs = {'target_lang': _to}
+        fmtkwargs = { 'target_lang': _to
+                    , 'source_lang': _from
+                    , 'ui_lang': session.get('locale', _to)
+                    }
+
         # [(lemma, XMLNodes)] -> [(lemma, generator(AlmostJSON))]
         formatted_results = list(FrontPageFormat(xml_nodes, **fmtkwargs))
 
@@ -905,7 +900,6 @@ def index():
                           , mobile=mobile
                           , iphone=iphone
                           )
-
 
 if __name__ == "__main__":
     app.caching_enabled = True

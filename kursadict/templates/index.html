@@ -213,19 +213,20 @@ $(document).ready( function() {
                             {% for lexeme in word_searches %}
                             {% if lexeme.lookups %}
                                 {% for lookup in lexeme.lookups %}
-                                {% if _from == "SoMe" %}
-                                    <p><a href="/detail/sme/{{ _to }}/{{ lookup.left }}.html?e_node={{ lookup.entry_hash }}">
-                                {% else %}
-                                    <p><a href="/detail/{{ _from }}/{{ _to }}/{{ lookup.left }}.html?e_node={{ lookup.entry_hash }}">
-                                {% endif %}
-                                        {{ lookup.left }}
-                                </a> ({{ lookup.pos|tagfilter(_from, _to) }}) &ndash; </p>
-                                <ol>{%- for tx in lookup.right -%}
-                                        <li>
-                                            {%- include 'main_page_li.html' -%}
-                                        </li>
-                                    {%- endfor -%}
-                                </ol>
+                                    {% if _from == "SoMe" %}
+                                        {% set link_target = "/detail/sme/%s/%s.html?e_node=%s" % (_to, lookup.left, lookup.entry_hash) %}
+                                    {% else %}
+                                        {% set link_target = "/detail/%s/%s/%s.html?e_node=%s" % (_from, _to, lookup.left, lookup.entry_hash) %}
+                                    {% endif %}
+
+                                    <p>{{ lookup.source_formatted|sneak_in_link(link_target)|safe }}
+
+                                    <ol>{%- for tx in lookup.right -%}
+                                            <li>
+                                                {%- include 'main_page_li.html' -%}
+                                            </li>
+                                        {%- endfor -%}
+                                    </ol>
                                 {% endfor %}
                             {% else %}
                                 {% if errors %}

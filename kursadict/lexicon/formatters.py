@@ -2,6 +2,8 @@
 def flatten(_list):
     return list(sum(_list, []))
 
+from lexicon import lexicon_overrides
+
 class EntryNodeIterator(object):
     """ A class for iterating through the result of an LXML XPath query,
     while cleaning the nodes into a more usable format.
@@ -173,28 +175,47 @@ class DetailedFormat(EntryNodeIterator):
 
 class FrontPageFormat(EntryNodeIterator):
 
+    def clean_tg_node(self, e, tg):
+        ui_lang = self.query_kwargs.get('ui_lang')
+
+        text, annotations, lang = self.find_translation_text(tg)
+
+        link = True
+
+        if isinstance(text, list):
+            if len(text) > 1:
+                link = False
+            text = ', '.join(text)
+        else:
+            link = True
+
+        # e node, tg node, default text for when formatter doesn't
+        # exist for current iso
+        target_formatted = lexicon_overrides.format_target(
+            self.query_kwargs.get('target_lang'), ui_lang, e, tg, text
+        )
+
+        right_node = { 'tx': text
+                     , 're': annotations
+                     , 'link': link
+                     , 'examples': self.examples(tg)
+                     , 'target_formatted': target_formatted
+                     }
+
+        return right_node, lang
+
     def clean(self, e):
         lemma, lemma_pos, lemma_context, lemma_type, lemma_hid = self.l_node(e)
         tgs, ts = self.tg_nodes(e)
 
-        right_nodes = []
-        right_langs = []
-        for tg in tgs:
-            text, annotations, lang = self.find_translation_text(tg)
-            right_langs.append(lang)
-            link = True
-            if isinstance(text, list):
-                if len(text) > 1:
-                    link = False
-                text = ', '.join(text)
-            else:
-                link = True
+        ui_lang = self.query_kwargs.get('ui_lang')
 
-            right_nodes.append({ 'tx': text
-                               , 're': annotations
-                               , 'link': link
-                               , 'examples': self.examples(tg)
-                               })
+        _right = map( lambda tg: self.clean_tg_node(e, tg)
+                    , tgs
+                    )
+
+        right_langs = [lang for _, lang in _right]
+        right_nodes = [fmt_node for fmt_node, _ in _right]
 
         # Make our own hash, 'cause lxml won't
         entry_hash = [ unicode(lemma)
@@ -204,7 +225,29 @@ class FrontPageFormat(EntryNodeIterator):
                      ]
         entry_hash = str('-'.join(entry_hash).__hash__())
 
+        # node, and default format for if a formatter doesn't exist for
+        # iso
+        from neahtta import tagfilter
+
+        source_lang = self.query_kwargs.get('source_lang')
+        target_lang = self.query_kwargs.get('target_lang')
+
+        if lemma and lemma_pos:
+            default_format = "%s (%s)" % ( lemma
+                                         , tagfilter( lemma_pos
+                                                    , source_lang
+                                                    , target_lang
+                                                    )
+                                         )
+        elif lemma and not lemma_pos:
+            default_format = lemma
+
+        source_formatted = lexicon_overrides.format_source(
+            source_lang, ui_lang, e, default_format
+        )
+
         return { 'left': lemma
+               , 'source_formatted': source_formatted
                , 'context': lemma_context
                , 'pos': lemma_pos
                , 'right': right_nodes
