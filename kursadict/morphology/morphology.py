@@ -511,7 +511,7 @@ class Morphology(object):
                 _tag = unicode(_tag).encode('utf-8')
                 return '<Lemma: %s, %s, %s>' % (_lem, _pos, _tag)
 
-            def __init__(lem_obj, lemma, pos, tag, _input=False):
+            def __init__(lem_obj, lemma, pos='', tag=[''], _input=False):
                 lem_obj.lemma = lemma
                 lem_obj.pos = pos
                 lem_obj.tag = tag
@@ -572,10 +572,16 @@ class Morphology(object):
 
             for analysis in analyses:
                 _an_parts = self.tool.splitAnalysis(analysis)
-                _lem      = _an_parts[0]
-                _pos      = _an_parts[1]
-                _analysis = _an_parts[2::]
-                lem = Lemma(_lem, _pos, _analysis, form)
+                # If a word doesn't have a PoS in an analysis, we try to
+                # handle it as best as possible.
+                if len(_an_parts) == 1:
+                    _lem = _an_parts[0]
+                    lem = Lemma(lemma=_lem, _input=_lem)
+                else:
+                    _lem      = _an_parts[0]
+                    _pos      = _an_parts[1]
+                    _analysis = _an_parts[2::]
+                    lem = Lemma(_lem, _pos, _analysis, form)
                 lemmas.add(lem)
 
         return list(lemmas)
