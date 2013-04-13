@@ -8,6 +8,7 @@ from flaskext.babel import lazy_gettext as _
 NAMES = dict([
     # sanit
     ('sme', _(u"North Sámi")),
+    ('se', _(u"North Sámi")),
     ('SoMe', _(u"North Sámi (#SoMe)")),
 
     # baakoeh
@@ -51,6 +52,7 @@ LOCALISATION_NAMES_BY_LANGUAGE = dict([
     # form of "kieli", so, someone should check what the common practice
     # is amongst these language groups.
     ('sme', u"Davvisámegiella"),
+    ('se', u"Davvisámegiella"),
     ('sma', u"Åarjelsaemien gïele"),
     ('ru', u"Руский"),
     ('olo', u"Livvin kieli"), # TODO: flag
