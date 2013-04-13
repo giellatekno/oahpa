@@ -38,6 +38,14 @@ def create_app():
     other things.
     """
     from morpho_lexicon import MorphoLexicon
+    # TODO: this is called twice sometimes, slowdowns have been reduced,
+    # but don't know why yet. Need to check. It only happens on the
+    # first POST lookup, however...
+
+    # import inspect
+    # curframe = inspect.currentframe()
+    # calframe = inspect.getouterframes(curframe, 2)
+    # print "caller name", calframe[1]
 
     cache = SimpleCache()
     app = Flask(__name__,
@@ -191,34 +199,39 @@ def sneak_in_link(s, link_src):
                                        , target_word
                                        )
 
-@app.template_filter('tagfilter')
-def tagfilter(s, lang_iso, targ_lang):
+def tagfilter_conf(filters, s):
+    """ A helper function for filters to extract app.config from the
+    function for import in other modules.
+    """
     if not s:
         return s
 
-    filters = app.config.tag_filters.get((lang_iso, targ_lang), False)
-    if filters:
-        filtered = []
-        if isinstance(s, list):
-            parts = s
-        else:
-            parts = s.split(' ')
-        for part in parts:
-            # try part, and if it doesn't work, then try part.lower()
-            _f_part = filters.get( part
-                                 , filters.get( part.lower()
-                                              , part
-                                              )
-                                 )
-            filtered.append(_f_part)
-
-        return ' '.join([a for a in filtered if a.strip()])
+    filtered = []
+    if isinstance(s, list):
+        parts = s
     else:
-        if isinstance(s, list):
-            return ' '.join(s)
-        else:
-            return s
-    return s
+        parts = s.split(' ')
+    for part in parts:
+        # try part, and if it doesn't work, then try part.lower()
+        _f_part = filters.get( part
+                             , filters.get( part.lower()
+                                          , part
+                                          )
+                             )
+        filtered.append(_f_part)
+
+    return ' '.join([a for a in filtered if a.strip()])
+
+@app.template_filter('tagfilter')
+def tagfilter(s, lang_iso, targ_lang):
+
+    filters = app.config.tag_filters.get((lang_iso, targ_lang), False)
+
+    if filters:
+        return tagfilter_conf(filters, s)
+    else:
+        return s
+
 
 @app.template_filter('urlencode')
 def urlencode_filter(s):

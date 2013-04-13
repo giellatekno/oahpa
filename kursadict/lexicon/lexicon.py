@@ -220,15 +220,24 @@ class AutocompleteTrie(XMLDict):
     def __init__(self, *args, **kwargs):
         super(AutocompleteTrie, self).__init__(*args, **kwargs)
 
-        print "* Preparing autocomplete trie..."
         from trie import Trie
-        self.trie = Trie()
-        try:
-            self.trie.update(self.allLemmas)
-        except:
-            print "Trie processing error"
-            print list(self.allLemmas)
-            self.trie = False
+
+        print "* Preparing autocomplete trie..."
+        filename = kwargs.get('filename')
+
+        parsed_key = 'auto-' + filename
+        if parsed_key not in PARSED_TREES:
+            self.trie = Trie()
+            try:
+                self.trie.update(self.allLemmas)
+            except:
+                print "Trie processing error"
+                print list(self.allLemmas)
+                self.trie = False
+            PARSED_TREES[parsed_key] = self.trie
+
+        else:
+            self.trie = PARSED_TREES[filename]
 
 
 class ReverseLookups(XMLDict):
@@ -295,7 +304,10 @@ class Lexicon(object):
         for k, v in language_pairs.iteritems():
             has_root = language_pairs.get(k)
             if has_root:
-                autocomplete_tries[k] = AutocompleteTrie(tree=has_root.tree)
+                fname = settings.dictionaries.get(k)
+                autocomplete_tries[k] = AutocompleteTrie( tree=has_root.tree
+                                                        , filename=fname
+                                                        )
 
         self.autocomplete_tries = autocomplete_tries
 
