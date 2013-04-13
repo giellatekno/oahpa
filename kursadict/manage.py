@@ -3,9 +3,7 @@
 
 from flask import Flask
 from flaskext.actions import Manager
-from neahtta import create_app
-
-app = create_app()
+from neahtta import app
 
 manager = Manager(app, default_server_actions=True)
 
