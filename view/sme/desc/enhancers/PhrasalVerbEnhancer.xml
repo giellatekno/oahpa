@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+<frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+<primitive>true</primitive>
+<annotatorImplementationName>werti.uima.enhancer.PhrasalVerbEnhancer</annotatorImplementationName>
+<analysisEngineMetaData>
+<name>PhrasalVerbEnhancer</name>
+<description>Add phrasal verb (verb, particle, intervening ADVP/NP) annotation.</description>
+<version>1.0</version>
+<vendor></vendor>
+<configurationParameters>
+</configurationParameters>
+<configurationParameterSettings>
+</configurationParameterSettings>
+<typeSystemDescription>
+<imports>
+<import location="../vislcg3TypeSystem.xml"/>
+</imports>
+</typeSystemDescription>
+<typePriorities>
+      <imports>
+        <import location="../WERTiTypePriorities.xml"/>
+      </imports>
+    </typePriorities>
+<fsIndexCollection/>
+<capabilities>
+<capability>
+<inputs>
+<type allAnnotatorFeatures="true">werti.uima.types.annot.PhrasalVerb</type>
+</inputs>
+<outputs>
+<type allAnnotatorFeatures="true">werti.uima.types.Enhancement</type>
+</outputs>
+<languagesSupported/>
+</capability>
+</capabilities>
+<operationalProperties>
+<modifiesCas>true</modifiesCas>
+<multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+<outputsNewCASes>false</outputsNewCASes>
+</operationalProperties>
+</analysisEngineMetaData>
+<resourceManagerConfiguration/>
+</analysisEngineDescription>

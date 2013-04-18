@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<!-- Single configuration file for an activity. -->
+<!-- <!DOCTYPE activity SYSTEM "../activity.dtd"> -->
+<activity version="0.1" enabled="yes">
+	<meta>
+		<name>Conjunctions</name>
+		<author>Adriane Boyd, Heli Uibo</author>
+	</meta>
+	
+	<!-- the client configuration will be converted to JavaScript ending up in  the browser  -->
+	<client-cfg>
+	<!-- the client-cfg is in js-lib for newer releases, f ex WERTiCore -->
+	   		<!-- the enhancement style for a colorize activity: -->
+		<entry key="colorizeStyle" value="color: #22F; font-weight:bold" overridable="yes"/>
+		<!-- this is the default style for the input box in a cloze activity: -->
+		<entry key="clozeDefaultStyle" value="font-weight:bold; width:35px; border:1px solid black; background:white;" overridable="yes"/>
+		<!-- the input box in a cloze activity is set to this style if the input was wrong: -->
+		<entry key="clozeWrongStyle" value="color: red; font-weight:bold; width:35px; border:1px solid black; background:white;" overridable="yes"/>
+		<!-- the input box is replaced by a text of this style if the input was correct: -->
+		<entry key="clozeCorrectStyle" value="color: green; font-weight:bold" overridable="yes"/>
+		<!-- show hint questionmarks in cloze activity? if so, define their style... -->
+		<entry key="clozeShowHints" value="yes" overridable="yes" />
+		<entry key="clozeHintStyle" value="font-weight:regular; width:15px; border:1px solid #A0A0A0; background:#E9E9E9; color:#A0A0A0; margin-left:2px;" overridable="yes"/>
+		<entry key="clozeHintSolvedStyle" value="color: #22F; font-weight:bold" overridable="yes"/>
+
+	</client-cfg>
+	<!--  this is the UIMA AE configuration for the pipeline -->
+	<server-cfg>
+		<lang code="en"> <!-- because there is no tokenizer for lang=sme -->
+			<pre>
+				<!-- the pipeline descriptor is looked up in the class path, must begin with / -->
+				<pipeline desc="/operators/vislcg3Pipe.xml"/>
+			</pre>
+			<post>
+				<!-- the pipeline descriptor is looked up in the class path, must begin with / -->
+				<pipeline desc="/operators/vislcg3PostProc.xml"/>
+				<entry key="conjunctionTags" value="CC,CS" overridable="yes"/>  
+			</post>
+		</lang>
+	</server-cfg>
+</activity>

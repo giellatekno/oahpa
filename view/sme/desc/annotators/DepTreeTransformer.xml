@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>
+  <annotatorImplementationName>werti.uima.ae.DepTreeTransformer</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>DepTreeTransformer</name>
+    <description/>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters>
+	    <configurationParameter>
+			<name>morphgLoc</name>
+			<description>Location of the morphg program.</description>
+			<type>String</type>
+			<multiValued>false</multiValued>
+			<mandatory>true</mandatory>
+		</configurationParameter>
+		<configurationParameter>
+			<name>morphgVerbstemLoc</name>
+			<description>Location of the verbstem file used by morphg.</description>
+			<type>String</type>
+			<multiValued>false</multiValued>
+			<mandatory>true</mandatory>
+		</configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+		<name>morphgLoc</name>
+		<value>
+			<string>/usr/local/werti/bin/morphg</string>
+		</value>
+	  </nameValuePair>
+	  <nameValuePair>
+		<name>morphgVerbstemLoc</name>
+			<value>
+				<string>/usr/local/werti/share/morph/verbstem.list</string>
+			</value>
+	  </nameValuePair>
+    </configurationParameterSettings>
+    <typeSystemDescription>
+      <imports>
+        <import location="../WERTiTypeSystem.xml"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities>
+      <imports>
+        <import location="../WERTiTypePriorities.xml"/>
+      </imports>
+    </typePriorities>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs>
+          <type>werti.uima.types.annot.SentenceAnnotation</type>
+          <feature>werti.uima.types.annot.SentenceAnnotation:parseCandidate</feature>
+          <feature>werti.uima.types.annot.SentenceAnnotation:passiveConversionStrategy</feature>
+          <feature>werti.uima.types.annot.SentenceAnnotation:hasdepparse</feature>
+          <feature>werti.uima.types.annot.SentenceAnnotation:end</feature>
+          <feature>werti.uima.types.annot.SentenceAnnotation:begin</feature>
+          <feature>werti.uima.types.annot.SentenceAnnotation:sofa</feature>
+          <type>werti.uima.types.annot.Token</type>
+          <feature>werti.uima.types.annot.Token:deprel</feature>
+          <feature>werti.uima.types.annot.Token:dephead</feature>
+          <feature>werti.uima.types.annot.Token:depid</feature>
+          <feature>werti.uima.types.annot.Token:tag</feature>
+          <feature>werti.uima.types.annot.Token:end</feature>
+          <feature>werti.uima.types.annot.Token:begin</feature>
+          <feature>werti.uima.types.annot.Token:sofa</feature>
+        </inputs>
+        <outputs>
+          <type allAnnotatorFeatures="true">werti.uima.types.Subclause</type>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>

@@ -1,0 +1,5 @@
+The way MaltParser loads files from /appdata does not work in the servlet 
+context.  I've moved Util.findURL and Util.findURLinJars to the class
+Finder and made them non-static, so that getClass().getResource() can
+find the files in malt.jar in the servlet context.  The current local 
+version is 1.4.1.2 (only in our internal maven repository).

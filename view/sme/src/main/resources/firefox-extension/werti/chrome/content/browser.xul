@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://view/skin/skin.css" type="text/css"?> 
+<!DOCTYPE wertiview SYSTEM "chrome://view/locale/translations.dtd">
+<overlay id="wertiview-browser" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<script type="application/x-javascript" src="chrome://view/content/view.js" />
+		<script type="application/x-javascript" src="chrome://view/content/jquery.ui.core.js" />
+		<script type="application/x-javascript" src="chrome://view/content/lib.js" />
+		<script type="application/x-javascript" src="chrome://view/content/toolbar.js" />
+		<script type="application/x-javascript" src="chrome://view/content/notification.js" />
+		<script type="application/x-javascript" src="chrome://view/content/blur.js" />
+		<script type="application/x-javascript" src="chrome://view/content/activity.js" />
+		<script type="application/x-javascript" src="chrome://view/content/openid.js" />
+		<script type="application/x-javascript" src="chrome://view/content/pos.js" />
+		<script type="application/x-javascript" src="chrome://view/content/gerunds.js" />
+		<script type="application/x-javascript" src="chrome://view/content/whquestions.js" />
+		<script type="application/x-javascript" src="chrome://view/content/conditionals.js" />
+		<script type="application/x-javascript" src="chrome://view/content/phrasalverbs.js" />
+		<script type="application/x-javascript" src="chrome://view/content/nouncountability.js" />
+		<script type="application/x-javascript" src="chrome://view/content/passives.js" />
+		<script type="application/x-javascript" src="chrome://view/content/serestar.js" />
+		<script type="application/x-javascript" src="chrome://view/content/konjunktiv.js" />
+		
+		<!-- Tools Menu Entry -->
+		<menupopup id="menu_ToolsPopup"> 
+			<menu id="wertiview-tools-menu" class="" image="" label="&wertiview;">
+			<menupopup>
+			<menuitem label="&runwertiviewonce;" key="wertiview-run-key" oncommand="wertiview.activity.add()"/> 
+			<menuitem label="&removewertiview;" key="wertiview-remove-key" oncommand="wertiview.activity.remove()"/>
+			<menuseparator />
+			<menuitem id="wertiview-tools-help" label="&gethelp;" accesskey="H" oncommand="wertiview.goToPage(event, 'help')" />
+			<menuseparator />
+			<menuitem id="wertiview-tools-about" label="&about;" accesskey="A" oncommand="wertiview.openAbout()" />
+			</menupopup>
+			</menu>
+		</menupopup>
+		
+		<!-- Key Shortcut -->
+		<keyset>
+			<key id="wertiview-run-key" modifiers="accel alt shift" key="W" oncommand="wertiview.activity.add()"/>
+			<key id="wertiview-remove-key" modifiers="accel alt shift" key="R" oncommand="wertiview.activity.remove()"/>
+		</keyset>
+
+		<!-- Toolbar -->
+		<toolbox id="navigator-toolbox">
+			<toolbar id="wertiview-toolbar" toolbarname="VIEW Toolbar"
+				class="chromeclass-toolbar" accesskey="W"
+				context="toolbar-context-menu"
+				hidden="false" persist="hidden">
+			<toolbaritem>
+				<toolbarbutton id="wertiview-toolbar-enabled" accesskey="W" tooltiptext="&toggle;" oncommand="wertiview.toolbar.toggleEnabled(event)" />
+			</toolbaritem>
+			<toolbaritem flex="0">
+				<toolbarbutton id="wertiview-toolbar-help" label="&help;" type="menu">
+					<menupopup>
+						<menuitem id="wertiview-toolbar-about" label="&about;" accesskey="A" oncommand="wertiview.openAbout()" />
+						<menuseparator />
+						<menuitem id="wertiview-toolbar-help" label="&gethelp;" accesskey="H" oncommand="wertiview.goToPage(event, 'help')" />
+					</menupopup>
+				</toolbarbutton>
+			</toolbaritem>
+			<toolbaritem>
+				<menulist id="wertiview-toolbar-language-menu">
+					<menupopup oncommand="wertiview.toolbar.setSelection('language', event); wertiview.toolbar.updateTopics(event.target.value);">
+						<menuitem id="wertiview-toolbar-language-unselected" label="&pick-language;"  value="unselected" />
+						<menuseparator />
+						<menuitem id="wertiview-toolbar-language-en" label="&english;" value="en" />
+						<menuitem id="wertiview-toolbar-language-de" label="&german;" value="de" />
+						<menuitem id="wertiview-toolbar-language-es" label="&spanish;" value="es" />
+					</menupopup>
+				</menulist>
+			</toolbaritem>
+			<toolbaritem>
+				<menulist id="wertiview-toolbar-topic-menu">
+					<menupopup oncommand="wertiview.toolbar.setSelection('topic', event)">
+						<menuitem id="wertiview-toolbar-topic-unselected" label="&pick-topic;"  value="unselected" />
+						<menuseparator />
+						<!--<menuitem id="wertiview-toolbar-topic-Conditionals" label="&conditionals;" value="Conditionals" />-->
+						<menuitem id="wertiview-toolbar-topic-Arts" label="&articles;" value="Arts" />
+						<menuitem id="wertiview-toolbar-topic-Dets" label="&determiners;" value="Dets" />
+						<menuitem id="wertiview-toolbar-topic-Gerunds" label="&gerunds;" value="Gerunds" />
+						<menuitem id="wertiview-toolbar-topic-Konjunktiv" label="&konjunktiv;" value="Konjunktiv" />
+						<menuitem id="wertiview-toolbar-topic-NounCountability" label="&nouncountability;" value="NounCountability" />
+						<menuitem id="wertiview-toolbar-topic-Passives" label="&passives;" value="Passives" />
+						<menuitem id="wertiview-toolbar-topic-PhrasalVerbs" label="&phrasalverbs;" value="PhrasalVerbs" />
+						<menuitem id="wertiview-toolbar-topic-Preps" label="&prepositions;" value="Preps" />
+						<menuitem id="wertiview-toolbar-topic-SerEstar" label="&serestar;" value="SerEstar" />
+						<menuitem id="wertiview-toolbar-topic-WhQuestions" label="&whquestions;" value="WhQuestions" />
+					</menupopup>
+				</menulist>
+			</toolbaritem>
+			<toolbaritem>
+				<menulist id="wertiview-toolbar-activity-menu" label="Activity">
+					<menupopup oncommand="wertiview.toolbar.setSelection('activity', event)">
+						<menuitem id="wertiview-toolbar-activity-unselected" label="&pick-activity;" value="unselected" />
+						<menuseparator />
+						<menuitem id="wertiview-toolbar-activity-colorize" label="&colorize;" value="colorize" />
+						<menuitem id="wertiview-toolbar-activity-click" label="&click;" value="click" />
+						<menuitem id="wertiview-toolbar-activity-mc" label="&mc;" value="mc" />
+						<menuitem id="wertiview-toolbar-activity-cloze" label="&cloze;" value="cloze" />
+					</menupopup>
+				</menulist>
+			</toolbaritem>
+			<toolbaritem>
+				<toolbarbutton id="wertiview-toolbar-single-button" label="&run;" oncommand="wertiview.activity.add()" />
+			</toolbaritem>
+			<toolbaritem>
+				<toolbarbutton id="wertiview-toolbar-remove-button" label="&removewertiview;" oncommand="wertiview.activity.remove()" />
+			</toolbaritem>
+			<toolbarseparator/>
+			<toolbaritem id="wertiview-toolbar-openid-signingroup">
+				<!-- OpenID sign in -->
+				<label control="wertiview-toolbar-openid-identifier" value="&signInWithOpenID;"/>
+				<textbox id="wertiview-toolbar-openid-identifier" value="&exampleOpenID;"/>
+				<button id="wertiview-toolbar-openid-signin" label="&submitOpenID;" oncommand="wertiview.openid.signIn(document, document.getElementById('wertiview-toolbar-openid-identifier').value);"/>
+				<button id="wertiview-toolbar-openid-signout" label="&signOutFromOpenID;" oncommand="wertiview.openid.signOut(document);"/>
+				<label class="text-link" href="http://openid.net/" value="&whatIsOpenID;"/>
+			</toolbaritem>
+			</toolbar>
+		</toolbox>
+
+		<!-- Right Click Menu -->
+		<popup id="contentAreaContextMenu">
+			<menu accesskey="W" label="WERTi">
+				<menuitem label="&runwertiviewonce;" accesskey="W" oncommand="wertiview.activity.add()" />
+			</menu>
+		</popup>
+</overlay>

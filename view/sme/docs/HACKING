@@ -1,0 +1,190 @@
+Modifying WERTi
+===============
+
+This document should help you get started modifying WERTi's internals.
+
+A diagram of the WERTi architecture is available in 
+'docs/architecture.pdf'. There are two interfaces to the WERTi that use 
+the same UIMA annotation pipeline but require slightly different request 
+parsing and result generation steps due to differences in the information 
+provided in the request and how the resulting enhanced page is displayed.
+
+- The web form interface provided by the servlet sends a GET request 
+  including the URL and the chosen topic/activity.  The servlet fetches 
+  the web page from the URL and returns a complete web page with HTML 
+  enhancements and activity-specific javascript, which is displayed in a 
+  new window.
+
+- The firefox extension sends an AJAX POST request in JSON format that 
+  includes the text extracted from the web page and the chosen 
+  topic/activity.  The servlet returns a response with the enhanced text 
+  and the extension inserts the enhanced text into the page and uses the 
+  topic/activity specified in the toolbar to set up the activity.
+
+
+The File Hierarchy
+------------------
+
+    werti/
+          desc/
+          docs/
+          src/
+          pom.xml
+          AUTHORS
+          COPYRIGHT
+          INSTALL
+          README
+          TODO
+
+
+The UIMA Descriptor Files
+-------------------------
+
+All UIMA descriptor files are located in 'desc', which has the following
+layout:
+
+    desc/
+         annotators/
+         enhancers/
+         operators/
+         WERTiTypeSystem.xml
+
+The type system, which is global for all WERTi descriptors, is contained 
+in 'WERTiTypeSystem.xml'.
+
+All annotation on web content is performed by the descriptors in 
+'annotators'.
+
+Different enhancements are set up using the descriptors in 'enhancers'.
+
+'operators' contains aggregate descriptors to coordinate the work flow 
+between all other components.
+
+
+Firefox Extension
+-----------------
+
+The code for the firefox extension is in
+
+    src/main/resources/firefox-extension/werti/
+                                               chrome.manifest
+                                               install.rdf
+                                               chrome/content/
+                                               chrome/skin/
+                                               defaults/preferences/
+                                               locale/en-US/
+
+We've tried to follow firefox extension standards as much as possible, so 
+the relevant files should all be in fairly standard locations.
+
+'chrome/content/' contains most of the interesting code for the extension:
+
+    browser.xul adds the toolbar and menus to firefox
+    werti.js    sets up the top-level namespace for the extension, loads the
+                extension, and handles high-level calls from the toolbar and
+                menu
+    activity.js handles the response from the server and adding/removing
+                enhancements from a page
+    pos.js     handles the presentation of the activities for a single topic,
+                in this case determiners
+
+The remaining files (blur.js, lib.js, notification.js, toolbar.js) handle 
+various functions common to all topics/activities: blurring the page for 
+cloze activities, adding notification popups, disabling/enabling toolbar 
+buttons, etc.
+
+These files are automatically copied (with slight modifications) during 
+the build process to 'src/main/webapp/js-lib' to handle the presentation 
+for the web form interface.
+
+The extension uses the jQuery library to do AJAX requests, event 
+handling, and the majority of the document traversal and manipulation.  
+Read the beginning of werti.js in the add-on to see the credits for the 
+namespace setup and the jQuery setup.  The jQuery setup requires a couple 
+lines of code at the beginning of each function that uses jQuery, but it 
+succeeds in isolating the WERTi jQuery library from other (possibly 
+conflicting) copies used by other extensions or included in web pages.
+
+
+Changing the Server Location
+----------------------------
+
+The default server location is http://localhost:8080/WERTiCore, which is 
+obviously intended only for development.  When you want to change the 
+server location, the server URL is stored in two places, once in the 
+add-on and once for the web form:
+
+    src/main/resources/firefox-extension/werti/chrome/content/werti.js
+    src/main/webapp/js-lib/werti.js
+
+Note that 'src/main/webapp/js-lib/werti.js' is specific to the web form 
+interface and is not the same as 
+'src/main/resources/firefox-extension/werti/chrome/content/werti.js', 
+unlike the rest of the javascript files, which are automatically copied 
+from the extension directory to the webapp directory.
+
+
+Documentation
+-------------
+
+General installation instructions are in the top-level directory in 
+INSTALL, including instructions on how to generate the javadoc API 
+documentation.
+
+Documentation for extending WERTi with new topics and activities is in 
+'docs/EXTENDING'.
+
+
+Source Code
+-----------
+
+The source code has the following layout:
+
+    src/
+        main/
+             java/
+             resources/
+             webapp/
+        test/
+
+The 'test' directory *would* hold nice JUnit tests, but so far, none 
+exist. The 'main' directory holds the Java sources, the resources WERTi 
+needs to run (for now, these are just a few model files), the source for 
+the firefox add-on, and all files the webapp needs to run (WEB-INF/web.xml 
+and logging properties). Anything accessible to the server-side 
+application at run time should go in the folder 'webapp'.
+
+
+Compiling the Source
+--------------------
+
+The project uses standard maven targets. Type 'mvn compile' to compile and 
+'mvn clean' to delete any results of previous compilations. 'mvn package' 
+creates the '.war' file to deploy on a server. It should contain 
+everything, including a set of model files and all libraries, which could 
+make it quite large.
+
+Typically, you will not want to build the whole WAR archive, as it can be 
+large and thus takes a while to build. You can instead use the maven 
+webapp-plug in to create an 'exploded' archive, viz. the directory 
+structure and all files without actually packaging it, by issuing the 
+command 'mvn war:exploded'.
+
+All compiled/packaged/generated files will be in the 'target' folder.
+
+
+Notes
+-----
+
+- Maven will typically search its repositories for updates and also for 
+  online sources for libraries such as OpenNLP and GSON. You should let 
+  maven do that from time to time, but for everyday compiles, the '-o' 
+  switch will prevent maven from going online, and thus speed up 
+  compilation quite a bit.
+  
+
+Creating a New Activity
+-----------------------
+
+See separate instructions for creating a new topic or activity in 
+'docs/EXTENDING'.

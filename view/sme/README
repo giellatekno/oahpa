@@ -1,0 +1,38 @@
+WERTi: a Platform for ICALL Systems
+===================================
+
+WERTi is an intelligent computer-assisted language learning (ICALL) system 
+designed to provide supplementary language learning activities using 
+authentic English texts selected by the learner.  It can be viewed as an 
+intelligent automatic workbook, providing an unlimited number of 
+activities designed to foster awareness of English grammatical forms and 
+functions.
+
+The WERTiCore package provides the core WERTi functionality including:
+
+- java servlet that performs linguistic annotation and HTML enhancement
+- firefox extension that sends requests to the servlet and enhances web 
+  pages
+- web site that provides help pages and a browser-independent web form
+  interface that can enhance a web page given its URL
+
+For demonstration purposes, WERTiCore includes a determiners topic that 
+enhances any tokens tagged with DT by an OpenNLP pipeline that includes 
+the OpenNLP tokenizer, sentence detector, and tagger.
+
+
+Installation
+------------
+
+See INSTALL for installation instructions.
+
+
+Further Documentation
+---------------------
+
+See 'docs/HACKING' for an overview of how WERTi is structured.
+
+See 'docs/EXTENDING' for guidance on creating new topics and activities.
+
+The papers published on WERTi are included for your reference in the 
+'docs' directory.

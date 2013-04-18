@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>false</primitive>
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="TokenEnhancer">
+      <import location="../enhancers/TokenEnhancer.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="vislcg3ConjunctionEnhancer">
+      <import location="../enhancers/vislcg3ConjunctionEnhancer.xml"/>
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
+  <analysisEngineMetaData>
+    <name>vislcg3PostProc</name>
+    <description/>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters searchStrategy="language_fallback">
+      <configurationParameter>
+        <name>Tags</name>
+        <description>A list of tags to mark up, comma separated</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+        <overrides>
+          <parameter>TokenEnhancer/Tags</parameter>
+        </overrides>
+      </configurationParameter>
+      <configurationParameter>
+        <name>conjunctionTags</name>
+        <description>A comma-separated list of conjunction tags.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+        <overrides>
+          <parameter>vislcg3ConjunctionEnhancer/conjunctionTags</parameter>
+        </overrides>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+<!--      <nameValuePair>
+        <name>Tags</name>
+        <value>
+          <string>blah,blubb</string>
+        </value>
+      </nameValuePair>  -->
+      <nameValuePair>
+        <name>Tags</name>
+        <value>
+          <string>CC,CS</string>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+    <flowConstraints>
+      <fixedFlow>
+        <node>TokenEnhancer</node>
+        <node>vislcg3ConjunctionEnhancer</node>
+      </fixedFlow>
+    </flowConstraints>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs>
+          <type allAnnotatorFeatures="true">werti.uima.types.annot.CGToken</type>
+        </inputs>
+        <outputs>
+          <type allAnnotatorFeatures="true">werti.uima.types.Enhancement</type>
+          <type allAnnotatorFeatures="true">werti.uima.types.annot.CGToken</type>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>

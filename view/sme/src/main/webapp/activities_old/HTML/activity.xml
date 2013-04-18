@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<!-- Single configuration file for an activity. -->
+<!-- <!DOCTYPE activity SYSTEM "../activity.dtd"> -->
+<activity version="0.1" enabled="no">
+	<meta>
+		<name>HTML</name>
+		<author>Adriane Boyd</author>
+	</meta>
+	
+	<!-- the client configuration (no longer used) -->
+	<client-cfg/>
+	<!--  this is the UIMA AE configuration for the pipeline -->
+	<server-cfg>
+		<lang code="en">
+			<pre>
+				<!-- the pipeline descriptor is looked up in the class path, must begin with / -->
+				<pipeline desc="/operators/HTMLContentTypePipe.xml"/>
+			</pre>
+			<post>
+				<!-- the pipeline descriptor is looked up in the class path, must begin with / -->
+				<pipeline desc="/enhancers/HTMLContentTypeEnhancer.xml"/>
+			</post>
+		</lang>
+	</server-cfg>
+</activity>

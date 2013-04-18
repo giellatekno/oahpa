@@ -1,0 +1,22 @@
+Before running mccoy for the first time, copy the WERTi mccoy profile to 
+your own .mozilla directory.  
+
+- on delos: cp -rp ~adriane/.mozilla/mccoy to ~/.mozilla/mccoy
+
+For each new version:
+
+1. Create the new .xpi file (double-check that you have all the right version 
+   numbers in install.rdf).
+2. Edit update.rdf.dev:
+   Copy the previous <r:li> block and update the version number, the
+   min/max firefox versions as needed, update the download link, and add 
+   the sha256sum of the new .xpi file.
+3. Copy update.rdf.dev to update.rdf.  (mccoy destroys the formatting, so it's
+   a lot easier to edit update.rdf.dev and let mccoy reformat update.rdf as it
+   desires.)
+4. Run ~adriane/mccoy/mccoy (currently on delos) and enter the password in 
+   ~adriane/mccoy/view-key.txt
+5. Select WERTi Extension.
+6. Click on "Sign" and select the updated update.rdf file.
+7. When you click "Open", update.rdf will be updated in place and mccoy won't 
+   display any further information.

@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?> 
+<!DOCTYPE wertiview SYSTEM "chrome://view/locale/translations.dtd">
+
+<prefwindow
+     title="VIEW Preferences"
+     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<prefpane label="VIEW Preferences">
+		<preferences>
+			<preference id="wertiview-fixed-or-percentage" name="extensions.wertiview.fixedOrPercentage" type="int"/>
+			<preference id="wertiview-fixed-number-of-exercises" name="extensions.wertiview.fixedNumberOfExercises" type="int"/>
+			<preference id="wertiview-proportion-of-exercises" name="extensions.wertiview.proportionOfExercises" type="int"/>
+			<preference id="wertiview-choice-mode" name="extensions.wertiview.choiceMode" type="int"/>
+			<preference id="wertiview-first-offset" name="extensions.wertiview.firstOffset" type="int"/>
+			<preference id="wertiview-interval-size" name="extensions.wertiview.intervalSize" type="int"/>
+			<preference id="wertiview-noncount-ratio" name="extensions.wertiview.noncountRatio" type="int"/>
+		</preferences>
+
+		<groupbox>
+			<caption label="Settings"/>
+			<grid>
+				<columns>
+					<column flex="4"/>
+					<column flex="1"/>
+				</columns>
+				<rows>
+
+					<label value="&fixedOrPercentage;"/>
+					<radiogroup preference="wertiview-fixed-or-percentage">
+						<row>
+							<radio value="0" label="&fixedNumberOfExercises;"/>
+							<textbox preference="wertiview-fixed-number-of-exercises" type="number" min="1" increment="5" size="5"/>
+						</row>
+						<row>
+							<radio value="1" label="&proportionOfExercises;"/>
+							<textbox preference="wertiview-proportion-of-exercises" type="number" min="1" max="100" increment="5" size="3"/>
+						</row>
+					</radiogroup>
+
+					<separator orient="horizontal" class="groove"/>
+					<label value="&choiceMode;"/>
+					<radiogroup preference="wertiview-choice-mode">
+						<row>
+							<radio value="0" label="&chooseRandomly;"/>
+						</row>
+						<row>
+							<radio value="1" label="&chooseFirst;"/>
+							<textbox preference="wertiview-first-offset" type="number" min="0" increment="1" size="5"/>
+						</row>
+						<row>
+							<radio value="2" label="&chooseIntervals;"/>
+							<textbox preference="wertiview-interval-size" type="number" min="1" increment="1" size="3"/>
+						</row>
+					</radiogroup>
+
+					<separator orient="horizontal" class="groove"/>
+					<label value="&noncountRatioTitle;"/>
+					<row>
+						<label control="noncountRatioBox" value="&noncountRatio;"/>
+						<textbox id="noncountRatioBox" preference="wertiview-noncount-ratio" type="number" min="0" max="100" increment="5" size="3"/>
+					</row>
+
+				</rows>
+			</grid>
+		</groupbox>	
+
+	</prefpane>
+
+</prefwindow>

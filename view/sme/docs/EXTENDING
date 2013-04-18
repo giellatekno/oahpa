@@ -1,0 +1,257 @@
+Creating a New Topic/Activity in WERTi
+======================================
+
+Creating a new topic is a little complicated.  First off, the terminology 
+can potentially be confusing, so to clarify:
+
+- topic: the grammar topic being presented, e.g., determiners
+
+- activity: the type of presentation, e.g., colorize, click, multiple 
+  choice, practice
+
+Unfortunately, we haven't always used these names correctly in the 
+directory structure, but we'll try to use them consistently in the 
+instructions below.
+
+It's easiest to start out with a copy of an existing topic and modify it 
+gradually.  In the first section, we'll start out by modifying a copy of 
+the Determiners topic that annotates prepositions instead of determiners.  
+This involves adding a new topic to the web interface and firefox add-on, 
+but doesn't yet involve new annotators.  The second section will discuss 
+how to add new annotators and the third section will discuss how to modify 
+the activities.
+
+
+The Simplest New Topic
+----------------------
+
+We're going to make a copy of the determiners topic and modify it to 
+highlight prepositions instead.
+
+1. Make a copy of the topic specification
+
+Make a copy of the Dets directory in 'src/main/webapp/activities/Dets 
+called 'src/main/webapp/activities/Preps'.
+
+(Yes, this directory should actually be called "topics" to line up with 
+the terminology above.)
+
+2. Edit 'src/main/webapp/activities/Preps/activity.xml'
+
+Change the <name> of the topic to "Prepositions".
+
+Modify the following line so that the tag under consideration is IN 
+instead of DT.
+
+    <entry key="Tags" value="IN" overridable="yes"/>
+
+(Note: IN probably isn't quite sufficient for a prepositions activity, but 
+that's not important for this explanation.  The TokenEnhancer can also 
+annotate more that one tag if you provide a comma-separated list like 
+"JJ,JJR,JJS".)
+
+3. Edit 'src/main/webapp/activities/Preps/help.jsp for the new topic.  
+(This step can easily be postponed, but don't forget it!)
+
+4. Create a new topic in the WERTi firefox extension
+
+4a. Add the new topic to the WERTi toolbar
+
+Edit 
+'src/main/resources/firefox-extension/werti/chrome/content/browser.xul' to 
+add a new item to the werticore-toolbar-topic-menu menu:
+
+    <menuitem id="werticore-toolbar-topic-Preps" label="&prepositions;" value="Preps" />
+
+Add the string for &prepositions; to 
+'src/main/resources/firefox-extension/werti/locale/en-US/translations.dtd'.
+
+4b. Add the javascript implementing the activities for the new topic to 
+the extension
+
+Our example new topic 'Preps' is similar enough to 'Dets' that several 
+shortcuts can be taken.  Option 1 describes these shortcuts.  Option 2 
+describes the steps for a completely new topic.
+
+Option 1: The 'Preps' topic is extremely similar to the 'Dets' topic, so 
+it's possible to use most of the same code from pos.js.  Add the case 
+'Preps' to the switch(topic) statements in 
+'src/main/resources/firefox-extension/werti/chrome/content/pos.js' with 
+new CSS class names and add the colorize styles to 
+'src/main/resources/firefox-extension/werti/chrome/content/werticore.css'.
+
+Search in werti.util.HTMLEnhancer and in 
+'src/main/resources/firefox-extension/werti/chrome/content/activity.js' 
+for the places where 'Dets' is translated to 'pos' and add 'Preps' to 
+this set of special cases.
+
+Option 2: If the new topic is not as similar, add a new class to handle 
+the activities for the new topic:
+ 
+Copy 'src/main/resources/firefox-extension/werti/chrome/content/pos.js' 
+to 'src/main/resources/firefox-extension/werti/chrome/content/preps.js'.  
+The name of the new class should be the lowercase version of the directory 
+name chosen in step #1.
+
+Edit 'preps.js' to change the class name to werticore.preps (in line 2)
+
+    werticore.preps = {
+
+Add the colorize styles to 
+'src/main/resources/firefox-extension/werti/chrome/content/werticore.css'.
+
+In 'preps.js', change all occurrences of 'werticore.pos' to 
+'werticore.preps'.
+
+Edit 
+'src/main/resources/firefox-extension/werti/chrome/content/browser.xul' to 
+tell the add-on to load this new class (around line 12):
+
+    <script type="application/x-javascript" src="chrome://werticore/content/preps.js" />
+
+Add preps.js to the list of files automatically copied to the web form 
+interface javascript directory in 'pom.xml' under:
+
+    <plugin>
+        <groupId>com.google.code.maven-replacer-plugin</groupId>
+        ....
+            <filesToInclude>blur.js,pos.js,jquery-1.4.2.min.js,lib.js,notification.js,werticore.css</filesToInclude>
+
+See 'Modifying Activities' below for more information on the structure of 
+the activities classes.
+
+(Note: this automatic copying, which saves a lot of hassle in keeping the 
+extension and web interface in sync, causes eclipse to throw "Resource 
+out of sync" errors every time the servlet is refreshes/restarted.  This 
+is really annoying, but I haven't found a better solution.  If you find 
+one, let me know!)
+
+5. Try it out
+
+Refresh/redeploy to be sure the javascript and CSS files from the 
+extension directory have been copied to the web interface directory and 
+that the most recent version of the add-on has been generated in 
+'src/main/webapp/firefox-extension'.
+
+Try out the new activity in the web form interface
+
+    http://localhost:8080/WERTiCore/index.jsp?content=activity-help&activity=Preps
+
+Install the latest version of the add-on from
+
+    http://localhost:8080/WERTiCore/index.jsp?content=firefox-extension
+    
+and see if it works.
+
+6. Troubleshooting
+
+6a. Server errors
+
+Look for details about server errors in the tomcat logs.  The default 
+location is /path/to/tomcat/logs/werti.log.  If you develop WERTi in 
+eclipse, logging information and errors are printed to the console.
+
+6b. Firefox extension errors
+
+Debugging a firefox extension takes a little effort.  Here are some tips 
+on how to set up your profile and your environment to make this easier:
+
+https://developer.mozilla.org/en/setting_up_extension_development_environment
+
+The error console (in the Tools menu) shows details about most kinds of 
+errors if you've set up your environment as explained in the previous 
+link.  Firebug can also help you figure out if something has gone wrong 
+when adding the enhancements to the page.
+
+
+Adding New Annotators and Enhancers
+-----------------------------------
+
+If you add a new topic that annotates something other than parts of 
+speech, you'll need to add new annotators and enhancers that are used in a 
+UIMA pipeline to annotate the relevant grammatical features.
+
+Both annotators and enhancers are annotators from UIMA's perspective.  In 
+WERTi, annotators add linguistic annotation and enhancers interpret the 
+linguistic annotation to generate the HTML annotation that will be 
+inserted into the enhanced page.
+
+This section will point out where the relevant files are in WERTi, but 
+isn't intended to be a UIMA tutorial.  A UIMA tutorial can be found here:
+
+    http://uima.apache.org/doc-uima-annotator.html
+
+1. If you need to annotate new features on existing types of annotation or 
+add new types of annotation, modify or add new type descriptions in 
+'desc/WERTiTypeSystem.xml'. (Remember that you'll need to refresh the 
+project in eclipse after doing this so that it sees the new type files 
+generated by JCasGen.)
+
+2. Add your analysis engine descriptions to 'desc/annotators/' for 
+annotators and to 'desc/enhancers/' for enhancers.  Operators that 
+describe an annotator pipeline for a topic are in 'desc/operators/'.
+
+3. Add the corresponding annotator and enhancer implementations to 
+'src/main/java/werti/uima/ae/' and 'src/main/java/werti/uima/enhancer/'.
+
+Models can be loaded in an annotator's initialize() method, but to 
+improve response times and memory usage, the class werti.WERTiContext was 
+designed to load all models once and store them in memory for future use.  
+The models are loaded the first time a request is sent to the server (not 
+immediately when the server is restarted as you might expect), so the 
+first time you load a page after restarting the server it will be slow, 
+but any subsequent requests will be much faster.
+
+4. The activity.xml for your new topic will specify one of the operators 
+as the preprocessor and one of the enhancers as the postprocessor.
+
+
+Modifying Activities
+--------------------
+
+The activities are written in javascript using the jQuery library.  The 
+class of each topic (e.g., pos.js) contains the following functions:
+
+remove()       removes annotation and event listeners for all activity 
+               types
+colorize()     colorizing for the web form interface
+colorizeSpan() colorizing for the add-on interface (this separate function 
+               improves efficiency for the add-on)
+click()        sets up the click activity
+clickHandler() listens for click events and responds appropriately
+mc()           sets up the multiple choice activity
+cloze()        sets up the practice activity
+clozeInputHandler()  listens for text typed in the input boxes or selections
+                     in drop-down menus
+clozeHintHandler()   listens for click events on the hint buttons
+
+In the demo determiners topic, the multiple choice activity is extremely 
+similar to the cloze activity, so the multiple choice activity can use the 
+cloze event listeners without any modifications, but this depends of 
+course on what the multiple choice activity should do.
+
+It is important for remove() to remove all annotation and event listeners 
+for all possible activities.  If remove() misses any markup or event 
+listeners, unpredictable things can happen when a page is enhanced 
+multiple times without reloading.  Currently, all WERTi markup is 
+surrounded by <span class="werticore"> tags, so it's easy to replace 
+these spans with their original text-only content.  For the mc() and 
+cloze() activities, the original text content is stored in a hidden 
+variable using jQuery.data(), so that it's easy to access when the markup 
+should be removed.
+
+In order to get around problems with WERTi activities inside links, links 
+are disabled for the purposes of certain activities and reenabled when the 
+markup is removed.  This is controlled in addActivity() in 'activity.js'.
+
+If you want to add a new activity type beyond colorize/click/etc., you 
+will need to add the activity in the menu in 'browser.xul' and modify 
+'activity.js' so that it calls the right function in addActivity().
+
+If you leave out one of the functions, say you haven't implemented cloze() 
+yet for a new topic, WERTi will detect that the function doesn't exist and 
+show an error message asking the learner to select another activity.
+
+When you've finished implementing a new activity, remember to edit 
+'src/main/webapp/tmpl/form.jsp' to add the new activity type to the web 
+form interface.

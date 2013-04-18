@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>  <!-- was ISO-8859-1 -->
+
+<!DOCTYPE web-app 
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" 
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+    <!-- General description of your web application -->
+    <display-name>WERTisme</display-name>
+    <description>Learning languages interactively on the WEB</description>
+
+    <context-param>
+      <param-name>webmaster</param-name>
+      <param-value>adriane@sfs.uni-tuebingen.de</param-value>
+      <description>Mail for trouble</description>
+    </context-param>
+
+    <servlet>
+	    <servlet-name>WERTiServlet</servlet-name>
+	    <servlet-class>werti.server.WERTiServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+	    <servlet-name>WERTiServlet</servlet-name>
+		<url-pattern>/WERTiServlet</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+      <session-timeout>30</session-timeout> 
+    </session-config>
+    
+    <error-page>
+		<error-code>404</error-code>
+		<location>/index.jsp?content=error-404</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/index.jsp?content=error-500</location>
+	</error-page>
+
+    <error-page>
+		<exception-type>java.net.MalformedURLException</exception-type>
+    	<location>/index.jsp?content=error-malformedurl</location>
+	</error-page>
+	
+</web-app>

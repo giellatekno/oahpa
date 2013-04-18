@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>false</primitive>
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="OpenNlpTagger">
+      <import location="../annotators/OpenNlpTagger.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="DOTTER">
+      <import location="../annotators/DOTTER.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="OpenNlpTokenizer">
+      <import location="../annotators/OpenNlpTokenizer.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="WholeText">
+      <import location="../annotators/relevance/WholeText.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="StanfordDependencyParser">
+      <import location="../annotators/StanfordDependencyParser.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="PassiveSentenceConverter">
+      <import location="../annotators/PassiveSentenceConverter.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="OpenNlpSentenceDetector">
+      <import location="../annotators/OpenNlpSentenceDetector.xml"/>
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
+  <analysisEngineMetaData>
+    <name>ParserTest</name>
+    <description/>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters>
+      <configurationParameter>
+        <name>parserFilter</name>
+        <description>name of Filter class</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+        <overrides>
+          <parameter>StanfordDependencyParser/parserFilter</parameter>
+        </overrides>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>parserFilter</name>
+        <value>
+          <string>werti.uima.ae.filter.AlwaysFilter</string>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+    <flowConstraints>
+      <fixedFlow>
+        <node>WholeText</node>
+        <node>OpenNlpTokenizer</node>
+        <node>OpenNlpSentenceDetector</node>
+        <node>OpenNlpTagger</node>
+        <node>StanfordDependencyParser</node>
+        <node>PassiveSentenceConverter</node>
+      </fixedFlow>
+    </flowConstraints>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs>
+          <type allAnnotatorFeatures="true">uima.tcas.DocumentAnnotation</type>
+        </inputs>
+        <outputs>
+          <type allAnnotatorFeatures="true">werti.uima.types.annot.Token</type>
+          <type allAnnotatorFeatures="true">werti.uima.types.annot.SentenceAnnotation</type>
+          <type allAnnotatorFeatures="true">werti.uima.types.annot.RelevantText</type>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>

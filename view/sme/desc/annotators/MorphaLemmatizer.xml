@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>
+  <annotatorImplementationName>werti.uima.ae.MorphaLemmatizer</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>MorphaLemmatizer</name>
+    <description>Uses morpha to lemmatize all tokens in the text. Requires Penn tagset tagger.</description>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters />
+    <configurationParameterSettings />
+    <typeSystemDescription>
+      <imports>
+        <import location="../WERTiTypeSystem.xml"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities>
+      <imports>
+        <import location="../WERTiTypePriorities.xml"/>
+      </imports>
+    </typePriorities>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs>
+        	<type>werti.uima.types.annot.Token</type>
+			<feature>werti.uima.types.annot.Token:tag</feature>
+		</inputs>
+        <outputs>
+        	<type>werti.uima.types.annot.Token</type>
+			<feature>werti.uima.types.annot.Token:lemma</feature>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>

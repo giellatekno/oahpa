@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>
+  <annotatorImplementationName>werti.uima.ae.GerundGenerator</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>GerundGenerator</name>
+    <description>Uses external morphg to generate -ing forms for infinitives in the text. Requires OpenNlpTagger or similar Penn tagset tagger.</description>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters>
+	    <configurationParameter>
+			<name>morphgLoc</name>
+			<description>Location of the morphg program.</description>
+			<type>String</type>
+			<multiValued>false</multiValued>
+			<mandatory>true</mandatory>
+		</configurationParameter>
+		<configurationParameter>
+			<name>morphgVerbstemLoc</name>
+			<description>Location of the verbstem file used by morphg.</description>
+			<type>String</type>
+			<multiValued>false</multiValued>
+			<mandatory>true</mandatory>
+		</configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+		<name>morphgLoc</name>
+		<value>
+			<string>/usr/local/werti/bin/morphg</string>
+		</value>
+	  </nameValuePair>
+	  <nameValuePair>
+		<name>morphgVerbstemLoc</name>
+			<value>
+				<string>/usr/local/werti/share/morph/verbstem.list</string>
+			</value>
+	  </nameValuePair>
+    </configurationParameterSettings>
+    <typeSystemDescription>
+      <imports>
+        <import location="../WERTiTypeSystem.xml"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities>
+      <imports>
+        <import location="../WERTiTypePriorities.xml"/>
+      </imports>
+    </typePriorities>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs>
+        	<type>werti.uima.types.annot.Token</type>
+			<feature>werti.uima.types.annot.Token:tag</feature>
+		</inputs>
+        <outputs>
+        	<type>werti.uima.types.annot.Token</type>
+			<feature>werti.uima.types.annot.Token:gerund</feature>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>
