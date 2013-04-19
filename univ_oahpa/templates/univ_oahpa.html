@@ -93,9 +93,9 @@
 	<ul class="sidelist small">
 		<li><a target="_blank" href="{% block veiledning %}{% endblock %}" class="interface">{% trans_to "Veiledning" "sme" %}<span class="invisible">{% trans "Veiledning" %}</span></a></li>
         {% ifequal LANGUAGE_CODE "fi" %}
-            <li><a target="_blank" href="http://victorio.uit.no/webdict/index_sme-fin.html" class="interface">{% trans_to "Dictionary" "sme" %}<span class="invisible">{% trans "Dictionary" %}</span></a></li>
+            <li><a target="_blank" href="http://sanit.oahpa.no/sme/fin" class="interface">{% trans_to "Dictionary" "sme" %}<span class="invisible">{% trans "Dictionary" %}</span></a></li>
         {% else %}
-            <li><a target="_blank" href="http://victorio.uit.no/webdict/index_sme-nob.html" class="interface">{% trans_to "Dictionary" "sme" %}<span class="invisible">{% trans "Dictionary" %}</span></a></li>
+            <li><a target="_blank" href="http://sanit.oahpa.no/sme/nob" class="interface">{% trans_to "Dictionary" "sme" %}<span class="invisible">{% trans "Dictionary" %}</span></a></li>
         {% endifequal %}
         {% ifequal LANGUAGE_CODE "sme" %}
             <li><a target="_blank" href="http://oahpa.no/sme/gramm/grammatihkka.html" class="interface">{% trans_to "Grammar" "sme" %}<span class="invisible">{% trans "Grammar" %}</span></a></li>
