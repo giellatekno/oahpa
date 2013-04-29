@@ -2,14 +2,14 @@ Leksa needs more documentation.
 
 !!!Background
 
-To be included here: A list of relevant files. While waiting, [see this document|http://giellatekno.uit.no/oahpa/addlang/more.html]
+To be included here: A list of relevant files. While waiting, [see this document|http://oahpa.no/addlang/more.html]
 
 !!Installation
 
 ! for sjd and sma
 
 Make a backup of the database (there is a script for it in the db_bakup directory).
-Then make the new database. There is a script ./feed_db.sh to do that in the __lower__ 
+Then make the new database. There is a script ./feed_db.sh to do that in the __lower__
 $LANGoahpa directory.
 
 
@@ -61,7 +61,7 @@ I'm organizing these to reflect somewhat what the structure is for dependencies 
 * views.py
 ** leksa_game
 ** Quizzview
-*** leksa_game is called, which uses Quizzview to set up a lot of common variables, and then a response is returned. This is where the browser language is checked and a game is produced based on those settings. 
+*** leksa_game is called, which uses Quizzview to set up a lot of common variables, and then a response is returned. This is where the browser language is checked and a game is produced based on those settings.
 *** Quizzview handles the processing of the settings form, and GET and POST data. GET is available so that outside courses can link directly to certain exercises, and in addition, Quizzview handles instantiating game.QuizzGame, and setting various template variables.
 *** Docstrings and comments on these methods should explain a little more in depth
 
@@ -79,12 +79,12 @@ I'm organizing these to reflect somewhat what the structure is for dependencies 
 
 * semantical_sets.xml
 ** This file is in sme/xml in Ur-Oahpa, in LANG/meta-data in sma-type Oahpa versions.
-** It contains __the supersets__ (not found in the xml files) and their __subsets__ 
+** It contains __the supersets__ (not found in the xml files) and their __subsets__
    (found in the xml files). Sets in the xml files not being part of supersets are not
    listed in this file. Both supersets and singleton sets are listed in {{forms.py}}, though.
 
 ** templates and their inheritance structure
-*** views call the farthest down template in the inheritance hierarchy, and 
+*** views call the farthest down template in the inheritance hierarchy, and
     the rest are extended via the {% extends %} template tag.
 
 {{{

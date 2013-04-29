@@ -2,7 +2,7 @@ Documentation for programmers
 
 !!!Class inheritance structure
 
-The class inheritance structure for Numra, Klokka and Dato is the same in both the classes in smadrill.game and smadrill.forms, with the classes getting progressively simpler, where Dato is the simplest. 
+The class inheritance structure for Numra, Klokka and Dato is the same in both the classes in smadrill.game and smadrill.forms, with the classes getting progressively simpler, where Dato is the simplest.
 
 Overall, methods and classes in smadrill.views call methods in smadrill.game, which creates smadrill.forms classes. This pattern is found throughout the rest of the game types. Views also handle POST/GET responses and requests, Forms handle the creation of form objects and their validation, and Game classes handle evaluation of whether answers are correct or not as well as the selection of words or numbers from the FSTs.
 
@@ -23,7 +23,7 @@ There is room for some decoupling of functionality in smadrill.forms and smadril
 ** ...
 
 * Klokka
-* forms.py: 
+* forms.py:
 * game.py: Klokka (subclass of NumGame)
 ** Subclass contains filenames of the question/answer FSTs, and depends on settigns.FST_DIRECTORY
 ** Subclass of NumGame, results in need to only override NumGame.get_db_info and NumGame.create_form
@@ -41,7 +41,7 @@ There is room for some decoupling of functionality in smadrill.forms and smadril
 *** def num_date
 
 ** templates and their inheritance structure
-*** views call the farthest down template in the inheritance hierarchy, and 
+*** views call the farthest down template in the inheritance hierarchy, and
     the rest are extended via the {% extends %} template tag.
 
 {{{
@@ -58,7 +58,7 @@ templates/smaoahpa_main.html
 
 Numra differs from Morfa in not using the MySQL database, but using transducers directly.
 
-The transducers behind numra are (where $LANG is the iso code for your language): 
+The transducers behind numra are (where $LANG is the iso code for your language):
 
 * Cardinal and ordinal numbers: $LANG-num.txt ([North Sámi example|https://victorio.uit.no/langtech/trunk/gt/sme/src/sme-num.txt])
 * Clock clock-$LANG.lexc ([North Sámi example|https://victorio.uit.no/langtech/trunk/gt/sme/src/clock-sme.lexc])
@@ -66,7 +66,7 @@ The transducers behind numra are (where $LANG is the iso code for your language)
 
 The files governing the four programs are ''num.html, num_ord.html, clock.html, date.html''. These files are found here:
 
-* for sme, smn, sjd, rus: ''ped/OAHPA/drill/templates/'', where 
+* for sme, smn, sjd, rus: ''ped/OAHPA/drill/templates/'', where
 ** OAHPA = univ_oahpa, smn_oahpa, sjd_oahpa, rus_oahpa, respectively (in $GTHOME/ped/ )
 * for sma and other languages: ''pedversions/smaoahpa/smadrill/templates/''
 
@@ -74,7 +74,7 @@ These files refer to the fsts on victorio, in the opt catalogue there.
 
 !!!Documentation of the content production
 
-* [Documentation for linguists defeloping Numra content|http://giellatekno.uit.no/oahpa/addlang/developernumra.html]
+* [Documentation for linguists defeloping Numra content|http://oahpa.no/addlang/developernumra.html]
 
 
 !!!The different types of Numra
@@ -108,12 +108,12 @@ The source files are in $LANG/src/translations/*.lexc for newinfra, in gt/sme/sr
 
 !!!Documenting +Use/NG and +Use/NA
 
-* +Use/NG  = not-generate, for ped generation isme-ped.fst                                                                    
-* +Use/NA  = not-analyse, for restricting analyses needed for MT generation not to pop up elsewhere  
+* +Use/NG  = not-generate, for ped generation isme-ped.fst
+* +Use/NA  = not-analyse, for restricting analyses needed for MT generation not to pop up elsewhere
 
 Thus, we should restrict the +Use/NA flag to strings we do not want in Oahpa...
 
-But this is not how it is used.            
+But this is not how it is used.
 Note especially $GTLANG/gt/Makefile; it seems +Use/NA has no function (it removes all strings).
 
 
