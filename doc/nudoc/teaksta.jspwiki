@@ -4,18 +4,40 @@ Studentene skal arbeide med autentiske tekster på internett, nye og aktuelle te
 
 Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for studenten, men kan også gjøre tekster om til interaktive oppgaver på ulike måter, f.eks.: 
 # grammatiske kategorier blir markert med farge for å gjøre studenten oppmerksom på dem 
-# studenten skal selv finne dem i teksten og markere dem 
-# studenten skal velge riktig ordform av flere mulige
+# studenten skal selv finne dem i teksten og klikke på dem 
+# studenten skal velge riktig ordform av flere mulige (flervalgsoppgave)
+## vi må lage en algoritme for å generere "distractors" og samtidig unngå homonymi
 # studenten skal skrive riktig ordform fra oppgitt lemma, evt skrive riktig CC/CS, adposisjon osv.
 
-Vi bygger på
+!!Vi bygger på
 * [WERTi|http://www.purl.org/net/WERTi/]. 
 * [Nyare url|http://sifnos.sfs.uni-tuebingen.de/WERTi/index.jsp?content=intro] - 
-* ny versjon [View|http://sifnos.sfs.uni-tuebingen.de/VIEW/index.jsp?content=intro]
+* ny Firefox-versjon [View|http://sifnos.sfs.uni-tuebingen.de/VIEW/index.jsp?content=intro]
 
-Oppgavetyper
-# Finitte verb (Alle verb som inneholder taggen Ind)
-# Skrive riktig konjunksjon/subjunksjon (innholder taggene CS og CC)
+!!Oppgavetyper
+! ConNeg form av verb
+* Inneholder taggene Ind og ConNeg (både Prt og Prs)
+* Flervalgsoppgave
+** Distractors: samme lemma men random av følgende: V+VGen, V+Ind+Prs+Sg1,  V+Ind+Prs+Sg2,  V+Ind+Prs+Sg3,  V+Ind+Prt+Sg1,  V+Ind+Prt+Sg2, V+Ind+Prt+Sg3, V+Inf
+! Finn finitte verb 
+* Alle verb som inneholder en av disse taggene i tillegg til Ind: Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 
+* her er spørsmålet om vi skal oppgi tiden til studenten (Prt, Prs), eller om hun skal finne ut selv hva hun trur er best. Jeg tror vi unngår Cond i denne, ihvertfall må vi da oppgi til studenten taggen
+* Flervalgsoppgave: 
+** Hvis verbet er Prs, kan man generere distractors av samme lemma: samme person, men Prt, V+Ind+Prs+ConNeg, V+Ind+Prt+ConNeg, V+VGen
+** Hvis verbet er Prt, kan man generere distractors av samme lemma: samme person, men Prs, V+Ind+Prs+ConNeg, V+Ind+Prt+ConNeg, V+VGen
+! Finn infinitte verb
+* alle V uten Sg1, Sg2, Sg3, Du1, Du2, Du3, Pl1, Pl2, Pl3. 
+* Flervalgsoppgave
+** Distractors: Sg2 Sg3 Du1 Du2 Du3 Pl2 (både Prs og Prt)
+! Skrive riktig konjunksjon/subjunksjon (innholder taggene CS og CC)
+* denne er litt vanskelig, her blir det lett mange muligheter
 
+!!Testing
 Teaksta finnes for testing [her|http://gtlab.uit.no:8080/teaksta]. Bruk Firefox som nettleser om du har den. Dessverre fungerer Teaksta ikke så bra i Safari.
 
+!!Grensesnitt
+Oppgavene kan presenteres på to måter:
+* Ferdige linker med tekst og oppgavetype, studenten velger colorize, click, Practice, multiple choice
+** slik sikrer vi at det er relevante tekster i forhold til oppgaver
+* Studenten kopierer inn url og velger oppgavetype
+* Læreren kopierer inn url, og linken presenteres på studentenes side
