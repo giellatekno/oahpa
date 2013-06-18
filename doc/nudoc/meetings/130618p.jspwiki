@@ -1,0 +1,103 @@
+!!! Møte 18.06.13
+
+Til stades: Heli, Lene, Trond.
+
+!!Saker: 
+
+* Werti
+* Morfa
+* Ressurser for Heli til høsten
+
+
+
+!!Werti
+
+[Dokumentasjon for Teaksta|http://giellatekno.uit.no/ped/nudoc/teaksta.html] 
+gir dokumentasjon for distraksjonssett.
+
+Werti er seinare enn før, fordi det tar tid å generere distraksjonssettet.
+No blir det lagra i fila, men det bør kunne bli lagra i arbeidsminnet
+i staden.
+
+På den andre sida ser det ut til at også andre oppgåvetyper tar meir tid.
+
+Alle verb som inneholder en av disse taggene i tillegg til Ind: Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3
+
+{{{
+bin$ lookup dict-isme-norm.fst - ta med alle som ikke har v, eller har v1 (ikke v2, v3, v4, v5)
+0%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>100%
+
+  *****  LEXICON LOOK-UP  *****
+
+dehálaš+A+Comp+Sg+Nom
+dehálaš+A+Comp+Sg+Nom	dehálit
+dehálaš+A+Comp+Sg+Nom	dehálut
+dehálaš+A+Comp+Sg+Nom	dehálet
+dehálaš+A+Comp+Sg+Nom	deháleabbo
+dehálaš+A+Comp+Sg+Nom	dehálat
+dehálaš+A+Comp+Sg+Nom	dehálabbo
+dehálaš+A+Comp+Sg+Nom	dehálaččat
+
+muitalit+V+Ind+Prs+Pl1	muitalat
+muitalit+V+Ind+Prs+Pl1	muitalit
+
+leat+V+Ind+Prt+Sg3	lei
+leat+V+Ind+Prt+Sg3	leai
+
+tunealla+N+Sg+Nom
+tunealla+N+Sg+Nom	tunnealla
+tunealla+N+Sg+Nom	tunealla
+}}}
+
+
+Her må vi bruke dict-isme-norm.fst:
+
+{{{
+bin$ lookup dict-isme-norm.fst 
+0%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>100%
+
+  *****  LEXICON LOOK-UP  *****
+
+tunealla+v2+N+G3+Sg+Loc
+tunealla+v2+N+G3+Sg+Loc	tunneallas
+
+tunealla+v1+N+G3+Sg+Loc
+tunealla+v1+N+G3+Sg+Loc	tuneallas
+}}}
+
+Ei java-løysing går slik: Heli fiksar dette etter generering, i java.
+
+Ei fst-løysing går slik:
+
+# Fjern alle __strengar__ som inneheld {{v2, ..., v5}}
+# (deretter) fjern __taggen__ {{v1}}
+
+Vi prøver helst Heli si løysing, for å halde fst-talet nede.
+
+Heli bruker dict-isme-norm.fst, og ekskluderer former
+{{v2, ..., v5}}.
+
+!TILTAK:
+* __Lene__ skal definere oppgaver med substantiver etc. i dokumentasjonen
+* __Lene__ skal lage liste over tekster som passer forskjellige oppgavetyper
+* __Heli__ skal finpusse distractorsett (Ind osv)
+* __Heli__ skal eksperimentere med å genere fasit
+* __Heli__ skal lage forslag til grensesnitt for på gt-lab (starte oahpa-davvi på gt-lab)
+* __Lene__ snakker med Kjellaug om logo (?)
+* __Heli,Trond,Lene__ Lokalisering.
+* Dette skjer i java, og er ikkje som i django.
+
+
+Vi må flytte smn, sms, sjd, rus bort frå victorio og over
+på gtoahpa (__Trond, Ciprian__)
+
+
+!!Morfa
+Lene ser på denne når oahpa er oppe på gtlab
+
+!!Ressurser for Heli til høsten
+
+Det blir litt, men kor mykje veit vi ikkje. Vi kjem attende til saka.
+
+!!Neste møte
+* torsdag 27.6 kl 9.00
