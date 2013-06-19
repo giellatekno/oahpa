@@ -15,21 +15,62 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 * ny Firefox-versjon [View|http://sifnos.sfs.uni-tuebingen.de/VIEW/index.jsp?content=intro]
 
 !!Oppgavetyper
-! ConNeg form av verb
-* Inneholder taggene Ind og ConNeg (både Prt og Prs)
-* Flervalgsoppgave
-** Distractors: samme lemma men random av følgende: V+VGen, V+Ind+Prs+Sg1,  V+Ind+Prs+Sg2,  V+Ind+Prs+Sg3,  V+Ind+Prt+Sg1,  V+Ind+Prt+Sg2, V+Ind+Prt+Sg3, V+Inf
-! Finn finitte verb 
-* Alle verb som inneholder en av disse taggene i tillegg til Ind: Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 
-* her er spørsmålet om vi skal oppgi tiden til studenten (Prt, Prs), eller om hun skal finne ut selv hva hun trur er best. Jeg tror vi unngår Cond i denne, ihvertfall må vi da oppgi til studenten taggen
-* Flervalgsoppgave: 
-** Hvis verbet er Prs, kan man generere distractors av samme lemma: samme person, men Prt, V+Ind+Prs+ConNeg, V+Ind+Prt+ConNeg, V+VGen
-** Hvis verbet er Prt, kan man generere distractors av samme lemma: samme person, men Prs, V+Ind+Prs+ConNeg, V+Ind+Prt+ConNeg, V+VGen
-! Finn infinitte verb
-* alle V uten Sg1, Sg2, Sg3, Du1, Du2, Du3, Pl1, Pl2, Pl3. 
-* Flervalgsoppgave
-** Distractors: Sg2 Sg3 Du1 Du2 Du3 Pl2 (både Prs og Prt)
-! Skrive riktig konjunksjon/subjunksjon (innholder taggene CS og CC)
+
+!! For alle Practise:
+* Vi bruker ikke ord med Der/* tag, eller Qst
+
+!! ConNeg form av verb
+* Inneholder taggene Ind+Prs+ConNeg og Ind+Prt+ConNeg 
+* Distractors av samme lemma:
+** V+Ind+Prs+Sg1 
+** V+Ind+Prs+Sg2  
+** V+Ind+Prs+Sg3  
+** V+Ind+Prt+Sg1  
+** V+Ind+Prt+Sg2 
+** V+Ind+Prt+Sg3
+
+!! Finitte verb, indikativ 
+* Alle verb som inneholder en av disse taggene i tillegg til "Ind": Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 
+* Vi satser på å ikke oppgi tiden (Prt, Prs), studenten skal finne ut selv hva hun trur er best. 
+* Distractors av samme lemma: 
+** V+Ind+Prs+ConNeg 
+** V+Ind+Prt+ConNeg
+** V+Inf  
+** V+Actio+Ess  
+** V+Ind+Prt+Sg1  
+** V+Ind+Prt+Sg2  
+** V+Ind+Prt+Sg3  
+** V+Ind+Prs+Sg1  
+** V+Ind+Prs+Sg2  
+** V+Ind+Prs+Sg3  
+** V+Ind+Prt+Du1  
+** V+Ind+Prt+Du2  
+** V+Ind+Prt+Du3  
+** V+Ind+Prs+Du1  
+** V+Ind+Prs+Du2  
+** V+Ind+Prs+Du3  
+
+
+!! Infinitte verb
+* V+PrfPrc, V+VGen, V+VAbess, V+Ger, V+Actio+Ess, V+Inf, Ind+Prs+ConNeg, Ind+Prt+ConNeg
+* Distractors av samme lemma:
+** V+Ind+Prt+Sg1  
+** V+Ind+Prt+Sg2  
+** V+Ind+Prt+Sg3  
+** V+Ind+Prs+Sg1  
+** V+Ind+Prs+Sg2  
+** V+Ind+Prs+Sg3  
+** V+Ind+Prt+Du1  
+** V+Ind+Prt+Du2  
+** V+Ind+Prt+Du3  
+** V+Ind+Prs+Du1  
+** V+Ind+Prs+Du2  
+** V+Ind+Prs+Du3  
+
+!! Skriv substantiv i riktig kasus
+
+
+!! Skrive riktig konjunksjon/subjunksjon (innholder taggene CS og CC)
 * denne er litt vanskelig, her blir det lett mange muligheter
 
 !!Testing
