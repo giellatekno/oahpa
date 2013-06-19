@@ -20,7 +20,7 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 * Vi bruker ikke ord med Der/* tag, eller Qst
 
 !! ConNeg form av verb
-* Inneholder taggene Ind+Prs+ConNeg og Ind+Prt+ConNeg 
+* Oppgavene inneholder taggene Ind+Prs+ConNeg og Ind+Prt+ConNeg 
 * Distractors av samme lemma:
 ** V+Ind+Prs+Sg1 
 ** V+Ind+Prs+Sg2  
@@ -30,7 +30,7 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 ** V+Ind+Prt+Sg3
 
 !! Finitte verb, indikativ 
-* Alle verb som inneholder en av disse taggene i tillegg til "Ind": Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 
+* Oppgavene inneholder en av disse taggene i tillegg til "Ind": Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 
 * Vi satser på å ikke oppgi tiden (Prt, Prs), studenten skal finne ut selv hva hun trur er best. 
 * Distractors av samme lemma: 
 ** V+Ind+Prs+ConNeg 
@@ -52,7 +52,7 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 
 
 !! Infinitte verb
-* V+PrfPrc, V+VGen, V+VAbess, V+Ger, V+Actio+Ess, V+Inf, Ind+Prs+ConNeg, Ind+Prt+ConNeg
+* Oppgavene inneholder V+PrfPrc, V+VGen, V+VAbess, V+Ger, V+Actio+Ess, V+Inf, Ind+Prs+ConNeg, Ind+Prt+ConNeg
 * Distractors av samme lemma:
 ** V+Ind+Prt+Sg1  
 ** V+Ind+Prt+Sg2  
@@ -67,18 +67,36 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 ** V+Ind+Prs+Du2  
 ** V+Ind+Prs+Du3  
 
-!! Skriv substantiv i riktig kasus
+!! Skriv substantiv entall i riktig kasus
+* Oppgavene inneholder N+Sg+Nom, N+Sg+Acc, N+Sg+Gen, N+Sg+Ill, N+Sg+Loc, N+Sg+Com
+* Distractors av samme lemma (samme lista):
+** N+Sg+Nom 
+** N+Sg+Acc 
+** N+Sg+Gen 
+** N+Sg+Ill 
+** N+Sg+Loc 
+** N+Sg+Com
+
+!! Skriv substantiv flertall i riktig kasus
+* Oppgavene inneholder N+Pl+Nom, N+Pl+Acc, N+Pl+Gen, N+Pl+Ill, N+Pl+Loc, N+Pl+Com
+* Distractors av samme lemma (samme former som i linja over):
+** N+Pl+Nom 
+** N+Pl+Acc 
+** N+Pl+Gen 
+** N+Pl+Ill 
+** N+Pl+Loc 
+** N+Pl+Com
 
 
-!! Skrive riktig konjunksjon/subjunksjon (innholder taggene CS og CC)
-* denne er litt vanskelig, her blir det lett mange muligheter
+
+!! Skrive riktig subjunksjon (innholder taggene CS og CC)
+* denne er litt vanskelig, her blir det lett mange muligheter, så jeg tror vi ikke presenterer denne for studentene
 
 !!Testing
 Teaksta finnes for testing [her|http://gtlab.uit.no:8080/teaksta]. Bruk Firefox som nettleser om du har den. Dessverre fungerer Teaksta ikke så bra i Safari.
 
 !!Grensesnitt
-Oppgavene kan presenteres på to måter:
-* Ferdige linker med tekst og oppgavetype, studenten velger colorize, click, Practice, multiple choice
-** slik sikrer vi at det er relevante tekster i forhold til oppgaver
-* Studenten kopierer inn url og velger oppgavetype
-* Læreren kopierer inn url, og linken presenteres på studentenes side
+Werti-ikon på oahpa-hovedside. Link til Werti-siden
+* Ferdige linker med tekst og oppgavetype, studenten velger colorize, click, Practice, multiple choice. Slik sikrer vi at det er relevante tekster i forhold til oppgaver.
+* Studenten kan også kopiere inn url og velger oppgavetype
+* Lokalisering 
