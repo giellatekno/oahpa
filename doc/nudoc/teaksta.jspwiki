@@ -83,7 +83,7 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 * Distractors av samme lemma (samme former som i linja over):
 ** N+Pl+Nom 
 ** N+Pl+Acc 
-** N+Pl+Gen 
+** N+Pl+Gen q
 ** N+Pl+Ill 
 ** N+Pl+Loc 
 ** N+Pl+Com
@@ -93,6 +93,16 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 
 !! Skrive riktig subjunksjon (innholder taggene CS og CC)
 * denne er litt vanskelig, her blir det lett mange muligheter, så jeg tror vi ikke presenterer denne for studentene
+
+!! Finn subjektet – colorize og click
+* Oppgavene inneholder @SUBJ @<SUBJ @SUBJ> @-FSUBJ>
+
+!! Finn objektet – colorize og click
+* Oppgavene inneholder @OBJ @<OBJ @OBJ> @-FOBJ> @-F<OBJ @OBJ>SPRED @SPRED<OBJ @SUBJ<OBJ
+
+!! Finn adverbialet – colorize og click
+* Oppgavene inneholder @ADVL @<ADVL @ADVL> @-FADVL> @-F<ADVL  @ADVL>CS @ADVL>SUBJ  @SUBJ<ADVL
+
 
 !!Testing
 Teaksta finnes for testing [her|http://gtlab.uit.no:8080/teaksta]. Bruk Firefox som nettleser om du har den. Dessverre fungerer Teaksta ikke så bra i Safari.
