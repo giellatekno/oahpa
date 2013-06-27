@@ -1,7 +1,42 @@
 !!!Installing django
 
+!!!Virtualenv
 
+Univ_oahpa currently uses virutalenv to maintain all necessary dependent
+packages, but with some exceptions (outlined below).
 
+!! Exceptional prerequisites
+
+Univ_oahpa depends on python-mysql, which, depending on your system, will
+require development libraries for mysql to be installed. For systems with
+package managers, this should be easy: 
+
+With aptitude: 
+{{{
+    sudo apt-get install python-dev
+    sudo apt-get install mysql-devel
+}}}
+
+With yum: 
+{{{
+    sudo yum install python-devel
+    sudo yum install mysql-devel
+}}}
+
+!! Configuring a virtualenv for univ_oahpa
+
+1. Check out the univ_oahpa source, and [install virtualenv|http://www.virtualenv.org/].
+2. Create a virtual environment in some location where you will see it: {{{ virtualenv path/to/env }}}
+3. Activate the virtual environment by sourcing its activation file: {{{ . path/to/env/bin/activate }}}
+4. Locate requirements.txt within the univ_oahpa source branch, and run pip with it: {{{ pip install -r path/to/requirements.txt }}}
+5. Have some coffee or tea.
+
+!! GeoIP
+
+univ_oahpa's user log also includes geographical information on each user interaction, and this is handled with GeoIP, which must be
+compiled for each system you are using it on, and cannot be checked into the source tree. 
+
+For detailed install instructions [see our GeoIP notes|geoip.html].
 
 !!!Install Django locally
 
