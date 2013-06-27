@@ -1,4 +1,4 @@
-This directory contains material relevant to Oahpa!-nuõrti. The  dictionary database (in /src) is imported from a "common" dictionary database called (~/sms2X).
+This directory contains material relevant to Oahpa!-nuõrti. The dictionary database (in /src) is imported from a "common" dictionary database called (~/sms2X).
 
 Documentation for smsoahpa at http://victorio.uit.no/cgi-bin/wiki/index.php/Smsoahpa (to be written)
 
@@ -41,7 +41,7 @@ The usual cycle:
 6. filter away the entries without stat="pref"
    sms_filter_merged.xsl inFile=.....
 
- ==> re-build the smaoahpa db on victorio
+ ==> re-build the smsoahpa db on victorio
 
 =====
 Micha (old note):
@@ -66,7 +66,7 @@ Micha (old note):
 * BOT "Plant"
 * FOOD "Mat og drikk"
 * ENVIR "Verld"
-For now we use only these supersets. Two sets (LANG "Språk" and CLOTH "Klær") are still excluded because we have not enough entries there yet.
+For now we use only these supersets. Two sets (LANG "Språk" and CLOTH "Klær") are still excluded because we do not have enough entries there yet.
 
 6. dis/preferred variants in <l> and <t>
 * in <l> I mark only dispreferred variants (oahpa="dispref"), i.e. a translation variant which is accepted as answer in the reversed x-sms LEKSA game without being shown as the right answer
