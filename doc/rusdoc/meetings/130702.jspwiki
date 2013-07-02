@@ -1,0 +1,368 @@
+
+Møte rus_oahpa 2.7.
+
+
+Til stades: Heli, Laura, Tore, Trond
+
+
+
+!!!Status quo:
+
+* Francis og Laura har arbeidd med "Möte i St.Petersburg"
+* og har ein analysator for det -- ( i apertiumformat )
+* Analysatoren inneheld:
+* ordforrådet i "Möte i St.Petersburg (ca. 1000 ord)
+* morfologisk analyse for dei orda, inkl. trykkmarkering
+
+
+
+!!!Innhald i arbeidet
+
+förste prioritet:
+
+* Bruke analysatoren for å lage MorfaS
+* Inkludere ei behandling av trykk som tilsvarer ï / i for sørsamisk
+
+
+Ny type øving i russisk oahpa:
+
+Trykkøving: 
+
+* Ta ein tekst utan trykk og sett på trykk
+* La studenten gjere det same.
+* Spørsmål om tastatur
+** Ha ein java-knapp
+*** Prosedyre: 
+*** studenten skriv го
+*** studenten trykker på ein knapp
+*** studenten skriv род
+*** resultatet blir го́род
+** Bruke eit russisk tastatur som har trykkmarkering
+*** Trykk __her__ for å laste ned eit russisk tastatur for mac...
+
+
+Attendemelding til studenten
+
+{{{
+suopman
+    svar: suopmanit
+    korrekt: suopmanat
+    
+"suopman" har ulikestavelsesstamme uten stadieveksling. -at-ending.
+         <l diphthong="no" gradation="no" pos="n" rime="0" stem="3syll">suopman</l>
+      <l gender="neut" animate="inanim" declension="2" pos="n">окно</l>
+    <pardef n="/у́тро__n_nt_1a^">
+    
+    <lg>
+      <l gender="fem" animate="anim" declension="1" pos="n">девочка</l>
+
+      <l gender="fem" animate="anim" declension="1" pos="n" stress="C">девочка</l>
+      <analysis>N_Sg_Nom</analysis>
+      <mini_paradigm>
+        <analysis ms="N_Sg_Acc">
+          <wordform>де́вочку</wordform>
+        </analysis>
+        <analysis ms="N_Pl_Acc">
+          <wordform>де́вочек</wordform>
+          ...
+}}}
+
+
+
+Tore og Laura skal skrive tilbakemeldinger...
+
+[https://apertium.svn.sourceforge.net/svnroot/apertium/incubator/apertium-rus/apertium-rus.rus.dix]
+
+
+{{{
+    <pardef n="Москв/а́__np_f_1b">
+    <e lm="городско́й"><i>городск</i><par n="городск/о́й__adj_3bX~"/></e>
+    
+    <e lm="рома́н"><i>рома́н</i><par n="авто́бус__n_m_1a"/></e>
+
+    <pardef n="авто́бус__n_m_1a">
+      <e>       <p><l></l><r><s n="n"/><s n="m"/><s n="nn"/><s n="sg"/><s n="acc"/></r></p></e>
+      <e>       <p><l>ы</l><r><s n="n"/><s n="m"/><s n="nn"/><s n="pl"/><s n="acc"/></r></p></e>
+      <e>       <p><l></l><r><s n="n"/><s n="m"/><s n="nn"/></r></p><par n="n_m_1a"/></e>
+    </pardef>
+}}}
+
+
+* окно    n zal window  vindu   vindue
+* авто́бус__n_m_1a ==> oahpa-xml
+* zaliznjak ==> oahpa-xml
+
+
+
+
+
+!!Filer
+
+* $GTHOME/ped/rus
+* $GTHOME/ped/rus_oahpa
+* https://apertium.svn.sourceforge.net/svnroot/apertium/incubator/apertium-rus/
+* csv-filene
+
+
+!!Skal bli gjort:
+
+Teknisk:
+* Heli treng Apertium-passord (Trond, Francis)
+* Installere Apertium: [http://wiki.apertium.org/wiki/Apertium_on_Mac_OS_X]
+* Vurdere om vi skal bruke rus_oahpa
+
+
+!Morfa
+
+* Leksikon
+** Kor er rus-eng-nob-dan.csv (Trond, Francis)
+** lage ei oahpa-fil av rus-eng-nob-dan.csv, inkludere stammeinformasjon (Heli)
+* Morfologi
+** generere bøyingsformer til mysql-basen av leksikon med rus.autogen.bin (Heli)
+* Feedback
+** skrive messages_nouns.xml etc. (Tore, Laura)
+*** Sjå på smeoahpa for inspirasjon på X-tilbakemelding for MorfaS
+*** Skriv kvasikode
+
+
+!Leksa
+
+* Etter morfa
+
+
+!!Ferieavvikling:
+
+* Tore, Laura på nett frå 15.7. til 26.7.
+* Trond denne veka, deretter borte ei veke, deretter vekslande, attende 1.8.
+* Heli: 15.7. - 22.7 intensivjobb
+heli1401@gmail.com
+
+!!Tidsplan
+
+* Formelt m/Francis om filer før Trond fer på hytta
+* Heli intensivt 15.7-22.7
+* Frå og med 15.7. input frå Tore og Laura
+
+!!Neste møte
+
+__22.7. 0800 norsk tid__
+
+
+
+
+!!!Appendix
+
+Utdrag frå filer
+
+
+
+!!Oahpa-format for sme
+
+{{{
+ <e>
+      <lg>
+         <l diphthong="no" gen_only="N+NomAg" gradation="no" pos="n" rime="0" soggi="u"
+            stem="2syll"
+            type="NomAg">dáppeorru</l>
+      </lg>
+      <sources>
+         <book name="c4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ACTOR"/>
+            <sem class="MORFAS"/>
+         </semantics>
+         <tg xml:lang="nob">
+            <t pos="n" stat="pref">en som bor her</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="n" stat="pref">täälläasuja</t>
+         </tg>
+         <tg xml:lang="swe">
+            <t stat="pref">en som bor här</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t stat="pref">täälläasuja_ENG</t>
+         </tg>
+      </mg>
+   </e>
+}}}
+
+!!Oahpa-format for sjd
+
+
+{{{
+   <e>
+      <lg>
+         <l pos="n">тӣрвхэмушш</l>
+      </lg>
+      <sources>
+         <book name="Saamkilsyjjt"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SCHOOL_EDUCATION"/>
+            <sem class="TIME_EXPRESSION"/>
+         </semantics>
+         <tg xml:lang="rus">
+            <t stat="pref">поздравление</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t stat="pref">congratulation</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t stat="pref">congratulation_SME</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t stat="pref">gratulasjon</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t stat="pref">onnittelu</t>
+         </tg>
+         <tg xml:lang="ger">
+            <t stat="pref">Gratulation</t>
+         </tg>
+      </mg>
+   </e>
+}}}
+
+!! Apertium-format   
+   
+
+{{{
+    <pardef n="n_m_1a">
+      <e>       <p><l></l><r><s n="sg"/><s n="nom"/></r></p></e>
+      <e>       <p><l>а</l><r><s n="sg"/><s n="gen"/></r></p></e>
+      <e>       <p><l>у</l><r><s n="sg"/><s n="dat"/></r></p></e>
+      <e>       <p><l>ом</l><r><s n="sg"/><s n="ins"/></r></p></e>
+      <e>       <p><l>е</l><r><s n="sg"/><s n="prp"/></r></p></e>
+      <e>       <p><l>ы</l><r><s n="pl"/><s n="nom"/></r></p></e>
+      <e>       <p><l>ов</l><r><s n="pl"/><s n="gen"/></r></p></e>
+      <e>       <p><l>ам</l><r><s n="pl"/><s n="dat"/></r></p></e>
+      <e>       <p><l>ами</l><r><s n="pl"/><s n="ins"/></r></p></e>
+      <e>       <p><l>ах</l><r><s n="pl"/><s n="prp"/></r></p></e>
+    </pardef>
+}}}
+
+    
+!!Böyingstyper
+
+{{{
+    <pardef n="/большо́й__adj_4b">
+    <pardef n="/бы́ть__vbser">
+    <pardef n="/в__pr">
+    <pardef n="/икра́__n_f_1d">
+    <pardef n="/к__pr">
+    <pardef n="/мно́го__adv">
+    <pardef n="/мы__prn">
+    <pardef n="/над__pr">
+    <pardef n="/о__pr">
+    <pardef n="/о́бщий__adj_4a/c">
+    <pardef n="/о́вощ__n_m_4e">
+    <pardef n="/о́зеро__n_nt_1a">
+    <pardef n="/о́н__prn">
+    <pardef n="/о́рден__n_m_1c(1)">
+    <pardef n="/о́стров__n_m_1c(1)">
+    <pardef n="/о́тпуск__n_m_3c(1)">
+    <pardef n="/о́чередь__n_f_8e">
+    <pardef n="/окно́__n_nt_1*d">
+    <pardef n="/она́__prn">
+    <pardef n="/они́__prn">
+    <pardef n="/оно́__prn">
+    <pardef n="/оте́ц__n_m_5*b">
+    <pardef n="/пло́хо__adv">
+    <pardef n="/плохо́й__adj_3b/c">
+    <pardef n="/ребёнок__n_m_3°a^">
+    <pardef n="/с__pr">
+    <pardef n="/у́мный__adj_1*a/b">
+    <pardef n="/у́тро__n_nt_1a^">
+    <pardef n="/хорошо́__adv">
+...
+383
+
+}}}
+
+
+!!Generering i Apertium
+
+{{{
+make
+
+echo Москва | lt-proc rus.automorf.bin 
+^Москва/Москва́<np><top><f><sg><nom>$
+
+echo Москве| lt-proc rus.automorf.bin 
+^Москве/Москва́<np><top><f><sg><dat>/Москва́<np><top><f><sg><prp>$
+        
+echo Moсква́<np><top><f><sg><prp> | lt-proc rus.autogen.bin 
+
+Disse filene ligg i
+$GTHOME/ped/rus/src/n_rus.xml
+$GTHOME/ped/rus/meta-data/ ... ikkje laga enno, jf:
+
+$GTHOME/ped/sme/src/n_smenob.xml
+$GTHOME/ped/sme/meta/feedback_nouns.xml 
+}}}
+
+
+
+
+
+!!Feedback for sme
+
+{{{
+Messageorder nouns: LEMMA A B C D E                                                                                                                  
+A:                                                                                                                                                        
+bisyllabic_stem                                                                                                                                           
+trisyllabic_stem                                                                                                                                          
+contracted_stem                                                                                                                                           
+                                                                                                                                                          
+B:                                                                                                                                                        
+inv_gradation                                                                                                                                             
+no_gradation                                                                                                                                              
+weak_grade                                                                                                                                                
+strong_grade                                                                                                                                              
+finalstrong_grade                                                                                                                                         
+finalweak_grade                                                                                                                                           
+                                                                                                                                                          
+C:                                                                                                                                                        
+diphthong_simplification                                                                                                                                  
+diphthong_simplification_and_a_i                                                                                                                          
+                                                                                                                                                          
+D:                                                                                                                                                        
+u_o                                                                                                                                                       
+is_á                                                                                                                                                      
+oš_o                                                                                                                                                      
+š_ž                                                                                                                                                       
+i_j                                                                                                                                                       
+a_i                                                                                                                                                       
+e_i                                                                                                                                                       
+i_á                                                                                                                                                       
+o_u                                                                                                                                                       
+oš_u                                                                                                                                                      
+t_h                                                                                                                                                       
+t_d                                                                                                                                                       
+t_b                                                                                                                                                       
++g                                                                                                                                                        
++n                                                                                                                                                        
++m                                                                                                                                                        
+                                                                                                                                                          
+E:                                                                                                                                                        
+a-suffix                                                                                                                                                  
+no_suffix                                                                                                                                                 
+id-suffix                                                                                                                                                 
+i-suffix                                                                                                                                                  
+ide-suffix                                                                                                                                                
+s-suffix                                                                                                                                                  
+in-suffix                                                                                                                                                 
+iguin-suffix                                                                                                                                              
+n-suffix                                                                                                                                                  
+ii-suffix                                                                                                                                                 
+iidda-suffix                                                                                                                                              
+is-suffix                                                                                                                                                 
+iin-suffix                                                                                                                                                
+iid-suffix                                                                                                                                                
+as-suffix  
+
+}}}
