@@ -11,8 +11,13 @@
 * norwegian3 visl-in-nob ==» index, L2, res, res
 * finnish    sme-in-fin ==» index, L2, res, res
 * swedish    sme-in-swe ==» index, L2, res, res
-* english    sme-in-ent ==» index, L2, res, res
+* english    sme-in-eng ==» index, L2, res, res
 * russian    sjd-in-rus ==» index, L2, res, res
+* russian_sms sms-in-rus ==» index, L2, res, res
+* english_sms sms-in-eng ==» index, L2, res, res
+* finnish_sms sms-in-fin ==» index, L2, res, res
+* norwegian_sms sms-in-nob ==» index, L2, res, res
+* smsgramm sms-in-nob ==» res, res
 * smegramm   in-eng ==» res, res
 * english2   visl-in-eng ==» index, L2, res, res
 * extending ==» index, ...
@@ -410,27 +415,34 @@
   </res>
   </finnish_sms>
 
-  <norwegian_sms label="Menu" tab="OAHPAnuorti_inNorwegian">
-    <index label="Velkommen" href="index.nob.html" description="Velkommen til oahpa"/>
-  <L2 label="OAHPA-nuõrti">
+  <norwegian_sms label="Meny" tab="OAHPAnuorti_inNorwegian">
+    <index label="Veiledning" href="sms/index.nob.html" description="Velkommen til læringsportalen"/>
+    <L2 label="OAHPA-nuõrti">
     <bagadus label="Introduksjon" href="sms/index.nob.html"/>
      <numra label="Numra" href="sms/useoahpa/numra.nob.html"/>
      <leksa label="Leksa" href="sms/useoahpa/leksa.nob.html"/>
     <background label="Bakgrunn" href="sms/useoahpa/background.nob.html"/>
     <!--<satnevuorka  label="Ordliste" href="sms/useoahpa/satnevuorka.nob.html"/>this ressource is excluded from the menue for now-->
   </L2>
-  <res label="Resources">
+    <res label="Hjelpemidler">
     <!--<satneluohkat  label="Ordklasser" href="sms/useoahpa/pos.html"/>this ressource is excluded from the menue for now-->
     <paradigmat label="Grammatikk" href="sms/grammar/grammar.nob.html"/>
     <satnegirji label="Ordbøker" href="sms/useoahpa/dictionary.nob.html"/>
     <linker label="Linker" href="sms/useoahpa/link.nob.html"/>
   </res>
-  <res label="Home">
+    <res label="Hjem">
     <valdosiidu label="Hovedmeny" href="index.nob.html"/>
   </res>
   </norwegian_sms>
 
-
+  <smsgramm label="Meny" tab="smsgramm_inNorwegian">
+    <res label="Grammatikk">
+      <substintro  label="Substantiv - intro" href="sms/grammar/noun-intro.nob.html"/>
+    </res>
+    <res label="Hjem">
+      <valdosiidu  label="Grammatikk" href="sms/grammar/grammar.nob.html"/>
+    </res>
+  </smsgramm>
 
   <english_smn label="Menu" tab="OAHPAaanaar_inEnglish">
     <index label="Welcome" href="index.eng.html" description="Welcome to oahpa"/>
@@ -481,8 +493,6 @@
     <valdosiidu  label="Hovedmeny" href="index.nob.html"/>
   </res>
   </norwegian_smn>
-
-
 
   <smegramm label="Meny" tab="gramm_English">
   <res label="Grammar">
