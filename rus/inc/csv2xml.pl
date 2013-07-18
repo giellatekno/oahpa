@@ -18,8 +18,8 @@ while (<>)
 	print STDOUT "  <e>\n";
 	print STDOUT "    <lg>\n";
 	print STDOUT "      <l pos=\"$pos\" zaliznjak=\"$zaliznjak\">$lemma</l>\n";
+	print STDOUT "      <lemma_stressed>$lemma_stressed</lemma_stressed>\n";
 	print STDOUT "    </lg>\n";
-    print STDOUT "    <lemma_stressed>$lemma_stressed</lemma_stressed>\n";
 	print STDOUT "    <sources>\n";
 	print STDOUT "      <book name=\"$book\" chapter=\"$chapter\"/>\n";
 	print STDOUT "    </sources>\n";
