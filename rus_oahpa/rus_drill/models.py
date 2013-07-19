@@ -113,10 +113,11 @@ class Dialect(models.Model):
 		return smart_unicode(S)
 
 def Translations2(target_lang):
-	if target_lang in ["nob", "rus", "eng", "no"]:
+	if target_lang in ["nob", "rus", "eng", "dan", "no"]:
 		if target_lang == "nob" or "no":	related = 'translations2nob'
 		if target_lang == "rus":	related = 'translations2rus'
 		if target_lang == "eng":	related = 'translations2eng'
+		if target_lang == "dan":	related = 'translations2dan'
 		return related
 	else:
 		return None
@@ -131,7 +132,7 @@ class MorphPhonTag(models.Model): # redone for Russian
 	stem		 = models.CharField(max_length=20)
 	gender           = models.CharField(max_length=20)
 	animate          = models.CharField(max_length=20)
-	# inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
+	inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
 	# stress_class     = models.CharField(max_length=20) # Zaliznyak's stress class
 	declension       = models.CharField(max_length=20) # Doing it this way until an fst is up
 	reflexive        = models.NullBooleanField(blank=True)
@@ -141,17 +142,12 @@ class MorphPhonTag(models.Model): # redone for Russian
 
 # PI: Do we encode minor things like problematic plurals etc.?
 
-	# wordclass	= models.CharField(max_length=20)
-	# diphthong	= models.CharField(max_length=20)
-	# gradation	= models.CharField(max_length=20)
-	# rime		 = models.CharField(max_length=20)
-	# soggi		= models.CharField(max_length=20)
-
 	def __unicode__(self):
 		attrs = [self.stem,
 			 self.gender,
 			 self.animate,
 			 self.declension,
+			 self.inflection_class,
 #			 self.stress_class,
 			 self.reflexive]
 
@@ -163,6 +159,7 @@ class MorphPhonTag(models.Model): # redone for Russian
 				   "gender",
 				   "animate",
 				   "declension",
+				   "inflection_class",
 #				   "stress_class",
 				   "reflexive",)
 
@@ -184,8 +181,6 @@ def leksa_filter(Model,
 
 	QUERY['language'] = lang
 	QUERY['wordtranslation__language'] = tx_lang
-
-	# Heli: I think that the next if-clause is relevant only for leksa-place ?
 
 	if geography:
 		QUERY['geography'] = geography
@@ -227,18 +222,14 @@ class Word(models.Model):
 	gender = models.CharField(max_length=20)
 	declension = models.CharField(max_length=20)
 	reflexive = models.NullBooleanField(blank=True)
+	inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
 
 	# wordclass = models.CharField(max_length=8)
 	# valency = models.CharField(max_length=10)
 	hid = models.IntegerField(max_length=3, null=True, default=None) # PI: what's this?
 	semtype = models.ManyToManyField(Semtype)
-	source = models.ManyToManyField(Source) # PI: what's this?
-	# diphthong = models.CharField(max_length=5)
-	# gradation = models.CharField(max_length=20)
-	# rime = models.CharField(max_length=20)
-	# attrsuffix = models.CharField(max_length=20)
-	# compsuffix = models.CharField(max_length=20)
-	# soggi = models.CharField(max_length=10)
+	source = models.ManyToManyField(Source) # The textbook(s) where the word is introduced
+	chapter = models.CharField(max_length=10) 
 	compare = models.CharField(max_length=5) # PI: what's this?
 	# translations2nob = models.ManyToManyField('Wordnob')
 	# translations2swe = models.ManyToManyField('Wordswe')
@@ -253,6 +244,8 @@ class Word(models.Model):
 	# nob = Nob()
 	morphophon = models.ForeignKey(MorphPhonTag, null=True)
 	dialects = models.ManyToManyField(Dialect, null=True)
+	aspect = models.CharField(max_length=20) # aspect partner (verbs only)
+	motion = models.CharField(max_length=20) # motion partner (verbs only)
 
 
 	def morphTag(self, nosave=True):
@@ -266,6 +259,7 @@ class Word(models.Model):
 				'animate':	self.animate,
 				'declension':	self.declension,
 				'reflexive':	self.reflexive,
+				'inflection_class': self.inflection_class
 			}
 
 			morphtag, create = MorphPhonTag.objects.get_or_create(**kwargs)
@@ -449,7 +443,7 @@ class Tagname(models.Model):
 		return smart_unicode(self.tagname)
 
 class Tag(models.Model):
-	string = models.CharField(max_length=40, unique=True) # PI: what's this?
+	string = models.CharField(max_length=40, unique=True) # tag sequence
 	# TODO: pos = models.CharField(max_length=12)
 	attributive = models.CharField(max_length=5)
 	case = models.CharField(max_length=5)

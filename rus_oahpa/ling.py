@@ -17,14 +17,19 @@ _D = open('/dev/null', 'w')
 
 
 try:
-	fstdir = settings.FST_DIRECTORY
+	fstdir = settings.FST_DIRECTORY  # lexc fst - for generation of numerals
 except:
-	fstdir = "/opt/smi/rus/bin"
+	fstdir = "/opt/rus/bin"
 
 try:
 	lookup = settings.LOOKUP_TOOL
 except:
 	lookup = "/usr/local/bin/lookup"
+	
+try:
+    apertiumdir = settings.APERTIUM_DIRECTORY  # apertium fst - for generation of substantives, verbs, adjectives
+except:
+    apertiumdir = "/home/heli/apertium/incubator/apertium-rus"
 
 try:
 	language = settings.MAIN_LANGUAGE[0]
@@ -93,19 +98,36 @@ def Popen(cmd, data=False, ret_err=False, ret_proc=False):
 
 
 def FSTLookup(data, fst_file):
-	gen_fst = fstdir + "/%s" % fst_file
+	# gen_fst = fstdir + "/%s" % fst_file
 	# cmd = 'hfst-optimized-lookup /opt/local/share/omorfi/mor-omorfi.apertium.hfst.ol'
-	cmd = lookup + " -flags mbTT -utf8 -d " + gen_fst
-
+	#cmd = lookup + " -flags mbTT -utf8 -d " + gen_fst # lexc
+	morf_fst = apertiumdir + "/rus.automorf.bin"  # Apertium-style morf fst
+	gen_fst = apertiumdir + "/rus.autogen.bin" # Apertium-style form generating fst
+	cmd_anal = "lt-proc " + morf_fst # analysis
+    cmd_gen = "lt-proc -g " + gen_fst   # generation
+    
 	if type(data) == list:
 		data = [a.strip() for a in list(set(data)) if a.strip()]
 		data = u'\n'.join(data).encode('utf-8')
-	print >> STDOUT, "Generating forms in %s" % gen_fst
+    
+	morphemes = data.split("+")  # Apertium
+	lemma = morphemes[0]
+	 
+	print >> STDOUT, "Generating forms"
 	try:
-		lookups = Popen(cmd, data)
+		morfanal_lemma = Popen(cmd_anal, lemma)  # use morph analysis to obtain gender and animacy
 	except OSError:
-		print >> STDERR, "Problem in command: %s" % cmd
+		print >> STDERR, "Problem in command: %s" % cmd_anal
 		sys.exit(2)
+			
+    generator_input = morfanal_lemma.replace("sg", morphemes[2].lower())
+    generator_input = generator_input.replace("nom", morphemes[3].lower())  # nouns: morphemes[2]=Sg/Pl, morphemes[3]=case
+    try:
+        lookups = Popen(cmd_gen, generator_input)
+    except OSError:
+		print >> STDERR, "Problem in command: %s" % cmd_gen
+		sys.exit(2) 
+		       
 	lookups = lookups.decode('utf-8')
 
 	return lookups
@@ -129,7 +151,9 @@ class Paradigm:
 		self.generate_data = []
 
 
-	def handle_tags(self, tagfile, add_db):
+	def handle_tags(self, tagfile, add_db):  
+	""" The function is called from install.py and its aim is to install the contents of the tag file (e.g. tags.txt) in the database.
+	"""
 
 		with open(tagfile, "r") as F:
 			# Read tags, remove newlines
@@ -151,6 +175,8 @@ class Paradigm:
 
 
 	def read_paradigms(self, paradigmfile, tagfile, add_database):
+    """ The function is called from install.py and its aim is to install the contents of the paradigm file (e.g. paradigms.txt) into the database.
+	"""
 		if not self.tagset:
 			self.handle_tags(tagfile)
 
@@ -268,7 +294,7 @@ class Paradigm:
 		else:
 			wordtype = '+' + wordtype.capitalize()
 
-		if self.paradigms.has_key(pos):
+		if self.paradigms.has_key(pos):  # composition of the input strings for the wordform generator 
 			for a in self.paradigms[pos]:
 				if wordtype.strip():
 					if not wordtype in a:

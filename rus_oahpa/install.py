@@ -79,18 +79,18 @@ def main(opts):
 
 	(options, args) = parser.parse_args()
 
-	linginfo = Paradigm()
-	words = Words()
+	linginfo = Paradigm()  # class Paradigm in ling.py
+	words = Words() # class Words in words_install.py
 	extra = Extra()
 	sahka = Sahka() # added by Heli
 	feedback = Feedback_install()
 	questions = Questions()
 
 	if options.tagfile:
-		linginfo.handle_tags(options.tagfile, options.add_db)
+		linginfo.handle_tags(options.tagfile, options.add_db)  # install tags
 
 	if options.paradigmfile:
-		linginfo.read_paradigms(options.paradigmfile, options.tagfile, options.add_db)
+		linginfo.read_paradigms(options.paradigmfile, options.tagfile, options.add_db)   # install paradigms
 
 	if options.wordid:
 		words.delete_word(options.wordid,options.pos)

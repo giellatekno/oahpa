@@ -16,7 +16,7 @@ _D = open('/dev/null', 'w')
 
 COUNT_ONLY = False
 
-supported_langs = ['rus', 'nob', 'eng']
+supported_langs = ['rus', 'nob', 'eng', 'dan']
 
 # # #
 #
@@ -54,14 +54,14 @@ try:
 except:
 	print """Infinitives not defined in settings.py...
 		 	INFINITIVE_SUBTRACT = {
-		 		'nob': ur'^(?P<inf>å )?(?P<lemma>.*)$',
+		 		'nob': ur'^(?P<inf>책 )?(?P<lemma>.*)$',
 		 		'swe': ur'^(?P<inf>att )?(?P<lemma>.*)$',
 		 		'eng': ur'^(?P<inf>to )?(?P<lemma>.*)$',
 		 		'deu': ur'^(?P<inf>zu )?(?P<lemma>.*)$',
 		 	}
 
 		 	INFINITIVE_ADD = {
-		 		'nob': ur'å \g<lemma>',
+		 		'nob': ur'책 \g<lemma>',
 		 		'swe': ur'att \g<lemma>',
 		 		'eng': ur'to \g<lemma>',
 		 		'deu': ur'zu \g<lemma>',
@@ -116,6 +116,7 @@ class Analysis(object):
 			'number': self.classes.get('Number',""),
 			'gender': self.classes.get('Gender', ""),  # PI: added for Russian
 			'case': self.classes.get('Case',""),
+			'inflection_class': self.classes.get('Inflectionclass',""),  # added by Heli: this is the Zaliznjak code 
 #			'possessive': self.classes.get('Possessive',""),
 #			'grade': self.classes.get('Grade',""),
 #			'infinite': self.classes.get('Infinite',""),
@@ -189,17 +190,33 @@ class Entry(object):
 		""" Handles nodes such as...
 
 			<lg>
-      		   <l pos="n" soggi="oe" stem="2syll">aajroe</l>
-      		</lg>
+                <l gender="fem" animate="anim" declension="1" pos="n">девочка</l>
+            </lg>
 
-      		Including those containing lemma_ref and miniparadigms:
+      		Including those containing lemma_stressed: 
 
 			<lg>
-				<l pos="pron" type="pers">mijjen</l>
-         		<lemma_ref lemmaID="mijjieh_pron_pers">mijjieh</lemma_ref>
-         		<analysis>Pron_Pers_Pl1_Gen</analysis>
-			</lg>
+                <l pos="n" zaliznjak=" 1c(1)">вечер</l>
+                <lemma_stressed>ве́чер</lemma_stressed>
+            </lg>
+            
+            and miniparadigms:
+            
+            <lg>
+                <l gender="fem" animate="anim" declension="3" pos="n">мышь</l>
+                <analysis>N_Sg_Nom</analysis>
+                <mini_paradigm>
+                    <analysis ms="N_Sg_Acc">
+                        <wordform>мы́шь</wordform>
+                    </analysis>
+                    ..... 
+                    <analysis ms="N_Pl_Gen">
+                        <wordform>мыше́й</wordform>
+                    </analysis>
+                </mini_paradigm>
+            </lg>
 
+    
 		"""
 
 		n = self.node
@@ -216,13 +233,13 @@ class Entry(object):
 			("pos", None),
 			("animate", None),
 			("declension", None),
-			("gender", None)
-
+			("gender", None),
+			("zaliznjak", "inflection_class")
 		]
 
 		analysis = _firstelement(lg, "analysis")
 		miniparadigm = _firstelement(lg, "mini_paradigm")
-		lemma_ref = _firstelement(lg, "lemma_ref")
+		lemma_stressed = _firstelement(lg, "lemma_stressed")
 
 		if analysis:
 			self.analysis = _data(analysis).replace('_', '+')
@@ -234,10 +251,10 @@ class Entry(object):
 		else:
 			self.lemma_analyses = False
 
-		if lemma_ref:
-			self.lemma_ref = _data(lemma_ref)
+		if lemma_stressed:
+			self.lemma_stressed = _data(lemma_stressed)
 		else:
-			self.lemma_ref = False
+			self.lemma_stressed = False
 
 		for xmlattr, objattr in l_attrs:
 			if not objattr:
@@ -249,7 +266,7 @@ class Entry(object):
 	def processSources(self):
 		""" Handles nodes such as...
             <sources>
-               <book name=""/>
+               <book name="MiP" chapter="L6"/>
                <frequency class="common"/>
                <geography class="mid"/>
             </sources>
@@ -269,8 +286,11 @@ class Entry(object):
 		books = _elements(sources, "book")
 
 		book_names = [_attribute(b, "name") for b in books]
+		
+		book_chapters = [_attribute(b, "chapter") for b in books]
 
 		self.sources = book_names
+		self.chapters = book_chapters
 
 		frequency = _elements(sources, "frequency")
 		geography = _elements(sources, "geography")
@@ -370,7 +390,7 @@ class Entry(object):
          		   <tf tcomm="no">bestefar sitt barnebarn</tf>
          		</tg>
          		<tg xml:lang="swe">
-         		   <tf pos="phrase_n" stat="pref" tcomm="no">bestefars barnebarn_SWE</tf>
+         		   <tf pos="phrase_n" stat="pref" tcomm="no">farfars barnbarn</tf>
          		</tg>
          	</mg>
          	<mg>
@@ -390,6 +410,14 @@ class Entry(object):
 
 			self.meanings.append(meaning)
 
+	def handlePartnerVerbs(self):
+		"""  Handles nodes such as...
+			<aspect>уви́деть</aspect>
+			<motion>идти</motion>
+        """
+		self.aspect = _data(self.node, "aspect")
+		self.motion = _data(self.node, "motion")
+		
 
 	def make_checksum(self):
 		import hashlib
@@ -407,6 +435,7 @@ class Entry(object):
 			self.processLG()
 			self.processSources()
 			self.processMeaningGroups()
+			self.handlePartnerVerbs()
 			self.make_checksum()
 		except Exception, e:
 			import traceback
@@ -646,6 +675,13 @@ class Words(object):
 
 			w.source.add(book_entry)
 			w.save()
+			
+    def add_chapters(self,entry,w):
+		for chapter in entry.chapters:
+            if VERBOSE:
+                print >> _STDOUT, "Added chapter ", chapter.encode('utf-8')
+			w.chapter = chapter
+			w.save()
 
 	def store_word(self,entry,linginfo,mainlang,paradigmfile,delete,append_only=False):
 		OUT_STRS = []
@@ -735,7 +771,7 @@ class Words(object):
 		animate = None or entry.animate
 		gender = None or entry.gender
 		declension = None or entry.declension
-
+        inflection_class = None or entry.inflection_class
 
 		trisyllabic = ['3syll', '3', 'trisyllabic']
 		bisyllabic = ['2syll', '2', 'bisyllabic']
@@ -746,12 +782,12 @@ class Words(object):
 		# Search for existing word in the database.
 		w = None
 
-		if entry.lemma_ref:
-			# For entries with lemma ref, we need to
+		if entry.lemma_stressed:
+			# For entries with stressed lemma, we need to
 			# actually fetch an existing word entry,
 			# and add the lemma here as fullform to Form models
-			exist_kwargs['lemma'] = entry.lemma_ref
-			exist_kwargs['wordid'] = entry.lemma_ref
+			exist_kwargs['lemma'] = entry.lemma_stressed
+			exist_kwargs['wordid'] = entry.lemma_stressed
 		else:
 			exist_kwargs['lemma'] = lemma
 			exist_kwargs['wordid'] = lemma
@@ -794,6 +830,7 @@ class Words(object):
 		w.gender = gender
 		w.animate = animate
 		w.declension = declension
+		w.inflection_class = inflection_class
 
 		w.valency = valency
 		w.frequency = frequency
@@ -938,7 +975,8 @@ class Words(object):
 						'number': 			g.get('Number',""),
 						'case': 			g.get('Case',""),
 #						'possessive': 		g.get('Possessive',""),
-						'gender':                       g.get('Gender', ""),
+						'gender':           g.get('Gender', ""),
+						'inflection_class':   g.get('Inflectionclass', ""),
 #						'grade': 			g.get('Grade',""),
 #						'infinite': 		g.get('Infinite',""),
 						'personnumber': 	g.get('Person-Number',""),
@@ -996,6 +1034,8 @@ class Words(object):
 		if changes_to_xml:
 			if entry.sources:
 				self.add_sources(entry, w)
+            if entry.chapters:
+                self.add_chapters(entry, w)
 
 		if changes_to_xml:
 			for mgroup in entry.meanings:
