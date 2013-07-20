@@ -110,8 +110,8 @@ def FSTLookup(data, fst_file):
 		data = [a.strip() for a in list(set(data)) if a.strip()]
 		data = u'\n'.join(data).encode('utf-8')
     
-	morphemes = data.split("+")  # Apertium
-	lemma = morphemes[0]
+	data_tokens = data.split("+")  # Apertium
+	lemma = data_tokens[0]
 	 
 	print >> STDOUT, "Generating forms"
 	try:
@@ -120,8 +120,9 @@ def FSTLookup(data, fst_file):
 		print >> STDERR, "Problem in command: %s" % cmd_anal
 		sys.exit(2)
 			
-    generator_input = morfanal_lemma.replace("sg", morphemes[2].lower())
-    generator_input = generator_input.replace("nom", morphemes[3].lower())  # nouns: morphemes[2]=Sg/Pl, morphemes[3]=case
+    readings = morfanal_lemma.split("/")  # needes to handle morphpologically ambiguous lemmas
+    generator_input = readings[1].replace("sg", data_tokens[2].lower())
+    generator_input = generator_input.replace("nom", data_tokens[3].lower())  # nouns: data_tokens[2]=Sg/Pl, data_tokens[3]=case
     try:
         lookups = Popen(cmd_gen, generator_input)
     except OSError:
