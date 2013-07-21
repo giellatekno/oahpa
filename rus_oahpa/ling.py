@@ -8,6 +8,7 @@ import os
 import re
 # import string
 import codecs
+from django.utils.encoding import force_unicode
 
 # Using django settings paths, need to make these more central.
 
@@ -27,9 +28,9 @@ except:
 	lookup = "/usr/local/bin/lookup"
 	
 try:
-    apertiumdir = settings.APERTIUM_DIRECTORY  # apertium fst - for generation of substantives, verbs, adjectives
+	apertiumdir = settings.APERTIUM_DIRECTORY  # apertium fst - for generation of substantives, verbs, adjectives
 except:
-    apertiumdir = "/home/heli/apertium/incubator/apertium-rus"
+	apertiumdir = "/home/heli/apertium/incubator/apertium-rus"
 
 try:
 	language = settings.MAIN_LANGUAGE[0]
@@ -97,40 +98,51 @@ def Popen(cmd, data=False, ret_err=False, ret_proc=False):
 		return output
 
 
-def FSTLookup(data, fst_file):
+def FSTLookup(data):
 	# gen_fst = fstdir + "/%s" % fst_file
 	# cmd = 'hfst-optimized-lookup /opt/local/share/omorfi/mor-omorfi.apertium.hfst.ol'
 	#cmd = lookup + " -flags mbTT -utf8 -d " + gen_fst # lexc
 	morf_fst = apertiumdir + "/rus.automorf.bin"  # Apertium-style morf fst
 	gen_fst = apertiumdir + "/rus.autogen.bin" # Apertium-style form generating fst
 	cmd_anal = "lt-proc " + morf_fst # analysis
-    cmd_gen = "lt-proc -g " + gen_fst   # generation
+	cmd_gen = "lt-proc -g " + gen_fst   # generation
+	lookups = ""
+
+	#print >> STDOUT, "The whole generation data: %s" % data
     
 	if type(data) == list:
 		data = [a.strip() for a in list(set(data)) if a.strip()]
 		data = u'\n'.join(data).encode('utf-8')
+		rows = data.split('\n')
     
-	data_tokens = data.split("+")  # Apertium
-	lemma = data_tokens[0]
+		for row in rows:
+			data_tokens = row.split("+")  # Apertium
+			lemma = data_tokens[0]
+			print >> STDOUT, "number: %s" % data_tokens[2]
+			print >> STDOUT, "case: %s" % data_tokens[3]
 	 
-	print >> STDOUT, "Generating forms"
-	try:
-		morfanal_lemma = Popen(cmd_anal, lemma)  # use morph analysis to obtain gender and animacy
-	except OSError:
-		print >> STDERR, "Problem in command: %s" % cmd_anal
-		sys.exit(2)
-			
-    readings = morfanal_lemma.split("/")  # needes to handle morphpologically ambiguous lemmas
-    generator_input = readings[1].replace("sg", data_tokens[2].lower())
-    generator_input = generator_input.replace("nom", data_tokens[3].lower())  # nouns: data_tokens[2]=Sg/Pl, data_tokens[3]=case
-    try:
-        lookups = Popen(cmd_gen, generator_input)
-    except OSError:
-		print >> STDERR, "Problem in command: %s" % cmd_gen
-		sys.exit(2) 
+			print >> STDOUT, "Generating forms"
+			try:
+				morfanal_lemma = os.popen("echo \"" + force_unicode(lemma).encode('utf-8') + "\" | " + cmd_anal).readlines()  # use morph analysis to obtain gender and animacy
+			except OSError:
+				print >> STDERR, "Problem in command: %s" % cmd_anal
+				sys.exit(2)
+	
+			print >> STDOUT, "morf analysis of lemma: %s" % morfanal_lemma[0]
+			readings = morfanal_lemma[0].split("/")  # needes to handle morphpologically ambiguous lemmas
+			print >> STDOUT, "the first reading: %s" % readings[1]
+			generator_input = readings[1].replace("sg", force_unicode(data_tokens[2]).encode('utf-8').lower())
+			print >> STDOUT, "number replaced by sg: %s" % generator_input
+			generator_input = generator_input.replace("nom", force_unicode(data_tokens[3]).encode('utf-8').lower())  # nouns: data_tokens[2]=Sg/Pl, data_tokens[3]=case
+			print >> STDOUT, "generator input: %s" % generator_input
+			try:
+				forms = os.popen("echo \"^" + force_unicode(generator_input).encode('utf-8') + "$\" | " + cmd_gen).readlines()
+			except OSError:
+				print >> STDERR, "Problem in command: %s" % cmd_gen
+				sys.exit(2) 
 		       
-	lookups = lookups.decode('utf-8')
-
+			lookups = lookups + forms[0].decode('utf-8')
+			print >> STDOUT, "generated form: %s" % forms[0]
 	return lookups
 
 
@@ -153,8 +165,8 @@ class Paradigm:
 
 
 	def handle_tags(self, tagfile, add_db):  
-	""" The function is called from install.py and its aim is to install the contents of the tag file (e.g. tags.txt) in the database.
-	"""
+		""" The function is called from install.py and its aim is to install the contents of the tag file (e.g. tags.txt) in the database.
+		"""
 
 		with open(tagfile, "r") as F:
 			# Read tags, remove newlines
@@ -176,8 +188,8 @@ class Paradigm:
 
 
 	def read_paradigms(self, paradigmfile, tagfile, add_database):
-    """ The function is called from install.py and its aim is to install the contents of the paradigm file (e.g. paradigms.txt) into the database.
-	"""
+		""" The function is called from install.py and its aim is to install the contents of the paradigm file (e.g. paradigms.txt) into the database.
+		"""
 		if not self.tagset:
 			self.handle_tags(tagfile)
 
@@ -233,7 +245,7 @@ class Paradigm:
 					g.classes[tagclass] = t
 			self.paradigm.append(g)
 
-	def collect_gen_data(self, lemma, pos, hid, wordtype, gen_only, forms):
+	def collect_gen_data(self, lemma, pos, forms): # hid, wordtype, gen_only - deleted
 		"""
 			Collects tags and paradigms to be passed off to the FST for generation.
 			Tags and items to be generated are filtered based on following parameters
@@ -263,7 +275,8 @@ class Paradigm:
 		# }
 
 		# Using gen_only now
-
+		# commented out everything about gen_only, hid, wordtype:
+		"""
 		if not gen_only.strip():
 			gen_only = False
 		else:
@@ -276,42 +289,45 @@ class Paradigm:
 
 		if pos.upper() == 'PROP':
 			pos = 'N'
+		"""
 
 		if not self.tagset:
 			self.handle_tags()
 
 		lookups = ""
+		"""
 		if not hid.strip():
 			hid = ""
 		else:
 			hid = '+' + hid
+		"""
 
 		# If wordtype is defined, then the wordtype is inserted after
 		# the first tag element, which should be the part of speech.
 		# If hid is defined simultaneously, this should not mess with that.
-
+		"""
 		if not wordtype.strip():
 			wordtype = ""
 		else:
 			wordtype = '+' + wordtype.capitalize()
-
+	        """
 		if self.paradigms.has_key(pos):  # composition of the input strings for the wordform generator 
 			for a in self.paradigms[pos]:
-				if wordtype.strip():
-					if not wordtype in a:
-						_pos, _, _rest = a.partition('+')
-						tag = "%s%s+%s" % (_pos, wordtype, _rest)
-				else:
-					tag = a
+				#if wordtype.strip():
+				#	if not wordtype in a:
+				#		_pos, _, _rest = a.partition('+')
+				#		tag = "%s%s+%s" % (_pos, wordtype, _rest)
+				#else:
+				        #tag = a
 
-				if gen_only:
-					for c in gen_only:
-						if c in tag:
-							lookups = lookups + lemma + hid + "+" + tag
-				else:
-					if not lemma:
-						raise TypeError
-					lookups = lookups + lemma + hid + "+" + tag
+				#if gen_only:
+				#	for c in gen_only:
+				#		if c in tag:
+				#			lookups = lookups + lemma + hid + "+" + tag
+				#else:
+				if not lemma:
+					raise TypeError
+				lookups = lookups + lemma + "+" + a
 
 		lookups += '\n\n\n'
 		self.generate_data.append(lookups)
@@ -335,21 +351,21 @@ class Paradigm:
 				gen_dialects[dialect] = d_data
 
 		self.master_paradigm = gen_dialects.copy()
-		for dialect, gen_file in gen_dialects.items():
-			lookups = FSTLookup(data, fst_file=gen_file[0])
-			lookup_dictionary = {}
+		#for dialect, gen_file in gen_dialects.items():  no dialects so far
+		lookups = FSTLookup(data)
+		lookup_dictionary = {}
 
-			for line in lookups.split('\n\n'):
-				items = line.split('\n')
-				for item in items:
-					result = item.split('\t')
-					lemma = result[0].partition('+')[0]
-					try:
-						lookup_dictionary[lemma] += item + '\n'
-					except KeyError:
-						lookup_dictionary[lemma] = item + '\n'
+		for line in lookups.split('\n\n'):
+			items = line.split('\n')
+			for item in items:
+				result = item.split('\t')
+				lemma = result[0].partition('+')[0]
+				try:
+					lookup_dictionary[lemma] += item + '\n'
+				except KeyError:
+					lookup_dictionary[lemma] = item + '\n'
 
-			self.master_paradigm[dialect] = lookup_dictionary
+		self.master_paradigm[dialect] = lookup_dictionary
 
 
 	def get_paradigm(self, lemma, pos, forms, dialect=False, wordtype=None):

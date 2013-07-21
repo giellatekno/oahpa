@@ -1835,7 +1835,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    #logfile = open('/home/rus_oahpa/rus_oahpa/rus_drill/vastaF_log.txt','w')
+    #logfile = open('/home/rusoahpa/rus_oahpa/rus_drill/vastaF_log.txt','w')
 
     host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
@@ -2307,7 +2307,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    logfile = open('/home/rusoahpa/rusoahpa/rus_drill/vastas_log.txt', 'w')
+    #logfile = open('/home/rusoahpa/rus_oahpa/rus_drill/vastas_log.txt', 'w')
     host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024

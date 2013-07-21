@@ -7,7 +7,7 @@ import sys
 
 from rus_drill.models import *
 import conf.ordereddict
-#from collections import OrderedDict
+from collections import OrderedDict
 
 
 # For easier debugging.
@@ -189,16 +189,16 @@ class Entry(object):
 	def processLG(self):
 		""" Handles nodes such as...
 
-			<lg>
-                <l gender="fem" animate="anim" declension="1" pos="n">девочка</l>
-            </lg>
+		<lg>
+                    <l gender="fem" animate="anim" declension="1" pos="n">девочка</l>
+		</lg>
 
       		Including those containing lemma_stressed: 
 
-			<lg>
-                <l pos="n" zaliznjak=" 1c(1)">вечер</l>
-                <lemma_stressed>ве́чер</lemma_stressed>
-            </lg>
+		<lg>
+                   <l pos="n" zaliznjak=" 1c(1)">вечер</l>
+                   <lemma_stressed>ве́чер</lemma_stressed>
+		</lg>
             
             and miniparadigms:
             
@@ -214,7 +214,7 @@ class Entry(object):
                         <wordform>мыше́й</wordform>
                     </analysis>
                 </mini_paradigm>
-            </lg>
+		</lg>
 
     
 		"""
@@ -265,11 +265,11 @@ class Entry(object):
 
 	def processSources(self):
 		""" Handles nodes such as...
-            <sources>
-               <book name="MiP" chapter="L6"/>
-               <frequency class="common"/>
-               <geography class="mid"/>
-            </sources>
+		<sources>
+		   <book name="MiP" chapter="L6"/>
+                   <frequency class="common"/>
+                   <geography class="mid"/>
+		</sources>
 		"""
 
 		n = self.node
@@ -305,7 +305,7 @@ class Entry(object):
         	   <sem class="FISHING" />
         	   <sem class="mLONG_SHORT" />
         	</semantics>
-        """
+		"""
 
 		try:
 			semantics = _elements(node, "semantics")[0]
@@ -415,8 +415,8 @@ class Entry(object):
 			<aspect>уви́деть</aspect>
 			<motion>идти</motion>
         """
-		self.aspect = _data(self.node, "aspect")
-		self.motion = _data(self.node, "motion")
+		self.aspect = _data("aspect")
+		self.motion = _data("motion")
 		
 
 	def make_checksum(self):
@@ -512,20 +512,20 @@ class Words(object):
 					paradigm_args = [
 						entry.lemma,
 						entry.pos,
-						entry.hid,
-						entry.wordtype,		# TV, IV, TODO: Neg
-						entry.gen_only,
+						#entry.hid,
+						#entry.wordtype,		# TV, IV, TODO: Neg
+						#entry.gen_only,
 						[],
 					]
+					if (entry.pos.upper() == 'N'):  # only N paradigm generation now
+						try:
+							linginfo.collect_gen_data(*paradigm_args)
+						except TypeError:
+							print e.toxml()
+							print >> sys.stderr, "XML file contains an empty <l /> element."
+							print >> sys.stderr, "... Exiting."
 
-					try:
-						linginfo.collect_gen_data(*paradigm_args)
-					except TypeError:
-						print e.toxml()
-						print >> sys.stderr, "XML file contains an empty <l /> element."
-						print >> sys.stderr, "... Exiting."
-
-						sys.exit(2)
+							sys.exit(2)
 
 			entries.append(entry)
 
@@ -676,10 +676,10 @@ class Words(object):
 			w.source.add(book_entry)
 			w.save()
 			
-    def add_chapters(self,entry,w):
+	def add_chapters(self,entry,w):
 		for chapter in entry.chapters:
-            if VERBOSE:
-                print >> _STDOUT, "Added chapter ", chapter.encode('utf-8')
+			if VERBOSE:
+				print >> _STDOUT, "Added chapter ", chapter.encode('utf-8')
 			w.chapter = chapter
 			w.save()
 
@@ -771,7 +771,7 @@ class Words(object):
 		animate = None or entry.animate
 		gender = None or entry.gender
 		declension = None or entry.declension
-        inflection_class = None or entry.inflection_class
+		inflection_class = None or entry.inflection_class
 
 		trisyllabic = ['3syll', '3', 'trisyllabic']
 		bisyllabic = ['2syll', '2', 'bisyllabic']
@@ -918,12 +918,12 @@ class Words(object):
 				if VERBOSE:
 					OUT_STRS.append('Forms for dialect %s' % dialect.dialect)
 
-				wordtype = entry.wordtype.capitalize() or None
+				#wordtype = entry.wordtype.capitalize() or None
 				generated_forms = linginfo.get_paradigm(lemma=lemma,
 										pos=pos,
 										forms=forms,
-										dialect=dialect.dialect,
-										wordtype=wordtype)
+										dialect=dialect.dialect)
+										#wordtype=wordtype)
 
 				if not generated_forms:
 					continue
@@ -1034,8 +1034,8 @@ class Words(object):
 		if changes_to_xml:
 			if entry.sources:
 				self.add_sources(entry, w)
-            if entry.chapters:
-                self.add_chapters(entry, w)
+			if entry.chapters:
+				self.add_chapters(entry, w)
 
 		if changes_to_xml:
 			for mgroup in entry.meanings:

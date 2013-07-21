@@ -16,7 +16,7 @@ admin_url = r'^%s/admin/' % prefix
 
 urlpatterns = patterns('',
 	# Example:
-	# (r'^rusoahpa/', include('rusoahpa.foo.urls')),
+	# (r'^rusoahpa/', include('rus_oahpa.foo.urls')),
 	url(r'^%s/$' % prefix, 'rus_oahpa.rus_drill.views.index'),
 	url(r'^%s/i18n/' % prefix, include('django.conf.urls.i18n')),
 	url(r'^%s/media/(?P<path>.*)$' % prefix, 'django.views.static.serve',
@@ -26,5 +26,5 @@ urlpatterns = patterns('',
 	url(r'^%s/dialect/$' % prefix, 'rus_oahpa.conf.views.dialect'),
 	url(admin_url, include(admin.site.urls)),
 	# (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-	#url(r'^%s/openid/' % prefix, include('rusoahpa.openid_provider.urls')),
+	#url(r'^%s/openid/' % prefix, include('rus_oahpa.openid_provider.urls')),
 )
