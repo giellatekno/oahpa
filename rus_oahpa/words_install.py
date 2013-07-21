@@ -919,7 +919,7 @@ class Words(object):
 					OUT_STRS.append('Forms for dialect %s' % dialect.dialect)
 
 				#wordtype = entry.wordtype.capitalize() or None
-				generated_forms = linginfo.get_paradigm(lemma=lemma,
+				generated_forms = linginfo.get_paradigm( lemma=lemma,
 										pos=pos,
 										forms=forms,
 										dialect=dialect.dialect)
@@ -948,7 +948,7 @@ class Words(object):
 			paradigms_to_create = OrderedDict(sorted(paradigms_to_create.items(), key=lambda t: t[0]))
 
 			changes_to_paradigm = False
-			paradigm_key = '%s|%s|%s' % (lemma, pos, dialect.dialect)
+			paradigm_key = '%s|%s|%s' % (lemma, pos, dialect.dialect) 
 			changes_to_paradigm = self.paradigm_is_changed(paradigm_key, paradigms_to_create)
 
 			if changes_to_paradigm:
@@ -976,7 +976,7 @@ class Words(object):
 						'case': 			g.get('Case',""),
 #						'possessive': 		g.get('Possessive',""),
 						'gender':           g.get('Gender', ""),
-						'inflection_class':   g.get('Inflectionclass', ""),
+#						'inflection_class':   g.get('Inflectionclass', ""),
 #						'grade': 			g.get('Grade',""),
 #						'infinite': 		g.get('Infinite',""),
 						'personnumber': 	g.get('Person-Number',""),
@@ -1007,8 +1007,8 @@ class Words(object):
 									f.form,
 									', '.join(list(names)))
 
-							_outstr = u"Created form: %s\t%s\t\t%s" % fmt
-							OUT_STRS.append(_outstr)
+							#_outstr = u"Created form: %s\t%s\t\t%s" % fmt  commented out to avoid unicode error
+							#OUT_STRS.append(_outstr)
 
 					del form
 

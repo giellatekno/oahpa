@@ -1,10 +1,11 @@
 #!/bin/sh
 
-P="/home/pasha/dev/oahpa/bin/python"
-GTHOME="/home/pasha/dev/oahpa/main"
-LANGDIR="ped/rus"
+P="python2.7"
+GTHOME="/home/rusoahpa"
+LANGDIR="rus"
 DATA=$GTHOME/$LANGDIR
 DPS="$DATA/src"
+INC="$DATA/inc"
 META="$DATA/meta-data"
 DPN="$DATA/nobrus"
 #DPF="$DATA/finsme"
@@ -12,8 +13,8 @@ DPN="$DATA/nobrus"
 #WORDS=$GTHOME/words/dicts/smenob/src
 
 echo "==================================================="
-echo "installing tags and paradigms for Morfa-C"
-$P install.py -r $META/paradigms.txt -t $META/tags.txt -b # 2>>error.log
+echo "installing tags and paradigms for Morfa"
+$P install.py -r $META/paradigms.txt -t $META/tags.txt -b #2>>../logs/error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -22,11 +23,18 @@ echo "==================================================="
 ## Trying to set up Russian
 
 echo "==================================================="
-echo "feeding db with $DPS/n_ru.xml"
-$P install.py --file $DPS/n_rus.xml --tagfile $META/tags.txt --paradigmfile $META/paradigms.txt # 2>error.log
+echo "installing MiPListAlpha.xml"
+$P install.py --file $INC/MiPListAlpha_corrected.xml --tagfile $META/tags.txt --paradigmfile $META/paradigms.txt #2>../logs/error.log
 echo " "
 echo "done"
 echo "==================================================="
+
+#echo "==================================================="
+#echo "feeding db with $DPS/n_ru.xml"
+#$P install.py --file $DPS/n_rus.xml --tagfile $META/tags.txt --paradigmfile $META/paradigms.txt 2>../logs/error.log
+#echo " "
+#echo "done"
+#echo "==================================================="
 
 
 ##

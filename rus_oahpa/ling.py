@@ -118,30 +118,30 @@ def FSTLookup(data):
 		for row in rows:
 			data_tokens = row.split("+")  # Apertium
 			lemma = data_tokens[0]
-			print >> STDOUT, "number: %s" % data_tokens[2]
-			print >> STDOUT, "case: %s" % data_tokens[3]
+			#print >> STDOUT, "number: %s" % data_tokens[2]
+			#print >> STDOUT, "case: %s" % data_tokens[3]
 	 
 			print >> STDOUT, "Generating forms"
 			try:
-				morfanal_lemma = os.popen("echo \"" + force_unicode(lemma).encode('utf-8') + "\" | " + cmd_anal).readlines()  # use morph analysis to obtain gender and animacy
+				morfanal_lemma = os.popen("echo \"" + lemma + "\" | " + cmd_anal).readlines()  # use morph analysis to obtain gender and animacy
 			except OSError:
 				print >> STDERR, "Problem in command: %s" % cmd_anal
 				sys.exit(2)
 	
-			print >> STDOUT, "morf analysis of lemma: %s" % morfanal_lemma[0]
+			#print >> STDOUT, "morf analysis of lemma: %s" % morfanal_lemma[0]
 			readings = morfanal_lemma[0].split("/")  # needes to handle morphpologically ambiguous lemmas
-			print >> STDOUT, "the first reading: %s" % readings[1]
+			#print >> STDOUT, "the first reading: %s" % readings[1]
 			generator_input = readings[1].replace("sg", force_unicode(data_tokens[2]).encode('utf-8').lower())
-			print >> STDOUT, "number replaced by sg: %s" % generator_input
+			#print >> STDOUT, "number replaced by sg: %s" % generator_input
 			generator_input = generator_input.replace("nom", force_unicode(data_tokens[3]).encode('utf-8').lower())  # nouns: data_tokens[2]=Sg/Pl, data_tokens[3]=case
-			print >> STDOUT, "generator input: %s" % generator_input
+			#print >> STDOUT, "generator input: %s" % generator_input
 			try:
 				forms = os.popen("echo \"^" + force_unicode(generator_input).encode('utf-8') + "$\" | " + cmd_gen).readlines()
 			except OSError:
 				print >> STDERR, "Problem in command: %s" % cmd_gen
 				sys.exit(2) 
 		       
-			lookups = lookups + forms[0].decode('utf-8')
+			lookups = lookups + lemma + "\t" + forms[0] + "\n"
 			print >> STDOUT, "generated form: %s" % forms[0]
 	return lookups
 
@@ -352,32 +352,45 @@ class Paradigm:
 
 		self.master_paradigm = gen_dialects.copy()
 		#for dialect, gen_file in gen_dialects.items():  no dialects so far
+		dialect = 'main'  # HU: There are no dialects defined for rus. I have defined this just to make the program work.
 		lookups = FSTLookup(data)
 		lookup_dictionary = {}
 
 		for line in lookups.split('\n\n'):
+			print >> STDOUT, 'line in lookups: %s' % line
 			items = line.split('\n')
 			for item in items:
+				print >> STDOUT, 'item: %s' % item
 				result = item.split('\t')
-				lemma = result[0].partition('+')[0]
-				try:
-					lookup_dictionary[lemma] += item + '\n'
-				except KeyError:
-					lookup_dictionary[lemma] = item + '\n'
+				if result[0]:
+					#print >> STDOUT,'lemma: %s, wordform: %s' % (result[0], result[1])				
+					lemma = force_unicode(result[0]).encode('utf-8')
+					try:
+						lookup_dictionary[lemma] += force_unicode(result[1]).encode('utf-8') + '\n'
+						#print >> STDOUT, 'lookupdict: %s' % lookup_dictionary[lemma]
+					except KeyError:
+						lookup_dictionary[lemma] = force_unicode(result[1]).encode('utf-8') + '\n'
+		#print >> STDOUT, 'lemma: %s, dialect: %s' % (lemma, dialect)
 
+		#print >> STDOUT, 'lookup_dictionary: %s' % lookup_dictionary
 		self.master_paradigm[dialect] = lookup_dictionary
 
 
 	def get_paradigm(self, lemma, pos, forms, dialect=False, wordtype=None):
 		if not dialect:
 			dialect = 'main'
+		for form in self.master_paradigm[dialect]:
+			print >> STDOUT, 'form in paradigm: %s' % form
+		#print >> STDOUT, 'the whole lookupdict: %s' % self.master_paradigm
 
 		extraforms = {}
+		print >> STDOUT, 'lemma: %s' % lemma.encode('utf-8')
+		lemma = lemma.encode('utf-8')
 
 		try:
 			lines_tmp = self.master_paradigm[dialect][lemma].split('\n')
 		except Exception, e:
-			print >> STDERR, 'No forms generated for %s in dialect %s' % (lemma.encode('utf-8'), dialect.encode('utf-8'))
+			print >> STDERR, 'No forms generated for %s in dialect %s' % (lemma, dialect)
 			lines_tmp = False
 			if not forms:
 				self.paradigm = False
