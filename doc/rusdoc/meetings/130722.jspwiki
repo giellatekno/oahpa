@@ -1,0 +1,175 @@
+
+Møte rus_oahpa 2.7. 2013
+
+
+Til stades: ''Heli, Laura, Tore, Trond''
+
+!!!Saksliste
+
+* Status quo
+* Zaliznjak
+* Feilmeldingar
+*  Apertium: Manglande lokativ:
+* MorfaS
+* Arbeid framover
+* Neste møte
+
+!!! Status quo
+
+Heli har kompilert morfologisk analysator og generator basert på Apertium.
+
+Visse former blir ikkje generert, kasus lokativ blir ikkje alltid generert
+
+Heli har laga xml-fil av .csv-fila frå ''Møte i St. Petersburg.'' Alle formene som kan bli generert med generatoren blir no generert.
+
+Fila heiter  {{ped/rus/inc/MiPListAlpha_corrected.xml}}
+
+Laura har laga utkast til feedback-fil.
+
+
+!!!Zaliznjak
+
+Zaliznjak-koden hadde problematisk formattering i csv-filene:
+
+{{{
+белый;бе́лый;; 1a/c""MiP;B8;white;hvid;hvit;;;
+широкий;широ́кий;; 3a/c";MiP;L21;wide;bred;bred;;;
+1774 <l pos="n" zaliznjak="1d'">вода</l>
+
+samme MiPAlpha.csv, opna i emacs og i LibreOffice
+вода;вода́;n; 1d''MiP;L19;water;vand;vann;;;
+вода    вода́   n    1d'    MiP L19 water   vand    vann
+белый   бе́лый       1a/c"  MiP B8  white   hvid    hvit
+}}}
+
+Programmet er online på same adresse som før.
+
+For leksa treng vi semantiske klasser, for morfa har ikkje Heli starta enno.
+
+
+__TILTAKSLISTE__
+
+* Zaliznjak-problemet
+** Erstatte " i adjektiv-taggen med noko anna (__Heli__), kanskje y
+** Lage ei side under dokumentasjonen med Zaliznjak-konvensjon
+
+
+!!!Feilmeldingar
+
+Laura sitt oppsett:
+
+* This is a masculine animate noun ending in -ц. It has the same endings as оте́ц.
+* This noun always has stress on the stem.
+* This noun has a mobile vowel.
+
+
+Vi bør lage ein leseleg versjon:
+
+* This is a masculine animate noun ending in -ц. It has the same endings as оте́ц. It always has stress on the stem, and it has a mobile vowel.
+
+I dag har vi:
+
+рубль;рубль;n; 2b;MiP;L8;ruble;rubel;rubel;;;
+
+som tilsvarer
+
+    рубль {{soft stem masculine inanimate noun}}
+
+Vi vil ha koden initialt i linja.
+
+Bruk sme/meta/feedback_nouns.xml som eksempel
+
+Vi vil ha noko a la dette i xml-fila:
+
+      <l pos="n" zaliznjak="2b" stem="soft" gen="m" anim="in" velarstem="no">рубль</l>
+
+Jf. sme:
+
+         <l diphthong="yes" gen_only="N+NomAg" gradation="no" morfas="no" pos="n" rime="0"
+            soggi="i"
+            stem="2syll"
+            type="NomAg">viehkki</l>
+
+I dag har vi:
+
+{{{
+  <e>
+    <lg>
+      <l pos="n" zaliznjak="2b">рубль</l>
+      <lemma_stressed>рубль</lemma_stressed>
+    </lg>
+    <sources>
+      <book name="MiP" chapter="L8"/>
+    </sources>
+    <mg>
+      <tg xml:lang="eng">
+        <t stat="pref">ruble</t>
+      </tg>
+      <tg xml:lang="dan">
+        <t stat="pref">rubel</t>
+      </tg>
+      <tg xml:lang="nob">
+        <t stat="pref">rubel</t>
+      </tg>
+    </mg>
+  </e>
+}}}
+
+
+Jf. Berkov sin versjon:
+
+{{{
+тигр 1ama "tiger" ;
+спор 1ami "strid" ;
+рыба 1afa "fisk" ;
+карта 1afi "kart" ;
+}}}
+
+
+__TILTAK__
+
+* Sjekk om lista av headwords er i .csv-dokumentet, legg til dei som manglar (__Laura__)    
+* Finn ut kva informasjon dei ulike substantiva skal ha i xml-leksikon (__Laura__)
+* Laura har sjekka inn dokumentet, __Heli__ ser på den og formaterer det på same måten
+  som for sme-fila {{feedback_nouns.xml}}.
+* implementera Morfa-S för substantiver (__Heli__)
+
+
+!!! Apertium: nglande lokativ:
+
+{{~/apertium/incubator/apertium-rus/apertium-rus.rus.dix}}
+
+(jf. lloc og loloc, kva er det?)
+
+{{{
+      <e>       <p><l>ету́</l><r>ёт<s n="n"/><s n="m"/><s n="nn"/><s n="sg"/><s n="lloc/></r></p></e>
+      <e>       <p><l>иру́</l><r>и́р<s n="n"/><s n="m"/><s n="nn"/><s n="sg"/><s n="loloc></r></p></e>
+}}}
+
+
+!!!MorfaS
+
+
+Vi vil ha genus x 3 der nordsamisk har stammetype x 3. Kasus-numerus som for nordsamisk.
+Bok som bestemt tidlegare (?), etter kapittel.
+
+
+__TILTAK__
+
+* Laura finn fram det vi sa om kapittelinndeling
+* implementera Morfa-S för substantiver (Heli)
+
+
+
+!!!Arbeid framover
+
+# Morfa på beina (substantiver) utan feedback
+# Feedback
+# Leksa
+## Semantiske klassar
+## På lufta
+
+
+!!! Neste møte
+
+Måndag 5.8. klokka 09.00 norsk tid.
