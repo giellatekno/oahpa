@@ -141,7 +141,7 @@ def FSTLookup(data):
 				print >> STDERR, "Problem in command: %s" % cmd_gen
 				sys.exit(2) 
 		       
-			lookups = lookups + lemma + "\t" + forms[0] + "\n"
+			lookups = lookups + row + "\t" + forms[0] + "\n"
 			print >> STDOUT, "generated form: %s" % forms[0]
 	return lookups
 
@@ -362,14 +362,15 @@ class Paradigm:
 			for item in items:
 				print >> STDOUT, 'item: %s' % item
 				result = item.split('\t')
-				if result[0]:
+				lemma = result[0].partition('+')[0]
+				if lemma:
 					#print >> STDOUT,'lemma: %s, wordform: %s' % (result[0], result[1])				
-					lemma = force_unicode(result[0]).encode('utf-8')
+					#lemma = force_unicode(result[0]).encode('utf-8')
 					try:
-						lookup_dictionary[lemma] += force_unicode(result[1]).encode('utf-8') + '\n'
+						lookup_dictionary[lemma] += item + '\n'
 						#print >> STDOUT, 'lookupdict: %s' % lookup_dictionary[lemma]
 					except KeyError:
-						lookup_dictionary[lemma] = force_unicode(result[1]).encode('utf-8') + '\n'
+						lookup_dictionary[lemma] = item + '\n'
 		#print >> STDOUT, 'lemma: %s, dialect: %s' % (lemma, dialect)
 
 		#print >> STDOUT, 'lookup_dictionary: %s' % lookup_dictionary
