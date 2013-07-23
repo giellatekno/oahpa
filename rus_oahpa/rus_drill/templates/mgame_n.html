@@ -14,9 +14,9 @@
 	{% ifequal settings.gametype "bare" %}
 	<li><label for="id_{{ settingsform.case.name }}">{% trans "Case" %}</label>
 		{{ settingsform.case }}</li>
-	<li><label for="id_{{ settingsform.noun_class.name }}">{% trans "Class" %}</label>
+<!--	<li><label for="id_{{ settingsform.noun_class.name }}">{% trans "Class" %}</label>
 	        {{ settingsform.noun_class }}</li>
-	</li>
+	</li> -->
 	{% else %}
 	<li><label for="id_{{ settingsform.case_context.name }}">{% trans "Case" %}</label>
 		{{ settingsform.case_context }}</li>

@@ -320,7 +320,7 @@ BOOK_CHOICES = (
     #('l1', _('Level 1')),
     #('l2', _('Level 1-2')),
     #('l3', _('Level 1-3')),
-    ('Saamkilsyjjt', _('Saamkilsyjjt')),
+    #('Saamkilsyjjt', _('Saamkilsyjjt')),
     ('all', _('All')),
 )
 

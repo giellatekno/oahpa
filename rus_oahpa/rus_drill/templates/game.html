@@ -111,7 +111,7 @@
 			<!-- Answer field -->
 			{% if form.pron %}<span class="pronoun">{{ form.pron }}</span>{% endif %}
 			{% if gametype != "sahka" or forloop.last %}
-                {{ form.answer }} <span class="click-to-stress">Put stress mark</span>
+                {{ form.answer }} <span class="click-to-stress" style="border: 1px solid #AAA; padding: 3px; font-size: 75%; color: #0000ff; background-color: #ddd;">Put stress mark</span>
 			{% endif %}
 			{% if form.pron_imp %}
                 <span class="pronoun">{{ form.pron_imp }}</span>

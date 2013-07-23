@@ -26,7 +26,7 @@ from .forms import PRONOUNS_LIST
 try:
 	L1 = rus_oahpa.settings.L1
 except:
-	L1 = 'rus'  # was: sme
+	L1 = 'ru'  # was: sme
 
 try:
 	LOOKUP_TOOL = rus_oahpa.settings.LOOKUP_TOOL
@@ -768,6 +768,7 @@ class BareGame(Game):
 		try:
 
 			WORD_FILTER = Q()
+			""" commented out for testing without noun_class
 			normalized_noun_class = [item.lower().capitalize() for item in noun_class.split('-')]
 			for item in normalized_noun_class:
 				tagname = Tagname.objects.get(tagname=item)
@@ -779,6 +780,7 @@ class BareGame(Game):
 					WORD_FILTER = WORD_FILTER & Q(word__declension=tagname.tagname.lower())
 				elif tagset.tagset == 'Gender':
 					WORD_FILTER = WORD_FILTER & Q(word__gender=tagname.tagname.lower())
+            """
 
 			tag = tags.order_by('?')[0]
 			no_form = True
@@ -818,6 +820,7 @@ class BareGame(Game):
 				if random_word.count() > 0:
 					random_form = random_word.order_by('?')[0]
 					random_word = random_form.word
+					print random_word
 					no_form = False
 					break
 				elif random_word.count() == 1:
@@ -830,6 +833,7 @@ class BareGame(Game):
 
 			db_info['word_id'] = random_word.id
 			db_info['tag_id'] = tag.id
+			#print db_info
 			if tag.string.lower().find('conneg') > -1:
 				db_info['conneg'] = choice(PRONOUNS_LIST.keys())
 			else:
@@ -851,20 +855,24 @@ class BareGame(Game):
 
 
 	def create_form(self, db_info, n, data=None):
-		if not 'word_id' in db_info:
-			return None, None
+		print "creating form..."
+		#if not 'word_id' in db_info:
+		#	return None, None
 
-		if self.settings.has_key('dialect'):
-			UI_Dialect = self.settings['dialect']
-		else:
-			UI_Dialect = DEFAULT_DIALECT
+		#if self.settings.has_key('dialect'):
+		#	UI_Dialect = self.settings['dialect']
+		#else:
+		#	UI_Dialect = DEFAULT_DIALECT
 
 		language = self.settings['language']
 		pos = self.settings['pos']
-		Q_DIALECT = Dialect.objects.get(dialect=UI_Dialect)
+		Q_DIALECT = Dialect.objects.get(dialect="main")
 
 		word = Word.objects.get(id=db_info['word_id'])
+		print "word id: ", db_info['word_id']
+		print "word: ", word
 		tag = Tag.objects.get(id=db_info['tag_id'])
+		print tag
 
 		# A little exception for derivation, we want to be able to accept PassS
 		# and PassL, but show only PassL in the answers.
@@ -971,14 +979,14 @@ class BareGame(Game):
 		accepted_answers = form_list.values_list('fullform', flat=True)
 
 		# Just the ones we want to present for just one dialect
-		presentation = form_list.filter(dialects=Q_DIALECT)
+		#presentation = form_list.filter(dialects=Q_DIALECT)
 
 		if pos == 'Der':
 			presentation = presentation.filter(tag__string__contains='PassL')
 
 		# Unless there aren't any ...
-		if presentation.count() == 0:
-			presentation = form_list
+		#if presentation.count() == 0:
+                presentation = form_list
 
 		# Exclude those that shouldn't be displayed, but should be accepted
 		presentation_ng = presentation.exclude(dialects__dialect='NG')
@@ -1008,7 +1016,7 @@ class BareGame(Game):
 					answer_presentation=presentation_ng,
 					translations=translations,
 					question="",
-					dialect=Q_DIALECT,
+					dialect="main", #Q_DIALECT,
 					language=language,
 					userans_val=db_info['userans'],  # TODO: userans not in use?
 					correct_val=db_info['correct'],
