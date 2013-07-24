@@ -103,13 +103,6 @@
 		<div id="content">
 			{% block main_content %}
 			<ul id="games_menu">
-                <li class="game">
-					<a href="{% url morfa_s.noun %}">
-						<span>MORFA-S</span><br />
-						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-S" /><br />
-						<span>{% trans "Practise morphology" %}</span>
-					</a>
-				</li>
 
         <!--        <li class="game">
 					<a href="{% url vasta_s %}">
@@ -125,18 +118,25 @@
 						<span>{% trans "Words and translations" %}</span>
 					</a>
 				</li>
-
-			<ul id="games_menu">
+				
+				<li class="game">
+					<a href="{% url morfa_s.noun %}">
+						<span>MORFA-S</span><br />
+						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-S" /><br />
+						<span>{% trans "Practice morphology" %}</span>
+					</a>
+				</li>
 
 				<li class="game">
                     <a href="{% url morfa_c.noun %}">
 						<span>MORFA-C</span><br />
 						<img src="{{ MEDIA_URL }}/images/morfac.png" alt="MORFA-C" /><br />
-						<span>{% trans "Practise morphology in context" %}</span>
+						<span>{% trans "Practice morphology in context" %}</span>
 					</a>
 				</li>
-				<li class="game">
-<!--                    <a href="{% url sahka %}">
+				
+<!--            <li class="game">
+                        <a href="{% url sahka %}">
 						<span>SAHKA</span><br />
 						<img src="{{ MEDIA_URL }}/images/sahka.png" alt="SAHKA" /><br />
 						<span>{% trans "Dialogue game" %} <font color="#FF0000" size="3pt"> (under construction) </font></span>
@@ -146,35 +146,36 @@
                     <a href="{% url numra %}">
 						<span>NUMRA</span><br />
 						<img src="{{ MEDIA_URL }}/images/numra.png" alt="NUMRA" /><br />
-						<span>{% trans "Practise numerals" %}</span>
+						<span>{% trans "Practice numerals" %}</span>
 					</a>
                 </li>
 			</ul>
+			</br>
 			{% comment %}
 			<h3>{% trans "Online reference materials" %}</h3>
 			{% endcomment %}
-			<p class="intro">{% trans "Oahpa is an internet program for youth and grown ups learning Russian. The program can be adjusted to different themes and levels of difficulty, and it generates new task sets automatically." %}</p>
+			<p class="intro" align="centre">{% trans "Oahpa is an internet program for learners of Russian. The program can be adjusted to different topics and levels of difficulty, and it generates new task sets automatically." %}</p>
 			{% comment %}
 			<p>{% trans "Oahpa is connected with online reference materials." %}</p>
 			{% endcomment %}
 			<ul class="linklist">
             {% ifequal LANGUAGE_CODE "sme" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Veiledning" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "fi" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Veiledning" %}</a></li>
+                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "en" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Veiledning" %}</a></li>
+                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "no" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Veiledning" %}</a></li>
+                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "ru" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.html">{% trans "Veiledning" %}</a></li>
+                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.html">{% trans "Instructions" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "sv" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Veiledning" %}</a></li>
+                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
             {% endifequal %}
 <!--            {% ifequal LANGUAGE_CODE "fi" %}
 
