@@ -111,7 +111,7 @@
 			<!-- Answer field -->
 			{% if form.pron %}<span class="pronoun">{{ form.pron }}</span>{% endif %}
 			{% if gametype != "sahka" or forloop.last %}
-                {{ form.answer }} <span class="click-to-stress" style="border: 1px solid #AAA; padding: 3px; font-size: 75%; color: #0000ff; background-color: #ddd;">Put stress mark</span>
+                {{ form.answer }} <span class="click-to-stress">Insert stress mark</span>
 			{% endif %}
 			{% if form.pron_imp %}
                 <span class="pronoun">{{ form.pron_imp }}</span>
@@ -127,7 +127,6 @@
 
 		{% ifequal form.error "error" %}
 			<!-- Feedback -->
-			<span class="click-to-stress">Put stress mark</span>
 			{% if form.feedback %}
 			<a href="#" class="feedback_link" id="link_feedback-{{ forloop.counter }}">
 					<img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
@@ -137,6 +136,9 @@
 				<img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
 				{% if form.tcomm %}{% trans "This is almost correct!" %}{% endif %}
 			{% endif %}
+			{% if not show_correct %}
+			 <span class="click-to-stress">Insert stress mark</span>
+            {% endif %}
 
 		{% endifequal %}
 
