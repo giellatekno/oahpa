@@ -186,14 +186,14 @@
 	</dl>
 
 	{% block submit %}
-	{% if not all_correct %}
+	{# {% if not all_correct %}  make it possible to see the correct stress markings even if the word form without stress markings was accepted #}
 	   {% if not show_correct %}
 	   <input type="submit" name="test" value="{% trans "Test answers" %}"/>
 	   {% endif %}
 	   {% ifequal count 1 %}
 	   <input type="submit" name="show_correct" value="{% trans "Show the correct answers" %}" />
 	   {% endifequal %}
-	{% endif %}
+	{# {% endif %} #}
 	{% endblock %}
 
     <div id="score">

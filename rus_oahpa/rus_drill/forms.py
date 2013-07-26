@@ -60,17 +60,18 @@ POS_CHOICES = (
 
 CASE_CHOICES = (
 	('N-NOM-PL', _('nominative plural')),
+    ('N-GEN-SG', _('genitive singular')),
+    ('N-GEN2', _('genitive 2')),
+	('N-GEN-PL', _('genitive plural')),
+    ('N-DAT-SG', _('dative singular')),
+	('N-DAT-PL', _('dative plural')),
 	('N-ACC-SG', _('accusative singular')),
 	('N-ACC-PL', _('accusative plural')),
-	('N-DAT-SG', _('dative singular')),
-	('N-DAT-PL', _('dative plural')),
-	('N-LOC-SG', _('locative singular')),
-	('N-LOC-PL', _('locative plural')),
 	('N-INS-SG', _('instrumental singular')),
 	('N-INS-PL', _('instrumental plural')),
-	('N-GEN-SG', _('genitive singular')),
-	('N-GEN-PL', _('genitive plural')),
-	('N-GEN2', _('genitive 2')),
+    ('N-LOC-SG', _('locative singular')),
+    ('N-LOC2', _('locative 2')),
+	('N-LOC-PL', _('locative plural')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -547,26 +548,37 @@ def relax(strict):
 	relax_pairs = {
 		# key: value
 		# key is accepted for value
-		# For Russian: The one spellrelax we need is je vs jo
-        u'ӯ': u'ӯ',
-        u'ӣ': u'ӣ',
-	u'е': u'ё',
-        # u'р': u'ҏ' do we want spellrelax here? р vs. ҏ are neither orthographic nor typographic variants
+		# For Russian: spellrelax for je vs jo, vowels with and without stress marks
+	   u'е': u'ё',
+	   u'а': u'а́',
+	   u'е': u'е́',
+	   u'и': u'и́',
+	   u'о': u'о́',
+	   u'у': u'у́',
+	   u'ы': u'ы́',
+	   u'э': u'э́',
+	   u'ю': u'ю́',
+	   u'я': u'я́',
 	}
 
 	# Create an iterator. We want to generate as many possibilities as
 	# possible (very fast), so more relaxed options are available.
 	searches = relax_pairs.items()
-	permutations = itertools.chain(itertools.permutations(searches))
-	perms_flat = sum([list(a) for a in permutations], [])
+	# HU: Commented out the following complex code because it was causing an infinite loop or similar. And the generation of relaxed forms works fine without it. :)
+	#print "searches composed", searches
+	#permutations = itertools.chain(itertools.permutations(searches))
+	#print "permutations composed"
+	#perms_flat = sum([list(a) for a in permutations], [])
+	#print "list of permutations ",perms_flat
 
 	# Individual possibilities
-	relaxed_perms = [sub_str(relaxed, R, S) for S, R in perms_flat]
+	relaxed_perms = [sub_str(relaxed, R, S) for S, R in searches]
+	#print relaxed_perms
 
 	# Possibilities applied one by one
-	for S, R in perms_flat:
-		relaxed = sub_str(relaxed, R, S)
-		relaxed_perms.append(relaxed)
+	#for S, R in perms_flat:
+	#	relaxed = sub_str(relaxed, R, S)
+	#	relaxed_perms.append(relaxed)
 
 	# Return list of unique possibilities
 	relaxed_perms = list(set(relaxed_perms))
@@ -675,8 +687,7 @@ def get_feedback(self, wordform, language):
 
 	language = switch_language_code(language)
 
-	feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
-					.order_by('feedbacktext__order')
+	feedbacks = wordform.feedback.filter(feedbacktext__language=language).order_by('feedbacktext__order')
 
 	feedback_messages = []
 	for feedback in feedbacks:
@@ -924,14 +935,16 @@ class OahpaQuestion(forms.Form):
 		self.is_tcomm = ""
 		forms = []
 		relaxings = []
-		if hasattr(self, 'translang'):
-			if self.translang == 'ru':   # PI: was: sjd
- 				# Relax spellings.
-				accepted_answers = [force_unicode(item) for item in accepted_answers]
-				forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
-				# need to subtract legal answers and make an only relaxed list.
-				relaxings = [item for item in forms if force_unicode(item) not in accepted_answers]
-			# else:
+		#if hasattr(self, 'translang'): commented out these two lines, because otherwise relax was not working in Morfa
+		#if self.translang == 'ru':   # PI: was: sjd
+		# Relax spellings.
+		accepted_answers = [force_unicode(item) for item in accepted_answers]
+		print "accepted answers ok"
+		forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
+		print "relaxed forms: ", forms
+		# need to subtract legal answers and make an only relaxed list.
+		relaxings = [item for item in forms if force_unicode(item) not in accepted_answers]
+		# else:
 				# PI: commented out at this stage
 				# # add infinitives as possible answers
 				# if self.word.pos == 'V':
@@ -944,8 +957,7 @@ class OahpaQuestion(forms.Form):
 
 				# forms = accepted_answers
 
-		self.correct_anslist = [force_unicode(item) for item in accepted_answers] + \
-							   [force_unicode(f) for f in forms]
+		self.correct_anslist = [force_unicode(item) for item in accepted_answers] + [force_unicode(f) for f in forms]
 		self.relaxings = relaxings
 
 		#def generate_fields(self,answer_size, maxlength):
@@ -1283,11 +1295,11 @@ class MorfaQuestion(OahpaQuestion):
 			if correct_val == "correct":
 				self.error="correct"
 			# relax
-			if userans_val in self.relaxings:
-				self.is_relaxed = "relaxed"
-				self.strict = 'Strict form'
-			else:
-				self.is_relaxed = ""
+			#if userans_val in self.relaxings: let's make the spelling always relaxed
+                self.is_relaxed = "relaxed"
+                self.strict = 'Strict form'
+			#else:
+			#	self.is_relaxed = ""
 
 		self.correct_ans = answer_presentation
 # #
