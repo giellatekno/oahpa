@@ -148,8 +148,8 @@ CASE_CONTEXT_CHOICES = (
 )
 
 NOUN_TYPE_CHOICES =(
-	('N-FEM-3', _('feminine 3rd declension')),
-	('N-FEM-1', _('feminine 1st declension')),
+	('N-FEM-other', _(u'feminine in -a/-я')),
+	('N-FEM-8', _(u'feminine in -ь')),
 	('N-MASC-INANIM', _('masculine inanimate')),
 	('N-MASC-ANIM', _('masculine animate')),
 	('N-NEUT', _('neuter')),
@@ -871,7 +871,7 @@ class OahpaSettings(forms.Form):
 					'num_bare' : 'N-NOM', # Need a new default case here
 					'adj_context' : 'ATTRPOS',
 					'source' : 'all',
-					'noun_class': 'N-MASC-INANIM'}
+					'noun_type': 'N-MASC-INANIM'}
 
 
 
@@ -1126,7 +1126,7 @@ class MorfaSettings(OahpaSettings):
 	grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
 
 	# PI added
-	noun_class = forms.ChoiceField(initial='N-MASC-INANIM', choices=NOUN_TYPE_CHOICES, widget=forms.Select)
+	noun_type = forms.ChoiceField(initial='N-MASC-INANIM', choices=NOUN_TYPE_CHOICES, widget=forms.Select)
 
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1141,6 +1141,11 @@ class MorfaSettings(OahpaSettings):
 			post_data = False
 
 		if post_data:
+			# Gen2 and Loc2 only exist for masculine nouns:
+			if 'case' in post_data:
+				if post_data['case'] in ['Par', 'Loc']:
+				    self.settings['noun_type'] = "N-MASC-INANIM"
+				    self.fields['noun_type'] = 'N-MASC-INANIM'
 			# Use a restricted choice set for pronoun case for Refl and Recipr
 			if 'pron_type' in post_data:
 				if post_data['pron_type'].lower() in ['refl', 'recipr']:

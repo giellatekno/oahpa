@@ -10,6 +10,7 @@ from django.db.models import Avg, Max, Min, Count
 # commandline.
 from django.db.utils import DatabaseError
 
+"""
 try: 
 	instructor_group = Group.objects.get(name='Instructors')
 except Group.DoesNotExist:
@@ -21,7 +22,7 @@ except DatabaseError:
 	pass
 else:
 	pass
-
+"""
 # Problems when using loaddata, which we may want to use more often.
 try:
 	from functools import wraps

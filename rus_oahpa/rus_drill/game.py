@@ -332,9 +332,10 @@ class BareGame(Game):
 		'N-ACC-PL': ('Acc', 'Pl'),
 		'N-INS-SG': ('Ins', 'Sg'),
 		'N-INS-PL': ('Ins', 'Pl'),
-		'N-LOC-SG': ('Loc', 'Sg'),
-		'N-LOC-PL': ('Loc', 'Pl'),
-		'N-GEN2': ('Gen2', 'Sg'),
+		'N-LOC-SG': ('Prp', 'Sg'),
+		'N-LOC-PL': ('Prp', 'Pl'),
+		'N-GEN2': ('Par', 'Sg'),
+        'N-LOC2': ('Loc', 'Sg'),
 		'': '',
 	}
 
@@ -466,7 +467,7 @@ class BareGame(Game):
 		syll = True and	self.settings.get('syll')	or ['']
 		case = True and	self.settings.get('case')	or   ""
 		number = self.settings.get('number', '')
-		noun_class = self.settings.get('noun_class', '')
+		noun_type = self.settings.get('noun_type', '')  # was: noun_class
 #		levels = True and self.settings.get('level')   or   []
 		adjcase = True and self.settings.get('adjcase') or   ""
 		pron_type = True and self.settings.get('pron_type') or   ""
@@ -765,9 +766,21 @@ class BareGame(Game):
 		# else:
 		# 	UI_Dialect = DEFAULT_DIALECT
 
-		try:
-
+		try: 
+			
 			WORD_FILTER = Q()
+			# Process the selection from the noun_type menu (incorporates gender, animacy and inflection type):
+			if noun_type == "N-NEUT":
+				WORD_FILTER = Q(word__gender='nt')
+			elif noun_type == "N-MASC-INANIM":
+				WORD_FILTER = Q(word__gender='m',word__animate='nn')
+			elif noun_type == "N-MASC-ANIM":
+				WORD_FILTER = Q(word__gender='m',word__animate='aa')
+			elif noun_type == "N-FEM-8":
+				WORD_FILTER = Q(word__gender='f', word__inflection_class__contains='8')
+			elif noun_type == "N-FEM-other":
+				WORD_FILTER = Q(word__gender='f') & (Q(word__lemma__endswith='а') | Q(word__lemma__endswith='я'))
+                        
 			""" commented out for testing without noun_class
 			normalized_noun_class = [item.lower().capitalize() for item in noun_class.split('-')]
 			for item in normalized_noun_class:
@@ -793,6 +806,9 @@ class BareGame(Game):
 					tag = tags.order_by('?')[0]
 
 				random_word = tag.form_set.filter(WORD_FILTER, word__language=L1)
+				# Ensure that only words that have Gen2 / Loc2 are filtered out. In the future, the same filter can be applied to all words. Right now, in the testing phase, we also show the forms that Apertium fst was not able to generate.
+				if tag.case in ['Par','Loc']:
+				    random_word = random_word.exclude(fullform__contains='#').exclude(fullform__contains='*')
 
 				# PI: commented out, b/c at this stage
 				# where the Morfa-S semtype has not

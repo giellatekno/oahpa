@@ -768,8 +768,15 @@ class Words(object):
 
 		# if entry.rime:
 		# 	rime = entry.rime
-		animate = None or entry.animate
-		gender = None or entry.gender
+		#animate = None or entry.animate
+		#gender = None or entry.gender
+		gender = ""
+		animate = ""
+		print >> sys.stdout, 'lemma: %s' % lemma
+		if pos == 'N':
+		  stem_info = linginfo.get_stem_info(force_unicode(lemma).encode('utf-8')) # added by Heli, not sure if it works like this
+		  gender = None or stem_info[0]
+		  animate = None or stem_info[1]
 		declension = None or entry.declension
 		inflection_class = None or entry.inflection_class
 

@@ -102,7 +102,7 @@ def FSTLookup(data):
 	# gen_fst = fstdir + "/%s" % fst_file
 	# cmd = 'hfst-optimized-lookup /opt/local/share/omorfi/mor-omorfi.apertium.hfst.ol'
 	#cmd = lookup + " -flags mbTT -utf8 -d " + gen_fst # lexc
-	morf_fst = apertiumdir + "/rus.automorf.bin"  # Apertium-style morf fst
+	morf_fst = apertiumdir + "/rus.automorf.bin"  # Apertium-style morf analysis fst
 	gen_fst = apertiumdir + "/rus.autogen.bin" # Apertium-style form generating fst
 	cmd_anal = "lt-proc " + morf_fst # analysis
 	cmd_gen = "lt-proc -g " + gen_fst   # generation
@@ -118,6 +118,8 @@ def FSTLookup(data):
 		for row in rows:
 			data_tokens = row.split("+")  # Apertium
 			lemma = data_tokens[0]
+			gender = "no_gender"
+			animacy = "no_animacy"
 			#print >> STDOUT, "number: %s" % data_tokens[2]
 			#print >> STDOUT, "case: %s" % data_tokens[3]
 	 
@@ -129,9 +131,20 @@ def FSTLookup(data):
 				sys.exit(2)
 	
 			#print >> STDOUT, "morf analysis of lemma: %s" % morfanal_lemma[0]
-			readings = morfanal_lemma[0].split("/")  # needes to handle morphpologically ambiguous lemmas
+			readings = morfanal_lemma[0].split("/")  # needed to handle morphpologically ambiguous lemmas
 			#print >> STDOUT, "the first reading: %s" % readings[1]
+			# Split the reading to individual tags:
+			tagsequence = readings[1].replace("<"," ")
+			tagsequence = tagsequence.replace(">"," ")
+			tags = tagsequence.split()
+			print >> STDOUT, "lemma: %s" % (tags[0])
+			if tagsequence.find("*") == -1 and tags[1] == 'n':
+			 gender = tags[2]
+			 print >> STDOUT, "gender: %s" % gender
+			 animacy = tags[3]
+			 print >> STDOUT, "animacy: %s" % animacy
 			generator_input = readings[1].replace("sg", force_unicode(data_tokens[2]).encode('utf-8').lower())
+			
 			#print >> STDOUT, "number replaced by sg: %s" % generator_input
 			generator_input = generator_input.replace("nom", force_unicode(data_tokens[3]).encode('utf-8').lower())  # nouns: data_tokens[2]=Sg/Pl, data_tokens[3]=case
 			#print >> STDOUT, "generator input: %s" % generator_input
@@ -141,7 +154,7 @@ def FSTLookup(data):
 				print >> STDERR, "Problem in command: %s" % cmd_gen
 				sys.exit(2) 
 		       
-			lookups = lookups + row + "\t" + forms[0] + "\n"
+			lookups = lookups + row + "\t" + gender + "\t" + animacy + "\t" + forms[0] + "\n"
 			print >> STDOUT, "generated form: %s" % forms[0]
 	return lookups
 
@@ -162,6 +175,7 @@ class Paradigm:
 		self.paradigms = {}
 		self.paradigm = []
 		self.generate_data = []
+		self.stem_info = {} # for saving gender and animacy
 
 
 	def handle_tags(self, tagfile, add_db):  
@@ -359,24 +373,44 @@ class Paradigm:
 		for line in lookups.split('\n\n'):
 			print >> STDOUT, 'line in lookups: %s' % line
 			items = line.split('\n')
+			stem_info = []
 			for item in items:
 				print >> STDOUT, 'item: %s' % item
 				result = item.split('\t')
+				for token in result:
+					print >> STDOUT,'token: %s' % token
 				lemma = result[0].partition('+')[0]
+				#gender = result[2]
+				#animacy = result[3]
+				#stem_info.append(gender)
+				#stem_info.append(animacy)
 				if lemma:
+				#if result.len() > 3:
 					#print >> STDOUT,'lemma: %s, wordform: %s' % (result[0], result[1])				
-					#lemma = force_unicode(result[0]).encode('utf-8')
+					#lemma = force_unicode(lemma).encode('utf-8')
+					#stem_info[0] = FSToutput[1]
+					#stem_info[1] = FSToutput[2]
+					gender = result[1]
+					animacy = result[2]
+					stem_info.append(gender)
+					stem_info.append(animacy)
+					self.stem_info[lemma] = stem_info
+					print >> STDOUT, 'lemma: %s stem info: %s' % (lemma, self.stem_info[lemma])
 					try:
 						lookup_dictionary[lemma] += item + '\n'
 						#print >> STDOUT, 'lookupdict: %s' % lookup_dictionary[lemma]
 					except KeyError:
 						lookup_dictionary[lemma] = item + '\n'
+						
 		#print >> STDOUT, 'lemma: %s, dialect: %s' % (lemma, dialect)
 
 		#print >> STDOUT, 'lookup_dictionary: %s' % lookup_dictionary
 		self.master_paradigm[dialect] = lookup_dictionary
 
 
+	def get_stem_info(self, lemma):
+		return self.stem_info[lemma]
+        
 	def get_paradigm(self, lemma, pos, forms, dialect=False, wordtype=None):
 		if not dialect:
 			dialect = 'main'
