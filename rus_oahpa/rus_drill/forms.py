@@ -869,7 +869,7 @@ class OahpaSettings(forms.Form):
 					'frequency' : [],
 					'num_bare' : 'N-NOM', # Need a new default case here
 					'adj_context' : 'ATTRPOS',
-					'source' : 'all',
+					'book' : 'all',
 					'noun_type': 'N-MASC-INANIM'}
 
 
