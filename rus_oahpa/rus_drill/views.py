@@ -653,10 +653,9 @@ class Morfaview(Gameview):
 	def additional_settings(self, settings_form):
 
 		self.settings['allcase'] = settings_form.allcase
-		self.settings['allnoun_class'] = settings_form.allnoun_class
 #		self.syll_settings(settings_form)
 		self.settings['allnum_type'] = settings_form.allnum_type  # added by Heli
-		self.settings['noun_type'] = []
+		self.settings['allnoun_type'] = settings_form.allnoun_type
 
 		if 'noun_type' in settings_form.data:
             # Gen2 and Loc2 only exist for (some) masculine nouns. 

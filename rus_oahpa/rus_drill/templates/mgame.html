@@ -60,7 +60,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
         {% if settings.pos != "Num" %}
             {% block book %}
             {% ifequal settings.gametype "bare" %} 
-            <li><label for="id_{{ settingsform.book.name }}">{% trans "Book" %}</label>
+            <li><label for="id_{{ settingsform.book.name }}">{% trans "Book chapters" %}</label>
                 {{ settingsform.book }}</li>
             {% endifequal %}
             {% endblock %}

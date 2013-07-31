@@ -318,11 +318,10 @@ DERIVATION_CHOICES_CONTEXT = (
 )
 
 BOOK_CHOICES = (
-    #('l1', _('Level 1')),
-    #('l2', _('Level 1-2')),
-    #('l3', _('Level 1-3')),
-    #('Saamkilsyjjt', _('Saamkilsyjjt')),
-    ('all', _('All')),
+    ('l1', _(u'А-З + 1-5')),
+    ('l2', _(u'А-З + 1-12')),
+    ('l3', _(u'А-З + 1-17')),
+    ('all', _('whole book')),
 )
 
 FREQUENCY_CHOICES = (
@@ -437,10 +436,10 @@ DIALOGUE_CHOICES = (
 	('shopadj', _('Shopadj')),
 )
 
-# BOOK_CHOICES = tuple(
-# 	[(source.name, source.name) for source in Source.objects.all()] + \
+#BOOK_CHOICES = tuple(
+# 	[(source.name, source.name) for source in Source.objects.all()] +
 # 	[('all', _('ALL'))]
-# )
+#)
 
 
 # Syllables are manually coded in the templates, but it's useful to get the
@@ -675,7 +674,7 @@ def set_settings(self):
 	self.sources = dict(BOOK_CHOICES).keys()
 	self.geography = dict(GEOGRAPHY_CHOICES).keys()
 	self.frequency = dict(FREQUENCY_CHOICES).keys() # added by Heli
-	self.allnoun_class = dict(NOUN_TYPE_CHOICES).keys() # added by Pavel
+	self.allnoun_type = dict(NOUN_TYPE_CHOICES).keys() # added by Pavel
 
 
 # comment

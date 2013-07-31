@@ -475,22 +475,12 @@ class BareGame(Game):
 		derivation_type = True and self.settings.get('derivation_type') or   ""
 #		grade = True and self.settings.get('grade')  or  ""
 		num_type = True and self.settings.get('num_type') or ""  # added to get num_type from settings
-		source = ""
+		source = self.settings['book']
 
 		mood, tense, infinite, attributive = "", "", "", ""
 
 		num_bare = ""
-
-		if 'source' in self.settings:  # was: book, but in forms.py it is called source
-			source = self.settings['source']
-			if source.lower() != 'all':
-				try:
-					S = Source.objects.filter(name=source)
-					source = S
-				except Source.DoesNotExist:
-					source = False
-			else:
-				source = False
+		
 		if 'num_bare' in self.settings:
 			num_bare = self.settings['num_bare']
 		if 'num_level' in self.settings:
@@ -737,8 +727,8 @@ class BareGame(Game):
 		else:
 			# levels is not what we're looking for
 			  QUERY = Q(pos__iexact=pos) & Q(stem__in=syll)
-			  if source and source not in ['all', 'All']:
-				 QUERY = QUERY & Q(source__name=source)
+			  #if source and source not in ['all', 'All']:
+				# QUERY = QUERY & Q(source__name=source)
 
 
 		# smallnum = ["okta", "guokte", "golbma", "njeallje", "vihtta", "guhtta",
@@ -780,6 +770,15 @@ class BareGame(Game):
 				WORD_FILTER = Q(word__gender='f', word__inflection_class__contains='8')
 			elif noun_type == "N-FEM-other":
 				WORD_FILTER = Q(word__gender='f') & (Q(word__lemma__endswith='а') | Q(word__lemma__endswith='я'))
+			SOURCE_FILTER = Q() 
+			if source.lower() != 'all':
+				if source == "l1":
+				    SOURCE_FILTER = Q(word__chapter__in=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5'])
+				elif source == "l2":
+				    SOURCE_FILTER =  Q(word__chapter__in=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5','L6','L7','L8','L9','L10','L11','L12'])
+				elif source == "l3":
+				    SOURCE_FILTER = Q(word__chapter__in=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5','L6','L7','L8','L9','L10','L11','L12','L13','L14','L15','L16','L17'])
+
                         
 			""" commented out for testing without noun_class
 			normalized_noun_class = [item.lower().capitalize() for item in noun_class.split('-')]
@@ -805,7 +804,7 @@ class BareGame(Game):
 				if tag.pos == 'Pron':
 					tag = tags.order_by('?')[0]
 
-				random_word = tag.form_set.filter(WORD_FILTER, word__language=L1)
+				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)
 				# Ensure that only words that have Gen2 / Loc2 are filtered out. In the future, the same filter can be applied to all words. Right now, in the testing phase, we also show the forms that Apertium fst was not able to generate.
 				if tag.case in ['Par','Loc']:
 				    random_word = random_word.exclude(fullform__contains='#').exclude(fullform__contains='*')
@@ -935,10 +934,14 @@ class BareGame(Game):
 		# about turning nominative singular into nominative plural,
 		# thus all baseforms should be singular.
 
-		if tag.case in ['Ess', 'Nom'] or tag.attributive:
-			match_number = False
-		else:
-			match_number = True
+		#if tag.case in ['Ess', 'Nom'] or tag.attributive:
+		#	match_number = False
+		#else:
+		#	match_number = True
+		
+        # There is no number matching needed in Russian, all the baseforms  
+        # should be in singular.
+                match_number = False
 
 		def baseformFilter(form):
 			#   Get baseforms, and filter based on dialects.
