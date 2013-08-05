@@ -1,0 +1,122 @@
+
+
+Møte rus_oahpa 5.8. 2013
+
+
+Til stades: ''Heli, Laura, Tore, Trond''
+
+!!!Saksliste
+
+* Status quo
+* MorfaS - evaluering
+* Bugzilla
+* Arbeid framover
+** Feedback
+** Lokalisering
+* Neste møte
+
+
+!!!Status quo
+
+Heli har implementert nye menyar: 
+
+* Loc2
+* Meny for substantivtype
+* Bokkapittelmeny
+
+Alle fungerer.
+
+Wordtype-menyen manglar ''all types''. 
+
+#ключ betyr at fst-en ikkje kan generere denne forma.
+Programmet genererer alle formene til databasen ved hjelp
+av Francis' fst. Viss databasen
+
+Framgangsmåte:
+* Legge til manglande ord frå grammatikken i fst-en
+** Analysere heile Oahpa og liste manglande ord  (__Heli__)
+** Finne ut kva slags kode dei skal ha i apertium (__Trond, Francis__)
+** Legge til i apertium-rus (__Trond, Francis, ...__)
+* Rette fst-en:
+** Generere kasus for kasus av alle Oahpa-orda (__Heli__)
+*** Dra ut genus for genus, baklengssorter, og send til analyse
+** Sjekke kasus av alle Oahpa-orda (__Tore, Laura__)
+
+__TILTAK__
+
+* Heli legg til meny all types
+* Vi gjennomfører prosedyre for feilretting
+
+
+!!!MorfaS - evaluering
+
+Framfor alt: 
+
+!! ё / е
+
+Vi inkluderer dei i relax-funksjonen
+
+!! Bokstavfeil
+
+Det er bokstavar som forsvinn. Det er mogleg dei kjem frå
+Apertium. Heli ser på det.
+
+!!Sg vs. Pl
+
+* Meny med bare kasus
+* Avkrysningsboks attmed: ''Sg only''
+
+!!Menyen Book chapters
+
+* "Whole book" --> "Møde i Petersborg"
+* "A-3 + 1-5" --> "MiP 1-5"
+* "A-3 + 1-12" --> "MiP 1-12"
+
+!!Kasus
+
+* Nominative plural
+* Accusative <=========== default
+* Genitive
+* Dative
+* Instrumental
+* Locative
+* Genitive 2 (med boksforklaring: gen 1 __og__ gen 2)
+* Locative 2 (med boksforklaring: loc 1 __og__ loc 2)
+
+Avkrysning: sg/pl
+
+!!!Bugzilla
+
+Intro.
+
+!!!Arbeid framover
+
+Morfa-S: sjå første punkt.
+
+!!Feedback
+
+Laura har laga ei fil, og skrive feedback-meldingar.
+Heli ser på den, men det ser ut til å fungere bra.
+
+__TILTAK__
+* Heli arbeidet med det + evt. diskuterer med Laura.
+
+!!Lokalisering
+
+rus_oapha/locale/ er tom.
+
+Vi ventar med lokalisering til vi har ein større og betre versjon.
+
+
+!!!Neste møte
+
+
+__23. august kl. 10.00__
+
+
+
+
+
+
+
+
