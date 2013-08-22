@@ -323,19 +323,14 @@ class Game(object):
 class BareGame(Game):
 
 	casetable = {
-		'N-NOM-PL': ('Nom', 'Pl'),
-		'N-GEN-SG': ('Gen', 'Sg'),
-		'N-GEN-PL': ('Gen', 'Pl'),
-		'N-DAT-SG': ('Dat', 'Sg'),
-		'N-DAT-PL': ('Dat', 'Pl'),
-		'N-ACC-SG': ('Acc', 'Sg'),
-		'N-ACC-PL': ('Acc', 'Pl'),
-		'N-INS-SG': ('Ins', 'Sg'),
-		'N-INS-PL': ('Ins', 'Pl'),
-		'N-LOC-SG': ('Prp', 'Sg'),
-		'N-LOC-PL': ('Prp', 'Pl'),
-		'N-GEN2': ('Par', 'Sg'),
-        'N-LOC2': ('Loc', 'Sg'),
+		'N-NOM-PL': ('Nom', ['Pl']),
+		'N-GEN': ('Gen', ['Sg','Pl']),
+		'N-DAT': ('Dat', ['Sg','Pl']),
+		'N-ACC': ('Acc', ['Sg','Pl']),
+		'N-INS': ('Ins', ['Sg','Pl']),
+		'N-LOC': ('Prp', ['Sg','Pl']),
+		'N-GEN2': ('Par', ['Sg']),
+        'N-LOC2': ('Loc', ['Sg']),
 		'': '',
 	}
 
@@ -468,6 +463,7 @@ class BareGame(Game):
 		case = True and	self.settings.get('case')	or   ""
 		number = self.settings.get('number', '')
 		noun_type = self.settings.get('noun_type', '')  # was: noun_class
+		singular_only = self.settings.get('singular_only', False)  # make it possible to only generate singular exercises if the user wishes so
 #		levels = True and self.settings.get('level')   or   []
 		adjcase = True and self.settings.get('adjcase') or   ""
 		pron_type = True and self.settings.get('pron_type') or   ""
@@ -643,8 +639,11 @@ class BareGame(Game):
 						# regardless of whether it's Actor, Coll, etc.
 
 			if pos == 'N':
-				TAG_QUERY = TAG_QUERY & \
-							Q(number=number)
+				if singular_only:   # if the user has checked the box "singular only"
+					TAG_QUERY = TAG_QUERY & Q(number='Sg')
+				else:
+					TAG_QUERY = TAG_QUERY & \
+							Q(number__in=number)
 
 
 
@@ -934,14 +933,11 @@ class BareGame(Game):
 		# about turning nominative singular into nominative plural,
 		# thus all baseforms should be singular.
 
-		#if tag.case in ['Ess', 'Nom'] or tag.attributive:
-		#	match_number = False
-		#else:
-		#	match_number = True
+		if tag.case in ['Nom', 'Par', 'Loc'] or tag.attributive:
+			match_number = False
+		else:
+			match_number = True
 		
-        # There is no number matching needed in Russian, all the baseforms  
-        # should be in singular.
-                match_number = False
 
 		def baseformFilter(form):
 			#   Get baseforms, and filter based on dialects.

@@ -59,19 +59,14 @@ POS_CHOICES = (
 )
 
 CASE_CHOICES = (
-	('N-NOM-PL', _('nominative plural')),
-    ('N-GEN-SG', _('genitive singular')),
-    ('N-GEN2', _('genitive 2')),
-	('N-GEN-PL', _('genitive plural')),
-    ('N-DAT-SG', _('dative singular')),
-	('N-DAT-PL', _('dative plural')),
-	('N-ACC-SG', _('accusative singular')),
-	('N-ACC-PL', _('accusative plural')),
-	('N-INS-SG', _('instrumental singular')),
-	('N-INS-PL', _('instrumental plural')),
-    ('N-LOC-SG', _('locative singular')),
-    ('N-LOC2', _('locative 2')),
-	('N-LOC-PL', _('locative plural')),
+	('N-NOM-PL', _('Nominative plural')),
+	('N-ACC', _('Accusative')),
+    ('N-GEN', _('Genitive')),
+    ('N-DAT', _('Dative')),
+    ('N-INS', _('Instrumental')),
+    ('N-LOC', _('Locative')),
+    ('N-GEN2', _('Genitive 2')),
+    ('N-LOC2', _('Locative 2')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -153,7 +148,8 @@ NOUN_TYPE_CHOICES =(
 	('N-MASC-INANIM', _('masculine inanimate')),
 	('N-MASC-ANIM', _('masculine animate')),
 	('N-NEUT', _('neuter')),
-	)
+	('all', _('All')),
+)
 
 #
 # No inessive or essive, and no choice between nom sg. and pl, but nom sg and pl come together.
@@ -318,10 +314,10 @@ DERIVATION_CHOICES_CONTEXT = (
 )
 
 BOOK_CHOICES = (
-    ('l1', _(u'А-З + 1-5')),
-    ('l2', _(u'А-З + 1-12')),
-    ('l3', _(u'А-З + 1-17')),
-    ('all', _('whole book')),
+    ('all', _(u'Møde i Petersborg')),
+    ('l1', _('MiP 1-5')),
+    ('l2', _('MiP 1-12')),
+    ('l3', _('MiP 1-17')),
 )
 
 FREQUENCY_CHOICES = (
@@ -849,7 +845,7 @@ class OahpaSettings(forms.Form):
 					'contracted': False,
 					'level' : 'all',
 					'lemmacount' : '2',
-					'case': 'N-NOM-PL', # Need a new default case here
+					'case': 'N-ACC',
 					'pos' : 'N',
 					'vtype' : 'PRS',
 					'adjcase' : 'NOM',
@@ -870,7 +866,8 @@ class OahpaSettings(forms.Form):
 					'num_bare' : 'N-NOM', # Need a new default case here
 					'adj_context' : 'ATTRPOS',
 					'book' : 'all',
-					'noun_type': 'N-MASC-INANIM'}
+					'noun_type': 'N-MASC-INANIM',
+					'singular_only' : False}
 
 
 
@@ -1102,7 +1099,7 @@ class MorfaSettings(OahpaSettings):
 		$home/morfa/ came from, because instead of an
 		exception there was a relatively unhelpful 404 error.
 	"""
-	case = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES, widget=forms.Select)
+	case = forms.ChoiceField(initial='N-ACC', choices=CASE_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
@@ -1126,6 +1123,8 @@ class MorfaSettings(OahpaSettings):
 
 	# PI added
 	noun_type = forms.ChoiceField(initial='N-MASC-INANIM', choices=NOUN_TYPE_CHOICES, widget=forms.Select)
+	# HU added
+	singular_only = forms.BooleanField(required=False, initial=False)
 
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
