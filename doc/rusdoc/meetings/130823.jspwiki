@@ -1,0 +1,162 @@
+
+Meeting rus_oahpa 23.8. 2013
+
+
+Present: ''Robert, Heli, Laura, Tore, Trond''
+
+!!!Agenda
+
+
+* Status quo
+* Word mismatches
+* Bugzilla
+* Next meeting
+
+!!!Status quo
+
+!!Work done
+
+* Heli presents updates done
+** All word types
+** Case menu is changed: No separate plural, but a checkbox
+** Book menu: titles
+
+The Locative 2 issue:
+
+Include all words, and leave locative 1/2 to the user?
+This is not yet implemented, so in this task 
+the user gets only the words that have a separate Locative 2.
+
+TODO: Include all the words in the Gen2 and Loc2 tasks.
+
+Otherwise the case menu works.
+
+Laura has been testing and it works and looks good.
+
+!!Open issues
+
+!Errors in the Apertium fst.
+
+Not done
+
+!e / ë
+
+Open. Heli tried to implement e/ë-acceptance, but it
+does not work, for some reason. 
+
+Also, stress feedback is still not implemented
+
+
+!!!Word mismatches
+
+!!Case-marked nouns used as adverbs
+
+We want the oblique forms out of the list of nouns.
+
+!!Nouns with marginal Gen2
+
+We make an xml file listing the relevant marginal-gen2-words.
+They then get a mark in the mysql database during compilation.
+
+This xml file will then go into the compilation process
+
+__or__ we could have the apertium xml generate two fsts.
+
+Which words to treat how will be a topic for linguistic research.
+
+__TODO__
+
+* Heli and Francis to look into this until next meeting.
+* Tore and Laura can work on a list of nons that do not have a pedagogical plural
+  Rob suggests that we should come up with continuation lexica
+  that combines the various issues of non-ped pl, G2, L2.
+* Word set filters - singular tantum, Gen2, Loc2
+constraints in the fst or special features in the oahpa database?
+
+
+
+!!!Bugzilla
+
+
+!!1682	P5	Adverbs as nouns in Morfa-S
+
+see above.
+
+!!1683 P5	GenPl in Morfa-S errors
+
+For Robert.
+
+!!1684 P5	Words that should appear as singular only in Rus-Oahpa
+
+List is here, nice, now we await the xml vs list  issue.
+
+!!1685 P5	Problems with some irregular nouns
+
+Robert to look at this.
+
+!!1686 P5	Random problems with regular feminine nouns
+
+Robert
+!!1692 P5	запад, восток, юг and север are singularia tantum
+
+Closed.
+
+!!1693 P5	Голод - singular tantum?
+
+Closed
+
+!!1694 P5	Words with e or ë
+
+Heli on this.
+
+!!1695 P5	Adverbs are registered as nouns
+
+Duplicate of 1682.
+
+!!1696 P5	Tuesday
+
+Duplicate of 1683.
+
+!!1697 P5	#молоко́
+
+These forms are not generated bŧ apertium.  Robert.
+
+!!1698 P5	adverbs should be removed from the list of nouns
+
+Duplicate of 1682
+
+!!1699 P5	It should be possible to enter e for words that contain ё
+
+Duplicate of 1694
+
+!!1700 P5	some words come up with * and are not declined as they should be
+
+Duplicate of 1697
+
+!!1701 P5	моро́женые should be listed as sg only for our purposes
+
+Duplicate of 1682
+
+!!1702 P5	Genitive 2
+
+Heli to give a list
+
+!!1703 P5	Shower vs. soul
+
+Duplicate of 
+
+!!1704 P5	Locative 2
+
+
+
+
+!!!Next meeting
+
+
+29.8. at 0900.
+
+
+
+
+
+
