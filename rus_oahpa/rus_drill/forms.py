@@ -1139,11 +1139,11 @@ class MorfaSettings(OahpaSettings):
 			post_data = False
 
 		if post_data:
-			# Gen2 and Loc2 only exist for masculine nouns:
-			if 'case' in post_data:
-				if post_data['case'] in ['Par', 'Loc']:
-				    self.settings['noun_type'] = "N-MASC-INANIM"
-				    self.fields['noun_type'] = 'N-MASC-INANIM'
+			# Gen2 and Loc2 mostly exist for masculine nouns:
+			#if 'case' in post_data:
+			#	if post_data['case'] in ['Par', 'Loc']:
+			#	    self.settings['noun_type'] = "N-MASC-INANIM"
+			#	    self.fields['noun_type'] = 'N-MASC-INANIM'
 			# Use a restricted choice set for pronoun case for Refl and Recipr
 			if 'pron_type' in post_data:
 				if post_data['pron_type'].lower() in ['refl', 'recipr']:

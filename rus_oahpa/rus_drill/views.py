@@ -652,11 +652,11 @@ class Morfaview(Gameview):
 		self.settings['allnum_type'] = settings_form.allnum_type  # added by Heli
 		self.settings['allnoun_type'] = settings_form.allnoun_type
 
-		if 'noun_type' in settings_form.data:
+		#if 'noun_type' in settings_form.data:
             # Gen2 and Loc2 only exist for (some) masculine nouns. 
-			if self.settings['case'] in ['N-GEN2','N-LOC2']:
-				settings_form.data['noun_type'] = "N-MASC-INANIM"
-                        self.settings['noun_type'] = settings_form.data['noun_type']
+		#	if self.settings['case'] in ['N-GEN2','N-LOC2']:
+		#		settings_form.data['noun_type'] = "N-MASC-INANIM"
+         #               self.settings['noun_type'] = settings_form.data['noun_type']
 
 	def set_gamename(self):
 		subname = False

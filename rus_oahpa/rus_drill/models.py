@@ -221,6 +221,8 @@ class Word(models.Model):
 	animate = models.CharField(max_length=20) # PI: could be boolean?
 	gender = models.CharField(max_length=20)
 	declension = models.CharField(max_length=20)
+	loc2 = models.BooleanField(default=False) # indicates if the word has Locative2 or not
+	gen2 = models.BooleanField(default=False) # indicates if the word has Genitive2 or not
 	reflexive = models.NullBooleanField(blank=True)
 	inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
 
