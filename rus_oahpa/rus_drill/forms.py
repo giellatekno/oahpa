@@ -542,18 +542,18 @@ def relax(strict):
 
 	relax_pairs = {
 		# key: value
-		# key is accepted for value
+		# value is accepted for key - have changed the order in the pairs because the key must be unique
 		# For Russian: spellrelax for je vs jo, vowels with and without stress marks
-	   u'е': u'ё',
-	   u'а': u'а́',
-	   u'е': u'е́',
-	   u'и': u'и́',
-	   u'о': u'о́',
-	   u'у': u'у́',
-	   u'ы': u'ы́',
-	   u'э': u'э́',
-	   u'ю': u'ю́',
-	   u'я': u'я́',
+	   u'а́': u'а',
+	   u'е́': u'е',
+	   u'и́': u'и',
+	   u'о́': u'о',
+	   u'у́': u'у',
+	   u'ы́': u'ы',
+	   u'э́': u'э',
+	   u'ю́': u'ю',
+	   u'я́': u'я',
+	   u'ё': u'е',
 	}
 
 	# Create an iterator. We want to generate as many possibilities as
@@ -567,7 +567,7 @@ def relax(strict):
 	#print "list of permutations ",perms_flat
 
 	# Individual possibilities
-	relaxed_perms = [sub_str(relaxed, R, S) for S, R in searches]
+	relaxed_perms = [sub_str(relaxed, R, S) for R, S in searches]
 	#print relaxed_perms
 
 	# Possibilities applied one by one
