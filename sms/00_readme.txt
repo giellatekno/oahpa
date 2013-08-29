@@ -1,4 +1,4 @@
-This directory contains material relevant to Oahpa!-nuõrti. The dictionary database (in /src) is imported from a "common" dictionary database called (~/sms2X).
+This directory contains material relevant to Oahpa!-nuõrti (smsoahpa). The lexical data is taken from a dictionary database called sms2X in ~/words/dicts.
 
 Documentation for smsoahpa at http://victorio.uit.no/cgi-bin/wiki/index.php/Smsoahpa (to be written)
 
@@ -9,17 +9,42 @@ Currently, our preliminary version of Oahpa!-nuõrti includes two "books", which
 * book="100" (~100 words)
 * book="200" (~200 words)
 
-=====
-Next compilation:
 
-The planned next version of Oahpa!-nuõrti should include all entries tagged with:
+=====
+Current compilation (xml source files are almost ready):
+
+The current version to be compiled should include all entries tagged with:
+<usage oahpa="yes"/>
+
+These include:
 * book="kurss" (schoolbook in Finnish, Russian and Norwegian versions, see the Norwegian version here: http://omnibus.uni-freiburg.de/~mr5496/downl/Kurss_nob.pdf)
-MR is currently working on including the words in the dictionary database.
+* book="200" (~200 words)
+* book="100" (~100 words)
 
-Also a "place name game" should be included in LEKSA (from src dictionary files: pn_sms2X.xml)
+Also a "place name game" could be included in LEKSA (from src dictionary files: prop_sms2X.xml with the tag type="place")
+
+Semantic sets are the same as for the last version (defined in ~/meta-data):
+* HUMAN "Menneske"
+* SPACE "Rom"
+* BODY "Kropp"
+* SENSE "Egenskap, mengd, sinne"
+* HOUSE "Hus"
+* WORK "Arbeid og fritid"
+* TIME "Tid"
+* ZOO "Djur"
+* BOT "Plant"
+* FOOD "Mat og drikk"
+* ENVIR "Verld"
+For now we use only these supersets. Two sets (LANG "Språk" and CLOTH "Klær") are still excluded because we do not have enough entries there yet.
+
+Menue for book names:
+1. "all"
+2. "Kurss"
+3. "200"
+4. "100"
 
 =====
-Futurefuture…
+Future compilations (noch nicht zuende gedacht:): 
 *"termm" - different term(inological) lists, which are not completely included in the textbook or the basic vocabulary lists.
 
 =====
@@ -51,22 +76,6 @@ Micha (old note):
 2. For LEKSA use only entries tagged as <book name="200"> in sms2X (for which <book name="100"> is a subset), but exclude <mg>s of entries tagged as <mg oahpa="excl">.
 
 3. For the Placename game in LEKSA use entries tagged as <l pos="pn" class="place"> (if not <mg oahpa="excl">).
-
-4. Three book names: "all", "100", "200".
-
-5. Semantic sets for the new version (defined in ~/meta-data):
-* HUMAN "Menneske"
-* SPACE "Rom"
-* BODY "Kropp"
-* SENSE "Egenskap, mengd, sinne"
-* HOUSE "Hus"
-* WORK "Arbeid og fritid"
-* TIME "Tid"
-* ZOO "Djur"
-* BOT "Plant"
-* FOOD "Mat og drikk"
-* ENVIR "Verld"
-For now we use only these supersets. Two sets (LANG "Språk" and CLOTH "Klær") are still excluded because we do not have enough entries there yet.
 
 6. dis/preferred variants in <l> and <t>
 * in <l> I mark only dispreferred variants (oahpa="dispref"), i.e. a translation variant which is accepted as answer in the reversed x-sms LEKSA game without being shown as the right answer
