@@ -9,6 +9,11 @@ Currently, our preliminary version of Oahpa!-nuõrti includes two "books", which
 * book="100" (~100 words)
 * book="200" (~200 words)
 
+Bugs in current smsoahpa:
+*Select the language pair: "Skolt Sámi to Finnish" occurs twice, but "Skolt Sámi to English" is missing
+
+Possible improvement in smsoahpa userinterface:
+*html-based input tool for special Skolt Saami letters, like http://victorio-old.uit.no/webdict/index_sms-nob.html
 
 =====
 Current compilation (xml source files are almost ready):
