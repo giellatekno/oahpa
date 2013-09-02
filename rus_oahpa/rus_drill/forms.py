@@ -345,9 +345,11 @@ VASTAS_NR_OF_TASKWORDS = (
 
 TRANS_CHOICES = (
 	('rusnob', _('Russian to Norwegian')),
-	('nobrus', _('Norwegian to Russian')),
+	#('nobrus', _('Norwegian to Russian')),
+	('rusdan', _('Russian to Danish')),
+	#('danrus', _('Danish to Russian')),
 	('ruseng', _('Russian  to English')),
-	('engrus', _('English to Russian')),
+	#('engrus', _('English to Russian')),
 )
 
 NUMLANGUAGE_CHOICES = (
@@ -355,6 +357,11 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
+    ('CLASS1', _('class1')),
+    ('CLASS2', _('class2')),
+    ('all', _('all')),
+)
+"""
 	('KIN', _('family')),
     ('HUMAN', _('human')),
     ('ANIMAL_FISH', _('animal/fish')),
@@ -383,6 +390,7 @@ SEMTYPE_CHOICES = (
     ('DIMINUTIVE', _('diminutive')),
     ('all', _('all')),
 )
+"""
 
 NUM_CHOICES = (
 	('10', _('0-10')),
@@ -968,13 +976,13 @@ class OahpaQuestion(forms.Form):
 # #
 
 class LeksaSettings(OahpaSettings):
-	semtype = forms.ChoiceField(initial='HUMAN', choices=SEMTYPE_CHOICES)
+	semtype = forms.ChoiceField(initial='CLASS1', choices=SEMTYPE_CHOICES) # was: HUMAN
 	transtype = forms.ChoiceField(choices=TRANS_CHOICES, widget=forms.Select)
 	# For placename quizz
-	geography = forms.ChoiceField(initial='world', choices=GEOGRAPHY_CHOICES)
+	#geography = forms.ChoiceField(initial='world', choices=GEOGRAPHY_CHOICES)
 	#frequency = forms.MultipleChoiceField(required=False, widget=CheckboxSelectMultiple, choices=FREQUENCY_CHOICES)  # added
-	common = forms.BooleanField(required=False, initial='1')
-	rare = forms.BooleanField(required=False,initial=0)
+	#common = forms.BooleanField(required=False, initial='1')
+	#rare = forms.BooleanField(required=False,initial=0)
 	# sapmi = forms.BooleanField(required=False, initial='1')
 	# world = forms.BooleanField(required=False,initial=0)
 	# suopma = forms.BooleanField(required=False,initial=0)
@@ -982,15 +990,15 @@ class LeksaSettings(OahpaSettings):
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
 
 	default_data = {'gametype' : 'bare', 'language' : 'sjd', 'dialogue' : 'GG',
-			'syll' : [],
-			'bisyllabic': False,
-			'trisyllabic': False,
-			'bisyllabic': False,
-			'contracted': False,
+			#'syll' : [],
+			#'bisyllabic': False,
+			#'trisyllabic': False,
+			#'bisyllabic': False,
+			#'contracted': False,
 			'source': 'all',
-			'semtype' : 'HUMAN',
-			'geography' : 'world',
-			'frequency' : ['common'] # added
+			'semtype' : 'CLASS1', # was: 'HUMAN',
+			#'geography' : 'world',
+			#'frequency' : ['common'] # added
 			}
 
 
