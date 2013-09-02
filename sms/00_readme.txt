@@ -16,7 +16,13 @@ Possible improvement in smsoahpa userinterface:
 *html-based input tool for special Skolt Saami letters, like http://victorio-old.uit.no/webdict/index_sms-nob.html
 
 =====
-Current compilation (xml source files are almost ready):
+Current compilation:
+*cc_sms2X
+*cs_sms2X
+*det_sms2X
+*i_sms2X
+*prop_sms2X
+(the other xml source files are almost ready)
 
 The current version to be compiled should include all entries tagged with:
 <usage oahpa="yes"/>
@@ -25,8 +31,9 @@ These include:
 * book="kurss" (schoolbook in Finnish, Russian and Norwegian versions, see the Norwegian version here: http://omnibus.uni-freiburg.de/~mr5496/downl/Kurss_nob.pdf)
 * book="200" (~200 words)
 * book="100" (~100 words)
+(a third book=lookkamkerjj is not ready for oahpa yet and should be ignored for now)
 
-Also a "place name game" could be included in LEKSA (from src dictionary files: prop_sms2X.xml with the tag type="place")
+Also a "place name game" could perhaps be included in LEKSA (from src dictionary files: prop_sms2X.xml with the tag type="place")
 
 Semantic sets are the same as for the last version (defined in ~/meta-data):
 * HUMAN "Menneske"
