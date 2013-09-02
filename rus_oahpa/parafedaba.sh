@@ -14,7 +14,7 @@ DPN="$DATA/nobrus"
 
 echo "==================================================="
 echo "installing tags and paradigms for Morfa"
-$P install.py -r $META/paradigms.txt -t $META/tags.txt -b #2>>../logs/error.log
+#$P install.py -r $META/paradigms.txt -t $META/tags.txt -b #2>>../logs/error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -281,12 +281,12 @@ echo "==================================================="
 # echo "==================================================="
 
 
-# echo "==================================================="
-# echo "feeding db with $META/semantical_sets.xml"
-# $P install.py --sem $META/semantical_sets.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $META/semantical_sets.xml"
+$P install.py --sem $META/semantical_sets.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with messages to feedback"

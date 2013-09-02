@@ -26,7 +26,7 @@ from .forms import PRONOUNS_LIST
 try:
 	L1 = rus_oahpa.settings.L1
 except:
-	L1 = 'ru'  # was: sme
+	L1 = 'rus'  # was: sme
 
 try:
 	LOOKUP_TOOL = rus_oahpa.settings.LOOKUP_TOOL
@@ -860,8 +860,8 @@ class BareGame(Game):
 				if random_word.count() > 0:
 					random_form = random_word.order_by('?')[0]
 					random_word = random_form.word
-					random_loc2 = random_word.loc2
-					print random_word
+					#random_loc2 = random_word.loc2
+					#print random_word
 					no_form = False
 					break
 				elif random_word.count() == 1:
