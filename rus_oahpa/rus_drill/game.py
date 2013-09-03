@@ -1429,6 +1429,13 @@ class Dato(Klokka):
 
 class QuizzGame(Game):
 
+	def __init__(self, *args, **kwargs):
+		super(QuizzGame, self).__init__(*args, **kwargs)
+		self.init_tags()
+        
+	def init_tags(self):
+		self.settings['gametype'] = "leksa"
+
 	def get_db_info(self, db_info):
 
 		# levels = self.settings['level']

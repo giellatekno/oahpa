@@ -988,8 +988,8 @@ class LeksaSettings(OahpaSettings):
 	# suopma = forms.BooleanField(required=False,initial=0)
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
-
-	default_data = {'gametype' : 'bare', 'language' : 'sjd', 'dialogue' : 'GG',
+	
+	default_data = {'gametype' : 'leksa', 'language' : 'rus', 'dialogue' : 'GG',
 			#'syll' : [],
 			#'bisyllabic': False,
 			#'trisyllabic': False,
