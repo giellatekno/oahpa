@@ -16,12 +16,19 @@ Possible improvement in smsoahpa userinterface:
 *html-based input tool for special Skolt Saami letters, like http://victorio-old.uit.no/webdict/index_sms-nob.html
 
 =====
-Current compilation:
+The current compilation shall include the following part-lexica:
+*a_sms2X
 *cc_sms2X
 *cs_sms2X
 *det_sms2X
 *i_sms2X
 *prop_sms2X
+
+*der/der_adv_sms2X
+
+*inf/inf_det_sms2X
+*inf/inf_adv_sms2X
+
 (the other xml source files are almost ready)
 
 The current version to be compiled should include all entries tagged with:
