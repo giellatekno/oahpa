@@ -1039,8 +1039,10 @@ class LeksaQuestion(OahpaQuestion):
 
 		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
 
+        # If we want stress marks in Leksa then we have to use lemma_stressed instead of just lemma.
+		
 		if type(word) == Word:
-			self.lemma = word.lemma
+			self.lemma = word.lemma_stressed  # was: word.lemma
 		else:
 			self.lemma = word.definition
 

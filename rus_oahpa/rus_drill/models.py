@@ -219,8 +219,9 @@ class Word(models.Model):
 		>>> a.wordnob_set.create(lemma='bbq')
 	"""
 	wordid = models.CharField(max_length=200, db_index=True)
-	language = models.CharField(max_length=5, default='ru', db_index=True)
+	language = models.CharField(max_length=5, default='rus', db_index=True)
 	lemma = models.CharField(max_length=200, db_index=True)
+	lemma_stressed = models.CharField(max_length=200, db_index=True)  # added by HU
 	presentationform = models.CharField(max_length=5) # PI: what's this?
 	pos = models.CharField(max_length=12) # Accomodate larger PoS
 	stem = models.CharField(max_length=20)

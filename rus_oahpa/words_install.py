@@ -779,6 +779,7 @@ class Words(object):
 		  animate = None or stem_info[1]
 		declension = None or entry.declension
 		inflection_class = None or entry.inflection_class
+		lemma_stressed = None or entry.lemma_stressed
 
 		trisyllabic = ['3syll', '3', 'trisyllabic']
 		bisyllabic = ['2syll', '2', 'bisyllabic']
@@ -838,6 +839,7 @@ class Words(object):
 		w.animate = animate
 		w.declension = declension
 		w.inflection_class = inflection_class
+		w.lemma_stressed = lemma_stressed
 
 		w.valency = valency
 		w.frequency = frequency
