@@ -940,26 +940,26 @@ class OahpaQuestion(forms.Form):
 		forms = []
 		relaxings = []
 		#if hasattr(self, 'translang'): commented out these two lines, because otherwise relax was not working in Morfa
-		#if self.translang == 'ru':   # PI: was: sjd
-		# Relax spellings.
-		accepted_answers = [force_unicode(item) for item in accepted_answers]
-		print "accepted answers ok"
-		forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
-		print "relaxed forms: ", forms
-		# need to subtract legal answers and make an only relaxed list.
-		relaxings = [item for item in forms if force_unicode(item) not in accepted_answers]
-		# else:
-				# PI: commented out at this stage
-				# # add infinitives as possible answers
-				# if self.word.pos == 'V':
-				# 	if self.translang in infinitives_sub and infinitives_add:
-				# 		infin_s = infinitives_sub[self.translang]
-				# 		infin_a = infinitives_add[self.translang]
-				# 		lemma = re.compile(infin_s)
-				# 		infins = [lemma.sub(infin_a, force_unicode(ax)) for ax in accepted_answers]
-				# 		accepted_answers = infins + accepted_answers
+		if self.translang == 'rus': 
+			# Relax spellings.
+			accepted_answers = [force_unicode(item) for item in accepted_answers]
+			print "accepted answers ok"
+			forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
+			print "relaxed forms: ", forms
+			# need to subtract legal answers and make an only relaxed list.
+			relaxings = [item for item in forms if force_unicode(item) not in accepted_answers]
+		else:
+			# PI: commented out at this stage
+			# # add infinitives as possible answers
+			if self.word.pos == 'V':
+				if self.translang in infinitives_sub and infinitives_add:
+					infin_s = infinitives_sub[self.translang]
+				        infin_a = infinitives_add[self.translang]
+				        lemma = re.compile(infin_s)
+				        infins = [lemma.sub(infin_a, force_unicode(ax)) for ax in accepted_answers]
+				        accepted_answers = infins + accepted_answers
 
-				# forms = accepted_answers
+                forms = accepted_answers
 
 		self.correct_anslist = [force_unicode(item) for item in accepted_answers] + [force_unicode(f) for f in forms]
 		self.relaxings = relaxings
@@ -1039,7 +1039,7 @@ class LeksaQuestion(OahpaQuestion):
 
 		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
 
-        # If we want stress marks in Leksa then we have to use lemma_stressed instead of just lemma.
+        # If we want stress marks in Leksa then we have to use lemma_stressed instead of lemma.
 		
 		if type(word) == Word:
 			self.lemma = word.lemma_stressed  # was: word.lemma
