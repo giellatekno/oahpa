@@ -773,7 +773,7 @@ class Words(object):
 		gender = ""
 		animate = ""
 		print >> sys.stdout, 'lemma: %s' % lemma
-		if pos == 'N':
+		if pos == 'N' and mainlang == 'rus':  # Stem info should be obtained for Russian words only, not the translations. 'mainlang' is the value of the xml:lang attribute in the xml file.
 		  stem_info = linginfo.get_stem_info(force_unicode(lemma).encode('utf-8')) # added by Heli, not sure if it works like this
 		  gender = None or stem_info[0]
 		  animate = None or stem_info[1]

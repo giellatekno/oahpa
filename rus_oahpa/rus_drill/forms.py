@@ -345,11 +345,11 @@ VASTAS_NR_OF_TASKWORDS = (
 
 TRANS_CHOICES = (
 	('rusnob', _('Russian to Norwegian')),
-	#('nobrus', _('Norwegian to Russian')),
+	('nobrus', _('Norwegian to Russian')),
 	('rusdan', _('Russian to Danish')),
-	#('danrus', _('Danish to Russian')),
+	('danrus', _('Danish to Russian')),
 	('ruseng', _('Russian  to English')),
-	#('engrus', _('English to Russian')),
+	('engrus', _('English to Russian')),
 )
 
 NUMLANGUAGE_CHOICES = (
@@ -1025,6 +1025,7 @@ class LeksaQuestion(OahpaQuestion):
 	def __init__(self, tcomms, stat_pref, preferred, possible, transtype, word, correct, translations, question, userans_val, correct_val, *args, **kwargs):
 		lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
 		self.translang = transtype[-3::]
+		self.sourcelang = transtype[0:3]
 		self.word = word
 		kwargs['correct_val'] = correct_val
 		super(LeksaQuestion, self).__init__(*args, **kwargs)
@@ -1041,8 +1042,11 @@ class LeksaQuestion(OahpaQuestion):
 
         # If we want stress marks in Leksa then we have to use lemma_stressed instead of lemma.
 		
-		if type(word) == Word:
-			self.lemma = word.lemma_stressed  # was: word.lemma
+		if type(word) == Word: 
+                    if self.sourcelang == 'rus':
+                        self.lemma = word.lemma_stressed  # for Russian the words will be presented with stress marks
+                    else:
+                        self.lemma = word.lemma # for other languages 'lemma_stressed' does not exist
 		else:
 			self.lemma = word.definition
 
