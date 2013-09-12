@@ -11,13 +11,16 @@ ped/oahpa/locale/en/LC_MESSAGES/django.po
 The English file is needed for the names and strings that contain
 Unicode. The English texts in the html-pages should be ascii.
 
+
 Whenever the texts in the page are updated, the translations need to be checked and updated as well. 
+
 {{{
 cd ped/oahpa
 python manage.py makemessages -a
 svn ci -m "new generated files" locale/fi/LC_MESSAGES/django.po
    ... etc. for the other files. 
 }}}
+
 
 After that, work on the respective django.po files, and check them
 in again. Search for word "#fuzzy" from django.po. It means that the
@@ -36,7 +39,10 @@ python manage.py compilemessages
 If you are not allowed to compile the messages (the machine requires
 sudo rights), remove the {{ *.mo}} files:
 
+{{{
 rm -f locale/*/LC_MESSAGES/django.mo
+}}}
+
 
 Thereafter, repeate the compile message.
 
@@ -47,8 +53,9 @@ sudo service univ_oahpa restart
 }}}
 
 This is an alias, to be written anywhere, for the command 
-''sudo /home/univ_oahpa/univ_oahpa/run_fastcgi.sh', and correspondingly for smaoahpa, etc.
+''sudo /home/univ_oahpa/univ_oahpa/run_fastcgi.sh'', and correspondingly for smaoahpa, etc.
 Note that server maintenance and restart is documented in the document [httpdserver.jspwiki|httpdserver.html]
+
 
 !!!New localisations
 
@@ -84,7 +91,7 @@ Then copy one of the existing folders to a new folder with the language code for
 }}}
 
 !settings.py 
- 
+
 The project's settings.py file must be modified to include the localisation language, so that administrative
 commands will work. 
 
@@ -104,3 +111,6 @@ the application.
 !!!Official documentation
 
 [Django localisation documentation|https://docs.djangoproject.com/en/dev/topics/i18n/localization/]
+
+
+
