@@ -1,0 +1,156 @@
+!!! Møte 13.09.13
+
+Til stades: Heli, Lene, Trond.
+
+
+!!!Saker: 
+* Heli
+* Werti
+* Neste møte
+
+
+
+!!!Heli
+Heli skriv timeliste som for rusoahpa. 40 % av 2 mnd er 130 timar.
+
+!!!Werti
+
+!!Status quo
+
+* Heli har brukt Lene sin dokumentasjon ... som bør endrast.
+* Funksjonar: Det er mogleg å leite etter subjekt, objekt, adverbial
+* Det er mogleg å leite etter substantiv i sg og pl
+* Dei syntaktiske funksjonane går fortare, fordi programmet 
+  ikkje genererer distractors. Sg / Pl er like seine som resten av programmet.
+* Løysinga å laga ferdiglagra sider har Heli ikkje implementert
+
+Problem med underscore:
+
+{{{
+"<130_000>"
+	"130_000" Num Sg Acc @-F<OBJ 
+
+
+Fel:
+ ja m&aacute;ksit 130 <span id="WERTi-span-OBJ-3" class="wertiviewtoken  wertiviewObject " style="display: inline; background-image: none; padding: 0px; margin: 0px; color: inherit; font: inherit; font-size: 100%; position: relative; top: 0px; left: 0px;">000</span> kruvdnosaš
+
+Rätt:
+ ja m&aacute;ksit <span id="WERTi-span-OBJ-3" class="wertiviewtoken  wertiviewObject " style="display: inline; background-image: none; padding: 0px; margin: 0px; color: inherit; font: inherit; font-size: 100%; position: relative; top: 0px; left: 0px;">130 000</span> kruvdnosaš
+         
+
+echo 130 000 | preprocess | usme
+130 000	130 000+Num+Sg+Nom
+
+echo 130 000 | preprocess | usme |lookup2cg
+"<130_000>"
+	 "130_000" Num Sg Nom
+
+echo "muhtun muddui" |  usme | lookup2cg 
+0%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>100%
+"<muhtun_muddui>"
+	 "muhtun_muddui" MWE Adv
+
+
+"<NRK>"
+	"NRK" N ACR Sg Acc @OBJ> 
+"<Sámi>"
+	"Sápmi" N Prop Plc Sg Gen @>N 
+"<váldodoaimmaheaddji>"
+	"váldodoaimmaheaddji" Hum N NomAg Sg Nom @>N 
+"<Nils>"
+	"Nils" N Prop Mal Attr @>N 
+"<Johan>"
+	"Johan" N Prop Mal Attr @>N 
+"<Heatta>"
+	"Heatta" N Prop Sur Sg Nom @SUBJ>
+	
+	
+	"<gáfe>"
+	"gáffe" Plant N Sg Acc @<OBJ 
+	"gáfe" Plant N Sg Acc @<OBJ 
+
+"<Murjen>"
+	"murjet" V IV Ind Prs Sg1 @+FMAINV 
+	"muorjat" V IV Ind Prt Sg1 @+FMAINV
+}}}
+
+!!Forbedringer
+
+!Ved ambiguitet:
+* Colorize og click: ta med første analyse
+* Multiple choice og pratise: ikke ta med ordet
+
+!Subjekt - bare kjerneordet i nominativ:
+* Nom +  @SUBJ @<SUBJ @SUBJ> @-FSUBJ>
+
+
+!Objekt - bare kjerneordet i akkusativ :
+* Acc +  @OBJ @<OBJ @OBJ> @-FOBJ> @-F<OBJ @OBJ>SPRED @SPRED<OBJ @SUBJ<OBJ>
+{{{
+"<dievddu>"
+	"dievdu" N Sg Acc @-FSUBJ> 
+
+	gt/sme/src
+	
+}}}
+
+!TODO  for Heli:	
+* Endre subj og obj
+* Konjunksjonar berre farging og klikk, ikkje practise eller multiple choice
+* løse 130_000 problemet
+
+! Nyimplementering
+
+* Godkjenning av varianter
+* Ferdiglagring av sider som oppgaver
+* Der og Qst skal være med i colorize og click
+
+
+!!Grensesnitt og lokalisering
+
+Først grensesnitt, så lokalisering
+
+!!Grensesnitt
+
+Inspirert av [Oahpa|http://oahpa.no/davvi/morfac/].
+
+{{{
++---------------------------------------------------+
+|                                                   |
+|   WERTI – jobb med aut. tekst OAHPA  KURSA        |
+|--------------------------------------------       |
+|(Helper)    |  oppgavetypevalg             |       |
+|            | -------------------------    |       |
+|Teaksta     |                     +------+ |       |
+|            |   tekst             |expl  | |       |
+|Adverbial   |   tekst             +------+ |       |
+|Concjunctio |   tekst                      |       |
+|venstremen1 |   tekst                      |       |
+|venstremen1 |                              |       |
+|            |                              |       |
+| ---------- |    url                       |       |
+| Resurssat  |    ------------------        |       |
+| etc.       |                              |       |
+|            |                              |       |
++---------------------------------------------------+
+}}}
+
+!Grafikk
+Det bør minne brukaren om Oahpa, slik at det gjev ei kjensle
+av at du er på same side.
+
+Logo: 
+* Hjelparen? -- vi prøver med det.
+* Ein ny logo ... eit bunke med ark for Teaksta?
+
+!!Lokalisering
+
+Etterpå.
+
+
+!!Neste møte
+
+I Tromsø, veke 40.
+
+
+
