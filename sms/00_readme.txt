@@ -26,6 +26,7 @@ The current compilation shall include the following part-lexica:
 *i_sms2X
 *num_sms2X
 *pcle_sms2X
+*pro_sms2X
 *prop_sms2X
 
 *der/der_adv_sms2X
