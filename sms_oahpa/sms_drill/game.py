@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from smsoahpa.sms_drill.models import *
-from smsoahpa.sms_drill.forms import *
+from sms_oahpa.sms_drill.models import *
+from sms_oahpa.sms_drill.forms import *
 
-from smsoahpa.conf.tools import switch_language_code
+from sms_oahpa.conf.tools import switch_language_code
 
 from django.db.models import Q, Count
 from django.http import HttpResponse, Http404
@@ -15,7 +15,7 @@ import os
 import re
 import itertools
 
-import smsoahpa.settings
+import sms_oahpa.settings
 
 # DEBUG = open('/dev/ttys001', 'w')
 
@@ -23,23 +23,23 @@ from random import choice
 from .forms import PRONOUNS_LIST
 
 try:
-	L1 = smsoahpa.settings.L1
+	L1 = sms_oahpa.settings.L1
 except:
 	L1 = 'sms'  # was: sme
 
 try:
-	LOOKUP_TOOL = smsoahpa.settings.LOOKUP_TOOL
+	LOOKUP_TOOL = sms_oahpa.settings.LOOKUP_TOOL
 except:
 	LOOKUP_TOOL = 'lookup'
 
 
 try:
-	FST_DIRECTORY = smsoahpa.settings.FST_DIRECTORY
+	FST_DIRECTORY = sms_oahpa.settings.FST_DIRECTORY
 except:
 	FST_DIRECTORY = False
 
 try:
-	DEFAULT_DIALECT = smsoahpa.settings.DEFAULT_DIALECT
+	DEFAULT_DIALECT = sms_oahpa.settings.DEFAULT_DIALECT
 except:
 	DEFAULT_DIALECT = None
 

@@ -84,7 +84,7 @@ class trackGrade(object):
 		"""
 
 		def decorated_function(*args, **kwargs):
-			from smsoahpa.courses.views import trackGrade
+			from sms_oahpa.courses.views import trackGrade
 
 			# grab the request, and execute the view function as normal
 			request = args[0]
