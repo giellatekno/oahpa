@@ -2,7 +2,7 @@ from django.conf.urls.defaults import patterns, url, include, handler404, handle
 # from django.conf import settings
 
 urlpatterns = patterns('sms_oahpa.sms_drill.views',
-	# (r'^morfa/substantiv/$', 'smaoahpa.smadrill.views.morfa_game', {'pos': 'N'}),
+	# (r'^morfa/substantiv/$', 'sms_oahpa.sms_drill.views.morfa_game', {'pos': 'N'}),
 	url(r'^morfas/der/$', 'morfa_game', {'pos': 'Der'}, name="morfa_s.der"),
 	url(r'^morfas/v/$', 'morfa_game', {'pos': 'V'}, name="morfa_s.verb"),
 	url(r'^morfas/s/$', 'morfa_game', {'pos': 'N'}),
@@ -36,9 +36,9 @@ urlpatterns = patterns('sms_oahpa.sms_drill.views',
 )
 
 # # These are for me testing things, otherwise ignore.
-# urlpatterns += patterns('smaoahpa.smadrill.new_views',
-# 	# (r'^new_morfa/(?P<pos>V)/$', 'smaoahpa.smadrill.new_views.Morfa'),
-# 	# (r'^new_morfa/(?P<pos>N|S)/$', 'smaoahpa.smadrill.new_views.Morfa'),
+# urlpatterns += patterns('sms_oahpa.sms_drill.new_views',
+# 	# (r'^new_morfa/(?P<pos>V)/$', 'sms_oahpa.sms_drill.new_views.Morfa'),
+# 	# (r'^new_morfa/(?P<pos>N|S)/$', 'sms_oahpa.sms_drill.new_views.Morfa'),
 # 	# (r'^new_morfa/V/$', 'Game', {'gametype': 'MORFAV'}),
 # 	# (r'^new_morfa/S/$', 'Game', {'gametype': 'MORFAS'}),
 # 	# (r'^new_leksa/$', 'Game', {'gametype': 'LEKSA'}),

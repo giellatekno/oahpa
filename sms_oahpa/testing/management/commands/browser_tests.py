@@ -10,7 +10,7 @@ from sms_drill.models import Tag
 
 import requests
 
-HOST = 'http://oahpa.uit.no'
+HOST = 'http://oahpa.no'
 
 def test_morfas():
 	""" Tests here make sure that we at least get a question set for all
