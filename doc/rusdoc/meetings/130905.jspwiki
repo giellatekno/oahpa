@@ -1,0 +1,126 @@
+
+
+Meeting rus_oahpa 5.9. 2013
+
+
+Present: ''Robert, Heli, Laura, Tore, Trond''
+
+!!!Agenda
+
+
+* Status quo
+* Leksa
+* Bugzilla
+* Next meeting
+
+!!!Status quo
+
+
+!!Leksa status
+
+Leksa is online, in one direction, at [http://testing.oahpa.no/rusoahpa/leksa]
+
+More translations can be added at lib.
+
+Turning direction: Cip has been added Heli some scripts, that she is
+improving, so a testing for X2rus is forthcoming.
+
+Trond has added Norwegian (and a couple of English) synonyms.
+
+$GTHOME/ped/inc/MiP
+
+Add synomyms?
+
+
+!!Database generation
+
+A list of words not being generated have been generated.
+Heli gave them to Robert.
+
+The database has been reinstalled. POS changes since last meeting 
+are thus implemented, the Adv-as-N issue is thus resolved.
+
+!! Linguistics improvement
+
+Robert has worked on typos and other issues in the apertium fst,
+with data from Heli. We will discuss with Francis later on.
+
+The automated way to generate everything.
+
+Testing procedures
+
+* expand the whole lexicon and search everything
+* make a list of lemma + POS and send to the generator
+
+Robert and Trond have been looking at that.
+
+!! One level vs. two levels
+
+Lexc
+Meeting
+
+
+!!!Leksa
+
+Sveta was excited, but wanted us to turn it around.
+
+
+!!Leksa X2rus
+
+
+Time plan: Beginning of next week (optimistic).
+
+Note: the same treatment of stress as for Morfa.
+
+As soon as Leksa is up
+
+
+Handling perfectivity in Leksa:
+
+nob2rus should contain the following correct answers:
+
+* читать/прочитать (stat="pref")
+* читать
+* прочитать
+* прочитать/читать
+
+
+!!!Apertium format vs. hfst format (one fst vs two fsts)
+
+We consider moving to a twolc + lexc format.
+
+PRO:
+
+* Scalability
+* Readability of the code
+
+Laura to contact Francis for a discussion.
+
+ped/rus/inc/MiPListAlpha_corrected.xml
+
+
+
+!!!Bugzilla
+
+* ''агенство / агенТство''
+* ''суда - сюда''
+* ''прав'' = ''ты прав''
+
+30 words are missing, and can be added. They are not
+recognised by the fst.
+
+Heli will filter out whatever is not generated.
+Errouneous form should thus be corrected, missing forms may
+
+
+!!!Next meeting
+
+Thursday 19. sept at 8.30
+
+Topics including:
+
+* Leksa X2rus
+* fst: hfst vs. apertium format
+
+
+
