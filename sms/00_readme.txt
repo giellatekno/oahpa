@@ -15,7 +15,7 @@ Bugs in current smsoahpa:
 *Select the language pair: "Skolt Sámi to Finnish" occurs twice, but "Skolt Sámi to English" is missing
 
 Possible improvement in smsoahpa userinterface:
-*html-based input tool for special Skolt Saami letters, like http://victorio-old.uit.no/webdict/index_sms-nob.html
+*html-based input tool for special Skolt Saami letters, like we had earlier in the webdicts for sjd and sms
 
 =====
 The current compilation shall include the following part-lexica:
@@ -30,22 +30,20 @@ The current compilation shall include the following part-lexica:
 *pcle_sms2X
 *pro_sms2X
 *prop_sms2X
-
 *der/der_adv_sms2X
-
 *inf/inf_det_sms2X
 *inf/inf_adv_sms2X
+(the nouns will be ready tomorrow morning)
 
-(the other xml source files are almost ready)
+The other xml source files in the source directory can be ignored for now
 
 The current version to be compiled should include all entries tagged with:
-<usage oahpa="yes"/>
-
-These include:
 * book="kurss" (schoolbook in Finnish, Russian and Norwegian versions, see the Norwegian version here: http://omnibus.uni-freiburg.de/~mr5496/downl/Kurss_nob.pdf)
 * book="200" (~200 words)
 * book="100" (~100 words)
-(a third book=lookkamkerjj is not ready for oahpa yet and should be ignored for now)
+But please exclude all words tagged with <usage oahpa="excl"/>
+
+=====
 
 Also a "place name game" could perhaps be included in LEKSA (from src dictionary files: prop_sms2X.xml with the tag type="place")
 
