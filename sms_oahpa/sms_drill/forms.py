@@ -523,9 +523,10 @@ def relax(strict):
 	relax_pairs = {
 		# key: value
 		# key is accepted for value
-        u'ӯ': u'ӯ',
-        u'ӣ': u'ӣ',
-        # u'р': u'ҏ' do we want spellrelax here? р vs. ҏ are neither orthographic nor typographic variants 
+        u'′': u'ˊ', # 2032: 02ca
+        u'´': u'ˊ', # 00b4: 02ca
+        u'´': u'ˊ', # 02b9: 02ca
+        u'’': u'ʼ', # 2019: 02bc
 	}
 	
 	# Create an iterator. We want to generate as many possibilities as 
