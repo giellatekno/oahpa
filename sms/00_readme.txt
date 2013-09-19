@@ -10,12 +10,16 @@ Currently, our preliminary version of Oahpa!-nuõrti includes two "books" (which
 * book="200" (~200 words)
 The third book to be included now is:
 * book="kurss"
+ ==> cip: unclear what to be included: only the two books or all three?
 
 Bugs in current smsoahpa:
 *Select the language pair: "Skolt Sámi to Finnish" occurs twice, but "Skolt Sámi to English" is missing
+ cip: this is not true, at least not according to my testing. Please give some docu in form of screen shots
+      to see when it is the case.
 
 Possible improvement in smsoahpa userinterface:
 *html-based input tool for special Skolt Saami letters, like we had earlier in the webdicts for sjd and sms
+ ==> cip: not for Inari 
 
 =====
 The current compilation shall include the following part-lexica:
@@ -34,18 +38,22 @@ The current compilation shall include the following part-lexica:
 *inf/inf_det_sms2X
 *inf/inf_adv_sms2X
 (the nouns will be ready tomorrow morning)
+ ==> cip: tomorrow... hehehe, yesterday was once also a tomorrow! Please be more precise!
 
-The other xml source files in the source directory can be ignored for now
+The other xml source files in the source directory can be ignored for now.
+ ==> as you wish!
 
 The current version to be compiled should include all entries tagged with:
 * book="kurss" (schoolbook in Finnish, Russian and Norwegian versions, see the Norwegian version here: http://omnibus.uni-freiburg.de/~mr5496/downl/Kurss_nob.pdf)
 * book="200" (~200 words)
 * book="100" (~100 words)
 But please exclude all words tagged with <usage oahpa="excl"/>
+ ==> cip: aha, now we talk busines... but why put this info twice?
 
 =====
 
 Also a "place name game" could perhaps be included in LEKSA (from src dictionary files: prop_sms2X.xml with the tag type="place")
+ ==> if time permits
 
 Semantic sets are the same as for the last version (defined in ~/meta-data):
 * HUMAN "Menneske"
@@ -90,7 +98,7 @@ The usual cycle:
 6. filter away the entries without stat="pref"
    sms_filter_merged.xsl inFile=.....
 
- ==> re-build the smsoahpa db on victorio
+ ==> re-build the smsoahpa db on the server
 
 =====
 Micha (old note):
@@ -201,6 +209,6 @@ rus2sms
 
 =====
 
-To correct:
+To correct 20130920:
  - ordinals >>> string2numeral: put the correct fst, the current one is the same as numeral2string
    test answers in ordinals >>> numeral2string: sms-inum.fst does not exist.
