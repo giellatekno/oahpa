@@ -203,5 +203,6 @@ rus2sms
 
 =====
 
-
+To correct:
+ - ordinals >>> string2numeral: put the correct fst, the current one is the same as numeral2string
 
