@@ -14,12 +14,7 @@ Bugs in current smsoahpa:
 
 Possible improvement in smsoahpa userinterface:
 *html-based input tool for special Skolt Saami letters, like we had earlier in the webdicts for sjd and sms
- ==> cip: not for Inari 
- ==> trond: perhaps not for sms as well, since we have a spellrelax 
- ==> function for the 2+1 accent letter pairs in use 
- ==> (sms_drill/forms.py)
-cip2trond: the input tool for special Skolt Saami letters is just for users that can't find these letters on they keyboard. This has little to do with spellrelax!
-micha2trond: yes, it has nothing to do with spellrelax; just a help for character input
+ ==> cip: not before Inari 
 
 The different book names need to be included into the menue:
 Menue for book names:
@@ -46,18 +41,17 @@ The current compilation shall include the following part-lexica:
 * der/der_adv_sms2X
 * inf/inf_det_sms2X
 * inf/inf_adv_sms2X
- ==> cip: tomorrow... hehehe, yesterday was once also a tomorrow! Please be more precise!
- micha2cip: now, they are ready. I'm sorry for the delay (I am in Murmansk)
-
-The other xml source files in the source directory can be ignored for now.
- ==> as you wish!
 
 The current version to be compiled should include all entries tagged with:
 * book="kurss" (schoolbook in Finnish, Russian and Norwegian versions, see the Norwegian version here: http://omnibus.uni-freiburg.de/~mr5496/downl/Kurss_nob.pdf)
 * book="200" (~200 words)
 * book="100" (~100 words)
 But please exclude all words tagged with <usage oahpa="excl"/>
- ==> cip: aha, now we talk busines... but why put this info twice?
+ ==> cip: I will turn all these tags into attributes, at the moment it is inconsistent.
+
+src/abbr_sms2X.xml:         <xg oahpa="excl" kurss="no">
+src/n_sms2X.xml:         <usage oahpa="excl"/>
+src/n_sms2X.xml:         <tg xml:lang="rus" oahpa="excl">
 
 =====
 
