@@ -196,11 +196,10 @@ rus2sms
 To correct 20130920:
  - ordinals >>> string2numeral: put the correct fst, the current one is the same as numeral2string
    test answers in ordinals >>> numeral2string: sms-inum.fst does not exist.
+   Trond: Done.
+   TODO: Look at the makefile procedure that did not make it automatially
+   Trond, Sjur: Done.
    
-   Trond: I inverted a newcompiled sms-num.fst and inverted it.
-   TODO: Look at the makefile procedure that did not make it automatially, we may have some
-         tag inconsistencies here.
-
 =====
  - some comments on the new sms lexical data that has to be used for oahpa:
 
