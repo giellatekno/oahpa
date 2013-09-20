@@ -224,3 +224,32 @@ To correct 20130920:
    Trond: I inverted a newcompiled sms-num.fst and inverted it.
    TODO: Look at the makefile procedure that did not make it automatially, we may have some
          tag inconsistencies here.
+
+=====
+ - some comments on the new sms lexical data that has to be used for oahpa:
+
+ 1. inconsistencies in structures:
+
+    (a)
+         <tg xml:lang="sju">
+            <t pos="a" pred="jårˈbada">jårbs</t>
+            <t pos="a">mulˈlòda</t>
+         </tg>
+ 
+    (b)
+         <tg xml:lang="eng" style="obs" oahpa="excl">
+            <t pos="adv">whither</t>
+         </tg>
+         <tg xml:lang="eng" oahpa="pref">
+            <t pos="adv">where</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="mwe_adv">to where</t>
+         </tg>
+         <tg xml:lang="fin" oahpa="pref">
+            <t pos="adv">mihin</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="adv">minne</t>
+         </tg>
+
