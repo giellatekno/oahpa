@@ -943,12 +943,11 @@ class OahpaQuestion(forms.Form):
 		if self.translang == 'rus': 
 			# Relax spellings.
 			accepted_answers = [force_unicode(item) for item in accepted_answers]
-			print "accepted answers ok"
 			forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
-			print "relaxed forms: ", forms
+			#print "relaxed forms: ", forms
 			# need to subtract legal answers and make an only relaxed list.
 			relaxings = [item for item in forms if force_unicode(item) not in accepted_answers]
-		else:
+		elif self.gametype == 'leksa': # this applies only to Leksa
 			# PI: commented out at this stage
 			# # add infinitives as possible answers
 			if self.word.pos == 'V':
@@ -959,9 +958,10 @@ class OahpaQuestion(forms.Form):
 				        infins = [lemma.sub(infin_a, force_unicode(ax)) for ax in accepted_answers]
 				        accepted_answers = infins + accepted_answers
 
-                forms = accepted_answers
+                #forms = accepted_answers  # This is wrong: the relaxed pairs are overwritten!
 
 		self.correct_anslist = [force_unicode(item) for item in accepted_answers] + [force_unicode(f) for f in forms]
+		print "correct_anslist:",self.correct_anslist
 		self.relaxings = relaxings
 
 		#def generate_fields(self,answer_size, maxlength):
@@ -1027,6 +1027,7 @@ class LeksaQuestion(OahpaQuestion):
 		self.translang = transtype[-3::]
 		self.sourcelang = transtype[0:3]
 		self.word = word
+		self.gametype = 'leksa'
 		kwargs['correct_val'] = correct_val
 		super(LeksaQuestion, self).__init__(*args, **kwargs)
 
@@ -1069,12 +1070,12 @@ class LeksaQuestion(OahpaQuestion):
 		if correct_val:
 			if correct_val == "correct":
 				self.error = "correct"
-			# relax
-			if userans_val in self.relaxings:
+			# always accept relaxed spelling
+			#if userans_val in self.relaxings:
 				self.is_relaxed = "relaxed"
 				self.strict = 'Strict form'
-			else:
-				self.is_relaxed = ""
+			#else:
+			#	self.is_relaxed = ""
 
 		if stat_pref:
 			self.correct_ans = stat_pref
@@ -1177,7 +1178,8 @@ class MorfaQuestion(OahpaQuestion):
 
 		lemma_widget = forms.HiddenInput(attrs={'value': word.id})
 		tag_widget = forms.HiddenInput(attrs={'value': tag.id})
-		self.translang = 'sme'
+		self.translang = 'rus'
+		self.gametype = 'morfa'
 		kwargs['correct_val'] = correct_val
 		super(MorfaQuestion, self).__init__(*args, **kwargs)
 
