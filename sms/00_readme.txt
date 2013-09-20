@@ -3,12 +3,11 @@ This directory contains material relevant to Oahpa!-nuõrti (smsoahpa). The lexi
 Documentation for smsoahpa at http://victorio.uit.no/cgi-bin/wiki/index.php/Smsoahpa (to be written)
 
 =====
-Possible improvement in smsoahpa userinterface:
-*html-based input tool for special Skolt Saami letters, like we had earlier in the webdicts for sjd and sms
- ==> cip: not before Inari 
- 
 Link to the dictionary
 ==> perhaps better to saan.oahpa.no?
+
+Spellrelex
+beside the apostrophes (already inluded in spellrelax) we need spellrelax for Skolt Saami ẹ ~ e (the first one always to be shown, the second one to be accepted)
 
 The different book names need to be included into the menue:
 Menue for book names:
@@ -18,7 +17,7 @@ Menue for book names:
 4. "100"
 
 =====
-The current compilation shall include the following part-lexica:
+The current compilation shall include the following part-lexica (other part-lexica in ~/src can be ignored for now):
 * a_sms2X
 * adp_sms2X
 * adv_sms2X
@@ -51,9 +50,6 @@ src/prop_sms2X.xml:         <usage oahpa="yes"/>
 
 =====
 
-Also a "place name game" could perhaps be included in LEKSA (from src dictionary files: prop_sms2X.xml with the tag type="place")
- ==> not before Inari
-
 Semantic sets are the same as for the last version (defined in ~/meta-data):
 * HUMAN "Menneske"
 * SPACE "Rom"
@@ -70,10 +66,6 @@ Two more sets
 * LANG "Språk"
 * CLOTH "Klær"
 should now have enough lemmas to be included
-
-=====
-Future compilations (noch nicht zuende gedacht:): 
-*"termm" - different term(inological) lists, which are not completely included in the textbook or the basic vocabulary lists.
 
 =====
 Preparing/Updating sms data:
@@ -96,25 +88,21 @@ The usual cycle:
 
  ==> re-build the smsoahpa db on the server
 
-=====
-Micha (old note):
+======
+FUTURE
+======
+Future compilations (perhaps): 
+* spellrelax for Russian (ё ~ е)
 
-1. Overwrite (delete) the current Oahpa!-nuōrti (which was only a preliminary version of book="100").
+* a "place name game" could perhaps be included in LEKSA (from src dictionary files: prop_sms2X.xml with the tag type="place"/class="place" (if not <mg excluded="oahpa").
+ ==> not before Inari
 
-2. For LEKSA use only entries tagged as <book name="200"> in sms2X (for which <book name="100"> is a subset), but exclude <mg>s of entries tagged as <mg oahpa="excl">.
+* Possible improvement in smsoahpa userinterface:
+html-based input tool for special Skolt Saami letters, like we had earlier in the webdicts for sjd and sms
+ ==> cip: not before Inari 
 
-3. For the Placename game in LEKSA use entries tagged as <l pos="pn" class="place"> (if not <mg oahpa="excl">).
-
-6. dis/preferred variants in <l> and <t>
-* in <l> I mark only dispreferred variants (oahpa="dispref"), i.e. a translation variant which is accepted as answer in the reversed x-sms LEKSA game without being shown as the right answer
-* in <t> I mark only the preferred variant (oahpa="pref"), i.e. a translation variant which is always shown as the right answer in the sms-x LEKSA game
-* oahpa="excl" in <t> marks variants which are excluded from the LEKSA game
-
-A few more conventions:
-* Accepted but not recommended entries are
-** dialectal variants of sms lemmata (like <lv variant="dial" source="1991">kueˊhtt</lv>)
-** diminutive and attributive derivations of sms-lemmata (like _piânˈnǥaž_ tagged as <der gloss="dim">piânˈnǥaž</der> or _jorbb_ tagged as <der gloss="attr">jorbb</der>)
-** inflected forms of translations (like _длинен_ tagged as <t pos="a:attr" pred="длинен">длинный</t> or _tørt, tørre_ tagged as <t pos="a:utr" n="tørt" pl="tørre">tørr</t>)
+*"termm" - different term(inological) lists, which are not completely included in the textbook or the basic vocabulary lists.
+ == not before christmas
 
 =====
 Cip (old note):
