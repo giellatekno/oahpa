@@ -39,15 +39,17 @@ The current compilation shall include the following part-lexica:
 * cs_sms2X
 * det_sms2X
 * i_sms2X
+* n_sms2X
 * num_sms2X
 * pcle_sms2X
 * pro_sms2X
 * prop_sms2X
+* v_sms2X
 * der/der_adv_sms2X
 * inf/inf_det_sms2X
 * inf/inf_adv_sms2X
-(the nouns will be ready tomorrow morning)
  ==> cip: tomorrow... hehehe, yesterday was once also a tomorrow! Please be more precise!
+ micha2cip: now, they are ready. I'm sorry for the delay (I am in Murmansk)
 
 The other xml source files in the source directory can be ignored for now.
  ==> as you wish!
