@@ -27,8 +27,8 @@ Possible improvement in smsoahpa userinterface:
  ==> function for the 2+1 accent letter pairs in use 
  ==> (sms_drill/forms.py)
 
-cip2trond: the input tool for special Skolt Saami letters is just for users that cann't find these letters
-on they keyboard. This has little to do with spellrelax!
+cip2trond: the input tool for special Skolt Saami letters is just for users that can't find these letters on they keyboard. This has little to do with spellrelax!
+micha2trond: yes, it has nothing to do with spellrelax; just a help for character input
 
 =====
 The current compilation shall include the following part-lexica:
