@@ -22,9 +22,11 @@ cip2trond: the input tool for special Skolt Saami letters is just for users that
 micha2trond: yes, it has nothing to do with spellrelax; just a help for character input
 
 The different book names need to be included into the menue:
-* book="100"
-* book="200"
-* book="kurss"
+Menue for book names:
+1. "all"
+2. "Kurss"
+3. "200"
+4. "100"
 
 =====
 The current compilation shall include the following part-lexica:
@@ -74,13 +76,10 @@ Semantic sets are the same as for the last version (defined in ~/meta-data):
 * BOT "Plant"
 * FOOD "Mat og drikk"
 * ENVIR "Verld"
-For now we use only these supersets. Two sets (LANG "Språk" and CLOTH "Klær") are still excluded because we do not have enough entries there yet.
-
-Menue for book names:
-1. "all"
-2. "Kurss"
-3. "200"
-4. "100"
+Two more sets
+* LANG "Språk"
+* CLOTH "Klær"
+should now have enough lemmas to be included
 
 =====
 Future compilations (noch nicht zuende gedacht:): 
