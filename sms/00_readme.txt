@@ -18,7 +18,7 @@ Bugs in current smsoahpa:
  cip: this is not true, at least not according to my testing. Please give some docu in form of screen shots to see when it is the case.
  trond: I fixed this bug as of r80976, but did not know this readme
         file was to be notified. (cf. sms_oahpa/locale) 
- 
+ micha2cip/trond: it works now, but the menue is still wrong; I can look for this and fix it
 
 Possible improvement in smsoahpa userinterface:
 *html-based input tool for special Skolt Saami letters, like we had earlier in the webdicts for sjd and sms
