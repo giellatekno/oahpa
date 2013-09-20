@@ -11,6 +11,7 @@ Currently, our preliminary version of Oahpa!-nuõrti includes two "books" (which
 The third book to be included now is:
 * book="kurss"
  ==> cip: unclear what to be included: only the two books or all three?
+ micha2cip:all three
 
 Bugs in current smsoahpa:
 *Select the language pair: "Skolt Sámi to Finnish" occurs twice, but "Skolt Sámi to English" is missing
