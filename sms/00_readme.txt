@@ -15,6 +15,9 @@ Bugs in current smsoahpa:
 Possible improvement in smsoahpa userinterface:
 *html-based input tool for special Skolt Saami letters, like we had earlier in the webdicts for sjd and sms
  ==> cip: not before Inari 
+ 
+Link to the dictionry
+==> perhaps better to saan.oahpa.no?
 
 The different book names need to be included into the menue:
 Menue for book names:
