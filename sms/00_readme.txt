@@ -247,3 +247,5 @@ To correct 20130920:
             <t pos="adv">minne</t>
          </tg>
 
+=================
+ - TODO: update localisation stuff
