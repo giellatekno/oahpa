@@ -3,20 +3,11 @@ This directory contains material relevant to Oahpa!-nuõrti (smsoahpa). The lexi
 Documentation for smsoahpa at http://victorio.uit.no/cgi-bin/wiki/index.php/Smsoahpa (to be written)
 
 =====
-State of the art:
-
-Bugs in current smsoahpa:
-*Select the language pair: "Skolt Sámi to Finnish" occurs twice, but "Skolt Sámi to English" is missing
- cip: this is not true, at least not according to my testing. Please give some docu in form of screen shots to see when it is the case.
- trond: I fixed this bug as of r80976, but did not know this readme
-        file was to be notified. (cf. sms_oahpa/locale) 
- micha2cip/trond: it works now, but the menue is still wrong; I can look for this and fix it
-
 Possible improvement in smsoahpa userinterface:
 *html-based input tool for special Skolt Saami letters, like we had earlier in the webdicts for sjd and sms
  ==> cip: not before Inari 
  
-Link to the dictionry
+Link to the dictionary
 ==> perhaps better to saan.oahpa.no?
 
 The different book names need to be included into the menue:
