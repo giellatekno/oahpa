@@ -14,12 +14,17 @@ The third book to be included now is:
 
 Bugs in current smsoahpa:
 *Select the language pair: "Skolt Sámi to Finnish" occurs twice, but "Skolt Sámi to English" is missing
- cip: this is not true, at least not according to my testing. Please give some docu in form of screen shots
-      to see when it is the case.
+ cip: this is not true, at least not according to my testing. Please give some docu in form of screen shots to see when it is the case.
+ trond: I fixed this bug as of r80976, but did not know this readme
+        file was to be notified. (cf. sms_oahpa/locale) 
+ 
 
 Possible improvement in smsoahpa userinterface:
 *html-based input tool for special Skolt Saami letters, like we had earlier in the webdicts for sjd and sms
  ==> cip: not for Inari 
+ ==> trond: perhaps not for sms as well, since we have a spellrelax 
+ ==> function for the 2+1 accent letter pairs in use 
+ ==> (sms_drill/forms.py)
 
 =====
 The current compilation shall include the following part-lexica:
@@ -212,3 +217,7 @@ rus2sms
 To correct 20130920:
  - ordinals >>> string2numeral: put the correct fst, the current one is the same as numeral2string
    test answers in ordinals >>> numeral2string: sms-inum.fst does not exist.
+   
+   Trond: I inverted a newcompiled sms-num.fst and inverted it.
+   TODO: Look at the makefile procedure that did not make it automatially, we may have some
+         tag inconsistencies here.
