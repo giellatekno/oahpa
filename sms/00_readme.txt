@@ -52,6 +52,8 @@ But please exclude all words tagged with <usage oahpa="excl"/>
 src/abbr_sms2X.xml:         <xg oahpa="excl" kurss="no">
 src/n_sms2X.xml:         <usage oahpa="excl"/>
 src/n_sms2X.xml:         <tg xml:lang="rus" oahpa="excl">
+src/prop_sms2X.xml:         <usage oahpa="no"/>
+src/prop_sms2X.xml:         <usage oahpa="yes"/>
 
 =====
 
