@@ -52,7 +52,7 @@ src/prop_sms2X.xml:         <usage oahpa="yes"/>
 =====
 
 Also a "place name game" could perhaps be included in LEKSA (from src dictionary files: prop_sms2X.xml with the tag type="place")
- ==> if time permits
+ ==> not before Inari
 
 Semantic sets are the same as for the last version (defined in ~/meta-data):
 * HUMAN "Menneske"
