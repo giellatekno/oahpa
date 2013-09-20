@@ -5,14 +5,6 @@ Documentation for smsoahpa at http://victorio.uit.no/cgi-bin/wiki/index.php/Smso
 =====
 State of the art:
 
-Currently, our preliminary version of Oahpa!-nuõrti includes two "books" (which are actually not schoolbooks, but just lists of basic vocabulary). They need to be included in the menue:
-* book="100" (~100 words)
-* book="200" (~200 words)
-The third book to be included now is:
-* book="kurss"
- ==> cip: unclear what to be included: only the two books or all three?
- micha2cip:all three
-
 Bugs in current smsoahpa:
 *Select the language pair: "Skolt Sámi to Finnish" occurs twice, but "Skolt Sámi to English" is missing
  cip: this is not true, at least not according to my testing. Please give some docu in form of screen shots to see when it is the case.
@@ -26,9 +18,13 @@ Possible improvement in smsoahpa userinterface:
  ==> trond: perhaps not for sms as well, since we have a spellrelax 
  ==> function for the 2+1 accent letter pairs in use 
  ==> (sms_drill/forms.py)
-
 cip2trond: the input tool for special Skolt Saami letters is just for users that can't find these letters on they keyboard. This has little to do with spellrelax!
 micha2trond: yes, it has nothing to do with spellrelax; just a help for character input
+
+The different book names need to be included into the menue:
+* book="100"
+* book="200"
+* book="kurss"
 
 =====
 The current compilation shall include the following part-lexica:
