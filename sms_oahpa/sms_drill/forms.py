@@ -527,6 +527,7 @@ def relax(strict):
         u'´': u'ˊ', # 00b4: 02ca
         u'´': u'ˊ', # 02b9: 02ca
         u'’': u'ʼ', # 2019: 02bc
+        u'e': u'ẹ', 
 	}
 	
 	# Create an iterator. We want to generate as many possibilities as 
