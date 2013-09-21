@@ -15,13 +15,17 @@ Spellrelex does not work yet
 ==>apostrophes (already inluded in spellrelax source code)
 ==>we also need spellrelax for Skolt Saami ẹ ~ e (the first one always to be shown, the second one to be accepted)
 
+In Numra, the ordinals do not work yet
+===> neither way works String to Numeral or Numeral to String
+==> also in both cases it shows String to Numeral input
+
 Link to the dictionary
 ==> perhaps also a link to saan.oahpa.no?
 
-Spellrelex
-
 =====
-The current compilation shall include the following part-lexica (other part-lexica in ~/src can be ignored for now):
+Notes on the next Oahpa compilation
+=====
+The next compilation shall include the following part-lexica (other part-lexica in ~/src can be ignored for now):
 * a_sms2X
 * adp_sms2X
 * adv_sms2X
