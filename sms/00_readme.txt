@@ -7,6 +7,7 @@ Notes on the current Oahpa user interface
 =====
 Bug on the starting page
 ==> The Interface language cannot be changed (whatever language I try to chose English remains the language)
+==> This problem seems to occur only with Firefox, not in Safari
 
 Book menue
 ==> includes only "all", but in the current version we have already two "books", hence:
