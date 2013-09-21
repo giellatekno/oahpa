@@ -5,6 +5,9 @@ Documentation for smsoahpa at http://victorio.uit.no/cgi-bin/wiki/index.php/Smso
 =====
 Notes on the current Oahpa user interface
 =====
+Bug on the starting page
+==> The Interface language cannot be changed (whatever language I try to chose English remains the language)
+
 Book menue
 ==> includes only "all", but in the current version we have already two "books", hence:
 1. "all"
