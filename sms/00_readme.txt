@@ -3,18 +3,22 @@ This directory contains material relevant to Oahpa!-nuõrti (smsoahpa). The lexi
 Documentation for smsoahpa at http://victorio.uit.no/cgi-bin/wiki/index.php/Smsoahpa (to be written)
 
 =====
+Notes on the current Oahpa user interface
+=====
+Book menue
+==> includes only "all", but in the current version we have already two "books", hence:
+1. "all"
+2. "200"
+3. "100"
+
+Spellrelex does not work yet
+==>apostrophes (already inluded in spellrelax source code)
+==>we also need spellrelax for Skolt Saami ẹ ~ e (the first one always to be shown, the second one to be accepted)
+
 Link to the dictionary
-==> perhaps better to saan.oahpa.no?
+==> perhaps also a link to saan.oahpa.no?
 
 Spellrelex
-beside the apostrophes (already inluded in spellrelax) we need spellrelax for Skolt Saami ẹ ~ e (the first one always to be shown, the second one to be accepted)
-
-The different book names need to be included into the menue:
-Menue for book names:
-1. "all"
-2. "Kurss"
-3. "200"
-4. "100"
 
 =====
 The current compilation shall include the following part-lexica (other part-lexica in ~/src can be ignored for now):
