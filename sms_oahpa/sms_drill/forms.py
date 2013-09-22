@@ -528,7 +528,17 @@ def relax(strict):
         u'´': u'ˊ', # 02b9: 02ca
         u'’': u'ʼ', # 2019: 02bc
         u'e': u'ẹ', 
+#        u'': u'ˈ',  # see discussion below
 	}
+	
+	# Discussion on the ˈ entry (to be deleted):
+	# TT: Micha wants ˈ to be facultative, hence 0:ˈ. 
+	#     First, I do not know whether u'': u'X', is formally ok
+	#     ... or should it e.g. be u'0': u'ˈ' as in twolc?
+	#     Cip, Ryan, any views? Or: please test.
+	#     Second, ˈ is a grade mark not visible outside dictionaries
+	#     Thus, there might be other ways of teaching grade III
+	#     For sme, we have followed the orthography, hence no ˈ.
 	
 	# Create an iterator. We want to generate as many possibilities as 
 	# possible (very fast), so more relaxed options are available.
