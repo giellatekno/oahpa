@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404
 from django.utils.translation import ugettext_lazy as _
 
-from smnoahpa.conf.tools import switch_language_code
+from smn_oahpa.conf.tools import switch_language_code
 
 from random import randint
 

@@ -8,7 +8,7 @@ from models import *
 from forms import *
 from game import Game
 
-import smnoahpa.settings as settings
+import smn_oahpa.settings as settings
 
 try:
 	DEFAULT_DIALECT = settings.DEFAULT_DIALECT

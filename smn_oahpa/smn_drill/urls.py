@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import patterns, url, include, handler404, handler500
 # from django.conf import settings
 
-urlpatterns = patterns('smnoahpa.smn_drill.views',
+urlpatterns = patterns('smn_oahpa.smn_drill.views',
 	# (r'^morfa/substantiv/$', 'smaoahpa.smadrill.views.morfa_game', {'pos': 'N'}),
 	url(r'^morfas/der/$', 'morfa_game', {'pos': 'Der'}, name="morfa_s.der"),
 	url(r'^morfas/v/$', 'morfa_game', {'pos': 'V'}, name="morfa_s.verb"),
