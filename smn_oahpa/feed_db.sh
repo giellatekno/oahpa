@@ -1,4 +1,4 @@
-P="python2.6"
+P="python"
 DATA=../smn
 SMN="$DATA/src"
 FIN="$DATA/finsmn"
