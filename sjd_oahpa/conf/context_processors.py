@@ -1,7 +1,7 @@
-import sjdoahpa.settings
+import sjd_oahpa.settings
 
 try:
-	default = sjdoahpa.settings.DEFAULT_DIALECT
+	default = sjd_oahpa.settings.DEFAULT_DIALECT
 except:
 	default = 'GG'
 
@@ -11,7 +11,7 @@ def dialect(request):
     return {'dialect': request.session.get('dialect')}
 
 def site_root(request):
-	return {'URL_PREFIX': sjdoahpa.settings.URL_PREFIX}
+	return {'URL_PREFIX': sjd_oahpa.settings.URL_PREFIX}
 
 def grammarlinks(request):
 	from sjd_drill.models import Grammarlinks

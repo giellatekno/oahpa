@@ -4,9 +4,9 @@ from django.db.models import Q
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
-import sjdoahpa.settings as settings
+import sjd_oahpa.settings as settings
 
-from sjdoahpa.conf.tools import switch_language_code
+from sjd_oahpa.conf.tools import switch_language_code
 
 from models import *
 #from game import * 
@@ -505,8 +505,8 @@ GAME_FILTER_DEFINITIONS = {
 
 import re
 
-from sjdoahpa.settings import INFINITIVE_SUBTRACT as infinitives_sub
-from sjdoahpa.settings import INFINITIVE_ADD as infinitives_add
+from sjd_oahpa.settings import INFINITIVE_SUBTRACT as infinitives_sub
+from sjd_oahpa.settings import INFINITIVE_ADD as infinitives_add
 
 def relax(strict):
 	"""Returns a list of relaxed possibilities, making changes by relax_pairs.
@@ -2288,7 +2288,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    logfile = open('/home/sjdoahpa/sjdoahpa/sjd_drill/vastas_log.txt', 'w')
+    logfile = open('/home/sjd_oahpa/sjd_oahpa/sjd_drill/vastas_log.txt', 'w')
     host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from sjdoahpa.sjd_drill.models import *
-from sjdoahpa.sjd_drill.forms import *
+from sjd_oahpa.sjd_drill.models import *
+from sjd_oahpa.sjd_drill.forms import *
 
-from sjdoahpa.conf.tools import switch_language_code
+from sjd_oahpa.conf.tools import switch_language_code
 
 from django.db.models import Q, Count
 from django.http import HttpResponse, Http404
@@ -15,7 +15,7 @@ import os
 import re
 import itertools
 
-import sjdoahpa.settings
+import sjd_oahpa.settings
 
 # DEBUG = open('/dev/ttys001', 'w')
 
@@ -23,23 +23,23 @@ from random import choice
 from .forms import PRONOUNS_LIST
 
 try:
-	L1 = sjdoahpa.settings.L1
+	L1 = sjd_oahpa.settings.L1
 except:
 	L1 = 'sjd'  # was: sme
 
 try:
-	LOOKUP_TOOL = sjdoahpa.settings.LOOKUP_TOOL
+	LOOKUP_TOOL = sjd_oahpa.settings.LOOKUP_TOOL
 except:
 	LOOKUP_TOOL = 'lookup'
 
 
 try:
-	FST_DIRECTORY = sjdoahpa.settings.FST_DIRECTORY
+	FST_DIRECTORY = sjd_oahpa.settings.FST_DIRECTORY
 except:
 	FST_DIRECTORY = False
 
 try:
-	DEFAULT_DIALECT = sjdoahpa.settings.DEFAULT_DIALECT
+	DEFAULT_DIALECT = sjd_oahpa.settings.DEFAULT_DIALECT
 except:
 	DEFAULT_DIALECT = None
 
