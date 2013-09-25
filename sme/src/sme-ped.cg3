@@ -5413,10 +5413,10 @@ LIST MAKKAR-BARGU = Makkár_bargu_dus_lea_young Makkár_bargu_dus_lea_adult 1_Pr
 SELECT Prop (*-1 ACCEPT-EVERYTHING BARRIER NOT-ADV-PCLE)(NOT *1 Prop) ; 
 
 # Collecting person name, if it is not in the lexicon - for SAHKA
-ADD (&dia-target) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea)) ;
+ADD (&dia-target) TARGET QMRK - ("Ipmel") IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea)) ;
 # Collecting name, the first one if there are many
-ADD (&dia-target) TARGET Prop IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea)) ;
-ADD (&dia-target) TARGET N (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea))(NEGATE *1 (&dia-target)) ;
+ADD (&dia-target) TARGET Prop - ("Ipmil") IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea)) ;
+ADD (&dia-target) TARGET N - ("Ipmil") (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea))(NEGATE *1 (&dia-target)) ;
 
 # Collecting name if it its in the lexicon, the first one if there are many
 ADD (&dia-target) TARGET Prop OR ACR IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila_adult)) ;
