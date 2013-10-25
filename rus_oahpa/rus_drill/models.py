@@ -3,7 +3,238 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.db.models import Q
 
+from django.db import connection
+from django.db import transaction
+
 from django.utils.encoding import smart_unicode
+class BulkManager(models.Manager):
+	""" This Manager adds additional methods to Feedback.objects. That allows
+	for bulk inserting via custom SQL query (calling INSERT INTO on a list of
+	dictionaries), this is much faster than using the standard .create() if 
+	many objects need to be added.
+
+		.create() -> .bulk_inesrt()
+		.messages.add() -> .bulk_add_messages()
+		.dialects.add() -> .bulk_add_dialects()
+
+	
+	"""
+
+	@transaction.commit_manually
+	def bulk_insert(self, fields, objs):
+		""" Takes a list of fields and a list dictionaries of fields and values,
+		iterates and inserts. @transaction.commit_manually is active, and the 
+		transaction is committed after insert.
+		"""
+		qn = connection.ops.quote_name
+		cursor = connection.cursor()
+
+		flds = ', '.join([qn(f) for f in fields])
+		values_list = [ r[f] for r in objs for f in fields]
+		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(objs))		   
+		sql = "INSERT INTO %s (%s) VALUES %s" % (self.model._meta.db_table, flds, arg_string,)	     
+		cursor.execute(sql, values_list)
+		transaction.commit()
+
+	@transaction.commit_manually
+	def bulk_add_form_messages(self, objs):
+		""" Takes a list of IDs, (feedback_id, feedback_message_id) and inserts
+		these to the many-to-many table, committing on complete.  """
+		qn = connection.ops.quote_name
+		cursor = connection.cursor()
+
+		fields = ['form_id', 'feedbackmsg_id']
+
+		vals = [dict(zip(fields, a)) for a in objs]
+		flds = ', '.join([qn(f) for f in fields])
+		values_list = [ r[f] for r in vals for f in fields]
+
+		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(vals))
+
+		# postgres seems to automatically ignore, mysql does not
+		try:
+			postgres = connection.ops._postgres_version
+			ignore = ''
+		except AttributeError:
+			postgres = False
+			ignore = 'IGNORE'
+
+		sql = "INSERT %s INTO %s (%s) VALUES %s" % (ignore, "rus_drill_form_feedback", flds, arg_string,)
+
+		cursor.execute(sql, values_list)
+		transaction.commit()
+	
+	@transaction.commit_manually
+	def bulk_remove_form_messages(self, form_qs):
+		""" Takes a form queryset, bulk removes all feedbacks for words with those ids """
+
+		form_ids = form_qs.values_list('id', flat=True)
+
+		qn = connection.ops.quote_name
+		cursor = connection.cursor()
+
+		table = "rus_drill_form_feedback"
+		fld = qn('form_id')
+		args = ', '.join([str(f) for f in form_ids])
+
+		sql = "DELETE FROM %s WHERE %s in (%s)" % (table, fld, args)
+
+		cursor.execute(sql)
+		transaction.commit()
+
+	
+	@transaction.commit_manually
+	def bulk_add_messages(self, objs):
+		""" Takes a list of IDs, (feedback_id, feedback_message_id) and inserts
+		these to the many-to-many table, committing on complete.  """
+		qn = connection.ops.quote_name
+		cursor = connection.cursor()
+
+		fields = ['feedback_id', 'feedbackmsg_id']
+
+		vals = [dict(zip(fields, a)) for a in objs]
+		flds = ', '.join([qn(f) for f in fields])
+		values_list = [ r[f] for r in vals for f in fields]
+
+		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(vals))
+		sql = "INSERT INTO %s (%s) VALUES %s" % ("rus_drill_feedback_messages", flds, arg_string,)
+
+		cursor.execute(sql, values_list)
+		transaction.commit()
+		
+	@transaction.commit_manually
+	def bulk_add_dialects(self, objs):
+		""" Takes a list of IDs, (feedback_id, dialect_id) and inserts these to
+		the many-to-many table, committing on complete.  """
+		qn = connection.ops.quote_name
+		cursor = connection.cursor()
+
+		fields = ['feedback_id', 'dialect_id']
+
+		vals = [dict(zip(fields, a)) for a in objs]
+		flds = ', '.join([qn(f) for f in fields])
+		values_list = [ r[f] for r in vals for f in fields]
+
+		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(vals))
+		sql = "INSERT INTO %s (%s) VALUES %s" % ("rus_drill_feedback_dialects", flds, arg_string,)
+
+		cursor.execute(sql, values_list)
+		transaction.commit()
+
+# Should insert some indexes here, should improve search time since a lot of these have repeated values
+
+### class Feedback(models.Model):
+### 	messages = models.ManyToManyField(Feedbackmsg)
+### 	# TODO: pos = models.CharField(max_length=12)
+### 	# tag = models.ForeignKey(Tag)
+### 	
+### 	# Word morphology / classes
+### 	attrsuffix = models.CharField(max_length=10,null=True,blank=True,db_index=True)
+### 	dialects = models.ManyToManyField(Dialect)
+### 	diphthong = models.CharField(max_length=5,blank=True,null=True,db_index=True)
+### 	gradation = models.CharField(max_length=15,null=True,blank=True,db_index=True)
+### 	rime = models.CharField(max_length=20,null=True,blank=True,db_index=True) # added
+### 	soggi = models.CharField(max_length=10,null=True,blank=True,db_index=True)
+### 	stem = models.CharField(max_length=20,blank=True,null=True,db_index=True)
+### 	wordclass = models.CharField(max_length=20,blank=True,null=True,db_index=True)
+### 
+### 	# Tag / inflection 
+### 	attributive = models.CharField(max_length=10,null=True,blank=True,db_index=True)
+### 	case2 = models.CharField(max_length=5,null=True,blank=True,db_index=True)
+### 	grade = models.CharField(max_length=10,null=True,blank=True,db_index=True)
+### 	mood = models.CharField(max_length=10,null=True,blank=True,db_index=True)
+### 	number = models.CharField(max_length=5,null=True,blank=True,db_index=True)
+### 	personnumber = models.CharField(max_length=6,null=True,blank=True,db_index=True)
+### 	pos = models.CharField(max_length=12,blank=True,null=True,db_index=True)
+### 	tense = models.CharField(max_length=6,null=True,blank=True,db_index=True)
+### 
+### 	objects = BulkManager()
+### 
+### 	class Meta:
+### 		# Sma doesn't have "diphthong","gradation"
+### 		# Sma doesn't have "rime"
+### 		# unique_together = ("tag")
+### 		unique_together = ( "pos",
+### 				    "stem",
+### 				    "soggi",
+### 				    "wordclass",
+### 				    "diphthong", # added for sme
+### 				    "gradation", # added for sme
+### 				    "rime",
+### 				    "case2",
+### 				    "number",
+### 						
+### 				    "personnumber",
+### 				    "tense",
+### 				    "mood",
+### 						
+### 				    "grade",
+### 				    "attrsuffix",
+### 				    "attributive", )
+### 
+### 	def __unicode__(self):
+### 		attrs = [
+### 				self.stem,
+### 				self.wordclass,
+### 				self.diphthong, # added for sme
+### 				self.gradation,  # added for sme
+### 				self.pos,
+### 				self.case2, 
+### 				self.grade, 
+### 				self.mood, 
+### 				self.number, 
+### 				self.personnumber,
+### 				self.tense,
+### 				self.attrsuffix,
+### 				self.attributive, 
+### 				self.soggi
+### 			]
+### 		attrs = [a for a in attrs if a]
+### 		S = unicode('/'.join([a for a in attrs if a.strip()])).encode('utf-8')
+### 		return S
+	
+	# def save(self, *args, **kwargs):
+	# 	"""
+	# 		Normalize syllables.
+	# 	"""
+	# 	syllables = {
+	# 		'2syll': '2syll',
+	# 		'3syll': '3syll',
+	# 		'bisyllabic': '2syll',
+	# 		'trisyllabic': '3syll',
+	# 		'': '',
+	# 	}
+	# 	
+	# 	if self.stem in syllables.keys():
+	# 		self.stem = syllables[self.stem]
+	# 	
+	# 	super(Feedback, self).save(*args, **kwargs)
+
+def filter_set_by_dialect(form_set, dialect):
+	from django.db.models import Q
+
+	QUERY = Q(~Q(dialects__dialect='NG'), 
+			Q(dialects__dialect=dialect) | \
+			Q(dialects__isnull=True))
+	
+	result = form_set.filter(QUERY)
+
+	if result.count() == 0:
+		return form_set
+	else:
+		return result
+
+	# excl = form_set.exclude(dialects__dialect='NG')
+	# 
+	# if excl.count() > 0:
+	# 	form_set = excl
+
+	# dialect_forms = form_set.filter(dialects__dialect__in=[dialect, None])
+
+	# if dialect_forms.count() > 0:
+	# 	form_set = dialect_forms
+
+	# return form_set
 
 class Comment(models.Model):
 	lang = models.CharField(max_length=5)
@@ -232,6 +463,7 @@ class Word(models.Model):
 	gen2 = models.BooleanField(default=False) # indicates if the word has Genitive2 or not
 	reflexive = models.NullBooleanField(blank=True)
 	inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
+	zaliznjak = models.CharField(max_length=20)
 
 	# wordclass = models.CharField(max_length=8)
 	# valency = models.CharField(max_length=10)
@@ -525,6 +757,7 @@ class Form(models.Model):
 	fullform = models.CharField(max_length=200)
 	dialects = models.ManyToManyField(Dialect, null=True)
 	feedback = models.ManyToManyField('Feedbackmsg', null=True)
+	objects = BulkManager()
 
  	@property
  	def dialect(self):

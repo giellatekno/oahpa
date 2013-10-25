@@ -129,23 +129,22 @@
 
 
 		{% ifequal form.error "error" %}
+		    <img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
+		    {% if not show_correct %}
+                {% if settings.gametype == "bare" or settings.transtype == "nobrus" or settings.transtype == "danrus" or settings.transtype == "engrus" %}
+    			 <span class="click-to-stress">Insert stress mark</span>
+    			 {% endif %}
+            
 			<!-- Feedback -->
 			{% if form.feedback %}
 			<a href="#" class="feedback_link" id="link_feedback-{{ forloop.counter }}">
-					<img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
-					{% trans "help" %}</span>
+					
+					{% trans "help" %}
 				</a>
+			{% endif %}	
 			{% else %}
-				<img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
 				{% if form.tcomm %}{% trans "This is almost correct!" %}{% endif %}
 			{% endif %}
-			{% if not show_correct %}
-                {% if settings.gametype == "bare" or settings.transtype == "nobrus" or settings.transtype == "danrus" or settings.transtype == "engrus" %}
-
-    			 <span class="click-to-stress">Insert stress mark</span>
-    			 {% endif %}
-            {% endif %}
-
 		{% endifequal %}
 
 	</span>

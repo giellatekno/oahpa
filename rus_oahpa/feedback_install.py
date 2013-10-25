@@ -25,7 +25,7 @@ Feedback message files have the following structure:
 
 In this case the id attribute corresponds to the message id, and the
 order attribute corresponds to the order that the message will appear
-in in the user interface. Orders are specified with the letters A-Z,
+in the user interface. Orders are specified with the letters A-Z,
 and if an order is not specified, it is assumed that this message will
 come first, before A.
 
@@ -243,7 +243,8 @@ class Feedback_install(object):
 
 	# Each part of speech followed by relevant word/lemma attributes
 	word_attribute_names = OrderedDict([
-		("N", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
+		#("N", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
+		("N", ['stem', 'zaliznjak', 'gender', 'animate',]),
 		("A", ['stem', 'gradation', 'diphthong', 'rime', 'soggi', 
 										'attrsuffix', 'compsuffix',]),
 		("Num", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
@@ -283,7 +284,7 @@ class Feedback_install(object):
 		self._lexicon_dialects = False # TODO: this
 		self._feedback_global_dialect = False # TODO: this
 
-	def read_messages(self,infile):
+	def read_messages(self,infile):  # Imports the feedback messages from infile (named messages.xml or similar) into the database.
 
 		xmlfile=file(infile)
 		tree = _dom.parse(infile)
@@ -421,11 +422,53 @@ class Feedback_install(object):
 		self.tag_possible_values = OrderedDict(map(get_tag_argument, self.tag_attr_names))
 
 		# Collect Feedback <l /> attributes
+		# TODO: Zaliznjak codes in the feedback are not always the full codes but parts of it. Therefore we have to extend the set with all possible code strings containing the trigger code. e.g. * is contained in the codes 5*a, 6*a etc.	
+		"""extended = self.feedback_elements[0]
+		for f_el in self.feedback_elements:
+		      print >> sys.stdout, "zcode of feedback_element:", f_el.getAttribute('zaliznjak')
+		      zal_code = f_el.getAttribute('zaliznjak')
+		      zcodes = [z for z in self.word_possible_values['zaliznjak'] if z.find(zal_code) > -1]
+		      for zcode in zcodes:
+		          new_el = f_el.cloneNode(1)
+		          new_el.setAttribute('stem',f_el.getAttribute('stem'))
+		          new_el.setAttribute('zaliznjak',zcode)
+		          new_el.setAttribute('gender',f_el.getAttribute('gender'))
+		          new_el.setAttribute('animate',f_el.getAttribute('animate'))
+		          print >> sys.stdout, "new element:", new_el.getAttribute('zaliznjak'), " ", new_el.getAttribute('gender')
+		          extended.appendChild(new_el)
+		#print >> sys.stdout, "feedback elements to be added:", extended
+		self.feedback_elements.append(extended)
+		print >> sys.stdout, "feedback elements:", self.feedback_elements"""
 		feedback_attributes = map(get_word_argument, self.feedback_elements)
+		#print >> sys.stdout, "feedback attributes:", feedback_attributes
+		"""extended_feedback_attributes = []
+		for feedback_record in feedback_attributes:
+		      #stem_value = feedback_record['stem']
+		      zal_value = feedback_record['zaliznjak']
+		      #gender_value = feedback_record['gender']
+		      #anim_value = feedback_record['animate']
+		      if zal_value:
+			      zcodes = [z for z in self.word_possible_values['zaliznjak'] if z.find(zal_value) > -1]
+			      for zcode in zcodes:
+				      new_record = feedback_record
+				      new_record['zaliznjak'] = zcode
+				      extended_feedback_attributes.append(new_record)
+		#print >> sys.stdout, "extended feedback attributes:", extended_feedback_attributes"""
 		self.feedback_possible_values = OrderedDict([
-			(attr_name, list(set([''] + [word_attr.get(attr_name, None) for word_attr in feedback_attributes])))
+			(attr_name, list(set([''] + [word_attr.get(attr_name, None) for word_attr in feedback_attributes]))) 
 			for attr_name in self.word_attr_names
 		])
+			
+		"""i=0		
+		while i < len(self.feedback_possible_values['zaliznjak']):  
+
+                    zcode = self.feedback_possible_values['zaliznjak'][i]
+                    if zcode:
+                        zcodes = [z for z in self.word_possible_values['zaliznjak'] if z.find(zcode) > -1]  # Heli
+                        self.feedback_possible_values['zaliznjak'][i] = zcodes
+			print >> sys.stdout,self.feedback_possible_values['zaliznjak'][i]
+		    i=i+1 """
+
 
 		# Collect Feedback <msg /> attributes
 		feedback_msg_attributes = map(get_msg_argument, self.feedback_msg_elements)
@@ -493,7 +536,6 @@ class Feedback_install(object):
 		print >> sys.stdout, "    <msg />  attributes in feedback file:"
 		print >> sys.stdout, fmt_dict(self.feedback_msg_possible_values)
 
-
 		print >> sys.stdout, "\n  COMPARISON"
 		print >> sys.stdout, "    Symmetric difference between lexicon and feedback:"
 
@@ -507,7 +549,6 @@ class Feedback_install(object):
 				print >> sys.stdout, _str.encode('utf-8')
 			except:
 				print >> sys.stdout, _str
-
 
 		print >> sys.stdout, '\n'
 
@@ -525,6 +566,7 @@ class Feedback_install(object):
 
 	def read_feedback(self, feedbackfile, wordfile):
 		"""
+		  Reads the feedback from the file (e.g. feedback_nouns.xml) and associates feedback message id-s with the appropriate lexical entries.
 			TODO: update this.
 		"""
 
@@ -584,7 +626,7 @@ class Feedback_install(object):
 						if d.dialect in self.dialects]
 
 			# TODO: global dialects?
-
+			
 			w_vals = [f.id, f.word.lemma, f.tag.string, dialects]
 
 			if w_keys in form_keys:
