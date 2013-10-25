@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feedback pos="N">
+
+<!-- Messageorder nouns: LEMMA A B C
+A: paradigm
+hard_m_inanim
+hard_m_anim
+soft_m_inanim
+soft_m_anim
+m_inanim_k
+m_anim_k
+m_inanim_sh
+m_anim_sh
+m_inanim_ts
+m_anim_ts
+m_inanim_j
+m_anim_j
+m_inanim_ij
+m_anim_ij
+m_anim_anin
+m_anim_jonok
+hard_m_inanim_pl_a
+hard_m_anim_pl_a
+soft_m_inanim_pl_ja
+soft_m_anim_pl_ja
+hard_f_inanim
+hard_f_anim
+soft_f_inanim
+soft_f_anim
+f_anim_ka
+f_inanim_ka
+f_inanim_sha
+f_anim_sha
+f_inanim_tsa
+f_anim_tsa
+f_inanim_Vja
+f_anim_Vja
+f_inanim_ija
+f_anim_ija
+f_inanim_b
+f_anim_b
+f_inanim_shb
+f_anim_shb
+hard_n
+hard_n_anim
+soft_n
+n_ko
+n_ishshe
+n_anim_ishshe
+n_tse
+soft_n_ije
+n_bje
+n_mja
+adj_ending (ва́нная, моро́женое, шампа́нское, учёный)
+papa (дедушка, папа)
+djadja (дя́дя)
+indeclinable_noun
+irregular_noun
+
+B: stress
+stress_stem
+stress_ending
+stress_ending_except_ISg
+stress_stem_sg_stress_ending_pl
+stress_ending_sg_stress_stem_pl
+stress_ending_sg_stress_stem_ASg_pl
+stress_stem_sg_NPl_APl
+stress_stem_sg_NPl
+stress_ending_except_NPl
+stress_ending_except_ASg_NPl
+stress_ending_except_ISg_NPl
+
+C: special features, f ex mobile vowels
+mobile_vowel
+GPl_ej
+no_GPl
+loc2
+gen2
+
+-->
+
+    <stems>
+    <!-- A: Paradigms -->
+        <l zaliznjak="1a" gender="m" animate="nn">           
+            <msg>hard_m_inanim</msg>
+        </l>
+        <l zaliznjak="1a" gender="m" animate="aa">
+            <msg>hard_m_anim</msg>
+        </l>
+        <l zaliznjak="1a" gender="f" animate="nn">         
+            <msg>hard_f_inanim</msg>
+        </l>
+        <l zaliznjak="1a" gender="f" animate="aa">
+            <msg>hard_f_anim</msg>
+        </l>
+
+        <!-- How to differentiate the following two types from hard_m_inanim?  
+        <l zaliznjak="1a" gender="m" animate="nn">        
+            <msg>hard_m_inanim_pl_a</msg>
+        </l>
+        <l zaliznjak="1a" gender="m" animate="nn">          
+            <msg>soft_m_inanim_pl_ja</msg>
+        </l>
+        -->
+        <l zaliznjak="1°a" gender="m" animate="aa">
+            <msg>m_anim_anin</msg>
+        </l>
+         <l zaliznjak="1c(1)" gender="m" animate="aa">
+            <msg>hard_m_anim_pl_a</msg>
+        </l>
+        <l zaliznjak="1c" gender="nt" animate="nn">          
+            <msg>hard_n</msg>
+        </l>
+        <l zaliznjak="1c" gender="nt" animate="aa">
+            <msg>hard_n_anim</msg>
+        </l>
+        
+        <l zaliznjak="2b" gender="m" animate="nn">
+            <msg>soft_m_inanim</msg>
+        </l>
+        <l zaliznjak="2a" gender="m" animate="aa">
+            <msg>soft_m_anim</msg>
+        </l>
+        <l zaliznjak="2c" gender="nt">          
+            <msg>soft_n</msg>
+        </l>
+        
+        <l zaliznjak="3b" gender="m" animate="aa">
+            <msg>m_anim_k</msg>
+        </l>
+        <l zaliznjak="3a" gender="m" animate="nn"> 
+            <msg>m_inanim_k</msg>
+        </l>
+        <l zaliznjak="3a" gender="f" animate="nn">   
+            <msg gender="f">f_inanim_ka</msg>
+        </l>
+        <l zaliznjak="3a" gender="f" animate="aa">
+            <msg>f_anim_ka</msg>
+        </l>
+        <l zaliznjak="3a" gender="nt" animate="nn">
+            <msg>n_ko</msg>
+        </l>
+        
+        <l zaliznjak="3**a" gender="m" animate="aa">
+            <msg>m_anim_jonok</msg>
+        </l>
+        
+        <l zaliznjak="4b" gender="m" animate="nn">
+            <msg>m_inanim_sh</msg>
+        </l>
+        <l zaliznjak="4b" gender="m" animate="aa">
+            <msg>m_anim_sh</msg>
+        </l>
+        <l zaliznjak="4a" gender="f" animate="nn">          
+            <msg>f_inanim_sha</msg>
+        </l>
+        <l zaliznjak="4a" gender="f" animate="aa">  
+            <msg>f_anim_sha</msg>
+        </l>
+        <l zaliznjak="4a" gender="nt" animate="nn">            
+            <msg>n_ishshe</msg>
+        </l>
+        <l zaliznjak="4a" gender="nt" animate="aa">          
+            <msg>n_anim_ishshe</msg>
+        </l>
+        
+        <l zaliznjak="5a" gender="f" animate="nn">          
+            <msg>f_inanim_tsa</msg>
+         </l>
+        <l zaliznjak="5a" gender="f" animate="aa">
+            <msg>f_anim_tsa</msg>
+         </l>
+        <l zaliznjak="5a" gender="nt">          
+            <msg>n_tse</msg>
+        </l>
+        <l zaliznjak="5*b" gender="m" animate="nn">
+            <msg>m_inanim_ts</msg>
+        </l>
+        <l zaliznjak="5*b" gender="m" animate="aa">
+            <msg>m_anim_ts</msg>
+        </l>
+        
+        <l zaliznjak="6a" gender="m" animate="nn">
+            <msg>m_inanim_j</msg>
+        </l>
+        <l zaliznjak="6a" gender="m" animate="aa">    
+            <msg>m_anim_j</msg>
+        </l>
+        <l zaliznjak="6a" gender="f" animate="nn">    
+            <msg>f_inanim_Vja</msg>
+        </l>
+        <l zaliznjak="6a" gender="f" animate="aa">    
+            <msg>f_anim_Vja</msg>
+        </l>
+        <l zaliznjak="6*a" gender="nt">          
+            <msg>n_bje</msg>
+        </l>
+        
+        <l zaliznjak="7a" gender="m" animate="nn">
+            <msg>m_inanim_ij</msg>
+        </l>
+        <l zaliznjak="6a" gender="m" animate="aa">
+            <msg>m_anim_ij</msg>
+        </l>
+        <l zaliznjak="6a" gender="f" animate="nn">
+            <msg>f_inanim_ija</msg>
+        </l>
+        <l zaliznjak="6a" gender="f" animate="aa">
+            <msg>f_anim_ija</msg>
+        </l>
+        <l zaliznjak="6a" gender="nt">
+            <msg>soft_n_ije</msg>
+        </l>
+        
+        <l zaliznjak="8e" gender="f" animate="nn">          
+            <msg>f_inanim_b</msg>
+        </l>
+        <l zaliznjak="8a" gender="f" animate="aa">
+            <msg>f_anim_b</msg>
+        </l>
+        <!-- It is not possible to differentiate the following two from the previous two on the basis of the zaliznjak code. 
+        <l zaliznjak="8e" gender="f" animate="nn">          
+            <msg>f_inanim_shb</msg>
+        </l>
+        <l zaliznjak="8e" gender="f" animate="aa">
+            <msg>f_anim_shb</msg>
+        </l> -->
+        
+        <l zaliznjak="8°c" gender="nt">          
+            <msg>n_mja</msg>
+        </l>
+        
+        <!-- In some sense special paradigms: -->
+        <!--<l>ый
+            <msg>adj_ending</msg>
+        </l>
+        <l>ий
+            <msg>adj_ending</msg>
+        </l>
+        <l>ое
+            <msg>adj_ending</msg>
+        </l>
+        <l>ая
+            <msg>adj_ending</msg>
+        </l> -->
+        <!-- Do not know yet how to handle the irregular words.
+        <l>пaпa
+            <msg>papa</msg>
+        </l>
+        <l>дедушка
+            <msg>papa</msg>
+        </l>
+        <l>дядя
+            <msg>djadja</msg>
+        </l>
+        <l zaliznjak="0">
+            <msg>indeclinable_noun</msg>
+        </l>
+        <l>
+            <msg lemma="дочь">irregular_noun</msg>
+        </l>
+        <l>
+            <msg lemma="мать">irregular_noun</msg>
+        </l>
+        <l>
+            <msg lemma="муж">irregular_noun</msg>
+        </l>
+        <l>
+            <msg lemma="сосед">irregular_noun</msg>
+        </l>
+        <l>
+            <msg lemma="брат">irregular_noun</msg>
+        </l>
+        <l>
+            <msg lemma="друг">irregular_noun</msg>
+        </l>
+        -->
+        
+        <!-- B: Stress -->        
+        <l zaliznjak="a">          
+            <msg>stress_stem</msg>
+        </l>
+        <l zaliznjak="b">
+            <msg>stress_ending</msg>
+        </l>
+        <l zaliznjak="b'">          
+            <msg>stress_ending_except_ISg</msg>
+        </l>
+        <l zaliznjak="c">          
+            <msg>stress_stem_sg_stress_ending_pl</msg>
+        </l>
+        <l zaliznjak="d">          
+            <msg>stress_ending_sg_stress_stem_pl</msg>
+        </l>
+        <l zaliznjak="d'">          
+            <msg>stress_ending_sg_stress_stem_ASg_pl</msg>
+        </l>
+        <l zaliznjak="e">          
+            <msg animate="nn">stress_stem_sg_NPl_APl</msg>          
+            <msg animate="aa">stress_stem_sg_NPl</msg>
+        </l>
+        <l zaliznjak="f">          
+            <msg>stress_ending_except_NPl</msg>
+        </l>
+        <l zaliznjak="f'">          
+            <msg>stress_ending_except_ASg_NPl</msg>
+        </l>
+        <l zaliznjak="f''">          
+            <msg>stress_ending_except_ISg_NPl</msg>
+        </l>
+        <!-- C: special features, e.g. mobile vowels -->
+        <l zaliznjak="*">          
+            <msg case="Gen" number="Sg">mobile_vowel</msg>
+            <msg case="Dat" number="Sg">mobile_vowel</msg>
+            <msg case="Ins" number="Sg">mobile_vowel</msg>
+            <msg case="Prp" number="Sg">mobile_vowel</msg>
+            <msg case="Nom" number="Pl">mobile_vowel</msg>
+            <msg case="Gen" number="Pl">mobile_vowel</msg>
+            <msg case="Dat" number="Pl">mobile_vowel</msg>
+            <msg case="Ins" number="Pl">mobile_vowel</msg>
+            <msg case="Prp" number="Pl">mobile_vowel</msg>
+        </l>
+        <l zaliznjak="2b">          
+            <msg case="Gen" number="Pl" gender="f">GPl_ej</msg>      
+            <msg case="Gen" number="Pl" gender="nt">GPl_ej</msg>
+        </l>
+        <l zaliznjak="2c">          
+            <msg case="Gen" number="Pl" gender="f">GPl_ej</msg>        
+            <msg case="Gen" number="Pl" gender="nt">GPl_ej</msg>
+        </l>
+        <l zaliznjak="2e">          
+            <msg case="Gen" number="Pl" gender="f">GPl_ej</msg>   
+            <msg case="Gen" number="Pl" gender="nt">GPl_ej</msg>
+        </l>
+        <l zaliznjak="2f">          
+            <msg case="Gen" number="Pl" gender="f">GPl_ej</msg>         
+            <msg case="Gen" number="Pl" gender="nt">GPl_ej</msg>
+        </l>
+        <l zaliznjak="4b">          
+            <msg case="Gen" number="Pl" gender="f">GPl_ej</msg>      
+            <msg case="Gen" number="Pl" gender="nt">GPl_ej</msg>
+        </l>
+        <l zaliznjak="4c">          
+            <msg case="Gen" number="Pl" gender="f">GPl_ej</msg>     
+            <msg case="Gen" number="Pl" gender="nt">GPl_ej</msg>
+        </l>
+        <l zaliznjak="4e">          
+            <msg case="Gen" number="Pl" gender="f">GPl_ej</msg>    
+            <msg case="Gen" number="Pl" gender="nt">GPl_ej</msg>
+        </l>
+        <l zaliznjak="4f">          
+            <msg case="Gen" number="Pl" gender="f">GPl_ej</msg>        
+            <msg case="Gen" number="Pl" gender="nt">GPl_ej</msg>
+        </l>
+        <l zaliznjak="2">          
+            <msg case="Gen" number="Pl" gender="m">GPl_ej</msg>
+        </l>
+        <l zaliznjak="4">          
+            <msg case="Gen" number="Pl" gender="m">GPl_ej</msg>
+        </l>
+        <l zaliznjak="8">          
+            <msg case="Gen" number="Pl" gender="f">GPl_ej</msg>
+        </l>
+        <l zaliznjak="^Р. МН. ЗАТРУДН.">          
+            <msg case="Gen" number="Pl">no_GPl</msg>
+        </l>
+        <l zaliznjak="^П2">          
+            <msg case="Loc" number="Sg">loc2</msg>
+        </l>
+        <l zaliznjak="^Р2">          
+            <msg case="Par" number="Sg">gen2</msg>
+        </l>
+    </stems>
+</feedback>
+
+
+
