@@ -18,19 +18,19 @@
 <forrest:template xmlns:forrest="http://apache.org/forrest/templates/1.0"
 xmlns:jx="http://apache.org/cocoon/templates/jx/1.0">
     <forrest:hook name="footer">
-    <forrest:hook class="lastmodified">
-        <forrest:contract name="siteinfo-last-published"/>
-    </forrest:hook>
-    <forrest:hook class="copyright">
-        <forrest:contract name="siteinfo-copyright">
-        <forrest:property name="siteinfo-copyright">
-            <copyright>
-            <year inception="true">2008</year>
-            <vendor>Romssa universitehta/The University of Tromsø.</vendor>
-            <copyright-link>http://www.acme.org/licenses/</copyright-link>
-            </copyright>
-        </forrest:property>
-        </forrest:contract>
-    </forrest:hook>
+        <forrest:hook class="lastmodified">
+            <forrest:contract name="siteinfo-last-published"/>
+        </forrest:hook>
+        <forrest:hook class="copyright">
+            <forrest:contract name="siteinfo-copyright">
+                <forrest:property name="siteinfo-copyright">
+                    <copyright>
+                        <year inception="true">2008</year>
+                        <vendor>Romssa universitehta/The University of Tromsø.</vendor>
+                        <copyright-link>http://www.acme.org/licenses/</copyright-link>
+                    </copyright>
+                </forrest:property>
+            </forrest:contract>
+        </forrest:hook>
     </forrest:hook>
 </forrest:template>
