@@ -32,5 +32,15 @@ xmlns:jx="http://apache.org/cocoon/templates/jx/1.0">
                 </forrest:property>
             </forrest:contract>
         </forrest:hook>
+        <forrest:hook class="feedback">
+            <forrest:contract name="siteinfo-feedback">
+              <forrest:property name="siteinfo-feedback">
+                <feedback to="giellatekno@hum.uit.no"
+                  href="mailto:giellatekno@hum.uit.no?subject=Feedback&#160;" >
+                  Váldde oktavuođa minguin/contact us at:
+                </feedback>
+              </forrest:property>
+            </forrest:contract>
+        </forrest:hook>
     </forrest:hook>
 </forrest:template>
