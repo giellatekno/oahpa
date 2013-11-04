@@ -1,0 +1,33 @@
+!!!The goal of the project
+
+The goal is to offer the Oahpa programs for students of Estonian as a foreign language.
+
+
+
+!!!Estonian and Oahpa
+
+!!Oahpa
+
+Oahpa has 6 programs, they can be divided in three groups
+
+# Learn words
+## __Leksa__: basic words and place names
+## __Numra__: numerals, time and date
+# Learn inflection
+## __Morfa-S__: Inflect words
+## __Morfa-C__: Inflect words in sentential context
+# Learning to write sentences
+## __Vasta__: Answering to questions
+## __Sahka__: Chatting with the computer
+
+The programs are best developed for [North Saami Oahpa|http://oahpa.no/davvi].
+
+In order to get working programs for learning inflection one needs
+a morphological transducer. Some previous work has been done by Jaak Pruulmann-Vengerfeldt and Heli Uibo. The source code can be found here: [https://github.com/jjpp/plamk]
+
+In order to get the programs for sentence writing exercises one needs a morphological disambiguator and a shallow syntactic parser. These are under development for the Estonian language and need to be improved and adapted for grammatical error checking purposes.
+
+
+!!Estonian Oahpa
+
+In this project, our minimal goal is to implement Leksa, Numra, Morfa-S and Morfa-C for Estonian. The maximal goal is to implement Vasta and Sahka as well.
