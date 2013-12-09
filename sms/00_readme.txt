@@ -3,7 +3,7 @@ This directory contains material relevant to Oahpa!-nuõrti (smsoahpa). The lexi
 Documentation for smsoahpa at http://victorio.uit.no/cgi-bin/wiki/index.php/Smsoahpa (to be written)
 
 =====
-Notes on the current Oahpa user interface
+Notes on the CURRENT Oahpa user interface
 =====
 Book menue
 ==> includes only "all", but in the current version we have already two "books", hence:
@@ -15,15 +15,14 @@ Spellrelex does not work yet
 ==>apostrophes (already inluded in spellrelax source code)
 ==>we also need spellrelax for Skolt Saami ẹ ~ e (the first one always to be shown, the second one to be accepted)
 
-In Numra, the ordinals do not work yet
-===> neither way works String to Numeral or Numeral to String
-==> also in both cases it shows String to Numeral input
+In Numra, the ordinals do still not work 
+===> the actuall words are from sme
 
 Link to the dictionary
 ==> perhaps also a link to saan.oahpa.no?
 
 =====
-Notes on the next Oahpa compilation
+Wishes on the NEXT Oahpa compilation
 =====
 The next compilation shall include the following part-lexica (other part-lexica in ~/src can be ignored for now):
 * a_sms2X
