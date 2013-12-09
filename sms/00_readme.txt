@@ -21,8 +21,12 @@ In Numra, the ordinals do still not work
 Link to the dictionary
 ==> perhaps also a link to saan.oahpa.no?
 
+Possible improvement in smsoahpa userinterface:
+html-based input tool for special Skolt Saami letters, like we had earlier in the webdicts for sjd and sms
+ ==> cip: not before Inari 
+
 =====
-Wishes on the NEXT Oahpa compilation
+Wishes for the NEXT Oahpa compilation
 =====
 The next compilation shall include the following part-lexica (other part-lexica in ~/src can be ignored for now):
 * a_sms2X
@@ -49,17 +53,11 @@ The next compilation shall include the following part-lexica (other part-lexica 
 * mwe/mwe_sms2X
 
 The current version to be compiled should include all entries tagged with:
-* book="kurss" (schoolbook in Finnish, Russian and Norwegian versions, see the Norwegian version here: http://omnibus.uni-freiburg.de/~mr5496/downl/Kurss_nob.pdf)
+* book="kurss" (~500 words)
 * book="200" (~200 words)
 * book="100" (~100 words)
-But please exclude all words tagged with <usage oahpa="excl"/>
- ==> cip: I will turn all these tags into attributes, at the moment it is inconsistent.
 
-src/abbr_sms2X.xml:         <xg oahpa="excl" kurss="no">
-src/n_sms2X.xml:         <usage oahpa="excl"/>
-src/n_sms2X.xml:         <tg xml:lang="rus" oahpa="excl">
-src/prop_sms2X.xml:         <usage oahpa="no"/>
-src/prop_sms2X.xml:         <usage oahpa="yes"/>
+If possible, Iwould also like to include a "place name game" in LEKSA (from src dictionary files: prop_sms2X.xml with the tag book="prop".
 
 =====
 
@@ -107,15 +105,8 @@ FUTURE
 Future compilations (perhaps): 
 * spellrelax for Russian (ё ~ е)
 
-* a "place name game" could perhaps be included in LEKSA (from src dictionary files: prop_sms2X.xml with the tag type="place"/class="place" (if not <mg excluded="oahpa").
- ==> not before Inari
-
-* Possible improvement in smsoahpa userinterface:
-html-based input tool for special Skolt Saami letters, like we had earlier in the webdicts for sjd and sms
- ==> cip: not before Inari 
-
 *"termm" - different term(inological) lists, which are not completely included in the textbook or the basic vocabulary lists.
- == not before christmas
+ == not before newyear
 
 =====
 Cip (old note):
