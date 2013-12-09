@@ -33,7 +33,6 @@ The next compilation shall include the following part-lexica (other part-lexica 
 * cs_sms2X
 * det_sms2X
 * i_sms2X
-* multiword_sms2X
 * n_sms2X
 * num_sms2X
 * pcle_sms2X
@@ -48,6 +47,7 @@ The next compilation shall include the following part-lexica (other part-lexica 
 * inf/inf_adv_sms2X
 * inf/inf_det_sms2X
 * inf/inf_v_sms2X
+* mwe/mwe_sms2X
 
 The current version to be compiled should include all entries tagged with:
 * book="kurss" (schoolbook in Finnish, Russian and Norwegian versions, see the Norwegian version here: http://omnibus.uni-freiburg.de/~mr5496/downl/Kurss_nob.pdf)
