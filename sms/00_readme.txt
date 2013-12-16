@@ -57,9 +57,9 @@ The next compilation shall include the following part-lexica (other part-lexica 
 * mwe/mwe_sms2X
 
 The current version to be compiled should include all entries tagged with:
-* book="kurss" (~500 words)
-* book="200" (~200 words)
-* book="100" (~100 words)
+* book="kurss" (~500 words) ==> 511
+* book="200" (~200 words) ==> 276
+* book="100" (~100 words) ==> 121
 
 If possible, I would also like to include a "place name game" in LEKSA (from src dictionary files: prop_sms2X.xml with the tag book="prop".
 
