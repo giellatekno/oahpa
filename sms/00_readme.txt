@@ -33,19 +33,19 @@ html-based input tool for special Skolt Saami letters, like we had earlier in th
 Wishes for the NEXT Oahpa compilation
 =====
 The next compilation shall include the following part-lexica (other part-lexica in ~/src can be ignored for now):
-* a_sms2X
-* adp_sms2X
-* adv_sms2X
-* cc_sms2X
-* cs_sms2X
-* det_sms2X
-* i_sms2X
-* n_sms2X
-* num_sms2X
-* pcle_sms2X
-* pro_sms2X
-* prop_sms2X
-* v_sms2X
+* cmd/a_sms2X
+* cmd/adp_sms2X
+* cmd/adv_sms2X
+* cmd/cc_sms2X
+* cmd/cs_sms2X
+* cmd/det_sms2X
+* cmd/i_sms2X
+* cmd/n_sms2X
+* cmd/num_sms2X
+* cmd/pcle_sms2X
+* cmd/pro_sms2X
+* cmd/prop_sms2X
+* cmd/v_sms2X
 * der/der_a_sms2X
 * der/der_adv_sms2X
 * der/der_n_sms2X
