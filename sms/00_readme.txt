@@ -16,7 +16,7 @@ Spellrelax does not work yet
 
 ==>apostrophes (already inluded in spellrelax source code)
  ==> done (checked by Trond)
-==>we also need spellrelax for Skolt Saami ẹ ~ e (the first one always to be shown, the second one to be accepted)
+ ==>we also need spellrelax for Skolt Saami ẹ ~ e (the first one always to be shown, the second one to be accepted)
  ==> done (checked by Trond)
 
 In Numra, the ordinals do still not work 
@@ -81,6 +81,7 @@ Two more sets
 * LANG "Språk"
 * CLOTH "Klær"
 should now have enough lemmas to be included
+ ==> added LANG and CLOTH to the meta-file!
 
 =====
 Preparing/Updating sms data:
