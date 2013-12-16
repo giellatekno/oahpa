@@ -1,9 +1,9 @@
-!!!Teaksta
+!!!Konteaksta
 
 Studentene skal arbeide med autentiske tekster på internett, nye og aktuelle tekster valgt etter interesse.
 
 Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for studenten, men kan også gjøre tekster om til interaktive oppgaver på ulike måter, f.eks.: 
-# grammatiske kategorier blir markert med farge for å gjøre studenten oppmerksom på dem 
+# gramatiske kategorier blir markert med farge for å gjøre studenten oppmerksom på dem 
 # studenten skal selv finne dem i teksten og klikke på dem 
 # studenten skal velge riktig ordform av flere mulige (flervalgsoppgave)
 ## vi må lage en algoritme for å generere "distractors" og samtidig unngå homonymi
@@ -76,7 +76,6 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 ** N+Sg+Ill 
 ** N+Sg+Loc 
 ** N+Sg+Com
-** N+Ess
 
 !! Skriv substantiv flertall i riktig kasus
 * Oppgavene inneholder N+Pl+Nom, N+Pl+Acc, N+Pl+Gen, N+Pl+Ill, N+Pl+Loc, N+Pl+Com
@@ -87,31 +86,84 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 ** N+Pl+Ill 
 ** N+Pl+Loc 
 ** N+Pl+Com
-** N+Ess
 
 
 
-!! Skrive riktig subjunksjon (innholder taggene CS og CC)
-* denne er litt vanskelig, her blir det lett mange muligheter, så jeg tror vi ikke presenterer denne for studentene
+!! Skrive riktig konjunksjon – colorize og click
+* innholder taggene CS og CC
 
 !! Finn subjektet – colorize og click
-* Oppgavene inneholder @SUBJ @<SUBJ @SUBJ> @-FSUBJ> pluss Nom
+* Oppgavene inneholder ( @SUBJ @<SUBJ @SUBJ> @-FSUBJ> ) pluss Nom
 
 !! Finn objektet – colorize og click
-* Oppgavene inneholder @OBJ @<OBJ @OBJ> @-FOBJ> @-F<OBJ @OBJ>SPRED @SPRED<OBJ @SUBJ<OBJ pluss Acc
+* Oppgavene inneholder ( @OBJ @<OBJ @OBJ> @-FOBJ> @-F<OBJ @OBJ>SPRED @SPRED<OBJ @SUBJ<OBJ ) pluss Acc
 
 !! Finn adverbialet – colorize og click
-* Oppgavene inneholder @ADVL @<ADVL @ADVL> @-FADVL> @-F<ADVL  @ADVL>CS @ADVL>SUBJ  @SUBJ<ADVL pluss N eller Pron
+* Oppgavene inneholder ( @ADVL @<ADVL @ADVL> @-FADVL> @-F<ADVL  @ADVL>CS @ADVL>SUBJ  @SUBJ<ADVL ) pluss N eller Pron
 
 
 !!Testing
-Teaksta finnes for testing [her|http://gtlab.uit.no:8080/teaksta]. Bruk Firefox som nettleser om du har den. Dessverre fungerer Teaksta ikke så bra i Safari.
+Konteaksta finnes for testing [her|http://gtlab.uit.no:8080/teaksta]. Bruk Firefox som nettleser om du har den. Dessverre fungerer Konteaksta ikke så bra i Safari.
 
 !!Grensesnitt
-Werti-ikon på oahpa-hovedside. Link til Werti-siden
+Konteaksta-ikon på oahpa-hovedside? Link til Konteaksta-siden
 * Ferdige linker med tekst og oppgavetype, studenten velger colorize, click, Practice, multiple choice. Slik sikrer vi at det er relevante tekster i forhold til oppgaver.
 * Studenten kan også kopiere inn url og velger oppgavetype
 * Lokalisering
+
+!!Konteaksta
+
+
+Under menyen til venstre
+
+
+Oahpa-oransjfargen, samme som i horisontal linje
+
+{{{
+Reference materials
+Dictionary
+Grammar
+Oahpa giela
+About Konteaksta -->
+
++-------------------+
+| About Konteaksta  |
+| -------------     |
+| blabla filosofi   |
+| Laga på grunnlag  |
+| av View (lenkje) |
+| -------------     |
+| ein del av oahpa  |
+| og kursa og ...   |
+|                   |
++-------------------+
+
+
+            +---------------------------+
+            |%%%%%%%%%%%%%%%%%%%%%%%%%%%|
+     o      |%%%%%%%%%%%%%%%%%%%%%oahpa%|
+    /|\     |%%% konteaksta %%%%%%%%%%%%|
+    / \     |%%%%%%%%%%%%%%%%%%%%%%%%%%%|
+%%%%%%%%%%%%|%%%%%%%%%%%%%%%%%%%%%%%%%%%|%%%%%%%%%%
+  Fáttát    |  Hárjehus: XXXX           |
+  ------    |                           |
+  Subjeakta |                           |
+  ...       |  Fáttát til v             |
+            |                           |
+ Resources  |                           |
+ ...        |                           |
+ t birra    |                           |
+ about t    +---------------------------+
+
+}}}
+
+
+
+Nytt namn på universitetet:
+
+UiT Norgga árktalaš universitehta
+
+
 
 !!Uppdatering av koden på gtlab
 cd /home/teaksta
