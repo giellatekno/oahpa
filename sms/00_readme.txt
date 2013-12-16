@@ -1,6 +1,6 @@
 This directory contains material relevant to Oahpa!-nuõrti (smsoahpa). The lexical data is taken from a dictionary database called sms2X in ~/words/dicts.
 
-Documentation for smsoahpa at http://victorio.uit.no/cgi-bin/wiki/index.php/Smsoahpa (to be written)
+Documentation for smsoahpa at http://gtweb.uit.no/cgi-bin/wiki/index.php/Smaoahpa (to be written)
 
 =====
 Notes on the CURRENT Oahpa user interface
@@ -11,9 +11,13 @@ Book menue
 2. "200"
 3. "100"
 
-Spellrelex does not work yet
+Spellrelax does not work yet
+ ==> to be debugged
+
 ==>apostrophes (already inluded in spellrelax source code)
+ ==> done (checked by Trond)
 ==>we also need spellrelax for Skolt Saami ẹ ~ e (the first one always to be shown, the second one to be accepted)
+ ==> done (checked by Trond)
 
 In Numra, the ordinals do still not work 
 ===> the actuall words are from sme
@@ -57,7 +61,7 @@ The current version to be compiled should include all entries tagged with:
 * book="200" (~200 words)
 * book="100" (~100 words)
 
-If possible, Iwould also like to include a "place name game" in LEKSA (from src dictionary files: prop_sms2X.xml with the tag book="prop".
+If possible, I would also like to include a "place name game" in LEKSA (from src dictionary files: prop_sms2X.xml with the tag book="prop".
 
 =====
 
