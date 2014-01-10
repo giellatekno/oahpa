@@ -1,0 +1,107 @@
+!!! Møte 10.01.14
+
+Til stades: Ryan, Lene, Trond
+
+
+!! Saksliste
+* Ryans kapasitet framover
+* Innlogging
+* NDS
+* Wordpress
+* Oahpa
+
+!! Ryans kapasitet framover
+Gielese skal være ferdig i februar, app skal ut i butikkene i mars.
+Februar blir full med dette. Også noen andre prosjekt på gang.
+Har 20 timer i uka fram til mars.
+
+!! Innlogging
+__Fra prosjektbeskrivelsen:__ \\
+Studentenes bruk av Oahpa og View blir logget. Vi har allerede et innloggingssystem basert på Open-­ID, men vi vil utvikle det videre slik at studentene ved innlogging, registrerer hvilket kurs de følger og dermed blir knyttet opp mot en lærer. Læreren kan innafor systemet rettlede studentene om hvilke oppgaver de bør gjøre på de forskjellige trinn i kurset. Studentenes oppgaver blir automatisk rettet av programmet, og studentene får tilbakemelding på hvilke typer grammatiske feil de gjør. 
+
+Lærerne vil kunne definere læringsmålene når det gjelder grammatikk og ordforråd for hvert enkelt kurs, og se hvilke oppgaver hver enkelt student har gjort, og få et resyme av resultatet for hver student. Dette vil gjøre det mulig å få til en vekselvirkning mellom studentenes egenarbeid og undervisninga. Studentene vil også kunne følge med i egen progresjon i forhold til læringsmålet for kurset, både i form av fargekode for hvilket nivå de har nådd i forhold til læringsmålet, og som prosent av arbeidsbyrden som er definert for kurset. 
+
+Ved at hver enkelt student blir gjenkjent av systemet, vil man også kunne tilpasse den automatiske tilbakemeldingen i forhold til studentenes nivå, f.eks. vil man kunne bruke mer grammatisk terminologi i forklaringer til studenter på høyere nivå, og mer dagligdags språk til studenter på lavere nivå. Man vil også kunne unngå å gjenta lange forklaringer til den samme studenten. 
+
+Dette bør få høy prioritet. Skal testes med russiskstudenter i første omgang.
+
+!Tiltak:
+* __Ryan__ lager en plan
+
+!! NDS
+
+! nobsme + Korp
+
+* smenob -> djuplenking i monolingval Korp.
+** luksusversjon: tospråkleg sme + nob
+* nobsme -> lenke til tospråkleg nob + sme (parallell)
+** luksusversjon: lemmasøk
+
+{{{
+http://gtweb.uit.no/korp/?mode=parallel#parallel_corpora=nob,sme&search=cqp%7C%5Blemma+%3D+%22enkel%22%5D%3A+%3CLINKED_CORPUS%3E+%5B%5D&page=0
+}}}
+
+!Tiltak:
+* __Ryan__ lager nobsme Korp-søk fra NDS til mandag
+* Vi ventar litt med tospråkleg smenob-korp.
+* Lokalisering __Lene, Trond__ oversetter
+
+! Kompilering
+Kompilering for dict kompilerer også fst for de andre språkene.
+* fab local kyv compile
+* fab local kyv test_configuration
+
+__Tiltak__
+
+* La kommandoane vere som dei er på gtweb
+* la fab local LANG compile gjelde berre ordbok på gtoahpa
+* Dokumentere dette på [http://giellatekno.uit.no/doc/dicts/nds/NDSUpdatingDictionaries.html]
+
+! IE (bug 1610)
+Ny tekst [her|http://sanit.oahpa.no/read/]Lesehjelp fungerer ikke på IE eldre enn IE9
+
+
+!! Prioritering i bugliste
+
+* 1585 P5	større sammensatt ord - boazodoallošiehtadallanlávdegoddi
+* 1597 P5 Mobile grensesnitt dukkar opp av og til
+* 1606 P5 Forslag etter lansering
+* 1607 P5 Noen websider godtar ikke plugin
+* 1610 P4 Reader-funksjon fungerer ikke på Explorer eller Firefox
+* 1639 P5 Word characters in the reader
+* 1677 P5 Ability to read searchable pdf on net.
+* 1706 P5 saan.oahpa.no still problematic
+* 1707 P5 Encoding on certain pages leads to problems
+* 1708 P5 Move NDS i18n translations to transifex.com? What do we think?
+* 1718 P4 Grammatikkinformasjon i reader - __lukke denne?__
+* 1720 P3 Fjerne eksempelsetninger fra første oppslag: sme-nob og sma-nob - __lukke denne?__
+* 1721 P2 sme: á-a er på i den vanlige versjonen
+* 1725 P4 Gi oversetting av suffikser  __borrat+V+TV+VAbess__
+* 1727 P5 Forskjellig meny-kjennetegnbokstav for hvert språk
+* 1730 P2 hid 1 og 2 blir ikke generert
+* 1734 P5 Languages not flags?
+* 1738 P4 lemma_ref vises ikke i NDS __lukke denne?__
+* 1745 P5 managing multiple variant entry display types
+* 1761 P4 Baakoeh: miniparadigmer mangler
+* 1762 P5 sme miniparadigmer: kontekst mangler for adjektiv
+* 1769 P4 Lage app for bokmerke til NDS
+* 1773 P2 Lenkje til Korp berre frå smenob, ikkje frå nobsme-klikk-smenob
+
+__Tiltak__
+
+* __Ryan__ Lukke bugger som er løst eller ikke skal løses (WONTFIX)
+
+
+!! Wordpress
+Ryan har lagt til en feature i wordpress for å unngå spam i kuvsje, den fungerer godt
+
+* Evt. Oppdatere wordpress og plugins i wordpress
+* Lage finere banner i kuvsje
+* Reader skal fungere på kuvsje
+* Bedre innlogging for kuvsje, google og facebook
+
+
+
+
+
+
