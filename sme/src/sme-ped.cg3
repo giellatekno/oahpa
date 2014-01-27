@@ -2555,7 +2555,7 @@ SELECT:r713 LAGA IF (0 LAGA) ;
 SELECT:r714 LAHKA IF (0 LAHKA LINK NOT 0 QDL);
   	## Čujuhuvvo maiddái sierramotiivvaide dearvvašvuođalága 45. paragráfii čuolbmačilgehusaid birra jávohisvuođageatnegasvuođa ja geigenlobi ektui epikriissa oktavuođas (oasi dearvvašvuođabargiidlágas oktan mearkkašumiiguin).
 
-SELECT:r716 ("láhka") IF (0 ("lága"))(*1 ("fápmu") LINK 1 ("boahtin") BARRIER V-NOT-COP);
+SELECT:r716 ("láhka") IF (0 ("lága"))(*1 ("fápmu") LINK *1 ("boahtin") BARRIER V-NOT-COP);
 
 #SELECT:r717 ("láhka") IF (0 ("lága") LINK *1 LAHKA-NOUN OR ("kriminaliseret") BARRIER V-NOT-COP);
 	## Norgga stáda lea iešguđet lágaid ja láhkaásahusaid bokte geatnegahtton.
@@ -2817,7 +2817,7 @@ SELECT:r809 ("virgi") IF (0 ("viergi" Ill) LINK *-1 ("ohcat") BARRIER SV-BOUNDAR
     
 SELECT:r810 ("virgi") IF (0 ("viergi") LINK *-1 BOS LINK *1 ("virgáibidjat") OR ("váldo#bidjan") OR ("bálká")) ;    
 
-SELECT:r811 ("virgi") IF (0 ("viergi" Gen))(1 VIRGI-NOUN BARRIER NOT-ADJ) ;
+SELECT:r811 ("virgi") IF (0 ("viergi" Gen))(*1 VIRGI-NOUN BARRIER NOT-ADJ) ;
 	## Mii váldit Finnmárkku olggobeale virggiid goluid, maiguin ásahit dakkár gelbbolašvuođa...
   
 SELECT:r812 ("virgi") IF (*-1 ("luohpat") OR ("bissut") OR ("bidjat") BARRIER NOT-ADV)(0 ("viergi" Loc));
@@ -2826,7 +2826,7 @@ SELECT:r813 ("virgi") IF (0 ("viergi" Loc))(*1 ("luohpat") OR ("bissut") OR ("bi
    	## Doavttir lea máŋgii biddjon eret virggiin miehtá Suoma.
    
 SELECT:r814 ("virgi") IF (0 ("viergi" Loc))(1 COPULAS)(*2 HUMAN OR VIRGI-LOC-NOUN BARRIER NP-HEAD-NOM LINK 0 Nom); 
-SELECT:r815 ("virgi") IF (*-1 HUMAN OR VIRGI-LOC-NOUN LINK 0 Nom BARRIER NPNH OR VERB LINK 0 NP-HEAD-NOM)(0 ("viergi" Loc));  
+SELECT:r815 ("virgi") IF (*-1 HUMAN OR VIRGI-LOC-NOUN BARRIER NPNH OR VERB LINK 0 Nom LINK 0 NP-HEAD-NOM)(0 ("viergi" Loc));  
 	## Virggiin leat nu ollu sámegielat doaktárat go vejolaš. 
 	
 SELECT:r816 ("virgi") IF (*0 ("resursavátnivuohta") OR ("servodatsuorgi") BARRIER NPNH)(0 ("viergi" Gen))(1 ("ektui"));	
@@ -3753,7 +3753,7 @@ SELECT:r1012 N IF (-1 BOC)(1 (PUNCT LEFT))(*2 (PUNCT RIGHT) LINK 1 (Pron Rel));
 	## Riehkit (riehkit ja fierváhirssat) mat bohtet beaŋkká siskkobeallai 
 	## olggobeal priváhta eatnamiid gullet eanaeaiggádii.
 
-REMOVE:r1013 N IF (0 Pr)(NEGATE 0 ("guovddáš") OR QDL)(*1 (N Gen) OR (Pron Pers Gen) BARRIER S-BOUNDARY OR CC LINK NOT 0 Cmpnd BARRIER NPNH);
+REMOVE:r1013 N IF (0 Pr)(NEGATE 0 ("guovddáš") OR QDL)(*1 (N Gen) OR (Pron Pers Gen) BARRIER S-BOUNDARY OR CC LINK NOT 0 Cmpnd);
 	## Jus divššohas sivas fysihkalaš vigiid,..  
 
 
@@ -4204,7 +4204,7 @@ SELECT:r1127 Pr IF (NEGATE -1 Gen)(NOT 0 QDL)(1 (Pron Gen));
 	## Gonagas addá láhkaásahusa lága geavaheami birra Svalbarddas.
 
 SELECT:r1129 Po IF (*-1 BOC OR CLB BARRIER NPNH)(-1 Gen)(NEGATE 0 NOUN-PO OR ("mielde") OR QDL);
-SELECT:r1130 Po IF (-1 Gen)(1 CC)(NEGATE -1 Acc LINK *-1 CC BARRIER NOT-NP LINK -1 Acc LINK -1 V-TRANS-ACT BARRIER NPNHA)(NEGATE 0 ("mielde") OR ("fárrui"));
+SELECT:r1130 Po IF (-1 Gen)(1 CC)(NEGATE -1 Acc LINK *-1 CC BARRIER NOT-NP LINK -1 Acc LINK *-1 V-TRANS-ACT BARRIER NPNHA)(NEGATE 0 ("mielde") OR ("fárrui"));
 SELECT:r1131 Po IF (-1 Gen)(NEGATE -1 VERB OR Adv)(NEGATE 0 TIME-PREP OR QDL)(1 TIME); 
 	## Dán vuostá sáhttá dadjat, ahte ...
 	## Jos sáddo deavdá buođu vuollái dahje jos sáddo hávddarda buođu vuolde... 
@@ -4531,7 +4531,7 @@ SELECT:r1214 Adv IF (-1 Acc LINK *-1 ("váldit") BARRIER S-BOUNDARY)(NEGATE -1 G
 SELECT:r1215 Adv IF (-1 Dem OR N OR A OR Pron LINK 0 Gen)(0 ("mađe"))(NEGATE *1 DADE BARRIER S-BOUNDARY);
 	## Mun bohten dan mađe árrat.		
 	
-SELECT:r1216 Adv IF (0 ("mielde"))(NOT 0 QDL)(*-1 ("go" Pcle) LINK -1 REALCOPULAS BARRIER VFIN);
+SELECT:r1216 Adv IF (0 ("mielde"))(NOT 0 QDL)(*-1 ("go" Pcle) LINK *-1 REALCOPULAS BARRIER VFIN);
 SELECT:r1217 Adv IF (0 ("mielde"))(NOT 0 QDL)(*-1 ("leat" Qst) BARRIER VFIN);
   	## Leago dorski mielde?
   	## Lea go dorski mielde?
@@ -5258,7 +5258,7 @@ SELECT:r1429 ("visot" A Attr) IF (0 ("visot") LINK 1 Refl LINK *1 (N Pl) BARRIER
 	
 	# viššal vs. viššalaš
 	# - - - - - - - - - -
-REMOVE:r1430 ("viššalaš") IF (*-1 HUMAN LINK 0 NP-HEAD-NOM BARRIER S-BOUNDARY)(NOT 0 QDL);
+REMOVE:r1430 ("viššalaš") IF (*-1 HUMAN BARRIER S-BOUNDARY LINK 0 NP-HEAD-NOM)(NOT 0 QDL);
   	## Sihke Mázes ja Guovdageainnus leat boarrásat viššalit finadan doaibmaguovddážiin.
 
 	# vuhtii
@@ -5375,7 +5375,7 @@ LIST ACCGEN = (N Gen) (N Acc) (Pers Acc) (Pers Gen)  ;
 
 # orrut + Actio Ess
 MAP (&grm-missing-ActEss) TARGET VERB (NOT 0 (Actio Ess) LINK *-1 ("orrut") OR ("fitnat") OR ("oaidnit") OR ("gullat") BARRIER NOT-ADV-PCLE LINK *-1 QDL) ;
-MAP (&grm-missing-ActEss) TARGET VERB (NOT 0 (Actio Ess) LINK -1 Acc LINK -1 ("orrut") OR ("fitnat") OR ("oaidnit") OR ("gullat") BARRIER NOT-ADV-PCLE LINK *-1 QDL) ;
+MAP (&grm-missing-ActEss) TARGET VERB (NOT 0 (Actio Ess) LINK -1 Acc LINK *-1 ("orrut") OR ("fitnat") OR ("oaidnit") OR ("gullat") BARRIER NOT-ADV-PCLE LINK *-1 QDL) ;
 MAP (&grm-missing-ActEss) TARGET VERB (NOT 0 (Actio Ess) LINK -1 TIME LINK -1 ("oppa") LINK *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1 QDL) ;
 #MAP (&grm-missing-ActEss) TARGET VERB (NOT 0 (Actio Ess) LINK *-1 V_ACTESS BARRIER (Actio Ess))(NEGATE *1 (Actio Ess)) ;
 
@@ -5400,7 +5400,7 @@ MAP (&grm-should-Ess) TARGET PROFESSION (NOT 0 Ess LINK -1 ("bargat") OR ("doaib
 # The user wants to stop the dialogue
 MAP (&dia-stop) TARGET ("heaitit")(*-1 SAHKA) ; 
 
-MAP (&err-capProp) TARGET LowercaseErr (*-1 QDL LINK 0 PLACENAME-QUESTION BARRIER Prop)(0 Plc) ;
+MAP (&err-capProp) TARGET LowercaseErr (*-1 QDL BARRIER Prop LINK 0 PLACENAME-QUESTION)(0 Plc) ;
 REMOVE LowercaseErr ;
 
 LIST ACCEPT-EVERYTHING = Makkar_snowboard_child Makkar_snowboard_adult Makkar_snowboard_young Mii_namma_lea dialogue_closing ;
@@ -5413,7 +5413,7 @@ LIST MAKKAR-BARGU = Makkár_bargu_dus_lea_young Makkár_bargu_dus_lea_adult 1_Pr
 SELECT Prop (*-1 ACCEPT-EVERYTHING BARRIER NOT-ADV-PCLE)(NOT *1 Prop) ; 
 
 # Collecting person name, if it is not in the lexicon - for SAHKA
-ADD (&dia-target) TARGET QMRK - ("Ipmel") IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea)) ;
+ADD (&dia-target) TARGET QMRK - ("Ipmel") - ("ipmel") IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea)) ;
 # Collecting name, the first one if there are many
 ADD (&dia-target) TARGET Prop - ("Ipmil") IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea)) ;
 ADD (&dia-target) TARGET N - ("Ipmil") (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea))(NEGATE *1 (&dia-target)) ;
@@ -5775,9 +5775,9 @@ MAP (&grm-missing-Ill-PP) TARGET ("gosa") IF (*1 QDL LINK NOT *1 ILLHEAD OR Neg 
 MAP (&grm-missing-Acc) TARGET ("makkár") IF (1 Acc LINK NOT 0 Nom LINK *1 QDL LINK NOT *1 Acc BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 Acc);
 MAP (&grm-missing-Nom) TARGET ("makkár") IF (1 Nom LINK NOT 0 Acc LINK *1 QDL LINK NOT *1 Nom OR QMRK OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 Nom)(NEGATE *1 MAKKAR-BARGU);
 
-MAP (&grm-Vehicle-Com) TARGET VEHICLE IF (NOT 0 Com LINK *-1 VERB LINK 0 ("vuolgit") OR ("mannat") OR ("vuodjit") BARRIER NPNH LINK *-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-Vehicle-Com) TARGET VEHICLE IF (NOT 0 Com LINK *-1 VERB BARRIER NPNH LINK 0 ("vuolgit") OR ("mannat") OR ("vuodjit") LINK *-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
-MAP (&grm-Loc-leaving) TARGET PLACE + Loc IF (*-1 VERB LINK 0 ("vuodjit") OR ("vuolgit") OR ("mannat") BARRIER Ill OR VERB OR S-BOUNDARY LINK *-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-Loc-leaving) TARGET PLACE + Loc IF (*-1 VERB BARRIER Ill OR VERB OR S-BOUNDARY LINK 0 ("vuodjit") OR ("vuolgit") OR ("mannat") LINK *-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 # Acc in S V O
 REMOVE Nom IF (-1 V-TRANS-ACT-NOT-ACT LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(NOT 0 TIME OR ROUTE)(NEGATE 0 A LINK *1 N BARRIER NOT-ADJ);
