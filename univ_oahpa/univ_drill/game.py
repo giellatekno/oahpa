@@ -841,13 +841,13 @@ class BareGame(Game):
 				if random_word.count() > 0:
 					random_form = random_word.order_by('?')[0]
 					random_word = random_form.word
-					logfile.write(random_word.lemma)
+					#logfile.write(random_word.lemma)
 					no_form = False
 					break
 				elif random_word.count() == 1:
 					random_form = random_word[0]
 					random_word = random_form.word
-					logfile.write(random_word.lemma)
+					#logfile.write(random_word.lemma)
 					break
 				else:
 					count += 1

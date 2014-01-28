@@ -2049,7 +2049,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	qtext = question
 	qtext = qtext.rstrip('.!?,')
 
-	logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastaF_and_Sahka_CGanalysis_log.txt','w')
+	#logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastaF_and_Sahka_CGanalysis_log.txt','w')
 	
 	host = 'localhost'
 	port = 9000  # was: 9000, TODO - add to settings.py
@@ -2143,7 +2143,6 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
 	checked = os.popen(ped_cg3).readlines()
 	print "syntactic analysis:\n",checked
-	logfile.write("syntactic analysis:\n",checked)
 
 	wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
 	messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
@@ -2159,7 +2158,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	lemma=""
 	for line in checked:
 		line = line.strip()
-	   #logfile.write(line+"\n")
+		#logfile.write(line+"\n")
 
 		#Find the lemma first
 		matchObj=constantObj.search(line)
@@ -2276,9 +2275,9 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	variables = []
 	variables.append(variable)
 	variables.append(constant)
-	logfile.write("variables in message:",variables)
-        logfile.write("msg:",msg)
-	logfile.write("dia_msg:", dia_msg)
+	#logfile.write("variable in message:"+variables[0])
+        #logfile.write("msg:"+msg[0])
+	#logfile.write("dia_msg:"+dia_msg[0])
 	return msg, dia_msg, variables
 
 
