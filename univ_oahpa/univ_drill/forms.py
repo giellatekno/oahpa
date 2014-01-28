@@ -2049,7 +2049,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	qtext = question
 	qtext = qtext.rstrip('.!?,')
 
-	#logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastaF_log.txt','w')
+	logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastaF_and_Sahka_CGanalysis_log.txt','w')
 	
 	host = 'localhost'
 	port = 9000  # was: 9000, TODO - add to settings.py
@@ -2072,7 +2072,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 			if not cohort or cohort == w:
 				cohort = w + "\n"
 			if cohort=="error":
-				raise Http500
+				raise Http404
 			analysis = analysis + force_unicode(cohort).encode('utf-8')
 
 		if self.gametype=="sahka":
@@ -2107,7 +2107,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 			if not cohort or cohort == w:
 				cohort = w + "\n"
 			if cohort=="error":
-				raise Http500
+				raise Http404
 			analysis = analysis + cohort
 
 		if self.gametype=="sahka":
@@ -2143,6 +2143,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
 	checked = os.popen(ped_cg3).readlines()
 	print "syntactic analysis:\n",checked
+	logfile.write("syntactic analysis:\n",checked)
 
 	wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
 	messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
@@ -2275,6 +2276,9 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	variables = []
 	variables.append(variable)
 	variables.append(constant)
+	logfile.write("variables in message:",variables)
+        logfile.write("msg:",msg)
+	logfile.write("dia_msg:", dia_msg)
 	return msg, dia_msg, variables
 
 
@@ -2555,7 +2559,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	qtext = question
 	qtext = qtext.rstrip('.!?,')
 
-	#logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastas_log.txt', 'w')
+	#logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/CGanalysis_log.txt', 'w')
 	host = 'localhost'
 	port = 9000  # was: 9000, TODO - add to settings.py
 	size = 1024
@@ -2583,7 +2587,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 			if not cohort or cohort == w:
 				cohort = w + "\n"
 			if cohort=="error":
-				raise Http500
+				raise Http404
 			#logfile.write(cohort+"\n")
 			analysis = analysis + force_unicode(cohort).encode('utf-8')
 		#logfile.write(analysis+"\n")
