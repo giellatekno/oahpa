@@ -11,11 +11,12 @@
   over aktivitet, med nokre korte / enkle statistikk
 
 * Admin brukarar for logga inn på ein administrative grensesnitt for å
-  leggja til nye lærarar i systemet, og setja deim som ansvarleg i sine
-  kurs.
+  leggja til nye lærarar i systemet
 
-* Admin brukarar får oversikt over elevane deira, og kan sjå på datoen
-  av siste innlogging, statistikk, osv. Dette er generert av Django sitt
+* Admin brukarar kan setja brukarar som ansvarleg som lærar i fleire kurs.
+
+* Lærararfår oversikt over elevane deira: kan sjå på datoen av siste
+  innlogging, statistikk, osv. Dette er generert av Django sitt
   admingrensesnittrammeverk.
 
 ### Neste stigar
@@ -38,9 +39,12 @@ Nye moglegheitar for tilbakemelding til studentar om statistikk / progresjon:
  * Studentane får tilbakemelding på typar grammatiske feil dei gjer
 
  * Studentar får fylgja med på progresjon i forhold til læringsmål frå
-   kurs dei er registrert i: både i form av fargekode for nivå dei hev
-   nådd i forhold til læringsmål, og prosent av arbeidsbyrden som er
-   definert
+   kurs dei er registrert i:
+
+   - studenten får fargekode for nivå dei hev nådd i forhold til
+     læringsmål
+
+   - studenten får ogso prosent av arbeidsbyrden som er definert
 
 Nye moglegheitar for inndeling av oppgåvor:
 
@@ -54,17 +58,17 @@ Nye moglegheitar for grammatiske feedback:
 
 * Unngå lange forklaringar: sporing av feedback studentar hev sedd på
 
-## Nye models
+# Programmering
 
- * Student level
-   - related course
-   - goals completed
-   - grammatical feedback type
+## Nye models
 
  * Goal
    - related course
    - goal name
    - expected accuracy rate / condition for success
+   - success period? (interval that the goal must be completed in)
+   - expiration period? (goal is only available for practice during this
+     period)
    - goal definitions:
      - exercise module (MORFA S, MORFA C, LEKSA, NUMRA)
      - exercise settings:
@@ -73,11 +77,90 @@ Nye moglegheitar for grammatiske feedback:
 
 ## Endringar på eksisterande model
 
+ * User profile model needs changes for level/statistics
+   - related course
+   - goals completed
+   - grammatical feedback type
+
  * User log - UI events ulik frå correct/incorrect svar: brukar klikkar
    på feedback, opnar grammatikken, osv.
 
+ * Morphological feedback models:
+   - will need a means for specifying the "level" of the feedback.
+
+### Moglege endringar
+
+ * ? Course connection request - viss lærar må godkjenna først, me treng
+ ein model for dette
+
+ * ? User log - course goal vs. general activity - viss studenten vel å
+ trena på eit kursmål, vis i loggen
+
 ## Nye frontend endringar
 
- * Systemet må lagra ei loggmelding når studentar klikkar på feedback,
-   dvs.: JSON API for logg-eventar
+ * Systemet må lagra ei loggmelding når studentar klikkar på morfologisk
+   feedback, dvs.: JSON API for logg-eventar
+
+     - systemet kan då velja kva slags feedback det burde visa neste
+       gongen, når alt vert logga
+
+ * Når studenten trenar på ulike oppgåvor som dei hev vald sjølv (f.eks., dei
+   berre går gjennom Morfa-S), det kan henda dei vil framleis sjå ei
+   lista over ting dei kan gjera i forhold til eit kurs:
+
+     - ? spursmål: burde alle aktivitet i ei oppgåva gå til kursmål, eller
+         berre når folk vel å trena på målet? f.eks., eksame-basert
+         læring, eller statistikk/progresjon basert?
+
+## Source data updates
+
+ * Feedback xml files (`feedback_nouns.xml`, `messages.lang.xml`) need
+   attributes for specifying message level. We can assume that there may
+   be however many levels as the instructor is willing to define, but,
+   message id needs to continue to be unique. Following is a maybe
+   unrealistic example, but should illustrate the point:
+
+e.g.:
+
+    <l stem="2syll">
+      <msg>bisyllabic_stem</msg>
+    </l>
+
+    -->
+
+    <l stem="2syll">
+      <msg user_level="1">bisyllabic_stem_I</msg>
+      <msg user_level="2">bisyllabic_stem_II</msg>
+      <msg user_level="3">bisyllabic_stem_III</msg>
+    </l>
+
+    <messages xml:lang="sme">
+        <message order="A" id="Bis_NomPl" user_level="1">
+            WORDFORM gets -t plural, and has two syllables.
+        </message>
+        <message order="A" id="Bis_NomPl" user_level="2">
+            WORDFORM inflects as a bisyllabic noun in the nominative plural.
+        </message>
+    </messages>
+
+ * Need to determine what the behavior will be if there is not a message
+   defined for the particular level, probably just take the highest
+   level available?
+
+## User flows
+
+Student sjølvregistrasjon:
+
+ 1.) studenten vel eit kurs
+
+ 2.) får tilgang til alle ulike måla på kurset
+
+ 3.) burde lærar godkjenna, eller får studenten plutseleg tilgang til alle
+     resurss?
+
+## New views
+
+ * Student's courses
+ * Student assignment/goals list
+ * Instructor feedback
 
