@@ -120,6 +120,9 @@ Nye moglegheitar for grammatiske feedback:
    message id needs to continue to be unique. Following is a maybe
    unrealistic example, but should illustrate the point:
 
+   This should be an optional update, which doesn't cause problems if
+   not present.
+
 e.g.:
 
     <l stem="2syll">
@@ -158,9 +161,39 @@ Student sjølvregistrasjon:
  3.) burde lærar godkjenna, eller får studenten plutseleg tilgang til alle
      resurss?
 
+Mål-basert oppgåvor:
+
+?
+
 ## New views
 
  * Student's courses
  * Student assignment/goals list
  * Instructor feedback
+
+
+# Questions
+
+## Course goals:
+
+What sort of criteria do we expect the instructors to specify? I have a
+few ideas (i.e., 80% accuracy on Illative Pl), but also:
+
+ * Will goals need to be restricted to a time period:
+   - complete this goal within 1 hour of work
+
+ * Will goals need to have a period of time they are available?
+   - You may begin trying March 1st, but must finish this by May 1st
+
+In order for work to count to a goal, should a student need to select
+that they will work on this goal, or can any work be counted? Must
+students choose to "test" themselves when they are ready?
+
+## Course registration
+
+Will instructors need to approve a student joining a course, or can we
+assume students can sign up however they will?
+
+Maybe some courses should be marked as free registration, and some
+should be marked as restricted/requiring approval?
 
