@@ -62,17 +62,21 @@ Nye moglegheitar for grammatiske feedback:
 
 ## Nye models
 
+ * event / notification
+   - student adds to course, need way of tracking new events to show to
+   	 instructor when they log in
+   - django rest framework for events shown to instructor, so they can
+   	 dismiss easily each notification
+
  * Goal
    - related course
    - goal name
    - expected accuracy rate / condition for success
-   - success period? (interval that the goal must be completed in)
-   - expiration period? (goal is only available for practice during this
-     period)
    - goal definitions:
      - exercise module (MORFA S, MORFA C, LEKSA, NUMRA)
      - exercise settings:
         - semantic sets, or case and number, and so forth
+     - correct on first try vs. correct eventually
    - goal deep-links
 
 ## Endringar på eksisterande model
@@ -85,15 +89,14 @@ Nye moglegheitar for grammatiske feedback:
  * User log - UI events ulik frå correct/incorrect svar: brukar klikkar
    på feedback, opnar grammatikken, osv.
 
+    - maybe this should be a different model: user feedback events
+
  * Morphological feedback models:
    - will need a means for specifying the "level" of the feedback.
 
 ### Moglege endringar
 
- * ? Course connection request - viss lærar må godkjenna først, me treng
- ein model for dette
-
- * ? User log - course goal vs. general activity - viss studenten vel å
+ * User log - course goal vs. general activity - viss studenten vel å
  trena på eit kursmål, vis i loggen
 
 ## Nye frontend endringar
@@ -103,6 +106,9 @@ Nye moglegheitar for grammatiske feedback:
 
      - systemet kan då velja kva slags feedback det burde visa neste
        gongen, når alt vert logga
+
+     - django rest framework and angular.js for these things:
+       http://www.django-rest-framework.org/
 
  * Når studenten trenar på ulike oppgåvor som dei hev vald sjølv (f.eks., dei
    berre går gjennom Morfa-S), det kan henda dei vil framleis sjå ei
@@ -163,7 +169,13 @@ Student sjølvregistrasjon:
 
 Mål-basert oppgåvor:
 
-?
+ 1.) studenten vel eit mål frå lista si
+
+ 2.) når dei arbeider, alt arbeid går i måla
+
+   - må ha ein måte at dei kan slå det av. Kanskje berre når dei
+   	 navigerar bort frå sida, eller kvar spursmål-svar sett send ein
+   	 variabel med kvar form submit
 
 ## New views
 
@@ -179,21 +191,12 @@ Mål-basert oppgåvor:
 What sort of criteria do we expect the instructors to specify? I have a
 few ideas (i.e., 80% accuracy on Illative Pl), but also:
 
- * Will goals need to be restricted to a time period:
-   - complete this goal within 1 hour of work
-
- * Will goals need to have a period of time they are available?
-   - You may begin trying March 1st, but must finish this by May 1st
-
-In order for work to count to a goal, should a student need to select
-that they will work on this goal, or can any work be counted? Must
-students choose to "test" themselves when they are ready?
+A student needs to select that they will work on this goal, or can any
+work be counted? Must students choose to "test" themselves when they are
+ready?
 
 ## Course registration
 
-Will instructors need to approve a student joining a course, or can we
-assume students can sign up however they will?
-
-Maybe some courses should be marked as free registration, and some
-should be marked as restricted/requiring approval?
+Students can register, maybe just by typing in a course name or
+following a link, instructors can always remove them.
 
