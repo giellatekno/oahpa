@@ -1,0 +1,60 @@
+# Migrating to mod_wsgi from mod_python
+
+## install mod_wsgi
+
+Should be installed on vic now.
+
+## Enable mod_wsgi
+
+Apache2 just requires a symlink in one directory from the available plugins directory.
+
+## Change apache's config file:
+
+How it is now...
+
+    # smaoahpa
+    <Location "/smaoahpa">
+        SetHandler python-program
+        PythonHandler django.core.handlers.modpython
+        SetEnv DJANGO_SETTINGS_MODULE smaoahpa.settings
+        PythonInterpreter smaoahpa
+        SetEnv PYTHON_EGG_CACHE /tmp
+        PythonDebug On
+        PythonPath "['/home/smaoahpa/smaoahpa', '/home/smaoahpa'] + sys.path"
+    </Location>
+    
+    Alias /smaoahpa/media /home/smaoahpa/smaoahpa/media
+    <Location "/smaoahpa/media">
+        SetHandler None
+    </Location>
+
+Changed to ... 
+
+    # smaoahpa
+    Include "/home/smaoahpa/smaoahpa/apache/apache_django_wsgi.conf"
+
+### What this does: 
+
+Points to a local configuration file in the smaoahpa directory. Project configuration files need to be stored in a subdirectory to the project because the webserver needs access to other files, but the webserver will then not give public access to parent directories.
+
+## Check the configuration files within smaoahpa/apache/
+
+smaoahpa/apache/ contains two files: an apache vhost definition (apache_django_wsgi.conf), and a WSGI script (written in python) that is run by apache (smaoahpa.wsgi) as a daemon.
+
+smaoahpa.wsgi: two paths, pointing to project directory and parent
+
+apache_django_wsgi.conf: 
+
+ - several paths to directories
+ - user permissions and user groups
+
+I (Ryan) have configured all of the paths so that they are like those on victorio, however one thing we will need to do is make sure that all files in the smaoahpa project are chowned to a user that apache/wsgi has access to. It may be worth creating an oahpa user, or if that exists, chowning to those, and managing file access and svn via groups.
+
+
+# References
+
+ - https://code.google.com/p/modwsgi/
+ - https://code.google.com/p/modwsgi/wiki/IntegrationWithDjango
+ - https://code.djangoproject.com/wiki/django_apache_and_mod_wsgi
+
+

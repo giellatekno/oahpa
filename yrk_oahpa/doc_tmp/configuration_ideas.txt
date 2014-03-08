@@ -1,0 +1,55 @@
+To add a new question type to Morfa-S I need to edit the following files, often doing things that are repeated across multiple places
+ * smadrill/game.py 
+ * smadrill/views.py 
+ * smadrill/forms.py
+
+Altering the case menu for pronouns in a separate instance required editing the following: 
+ * smadrill/game.py
+ * smadrill/views.py
+ * smadrill/forms.py
+ * smadrill/templates/mgame_p.html
+
+A future Oahpa should ideally define all question types for Morfa, Leksa and the rest of the games in a configuration file which also contains information on how the database is installed, and what the data sources are.
+
+For ease of configuration, I'd recommend YAML, because the idea is that if Oahpa becomes much more user-friendly to those who want to maintain their own Oahpa for their own language, setting it up shouldn't require a ton of custom coding. Of course, we can assume that they'll be generating with HFST or something like that ;) 
+
+Example of YAML follows, you'll get the idea...
+
+Config:
+ leksa: True
+ morfa_s: True
+ numra: False # Numra is disabled
+
+Languages:
+  "sma": "Southern Sámi"
+  "nob": "Norwegian (bokmål)"
+  "swe": "Swedish"
+
+Leksa:
+  pairs:
+    "sma-nob"
+	"nob-sma"
+	"sma-swe"
+	"swe-sma"
+  semsets:
+	"HUMAN"
+	"HUMAN_DOING"
+	# etc... 
+  sources:
+	"åa1": "Etc..."
+
+Morfa:
+  language: "sma"
+  
+  question_types:
+	case:
+      "ILL": "N+Sg+Ill", "N+Pl+Ill" # This is assumed to be tags
+      "INE": "N+Sg+Ine", "N+Pl+Ine"
+	stem:
+	  "bisyllabic": "2syll" # Need some way of defining where this data comes from, of course
+	  "trisyllabic": "3syll"
+  
+  display_dialect:
+	"SH": "Etc..."
+	"L": "Etc..."
+  
