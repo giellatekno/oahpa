@@ -135,6 +135,53 @@ class UserGrade(models.Model):
 		ordering = ['-datetime']
 		permissions = (("can_change_score", "Can change grade"),)
 
+class Goal(models.Model):
+	pass
+
+class UserActivityLog(models.Model):
+	""" Tracking user activity, question/answer completion, and feedback
+	use.
+	"""
+	user = models.ForeignKey(User)
+	goal = models.ForeignKey(Goal)
+	goal_repetition = models.IntegerField(default=1)
+	answer_correct = models.BooleanField()
+	user_input = models.TextField()
+
+def create_activity_log_from_drill_logs(user, drill_logs, current_user_goal=False):
+	# TODO: do it all in one commit.
+
+	drill_log_attrs = [
+		# ('game', 'in_game'),
+		# ('date', 'date'),
+		# user's input
+		('userinput', 'user_input'),
+		# correct or no?
+		('iscorrect', 'answer_correct'),
+		# the actual correct value
+		('correct', 'correct'),
+		('qid', 'qid'),
+		# ?
+		# ('example', 'example'),
+		# ?
+		# ('feedback', 'feedback'),
+		# ?
+		# ('comment', 'comment'),
+		('messageid', 'messageid'),
+		('lang', 'lang'),
+		# TODO: is this all the lemmas or just some? maybe this is just for
+		# sahka and cealkka
+		# 'tasklemmas', 
+	]
+
+	for drill_log in drill_logs:
+		activity_log_attrs = {}
+		for drill_attr, log_attr in drill_log_attrs:
+			activity_log_attrs[log_attr] = getattr(drill_log, drill_attr)
+		activity_log_attrs['user'] = user
+		# TODO: activity_log_attrs['goal'] = current_user_goal
+		print activity_log_attrs
+	return
 
 
 class Activity(models.Model):
@@ -219,3 +266,4 @@ post_delete.connect(course_relationship_postdelete, sender=CourseRelationship,
 pre_save.connect(user_presave, sender=User,
 	dispatch_uid="univ_oahpa.courses.models.pre_save")
 
+# vim: set ts=4 sw=4 tw=72 syntax=python noexpandtab :
