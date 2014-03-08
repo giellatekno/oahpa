@@ -2,7 +2,7 @@
 
 from settings import *
 import sys
-from yrk_drill.models import *
+from kpv_drill.models import *
 from xml.dom import minidom as _dom
 from django.db.models import Q
 from django.utils.encoding import force_unicode

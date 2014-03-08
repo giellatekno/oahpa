@@ -1,4 +1,4 @@
-{% extends 'yrk_oahpa_main.html' %}
+{% extends 'kpv_oahpa_main.html' %}
 {% load i18n %}
 {{ lang_switch }}
 {% get_available_languages as LANGUAGES %}
@@ -97,10 +97,10 @@
 <!--	<strong>{% trans "Online courses" %}</strong>
 	<ul class="sidelist small">
 		{% if user.is_authenticated %}
-			<li><a href="{% url yrk_oahpa.courses.views.courses_main %}">{% trans "View progress" %}</a></li>
-			<li><a href="{% url yrk_oahpa.courses.urls.logout %}">{% trans "Log out" %}</a></li>
+			<li><a href="{% url kpv_oahpa.courses.views.courses_main %}">{% trans "View progress" %}</a></li>
+			<li><a href="{% url kpv_oahpa.courses.urls.logout %}">{% trans "Log out" %}</a></li>
 		{% else %}
-    		<li><a href="/yrk_oahpa/courses/login/">{% trans "Log in" %}</a></li>
+    		<li><a href="/kpv_oahpa/courses/login/">{% trans "Log in" %}</a></li>
     	{% endif %}
     </ul>
 	
@@ -108,7 +108,7 @@
 </div>
 
 {% comment %}
-<a href="/yrk_oahpa/yrk_feedback/">{% trans 'Feedback' %}</a><br/>
+<a href="/kpv_oahpa/kpv_feedback/">{% trans 'Feedback' %}</a><br/>
 {% endcomment %}
 
 <div id="rightcontent">

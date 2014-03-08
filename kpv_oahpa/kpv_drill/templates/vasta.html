@@ -23,18 +23,18 @@
 http://oahpa.no/index.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-http://oahpa.no/yrk/index.html
+http://oahpa.no/kpv/index.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "en" %}
-http://oahpa.no/yrk/index.eng.html
+http://oahpa.no/kpv/index.eng.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-http://oahpa.no/yrk/index.nob.html
+http://oahpa.no/kpv/index.nob.html
 {% endifequal %}
 {% endblock %}
 
 {% block name %}{% trans "Vasta" %}{% endblock %}
-{% block pagename %}/yrk_oahpa/vasta/{% endblock %}
+{% block pagename %}/kpv_oahpa/vasta/{% endblock %}
 {% block instructions %}
 {% ifequal gametype "cealkka" %}
 {% trans "Answer the questions with full sentences." %} </br> 

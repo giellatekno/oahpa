@@ -85,7 +85,7 @@ margin-right:11px;
 {% endblock %}
 {% block extrajs %}
 <script src="{{ MEDIA_URL }}/js/prototype.js" type="text/javascript"></script>
-<script src="{{ MEDIA_URL }}/js/yrk_oahpa.js" type="text/javascript"></script>
+<script src="{{ MEDIA_URL }}/js/kpv_oahpa.js" type="text/javascript"></script>
 <!--[if lt IE 7]>
 <script defer type="text/javascript" src="{{ MEDIA_URL }}/js/pngfix.js"></script>
 <![endif]-->
@@ -100,7 +100,7 @@ function submitSahka(dia) {
 
 {% block imgprefix %}sahka{% endblock %}
 {% block questionsetclass %}sahka{% endblock %}
-{% block gametitlename %}<a href="/yrk_oahpa/sahka">SAHKA</a>{% endblock %}
+{% block gametitlename %}<a href="/kpv_oahpa/sahka">SAHKA</a>{% endblock %}
 {% block navbar %}
 {% if not forms %}
 <ul class="sidelist">
@@ -130,19 +130,19 @@ function submitSahka(dia) {
 http://oahpa.no/index.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-http://oahpa.no/yrk/index.html
+http://oahpa.no/kpv/index.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "en" %}
-http://oahpa.no/yrk/index.eng.html
+http://oahpa.no/kpv/index.eng.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-http://oahpa.no/yrk/index.nob.html
+http://oahpa.no/kpv/index.nob.html
 {% endifequal %}
 {% endblock %}
 
 
 {% block name %}Sahka{% endblock %}
-{% block pagename %}/yrk_oahpa/sahka/{% endblock %}
+{% block pagename %}/kpv_oahpa/sahka/{% endblock %}
 
 
 {% block settings %}

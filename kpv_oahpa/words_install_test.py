@@ -5,7 +5,7 @@ from xml.dom import minidom as _dom
 from django.utils.encoding import force_unicode
 import sys
 
-from yrk_drill.models import * 
+from kpv_drill.models import * 
 from collections import OrderedDict
 
 
@@ -15,7 +15,7 @@ _D = open('/dev/null', 'w')
 
 COUNT_ONLY = False
 
-supported_langs = ['yrk', 'nob', 'sme', 'swe', 'deu', 'eng']
+supported_langs = ['kpv', 'nob', 'sme', 'swe', 'deu', 'eng']
 
 # # # 
 # 

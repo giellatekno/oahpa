@@ -6,7 +6,7 @@ from optparse import make_option
 
 import sys
 
-from yrk_drill.models import Log
+from kpv_drill.models import Log
 
 def printLogs(queryset, csv=False, delimiter=False, attrs=False):
 	""" Print filtered queryset.

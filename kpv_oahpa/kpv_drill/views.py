@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404
 from django.utils.translation import ugettext_lazy as _
 
-from yrk_oahpa.conf.tools import switch_language_code
+from kpv_oahpa.conf.tools import switch_language_code
 
 from random import randint
 
@@ -30,7 +30,7 @@ def index(request):
 	c = RequestContext(request, {
 		'jee': "joku arvo",
 		})
-	return render_to_response('yrk_oahpa_main.html', c,
+	return render_to_response('kpv_oahpa_main.html', c,
 				context_instance=RequestContext(request))
 
 def updating(request):
@@ -392,12 +392,12 @@ def leksa_game(request, place=False):
 
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
-		if sess_lang == 'yrk':  # was: sme
+		if sess_lang == 'kpv':  # was: sme
 			sess_lang = 'rus'  # was: nob
 	else:
 		sess_lang = 'fin'
 
-	default_langpair = 'yrk%s' % sess_lang  # was: sme
+	default_langpair = 'kpv%s' % sess_lang  # was: sme
 
 	c = leksagame.create_game(request, initial_transtype=default_langpair)
 

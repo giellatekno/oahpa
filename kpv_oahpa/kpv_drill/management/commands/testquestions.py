@@ -40,7 +40,7 @@ def _firstelement(e, x):
         return None
 
 
-from yrk_drill.models import Tagname, Tagset, Form
+from kpv_drill.models import Tagname, Tagset, Form
 
 def parse_tag(tag):
     """ Iterate through a tag string by chunks, and check for tag sets
@@ -1178,7 +1178,7 @@ class Command(BaseCommand):
     )
 
     def test_agreement(self):
-        fname = 'yrk_drill/management/commands/testquestions_agreement_defs.yaml'
+        fname = 'kpv_drill/management/commands/testquestions_agreement_defs.yaml'
 
         agr = Agreement(fname)
 
@@ -1255,7 +1255,7 @@ class Command(BaseCommand):
 
         qpath = options['questionfile']
         gpath = options['grammarfile']
-        agreement_defs = 'yrk_drill/management/commands/testquestions_agreement_defs.yaml'
+        agreement_defs = 'kpv_drill/management/commands/testquestions_agreement_defs.yaml'
 
         iterations = int(options['itercount'])
         test_qid = options['qid']

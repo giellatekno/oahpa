@@ -4,13 +4,13 @@ from django.db.models import Q
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
-import yrk_oahpa.settings as settings
+import kpv_oahpa.settings as settings
 
-from yrk_oahpa.conf.tools import switch_language_code
+from kpv_oahpa.conf.tools import switch_language_code
 
 from models import *
 #from game import * 
-#from yrk_oahpa.yrk_drill.game import relax
+#from kpv_oahpa.kpv_drill.game import relax
 import datetime
 import socket
 import sys, os
@@ -328,12 +328,12 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-	('yrkfin', _('Inari Sami to Finnish')),
-	('finyrk', _('Finnish to Inari Sami')),
+	('kpvfin', _('Inari Sami to Finnish')),
+	('finkpv', _('Finnish to Inari Sami')),
 )
 
 NUMLANGUAGE_CHOICES = (
-	('yrk', _('Inari Sami')),
+	('kpv', _('Inari Sami')),
 )
 
 SEMTYPE_CHOICES = (
@@ -482,8 +482,8 @@ GAME_FILTER_DEFINITIONS = {
 
 import re
 
-from yrk_oahpa.settings import INFINITIVE_SUBTRACT as infinitives_sub
-from yrk_oahpa.settings import INFINITIVE_ADD as infinitives_add
+from kpv_oahpa.settings import INFINITIVE_SUBTRACT as infinitives_sub
+from kpv_oahpa.settings import INFINITIVE_ADD as infinitives_add
 
 def relax(strict):
 	"""Returns a list of relaxed possibilities, making changes by relax_pairs.
@@ -797,7 +797,7 @@ class OahpaSettings(forms.Form):
 	
 	def set_default_data(self):
 		self.default_data = {
-					'language' : 'yrk',  # sme in univ_oahpa
+					'language' : 'kpv',  # sme in univ_oahpa
 					'syll' : ['2syll'],
 					'bisyllabic': 'on',
 					'trisyllabic': False,
@@ -889,7 +889,7 @@ class OahpaQuestion(forms.Form):
 		forms = []
 		relaxings = []
 		if hasattr(self, 'translang'):
-			if self.translang == 'yrk':   # was: sme
+			if self.translang == 'kpv':   # was: sme
  				# Relax spellings.
 				accepted_answers = [force_unicode(item) for item in accepted_answers]
 				forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
@@ -938,7 +938,7 @@ class LeksaSettings(OahpaSettings):
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
 	
-	default_data = {'gametype' : 'bare', 'language' : 'yrk', 'dialogue' : 'GG', 
+	default_data = {'gametype' : 'bare', 'language' : 'kpv', 'dialogue' : 'GG', 
 			'syll' : [], 
 			'bisyllabic': False,
 			'trisyllabic': False,
@@ -1256,9 +1256,9 @@ class MorfaQuestion(OahpaQuestion):
 class NumSettings(OahpaSettings):
 	maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
 	numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
-	#numlanguage = forms.ChoiceField(initial='yrk', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
+	#numlanguage = forms.ChoiceField(initial='kpv', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
 	# TODO: remove mandatory need to set default data, should be done through 'initial' field setting.
-	default_data = {'language' : 'yrk', 'numlanguage' : 'yrk', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
+	default_data = {'language' : 'kpv', 'numlanguage' : 'kpv', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
 					
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1364,7 +1364,7 @@ class NumQuestion(OahpaQuestion):
 class KlokkaSettings(NumSettings):
 	numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES_PL, widget=forms.RadioSelect)
 	gametype = forms.ChoiceField(initial='kl1', choices=KLOKKA_CHOICES, widget=forms.RadioSelect)
-	default_data = {'language' : 'yrk', 'numlanguage' : 'yrk', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'string'}
+	default_data = {'language' : 'kpv', 'numlanguage' : 'kpv', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'string'}
 					
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1513,7 +1513,7 @@ class KlokkaQuestion(NumQuestion):
 class DatoSettings(KlokkaSettings):
 	gametype = None # Disable gametype (easy, medium, hard)
 
-	default_data = {'language' : 'yrk', 'numlanguage' : 'yrk', 'numgame': 'string'}
+	default_data = {'language' : 'kpv', 'numlanguage' : 'kpv', 'numgame': 'string'}
 
 
 class DatoQuestion(KlokkaQuestion):
@@ -1791,7 +1791,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    #logfile = open('/PATH/TO/THE/yrk_drill/vastaF_log.txt','w')
+    #logfile = open('/PATH/TO/THE/kpv_drill/vastaF_log.txt','w')
     
     host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
@@ -2263,7 +2263,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    logfile = open('/PATH/TO/THE/yrk_drill/vastas_log.txt', 'w')
+    logfile = open('/PATH/TO/THE/kpv_drill/vastas_log.txt', 'w')
     host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024

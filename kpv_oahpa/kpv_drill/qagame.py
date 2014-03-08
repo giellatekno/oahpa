@@ -8,7 +8,7 @@ from models import *
 from forms import *
 from game import Game
 
-import yrk_oahpa.settings
+import kpv_oahpa.settings
 
 try:
 	DEFAULT_DIALECT = settings.DEFAULT_DIALECT

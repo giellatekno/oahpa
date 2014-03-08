@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import settings
-from yrk_drill.models import *
+from kpv_drill.models import *
 # from xml.dom import minidom as _dom
 # from django.db.models import Q
 import sys
@@ -29,7 +29,7 @@ except:
 try:
 	language = settings.MAIN_LANGUAGE[0]
 except:
-	language = "yrk"
+	language = "kpv"
 
 numfst = fstdir + "/" + language + "-num.fst"
 

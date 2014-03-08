@@ -1,4 +1,4 @@
-from yrk_oahpa.yrk_drill.models import Log, Word, Semtype, Source, Form, Tag, Feedbackmsg, Feedbacktext, Question, QElement, WordQElement, WordTranslation
+from kpv_oahpa.kpv_drill.models import Log, Word, Semtype, Source, Form, Tag, Feedbackmsg, Feedbacktext, Question, QElement, WordQElement, WordTranslation
 from django.contrib import admin
 from django.contrib.contenttypes import generic
 

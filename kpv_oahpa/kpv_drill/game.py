@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from yrk_oahpa.yrk_drill.models import *
-from yrk_oahpa.yrk_drill.forms import *
+from kpv_oahpa.kpv_drill.models import *
+from kpv_oahpa.kpv_drill.forms import *
 
-from yrk_oahpa.conf.tools import switch_language_code
+from kpv_oahpa.conf.tools import switch_language_code
 
 from django.db.models import Q, Count
 from django.http import HttpResponse, Http404
@@ -15,7 +15,7 @@ import os
 import re
 import itertools
 
-import yrk_oahpa.settings
+import kpv_oahpa.settings
 
 # DEBUG = open('/dev/ttys001', 'w')
 
@@ -23,23 +23,23 @@ from random import choice
 from .forms import PRONOUNS_LIST
 
 try:
-	L1 = yrk_oahpa.settings.L1
+	L1 = kpv_oahpa.settings.L1
 except:
-	L1 = 'yrk'  # was: sme
+	L1 = 'kpv'  # was: sme
 
 try:
-	LOOKUP_TOOL = yrk_oahpa.settings.LOOKUP_TOOL
+	LOOKUP_TOOL = kpv_oahpa.settings.LOOKUP_TOOL
 except:
 	LOOKUP_TOOL = 'lookup'
 
 
 try:
-	FST_DIRECTORY = yrk_oahpa.settings.FST_DIRECTORY
+	FST_DIRECTORY = kpv_oahpa.settings.FST_DIRECTORY
 except:
 	FST_DIRECTORY = False
 
 try:
-	DEFAULT_DIALECT = yrk_oahpa.settings.DEFAULT_DIALECT
+	DEFAULT_DIALECT = kpv_oahpa.settings.DEFAULT_DIALECT
 except:
 	DEFAULT_DIALECT = None
 
@@ -998,8 +998,8 @@ class BareGame(Game):
 
 
 class NumGame(Game):
-	generate_fst = 'yrk-num.fst'
-	answers_fst = 'yrk-inum.fst'
+	generate_fst = 'kpv-num.fst'
+	answers_fst = 'kpv-inum.fst'
 	
 	def get_db_info(self, db_info):
 		""" Options supplied by views
@@ -1171,8 +1171,8 @@ class Klokka(NumGame):
 
 	QuestionForm = KlokkaQuestion
 	
-	generate_fst = 'iclock-yrk.fst'
-	answers_fst = 'clock-yrk.fst'
+	generate_fst = 'iclock-kpv.fst'
+	answers_fst = 'clock-kpv.fst'
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1307,8 +1307,8 @@ class Dato(Klokka):
 
 	# QuestionForm = DatoQuestion
 	
-	generate_fst = 'idate-yrk.fst'
-	answers_fst = 'date-yrk.fst'
+	generate_fst = 'idate-kpv.fst'
+	answers_fst = 'date-kpv.fst'
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
 					 or Dato is unable to look up forms."

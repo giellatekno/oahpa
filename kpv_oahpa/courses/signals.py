@@ -1,4 +1,4 @@
-# from yrk_oahpa.courses.models import CourseMembership
+# from kpv_oahpa.courses.models import CourseMembership
 from django.contrib.auth.models import User, Group
 from models import UserProfile
 from django.db.models import Avg, Max, Min, Count

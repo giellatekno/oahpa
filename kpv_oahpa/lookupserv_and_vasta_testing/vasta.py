@@ -12,8 +12,8 @@ from os import environ
 environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
 from random import randint
-from yrk_oahpa.yrk_drill.game import *
-from yrk_oahpa.yrk_drill.qagame import *
+from kpv_oahpa.kpv_drill.game import *
+from kpv_oahpa.kpv_drill.qagame import *
 from optparse import OptionParser
 
 
