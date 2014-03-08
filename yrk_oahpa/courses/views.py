@@ -26,7 +26,7 @@ def cookie_login(request, next_page=None, required=False, **kwargs):
 	"""
 
 	if not next_page:
-		next_page = '/smn_oahpa/courses/' # TODO: change next url for deep links
+		next_page = '/yrk_oahpa/courses/' # TODO: change next url for deep links
 	if request.user.is_authenticated():
 		message = "You are logged in as %s." % request.user.username
 		request.user.message_set.create(message=message)
@@ -51,7 +51,7 @@ def cookie_login(request, next_page=None, required=False, **kwargs):
 			error = "<h1>Forbidden</h1><p>Login failed.</p>"
 			return HttpResponseForbidden(error)
 	else:
-		return HttpResponseRedirect('/smn_oahpa/courses/standard_login/') # TODO: check
+		return HttpResponseRedirect('/yrk_oahpa/courses/standard_login/') # TODO: check
 
 
 def cookie_logout(request, next_page=None, **kwargs):
@@ -66,7 +66,7 @@ def cookie_logout(request, next_page=None, **kwargs):
 	# redirects.
 
 	if not next_page:
-		next_page = '/smn_oahpa/courses/logout/'
+		next_page = '/yrk_oahpa/courses/logout/'
 	
 	return HttpResponseRedirect(next_page)
 

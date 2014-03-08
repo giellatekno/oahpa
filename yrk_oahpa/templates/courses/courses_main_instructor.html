@@ -1,4 +1,4 @@
-{% extends 'smn_oahpa.html' %}
+{% extends 'yrk_oahpa.html' %}
 {% load i18n %}
 {% load cache %}
 {% get_current_language as LANGUAGE_CODE %}
@@ -16,7 +16,7 @@ TODO: internationalization strings
 	{# Add blocktrans and trans tags #}
 	<div id="courses">
 		<ul id="subnav">
-			<li><a href="{% url smn_oahpa.courses.urls.logout %}">Log out</a></li>
+			<li><a href="{% url yrk_oahpa.courses.urls.logout %}">Log out</a></li>
 		</ul>
 		<h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
 
@@ -55,7 +55,7 @@ TODO: internationalization strings
 				</tr>
 				{% endfor %}
 				</table>
-				<p><a href="/smn_oahpa/courses/{{ student.user.id }}">{% trans "More information about this student" %}.</a></p>
+				<p><a href="/yrk_oahpa/courses/{{ student.user.id }}">{% trans "More information about this student" %}.</a></p>
 				{% endif %}
 			</li>
 			{% endfor %}
