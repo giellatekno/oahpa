@@ -1,7 +1,7 @@
-import smn_oahpa.settings
+import yrk_oahpa.settings
 
 try:
-	default = smn_oahpa.settings.DEFAULT_DIALECT
+	default = yrk_oahpa.settings.DEFAULT_DIALECT
 except:
 	default = 'GG'
 
@@ -11,10 +11,10 @@ def dialect(request):
     return {'dialect': request.session.get('dialect')}
 
 def site_root(request):
-	return {'URL_PREFIX': smn_oahpa.settings.URL_PREFIX}
+	return {'URL_PREFIX': yrk_oahpa.settings.URL_PREFIX}
 
 def grammarlinks(request):
-	from smn_drill.models import Grammarlinks
+	from yrk_drill.models import Grammarlinks
 	from conf.tools import switch_language_code
 	
 	default_lang = 'nob'

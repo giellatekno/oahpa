@@ -1,4 +1,4 @@
-{% extends 'smn_oahpa.html' %}
+{% extends 'yrk_oahpa.html' %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
@@ -14,7 +14,7 @@ TODO: link in user interface
 	{# Add blocktrans and trans tags #}
 	<div id="courses">
 		<ul id="subnav">
-			<li><a href="{% url smn_oahpa.courses.urls.logout %}">Log out</a></li>
+			<li><a href="{% url yrk_oahpa.courses.urls.logout %}">Log out</a></li>
 		</ul>
 		<h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
 		{% if is_student %}
@@ -39,7 +39,7 @@ TODO: link in user interface
 				<ul class="courselist">
 					{# TODO: generalize this #}
 					<li>{% trans 'Copy and paste this link into the OpenID field to log in.' %}</li>
-					<li><img src="/smn_oahpa/media/images/openid.png" /> <a href="http://oahpa.no/smn_oahpa/openid/{{ user.username }}/">http://oahpa.no/smn_oahpa/openid/{{ user.username }}/</a></li>
+					<li><img src="/yrk_oahpa/media/images/openid.png" /> <a href="http://oahpa.no/yrk_oahpa/openid/{{ user.username }}/">http://oahpa.no/yrk_oahpa/openid/{{ user.username }}/</a></li>
 				</ul>
 				{% endcomment %}
 
@@ -63,7 +63,7 @@ TODO: link in user interface
 			{% endif %}
 		{% else %}
 			<p>{% trans "You are a course instructor." %}</p>
-			<p><a href="/smn_oahpa/admin/courses/">{% trans "View students' grades" %}</a></p>
+			<p><a href="/yrk_oahpa/admin/courses/">{% trans "View students' grades" %}</a></p>
 		{% endif %}
 	</div>
 
