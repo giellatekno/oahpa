@@ -135,8 +135,21 @@ class UserGrade(models.Model):
 		ordering = ['-datetime']
 		permissions = (("can_change_score", "Can change grade"),)
 
+GOAL_HELP_TEXT _("""This is a plain-text description shown to students
+describing their goal.""")
+
 class Goal(models.Model):
-	pass
+	course = models.ForeignKey(Course)
+	created_by = models.ForeignKey(User)
+	description = models.TextField(help_text=GOAL_HELP_TEXT)
+
+class GoalCriterion(models.Model):
+	# TODO: just for now using a text field so that I can start testing,
+	# eventually we'll have some conditions on how user activity logs
+	# must be evaluated.
+	# TODO: allow a user to reuse criteria from other goals?
+	goal = models.ForeignKey(Goal)
+	description = models.TextField()
 
 class UserActivityLog(models.Model):
 	""" Tracking user activity, question/answer completion, and feedback
