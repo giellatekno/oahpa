@@ -1,0 +1,71 @@
+{% extends 'yrk_oahpa.html' %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% comment %}
+TODO: game logo
+TODO: link in user interface
+
+{% endcomment %}
+
+{% block page_class %}fixed{% endblock %}
+
+{% block content %}
+	{# Add blocktrans and trans tags #}
+	<div id="courses">
+		<ul id="subnav">
+			<li><a href="{% url yrk_oahpa.courses.urls.logout %}">Log out</a></li>
+		</ul>
+		<h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
+		{% if is_student %}
+			<h3>{% trans "Enrolled in…" %} </h3>
+			<ul class="courselist">
+				{% for course in courses %}
+				{% if course.site_link %}
+				<li>{{ course.identifier }} &ndash; {{ course.name }}<br />
+					<a href="{{ course.site_link }}" target="BLANK">{% trans "View course lessons" %}</a></li>
+				{% else %}
+					<li>{{ course.identifier }} &ndash; {{ course.name }}</li>
+				{% endif %}
+				{% endfor %}
+			</ul>
+			{% if new_profile %}
+				<p>{% trans "You don't have any scores yet, go play some games!" %}</p>
+			{% else %}
+				<p>{% trans "The following scores represent your progress in the games available in Oahpa. Instructors will see your scores as shown below, but will also be able to see individual scores from every game. Good luck!" %}</p>
+				{% comment %}
+				{# OpenID not installed on site.uit.no yet #}
+				<h3>{% trans 'Site.uit.no login information' %}</h3>
+				<ul class="courselist">
+					{# TODO: generalize this #}
+					<li>{% trans 'Copy and paste this link into the OpenID field to log in.' %}</li>
+					<li><img src="/yrk_oahpa/media/images/openid.png" /> <a href="http://oahpa.no/yrk_oahpa/openid/{{ user.username }}/">http://oahpa.no/yrk_oahpa/openid/{{ user.username }}/</a></li>
+				</ul>
+				{% endcomment %}
+
+				{% load pretty_logs %}
+
+				<h3>{% trans "Course progress" %}</h3>
+				<dl>
+					{% for summary in summaries %}
+					<dt>{% for a in summary.game.name|filter_log %}{{ a }}{% if not forloop.last %} - {% endif %}{% endfor %}</dt>
+						<dd>
+							<ul>
+								<li>{% trans "Average" %} &mdash; {{ summary.average }}</li>
+								<li>{% trans "Highest score" %} &mdash; {{ summary.maximum }}</li>
+								<li>{% trans "Lowest score" %} &mdash; {{ summary.minimum }}</li>
+								<li>{% trans "Number of tries" %} &mdash; {{ summary.count }}</li>
+							</ul>		
+						</dd>
+					{% endfor %}
+				</dl>
+
+			{% endif %}
+		{% else %}
+			<p>{% trans "You are a course instructor." %}</p>
+			<p><a href="/yrk_oahpa/admin/courses/">{% trans "View students' grades" %}</a></p>
+		{% endif %}
+	</div>
+
+{% endblock %}
+

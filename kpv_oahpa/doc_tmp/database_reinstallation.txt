@@ -1,0 +1,39 @@
+# Database installation
+
+I'm sure the process is similar to other oahpas, but it never hurts to take notes!
+
+1. Backup logs (not going to delete them, but just in case)
+
+	- python manage.py dumpdata smadrill.log > logs.json
+	
+	OR
+
+	- python manage.py printlogs > logs.txt
+
+2. Update svn in data_sma/
+
+	- svn up data_sma/
+
+3. Recompile FSTs
+
+	- cd gtsvn/gt/
+	- cat ../../../compiling_fsts.txt | bash
+
+	* Note, it is not necessary to run the notes in the documentation, but follow them (this is just a shortcut)
+
+
+4. Clear smadrill data minus logs
+
+	- python manage.py sqlclear smadrill | grep -v '_log' | python2.6 manage.py dbshell
+
+5. Sync the database to recreate the destroyed tables
+
+	- python manage.py syncdb
+
+6. Run the database installation script
+
+	- ./parafedaba.sh
+
+... And keep an eye on the output. When it's done, error.log will contain the errors from the installation process. You can also less +F error.log to watch while the process runs.
+
+
