@@ -145,8 +145,15 @@ class UserActivityLog(models.Model):
 	user = models.ForeignKey(User)
 	goal = models.ForeignKey(Goal)
 	goal_repetition = models.IntegerField(default=1)
-	answer_correct = models.BooleanField()
+	is_correct = models.BooleanField()
+	correct_answer = models.TextField()
 	user_input = models.TextField()
+
+	# Now the rest of the attributes should just be meta where each
+	# activity was generated, i.e., morfa-s, morfa-c, etc. This will be
+	# indirectly contained in the Goal instance, so it may be that
+	# anything else isn't needed.
+	in_game = models.TextField()
 
 def create_activity_log_from_drill_logs(user, drill_logs, current_user_goal=False):
 	# TODO: do it all in one commit.
@@ -157,7 +164,7 @@ def create_activity_log_from_drill_logs(user, drill_logs, current_user_goal=Fals
 		# user's input
 		('userinput', 'user_input'),
 		# correct or no?
-		('iscorrect', 'answer_correct'),
+		('iscorrect', 'is_correct'),
 		# the actual correct value
 		('correct', 'correct'),
 		('qid', 'qid'),
