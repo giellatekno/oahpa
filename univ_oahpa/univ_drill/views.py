@@ -63,6 +63,14 @@ class Gameview(object):
 
 	"""
 
+	def register_logs(self, request, game):
+		""" Grab all the logs that were generated from a form, and
+		append them to the request session """
+		request.user_logs_generated = [
+			f.last_log for f in game.form_list
+			if hasattr(f, 'last_log')
+		]
+
 	def __init__(self, settingsclass, gameclass):
 		self.SettingsClass = settingsclass
 		self.GameClass = gameclass
@@ -307,6 +315,7 @@ class Leksaview(Gameview):
 		self.settings['gamename_key'] = "%s - %s" % (semtype, transtype)
 		
 	def context(self, request, game, settings_form):
+		self.register_logs(request, game)
 
 		return Context({
 			'settingsform': settings_form,
@@ -378,6 +387,8 @@ class LeksaPlaceview(Gameview):
 		self.settings['gamename_key'] = "Place - %s - %s" % (geog, freq)
 
 	def context(self, request, game, settings_form):
+		self.register_logs(request, game)
+
 		return Context({
 			'settingsform': settings_form,
 			'settings' : self.settings,
@@ -433,6 +444,7 @@ class Numview(Gameview):
 		return keys
 
 	def context(self, request, game, settings_form):
+		self.register_logs(request, game)
 
 		return Context({
 			'settingsform': settings_form,
@@ -666,6 +678,8 @@ class Morfaview(Gameview):
 
 
 	def context(self, request, game, settings_form):
+		self.register_logs(request, game)
+
 		return RequestContext(request, {
 			'settingsform': settings_form,
 			'settings' : self.settings,
@@ -840,6 +854,7 @@ class Vastaview(Gameview):
 			self.settings['gamename_key'] = gamename
 
 	def context(self, request, game, settings_form):
+		self.register_logs(request, game)
 
 		c = Context({
 			'settingsform': settings_form,
@@ -888,6 +903,7 @@ class Cealkkaview(Gameview):
 		self.settings['gamename_key'] = 'level %s' % str(self.settings['level'])
 	
 	def context(self, request, game, settings_form):
+		self.register_logs(request, game)
 		# TODO: seems to be fine, but settings['level'] on the first visit is
 		# all, not 1, even though the menu shows level 1
 
@@ -1006,6 +1022,7 @@ class Sahkaview(Cealkkaview):
 
 
 	def context(self, request, game, settings_form):
+		self.register_logs(request, game)
 
 		def getmessages(g):
 			if len(g.form_list) > 0:
@@ -1016,7 +1033,7 @@ class Sahkaview(Cealkkaview):
 		errormsg = ""
 		for f in game.form_list:
 			errormsg = errormsg + f.errormsg
-			
+		
 		c = Context({
 			'settingsform': settings_form,
 			'settings': self.settings,
