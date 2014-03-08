@@ -1,4 +1,4 @@
-""" Authentication and Middleware for site.uit.no cookie. 
+""" Authentication and Middleware for site.uit.no cookie.
 
 Changes required to settings (will elaborate on this more later):
 
