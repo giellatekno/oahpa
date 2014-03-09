@@ -20,6 +20,7 @@ import univ_oahpa.settings
 from random import choice
 from .forms import PRONOUNS_LIST
 
+MORFAS_LOG_FILE = os.path.join(os.getcwd(), 'univ_drill/morfas_log.txt')
 
 try:
 	L1 = univ_oahpa.settings.L1
@@ -541,7 +542,7 @@ class BareGame(Game):
 			"Px": possessive_type,  # possessive_type is about semtypes (family, other, all)
 		}
 
-		logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/morfas_log.txt', 'w')
+		logfile = open(MORFAS_LOG_FILE, 'w')
 		semtypes = False  # needed for Px
 		sylls = []
 		bisyl = ['2syll', 'bisyllabic']
