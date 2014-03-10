@@ -24,17 +24,33 @@ TODO: link in user interface
 		</ul>
 		<h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
 		{% if is_student %}
-			<h3>{% trans "Enrolled in…" %} </h3>
-			<ul class="courselist">
-				{% for course in courses %}
+			<p>{% trans "Your courses" %} </p>
+			<div class="courselist">
+			{% for course in courses %}
+				<h3>{{ course.identifier }} &ndash; {{ course.name }}</h3>
 				{% if course.site_link %}
-				<li>{{ course.identifier }} &ndash; {{ course.name }}<br />
-					<a href="{{ course.site_link }}" target="BLANK">{% trans "View course lessons" %}</a></li>
-				{% else %}
-					<li>{{ course.identifier }} &ndash; {{ course.name }}</li>
+				    <a href="{{ course.site_link }}" target="BLANK">{% trans "View course lessons" %}</a></li>
 				{% endif %}
-				{% endfor %}
-			</ul>
+				{% if course.goal_set.all|length > 0 %}
+				    <p>Your instructor has defined the following
+				        goals...</p>
+				    <ul class="course_goal">
+				    {% for goal in course.goal_set.all %}
+        			    <li>
+        			        <dl class="goal_definition">
+        			            <dt>{{ goal.short_name }}</dt>
+        			            <dd>{{ goal.description }}</dd>
+        			            <dt></dt>
+        			            <dd>Another field...</dd>
+        			            <dt></dt>
+        			            <dd><a href="goal/begin/{{ goal.id }}/">Begin!</a></dd>
+        			        </dl>
+        			    </li>
+				    {% endfor %}
+			        </ul>
+			    {% endif %}
+			{% endfor %}
+			</div>
 			{% if new_profile %}
 				<p>{% trans "You don't have any scores yet, go play some games!" %}</p>
 			{% else %}
@@ -43,7 +59,7 @@ TODO: link in user interface
 				{% load pretty_logs %}
 
 				<h3>{% trans "Course progress" %}</h3>
-				<dl>
+				<dl class="course_progress">
 					{% for summary in summaries %}
 					<dt>{% for a in summary.game.name|filter_log %}{{ a }}{% if not forloop.last %} - {% endif %}{% endfor %}</dt>
 						<dd>

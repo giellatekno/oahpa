@@ -3,10 +3,24 @@ from django.contrib.auth.models import AnonymousUser
 
 class GradingMiddleware(object):
 
+    def process_view(self, request, view_func, view_args, view_kwargs):
+        """ Mark view as being able to be graded or not.
+        """
+
+        setattr(request, 'graded_view', False)
+
+        if view_func.__module__.startswith('django.contrib.admin.'):
+            setattr(request, 'graded_view', False)
+        else:
+            setattr(request, 'graded_view', True)
+
     def process_response(self, request, response):
         """ Here the goal is to process the grading that pertains to the
         user's current activity, which is marked on the session object,
         and store it in the courses activity log model. """
+
+        if not hasattr(request, 'graded_view'):
+            return response
 
         user_isnt_anon = request.user.is_authenticated()
         request_logs_exist = hasattr(request, 'user_logs_generated')
@@ -21,3 +35,4 @@ class GradingMiddleware(object):
 
         return response
 
+# vim: set ts=4 sw=4 tw=72 syntax=python :
