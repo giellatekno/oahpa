@@ -13,10 +13,24 @@
    UserActivityLogs
 
  * beginning to sketch out models in code, but not ready yet
-   - each Goal model will have a few criteria 
-   - 
+   - each Goal model will have a few criteria
+   -
 
  * simple view to add session variable for current goal, and tracking
+
+ TODO: individual user goal instances - when user begins on a goal, they
+ get their own goal instance which tracks and stores results and such.
+
+   - alternatively, user gets new instances created when registered for a
+     course: if a course adds a new goal, then the goal propagates to
+     user goal instances, etc. thus, when looking at the course summary,
+     easier to list all the user's own goals, links, and current
+     progress. also then, deleted goals with progress can still remain
+     in the user's summary
+
+   -
+
+
 
  TODO: need actual goal criteria, now that the basic models are in place
  for stuff to be tracked
@@ -25,9 +39,14 @@
  analyze whether it's been passed, maybe can use this to allow the user
  to see their progress while they work? 
 
- TODO: individual user goal instances?
+ TODO: something in admin is broken so adding a user to a course
+ manually does not work 
 
  TODO: how does View work with this?
+
+ TODO: make it clear on the courses page that someone is still working
+ on a goal, so that when tey have multiple available they'll know what's
+ going on
 
 # Oppsummering fra prosjektbeskrivelsen:
 
@@ -95,9 +114,9 @@ Nye moglegheitar for grammatiske feedback:
 
  * event / notification
    - student adds to course, need way of tracking new events to show to
-   	 instructor when they log in
+     instructor when they log in
    - django rest framework for events shown to instructor, so they can
-   	 dismiss easily each notification
+     dismiss easily each notification
 
  * Goal
    - related course
@@ -216,8 +235,8 @@ Mål-basert oppgåvor:
  2.) når dei arbeider, alt arbeid går i måla
 
    - må ha ein måte at dei kan slå det av. Kanskje berre når dei
-   	 navigerar bort frå sida, eller kvar spursmål-svar sett send ein
-   	 variabel med kvar form submit
+     navigerar bort frå sida, eller kvar spursmål-svar sett send ein
+     variabel med kvar form submit
 
 ## New views
 
