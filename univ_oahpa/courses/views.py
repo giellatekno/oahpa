@@ -217,6 +217,10 @@ def begin_course_goal(request, goal_id):
 
     goal_id = int(goal_id)
 
+    # Reset any session variables for tracking progress
+    del request.session['all_correct']
+    del request.session['set_completed']
+
     # Check that the user has the goal
     user_courses = request.user.get_profile().courses
     user_course_goals = [goal for course in user_courses

@@ -165,7 +165,7 @@ class Course(models.Model):
     # instructors = models.ManyToManyField(User, related_name='instructorships')
     # students = models.ManyToManyField(User, related_name='studentships')
     site_link = models.URLField(verify_exists=False, max_length=200, blank=True, null=True)
-    end_date = models.DateTimeField(null=True, default=None)
+    end_date = models.DateTimeField(null=True, default=None, blank=True)
 
     @property
     def students(self):
@@ -238,6 +238,20 @@ class GoalCriterion(models.Model):
     goal = models.ForeignKey(Goal)
     description = models.TextField()
 
+    # TODO: some ideas of criteria
+    #    percent                 correct type                         log activity match 
+    #    - 80%               |   correct of all answers            |  Leksa semantic set
+    #    - 60%               |   correct on first try per question |  Morfa-C category & subcategory
+    #    - 15 sets completed |   ----                              |  Morfa-S category & subcategory & subcategory
+
+    # Said otherwise:
+    #   - set of user log answers pertaining to goal, filtered by match
+    #     category
+    #   - sorted by date time
+    #   - TODO: need a unique value for the answer set that the user is
+    #     working on, which increments each time the user finishes the
+    #     set
+
 class UserGoalProgress(models.Model):
     # TODO: do not cascade and delete to this model if instructor
     # deletes a goal?
@@ -258,6 +272,9 @@ class UserActivityLog(models.Model):
     is_correct = models.BooleanField()
     correct_answer = models.TextField()
     user_input = models.TextField()
+
+    question_set = models.IntegerField(default=1)
+    question_tries = models.IntegerField(default=1)
 
     # Now the rest of the attributes should just be meta where each
     # activity was generated, i.e., morfa-s, morfa-c, etc. This will be

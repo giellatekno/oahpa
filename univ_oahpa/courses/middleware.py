@@ -28,6 +28,9 @@ class GradingMiddleware(object):
         # TODO: need to actually set this on the session somewhere
         current_user_goal = request.session.get('current_user_goal', False)
 
+        print "all_correct: " + repr(request.session.get('all_correct', False))
+        print "set_completed: " + repr(request.session.get('set_completed', False))
+
         if request_logs_exist and user_isnt_anon and current_user_goal:
             create_activity_log_from_drill_logs(request.user,
                                                 request.user_logs_generated,
