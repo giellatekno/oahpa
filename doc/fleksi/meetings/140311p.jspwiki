@@ -1,0 +1,85 @@
+!!! Møte 11.03.14
+
+Til stades: Heli, Lene, Trond.
+
+!!!Saker: 
+* Oahpa for flere språk
+* Firefox-plugin for Konteaksta
+* Konteaksta
+* Bugzilla
+* Neste møte
+
+!!Oahpa for flere språk
+
+!Kvensk
+Vi skal få igang Oahpa for kvensk. Førsteprioritet nå.
+
+!Tiltak:
+* Foreløpig fil finnes her: main/ped/fkv/src/n_fkvnob.xml
+* Leena lager demofil, Lene sjekker inn i samme mappe og gir beskjed til Heli
+* Vi vil ha implementert: Leksa, Morfas, Morfac: fkv_oahpa
+* __Lene__ lager Morfac-oppgaver
+* __Trond__ finner ut hvilke morfa-oppgaver er realistisk her og nå: kasus-numerus
+* __Trond__ kompilerer fster for kvensk på gtlab og legger i opt
+* __Trond__ finner ut om rusoahpa http://testing.oahpa.no/rusoahpa/
+** Skift ''masculine inanimate'' til ''all'' som default (diskuter m/Laura)
+
+
+!Nye språk
+[http://oahpa.no/addlang/index.html] \\
+Lene oppdaterer denne
+
+# fkv, rus
+## /opt/smi/fkv/bin/
+# SamEst-språka: est_oahpa, vro_oahpa
+# AKU-språka: mrj, myv, olo, liv, yrk (yrk, kpv er implementert)
+# Canada (seinare)
+
+!!Firefox-plugin for Konteaksta
+Denne skal implementeres parallelt med websiden
+
+
+!!Konteaksta
+
+[Dokumentasjon|http://giellatekno.uit.no/ped/nudoc/teaksta.html]
+
+!Endring i tagger: Mus lea beana
+* @HAB> i habitivsetningar endra til <hab> @ADVL> 
+* @SPRED i eksistensialsetningar og hab-setningar endra til <ext> @SUBJ 
+
+
+!Grensesnitt:
+Grensesnittet er finare og finare.
+
+Mannen oppe til venstre kan erstattes med ein kikkert.
+
+
+__TILTAK__
+* Lage liste med url for kvar oppgåvetype __Lene__
+* Legge inn flere urler for googlesøk på dokumentasjonssida __Lene__
+* Legge til språkgjenkjenning: "leat" __Heli__
+* Småfiks på layout, lage oppgavesidene __Heli__
+* Tekst til About-sida __Lene__
+* Funksjonaliteten, se bugzillaer __Heli__
+
+!!Bugzilla
+* 1756 Konteaksta er hacket
+* 1758 Komme tilbake til index-siden etter google-søk
+* 1759 fungerer ikke på http://skuvla.info
+* 1760 Om generering av distractors og fasit
+* 1764 Endre lemma med paradigme, evt oppdatere database: smáđáhkes A => smáđáhkis A \\
+http://giellatekno.uit.no/ped/maintenance.html: \\
+Remove words from the database one by one by giving the word id (or lemma) and the part of speech as option:
+python install.py -w beana -p N
+* 1832 Grammatikksida kjem opp dobbelt via Oahpa-menyen
+
+
+!!!Neste møte
+Mandag 24.3 kl 13. Vi innkaller Leena også.
+
+
+
+
+
+
+
