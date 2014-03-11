@@ -70,6 +70,10 @@ class Gameview(object):
 			f.last_log for f in game.form_list
 			if hasattr(f, 'last_log')
 		]
+		request.session['all_correct'] = game.all_correct in [1, True, 'True', 'true']
+
+		request.session['set_completed'] = request.session['all_correct'] or \
+											game.show_correct in [1, True, 'True', 'true']
 
 	def __init__(self, settingsclass, gameclass):
 		self.SettingsClass = settingsclass
