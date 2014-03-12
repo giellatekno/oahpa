@@ -7,39 +7,39 @@
 	</header>
 	<body>
 		<p>
-Here starts the documentation for making Morfa work for new languages. The goal is to make a demo of Morfa-C with 2-3 sentence matrices and the lemmas from Leksa. <a href="http://oahpa.no/davvi/"><strong>Here</strong></a> you can see how the North Sámi Morfa-S and Morfa-C work. Choose instruction language in the right margin before you choose the program. 
+Here starts the documentation for making Morfa work for new languages. The goal is to make a demo of Morfa-C with 2-3 task templates and the lemmas from Leksa. <a href="http://oahpa.no/davvi/"><strong>Here</strong></a> you can see how the North Sámi Morfa-S and Morfa-C work. Choose instruction language in the right margin before you choose the program. 
 </p>
 		<section>
 			<title>Tasks for Morfa-C</title>
-<p>Now starts the fun part of the work. Using the semantic classes in the lexicon you can make tasks for the pupils. They get a lemma in base form, and their task is to inflect it. What kind of tasks depends on the language. Your tools are the semantic sets of HUMAN nouns, HUMAN adjectives, PLACE nouns, MOVEMENT verbs, ACTIVITY verbs, FOOD nouns and DRINK nouns.</p>
-<p>The semantic classes in the lexicon make it possible to make e.g. these matrices:</p>
+<p>Now starts the fun part of the work. Using the semantic classes in the lexicon you can make tasks for the students. They get a lemma in base form, and their task is to inflect it. What kind of tasks depends on the language. Your tools are the semantic sets of FAMILY and PEOPLE nouns, HUMAN_A adjectives, PLACE nouns, MOVEMENT_V verbs, ACTIVITY verbs, FOOD and DRINK nouns and FOOD_A adjectives.</p>
+<p>The semantic classes in the lexicon make it possible to make e.g. these templates:</p>
 <ul>
-<li>- Where does the ADJ HUMAN live? HUMAN lives in ______ (PLACE).</li>
-<li>- What does HUMAN drink? HUMAN drinks ______ (DRINK).</li>
-<li>- What does HUMAN eat? HUMAN eats ______ (FOOD).</li>
-<li>- Who are in PLACE? ______ (HUMAN) are.</li>
-<li>- What HUMAN do today? Today HUMAN _______ (ACTIVITY-verb).</li>
-<li>- What ADJ HUMAN did yesterday? Yesterday HUMAN _______ (ACTIVITY-verb).</li>
-<li>- How are HUMAN? They are ______ (HUMAN-adj).</li>
-<li>- Where to HUMAN MOVEMENT-verb? HUMAN MOVEMENT-verb _______ (to PLACE).</li>
+<li>- Where does your FAMILY live? My FAMILY lives in ______ (PLACE).</li>
+<li>- What does PEOPLE drink? PEOPLE drinks ______ (DRINK).</li>
+<li>- What does PEOPLE eat? PEOPLE eats ______ (FOOD).</li>
+<li>- Who are in PLACE? ______ (PEOPLE Pl) are.</li>
+<li>- What you FAMILY do today? Today my FAMILY _______ (ACTIVITY-verb).</li>
+<li>- What ADJ PEOPLE did yesterday? Yesterday PEOPLE _______ (ACTIVITY-verb).</li>
+<li>- How are PEOPLE Pl? PEOPLE pl are ______ (HUMAN-adj).</li>
+<li>- Where to PEOPLE MOVEMENT-verb? PEOPLE MOVEMENT-verb _______ (to PLACE).</li>
 </ul>
-<p>You probably want to add more lemmas and semantic classes? But you should first look at the section about word forms.</p>
+<p>Of course you can many places use pronoun in stead of variable in the answer.</p>
 		</section>			
 		
 		<section>
-			<title>Question-answer-pair matrix in xml-format</title>
-<p>The matrix contains both variables and constants. This is an example of a question-answer-pair matrix in North Sami. The first text is "What SUBJ did yesterday?", the next one is "Yesterday SUBJ MAINV". The line with game="morfa" implies that the task for the pupil is to write the correct word form of the MAINV.</p>
+			<title>Question-answer-pair templates in xml-format</title>
+<p>The template contains both variables and constants. This is an example of a question-answer-pair template in North Saami. The first text is "What SUBJ did yesterday?", the next one is "Yesterday SUBJ MAINV". The line with game="morfa" implies that the task for the student is to write the correct word form of the MAINV.</p>
 		<source>
    &lt;q id="prtSg">
     &lt;qtype>PRT&lt;/qtype>
     &lt;question>
       &lt;text>Maid ADJ SUBJ barggai ikte&lt;/text> 
       &lt;element id="ADJ">
-	&lt;sem class="HUMAN"/>
+	&lt;sem class="HUMAN_A"/>
 	&lt;grammar tag="A+Attr"/>
       &lt;/element>
      &lt;element id="SUBJ">
-	&lt;sem class="HUMAN"/>
+	&lt;sem class="PEOPLE"/>
 	&lt;grammar tag="N+Sg+Nom"/>
       &lt;/element>
     &lt;/question>
@@ -54,7 +54,7 @@ Here starts the documentation for making Morfa work for new languages. The goal 
   
  </source>
 
-<p>This first matrix generate tasks like "What the old teacher did yesterday?" "bake" "Yesterday the teacher ____ " . As you see, the variable ADJ is just for giving variation. The qtype is PRT: to inflect verbs in past tense. It will be useful when you have made so many matrices that you will sort them as options for the pupil. But we will not use it in the demo. Every matix has an id to make it easier to remove them.</p><p> One example with inflecting adjectives in plural:</p>
+<p>This first template generate tasks like "What the old teacher did yesterday?" "bake" "Yesterday the teacher ____ " . As you see, the variable ADJ is just for giving variation. The qtype is PRT: to inflect verbs in past tense. It will be useful when you have made so many templates that you will sort them as options for the student. But we will not use it in the demo. Every template has an id to make it easier to remove them.</p><p> One example with inflecting adjectives in plural:</p>
 
 		<source>
    &lt;q id="AdjPred">
@@ -79,7 +79,7 @@ Here starts the documentation for making Morfa work for new languages. The goal 
     &lt;/answer> 
   &lt;/q>		
   </source>
-<p>The first text is "How are the SUBJ?", the next one is "They are ADJ". The line with game="morfa" implies that the task for the pupil is to write the correct word form of the ADJ. This matrix will generate tasks like "How are the girls?" "clever" "They are ______ (plural form in North Sami) ". </p><p> One example with inflecting nouns in illative:</p>
+<p>The first text is "How are the SUBJ?", the next one is "They are ADJ". The line with game="morfa" implies that the task for the student is to write the correct word form of the ADJ. This template will generate tasks like "How are the girls?" "clever" "They are ______ (plural form in North Saami) ". </p><p> One example with inflecting nouns in illative:</p>
 		<source>
   &lt;q id="nill">
     &lt;qtype>N-ILL&lt;/qtype>
@@ -104,18 +104,28 @@ Here starts the documentation for making Morfa work for new languages. The goal 
   &lt;/q>
 	
   </source>
-<p>The first text is "Where to SUBJ MAINV?", the next one is "SUBJ MAINV N-ILL". The line with game="morfa" implies that the task for the pupil is to write the correct word form of the N-ILL. This matrix will generate tasks like "Where to the girl runs?" "school" "The girl runs ______ (illative case in Sami) " . </p>
+<p>The first text is "Where to SUBJ MAINV?", the next one is "SUBJ MAINV N-ILL". The line with game="morfa" implies that the task for the student is to write the correct word form of the N-ILL. This template will generate tasks like "Where to the girl runs?" "school" "The girl runs ______ (illative case in Saami) " . </p>
 
 <p>For the demo we do it simply. E.g. we don't use pronouns in the answer, which in principle is easy, but then we have to take in account that in some languages there are genders. We have also an agreement fuction e.g. between SUBJ and MAINV which one could use.</p>
 
-  <p>Save the matrices in a file with the language code, e.g. <code>questions.sme.xml</code></p>	
+  <p>Save the templates in a file with the language code, e.g. <code>questions.sme.xml</code></p>	
 
 
 		</section>
 
 		<section>
 			<title>Word forms</title>
-<p>The lexicon contains lemmas. The Morfa-C tasks need word forms. There are two ways of doing it - the best one is to generate the needed word forms automatically. If you can't do it for your language, then you have to write the word forms manually. The work depends on the matrices, there you see which word forms you need for each lemma, also the basis forms. The word forms have to be in this format (tab-separated): </p>
+<p>The lexicon contains lemmas. The Morfa-C tasks need word forms. There are two ways of doing it - the best one is to generate the needed word forms automatically.  then you need files, like v_paradigm.txt, telling what forms to generate. </p>
+  <source>
+V+Inf
+V+Ind+Prs+Sg1
+V+Ind+Prs+Sg2
+V+Ind+Prs+Sg3
+V+Ind+Prs+Pl1
+V+Ind+Prs+Pl2
+V+Ind+Prs+Pl3
+  </source>	
+<p> If you can't do it for your language, then you have to write the word forms manually. The work depends on the templates, there you see which word forms you need for each lemma, also the basis forms. The word forms have to be in this format (tab-separated): </p>
   <source> 
   wordformTABlemma+POS+.......
   
@@ -128,16 +138,14 @@ Here starts the documentation for making Morfa work for new languages. The goal 
   boaris    boaris+A+Sg+Nom
   boarrásat boaris+A+Pl+N
   </source>	
-  <p>Save them in a file with the language code, e.g. <code>wordforms.sme.txt</code></p>	
+  <p>Save them in a file with the language code, e.g. <code>wordforms.sme.txt</code></p>
+
 		</section>
 
 		<section>
 			<title>Morfa-S</title>
-<p>Morfa-S is based on the file with word forms. You have to decide what options there should be, take a look at the North Sami Morfa-S. This will be a big work if you have many lemmas, and cannot generate the word forms automatically.</p> <p> Morfa-S offers help if the pupil wants to know how to make the word form. The help-information is generated based on the combination of the morphological tags and the task it self. This will be explained on the page "More".</p>
+<p>Morfa-S is based on generated word forms. You have to decide what options there should be, take a look at the North Saami Morfa-S. This will be a big work if you have many lemmas, and cannot generate the word forms automatically.</p> <p> Morfa-S offers help if the student wants to know how to make the word form. The help-information is generated based on the combination of the morphological tags and the task it self. This will be explained <a href="more.html">here</a>.</p>
 
 		</section>
-		<p class="last_modified">Last changed: $Id: developermorfa.xml,v 1.6 2009/09/09
-	lene Exp $
-				</p>
 	</body>
 </document>
