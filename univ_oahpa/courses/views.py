@@ -212,8 +212,7 @@ def begin_course_goal(request, goal_id):
     """ Mark the session with the goal ID, and redirect the user to the
     goal's start page.
     """
-
-    from .models import Goal
+    from .models import Goal, UserActivityLog
 
     goal_id = int(goal_id)
 
@@ -242,6 +241,10 @@ def begin_course_goal(request, goal_id):
 
     goal = Goal.objects.get(id=goal_id)
     request.session['current_user_goal'] = int(goal_id)
+
+    # Reset goal progress
+    # TODO: confirm first if there is progress, then reset.
+    UserActivityLog.objects.filter(user=request.user, goal=goal).delete()
 
     return HttpResponseRedirect(goal.start_url)
 

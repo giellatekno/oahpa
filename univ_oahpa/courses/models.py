@@ -228,6 +228,81 @@ class Goal(models.Model):
     def __unicode__(self):
         return "%s - %s" % (unicode(self.course), self.short_name)
 
+    def student_set_count(self, user, logs):
+        """ For a given goal, count the amount of question sets a user
+        answered.
+        """
+        from operator import itemgetter
+
+        def exists(l):
+            return l is not None
+
+        values = logs.values_list('question_set')
+
+        sets = filter(exists, map(itemgetter(0), values))
+
+        return sorted(list(set(sets)))
+
+    def evaluate_for_student(self, user):
+        logs = UserActivityLog.objects.filter(user=user, goal=self)
+        if logs.count() == 0:
+            print " -- nothing yet -- "
+            return
+
+        question_sets = self.student_set_count(user, logs)
+
+        # Amount of questions that the user answered correctly on the
+        # first try.
+
+        def get_correct_on_first_try(ls):
+            first_round = ls.filter(question_tries=1, is_correct=True)
+            return first_round
+
+        def get_total_correct(ls):
+            return ls.filter(is_correct=True)
+
+        def get_total_answered_for_round(ls):
+            # Answers generated at all, correct and incorrect.
+            from operator import itemgetter
+            answered = 0
+            max_tries = list(set(map(itemgetter(0), ls.values_list('question_tries'))))
+            for t in max_tries:
+                tried = ls.filter(question_tries=t)
+                print (t, ls.filter(question_tries=t))
+                answered += tried.count()
+            return answered
+
+        correct_on_first_try = []
+        all_correct = []
+        amount_answered = 0
+
+        for q in question_sets:
+            set_logs = logs.filter(question_set=q)
+            first_try = get_correct_on_first_try(set_logs)
+            eventually = get_total_correct(set_logs)
+            answered = get_total_answered_for_round(set_logs)
+
+            print "round: " + repr(q)
+            print "correct on first:   %d" % first_try.count()
+            print "correct eventually: %d" % eventually.count()
+            print "attempted:          %d" % answered
+            print '--'
+            correct_on_first_try.extend(get_correct_on_first_try(set_logs))
+            all_correct.extend(eventually)
+            amount_answered += answered
+
+        print
+        print '---'
+        print "rounds:           %d" % max(question_sets)
+        print "answered:         %d" % amount_answered
+        print "correct on first: %d" % len(correct_on_first_try)
+        print "correct at all:   %d" % len(all_correct)
+        print '---'
+        print
+
+
+
+
 class GoalCriterion(models.Model):
     # TODO: just for now using a text field so that I can start testing,
     # eventually we'll have some conditions on how user activity logs
