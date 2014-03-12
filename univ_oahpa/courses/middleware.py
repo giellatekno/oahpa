@@ -39,7 +39,6 @@ class GradingMiddleware(object):
                 request.session['question_try_count'][log.correct] = 1
 
         request.session.modified = True
-        print request.session['question_set_count']
         return request
 
     def reset_increments(self, request):
@@ -68,6 +67,18 @@ class GradingMiddleware(object):
         current_user_goal = request.session.get('current_user_goal', False)
 
         if request_logs_exist and user_isnt_anon and current_user_goal:
+            current = request.session.get('current_exercise_params', False)
+            previous = request.session.get('previous_exercise_params', False)
+            if current and previous:
+                if current != previous:
+                    # TODO: check if goal is okay with tracking
+                    # whatever, for now we stop tracking
+                    print " -- user navigated to new page, stop tracking --"
+                    request.session['previous_exercise_params'] = current
+                    del request.session['current_user_goal']
+                    # TODO: redirect?
+                    return response
+
             self.increment_session_answer_counts(request)
 
             create_activity_log_from_drill_logs(request, request.user,
@@ -79,6 +90,10 @@ class GradingMiddleware(object):
             # TODO: this is for debug only.
             print Goal.objects.get(id=current_user_goal)\
                       .evaluate_for_student(request.user)
+
+        request.session['previous_exercise_params'] = \
+                request.session.get('current_exercise_params', False)
+
         return response
 
 # vim: set ts=4 sw=4 tw=72 syntax=python :

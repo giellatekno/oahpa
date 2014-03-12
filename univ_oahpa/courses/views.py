@@ -225,6 +225,7 @@ def begin_course_goal(request, goal_id):
     request.session['question_set_count'] = 0
     request.session['question_try_count'] = {}
     request.session['answered'] = {}
+    request.session['previous_exercise_params'] = False
 
     # Check that the user has the goal
     user_courses = request.user.get_profile().courses

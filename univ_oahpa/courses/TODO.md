@@ -22,6 +22,15 @@
    previous. now can query things that were right on the first try, vs.
    all else.
 
+ * Stop tracking goal if user navigates to a new set of views
+
+ * Working on goal evaluation, generating some basic numbers
+
+ --
+
+ TODO: optional goal tracking stop, or allow resume if they navigate
+     back?
+
  TODO: individual user goal instances - when user begins on a goal, they
  get their own goal instance which tracks and stores results and such.
 

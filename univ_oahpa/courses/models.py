@@ -4,6 +4,8 @@ from django.utils.translation import gettext_lazy as _
 
 from django.contrib.auth.models import User, Group
 
+from operator import itemgetter
+
 # TODO: need to create fixtures of groups and permissions
 # TODO: hide delete course admin actions for Instructors group
 # TODO: site-uit-no-default course added to fixtures
@@ -232,7 +234,6 @@ class Goal(models.Model):
         """ For a given goal, count the amount of question sets a user
         answered.
         """
-        from operator import itemgetter
 
         def exists(l):
             return l is not None
@@ -245,6 +246,7 @@ class Goal(models.Model):
 
     def evaluate_for_student(self, user):
         logs = UserActivityLog.objects.filter(user=user, goal=self)
+
         if logs.count() == 0:
             print " -- nothing yet -- "
             return
@@ -258,18 +260,16 @@ class Goal(models.Model):
             first_round = ls.filter(question_tries=1, is_correct=True)
             return first_round
 
-        def get_total_correct(ls):
+        def get_correct(ls):
             return ls.filter(is_correct=True)
 
         def get_total_answered_for_round(ls):
             # Answers generated at all, correct and incorrect.
-            from operator import itemgetter
             answered = 0
-            max_tries = list(set(map(itemgetter(0), ls.values_list('question_tries'))))
-            for t in max_tries:
-                tried = ls.filter(question_tries=t)
-                print (t, ls.filter(question_tries=t))
-                answered += tried.count()
+            _tries = list(set(map(itemgetter(0),
+                                  ls.values_list('question_tries'))))
+            for t in _tries:
+                answered += ls.filter(question_tries=t).count()
             return answered
 
         correct_on_first_try = []
@@ -279,7 +279,7 @@ class Goal(models.Model):
         for q in question_sets:
             set_logs = logs.filter(question_set=q)
             first_try = get_correct_on_first_try(set_logs)
-            eventually = get_total_correct(set_logs)
+            eventually = get_correct(set_logs)
             answered = get_total_answered_for_round(set_logs)
 
             print "round: " + repr(q)
@@ -287,6 +287,7 @@ class Goal(models.Model):
             print "correct eventually: %d" % eventually.count()
             print "attempted:          %d" % answered
             print '--'
+
             correct_on_first_try.extend(get_correct_on_first_try(set_logs))
             all_correct.extend(eventually)
             amount_answered += answered
@@ -309,7 +310,8 @@ class GoalCriterion(models.Model):
     # must be evaluated.
     # TODO: allow a user to reuse criteria from other goals?
     # TODO: criterion for setting the minimum amount of question sets a
-    # user must go through
+    # user must go through, or a max where they have to stop (redirect
+    # in middleware?).
     goal = models.ForeignKey(Goal)
     description = models.TextField()
 
