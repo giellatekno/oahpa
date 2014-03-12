@@ -28,7 +28,11 @@
 
  * save progress summary to goal instance, update if one exists
 
+ * json endpoint for requesting current goal progress
+
  --
+
+ TODO: disable non-JSON views when not in debug?
 
  TODO: optional goal tracking stop, or allow resume if they navigate
      back?

@@ -214,13 +214,25 @@ from rest_framework import permissions
 
 from .models import UserGoalInstance
 
+class GetOnly(permissions.BasePermission):
+
+    def has_permission(self, request, view, obj=None):
+        if request.method == 'GET':
+            return True
+        return False
+
+    def has_object_permission(self, request, view, obj):
+        if request.method == 'GET':
+            return True
+        return False
+
 class StatusSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = UserGoalInstance
         fields = ('progress', 'rounds', 'total_answered', 'correct', 'completed_date', 'grade')
 
 class UserStatsViewSet(viewsets.ModelViewSet):
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticated, GetOnly)
     model = UserGoalInstance
     serializer_class = StatusSerializer
 
