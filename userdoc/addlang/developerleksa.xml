@@ -7,87 +7,121 @@
 	</header>
 	<body>
 		<p>
-Here starts the documentation for making Leksa work for new languages. The goal is to make a demo with at least 55 words. The lexicon will be used also for Morfa-C. <a href="http://oahpa.no/davvi/"><strong>Here</strong></a> you can see how the North Sámi Leksa works. Choose instruction language in the right margin before you choose Leksa.
+Here starts the documentation for making Leksa work for new languages. The goal is to make a demo with at least 55 words. The lexicon will be used also for Morfa-C. <a href="http://oahpa.no/davvi/"><strong>Here</strong></a> you can see how the North Saami Leksa works. Choose instruction language in the right margin before you choose Leksa.
 </p>
 
 		<section>
 			<title>Lemmas</title>
-<p>You need some lemmas for the lexicon, and they will have these semantic classes: human, travel, food/drink. Some of the lemmas will in addtion have other semantic classes because we will use the same lemmas both for Leksa and for Morfa-C:</p>
+<p>You need some lemmas for the lexicon from semantic fields: human and food/drink. We will give the lemmas semantic classes so we can use them also in Morfa-C. For Leksa we put the semantic classes together into semantic fields, or superclasses:</p>
 
 			<ul>
-			<li>- the verb for "to live (in a place)", semantic class "HUMAN"</li> 
-			<li>- the verb "to eat", semantic class "FOOD/DRINK"  </li> 
-			<li>- the verb "to drink", semantic class "FOOD/DRINK" </li> 
-			<li>- at least 7 verbs for moving from one place to another, (e.g. walk, run, drive), semantic classes "MOVEMENT" and "TRAVEL" </li> 
-			<li>- at least 7 verbs for making food (e.g. steak, cook, bake), semantic classes "FOOD/DRINK" </li>
-			<li>- at least 7 nouns for beverages (e.g. water, milk, beer), semantic class "FOOD/DRINK" and "DRINK" </li>
-			<li>- 7 nouns for food (e.g. meat, bread, fish), semantic classes "FOOD/DRINK" and "FOOD"</li>
-			<li>-  at least 7 nouns for places (e.g. school, city, town), semantic classes "PLACE" and "TRAVEL"</li>
-			<li>- at least 7 nouns for human beings (e.g. boy, woman, teacher), semantic class "HUMAN" </li>
-			<li>- at least 10 adjectives about human beings, (e.g. strong, old, young, clever), semantic class "HUMAN"</li>
+			<li>- the verb for "to live (in a place)", semantic class "HUMAN_V"</li> 
+			<li>- the verb "to eat", semantic class "FOODDRINK_V" and "HUMAN_V"  </li> 
+			<li>- the verb "to drink", semantic class "FOODDRINK_V" and "HUMAN_V" </li> 
+			<li>- at least 5 verbs for making food (e.g. steak, cook, bake), semantic classes "FOODDRINK_V" </li>
+			<li>- at least 5 nouns for beverages (e.g. water, milk, beer), semantic class "DRINK" </li>
+			<li>- 5 nouns for food you will have for dinner (e.g. porridge, soup, steak), semantic classe "FOOD_DISH"</li>
+			<li>- 5 nouns for food you will by in a shop (e.g. flour, sugar, fruit), semantic class "FOOD_GROCERY"</li>
+			<li>- at least 5 nouns for family members beings , semantic class "FAMILY" </li>
+			<li>- at least 5 nouns for other human beings (e.g. boy, woman, teacher), semantic class "PEOPLE" </li>
+			<li>- at least 5 adjectives about human beings, (e.g. strong, old, young, clever), semantic class "HUMAN_A"</li>
+			<li>- at least 5 adjectives about food, (e.g. warm, cold, sour, sweet), semantic class "FOOD_A"</li>
 </ul>
-<p>Give in addition the semantic class "ACTIVITY" to all verbs which can be an answer to the question: "What did the girl do yesterday?" (e.g. bake)</p>		</section>
+<p>Give in addition the semantic class "ACTIVITY" to all verbs which can be an answer to the question: "What did the girl do yesterday?" (e.g. bake)</p>		
+<p>Give a book or level name to all entries, e.g. half of them K1 and half of them K2.</p>		
+
+</section>
 
 				
 		<section>
 			<title>XML-format</title>
-<p>You put the lemmas into xml-format. There should be one file for each of the parts of speech. Add names to the files with the language code first, like <code>verbs.sme.xml, nouns.sme.xml, adjectives.sme.xml</code>. pos class for noun is N, for verb it is V and for adjective it is A. If there are more than one translation (synonyms), put the most common one as the first one.</p>
+<p>You put the lemmas into xml-format. There should be one file for each of the parts of speech. Add names to the files with the language code first, like <code>verbs_smenob.xml, nouns_smenob.xml, adjectives_smenob.xml</code>. The main translation, that we want as facit answer, gets attribute stat="pref".</p>
 		<source>
 &lt;?xml version="1.0" encoding="utf-8"?>
-&lt;lexicon>
-   &lt;entry>
-     &lt;lemma>mielki&lt;/lemma>
-	 &lt;pos class="N"/>
-     &lt;translations>
-      &lt;tr xml:lang="nob">melk&lt;/tr>
-      &lt;tr xml:lang="nob">mjølk&lt;/tr>     
-      &lt;/translations>
-     &lt;semantics>
-      &lt;sem class="FOOD/DRINK"/>
-      &lt;sem class="DRINK"/>
-     &lt;/semantics>
-   &lt;/entry>
-&lt;/lexicon>		</source>
+&lt;r xml:lang="sme">
+ &lt;e>
+   &lt;lg>
+     &lt;l pos="n">mielki&lt;/l>
+      &lt;sources>
+         &lt;book name="K1"/>
+      &lt;/sources>
+   &lt;/lg>
+      &lt;mg>
+        &lt;semantics>
+          &lt;sem class="DRINK"/>
+          &lt;sem class="FOOD_GROCERY"/>
+        &lt;/semantics>
+       &lt;tg xml:lang="nob">
+          &lt;tr stat="pref" pos="n">melk&lt;/tr>
+          &lt;tr pos="n">mjølk&lt;/tr>     
+      &lt;/tg>
+    &lt;/mg>
+ &lt;/e>
+&lt;/r>		
+</source>
 		</section>
 		
 		<section>
 			<title>Lexicon files the other direction</title>
-<p>Now you make files with the same lemmas, with the most common translation as lemma. Add names to the files with the language code first, like <code>nobverbs.xml</code> and so on. Also here may be synonyms in the translation field. You only need the Leksa semantic classes (human, travel, food/drink), but it does no harm if you add all the semantic classes from the original files.</p>
+<p>The translations with attribute stat="pref" will be lemmas in the lexicon, which goes the other language direction, and the name of the file will be e.g. nouns_nobsme.xml Also here may be synonyms in the translation field. You only need the Leksa semantic fields (super sets) (human and food/drink), but it does no harm if you add all the semantic classes from the original files.</p>
 		<source>
 &lt;?xml version="1.0" encoding="utf-8"?>
-&lt;lexicon>   
-&lt;entry>
-     &lt;lemma>melk&lt;/lemma>
-	 &lt;pos class="N"/>
-     &lt;translations>
-      &lt;tr xml:lang="sme">mielki&lt;/tr>
-      &lt;/translations>
-     &lt;semantics>
-      &lt;sem class="FOOD/DRINK"/>
-      &lt;sem class="DRINK"/> - (not needed)
-     &lt;/semantics>
-   &lt;/entry>
-   &lt;/lexicon>
+&lt;r xml:lang="nob">
+ &lt;e>
+   &lt;lg>
+     &lt;l pos="n">melk&lt;/l>
+      &lt;sources>
+         &lt;book name="K1"/>
+      &lt;/sources>
+   &lt;/lg>
+      &lt;mg>
+        &lt;semantics>
+          &lt;sem class="DRINK"/>  
+        &lt;/semantics>
+       &lt;tg xml:lang="sme">
+          &lt;tr stat="pref" pos="n">mielki&lt;/tr>
+       &lt;/tg>
+    &lt;/mg>
+ &lt;/e>
+&lt;/r>		
 		</source>
 		</section>
 		<section>
 			<title>Your Leksa demo</title>
-<p>You have now made the xml-files for a Leksa demo with at least 55 words. The demo has these options:</p>
+<p>You have now made the xml-files for a Leksa demo with at least 48 words. The demo has these options:</p>
 			<ul>
-			<li>- language direction (e.g. from Sami to Norwegian or from Norwegian to Sami)</li> 
-            <li>- three semantic classes containing nouns, verbs and adjectives: human, travel, food/drink. The other semantic classes are for Morfa-C. If you are going to make a big Leksa, then you could use semantic sets and supersets instead of many semantic sets in each entry.</li>
+			<li>- language direction </li> 
+            <li>- 2 semantic classes containing nouns, verbs and adjectives: human, food/drink. The other semantic classes are for Morfa-C. </li>
+			<li>- two book or level choices</li> 
+
 		</ul>			</section>
 		<section>
-			<title>Extensions</title>
-<p>You can add more lemmas to each semantic class, e.g. also FOOD/DRINK and TRAVEL adjectives. You can make more semantic classes, e.g. NATURE. It is also possible to add more information to the lexicon to give the pupil more options. In the North Sami Leksa we have options for two main dialects and for text books (source). Another possibility would be level. This information is added to the lexicon like this: </p>
+			<title>Handling of semantic sets in Leksa</title>
+<p>We put togehter semantic sets into super sets (semantic fields) with the file semanticsets.xml</p>
 		<source>
-    &lt;sources>
-      &lt;book name="d4"/>
-      &lt;book name="bures"/>
-    &lt;/sources>
-        &lt;dialect class="NOT-GG"/>
-        &lt;level class="2"/>
-   </source>
+&lt;/?xml version="1.0" encoding="utf-8"?>
+&lt;/lexicon>
+        &lt;/subclasses class="HUMAN">  
+      &lt;/sem class="PEOPLE"/>   
+      &lt;/sem class="FAMILY"/>
+      &lt;/sem class="HUMAN_A"/>
+      &lt;/sem class="HUMAN_V"/>
+    &lt;//subclasses>
+        &lt;/subclasses class="FOOD/DRINK">  
+      &lt;/sem class="DRINK"/>
+      &lt;/sem class="FOODDRINK_V"/>
+      &lt;/sem class="FOOD_A"/>
+      &lt;/sem class="FOOD_DISH"/>
+      &lt;/sem class="FOOD_GROCERY"/>
+    &lt;/subclasses>
+&lt;//lexicon>
+		</source>
+
+
+</section>
+		<section>
+			<title>Extensions</title>
+<p>You can add more lemmas to each semantic class. You can make more semantic classes, e.g. NATURE.  </p>
    
 <p>Sometimes the translation will be a multi word expression, and it can be difficult to use the word in the Leksa from one of the languages to another one. You can make exeption for the word about in the xml-file. The word will still be used in Morfa-C.</p>
 		<source>
@@ -95,8 +129,5 @@ Here starts the documentation for making Leksa work for new languages. The goal 
 		   </source>
 	</section>
 		
-		<p class="last_modified">Last changed: $Id: developerleksa.xml,v 1.6 2009/09/09
-	lene Exp $
-				</p>				
 	</body>
 </document>
