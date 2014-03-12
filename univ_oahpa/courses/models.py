@@ -308,15 +308,6 @@ def create_activity_log_from_drill_logs(request, user, drill_logs, current_user_
         # 'tasklemmas', 
     ]
 
-    # 'question_set' should increment +1 for user if a set_completed is
-    # detected
-    # 
-    # 
-    # request.session['all_correct']
-    # request.session['set_completed']
-    # request.session['question_set_count']
-    # request.session['question_try_count'] = defaultdict(int)
-
     question_tries = request.session['question_try_count']
 
     for drill_log in drill_logs:
@@ -325,9 +316,21 @@ def create_activity_log_from_drill_logs(request, user, drill_logs, current_user_
             activity_log_attrs[log_attr] = getattr(drill_log, drill_attr)
         activity_log_attrs['user'] = user
         activity_log_attrs['goal_id'] = current_user_goal
-        activity_log_attrs['question_tries'] = question_tries.get(drill_log.correct)
         activity_log_attrs['question_set'] = request.session['question_set_count']
-        UserActivityLog.objects.create(**activity_log_attrs)
+        activity_log_attrs['question_tries'] = question_tries.get(drill_log.correct)
+
+        # Check if there are existing logs for this question that we
+        # need to update
+        existing_kwargs = activity_log_attrs.copy()
+        existing_kwargs.pop('user_input')
+        existing_kwargs.pop('question_tries')
+        existing = UserActivityLog.objects.filter(**activity_log_attrs)
+
+        # If so, update, otherwise create.
+        if existing:
+            existing.update(question_tries=question_tries.get(drill_log.correct))
+        else:
+            UserActivityLog.objects.create(**activity_log_attrs)
     return
 
 from django.db.models.signals import post_save, pre_save, post_delete

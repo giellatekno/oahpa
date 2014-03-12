@@ -17,11 +17,12 @@ class GradingMiddleware(object):
     def increment_session_answer_counts(self, request):
         # If all_correct or all_complete
 
-        # Increment the session variable for attempts on the whole set
-        if 'question_set_count' in request.session:
-            request.session['question_set_count'] += 1
-        else:
-            request.session['question_set_count'] = 1
+        # NB: Incrementing the session variable for set tried happens in
+        # reset_increments
+        # if 'question_set_count' in request.session:
+        #     request.session['question_set_count'] += 1
+        # else:
+        #     request.session['question_set_count'] = 1
 
         # Increment individual question/answer tries
         for log in request.user_logs_generated:
@@ -38,14 +39,16 @@ class GradingMiddleware(object):
                 request.session['question_try_count'][log.correct] = 1
 
         request.session.modified = True
+        print request.session['question_set_count']
         return request
 
     def reset_increments(self, request):
         # If 'set_completed' is in the session variable, 
         # then need to clear variables for the next go around.
+        # TODO: also increment on 'new set'
         if request.session.get('set_completed', False):
             request.session['question_try_count'] = {}
-            request.session['question_set_count'] = 1
+            request.session['question_set_count'] += 1
             request.session['answered'] = {}
 
     def process_response(self, request, response):

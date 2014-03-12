@@ -13,17 +13,14 @@
    UserActivityLogs
 
  * beginning to sketch out models in code, but not ready yet
-   - each Goal model will have a few criteria
-   -
 
  * simple view to add session variable for current goal, and tracking
 
- * Trying to figure out how to evaluate goal criteria: 
-   - TODO: increment answer set counts
+ * Trying to figure out how to evaluate goal criteria (notes in model)
 
- TODO: incrementing on log generation seems to not work for some reason.
- non-persistent session dictionary stuff?
-   - https://docs.djangoproject.com/en/dev/topics/http/sessions/
+ * Log generation increments user answer set counts
+   - TODO: search and update old entries in same set, or just create new
+     objects always?
 
  TODO: individual user goal instances - when user begins on a goal, they
  get their own goal instance which tracks and stores results and such.
@@ -35,24 +32,20 @@
      progress. also then, deleted goals with progress can still remain
      in the user's summary
 
-   -
-
-
-
  TODO: need actual goal criteria, now that the basic models are in place
  for stuff to be tracked
 
  TODO: need a post-save signal on the activity to track the goal and
  analyze whether it's been passed, maybe can use this to allow the user
- to see their progress while they work? 
+ to see their progress while they work?
 
  TODO: something in admin is broken so adding a user to a course
- manually does not work 
+ manually does not work
 
  TODO: how does View work with this?
 
  TODO: make it clear on the courses page that someone is still working
- on a goal, so that when tey have multiple available they'll know what's
+ on a goal, so that when they have multiple available they'll know what's
  going on
 
 # Oppsummering fra prosjektbeskrivelsen:
