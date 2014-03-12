@@ -312,8 +312,12 @@ def create_activity_log_from_drill_logs(request, user, drill_logs, current_user_
 
     for drill_log in drill_logs:
         activity_log_attrs = {}
+
+        # Copy
         for drill_attr, log_attr in drill_log_attrs:
             activity_log_attrs[log_attr] = getattr(drill_log, drill_attr)
+
+        # Add some things not present in the original log entry
         activity_log_attrs['user'] = user
         activity_log_attrs['goal_id'] = current_user_goal
         activity_log_attrs['question_set'] = request.session['question_set_count']
@@ -324,13 +328,24 @@ def create_activity_log_from_drill_logs(request, user, drill_logs, current_user_
         existing_kwargs = activity_log_attrs.copy()
         existing_kwargs.pop('user_input')
         existing_kwargs.pop('question_tries')
+        existing_kwargs.pop('is_correct')
+
+        # We only want to replace previously incorrect logs.
         existing = UserActivityLog.objects.filter(**activity_log_attrs)
 
         # If so, update, otherwise create.
         if existing:
-            existing.update(question_tries=question_tries.get(drill_log.correct))
+            if activity_log_attrs['is_correct'] == True:
+                existing.update(question_tries=question_tries.get(drill_log.correct)+1,
+                                user_input=activity_log_attrs['user_input'],
+                                is_correct=activity_log_attrs['is_correct'])
+            else:
+                existing.update(question_tries=question_tries.get(drill_log.correct),
+                                user_input=activity_log_attrs['user_input'],
+                                is_correct=activity_log_attrs['is_correct'])
         else:
             UserActivityLog.objects.create(**activity_log_attrs)
+
     return
 
 from django.db.models.signals import post_save, pre_save, post_delete

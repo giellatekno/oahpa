@@ -18,9 +18,9 @@
 
  * Trying to figure out how to evaluate goal criteria (notes in model)
 
- * Log generation increments user answer set counts
-   - TODO: search and update old entries in same set, or just create new
-     objects always?
+ * Log generation increments user answer set counts: search and update
+   previous. now can query things that were right on the first try, vs.
+   all else.
 
  TODO: individual user goal instances - when user begins on a goal, they
  get their own goal instance which tracks and stores results and such.
@@ -139,7 +139,7 @@ Nye moglegheitar for grammatiske feedback:
  * User log - UI events ulik frå correct/incorrect svar: brukar klikkar
    på feedback, opnar grammatikken, osv.
 
-    - `process_template_response` middleware? 
+    - `process_template_response` middleware?
 
     - maybe this should be a different model: user feedback events
 
