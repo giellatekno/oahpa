@@ -14,6 +14,40 @@ class GradingMiddleware(object):
         else:
             setattr(request, 'graded_view', True)
 
+    def increment_session_answer_counts(self, request):
+        # If all_correct or all_complete
+
+        # Increment the session variable for attempts on the whole set
+        if 'question_set_count' in request.session:
+            request.session['question_set_count'] += 1
+        else:
+            request.session['question_set_count'] = 1
+
+        # Increment individual question/answer tries
+        for log in request.user_logs_generated:
+            if log.correct in request.session['question_try_count']:
+                # Increment and add to answered, thus count stops
+                # incrementing after this round.
+                if not request.session['answered'].get(log.correct,
+                                                       False):
+                    request.session['question_try_count'][log.correct] += 1
+                    request.session['answered'][log.correct] = True
+                else:
+                    pass
+            else:
+                request.session['question_try_count'][log.correct] = 1
+
+        request.session.modified = True
+        return request
+
+    def reset_increments(self, request):
+        # If 'set_completed' is in the session variable, 
+        # then need to clear variables for the next go around.
+        if request.session.get('set_completed', False):
+            request.session['question_try_count'] = {}
+            request.session['question_set_count'] = 1
+            request.session['answered'] = {}
+
     def process_response(self, request, response):
         """ Here the goal is to process the grading that pertains to the
         user's current activity, which is marked on the session object,
@@ -28,13 +62,14 @@ class GradingMiddleware(object):
         # TODO: need to actually set this on the session somewhere
         current_user_goal = request.session.get('current_user_goal', False)
 
-        print "all_correct: " + repr(request.session.get('all_correct', False))
-        print "set_completed: " + repr(request.session.get('set_completed', False))
-
         if request_logs_exist and user_isnt_anon and current_user_goal:
-            create_activity_log_from_drill_logs(request.user,
+            self.increment_session_answer_counts(request)
+
+            create_activity_log_from_drill_logs(request, request.user,
                                                 request.user_logs_generated,
                                                 current_user_goal=current_user_goal)
+
+            self.reset_increments(request)
 
         return response
 

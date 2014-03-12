@@ -19,13 +19,11 @@
  * simple view to add session variable for current goal, and tracking
 
  * Trying to figure out how to evaluate goal criteria: 
-   - TODO: need to assign a unique value to each answer set the user is
-     working on that remains constant as they edit and submit new
-     answers, but increments with a new set.
-   - TODO: also track repeat count, so later filtering of amount
-     complete on first try is easier
-   - TODO: where to increment those things? can't use autoincrement
-     feature
+   - TODO: increment answer set counts
+
+ TODO: incrementing on log generation seems to not work for some reason.
+ non-persistent session dictionary stuff?
+   - https://docs.djangoproject.com/en/dev/topics/http/sessions/
 
  TODO: individual user goal instances - when user begins on a goal, they
  get their own goal instance which tracks and stores results and such.

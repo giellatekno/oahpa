@@ -282,7 +282,7 @@ class UserActivityLog(models.Model):
     # anything else isn't needed.
     in_game = models.TextField()
 
-def create_activity_log_from_drill_logs(user, drill_logs, current_user_goal=False):
+def create_activity_log_from_drill_logs(request, user, drill_logs, current_user_goal=False):
     # TODO: do it all in one commit.
 
     drill_log_attrs = [
@@ -308,12 +308,25 @@ def create_activity_log_from_drill_logs(user, drill_logs, current_user_goal=Fals
         # 'tasklemmas', 
     ]
 
+    # 'question_set' should increment +1 for user if a set_completed is
+    # detected
+    # 
+    # 
+    # request.session['all_correct']
+    # request.session['set_completed']
+    # request.session['question_set_count']
+    # request.session['question_try_count'] = defaultdict(int)
+
+    question_tries = request.session['question_try_count']
+
     for drill_log in drill_logs:
         activity_log_attrs = {}
         for drill_attr, log_attr in drill_log_attrs:
             activity_log_attrs[log_attr] = getattr(drill_log, drill_attr)
         activity_log_attrs['user'] = user
         activity_log_attrs['goal_id'] = current_user_goal
+        activity_log_attrs['question_tries'] = question_tries.get(drill_log.correct)
+        activity_log_attrs['question_set'] = request.session['question_set_count']
         UserActivityLog.objects.create(**activity_log_attrs)
     return
 
