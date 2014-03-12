@@ -208,6 +208,34 @@ def instructor_student_detail(request, uid):
                               context_instance=RequestContext(request))
 
 
+from rest_framework import viewsets
+from rest_framework import serializers
+from rest_framework import permissions
+
+from .models import UserGoalInstance
+
+class StatusSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = UserGoalInstance
+        fields = ('progress', 'rounds', 'total_answered', 'correct', 'completed_date', 'grade')
+
+class UserStatsViewSet(viewsets.ModelViewSet):
+    permission_classes = (permissions.IsAuthenticated,)
+    model = UserGoalInstance
+    serializer_class = StatusSerializer
+
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases
+        for the currently authenticated user.
+        """
+        user = self.request.user
+        goal_id = self.request.session.get('current_user_goal', False)
+        if goal_id:
+            return UserGoalInstance.objects.filter(user=user, goal__id=goal_id)
+        else:
+            return []
+
 def begin_course_goal(request, goal_id):
     """ Mark the session with the goal ID, and redirect the user to the
     goal's start page.

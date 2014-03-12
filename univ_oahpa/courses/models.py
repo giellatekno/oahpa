@@ -249,7 +249,7 @@ class Goal(models.Model):
 
         if logs.count() == 0:
             print " -- nothing yet -- "
-            return
+            return {}
 
         question_sets = self.student_set_count(user, logs)
 
@@ -301,8 +301,35 @@ class Goal(models.Model):
         print '---'
         print
 
+        result_args = {
+            'rounds': max(question_sets),
+            'total_answered': amount_answered,
+            # 'correct_first_try': len(correct_on_first_try),
+            'correct': len(all_correct),
+            'progress': float(len(all_correct)) / float(amount_answered)
+        }
+
+        return result_args
 
 
+class UserGoalInstance(models.Model):
+    user = models.ForeignKey(User)
+    goal = models.ForeignKey('Goal')
+
+    progress = models.DecimalField(decimal_places=2, max_digits=4, default=0.0)
+
+    rounds = models.IntegerField(default=0)
+    total_answered = models.IntegerField(default=0)
+    correct = models.IntegerField(default=0)
+
+    completed_date = models.DateTimeField(blank=True, null=True)
+    grade = models.IntegerField(blank=True, null=True)
+
+    class Meta(object):
+        unique_together = (("user", "goal"),)
+
+    def __unicode__(self):
+        return "%s: %.2f" % (self.goal.short_name, self.progress)
 
 class GoalCriterion(models.Model):
     # TODO: just for now using a text field so that I can start testing,
@@ -328,14 +355,6 @@ class GoalCriterion(models.Model):
     #   - TODO: need a unique value for the answer set that the user is
     #     working on, which increments each time the user finishes the
     #     set
-
-class UserGoalProgress(models.Model):
-    # TODO: do not cascade and delete to this model if instructor
-    # deletes a goal?
-    goal = models.ForeignKey(Goal)
-    user = models.ForeignKey(User)
-    completed_date = models.DateTimeField()
-    grade = models.IntegerField()
 
     # TODO: see how many sets a user completed this in?
 

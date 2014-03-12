@@ -25,7 +25,18 @@ from views import courses_main, instructor_student_detail, begin_course_goal
 urlpatterns += patterns('univ_oahpa.courses.views',
     url(r'^(?P<uid>\d+)/$', instructor_student_detail),
     url(r'^$', courses_main, name="courses_index"),
-    url(r'^goal/begin/(?P<goal_id>\d+)/$', begin_course_goal),
+    url(r'^goal/begin/(?P<goal_id>\d+)/$', begin_course_goal,
+        name="begin_course_goal"),
+)
+
+from rest_framework import routers
+from .views import UserStatsViewSet
+
+router = routers.DefaultRouter()
+router.register(r'stats', UserStatsViewSet)
+
+urlpatterns += patterns('univ_oahpa.courses.views',
+    url(r'^', include(router.urls)),
 )
 
 # vim: set ts=4 sw=4 tw=72 syntax=python :

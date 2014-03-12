@@ -55,7 +55,7 @@ class GradingMiddleware(object):
         user's current activity, which is marked on the session object,
         and store it in the courses activity log model. """
 
-        from .models import Goal
+        from .models import Goal, UserGoalInstance
 
         if not hasattr(request, 'graded_view'):
             return response
@@ -87,9 +87,18 @@ class GradingMiddleware(object):
 
             self.reset_increments(request)
 
+            goal = Goal.objects.get(id=current_user_goal)
             # TODO: this is for debug only.
-            print Goal.objects.get(id=current_user_goal)\
-                      .evaluate_for_student(request.user)
+            result = goal.evaluate_for_student(request.user)
+
+            user_goal_instance = UserGoalInstance.objects.filter(user=request.user, goal=goal)
+            if not user_goal_instance:
+                UserGoalInstance.objects.create(user=request.user,
+                                                goal=goal, **result)
+            else:
+                user_goal_instance.update(**result)
+
+            print user_goal_instance
 
         request.session['previous_exercise_params'] = \
                 request.session.get('current_exercise_params', False)

@@ -26,6 +26,8 @@
 
  * Working on goal evaluation, generating some basic numbers
 
+ * save progress summary to goal instance, update if one exists
+
  --
 
  TODO: optional goal tracking stop, or allow resume if they navigate
