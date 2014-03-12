@@ -61,12 +61,8 @@ Here starts the documentation for making Morfa work for new languages. The goal 
     &lt;qtype>PRED&lt;/qtype>
     &lt;question>
       &lt;text>Makkárat SUBJ leat&lt;/text>
-      &lt;element id="ADJ">
-	&lt;sem class="HUMAN"/>
-	&lt;grammar tag="A+Attr"/>
-      &lt;/element>
      &lt;element id="SUBJ">
-	&lt;sem class="HUMAN"/>
+	&lt;sem class="PEOPLE"/>
 	&lt;grammar tag="N+Pl+Nom"/>
       &lt;/element>
     &lt;/question>
@@ -74,7 +70,7 @@ Here starts the documentation for making Morfa work for new languages. The goal 
       &lt;text>Sii leat ADJ&lt;/text>
       &lt;element game='morfa' id="ADJ" task="yes">
 	&lt;grammar tag="A+Pl+Nom"/>
-	&lt;sem class="HUMAN"/>
+	&lt;sem class="HUMAN_A"/>
       &lt;/element>
     &lt;/answer> 
   &lt;/q>		
@@ -84,14 +80,14 @@ Here starts the documentation for making Morfa work for new languages. The goal 
   &lt;q id="nill">
     &lt;qtype>N-ILL&lt;/qtype>
     &lt;question>
-      &lt;text>Gosa SUBJ MAINV&lt;/text> 
+      &lt;text>Gosa du SUBJ MAINV&lt;/text> 
       &lt;element id="SUBJ">
 	&lt;grammar pos="N+Sg+Nom"/>
-	&lt;sem class="HUMAN"/>
+	&lt;sem class="FAMILY"/>
       &lt;/element>
       &lt;element id="MAINV">
 	&lt;grammar tag="V+Ind+Prs+Sg3"/>
-	&lt;sem class="MOVEMENT"/>
+	&lt;sem class="MOVEMENT_V"/>
       &lt;/element>
     &lt;/question>
     &lt;answer> 
@@ -104,7 +100,7 @@ Here starts the documentation for making Morfa work for new languages. The goal 
   &lt;/q>
 	
   </source>
-<p>The first text is "Where to SUBJ MAINV?", the next one is "SUBJ MAINV N-ILL". The line with game="morfa" implies that the task for the student is to write the correct word form of the N-ILL. This template will generate tasks like "Where to the girl runs?" "school" "The girl runs ______ (illative case in Saami) " . </p>
+<p>The first text is "Where to SUBJ MAINV?", the next one is "SUBJ MAINV N-ILL". The line with game="morfa" implies that the task for the student is to write the correct word form of the N-ILL. This template will generate tasks like "Where to your sister runs?" "school" "Sister runs ______ (illative case in Saami) " . </p>
 
 <p>For the demo we do it simply. E.g. we don't use pronouns in the answer, which in principle is easy, but then we have to take in account that in some languages there are genders. We have also an agreement fuction e.g. between SUBJ and MAINV which one could use.</p>
 
@@ -125,6 +121,7 @@ V+Ind+Prs+Pl1
 V+Ind+Prs+Pl2
 V+Ind+Prs+Pl3
   </source>	
+  <p><img alt="Oahpainstallation" width="80%" src="../images/Oahpa_system_overview.png" /></p>
 <!-- <p> If you can't do it for your language, then you have to write the word forms manually. The work depends on the templates, there you see which word forms you need for each lemma, also the basis forms. The word forms have to be in this format (tab-separated): </p>
   <source> 
   wordformTABlemma+POS+.......
