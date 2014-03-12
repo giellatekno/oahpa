@@ -115,7 +115,7 @@ Here starts the documentation for making Morfa work for new languages. The goal 
 
 		<section>
 			<title>Word forms</title>
-<p>The lexicon contains lemmas. The Morfa-C tasks need word forms. There are two ways of doing it - the best one is to generate the needed word forms automatically.  then you need files, like v_paradigm.txt, telling what forms to generate. </p>
+<p>The lexicon contains lemmas. The Morfa-C tasks need word forms, which are generated with an FST. For that you need files, like v_paradigm.txt, telling what forms to generate. </p>
   <source>
 V+Inf
 V+Ind+Prs+Sg1
@@ -125,7 +125,7 @@ V+Ind+Prs+Pl1
 V+Ind+Prs+Pl2
 V+Ind+Prs+Pl3
   </source>	
-<p> If you can't do it for your language, then you have to write the word forms manually. The work depends on the templates, there you see which word forms you need for each lemma, also the basis forms. The word forms have to be in this format (tab-separated): </p>
+<!-- <p> If you can't do it for your language, then you have to write the word forms manually. The work depends on the templates, there you see which word forms you need for each lemma, also the basis forms. The word forms have to be in this format (tab-separated): </p>
   <source> 
   wordformTABlemma+POS+.......
   
@@ -139,8 +139,8 @@ V+Ind+Prs+Pl3
   boarrásat boaris+A+Pl+N
   </source>	
   <p>Save them in a file with the language code, e.g. <code>wordforms.sme.txt</code></p>
-
-		</section>
+-->
+		</section> 
 
 		<section>
 			<title>Morfa-S</title>
