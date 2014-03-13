@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <!--+
-    | Transforms a csv file with two fields - "lemma","part-of-speech"- into a fitswe gtdict xml format
-    | NB: An XSLT-2.0-processor is needed!
-    | Usage: java -Xmx2024m net.sf.saxon.Transform -it main THIS_SCRIPT file="INPUT-FILE"
+    | Transforms a csv file with four fields - 
+    | LEMMA __ POS __ TRANSLATION_1,TRANSLATION_2,TRANSLATION_n __ SEMCLASS_1,SEMCLASS_2, SEMCLASS_n
+    | into oahpa lexicon files in  xml format split by pos values
+    | Usage: java -Xmx2024m net.sf.saxon.Transform -it:main ddsv2oahpa_xml_fuck.xsl inFile=wordlist.csv src_lang=fkv tgt_lang=nob
     | 
     +-->
 
@@ -68,6 +69,7 @@
 	  <r xml:lang="{$src_lang}">
 	    <!-- capture the patterns=columns and their meanings -->
 	    <xsl:for-each select="$lines">
+	      <!-- two underscores as field separator -->
 	      <xsl:variable name="current_lemma" select="tokenize(., '__')"/>
 	      <e>
 		<xsl:variable name="lemma" select="normalize-space($current_lemma[1])"/>
@@ -88,13 +90,19 @@
 		</lg>
 		<mg>
 		  <semantics>
+		    <!-- COMMA as separator between SEM_CLASS values -->
 		    <xsl:for-each select="tokenize($sem_classes, ',')">
 		      <sem class="{normalize-space(.)}"/>
 		    </xsl:for-each>
 		  </semantics>
 		  <tg xml:lang="{$tgt_lang}">
+		    <!-- COMMA as separator between TRANSLATION values -->
 		    <xsl:for-each select="tokenize($translations, ',')">
+		    <!-- as a default all translations get the same
+			 pos value as the lemma -->
 		      <t pos="{$pos}">
+			<!-- additionally, the first translations gets
+			the attribute-value pair stat="pref" --> 
 			<xsl:if test="position() = 1">
 			  <xsl:attribute name="stat">
 			    <xsl:value-of  select="'pref'"/>
