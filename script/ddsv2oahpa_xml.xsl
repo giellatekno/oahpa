@@ -17,9 +17,14 @@
   <xsl:output method="xml"
               encoding="UTF-8"
               omit-xml-declaration="no"
+              indent="yes"/>
+
+  <!--xsl:output method="xml"
+              encoding="UTF-8"
+              omit-xml-declaration="no"
               doctype-system="rootdict"
               doctype-public="-//XMLmind//DTD fitswe//FI ../script/fitswe.dtd"
-              indent="yes"/>
+              indent="yes"/-->
 
 
 <xsl:function name="local:distinct-deep" as="node()*">
@@ -46,64 +51,79 @@
   <xsl:variable name="e" select="'xml'"/>
   <xsl:variable name="outputDir" select="'xml-out'"/>
 
-  <xsl:param name="file" select="'default.csv'"/>
-  
+  <xsl:param name="inFile" select="'default.csv'"/>
+  <xsl:param name="src_lang" select="'fkv'"/>
+  <xsl:param name="tgt_lang" select="'nob'"/>
+
   <xsl:template match="/" name="main">
     
     <xsl:choose>
-      <xsl:when test="unparsed-text-available($file)">
+      <xsl:when test="unparsed-text-available($inFile)">
 
-	<xsl:variable name="file_name" select="substring-before($file, '.csv')"/>
+	<xsl:variable name="inFile_name" select="substring-before($inFile, '.csv')"/>
 
-	<xsl:variable name="source" select="unparsed-text($file)"/>
+	<xsl:variable name="source" select="unparsed-text($inFile)"/>
 	<xsl:variable name="lines" select="tokenize($source, '&#xa;')" as="xs:string+"/>
 	<xsl:variable name="output">
-	  <rootdict>
-	    <!-- capture the patterns and their meanings -->
+	  <r xml:lang="{$src_lang}">
+	    <!-- capture the patterns=columns and their meanings -->
 	    <xsl:for-each select="$lines">
-	      <xsl:analyze-string select="." regex='^"([^"]+)","([^"]+)"$' flags="s">
-		<xsl:matching-substring>
-		  <entry>
-		    <xsl:attribute name="src">
-		      <xsl:value-of select="$file_name"/>
+	      <xsl:variable name="current_lemma" select="tokenize(., '__')"/>
+	      <e>
+		<xsl:variable name="lemma" select="normalize-space($current_lemma[1])"/>
+		<xsl:variable name="pos" select="normalize-space($current_lemma[2])"/>
+		<xsl:variable name="translations" select="normalize-space($current_lemma[3])"/>
+		<xsl:variable name="sem_classes" select="normalize-space($current_lemma[4])"/>
+		<lg>
+		  <l>
+		    <xsl:attribute name="pos">
+		      <xsl:value-of select="$pos"/>
 		    </xsl:attribute>
-		    <xsl:variable name="lemma" select="regex-group(1)"/>
-		    <xsl:variable name="pos" select="regex-group(2)"/>
-		    <lemma>
-		      <xsl:attribute name="POS">
-			<xsl:value-of select="$pos"/>
-		      </xsl:attribute>
-		      <xsl:copy-of select="normalize-space($lemma)"/>
-		    </lemma>
-		    <mgr>
-		      <trgr>
-			<trans decl="xxx">xxx</trans>
-		      </trgr>
-		    </mgr>
-		  </entry>
-		</xsl:matching-substring>
-		<!-- 		  <xsl:non-matching-substring> -->
-		<!-- 		    <xxx><xsl:value-of select="." /></xxx> -->
-		<!-- 		  </xsl:non-matching-substring> -->
-	      </xsl:analyze-string>
+		    <xsl:copy-of select="$lemma"/>
+		  </l>
+		  <!-- default structure for the book elements -->
+		  <sources>
+		    <book name="xxx"/>
+		  </sources>
+		</lg>
+		<mg>
+		  <semantics>
+		    <xsl:for-each select="tokenize($sem_classes, ',')">
+		      <sem class="{normalize-space(.)}"/>
+		    </xsl:for-each>
+		  </semantics>
+		  <tg xml:lang="{$tgt_lang}">
+		    <xsl:for-each select="tokenize($translations, ',')">
+		      <t pos="{$pos}">
+			<xsl:if test="position() = 1">
+			  <xsl:attribute name="stat">
+			    <xsl:value-of  select="'pref'"/>
+			  </xsl:attribute>
+			</xsl:if>
+			<xsl:value-of select="normalize-space(.)"/>
+		      </t>
+		    </xsl:for-each>
+		  </tg>
+		</mg>
+	      </e>
 	    </xsl:for-each>
-	  </rootdict>
+	  </r>
 	</xsl:variable>
-
-	<!-- output -->
-	<xsl:for-each-group select="$output/rootdict/entry" group-by="./lemma/@POS">
-	  <xsl:result-document href="{$outputDir}/{current-grouping-key()}_fitswe.{$e}">
-	    <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../script/fitswe.css"</xsl:processing-instruction>
-	    <xsl:value-of select="'&#xA;'"/>
-	    <rootdict>
+	
+	<!-- pos-based output -->
+	<xsl:for-each-group select="$output/r/e" group-by="./lg/l/@pos">
+	  <xsl:result-document href="{$outputDir}/{current-grouping-key()}_{$src_lang}{$tgt_lang}.{$e}">
+	    <!--xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../script/fitswe.css"</xsl:processing-instruction>
+	    <xsl:value-of select="'&#xA;'"/-->
+	    <r xml:lang="{$src_lang}">
 	      <xsl:copy-of select="current-group()"/>
-	    </rootdict>
+	    </r>
 	  </xsl:result-document>
 	</xsl:for-each-group>
 	
       </xsl:when>
       <xsl:otherwise>
-	<xsl:text>Cannot locate : </xsl:text><xsl:value-of select="$file"/>
+	<xsl:text>Cannot locate : </xsl:text><xsl:value-of select="$inFile"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
