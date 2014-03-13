@@ -3,7 +3,7 @@
     | Transforms a csv file with four fields - 
     | LEMMA __ POS __ TRANSLATION_1,TRANSLATION_2,TRANSLATION_n __ SEMCLASS_1,SEMCLASS_2, SEMCLASS_n
     | into oahpa lexicon files in  xml format split by pos values
-    | Usage: java -Xmx2024m net.sf.saxon.Transform -it:main ddsv2oahpa_xml_fuck.xsl inFile=wordlist.csv src_lang=fkv tgt_lang=nob
+    | Usage: java -Xmx2024m net.sf.saxon.Transform -it:main ddsv2oahpa_xml.xsl inFile=wordlist.csv src_lang=fkv tgt_lang=nob
     | 
     +-->
 
