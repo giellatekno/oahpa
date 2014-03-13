@@ -1,33 +1,23 @@
-This directory contains linguistic and meta-linguistic data
-to feed the DB with.
- - meta: sets and super-sets used in the smaoahpa
- - sma: all entries from the smanob dict that are marked with application=oahpa
- - nob: all entries from the sma directory (i.e., the entries from smanob dict filtered by
-        the application flag) reverted accordingly.
-Now, the nobsma has been generated. Not yet merged! There might be some problems with the scopus
-of books when merging.
+This directory contains some scripts for working
+with lexical data for oahpa.
 
-=================================
-Status of freezing file:
+1. convert data from csv into oahpa-lexicon xml
+field separator = __ (two underscores) 
+separator between items of same type (translations, semantic classes) = , (comma)
 
- - documentation about this issue is here 
+ java -Xmx2024m net.sf.saxon.Transform -it:main ddsv2oahpa_xml.xsl inFile=wordlist.csv src_lang=fkv tgt_lang=nob
 
-      gtsvn/ped/sma/00_filtering-freezing-readme.txt
+ ==> result files are generated in the directory defined in the variable outputDir (here "xml-out")
+ <xsl:variable name="outputDir" select="'xml-out'"/>
 
-The (not that good) old way we generated smaoahpa source files out of
-smanob dictionary files (outdatet):
+input format:
+LEMMA __ POS __ TRANSLATION_1,TRANSLATION_2,TRANSLATION_n __ SEMCLASS_1,SEMCLASS_2, SEMCLASS_n
 
-=================================
-Previous procedure -- filtering and reverting the smaoahpa data out of the smanob dictionary files:
+NB 1: the first translation gets the attribute stat="pref"
+NB 2: all translation get the same set of semantic classes
+NB 3: if a lemma has different meanings it has to have as many entries as meanings
+      and each e-element has to have an ID denoting its meaning
 
-NB: Don't use the dict/sma/src data for oahpa directly, use rather the filtering
-    script get_sma-data.xsl. As a matter of fact, this was the idea in Cip's dream:
-    you have all in a place but for each application, you extract the data you need.
-
-The usual cycle:
-1. filter data for sma-oahpa from the smanob dict
-   get_sma-data.xsl
- -> result files generated in sma dir
 
 2. revert smaxxx to xxxsma
    revert_sma-data.xsl
