@@ -3,7 +3,7 @@
     | Transforms a csv file with four fields - 
     | LEMMA __ POS __ TRANSLATION_1,TRANSLATION_2,TRANSLATION_n __ SEMCLASS_1,SEMCLASS_2, SEMCLASS_n
     | into oahpa lexicon files in  xml format split by pos values
-    | Usage: java -Xmx2024m net.sf.saxon.Transform -it:main ddsv2oahpa_xml.xsl inFile=wordlist.csv src_lang=fkv tgt_lang=nob
+    | Usage: java -Xmx2024m net.sf.saxon.Transform -it:main uusv2oahpa_xml.xsl inFile=wordlist.csv src_lang=fkv tgt_lang=nob
     | 
     +-->
 
@@ -49,12 +49,13 @@
    
 </xsl:function>
 
-  <xsl:variable name="e" select="'xml'"/>
-  <xsl:variable name="outputDir" select="'xml-out'"/>
-
   <xsl:param name="inFile" select="'default.csv'"/>
   <xsl:param name="src_lang" select="'fkv'"/>
   <xsl:param name="tgt_lang" select="'nob'"/>
+
+  <xsl:variable name="e" select="'xml'"/>
+  <xsl:variable name="outputDir" select="'xml-out'"/>
+  <xsl:variable name="nl" select="'&#xa;'"/>
 
   <xsl:template match="/" name="main">
     
@@ -120,9 +121,17 @@
 	
 	<!-- pos-based output -->
 	<xsl:for-each-group select="$output/r/e" group-by="./lg/l/@pos">
-	  <xsl:result-document href="{$outputDir}/{current-grouping-key()}_{$src_lang}{$tgt_lang}.{$e}">
+	  <xsl:variable name="current_outfile" select="concat(current-grouping-key(),'_',$src_lang,$tgt_lang)"/>
+	  <xsl:result-document href="{$outputDir}/{$current_outfile}.{$e}">
 	    <!--xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../script/fitswe.css"</xsl:processing-instruction>
 	    <xsl:value-of select="'&#xA;'"/-->
+
+	    <xsl:message terminate="no">
+              <xsl:value-of select="concat('-----------------------------------------', $nl)"/>
+              <xsl:value-of select="concat('generating file ', $current_outfile, $nl)"/>
+              <xsl:value-of select="'-----------------------------------------'"/>
+            </xsl:message>
+	    
 	    <r xml:lang="{$src_lang}">
 	      <xsl:copy-of select="current-group()"/>
 	    </r>
