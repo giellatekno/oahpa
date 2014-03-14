@@ -19,36 +19,37 @@ Here are some more documentation if you want to know more than just make the dem
 
 <p>Files for OAHPA are in the ped-directory. </p>
 
-<p><strong>The pedagogical lexicon. Files for generating the database of word forms:</strong></p>
+<p><strong>The pedagogical lexicon. Files for generating the database of word forms, in sme:</strong></p>
 
 <ul>
-<li><code>sme/xml/adjectives.xml</code></li>
-<li><code>sme/xml/adjectives.xml</code></li>
-<li><code>sme/xml/nouns.xml</code></li>
-<li><code>sme/xml/numerals.xml</code></li>
-<li><code>sme/xml/pronouns.xml</code></li>
-<li><code>sme/xml/propernouns.xml</code></li>
-<li><code>sme/xml/verbs.css</code></li>
-<li><code>sme/xml/verbs.dtd</code></li>
-<li><code>sme/xml/verbs.xml</code> </li>
-<li><code>sme/xml/fillings.xml</code> (words of other POS) </li>
-<li><code>sme/xml/semantic_sets.xml</code> (some of the smaller Morfa-sets make bigger Leksa supersets)</li>
-<li><code>sme/src/paradigms.txt</code></li>
-<li><code>sme/src/tags.txt</code> </li>
-<li><code>isme-GG.restr.fst</code> (generates word forms according to western dialect) </li>
-<li><code>isme-KJ.restr.fst</code> (generates word forms according to eastern dialect)</li>
+<li><code>src/a_smenob.xml</code> and <code>meta/a_paradigms.txt</code></li>
+<li><code>src/n_smenob.xml</code> and <code>meta/n_paradigms.txt</code> and <code>meta/n_px_paradigms.txt</code></li>
+<li><code>src/num_smenob.xml</code>  and <code>meta/num_paradigms.txt</code></li>
+<li><code>src/prop_smenob.xml</code>  and <code>meta/prop_paradigms.txt</code></li>
+<li><code>src/v_smenob.xml</code>  and <code>meta/v_paradigms.txt</code></li>
+<li><code>src/neg_smenob.xml</code>  and <code>meta/neg_paradigms.txt</code> </li>
+<li><code>src/pron_sme.xml</code></li>
+<li><code>src/adv_smenob.xml</code></li>
+<li><code>src/multiword_smenob.xml</code></li>
+<li><code>src/derverb_sme.xml</code></li>
+<li><code>src/grammaticalwords_smenob.xml</code> </li>
+<li><code>src/names.xml</code> </li>
+<li><code>meta/fillings.xml</code> (words of other POS) </li>
+<li><code>meta/semantical_sets.xml</code> (semantic fields of semantic sets)</li>
+<li><code>meta/tags.txt</code> </li>
+<li><code>gt/bin/isme-GG.restr.fst</code> (western dialect) </li>
+<li><code>gt/bin/isme-KJ.restr.fst</code> (eastern dialect)</li>
+<li><code>gt/bin/isme-norm.fst</code> (key answers)</li>
 </ul>
 <p></p>
-<p>Files with more words from text books: <code>sme/src/adv.txt	sme/src/conj.txt	sme/src/pp.txt</code>  The words are not generated. The files are not in use today. </p>
 
 <p></p>
 
-<p><strong>Files especially for Leksa, from Norwegian to North Sami:</strong></p>
+<p><strong>Files especially for Leksa, from Norwegian to North Sami, in nobsrc/:</strong></p>
 
 <ul>
-<li><code>nob/xml/adjectives.xml</code></li>
-<li><code>nob/xml/verbs.xml</code></li>
-<li><code>nob/xml/nouns.xml</code></li>
+<li><code>a_nobsme.xml</code>, <code>prop_nobsme.xml</code>, <code>n_nobsme.xml</code></li>
+<li><code>v_nobsme.xml</code>, <code>num_nobsme.xml</code>, <code>adv_nobsme.xml</code>, <code>mwe_nobsme.xml</code></li>
 </ul>
 
 <p></p>
@@ -61,71 +62,70 @@ Here are some more documentation if you want to know more than just make the dem
 
 
 <p></p>
-<p><strong>Files for generating tasks in Morfa-C and Vasta:</strong></p>
+<p><strong>Files for generating tasks in Morfa-C and Vasta, in sme/meta/:</strong></p>
 <ul>
-<li><code>sme/xml/grammar_defaults.xml</code> </li>
-<li><code>sme/xml/questions_adjectives.xml</code> (for Morfa-C)</li>
-<li><code>sme/xml/questions_nouns.xml</code> (for Morfa-C)</li>
-<li><code>sme/xml/questions_numerals.xml</code> (for Morfa-C)</li>
-<li><code>sme/xml/questions_verbs.xml</code> (for Morfa-C)</li>
-<li><code>sme/xml/questions_vasta.xml</code> (for Vasta)</li>
+<li><code>adjective_questions.xml</code></li>
+<li><code>derivation_questions.xml</code></li>
+<li><code>noun_questions.xml</code></li>
+<li><code>numeral_questions.xml</code></li>
+<li><code>pron_questions.xml</code></li>
+<li><code>pron_questions_reflexive.xml</code></li>
+<li><code>px_questions.xml</code></li>
+<li><code>verb_questions.xml</code></li>
+<li><code>derivation_questions.xml</code></li>
+<li><code>vastas_questions.xml</code></li>
+<li><code>questions_vasta.xml</code> (for Vasta)</li>
+<li><code>grammar_defaults.xml</code> </li>
 </ul>
 <p></p>
 
 
-<p><strong>Dialogue files for Sahka:</strong></p> 
+<p><strong>Dialogue files for Sahka, in sme/meta/:</strong></p> 
 <ul>
-<li><code>sme/xml/dialogue_firstmeeting.xml</code></li>
-<li><code>sme/xml/dialogue_firstmeeting_boy.xml</code></li>
-<li><code>sme/xml/dialogue_firstmeeting_girl.xml</code></li>
-<li><code>sme/xml/dialogue_firstmeeting_man.xml</code></li>
-<li><code>sme/xml/dialogue_grocery.xml</code></li>
-<li><code>sme/xml/dialogue_shopadj.xml</code></li>
-<li><code>sme/xml/dialogue_visit.xml</code></li>
-<li><code>sme/xml/dialogues.dtd</code></li>
+<li><code>dialogue_firstmeeting.xml</code></li>
+<li><code>dialogue_car.xml</code></li>
+<li><code>dialogue_coffee.xml</code></li>
+<li><code>dialogue_hello.xml</code></li>
+<li><code>dialogue_grocery.xml</code></li>
+<li><code>dialogue_shopadj.xml</code></li>
+<li><code>dialogue_visit.xml</code></li>
+<li><code>dialogues.dtd</code></li>
 </ul>
 
 <p></p>
 
-<p><strong>Files for giving feedback about morphology in Morfa-S:</strong></p><p> The feedback-files add feedbacktags based on a combination of the morphological features specified in the lexicon, and the task itself. With help of the tags the system generates feedback messages for the user. Many small messages are linked together to a longer message.</p>
+<p><strong>Files for giving feedback about morphology in Morfa-S:</strong></p><p> The feedback-files add feedbacktags based on a combination of the morphological features specified in the lexicon, and the task itself. With help of the tags the system generates feedback messages for the user. Many small messages are linked together to a longer message. In sme/meta/:</p>
 <ul>
-<li><code>sme/xml/feedback_adjectives.xml</code> (for western dialect)</li>
-<li><code>sme/xml/feedback_adjectives_eastern.xml</code> (for eastern dialect)</li>
-<li><code>sme/xml/feedback_nouns.xml</code></li>
-<li><code>sme/xml/feedback_numerals.xml</code></li>
-<li><code>sme/xml/feedback_verbs.xml</code> (for western dialect)</li>
-<li><code>sme/xml/feedback_verbs_eastern.xml</code> (for eastern dialect)</li>
-<li><code>sme/xml/messages.eng.xml</code> (in English)</li>
-<li><code>sme/xml/messages.fin.xml</code> (in Finnish)</li>
-<li><code>sme/xml/messages.sme.xml</code> (in North Sami)</li>
-<li><code>sme/xml/messages.xml</code> (in Norwegian)</li>
+<li><code>feedback_adjectives.xml</code> (for western dialect)</li>
+<li><code>feedback_adjectives_eastern.xml</code> (for eastern dialect)</li>
+<li><code>feedback_nouns.xml</code></li>
+<li><code>feedback_numerals.xml</code></li>
+<li><code>feedback_verbs.xml</code> (for western dialect)</li>
+<li><code>feedback_verbs_eastern.xml</code> (for eastern dialect)</li>
+<li><code>messages.xml, (nob, eng, sme, swe, fin)</code></li>
 </ul>
 <p></p>
-<p><strong>Other files offering help to the user:</strong></p>
-<p><code>sme/xml/comments.nob.xml</code> (comments to the user aobut how she is succeeding with the tasks.)</p>
-<p><code>sme/src/comments.sme</code> </p>
-<p><code>sme/src/grammatikklinker.txt</code> (links to the grammar documentation. The grammar files are in userdoc/) </p>
+<p><strong>Other files offering help to the user, in sme/meta/:</strong></p>
+<p><code>comments.xml (nob, eng, sme, swe, fin)</code> (comments to the user aobut how she is succeeding with the tasks.)</p>
+<p><code>grammatikklinker.txt (nob, eng, sme, swe, fin)</code> (links to the grammar documentation. The grammar files are in userdoc/) </p>
 <p></p>
 
 <p><strong>Files for analysing the free input in Sahka and Vasta:</strong></p>
 
 <p><code>ped-sme.fst</code> gives morphological analysis to the user's input. It is normative, but it allows proper nouns written with small initial letter, but marks it with an error tag.</p>
-<p><code>sme/src/sme-ped.cg3</code> disambuguates and adds grammar error and navigation tags to the user's input.</p>
+<p><code>src/sme-ped.cg3</code> disambuguates and adds grammar error and navigation tags to the user's input.</p>
 <p></p>
 
-<p><strong>Files for giving feedback in Vasta and Sahka:</strong></p><p>The feedback messages are generated with help of the grammartags in the analysis done with the vislcg3-file:</p>
+<p><strong>Files for giving feedback in Vasta and Sahka:</strong></p><p>The feedback messages are generated with help of the grammartags in the analysis done with the vislcg3-file, in sme/meta/:</p>
 <ul>
-<li><code>sme/xml/messages_vasta.eng.xml</code></li>
-<li><code>sme/xml/messages_vasta.fin.xml</code></li>
-<li><code>sme/xml/messages_vasta.sme.xml</code></li>
-<li><code>sme/xml/messages_vasta.xml</code></li>
+<li><code>messages_vasta.xml, (nob, eng, sme, swe, fin)</code></li>
 </ul>
 
 </section>
 		<section>
 			<title>Other files</title>
 
-<p>In<code> oahpa/</code> are:</p>
+<p>In<code> univ_oahpa/</code> are files system files:</p>
 
 <ul>
 <li>installation scripts</li>
@@ -133,11 +133,10 @@ Here are some more documentation if you want to know more than just make the dem
 <li><code>templates/</code> : html-files for basic look for all the programs</li>
 <li><code>drill/</code> : scripts for each program</li>
 <li><code>drill/templates/</code>  : html-files for each program</li>
+<li><code>locale/</code>  : localisation </li>
 </ul>
 <p></p>
 
-<p>Files with translations for the texts in the interface are stored in <code>oahpa/locale/</code>:</p> <ul><li> <code>fi/LC_MESSAGES/django.po</code></li><li><code>sme/LC_MESSAGES/django.po </code></li><li><code>no/LC_MESSAGES/django.po </code></li><li><code>en/LC_MESSAGES/django.po </code></li></ul>
-<p></p>
 <p>In <code>userdoc/ </code>are files for userdocumentation and the North Sami grammar.</p>
 
 
