@@ -19,24 +19,24 @@ Here are some more documentation if you want to know more than just make the dem
 
 <p>Files for OAHPA are in the ped-directory. </p>
 
-<p><strong>The pedagogical lexicon. Files for generating the database of word forms, in sme:</strong></p>
+<p><strong>The pedagogical lexicon. Files for generating the database of word forms, in sme/src/ or sme/meta/:</strong></p>
 
 <ul>
-<li><code>src/a_smenob.xml</code> and <code>meta/a_paradigms.txt</code></li>
-<li><code>src/n_smenob.xml</code> and <code>meta/n_paradigms.txt</code> and <code>meta/n_px_paradigms.txt</code></li>
-<li><code>src/num_smenob.xml</code>  and <code>meta/num_paradigms.txt</code></li>
-<li><code>src/prop_smenob.xml</code>  and <code>meta/prop_paradigms.txt</code></li>
-<li><code>src/v_smenob.xml</code>  and <code>meta/v_paradigms.txt</code></li>
-<li><code>src/neg_smenob.xml</code>  and <code>meta/neg_paradigms.txt</code> </li>
-<li><code>src/pron_sme.xml</code></li>
-<li><code>src/adv_smenob.xml</code></li>
-<li><code>src/multiword_smenob.xml</code></li>
-<li><code>src/derverb_sme.xml</code></li>
-<li><code>src/grammaticalwords_smenob.xml</code> </li>
-<li><code>src/names.xml</code> </li>
-<li><code>meta/fillings.xml</code> (words of other POS) </li>
-<li><code>meta/semantical_sets.xml</code> (semantic fields of semantic sets)</li>
-<li><code>meta/tags.txt</code> </li>
+<li><code>a_smenob.xml</code> and <code>a_paradigms.txt</code></li>
+<li><code>n_smenob.xml</code> and <code>n_paradigms.txt</code> and <code>n_px_paradigms.txt</code></li>
+<li><code>num_smenob.xml</code>  and <code>num_paradigms.txt</code></li>
+<li><code>prop_smenob.xml</code>  and <code>prop_paradigms.txt</code></li>
+<li><code>v_smenob.xml</code>  and <code>v_paradigms.txt</code></li>
+<li><code>neg_smenob.xml</code>  and <code>neg_paradigms.txt</code> </li>
+<li><code>pron_sme.xml</code></li>
+<li><code>adv_smenob.xml</code></li>
+<li><code>multiword_smenob.xml</code></li>
+<li><code>derverb_sme.xml</code></li>
+<li><code>grammaticalwords_smenob.xml</code> </li>
+<li><code>names.xml</code> </li>
+<li><code>fillings.xml</code> (words of other POS) </li>
+<li><code>semantical_sets.xml</code> (semantic fields of semantic sets)</li>
+<li><code>tags.txt</code> </li>
 <li><code>gt/bin/isme-GG.restr.fst</code> (western dialect) </li>
 <li><code>gt/bin/isme-KJ.restr.fst</code> (eastern dialect)</li>
 <li><code>gt/bin/isme-norm.fst</code> (key answers)</li>
@@ -113,7 +113,7 @@ Here are some more documentation if you want to know more than just make the dem
 <p><strong>Files for analysing the free input in Sahka and Vasta:</strong></p>
 
 <p><code>ped-sme.fst</code> gives morphological analysis to the user's input. It is normative, but it allows proper nouns written with small initial letter, but marks it with an error tag.</p>
-<p><code>src/sme-ped.cg3</code> disambuguates and adds grammar error and navigation tags to the user's input.</p>
+<p><code>sme-ped.cg3</code> disambuguates and adds grammar error and navigation tags to the user's input.</p>
 <p></p>
 
 <p><strong>Files for giving feedback in Vasta and Sahka:</strong></p><p>The feedback messages are generated with help of the grammartags in the analysis done with the vislcg3-file, in sme/meta/:</p>
