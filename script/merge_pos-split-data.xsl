@@ -77,7 +77,8 @@
   <!-- Output dir, files -->
   <xsl:variable name="outputDir" select="concat('to_filter_', $slang)"/>
   <xsl:param name="slang" select="'nob'"/>
-  
+  <xsl:param name="tlang" select="'fkv'"/>
+
   <!-- Patterns for the feature values -->
   <xsl:variable name="output_format" select="'xml'"/>
   <xsl:variable name="e" select="$output_format"/>
@@ -122,7 +123,7 @@
 		      </xsl:attribute>
 		      
 		      <xsl:if test=".[not(@stat and @stat='pref')]/../..">
-			<xsl:attribute name="swe-stat">
+			<xsl:attribute name="{concat($slang,'-stat')}">
 			  <xsl:value-of select="'yes'"/>
 			</xsl:attribute>
 		      </xsl:if>
@@ -150,7 +151,7 @@
 		    <xsl:copy-of select="./sources"/>
 		    <mg>
 		      <xsl:copy-of select="./mg/semantics"/>
-		      <tg xml:lang="sma">
+		      <tg xml:lang="{$tlang}">
 			<xsl:variable name="curr_t" select="./mg/tg/t"/>
 			<t pos="{./mg/tg/t/@pos}" stat="pref">
 			  <xsl:value-of select="$curr_t"/>
