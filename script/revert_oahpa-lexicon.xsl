@@ -97,7 +97,7 @@
 	</r>
       </xsl:variable>
       
-      <xsl:result-document href="{$outDir}/{concat(substring-before($current_file, '_smanob'), '_', $tlang, $slang)}.{$e}" format="{$of}">
+      <xsl:result-document href="{$outDir}/{concat(substring-before($current_file, concat('_',$slang,$tlang)), '_', $tlang, $slang)}.{$e}" format="{$of}">
 	<xsl:copy-of select="$out_tmp"/>
       </xsl:result-document>
       
