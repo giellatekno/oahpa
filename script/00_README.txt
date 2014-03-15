@@ -18,10 +18,19 @@ NB 2: all translation get the same set of semantic classes
 NB 3: if a lemma has different meanings it has to have as many entries as meanings
       and each e-element has to have an ID denoting its meaning
 
+2. revert the xml file from aaabbb to bbbaaa
 
-2. revert smaxxx to xxxsma
-   revert_sma-data.xsl
- -> result files in some tmp dir (reverted2xxx)
+ java -Xmx2024m net.sf.saxon.Transform -it:main revert_oahpa-lexicon.xsl inDir=xml-out
+
+==> result files are generated in the directory defined in the variable outputDir (here "_reverted2nob"
+    because 'nob' is defined as target language 'tlang')
+  <xsl:param name="outDir" select="concat('_reverted2', $tlang)"/>
+
+NB: the parameter inDir should be adapted to whatever the input directory is
+
+___end of docu update___
+
+
 
 3. redistribute the reverted files by pos (some pos values might be different as the file name generated)
    pos-split_reverted-data.xsl  
