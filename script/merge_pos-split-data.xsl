@@ -75,7 +75,7 @@
   <xsl:param name="inFile" select="'default.xml'"/>
   
   <!-- Output dir, files -->
-  <xsl:variable name="outputDir" select="concat('to_filter_', $slang)"/>
+  <xsl:variable name="outDir" select="concat('to_filter_', $slang)"/>
   <xsl:param name="slang" select="'nob'"/>
   <xsl:param name="tlang" select="'fkv'"/>
 
@@ -167,7 +167,7 @@
 	</xsl:variable>
 	
 	<!-- out -->
-	<xsl:result-document href="{$outputDir}/{$file_name}.{$e}" format="{$output_format}">
+	<xsl:result-document href="{$outDir}/{$file_name}.{$e}" format="{$output_format}">
 	  <xsl:copy-of select="$out_tmp"/>
 	</xsl:result-document>
 

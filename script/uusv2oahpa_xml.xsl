@@ -54,7 +54,7 @@
   <xsl:param name="tgt_lang" select="'nob'"/>
 
   <xsl:variable name="e" select="'xml'"/>
-  <xsl:variable name="outputDir" select="'xml-out'"/>
+  <xsl:variable name="outDir" select="'xml-out'"/>
   <xsl:variable name="nl" select="'&#xa;'"/>
 
   <xsl:template match="/" name="main">
@@ -122,7 +122,7 @@
 	<!-- pos-based output -->
 	<xsl:for-each-group select="$output/r/e" group-by="./lg/l/@pos">
 	  <xsl:variable name="current_outfile" select="concat(current-grouping-key(),'_',$src_lang,$tgt_lang)"/>
-	  <xsl:result-document href="{$outputDir}/{$current_outfile}.{$e}">
+	  <xsl:result-document href="{$outDir}/{$current_outfile}.{$e}">
 	    <!--xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../script/fitswe.css"</xsl:processing-instruction>
 	    <xsl:value-of select="'&#xA;'"/-->
 
