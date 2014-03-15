@@ -17,6 +17,12 @@ import sys, os
 import itertools
 from random import choice
 
+try:
+        LOG_FILE = kpv_oahpa.settings.LOG_FILE
+except:
+        LOG_FILE = False
+
+
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
 PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'son',
@@ -1791,7 +1797,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    #logfile = open('/PATH/TO/THE/kpv_drill/vastaF_log.txt','w')
+    #logfile = open(LOG_FILE,'w')
     
     host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
@@ -2263,7 +2269,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    logfile = open('/PATH/TO/THE/kpv_drill/vastas_log.txt', 'w')
+    logfile = open(LOG_FILE, 'w')
     host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024
