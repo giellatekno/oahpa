@@ -36,13 +36,16 @@ NB: the parameter inDir should be adapted to whatever the input directory is
 ==> result files are generated outputDir (CAVEAT: slang is not the origianl tlang!)
   <xsl:param name="outDir" select="concat('pos_redistr_', $slang)"/>
 
+5. merge the possible doublings in each file separately
+
+ java -Xmx2024m net.sf.saxon.Transform -it:main merge_pos-split-data.xsl inFile=pos_redistr_nob/A_nobfkv.xml
+ java -Xmx2024m net.sf.saxon.Transform -it:main merge_pos-split-data.xsl inFile=pos_redistr_nob/N_nobfkv.xml
+ java -Xmx2024m net.sf.saxon.Transform -it:main merge_pos-split-data.xsl inFile=pos_redistr_nob/V_nobfkv.xml
+
+==> result files are generated outputDir (here: to_filter_nob)
+  <xsl:variable name="outputDir" select="concat('to_filter_', $slang)"/>
+
 ___end of docu update___
-
-4. in pos_redistr_xxx: merge collect POS and phrase_POS in one file POS_xxxsma.xml
-
-5. merge the possible doublings
-   merge_pos-split-data.xsl inFile=pos_redistr_xxx/a_xxxsma.xml
- -> result files in to_filter_xxx dir
 
 6. filter away the entries without stat="pref"
    stat-filter_merged-data.xsl
