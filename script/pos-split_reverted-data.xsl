@@ -39,7 +39,7 @@
       </xsl:if>
       
       <xsl:result-document href="./{$outDir}/{current-grouping-key()}_{$slang}{$tlang}.{$e}" format="{$of}">
-	<r>
+	<r xml:lang="{$slang}">
 	  <xsl:copy-of copy-namespaces="no" select="current-group()"/>
 	</r>
       </xsl:result-document>

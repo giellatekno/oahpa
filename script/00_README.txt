@@ -28,13 +28,15 @@ NB 3: if a lemma has different meanings it has to have as many entries as meanin
 
 NB: the parameter inDir should be adapted to whatever the input directory is
 
+3. redistribute the reverted files by the pos values of the reverted entries
+   (some pos values might be different than those of the original entries)
+
+ java -Xmx2024m net.sf.saxon.Transform -it:main pos-split_reverted-data.xsl inDir=_reverted2nob
+
+==> result files are generated outputDir (CAVEAT: slang is not the origianl tlang!)
+  <xsl:param name="outDir" select="concat('pos_redistr_', $slang)"/>
+
 ___end of docu update___
-
-
-
-3. redistribute the reverted files by pos (some pos values might be different as the file name generated)
-   pos-split_reverted-data.xsl  
- -> result files in some tmp dir (pos_redistr_xxx)
 
 4. in pos_redistr_xxx: merge collect POS and phrase_POS in one file POS_xxxsma.xml
 
