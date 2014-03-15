@@ -5,7 +5,7 @@ with lexical data for oahpa.
 field separator = __ (two underscores) 
 separator between items of same type (translations, semantic classes) = , (comma)
 
- java -Xmx2024m net.sf.saxon.Transform -it:main ddsv2oahpa_xml.xsl inFile=wordlist.csv src_lang=fkv tgt_lang=nob
+ java -Xmx2024m net.sf.saxon.Transform -it:main uusv2oahpa_xml.xsl inFile=wordlist.csv src_lang=fkv tgt_lang=nob
 
  ==> result files are generated in the directory defined in the variable outputDir (here "xml-out")
  <xsl:variable name="outputDir" select="'xml-out'"/>
