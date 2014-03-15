@@ -45,6 +45,8 @@ NB: the parameter inDir should be adapted to whatever the input directory is
 ==> result files are generated outputDir (here: to_filter_nob)
   <xsl:variable name="outputDir" select="concat('to_filter_', $slang)"/>
 
+TODO: make a for-each loop for this step!
+
 ___end of docu update___
 
 6. filter away the entries without stat="pref"
