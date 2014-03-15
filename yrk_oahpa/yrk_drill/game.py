@@ -43,11 +43,6 @@ try:
 except:
 	DEFAULT_DIALECT = None
 
-
-# FST_DIRECTORY = '/opt/smi/sme/bin' #Just testing. Hardcoded here because it looks like looking it up in settings.py failed
-# LOOKUP_TOOL = '/usr/local/bin/lookup'
-
-
 def parse_tag(tag):
 	""" Iterate through a tag string by chunks, and check for tag sets
 	and tag names. Return the reassembled tag on success. """
