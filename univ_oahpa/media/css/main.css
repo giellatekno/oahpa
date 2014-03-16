@@ -717,19 +717,52 @@ span.incorrect input {
 	font-size: 110% ;
 }
 
-#courses dl {
+#courses dl.course_progress {
 	margin: .5em auto 0 2em;
 	width: 60%;
 }
 
-#courses dt {
+#courses dl.course_progress dt {
 	border-bottom: 1px solid #AAA;
 	font-style: italic;
 }
 
-#courses dd {
+#courses dl.course_progress dd {
 	margin-left: 2em;
 	margin-bottom: 1em;
+}
+
+#courses dl.goal_definition  {
+    margin: 1em 0 ;
+    width: 100%;
+    display: block;
+}
+
+#courses dl.goal_definition dt {
+    width: 40%;
+}
+
+#courses dl.goal_definition dd {
+    width: 60%;
+}
+
+#game #course_goal {
+    border: 1px solid #ccc;
+    padding: 5px 7px;
+}
+
+#game #course_goal h2 {
+    font-size: 110%;
+    color: #333;
+}
+
+#course_goal .stat_title {
+    font-weight: bold;
+    font-size: 90%;
+}
+
+#course_goal .stat_value {
+    font-size: 90%;
 }
 
 ul.courselist {

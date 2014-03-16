@@ -1,0 +1,38 @@
+﻿{% comment %}
+    This is a chunk of angularjs (see courses.js), which
+    simply displays the user's current course status. It is
+    a simple HTTP GET request, and the part below is the
+    template snippet.
+
+    Here's the sample results key from the JSON, in case
+    more is required in the template.
+    {
+        "results": [
+            {
+                "progress": "0.89", 
+                "rounds": 1, 
+                "total_answered": 9, 
+                "correct": 8, 
+                "completed_date": null, 
+                "grade": null
+            }
+        ]
+    }
+
+    TODO: hide until we know that JS request works 
+{% endcomment %}
+<div id="course_goal" ng-app="Courses">
+    <div class="goal_in_progress"
+        ng-controller="GoalController" ng-source="/{{ URL_PREFIX  }}/courses/stats/">
+        <div ng-if="results">
+            <h2>Goal progress</h2>
+            <ul ng-repeat="goal in results">
+                <li><span class="stat_title">Rounds</span>:
+                    <span class="stat_value"><% goal.rounds %> (<% goal.total_answered %> answered)</span></h4>
+                <li><span class="stat_title">Correct</span>:
+                    <span class="stat_value"><% goal.progress * 100 %>%</span></h4>
+            </ul>
+        </div>
+    </div>
+</div>
+

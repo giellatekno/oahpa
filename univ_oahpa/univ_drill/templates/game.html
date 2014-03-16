@@ -25,38 +25,7 @@
             <p>{% block instructions %}{% endblock %}</p>
         </div>
         {% if courses_user %}
-            {% comment %}
-                This is a chunk of angularjs (see courses.js), which
-                simply displays the user's current course status. It is
-                a simple HTTP GET request, and the part below is the
-                template snippet.
-
-                Here's the sample results key from the JSON, in case
-                more is required in the template.
-                {
-                    "results": [
-                        {
-                            "progress": "0.89", 
-                            "rounds": 1, 
-                            "total_answered": 9, 
-                            "correct": 8, 
-                            "completed_date": null, 
-                            "grade": null
-                        }
-                    ]
-                }
-            {% endcomment %}
-            <div id="course_goal" ng-app="Courses">
-                <div class="goal_in_progress" ng-controller="GoalController">
-                    <div ng-if="results">
-                        <h2>Progress</h2>
-                        <div ng-repeat="goal in results">
-                            <h4>Rounds: <% goal.rounds %> (<% goal.total_answered %> answered)</h4>
-                            <h4>Correct: <% goal.progress * 100 %>,%</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include "courses/courses_goal_progress.html" %}
         {% endif %}
 	
 	{% block tooltips %}
