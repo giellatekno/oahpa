@@ -69,14 +69,16 @@ class GradingMiddleware(object):
         if request_logs_exist and user_isnt_anon and current_user_goal:
             current = request.session.get('current_exercise_params', False)
             previous = request.session.get('previous_exercise_params', False)
+            print (current, previous)
+            # This test is sometimes wrong when switching in and out of
+            # a goal.
             if current and previous:
                 if current != previous:
-                    # TODO: check if goal is okay with tracking
-                    # whatever, for now we stop tracking
                     print " -- user navigated to new page, stop tracking --"
                     request.session['previous_exercise_params'] = current
                     del request.session['current_user_goal']
-                    # TODO: redirect?
+                    del request.session['current_exercise_params']
+                    del request.session['previous_exercise_params']
                     return response
 
             self.increment_session_answer_counts(request)
