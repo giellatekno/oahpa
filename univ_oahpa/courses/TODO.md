@@ -38,9 +38,9 @@
 
  --
 
- TODO: improve design of status thing a bit, decide what info needs
-       to be visible (intended correct percent? amount of sets user has
-       to do to finish)
+ TODO: include goal summary / status on courses page
+
+ TODO: make courses look better
 
  TODO: increment round if user doesn't answer at all but clicks on new
  set
@@ -52,8 +52,11 @@
  TODO: optional goal tracking stop, or allow resume if they navigate
      back?
 
+ TODO: try getting this moving on testing.oahpa.no, but document things
+ that don't work 'cause they're probably settings i forgot to explain.
+
  TODO: implement some of the sample goal criteria, maybe store these as
- fixtures or something? 
+ fixtures or something?
 
  TODO: something in admin is broken so adding a user to a course
  manually does not work
