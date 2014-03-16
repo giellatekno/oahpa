@@ -29,5 +29,13 @@ urlpatterns = patterns('',
 	url(r'^%s/accounts/login/$' % prefix, 'courses.views.cookie_login'),
 	# (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 	# url(r'^%s/openid/' % prefix, include('openid_provider.urls')),
+	url(r'^%s/favicon\.ico$' % prefix, 
+			'django.views.generic.simple.redirect_to', 
+			{'url': '/%s/media/images/favicon_16x16.ico' % prefix})
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns('django.contrib.staticfiles.views',
+        url(r'^%s/static/(?P<path>.*)$' % prefix, 'serve'),
+    )
 
