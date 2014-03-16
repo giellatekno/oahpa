@@ -63,13 +63,20 @@ class Gameview(object):
 
 	"""
 
-	def register_logs(self, request, game):
+	def register_logs(self, request, game, settings_form):
 		""" Grab all the logs that were generated from a form, and
 		append them to the request session """
 		request.user_logs_generated = [
 			f.last_log for f in game.form_list
 			if hasattr(f, 'last_log')
 		]
+		# Use this to track whether the user switches away from the
+		# current exercise, if they do, then we can optionally stop
+		# tracking activity.
+
+		exercise_params = request.path_info + self.create_deeplink(game, settings_form)
+		request.session['current_exercise_params'] = exercise_params
+
 		request.session['all_correct'] = game.all_correct in [1, True, 'True', 'true']
 
 		request.session['set_completed'] = request.session['all_correct'] or \
@@ -319,7 +326,7 @@ class Leksaview(Gameview):
 		self.settings['gamename_key'] = "%s - %s" % (semtype, transtype)
 		
 	def context(self, request, game, settings_form):
-		self.register_logs(request, game)
+		self.register_logs(request, game, settings_form)
 
 		return Context({
 			'settingsform': settings_form,
@@ -391,7 +398,7 @@ class LeksaPlaceview(Gameview):
 		self.settings['gamename_key'] = "Place - %s - %s" % (geog, freq)
 
 	def context(self, request, game, settings_form):
-		self.register_logs(request, game)
+		self.register_logs(request, game, settings_form)
 
 		return Context({
 			'settingsform': settings_form,
@@ -448,7 +455,7 @@ class Numview(Gameview):
 		return keys
 
 	def context(self, request, game, settings_form):
-		self.register_logs(request, game)
+		self.register_logs(request, game, settings_form)
 
 		return Context({
 			'settingsform': settings_form,
@@ -682,7 +689,7 @@ class Morfaview(Gameview):
 
 
 	def context(self, request, game, settings_form):
-		self.register_logs(request, game)
+		self.register_logs(request, game, settings_form)
 
 		return RequestContext(request, {
 			'settingsform': settings_form,
@@ -858,7 +865,7 @@ class Vastaview(Gameview):
 			self.settings['gamename_key'] = gamename
 
 	def context(self, request, game, settings_form):
-		self.register_logs(request, game)
+		self.register_logs(request, game, settings_form)
 
 		c = Context({
 			'settingsform': settings_form,
@@ -907,7 +914,7 @@ class Cealkkaview(Gameview):
 		self.settings['gamename_key'] = 'level %s' % str(self.settings['level'])
 	
 	def context(self, request, game, settings_form):
-		self.register_logs(request, game)
+		self.register_logs(request, game, settings_form)
 		# TODO: seems to be fine, but settings['level'] on the first visit is
 		# all, not 1, even though the menu shows level 1
 
@@ -1026,7 +1033,7 @@ class Sahkaview(Cealkkaview):
 
 
 	def context(self, request, game, settings_form):
-		self.register_logs(request, game)
+		self.register_logs(request, game, settings_form)
 
 		def getmessages(g):
 			if len(g.form_list) > 0:
