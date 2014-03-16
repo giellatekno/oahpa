@@ -69,7 +69,6 @@ class GradingMiddleware(object):
         if request_logs_exist and user_isnt_anon and current_user_goal:
             current = request.session.get('current_exercise_params', False)
             previous = request.session.get('previous_exercise_params', False)
-            print (current, previous)
             # This test is sometimes wrong when switching in and out of
             # a goal.
             if current and previous:
@@ -99,8 +98,6 @@ class GradingMiddleware(object):
                                                 goal=goal, **result)
             else:
                 user_goal_instance.update(**result)
-
-            print user_goal_instance
 
         request.session['previous_exercise_params'] = \
                 request.session.get('current_exercise_params', False)

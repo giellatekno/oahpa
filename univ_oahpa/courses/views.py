@@ -262,7 +262,7 @@ def begin_course_goal(request, goal_id):
     if 'set_completed' in request.session:
         del request.session['set_completed']
 
-    request.session['question_set_count'] = 0
+    request.session['question_set_count'] = 1
     request.session['question_try_count'] = {}
     request.session['answered'] = {}
     request.session['previous_exercise_params'] = False
@@ -285,7 +285,12 @@ def begin_course_goal(request, goal_id):
 
     # Reset goal progress
     # TODO: confirm first if there is progress, then reset.
+    # TODO: maybe don't delete, but preserve somehow, create a new
+    # usergoalinstance to relate logs to?
     UserActivityLog.objects.filter(user=request.user, goal=goal).delete()
+
+    UserGoalInstance.objects.filter(user=request.user, goal=goal).delete()
+    UserGoalInstance.objects.create(user=request.user, goal=goal)
 
     return HttpResponseRedirect(goal.start_url)
 

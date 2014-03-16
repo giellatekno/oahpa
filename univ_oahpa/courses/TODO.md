@@ -42,9 +42,6 @@
        to be visible (intended correct percent? amount of sets user has
        to do to finish)
 
- TODO: create user goal instance when goal begins, so results always
- show.
-
  TODO: increment round if user doesn't answer at all but clicks on new
  set
 
