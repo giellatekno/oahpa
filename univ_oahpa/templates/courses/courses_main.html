@@ -43,7 +43,7 @@ TODO: link in user interface
         			            <dt></dt>
         			            <dd>Another field...</dd>
         			            <dt></dt>
-        			            <dd><a href="goal/begin/{{ goal.id }}/">Begin!</a></dd>
+        			            <dd><a href="{% url courses.views.begin_course_goal goal.id %}">Begin!</a></dd>
         			        </dl>
         			    </li>
 				    {% endfor %}

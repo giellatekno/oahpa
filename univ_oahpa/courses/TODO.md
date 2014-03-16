@@ -30,29 +30,33 @@
 
  * json endpoint for requesting current goal progress
 
+ * individual user goal instances - when user begins on a goal, they
+ get their own goal instance which tracks and stores results and such.
+
+ * ajax request of current goal status, otherwise remove infra for this
+   if user is not authenticated.
+
  --
 
+ TODO: improve design of status thing a bit, decide what info needs
+       to be visible (intended correct percent? amount of sets user has
+       to do to finish)
+
+ TODO: create user goal instance when goal begins, so results always
+ show.
+
+ TODO: increment round if user doesn't answer at all but clicks on new
+ set
+
  TODO: disable non-JSON views when not in debug?
+
+ TODO: translate new strings
 
  TODO: optional goal tracking stop, or allow resume if they navigate
      back?
 
- TODO: individual user goal instances - when user begins on a goal, they
- get their own goal instance which tracks and stores results and such.
-
-   - alternatively, user gets new instances created when registered for a
-     course: if a course adds a new goal, then the goal propagates to
-     user goal instances, etc. thus, when looking at the course summary,
-     easier to list all the user's own goals, links, and current
-     progress. also then, deleted goals with progress can still remain
-     in the user's summary
-
- TODO: need actual goal criteria, now that the basic models are in place
- for stuff to be tracked
-
- TODO: need a post-save signal on the activity to track the goal and
- analyze whether it's been passed, maybe can use this to allow the user
- to see their progress while they work?
+ TODO: implement some of the sample goal criteria, maybe store these as
+ fixtures or something? 
 
  TODO: something in admin is broken so adding a user to a course
  manually does not work
@@ -62,6 +66,18 @@
  TODO: make it clear on the courses page that someone is still working
  on a goal, so that when they have multiple available they'll know what's
  going on
+
+# Added installation notes:
+
+Context processors:
+    "univ_oahpa.courses.context_processors.courses_user",
+
+Middleware:
+    'courses.middleware.GradingMiddleware',
+
+installed apps:
+    'univ_oahpa.courses',
+
 
 # Oppsummering fra prosjektbeskrivelsen:
 
