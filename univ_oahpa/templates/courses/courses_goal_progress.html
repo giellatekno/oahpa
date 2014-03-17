@@ -31,6 +31,7 @@
                     <span class="stat_value"><% goal.rounds %> (<% goal.total_answered %> answered)</span></h4>
                 <li><span class="stat_title">Correct</span>:
                     <span class="stat_value"><% goal.progress * 100 %>%</span></h4>
+                <li ng-if="goal.is_complete">Complete!</li>
             </ul>
         </div>
     </div>

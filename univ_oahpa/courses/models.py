@@ -254,6 +254,7 @@ class Goal(models.Model):
         if passed_percent_correct and completed_min_rounds:
             user_goal_instance.completed_date = datetime.datetime.now()
             user_goal_instance.grade = user_goal_instance.progress
+            user_goal_instance.is_complete = True
             user_goal_instance.save()
             return True
 
@@ -347,6 +348,7 @@ class UserGoalInstance(models.Model):
 
     progress = models.DecimalField(decimal_places=2, max_digits=4, default=0.0)
 
+    is_complete = models.BooleanField(default=False)
     rounds = models.IntegerField(default=1)
     total_answered = models.IntegerField(default=0)
     correct = models.IntegerField(default=0)
