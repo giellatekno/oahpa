@@ -59,18 +59,10 @@ POS_CHOICES = (
 	('N', _('noun')),
 	('V', _('verb')),
 	('A', _('adjective')),
-	('Num', _('numeral')),
-	('Pron', _('pronoun')),
 )
 
 CASE_CHOICES = (
 	('NOMPL', _('plural')),
-	('N-ACC', _('accusative')),
-	('N-ILL', _('illative')),
-	('N-LOC', _('locative')),
-	('N-COM', _('comitative')),
-	('N-GEN', _('genitive')),
-	('N-ESS', _('essive')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -301,11 +293,6 @@ DERIVATION_CHOICES_CONTEXT = (
 )
 
 BOOK_CHOICES = (
-    ('piras', _(u'Pirâstiätu')),
-    ('bio5', _('Biologia 5')),
-    ('bio3', _('Biologia 3')),
-    ('ceelhi', _(u'Ceelhi tiervuođâid')),
-    ('puolas', _('Puolas')),
     ('all', _('All')),
 )
 
@@ -333,32 +320,23 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-	('yrkfin', _('Inari Sami to Finnish')),
-	('finyrk', _('Finnish to Inari Sami')),
+	('yrkeng', _('Nenets to English')),
+	('engyrk', _('English to Nenets')),
 )
-
+    
 NUMLANGUAGE_CHOICES = (
-	('yrk', _('Inari Sami')),
+	('yrk', _('Nenets')),
 )
 
 SEMTYPE_CHOICES = (
-	('HUMAN', _('human')),
-	('BODY', _('body')),
-	('PLANTS', _('plants')),
-	('BIRDS', _('birds')),
-	('ABSTRACT_CONCEPTS', _('abstract')),
-	('ANIMAL_FISH', _('animal/fish')),
-	('CLOTHING', _('clothing')),
-	('EDUCATION', _('education')),
-	('FOOD_DRINK', _('food/drink')),
-	('HEALTH', _('health')),
-	('NATURE_PHENOMENA', _('nature')),
-	('OTHER', _('other')),
-	('PLACE', _('place')),
-	('TIMEDATE', _('time and date')),
-	('TRAVEL', _('travel')),
-	('VERB', _('verbs')),
-	('all', _('all')),
+    ('FOOD-DRINK', _('food or drink')),
+#     ('FOOD', _('food')),
+#     ('DRINK', _('drink')),
+#     ('MOVEMENT', _('movement')),
+    ('TRAVEL', _('travel')),
+    ('HUMAN', _('humans')),
+#    ('PLACE', _('places')),
+    ('all', _('all')),
 )
 
 NUM_CHOICES = (
