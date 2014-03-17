@@ -12,7 +12,7 @@ Here starts the documentation for making Leksa work for new languages. The goal 
 
 		<section>
 			<title>Lemmas</title>
-<p>You need some lemmas for the lexicon from semantic fields: human and food/drink. We will give the lemmas semantic classes so we can use them also in Morfa-C. For Leksa we put the semantic classes together into semantic fields, or superclasses:</p>
+<p>You need some lemmas for the lexicon from different semantic categories: HUMAN and FOOD/DRINK. We will give the lemmas semantic classes so it will be easier to combine them in different semantic categories, and some of them we can use also in Morfa-C:</p>
 
 			<ul>
 			<li>- the verb for "to live (in a place)", semantic class "HUMAN_V"</li> 
@@ -27,8 +27,9 @@ Here starts the documentation for making Leksa work for new languages. The goal 
 			<li>- at least 5 nouns for other human beings (e.g. boy, woman, teacher), semantic class "PEOPLE" </li>
 			<li>- at least 5 adjectives about human beings, (e.g. strong, old, young, clever), semantic class "HUMAN_A"</li>
 			<li>- at least 5 adjectives about food, (e.g. warm, cold, sour, sweet), semantic class "FOOD_A"</li>
-</ul>
-<p>Give in addition the semantic class "ACTIVITY" to all verbs which can be an answer to the question: "What did the girl do yesterday?" (e.g. bake)</p>		
+			</ul>
+			
+<p>Give in addition the semantic class "mACTIVITY" to all verbs which can be an answer to the question: "What did the girl do yesterday?" (e.g. bake). The initial m tells that this is a morfaset, outside the systems of semantic categories.</p>		
 <p>Give a book or level name to all entries, e.g. half of them K1 and half of them K2.</p>		
 
 </section>
@@ -36,7 +37,7 @@ Here starts the documentation for making Leksa work for new languages. The goal 
 				
 		<section>
 			<title>XML-format</title>
-<p>You put the lemmas into xml-format. There should be one file for each of the parts of speech. Add names to the files with the language code first, like <code>verbs_smenob.xml, nouns_smenob.xml, adjectives_smenob.xml</code>. The main translation, that we want as facit answer, gets attribute stat="pref".</p>
+<p>You put the lemmas into xml-format. There should be one file for each of the parts of speech. Add names to the files with the language code first, like <code>V_slangtlang.xml, N_slangtlang.xml, A_slangtlang.xml</code> – Slang: source language, Tlang: target language. The "best" translation, that we want as facit answer, gets attribute stat="pref".</p>
 		<source>
 &lt;?xml version="1.0" encoding="utf-8"?>
 &lt;r xml:lang="sme">
@@ -64,7 +65,7 @@ Here starts the documentation for making Leksa work for new languages. The goal 
 		
 		<section>
 			<title>Lexicon files the other direction</title>
-<p>The translations with attribute stat="pref" will be lemmas in the lexicon, which goes the other language direction, and the name of the file will be e.g. nouns_nobsme.xml Also here may be synonyms in the translation field. You only need the Leksa semantic fields (super sets) (human and food/drink), but it does no harm if you add all the semantic classes from the original files.</p>
+<p>The translations with attribute stat="pref" will be lemmas in the lexicon, which goes the other language direction, and the name of the file will be e.g. N_tlangslang.xml Also here may be synonyms in the translation field. You only need the Leksa semantic categories  (HUMAN and FOOD/DRINK), but it does no harm if you add all the semantic classes from the original files.</p>
 		<source>
 &lt;?xml version="1.0" encoding="utf-8"?>
 &lt;r xml:lang="nob">
@@ -88,17 +89,8 @@ Here starts the documentation for making Leksa work for new languages. The goal 
 		</source>
 		</section>
 		<section>
-			<title>Your Leksa demo</title>
-<p>You have now made the xml-files for a Leksa demo with at least 48 words. The demo has these options:</p>
-			<ul>
-			<li>- language direction </li> 
-            <li>- 2 semantic classes containing nouns, verbs and adjectives: human, food/drink. The other semantic classes are for Morfa-C. </li>
-			<li>- two book or level choices</li> 
-
-		</ul>			</section>
-		<section>
 			<title>Handling of semantic sets in Leksa</title>
-<p>We put togehter semantic sets into super sets (semantic fields) with the file semanticsets.xml</p>
+<p>We put togehter semantic classes into semantic categories with the file semanticsets.xml</p>
 		<source>
 &lt;/?xml version="1.0" encoding="utf-8"?>
 &lt;/lexicon>
@@ -118,14 +110,23 @@ Here starts the documentation for making Leksa work for new languages. The goal 
     &lt;/subclasses>
 &lt;//lexicon>
 		</source>
-
-
 </section>
+
 		<section>
-			<title>Extensions</title>
+			<title>Your Leksa demo</title>
+<p>You have now made the xml-files for a Leksa demo with at least 48 words. The demo has these options:</p>
+			<ul>
+			<li>- language direction </li> 
+            <li>- 2 semantic categore containing nouns, verbs and adjectives: HUMAN and FOOD/DRINK. The other semantic classes are for Morfa-C. </li>
+			<li>- two book or level choices</li> 
+
+		</ul>			</section>
+
+		<section>
+			<title>Further work</title>
 <p>You can add more lemmas to each semantic class. You can make more semantic classes, e.g. NATURE.  </p>
    
-<p>Sometimes the translation will be a multi word expression, and it can be difficult to use the word in the Leksa from one of the languages to another one. You can make exeption for the word about in the xml-file. The word will still be used in Morfa-C.</p>
+<p>Sometimes the translation will be an explanation, and it can be difficult to use the word in the Leksa from one of the languages to another one. You can make exeption for the word about in the xml-file. The word will still be used in Morfa-C.</p>
 		<source>
 		&lt;noleksa/>
 		   </source>

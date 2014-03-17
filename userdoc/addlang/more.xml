@@ -9,37 +9,23 @@
 		<p>
 Here are some more documentation if you want to know more than just make the demos.</p>
 		<section>
-			<title>Constraint Grammar</title>
-			<p>Constraint grammar is used in Sahka and Vasta. This is an article based on a presentation held at NODALIDA 2009 CG workshop in Odense.		</p>			<p>
-        Antonsen, L., Huhumarniemi, S. and Trosterud, T. 2009: <a href="workshop09_article.pdf">Constraint Grammar in Dialogue Systems</a> </p>
-
-		</section>
-		<section>
 			<title>The linguistic files</title>
 
-<p>Files for OAHPA are in the ped-directory. </p>
+<p>Files for OAHPA are in the ped-directory, here is used sme (North Saami) and nob (Norwegian) as example. </p>
 
 <p><strong>The pedagogical lexicon. Files for generating the database of word forms, in sme/src/ or sme/meta/:</strong></p>
 
 <ul>
-<li><code>a_smenob.xml</code> and <code>a_paradigms.txt</code></li>
-<li><code>n_smenob.xml</code> and <code>n_paradigms.txt</code> and <code>n_px_paradigms.txt</code></li>
-<li><code>num_smenob.xml</code>  and <code>num_paradigms.txt</code></li>
-<li><code>prop_smenob.xml</code>  and <code>prop_paradigms.txt</code></li>
-<li><code>v_smenob.xml</code>  and <code>v_paradigms.txt</code></li>
-<li><code>neg_smenob.xml</code>  and <code>neg_paradigms.txt</code> </li>
-<li><code>pron_sme.xml</code></li>
-<li><code>adv_smenob.xml</code></li>
-<li><code>multiword_smenob.xml</code></li>
-<li><code>derverb_sme.xml</code></li>
-<li><code>grammaticalwords_smenob.xml</code> </li>
-<li><code>names.xml</code> </li>
+<li><code>N_smenob.xml</code> and <code>N_paradigms.txt</code>  (in paradigms are the tags for generation, one pair for each PoS)</li>
+<li><code>Adv_smenob.xml, Mwe_smenob.xml</code> (only for Leksa, no paradigms)</li>
+<li><code>semantic_sets.xml</code> (semantic categories of semantic sets)</li>
+<li><code>Pron_sme.xml</code> (containing paradigms, only for Morfa)</li>
+<li><code>Names.xml</code> (person names, only for Morfa) </li>
 <li><code>fillings.xml</code> (words of other POS) </li>
-<li><code>semantical_sets.xml</code> (semantic fields of semantic sets)</li>
 <li><code>tags.txt</code> </li>
-<li><code>gt/bin/isme-GG.restr.fst</code> (western dialect) </li>
-<li><code>gt/bin/isme-KJ.restr.fst</code> (eastern dialect)</li>
-<li><code>gt/bin/isme-norm.fst</code> (key answers)</li>
+<li><code>gt/bin/isme-GG.restr.fst</code> (for generation of the western dialect) </li>
+<li><code>gt/bin/isme-KJ.restr.fst</code> (for generation of the eastern dialect)</li>
+<li><code>gt/bin/isme-norm.fst</code> (for generation of the key answers)</li>
 </ul>
 <p></p>
 
@@ -48,8 +34,8 @@ Here are some more documentation if you want to know more than just make the dem
 <p><strong>Files especially for Leksa, from Norwegian to North Sami, in nobsrc/:</strong></p>
 
 <ul>
-<li><code>a_nobsme.xml</code>, <code>prop_nobsme.xml</code>, <code>n_nobsme.xml</code></li>
-<li><code>v_nobsme.xml</code>, <code>num_nobsme.xml</code>, <code>adv_nobsme.xml</code>, <code>mwe_nobsme.xml</code></li>
+<li><code>A_nobsme.xml</code>, <code>N_nobsme.xml</code>, <code>V_nobsme.xml</code></li>
+<li> <code>Adv_nobsme.xml</code>, <code>Mwe_nobsme.xml</code></li>
 </ul>
 
 <p></p>
@@ -57,38 +43,23 @@ Here are some more documentation if you want to know more than just make the dem
 <p><strong>Automata for Numra:</strong></p>
 
 <ul>
-<li><code>sme-num.fst</code></li>
+<li><code>sme-Num.fst</code></li>
 </ul>
 
 
 <p></p>
 <p><strong>Files for generating tasks in Morfa-C and Vasta, in sme/meta/:</strong></p>
 <ul>
-<li><code>adjective_questions.xml</code></li>
-<li><code>derivation_questions.xml</code></li>
-<li><code>noun_questions.xml</code></li>
-<li><code>numeral_questions.xml</code></li>
-<li><code>pron_questions.xml</code></li>
-<li><code>pron_questions_reflexive.xml</code></li>
-<li><code>px_questions.xml</code></li>
-<li><code>verb_questions.xml</code></li>
-<li><code>derivation_questions.xml</code></li>
+<li><code>N_questions.xml</code> (one file for each PoS in Morfa C)</li>
 <li><code>vastas_questions.xml</code></li>
-<li><code>questions_vasta.xml</code> (for Vasta)</li>
-<li><code>grammar_defaults.xml</code> </li>
+<li><code>grammar_defaults.xml</code> (takes care of agreement in Morfa C tasks) </li>
 </ul>
 <p></p>
 
 
 <p><strong>Dialogue files for Sahka, in sme/meta/:</strong></p> 
 <ul>
-<li><code>dialogue_firstmeeting.xml</code></li>
-<li><code>dialogue_car.xml</code></li>
-<li><code>dialogue_coffee.xml</code></li>
-<li><code>dialogue_hello.xml</code></li>
-<li><code>dialogue_grocery.xml</code></li>
-<li><code>dialogue_shopadj.xml</code></li>
-<li><code>dialogue_visit.xml</code></li>
+<li><code>dialogue_firstmeeting.xml</code> (one of many dialogues)</li>
 <li><code>dialogues.dtd</code></li>
 </ul>
 
@@ -96,13 +67,8 @@ Here are some more documentation if you want to know more than just make the dem
 
 <p><strong>Files for giving feedback about morphology in Morfa-S:</strong></p><p> The feedback-files add feedbacktags based on a combination of the morphological features specified in the lexicon, and the task itself. With help of the tags the system generates feedback messages for the user. Many small messages are linked together to a longer message. In sme/meta/:</p>
 <ul>
-<li><code>feedback_adjectives.xml</code> (for western dialect)</li>
-<li><code>feedback_adjectives_eastern.xml</code> (for eastern dialect)</li>
-<li><code>feedback_nouns.xml</code></li>
-<li><code>feedback_numerals.xml</code></li>
-<li><code>feedback_verbs.xml</code> (for western dialect)</li>
-<li><code>feedback_verbs_eastern.xml</code> (for eastern dialect)</li>
-<li><code>messages.xml, (nob, eng, sme, swe, fin)</code></li>
+<li><code>feedback_N.xml</code> (one file for each Morfa C PoS</li>
+<li><code>messages.xml</code> (one file for each metalanguage)</li>
 </ul>
 <p></p>
 <p><strong>Other files offering help to the user, in sme/meta/:</strong></p>
@@ -123,7 +89,7 @@ Here are some more documentation if you want to know more than just make the dem
 
 </section>
 		<section>
-			<title>Other files</title>
+			<title>System files</title>
 
 <p>In<code> univ_oahpa/</code> are files system files:</p>
 
@@ -141,6 +107,13 @@ Here are some more documentation if you want to know more than just make the dem
 
 
 </section>
+		<section>
+			<title>Constraint Grammar</title>
+			<p>Constraint grammar is used in Sahka and Vasta. This is an article based on a presentation held at NODALIDA 2009 CG workshop in Odense.		</p>			<p>
+        Antonsen, L., Huhumarniemi, S. and Trosterud, T. 2009: <a href="workshop09_article.pdf">Constraint Grammar in Dialogue Systems</a> </p>
+
+		</section>
+
 
 	</body>
 </document>
