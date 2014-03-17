@@ -3,5 +3,6 @@ Directory for the yrk_oahpa with new code (like sjd_oahpa, sma_oahpa and univ_oa
 Bugs in Leksa:
 мяˮ
 юр”
+иˮ
  ==> check data and pipeline!
 
