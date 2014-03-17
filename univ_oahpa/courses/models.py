@@ -227,8 +227,37 @@ class Goal(models.Model):
 
     start_url = models.TextField()
 
+    threshold = models.FloatField(default=80.0, help_text="Percentage user must get correct. E.g. 80.0")
+    minimum_sets_attempted = models.IntegerField(default=5, help_text="Amount of sets user must try to be finished.")
+    correct_first_try = models.BooleanField(default=False, help_text="Only count answers correct on the first try")
+
     def __unicode__(self):
         return "%s - %s" % (unicode(self.course), self.short_name)
+
+    def is_complete(self, user_goal_instance):
+        import datetime
+
+        # If this is completed, set the completed_date on the description
+        if self.correct_first_try:
+            up = user_goal_instance.correct_first_try
+        else:
+            up = user_goal_instance.correct
+
+        if float(up) == 0.0:
+            return False
+
+        calc_progress = (float(up) / float(user_goal_instance.total_answered)) * 100
+
+        completed_min_rounds = user_goal_instance.rounds >= self.minimum_sets_attempted
+        passed_percent_correct = calc_progress >= self.threshold
+
+        if passed_percent_correct and completed_min_rounds:
+            user_goal_instance.completed_date = datetime.datetime.now()
+            user_goal_instance.grade = user_goal_instance.progress
+            user_goal_instance.save()
+            return True
+
+        return False
 
     def student_set_count(self, user, logs):
         """ For a given goal, count the amount of question sets a user
@@ -304,7 +333,7 @@ class Goal(models.Model):
         result_args = {
             'rounds': max(question_sets),
             'total_answered': amount_answered,
-            # 'correct_first_try': len(correct_on_first_try),
+            'correct_first_try': len(correct_on_first_try),
             'correct': len(all_correct),
             'progress': float(len(all_correct)) / float(amount_answered)
         }
@@ -321,6 +350,7 @@ class UserGoalInstance(models.Model):
     rounds = models.IntegerField(default=1)
     total_answered = models.IntegerField(default=0)
     correct = models.IntegerField(default=0)
+    correct_first_try = models.IntegerField(default=0)
 
     completed_date = models.DateTimeField(blank=True, null=True)
     grade = models.IntegerField(blank=True, null=True)

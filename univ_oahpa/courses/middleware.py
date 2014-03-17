@@ -99,6 +99,9 @@ class GradingMiddleware(object):
             else:
                 user_goal_instance.update(**result)
 
+            complete = goal.is_complete(user_goal_instance[0])
+            print 'completed? ' + repr(complete)
+
         request.session['previous_exercise_params'] = \
                 request.session.get('current_exercise_params', False)
 

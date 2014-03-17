@@ -38,6 +38,13 @@
 
  --
 
+ TODO: show completed status in progress box, tell user they can stop or
+ keep going
+
+ TODO: include minimum amount of sets completed
+
+ TODO: prevent refresh re-submit
+
  TODO: include goal summary / status on courses page
 
  TODO: make courses look better

@@ -229,7 +229,7 @@ class GetOnly(permissions.BasePermission):
 class StatusSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = UserGoalInstance
-        fields = ('progress', 'rounds', 'total_answered', 'correct', 'completed_date', 'grade')
+        fields = ('progress', 'rounds', 'total_answered', 'correct', 'completed_date', 'grade', 'correct_first_try')
 
 class UserStatsViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated, GetOnly)
