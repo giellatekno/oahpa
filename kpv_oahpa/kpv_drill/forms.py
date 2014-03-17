@@ -332,7 +332,7 @@ VASTAS_NR_OF_TASKWORDS = (
 	('4', _('4')),
 )
 
-    TRANS_CHOICES = (
+TRANS_CHOICES = (
     ('kpvrus', _('Komi to Russian')),
     ('ruskpv', _('Russian to Komi')),
     ('kpveng', _('Komi to English')),
