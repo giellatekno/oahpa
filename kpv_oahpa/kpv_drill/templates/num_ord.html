@@ -10,9 +10,9 @@
 {% block instructions %}
   {# TODO: strings for instructions. #}
   {% ifequal gametype "string" %}
-    {% trans "Write a numeral followed by a period. (E.g. 32.)" %}
+    {% trans "Write an Arabic numeral followed by a period. (E.g. 32.)" %}
   {% else %}
-    {% trans "Write the ordinal numbers in Komi Zyrian. (E.g. квайтӧд)" %}
+    {% trans "Write the appropriate ordinal numerals in Komi Zyrian. (E.g. квайтӧд)" %}
   {% endifequal %}
 {% endblock %}
 
