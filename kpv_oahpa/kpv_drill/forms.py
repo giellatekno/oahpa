@@ -61,7 +61,6 @@ POS_CHOICES = (
 	('V', _('verb')),
 	('A', _('adjective')),
 	('Num', _('numeral')),
-	('Pron', _('pronoun')),
 )
 
 CASE_CHOICES = (
@@ -333,33 +332,22 @@ VASTAS_NR_OF_TASKWORDS = (
 	('4', _('4')),
 )
 
-TRANS_CHOICES = (
-	('kpvfin', _('Inari Sami to Finnish')),
-	('finkpv', _('Finnish to Inari Sami')),
+    TRANS_CHOICES = (
+    ('kpvrus', _('Komi to Russian')),
+    ('ruskpv', _('Russian to Komi')),
+    ('kpveng', _('Komi to English')),
+    ('engkpv', _('English to Komi')),
 )
 
 NUMLANGUAGE_CHOICES = (
-	('kpv', _('Inari Sami')),
+	('kpv', _('Komi')),
 )
 
 SEMTYPE_CHOICES = (
-	('HUMAN', _('human')),
-	('BODY', _('body')),
-	('PLANTS', _('plants')),
-	('BIRDS', _('birds')),
-	('ABSTRACT_CONCEPTS', _('abstract')),
-	('ANIMAL_FISH', _('animal/fish')),
-	('CLOTHING', _('clothing')),
-	('EDUCATION', _('education')),
-	('FOOD_DRINK', _('food/drink')),
-	('HEALTH', _('health')),
-	('NATURE_PHENOMENA', _('nature')),
-	('OTHER', _('other')),
-	('PLACE', _('place')),
-	('TIMEDATE', _('time and date')),
-	('TRAVEL', _('travel')),
-	('VERB', _('verbs')),
-	('all', _('all')),
+    ('NATURE', _('nature')),
+    ('HUMAN', _('humans')),
+    ('BODY', _('body')),
+    ('all', _('all')),
 )
 
 NUM_CHOICES = (
