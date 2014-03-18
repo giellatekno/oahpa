@@ -51,17 +51,7 @@
       <xsl:result-document href="{$outDir}/{concat($posFile, '_', $tlang, $slang)}.{$e}" format="{$of}">
 	<r xml:lang="{$tlang}">
 	  <xsl:for-each select="./r/e">
-	    
-	    <!-- <xsl:for-each select="./mg/tg/*[./@stat = 'pref']"> -->
-	    <!--xsl:for-each select="./mg[./semantics]/tg[./@xml:lang = $tlang]/*[starts-with(local-name(), 't')]"-->
-	    
-	    <xsl:for-each select="mg[semantics]/tg[@xml:lang = $tlang]/*[local-name()='t']">
-
-	      <!-- <xsl:for-each select="./mg[./@xml:lang = $tlang]/tg"> -->
-	      <!-- <xsl:variable name="cn" select="./*[not(local-name() = 'semantics')][not(local-name() = 're')][1]"/> -->
-	      <!-- <xsl:variable name="cn" select="./*[./@stat = 'pref']"/> -->
-
-	      <!-- if there is a pos attribute which is not empty take it otherwise use the pos value of the lemma -->
+	    <xsl:for-each select="mg[semantics]/tg[@xml:lang = $tlang]/t]">
 	      <xsl:variable name="c_pos" select="if (./@pos and not(./@pos = '')) then ./@pos else ../../../lg/l/@pos"/>
 	      <xsl:variable name="cc_pos" select="if (starts-with($c_pos, 'mwe_')) then substring-after($c_pos, 'mwe_') else $c_pos"/>
 	      
@@ -74,11 +64,14 @@
 	      <xsl:variable name="t_counter" select='count(../t)'/>
 	      
 	      <e>
+		<!-- this should be changed in the input files -->
 		<xsl:if test="(./@oahpa) and (./@oahpa = 'pref')">
 		  <xsl:attribute name="stat">
 		    <xsl:value-of select="'pref'"/>
 		  </xsl:attribute>
 		</xsl:if>
+		<!-- if there is only one t and it has no
+		     stat_pref-value add one as default -->
 		<xsl:if test="$t_counter = 1">
 		  <xsl:attribute name="stat">
 		    <xsl:value-of select="'pref'"/>
@@ -93,12 +86,6 @@
 		<mg>
 		  <xsl:copy-of select="../../semantics" copy-namespaces="no"/>
 		  <tg xml:lang="{$slang}">
-		    <xsl:copy-of select="../re[1]" copy-namespaces="no"/>
-		    <xsl:if test="((local-name(.) = 't') or (local-name(.) = 'tf')) and (../te[./position() + 1])">
-		      <re>
-			<xsl:value-of select="../te[./position() + 1]"/>
-		      </re>
-		    </xsl:if>
 		    <t>
 		      <xsl:copy-of select="./../../../lg/l/@pos"/>
 		      <xsl:value-of select="normalize-space(./../../../lg/l)"/>
