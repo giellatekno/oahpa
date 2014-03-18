@@ -266,26 +266,29 @@ def prepare_goal_params(rq):
 
     # TODO: will need to evaluate the values for each request, because
     # of localization.
+    # TODO: use the same strings as localization provides
+    # TODO: add the rest of the form choices.
+
     GOAL_PARAMETER_CHOICE_VALUES = {
         'source': {'options': dict(BOOK_CHOICES),
                    'name': 'Book'},
-        'geography': {'options': dict(GEOGRAPHY_CHOICES), 
+        'geography': {'options': dict(GEOGRAPHY_CHOICES),
                       'name': 'Geography'},
-        'common': {'options': dict(FREQUENCY_CHOICES), 
+        'common': {'options': dict(FREQUENCY_CHOICES),
                    'name': 'Word frequency'},
-        'semtype': {'options': dict(SEMTYPE_CHOICES), 
+        'semtype': {'options': dict(SEMTYPE_CHOICES),
                     'name': 'Semantic set'},
-        'transtype': {'options': dict(TRANS_CHOICES), 
+        'transtype': {'options': dict(TRANS_CHOICES),
                       'name': 'Translation'},
 
-        'numgame': {'options': dict(NUMGAME_CHOICES), 
+        'numgame': {'options': dict(NUMGAME_CHOICES),
                     'name': 'Game type'},
-        'maxnum':  {'options': dict(NUM_CHOICES), 
+        'maxnum':  {'options': dict(NUM_CHOICES),
                     'name': 'Max number'},
 
-        'case':  {'options': dict(CASE_CHOICES), 
+        'case':  {'options': dict(CASE_CHOICES),
                   'name': 'Case'},
-        'vtype': {'options': dict(VTYPE_CHOICES), 
+        'vtype': {'options': dict(VTYPE_CHOICES),
                   'name': 'Verb type'},
     }
 
@@ -302,19 +305,24 @@ def prepare_goal_params(rq):
     # something.
 
     GOAL_CHOICE_TREE = {
-        'leksa': [{
-            'path': '/leksa/',
+        'leksa': {
+            'subtypes': [{
+                'path': '/leksa/',
+                'name': 'Leksa',
+                'params': ['source', 'geography', 'common', 'semtype', 'transtype'],
+            }],
             'name': 'Leksa',
-            'params': ['source', 'geography', 'common', 'semtype', 'transtype'],
-        }],
-        'numra': [{
-            'path': '/numra/',
+        },
+        'numra': {
+            'subtypes': [{
+                'path': '/numra/',
+                'name': 'Numra',
+                'params': ['numgame', 'maxnum'],
+            }],
             'name': 'Numra',
-            'params': ['numgame', 'maxnum'],
-        }],
-
-        'morfas': [
-        {
+        },
+        'morfas': {
+            'subtypes': [{
             'params': ['case', 'book', 'vtype'],
             'name': 'Morfa-S Verb',
             'path': '/morfas/v/',
@@ -328,13 +336,15 @@ def prepare_goal_params(rq):
                   'params': ['something_else'],
                 },
             ],
+            },
+            {
+                'params': ['case', 'book'],
+                'name': 'Morfa-S Nouns',
+                'path': '/morfas/s/',
+            },
+            ],
+            'name': 'Morfa-S'
         },
-        {
-            'params': ['case', 'book'],
-            'name': 'Morfa-S Nouns',
-            'path': '/morfas/s/',
-        },
-        ],
     }
 
     return GOAL_CHOICE_TREE, GOAL_PARAMETER_CHOICE_VALUES

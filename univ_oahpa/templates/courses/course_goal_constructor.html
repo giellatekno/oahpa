@@ -1,32 +1,81 @@
-﻿
+﻿{# TODO: hide each main game type depending on what the user has selected (possible to avoid form submission of hidden things?) #}
+
 <div id="course_goal_constructor" ng-app="Courses" class="bootstrap-styles">
     <div class="goal_in_progress"
         ng-controller="GoalConstructorController" ng-source="/{{ URL_PREFIX }}/courses/api/goals/">
-        <form ng-if="results">
+        <form novalidate ng-if="results">
             <div class="form-group">
                 <label for="selectMainType">Game type</label>
-                <select class="form-control" id="selectMainType" name="main_type">
-                  <option ng-repeat="(key, data) in tree" value="<% key %>"><% key %></option>
+
+                {# Loop the main set of options #}
+
+                <select class="form-control"
+                        id="selectMainType"
+                        name="main_type"
+                        ng-options="opt.value as opt.label for opt in main_types"
+                        ng-model="main_type">
+
+                    <option value="">Select a type</option>
+
                 </select>
             </div>
-            <div class="form-section" ng-repeat="(key, data) in tree">
-                <div class="form-sub-section" ng-repeat="type in data">
+            {# Loop the main set of options #}
+            <div class="form-section" 
+                 ng-repeat="(key, data) in tree"
+                 ng-show="main_type == key">
+
+                {# each type available within the main type #}
+                <div class="form-sub-section" 
+                     ng-repeat="type in data.subtypes">
+
                     <h4><% type.name %></h4>
-                    <div class="form-group" ng-repeat="p in type.params">
+
+                    {# loop parameters available within the type #}
+                    <div class="form-group" 
+                         ng-repeat="p in type.params">
+
                         <p><% option_values[p].name %></p>
-                        <div class="radio" 
-                            ng-repeat="(val, desc) in option_values[p].options">
+
+                        <div class="radio-inline"
+                             ng-repeat="(val, desc) in option_values[p].options">
+
                             <label for="<% key %>-<% p %>-<% val %>">
                                 <input type="radio"
-                                       name="<% key %>-<% p %>-<% val %>"
+                                       name="<% key %>-<% p %>"
+                                       ng-model="user_goal[p]"
                                        id="<% key %>-<% p %>-<% val %>"
-                                       value="option2">
+                                       value="<% val %>">
                                      <% desc %>
                             </label>
+
                         </div>
+
                     </div>
+
+                    <div class="form-sub-sub-section"
+                         ng-show="type.conditional">
+
+                        <h4>Additional settings</h4>
+
+                        <div ng-repeat="additional in type.conditional"
+                             ng-show="user_goal[additional.key] == additional.value">
+
+                             {# TODO: loop additional parameters #}
+                            <p><% additional.key %></p>
+                            <p><% additional.value %></p>
+                            <p><% additional.params %></p>
+
+                        </div>
+
+                    </div>
+
                 </div>
+
             </div>
+
         </form>
+        <pre>
+            <% user_goal %>
+        </pre>
     </div>
 </div>
