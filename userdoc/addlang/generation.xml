@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document>
+	<header>
+		<title>Generation of word forms</title>
+	</header>
+	<body>
+		<p>
+Here are some more documentation if you want to know more than just make the demos.</p>
+		<section>
+			<title>The paradigm files</title>
+
+<p>For Saami languages we generate word forms for nouns, adjectives, verbs and numerals. For each of these word classes, we need a file with the tags for the forms we want to generate, e.g. N_paradigms.txt:</p>
+
+<source>
+N+Sg+Nom
+N+Sg+Gen
+N+NomAg+Sg+Nom
+N+NomAg+Sg+Gen
+N+Pl+Nom
+N+Pl+Gen
+N+NomAg+Pl+Nom
+N+NomAg+Pl+Gen
+..
+</source>
+
+</section>
+		<section>
+			<title>How to restrict the generation</title>
+
+<p>We can restrict the generation for lemmas by adding an gen_only-attribute to the l-element in the lexicon:</p>
+<p>No word forms are generated, the lemma will only be used for Leksa. Here are some examples:</p>
+
+<source>
+&lt;l gen_only="none"  ....>lemma&lt;/l> 
+</source>
+
+<p>Only word forms containing these tags will be generated: </p>
+
+<source>
+&lt;l gen_only="N+NomAg"  ....>lemma&lt;/l>  
+(NomAg is a tag for identifying a lemma when there is homonymi)
+
+&lt;l gen_only="N+Pl,N+Ess" ....>lemma&lt;/l>  
+(Only plural forms and essive are generated)
+</source>
+
+
+<p></p>
+</section>
+		<section>
+			<title>Linguistic variation</title>
+<p>We generate the word forms for the tasks and the key answers with a restricted-FST. We generate the word forms, which the program will accept as answers from the students, with a norm-FST, containing all the forms belonging to the written standard. One can take care of dialectical variation, by making two of more restricted FSTs. But the students will still get accepted the answers if they belong to the written standard.</p>
+
+
+</section>
+
+	</body>
+</document>
