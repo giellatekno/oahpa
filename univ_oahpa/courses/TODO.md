@@ -45,6 +45,9 @@
 
  TODO: prevent refresh re-submit
 
+ TODO: adjust Goal model. can store param key/value stuff as the goal
+ criteria, and then the main type as the url base
+
  TODO: need a fancy form on the non-admin courses page for users (admin,
  and student users) to construct goals. Need to have a sort of tree of
  forms that's easy to edit for the developer side: should be easy to
