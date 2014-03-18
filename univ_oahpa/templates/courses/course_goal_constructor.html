@@ -1,0 +1,32 @@
+﻿
+<div id="course_goal_constructor" ng-app="Courses" class="bootstrap-styles">
+    <div class="goal_in_progress"
+        ng-controller="GoalConstructorController" ng-source="/{{ URL_PREFIX }}/courses/api/goals/">
+        <form ng-if="results">
+            <div class="form-group">
+                <label for="selectMainType">Game type</label>
+                <select class="form-control" id="selectMainType" name="main_type">
+                  <option ng-repeat="(key, data) in tree" value="<% key %>"><% key %></option>
+                </select>
+            </div>
+            <div class="form-section" ng-repeat="(key, data) in tree">
+                <div class="form-sub-section" ng-repeat="type in data">
+                    <h4><% type.name %></h4>
+                    <div class="form-group" ng-repeat="p in type.params">
+                        <p><% option_values[p].name %></p>
+                        <div class="radio" 
+                            ng-repeat="(val, desc) in option_values[p].options">
+                            <label for="<% key %>-<% p %>-<% val %>">
+                                <input type="radio"
+                                       name="<% key %>-<% p %>-<% val %>"
+                                       id="<% key %>-<% p %>-<% val %>"
+                                       value="option2">
+                                     <% desc %>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

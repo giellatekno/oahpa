@@ -125,6 +125,13 @@ def trackGrade(gamename, request, c):
                                                 score=points,
                                                 total=total)
 
+@login_required
+def courses_goal_construction(request):
+    template = 'courses/courses_main_goals.html'
+    c = {}
+    return render_to_response(template,
+                              c,
+                              context_instance=RequestContext(request))
 
 @login_required
 def courses_main(request):
@@ -212,6 +219,9 @@ from rest_framework import viewsets
 from rest_framework import serializers
 from rest_framework import permissions
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
 from .models import UserGoalInstance
 
 class GetOnly(permissions.BasePermission):
@@ -247,6 +257,98 @@ class UserStatsViewSet(viewsets.ModelViewSet):
             return UserGoalInstance.objects.filter(user=user, goal__id=goal_id)
         else:
             return []
+
+def prepare_goal_params(rq):
+    from univ_drill.forms import *
+
+    # Here's a definition of all the choice possibilities that will be
+    # available to users below.
+
+    # TODO: will need to evaluate the values for each request, because
+    # of localization.
+    GOAL_PARAMETER_CHOICE_VALUES = {
+        'source': {'options': dict(BOOK_CHOICES),
+                   'name': 'Book'},
+        'geography': {'options': dict(GEOGRAPHY_CHOICES), 
+                      'name': 'Geography'},
+        'common': {'options': dict(FREQUENCY_CHOICES), 
+                   'name': 'Word frequency'},
+        'semtype': {'options': dict(SEMTYPE_CHOICES), 
+                    'name': 'Semantic set'},
+        'transtype': {'options': dict(TRANS_CHOICES), 
+                      'name': 'Translation'},
+
+        'numgame': {'options': dict(NUMGAME_CHOICES), 
+                    'name': 'Game type'},
+        'maxnum':  {'options': dict(NUM_CHOICES), 
+                    'name': 'Max number'},
+
+        'case':  {'options': dict(CASE_CHOICES), 
+                  'name': 'Case'},
+        'vtype': {'options': dict(VTYPE_CHOICES), 
+                  'name': 'Verb type'},
+    }
+
+    # This is a definition of the form tree that wil be presented.  Each
+    # key represents a main type, and this is a list of subtypes.  Each
+    # subtype contains `params`, which are HTTP parameters that will be
+    # set on the URL. If any need to be hidden and only displayed in
+    # certain cases, these will be defined in 'conditional', which is a
+    # list of objects, where the key is the parameter that the condition
+    # relates to, and a value is defined with a list of parameters that
+    # will be displayed if this condition is true.
+
+    # Eventually this might be able to be automatically constructed from
+    # something.
+
+    GOAL_CHOICE_TREE = {
+        'leksa': [{
+            'path': '/leksa/',
+            'name': 'Leksa',
+            'params': ['source', 'geography', 'common', 'semtype', 'transtype'],
+        }],
+        'numra': [{
+            'path': '/numra/',
+            'name': 'Numra',
+            'params': ['numgame', 'maxnum'],
+        }],
+
+        'morfas': [
+        {
+            'params': ['case', 'book', 'vtype'],
+            'name': 'Morfa-S Verb',
+            'path': '/morfas/v/',
+            'conditional': [
+                { 'key': 'vtype', 
+                  'value': 'PRS',
+                  'params': ['something'],
+                },
+                { 'key': 'vtype', 
+                  'value': 'PRT',
+                  'params': ['something_else'],
+                },
+            ],
+        },
+        {
+            'params': ['case', 'book'],
+            'name': 'Morfa-S Nouns',
+            'path': '/morfas/s/',
+        },
+        ],
+    }
+
+    return GOAL_CHOICE_TREE, GOAL_PARAMETER_CHOICE_VALUES
+
+class GoalParametersView(viewsets.ViewSet):
+    authentication_classes = ()
+    permission_classes = ()
+
+    def list(self, request, format=None):
+        choice_tree, parameter_values = prepare_goal_params(request)
+        parameters = {
+            'results': {'tree': choice_tree, 'values': parameter_values}
+        }
+        return Response(parameters)
 
 def begin_course_goal(request, goal_id):
     """ Mark the session with the goal ID, and redirect the user to the

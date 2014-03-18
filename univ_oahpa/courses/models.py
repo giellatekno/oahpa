@@ -212,6 +212,90 @@ class CourseRelationship(models.Model):
 GOAL_HELP_TEXT = _("""This is a plain-text description shown to students
 describing their goal.""")
 
+# TODO: compile automatically from choices in forms.py
+GOAL_CHOICES = [
+    ("Leksa - ", "/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=smenob",),
+    ("Leksa - ", "/leksa/?source=sam1031_2&geography=world&common=1&semtype=all&transtype=smenob",),
+    ("Leksa - ", "/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=nobsme",),
+    ("Leksa - ", "/leksa/?source=sam1031_2&geography=world&common=1&semtype=all&transtype=nobsme",),
+
+    ("Numra - ", "/numra/?numgame=string&maxnum=100",),
+    ("Numra - ", "/numra/?numgame=numeral&maxnum=100",),
+    ("Numra - ", "/numra/klokka/?numgame=string&maxnum=10&gametype=kl3",),
+    ("Numra - ", "/numra/dato/?numgame=string&maxnum=10",),
+
+    # NB: Morfa-S may also have additional parameters. 
+    ("Morfa-S - ", "/morfas/?case=NOMPL",),
+    ("Morfa-S - ", "/morfas/?case=N-ILL",),
+    ("Morfa-S - ", "/morfas/?case=N-ACC",),
+    ("Morfa-S - ", "/morfas/?case=N-LOC",),
+    ("Morfa-S - ", "/morfas/?case=N-COM",),
+    ("Morfa-S - ", "/morfas/?case=N-GEN",),
+    ("Morfa-S - ", "/morfas/?case=N-ESS",),
+    ("Morfa-S - ", "/morfas/v/?vtype=PRS",),
+    ("Morfa-S - ", "/morfas/v/?vtype=PRF",),
+
+    ("Morfa-S - ", "/morfas/a/?grade=POS&contracted=on&book=X&trisyllabic=on&adjcase=ATTR&bisyllabic=on",),
+
+    ("Morfa-S - ", "/morfas/p/?proncase=N-ACC&pron_type=Pers",),
+    ("Morfa-S - ", "/morfas/p/?proncase=N-ILL&pron_type=Pers",),
+    ("Morfa-S - ", "/morfas/p/?proncase=N-LOC&pron_type=Pers",),
+    ("Morfa-S - ", "/morfas/p/?proncase=N-COM&pron_type=Pers",),
+    ("Morfa-S - ", "/morfas/p/?proncase=N-GEN&pron_type=Pers",),
+
+    ("Morfa-C - ", "/morfac/?case_context=N-NOM-PL",),
+    ("Morfa-C - ", "/morfac/?case_context=N-ACC",),
+    ("Morfa-C - ", "/morfac/?case_context=N-GEN",),
+    ("Morfa-C - ", "/morfac/?case_context=N-ILL",),
+    ("Morfa-C - ", "/morfac/?case_context=N-LOC",),
+    ("Morfa-C - ", "/morfac/?case_context=N-COM",),
+    ("Morfa-C - ", "/morfac/?case_context=N-ESS",),
+    ("Morfa-C - ", "/morfac/?case_context=N-MIX",),
+
+    ("Vasta-S - ", "/vastas/?level=1",),
+]
+
+# !!SAM-1031
+# * Leksa: evt heller registrere ordforrådet merket med kurs SAM-1031_1 og SAM-1031_2 og at de er klart begge veger (smenob og nobsme)
+# ** http://oahpa.no/davvi/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=smenob
+# ** http://oahpa.no/davvi/leksa/?source=sam1031_2&geography=world&common=1&semtype=all&transtype=smenob
+# ** http://oahpa.no/davvi/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=nobsme
+# ** http://oahpa.no/davvi/leksa/?source=sam1031_2&geography=world&common=1&semtype=all&transtype=nobsme
+# * Numra - 3 ganger av hver, minst 80 % riktig
+# ** http://oahpa.no/davvi/numra/?numgame=string&maxnum=100    
+# ** http://oahpa.no/davvi/numra/?numgame=numeral&maxnum=100
+# ** http://oahpa.no/davvi/numra/klokka/?numgame=string&maxnum=10&gametype=kl3
+# ** http://oahpa.no/davvi/numra/dato/?numgame=string&maxnum=10
+# * Morfa S - 3 ganger av hver, minst 80 % riktig
+# ** http://oahpa.no/davvi/morfas/?case=NOMPL&book=X  <=== X er variabel: uansett bok
+# ** http://oahpa.no/davvi/morfas/?case=N-ILL&book=X
+# ** http://oahpa.no/davvi/morfas/?case=N-ACC&book=X
+# ** http://oahpa.no/davvi/morfas/?case=N-LOC&book=X
+# ** http://oahpa.no/davvi/morfas/?case=N-COM&book=X
+# ** http://oahpa.no/davvi/morfas/?case=N-GEN&book=X
+# ** http://oahpa.no/davvi/morfas/?case=N-ESS&book=X
+# ** http://oahpa.no/davvi/morfas/v/?vtype=PRS
+# ** http://oahpa.no/davvi/morfas/v/?vtype=PRF&book=X
+# ** http://oahpa.no/davvi/morfas/a/?grade=POS&contracted=on&book=X&trisyllabic=on&adjcase=ATTR&bisyllabic=on
+# ** http://oahpa.no/davvi/morfas/p/?proncase=N-ACC&pron_type=Pers
+# ** http://oahpa.no/davvi/morfas/p/?proncase=N-ILL&pron_type=Pers
+# ** http://oahpa.no/davvi/morfas/p/?proncase=N-LOC&pron_type=Pers
+# ** http://oahpa.no/davvi/morfas/p/?proncase=N-COM&pron_type=Pers
+# ** http://oahpa.no/davvi/morfas/p/?proncase=N-GEN&pron_type=Pers
+# * Morfa C - 3 ganger av hver, minst 80 % riktig
+# ** http://oahpa.no/davvi/morfac/?case_context=N-NOM-PL
+# ** http://oahpa.no/davvi/morfac/?case_context=N-ACC
+# ** http://oahpa.no/davvi/morfac/?case_context=N-GEN
+# ** http://oahpa.no/davvi/morfac/?case_context=N-ILL
+# ** http://oahpa.no/davvi/morfac/?case_context=N-LOC
+# ** http://oahpa.no/davvi/morfac/?case_context=N-COM
+# ** http://oahpa.no/davvi/morfac/?case_context=N-ESS
+# ** http://oahpa.no/davvi/morfac/?case_context=N-MIX
+# * Sahka - 3 ganger av hver 
+# Det mangler dyplinking
+# * VastaS - 3 ganger av hver 
+# ** http://oahpa.no/davvi/vastas/?level=1
+
 class Goal(models.Model):
     """ This is a course goal object, which is connected to criteria.
     """

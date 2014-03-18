@@ -19,11 +19,17 @@
         ]
     }
 
-    TODO: hide until we know that JS request works
+    TODO: hide with css manually until we know that JS request works
+
+    NB: template tags here are <% %>. Typically it's a bad idea to mix
+    templating things, client/server-wise, but this is so minimal and
+    for the purposes of display only, so it shouldn't provide problems.
+
 {% endcomment %}
+
 <div id="course_goal" ng-app="Courses">
     <div class="goal_in_progress"
-        ng-controller="GoalController" ng-source="/{{ URL_PREFIX  }}/courses/stats/">
+        ng-controller="GoalController" ng-source="/{{ URL_PREFIX }}/courses/api/stats/">
         <div ng-if="results">
             <h2>Goal progress</h2>
             <ul ng-repeat="goal in results">
@@ -31,7 +37,7 @@
                     <span class="stat_value"><% goal.rounds %> (<% goal.total_answered %> answered)</span></h4>
                 <li><span class="stat_title">Correct</span>:
                     <span class="stat_value"><% goal.progress * 100 %>%</span></h4>
-                <li ng-if="goal.is_complete">Complete!</li>
+                <li ng-if="goal.is_complete" class="complete">Complete!</li>
             </ul>
         </div>
     </div>

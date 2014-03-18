@@ -59,6 +59,8 @@
     * also allow goal model to be connected to individual users without
       a course.
 
+    - namespace bootstrap for forms
+
  TODO: include goal summary / status on courses page
 
  TODO: make courses look better

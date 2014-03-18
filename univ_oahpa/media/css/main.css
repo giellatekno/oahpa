@@ -754,7 +754,9 @@ span.incorrect input {
     font-weight: bold;
     font-size: 90%;
     padding:2px 5px;
+    border-bottom: 1px solid #CCC
 }
+
 #courses .course_goals td {
     padding:2px 5px;
 }
@@ -776,6 +778,17 @@ span.incorrect input {
 #course_goal .stat_title {
     font-weight: bold;
     font-size: 90%;
+}
+
+#course_goal li.complete {
+    width:100%;
+    text-align: center;
+    background-color: #4C4;
+    color: #FFF;
+    font-size: 110%;
+    border-radius: 2px;
+    margin: .5em 0;
+    padding: 5px 0
 }
 
 #course_goal .stat_value {
