@@ -87,8 +87,11 @@ should now have enough lemmas to be included
 Preparing/Updating sms data:
 
 The usual cycle:
+0. filter only the files that are requested for oahpa and copy them
+ into a TMP-DIR
+
 1. filter relevant entries from the sms2X source files:
-   extract_book-200-e.xsl inDir=$GTHOME/main/words/dicts/sms2X/src
+   extract_sms_entries4oahpa.xsl inDir=PATH/TO/THE/TMP-DIR
 
 2. revert sms2xxx to xxx2sms
    sms_revert.xsl
