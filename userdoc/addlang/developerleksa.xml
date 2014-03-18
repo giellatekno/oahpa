@@ -37,7 +37,7 @@ Here starts the documentation for making Leksa work for new languages. The goal 
 				
 		<section>
 			<title>XML-format</title>
-<p>You put the lemmas into xml-format. There should be one file for each of the parts of speech. Add names to the files with the language code first, like <code>V_slangtlang.xml, N_slangtlang.xml, A_slangtlang.xml</code> – Slang: source language, Tlang: target language. The "best" translation, that we want as facit answer, gets attribute stat="pref".</p>
+<p>You put the lemmas into xml-format. There should be one file for each of the parts of speech. Add names to the files with the language code first, like we have done for North Saami with translation to Norwegian <code>V_smenob.xml, N_smenobxml, A_smenob.xml</code>. The "best" translation, that we want as key answer, gets attribute stat="pref".</p>
 		<source>
 &lt;?xml version="1.0" encoding="utf-8"?>
 &lt;r xml:lang="sme">
