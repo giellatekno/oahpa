@@ -91,7 +91,7 @@ The usual cycle:
  into a TMP-DIR
 
 1. filter relevant entries from the sms2X source files:
-   extract_sms_entries4oahpa.xsl inDir=PATH/TO/THE/TMP-DIR
+   sms_extract_entries4oahpa.xsl inDir=PATH/TO/THE/TMP-DIR
 
 2. revert sms2xxx to xxx2sms
    sms_revert.xsl
