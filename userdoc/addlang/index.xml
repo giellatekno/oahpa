@@ -7,7 +7,7 @@
 	</header>
 	<body>
 		<p>
-This is the documentation for how to make OAHPA! work for new languages (we assume you know <a href="http://oahpa.no/davvi/"><strong>OAHPA!</strong></a> already). We start with three of the programs, Leksa, Morfa-C and Numra, and the goal is to make a demo of each of them, with at least 50 lemmas plus the number words in different contexts.</p>
+This is the documentation for how to make OAHPA! work for new languages (we assume you are familiar with <a href="http://oahpa.no/davvi/"><strong>OAHPA!</strong></a> already). We start with three of the programs, Leksa, Morfa-C and Numra, and the goal is to make a demo of each of them, with at least 50 lemmas plus the number words in different contexts.</p>
 		<section>
 			<title>Why port Oahpa! to other languages?</title>
 			<p>
@@ -18,7 +18,7 @@ We hope the virtue of Oahpa! speaks for itself: «Such a thing would be nice to 
 		<section>
 			<title>For which languages?</title>
 			<p>
-In principle, Oahpa! can be used for any language. Compared to many other interactive learning approaches, Oahpa! is particularly will suited for languages possessing a rich morphology, and for tasks where the system accepts free-form input from the student, like in the programs Vasta and Sahka. Note that these programs presupposes a robust syntactic parser for the language in question.
+In principle, Oahpa! can be used for any language. Compared to many other interactive learning approaches, Oahpa! is particularly well suited for languages possessing a rich morphology, and for tasks where the system accepts free-form input from the student, like in the programs Vasta and Sahka. Note that these programs presuppose a robust syntactic parser for the language in question.
 			</p>
 <p>Here are three papers about Oahpa. The last one is about Sahka and Vasta, which require a syntactic analyser:</p>
     <ul>
@@ -32,7 +32,7 @@ In principle, Oahpa! can be used for any language. Compared to many other intera
 <p>Anybody, but</p>
 <ul>
 <li>- you will need an internet connection.</li>
-<li>- your language should have a written standard. Dictionaries and a good grammar also do not hurt.</li>
+<li>- your language should have a written standard. Dictionaries and a good grammar as well will not hurt.</li>
 <li>- Familiarity with computers and/or a formal linguistic background will come in handy.</li>
 <li>- Teaching experience will be useful, especially if you already have vocabulary lists grouped according to student level, topic, etc.</li>
 </ul>
@@ -43,7 +43,7 @@ In principle, Oahpa! can be used for any language. Compared to many other intera
 		<section>
 		<title>What Oahpa! programs?</title>
 					<p>
-Whenever you want to start developing Oahpa! for your own language, or just want to test it out, we think the two learning programs Leksa and Morfa-C are a good start. They do not need too much grammatical resources, they are relevant for two central learning topics (vocabulary and word inflection), and they give a good impression of some of Oahpa!s basic functionality. In order to utilize it in full, you will need access to robust morphological and syntactic parsers for your language, but that will not be needed for Leksa and Morfa-C.
+Whenever you want to start developing Oahpa! for your own language, or just want to test it out, we think the two learning programs Leksa and Morfa-C are a good start. They do not need too much grammatical resources, they are relevant for two central learning topics (vocabulary and word inflection), and they give a good impression of some of Oahpa!s basic functionality. In order to utilize it to its full, you will need access to robust morphological and syntactic parsers for your language, but that will not be needed for Leksa and Morfa-C.
 			</p>
             <section>
 			<title>Leksa</title>
@@ -67,13 +67,13 @@ The pupil may practice word inflection in a systematic way - either with singlet
 		<section>
 			<title>Numra</title>
 			<p>
-The pupil may practice number understanding and generation in a systematic way - either by writing numbers out as words (<code>7</code> as <code>seven</code>) or vice versa, by writing number words as numerals. The task my involve different number formats (plain numerals, ordinals (<code>first, second, twentyfifth…</code>), clock formats (<code>16:15 a quarter to five</code>) expressions for dates.</p>
+The pupil may practice number understanding and generation in a systematic way - either by writing numbers out as words (<code>7</code> as <code>seven</code>) or vice versa, by writing number words as numerals. The task may involve different number formats (plain numerals, ordinals (<code>first, second, twenty-fifth…</code>), clock formats (<code>16:15 a quarter past four</code>) expressions for dates.</p>
 
 <p>
 The program is based upon a set of simple transducers which generate the expressions, and a random function that generates tasks and checks the pupil's performance.
 </p>
 
-<p><a href="http://oahpa.no/aarjel/"><strong>Here</strong></a> you can see how the South Sámi Numra work. Choose instruction language in the right margin before you choose the Numra program. 
+<p><a href="http://oahpa.no/aarjel/"><strong>Here</strong></a> you can see how the South Sámi Numra works. Choose instruction language in the right margin before you choose the Numra program. 
                 
 </p>
 <p><a href="developernumra.html">About Numra for developers</a></p>
