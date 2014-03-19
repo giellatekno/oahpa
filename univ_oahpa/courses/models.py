@@ -299,7 +299,7 @@ GOAL_CHOICES = [
 class Goal(models.Model):
     """ This is a course goal object, which is connected to criteria.
     """
-    course = models.ForeignKey(Course)
+    course = models.ForeignKey(Course, null=True, blank=True)
     created_by = models.ForeignKey(User)
     short_name = models.CharField(max_length=42)
     description = models.TextField(help_text=GOAL_HELP_TEXT)
@@ -447,32 +447,10 @@ class UserGoalInstance(models.Model):
     def __unicode__(self):
         return "%s: %.2f" % (self.goal.short_name, self.progress)
 
-class GoalCriterion(models.Model):
-    # TODO: just for now using a text field so that I can start testing,
-    # eventually we'll have some conditions on how user activity logs
-    # must be evaluated.
-    # TODO: allow a user to reuse criteria from other goals?
-    # TODO: criterion for setting the minimum amount of question sets a
-    # user must go through, or a max where they have to stop (redirect
-    # in middleware?).
+class GoalParameter(models.Model):
     goal = models.ForeignKey(Goal)
-    description = models.TextField()
-
-    # TODO: some ideas of criteria
-    #    percent                 correct type                         log activity match 
-    #    - 80%               |   correct of all answers            |  Leksa semantic set
-    #    - 60%               |   correct on first try per question |  Morfa-C category & subcategory
-    #    - 15 sets completed |   ----                              |  Morfa-S category & subcategory & subcategory
-
-    # Said otherwise:
-    #   - set of user log answers pertaining to goal, filtered by match
-    #     category
-    #   - sorted by date time
-    #   - TODO: need a unique value for the answer set that the user is
-    #     working on, which increments each time the user finishes the
-    #     set
-
-    # TODO: see how many sets a user completed this in?
+    parameter = models.CharField(max_length=64)
+    value = models.CharField(max_length=64)
 
 class UserActivityLog(models.Model):
     """ Tracking user activity, question/answer completion, and feedback

@@ -269,6 +269,7 @@ def prepare_goal_params(rq):
     # TODO: use the same strings as localization provides
     # TODO: add the rest of the form choices.
 
+    # TODO: bisyllabic, trisyllabic, contracted choices as checkboxes
     GOAL_PARAMETER_CHOICE_VALUES = {
         'source': {'options': dict(BOOK_CHOICES),
                    'name': 'Book'},
@@ -285,6 +286,9 @@ def prepare_goal_params(rq):
                     'name': 'Game type'},
         'maxnum':  {'options': dict(NUM_CHOICES),
                     'name': 'Max number'},
+
+        'gametype':  {'options': dict(KLOKKA_CHOICES),
+                    'name': 'Difficulty'},
 
         'case':  {'options': dict(CASE_CHOICES),
                   'name': 'Case'},
@@ -306,44 +310,80 @@ def prepare_goal_params(rq):
 
     GOAL_CHOICE_TREE = {
         'leksa': {
-            'subtypes': [{
-                'path': '/leksa/',
-                'name': 'Leksa',
-                'params': ['source', 'geography', 'common', 'semtype', 'transtype'],
-            }],
-            'name': 'Leksa',
+            'subtypes': [
+                {
+                    'path': '/leksa/',
+                    'label': 'Words',
+                    'value': 'leksa',
+                    'params': ['source', 'semtype', 'transtype'],
+                },
+                {
+                    'path': '/leksa/sted/',
+                    'label': 'Placenames',
+                    'value': 'leksa_place',
+                    'params': ['geography', 'common', 'transtype'],
+                }
+            ],
+            'label': 'Leksa',
+            'value': 'leksa',
         },
         'numra': {
-            'subtypes': [{
-                'path': '/numra/',
-                'name': 'Numra',
-                'params': ['numgame', 'maxnum'],
-            }],
-            'name': 'Numra',
+            'subtypes': [
+                {
+                    'path': '/numra/',
+                    'label': 'Cardinal numbers',
+                    'value': 'numra_number',
+                    'params': ['numgame', 'maxnum'],
+                },
+                {
+                    'path': '/numra/ord/',
+                    'label': 'Ordinal numbers',
+                    'value': 'numra_ordinal',
+                    'params': ['numgame', 'maxnum'],
+                },
+                {
+                    'path': '/numra/klokka/',
+                    'label': 'Time',
+                    'value': 'numra_klokka',
+                    'params': ['gametype', 'numgame', 'maxnum'],
+                },
+                {
+                    'path': '/numra/dato/',
+                    'label': 'Time',
+                    'value': 'numra_dato',
+                    'params': ['numgame'],
+                },
+            ],
+            'label': 'Numra',
+            'value': 'numra',
         },
         'morfas': {
-            'subtypes': [{
-            'params': ['case', 'book', 'vtype'],
-            'name': 'Morfa-S Verb',
-            'path': '/morfas/v/',
-            'conditional': [
-                { 'key': 'vtype', 
-                  'value': 'PRS',
-                  'params': ['something'],
+            'subtypes': [
+                {
+                    'params': ['case', 'book', 'vtype'],
+                    'label': 'Morfa-S Verb',
+                    'value': 'morfa_s_verb',
+                    'path': '/morfas/v/',
+                    'conditional': [
+                        { 'key': 'vtype', 
+                          'value': 'PRS',
+                          'params': ['something'],
+                        },
+                        { 'key': 'vtype', 
+                          'value': 'PRT',
+                          'params': ['something_else'],
+                        },
+                    ],
                 },
-                { 'key': 'vtype', 
-                  'value': 'PRT',
-                  'params': ['something_else'],
+                {
+                    'params': ['case', 'book'],
+                    'label': 'Morfa-S Nouns',
+                    'value': 'morfa_s_noun',
+                    'path': '/morfas/s/',
                 },
             ],
-            },
-            {
-                'params': ['case', 'book'],
-                'name': 'Morfa-S Nouns',
-                'path': '/morfas/s/',
-            },
-            ],
-            'name': 'Morfa-S'
+            'label': 'Morfa-S',
+            'value': 'morfa_s'
         },
     }
 
@@ -353,12 +393,35 @@ class GoalParametersView(viewsets.ViewSet):
     authentication_classes = ()
     permission_classes = ()
 
-    def list(self, request, format=None):
+    def create(self, request):
+        from .models import Goal
+
+        # TODO: must be authed, can't be anon
+        response_parameters = {}
+        new_obj = request.DATA
+        params = new_obj.get('params')
+        new_obj.pop('params')
+
+        goal = Goal.objects.create(created_by=request.user, **new_obj)
+        for p_k, p_v in params.iteritems():
+            goal.goalparameter_set.create(parameter=p_k, value=p_v)
+
+        print request.user
+        print new_obj
+        print params
+        print goal
+
+        response_parameters['success'] = True
+        return Response(response_parameters)
+
+    def metadata(self, request):
+        # This returns all the parameters 
+        data = super(GoalParametersView, self).metadata(request)
         choice_tree, parameter_values = prepare_goal_params(request)
-        parameters = {
-            'results': {'tree': choice_tree, 'values': parameter_values}
-        }
-        return Response(parameters)
+        parameters = {'tree': choice_tree, 'values': parameter_values}
+        data['parameters'] = parameters
+        return data
+
 
 def begin_course_goal(request, goal_id):
     """ Mark the session with the goal ID, and redirect the user to the
