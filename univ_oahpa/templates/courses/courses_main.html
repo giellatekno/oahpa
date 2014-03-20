@@ -30,6 +30,7 @@ TODO: link in user interface
 			        {% with user_defined_goals as goal_set %}
 				        {% include 'courses/goal_table_list.html' %}
 			        {% endwith %}
+			        <a href="{% url courses.views.courses_goal_construction %}">Create a new goal for yourself</a>
 			    {% else %}
 			        <a href="{% url courses.views.courses_goal_construction %}">Create a goal for yourself</a>
 			    {% endif %}

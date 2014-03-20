@@ -1,7 +1,7 @@
 ﻿{# TODO: hide each main game type depending on what the user has selected (possible to avoid form submission of hidden things?) #}
 
 <div id="course_goal_constructor" ng-app="Courses" class="bootstrap-styles">
-    <div class="col-lg-8 col-sm-8 col-md-8">
+    <div class="col-lg-9 col-sm-9 col-md-9">
 
     <div class="goal_in_progress"
         ng-controller="GoalConstructorController" ng-source="/{{ URL_PREFIX }}/courses/api/goals/">
@@ -59,32 +59,36 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <div class="">
-                            <label for="goal_percent_correct"
-                                class="control-label">Percent correct</label>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <div class="">
+                                    <label for="goal_percent_correct"
+                                        class="control-label">Percent correct</label>
+                                </div>
+
+                                {# Loop the main set of options #}
+
+                                <div class="input-group">
+                                    <input class="form-control"
+                                            id="goal_percent"
+                                            name="goal_percent"
+                                            type="number"
+                                            ng-min="20"
+                                            ng-max="100"
+                                            required
+                                            ng-model="user_goal.threshold">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
                         </div>
 
-                        {# Loop the main set of options #}
-
-                        <div class="input-group">
-                            <input class="form-control"
-                                    id="goal_percent"
-                                    name="goal_percent"
-                                    type="number"
-                                    ng-min="20"
-                                    ng-max="100"
-                                    required
-                                    ng-model="user_goal.threshold">
-                            <span class="input-group-addon">%</span>
-                        </div>
-                    </div>
-
+                        <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <div class="">
                             <label for="goal_minimum_tried"
-                                class="control-label">Minimum question
-                                sets tried</label>
+                                class="control-label">Minimum sets sets
+                                tried</label>
                         </div>
 
                         {# Loop the main set of options #}
@@ -96,6 +100,8 @@
                                     type="number"
                                     ng-min="2"
                                     ng-model="user_goal.minimum_sets_attempted">
+                        </div>
+                    </div>
                         </div>
                     </div>
 
