@@ -97,14 +97,15 @@
 
 Context processors:
     "univ_oahpa.courses.context_processors.courses_user",
+    "django.core.context_processors.csrf",
 
 Middleware:
+    'django.middleware.csrf.CsrfViewMiddleware',
     'courses.middleware.GradingMiddleware',
 
 installed apps:
     'univ_oahpa.courses',
     'rest_framework',
-    'rest_framework.authtoken',
 
 tokens?
 

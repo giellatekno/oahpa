@@ -5,9 +5,16 @@
 
     <div class="goal_in_progress"
         ng-controller="GoalConstructorController" ng-source="/{{ URL_PREFIX }}/courses/api/goals/">
+        <div id="success_msg" ng-show="form_success">
+            <pre><% goal %></pre>
+            <p class="lead">You successfully created the goal "<% goal.short_name %>".</p>
+            <button ng-click="beginGoal()" type="button" class="btn btn-success">Begin</button>
+            <button type="button" class="btn btn-info">Course overview</button>
+        </div>
         <form novalidate ng-if="results" ng-submit="submitForm()"
-            role="form">
+            id="new_goal" ng-hide="form_success" role="form">
             {% csrf_token %}
+            <fieldset ng-disabled="{{ form_submitted }}">
             {# TODO: for which course? for now self-defined #}
 
             {# Here we define meta info, name, description, etc. #}
@@ -254,6 +261,7 @@
                     <button type="button" class="btn btn-warning">Reset</button>
                 </div>
             </div>
+            </fieldset>
         </form>
 
         {% comment %}

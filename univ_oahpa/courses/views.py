@@ -421,12 +421,29 @@ class GoalParametersView(viewsets.ViewSet):
         url_base = EXERCISE_TYPE_URL_BASES.get(sub_type)
         new_obj['exercise_type'] = url_base
 
-        goal = Goal.objects.create(created_by=request.user, **new_obj)
-        for p_k, p_v in params.iteritems():
-            goal.goalparameter_set.create(parameter=p_k, value=p_v)
+        success = True
+        try:
+            goal = Goal.objects.create(created_by=request.user, **new_obj)
+        except:
+            success = False
 
-        response_parameters['success'] = True
-        response_parameters['id'] = goal.id
+        if success:
+            for p_k, p_v in params.iteritems():
+                goal.goalparameter_set.create(parameter=p_k, value=p_v)
+
+
+        from django.core.urlresolvers import reverse
+        if success:
+            response_parameters['goal'] = {}
+            response_parameters['goal']['id'] = goal.id
+            response_parameters['goal']['short_name'] = goal.short_name
+            response_parameters['goal']['description'] = goal.description
+            response_parameters['goal']['begin_url'] = reverse('begin_course_goal', kwargs={'goal_id': goal.id})
+        else:
+            response_parameters['error'] = "Could not create the goal."
+
+        response_parameters['success'] = success
+
         return Response(response_parameters)
 
     def metadata(self, request):
