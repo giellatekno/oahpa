@@ -7,6 +7,7 @@
         ng-controller="GoalConstructorController" ng-source="/{{ URL_PREFIX }}/courses/api/goals/">
         <form novalidate ng-if="results" ng-submit="submitForm()"
             role="form">
+            {% csrf_token %}
             {# TODO: for which course? for now self-defined #}
 
             {# Here we define meta info, name, description, etc. #}
@@ -243,8 +244,8 @@
                 </div>
 
                 <div class="col-md-11">
-                    <button type="submit" ng-click="submitForm()" class="btn btn-info">Submit</button>
-                    <button type="submit" class="btn btn-warning">Reset</button>
+                    <button type="button" ng-click="submitForm()" class="btn btn-info">Submit</button>
+                    <button type="button" class="btn btn-warning">Reset</button>
                 </div>
             </div>
         </form>

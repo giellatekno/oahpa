@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import UserGrade, UserGradeSummary, UserProfile, Course, Activity, Goal
+from models import UserGrade, UserGradeSummary, UserProfile, Course, Activity, Goal, GoalParameter
 from models import CourseRelationship
 
 from django.db.models import Q
@@ -14,6 +14,9 @@ class UserGradeSummaryInline(admin.TabularInline):
     model = UserGradeSummary
     ordering = ['game']
     extra = 0
+
+class GoalParamAdmin(admin.TabularInline):
+    model = GoalParameter
 
 class UserProfileAdmin(admin.ModelAdmin):
     inlines = [UserGradeSummaryInline, UserGradeInline]
@@ -95,8 +98,11 @@ class CourseAdmin(admin.ModelAdmin):
     inlines = [InstructorInline, StudentInline, ]
     list_display = ('identifier', 'name', 'end_date',)
 
+class GoalAdmin(admin.ModelAdmin):
+    inlines = [GoalParamAdmin]
+
 
 admin.site.register(Course, CourseAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Activity, ActivityAdmin)
-admin.site.register(Goal)
+admin.site.register(Goal, GoalAdmin)

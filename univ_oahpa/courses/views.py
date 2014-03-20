@@ -140,6 +140,8 @@ def courses_main(request):
         students will be shown their current progress in all of the games
         that they have records in.
     """
+    from .models import Goal
+
     template = 'courses/courses_main.html'
 
     c = {}
@@ -172,13 +174,16 @@ def courses_main(request):
         if summary.count() == 0:
             new_profile = True
 
+    user_defined_goals = Goal.objects.filter(created_by=request.user, course=None)
+
     c = {
         'user':  request.user,
         'profile':  profile,
         'new_profile':  new_profile,
         'is_student':  is_student,
         'summaries':  summary,
-        'courses': profile.studentships
+        'courses': profile.studentships,
+        'user_defined_goals': user_defined_goals
     }
 
     return render_to_response(template, 
@@ -258,7 +263,7 @@ class UserStatsViewSet(viewsets.ModelViewSet):
         else:
             return []
 
-def prepare_goal_params(rq):
+def prepare_goal_params(rq=None):
     from univ_drill.forms import *
 
     # Here's a definition of all the choice possibilities that will be
@@ -389,29 +394,39 @@ def prepare_goal_params(rq):
 
     return GOAL_CHOICE_TREE, GOAL_PARAMETER_CHOICE_VALUES
 
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+
 class GoalParametersView(viewsets.ViewSet):
-    authentication_classes = ()
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = ()
 
     def create(self, request):
         from .models import Goal
 
+        EXERCISE_TYPE_URL_BASES = dict([
+            (subtype.get('value'), subtype.get('path'))
+            for k, v in prepare_goal_params()[0].iteritems()
+            for subtype in v.get('subtypes', [])
+        ])
+
         # TODO: must be authed, can't be anon
         response_parameters = {}
         new_obj = request.DATA
-        params = new_obj.get('params')
-        new_obj.pop('params')
+        params = new_obj.pop('params')
+
+        main_type = new_obj.pop('main_type')
+        sub_type = new_obj.pop('sub_type')
+
+        # use main_type to get url path
+        url_base = EXERCISE_TYPE_URL_BASES.get(sub_type)
+        new_obj['exercise_type'] = url_base
 
         goal = Goal.objects.create(created_by=request.user, **new_obj)
         for p_k, p_v in params.iteritems():
             goal.goalparameter_set.create(parameter=p_k, value=p_v)
 
-        print request.user
-        print new_obj
-        print params
-        print goal
-
         response_parameters['success'] = True
+        response_parameters['id'] = goal.id
         return Response(response_parameters)
 
     def metadata(self, request):
@@ -446,7 +461,8 @@ def begin_course_goal(request, goal_id):
     user_courses = request.user.get_profile().courses
     user_course_goals = [goal for course in user_courses
                               for goal in course.goal_set.all()
-                        ]
+                        ] + list(Goal.objects.filter(created_by=request.user,
+                                                course=None))
 
     goal_ids = list(set([int(g.id) for g in user_course_goals]))
 
@@ -467,5 +483,5 @@ def begin_course_goal(request, goal_id):
     UserGoalInstance.objects.filter(user=request.user, goal=goal).delete()
     UserGoalInstance.objects.create(user=request.user, goal=goal)
 
-    return HttpResponseRedirect(goal.start_url)
+    return HttpResponseRedirect(goal.start_url())
 

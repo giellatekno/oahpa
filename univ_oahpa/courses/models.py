@@ -212,89 +212,13 @@ class CourseRelationship(models.Model):
 GOAL_HELP_TEXT = _("""This is a plain-text description shown to students
 describing their goal.""")
 
-# TODO: compile automatically from choices in forms.py
-GOAL_CHOICES = [
-    ("Leksa - ", "/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=smenob",),
-    ("Leksa - ", "/leksa/?source=sam1031_2&geography=world&common=1&semtype=all&transtype=smenob",),
-    ("Leksa - ", "/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=nobsme",),
-    ("Leksa - ", "/leksa/?source=sam1031_2&geography=world&common=1&semtype=all&transtype=nobsme",),
-
-    ("Numra - ", "/numra/?numgame=string&maxnum=100",),
-    ("Numra - ", "/numra/?numgame=numeral&maxnum=100",),
-    ("Numra - ", "/numra/klokka/?numgame=string&maxnum=10&gametype=kl3",),
-    ("Numra - ", "/numra/dato/?numgame=string&maxnum=10",),
-
-    # NB: Morfa-S may also have additional parameters. 
-    ("Morfa-S - ", "/morfas/?case=NOMPL",),
-    ("Morfa-S - ", "/morfas/?case=N-ILL",),
-    ("Morfa-S - ", "/morfas/?case=N-ACC",),
-    ("Morfa-S - ", "/morfas/?case=N-LOC",),
-    ("Morfa-S - ", "/morfas/?case=N-COM",),
-    ("Morfa-S - ", "/morfas/?case=N-GEN",),
-    ("Morfa-S - ", "/morfas/?case=N-ESS",),
-    ("Morfa-S - ", "/morfas/v/?vtype=PRS",),
-    ("Morfa-S - ", "/morfas/v/?vtype=PRF",),
-
-    ("Morfa-S - ", "/morfas/a/?grade=POS&contracted=on&book=X&trisyllabic=on&adjcase=ATTR&bisyllabic=on",),
-
-    ("Morfa-S - ", "/morfas/p/?proncase=N-ACC&pron_type=Pers",),
-    ("Morfa-S - ", "/morfas/p/?proncase=N-ILL&pron_type=Pers",),
-    ("Morfa-S - ", "/morfas/p/?proncase=N-LOC&pron_type=Pers",),
-    ("Morfa-S - ", "/morfas/p/?proncase=N-COM&pron_type=Pers",),
-    ("Morfa-S - ", "/morfas/p/?proncase=N-GEN&pron_type=Pers",),
-
-    ("Morfa-C - ", "/morfac/?case_context=N-NOM-PL",),
-    ("Morfa-C - ", "/morfac/?case_context=N-ACC",),
-    ("Morfa-C - ", "/morfac/?case_context=N-GEN",),
-    ("Morfa-C - ", "/morfac/?case_context=N-ILL",),
-    ("Morfa-C - ", "/morfac/?case_context=N-LOC",),
-    ("Morfa-C - ", "/morfac/?case_context=N-COM",),
-    ("Morfa-C - ", "/morfac/?case_context=N-ESS",),
-    ("Morfa-C - ", "/morfac/?case_context=N-MIX",),
-
-    ("Vasta-S - ", "/vastas/?level=1",),
-]
-
-# !!SAM-1031
-# * Leksa: evt heller registrere ordforrådet merket med kurs SAM-1031_1 og SAM-1031_2 og at de er klart begge veger (smenob og nobsme)
-# ** http://oahpa.no/davvi/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=smenob
-# ** http://oahpa.no/davvi/leksa/?source=sam1031_2&geography=world&common=1&semtype=all&transtype=smenob
-# ** http://oahpa.no/davvi/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=nobsme
-# ** http://oahpa.no/davvi/leksa/?source=sam1031_2&geography=world&common=1&semtype=all&transtype=nobsme
-# * Numra - 3 ganger av hver, minst 80 % riktig
-# ** http://oahpa.no/davvi/numra/?numgame=string&maxnum=100    
-# ** http://oahpa.no/davvi/numra/?numgame=numeral&maxnum=100
-# ** http://oahpa.no/davvi/numra/klokka/?numgame=string&maxnum=10&gametype=kl3
-# ** http://oahpa.no/davvi/numra/dato/?numgame=string&maxnum=10
-# * Morfa S - 3 ganger av hver, minst 80 % riktig
-# ** http://oahpa.no/davvi/morfas/?case=NOMPL&book=X  <=== X er variabel: uansett bok
-# ** http://oahpa.no/davvi/morfas/?case=N-ILL&book=X
-# ** http://oahpa.no/davvi/morfas/?case=N-ACC&book=X
-# ** http://oahpa.no/davvi/morfas/?case=N-LOC&book=X
-# ** http://oahpa.no/davvi/morfas/?case=N-COM&book=X
-# ** http://oahpa.no/davvi/morfas/?case=N-GEN&book=X
-# ** http://oahpa.no/davvi/morfas/?case=N-ESS&book=X
-# ** http://oahpa.no/davvi/morfas/v/?vtype=PRS
-# ** http://oahpa.no/davvi/morfas/v/?vtype=PRF&book=X
-# ** http://oahpa.no/davvi/morfas/a/?grade=POS&contracted=on&book=X&trisyllabic=on&adjcase=ATTR&bisyllabic=on
-# ** http://oahpa.no/davvi/morfas/p/?proncase=N-ACC&pron_type=Pers
-# ** http://oahpa.no/davvi/morfas/p/?proncase=N-ILL&pron_type=Pers
-# ** http://oahpa.no/davvi/morfas/p/?proncase=N-LOC&pron_type=Pers
-# ** http://oahpa.no/davvi/morfas/p/?proncase=N-COM&pron_type=Pers
-# ** http://oahpa.no/davvi/morfas/p/?proncase=N-GEN&pron_type=Pers
-# * Morfa C - 3 ganger av hver, minst 80 % riktig
-# ** http://oahpa.no/davvi/morfac/?case_context=N-NOM-PL
-# ** http://oahpa.no/davvi/morfac/?case_context=N-ACC
-# ** http://oahpa.no/davvi/morfac/?case_context=N-GEN
-# ** http://oahpa.no/davvi/morfac/?case_context=N-ILL
-# ** http://oahpa.no/davvi/morfac/?case_context=N-LOC
-# ** http://oahpa.no/davvi/morfac/?case_context=N-COM
-# ** http://oahpa.no/davvi/morfac/?case_context=N-ESS
-# ** http://oahpa.no/davvi/morfac/?case_context=N-MIX
-# * Sahka - 3 ganger av hver 
-# Det mangler dyplinking
-# * VastaS - 3 ganger av hver 
-# ** http://oahpa.no/davvi/vastas/?level=1
+# from .views import prepare_goal_params
+# 
+# EXERCISE_TYPE_URL_BASES = [
+#     (s.get('label'), s.get('path'))
+#     for k, v in prepare_goal_params()[1]
+#     for s in v.get('subtypes')
+# ]
 
 class Goal(models.Model):
     """ This is a course goal object, which is connected to criteria.
@@ -304,19 +228,32 @@ class Goal(models.Model):
     short_name = models.CharField(max_length=42)
     description = models.TextField(help_text=GOAL_HELP_TEXT)
 
+    exercise_type = models.CharField(max_length=24)
+
     # TODO: this should be a method that returns a URL based on the
     # activity definition, for now just making a shortcut. Can
     # eventually just use whatever code that the deeplink thing uses to
     # get the user to the right page.
 
-    start_url = models.TextField()
-
     threshold = models.FloatField(default=80.0, help_text="Percentage user must get correct. E.g. 80.0")
     minimum_sets_attempted = models.IntegerField(default=5, help_text="Amount of sets user must try to be finished.")
     correct_first_try = models.BooleanField(default=False, help_text="Only count answers correct on the first try")
 
+    def start_url(self):
+        from django.conf import settings
+        from urllib import urlencode
+
+        URL_PREFIX = settings.URL_PREFIX
+        params = dict([
+            (p.parameter, p.value) for p in self.goalparameter_set.all()
+        ])
+        return "/%s%s?%s" % (URL_PREFIX, self.exercise_type, urlencode(params))
+
     def __unicode__(self):
-        return "%s - %s" % (unicode(self.course), self.short_name)
+        if self.course:
+            return "%s - %s" % (unicode(self.course), self.short_name)
+        else:
+            return "User-defined <%s> - %s" % (unicode(self.created_by.username), self.short_name)
 
     def is_complete(self, user_goal_instance):
         import datetime
