@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<!DOCTYPE lexicon  PUBLIC '-//XMLmind//DTD lexicon//FI'  '../../dtd/questions.dtd'>
+-->
+
+<!-- xml-structure for questions in morphdrill -->
+<!-- Questions for verbs. Not yet potential -->
+<questions>
+
+<!-- This will be challenging; the SUBJ values in the question and the answer -->
+<!-- are different. It the question there is PxSg2, and in the answer PxSg1. -->
+<!--  -->
+<!--  -->
+  <q id="NLoc">
+    <qtype>N-LOC</qtype>
+   <question>
+      <text>Ков тонь SUBJ MAINV</text>
+      <element id="SUBJ">
+        <sem class="FAMILY"/>
+	<grammar tag="N+Sg+Nom+PxSg2"/>
+      </element>
+      <element id="MAINV">
+        <sem class="MOVEMENT_V"/>
+	<grammar tag="V+Ind+Prs+ScSg3"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-LOC</text>
+      <element id="SUBJ">
+        <sem class="FAMILY"/>
+	<grammar tag="N+Sg+Nom+PxSg1"/>
+      </element>
+      <element game='morfa' id="N-LOC" task="yes" >
+	<sem class="PLACE"/>
+	<grammar tag="N+Sem/Plc+SP+Lat+Indef"/>
+      </element>
+    </answer>
+  </q> 
+
+</questions>
+
+
+
+
