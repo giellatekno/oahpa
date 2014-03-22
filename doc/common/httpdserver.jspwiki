@@ -1,12 +1,12 @@
 !!!Restarting the httpd server
 
-On {{{gtoahpa}}} and {{{gtlab}}}, Apache/httpd is not in use for serving HTML
-and other applications, and nginx is in use. 
+On {{gtoahpa}} and {{gtlab}}, we use nginx for serving HTML
+and other applications. 
 
 !! In case of emergencies... 
 
 On gtoahpa, if for some reason the processes do not restart via chkconfig, 
-inspect via {{{ps aux}}} or {{{top}}} to find out what is or isn't running.
+inspect via {{ps aux}} or {{top}} to find out what is or isn't running.
 
 Once missing processes have been identified, the proper order that all services
 should be started in (given dependencies between them) is:
@@ -15,7 +15,7 @@ should be started in (given dependencies between them) is:
  * nginx
  * php-fpm
  * lookupserv
- * univ_oahpa / smaoahpa / rusoahpa
+ * univ_oahpa / smaoahpa / rusoahpa / ...
 
 For this use the command {{{ sudo service NAME start }}}, or alternatively
 restart, if necessary.
