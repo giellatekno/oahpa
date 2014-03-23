@@ -1,15 +1,20 @@
 
-Translations for the texts in the interface are provided in files:
+Translations for the texts in the interface are provided in a set of
+files in the {{locale}} catalogue in the {{LANG_oahpa}} catalogue,
+where LANG should be replaced with your language's ISO code 
+(note that the sme Oahpa does not follow standard and is located
+in the folder univ_oahpa):
 
 {{{
-ped/oahpa/locale/fi/LC_MESSAGES/django.po
-ped/oahpa/locale/sme/LC_MESSAGES/django.po
-ped/oahpa/locale/no/LC_MESSAGES/django.po
-ped/oahpa/locale/en/LC_MESSAGES/django.po
+ped/LANG_oahpa/locale/fi/LC_MESSAGES/django.po
+ped/LANG_oahpa/locale/sme/LC_MESSAGES/django.po
+ped/LANG_oahpa/locale/no/LC_MESSAGES/django.po
+ped/LANG_oahpa/locale/en/LC_MESSAGES/django.po
 }}}
 
 The English file is needed for the names and strings that contain
-Unicode. The English texts in the html-pages should be ascii.
+Unicode. The English texts in the html-pages in 
+{{LANG_oahpa/LANG_drill/templates}} should be ascii.
 
 
 Whenever the texts in the page are updated, the translations need to be checked and updated as well. 
@@ -21,6 +26,8 @@ svn ci -m "new generated files" locale/fi/LC_MESSAGES/django.po
    ... etc. for the other files. 
 }}}
 
+(Note: For this to work, your manage.py and your django installation
+must be tune with each other. See the django documentation.)
 
 After that, work on the respective django.po files, and check them
 in again. Search for word "#fuzzy" from django.po. It means that the
@@ -46,7 +53,7 @@ rm -f locale/*/LC_MESSAGES/django.mo
 
 Thereafter, repeate the compile message.
 
-After the messages have been compiled, restart the server (exchange univ_oahpa with smaoahpa, etc):
+After the messages have been compiled, restart the server (exchange univ_oahpa with smaoahpa, kom_oahpa, etc):
 
 {{{
 sudo service univ_oahpa restart
