@@ -25,10 +25,14 @@
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-LOC</text>
-      <element id="SUBJ">
-        <sem class="FAMILY"/>
+      <text>N-PXSG1 MAINV N-LOC</text>
+      <element id="N-PXSG1" content="SUBJ">
+        <agreement id="SUBJ"/>
 	<grammar tag="N+Sg+Nom+PxSg1"/>
+      </element>
+      <element id="MAINV" content="MAINV">
+        <agreement id="MAINV"/>
+	<grammar tag="V+Ind+Prs+ScSg3"/>
       </element>
       <element game='morfa' id="N-LOC" task="yes" >
 	<sem class="PLACE"/>
