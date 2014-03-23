@@ -47,25 +47,6 @@
 
  TODO: prevent refresh re-submit
 
- TODO: adjust Goal model. can store param key/value stuff as the goal
- criteria, and then the main type as the url base
-
- TODO: need a fancy form on the non-admin courses page for users (admin,
- and student users) to construct goals. Need to have a sort of tree of
- forms that's easy to edit for the developer side: should be easy to
- manage with angular, but maybe courses should expose an API for sending
- settings to the client side.
-
-    * example:
-      + user select leksa -> display set of fields automatically populated
-      + user selects morfa-s -> display separate set of fields
-      + etc
-
-    * also allow goal model to be connected to individual users without
-      a course.
-
-    - namespace bootstrap for forms
-
  TODO: include goal summary / status on courses page
 
  TODO: make courses look better
