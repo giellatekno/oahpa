@@ -36,23 +36,9 @@
  * ajax request of current goal status, otherwise remove infra for this
    if user is not authenticated.
 
+ * goal editing / submitting; include course possibility
+
  --
-
- TODO: navigation at top
-    - courses & goals
-    - learning stats
-    - personal log
-    - admin: courses
-
- TODO: courses page - separate general learning stats to another page.
-
- TODO: if user is instructor, include course selection in goal creation
- thing, but only show instructor's courses.
-
- TODO: instructor submit goal needs to be a bit different, allow them to
- test.
-
- TODO: edit goal.
 
  TODO: show completed status in progress box, tell user they can stop or
  keep going
@@ -108,6 +94,9 @@
  TODO: make it clear on the courses page that someone is still working
  on a goal, so that when they have multiple available they'll know what's
  going on
+
+
+ TODO: feedback click tracking
 
 # Added installation notes:
 
