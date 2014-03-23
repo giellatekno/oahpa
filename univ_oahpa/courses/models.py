@@ -228,7 +228,10 @@ class Goal(models.Model):
     short_name = models.CharField(max_length=42)
     description = models.TextField(help_text=GOAL_HELP_TEXT)
 
-    exercise_type = models.CharField(max_length=24)
+    url_base = models.CharField(max_length=24)
+
+    main_type = models.CharField(max_length=24)
+    sub_type = models.CharField(max_length=24)
 
     # TODO: this should be a method that returns a URL based on the
     # activity definition, for now just making a shortcut. Can
@@ -239,15 +242,29 @@ class Goal(models.Model):
     minimum_sets_attempted = models.IntegerField(default=5, help_text="Amount of sets user must try to be finished.")
     correct_first_try = models.BooleanField(default=False, help_text="Only count answers correct on the first try")
 
+    @property
+    def begin_url(self):
+        """ Confusing, I know. 
+        This constructs the URL that hte user is redirected to for
+        permission checks.
+        """
+        from django.core.urlresolvers import reverse
+
+        return reverse('begin_course_goal', kwargs={'goal_id': self.id})
+
     def start_url(self):
+        """ This is the exercise start page that the user will see when
+        they begin working on their goal. It is constructed from the
+        parameters defined in the goal.
+        """
         from django.conf import settings
         from urllib import urlencode
 
         URL_PREFIX = settings.URL_PREFIX
         params = dict([
-            (p.parameter, p.value) for p in self.goalparameter_set.all()
+            (p.parameter, p.value) for p in self.params.all()
         ])
-        return "/%s%s?%s" % (URL_PREFIX, self.exercise_type, urlencode(params))
+        return "/%s%s?%s" % (URL_PREFIX, self.url_base, urlencode(params))
 
     def __unicode__(self):
         if self.course:
@@ -385,7 +402,7 @@ class UserGoalInstance(models.Model):
         return "%s: %.2f" % (self.goal.short_name, self.progress)
 
 class GoalParameter(models.Model):
-    goal = models.ForeignKey(Goal)
+    goal = models.ForeignKey(Goal, related_name='params')
     parameter = models.CharField(max_length=64)
     value = models.CharField(max_length=64)
 

@@ -134,13 +134,65 @@ def courses_goal_construction(request):
                               context_instance=RequestContext(request))
 
 @login_required
+def courses_stats(request):
+    """ This is the main view presented to users after login.
+        Instructors will be shown a link to view grades and student progress,
+        students will be shown their current progress in all of the games
+        that they have records in.
+    """
+
+    template = 'courses/courses_stats.html'
+
+    c = {}
+    new_profile = None
+    is_student = None
+
+    try:
+        profile = request.user.get_profile()
+        new_profile = False
+    except UserProfile.DoesNotExist:
+        profile = UserProfile.objects.create(user=request.user)
+        profile.save()
+        new_profile = True
+
+    summary = False
+
+    if profile.is_instructor:
+        if request.GET.get('student_view', False):
+            is_student = True
+        else:
+            is_student = False
+    else:
+        is_student = True
+
+    if is_student:
+        summary = profile.usergradesummary_set.all()
+        if summary.count() == 0:
+            new_profile = True
+
+    user_defined_goals = Goal.objects.filter(created_by=request.user, course=None)
+
+    c = {
+        'user':  request.user,
+        'profile':  profile,
+        'new_profile':  new_profile,
+        'is_student':  is_student,
+        'summaries':  summary,
+        'courses': profile.studentships,
+        'user_defined_goals': user_defined_goals
+    }
+
+    return render_to_response(template,
+                              c,
+                              context_instance=RequestContext(request))
+
+@login_required
 def courses_main(request):
     """ This is the main view presented to users after login.
         Instructors will be shown a link to view grades and student progress,
         students will be shown their current progress in all of the games
         that they have records in.
     """
-    from .models import Goal
 
     template = 'courses/courses_main.html'
 
@@ -253,7 +305,7 @@ class UserStatsViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """
-        This view should return a list of all the purchases
+        This view should return a list of all the goals
         for the currently authenticated user.
         """
         user = self.request.user
@@ -395,50 +447,97 @@ def prepare_goal_params(rq=None):
     return GOAL_CHOICE_TREE, GOAL_PARAMETER_CHOICE_VALUES
 
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework import mixins
 
-class GoalParametersView(viewsets.ViewSet):
+from .models import Goal, GoalParameter
+
+class GoalParamSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = GoalParameter
+        fields = ('parameter', 'value')
+
+# TODO: edit/put
+
+class GoalSerializer(serializers.ModelSerializer):
+    begin_url = serializers.CharField(source='begin_url', read_only=True)
+    params = GoalParamSerializer(many=True)
+
+    def transform_params(self, obj, value):
+        if value is not None:
+            return dict([(p.get('parameter'), p.get('value')) for p in value])
+        return None
+
+    class Meta:
+        model = Goal
+        fields = ('id', 'short_name', 'description', 'begin_url',
+                  'course', 'params', 'main_type', 'sub_type', 'threshold', 'minimum_sets_attempted', 'correct_first_try')
+
+from django.shortcuts import get_object_or_404
+
+class GoalParametersView(viewsets.ModelViewSet):
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = ()
+    queryset = Goal.objects.all()
 
-    def create(self, request):
-        from .models import Goal
+    serializer_class = GoalSerializer
 
-        EXERCISE_TYPE_URL_BASES = dict([
+    def get_queryset(self):
+        user = self.request.user
+        return self.queryset.filter(created_by=user)
+
+    def list(self, request):
+        """
+        This view should return a list of all the goals
+        for the currently authenticated user.
+        """
+
+        goals = Goal.objects.filter(created_by=request.user)
+
+        response_parameters = {}
+        response_parameters['success'] = True
+        response_parameters['goals'] = GoalSerializer(goals).data
+
+        return Response(response_parameters)
+
+    @property
+    def exercise_type_url_bases(self):
+        return dict([
             (subtype.get('value'), subtype.get('path'))
             for k, v in prepare_goal_params()[0].iteritems()
             for subtype in v.get('subtypes', [])
         ])
+
+    def create(self, request):
+        # TODO: this can probably be generalized with the serializer now
 
         # TODO: must be authed, can't be anon
         response_parameters = {}
         new_obj = request.DATA
         params = new_obj.pop('params')
 
-        main_type = new_obj.pop('main_type')
-        sub_type = new_obj.pop('sub_type')
-
         # use main_type to get url path
-        url_base = EXERCISE_TYPE_URL_BASES.get(sub_type)
-        new_obj['exercise_type'] = url_base
+        url_base = self.exercise_type_url_bases.get(new_obj.get('sub_type'))
+        new_obj['url_base'] = url_base
 
         success = True
         try:
             goal = Goal.objects.create(created_by=request.user, **new_obj)
-        except:
+        except Exception, e:
             success = False
 
         if success:
             for p_k, p_v in params.iteritems():
-                goal.goalparameter_set.create(parameter=p_k, value=p_v)
-
+                goal.params.create(parameter=p_k, value=p_v)
 
         from django.core.urlresolvers import reverse
+
         if success:
             response_parameters['goal'] = {}
             response_parameters['goal']['id'] = goal.id
             response_parameters['goal']['short_name'] = goal.short_name
             response_parameters['goal']['description'] = goal.description
-            response_parameters['goal']['begin_url'] = reverse('begin_course_goal', kwargs={'goal_id': goal.id})
+            response_parameters['goal']['begin_url'] = goal.begin_url
         else:
             response_parameters['error'] = "Could not create the goal."
 
