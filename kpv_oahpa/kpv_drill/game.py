@@ -1165,9 +1165,9 @@ from forms import KlokkaQuestion
 class Klokka(NumGame):
 
 	QuestionForm = KlokkaQuestion
-	
-	generate_fst = 'transcriptor-text2clock-desc.xfst'
-	answers_fst = 'transcriptor-clock2text-desc.xfst'
+
+	generate_fst = 'transcriptor-clock2text-desc.xfst'
+	answers_fst = 'transcriptor-text2clock-desc.xfst'
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
