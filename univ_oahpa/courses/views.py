@@ -464,6 +464,8 @@ class GoalSerializer(serializers.ModelSerializer):
     params = GoalParamSerializer(many=True)
 
     def transform_params(self, obj, value):
+        """ Need to switch all these to dictionaries
+        """
         if value is not None:
             return dict([(p.get('parameter'), p.get('value')) for p in value])
         return None
@@ -471,13 +473,32 @@ class GoalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Goal
         fields = ('id', 'short_name', 'description', 'begin_url',
-                  'course', 'params', 'main_type', 'sub_type', 'threshold', 'minimum_sets_attempted', 'correct_first_try')
+                  'course', 'params', 'main_type', 'sub_type',
+                  'threshold', 'minimum_sets_attempted',
+                  'correct_first_try')
 
 from django.shortcuts import get_object_or_404
 
+class CanCreateAndUpdateGoal(permissions.BasePermission):
+
+    def has_permission(self, request, view, obj=None):
+        return True
+
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
+        # If there's a course, only the instructors can edit
+        if obj.course:
+            return obj.course in request.user.get_profile().instructorships
+        # Otherwise, this is the user's personal goal.
+        else:
+            return obj.created_by == request.user
+        return False
+
 class GoalParametersView(viewsets.ModelViewSet):
     authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = ()
+    permission_classes = (CanCreateAndUpdateGoal, )
     queryset = Goal.objects.all()
 
     serializer_class = GoalSerializer
@@ -508,10 +529,52 @@ class GoalParametersView(viewsets.ModelViewSet):
             for subtype in v.get('subtypes', [])
         ])
 
+    def update(self, request, pk=None):
+        success = True
+
+        response_parameters = {}
+        new_obj = request.DATA
+        new_obj.pop('id')
+        new_obj.pop('begin_url')
+        url_base = self.exercise_type_url_bases.get(new_obj.get('sub_type'))
+        new_obj['url_base'] = url_base
+        params = new_obj.pop('params')
+
+        # TODO: check user has permissions to update
+        try:
+            goal = self.queryset.filter(pk=pk)
+            goal.update(**new_obj)
+        except Exception, e:
+            success = False
+
+        goal = goal[0]
+
+        if success:
+            GoalParameter.objects.filter(goal=goal).delete()
+            for p_k, p_v in params.iteritems():
+                goal.params.create(parameter=p_k, value=p_v)
+
+            # TODO: Reset user instance
+
+        response_parameters = {}
+
+        if success:
+            response_parameters['goal'] = GoalSerializer(goal).data
+        else:
+            response_parameters['error'] = "Could not update the goal."
+
+        response_parameters['success'] = success
+
+
+        return Response(response_parameters)
+
     def create(self, request):
         # TODO: this can probably be generalized with the serializer now
 
         # TODO: must be authed, can't be anon
+        # TODO: course_id within
+        # request.user.get_profile().instructorships?
+
         response_parameters = {}
         new_obj = request.DATA
         params = new_obj.pop('params')
@@ -546,11 +609,13 @@ class GoalParametersView(viewsets.ModelViewSet):
         return Response(response_parameters)
 
     def metadata(self, request):
+        # TODO: include user's courses if they are an instructor in any
         # This returns all the parameters 
         data = super(GoalParametersView, self).metadata(request)
         choice_tree, parameter_values = prepare_goal_params(request)
         parameters = {'tree': choice_tree, 'values': parameter_values}
         data['parameters'] = parameters
+        data['courses'] = [(c.id, c.name) for c in request.user.get_profile().instructorships]
         return data
 
 
