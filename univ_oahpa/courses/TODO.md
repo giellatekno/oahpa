@@ -40,19 +40,19 @@
 
  --
 
- TODO: show completed status in progress box, tell user they can stop or
- keep going
-
- TODO: include minimum amount of sets completed
+ TODO: increment round if user doesn't answer at all but clicks on new
+ set
 
  TODO: prevent refresh re-submit
+   - need a form set count with a unique hash or something, so if submit count
+   	 for that hash goes above 1, we know that it's resubmitted
+
+ TODO: show completed status in progress box, tell user they can stop or
+ keep going
 
  TODO: include goal summary / status on courses page
 
  TODO: make courses look better
-
- TODO: increment round if user doesn't answer at all but clicks on new
- set
 
  TODO: disable non-JSON views when not in debug?
 

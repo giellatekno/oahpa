@@ -45,7 +45,12 @@ class GradingMiddleware(object):
         # If 'set_completed' is in the session variable, 
         # then need to clear variables for the next go around.
         # TODO: also increment on 'new set'
-        if request.session.get('set_completed', False):
+        new_set = request.session.get('new_game')
+        prev_new_set = request.session['prev_new_game']
+        new_sets = new_set and prev_new_set
+        print 'new sets: ' + repr(new_sets)
+
+        if request.session.get('set_completed', False) or new_sets:
             request.session['question_try_count'] = {}
             request.session['question_set_count'] += 1
             request.session['answered'] = {}
@@ -101,9 +106,13 @@ class GradingMiddleware(object):
 
             complete = goal.is_complete(user_goal_instance[0])
             print 'completed? ' + repr(complete)
+            print 'new-game? ' + repr(request.session['new_game'])
 
         request.session['previous_exercise_params'] = \
                 request.session.get('current_exercise_params', False)
+
+        request.session['prev_new_game'] = \
+                request.session.get('new_game', False)
 
         return response
 

@@ -286,7 +286,11 @@ class Goal(models.Model):
 
         calc_progress = (float(up) / float(user_goal_instance.total_answered)) * 100
 
-        completed_min_rounds = user_goal_instance.rounds >= self.minimum_sets_attempted
+        if self.minimum_sets_attempted:
+            completed_min_rounds = user_goal_instance.rounds >= self.minimum_sets_attempted
+        else:
+            completed_min_rouds = True
+
         passed_percent_correct = calc_progress >= self.threshold
 
         if passed_percent_correct and completed_min_rounds:

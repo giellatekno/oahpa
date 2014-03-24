@@ -303,6 +303,11 @@ class UserStatsViewSet(viewsets.ModelViewSet):
     model = UserGoalInstance
     serializer_class = StatusSerializer
 
+    def list(self, request):
+        rq = super(UserStatsViewSet, self).list(request)
+        rq.data['current_set_count'] = request.session['question_set_count']
+        return rq
+
     def get_queryset(self):
         """
         This view should return a list of all the goals
@@ -632,11 +637,16 @@ def begin_course_goal(request, goal_id):
         del request.session['all_correct']
     if 'set_completed' in request.session:
         del request.session['set_completed']
+    if 'new_game' in request.session:
+        del request.session['new_game']
+    if 'prev_new_game' in request.session:
+        del request.session['prev_new_game']
 
-    request.session['question_set_count'] = 1
+    request.session['question_set_count'] = 0
     request.session['question_try_count'] = {}
     request.session['answered'] = {}
     request.session['previous_exercise_params'] = False
+    request.session['prev_new_game'] = False
 
     # Check that the user has the goal
     user_courses = request.user.get_profile().courses
