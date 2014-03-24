@@ -357,6 +357,27 @@ def prepare_goal_params(rq=None):
                   'name': 'Case'},
         'vtype': {'options': dict(VTYPE_CHOICES),
                   'name': 'Verb type'},
+
+        'pron_type': {'options': dict(PRONOUN_SUBCLASSES),
+                  'name': 'Pronoun type'},
+        'proncase': {'options': dict(CASE_CHOICES),
+                  'name': 'Pronoun case'},
+
+        'case_context':  {'options': dict(CASE_CONTEXT_CHOICES),
+                  'name': 'Case'},
+        'vtype_context': {'options': dict(VTYPE_CONTEXT_CHOICES),
+                  'name': 'Verb type'},
+        # TODO: test adj
+        'adj_context': {'options': dict(ADJ_CONTEXT_CHOICES),
+                  'name': 'Adjective type'},
+        'pron_context': {'options': dict(PRON_CONTEXT_CHOICES),
+                  'name': 'Pronoun type'},
+        'num_context': {'options': dict(NUM_CONTEXT_CHOICES),
+                  'name': 'Numeral case'},
+        'derivation_type_context': {'options': dict(DERIVATION_CHOICES),
+                  'name': 'Derivation type'},
+
+        # TODO: adj grade choices in context?
     }
 
     # This is a definition of the form tree that wil be presented.  Each
@@ -423,30 +444,82 @@ def prepare_goal_params(rq=None):
         'morfas': {
             'subtypes': [
                 {
-                    'params': ['case', 'book', 'vtype'],
+                    'params': ['case', 'book', 'stem_type'],
+                    'label': 'Morfa-S Nouns',
+                    'value': 'morfa_s_noun',
+                    'path': '/morfas/s/',
+                },
+                {
+                    'params': ['vtype', 'book', 'stem_type'],
                     'label': 'Morfa-S Verb',
                     'value': 'morfa_s_verb',
                     'path': '/morfas/v/',
                     'conditional': [
-                        { 'key': 'vtype', 
+                        { 'key': 'vtype',
                           'value': 'PRS',
                           'params': ['something'],
                         },
-                        { 'key': 'vtype', 
+                        { 'key': 'vtype',
                           'value': 'PRT',
                           'params': ['something_else'],
                         },
                     ],
                 },
                 {
-                    'params': ['case', 'book'],
-                    'label': 'Morfa-S Nouns',
-                    'value': 'morfa_s_noun',
-                    'path': '/morfas/s/',
+                    'params': ['pron_type', 'proncase',],
+                    'label': 'Morfa-S Pronouns',
+                    'value': 'morfa_s_pron',
+                    'path': '/morfas/p/',
                 },
+                # TODO: Morfa-S Adj
+                # TODO: Morfa-S Pronouns
+                # TODO: Morfa-S Numerals
+                # TODO: Morfa-S Derivations
             ],
             'label': 'Morfa-S',
             'value': 'morfa_s'
+        },
+        'morfac': {
+            'subtypes': [
+                {
+                    'params': ['case_context',],
+                    'label': 'Morfa-C Nouns',
+                    'value': 'morfa_c_noun',
+                    'path': '/morfac/s/',
+                },
+                {
+                    'params': ['vtype_context',],
+                    'label': 'Morfa-C Verb',
+                    'value': 'morfa_c_verb',
+                    'path': '/morfac/v/',
+                },
+                {
+                    'params': ['adj_context',],
+                    'label': 'Morfa-C Adjectives',
+                    'value': 'morfa_c_adj',
+                    'path': '/morfac/a/',
+                },
+                {
+                    'params': ['pron_context',],
+                    'label': 'Morfa-C Pronouns',
+                    'value': 'morfa_c_pron',
+                    'path': '/morfac/p/',
+                },
+                {
+                    'params': ['num_context',],
+                    'label': 'Morfa-C Numerals',
+                    'value': 'morfa_c_num',
+                    'path': '/morfac/l/',
+                },
+                {
+                    'params': ['derivation_type_context'],
+                    'label': 'Morfa-C Derivations',
+                    'value': 'morfa_c_der',
+                    'path': '/morfac/der/',
+                },
+            ],
+            'label': 'Morfa-C',
+            'value': 'morfa_c'
         },
     }
 
