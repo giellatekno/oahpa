@@ -40,6 +40,9 @@
 
  --
 
+ TODO: feedback to user in status thing that their progress was stopped because
+ the page changed
+
  TODO: increment round if user doesn't answer at all but clicks on new
  set
 

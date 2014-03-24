@@ -62,6 +62,11 @@ class GradingMiddleware(object):
 
         from .models import Goal, UserGoalInstance
 
+        if request.session['navigated_away'] > 0:
+            request.session['navigated_away'] += 1
+        if request.session['navigated_away'] > 2:
+            request.session['navigated_away'] = 0
+
         if not hasattr(request, 'graded_view'):
             return response
 
@@ -83,6 +88,7 @@ class GradingMiddleware(object):
                     del request.session['current_user_goal']
                     del request.session['current_exercise_params']
                     del request.session['previous_exercise_params']
+                    request.session['navigated_away'] += 1
                     return response
 
             self.increment_session_answer_counts(request)

@@ -30,14 +30,21 @@
 <div id="course_goal" ng-app="Courses">
     <div class="goal_in_progress"
         ng-controller="GoalController" ng-source="/{{ URL_PREFIX }}/courses/api/stats/">
+        <div ng-if="navigated_away">
+            <h2>Goal progress</h2>
+            <p class="error" ng-show="navigated_away">Page changed,
+                progress no longer tracked. <a href="/{{ URL_PREFIX  }}/courses/">Begin again?</a></p>
+        </div>
         <div ng-if="results">
             <h2>Goal progress</h2>
-            <ul ng-repeat="goal in results">
+            <ul ng-repeat="goal in results" ng-show="results">
                 <li><span class="stat_title">Round</span>:
                     <span class="stat_value"><% current_set_count %></span></h4>
                 <li><span class="stat_title">Correct</span>:
                     <span class="stat_value"><% goal.progress * 100 %>%</span></h4>
                 <li ng-if="goal.is_complete" class="complete">Complete!</li>
+                <li ng-if="goal.is_complete">You can keep playing, or <a
+                        href="#">work on a new goal</a></li>
             </ul>
         </div>
     </div>

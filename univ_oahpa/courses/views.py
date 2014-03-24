@@ -306,6 +306,7 @@ class UserStatsViewSet(viewsets.ModelViewSet):
     def list(self, request):
         rq = super(UserStatsViewSet, self).list(request)
         rq.data['current_set_count'] = request.session['question_set_count']
+        rq.data['navigated_away'] = request.session.get('navigated_away', 0)
         return rq
 
     def get_queryset(self):
