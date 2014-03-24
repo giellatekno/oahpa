@@ -1,0 +1,37 @@
+Development only packages
+ - sqlite3
+
+Packages required:
+ - python2.6 or above
+
+Python modules required:
+ - MySQL-python
+ - flup (for mod_fastcgi)
+ - django (1, 1, 2, 'final', 0)
+
+
++ All of the python modules required can be installed via the corresponding easy_install
+  version for python that you are using, e.g.: 
+
+  	easy_install-2.6 flup
+	easy_install-2.7 flup
+
+
+
+## 
+
+Adding words to the database is done with the install.py tool. Supersets must be added after words have been added.
+
+Original examples from sma:
+
+python install.py --file $GTSVN/words/dicts/smanob/src/n_smanob.xml --tagfile $GTSVN/ped/sma/src/tags.txt --paradigmfile $GTSVN/ped/sma/src/paradigms.txt 
+python install.py --file $GTSVN/words/dicts/smanob/src/a_smanob.xml --tagfile $GTSVN/ped/sma/src/tags.txt --paradigmfile $GTSVN/ped/sma/src/paradigms.txt
+python install.py --file $GTSVN/words/dicts/smanob/src/v_smanob.xml --tagfile $GTSVN/ped/sma/src/tags.txt --paradigmfile $GTSVN/ped/sma/src/paradigms.txt
+python install.py --sem sma/xml/semantical_sets.xml
+
+The corresponding fkv examples will probably be something like this:
+
+python install.py --file $GTHOME/ped/fkv/src/n_fkvnob.xml --tagfile $GTHOME/ped/fkv/src/tags.txt --paradigmfile $GTHOME/ped/fkv/src/paradigms.txt 
+python install.py --file $GTHOME/ped/fkv/src/a_fkvnob.xml --tagfile $GTHOME/ped/fkv/src/tags.txt --paradigmfile $GTHOME/ped/fkv/src/paradigms.txt
+python install.py --file $GTHOME/ped/fkv/src/v_fkvnob.xml --tagfile $GTHOME/ped/fkv/src/tags.txt --paradigmfile $GTHOME/ped/fkv/src/paradigms.txt
+python install.py --sem fkv/xml/semantical_sets.xml
