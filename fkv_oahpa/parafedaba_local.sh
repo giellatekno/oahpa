@@ -1,7 +1,7 @@
 #!/bin/sh
 
 P="python2.7"
-GTHOME="/Users/mslm/main/ped"
+GTHOME="/home/heli/main/ped"
 LANGDIR="fkv"
 DATA=$GTHOME/$LANGDIR
 DPS="$DATA/src"
