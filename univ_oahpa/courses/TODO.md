@@ -40,6 +40,10 @@
 
  --
 
+ TODO: stem-type
+
+ TODO: log feedback
+
  TODO: feedback to user in status thing that their progress was stopped because
  the page changed
 

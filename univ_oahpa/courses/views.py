@@ -2,6 +2,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect, HttpResponseForbidden, Http404
 
 from django.conf import settings
+from .models import Goal
 
 URL_PREFIX = settings.URL_PREFIX
 

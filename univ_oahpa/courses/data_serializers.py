@@ -18,6 +18,7 @@ class GoalParamSerializer(serializers.ModelSerializer):
 class GoalSerializer(serializers.ModelSerializer):
     begin_url = serializers.CharField(source='begin_url', read_only=True)
     params = GoalParamSerializer(many=True)
+    # TODO: validate that name and desc aren't empty
 
     def transform_params(self, obj, value):
         """ Need to switch all these to dictionaries

@@ -10,6 +10,7 @@
                 id="selectToEdit"
                 name="edit_goal"
                 ng-change="populateGoal()"
+                ng-show="!form_success"
                 ng-options="g.id as g.short_name for g in existing_goals"
                 ng-model="edit_goal_id">
             <option value="">Edit an existing goal</option>
@@ -248,9 +249,26 @@
                                     <p><% option_values[p].name %></p>
                                 </div>
 
+                                <!-- TODO: no value when not selected?
+                                    also, somehow tricky when selected
+                                    and unselected unselected values
+                                    need to not be stored
+                                -->
+                                {% comment %}
+                                <input class="form-control"
+                                        id="goal_correct_first_try"
+                                        ng-if="option_values[p].boolean"
+                                        name="user_goal.params[p]"
+                                        ng-true-value="on"
+                                        type="checkbox"
+                                        ng-model="user_goal.params[p]"
+                                >
+                                {% endcomment %}
+
                                 <select class="form-control"
                                         id="selectMainType"
                                         name="main_type"
+                                        ng-if="option_values[p].select"
                                         ng-options="value as label for (value, label) in option_values[p].options"
                                         ng-model="user_goal.params[p]">
 

@@ -23,6 +23,7 @@ urlpatterns = patterns('django.contrib.auth.views',
 from views import courses_main, instructor_student_detail, begin_course_goal, courses_goal_construction, courses_stats
 
 from rest_framework import routers
+
 from .data_api import UserStatsViewSet, GoalParametersView, FeedbackLogView
 
 router = routers.DefaultRouter()

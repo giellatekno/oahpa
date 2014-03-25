@@ -11,9 +11,9 @@ from .data_serializers import *
 from .data_utils import *
 
 class UserStatsViewSet(viewsets.ModelViewSet):
-	""" This view powers the display of goal progress when the user is
-	submitting answers for a course goal.
-	"""
+    """ This view powers the display of goal progress when the user is
+    submitting answers for a course goal.
+    """
     permission_classes = (IsAuthenticated, GetOnly)
     model = UserGoalInstance
     serializer_class = StatusSerializer
@@ -39,9 +39,9 @@ class UserStatsViewSet(viewsets.ModelViewSet):
             return []
 
 class FeedbackLogView(viewsets.ModelViewSet):
-	""" These views are for adding feedback logs when the user clicks on
-	a feedback link.
-	"""
+    """ These views are for adding feedback logs when the user clicks on
+    a feedback link.
+    """
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (CanCreateAndUpdateFeedbackLog, )
     model = UserFeedbackLog
@@ -55,14 +55,14 @@ class FeedbackLogView(viewsets.ModelViewSet):
         return self.model.objects.filter(user=user)
 
 class GoalParametersView(viewsets.ModelViewSet):
-	""" These views are for creating, editing and deleting users'
-	personal goals, as well as goals connected to courses.
+    """ These views are for creating, editing and deleting users'
+    personal goals, as well as goals connected to courses.
 
-	Django admin wasn't really enough to manage this kind of thing.
-	OPTIONS provides a set of possible parameters, and POST and PUT are
-	available for creating and editing. DELETE is also possible, and
-	permissions are checked.
-	"""
+    Django admin wasn't really enough to manage this kind of thing.
+    OPTIONS provides a set of possible parameters, and POST and PUT are
+    available for creating and editing. DELETE is also possible, and
+    permissions are checked.
+    """
 
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (CanCreateAndUpdateGoal, )
