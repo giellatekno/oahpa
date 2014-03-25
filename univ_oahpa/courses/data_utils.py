@@ -9,9 +9,6 @@ def prepare_goal_params(rq=None):
     # Here's a definition of all the choice possibilities that will be
     # available to users below.
 
-    # TODO: will need to evaluate the values for each request, because
-    # of localization.
-    # TODO: use the same strings as localization provides
     # TODO: add the rest of the form choices.
 
     # TODO: bisyllabic, trisyllabic, contracted choices as checkboxes

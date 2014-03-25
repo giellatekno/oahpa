@@ -11,12 +11,17 @@ from .data_serializers import *
 from .data_utils import *
 
 class UserStatsViewSet(viewsets.ModelViewSet):
+	""" This view powers the display of goal progress when the user is
+	submitting answers for a course goal.
+	"""
     permission_classes = (IsAuthenticated, GetOnly)
     model = UserGoalInstance
     serializer_class = StatusSerializer
 
     def list(self, request):
         rq = super(UserStatsViewSet, self).list(request)
+
+        # Insert some things for easier display
         rq.data['current_set_count'] = request.session['question_set_count']
         rq.data['navigated_away'] = request.session.get('navigated_away', 0)
         return rq
@@ -34,6 +39,9 @@ class UserStatsViewSet(viewsets.ModelViewSet):
             return []
 
 class FeedbackLogView(viewsets.ModelViewSet):
+	""" These views are for adding feedback logs when the user clicks on
+	a feedback link.
+	"""
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (CanCreateAndUpdateFeedbackLog, )
     model = UserFeedbackLog
@@ -47,6 +55,15 @@ class FeedbackLogView(viewsets.ModelViewSet):
         return self.model.objects.filter(user=user)
 
 class GoalParametersView(viewsets.ModelViewSet):
+	""" These views are for creating, editing and deleting users'
+	personal goals, as well as goals connected to courses.
+
+	Django admin wasn't really enough to manage this kind of thing.
+	OPTIONS provides a set of possible parameters, and POST and PUT are
+	available for creating and editing. DELETE is also possible, and
+	permissions are checked.
+	"""
+
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (CanCreateAndUpdateGoal, )
     queryset = Goal.objects.all()
@@ -54,6 +71,10 @@ class GoalParametersView(viewsets.ModelViewSet):
     serializer_class = GoalSerializer
 
     def get_queryset(self):
+        """ Always filter by user, because this only concerns
+        creating/editing goals, not exhaustively listing all goals
+        available to the user via classes.
+        """
         user = self.request.user
         return self.queryset.filter(created_by=user)
 
@@ -63,11 +84,11 @@ class GoalParametersView(viewsets.ModelViewSet):
         for the currently authenticated user.
         """
 
-        goals = Goal.objects.filter(created_by=request.user)
+        goals = self.get_queryset()
 
         response_parameters = {}
         response_parameters['success'] = True
-        response_parameters['goals'] = GoalSerializer(goals).data
+        response_parameters['goals'] = self.serializer_class(goals).data
 
         return Response(response_parameters)
 
@@ -80,17 +101,28 @@ class GoalParametersView(viewsets.ModelViewSet):
         ])
 
     def update(self, request, pk=None):
+        """ When the PUT verb is used, this is called.
+        """
         success = True
 
         response_parameters = {}
+
         new_obj = request.DATA
+
+        # Pop some kwargs not available in the model
         new_obj.pop('id')
         new_obj.pop('begin_url')
+
+        # grab the URL base of the exercise
         url_base = self.exercise_type_url_bases.get(new_obj.get('sub_type'))
         new_obj['url_base'] = url_base
+
+        # Pop params, because we iterate later.
         params = new_obj.pop('params')
 
-        # TODO: check user has permissions to update
+        # NB: queryset already filtered for user
+
+        # Actually update the main object, easier to do as a queryset.
         try:
             goal = self.queryset.filter(pk=pk)
             goal.update(**new_obj)
@@ -99,31 +131,32 @@ class GoalParametersView(viewsets.ModelViewSet):
 
         goal = goal[0]
 
+        # If the update worked, remove the GoalParameters and re-add
+        # them.
         if success:
             GoalParameter.objects.filter(goal=goal).delete()
             for p_k, p_v in params.iteritems():
                 goal.params.create(parameter=p_k, value=p_v)
 
-            # TODO: Reset user instance
-
-        response_parameters = {}
+            # Reset user progress.
+            goal.usergoalinstance_set.all().delete()
 
         if success:
-            response_parameters['goal'] = GoalSerializer(goal).data
+            # re-serialize the created goal for return.
+            response_parameters['goal'] = self.serializer_class(goal).data
         else:
             response_parameters['error'] = "Could not update the goal."
 
         response_parameters['success'] = success
-
 
         return Response(response_parameters)
 
     def create(self, request):
         # TODO: this can probably be generalized with the serializer now
 
-        # TODO: must be authed, can't be anon
-        # TODO: course_id within
-        # request.user.get_profile().instructorships?
+        # TODO: doublecheck that course_id within
+        # request.user.get_profile().instructorships if course is
+        # specified?
 
         response_parameters = {}
         new_obj = request.DATA
@@ -159,8 +192,15 @@ class GoalParametersView(viewsets.ModelViewSet):
         return Response(response_parameters)
 
     def metadata(self, request):
-        # TODO: include user's courses if they are an instructor in any
-        # This returns all the parameters 
+        """ This returns stuff when the OPTIONS verb is used,
+        but we're coopting it slightly to include the parameters for the
+        form, which need to be automatically constructed for each
+        installation.
+
+        If the user is an instructor in any courses, these are included
+        and rendered in the form.
+        """
+
         data = super(GoalParametersView, self).metadata(request)
         choice_tree, parameter_values = prepare_goal_params(request)
         parameters = {'tree': choice_tree, 'values': parameter_values}
