@@ -2,10 +2,10 @@
 
 For reference: 
 
-Here are the commands used to test the clock automata iclock-sme.fst ([num2clock|../nudoc/gen/numra_num2clock.csv]) and clock-sme.fst ([clock2num|../nudoc/gen/numra_clock2num.csv]):
+Here are the commands used to test the clock automata transcriptor-clock2text-desc.xfst ([clock2text|../nudoc/gen/numra_num2clock.csv]) and transcriptor-text2clock-desc.xfst  ([tet2clock|../nudoc/gen/numra_clock2num.csv]):
 
 {{{
-cat $GTHOME/gt/script/digitalclock_numberlist.csv | lookup sme/bin/iclock-sme.fst > $GTHOME/ped/doc/nudoc/gen/numra_num2clock.csv
+cat $GTHOME/gt/script/digitalclock_numberlist.csv | lookup $GTHOME/langs/sme/src/transcription-clock2text.xfst > $GTHOME/ped/doc/nudoc/gen/numra_num2clock.csv
 
-cat ../ped/doc/nudoc/gen/numra_num2clock.csv | cut -f2|lookup -flags mbTT -utf8 sme/bin/clock-sme.fst > $GTHOME/ped/doc/nudoc/gen/numra_clock2num.csv
+cat ../ped/doc/nudoc/gen/numra_num2clock.csv | cut -f2|lookup -flags mbTT -utf8  $GTHOME/langs/sme/src/transcription-text2clock.xfst  > $GTHOME/ped/doc/nudoc/gen/numra_clock2num.csv
 }}}
