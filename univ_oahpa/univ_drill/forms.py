@@ -752,9 +752,12 @@ def get_feedback(self, wordform, language):
 					.order_by('feedbacktext__order')
 	
 	feedback_messages = []
+	feedback_ids = []
+
 	for feedback in feedbacks:
 		texts = feedback.feedbacktext_set.filter(language=language).order_by('order')
 		feedback_messages.extend([a.message for a in texts])
+		feedback_ids.append(feedback.msgid)
 
 	try:
 		baseform = wordform.getBaseform()
@@ -769,6 +772,7 @@ def get_feedback(self, wordform, language):
 			message_list.append(text)
 	
 	self.feedback = ' \n '.join(list(message_list))
+	self.feedback_ids = ','.join(feedback_ids)
 
 	### print 'stem:' + wordform.word.stem
 	### print 'gradation:' + wordform.word.gradation
@@ -1428,7 +1432,8 @@ class MorfaQuestion(OahpaQuestion):
 				if noun_pres:
 					# self.lemma is unicode, concatenating results in
 					# encoding error
-					self.lemma = self.lemma + ' ' + force_unicode(noun_pres).encode('utf-8')
+					self.lemma = u"%s %s" % (self.lemma, noun_pres)
+					self.lemma = self.lemma.encode('utf-8')
 					#self.lemma += u'( %s)' % noun_pres
 					#self.lemma = force_unicode(self.lemma).encode('utf-8')
 
@@ -1440,7 +1445,8 @@ class MorfaQuestion(OahpaQuestion):
 				if self.lemma == 'dat':
 					noun_pres = DEMONSTRATIVE_PRESENTATION.get(tag.personnumber, False)
 					if noun_pres:
-						self.lemma = self.lemma + ' (' + force_unicode(noun_pres).encode('utf-8') + ')'
+						self.lemma = u"%s (%s)" % (self.lemma, noun_pres)
+						self.lemma = force_unicode(self.lemma).encode('utf-8')
 						#self.lemma += u' (%s)' % noun_pres
 						#self.lemma = force_unicode(self.lemma).encode('utf-8')
 						
