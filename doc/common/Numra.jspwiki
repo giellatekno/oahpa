@@ -60,17 +60,17 @@ Numra differs from Morfa in not using the MySQL database, but using transducers 
 
 The transducers behind numra are (where $LANG is the iso code for your language):
 
-* Cardinal and ordinal numbers: $LANG-num.txt ([North Sámi example|https://victorio.uit.no/langtech/trunk/gt/sme/src/sme-num.txt])
-* Clock clock-$LANG.lexc ([North Sámi example|https://victorio.uit.no/langtech/trunk/gt/sme/src/clock-sme.lexc])
-* Date date-$LANG.lexc ([North Sámi example|https://victorio.uit.no/langtech/trunk/gt/sme/src/date-sme.lexc])
+* Cardinal and ordinal numbers: $LANG/src/transcriptions/numbers.lexc ([North Sámi example|https://victorio.uit.no/langtech/trunk/gt/sme/src/sme-num.txt])
+* Clock: $LANG/src/transcriptions/clock.lexc ([North Sámi example|https://victorio.uit.no/langtech/trunk/gt/sme/src/clock-sme.lexc])
+* Date: $LANG/src/transcriptions/date.lexc ([North Sámi example|https://victorio.uit.no/langtech/trunk/gt/sme/src/date-sme.lexc])
 
 The files governing the four programs are ''num.html, num_ord.html, clock.html, date.html''. These files are found here:
 
 * for sme, smn, sjd, rus: ''ped/OAHPA/drill/templates/'', where
-** OAHPA = univ_oahpa, smn_oahpa, sjd_oahpa, rus_oahpa, respectively (in $GTHOME/ped/ )
+** OAHPA = univ_oahpa, smn_oahpa, sjd_oahpa, rus_oahpa, etc. (in $GTHOME/ped/ )
 * for sma and other languages: ''pedversions/smaoahpa/smadrill/templates/''
 
-These files refer to the fsts on victorio, in the opt catalogue there.
+These files refer to the fsts on gtoahpa and gtlab, in the opt catalogue there.
 
 !!!Documentation of the content production
 
@@ -79,32 +79,39 @@ These files refer to the fsts on victorio, in the opt catalogue there.
 
 !!!The different types of Numra
 
-There are four different subprograms, each with its transducers in the opt catalogue.
+There are four different subprograms, each with its transducers in the opt catalogue
+for the language in question. They are called in the LANG_drill/game.py file.
 
 !! The transducers
 
-!Numra cardinal
+!Numra cardinal and Numra ordinal
 
-* $LANG-num.fst
-* $LANG-inum.fst
-
-!Numra ordinal
-
-* $LANG-num.fst
-* $LANG-inum.fst
+__class NumGame(Game):__
+{{{
+generate_fst = 'transcriptor-numbers2text-desc.xfst'
+answers_fst = 'transcriptor-text2numbers-desc.xfst' 
+}}}
 
 !Numra clock
 
-* clock-$LANG.fst
-* iclock-lang.fst
+__class Klokka(NumGame):__
+{{{
+generate_fst = 'transcriptor-clock2text-desc.xfst'
+answers_fst = 'transcriptor-text2clock-desc.xfst'        
+}}}
 
 !Numra date
 
-* clock-$LANG.fst
-* iclock-lang.fst
+__class Dato(Klokka):__
+
+{{{
+generate_fst = 'transcriptor-date2text-desc.xfst'
+answers_fst = 'transcriptor-text2date-desc.xfst'
+}}}
 
 !! The source files
-The source files are in $LANG/src/translations/*.lexc for newinfra, in gt/sme/src/ and st/LANG/src for the old ones.
+
+The source files are in $LANG/src/transcriptions/*.lexc.
 
 !!!Documenting +Use/NG and +Use/NA
 
@@ -113,7 +120,8 @@ The source files are in $LANG/src/translations/*.lexc for newinfra, in gt/sme/sr
 
 Thus, we should restrict the +Use/NA flag to strings we do not want in Oahpa...
 
-But this is not how it is used.
-Note especially $GTLANG/gt/Makefile; it seems +Use/NA has no function (it removes all strings).
+But this is not how it is (was?) used (?)
+
+Note especially the old $GTLANG/gt/Makefile; where it seems +Use/NA had no function (it removed all strings).
 
 
