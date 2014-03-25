@@ -351,16 +351,11 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
-    ('CLASS1', _('class1')),
-    ('CLASS2', _('class2')),
-    ('all', _('all')),
-)
-"""
     ('HUMAN', _('human')),
     ('FOOD_DRINK', _('food/drink')),
     ('all', _('all')),
 )
-"""
+
 
 NUM_CHOICES = (
 	('10', _('0-10')),
