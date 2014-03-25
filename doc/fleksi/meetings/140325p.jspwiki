@@ -1,0 +1,145 @@
+!!! Møte 25.03.14
+
+Til stades: Heli, Lene, Trond. Leena
+
+!!!Saker: 
+* Leksa
+* Numra
+* MorfaS
+* MorfaC
+* Lokalisering
+* Prioritering
+* Dokumentasjon
+* Bugzilla
+* Møte med Eira
+
+!!Oahpa for kvensk
+Vi har fått igang Oahpa for kvensk. 
+
+!!Leksa
+Leksa fungerer fkv-nob, ikke nob-fkv. To semantiske kategorier \\
+Book chapter: (exempel från Rusoahpa)
+
+{{{
+<e>
+    <lg>
+      <l pos="n" zaliznjak="1a">автомат</l>
+      <lemma_stressed>автома́т</lemma_stressed>
+    </lg>
+    <sources>
+      <book name="MiP" chapter="L2"/>
+    </sources>
+}}}
+
+Vi har 50-60 ord.
+
+
+!TILTAK:
+* __Heli__ får nobfkv til å fungere
+** n_fkvnob.xml, N_nobfkv.xml,  n til N (Heli endrar)
+** Vi vil ha: N_fkvnob.xml, N_nobfkv.xml (slik er det i words/dicts/fkvnob/src)
+* __Heli__ implementerer bokvalg og semantiske kategorier
+* __Lene__ redigerer i forms.py
+* __Heli__ kommenterer ut Names og Grammar fra grensesnittet og 
+* For dictionary endrar __Heli__ lenka:
+** /webdict/index_sme-fin.html skal bli endra til /webdict/index_fkv-nob.html
+* Målspråk er for Leksa i dag nob. __Heli__ legg til fin og eng også. rik_ENG, rikas_FIN
+* __Leena__ oversetter til engelsk og finsk
+ 
+!!Numra
+
+* Grunntal fungerer
+* Ordenstal har 6-й og ikkje 6. som markør for ordenstal
+* Klokke og data refererer ikkje til korrekt fst.
+
+!TILTAK:
+* __Heli__ implementerer resten av oppgavenetypene, Trond har sjekka inn nye filnavn
+* Ordenstall, datoer og klokka fra finsk til kvensk
+** Ordenstall manglar i lexc, __Trond__ legg dei til i lexc-fila.
+** Klokke (clock.lexc) og dato (date.lexc) står på finsk, __Leena__ 
+   endrar dei til kvensk.
+
+!!MorfaS
+
+Adjektiv har fått kasus, men kopiert frå substantiv.
+Betre løysing: dirigere både n_21 og a_21 til felles_21,
+og dirigere a_21 til komparativ.
+
+Mogleg å implementere:
+
+* Substantiv 
+** Berre Sg til automaten er litt betre.
+** Kasus: Nom, Gen, Par, Ine, Ela, Ill, Ade, Abl, All
+* Verb.
+** 6 personar i Ind: Prs, Prt
+
+Sjekke fst-en systematisk:
+
+{{cat src/n_fkvnob.xml |grep '<l '|tr '<' '>'|cut -d">" -f3|sed 's/$/+N+Sg+Par/g;'|dfkv}}
+
+Verdiar for verb-person-numerus:
+
+{{{
+mie, sie, se
+met, tet, net
+}}}
+
+Vi vurderer korleis vi gjer det med se / hän og med net / het.
+
+Etterpå også andre grammatiske kategoriar og andre ordklasser.
+
+!TILTAK:
+* __Lene__ redigere forms.py
+* __Heli__ implementerer oppgaver
+
+!!MorfaC
+fkv/meta/questions.xml
+
+!TILTAK:
+* __Lene__ splittar questions.xml etter POS slik vi vil ha det framover.
+* __Heli__ implementerer oppgaver
+
+!!Lokalisering
+Demoen skal lokaliseres på norsk, engelsk, finsk, kvensk
+
+!TILTAK:
+* __Heli__ generer lokaliseringfiler
+* __Leena, Trond__ set om til finsk, kvensk, norsk, engelsk.
+
+!!Prioritering - ferdig til mandag 31.3
+
+# Leksa begge vegar
+# MorfaS
+# MorfaC
+
+!!Dokumentasjon
+
+__Merk!__ Vi har no tre ulike dokumentasjonssider:
+
+* [http://giellatekno.uit.no/ped/fkv-oahpa.html] (fkv-oahpa)
+* [http://giellatekno.uit.no/ped/fleksi/FleksibelUtdanning.html] (prosjektet)
+* [http://giellatekno.uit.no/doc/lang/fkv/KvenDocumentation.html] (kvensk fst)
+
+!!Bugzilla
+
+!TILTAK:
+* 1764 Endre lemma med paradigme, evt oppdatere database: smáđáhkes A => smáđáhkis A \\
+http://giellatekno.uit.no/ped/maintenance.html: \\
+Remove words from the database one by one by giving the word id (or lemma) and the part of speech as option:
+python install.py -w beana -p N
+
+
+!!Neste møte
+
+Leena koordinerer med Eira og kjem med framlegg til tidspunkt.
+
+
+
+
+
+
+
+
+
+
+
