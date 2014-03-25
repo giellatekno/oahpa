@@ -1,0 +1,119 @@
+!!!Meeting 25.03.14
+Participants: Jack, Trond, Heli, Lene
+
+!!Agenda
+* Jaska planns
+* How to realize them
+
+
+!! Jaska plans
+
+!Oahpa for these languages:
+* liv: Renate Blumberga & Livonian al (prio 2)
+* yrk: course materials: Lotta Jalava
+* mrj: course materials: Julia Kuprina 
+* myv: Plans for courses: Olga & Jaska (prio 1)
+* olo: course materials: Giloeva (prio 3)
+* kpv: 
+
+!
+
+All these languages have both fst and dictionary
+
+
+
+!!What to do, how
+
+[Documentation|http://oahpa.no/addlang/index.html]
+
+
+!!Localisation
+
+[http://giellatekno.uit.no/ped/common/Localisation.html]
+
+For each language: django.po for:
+* ru, en, fi, et, target language
+* liv: lv
+
+The original:
+
+myv_oahpa/myv_drill/templates/*.html
+
+Localisation for en and fi django.po:
+
+myv_oahpa/locale/ru/LC_MESSAGES/django.po  <==
+
+{{{
+#: env/lib/python2.7/site-packages/django/contrib/admin/widgets.py:75
+msgid "Time:"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/django/contrib/admin/widgets.py:75
+msgid "Time:"
+msgstr "Aika:"
+}}}
+
+
+!!Numra
+
+* Heli will set up the infra
+* Jack will work on the fst:s
+** card: myv, mrj, yrk, kpv, liv, olo
+** ord: myv, yrk, kpv,
+** dato: myv, mrj, yrk, kpv, 
+** clock: myv, kpv, mrj, 
+
+
+!!The basic lexicon
+
+The catalogue structure is documented [here|../../common/overview.html]
+
+* myv_oahpa = tähän lingvistiikka
+* myv = tähän lingvistiikka
+** inc - lexicons in csv format
+** src - lexicons in xml format
+** meta - morfaC exercise frames, tags, paradigms, feedback messages
+** finmyv, engmyv - reverted lexicons
+
+* myv_oahpa = tähän itse oahpa jne.
+Localisation of the user interface to Finnish: myv_oahpa/locale/fi/LC_MESSAGES/django.po
+
+Documentation:
+
+[http://oahpa.no/addlang/developerleksa.html]
+
+csv format (but see below):
+
+{{mielki __ N __ melk, mjølk __ DRINK, FOOD_GROCERY}}
+
+The scripts for reverting the lexicon:
+
+{{{
+main/ped/script/uusv2oahpa_xml.xsl
+ped/script/revert_oahpa-lexicon.xsl
+}}}
+
+
+
+!!Leksa
+
+We make basic test lexica, just as for fkv.
+
+__Jaska__ will generate them directly from the dictionary xml files, 
+rather than via csv files.
+
+!!MorfaS
+
+Here, the analysers are ready already.
+__Jaska, Trond__ to provide pronouns for identifying person-number forms
+of verbs.
+
+There is work ahead of us for developing MorfaS for the 
+Mordvin and Nenets objective conjugation.
+
+
+!!MorfaC
+
+We wait with MorfaC until we have the others.
+
+
