@@ -18,6 +18,7 @@
 {% ifnotequal gametype "sahka_main" %}
 <hr/>
 <div id="game_right_float">
+	<div ng-app="Courses">
     
         <div id="instructions">
             <p>{% block gamename %}{% endblock %}</p>
@@ -28,7 +29,7 @@
         {% endif %}
 	
 	{% block tooltips %}
-	<div id="tooltips">
+	<div id="tooltips" ng-controller="TooltipController">
 		{% for form in forms %}
 			{% block tooltip %}
 			{% endblock %}
@@ -45,6 +46,7 @@
 		
 	</div>
     {% endblock %}
+	</div>
 </div>
 {% endifnotequal %}
 {% endifnotequal %}
