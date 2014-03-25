@@ -19,23 +19,20 @@ from random import choice
 
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
-PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'son',
-		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'sii',
-		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
+PRONOUNS_LIST = {'Sg1':'mie', 'Sg2':'sie', 'Sg3':'se',
+		  'Pl1':'met', 'Pl2':'tet', 'Pl3':'net'}
 
 # DEMONSTRATIVE_PRESENTATION plus Sg3/Pl3
-PASSIVE_PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'dat',
-		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'dat',
-		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
+PASSIVE_PRONOUNS_LIST = {'Sg1':'mie', 'Sg2':'sie', 'Sg3':'se',
+		  'Pl1':'met', 'Pl2':'tet', 'Pl3':'net'}
 
 
 NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
-		  'Pl1':'eat', 'Pl2':'ehpet', 'Pl3':'eai',
-		  'Du1':'ean', 'Du2':'eahppi', 'Du3':'eaba'}
+		  'Pl1':'eat', 'Pl2':'ehpet', 'Pl3':'eai'}
 
 TENSE_PRESENTATION = {
-	'Prt': u'ikte',
-	'Prs': u'odne',
+	'Prt': u'eilen',
+	'Prs': u'tänään',
 }
 
 RECIPROCATIVE_PRESENTATION = {
@@ -53,20 +50,17 @@ DEMONSTRATIVE_PRESENTATION = {
 POS_CHOICES = (
 	('N', _('noun')),
 	('V', _('verb')),
-	('A', _('adjective')),
-	('Num', _('numeral')),
-	('Pron', _('pronoun')),
 )
 
 CASE_CHOICES = (
-	('N-NOM-PL', _('Nominative plural')),
-	('N-ACC', _('Accusative')),
     ('N-GEN', _('Genitive')),
-    ('N-DAT', _('Dative')),
-    ('N-INS', _('Instrumental')),
-    ('N-LOC', _('Locative')),
-    ('N-GEN2', _('Genitive 2')),
-    ('N-LOC2', _('Locative 2')),
+    ('N-PAR', _('Partitive')),
+    ('N-ILL', _('Illative')),
+    ('N-INE', _('Inessive')),
+    ('N-ELA', _('Elative')),
+    ('N-ADE', _('Adessive')),
+    ('N-ABL', _('Ablative')),
+    ('N-ALL', _('Allative')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -74,13 +68,14 @@ CASE_CHOICES = (
 
 NOUN_QUESTION_ANSWER = {
 	# gametype			question		answer
-	'NOMPL': [('N+Sg+Nom', 'N+Pl+Nom')],
-	'N-ACC': [('N+NumberN+Nom', 'N+NumberN+Acc')],
-	'N-ILL': [('N+NumberN+Nom', 'N+NumberN+Ill')],
-	'N-LOC': [('N+NumberN+Nom', 'N+NumberN+Loc')],
-	'N-COM': [('N+NumberN+Nom', 'N+NumberN+Com')],
 	'N-GEN': [('N+NumberN+Nom', 'N+NumberN+Gen')],
-	'N-ESS': [('N+NumberN+Nom', 'N+Ess')],
+	'N-PAR': [('N+NumberN+Nom', 'N+NumberN+Par')],
+	'N-ILL': [('N+NumberN+Nom', 'N+NumberN+Ill')],
+	'N-INE': [('N+NumberN+Nom', 'N+NumberN+Ine')],
+	'N-ELA': [('N+NumberN+Nom', 'N+NumberN+Ela')],
+	'N-ADE': [('N+NumberN+Nom', 'N+NumberN+Ade')],
+	'N-ABL': [('N+NumberN+Nom', 'N+NumberN+Abl')],
+	'N-ALL': [('N+NumberN+Nom', 'N+NumberN+All')],
 }
 
 NOUN_FILTER_DEFINITION = ['animacy', 'declension', 'gender', 'source']
@@ -132,14 +127,14 @@ PRONOUN_SUBCLASSES = (
 )
 
 CASE_CONTEXT_CHOICES = (
-	('N-NOM-PL', _('plural')),
-	('N-ACC', _('accusative')),
-	('N-GEN', _('genitive')),
+#	('N-NOM-PL', _('plural')),
+	('N-PAR', _('partitive')),
+#	('N-ACC', _('accusative')),
+#	('N-GEN', _('genitive')),
 #	('N-ILL', _('illative')),
-	('N-LOC', _('locative')),
 #	('N-COM', _('comitative')),
 #	('N-ESS', _('essive')),
-	('N-MIX', _('mix')),
+#	('N-MIX', _('mix')),
 )
 
 NOUN_TYPE_CHOICES =(
@@ -257,21 +252,21 @@ NUM_TYPE_CHOICES = (
 VTYPE_CHOICES = (
 	('PRS', _('present')),
 	('PRT', _('past')),
-	('PRF', _('perfect')),
-	('GER', _('gerund')),
-	('COND', _('conditional')),
-	('IMPRT', _('imperative')),
-	('POT', _('potential')),
+#	('PRF', _('perfect')),
+#	('GER', _('gerund')),
+#	('COND', _('conditional')),
+#	('IMPRT', _('imperative')),
+#	('POT', _('potential')),
 )
 
 VERB_QUESTION_ANSWER = {
 	'PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
-	'PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
-	'PRF': [('V+Inf', 'V+PrfPrc')],
-	'GER': [('V+Inf', 'V+Ger')],
-	'COND': [('V+Inf', 'V+Cond+Prs+Person-Number')],
-	'IMPRT': [('V+Inf', 'V+Imprt+Person-Number')],
-	'POT': [('V+Inf', 'V+Pot+Prs+Person-Number')],
+#	'PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
+#	'PRF': [('V+Inf', 'V+PrfPrc')],
+#	'GER': [('V+Inf', 'V+Ger')],
+#	'COND': [('V+Inf', 'V+Cond+Prs+Person-Number')],
+#	'IMPRT': [('V+Inf', 'V+Imprt+Person-Number')],
+#	'POT': [('V+Inf', 'V+Pot+Prs+Person-Number')],
 }
 
 VERB_FILTER_DEFINITION = ['stem', 'source']
@@ -279,13 +274,13 @@ VERB_FILTER_DEFINITION = ['stem', 'source']
 VTYPE_CONTEXT_CHOICES = (
 	('V-PRS', _('present')),
 	('V-PRT', _('past')),
-	('V-PRF', _('perfect')),
-	('V-GER', _('gerund')),
-	('V-COND', _('conditional')),
-	('V-IMPRT', _('imperative')),
-	('V-POT', _('potential')),
-	('V-MIX', _('mix')),
-	('TEST', _('test questions')),
+#	('V-PRF', _('perfect')),
+#	('V-GER', _('gerund')),
+#	('V-COND', _('conditional')),
+#	('V-IMPRT', _('imperative')),
+#	('V-POT', _('potential')),
+#	('V-MIX', _('mix')),
+#	('TEST', _('test questions')),
  )
 
 LEVEL_CHOICES = (
@@ -314,10 +309,9 @@ DERIVATION_CHOICES_CONTEXT = (
 )
 
 BOOK_CHOICES = (
-    ('all', _(u'Møde i Petersborg')),
-    ('l1', _('MiP 1-5')),
-    ('l2', _('MiP 1-12')),
-    ('l3', _('MiP 1-17')),
+    ('all', _(u'all')),
+    ('K1', _('Book 2')),
+    ('K2', _('Book 2')),
 )
 
 FREQUENCY_CHOICES = (
@@ -347,7 +341,7 @@ TRANS_CHOICES = (
 	('fkvnob', _('Kven to Norwegian')),
 	('nobfkv', _('Norwegian to Kven')),
 	('fkvfin', _('Kven to Finnish')),
-	('danfkv', _('Finnish to Kven')),
+	('finfkv', _('Finnish to Kven')),
 	('fkveng', _('Kven  to English')),
 	('engfkv', _('English to Kven')),
 )
@@ -362,32 +356,8 @@ SEMTYPE_CHOICES = (
     ('all', _('all')),
 )
 """
-	('KIN', _('family')),
     ('HUMAN', _('human')),
-    ('ANIMAL_FISH', _('animal/fish')),
-    ('BODY', _('body')),
     ('FOOD_DRINK', _('food/drink')),
-    ('TIME', _('time')),
-    ('CLOTHING', _('clothes')),
-    ('HEALTH', _('health')),
-    ('PLACE', _('place')),
-    ('PLACE_DOMESTIC', _('domestic place')),
-    ('TRAVELING', _('travel')),
-    ('WEATHER', _('weather')),
-    ('NATURE_PHENOMENA', _('nature')),
-    ('PLANT', _('plant')),
-    ('HANDICRAFT', _('handicraft')),
-    ('GRAMMAR_TERMINOLOGY', _('grammar terminology')),
-    ('EDUCATION', _('school/education')),
-    ('EXPRESSIONS', _('expressions')),
-    ('CHURCH', _('church')),
-    ('ABSTRACT_CONCEPTS', _('abstract')),
-    ('VERB1', _('easy verbs')),
-    ('VERB2', _('intermediate verbs')),
-    ('VERB3', _('difficult verbs')),
-    ('PRONOUN', _('pronoun')),
-    ('NAME', _('name')),
-    ('DIMINUTIVE', _('diminutive')),
     ('all', _('all')),
 )
 """
