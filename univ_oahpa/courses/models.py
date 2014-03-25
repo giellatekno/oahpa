@@ -410,6 +410,26 @@ class GoalParameter(models.Model):
     parameter = models.CharField(max_length=64)
     value = models.CharField(max_length=64)
 
+from univ_drill.models import Feedbackmsg, Feedbacktext
+
+class UserFeedbackLog(models.Model):
+    user = models.ForeignKey(User)
+    goal = models.ForeignKey(Goal, null=True, blank=True)
+
+    user_input = models.TextField()
+    correct_answer = models.TextField()
+
+    datetime = models.DateTimeField(auto_now_add=True)
+
+    feedback_texts = models.TextField(Feedbacktext)
+
+    # TODO: how much detailed info do we want on when the user clicked?
+    # TODO: methods for determining whether user has reached a given
+    # threshold for feedback levels
+
+    def get_user_feedback_level(self, user):
+        return '1'
+
 class UserActivityLog(models.Model):
     """ Tracking user activity, question/answer completion, and feedback
     use.
@@ -429,6 +449,8 @@ class UserActivityLog(models.Model):
     # indirectly contained in the Goal instance, so it may be that
     # anything else isn't needed.
     in_game = models.TextField()
+
+    # TODO: datetime?
 
 def create_activity_log_from_drill_logs(request, user, drill_logs, current_user_goal=False):
     # TODO: do it all in one commit.

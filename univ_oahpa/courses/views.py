@@ -528,16 +528,19 @@ def prepare_goal_params(rq=None):
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework import mixins
 
-from .models import Goal, GoalParameter
+from .models import Goal, GoalParameter, UserFeedbackLog
+
+class FeedbackLogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserFeedbackLog
+        fields = ('feedback_texts', 'user_input', 'correct_answer', 'datetime')
 
 class GoalParamSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = GoalParameter
         fields = ('parameter', 'value')
 
 # TODO: edit/put
-
 class GoalSerializer(serializers.ModelSerializer):
     begin_url = serializers.CharField(source='begin_url', read_only=True)
     params = GoalParamSerializer(many=True)
@@ -558,6 +561,17 @@ class GoalSerializer(serializers.ModelSerializer):
 
 from django.shortcuts import get_object_or_404
 
+class CanCreateAndUpdateFeedbackLog(permissions.BasePermission):
+
+    def has_permission(self, request, view, obj=None):
+        return True
+
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
+        return obj.user == request.user
+
 class CanCreateAndUpdateGoal(permissions.BasePermission):
 
     def has_permission(self, request, view, obj=None):
@@ -574,6 +588,19 @@ class CanCreateAndUpdateGoal(permissions.BasePermission):
         else:
             return obj.created_by == request.user
         return False
+
+class FeedbackLogView(viewsets.ModelViewSet):
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (CanCreateAndUpdateFeedbackLog, )
+    model = UserFeedbackLog
+    serializer_class = FeedbackLogSerializer
+
+    def pre_save(self, obj):
+        obj.user = self.request.user
+
+    def get_queryset(self):
+        user = self.request.user
+        return self.model.objects.filter(user=user)
 
 class GoalParametersView(viewsets.ModelViewSet):
     authentication_classes = (SessionAuthentication, BasicAuthentication)
