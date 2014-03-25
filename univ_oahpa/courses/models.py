@@ -212,14 +212,6 @@ class CourseRelationship(models.Model):
 GOAL_HELP_TEXT = _("""This is a plain-text description shown to students
 describing their goal.""")
 
-# from .views import prepare_goal_params
-# 
-# EXERCISE_TYPE_URL_BASES = [
-#     (s.get('label'), s.get('path'))
-#     for k, v in prepare_goal_params()[1]
-#     for s in v.get('subtypes')
-# ]
-
 class Goal(models.Model):
     """ This is a course goal object, which is connected to criteria.
     """

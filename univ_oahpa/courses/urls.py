@@ -23,11 +23,12 @@ urlpatterns = patterns('django.contrib.auth.views',
 from views import courses_main, instructor_student_detail, begin_course_goal, courses_goal_construction, courses_stats
 
 from rest_framework import routers
-from .views import UserStatsViewSet, GoalParametersView
+from .data_api import UserStatsViewSet, GoalParametersView, FeedbackLogView
 
 router = routers.DefaultRouter()
 router.register(r'stats', UserStatsViewSet)
 router.register(r'goals', GoalParametersView, base_name='params')
+router.register(r'feedback', FeedbackLogView)
 
 urlpatterns += patterns('univ_oahpa.courses.views',
     url(r'^goal/begin/(?P<goal_id>\d+)/$', begin_course_goal,
