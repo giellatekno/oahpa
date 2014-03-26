@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+  <q id="vprs1">
+    <qtype>V-PRS</qtype>
+    <question>
+      <text>Mitä SUBJ tekkee tänään</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="FAMILY"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Tänään SUBJ MAINV</text>
+      <element game='morfa' id="MAINV" task="yes">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <sem class="mACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+  <q id="vprt2">
+    <qtype>V-PRT</qtype>
+    <question>
+      <text>Mitä SUBJ teki eilen</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Eilen SUBJ MAINV</text>
+      <element game='morfa' id="MAINV" task="yes">
+        <grammar tag="V+Act+Ind+Prt+Sg3"/>
+        <sem class="mACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+</questions>
+
