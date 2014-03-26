@@ -264,6 +264,13 @@ class Goal(models.Model):
         else:
             return "User-defined <%s> - %s" % (unicode(self.created_by.username), self.short_name)
 
+    def user_completed(self, user):
+        goal_instance = self.usergoalinstance_set.filter(user=user)
+        if len(goal_instance) > 0:
+            return self.is_complete(goal_instance[0])
+        else:
+            return False
+
     def is_complete(self, user_goal_instance):
         import datetime
 

@@ -3,6 +3,7 @@
 <table class="course_goals">
 	<tr>
 		<th>&nbsp;</th>
+		<th>&nbsp;</th>
 		<th>Goal</th>
 		<th>Description</th>
 		<th>Progress</th>
@@ -13,6 +14,13 @@
         {% comment %}TODO: test if it's already in progress or
         been done and restyle, or sort by completed
         date? {% endcomment %}
+        <td>
+            {% if goal|complete_for:user %}
+                &#9734;
+            {% else %}
+                &nbsp;
+            {% endif %}
+        </td>
         <td>
         	{% if goal.usergoalinstance_set.all|goal_instances_for:user.username|length > 0 %}
         		<a class="begin_goal" href="{% url courses.views.begin_course_goal goal.id %}">Redo</a>

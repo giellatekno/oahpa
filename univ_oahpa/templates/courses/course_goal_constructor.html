@@ -19,7 +19,7 @@
         <br />
         <div id="delete_msg" ng-show="goal_deleted">
             <p class="lead">You successfully deleted the goal "<% goal.short_name %>".</p>
-            <button type="button" class="btn btn-info">Course overview</button>
+            <a type="button" class="btn btn-info" href="{{ URL_PREFIX }}/courses/">Course overview</a>
         </div>
         <div id="success_msg" ng-show="form_success">
             <p ng-hide="editing_existing" class="lead">You successfully created the goal "<% goal.short_name %>".</p>

@@ -2,7 +2,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect, HttpResponseForbidden, Http404
 
 from django.conf import settings
-from .models import Goal
+from .models import Goal, UserGoalInstance
 
 URL_PREFIX = settings.URL_PREFIX
 
@@ -291,10 +291,16 @@ def begin_course_goal(request, goal_id):
     if 'prev_new_game' in request.session:
         del request.session['prev_new_game']
 
-    request.session['question_set_count'] = 0
+    request.session['question_set_count'] = 1
     request.session['question_try_count'] = {}
     request.session['answered'] = {}
-    request.session['previous_exercise_params'] = False
+
+    try: del request.session['previous_exercise_params']
+    except: pass
+
+    try: del request.session['current_exercise_params']
+    except: pass
+
     request.session['prev_new_game'] = False
 
     # Check that the user has the goal

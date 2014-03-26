@@ -39,12 +39,12 @@
             <h2>Goal progress</h2>
             <ul ng-repeat="goal in results" ng-show="results">
                 <li><span class="stat_title">Round</span>:
-                    <span class="stat_value"><% current_set_count + 1%></span></h4>
+                    <span class="stat_value"><% current_set_count %></span></h4>
                 <li><span class="stat_title">Correct</span>:
                     <span class="stat_value"><% goal.progress * 100 %>%</span></h4>
                 <li ng-if="goal.is_complete" class="complete">Complete!</li>
                 <li ng-if="goal.is_complete">You can keep playing, or <a
-                        href="#">work on a new goal</a></li>
+                        href="/{{ URL_PREFIX }}/courses/">work on a new goal</a></li>
             </ul>
         </div>
     </div>

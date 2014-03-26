@@ -38,14 +38,22 @@
 
  * goal editing / submitting; include course possibility
 
+ * feedback to user that their progress was stopped because they changed the
+   settings or navigated away
+
  --
+
+ TODO: when editing a goal for a course, the associated course isn't
+    automatically populated in the form
+
+ TODO: update the course goal when it's complete, after last submit?
+    re-evaluate with each request to /stats/
+
+ TODO: fixtures for sample goals
 
  TODO: stem-type
 
  TODO: log feedback
-
- TODO: feedback to user in status thing that their progress was stopped because
- the page changed
 
  TODO: increment round if user doesn't answer at all but clicks on new
  set
@@ -99,14 +107,6 @@ Middleware:
 installed apps:
     'univ_oahpa.courses',
     'rest_framework',
-
-tokens?
-
-    from django.contrib.auth.models import User
-    from rest_framework.authtoken.models import Token
-
-    for user in User.objects.all():
-        Token.objects.get_or_create(user=user)
 
 # Oppsummering fra prosjektbeskrivelsen:
 

@@ -8,6 +8,11 @@ TODO: internationalization strings
 
 {% endcomment %}
 
+{% block extrajs %}
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
+{% endblock %}
+
 {% block imgprefix %}numra{% endblock %}
 
 {% block page_class %}fixed{% endblock %}
@@ -30,6 +35,17 @@ TODO: internationalization strings
 		<div class="instructor_course">
 			<h3>{{ course.identifier }} - {{ course.name }}</h3>
 			<p>{% trans "Course content is available online" %}: <a href="{{ course.site_link }}">{{ course.site_link }}</a></p>
+
+			{% if course.goal_set.all|length > 0 %}
+				{% with course.goal_set.all as goal_set %}
+				    {% include 'courses/goal_table_list.html' %}
+				{% endwith %}
+			{% else %}
+			    <p class="goal_note">You have not defined any goals for this course.</p>
+			{% endif %}
+			<div class="bootstrap-styles">
+			    <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_goal_construction %}">Create a goal</a>
+            </div>
 
 			<br />
 			<ul class="course_students">
