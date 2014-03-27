@@ -98,17 +98,14 @@ h2 {
 	letter-spacing: 1px;
 	font-family: Arial, sans-serif;
 	margin-bottom: .5em;
-	border-bottom: 1px solid #ccc;
 }
 
-h3 {
+#courses h3 {
 	font-size: 150%;
-	font-weight: lighter;
+	font-weight: light;
 	letter-spacing: 1px;
 	font-family: "Helvetica Neue", "Helvetica", Arial,  sans-serif;
-	padding-left: .75em;
 	margin-bottom: .25em;
-	border-bottom: 1px solid #ccc;
 }
 
 #page {
@@ -345,8 +342,8 @@ div#dialect_selection {
 
 .language_help {
 	position: absolute;
-	top: 21em;
-	right: 8em;
+	top: 1em;
+	right: -3.5em;
 }
 
 .language_help_frontpage {
@@ -711,6 +708,12 @@ span.incorrect input {
 	padding: 0 2em;
 }
 
+#courses #create_self_goal {
+    color: #FFF;
+    font-size: 110%;
+    margin-left: 1em;
+}
+
 #courses > p {
 	margin: .5em 0em;
 	width: 60%;
@@ -725,9 +728,31 @@ span.incorrect input {
 	font-weight: bold;
 }
 
-#courses h3 {
+#courses h3.course_name {
 	font-weight: bold ; 
-	font-size: 110% ;
+	font-size: 100% ;
+	margin-top: 1em;
+	margin-left: 0em !important;
+	border-bottom: none;
+	text-indent: 0 !important;
+}
+
+#courses .section_header {
+    margin: 1em 0 .5em 0;
+    font-variant: small-caps;
+    text-transform: lowercase;
+    color: #333;
+    font-size: 150%;
+}
+
+#courses .course_block {
+    margin-bottom: 2em;
+    padding-left: 1em;
+}
+
+#courses .course_block table {
+    margin-left: 0em;
+    margin-bottom: 1.5em;
 }
 
 #courses dl.course_progress {
@@ -760,7 +785,7 @@ span.incorrect input {
 }
 
 #courses .course_goals {
-    margin: 1.5em 1.5em;
+    margin: .5em 1.5em;
 }
 
 #courses .course_goals th {

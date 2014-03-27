@@ -125,6 +125,7 @@ function reveal_tooltip (event) {
 	return false; 
 }
 
+
 function reveal_feedback (event) {
 	/* Somehow JS seems to be thinking the <t /> node is the event target
 	   so, now we need to get the parent of the event that is a.feedback_link.
@@ -138,11 +139,6 @@ function reveal_feedback (event) {
 	$('div.language_help').hide()
 	$('.tooltip').hide();
 	$('#' + reveal_id).show();
-
-    // If the Google isn't with us, skip the rest.
-    // if (typeof _gaq !== "undefined" && _gaq !== null) {
-    // 	return false ;
-    // }
 
 	var feedback_event_desc = $('#' + reveal_id).html().replace(/\n/g, ' ').replace(/ [ ]*/g, ' ') ;
 
@@ -200,12 +196,7 @@ function reveal_feedback (event) {
     var google_event_args = ['_trackEvent', event_type, event_title, feedback_event_desc];
 
     _gaq.push(google_event_args)
-    //
-    // TODO: feedback tracking
-    //
-    // waiting to see some test events in analytics data to make sure it works, then will
-    // write the code
-    //
+
 	return false; 
 }
 

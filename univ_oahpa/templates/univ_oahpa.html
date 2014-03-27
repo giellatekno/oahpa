@@ -139,6 +139,7 @@
 
     {% block disable_form_start %}
 	    <form action="" method="post" id="gameform" name="gameform">
+            {% csrf_token %}
     {% endblock %}
 	
 	<div id="settings">
