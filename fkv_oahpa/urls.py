@@ -26,5 +26,5 @@ urlpatterns = patterns('',
 	url(r'^%s/dialect/$' % prefix, 'fkv_oahpa.conf.views.dialect'),
 	url(admin_url, include(admin.site.urls)),
 	# (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-	#url(r'^%s/openid/' % prefix, include('rus_oahpa.openid_provider.urls')),
+	#url(r'^%s/openid/' % prefix, include('fkv_oahpa.openid_provider.urls')),
 )

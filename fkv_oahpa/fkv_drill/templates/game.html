@@ -112,9 +112,6 @@
 			{% if form.pron %}<span class="pronoun">{{ form.pron }}</span>{% endif %}
 			{% if gametype != "sahka" or forloop.last %}
                 {{ form.answer }}
-                {% if settings.gametype == "bare" or settings.transtype == "nobrus" or settings.transtype == "danrus" or settings.transtype == "engrus" %}
-                    <span class="click-to-stress">Insert stress mark</span>
-                {% endif %}
 			{% endif %}
 			{% if form.pron_imp %}
                 <span class="pronoun">{{ form.pron_imp }}</span>
@@ -131,9 +128,6 @@
 		{% ifequal form.error "error" %}
 		    <img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
 		    {% if not show_correct %}
-                {% if settings.gametype == "bare" or settings.transtype == "nobrus" or settings.transtype == "danrus" or settings.transtype == "engrus" %}
-    			 <span class="click-to-stress">Insert stress mark</span>
-    			 {% endif %}
             
 			<!-- Feedback -->
 			{% if form.feedback %}

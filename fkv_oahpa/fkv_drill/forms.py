@@ -310,7 +310,7 @@ DERIVATION_CHOICES_CONTEXT = (
 
 BOOK_CHOICES = (
     ('all', _(u'all')),
-    ('K1', _('Book 2')),
+    ('K1', _('Book 1')),
     ('K2', _('Book 2')),
 )
 
@@ -340,10 +340,10 @@ VASTAS_NR_OF_TASKWORDS = (
 TRANS_CHOICES = (
 	('fkvnob', _('Kven to Norwegian')),
 	('nobfkv', _('Norwegian to Kven')),
-	('fkvfin', _('Kven to Finnish')),
-	('finfkv', _('Finnish to Kven')),
-	('fkveng', _('Kven  to English')),
-	('engfkv', _('English to Kven')),
+	#('fkvfin', _('Kven to Finnish')),
+	#('finfkv', _('Finnish to Kven')),
+	#('fkveng', _('Kven  to English')),
+	#('engfkv', _('English to Kven')),
 )
 
 NUMLANGUAGE_CHOICES = (
@@ -906,14 +906,15 @@ class OahpaQuestion(forms.Form):
 		forms = []
 		relaxings = []
 		#if hasattr(self, 'translang'): commented out these two lines, because otherwise relax was not working in Morfa
-		if self.translang == 'fkv': 
+		if self.translang == 'fkv': # caused a problem in Numra, as NumQuestion does not have the attribute translang 
 			# Relax spellings.
-			accepted_answers = [force_unicode(item) for item in accepted_answers]
-			forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
-			#print "relaxed forms: ", forms
-			# need to subtract legal answers and make an only relaxed list.
-			relaxings = [item for item in forms if force_unicode(item) not in accepted_answers]
-		elif self.gametype == 'leksa': # this applies only to Leksa
+			
+                        accepted_answers = [force_unicode(item) for item in accepted_answers]
+                        forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
+                        #print "relaxed forms: ", forms
+                        # need to subtract legal answers and make an only relaxed list.
+                        relaxings = [item for item in forms if force_unicode(item) not in accepted_answers]
+		if self.gametype == 'leksa': # this applies only to Leksa, was: elif
 			# PI: commented out at this stage
 			# # add infinitives as possible answers
 			if self.word.pos == 'V':
@@ -1357,6 +1358,8 @@ class NumQuestion(OahpaQuestion):
 		super(NumQuestion, self).__init__(*args, **kwargs)
 		wforms = []
 		self.relaxings = []
+                self.gametype = gametype
+                self.translang = 'fkv'
 
 		# Initialize variables
 		if gametype == "string":

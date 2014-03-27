@@ -1,4 +1,4 @@
-#!/home/rusoahpa/bin/python
+#!/home/fkv_oahpa/env/bin/python
 from django.core.management import execute_manager
 try:
     import settings # Assumed to be in the same directory.

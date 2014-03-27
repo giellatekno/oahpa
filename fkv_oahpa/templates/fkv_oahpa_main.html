@@ -160,11 +160,10 @@
 			<h3>{% trans "Online reference materials" %}</h3>
 			{% endcomment %}
 			<p class="intro" align="centre">{% trans "Oahpa is an internet program for learners of Kven. The program can be adjusted to different topics and levels of difficulty, and it generates new task sets automatically." %}</p>
-			{% comment %}
-			<p>{% trans "Oahpa is connected with online reference materials." %}</p>
-			{% endcomment %}
+			
+		<!--	<p>{% trans "Oahpa is connected with online reference materials." %}</p> -->
 			<ul class="linklist">
-            {% ifequal LANGUAGE_CODE "sme" %}
+           <!-- {% ifequal LANGUAGE_CODE "sme" %}
 				<li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "fi" %}
@@ -182,12 +181,12 @@
             {% ifequal LANGUAGE_CODE "sv" %}
                 <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
             {% endifequal %}
-<!--            {% ifequal LANGUAGE_CODE "fi" %}
+            {% ifequal LANGUAGE_CODE "fi" %} -->
 
-                <li><a href="http://victorio.uit.no/webdict/index_sjd-rus.html">{% trans "Russian" %}-{% trans "Norwegian" %} {% trans "web dictionary" %}</a></li>
-            {% else %}
+                <li><a href="http://gtweb.uit.no/webdict/index_fkv-nob.html">{% trans "Kven" %}-{% trans "Norwegian" %} {% trans "web dictionary" %}</a></li>
+            <!--{% else %}
 				<li><a href="http://victorio.uit.no/webdict/index_sjd-rus.html">{% trans "Norwegian" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
-            {% endifequal %}
+            {% endifequal %} -->
             <!--
             {% ifequal LANGUAGE_CODE "sme" %}
 				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.html">{% trans "Russian grammar" %}</a></li>

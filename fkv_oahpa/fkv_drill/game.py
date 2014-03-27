@@ -1090,7 +1090,7 @@ class NumGame(Game):
 		db_info['numeral_id'] = smart_str(random_num)
 
 		if self.settings['gametype'] == 'ord':
-			db_info['numeral_id'] += u"-й"
+			db_info['numeral_id'] += u"."
 
 		return db_info
 
@@ -1215,10 +1215,7 @@ class NumGame(Game):
 		for num in num_tmp:
 			line = num.strip()
 			# line = line.replace(' ','')
-			# PI: Russian needs the spaces, otherwise the
-			# program incorrectly designates
-			# 'пятьдесяттри' as the correct answer
-
+			
 			if line:
 				nums = line.split('\t')
 				num_list.append(nums[a].decode('utf-8'))
@@ -1452,7 +1449,7 @@ class QuizzGame(Game):
 		excl = ['exclude_' + self.settings['transtype']]
 
 		error = "QuizzGame.get_db_info: Database may be improperly loaded. \
-		Query for semantic type %s and book %s returned zero results." % ((semtypes, source))
+		Query for %s-%s, semantic type %s and book %s returned zero results." % ((source_language, target_language, semtypes, source))
 
 		# This query is fairly expensive, and must be run once per game-form generation. Thus,
 		# on the first generation it is run, and the results are stored to a list.
