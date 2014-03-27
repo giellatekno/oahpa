@@ -82,6 +82,8 @@ class Gameview(object):
 		request.session['set_completed'] = request.session['all_correct'] or \
 											game.show_correct in [1, True, 'True', 'true']
 
+		request.session['new_game'] = game.is_new_game
+
 	def __init__(self, settingsclass, gameclass):
 		self.SettingsClass = settingsclass
 		self.GameClass = gameclass
@@ -285,24 +287,24 @@ class Gameview(object):
 		# and check whether or not the answers are correct or incorrect.
 
 		game = self.GameClass(self.settings)
-		
+
 		self.set_gamename()
 
 		if is_new_game:
 			game = self.change_game_settings(game)
 			game.new_game()
+			game.is_new_game = True
 		else:
 			game = self.change_game_settings(game)
 			game.check_game(settings_form.data)
 			game.get_score(settings_form.data)
+			game.is_new_game = False
 
 			if 'test' in settings_form.data:
 				game.count = 1
 
 			if "show_correct" in settings_form.data:
 				game.show_correct = 1
-
-		
 
 		return self.context(request, game, settings_form)
 
@@ -686,7 +688,6 @@ class Morfaview(Gameview):
 				return ['pron_context', 'wordform_type']
 			if self.settings['pos'] == 'Num':
 				return ['num_context']
-
 
 	def context(self, request, game, settings_form):
 		self.register_logs(request, game, settings_form)
