@@ -28,8 +28,8 @@ echo "==================================================="
 ##
 
  echo "==================================================="
- echo "feeding db with $DPS/n_fkvnob.xml"
- $P install.py --file $DPS/n_fkvnob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>error.log
+ echo "feeding db with $DPS/N_fkvnob.xml"
+ $P install.py --file $DPS/N_fkvnob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>error.log
  echo " "
  echo "done"
  echo "==================================================="
@@ -57,15 +57,15 @@ echo "==================================================="
 # echo "==================================================="
 
  echo "==================================================="
- echo "feeding db with $DPS/a_fkvnob.xml"
- $P install.py --file $DPS/a_fkvnob.xml --tagfile $META/tags.txt --paradigmfile $META/a_paradigms.txt 2>>error.log
+ echo "feeding db with $DPS/A_fkvnob.xml"
+ $P install.py --file $DPS/A_fkvnob.xml --tagfile $META/tags.txt --paradigmfile $META/a_paradigms.txt 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
 
  echo "==================================================="
- echo "feeding db with $DPS/v_fkvnob.xml"
- $P install.py --file $DPS/v_fkvnob.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt 2>>error.log
+ echo "feeding db with $DPS/V_fkvnob.xml"
+ $P install.py --file $DPS/V_fkvnob.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
