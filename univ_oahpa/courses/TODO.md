@@ -43,6 +43,15 @@
 
  --
 
+ TODO: store old goal progress instances
+
+ TODO: add more columns to table?
+
+ TODO: some color for star
+
+ TODO: course goal summary for instructor for each student - show students'
+   individual goals on instructor view too
+
  TODO: when editing a goal for a course, the associated course isn't
     automatically populated in the form
 

@@ -1,9 +1,7 @@
 #!/bin/sh
 
 P="python2.7"
-GTHOME="/home/univ_oahpa/"
-LANGDIR="sme/"
-DATA=$GTHOME/$LANGDIR
+DATA="$GTHOME/ped/sme/"
 DPS="$DATA/src"
 META="$DATA/meta"
 DPN="$DATA/nobsme"
