@@ -75,7 +75,7 @@
 		    <xsl:value-of select="normalize-space(.)"/>
 		  </l>		  
 		</lg>
-		<xsl:copy-of select="../../../lg/sources" copy-namespaces="no"/> <!-- Was:  ./../../../sources but that referred to the wrong level and the sources were not copied to the reverted lexicon. -->
+		<xsl:copy-of select="../../../lg/sources" copy-namespaces="no"/> <!-- adjust path according to the input files -->
 		<mg>
 		  <xsl:copy-of select="../../semantics" copy-namespaces="no"/>
 		  <tg xml:lang="{$slang}">
