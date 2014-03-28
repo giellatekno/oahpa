@@ -171,16 +171,12 @@ def prepare_goal_params(rq=None):
                     'label': 'Morfa-S Verb',
                     'value': 'morfa_s_verb',
                     'path': '/morfas/v/',
-                    'conditional': [
-                        { 'key': 'vtype',
-                          'value': 'PRS',
-                          'params': ['something'],
-                        },
-                        { 'key': 'vtype',
-                          'value': 'PRT',
-                          'params': ['something_else'],
-                        },
-                    ],
+                    # 'conditional': [
+                    #     { 'key': 'vtype',
+                    #       'value': 'PRS',
+                    #       'params': ['vtype_context'],
+                    #     },
+                    # ],
                 },
                 {
                     'params': ['pron_type', 'proncase',],

@@ -212,6 +212,26 @@ class CourseRelationship(models.Model):
 GOAL_HELP_TEXT = _("""This is a plain-text description shown to students
 describing their goal.""")
 
+class CourseGoal(models.Model):
+    """ This is a grouping of goals connected to a course.
+
+    TODO: course goal evaluation for sub goals for user.
+    TODO: fixtures with default set that can be copied to another
+    course.
+
+    """
+
+    course = models.ForeignKey(Course, null=True, blank=True)
+    created_by = models.ForeignKey(User)
+    short_name = models.CharField(max_length=42)
+    description = models.TextField(help_text=GOAL_HELP_TEXT)
+
+    goals = models.ManyToManyField('Goal', related_name='goals')
+
+    def __unicode__(self):
+        return u"%s - %s" % (self.course, self.short_name)
+
+
 class Goal(models.Model):
     """ This is a course goal object, which is connected to criteria.
     """
@@ -381,7 +401,6 @@ class Goal(models.Model):
         }
 
         return result_args
-
 
 class UserGoalInstance(models.Model):
     user = models.ForeignKey(User)

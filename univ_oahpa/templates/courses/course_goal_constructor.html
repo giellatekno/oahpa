@@ -281,17 +281,46 @@
                                  ng-show="type.conditional">
 
                                 <div class="form-group">
-                                    <h4>Additional settings</h4>
 
                                     <div class="col-sm-10">
                                         <div ng-repeat="additional in type.conditional"
                                              ng-show="user_goal.params[additional.key] == additional.value">
 
+                                            <h4>Additional settings</h4>
                                              {# TODO: loop additional parameters #}
-                                            <p><% additional.key %></p>
-                                            <p><% additional.value %></p>
-                                            <p><% additional.params %></p>
+                                            <div ng-repeat="p in additional.params">
 
+                                            <div class="">
+                                                <p><% option_values[p].name %></p>
+                                            </div>
+
+                                            <!-- TODO: no value when not selected?
+                                                also, somehow tricky when selected
+                                                and unselected unselected values
+                                                need to not be stored
+                                            -->
+                                            {% comment %}
+                                            <input class="form-control"
+                                                    id="goal_correct_first_try"
+                                                    ng-if="option_values[p].boolean"
+                                                    name="user_goal.params[p]"
+                                                    ng-true-value="on"
+                                                    type="checkbox"
+                                                    ng-model="user_goal.params[p]"
+                                            >
+                                            {% endcomment %}
+
+                                            <select class="form-control"
+                                                    id="selectMainType"
+                                                    name="main_type"
+                                                    ng-if="option_values[p].select"
+                                                    ng-options="value as label for (value, label) in option_values[p].options"
+                                                    ng-model="user_goal.params[p]">
+
+                                                <option value="">Select a type</option>
+                                            </select>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

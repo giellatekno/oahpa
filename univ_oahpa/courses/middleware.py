@@ -62,6 +62,9 @@ class GradingMiddleware(object):
 
         from .models import Goal, UserGoalInstance
 
+        if not hasattr(request, 'session'):
+            return response
+
         if request.session.get('navigated_away', False):
             if request.session['navigated_away'] > 0:
                 request.session['navigated_away'] += 1

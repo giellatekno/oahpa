@@ -1,5 +1,15 @@
 from django.contrib import admin
-from models import UserGrade, UserGradeSummary, UserProfile, Course, Activity, Goal, GoalParameter
+
+from models import ( UserGrade
+                   , UserGradeSummary
+                   , UserProfile
+                   , Course
+                   , Activity
+                   , Goal
+                   , GoalParameter
+                   , CourseGoal
+                   )
+
 from models import CourseRelationship
 
 from django.db.models import Q
@@ -106,3 +116,4 @@ admin.site.register(Course, CourseAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Activity, ActivityAdmin)
 admin.site.register(Goal, GoalAdmin)
+admin.site.register(CourseGoal)
