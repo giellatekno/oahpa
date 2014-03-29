@@ -252,22 +252,33 @@ def instructor_group(user):
         return False
 
 @user_passes_test(instructor_group)
-def instructor_student_detail(request, uid):
+def instructor_student_detail(request, uid, cid):
     student = UserProfile.objects.get(user__id=uid)
     instructor = request.user.get_profile()
 
     instructor_courses = list([a.id for a in instructor.instructorships])
+    print instructor_courses
+    course_for_inst = [a for a in instructor_courses if a == long(cid)]
+    print course_for_inst
+
+    if len(course_for_inst) > 0:
+        course = course_for_inst[0]
+        course = Course.objects.get(id=course)
+    else:
+        course = False
+
     student_courses = list([a.id for a in student.courses])
 
     intersection = list(set(instructor_courses) & set(student_courses))
 
-    if len(intersection) == 0:
+    if len(intersection) == 0 or not course:
         error = 'Student not found.'
         return HttpResponseForbidden(error)
 
     template = 'courses/instructor_student_detail.html'
     c = {}
     c['student'] = UserProfile.objects.get(user__id=uid)
+    c['course'] = course
     return render_to_response(template,
                               c,
                               context_instance=RequestContext(request))

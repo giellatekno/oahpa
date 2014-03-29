@@ -43,8 +43,6 @@
 
  --
 
- TODO: course goal group model
-
  TODO: goals - ordering field, apart from alphabetic, instructors can define
  goal progression
 

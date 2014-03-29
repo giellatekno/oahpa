@@ -1,6 +1,8 @@
 {% extends 'univ_oahpa.html' %}
 {% load i18n %}
 {% load cache %}
+{% load goal_filters %}
+
 {% get_current_language as LANGUAGE_CODE %}
 
 {% comment %}
@@ -18,12 +20,29 @@ TODO: internationalization strings
 		<ul id="subnav">
 			<li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li>
 		</ul>
+		<h3>{{ course }}</h3>
 		<h2>{{ student }}</h2>
 
 		<ul>
 			<li>{% trans "last login" %}: {{ student.last_login }}</li>
 			<li>{% trans "login count" %}: {{ student.login_count }}</li>
 		</ul>
+
+		<div class="student_coursegoal_progress">
+		    <p>{{ student }} has progress in the following goals</p>
+			{% if course.coursegoal_set.all|length > 0 %}
+				{% for coursegoal in course.coursegoal_set.all %}
+				    {% if coursegoal|goals_with_progress:student|length > 0 %}
+				        <h3>{{ coursegoal.short_name }}</h3>
+				        {% with coursegoal|goals_with_progress:student as goal_set %}
+				            {% with student as user %}
+				                {% include 'courses/instructor_goal_table_list.html' %}
+				            {% endwith %}
+				        {% endwith %}
+				    {% endif %}
+				{% endfor %}
+			{% endif %}
+		</div>
 
 		<table class="grades">
 		<tr>

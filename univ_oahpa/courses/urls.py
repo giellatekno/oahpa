@@ -38,7 +38,7 @@ urlpatterns += patterns('univ_oahpa.courses.views',
         name="courses_goal_construction"),
     url(r'^stats/$', courses_stats, name="courses_stats"),
     url(r'^api/', include(router.urls)),
-    url(r'^(?P<uid>\d+)/$', instructor_student_detail),
+    url(r'^(?P<cid>\d+)/(?P<uid>\d+)/$', instructor_student_detail),
     url(r'^$', courses_main, name="courses_index"),
 )
 

@@ -8,6 +8,7 @@ from models import ( UserGrade
                    , Goal
                    , GoalParameter
                    , CourseGoal
+                   , CourseGoalGoal
                    )
 
 from models import CourseRelationship
@@ -111,9 +112,14 @@ class CourseAdmin(admin.ModelAdmin):
 class GoalAdmin(admin.ModelAdmin):
     inlines = [GoalParamAdmin]
 
+class CourseGoalGoalAdmin(admin.TabularInline):
+    model = CourseGoalGoal
+
+class CourseGoalAdmin(admin.ModelAdmin):
+    inlines = [CourseGoalGoalAdmin]
 
 admin.site.register(Course, CourseAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Activity, ActivityAdmin)
 admin.site.register(Goal, GoalAdmin)
-admin.site.register(CourseGoal)
+admin.site.register(CourseGoal, CourseGoalAdmin)

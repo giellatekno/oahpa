@@ -226,11 +226,18 @@ class CourseGoal(models.Model):
     short_name = models.CharField(max_length=42)
     description = models.TextField(help_text=GOAL_HELP_TEXT)
 
-    goals = models.ManyToManyField('Goal', related_name='goals')
+    # TODO: maybe progression should be defined in related model
+    # instead of many2many, so goals can be shared with different
+    # orderings
+
+    # goals = models.ManyToManyField('Goal', related_name='goals')
 
     def __unicode__(self):
         return u"%s - %s" % (self.course, self.short_name)
 
+class CourseGoalGoal(models.Model):
+    coursegoal = models.ForeignKey('CourseGoal', related_name="goals")
+    goal = models.ForeignKey('Goal')
 
 class Goal(models.Model):
     """ This is a course goal object, which is connected to criteria.

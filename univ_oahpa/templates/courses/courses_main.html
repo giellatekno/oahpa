@@ -62,7 +62,7 @@ TODO: link in user interface
 				                        {% for coursegoal in course.coursegoal_set.all %}
 				                            <h4>{{ coursegoal.short_name }}</h4>
 				                            <p class="goal_description">{{ coursegoal.description }}</p>
-				                            {% with coursegoal.goals.all as goal_set %}
+				                            {% with coursegoal|goals as goal_set %}
 				                                {% include 'courses/goal_table_list.html' %}
 				                            {% endwith %}
 				                        {% endfor %}

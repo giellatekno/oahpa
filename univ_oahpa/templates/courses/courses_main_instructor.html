@@ -58,7 +58,7 @@ TODO: internationalization strings
 			{% for student in course.students.all %}
 			    <tr>
 			        <td>
-			            <a href="/{{ URL_PREFIX }}/courses/{{ student.user.id }}">
+			            <a href="/{{ URL_PREFIX }}/courses/{{ course.id }}/{{ student.user.id }}">
 			                {{ student.user.username }}
 			            </a>
 			        </td>
