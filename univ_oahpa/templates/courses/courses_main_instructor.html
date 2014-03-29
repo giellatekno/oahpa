@@ -48,38 +48,25 @@ TODO: internationalization strings
             </div>
 
 			<br />
-			<ul class="course_students">
+			<h4>Students</h4>
+			<table class="course_students course_goals">
+			    <tr>
+			        <th></th>
+			        <th>{% trans "last login" %}</th>
+			        <th>{% trans "login count" %}</th>
+			    </tr>
 			{% for student in course.students.all %}
-			<li><strong class="student_name">{{ student.user.username }}</strong>
-				<ul class="row">
-					<li>{% trans "last login" %}: {{ student.last_login }}</li>
-					<li>{% trans "login count" %}: {{ student.login_count }}</li>
-				</ul>
-				{% if student.grades %}
-				<table class="grades">
-				<tr>
-					{# TODO: padding here is not working #}
-					<th>{% trans "exercise" %}&nbsp;</th>
-					<th>{% trans "average" %}&nbsp;</th>
-					<th>{% trans "minimum" %}&nbsp;</th>
-					<th>{% trans "maximum" %}&nbsp;</th>
-					<th>{% trans "game count" %}</th>
-				</tr>
-				{% for grade in student.grades|dictsort:"game_name"|slice:":5" %}
-				<tr class="{% cycle "even" "odd" %}">
-					<td>{{ grade.game_name }}</td>
-					<td>{{ grade.average }}</td>
-					<td>{{ grade.minimum }}</td>
-					<td>{{ grade.maximum }}</td>
-					<td>{{ grade.count }}</td>
-				</tr>
-				{% endfor %}
-				</table>
-				<p><a href="/{{ URL_PREFIX }}/courses/{{ student.user.id }}">{% trans "More information about this student" %}.</a></p>
-				{% endif %}
-			</li>
+			    <tr>
+			        <td>
+			            <a href="/{{ URL_PREFIX }}/courses/{{ student.user.id }}">
+			                {{ student.user.username }}
+			            </a>
+			        </td>
+					<td>{{ student.last_login }}</td>
+					<td>{{ student.login_count }}</td>
+			    </tr>
 			{% endfor %}
-			</ul>
+			</table>
 		</div>
 		{% endfor %}
 		{# endcache #}
