@@ -20,6 +20,9 @@ def goals(coursegoal):
     """ Return a list of goals, skipping the related thing. """
     return (c.goal for c in coursegoal.goals.all())
 
+@register.filter(name='cumulative_progress')
+def cumulative_progress(coursegoal, user):
+    return coursegoal.progress_for(user)
 
 @register.filter(name='goals_with_progress')
 def goals_with_progress(coursegoal, student):

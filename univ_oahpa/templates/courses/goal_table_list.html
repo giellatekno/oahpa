@@ -22,12 +22,10 @@
             {% endif %}
         </td>
         <td>
-            {% if hide_begin_link %}
-                {% if goal.usergoalinstance_set.all|goal_instances_for:user.username|length > 0 %}
-                    <a class="begin_goal" href="{% url courses.views.begin_course_goal goal.id %}">Redo</a>
-                {% else %}
-                    <a class="begin_goal" href="{% url courses.views.begin_course_goal goal.id %}">Begin!</a>
-                {% endif %}
+            {% if goal.usergoalinstance_set.all|goal_instances_for:user.username|length > 0 %}
+                <a class="begin_goal" href="{% url courses.views.begin_course_goal goal.id %}">Redo</a>
+            {% else %}
+                <a class="begin_goal" href="{% url courses.views.begin_course_goal goal.id %}">Begin!</a>
             {% endif %}
         </td>
         <td>{{ goal.short_name }}</td>

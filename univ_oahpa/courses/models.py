@@ -235,6 +235,13 @@ class CourseGoal(models.Model):
     def __unicode__(self):
         return u"%s - %s" % (self.course, self.short_name)
 
+    def progress_for(self, user):
+        ugis = sum( [list(g.goal.usergoalinstance_set.filter(user=user)) for g in self.goals.all()]
+                  , []
+                  )
+        return ','.join( map(str, [ugi.progress for ugi in ugis] ) )
+
+
 class CourseGoalGoal(models.Model):
     coursegoal = models.ForeignKey('CourseGoal', related_name="goals")
     goal = models.ForeignKey('Goal')
