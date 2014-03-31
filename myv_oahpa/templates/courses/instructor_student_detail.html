@@ -1,4 +1,4 @@
-{% extends 'univ_oahpa.html' %}
+{% extends 'myv_oahpa.html' %}
 {% load i18n %}
 {% load cache %}
 {% load goal_filters %}
@@ -18,7 +18,7 @@ TODO: internationalization strings
 	{# Add blocktrans and trans tags #}
 	<div id="courses">
 		<ul id="subnav">
-			<li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li>
+			<li><a href="{% url myv_oahpa.courses.urls.logout %}">Log out</a></li>
 		</ul>
 		<h3>{{ course }}</h3>
 		<h2>{{ student }}</h2>

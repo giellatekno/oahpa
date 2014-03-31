@@ -1,1 +1,1 @@
-﻿ALTER TABLE `univ_drill_log` ADD COLUMN `username` varchar(64) ;
+﻿ALTER TABLE `myv_drill_log` ADD COLUMN `username` varchar(64) ;

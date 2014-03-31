@@ -1,4 +1,4 @@
-{% extends "univ_oahpa.html" %}
+{% extends "myv_oahpa.html" %}
 {% load i18n %} 
 
 {# clear sidebar #}
@@ -12,12 +12,12 @@
 {% endif %}
 
 {% if user.is_authenticated %}
-<p>{% trans "You are currently logged in." %} <a href="{% url univ_oahpa.courses.urls.logout %}">{% trans "Log out?" %}</a></p>
+<p>{% trans "You are currently logged in." %} <a href="{% url myv_oahpa.courses.urls.logout %}">{% trans "Log out?" %}</a></p>
 {% else %}
 <p>{% trans "Please log in to continue." %}</p>
 {% endif %}
 
-<form method="post" action="{% url univ_oahpa.courses.urls.login %}">
+<form method="post" action="{% url myv_oahpa.courses.urls.login %}">
 {% csrf_token %}
 <table>
 <tr>

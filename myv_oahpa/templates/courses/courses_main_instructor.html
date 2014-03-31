@@ -1,4 +1,4 @@
-{% extends 'univ_oahpa.html' %}
+{% extends 'myv_oahpa.html' %}
 {% load i18n %}
 {% load cache %}
 {% get_current_language as LANGUAGE_CODE %}
@@ -21,7 +21,7 @@ TODO: internationalization strings
 	{# Add blocktrans and trans tags #}
 	<div id="courses">
 		<ul id="subnav">
-			{#  <li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li> #}
+			{#  <li><a href="{% url myv_oahpa.courses.urls.logout %}">Log out</a></li> #}
 			{% if user.is_staff %}
 			<li><a href="/{{ URL_PREFIX }}/courses/?student_view=True">{% trans "Grade summary" %}</a></li>
 			<li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
