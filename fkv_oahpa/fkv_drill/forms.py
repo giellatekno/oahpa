@@ -130,13 +130,14 @@ PRONOUN_SUBCLASSES = (
 )
 
 CASE_CONTEXT_CHOICES = (
-#	('N-NOM-PL', _('plural')),
-	('N-PAR', _('partitive')),
-#	('N-ACC', _('accusative')),
-#	('N-GEN', _('genitive')),
-#	('N-ILL', _('illative')),
-#	('N-COM', _('comitative')),
-#	('N-ESS', _('essive')),
+   # ('N-GEN', _('Genitive')),
+    ('N-PAR', _('Partitive')),
+    #('N-ILL', _('Illative')),
+    #('N-INE', _('Inessive')),
+    #('N-ELA', _('Elative')),
+    #('N-ADE', _('Adessive')),
+    #('N-ABL', _('Ablative')),
+    #('N-ALL', _('Allative')),
 #	('N-MIX', _('mix')),
 )
 
@@ -169,13 +170,14 @@ WORDFORM_TYPE_CHOICES = (
 ADJCASE_CHOICES = (
 	('NOMPL', _('plural')),
 	('ATTR', _('attributive')),
-	('N-ACC', _('accusative')),
-	('N-ILL', _('illative')),
-	('N-LOC', _('locative')),
-	('N-COM', _('comitative')),
-	('N-GEN', _('genitive')),
-	('N-ESS', _('essive')),
-)
+	('A-GEN', _('Genitive')),
+    ('A-PAR', _('Partitive')),
+    ('A-ILL', _('Illative')),
+    ('A-INE', _('Inessive')),
+    ('A-ELA', _('Elative')),
+    ('A-ADE', _('Adessive')),
+    ('A-ABL', _('Ablative')),
+    ('A-ALL', _('Allative')),)
 
 ADJECTIVE_QUESTION_ANSWER = {
 	# gametype			question		answer
@@ -343,10 +345,10 @@ VASTAS_NR_OF_TASKWORDS = (
 TRANS_CHOICES = (
 	('fkvnob', _('Kven to Norwegian')),
 	('nobfkv', _('Norwegian to Kven')),
-	#('fkvfin', _('Kven to Finnish')),
-	#('finfkv', _('Finnish to Kven')),
-	#('fkveng', _('Kven  to English')),
-	#('engfkv', _('English to Kven')),
+	('fkvfin', _('Kven to Finnish')),
+	('finfkv', _('Finnish to Kven')),
+	('fkveng', _('Kven  to English')),
+	('engfkv', _('English to Kven')),
 )
 
 NUMLANGUAGE_CHOICES = (
@@ -830,8 +832,8 @@ class OahpaSettings(forms.Form):
 					'pron_type': 'Pers',
 					'proncase' : 'N-NOM', # Need a new default case here
 					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
-					'case_context' : 'N-NOM',
-					'vtype_context' : 'V-PRS',
+					'case_context' : 'N-PAR',
+					'vtype_context' : 'MAINV',
 					'pron_context' : 'P-PERS',
 					'num_context' : 'NUM-ATTR',
 					'num_level' : '1',
@@ -908,16 +910,16 @@ class OahpaQuestion(forms.Form):
 		self.is_tcomm = ""
 		forms = []
 		relaxings = []
-		#if hasattr(self, 'translang'): commented out these two lines, because otherwise relax was not working in Morfa
-		if self.translang == 'fkv': # caused a problem in Numra, as NumQuestion does not have the attribute translang 
-			# Relax spellings.
+		if hasattr(self, 'translang'): # commented out these two lines, because otherwise relax was not working in Morfa
+			if self.translang == 'fkv': # caused a problem in Numra, as NumQuestion does not have the attribute translang 
+				# Relax spellings.
 			
-                        accepted_answers = [force_unicode(item) for item in accepted_answers]
-                        forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
-                        #print "relaxed forms: ", forms
-                        # need to subtract legal answers and make an only relaxed list.
-                        relaxings = [item for item in forms if force_unicode(item) not in accepted_answers]
-		if self.gametype == 'leksa': # this applies only to Leksa, was: elif
+				accepted_answers = [force_unicode(item) for item in accepted_answers]
+				forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
+                                #print "relaxed forms: ", forms
+				# need to subtract legal answers and make an only relaxed list.
+				relaxings = [item for item in forms if force_unicode(item) not in accepted_answers]
+		if (hasattr(self, 'gametype') and self.gametype == 'leksa'): # this applies only to Leksa, was: elif
 			# PI: commented out at this stage
 			# # add infinitives as possible answers
 			if self.word.pos == 'V':
@@ -1589,7 +1591,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 	"""
 
 	select_words = select_words
-	qtype_verbs = set(['V-PRS', 'V-PRT', 'V-COND','V-IMPRT', 'TEST'])
+	qtype_verbs = set(['MAINV', 'V-PRS', 'V-PRT', 'V-COND','V-IMPRT', 'TEST']) # added MAINV for fkv
 
 	def generate_fields(self,answer_size, maxlength):
 		self.fields['answer'] = forms.CharField(max_length = maxlength, \
@@ -1603,6 +1605,8 @@ class ContextMorfaQuestion(OahpaQuestion):
 		self.init_variables("", userans_val, [])
 		self.lemma = ""
 		self.dialect = dialect
+		self.translang = 'fkv'
+		self.gametype = 'morfac' # not sure if this is ok
 
 		qtype=question.qtype
 		if qtype in self.qtype_verbs:

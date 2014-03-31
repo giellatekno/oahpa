@@ -954,7 +954,7 @@ class Words(object):
 					  	   (g.get('Grade')=="Comp" or g.get('Grade')=="Superl"):
 						continue
 
-					tag_kwargs = {  # Commented out some to get installation of the database to work at any price.
+					tag_kwargs = { 
 						'string':			f.tags,
 						'pos':				g.get('Wordclass', ""),
 						'number':			g.get('Number',""),
