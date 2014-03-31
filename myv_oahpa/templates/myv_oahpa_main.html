@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	    <title>{% block title %}{% endblock %}</title>
+		
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main.css"/>
+		<!--[if gte IE 7]>
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/ie_fixes.css"/>
+		<![endif]-->
+		
+		{% comment %}
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/mobile.css"/>
+		{% endcomment %}
+		{% block main_js %}
+		<script src="{{ MEDIA_URL }}/js/jquery-1.6.4.min.js" type="text/javascript"></script>
+		<script src="{{ MEDIA_URL }}/js/main.js" type="text/javascript"></script>
+		{% endblock %}
+		{% block extracss %}
+		{% endblock %}
+
+		{% block extrajs %}
+		{% endblock %}
+
+		<!--[if lt IE 7.]>
+		<script defer type="text/javascript" src="{{ MEDIA_URL }}/js/pngfix.js"></script>
+		<![endif]-->
+	</head>
+
+	{% load i18n %}
+    {% load trans_to %}
+    {{ lang_switch }}			
+
+<body class="{% block bodyclass %}main{% endblock %}">
+	<div id="page" class="{% block pageclass %}{% endblock %}">
+		<div id="headerimg"><a href="/{{ URL_PREFIX }}/"><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!"/></a></div>
+		<a class="hide" href="#content">Skip to content</a>
+		
+        <div id="language_options">
+		{% block language_select %}
+		
+			{% get_current_language as LANGUAGE_CODE %}
+			<form action="/{{ URL_PREFIX }}/i18n/setlang/" method="post" name="newlang">
+				<dl>
+					<dt><label for="language_select" class="interface">{% trans_to "Interface language" "myv" %}<span class="invisible">{% trans "Interface language" %}</span></label></dt>
+					<dd>
+						<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
+						<select id="language_select" name="language" onChange="javascript:this.form.submit();">
+						
+						{% ifequal LANGUAGE_CODE "no" %}
+							<option value="no" selected="selected">Norsk</option>
+						{% else %}
+							<option value="no">Norsk</option>
+						{% endifequal %}
+						
+						{% ifequal LANGUAGE_CODE "myv" %}
+							<option value="myv" selected="selected">Эрзя</option>
+						{% else %}
+							<option value="myv">Эрзя</option>
+						{% endifequal %}
+						
+						{% ifequal LANGUAGE_CODE "en" %}
+							<option value="en" selected="selected">English</option>
+						{% else %}
+							<option value="en">English</option>
+						{% endifequal %}
+
+						{% ifequal LANGUAGE_CODE "sv" %}
+							<option value="sv" selected="selected">Svenska</option>
+						{% else %}
+							<option value="sv">Svenska</option>
+						{% endifequal %}
+							  
+						{% ifequal LANGUAGE_CODE "fi" %}
+						 	<option value="fi" selected="selected">Suomi</option> 
+						{% else %}
+						 	<option value="fi">Suomi</option> 
+						{% endifequal %}
+						 
+					</select>
+					</dd>
+				</dl>
+				<input type="submit" class="hide" value="submit" />
+			</form>
+			<form action="/{{ URL_PREFIX }}/dialect/" method="post">
+				<dl>
+					<dt><label for="dialect" class="interface">{% trans_to "Northern Sami dialect" "myv" %}<span class="invisible">{% trans "Northern Sami dialect" %}</span></label></dt>
+					<dd>
+						<input name="next" type="hidden" value="/{{ URL_PREFIX }}/" />
+						<select name="dialect" onChange="javascript:this.form.submit();">
+						{% if dialect %}
+							{% ifequal dialect "GG" %}
+								<option value="GG" selected="selected">{% trans 'GG' %}</option>
+								<option value="KJ">{% trans 'KJ' %}</option>
+							{% else %}
+								<option value="GG">{% trans 'GG' %}</option>
+								<option value="KJ" selected="selected">{% trans 'KJ' %}</option>
+							{% endifequal %}  
+						{% else %}
+							<option value="GG">{% trans 'GG' %}</option>
+							<option value="KJ">{% trans 'KJ' %}</option>
+						{% endif %}
+					</select>
+					</dd>
+				</dl>
+				<input type="submit" class="hide" value="submit" />
+			</form>
+		
+		{% endblock %}
+        </div>
+		
+		<div id="header">
+			{% block header_content %}
+			<h1><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!" /></h1>
+			<h2>Bures boahtin!</h2>
+			{% endblock %}
+		</div>
+
+		<div id="content">
+			{% block main_content %}
+<!---			<p align="center"><b><span style="color: #993366">Hjelp oss å utvikle Oahpa – svar på et lite <span style="color: #9933FF"><a href="http://kursa.oahpa.no/2012/03/27/sporreskjema/">spørreskjema </a></span>om bruk av noen av programmene.</span></b></p>
+			<hr color="#CCCCCC">  --->
+			<ul id="games_menu">
+                <li class="game">
+					<a href="{% url morfa_s.noun %}">
+						<span>MORFA-S</span><br />
+						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-S" /><br />
+						<span class="interface">{% trans_to "Practise morphology" "myv" %}<span class="invisible">{% trans "Practise morphology" %}</span></span>
+					</a>
+				</li>
+				
+                <li class="game">
+					<a href="{% url vasta_s %}">
+						<span>VASTA</span><br />
+						<img src="{{ MEDIA_URL }}/images/vasta.png" alt="VASTA" /><br />
+						<span class="interface">{% trans_to "Answer to questions" "myv" %}<span class="invisible">{% trans "Answer to questions" %}</span></span>
+					</a>
+				</li>
+				<li class="game">
+					<a href="{% url leksa %}">
+						<span>LEKSA</span><br />
+						<img src="{{ MEDIA_URL }}/images/leksa.png" alt="LEKSA" /><br />
+						<span class="interface">{% trans_to "Words and translations" "myv" %}<span class="invisible">{% trans "Words and translations" %}</span></span>
+					</a>
+				</li>
+			</ul>
+			
+			<ul id="games_menu">
+
+				<li class="game">
+                    <a href="{% url morfa_c.noun %}">
+						<span>MORFA-C</span><br />
+						<img src="{{ MEDIA_URL }}/images/morfac.png" alt="MORFA-C" /><br />
+						<span class="interface">{% trans_to "Practise morphology in context" "myv" %}<span class="invisible">{% trans "Practise morphology in context" %}</span></span>
+					</a>
+				</li>
+				<li class="game">
+                    <a href="{% url sahka %}">
+						<span>SAHKA</span><br />
+						<img src="{{ MEDIA_URL }}/images/sahka.png" alt="SAHKA" /><br />
+						<span class="interface">{% trans_to "Dialogue game" "myv" %}<span class="invisible">{% trans "Dialogue game" %} </span></span>
+					</a>
+				</li>
+                <li class="game">
+                    <a href="{% url numra %}">
+						<span>NUMRA</span><br />
+						<img src="{{ MEDIA_URL }}/images/numra.png" alt="NUMRA" /><br />
+						<span class="interface">{% trans_to "Practise numerals" "myv" %}<span class="invisible">{% trans "Practise numerals" %}</span></span>
+					</a>
+                </li>
+			</ul>
+			{% comment %}
+			<h3><t class="interface">{% trans_to "Online reference materials" "myv" %}<span class="invisible">{% trans "Online reference materials" %}</span></t></h3>
+			{% endcomment %}
+			<p class="intro interface">{% trans_to "Oahpa is an internet program for youth and grownups learning Erzya. The program can be adjusted to different themes and levels of difficulty, and it generates new task sets automatically." "myv" %}<span class="invisible" width="400">{% trans "Oahpa is an internet program for youth and grownups learning Erzya. The program can be adjusted to different themes and levels of difficulty, and it generates new task sets automatically." %}</span></p>
+			{% comment %}
+			<p class="interface">{% trans_to "Oahpa is connected with online reference materials." "myv" %}<span class="invisible">{% trans "Oahpa is connected with online reference materials." %}</span></p>
+			{% endcomment %}
+			<ul class="linklist">
+           {% ifequal LANGUAGE_CODE "myv" %}
+				<li><a href="http://oahpa.no/myv/useoahpa/OAHPAveiledning.html" class="interface">{% trans_to "Veiledning" "myv" %}<span class="invisible">{% trans "Veiledning" %}</span></a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "fi" %}
+                <li><a href="http://oahpa.no/myv/useoahpa/OAHPAveiledning.fin.html" class="interface">{% trans_to "Veiledning" "myv" %}<span class="invisible">{% trans "Veiledning" %}</span></a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "en" %}
+                <li><a href="http://oahpa.no/myv/useoahpa/OAHPAveiledning.eng.html" class="interface">{% trans_to "Veiledning" "myv" %}<span class="invisible">{% trans "Veiledning" %}</span></a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "no" %}
+                <li><a href="http://oahpa.no/myv/useoahpa/OAHPAveiledning.nob.html" class="interface">{% trans_to "Veiledning" "myv" %}<span class="invisible">{% trans "Veiledning" %}</span></a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "sv" %}
+                <li><a href="http://oahpa.no/myv/useoahpa/OAHPAveiledning.nob.html" class="interface">{% trans_to "Veiledning" "myv" %}<span class="invisible">{% trans "Veiledning" %}</span></a></li>
+            {% endifequal %}
+        {% ifequal LANGUAGE_CODE "fi" %}
+            <li><a target="_blank" href="http://valks.oahpa.no/myv/fin" class="interface">{% trans_to "Erzya" "myv" %}-{% trans_to "Finnish" "myv" %} {% trans_to "dictionary" "myv" %}<span class="invisible">{% trans "Erzya" %}-{% trans "Finnish" %} {% trans "dictionary" %}</span></a></li>
+        {% else %}
+            <li><a target="_blank" href="http://valks.oahpa.no/myv/nob" class="interface">{% trans_to "Erzya" "myv" %}-{% trans_to "Norwegian" "myv" %} {% trans_to "dictionary" "myv" %}<span class="invisible">{% trans "Erzya" %}-{% trans "Norwegian" %} {% trans "dictionary" %}</span></a></li>
+        {% endifequal %}
+        {% ifequal LANGUAGE_CODE "myv" %}
+            <li><a target="_blank" href="http://oahpa.no/myv/gramm/grammatihkka.html" class="interface">{% trans_to "Erzya grammar" "myv" %}<span class="invisible">{% trans "Erzya grammar" %}</span></a></li>
+        {% endifequal %}
+        {% ifequal LANGUAGE_CODE "fi" %}
+            <li><a target="_blank" href="http://oahpa.no/myv/gramm/grammatihkka.html" class="interface">{% trans_to "Erzya grammar" "myv" %}<span class="invisible">{% trans "Erzya grammar" %}</span></a></li>
+        {% endifequal %}
+        {% ifequal LANGUAGE_CODE "en" %}
+            <li><a target="_blank" href="http://oahpa.no/myv/gramm/grammatihkka.eng.html" class="interface">{% trans_to "Erzya grammar" "myv" %}<span class="invisible">{% trans "Erzya grammar" %}</span></a></li>
+        {% endifequal %}
+        {% ifequal LANGUAGE_CODE "no" %}
+            <li><a target="_blank" href="http://oahpa.no/myv/gramm/grammatihkka.nob.html" class="interface">{% trans_to "Erzya grammar" "myv" %}<span class="invisible">{% trans "Erzya grammar" %}</span></a></li>
+        {% endifequal %}
+        {% ifequal LANGUAGE_CODE "sv" %}
+            <li><a target="_blank" href="http://oahpa.no/myv/gramm/grammatihkka.nob.html" class="interface">{% trans_to "Erzya grammar" "myv" %}<span class="invisible">{% trans "Erzya grammar" %}</span></a></li>
+        {% endifequal %}
+            <li><a target="_blank" href="http://giellatekno.uit.no/ped/oahpapublications.html" class="interface">Research papers</a></li>
+			</ul>
+
+			<p><t class="interface">{% trans_to "Are you visiting this site as part of a course?" "myv" %}<span class="invisible">{% trans "Are you visiting this site as part of a course?" %}</span></t> <a href="{% url courses.views.courses_main %}" class="interface">{% trans_to "Log in here" "myv" %}<span class="invisible">{% trans "Log in here" %}</span></a></p>
+			{% endblock %}
+		</div>
+		
+		<div id="footer">
+			<div id="copyright">
+			{% block deeplink %}
+			{% if deeplink %}
+			<div id="deeplink">
+				<a href="{{ deeplink }}" class="interface" style="color:#0000FF">{% trans_to 'Link to this exercise' "myv" %}<span class="invisible">{% trans 'Link to this exercise' %}</span></a>
+			</div>
+			{% endif %}
+			{% endblock %}
+
+			  <p> <t class="interface">
+				  {% trans_to "Copyright 2014 Universitetet i Troms&oslash; " "myv" %}<span class="invisible">{% trans "Copyright 2013 Universitetet i Troms&oslash; " %}</span></t><br />
+			{% trans "Contact " %}&nbsp;oahpa@hum.uit.no</p>
+			</div>
+            {% block tooltip_help %}
+            <div class="language_help_frontpage">
+    <a class="helptext" href="#"><!--<img src="/univ_oahpa/media/images/littleman.png" alt="HELP"/></br>-->{% trans "HELP" %}<span class="shortinfo">{% trans "To get the translation of the user interface text to " %} 
+    {% for lc,la in LANGUAGES %}
+        {% ifequal lc LANGUAGE_CODE %} {% trans la|lower %}{% endifequal %}
+    {% endfor %}
+    {% trans "hold down the [Alt] key while pointing at the text with the mouse." %}</span></a>
+            </div>
+            {% endblock %} 
+		</div>        
+	</div>
+	{% include 'google_analytics_snippet.html' %}
+    </body>
+</html>
