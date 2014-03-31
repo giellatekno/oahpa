@@ -1,0 +1,72 @@
+{% extends 'univ_oahpa.html' %}
+{% load i18n %}
+{% load cache %}
+{% load goal_filters %}
+
+{% get_current_language as LANGUAGE_CODE %}
+
+{% comment %}
+TODO: internationalization strings
+
+{% endcomment %}
+
+{% block imgprefix %}numra{% endblock %}
+
+{% block page_class %}fixed{% endblock %}
+
+{% block content %}
+	{# Add blocktrans and trans tags #}
+	<div id="courses">
+		<ul id="subnav">
+			<li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li>
+		</ul>
+		<h3>{{ course }}</h3>
+		<h2>{{ student }}</h2>
+
+		<ul>
+			<li>{% trans "last login" %}: {{ student.last_login }}</li>
+			<li>{% trans "login count" %}: {{ student.login_count }}</li>
+		</ul>
+
+		<div class="student_coursegoal_progress">
+		    <p>{{ student }} has progress in the following goals</p>
+			{% if course.coursegoal_set.all|length > 0 %}
+				{% for coursegoal in course.coursegoal_set.all %}
+				    {% if coursegoal|goals_with_progress:student|length > 0 %}
+				        <h3>{{ coursegoal.short_name }}</h3>
+				        {% with coursegoal|goals_with_progress:student as goal_set %}
+				            {% with student as user %}
+				                {% include 'courses/instructor_goal_table_list.html' %}
+				            {% endwith %}
+				        {% endwith %}
+				    {% endif %}
+				{% endfor %}
+			{% endif %}
+		</div>
+
+		<table class="grades">
+		<tr>
+			{# TODO: padding here is not working #}
+			<th>{% trans "exercise" %}&nbsp;</th>
+			<th>{% trans "average" %}&nbsp;</th>
+			<th>{% trans "minimum" %}&nbsp;</th>
+			<th>{% trans "maximum" %}&nbsp;</th>
+			<th>{% trans "game count" %}</th>
+		</tr>
+
+		{% for grade in student.grades|dictsort:"game_name" %}
+		<tr class="{% cycle "even" "odd" %}">
+			<td>{{ grade.game_name }}</td>
+			<td>{{ grade.average }}</td>
+			<td>{{ grade.minimum }}</td>
+			<td>{{ grade.maximum }}</td>
+			<td>{{ grade.count }}</td>
+		</tr>
+		{% endfor %}
+		</table>
+	</div>
+{% endblock %}
+
+{# vim: set ts=4 sw=4 tw=0 syntax=htmldjango : #}
+
+
