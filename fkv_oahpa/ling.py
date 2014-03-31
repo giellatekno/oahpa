@@ -194,7 +194,7 @@ class Paradigm:
 				print >> STDERR, ' * Error on line: %s' % line
 				sys.exit()
 			self.paradigms[pos].append(line)
-			print >> STDERR, '%s paradigm: %s' % (pos,self.paradigms[pos])
+			# print >> STDERR, '%s paradigm: %s' % (pos,self.paradigms[pos])
 
 	def create_paradigm_no_gen(self, lemma, pos, baseform, wordforms):
 		""" Creates paradigm objects as does create_paradigm, but using data
@@ -343,7 +343,7 @@ class Paradigm:
 		lookup_dictionary = {}
 			
 		for line in lookups.split('\n\n'):
-			print >> STDOUT, 'line in lookups: %s' % line
+			# print >> STDOUT, 'line in lookups: %s' % line
 			items = line.split('\n')
 			for item in items:
 				result = item.split('\t')
