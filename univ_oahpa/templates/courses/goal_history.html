@@ -1,0 +1,24 @@
+﻿{% load goal_filters %}
+
+<table class="course_goals">
+    <tr>
+        <th>last_attempt</th>
+        <th>score</th>
+        <th>correct</th>
+        <th>correct_first_try</th>
+        <th>answered</th>
+        <th>rounds</th>
+    </tr>
+{% for goal in goal_instances %}
+    <tr>
+        <td>{{ goal.last_attempt }}</td>
+        <td>{{ goal.evaluation.progress|floatformat }}%</td>
+        <td>{{ goal.evaluation.correct }}</td>
+        <td>{{ goal.evaluation.correct_first_try }}</td>
+        <td>{{ goal.evaluation.answered }}</td>
+        <td>{{ goal.evaluation.rounds }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+
