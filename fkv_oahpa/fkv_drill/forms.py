@@ -265,7 +265,9 @@ VTYPE_CHOICES = (
 )
 
 VERB_QUESTION_ANSWER = {
-	'PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
+	'V-PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
+	'V-PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
+#	'PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
 #	'PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
 #	'PRF': [('V+Inf', 'V+PrfPrc')],
 #	'GER': [('V+Inf', 'V+Ger')],
@@ -833,7 +835,7 @@ class OahpaSettings(forms.Form):
 					'proncase' : 'N-NOM', # Need a new default case here
 					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
 					'case_context' : 'N-PAR',
-					'vtype_context' : 'MAINV',
+					'vtype_context' : 'V-PRS',
 					'pron_context' : 'P-PERS',
 					'num_context' : 'NUM-ATTR',
 					'num_level' : '1',
