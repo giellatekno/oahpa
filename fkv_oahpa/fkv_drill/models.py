@@ -465,7 +465,7 @@ class Word(models.Model):
 	inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
 	zaliznjak = models.CharField(max_length=20)
 
-	# wordclass = models.CharField(max_length=8)
+	wordclass = models.CharField(max_length=8)
 	# valency = models.CharField(max_length=10)
 	hid = models.IntegerField(max_length=3, null=True, default=None) # PI: what's this?
 	semtype = models.ManyToManyField(Semtype)

@@ -84,11 +84,14 @@ NOUN_FILTER_DEFINITION = ['animacy', 'declension', 'gender', 'source']
 # Dem - akk, gen, ill, lok, kom
 CASE_CHOICES_PRONOUN = (
 	('NOMPL', _('plural')),
-	('N-ACC', _('accusative')),
-	('N-DAT', _('dative')),
-	('N-LOC', _('locative')),
-	('N-INS', _('instrumental')),
-	('N-GEN', _('genitive')),
+	('N-GEN', _('Genitive')),
+    ('N-PAR', _('Partitive')),
+    ('N-ILL', _('Illative')),
+    ('N-INE', _('Inessive')),
+    ('N-ELA', _('Elative')),
+    ('N-ADE', _('Adessive')),
+    ('N-ABL', _('Ablative')),
+    ('N-ALL', _('Allative')),
 )
 
 # 	('N-ACC', _('accusative')),
@@ -101,9 +104,9 @@ CASE_CHOICES_PRONOUN = (
 
 PRONOUN_QUESTION_ANSWER = {
 	# gametype			question		answer
-	'N-ACC': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Acc')],
-#	'N-ILL': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Ill')],
-	'N-LOC': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Loc')],
+	'N-PAR': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Par')],
+	'N-ILL': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Ill')],
+#	'N-LOC': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Loc')],
 #	'N-COM': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Com')],
 	'N-GEN': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Gen')],
 }
@@ -819,7 +822,7 @@ class OahpaSettings(forms.Form):
 					'contracted': False,
 					'level' : 'all',
 					'lemmacount' : '2',
-					'case': 'N-ACC',
+					'case': 'N-PAR',
 					'pos' : 'N',
 					'vtype' : 'PRS',
 					'adjcase' : 'NOM',
@@ -841,7 +844,7 @@ class OahpaSettings(forms.Form):
 					'adj_context' : 'ATTRPOS',
 					'book' : 'all',
 					'noun_type': 'N-MASC-INANIM',
-					'singular_only' : False}
+					'singular_only' : True}
 
 
 
@@ -1081,7 +1084,7 @@ class MorfaSettings(OahpaSettings):
 		$home/morfa/ came from, because instead of an
 		exception there was a relatively unhelpful 404 error.
 	"""
-	case = forms.ChoiceField(initial='N-ACC', choices=CASE_CHOICES, widget=forms.Select)
+	case = forms.ChoiceField(initial='N-PAR', choices=CASE_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
@@ -1106,7 +1109,7 @@ class MorfaSettings(OahpaSettings):
 	# PI added
 	noun_type = forms.ChoiceField(initial='N-MASC-INANIM', choices=NOUN_TYPE_CHOICES, widget=forms.Select)
 	# HU added
-	singular_only = forms.BooleanField(required=False, initial=False)
+	singular_only = forms.BooleanField(required=False, initial=True)
 
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
