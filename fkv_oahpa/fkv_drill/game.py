@@ -512,7 +512,10 @@ class BareGame(Game):
 		# if pos == 'Pron':
 		# 	syll = ['']
 
-		case, number = self.casetable[pos_tables[pos]]
+		if pos in ['N', 'Num', 'Pron']:
+			case, number = self.casetable[pos_tables[pos]]
+		else:
+			case = self.casetable[pos_tables[pos]]
 		grade = self.casetable.get('grade', '')
 		num_type = self.casetable.get('num_type', '') # added by Heli, changed by Pavel to skip an exception, change this back I suppose
 
