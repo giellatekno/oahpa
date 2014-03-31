@@ -1,30 +1,30 @@
 ﻿BEGIN;
 
 -- Alter tables for columns below
-ALTER TABLE `univ_drill_dialect` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci ;
-ALTER TABLE `univ_drill_form` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci ;
-ALTER TABLE `univ_drill_semtype` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci ;
-ALTER TABLE `univ_drill_source` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci ;
-ALTER TABLE `univ_drill_word` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci ;
-ALTER TABLE `univ_drill_wordtranslation` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci ;
+ALTER TABLE `myv_drill_dialect` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci ;
+ALTER TABLE `myv_drill_form` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci ;
+ALTER TABLE `myv_drill_semtype` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci ;
+ALTER TABLE `myv_drill_source` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci ;
+ALTER TABLE `myv_drill_word` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci ;
+ALTER TABLE `myv_drill_wordtranslation` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci ;
 
 
 -- Alter individual columns
-ALTER TABLE `univ_drill_dialect` MODIFY name
+ALTER TABLE `myv_drill_dialect` MODIFY name
     varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL ;
-ALTER TABLE `univ_drill_form` MODIFY fullform
+ALTER TABLE `myv_drill_form` MODIFY fullform
     varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL ;
-ALTER TABLE `univ_drill_semtype` MODIFY semtype
+ALTER TABLE `myv_drill_semtype` MODIFY semtype
     varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL ;
-ALTER TABLE `univ_drill_source` MODIFY name
+ALTER TABLE `myv_drill_source` MODIFY name
     varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL ;
-ALTER TABLE `univ_drill_word` MODIFY lemma
+ALTER TABLE `myv_drill_word` MODIFY lemma
     varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL ;
-ALTER TABLE `univ_drill_wordtranslation` MODIFY explanation
+ALTER TABLE `myv_drill_wordtranslation` MODIFY explanation
     longtext CHARACTER SET utf8 COLLATE utf8_bin NOT NULL ;
-ALTER TABLE `univ_drill_wordtranslation` MODIFY lemma
+ALTER TABLE `myv_drill_wordtranslation` MODIFY lemma
     varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL ;
-ALTER TABLE `univ_drill_wordtranslation` MODIFY phrase
+ALTER TABLE `myv_drill_wordtranslation` MODIFY phrase
     longtext CHARACTER SET utf8 COLLATE utf8_bin NOT NULL ;
 
 COMMIT;
