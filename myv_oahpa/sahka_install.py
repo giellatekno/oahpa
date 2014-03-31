@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from univ_drill.models import *
+from myv_drill.models import *
 from xml.dom import minidom as _dom
 from django.db.models import Q
 from django.utils.encoding import force_unicode

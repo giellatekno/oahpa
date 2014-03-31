@@ -5,9 +5,9 @@ from xml.dom import minidom as _dom
 from django.utils.encoding import force_unicode
 import sys
 
-from univ_drill.models import * 
+from myv_drill.models import * 
 #from collections import OrderedDict
-from univ_oahpa.conf.ordereddict import *
+from myv_oahpa.conf.ordereddict import *
 from django.db.utils import IntegrityError
 
 # For easier debugging.
@@ -16,7 +16,7 @@ _D = open('/dev/null', 'w')
 
 COUNT_ONLY = False
 
-supported_langs = ['sme', 'nob', 'sme', 'swe', 'deu', 'eng']
+supported_langs = ['myv', 'nob', 'sme', 'swe', 'deu', 'eng', 'fin', 'rus']
 
 # # # 
 # 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from settings import *
-from univ_drill.models import *
+from myv_drill.models import *
 from django.db.models import Q
 from xml.dom import minidom as _dom
 from django.utils.encoding import force_unicode
@@ -17,6 +17,8 @@ languages = [
 	'eng',
 	'fin', 
 	'deu',
+	'rus',
+	'myv',
 ]
 
 class Link(object):

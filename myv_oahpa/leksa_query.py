@@ -8,7 +8,7 @@ print " * Correcting paths"
 cur_path = os.getcwd()
 parent_path = '/' + '/'.join([a for a in cur_path.split('/') if a][0:-1]) + '/' 
 sys.path.insert(0, parent_path)
-environ['DJANGO_SETTINGS_MODULE'] = 'smaoahpa.settings'
+environ['DJANGO_SETTINGS_MODULE'] = 'myv_oahpa.settings'
 import settings
 settings.DEBUG = False
 
