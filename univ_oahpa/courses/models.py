@@ -239,7 +239,13 @@ class CourseGoal(models.Model):
         ugis = sum( [list(g.goal.usergoalinstance_set.filter(user=user)) for g in self.goals.all()]
                   , []
                   )
-        return ','.join( map(str, [ugi.progress for ugi in ugis] ) )
+        progresses = [float(ugi.progress) for ugi in ugis]
+        if len(progresses) > 0:
+            progress = sum(progresses)/float(len(progresses)) * 100
+            progress_str = "%.0f" % progress
+            return progress_str + '%'
+        else:
+            return "0%"
 
 
 class CourseGoalGoal(models.Model):
@@ -305,6 +311,10 @@ class Goal(models.Model):
         else:
             return False
 
+    def save(self, *args, **kwargs):
+        self.last_attempt = datetime.datetime.now()
+        super(UserGoalInstance, self).save(*args, **kwargs)
+
     def is_complete(self, user_goal_instance):
         import datetime
 
@@ -327,7 +337,6 @@ class Goal(models.Model):
         passed_percent_correct = calc_progress >= self.threshold
 
         if passed_percent_correct and completed_min_rounds:
-            user_goal_instance.completed_date = datetime.datetime.now()
             user_goal_instance.grade = user_goal_instance.progress
             user_goal_instance.is_complete = True
             user_goal_instance.save()
@@ -349,12 +358,17 @@ class Goal(models.Model):
 
         return sorted(list(set(sets)))
 
-    def evaluate_for_student(self, user):
-        logs = UserActivityLog.objects.filter(user=user, goal=self)
+    def evaluate_for_student(self, user, last_only=True, iteration=False):
+        logs = UserActivityLog.objects.filter(user=user, usergoalinstance__goal=self)
+        if iteration:
+            logs = logs.filter(usergoalinstance__attempt_count=iteration)
+        elif last_only:
+            _max = max(logs.values_list('usergoalinstance__attempt_count', flat=True))
+            logs = logs.filter(usergoalinstance__attempt_count=_max)
 
         if logs.count() == 0:
             print " -- nothing yet -- "
-            return {}
+            return None
 
         question_sets = self.student_set_count(user, logs)
 
@@ -420,6 +434,10 @@ class UserGoalInstance(models.Model):
     user = models.ForeignKey(User)
     goal = models.ForeignKey('Goal')
 
+    # only one may be 'opened' at a time
+    opened = models.BooleanField(default=True)
+    attempt_count = models.IntegerField(default=1)
+
     progress = models.DecimalField(decimal_places=2, max_digits=4, default=0.0)
 
     is_complete = models.BooleanField(default=False)
@@ -428,14 +446,36 @@ class UserGoalInstance(models.Model):
     correct = models.IntegerField(default=0)
     correct_first_try = models.IntegerField(default=0)
 
-    completed_date = models.DateTimeField(blank=True, null=True)
+    last_attempt = models.DateTimeField(auto_now_add=True)
     grade = models.IntegerField(blank=True, null=True)
 
     class Meta(object):
-        unique_together = (("user", "goal"),)
+        unique_together = (("user", "goal", "attempt_count"),)
 
     def __unicode__(self):
         return "%s: %.2f" % (self.goal.short_name, self.progress)
+
+    @property
+    def evaluation(self):
+        return self.evaluate_instance()
+
+    def evaluate_instance(self):
+        evaluated = self.goal.evaluate_for_student(self.user, iteration=self.attempt_count)
+        if (self.progress is not None) and (self.progress != evaluated.get('progress', False)):
+            self.progress = evaluated.get('progress')
+            self.save()
+        if evaluated.get('progress', False):
+            evaluated['progress'] = evaluated['progress'] * 100
+        return evaluated
+
+    def save(self, *args, **kwargs):
+        vals = UserGoalInstance.objects.filter(user=self.user, goal=self.goal).values_list('attempt_count', flat=True)
+        if len(vals) > 0:
+            highest = max(
+                UserGoalInstance.objects.filter(user=self.user, goal=self.goal).values_list('attempt_count', flat=True)
+            )
+            self.attempt_count = highest + 1
+        super(UserGoalInstance, self).save(*args, **kwargs)
 
 class GoalParameter(models.Model):
     goal = models.ForeignKey(Goal, related_name='params')
@@ -467,8 +507,7 @@ class UserActivityLog(models.Model):
     use.
     """
     user = models.ForeignKey(User)
-    goal = models.ForeignKey(Goal)
-    goal_repetition = models.IntegerField(default=1)
+    usergoalinstance = models.ForeignKey(UserGoalInstance)
     is_correct = models.BooleanField()
     correct_answer = models.TextField()
     user_input = models.TextField()
@@ -521,7 +560,7 @@ def create_activity_log_from_drill_logs(request, user, drill_logs, current_user_
 
         # Add some things not present in the original log entry
         activity_log_attrs['user'] = user
-        activity_log_attrs['goal_id'] = current_user_goal
+        activity_log_attrs['usergoalinstance_id'] = current_user_goal
         activity_log_attrs['question_set'] = request.session['question_set_count']
         activity_log_attrs['question_tries'] = question_tries.get(drill_log.correct)
 

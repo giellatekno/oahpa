@@ -283,6 +283,18 @@ def instructor_student_detail(request, uid, cid):
                               c,
                               context_instance=RequestContext(request))
 
+def goal_history(request, goal_id):
+    u = request.user
+
+    instances = UserGoalInstance.objects.filter(user=u, goal=goal_id)\
+                                        .order_by('-last_attempt')
+    template = 'courses/goal_history.html'
+    c = {}
+    c['student'] = UserProfile.objects.get(user__id=request.user.id)
+    c['goal_instances'] = instances
+    return render_to_response(template,
+                              c,
+                              context_instance=RequestContext(request))
 
 def begin_course_goal(request, goal_id):
     """ Mark the session with the goal ID, and redirect the user to the
@@ -329,16 +341,14 @@ def begin_course_goal(request, goal_id):
     # TODO: redirect to beginning of course goal
 
     goal = Goal.objects.get(id=goal_id)
-    request.session['current_user_goal'] = int(goal_id)
 
     # Reset goal progress
-    # TODO: confirm first if there is progress, then reset.
-    # TODO: maybe don't delete, but preserve somehow, create a new
-    # usergoalinstance to relate logs to?
-    UserActivityLog.objects.filter(user=request.user, goal=goal).delete()
+    # TODO: will this need to be connected to a usergoalinstance? 
+    # UserActivityLog.objects.filter(user=request.user, goal=goal)
 
-    UserGoalInstance.objects.filter(user=request.user, goal=goal).delete()
-    UserGoalInstance.objects.create(user=request.user, goal=goal)
+    UserGoalInstance.objects.filter(user=request.user, goal=goal).update(opened=False)
+    ugi = UserGoalInstance.objects.create(user=request.user, goal=goal)
+    request.session['current_user_goal'] = int(ugi.id)
 
     return HttpResponseRedirect(goal.start_url())
 

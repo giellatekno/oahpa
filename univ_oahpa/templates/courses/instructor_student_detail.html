@@ -35,9 +35,7 @@ TODO: internationalization strings
 				    {% if coursegoal|goals_with_progress:student|length > 0 %}
 				        <h3>{{ coursegoal.short_name }}</h3>
 				        {% with coursegoal|goals_with_progress:student as goal_set %}
-				            {% with student as user %}
-				                {% include 'courses/instructor_goal_table_list.html' %}
-				            {% endwith %}
+				            {% include 'courses/instructor_goal_table_list.html' %}
 				        {% endwith %}
 				    {% endif %}
 				{% endfor %}

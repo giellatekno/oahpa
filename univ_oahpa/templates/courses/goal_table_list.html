@@ -31,14 +31,17 @@
         <td>{{ goal.short_name }}</td>
         <td class="description">{{ goal.description }}</td>
         {% if goal.usergoalinstance_set.all|goal_instances_for:user.username|length > 0 %}
-            {% for g in goal.usergoalinstance_set.all|goal_instances_for:user.username %}
+            {% with goal.usergoalinstance_set.all|goal_instances_for:user.username|first as g %}
             <td class="current_progress">
                 {{ g.progress|format_percent }}
             </td>
             <td class="current_progress sets">
                 {{ g.rounds }}
             </td>
-            {% endfor %}
+            <td class="current_progress sets">
+                <a class="goal_history" href="{% url courses.views.goal_history goal.id %}">History</a>
+            </td>
+            {% endwith %}
         {% else %}
             <td></td>
             <td></td>

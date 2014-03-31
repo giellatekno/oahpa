@@ -88,6 +88,18 @@ class GradingMiddleware(object):
             if current and previous:
                 if current != previous:
                     print " -- user navigated to new page, stop tracking --"
+
+                    user_goal_instance = UserGoalInstance.objects.filter( user=request.user
+                                                                        , usergoalinstance_id=current_user_goal
+                                                                        , opened=True
+                                                                        )\
+                                                                 .order_by('last_attempt')
+
+                    # Mark this instance as no longer being active.
+                    if user_goal_instance is not None:
+                        user_goal_instance[0].opened = False
+                        user_goal_instance[0].save()
+
                     request.session['previous_exercise_params'] = current
                     del request.session['current_user_goal']
                     del request.session['current_exercise_params']
@@ -104,7 +116,9 @@ class GradingMiddleware(object):
 
             self.reset_increments(request)
 
-            goal = Goal.objects.get(id=current_user_goal)
+            ugi = UserGoalInstance.objects.get(id=current_user_goal)
+            goal = ugi.goal
+
             # TODO: this is for debug only.
             result = goal.evaluate_for_student(request.user)
 

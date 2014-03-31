@@ -42,5 +42,5 @@ class FeedbackLogSerializer(serializers.ModelSerializer):
 class StatusSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = UserGoalInstance
-        fields = ('progress', 'rounds', 'total_answered', 'correct', 'completed_date', 'grade', 'correct_first_try', 'is_complete')
+        fields = ('progress', 'rounds', 'total_answered', 'correct', 'last_attempt', 'grade', 'correct_first_try', 'is_complete')
 
