@@ -61,11 +61,16 @@ Here starts the documentation for making Leksa work for new languages. The goal 
  &lt;/e>
 &lt;/r>		
 </source>
-<p>One way of making the lexicon, is to start with a csv-file: </p>
+<p>One way of making the lexicon, is to start with a csv-file, with double underscore as delimiter: </p>
 <source>
 mielki __ N __ melk, mjølk __ DRINK, FOOD_GROCERY
 </source>
 <p>and use the script main/ped/script/uusv2oahpa_xml.xsl</p>
+<p>If one word have different meanings belonging to different semantic classes, this is the way of doing it:</p>
+<source>
+beaivi __ N __ day __ TIME
+beaivi __ N __ sun __ NATUR
+</source>
 		</section>
 		
 		<section>
