@@ -5,10 +5,10 @@ from xml.dom import minidom as _dom
 from django.utils.encoding import force_unicode
 import sys
 
-from myv_drill.models import * 
+from yrk_drill.models import *
+import conf.ordereddict
 #from collections import OrderedDict
-from myv_oahpa.conf.ordereddict import *
-from django.db.utils import IntegrityError
+
 
 # For easier debugging.
 # _D = open('/dev/ttys005', 'w')
@@ -16,7 +16,7 @@ _D = open('/dev/null', 'w')
 
 COUNT_ONLY = False
 
-supported_langs = ['myv', 'nob', 'sme', 'swe', 'deu', 'eng', 'fin', 'rus']
+supported_langs = ['yrk', 'rus', 'nob', 'sme', 'fin', 'eng']
 
 # # # 
 # 
@@ -34,13 +34,13 @@ try:
 except:
 	print """Dialects not defined in settings.py... 
 		DIALECTS = {
-            'main': ('oahpa-isme-norm.fst', 'Unrestricted'),
-            'GG': ('isme-GG.restr.fst', 'Western'),
-            'KJ': ('isme-KJ.restr.fst', 'Eastern'),
-            'NG': (None, 'Non-Presented forms'),
+			'main': ('isma-norm.fst', 'Unrestricted'),
+			'SH': ('isma-SH.restr.fst', 'Short forms'),
+			'L': ('isma-L.restr.fst', 'Long forms'),
+			'NG': (None, 'Non-Presented forms'),
 		}
 
-		DEFAULT_DIALECT = 'GG'
+		DEFAULT_DIALECT = 'SH'
 		NONGEN_DIALECT = 'NG'
 	"""
 	sys.exit(2)
@@ -50,19 +50,19 @@ try:
 	INFINITIVE_ADD = settings.INFINITIVE_ADD
 except:
 	print """Infinitives not defined in settings.py...
-			INFINITIVE_SUBTRACT = {
-				'nob': ur'^(?P<inf>å )?(?P<lemma>.*)$',
-				'swe': ur'^(?P<inf>att )?(?P<lemma>.*)$',
-				'eng': ur'^(?P<inf>to )?(?P<lemma>.*)$',
-				'deu': ur'^(?P<inf>zu )?(?P<lemma>.*)$',
-			}
-			
-			INFINITIVE_ADD = {
-				'nob': ur'å \g<lemma>',
-				'swe': ur'att \g<lemma>',
-				'eng': ur'to \g<lemma>',
-				'deu': ur'zu \g<lemma>',
-			}
+		 	INFINITIVE_SUBTRACT = {
+		 		'nob': ur'^(?P<inf>å )?(?P<lemma>.*)$',
+		 		'swe': ur'^(?P<inf>att )?(?P<lemma>.*)$',
+		 		'eng': ur'^(?P<inf>to )?(?P<lemma>.*)$',
+		 		'deu': ur'^(?P<inf>zu )?(?P<lemma>.*)$',
+		 	}
+		 	
+		 	INFINITIVE_ADD = {
+		 		'nob': ur'å \g<lemma>',
+		 		'swe': ur'att \g<lemma>',
+		 		'eng': ur'to \g<lemma>',
+		 		'deu': ur'zu \g<lemma>',
+		 	}
 
 	"""
 	sys.exit(2)
@@ -129,9 +129,8 @@ class Analysis(object):
 		
 		for t in self.tags.split('+'):
 			if linginfo.tagset.has_key(t):
-				tagclasses = linginfo.tagset[t]
-				for tagclass in tagclasses:
-					self.classes[tagclass] = t
+				tagclass = linginfo.tagset[t]
+				self.classes[tagclass] = t
 
 class Entry(object):
 	""" The beginning of a class for parsing entry nodes. 
@@ -143,15 +142,15 @@ class Entry(object):
 	
 	def processMiniParadigm(self, mini_paradigm):
 		""" Processes a mini_paradigm
-		 
-			<mini_paradigm>
+         
+            <mini_paradigm>
 				<analysis ms="Pron_Pers_Sg2_Acc">
-				   <wordform>datnem</wordform>
-				</analysis>
-				<analysis ms="Pron_Pers_Sg2_Gen">
-				   <wordform>dov</wordform>
-				</analysis>
-			</mini_paradigm>
+            	   <wordform>datnem</wordform>
+            	</analysis>
+            	<analysis ms="Pron_Pers_Sg2_Gen">
+            	   <wordform>dov</wordform>
+            	</analysis>
+            </mini_paradigm>
 
 			# TODO:	<analysis ms="Pron_Pers_Pl1_Ill" dial="NG">
 		"""
@@ -174,15 +173,15 @@ class Entry(object):
 		""" Handles nodes such as...
 			
 			<lg>
-	 		   <l pos="n" soggi="oe" stem="2syll">aajroe</l>
-	 		</lg>
+      		   <l pos="n" soggi="oe" stem="2syll">aajroe</l>
+      		</lg>
 
-	 		Including those containing lemma_ref and miniparadigms:
+      		Including those containing lemma_ref and miniparadigms:
 
 			<lg>
 				<l pos="pron" type="pers">mijjen</l>
-				<lemma_ref lemmaID="mijjieh_pron_pers">mijjieh</lemma_ref>
-				<analysis>Pron_Pers_Pl1_Gen</analysis>
+         		<lemma_ref lemmaID="mijjieh_pron_pers">mijjieh</lemma_ref>
+         		<analysis>Pron_Pers_Pl1_Gen</analysis>
 			</lg>
 
 		"""
@@ -246,11 +245,11 @@ class Entry(object):
 	
 	def processSources(self):
 		""" Handles nodes such as...
-			<sources>
-			   <book name=""/>
-			   <frequency class="common"/>
-			   <geography class="mid"/>
-			</sources>
+            <sources>
+               <book name=""/>
+               <frequency class="common"/>
+               <geography class="mid"/>
+            </sources>
 		"""
 
 		n = self.node
@@ -275,29 +274,15 @@ class Entry(object):
 
 		self.frequency = [_attribute(b, "class") for b in frequency]
 		self.geography = [_attribute(b, "class") for b in geography]
-		
-	def processDialects(self):  # added by Heli
-		""" Handles nodes such as...
-			<dialect class ="NOT-KJ"/>
-		"""
 
-		n = self.node
-
-		try:
-			dialect = _elements(n, "dialect")[0]
-			d = _attribute(dialect, "class")
-			self.excl_dialect = d[-2:]  # NOT-KJ -> KJ
-		except IndexError:
-			self.excl_dialect = False
-			
 
 	def _handleSemantics(self, node):
 		"""  Handles nodes such as...
 			<semantics>
-			   <sem class="FISHING" />
-			   <sem class="mLONG_SHORT" />
-			</semantics>
-		""" 
+        	   <sem class="FISHING" />
+        	   <sem class="mLONG_SHORT" />
+        	</semantics>
+        """ 
 		
 		try:
 			semantics = _elements(node, "semantics")[0]
@@ -312,10 +297,10 @@ class Entry(object):
 	def _handleTranslations(self, node):
 		""" Handles nodes such as...
 			<tg xml:lang="nob">
-			   <tf pos="phrase_n" stat="pref" tcomm="no">spor etter reinflokk</tf>
-			   <t pos="n" stat="notpref" tcomm="no">reinspor</t>
-			   <t pos="n" stat="notpref" tcomm="no">spor</t>
-			</tg>
+        	   <tf pos="phrase_n" stat="pref" tcomm="no">spor etter reinflokk</tf>
+        	   <t pos="n" stat="notpref" tcomm="no">reinspor</t>
+        	   <t pos="n" stat="notpref" tcomm="no">spor</t>
+        	</tg>
 
 		"""
 
@@ -378,14 +363,14 @@ class Entry(object):
 					<sem class="FAMILY" />
 				</semantics>
 				<tg xml:lang="nob">
-				   <tf pos="phrase_n" stat="pref" tcomm="no">bestefars barnebarn</tf>
-				   <tf tcomm="no">bestefar sitt barnebarn</tf>
-				</tg>
-				<tg xml:lang="swe">
-				   <tf pos="phrase_n" stat="pref" tcomm="no">bestefars barnebarn_SWE</tf>
-				</tg>
-			</mg>
-			<mg>
+         		   <tf pos="phrase_n" stat="pref" tcomm="no">bestefars barnebarn</tf>
+         		   <tf tcomm="no">bestefar sitt barnebarn</tf>
+         		</tg>
+         		<tg xml:lang="swe">
+         		   <tf pos="phrase_n" stat="pref" tcomm="no">bestefars barnebarn_SWE</tf>
+         		</tg>
+         	</mg>
+         	<mg>
 				etc...
 			</mg>
 			
@@ -405,7 +390,7 @@ class Entry(object):
 
 	def make_checksum(self):
 		import hashlib
-		self.checksum = hashlib.md5(self.node.toxml().encode('utf-8')).hexdigest()
+	 	self.checksum = hashlib.md5(self.node.toxml().encode('utf-8')).hexdigest()
 
 	def __init__(self, e_node):
 		""" Takes a parsed e_node and begins the process. Returns traceback upon fail.
@@ -418,7 +403,6 @@ class Entry(object):
 			self.exclude = _attribute(e_node, 'exclude')
 			self.processLG()
 			self.processSources()
-			self.processDialects()  # added by Heli
 			self.processMeaningGroups()
 			self.make_checksum()
 		except Exception, e:
@@ -660,18 +644,6 @@ class Words(object):
 			w.source.add(book_entry)
 			w.save()
 
-	def add_dialects(self,entry,w):
-		for dialect, dial_data in DIALECTS.items():  # fill the dialect field of the Word object - added by Heli
-			dial, created = Dialect.objects.get_or_create(dialect=dialect)
-			if created:
-				if VERBOSE:
-					print >> _STDOUT, "Added dialects to Word ", dialect.encode('utf-8')
-			dial.name = dial_data[1]
-			dial.save()
-			if dialect != NG_DIALECT and dialect != entry.excl_dialect:
-				w.dialects.add(dial)
-				w.save()
-    
 	def store_word(self,entry,linginfo,mainlang,paradigmfile,delete,append_only=False):
 		OUT_STRS = []
 		ERR_STRS = []
@@ -681,8 +653,8 @@ class Words(object):
 		changes_to_paradigm = True
 		# Intialize null variables
 		stem, forms, gradation, rime						=	[""]*4
-		wordclass, attrsuffix, compsuffix, soggi, valency	=	[""]*5
-		compare, frequency, geography, presentationform, excl_dialect	=	[""]*5
+		wordclass, attrsuffix, compsuffix, soggi, valency	= 	[""]*5
+		compare, frequency, geography, presentationform 	= 	[""]*4
 
 		diphthong = "no"
 		
@@ -705,8 +677,8 @@ class Words(object):
 		self.all_wordids.append(wid)
 		
 		
-		if entry.wordtype:
-			wordclass = entry.wordtype
+		if entry.wordclass:
+			wordclass = entry.wordclass
 			if not COUNT_ONLY:
 				OUT_STRS.append(wordclass)
 		
@@ -716,9 +688,6 @@ class Words(object):
 
 		if entry.geography:
 			geography = entry.geography[0]
-			
-		if entry.excl_dialect:  # Heli
-			excl_dialect = entry.excl_dialect
 
 		# Part of speech information
 		pos = entry.pos
@@ -777,11 +746,9 @@ class Words(object):
 			# and add the lemma here as fullform to Form models
 			exist_kwargs['lemma'] = entry.lemma_ref
 			exist_kwargs['wordid'] = entry.lemma_ref
-			exist_kwargs['wordclass'] = entry.wordtype.capitalize()
 		else:
 			exist_kwargs['lemma'] = lemma
 			exist_kwargs['wordid'] = lemma
-			exist_kwargs['wordclass'] = entry.wordtype.capitalize()
 
 		
 		try:
@@ -803,29 +770,29 @@ class Words(object):
 			# changes_to_xml = True
 		
 		# if not changes_to_xml:
-		#	print >> sys.stdout, ' * No changes detected to word XML, skipping... '
-		#	return
+		# 	print >> sys.stdout, ' * No changes detected to word XML, skipping... '
+		# 	return
 
-		if created:
-			w.wordclass = entry.wordtype.capitalize()
-			w.pos = pos
-			w.wordid = w.lemma = lemma
-			# w.presentationform = presentationform
-			w.stem = stem
-			w.rime = rime
-			w.compare = compare
-			w.attrsuffix = attrsuffix
-			w.compsuffix = compsuffix
-			w.soggi = soggi
-			w.gradation = gradation
-			w.diphthong = diphthong
-			w.valency = valency
-			w.frequency = frequency
-			OUT_STRS.append(frequency)
-			OUT_STRS.append(geography)
-			w.geography = geography
-			w.hid = hid 
-			w.save()
+		w.wordclass = wordclass
+		w.pos = pos
+		w.wordid = w.lemma = lemma
+		# w.presentationform = presentationform
+		w.stem = stem
+		w.rime = rime
+		w.compare = compare
+		w.attrsuffix = attrsuffix
+		w.compsuffix = compsuffix
+		w.soggi = soggi
+		w.gradation = gradation
+		w.diphthong = diphthong
+
+		w.valency = valency
+		w.frequency = frequency
+		OUT_STRS.append(frequency)
+		OUT_STRS.append(geography)
+		w.geography = geography
+		w.hid = hid
+		w.save()
 
 		dialect_objects = []
 		
@@ -837,7 +804,7 @@ class Words(object):
 				dial.save()
 			if dialect != NG_DIALECT:
 				dialect_objects.append(dial)
-	
+		
 		# additional dialect mappings
 		# NG - main, NG; but not L and SH
 
@@ -951,29 +918,26 @@ class Words(object):
 					g = f.classes
 
 					if w.pos == "A" and w.compare == "no" and \
-					  	   (g.get('Grade')=="Comp" or g.get('Grade')=="Superl"):
+					   	   (g.get('Grade')=="Comp" or g.get('Grade')=="Superl"):
 						continue
 
 					tag_kwargs = {
-						'string':			f.tags,
-						'pos':				g.get('Wordclass', ""),
-						'number':			g.get('Number',""),
-						'case':			g.get('Case',""),
-						'possessive':		g.get('Possessive',""),
-						'grade':			g.get('Grade',""),
-						'infinite':		g.get('Infinite',""), 
-						'personnumber':	g.get('Person-Number',""),
-						'polarity':		g.get('Polarity',""),
-						'tense':			g.get('Tense',""),
-						'mood':			g.get('Mood',""), 
-						'subclass':		g.get('Subclass',""),
-						'attributive':		g.get('Attributive',""),
+						'string': 			f.tags,
+						'pos': 				g.get('Wordclass', ""),
+						'number': 			g.get('Number',""),
+						'case': 			g.get('Case',""),
+						'possessive': 		g.get('Possessive',""),
+						'grade': 			g.get('Grade',""),
+						'infinite': 		g.get('Infinite',""), 
+						'personnumber': 	g.get('Person-Number',""),
+						'polarity': 		g.get('Polarity',""),
+						'tense': 			g.get('Tense',""),
+						'mood': 			g.get('Mood',""), 
+						'subclass': 		g.get('Subclass',""),
+						'attributive': 		g.get('Attributive',""),
 					}
 
-					try:
-						t = Tag.objects.get(string=f.tags)
-					except Tag.DoesNotExist:
-						t = Tag.objects.create(**tag_kwargs)
+					t,created=Tag.objects.get_or_create(**tag_kwargs)
 
 					t.save()
 
@@ -1020,10 +984,6 @@ class Words(object):
 		if changes_to_xml:
 			if entry.sources:
 				self.add_sources(entry, w)
-        
-		if changes_to_xml:
-			if excl_dialect:
-				self.add_dialects(entry, w)
 		
 		if changes_to_xml:
 			for mgroup in entry.meanings:
@@ -1057,7 +1017,7 @@ class Words(object):
 			# to debug and fix: delete word routine
 			# wordruss = Wordrus.objects.filter(wordid=wid)
 			# for w in wordruss:
-			#		print "Removing", w.wordid
+			# 		print "Removing", w.wordid
 			#		w.delete()
 		if wid and pos:
 			words = Word.objects.filter(wordid=wid,pos=pos)

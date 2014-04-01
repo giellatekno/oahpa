@@ -1,4 +1,4 @@
-{% extends 'myv_oahpa.html' %}
+{% extends 'yrk_oahpa.html' %}
 {% load i18n %}
 {% load cache %}
 {% get_current_language as LANGUAGE_CODE %}
@@ -8,11 +8,6 @@ TODO: internationalization strings
 
 {% endcomment %}
 
-{% block extrajs %}
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
-{% endblock %}
-
 {% block imgprefix %}numra{% endblock %}
 
 {% block page_class %}fixed{% endblock %}
@@ -21,52 +16,50 @@ TODO: internationalization strings
 	{# Add blocktrans and trans tags #}
 	<div id="courses">
 		<ul id="subnav">
-			{#  <li><a href="{% url myv_oahpa.courses.urls.logout %}">Log out</a></li> #}
-			{% if user.is_staff %}
-			<li><a href="/{{ URL_PREFIX }}/courses/?student_view=True">{% trans "Grade summary" %}</a></li>
-			<li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
-			{% endif %}
+			<li><a href="{% url yrk_oahpa.courses.urls.logout %}">Log out</a></li>
 		</ul>
 		<h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
 
 		<p>{% trans "You are a course instructor." %}</p>
 		{# cache 300 courses user.username #}
-		{% for course in profile.instructorships %}
+		{% for course in courses %}
 		<div class="instructor_course">
 			<h3>{{ course.identifier }} - {{ course.name }}</h3>
 			<p>{% trans "Course content is available online" %}: <a href="{{ course.site_link }}">{{ course.site_link }}</a></p>
 
-			{% if course.goal_set.all|length > 0 %}
-				{% with course.goal_set.all as goal_set %}
-				    {% include 'courses/goal_table_list.html' %}
-				{% endwith %}
-			{% else %}
-			    <p class="goal_note">You have not defined any goals for this course.</p>
-			{% endif %}
-			<div class="bootstrap-styles">
-			    <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_goal_construction %}">Create a goal</a>
-            </div>
-
 			<br />
-			<h4>Students</h4>
-			<table class="course_students course_goals">
-			    <tr>
-			        <th></th>
-			        <th>{% trans "last login" %}</th>
-			        <th>{% trans "login count" %}</th>
-			    </tr>
+			<ul class="course_students">
 			{% for student in course.students.all %}
-			    <tr>
-			        <td>
-			            <a href="/{{ URL_PREFIX }}/courses/{{ course.id }}/{{ student.user.id }}">
-			                {{ student.user.username }}
-			            </a>
-			        </td>
-					<td>{{ student.last_login }}</td>
-					<td>{{ student.login_count }}</td>
-			    </tr>
+			<li><strong class="student_name">{{ student.user.username }}</strong>
+				<ul class="row">
+					<li>{% trans "last login" %}: {{ student.last_login }}</li>
+					<li>{% trans "login count" %}: {{ student.login_count }}</li>
+				</ul>
+				{% if student.grades %}
+				<table class="grades">
+				<tr>
+					{# TODO: padding here is not working #}
+					<th>{% trans "exercise" %}&nbsp;</th>
+					<th>{% trans "average" %}&nbsp;</th>
+					<th>{% trans "minimum" %}&nbsp;</th>
+					<th>{% trans "maximum" %}&nbsp;</th>
+					<th>{% trans "game count" %}</th>
+				</tr>
+				{% for grade in student.grades|dictsort:"game_name"|slice:":5" %}
+				<tr class="{% cycle "even" "odd" %}">
+					<td>{{ grade.game_name }}</td>
+					<td>{{ grade.average }}</td>
+					<td>{{ grade.minimum }}</td>
+					<td>{{ grade.maximum }}</td>
+					<td>{{ grade.count }}</td>
+				</tr>
+				{% endfor %}
+				</table>
+				<p><a href="/yrk_oahpa/courses/{{ student.user.id }}">{% trans "More information about this student" %}.</a></p>
+				{% endif %}
+			</li>
 			{% endfor %}
-			</table>
+			</ul>
 		</div>
 		{% endfor %}
 		{# endcache #}

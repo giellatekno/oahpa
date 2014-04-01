@@ -7,11 +7,11 @@ print " * Correcting paths"
 cur_path = os.getcwd()
 parent_path = '/' + '/'.join([a for a in cur_path.split('/') if a][0:-1]) + '/'
 sys.path.insert(0, parent_path)
-environ['DJANGO_SETTINGS_MODULE'] = 'myv_oahpa.settings'
+environ['DJANGO_SETTINGS_MODULE'] = 'yrk_oahpa.settings'
 
 settings.DEBUG = False
 
-from myv_drill.models import *
+from yrk_drill.models import *
 from optparse import OptionParser, make_option
 import sys
 from ling import Paradigm
@@ -21,12 +21,12 @@ from feedback_install import Feedback_install
 from questions_install import Questions
 from sahka_install import Sahka  # added by Heli
 
-# TODO: option for oa="yes" only, for myv_
+# TODO: option for oa="yes" only, for yrk_
 # ota lemma jos on name="oahpa"
 # jos on lemma, niin ota käännös jos on oa="yes"
 
 OPTION_LIST = (
-	make_option("-a", "--append", dest="append",
+	make_option("-a", "--append-words", dest="append",
 					  action="store_true", default=False,
 					  help="Add wordforms to words without deleting existing wordforms"),
 	make_option("-b", "--db", dest="add_db",
@@ -113,12 +113,8 @@ def main(opts):
 		sys.exit()
 
 	if options.feedbackfile and options.infile:
-		if options.append:
-			append_only = True
-		else:
-			append_only = False
-		feedback.read_feedback(options.feedbackfile,options.infile,append=append_only)
-		sys.exit()
+	    feedback.read_feedback(options.feedbackfile,options.infile)
+	    sys.exit()
 	
 	if options.linkfile:
 		extra.read_address(options.linkfile)

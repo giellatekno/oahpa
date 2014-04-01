@@ -126,7 +126,7 @@ various permutations of morphosyntactic features.
 """
 
 from settings import *
-from myv_drill.models import Feedbackmsg,Feedbacktext,Dialect,Comment,Tag
+from yrk_drill.models import Feedbackmsg,Feedbacktext,Dialect,Comment,Tag
 from xml.dom import minidom as _dom
 from django.db.models import Q
 import sys
@@ -135,20 +135,13 @@ import string
 import codecs
 import operator
 
-from myv_drill.models import Form
+from yrk_drill.models import Form
 
 from django.db import transaction
 from itertools import product
 
-from django.utils.encoding import force_unicode
+from django.utils.encoding import smart_unicode
 
-def fix_encoding(s):
-	try:
-		s = s.decode('utf-8')
-	except:
-		pass
-	
-	return force_unicode(s)
 
 try:
 	from collections import OrderedDict
@@ -168,7 +161,7 @@ def get_attrs(item, attr_names):
 	for attr in attr_names:
 		val = item.__getattribute__(attr)
 		if val:
-			vals.append(fix_encoding(val))
+			vals.append(smart_unicode(val))
 		else:
 			vals.append('')
 	return vals
@@ -194,11 +187,11 @@ def get_attrs_with_defaults(element, attr_list, defaults):
 			val = defaults.get(attr)
 
 		if isinstance(val, list):
-			val = [fix_encoding(s) for s in val]
+			val = [smart_unicode(s) for s in val]
 		elif isinstance(val, set):
-			val = [fix_encoding(s) for s in list(val)]
+			val = [smart_unicode(s) for s in list(val)]
 		else:
-			val = [fix_encoding(val)]
+			val = [smart_unicode(val)]
 		vals.append(val)
 			
 	x = OrderedDict(zip(attr_list, vals))
@@ -206,12 +199,6 @@ def get_attrs_with_defaults(element, attr_list, defaults):
 	if grade:
 		if x['grade'] == ['Pos']:
 			x['grade'] == ['']
-
-	subclass = x.get('subclass', False)
-	if subclass:
-		if x['subclass'] == ['Active']:
-			x['subclass'] == ['']
-	
 	return x
 
 
@@ -260,12 +247,14 @@ class Feedback_install(object):
 		("V", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
 	])
 
+	# TODO: compsuffix
+
 	# Each part of speech followed by relevant tag/wordform attributes
 	tag_attribute_names = OrderedDict([
 		("N", ('case', 'number', )),
 		("A", ('case', 'number', 'grade', 'attributive', )),
 		("Num", ('case', 'number',)),
-		("V", ('subclass', 'infinite', 'mood', 'tense', 'personnumber', )),
+		("V", ('infinite', 'mood', 'tense', 'personnumber', )),
 	])
 
 	# NOTE: processing of dialects and lemma exclusions is not something that
@@ -287,14 +276,13 @@ class Feedback_install(object):
 		self._feedback_elements = False
 		self._feedback_msg_elements = False
 		self._form_objects = False
-		self._global_form_filter = False
 
 		self._lexicon_dialects = False # TODO: this
 		self._feedback_global_dialect = False # TODO: this
 
 	def read_messages(self,infile):
 
-		xmlfile = file(infile)
+		xmlfile=file(infile)
 		tree = _dom.parse(infile)
 		lex = tree.getElementsByTagName("messages")[0]
 		lang = lex.getAttribute("xml:lang")		
@@ -314,7 +302,7 @@ class Feedback_install(object):
 				# else:
 					# link = node.toxml(encoding="utf-8") # in case the feedback contains a link
 					# message = message + link  
-			print >> sys.stdout, message.encode('utf-8')
+			print >> sys.stdout, message
 			fm, created = Feedbackmsg.objects.get_or_create(msgid=mid)
 			fm.save()
 
@@ -361,17 +349,6 @@ class Feedback_install(object):
 			root = self.feedbacktree.getElementsByTagName("feedback")[0]
 			self._file_pos = root.getAttribute("pos").capitalize()
 		return self._file_pos
-	
-	@property
-	def global_form_filter(self):
-		if not self._global_form_filter:
-			root = self.feedbacktree.getElementsByTagName("feedback")[0]
-			global_filter = root.getAttribute("tag__string__contains").strip()
-			if global_filter:
-				self._global_form_filter = global_filter
-			else:
-				self._global_form_filter = False
-		return self._global_form_filter
 	
 	@property
 	def feedback_global_dialect(self):
@@ -494,7 +471,7 @@ class Feedback_install(object):
 				line = "        %s: %s" % (k, vs)
 				lines.append(line)
 			try:
-				return fix_encoding('\n'.join(lines))
+				return smart_unicode('\n'.join(lines))
 			except:
 				return '\n'.join(lines)
 
@@ -543,7 +520,7 @@ class Feedback_install(object):
 		print >> sys.stdout, '\n'
 
 
-	def read_feedback(self, feedbackfile, wordfile, append):
+	def read_feedback(self, feedbackfile, wordfile):
 		"""
 			TODO: update this.
 		"""
@@ -557,9 +534,8 @@ class Feedback_install(object):
 		print >> sys.stdout, self.feedbackfilename
 		print >> sys.stdout, self.wordfilename
 
-		if not append:
-			print >> sys.stdout, " * Deleting existing feedbacks"
-			Form.objects.bulk_remove_form_messages(self.form_objects)
+		print >> sys.stdout, " * Deleting existing feedbacks"
+		Form.objects.bulk_remove_form_messages(self.form_objects)
 
 		# Get intersection of elements and tags
 		self.attributes_intersection = self.find_intersection()
@@ -579,8 +555,6 @@ class Feedback_install(object):
 		print >> sys.stdout, "Fetching wordform attributes."
 		
 		forms = self.form_objects.only(*values) # Get only the things we need.
-		if self.global_form_filter:
-			forms = forms.filter(tag__string__contains=self.global_form_filter)
 		total = forms.count()
 		form_keys = {}
 
@@ -588,13 +562,6 @@ class Feedback_install(object):
 		if self.file_pos == 'A':
 			self.default_attributes['grade'].add('Pos')
 			# self.default_attributes['grade'].remove("")
-
-		if self.file_pos == 'V':
-			self.default_attributes['subclass'].add('Active')
-
-		# TODO: test this.
-		# if self.file_pos == 'N':
-			# self.default_attributes['rime'].add('0')
 
 		# .iterator() necessary because QuerySet is very large.
 		for f in forms.iterator():
@@ -608,10 +575,6 @@ class Feedback_install(object):
 				if not w_key_vals['grade'] in ['Comp', 'Superl']:
 					w_key_vals['grade'] = 'Pos'
 
-			if self.file_pos == 'V':
-				if not w_key_vals['subclass'] in ['Der/PassL', 'Der/PassS', 'Der/AV']:
-					w_key_vals['subclass'] = 'Active'
-
 			w_keys = tuple(w_key_vals.values())
 
 			dialects = [''] + [d.dialect for d in f.dialects.all() 
@@ -619,7 +582,7 @@ class Feedback_install(object):
 
 			# TODO: global dialects?
 
-			w_vals = [f.id, fix_encoding(f.word.lemma), f.tag.string, dialects]
+			w_vals = [f.id, f.word.lemma, f.tag.string, dialects]
 
 			if w_keys in form_keys:
 				form_keys[w_keys].append(w_vals)
@@ -715,9 +678,9 @@ class Feedback_install(object):
 				
 				def intersect_param_set(param_set):
 					print >> sys.stderr, "Intersecting..."
-
+					# print list(param_set)[0:10]
 					intersection = form_keys_key_set & param_set
-
+					# raw_input()
 					for item in intersection:
 						if lemma:
 							form_keys[item] = [
@@ -752,9 +715,6 @@ class Feedback_install(object):
 				print >> sys.stderr, "Permutation count: %d" % prod_count
 				perm_count = 0
 				for perm in Entry(kwargs, tagkwargs).permutations:
-					# p, e, r, m, i, n, a = perm
-					# if [p, e, r] == [u'2syll', u'yes', u'no']:
-						# print perm
 					param_set_.add(tuple(perm))
 
 					perm_count += 1
@@ -774,13 +734,23 @@ class Feedback_install(object):
 
 
 
-		# TODO: store words with no matches somewhere?
+		# TODO: store words with no matches somewhere=
 
 		# Prefetch all feedback ids and msgids: {'bisyllabic_stem': 4, etc ...}
-		feedbackmsg_ids = dict([(fix_encoding(msg.msgid), msg.id) 
+		feedbackmsg_ids = dict([(msg.msgid, msg.id) 
 								for msg in Feedbackmsg.objects.iterator()])
 
+		# values = ['word__' + w_attr for w_attr in self.word_attr_names] + \
+					# ['tag__' + t_attr for t_attr in self.tag_attr_names] + \
+					# ['id', 'fullform', 'tag__string', 'word__lemma']
+
+		# Get only the things we need.
+		# forms = self.form_objects.only(*values)
 		total_forms = self.form_objects.count()
+
+		# def form_key(f):
+			# return tuple(get_attrs(f.word, self.word_attr_names) + \
+							# get_attrs(f.tag, self.tag_attr_names))
 
 
 		# Now we iterate through the prefetched form attributes and form IDs,
@@ -800,6 +770,24 @@ class Feedback_install(object):
 			msg_id = feedbackmsg_ids.get(f_msg)
 			form_id_msg_id.append((f_id, msg_id))
 
+
+
+		### print >> sys.stdout, "Collecting for insert."
+		### form_to_msgs = []
+		### for form_key, form_info in form_keys.iteritems():
+		### 	total_forms -= 1
+		### 	for inf in form_info:
+		### 		form_id, lemma, tag_string, dialects = inf 
+
+		### 		msg_strings = attrs_and_messages.get(form_key, False)
+
+		### 		if msg_strings:
+		### 			msg_ids = [feedbackmsg_ids.get(msg_string) for msg_string in msg_strings]
+		### 			# If in doubt, print this.
+		### 			form_entry = (lemma, tag_string, msg_strings, form_id, msg_ids)
+		### 			form_to_msgs.append(form_entry)
+		### 		else:
+		### 			continue
 
 		# Expand (id, [msgid, msgid, msgid]) into 
 		#        [(id, msgid), (id, msgid), (id, msgid)]

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from settings import *
-from myv_drill.models import *
+from yrk_drill.models import *
 from django.db.models import Q
 from xml.dom import minidom as _dom
 from django.utils.encoding import force_unicode
@@ -12,13 +12,13 @@ import codecs
 # TODO: get these from settings
 
 languages = [
+    'yrk',
+    'rus',
 	'sme',
 	'nob', # was: 'nob' But in the documentation url-s the abbreviation nno is used to mark the Norwegian version of a help page. 
 	'eng',
 	'fin', 
 	'deu',
-	'rus',
-	'myv',
 ]
 
 class Link(object):

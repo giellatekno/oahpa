@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from settings import *
 import sys
-from myv_drill.models import *
+from yrk_drill.models import *
 from xml.dom import minidom as _dom
 from django.db.models import Q
 from django.utils.encoding import force_unicode
@@ -9,15 +10,13 @@ from django.utils.encoding import force_unicode
 import re
 import string
 import codecs
-import settings
 
 
 class Sahka:
 
     def add_wordlist(self,word,t):
-        #cgfile="/opt/smi/sme/bin/sme-ped.cg3"  # on victorio
+        cgfile="/opt/smi/sme/bin/sme-ped.cg3"  # on victorio
         #cgfile="../sme/src/sme-ped.cg3" # relative path, for local use
-        cgfile = settings.FST_DIRECTORY + "/sme-ped.cg3"
 
         wordclass = word.getAttribute("class")
         print wordclass
@@ -91,16 +90,12 @@ class Sahka:
                 utterance = {}
                 utt_text=""
                 utt_word=None
-                utt_facit=""
                 if utt.getElementsByTagName("text"):
                     if utt.getElementsByTagName("text")[0].firstChild.data:
                         utt_text = utt.getElementsByTagName("text")[0].firstChild.data
 
                 if utt.getElementsByTagName("word"):
                     utt_word = utt.getElementsByTagName("word")[0]
-                    
-                if utt.getElementsByTagName("facit"):
-                    utt_facit = utt.getElementsByTagName("facit")[0].firstChild.data
                 
                 if utt.getElementsByTagName("element"):
                     uttelement = utt.getElementsByTagName("element")[0]
@@ -112,7 +107,6 @@ class Sahka:
                     utterance['elements'] = { 'id' : el_id, 'tag' : tag }
 
                 utterance['text'] = utt_text
-                utterance['facit'] = utt_facit
                 utterance['name'] = utt_name
                 utterance['type'] = utttype
                 utterance['word'] = utt_word
@@ -146,10 +140,12 @@ class Sahka:
                 utts.append(utterance)
                 
             for u in utts:
-                utt, created = Utterance.objects.get_or_create(utterance=u['text'], utttype=u['type'], topic=t, name=u['name'], facit=u['facit'])
+                utt, created = Utterance.objects.get_or_create(utterance=u['text'],\
+                                                               utttype=u['type'],\
+                                                               topic=t,\
+                                                               name=u['name'])
                 if u['word']:
-                    _msg = "Adding wordlist " + u['text']
-                    print >> sys.stdout, _msg.encode('utf-8')
+                    print "Adding wordlist", u['text']
                     self.add_wordlist(u['word'],utt)
                 utt.save()
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import settings
-from myv_drill.models import *
+from yrk_drill.models import *
 # from xml.dom import minidom as _dom
 # from django.db.models import Q
 import sys
@@ -29,7 +29,7 @@ except:
 try:
 	language = settings.MAIN_LANGUAGE[0]
 except:
-	language = "myv"
+	language = "yrk"
 
 numfst = fstdir + "/" + language + "-num.fst"
 
@@ -129,38 +129,24 @@ class Paradigm:
 		
 
 	def handle_tags(self, tagfile, add_db):
-		""" This installs all tags if add_db=True, otherwise it reads
-		all of the tags and produces a dictionary of the tag as the key
-		and the tag set it belongs to as the value.
-		"""
 
-		if add_db:
-			with open(tagfile, "r") as F:
-				# Read tags, remove newlines
-				tags = [a.strip() for a in F.readlines()]
+		with open(tagfile, "r") as F:
+			# Read tags, remove newlines
+			tags = [a.strip() for a in F.readlines()]
 
-			tagclass = ""
-			for line in tags:
-				if line.startswith("#"):
-					tagclass = line.lstrip("#")
-				else:
-					string = line.strip().replace('*', '')
-					self.tagset[string] = tagclass
-					if add_db and tagclass and string:
-						string = string.replace('%', '')
-						#print "adding " + tagclass + " " + string
-						tagset, created = Tagset.objects.get_or_create(tagset=tagclass)
-						pos, created = Tagname.objects.get_or_create(tagname=string, tagset=tagset)
-						print "%s added to %s" % (string, tagclass)
-		else:
-			tagname_tagset = Tagname.objects.all().values_list('tagname', 'tagset__tagset')
-			tagset_dict = dict()
-			for k, v in tagname_tagset:
-				if k in tagset_dict:
-					tagset_dict[k].append(v)
-				else:
-					tagset_dict[k] = [v]
-			self.tagset = tagset_dict
+		tagclass = ""
+		for line in tags:
+			if line.startswith("#"):
+				tagclass = line.lstrip("#")
+			else:
+				string = line.strip().replace('*', '')
+				self.tagset[string] = tagclass
+				if add_db and tagclass and string:
+					#print "adding " + tagclass + " " + string
+					tagset, created = Tagset.objects.get_or_create(tagset=tagclass)
+					pos, created = Tagname.objects.get_or_create(tagname=string, tagset=tagset)
+					print "%s added to %s" % (string, tagclass)
+
 
 
 	def read_paradigms(self, paradigmfile, tagfile, add_database):
@@ -215,9 +201,8 @@ class Paradigm:
 			g.form, g.tags = wordform
 			for t in g.tags:
 				if self.tagset.has_key(t):
-					tagclasses = self.tagset[t]
-					for tagclass in tagclasses:
-						g.classes[tagclass] = t
+					tagclass = self.tagset[t]
+					g.classes[tagclass] = t
 			self.paradigm.append(g)
 			
 	def collect_gen_data(self, lemma, pos, hid, wordtype, gen_only, forms):
@@ -280,8 +265,7 @@ class Paradigm:
 		if not wordtype.strip():
 			wordtype = ""
 		else:
-			w, rest = wordtype[0], wordtype[1::]
-			wordtype = '+' + w.capitalize() + rest
+			wordtype = '+' + wordtype.capitalize()
 
 		if self.paradigms.has_key(pos):
 			for a in self.paradigms[pos]:
@@ -415,13 +399,12 @@ class Paradigm:
 
 					for t in g.tags.split('+'):
 						if self.tagset.has_key(t):
-							tagclasses = self.tagset[t]
-							for tagclass in tagclasses:
-								g.classes[tagclass] = t
+							tagclass=self.tagset[t]
+							g.classes[tagclass] = t
 
 					# if wordtype is specified (G3, Actor, etc.,), we want only
 					# these forms, otherwise we want only forms without a
-					# wordtype, these are assigned to the Nountype group in tags.txt.
+					# wordtype
 					if wordtype is not None:
 						wordtype = wordtype.upper()
 						g_wordtype = g.classes.get('Subclass', False)
@@ -434,11 +417,6 @@ class Paradigm:
 							continue
 					else:
 						g_wordtype = g.classes.get('Subclass', False)
-						# subclass is also part of another tag group,
-						# thus not only a subclass, so none.
-						# Kind of hacky, for Der/PassL which
-						if g_wordtype in g.classes.values():
-							g_wordtype = False
 						if g_wordtype:
 							continue
 						else:
@@ -511,7 +489,6 @@ class Paradigm:
 					extraforms[tagstring] = wordform
 					print >> STDOUT, "adding extra wordform..", wordform
 
-		# TODO: reproduce word type stuff up here
 		for line in lines_tmp:
 			if not line.strip(): continue
 			matchObj=genObj.search(line)
@@ -526,9 +503,8 @@ class Paradigm:
 				print repr(g.tags)
 				for t in g.tags.split('+'):
 					if self.tagset.has_key(t):
-						tagclasses = self.tagset[t]
-						for tagclass in tagclasses:
-							g.classes[tagclass] = t
+						tagclass=self.tagset[t]
+						g.classes[tagclass]=t
 				print g.classes
 				raw_input()
 				self.paradigm.append(g)
