@@ -63,7 +63,7 @@ class UserProfile(models.Model):
 	
 	@property
 	def open_id_link(self):
-		return 'http://oahpa.uit.no/yrk_oahpa/openid/%s' % self.user.username
+		return 'http://oahpa.uit.no/myv_oahpa/openid/%s' % self.user.username
 	
 	@property
 	def grades(self):
@@ -198,14 +198,14 @@ from django.db.models.signals import post_save, pre_save
 from signals import create_profile, aggregate_grades, user_presave, course_relationship_postsave
 
 post_save.connect(create_profile, sender=User, 
-	dispatch_uid="yrk_oahpa.courses.models.post_save")
+	dispatch_uid="myv_oahpa.courses.models.post_save")
 
 post_save.connect(aggregate_grades, sender=UserGrade,
-	dispatch_uid="yrk_oahpa.courses.models.post_save")
+	dispatch_uid="myv_oahpa.courses.models.post_save")
 
 post_save.connect(course_relationship_postsave, sender=CourseRelationship,
-	dispatch_uid="yrk_oahpa.courses.models.post_save")
+	dispatch_uid="myv_oahpa.courses.models.post_save")
 
 pre_save.connect(user_presave, sender=User,
-	dispatch_uid="yrk_oahpa.courses.models.pre_save")
+	dispatch_uid="myv_oahpa.courses.models.pre_save")
 
