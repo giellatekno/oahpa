@@ -20,15 +20,27 @@ urlpatterns = patterns('django.contrib.auth.views',
     url(r'^cookie_logout/$', cookie_logout),
 )
 
-from views import courses_main, instructor_student_detail, begin_course_goal, courses_goal_construction, courses_stats, goal_history
+from views import ( courses_main
+                  , instructor_student_detail
+                  , begin_course_goal
+                  , courses_goal_construction
+                  , courses_stats
+                  , goal_history
+                  , courses_coursegoal_construction
+                  )
 
 from rest_framework import routers
 
-from .data_api import UserStatsViewSet, GoalParametersView, FeedbackLogView
+from .data_api import ( UserStatsViewSet
+                      , GoalParametersView
+                      , FeedbackLogView
+                      , CourseGoalView
+                      )
 
 router = routers.DefaultRouter()
 router.register(r'stats', UserStatsViewSet)
 router.register(r'goals', GoalParametersView, base_name='params')
+router.register(r'coursegoals', CourseGoalView, base_name='goals')
 router.register(r'feedback', FeedbackLogView)
 
 urlpatterns += patterns('univ_oahpa.courses.views',
@@ -36,6 +48,8 @@ urlpatterns += patterns('univ_oahpa.courses.views',
         name="goal_history"),
     url(r'^goal/begin/(?P<goal_id>\d+)/$', begin_course_goal,
         name="begin_course_goal"),
+    url(r'^create/coursegoal/$', courses_coursegoal_construction,
+        name="courses_coursegoal_construction"),
     url(r'^create/goal/$', courses_goal_construction,
         name="courses_goal_construction"),
     url(r'^stats/$', courses_stats, name="courses_stats"),

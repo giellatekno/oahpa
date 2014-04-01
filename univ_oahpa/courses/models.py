@@ -235,6 +235,10 @@ class CourseGoal(models.Model):
     def __unicode__(self):
         return u"%s - %s" % (self.course, self.short_name)
 
+    @property
+    def combined_name(self):
+        return u"%s (%s)" % (self.short_name, self.course)
+
     def progress_for(self, user):
         ugis = sum( [list(g.goal.usergoalinstance_set.filter(user=user)) for g in self.goals.all()]
                   , []

@@ -1,4 +1,4 @@
-﻿var Courses = angular.module('Courses', ['ngCookies']).
+﻿var Courses = angular.module('Courses', ['ngCookies', 'ui.sortable']).
     config(function($interpolateProvider, $httpProvider) {
         // set template expression symbols
         $interpolateProvider.startSymbol('<%');
@@ -36,6 +36,56 @@ function GoalController($scope, $http, $element, $cookies) {
              $scope.current_set_count = data.current_set_count;
              $scope.navigated_away = data.navigated_away;
          });
+}
+
+function CourseGoalConstructorController($scope, $http, $element, $cookies) {
+    var coursegoal_url = $element.attr('ng-source-coursegoal') ;
+    var goal_url = $element.attr('ng-source-goal') ;
+
+    $scope.course_goal = {};
+    $scope.orderable_goals = [];
+    $scope.sorting = [];
+    $scope.not_in_use = [];
+
+    // TODO: return to not in use:
+    // http://codepen.io/thgreasi/pen/uFile?editors=111
+    $scope.sortableOptions = {
+        placeholder: "sortable-placeholder",
+        connectWith: ".connected-sorting",
+    }
+
+    $scope.submitForm = function() {
+        $scope.created = true;
+    };
+
+    $scope.saveSorting = function() {
+        console.log($scope.sorting);
+        console.log($scope.not_in_use);
+        // TODO: send new sorting info
+        
+    };
+
+    $http.get(coursegoal_url)
+         .success(function(data){
+             $scope.coursegoals = data.results;
+         });
+
+    $http.get(goal_url)
+         .success(function(data){
+             $scope.goals = data.goals;
+             for (var i = 0; i < data.goals.length; i++) {
+                 var goal = data.goals[i];
+
+                 $scope.not_in_use.push({
+                     text: goal.short_name,
+                     id: goal.id,
+                     value: i+1
+                 });
+             }
+         });
+
+  
+  
 }
 
 function GoalConstructorController($scope, $http, $element, $cookies) {

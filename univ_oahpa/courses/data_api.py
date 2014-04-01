@@ -4,7 +4,7 @@ from rest_framework import mixins
 from rest_framework.response import Response
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
-from .models import UserGoalInstance, Goal, GoalParameter, UserFeedbackLog
+from .models import UserGoalInstance, CourseGoal, Goal, GoalParameter, UserFeedbackLog
 
 from .data_permissions import *
 from .data_serializers import *
@@ -53,6 +53,37 @@ class FeedbackLogView(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         return self.model.objects.filter(user=user)
+
+class CourseGoalView(viewsets.ModelViewSet):
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (CanCreateAndUpdateCourseGoal, )
+    queryset = CourseGoal.objects.all()
+
+    serializer_class = CourseGoalSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        # TODO: also return coursegoals for users instructorships
+        return self.queryset.filter(created_by=user)
+
+    # def user_goals(self):
+    #     goals = GoalSerializer(data=self.request.user.goal_set.filter()).data
+    #     print goals
+    #     return goals
+
+    def metadata(self, request):
+        """ This returns stuff when the OPTIONS verb is used,
+        but we're coopting it slightly to include the parameters for the
+        form, which need to be automatically constructed for each
+        installation.
+
+        If the user is an instructor in any courses, these are included
+        and rendered in the form.
+        """
+
+        data = super(CourseGoalView, self).metadata(request)
+        # data['goals'] = self.user_goals()
+        return data
 
 class GoalParametersView(viewsets.ModelViewSet):
     """ These views are for creating, editing and deleting users'
@@ -205,6 +236,6 @@ class GoalParametersView(viewsets.ModelViewSet):
         choice_tree, parameter_values = prepare_goal_params(request)
         parameters = {'tree': choice_tree, 'values': parameter_values}
         data['parameters'] = parameters
-        data['courses'] = [(c.id, c.name) for c in request.user.get_profile().instructorships]
+        # data['courses'] = [(c.id, c.name) for c in request.user.get_profile().instructorships]
         return data
 

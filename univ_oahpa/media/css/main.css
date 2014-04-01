@@ -750,9 +750,40 @@ span.incorrect input {
     padding-left: 1em;
 }
 
+#courses .course_block .coursegoal {
+    margin-bottom: 2em;
+}
+
+.coursegoal .cumulative_progress {
+    font-weight: 200;
+    font-size: 175%;
+}
+
 #courses .course_block table {
+    margin-top: 0em;
     margin-left: 0em;
     margin-bottom: 1.5em;
+}
+
+#courses .source-region, #courses .target-region {
+    min-height: 250px;
+    padding-bottom: 15px;
+}
+
+#courses .target-region {
+    background-color: rgba(0, 150, 0, .1);
+    border: 3px #CCF dashed;
+}
+
+#courses .source-region {
+    background-color: rgba(150, 0, 0, .1);
+    border: 3px #CCC dashed;
+}
+
+#courses .sortable-placeholder {
+    background-color: #F00;
+    padding: 2px 5px;
+    border: 1px solid #CCC;
 }
 
 #courses dl.course_progress {
