@@ -1,6 +1,6 @@
 #!/bin/sh
 
-file_dir=/home/ciprian/gt_stuff/gtsvn/words/dicts/smanob/demo_src
+file_dir=PATH/TO/DIR
 
 for xfile in $(ls $file_dir/demo_*_sma.xml)
 do
