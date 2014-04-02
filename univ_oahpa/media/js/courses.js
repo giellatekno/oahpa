@@ -1,8 +1,7 @@
 ﻿function listContainsObject(_list, _obj, field) {
     for (var i = 0; i < _list.length; i++) {
-        if(_list[i][field] === _obj[field]) {
-            index = i;
-            return index;
+        if(_list[i][field] == _obj[field]) {
+            return i;
         }
     }
     return -1;
@@ -56,6 +55,8 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
     $scope.orderable_goals = [];
     $scope.sorting = [];
     $scope.not_in_use = [];
+    $scope.edit = false;
+    $scope.intermediate = false;
 
     // TODO: return to not in use:
     // http://codepen.io/thgreasi/pen/uFile?editors=111
@@ -68,6 +69,27 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
     $http.defaults.headers.put['X-CSRFToken'] = $cookies.csrftoken;
 
     $scope.populateGoal = function() {
+       // If this is null, clear things and return
+       if ($scope.edit_goal_id === null) {
+           $scope.course_goal = {};
+           $scope.intermediate = false;
+           $scope.edit = false;
+
+            // Re-add all the goals that we grabbed while
+            // initializing
+            for (var i = 0; i < $scope.goals.length; i++) {
+                var goal = $scope.goals[i];
+
+                $scope.not_in_use.push({
+                    text: goal.short_name,
+                    id: goal.id,
+                    value: i+1
+                });
+            }
+
+           return false;
+       }
+
        var get_url = coursegoal_url + $scope.edit_goal_id + '/' ;
         
         $http.get(get_url)
@@ -75,12 +97,14 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
                  // TODO: allow user to restore this
                  $scope.course_goal_create = $scope.user_goal ;
                  $scope.course_goal = data ;
+                 $scope.intermediate = true;
                  $scope.edit = true;
 
                  $scope.sorting = [];
-
                  $scope.not_in_use = [];
 
+                 // Re-add all the goals that we grabbed while
+                 // initializing
                  for (var i = 0; i < $scope.goals.length; i++) {
                      var goal = $scope.goals[i];
 
@@ -91,6 +115,8 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
                      });
                  }
 
+                 // Now iterate through the response goals, if they're
+                 // assigned already, remove from $scope.not_in_use
                  for (var i = 0; i < data.goals.length; i++) {
 
                      var goal = data.goals[i];
@@ -103,7 +129,7 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
 
                      var ind_of = listContainsObject($scope.not_in_use, item, 'id');
 
-                     if (ind_of >= 0) {
+                     if (ind_of >= -1) {
                        $scope.not_in_use.pop(ind_of);
                      }
 

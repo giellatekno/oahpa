@@ -91,10 +91,12 @@ class CourseGoalView(viewsets.ModelViewSet):
                 CourseGoalGoal.objects.create(coursegoal=obj, goal=g)
         except Exception, e:
             errors.append(repr(e))
-            print e
 
+        success = True
         if not success:
             response_params['errors'] = errors
+
+        response_params['success'] = success
 
         return Response(response_params)
 

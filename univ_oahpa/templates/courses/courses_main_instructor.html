@@ -49,12 +49,14 @@ TODO: internationalization strings
 				                        <div class="col-md-4 col-sm-4 col-lg-4">
 				                            <h4>{{ coursegoal.short_name }}</h4>
 				                            <h5 class="cumulative_progress">{{ coursegoal|cumulative_progress:user }}</h5>
+				                            <div class="well">
+				                                <p class="goal_description">{{ coursegoal.description }}</p>
+				                            </div>
 				                        </div>
 				                        <div class="col-md-8 col-sm-8 col-lg-8">
 				                            {% with coursegoal|goals as goal_set %}
 				                                {% include 'courses/goal_table_list.html' %}
 				                            {% endwith %}
-				                            <p class="goal_description">{{ coursegoal.description }}</p>
 				                        </div>
                                     </div>
                                     <div class="clearfix visible-xs"></div>
@@ -66,10 +68,13 @@ TODO: internationalization strings
 			                </div>
 			            {% endif %}
 
-			            <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_coursegoal_construction %}">Create a course goal</a>
-			            <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_goal_construction %}">Create a goal</a>
-
+			        </div>
                 </div>
+
+                <div class="row">
+			        <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_coursegoal_construction %}">Create a course goal</a>
+			        <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_goal_construction %}">Create a goal</a>
+			    </div>
 
 			<br />
 			<h4>Students</h4>

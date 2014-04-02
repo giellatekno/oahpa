@@ -41,42 +41,35 @@
  * feedback to user that their progress was stopped because they changed the
    settings or navigated away
 
+ * course goal editing and course assignment
+
  --
 
  TODO: cumulative progress
+   - coursegoal models needs fields for user to specity threshold too.
 
- TODO: goals - ordering field, apart from alphabetic, instructors can define
- goal progression
+   - only use recent-most runthrough? 
 
- TODO: goals - new field: open/closed, track all progress
-
- TODO: store old goal progress instances
-    - maybe summary column can then be cumulative for all work, but save
-      individual work instances
+ TODO: coursegoals - clean up minor bugs on edit part of form, finish up user feedback about create/delete/etc.
+   - drag goals back to not in use area
+   - add a link to create a new goal?
 
  TODO: instructor summary pages 
    general statistics to 'more information' page
    overview page: just student names / list? 
 
-
  TODO: registration for course
 
- TODO: add more columns to table?
-
- TODO: some color for star
-
- TODO: course goal summary for instructor for each student - 
-    detail page: show students' individual goals ? 
-
- TODO: when editing a goal for a course, the associated course isn't
-    automatically populated in the form
+ TODO: some color for completion stars
 
  TODO: update the course goal when it's complete, after last submit?
     re-evaluate with each request to /stats/
 
  TODO: fixtures for sample goals
+  - default coursegoal sets that can be copied to courses.
 
- TODO: stem-type
+
+ TODO: stem-type buttons
 
  TODO: log feedback
 
