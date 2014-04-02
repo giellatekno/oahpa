@@ -337,11 +337,11 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
-    ('FOOD-DRINK', _('food or drink')),
+    ('FOOD/DRINK', _('food or drink')),
 #     ('FOOD', _('food')),
 #     ('DRINK', _('drink')),
 #     ('MOVEMENT', _('movement')),
-    ('TRAVEL', _('travel')),
+#    ('TRAVEL', _('travel')),
     ('HUMAN', _('humans')),
 #    ('PLACE', _('places')),
     ('all', _('all')),
