@@ -520,13 +520,11 @@ class BareGame(Game):
 		num_type = self.casetable.get('num_type', '') # added by Heli, changed by Pavel to skip an exception, change this back I suppose
 
 		pos_mood_tense = {
-			"PRS":	("Ind", "Prs", ""),
-			"PRT":	("Ind", "Prt", ""),
-			"PRF":	("", "", "PrfPrc"),
-			"GER":	("", "", "Ger"),
-			"COND":   ("Cond", "Prs", ""),
-			"IMPRT":  ("Imprt", "", ""),
-			"POT":	("Pot", "Prs", "")
+			"PRS":	("Ind", "Act", "Prs", ""),
+			"PRT":	("Ind", "Act", "Prt", ""),
+			"PRF":	("", "", "", "PrfPrc"),
+			"COND":   ("Act", "Cond", ""),
+			"IMPRT":  ("Act", "Imprt", "")
 		}
 
 		if pos == "V" and self.settings.has_key('vtype'):
