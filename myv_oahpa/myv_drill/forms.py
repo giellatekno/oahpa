@@ -320,12 +320,20 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-	('myveng', _('Nenets to English')),
-	('engmyv', _('English to Nenets')),
+	('myveng', _('Erzya to English')),
+	('engmyv', _('English to Erzya')),
+	('myvfin', _('Erzya to Finnish')),
+	('finmyv', _('Finnish to Erzya')),
+    ('myvnob', _('Erzya to Norwegian Bokmål')),
+    ('nobmyv', _('Norwegian Bokmål to Erzya')),
+	('myvrus', _('Erzya to Russian')),
+	('rusmyv', _('Russian to Erzya')),
+	('myvsme', _('Erzya to North Saami')),
+	('smemyv', _('North Saami to Erzya')),
 )
     
 NUMLANGUAGE_CHOICES = (
-	('myv', _('Nenets')),
+	('myv', _('Erzya')),
 )
 
 SEMTYPE_CHOICES = (
