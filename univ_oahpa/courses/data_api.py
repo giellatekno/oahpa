@@ -4,7 +4,7 @@ from rest_framework import mixins
 from rest_framework.response import Response
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
-from .models import UserGoalInstance, CourseGoal, Goal, GoalParameter, UserFeedbackLog
+from .models import UserGoalInstance, CourseGoal, Goal, GoalParameter, UserFeedbackLog, CourseGoalGoal
 
 from .data_permissions import *
 from .data_serializers import *
@@ -66,6 +66,62 @@ class CourseGoalView(viewsets.ModelViewSet):
         # TODO: also return coursegoals for users instructorships
         return self.queryset.filter(created_by=user)
 
+    def update(self, request, pk=None, partial=False):
+        response_params = {}
+        errors = []
+
+        success = True
+        data = request.DATA
+        data.pop('id')
+        goals = data.pop('goals')
+
+        try:
+            obj = self.queryset.filter(pk=pk).update(**data)
+        except Exception, e:
+            success = False
+            errors.append(repr(e))
+
+        obj = self.queryset.get(pk=pk)
+
+        goal_objs = Goal.objects.filter(id__in=goals)
+
+        try:
+            CourseGoalGoal.objects.filter(coursegoal=obj).delete()
+            for g in goal_objs:
+                CourseGoalGoal.objects.create(coursegoal=obj, goal=g)
+        except Exception, e:
+            errors.append(repr(e))
+            print e
+
+        if not success:
+            response_params['errors'] = errors
+
+        return Response(response_params)
+
+    def create(self, request):
+        # TODO: this can probably be generalized with the serializer now
+
+        # TODO: doublecheck that course_id within
+        # request.user.get_profile().instructorships if course is
+        # specified?
+
+        success = True
+        response_parameters = {}
+
+        new_obj = request.DATA
+        new_obj['created_by'] = request.user
+        new_obj['course_id'] = new_obj.pop('course')
+        new_goal = CourseGoal.objects.create(**new_obj)
+
+        response_parameters = {
+            'success': success,
+        }
+
+        if success:
+            response_parameters['id'] = new_goal.id
+
+        return Response(response_parameters)
+
     # def user_goals(self):
     #     goals = GoalSerializer(data=self.request.user.goal_set.filter()).data
     #     print goals
@@ -82,6 +138,12 @@ class CourseGoalView(viewsets.ModelViewSet):
         """
 
         data = super(CourseGoalView, self).metadata(request)
+
+        data['courses'] = [
+            {'value': c.id, 'label': c.name}
+            for c in request.user.get_profile().instructorships
+        ]
+
         # data['goals'] = self.user_goals()
         return data
 

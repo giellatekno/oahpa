@@ -1,5 +1,7 @@
 ﻿{# TODO: hide each main game type depending on what the user has selected (possible to avoid form submission of hidden things?) #}
 
+<form>
+    {% csrf_token %}
 <div id="course_goal_constructor" ng-app="Courses" class="bootstrap-styles">
     <div class="col-lg-9 col-sm-9 col-md-9">
 
@@ -349,3 +351,4 @@
     </div>
 
 </div>
+</form>

@@ -51,7 +51,7 @@ class CourseGoalGoalSerializer(serializers.ModelSerializer):
 
 class CourseGoalSerializer(serializers.ModelSerializer):
 
-    goals = CourseGoalGoalSerializer(many=True)
+    goals = CourseGoalGoalSerializer(many=True, required=False)
     combined_name = serializers.CharField(source='combined_name', read_only=True)
 
     def transform_goals(self, obj, value):
