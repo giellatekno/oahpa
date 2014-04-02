@@ -79,12 +79,12 @@
 		<mg>
 		  <xsl:copy-of select="../../semantics" copy-namespaces="no"/>
 		  <tg xml:lang="{$slang}">
-		    <xsl:copy-of select="../re[1]" copy-namespaces="no"/>
+		    <!--xsl:copy-of select="../re[1]" copy-namespaces="no"/>
 		    <xsl:if test="((local-name(.) = 't') or (local-name(.) = 'tf')) and (../te[./position() + 1])">
 		      <re>
 			<xsl:value-of select="../te[./position() + 1]"/>
 		      </re>
-		    </xsl:if>
+		    </xsl:if-->
 		    <t>
 		      <xsl:copy-of select="./../../../lg/l/@pos"/>
 		      <xsl:value-of select="normalize-space(./../../../lg/l)"/>
@@ -96,7 +96,7 @@
 	  </xsl:for-each>
 	</r>
       </xsl:variable>
-      
+      <!-- adapt the code depending on the input file names: myveng vs myv2X --> 
       <xsl:result-document href="{$outDir}/{concat(substring-before($current_file, concat('_',$slang,$tlang)), '_', $tlang, $slang)}.{$e}" format="{$of}">
 	<xsl:copy-of select="$out_tmp"/>
       </xsl:result-document>
