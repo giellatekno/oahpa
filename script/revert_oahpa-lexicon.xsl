@@ -72,10 +72,11 @@
 		</xsl:if>
 		<lg>
 		  <l pos="{$c_pos}">
+		    <xsl:copy-of select="./@*[not(local-name() = 'pos')][not(local-name() = 'stat')]"/>
 		    <xsl:value-of select="normalize-space(.)"/>
 		  </l>		  
 		</lg>
-		<xsl:copy-of select="../../../lg/sources" copy-namespaces="no"/> <!-- adjust path according to the input files -->
+		<xsl:copy-of select="../../../sources" copy-namespaces="no"/> <!-- adjust path according to the input files -->
 		<mg>
 		  <xsl:copy-of select="../../semantics" copy-namespaces="no"/>
 		  <tg xml:lang="{$slang}">
@@ -86,7 +87,7 @@
 		      </re>
 		    </xsl:if-->
 		    <t>
-		      <xsl:copy-of select="./../../../lg/l/@pos"/>
+		      <xsl:copy-of select="./../../../lg/l/@*"/>
 		      <xsl:value-of select="normalize-space(./../../../lg/l)"/>
 		    </t>
 		  </tg>
