@@ -431,9 +431,9 @@ def leksa_game(request, place=False):
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
 		if sess_lang == 'liv':
-			sess_lang = 'nob'
+			sess_lang = 'eng' # was: nob
 	else:
-		sess_lang = 'nob'
+		sess_lang = 'eng' # was: nob
 
 	default_langpair = 'liv%s' % sess_lang
 
@@ -565,8 +565,8 @@ class Morfaview(Gameview):
 		'N-GEN':  _('Practise genitive'),
 		'N-NOM-PL':  _('Practise plural'),
 		'N-INE':  _('Practise inessive'),
-		'N-ELA':  _('Practise elative'),
-		'N-ADE':  _('Practise adessive'),
+		'N-DAT':  _('Practise dative'),
+		'N-INS':  _('Practise instrumental'),
 		'N-ABL':  _('Practise ablative'),
 		'N-ALL':  _('Practise allative'),
 		'N-MIX':  _('Practise a mix'),

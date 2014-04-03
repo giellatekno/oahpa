@@ -19,20 +19,20 @@ from random import choice
 
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
-PRONOUNS_LIST = {'Sg1':'mie', 'Sg2':'sie', 'Sg3':'se',
-		  'Pl1':'met', 'Pl2':'tet', 'Pl3':'net'}
+PRONOUNS_LIST = {'Sg1':u'ma', 'Sg2':u'sa', 'Sg3':u'ta',
+		  'Pl1':u'mēg', 'Pl2':u'tēg', 'Pl3':u'ne'}
 
 # DEMONSTRATIVE_PRESENTATION plus Sg3/Pl3
-PASSIVE_PRONOUNS_LIST = {'Sg1':'mie', 'Sg2':'sie', 'Sg3':'se',
-		  'Pl1':'met', 'Pl2':'tet', 'Pl3':'net'}
+PASSIVE_PRONOUNS_LIST = {'Sg1':u'ma', 'Sg2':u'sa', 'Sg3':u'ta',
+                         'Pl1':u'mēg', 'Pl2':u'tēg', 'Pl3':u'ne'}
 
 
 NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
 		  'Pl1':'eat', 'Pl2':'ehpet', 'Pl3':'eai'}
 
 TENSE_PRESENTATION = {
-	'Prt': u'eilen',
-	'Prs': u'tänään',
+	'Prt': u'eggiļ',
+	'Prs': u'tämpõ',
 }
 
 RECIPROCATIVE_PRESENTATION = {
@@ -55,12 +55,12 @@ POS_CHOICES = (
 CASE_CHOICES = (
     ('N-GEN', _('Genitive')),
     ('N-PAR', _('Partitive')),
+    ('N-DAT', _('Dative')),
     ('N-ILL', _('Illative')),
     ('N-INE', _('Inessive')),
     ('N-ELA', _('Elative')),
-    ('N-ADE', _('Adessive')),
-    ('N-ABL', _('Ablative')),
-    ('N-ALL', _('Allative')),
+    ('N-INS', _('Instrumental')),
+    #('N-ALL', _('Allative')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -89,9 +89,9 @@ CASE_CHOICES_PRONOUN = (
     ('N-ILL', _('Illative')),
     ('N-INE', _('Inessive')),
     ('N-ELA', _('Elative')),
-    ('N-ADE', _('Adessive')),
-    ('N-ABL', _('Ablative')),
-    ('N-ALL', _('Allative')),
+    #('N-ADE', _('Adessive')),
+    #('N-ABL', _('Ablative')),
+    #('N-ALL', _('Allative')),
 )
 
 # 	('N-ACC', _('accusative')),
@@ -345,21 +345,29 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-	('livnob', _('Kven to Norwegian')),
-	('nobliv', _('Norwegian to Kven')),
-	('livfin', _('Kven to Finnish')),
-	('finliv', _('Finnish to Kven')),
-	('liveng', _('Kven  to English')),
-	('engliv', _('English to Kven')),
+	('liveng', _('Livonian  to English')),
+	('engliv', _('English to Livonian')),
+        ('livfin', _('Livonian to Finnish')),
+        ('finliv', _('Finnish to Livonian')),   
+        ('livest', _('Livonian to Estonian')),
+        ('estliv', _('Estonian to Livonian')),
+        ('livlat', _('Livonian to Latvian')),
+        ('latliv', _('Latvian to Livonian')),
+        ('livsme', _('Livonian to North Saami')),
+        ('smeliv', _('North Saami to Livonian')),
+        ('livnob', _('Livonian to Norwegian')),
+        ('nobliv', _('Norwegian to Livonian')), 
+        ('livrus', _('Livonian to Russian')),
+        #('rusliv', _('Russian to Livonian')),
 )
 
 NUMLANGUAGE_CHOICES = (
-	('liv', _('Kven')),
+	('liv', _('Livonian')),
 )
 
 SEMTYPE_CHOICES = (
     ('HUMAN', _('human')),
-    ('FOOD_DRINK', _('food/drink')),
+    ('FOOD/DRINK', _('food/drink')),
     ('all', _('all')),
 )
 
@@ -2000,7 +2008,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["nob","sme","fin","eng","swe"]: language="nob"
+    if not language in ["nob","sme","fin","eng","swe","liv"]: language="nob"
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():
