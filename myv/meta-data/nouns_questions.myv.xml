@@ -11,8 +11,50 @@
 <!-- are different. It the question there is PxSg2, and in the answer PxSg1. -->
 <!--  -->
 <!--  -->
-  <q id="NLoc">
-    <qtype>N-LOC</qtype>
+  <q id="nabl1">
+    <qtype>N-ABL</qtype>
+    <question>
+      <text>Мезде SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>ярсамс</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ABL</text>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Par"/>
+        <sem class="FOOD_DISH"/>
+      </element>
+    </answer>
+  </q>
+  <q id="nabl2">
+    <qtype>N-ABL</qtype>
+    <question>
+      <text>Мезде SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>симемс</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ABL</text>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Par"/>
+        <sem class="DRINK"/>
+      </element>
+    </answer>
+  </q>
+<!--  <q id="NLat">
+    <qtype>N-LAT</qtype>
    <question>
       <text>Ков тонь SUBJ MAINV</text>
       <element id="SUBJ">
@@ -25,7 +67,7 @@
       </element>
     </question>
     <answer> 
-      <text>N-PXSG1 MAINV N-LOC</text>
+      <text>N-PXSG1 MAINV N-LAT</text>
       <element id="N-PXSG1" content="SUBJ">
         <agreement id="SUBJ"/>
 	<grammar tag="N+Sg+Nom+PxSg1"/>
@@ -34,13 +76,13 @@
         <agreement id="MAINV"/>
 	<grammar tag="V+Ind+Prs+ScSg3"/>
       </element>
-      <element game='morfa' id="N-LOC" task="yes" >
+      <element game='morfa' id="N-LAT" task="yes" >
 	<sem class="PLACE"/>
 	<grammar tag="N+Sem/Plc+SP+Lat+Indef"/>
       </element>
     </answer>
   </q> 
-
+-->
 </questions>
 
 
