@@ -70,6 +70,11 @@ TODO: link in user interface
 				                                        <div class="col-md-4 col-sm-4 col-lg-4">
 				                                            <h4>{{ coursegoal.short_name }}</h4>
 				                                            <h5 class="cumulative_progress">{{ coursegoal|cumulative_progress:user }}</h5>
+				                                            {% if coursegoal|complete_for:user %}
+				                                                <h5 class="complete">Complete!</h5>
+				                                            {% else %}
+				                                                <h5 class="not_complete">Not complete</h5>
+				                                            {% endif %}
 				                                            <div class="well">
 				                                                <p class="goal_description">{{ coursegoal.description }}</p>
 				                                            </div>

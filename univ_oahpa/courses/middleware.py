@@ -122,16 +122,17 @@ class GradingMiddleware(object):
             # TODO: this is for debug only.
             result = goal.evaluate_for_student(request.user)
 
-            user_goal_instance = UserGoalInstance.objects.filter(user=request.user, goal=goal)
-            if not user_goal_instance:
-                UserGoalInstance.objects.create(user=request.user,
-                                                goal=goal, **result)
-            else:
-                user_goal_instance.update(**result)
+            if result is not None:
+                user_goal_instance = UserGoalInstance.objects.filter(user=request.user, goal=goal)
+                if not user_goal_instance:
+                    UserGoalInstance.objects.create(user=request.user,
+                                                    goal=goal, **result)
+                else:
+                    user_goal_instance.update(**result)
 
-            complete = goal.is_complete(user_goal_instance[0])
-            print 'completed? ' + repr(complete)
-            print 'new-game? ' + repr(request.session['new_game'])
+                complete = goal.is_complete(user_goal_instance[0])
+                print 'completed? ' + repr(complete)
+                print 'new-game? ' + repr(request.session['new_game'])
 
         request.session['previous_exercise_params'] = \
                 request.session.get('current_exercise_params', False)

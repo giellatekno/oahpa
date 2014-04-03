@@ -226,6 +226,9 @@ class CourseGoal(models.Model):
     short_name = models.CharField(max_length=42)
     description = models.TextField(help_text=GOAL_HELP_TEXT)
 
+    threshold = models.FloatField(default=80.0, help_text="Complete goals must average this amount.", blank=True, null=True)
+    percent_goals_completed = models.FloatField(default=80.0, help_text="This percentage of associated goals must be completed", blank=True, null=True)
+
     # TODO: maybe progression should be defined in related model
     # instead of many2many, so goals can be shared with different
     # orderings
@@ -239,17 +242,101 @@ class CourseGoal(models.Model):
     def combined_name(self):
         return u"%s (%s)" % (self.short_name, self.course)
 
-    def progress_for(self, user):
-        ugis = sum( [list(g.goal.usergoalinstance_set.filter(user=user)) for g in self.goals.all()]
+    def user_goal_instances(self, user):
+
+        def get_instances(goal):
+            return goal.usergoalinstance_set.filter(user=user)
+
+        def list_instances(*args, **kwargs):
+            return list(get_instances(*args, **kwargs))
+
+        ugis = sum( map( list_instances
+                       , [ g.goal for g in self.goals.all() ]
+                       )
                   , []
                   )
+
+        return ugis
+
+    def newest_user_goal_instances(self, user):
+
+        def get_newest(ugi_set):
+            if ugi_set.count() == 0:
+                return ugi_set
+
+            ugi_set = ugi_set.order_by('-last_attempt')[0]
+
+            return [ugi_set]
+
+        def get_instances(goal):
+            return goal.usergoalinstance_set.filter(user=user)
+
+        def list_newest_instances(*args, **kwargs):
+            return list(get_newest(get_instances(*args, **kwargs)))
+
+        ugis = sum( map( list_newest_instances
+                       , [ g.goal for g in self.goals.all() ]
+                       )
+                  , []
+                  )
+
+        return ugis
+
+    @property
+    def goal_count(self):
+        return self.goals.all().count()
+
+    def progress_for(self, user):
+        """ Return user's progress as a formatted string.
+        """
+        ugis = self.newest_user_goal_instances(user)
+        progress = self.cumulative_instance_threshold(ugis)
+        progress_str = "%.0f" % progress
+        return progress_str + '%'
+
+    def is_complete(self, user):
+        # TODO: 
+        pass
+
+    def cumulative_instance_threshold(self, ugis):
         progresses = [float(ugi.progress) for ugi in ugis]
         if len(progresses) > 0:
-            progress = sum(progresses)/float(len(progresses)) * 100
-            progress_str = "%.0f" % progress
-            return progress_str + '%'
+            progress = sum(progresses)/float(self.goal_count) * 100
         else:
-            return "0%"
+            progress = 0.0
+        return progress
+
+    def instance_completion_rate(self, ugis):
+        completes = sum([1.0 for ugi in ugis if ugi.is_complete])
+        return (completes/self.goal_count) * 100.0
+
+    def user_completed(self, user):
+        # TODO: only count the goals above the threshold with sets
+        # complete? orrrr
+
+        ugis = self.newest_user_goal_instances(user)
+
+        if len(ugis) == 0:
+            return False
+
+        if self.percent_goals_completed:
+            complete_count = self.instance_completion_rate(ugis) >= self.percent_goals_completed
+        else:
+            complete_count = True
+
+        if self.threshold:
+            threshold_reached = self.cumulative_instance_threshold(ugis) >= self.threshold
+        else:
+            threshold_reached = False
+
+        if self.percent_goals_completed and self.threshold:
+            return complete_count and threshold_reached
+        elif self.percent_goals_completed and not self.threshold:
+            return threshold_reached
+        elif not self.percent_goals_completed and self.threshold:
+            return complete_count
+
+        return False
 
 
 class CourseGoalGoal(models.Model):
@@ -364,6 +451,10 @@ class Goal(models.Model):
 
     def evaluate_for_student(self, user, last_only=True, iteration=False):
         logs = UserActivityLog.objects.filter(user=user, usergoalinstance__goal=self)
+
+        if len(logs) == 0:
+            return None
+
         if iteration:
             logs = logs.filter(usergoalinstance__attempt_count=iteration)
         elif last_only:

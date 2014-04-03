@@ -7,7 +7,7 @@
     return -1;
 }
 
-var CoursesConstruction = angular.module('Courses', ['ngCookies', 'ui.sortable']).
+var CoursesConstruction = angular.module('CoursesConstruction', ['ngCookies', 'ui.sortable']).
     config(function($interpolateProvider, $httpProvider) {
         // set template expression symbols
         $interpolateProvider.startSymbol('<%');
