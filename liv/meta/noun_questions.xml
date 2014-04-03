@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+  <q id="npar1">
+    <qtype>N-PAR</qtype>
+    <question>
+      <text>Mis SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>sīedõ</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-PAR</text>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Par"/>
+        <sem class="FOOD_DISH"/>
+      </element>
+    </answer>
+  </q>
+  <q id="npar2">
+    <qtype>N-PAR</qtype>
+    <question>
+      <text>Mis SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>jūodõ</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-PAR</text>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Par"/>
+        <sem class="DRINK"/>
+      </element>
+    </answer>
+  </q>
+<!--  <q id="npar3">
+    <qtype>N-PAR</qtype>
+    <question>
+      <text>Mitä SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="FAMILY"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>ostaat</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-PAR</text>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Par"/>
+        <sem class="FOOD_GROCERY"/>
+      </element>
+    </answer>
+  </q>-->
+</questions>
+
