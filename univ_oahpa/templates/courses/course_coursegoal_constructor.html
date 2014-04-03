@@ -1,0 +1,147 @@
+﻿{# TODO: hide each main game type depending on what the user has selected (possible to avoid form submission of hidden things?) #}
+
+<form>
+    {% csrf_token %}
+<div id="course_coursegoal_constructor" ng-app="CoursesConstruction" class="bootstrap-styles">
+    <div class="goal_in_progress"
+        ng-controller="CourseGoalConstructorController" 
+        ng-source-coursegoal="/{{ URL_PREFIX }}/courses/api/coursegoals/"
+        ng-source-goal="/{{ URL_PREFIX }}/courses/api/goals/">
+    <div class="col-lg-9 col-sm-9 col-md-9">
+        <div class="row" ng-show="finalized">
+            <p class="lead">The new Course Goal "<% course_goal.short_name %>" has been created.</p>
+
+        </div>
+
+        <div class="row" ng-hide="finalized">
+
+                <select class="form-control"
+                        id="selectToEdit"
+                        name="edit_goal"
+                        ng-change="populateGoal()"
+                        ng-show="!form_success"
+                        ng-options="g.id as g.combined_name for g in coursegoals"
+                        ng-model="edit_goal_id">
+                    <option value="">Edit an existing course goal</option>
+                </select>
+
+        </div>
+
+        <div class="row" ng-hide="finalized">
+
+            <div class="col-md-1">
+                <span class="step_number">1</span>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <label for="goal_name" class="control-label">Course Goal Name</label>
+
+                    <input class="form-control"
+                            id="goal_name"
+                            name="goal_name"
+                            required
+                            ng-model="course_goal.short_name">
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" ng-hide="finalized">
+
+            <div class="col-md-1">
+                <span class="step_number">&nbsp;</span>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <label for="goal_name" class="control-label">Description</label>
+
+                    <textarea class="form-control"
+                            id="goal_description"
+                            description="goal_description"
+                            required
+                            ng-model="course_goal.description">
+                    </textarea>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" ng-hide="finalized">
+
+            <div class="col-md-1">
+                <span class="step_number">&nbsp;</span>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <label for="goal_name" class="control-label">Course</label>
+
+                    <select class="form-control"
+                            id="selectToEdit"
+                            name="edit_goal"
+                            ng-change="populateGoal()"
+                            ng-show="!form_success"
+                            ng-options="g.value as g.label for g in courses"
+                            ng-model="course_goal.course">
+                    </select>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" ng-hide="finalized || intermediate">
+
+            <div class="col-md-1">
+                <span class="step_number">2</span>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <p>If you're satisfied with the above, save and then add goals to this course goal.</p>
+                    <br />
+                    <button ng-hide="created" type="button" ng-click="submitForm()" class="btn btn-info">Submit</button>
+                    <button ng-show="created" type="button" ng-click="submitForm()" class="btn btn-info">Edit</button>
+                    <button type="button" class="btn btn-warning">Reset</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" ng-show="created || edit" ng-hide="finalized">
+
+            <div class="col-md-1">
+                <span class="step_number">3</span>
+            </div>
+            <div class="col-md-11">
+                <div class="col-md-6">
+                    <p class="sortable-note">Drop things here</p>
+                    <ul ng-model="sorting" ui-sortable="sortableOptions" class="connected-sorting nav nav-pills nav-stacked target-region">
+                        <li ng-repeat="goal in sorting"><a href="#"><% $index + 1 %>.) <% goal.text %></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <p class="sortable-note">Your goals</p>
+                    <ul ng-model="not_in_use" ui-sortable="sortableOptions" class="connected-sorting source-region nav nav-pills nav-stacked">
+                        <li ng-repeat="goal in not_in_use"><a href="#"><% goal.text %></a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" ng-show="created || edit" ng-hide="finalized">
+            <div class="col-md-1">
+                <span class="step_number">4</span>
+            </div>
+            <div class="col-md-11">
+                <button type="button" ng-click="saveSorting()" class="btn btn-info">Save</button>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+</div>
+
+</form>
