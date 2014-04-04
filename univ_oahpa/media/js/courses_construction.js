@@ -35,6 +35,8 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
 
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
     $http.defaults.headers.put['X-CSRFToken'] = $cookies.csrftoken;
+    $http.defaults.headers.delete = {};
+    $http.defaults.headers.delete['X-CSRFToken'] = $cookies.csrftoken;
 
     $scope.populateGoal = function() {
        // If this is null, clear things and return
@@ -124,9 +126,27 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
                 $scope.edit = true;
                 $scope.message = data.message;
                 $scope.created_goal = data.goal;
+                $scope.course_goal.id = data.id;
             }
         });
     };
+
+    $scope.refresh = function() {
+        location.reload();
+    }
+
+    $scope.deleteCourseGoal = function() {
+       var config = {
+           withCredentials: true,
+       };
+       var delete_url = coursegoal_url + $scope.course_goal.id + '/' ;
+       $http.delete(delete_url, config)
+            .success( function(data) {
+                $scope.deleted = true;
+                $scope.edit = false;
+                $scope.finalized = true;
+            });
+    }
 
     $scope.saveSorting = function() {
         $scope.course_goal.goals  = []

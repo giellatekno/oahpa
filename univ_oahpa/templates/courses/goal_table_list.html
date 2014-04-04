@@ -16,7 +16,7 @@
         date? {% endcomment %}
         <td>
             {% if goal|complete_for:user %}
-                &#9734;
+                <span class="star">&#9733;</span>
             {% else %}
                 &nbsp;
             {% endif %}
