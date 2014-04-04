@@ -3,6 +3,11 @@
 {% load cache %}
 {% load goal_filters %}
 
+{% block extrajs %}
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
+{% endblock %}
+
 {% get_current_language as LANGUAGE_CODE %}
 
 {% comment %}
@@ -16,32 +21,54 @@ TODO: internationalization strings
 
 {% block content %}
 	{# Add blocktrans and trans tags #}
-	<div id="courses">
+	<div id="courses" class="bootstrap-styles">
 		<ul id="subnav">
 			<li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li>
 		</ul>
-		<h3>{{ course }}</h3>
 		<h2>{{ student }}</h2>
 
-		<ul>
-			<li>{% trans "last login" %}: {{ student.last_login }}</li>
-			<li>{% trans "login count" %}: {{ student.login_count }}</li>
-		</ul>
+        <dl class="dl-horizontal">
+			<dt>{% trans "last login" %}</dt>
+			<dd>{{ student.last_login }}</dd>
+		    <dt>{% trans "login count" %}</dt>
+		    <dd>{{ student.login_count }}</dd>
+		</dl>
+
+		<h3>{{ course }}</h3>
 
 		<div class="student_coursegoal_progress">
-		    <p>{{ student }} has progress in the following goals</p>
+		    <h4>Goal progress</h4>
 			{% if course.coursegoal_set.all|length > 0 %}
 				{% for coursegoal in course.coursegoal_set.all %}
+				    <div class="row">
 				    {% if coursegoal|goals_with_progress:student|length > 0 %}
-				        <h3>{{ coursegoal.short_name }}</h3>
+				        <div class="col-md-2">
+				            <h4>{{ coursegoal.short_name }}</h4>
+				        </div>
+				        <div class="col-md-10">
 				        {% with coursegoal|goals_with_progress:student as goal_set %}
 				            {% include 'courses/instructor_goal_table_list.html' %}
 				        {% endwith %}
+				        </div>
+				    {% else %}
+				        <br />
+				        <div class="col-md-2">
+				            <h4>{{ coursegoal.short_name }}</h4>
+				        </div>
+				        <div class="col-md-10">
+				            <h5>No progress yet</h5>
+				        </div>
+                    <div class="clearfix visible-xs visible-md visible-lg"></div>
 				    {% endif %}
+				    </div>
 				{% endfor %}
 			{% endif %}
 		</div>
 
+		<br />
+		<br />
+		<br />
+		<h3>Summary of all work</h3>
 		<table class="grades">
 		<tr>
 			{# TODO: padding here is not working #}
