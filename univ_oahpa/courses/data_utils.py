@@ -75,6 +75,19 @@ def prepare_goal_params(rq=None):
         'case_context':  {'options': dict(CASE_CONTEXT_CHOICES),
                    'select': True,
                   'name': 'Case'},
+
+        'num_bare': { 'options': dict(NUM_BARE_CHOICES),
+                   'select': True,
+                  'name': 'Case'},
+
+        'num_level': { 'options': dict(NUM_LEVEL_CHOICES),
+                   'select': True,
+                  'name': 'Level'},
+
+        'num_type': { 'options': dict(NUM_TYPE_CHOICES),
+                   'select': True,
+                  'name': 'Type'},
+
         'vtype_context': {'options': dict(VTYPE_CONTEXT_CHOICES),
                    'select': True,
                   'name': 'Verb type'},
@@ -183,6 +196,12 @@ def prepare_goal_params(rq=None):
                     'label': 'Morfa-S Pronouns',
                     'value': 'morfa_s_pron',
                     'path': '/morfas/p/',
+                },
+                {
+                    'params': ['num_bare', 'num_level', 'num_type'],
+                    'label': 'Morfa-S Numerals',
+                    'value': 'morfa_s_num',
+                    'path': '/morfas/l/',
                 },
                 # TODO: Morfa-S Adj
                 # TODO: Morfa-S Pronouns

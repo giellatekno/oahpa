@@ -6,6 +6,8 @@ from django.contrib.auth.models import User, Group
 
 from operator import itemgetter
 
+import datetime
+
 # TODO: need to create fixtures of groups and permissions
 # TODO: hide delete course admin actions for Instructors group
 # TODO: site-uit-no-default course added to fixtures
@@ -15,7 +17,6 @@ from operator import itemgetter
 ##      User data
 ##
 ####
-
 
 class UserProfile(models.Model):
     """ This is more of a handy organizational object for now, 
@@ -338,7 +339,6 @@ class CourseGoal(models.Model):
 
         return False
 
-
 class CourseGoalGoal(models.Model):
     coursegoal = models.ForeignKey('CourseGoal', related_name="goals")
     goal = models.ForeignKey('Goal')
@@ -396,15 +396,11 @@ class Goal(models.Model):
             return "User-defined <%s> - %s" % (unicode(self.created_by.username), self.short_name)
 
     def user_completed(self, user):
-        goal_instance = self.usergoalinstance_set.filter(user=user)
-        if len(goal_instance) > 0:
-            return self.is_complete(goal_instance[0])
+        ugi_set = self.usergoalinstance_set.filter(user=user).order_by('-last_attempt')
+        if len(ugi_set) > 0:
+            return self.is_complete(ugi_set[0])
         else:
             return False
-
-    def save(self, *args, **kwargs):
-        self.last_attempt = datetime.datetime.now()
-        super(UserGoalInstance, self).save(*args, **kwargs)
 
     def is_complete(self, user_goal_instance):
         import datetime
@@ -450,7 +446,9 @@ class Goal(models.Model):
         return sorted(list(set(sets)))
 
     def evaluate_for_student(self, user, last_only=True, iteration=False):
-        logs = UserActivityLog.objects.filter(user=user, usergoalinstance__goal=self)
+        logs = UserActivityLog.objects.filter( user=user
+                                             , usergoalinstance__goal=self
+                                             )
 
         if len(logs) == 0:
             return None

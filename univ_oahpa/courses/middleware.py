@@ -97,7 +97,7 @@ class GradingMiddleware(object):
 
                     # Mark this instance as no longer being active.
                     if user_goal_instance is not None:
-                        user_goal_instance[0].opened = False
+                        # user_goal_instance[0].opened = False
                         user_goal_instance[0].save()
 
                     request.session['previous_exercise_params'] = current
@@ -123,7 +123,7 @@ class GradingMiddleware(object):
             result = goal.evaluate_for_student(request.user)
 
             if result is not None:
-                user_goal_instance = UserGoalInstance.objects.filter(user=request.user, goal=goal)
+                user_goal_instance = UserGoalInstance.objects.filter(user=request.user, goal=goal, opened=True)
                 if not user_goal_instance:
                     UserGoalInstance.objects.create(user=request.user,
                                                     goal=goal, **result)

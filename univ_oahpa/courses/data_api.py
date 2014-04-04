@@ -72,7 +72,10 @@ class CourseGoalView(viewsets.ModelViewSet):
 
         success = True
         data = request.DATA
-        data.pop('id')
+
+        try: data.pop('id')
+        except: pass
+
         goals = data.pop('goals')
 
         try:
@@ -121,6 +124,7 @@ class CourseGoalView(viewsets.ModelViewSet):
 
         if success:
             response_parameters['id'] = new_goal.id
+            response_parameters['goal'] = self.serializer_class(data=new_goal).data
 
         return Response(response_parameters)
 
@@ -257,15 +261,14 @@ class GoalParametersView(viewsets.ModelViewSet):
         new_obj = request.DATA
         params = new_obj.pop('params')
 
+        errors = []
+
         # use main_type to get url path
         url_base = self.exercise_type_url_bases.get(new_obj.get('sub_type'))
         new_obj['url_base'] = url_base
 
         success = True
-        try:
-            goal = Goal.objects.create(created_by=request.user, **new_obj)
-        except Exception, e:
-            success = False
+        goal = Goal.objects.create(created_by=request.user, **new_obj)
 
         if success:
             for p_k, p_v in params.iteritems():
@@ -281,6 +284,7 @@ class GoalParametersView(viewsets.ModelViewSet):
             response_parameters['goal']['begin_url'] = goal.begin_url
         else:
             response_parameters['error'] = "Could not create the goal."
+            response_parameters['errors'] = errors
 
         response_parameters['success'] = success
 

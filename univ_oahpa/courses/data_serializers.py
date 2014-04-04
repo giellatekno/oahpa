@@ -56,6 +56,7 @@ class CourseGoalSerializer(serializers.ModelSerializer):
     percent_goals_completed = serializers.CharField(source='combined_name', read_only=True)
 
     def transform_goals(self, obj, value):
+        # Remove the wrapping of {'goal': {}}
         if value is not None:
             value = [v.get('goal') for v in value]
         return value
