@@ -10,8 +10,8 @@ TODO: internationalization strings
 {% endcomment %}
 
 {% block extrajs %}
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
 {% endblock %}
 
 {% block imgprefix %}numra{% endblock %}
@@ -19,88 +19,36 @@ TODO: internationalization strings
 {% block page_class %}fixed{% endblock %}
 
 {% block content %}
-	{# Add blocktrans and trans tags #}
-	<div id="courses">
-		<ul id="subnav">
-			{#  <li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li> #}
-			{% if user.is_staff %}
-			<li><a href="/{{ URL_PREFIX }}/courses/?student_view=True">{% trans "Grade summary" %}</a></li>
-			<li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
-			{% endif %}
-		</ul>
-		<h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
+    {# Add blocktrans and trans tags #}
+	<div id="courses" class="bootstrap-styles">
+        <ul id="subnav">
+            {#  <li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li> #}
+            {% if user.is_staff %}
+            <li><a href="/{{ URL_PREFIX }}/courses/?student_view=True">{% trans "Grade summary" %}</a></li>
+            <li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
+            {% endif %}
+        </ul>
+        <h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
 
-		<p>{% trans "You are a course instructor." %}</p>
-		{# cache 300 courses user.username #}
-		{% for course in profile.instructorships %}
-		<div class="instructor_course bootstrap-styles">
-			    <div class="row">
-				    <div class="col-md-12 col-sm-12 col-lg-12">
-				        <h3 class="course_name">{{ course.identifier }} &ndash; {{ course.name }}</h3>
-			            <p>{% trans "Course content is available online" %}: <a href="{{ course.site_link }}">{{ course.site_link }}</a></p>
-                    </div>
-                </div>
-                <div class="row">
-				    <div class="course_block">
-				        {% if course.coursegoal_set.all|length > 0 %}
-				            {% for coursegoal in course.coursegoal_set.all %}
-				                {% if coursegoal|goals|length > 0 %}
-				                    <div class="coursegoal row">
-				                        <div class="col-md-4 col-sm-4 col-lg-4">
-				                            <h4>{{ coursegoal.short_name }}</h4>
-				                            <h5 class="cumulative_progress">{{ coursegoal|cumulative_progress:user }}</h5>
-				                            <div class="well">
-				                                <p class="goal_description">{{ coursegoal.description }}</p>
-				                            </div>
-				                        </div>
-				                        <div class="col-md-8 col-sm-8 col-lg-8">
-				                            {% with coursegoal|goals as goal_set %}
-				                                {% include 'courses/goal_table_list.html' %}
-				                            {% endwith %}
-				                        </div>
-                                    </div>
-                                    <div class="clearfix visible-xs"></div>
-                                {% endif %}
-				            {% endfor %}
-			            {% else %}
-				            <div class="col-md-12 col-sm-12 col-lg-12">
-			                    <p class="goal_note">You have not defined any goals for this course.</p>
-			                </div>
-			            {% endif %}
+        <p>{% trans "You are a course instructor." %}</p>
+        {# cache 300 courses user.username #}
+        {% for course in profile.instructorships %}
+			{% include 'courses/courses_course_block.html' %}
 
-			        </div>
-                </div>
+            <!-- <p class="goal_note">You have not defined any goals for this course.</p> -->
+            <div class="row">
+                <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_coursegoal_construction %}">Create a course goal</a>
+                <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_goal_construction %}">Create a goal</a>
+            </div>
 
-                <div class="row">
-			        <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_coursegoal_construction %}">Create a course goal</a>
-			        <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_goal_construction %}">Create a goal</a>
-			    </div>
+            <br />
+            <h4>Students</h4>
+            {% include 'courses/student_roster_table.html' %}
+        </div>
+        {% endfor %}
+        {# endcache #}
 
-			<br />
-			<h4>Students</h4>
-			<table class="course_students course_goals">
-			    <tr>
-			        <th></th>
-			        <th>{% trans "last login" %}</th>
-			        <th>{% trans "login count" %}</th>
-			    </tr>
-			{% for student in course.students.all %}
-			    <tr>
-			        <td>
-			            <a href="/{{ URL_PREFIX }}/courses/{{ course.id }}/{{ student.user.id }}">
-			                {{ student.user.username }}
-			            </a>
-			        </td>
-					<td>{{ student.last_login }}</td>
-					<td>{{ student.login_count }}</td>
-			    </tr>
-			{% endfor %}
-			</table>
-		</div>
-		{% endfor %}
-		{# endcache #}
-
-	</div>
+    </div>
 
 {% endblock %}
 

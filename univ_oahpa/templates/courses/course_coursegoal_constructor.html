@@ -9,8 +9,11 @@
         ng-source-goal="/{{ URL_PREFIX }}/courses/api/goals/">
     <div class="col-lg-9 col-sm-9 col-md-9">
         <div class="row" ng-show="finalized">
-            <p class="lead">The new Course Goal "<% course_goal.short_name %>" has been created.</p>
+            <p class="lead" ng-show="created">The new Course Goal "<% course_goal.short_name %>" has been created.</p>
+            <p class="lead" ng-show="deleted">The new Course Goal "<% course_goal.short_name %>" has been deleted.</p>
+            <p class="lead" ng-show="edit && !created">The new Course Goal "<% course_goal.short_name %>" has been edited.</p>
 
+            <button href="#" ng-click="refresh()" class="btn btn-info">Create another</button>
         </div>
 
         <div class="row" ng-hide="finalized">
@@ -91,6 +94,38 @@
 
         </div>
 
+        <div class="row" ng-hide="finalized">
+            <div class="col-md-1">
+                <span class="step_number">&nbsp;</span>
+            </div>
+
+            <div class="col-md-11">
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <div class="">
+                            <label for="goal_percent_correct"
+                                class="control-label">Percent correct</label>
+                        </div>
+
+                        {# Loop the main set of options #}
+
+                        <div class="input-group">
+                            <input class="form-control"
+                                    id="goal_percent"
+                                    name="goal_percent"
+                                    type="number"
+                                    ng-min="20"
+                                    ng-max="100"
+                                    required
+                                    ng-model="course_goal.threshold">
+                            <span class="input-group-addon">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
         <div class="row" ng-hide="finalized || intermediate">
 
             <div class="col-md-1">
@@ -136,6 +171,8 @@
             </div>
             <div class="col-md-11">
                 <button type="button" ng-click="saveSorting()" class="btn btn-info">Save</button>
+                <button type="button" ng-click="deleteCourseGoal()" ng-show="edit" class="btn
+                    btn-danger">Delete this course goal</button>
             </div>
         </div>
 

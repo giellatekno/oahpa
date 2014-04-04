@@ -1,0 +1,50 @@
+{% load i18n %}
+{% load goal_filters %}
+
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-lg-12">
+		<h3 class="course_name">{{ course.identifier }} &ndash; {{ course.name }}</h3>
+    </div>
+</div>
+
+<div class="row">
+	<div class="course_block">
+		{% if course.coursegoal_set.all|length > 0 %}
+			{% for coursegoal in course.coursegoal_set.all %}
+				{% if coursegoal|goals|length > 0 %}
+				    <div class="coursegoal row">
+				        <div class="col-md-4 col-sm-4 col-lg-4">
+				            <h4>{{ coursegoal.short_name }}</h4>
+				            <h5 class="cumulative_progress">{{ coursegoal|cumulative_progress:user }}</h5>
+				            {% if coursegoal|complete_for:user %}
+				                <h5 class="complete">Complete!</h5>
+				            {% else %}
+				                <h5 class="not_complete">Not complete</h5>
+				            {% endif %}
+				            {% if course.description %}
+				                <div class="well">
+				                    <p class="goal_description">{{ coursegoal.description }}</p>
+				                </div>
+				            {% endif %}
+				        </div>
+				        <div class="col-md-8 col-sm-8 col-lg-8">
+				            {% with coursegoal|goals as goal_set %}
+				                {% include 'courses/goal_table_list.html' %}
+				            {% endwith %}
+				        </div>
+                    </div>
+                    <div class="clearfix visible-xs visible-md visible-lg"></div>
+                {% endif %}
+			{% endfor %}
+		{% else %}
+			<div class="col-md-12 col-sm-12 col-lg-12">
+			    <p class="goal_note">Your instructor has not yet defined
+			        any goals for this course.</p>
+			</div>
+		{% endif %}
+
+		{% if course.site_link %}
+			<a class="course_link" href="{{ course.site_link }}" target="BLANK">{% trans "View course lessons" %}</a>
+		{% endif %}
+	</div>
+</div>
