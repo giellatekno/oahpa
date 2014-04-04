@@ -1,5 +1,8 @@
 ﻿# Current development:
 
+ TODO: when starting a new goal, old progress ends up included somehow 
+   need to check that the middleware taht grades is getting the right goal in progress
+
  TODO: cumulative progress vs. total goals completed?
    - only use recent-most runthrough? 
 

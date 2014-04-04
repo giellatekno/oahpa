@@ -34,7 +34,12 @@ class UserStatsViewSet(viewsets.ModelViewSet):
         user = self.request.user
         goal_id = self.request.session.get('current_user_goal', False)
         if goal_id:
-            return UserGoalInstance.objects.filter(user=user, id=goal_id, opened=True)
+            user_goal_instance = UserGoalInstance.objects.filter( user=user
+                                                                , id=goal_id
+                                                                , opened=True
+                                                                )
+            omg
+            return user_goal_instance
         else:
             return []
 

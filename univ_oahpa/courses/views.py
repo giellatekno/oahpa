@@ -332,6 +332,9 @@ def begin_course_goal(request, goal_id):
     try: del request.session['current_exercise_params']
     except: pass
 
+    try: del request.session['current_user_goal']
+    except: pass
+
     request.session['prev_new_game'] = False
 
     # Check that the user has the goal
