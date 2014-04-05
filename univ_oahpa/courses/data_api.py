@@ -23,6 +23,8 @@ class UserStatsViewSet(viewsets.ModelViewSet):
 
         # Insert some things for easier display
         rq.data['current_set_count'] = request.session['question_set_count']
+        rq.data['max_rounds'] = request.session.get('max_rounds', False)
+        rq.data['correct_threshold'] = request.session.get('correct_threshold', False)
         rq.data['navigated_away'] = request.session.get('navigated_away', 0)
         return rq
 

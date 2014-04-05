@@ -335,6 +335,12 @@ def begin_course_goal(request, goal_id):
     try: del request.session['current_user_goal']
     except: pass
 
+    try: del request.session['max_rounds']
+    except: pass
+
+    try: del request.session['correct_threshold']
+    except: pass
+
     request.session['prev_new_game'] = False
 
     # Check that the user has the goal
@@ -360,6 +366,8 @@ def begin_course_goal(request, goal_id):
     UserGoalInstance.objects.filter(user=request.user, goal=goal).update(opened=False)
     ugi = UserGoalInstance.objects.create(user=request.user, goal=goal)
     request.session['current_user_goal'] = int(ugi.id)
+    request.session['max_rounds'] = goal.minimum_sets_attempted
+    request.session['correct_threshold'] = goal.threshold
 
     return HttpResponseRedirect(goal.start_url())
 

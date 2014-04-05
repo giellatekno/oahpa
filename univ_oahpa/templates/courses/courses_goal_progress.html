@@ -27,25 +27,34 @@
 
 {% endcomment %}
 
-<div id="course_goal">
+<div id="course_goal" class="bootstrap-styles">
     <div class="goal_in_progress"
         ng-controller="GoalController" ng-source="/{{ URL_PREFIX }}/courses/api/stats/">
         <div ng-if="navigated_away">
             <h2>Goal progress</h2>
             <p class="error" ng-show="navigated_away">Page changed,
-                progress no longer tracked. <a href="/{{ URL_PREFIX  }}/courses/">Begin again?</a></p>
+                progress no longer tracked. <a href="/{{ URL_PREFIX }}/courses/">Begin again?</a></p>
         </div>
-        <div ng-if="results">
+        <div ng-if="success">
             <h2>Goal progress</h2>
-            <ul ng-repeat="goal in results" ng-show="results">
-                <li><span class="stat_title">Round</span>:
-                    <span class="stat_value"><% current_set_count %></span></h4>
-                <li><span class="stat_title">Correct</span>:
-                    <span class="stat_value"><% goal.progress * 100 %>%</span></h4>
+            <ul>
                 <li ng-if="goal.is_complete" class="complete">Complete!</li>
                 <li ng-if="goal.is_complete">You can keep playing, or <a
                         href="/{{ URL_PREFIX }}/courses/">work on a new goal</a></li>
             </ul>
+            <div class="progress progress-striped" ng-show="max_rounds" ng-hide="complete">
+                <div class="progress-bar <% progress_class %>" 
+                    role="progressbar" 
+                    aria-valuenow="<% current_set_count %>"
+                    aria-valuemin="1" 
+                    aria-valuemax="<% max_rounds %>"
+                    style="width: <% progress_percent %>%;">
+                <% current_set_count %> / <% max_rounds %> rounds
+              </div>
+            </div>
+            <div class="correct_rate">
+                <span class="stat_value"><% goal.progress * 100 %>%</span> <span class="stat_total">of <% correct_threshold %>%</span>
+            </div>
         </div>
     </div>
 </div>

@@ -3,10 +3,10 @@
 <table class="course_goals">
     <tr>
         <th>&nbsp;</th>
+        <th>&nbsp;</th>
         <th>Goal</th>
         <th>Progress</th>
         <th>Sets answered</th>
-        <th>&nbsp;</th>
         <th>&nbsp;</th>
     </tr>
 {% for goal in goal_set %}
@@ -18,7 +18,18 @@
             {% if goal|complete_for:user %}
                 <span class="star">&#9733;</span>
             {% else %}
-                &nbsp;
+                <span class="star clear">&#9733;</span>
+            {% endif %}
+        </td>
+        <td>
+            {% if goal|goal_instances_for:user|length > 0 %}
+                {% if goal|complete_for:user %}
+                    <a class="begin_goal" href="{% url courses.views.begin_course_goal goal.id %}"><span class="label label-danger">Redo</span></a>
+                {% else %}
+                    <a class="begin_goal" href="{% url courses.views.begin_course_goal goal.id %}"><span class="label label-success">Redo</span></a>
+                {% endif %}
+            {% else %}
+                <a class="begin_goal" href="{% url courses.views.begin_course_goal goal.id %}"><span class="label label-success">Begin</span></a>
             {% endif %}
         </td>
         <td>{{ goal.short_name }}</td>
@@ -31,7 +42,7 @@
                 {{ g.rounds }}
             </td>
             <td class="current_progress sets">
-                <a class="goal_history" href="{% url courses.views.goal_history goal.id %}">History</a>
+                <a class="goal_history" href="{% url courses.views.goal_history goal.id %}"><span class="label label-primary">History</span></a>
             </td>
             {% endwith %}
         {% else %}
@@ -39,13 +50,6 @@
             <td></td>
             <td></td>
         {% endif %}
-        <td>
-            {% if goal|goal_instances_for:user|length > 0 %}
-                <a class="begin_goal" href="{% url courses.views.begin_course_goal goal.id %}">Redo</a>
-            {% else %}
-                <a class="begin_goal" href="{% url courses.views.begin_course_goal goal.id %}">Begin!</a>
-            {% endif %}
-        </td>
     </tr>
 {% endfor %}
 </table>
