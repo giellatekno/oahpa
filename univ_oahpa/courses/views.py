@@ -128,7 +128,7 @@ def trackGrade(gamename, request, c):
 
 @login_required
 def courses_goal_construction(request):
-    template = 'courses/courses_main_goals.html'
+    template = 'courses_main_goals.html'
     c = {'coursegoal': False}
     return render_to_response(template,
                               c,
@@ -136,7 +136,7 @@ def courses_goal_construction(request):
 
 @login_required
 def courses_coursegoal_construction(request):
-    template = 'courses/courses_main_goals.html'
+    template = 'courses_main_goals.html'
     c = {'coursegoal': True}
     return render_to_response(template,
                               c,
@@ -150,7 +150,7 @@ def courses_stats(request):
         that they have records in.
     """
 
-    template = 'courses/courses_stats.html'
+    template = 'courses_stats.html'
 
     c = {}
     new_profile = None
@@ -203,7 +203,7 @@ def courses_main(request):
         that they have records in.
     """
 
-    template = 'courses/courses_main.html'
+    template = 'courses_main.html'
 
     c = {}
     new_profile = None
@@ -221,13 +221,13 @@ def courses_main(request):
 
     if profile.is_instructor:
         if request.GET.get('student_view', False):
-            template = 'courses/courses_main.html'
+            template = 'courses_main.html'
             is_student = True
         else:
-            template = 'courses/courses_main_instructor.html'
+            template = 'courses_main_instructor.html'
             is_student = False
     else:
-        template = 'courses/courses_main.html'
+        template = 'courses_main.html'
         is_student = True
 
     if is_student:
@@ -283,7 +283,7 @@ def instructor_student_detail(request, uid, cid):
         error = 'Student not found.'
         return HttpResponseForbidden(error)
 
-    template = 'courses/instructor_student_detail.html'
+    template = 'instructor_student_detail.html'
     c = {}
     c['student'] = UserProfile.objects.get(user__id=uid)
     c['course'] = course
@@ -296,7 +296,7 @@ def goal_history(request, goal_id):
 
     instances = UserGoalInstance.objects.filter(user=u, goal=goal_id)\
                                         .order_by('-last_attempt')
-    template = 'courses/goal_history.html'
+    template = 'goal_history.html'
     c = {}
     c['student'] = UserProfile.objects.get(user__id=request.user.id)
     c['goal_instances'] = instances

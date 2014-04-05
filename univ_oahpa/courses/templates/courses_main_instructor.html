@@ -34,7 +34,7 @@ TODO: internationalization strings
         <p>{% trans "You are a course instructor." %}</p>
         {# cache 300 courses user.username #}
         {% for course in profile.instructorships %}
-			{% include 'courses/courses_course_block.html' %}
+			{% include 'courses_course_block.html' %}
 
             <!-- <p class="goal_note">You have not defined any goals for this course.</p> -->
             <div class="row">
@@ -44,7 +44,7 @@ TODO: internationalization strings
 
             <br />
             <h4>Students</h4>
-            {% include 'courses/student_roster_table.html' %}
+            {% include 'student_roster_table.html' %}
         </div>
         {% endfor %}
         {# endcache #}
