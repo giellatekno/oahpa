@@ -36,12 +36,8 @@
                 progress no longer tracked. <a href="/{{ URL_PREFIX }}/courses/">Begin again?</a></p>
         </div>
         <div ng-if="success">
-            <h2>Goal progress</h2>
-            <ul>
-                <li ng-if="goal.is_complete" class="complete">Complete!</li>
-                <li ng-if="goal.is_complete">You can keep playing, or <a
-                        href="/{{ URL_PREFIX }}/courses/">work on a new goal</a></li>
-            </ul>
+            <h2 ng-hide="goal.is_complete">Goal progress</h2>
+            <h2 ng-show="goal.is_complete" class="complete">Complete!</h2>
             <div class="progress progress-striped" ng-show="max_rounds" ng-hide="complete">
                 <div class="progress-bar <% progress_class %>" 
                     role="progressbar" 
@@ -55,6 +51,10 @@
             <div class="correct_rate">
                 <span class="stat_value"><% goal.progress * 100 %>%</span> <span class="stat_total">of <% correct_threshold %>%</span>
             </div>
+            <ul>
+                <li ng-if="goal.is_complete">You can keep playing, or <a
+                        href="/{{ URL_PREFIX }}/courses/">work on a new goal</a></li>
+            </ul>
         </div>
     </div>
 </div>

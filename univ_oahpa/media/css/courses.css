@@ -181,14 +181,32 @@
     width: 12em;
 }
 
+/* This is the goal block thingy that shows up while playing */
+
 #game #course_goal {
     border: 1px solid #ccc;
     padding: 5px 7px;
 }
 
-#game #course_goal h2 {
-    font-size: 110%;
-    color: #333;
+#game #course_goal .correct_rate {
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-bottom: .5em;
+}
+
+#game #course_goal .stat_value {
+    font-size: 180%;
+    font-weight: 200;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#game #course_goal .stat_total {
+    font-size: 120%;
+    font-weight: 200;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 #course_goal .stat_title {
@@ -196,20 +214,30 @@
     font-size: 90%;
 }
 
-#course_goal li.complete {
+#course_goal h2 {
+    margin-top: 0;
+    font-size: 110%;
+    color: #333;
+}
+
+#course_goal div.progress {
+    margin-bottom: .75em;
+}
+
+#course_goal h2.complete {
     width:100%;
     text-align: center;
-    background-color: #4C4;
-    color: #FFF;
-    font-size: 110%;
+    color: #494 !important;
+    font-size: 140% !important;
     border-radius: 2px;
-    margin: .5em 0;
     padding: 5px 0
 }
+
 
 #course_goal .stat_value {
     font-size: 90%;
 }
+
 
 ul.courselist {
 	margin: 1em 2em; 
@@ -231,6 +259,12 @@ ul.courselist li {
 #courses .star {
     color: goldenrod;
     text-shadow: 1px 1px 3px #333;
+    font-size: 150%;
+}
+
+#courses .star.clear {
+    color: transparent;
+    text-shadow: 1px 1px 1px transparent;
     font-size: 150%;
 }
 
