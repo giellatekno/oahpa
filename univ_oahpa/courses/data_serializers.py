@@ -36,10 +36,9 @@ class GoalSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Goal
-        fields = ('id', 'short_name', 'description', 'begin_url',
-                  'course', 'params', 'main_type', 'sub_type',
-                  'threshold', 'minimum_sets_attempted',
-                  'correct_first_try')
+        fields = ('id', 'short_name', 'begin_url', 'course', 'params',
+                  'main_type', 'sub_type', 'threshold',
+                  'minimum_sets_attempted', 'correct_first_try')
 
 class CourseGoalGoalSerializer(serializers.ModelSerializer):
 
@@ -75,5 +74,7 @@ class FeedbackLogSerializer(serializers.ModelSerializer):
 class StatusSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = UserGoalInstance
-        fields = ('progress', 'rounds', 'total_answered', 'correct', 'last_attempt', 'grade', 'correct_first_try', 'is_complete')
+        fields = ('progress', 'rounds', 'total_answered', 'correct',
+                  'last_attempt', 'grade', 'correct_first_try',
+                  'is_complete')
 

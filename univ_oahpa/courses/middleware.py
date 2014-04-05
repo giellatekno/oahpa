@@ -120,7 +120,7 @@ class GradingMiddleware(object):
             goal = ugi.goal
 
             # TODO: this is for debug only.
-            result = goal.evaluate_for_student(request.user)
+            result = ugi.evaluate_instance()
 
             if result is not None:
                 user_goal_instance = UserGoalInstance.objects.filter(user=request.user, goal=goal, opened=True)

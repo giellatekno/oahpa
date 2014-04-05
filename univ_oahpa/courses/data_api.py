@@ -37,8 +37,8 @@ class UserStatsViewSet(viewsets.ModelViewSet):
             user_goal_instance = UserGoalInstance.objects.filter( user=user
                                                                 , id=goal_id
                                                                 , opened=True
-                                                                )
-            omg
+                                                                )\
+                                                         .order_by('-last_attempt')
             return user_goal_instance
         else:
             return []

@@ -348,8 +348,7 @@ class Goal(models.Model):
     """
     course = models.ForeignKey(Course, null=True, blank=True)
     created_by = models.ForeignKey(User)
-    short_name = models.CharField(max_length=42)
-    description = models.TextField(help_text=GOAL_HELP_TEXT)
+    short_name = models.CharField(max_length=128)
 
     url_base = models.CharField(max_length=24)
 
@@ -367,7 +366,7 @@ class Goal(models.Model):
 
     @property
     def begin_url(self):
-        """ Confusing, I know. 
+        """ Confusing, I know.
         This constructs the URL that hte user is redirected to for
         permission checks.
         """
@@ -554,12 +553,14 @@ class UserGoalInstance(models.Model):
 
     def evaluate_instance(self):
         evaluated = self.goal.evaluate_for_student(self.user, iteration=self.attempt_count)
-        if (self.progress is not None) and (self.progress != evaluated.get('progress', False)):
-            self.progress = evaluated.get('progress')
-            self.save()
-        if evaluated.get('progress', False):
-            evaluated['progress'] = evaluated['progress'] * 100
-        return evaluated
+        if evaluated is not None:
+            if (self.progress is not None) and (self.progress != evaluated.get('progress', False)):
+                self.progress = evaluated.get('progress')
+                self.save()
+            # if evaluated.get('progress', False):
+            #     evaluated['progress'] = evaluated['progress'] * 100
+            return evaluated
+        return None
 
     def save(self, *args, **kwargs):
         vals = UserGoalInstance.objects.filter(user=self.user, goal=self.goal).values_list('attempt_count', flat=True)
