@@ -23,8 +23,8 @@
             {% endif %}
         </td>
         <td>{{ goal.short_name }}</td>
-        {% if goal.usergoalinstance_set.all|goal_instances_for:student.user.username|length > 0 %}
-            {% with goal.usergoalinstance_set.all|goal_instances_for:student.user.username|first as g %}
+        {% if goal|goal_instances_for:user %}
+            {% with goal|goal_instances_for:user|first as g %}
             <td class="current_progress">
                 {{ g.progress|format_percent }}
             </td>

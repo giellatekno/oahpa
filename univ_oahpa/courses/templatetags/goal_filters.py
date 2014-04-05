@@ -7,8 +7,8 @@ def complete_for(a, user):
     return a.user_completed(user)
 
 @register.filter(name='goal_instances_for')
-def goal_instances_for(instances, username):
-    return instances.filter(user__username=username)
+def goal_instances_for(goal, user):
+    return goal.usergoalinstance_set.filter(user=user).order_by('-last_attempt')
 
 @register.filter(name='format_percent')
 def format_percent(_float):
