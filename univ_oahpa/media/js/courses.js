@@ -30,9 +30,25 @@ function GoalController($scope, $http, $element, $cookies) {
     var stats_url = $element.attr('ng-source') ;
     $http.get(stats_url)
          .success(function(data){
-             $scope.results = data.results;
+             $scope.success = data.results;
+             $scope.goal = data.results[0];
              $scope.current_set_count = data.current_set_count;
              $scope.navigated_away = data.navigated_away;
+             $scope.max_rounds = data.max_rounds;
+             $scope.correct_threshold = data.correct_threshold;
+             $scope.progress_class = 'progress-bar-info';
+             if ($scope.max_rounds) {
+                 $scope.progress_percent = ($scope.current_set_count / $scope.max_rounds) * 100;
+                 if ($scope.progress_percent > 100) {
+                    $scope.progress_percent = 100;
+                 }
+                 if ($scope.current_set_count < $scope.max_rounds) {
+                     $scope.progress_class = 'progress-bar-warning';
+                 }
+                 if ($scope.current_set_count == $scope.max_rounds) {
+                     $scope.progress_class = 'progress-bar-success';
+                 }
+             }
          });
 }
 
