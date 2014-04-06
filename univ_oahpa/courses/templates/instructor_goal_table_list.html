@@ -23,8 +23,8 @@
             {% endif %}
         </td>
         <td>{{ goal.short_name }}</td>
-        {% if goal|goal_instances_for:user %}
-            {% with goal|goal_instances_for:user|first as g %}
+        {% if goal|goal_instances_for:student.user %}
+            {% with goal|goal_instances_for:student.user|first as g %}
             <td class="current_progress">
                 {{ g.progress|format_percent }}
             </td>
@@ -32,7 +32,7 @@
                 {{ g.rounds }}
             </td>
             <td class="current_progress sets">
-                <a class="goal_history" href="{% url courses.views.goal_history goal.id %}">History</a>
+                <a class="goal_history" href="{% url courses.views.goal_history goal.id, student.user.id %}">History</a>
             </td>
             {% endwith %}
         {% else %}

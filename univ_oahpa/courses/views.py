@@ -259,15 +259,28 @@ def instructor_group(user):
     else:
         return False
 
+def instructor_can_see_student(instructor, student):
+    # Instructor's course IDs
+    instructor_p = instructor.get_profile()
+    instructor_courses = list([a.id for a in instructor_p.instructorships])
+
+    # Student's ... 
+    student_p = student.get_profile()
+    student_courses = list([a.id for a in student_p.courses])
+    intersection = list(set(instructor_courses) & set(student_courses))
+
+    if len(intersection) == 0:
+        return False
+    else:
+        return True
+
 @user_passes_test(instructor_group)
 def instructor_student_detail(request, uid, cid):
     student = UserProfile.objects.get(user__id=uid)
     instructor = request.user.get_profile()
 
     instructor_courses = list([a.id for a in instructor.instructorships])
-    print instructor_courses
     course_for_inst = [a for a in instructor_courses if a == long(cid)]
-    print course_for_inst
 
     if len(course_for_inst) > 0:
         course = course_for_inst[0]
@@ -291,14 +304,28 @@ def instructor_student_detail(request, uid, cid):
                               c,
                               context_instance=RequestContext(request))
 
-def goal_history(request, goal_id):
-    u = request.user
+def goal_history(request, goal_id, user_id=None):
+    from django.contrib.auth.models import User
+
+    if user_id is None:
+        u = request.user
+    else:
+        requested_user = User.objects.get(id=user_id)
+        if request.user.id == user_id:
+            u = request.user
+        else:
+            # Likely an instructor is requesting this user_id, so we
+            # need to make sure they have access
+            if instructor_can_see_student(request.user, requested_user):
+                u = requested_user
+            else:
+                u = request.user
 
     instances = UserGoalInstance.objects.filter(user=u, goal=goal_id)\
                                         .order_by('-last_attempt')
     template = 'goal_history.html'
     c = {}
-    c['student'] = UserProfile.objects.get(user__id=request.user.id)
+    c['student'] = u.get_profile()
     c['goal_instances'] = instances
     return render_to_response(template,
                               c,

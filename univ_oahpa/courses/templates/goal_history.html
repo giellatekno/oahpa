@@ -1,7 +1,9 @@
 ﻿{% load goal_filters %}
 
+<h3>{{ student.user.username }}</h3>
 <table class="course_goals">
     <tr>
+        <th>success</th>
         <th>last_attempt</th>
         <th>score</th>
         <th>correct</th>
@@ -11,6 +13,7 @@
     </tr>
 {% for goal in goal_instances %}
     <tr>
+        <td>{{ goal.is_complete }}</td>
         <td>{{ goal.last_attempt }}</td>
         <td>{{ goal.evaluation.progress|floatformat }}%</td>
         <td>{{ goal.evaluation.correct }}</td>

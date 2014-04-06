@@ -3,9 +3,6 @@
  TODO: only count rounds with actual progress, so no one can hit new set until
  the count is up, and then submit one
 
- TODO: when starting a new goal, old progress ends up included somehow 
-   need to check that the middleware taht grades is getting the right goal in progress
-
  TODO: cumulative progress vs. total goals completed?
    - only use recent-most runthrough? 
 

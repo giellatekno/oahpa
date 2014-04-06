@@ -44,6 +44,8 @@ router.register(r'coursegoals', CourseGoalView, base_name='coursegoals')
 router.register(r'feedback', FeedbackLogView)
 
 urlpatterns += patterns('univ_oahpa.courses.views',
+    url(r'^goal/history/(?P<goal_id>\d+)/(?P<user_id>\d+)/$', goal_history,
+        name="goal_history"),
     url(r'^goal/history/(?P<goal_id>\d+)/$', goal_history,
         name="goal_history"),
     url(r'^goal/begin/(?P<goal_id>\d+)/$', begin_course_goal,
