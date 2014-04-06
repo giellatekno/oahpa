@@ -326,11 +326,15 @@ def goal_history(request, goal_id, user_id=None):
     goal = Goal.objects.get(id=goal_id)
     instances = UserGoalInstance.objects.filter(user=u, goal=goal_id)\
                                         .order_by('-last_attempt')
+    instances_rev = UserGoalInstance.objects.filter(user=u, goal=goal_id)\
+                                        .order_by('last_attempt')
     template = 'goal_history.html'
     c = {}
     c['student'] = u.get_profile()
+    c['goal'] = goal
     c['goal_instances'] = instances
     c['incorrects'] = incorrects_by_frequency(u, goal=goal)
+    c['spark_data'] = ','.join(map(str, instances_rev.values_list('correct', flat=True)))
 
     return render_to_response(template,
                               c,

@@ -34,4 +34,3 @@ def goals_with_progress(coursegoal, student):
         if len(g.usergoalinstance_set.filter(user_id=user.id)) > 0:
             gs.append(g)
     return gs
-

@@ -557,8 +557,13 @@ class UserGoalInstance(models.Model):
             if (self.progress is not None) and (self.progress != evaluated.get('progress', False)):
                 self.progress = evaluated.get('progress')
                 self.save()
-            # if evaluated.get('progress', False):
-            #     evaluated['progress'] = evaluated['progress'] * 100
+            if evaluated.get('progress', False):
+                flo = '%.1f' % (evaluated['progress'] * 100)
+                evaluated['progress_pretty'] =  flo + '%'
+                evaluated['correct_minus_first'] = evaluated['correct'] - evaluated['correct_first_try']
+            else:
+                evaluated['progress_pretty'] = ''
+                evaluated['correct_minus_first'] = ''
             return evaluated
         return None
 

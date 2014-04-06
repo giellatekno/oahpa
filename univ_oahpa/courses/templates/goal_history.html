@@ -8,6 +8,24 @@
     <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
     <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
 	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/courses.css"/>
+
+    <script src="{{ MEDIA_URL }}/js/jquery.1.10.2.min.js"></script>
+    <script src="{{ MEDIA_URL }}/js/jquery.sparkline.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('.inlinesparkline').sparkline('html', {
+            	'width': '85px',
+            	'height': '30px',
+            }); 
+            $('.piechart').sparkline('html', {
+            	'type': 'pie',
+            	'width': '25px',
+            	'height': '25px',
+            	             // correct, correct on first try
+            	'sliceColors': ['#0058B2', '#FFB331']
+            }); 
+        });
+    </script>
 {% endblock %}
 
 {% get_current_language as LANGUAGE_CODE %}
@@ -17,56 +35,82 @@
 {% block page_class %}fixed{% endblock %}
 
 {% block content %}
-    <div class="bootstrap-styles" id="user_goal_history">
-        <h3>{{ student.user.username }}</h3>
+    <div id="courses" class="bootstrap-styles">
+    <div id="user_goal_history">
+        <h4>{{ goal.short_name }}</h4>
+        <dl class="dl-horizontal">
+            <dt>Completion criteria</dt><dd>&nbsp;</dd>
+            <dt>Correct threshold:</dt> <dd>{{ goal.threshold }}%</dd>
+            <dt>Minimum sets: <dd>{{ goal.minimum_sets_attempted }}</dd>
+            {% if goal.correct_first_try %}
+                <dt>Correct on first try</dt> <dd>&nbsp;</dd>
+            {% endif %}
+        </dl>
+        <div class="row">
+            <div class="col-lg-9 col-md-9">
 
-        {% cache 100 user_course_goals student.user.username %}
-            <table class="course_goals">
-                <tr>
-                    <th>success</th>
-                    <th>last_attempt</th>
-                    <th>score</th>
-                    <th>correct</th>
-                    <th>correct_first_try</th>
-                    <th>answered</th>
-                    <th>rounds</th>
-                </tr>
-            {% for goal in goal_instances %}
-                <tr class="{% cycle 'even' 'odd' %}">
-                    <td>{{ goal.is_complete }}</td>
-                    <td>{{ goal.last_attempt }}</td>
-                    <td>{{ goal.evaluation.progress|floatformat }}%</td>
-                    <td>{{ goal.evaluation.correct }}</td>
-                    <td>{{ goal.evaluation.correct_first_try }}</td>
-                    <td>{{ goal.evaluation.answered }}</td>
-                    <td>{{ goal.evaluation.rounds }}</td>
-                </tr>
-            {% endfor %}
-            </table>
-        {% endcache %}
+                {% cache 100 user_course_goals student.user.username goal.id %}
+                    <table class="course_goals">
+                        <tr>
+                            <th>success</th>
+                            <th>score</th>
+                            <th>correct <span class="pie_label_correct">&nbsp;</span> /first try <span class="pie_label_first_try">&nbsp;</span></th>
+                            <th>rounds</th>
+                            <th>last_attempt</th>
+                        </tr>
+                    {% for goal in goal_instances %}
+                        <tr class="{% cycle 'even' 'odd' %}">
+                            <td>
+                                {% if goal.is_complete %}
+                                    <span class="star">&#9733;</span>
+                                {% else %}
+                                    <span class="star clear">&#9733;</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ goal.evaluation.progress_pretty }}</td>
+                            <td>{{ goal.evaluation.correct }} / {{ goal.evaluation.correct_first_try }} <span class="piechart">{{ goal.evaluation.correct_minus_first }},{{ goal.evaluation.correct_first_try }}</span></td>
+                            <td>{{ goal.evaluation.rounds }}</td>
+                            <td>{{ goal.last_attempt|date:"DATE_FORMAT" }}</td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                {% endcache %}
+            </div>
+            <div class="col-lg-3 col-md-3">
+                {% cache 100 user_course_goals_sparkline student.user.username goal.id %}
+                <span class="spark inlinesparkline">{{ spark_data }}</span>
+                {% endcache %}
+            </div>
+        </div>
 
-        <h3>Words to work on</h3>
+        <div class="row">
+            <div class="col-lg-9 col-md-9">
+                <h3>Words to work on</h3>
 
-        <table>
-            <tr>
-                <th>Incorrect count</th>
-                <th>Correct answer</th>
-                <th>Your errors</th>
-            </tr>
-            {% for w in incorrects|dictsortreversed:"count" %}
-                <tr class="{% cycle 'even' 'odd' %}">
-                    <td>{{ w.count }}</td>
-                    <td>{% for c in w.correct_answer %}
-                            {{ c }}<br /> 
-                        {% endfor %}
-                    </td>
-                    <td>{% for i in w.user_inputs %}
-                            {{ i }}<br />
-                        {% endfor %}
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
+                <table>
+                    <tr>
+                        <th>Incorrect count</th>
+                        <th>Correct answer</th>
+                        <th>Your errors</th>
+                    </tr>
+                    {% for w in incorrects|dictsortreversed:"count" %}
+                        <tr class="{% cycle 'even' 'odd' %}">
+                            <td>{{ w.count }}</td>
+                            <td>{% for c in w.correct_answer %}
+                                    {{ c }}<br /> 
+                                {% endfor %}
+                            </td>
+                            <td>{% for i in w.user_inputs %}
+                                    {{ i }}<br />
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
     </div>
+    </div>
+
 {% endblock %}
 
