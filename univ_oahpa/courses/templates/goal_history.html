@@ -1,47 +1,72 @@
-﻿{% load goal_filters %}
+﻿{% extends 'univ_oahpa.html' %}
+
+{% load i18n %}
+{% load goal_filters %}
 {% load cache %}
 
-<h3>{{ student.user.username }}</h3>
+{% block extrajs %}
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/courses.css"/>
+{% endblock %}
 
-{% cache 100 user_course_goals student.user.username %}
-    <table class="course_goals">
-        <tr>
-            <th>success</th>
-            <th>last_attempt</th>
-            <th>score</th>
-            <th>correct</th>
-            <th>correct_first_try</th>
-            <th>answered</th>
-            <th>rounds</th>
-        </tr>
-    {% for goal in goal_instances %}
-        <tr>
-            <td>{{ goal.is_complete }}</td>
-            <td>{{ goal.last_attempt }}</td>
-            <td>{{ goal.evaluation.progress|floatformat }}%</td>
-            <td>{{ goal.evaluation.correct }}</td>
-            <td>{{ goal.evaluation.correct_first_try }}</td>
-            <td>{{ goal.evaluation.answered }}</td>
-            <td>{{ goal.evaluation.rounds }}</td>
-        </tr>
-    {% endfor %}
-    </table>
-{% endcache %}
+{% get_current_language as LANGUAGE_CODE %}
 
-<h3>Words to work on</h3>
+{% block imgprefix %}numra{% endblock %}
 
-<table>
-    <tr>
-        <th>Incorrect count</th>
-        <th>Correct answer</th>
-        <th>Your errors</th>
-    </tr>
-    {% for w in incorrects|dictsortreversed:"count" %}
-        <tr>
-            <td>{{ w.count }}</td>
-            <td>{{ w.correct_answer }}</td>
-            <td>{{ w.user_inputs|join:', ' }} </td>
-        </tr>
-    {% endfor %}
-</table>
+{% block page_class %}fixed{% endblock %}
+
+{% block content %}
+    <div class="bootstrap-styles" id="user_goal_history">
+        <h3>{{ student.user.username }}</h3>
+
+        {% cache 100 user_course_goals student.user.username %}
+            <table class="course_goals">
+                <tr>
+                    <th>success</th>
+                    <th>last_attempt</th>
+                    <th>score</th>
+                    <th>correct</th>
+                    <th>correct_first_try</th>
+                    <th>answered</th>
+                    <th>rounds</th>
+                </tr>
+            {% for goal in goal_instances %}
+                <tr class="{% cycle 'even' 'odd' %}">
+                    <td>{{ goal.is_complete }}</td>
+                    <td>{{ goal.last_attempt }}</td>
+                    <td>{{ goal.evaluation.progress|floatformat }}%</td>
+                    <td>{{ goal.evaluation.correct }}</td>
+                    <td>{{ goal.evaluation.correct_first_try }}</td>
+                    <td>{{ goal.evaluation.answered }}</td>
+                    <td>{{ goal.evaluation.rounds }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        {% endcache %}
+
+        <h3>Words to work on</h3>
+
+        <table>
+            <tr>
+                <th>Incorrect count</th>
+                <th>Correct answer</th>
+                <th>Your errors</th>
+            </tr>
+            {% for w in incorrects|dictsortreversed:"count" %}
+                <tr class="{% cycle 'even' 'odd' %}">
+                    <td>{{ w.count }}</td>
+                    <td>{% for c in w.correct_answer %}
+                            {{ c }}<br /> 
+                        {% endfor %}
+                    </td>
+                    <td>{% for i in w.user_inputs %}
+                            {{ i }}<br />
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
 

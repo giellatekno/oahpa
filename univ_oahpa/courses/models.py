@@ -622,10 +622,15 @@ class UserActivityLog(models.Model):
     # stats = LearningManager()
     # objects = models.Manager()
 
-def incorrects_by_frequency(user):
+def incorrects_by_frequency(user, goal=None):
     from collections import defaultdict
 
-    objs = UserActivityLog.objects.filter(user=user, is_correct=False)
+    if goal:
+        objs = UserActivityLog.objects.filter(user=user,
+                                              is_correct=False,
+                                              usergoalinstance__goal=goal)
+    else:
+        objs = UserActivityLog.objects.filter(user=user, is_correct=False)
 
     incorrects = defaultdict(dict)
 
@@ -636,7 +641,7 @@ def incorrects_by_frequency(user):
             }
 
         incorrects[o.correct_answer]['count'] += 1
-        incorrects[o.correct_answer]['correct_answer'] = ', '.join(list(set(o.correct_answer.split(','))))
+        incorrects[o.correct_answer]['correct_answer'] = list(set(o.correct_answer.split(',')))
 
         if 'user_inputs' in incorrects[o.correct_answer]:
             incorrects[o.correct_answer]['user_inputs'].add(o.user_input)
