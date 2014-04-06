@@ -36,50 +36,67 @@
 
 {% block content %}
     <div id="courses" class="bootstrap-styles">
+        <br /> 
+        <br /> 
     <div id="user_goal_history">
-        <h4>{{ goal.short_name }}</h4>
-        <dl class="dl-horizontal">
-            <dt>Completion criteria</dt><dd>&nbsp;</dd>
-            <dt>Correct threshold:</dt> <dd>{{ goal.threshold }}%</dd>
-            <dt>Minimum sets: <dd>{{ goal.minimum_sets_attempted }}</dd>
-            {% if goal.correct_first_try %}
-                <dt>Correct on first try</dt> <dd>&nbsp;</dd>
-            {% endif %}
-        </dl>
         <div class="row">
-            <div class="col-lg-9 col-md-9">
-
+            <div class="col-lg-8 col-md-8">
+                <h4>{{ goal.short_name }} </h4>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                {% cache 100 user_course_goals_sparkline student.user.username goal.id %}
+                    <span class="spark inlinesparkline">{{ spark_data }}</span>
+                {% endcache %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-8">
                 {% cache 100 user_course_goals student.user.username goal.id %}
                     <table class="course_goals">
                         <tr>
                             <th>success</th>
                             <th>score</th>
-                            <th>correct <span class="pie_label_correct">&nbsp;</span> /first try <span class="pie_label_first_try">&nbsp;</span></th>
+                            <th class="align-bottom" colspan=2>correct/first try</th>
                             <th>rounds</th>
                             <th>last_attempt</th>
                         </tr>
                     {% for goal in goal_instances %}
-                        <tr class="{% cycle 'even' 'odd' %}">
-                            <td>
-                                {% if goal.is_complete %}
-                                    <span class="star">&#9733;</span>
-                                {% else %}
-                                    <span class="star clear">&#9733;</span>
-                                {% endif %}
-                            </td>
-                            <td>{{ goal.evaluation.progress_pretty }}</td>
-                            <td>{{ goal.evaluation.correct }} / {{ goal.evaluation.correct_first_try }} <span class="piechart">{{ goal.evaluation.correct_minus_first }},{{ goal.evaluation.correct_first_try }}</span></td>
-                            <td>{{ goal.evaluation.rounds }}</td>
-                            <td>{{ goal.last_attempt|date:"DATE_FORMAT" }}</td>
-                        </tr>
+                        {% if goal.evaluation %}
+                            <tr class="{% cycle 'even' 'odd' %}">
+                                <td>
+                                    {% if goal.is_complete %}
+                                        <span class="star">&#9733;</span>
+                                    {% else %}
+                                        <span class="star clear">&#9733;</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ goal.evaluation.progress_pretty }}</td>
+                                <td><span class="piechart">{{ goal.evaluation.correct_minus_first }},{{ goal.evaluation.correct_first_try }}</span></td>
+                                <td>{{ goal.evaluation.correct }} / {{ goal.evaluation.correct_first_try }} </td>
+                                <td>{{ goal.evaluation.rounds }}</td>
+                                <td>{{ goal.last_attempt|date:"DATE_FORMAT" }}</td>
+                            </tr>
+                        {% endif %}
                     {% endfor %}
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th class="align-bottom" colspan=2><span class="pie_label_correct">&nbsp;</span> correct <br /><span class="pie_label_first_try">&nbsp;</span> first try</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                        </tr>
                     </table>
                 {% endcache %}
             </div>
-            <div class="col-lg-3 col-md-3">
-                {% cache 100 user_course_goals_sparkline student.user.username goal.id %}
-                <span class="spark inlinesparkline">{{ spark_data }}</span>
-                {% endcache %}
+            <div class="col-lg-4 col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>Completion criteria</dt><dd>&nbsp;</dd>
+                    <dt>Correct threshold:</dt> <dd>{{ goal.threshold }}%</dd>
+                    <dt>Minimum sets: <dd>{{ goal.minimum_sets_attempted }}</dd>
+                    {% if goal.correct_first_try %}
+                        <dt>Correct on first try</dt> <dd>&nbsp;</dd>
+                    {% endif %}
+                </dl>
             </div>
         </div>
 
