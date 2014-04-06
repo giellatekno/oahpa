@@ -1,27 +1,47 @@
 ﻿{% load goal_filters %}
+{% load cache %}
 
 <h3>{{ student.user.username }}</h3>
-<table class="course_goals">
-    <tr>
-        <th>success</th>
-        <th>last_attempt</th>
-        <th>score</th>
-        <th>correct</th>
-        <th>correct_first_try</th>
-        <th>answered</th>
-        <th>rounds</th>
-    </tr>
-{% for goal in goal_instances %}
-    <tr>
-        <td>{{ goal.is_complete }}</td>
-        <td>{{ goal.last_attempt }}</td>
-        <td>{{ goal.evaluation.progress|floatformat }}%</td>
-        <td>{{ goal.evaluation.correct }}</td>
-        <td>{{ goal.evaluation.correct_first_try }}</td>
-        <td>{{ goal.evaluation.answered }}</td>
-        <td>{{ goal.evaluation.rounds }}</td>
-    </tr>
-{% endfor %}
-</table>
 
+{% cache 100 user_course_goals student.user.username %}
+    <table class="course_goals">
+        <tr>
+            <th>success</th>
+            <th>last_attempt</th>
+            <th>score</th>
+            <th>correct</th>
+            <th>correct_first_try</th>
+            <th>answered</th>
+            <th>rounds</th>
+        </tr>
+    {% for goal in goal_instances %}
+        <tr>
+            <td>{{ goal.is_complete }}</td>
+            <td>{{ goal.last_attempt }}</td>
+            <td>{{ goal.evaluation.progress|floatformat }}%</td>
+            <td>{{ goal.evaluation.correct }}</td>
+            <td>{{ goal.evaluation.correct_first_try }}</td>
+            <td>{{ goal.evaluation.answered }}</td>
+            <td>{{ goal.evaluation.rounds }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endcache %}
+
+<h3>Words to work on</h3>
+
+<table>
+    <tr>
+        <th>Incorrect count</th>
+        <th>Correct answer</th>
+        <th>Your errors</th>
+    </tr>
+    {% for w in incorrects|dictsortreversed:"count" %}
+        <tr>
+            <td>{{ w.count }}</td>
+            <td>{{ w.correct_answer }}</td>
+            <td>{{ w.user_inputs|join:', ' }} </td>
+        </tr>
+    {% endfor %}
+</table>
 

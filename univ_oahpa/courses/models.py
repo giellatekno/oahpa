@@ -596,6 +596,8 @@ class UserFeedbackLog(models.Model):
     def get_user_feedback_level(self, user):
         return '1'
 
+
+
 class UserActivityLog(models.Model):
     """ Tracking user activity, question/answer completion, and feedback
     use.
@@ -616,6 +618,32 @@ class UserActivityLog(models.Model):
     in_game = models.TextField()
 
     # TODO: datetime?
+
+    # stats = LearningManager()
+    # objects = models.Manager()
+
+def incorrects_by_frequency(user):
+    from collections import defaultdict
+
+    objs = UserActivityLog.objects.filter(user=user, is_correct=False)
+
+    incorrects = defaultdict(dict)
+
+    for o in objs:
+        if o.correct_answer not in incorrects:
+            incorrects[o.correct_answer] = {
+                'count': 0,
+            }
+
+        incorrects[o.correct_answer]['count'] += 1
+        incorrects[o.correct_answer]['correct_answer'] = ', '.join(list(set(o.correct_answer.split(','))))
+
+        if 'user_inputs' in incorrects[o.correct_answer]:
+            incorrects[o.correct_answer]['user_inputs'].add(o.user_input)
+        else:
+            incorrects[o.correct_answer]['user_inputs'] = set([o.user_input])
+
+    return incorrects.values()
 
 def create_activity_log_from_drill_logs(request, user, drill_logs, current_user_goal=False):
     # TODO: do it all in one commit.

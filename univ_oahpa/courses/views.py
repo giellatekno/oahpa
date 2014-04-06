@@ -306,6 +306,8 @@ def instructor_student_detail(request, uid, cid):
 
 def goal_history(request, goal_id, user_id=None):
     from django.contrib.auth.models import User
+    from .models import UserActivityLog
+    from .models import incorrects_by_frequency
 
     if user_id is None:
         u = request.user
@@ -327,6 +329,8 @@ def goal_history(request, goal_id, user_id=None):
     c = {}
     c['student'] = u.get_profile()
     c['goal_instances'] = instances
+    c['incorrects'] = incorrects_by_frequency(u)
+
     return render_to_response(template,
                               c,
                               context_instance=RequestContext(request))
