@@ -25,7 +25,7 @@ It is still a test, so do not make many goals. Just make some
 (relevant) goals, and test them out.
 
 The X in the course goal list is a variable, a sign to Ryan 
-to implement it with all books.
+to implement it e.g. with all books.
 The course goal list should be made by the teacher (Robert!)
 and implemented by Ryan.
 
@@ -36,7 +36,8 @@ How much she has worked, and what the results are (percent correct anwser).
 
 The teacher does not see the self-given student goals, he only
 sees the goals he has given to all students, and for each and every
-student he will see the student progress.
+student he will see the student progress. Even if the the course goals are
+defined for each course, the teacher will be able to  edit them.
 
 Later on, we may use the data for research, with anonymous student id-s ,
 but identifying the progress of each individual student.
@@ -52,28 +53,33 @@ but must be accepted by the teacher as a student of the course in question.
 !!!MorfaC
 
 Look at Kven MorfaC (in the fkv and fkv_oahpa folders), 
-and look at the [http://oahpa.no/addlang/developermorfa.html] page
-for working with MorfaC.
+and look at the [http://oahpa.no/addlang/developerleksa.html] and 
+[http://oahpa.no/addlang/developermorfa.html] page
+for working with MorfaC (the latter to see the sets explanained).
 
 !!Semantic sets
 
 We have semantic variables, pointing to sets.
-DRINK = tea, coffee
-FOOD = soup, bread, ..
-PEOPLE = boy, teacher
-MOVEMENT-verb = walk, 
+* DRINK = tea, coffee
+* FOOD = soup, bread, ..
+* PEOPLE = boy, teacher
+* FAMILY = father, mother
+* MOVEMENT-verb = walk, 
 
-The lexicon contains all info for all lexemes, also the semantic class
+The lexicon contains all info for all lexemes, also the semantic class. One lemma
+can have several semantic classes.
 
-The semantic classes are listed in {{meta/semantical_sets.xml}}
+The semantic classes are listed in {{meta/semantical_sets.xml}}. Those marked with an
+initial m are only for Morfa, and are not listed in this file.
 
-Note ther are __class__ and __subclass__. 
+Note there are __class__ and __subclass__ (semantic category). 
 
 In MorfaC not all these sets go toghether.
 
 So, for Leksa, FOOD is an ok set. For MorphaC this is too coarse.
 We have FOOD_GROCERY, FOOD_DISH, and disthinguish between them.
 We lump them together in a ''class'' for Leksa, but use the ''subclass''
+(semantic category)
 for MorfaC, so that you can buy FOOD_GROCERY, but order FOOD_DISH in
 the resaurant. You may also add subclasses to several classes.
 
@@ -114,7 +120,7 @@ Variables written with capital letters, and defined.
   </q>
 }}}
 
-For each variabke, there is an <element> explaining it.
+For each variable, there is an <element> explaining it.
 
 !!semantical_sets.xml file
 
@@ -142,16 +148,16 @@ We also have constants, like what, yesterday.
 We have declared all those in the file fillings.xml, in order
 to feed them to the mysql.
 
-!!restrictions in the lexicon files
+!!Restrictions in the lexicon files
 
-When we generate the base, some lemmata do not ahve paradigms or 
+When we generate the base, some lemmata do not have paradigms or 
 have missing forms.
 
 So, you have the tag gen_only="none", and with gen_only="none"
 the word is used only for Leksa. Also foreign names we may have in Leksa
-but we do not want to inflect it for Morpha.
+but we do not want to inflect it for Morfa.
 
-We may have gen_only="Inf, Ind", which generates only infinitive and
+We may have gen_only="Inf,Ind", which generates only infinitive and
 indicative, and no other forms of the paradigm.
 
 !!Feedback
@@ -169,6 +175,8 @@ We will use Zaliznjak. We do not need to implement this yet.
 * fill in the n_rusnob.xml etc. files
 * Fran and Rob to do this soon.
 * Check by Lene and implementation by Heli, and then a demo on Friday.
+
+
 
 
 
