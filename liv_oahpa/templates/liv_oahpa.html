@@ -73,9 +73,9 @@
 	<ul class="sidelist small">
 	<!--	<li><a href="{% block veiledning %}{% endblock %}">{% trans "Instructions" %}</a></li> -->
         {% ifequal LANGUAGE_CODE "fi" %}
-            <li><a href="http://gtweb.uit.no/webdict/index_liv-fin.html">{% trans "Dictionary" %}</a></li>
+            <li><a target="_blank" href="http://sanat.oahpa.no/liv/fin">{% trans "Dictionary" %}</a></li>
         {% else %}
-            <li><a href="http://gtweb.uit.no/webdict/index_liv-nob.html">{% trans "Dictionary" %}</a></li>
+            <li><a target="_blank" href="http://sanat.oahpa.no/liv/est">{% trans "Dictionary" %}</a></li>
         {% endifequal %}
 
         <!-- {% ifequal LANGUAGE_CODE "sme" %}
