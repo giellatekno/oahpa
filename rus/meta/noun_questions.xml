@@ -1,19 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <questions>
   <q id="npar1">
-    <qtype>V-PAST</qtype>
+    <qtype>N-LOC</qtype>
     <question>
-      <text>Что SUBJ MAINV вчера</text>
+      <text>Где SUBJ</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
-      <element id="MAINV">
-        <grammar tag="V+IV+Act+Ind+Prs+Sg3"/>
+    </question>
+    <answer> 
+      <text>SUBJ в LOCATION-V-LOC2</text> <!-- Отец в лесу -->
+      <element id="LOCATION-V-LOC2">
+            <grammar tag="N+Sg+Loc2"/>
+            <sem class="LOCATION-V-LOC2"/>
+      </element>
+    </answer>
+  </q>
+  <q id="npar2">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Где SUBJ</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV</text>
+      <text>SUBJ в LOCATION-V-LOC</text> <-- Отец в городе -->
+      <element id="LOCATION-V-LOC">
+            <grammar tag="N+Sg+Loc"/>
+            <sem class="LOCATION-V-LOC"/>
+      </element>
     </answer>
   </q>
 </questions>
