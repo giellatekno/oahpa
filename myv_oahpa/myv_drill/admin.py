@@ -15,8 +15,8 @@ class FormInline(admin.TabularInline):
 # 	raw_id_fields = ('wordnob',)
 
 class WordAdmin(admin.ModelAdmin):
-	list_display = ('lemma','wordid','pos','stem', 'sem_types_admin', 'source_admin','soggi','valency')
-	list_filter = ['pos','stem','semtype','source', 'soggi'] 
+	list_display = ('lemma','wordid','pos','stem', 'sem_types_admin', 'source_admin') #, 'soggi', 'valency')
+	list_filter = ['pos','stem','semtype','source'] #, 'soggi'] 
 	search_fields = ['lemma', 'semtype__semtype']
 	inlines = [FormInline] # TODO: , WordTranslationInline]
 	# raw_id_fields = ('wordtranslation_set', )
@@ -30,7 +30,7 @@ class FormAdmin(admin.ModelAdmin):
 
 
 class FeedbackAdmin(admin.ModelAdmin):
-	list_display = ['pos', 'stem', 'soggi', 'tense']
+	list_display = ['pos', 'stem', 'tense'] # commented out soggi
 
 
 admin.site.register(Form, FormAdmin)

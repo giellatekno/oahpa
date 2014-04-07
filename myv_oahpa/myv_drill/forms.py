@@ -1012,14 +1012,9 @@ class LeksaQuestion(OahpaQuestion):
 
 
 		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
-
-        # If we want stress marks in Leksa then we have to use lemma_stressed instead of lemma.
 		
 		if type(word) == Word: 
-                    if self.sourcelang == 'rus':
-                        self.lemma = word.lemma_stressed  # for Rusian the words will be presented with stress marks
-                    else:
-                        self.lemma = word.lemma # for other languages 'lemma_stressed' does not exist
+                        self.lemma = word.lemma
 		else:
 			self.lemma = word.definition
 

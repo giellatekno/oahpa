@@ -1,7 +1,7 @@
 #!/bin/sh
 
 P="python2.7"
-DATA="$GTHOME/ped/myv/"
+DATA="/home/heli/main/ped/myv"
 DPS="$DATA/src"
 META="$DATA/meta"
 DPN="$DATA/nobmyv"
@@ -122,8 +122,8 @@ echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPN/A_nobmyv.xml"
-$P install.py --file $DPN/A_nobmyv.xml 2>>error.log
+echo "feeding db with $DPN/N_nobmyv.xml"
+$P install.py --file $DPN/N_nobmyv.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="

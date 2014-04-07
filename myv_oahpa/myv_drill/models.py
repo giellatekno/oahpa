@@ -498,7 +498,7 @@ class Word(models.Model):
 			kwargs = {
 				#'gender':	self.gender,
 				#'animate':	self.animate,
-				'declension':	self.declension,
+				#'declension':	self.declension,
 				'reflexive':	self.reflexive,
 				'inflection_class': self.inflection_class
 			}
