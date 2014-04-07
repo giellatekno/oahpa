@@ -9,29 +9,20 @@
         <sem class="PEOPLE"/>
       </element>
     </question>
-    <answer> 
-      <text>SUBJ в LOCATION-V-LOC2</text> <!-- Отец в лесу -->
-      <element id="LOCATION-V-LOC2">
+    <answer>
+      <text>SUBJ в LOCATION</text> <!-- Отец в лесу -->
+      <element id="LOCATION">
             <grammar tag="N+Sg+Loc2"/>
             <sem class="LOCATION-V-LOC2"/>
       </element>
     </answer>
-  </q>
-  <q id="npar2">
-    <qtype>N-LOC</qtype>
-    <question>
-      <text>Где SUBJ</text>
-      <element id="SUBJ">
-            <grammar tag="N+Sg+Nom"/>
-        <sem class="PEOPLE"/>
-      </element>
-    </question>
-    <answer> 
-      <text>SUBJ в LOCATION-V-LOC</text> <-- Отец в городе -->
-      <element id="LOCATION-V-LOC">
+    <answer>
+      <text>SUBJ в LOCATION</text> <-- Отец в городе -->
+      <element id="LOCATION">
             <grammar tag="N+Sg+Loc"/>
             <sem class="LOCATION-V-LOC"/>
       </element>
     </answer>
   </q>
 </questions>
+
