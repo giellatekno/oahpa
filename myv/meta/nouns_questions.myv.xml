@@ -16,7 +16,7 @@
     <question>
       <text>Мезде SUBJ MAINV</text>
       <element id="SUBJ">
-            <grammar tag="N+Sg+Nom"/>
+            <grammar tag="N+Sg+Nom+Def"/>
         <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
@@ -26,8 +26,8 @@
     </question>
     <answer> 
       <text>SUBJ MAINV N-ABL</text>
-      <element game='morfa' id="N-PAR" task="yes">
-        <grammar tag="N+Sg+Par"/>
+      <element game='morfa' id="N-ABL" task="yes">
+        <grammar tag="N+SP+Abl"/>
         <sem class="FOOD_DISH"/>
       </element>
     </answer>
@@ -37,7 +37,7 @@
     <question>
       <text>Мезде SUBJ MAINV</text>
       <element id="SUBJ">
-            <grammar tag="N+Sg+Nom"/>
+            <grammar tag="N+Sg+Nom+Def"/>
         <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
@@ -47,8 +47,8 @@
     </question>
     <answer> 
       <text>SUBJ MAINV N-ABL</text>
-      <element game='morfa' id="N-PAR" task="yes">
-        <grammar tag="N+Sg+Par"/>
+      <element game='morfa' id="N-ABL" task="yes">
+        <grammar tag="N+SP+Abl+Indef"/>
         <sem class="DRINK"/>
       </element>
     </answer>
