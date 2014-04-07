@@ -1,0 +1,175 @@
+
+
+Fleksibel utdanning 
+
+Møte 7. april 2014
+
+Til stede: Fran, Lene, Robert, Trond
+
+Tidsplan under [Fleksibel utdanning|../FleksibelUtdanning.html]
+
+
+!!!Innlogging
+
+Ryan now writes code for that, cf. the links for
+"Møter med Ryan" under [Fleksibel utdanning|../FleksibelUtdanning.html].
+
+Cf. the course goals for North Saami, here:
+[http://giellatekno.uit.no/ped/fleksi/course/smecourse.html].
+
+This then will be part of the course goal given to each student
+on her personal page. The program will then keep track of her
+work on each individual goal.
+
+It is still a test, so do not make many goals. Just make some
+(relevant) goals, and test them out.
+
+The X in the course goal list is a variable, a sign to Ryan 
+to implement it with all books.
+The course goal list should be made by the teacher (Robert!)
+and implemented by Ryan.
+
+Both teacher and student may log in, with different roles.
+Each student sees her teacher-given goals, and also sees
+the goals she has given to herself. She also sees the progress:
+How much she has worked, and what the results are (percent correct anwser).
+
+The teacher does not see the self-given student goals, he only
+sees the goals he has given to all students, and for each and every
+student he will see the student progress.
+
+Later on, we may use the data for research, with anonymous student id-s ,
+but identifying the progress of each individual student.
+
+!!Login: 
+
+We now offer Google and Facebook, but should probably add
+vKontakte? The vKontakte would then be for Russian students wanting
+to learn Estonian. The students register as students of indivudual courses,
+but must be accepted by the teacher as a student of the course in question.
+
+
+!!!MorfaC
+
+Look at Kven MorfaC (in the fkv and fkv_oahpa folders), 
+and look at the [http://oahpa.no/addlang/developermorfa.html] page
+for working with MorfaC.
+
+!!Semantic sets
+
+We have semantic variables, pointing to sets.
+DRINK = tea, coffee
+FOOD = soup, bread, ..
+PEOPLE = boy, teacher
+MOVEMENT-verb = walk, 
+
+The lexicon contains all info for all lexemes, also the semantic class
+
+The semantic classes are listed in {{meta/semantical_sets.xml}}
+
+Note ther are __class__ and __subclass__. 
+
+In MorfaC not all these sets go toghether.
+
+So, for Leksa, FOOD is an ok set. For MorphaC this is too coarse.
+We have FOOD_GROCERY, FOOD_DISH, and disthinguish between them.
+We lump them together in a ''class'' for Leksa, but use the ''subclass''
+for MorfaC, so that you can buy FOOD_GROCERY, but order FOOD_DISH in
+the resaurant. You may also add subclasses to several classes.
+
+The sets with m prefix are morfa sets. This just to remember that
+it does not need to be in the Leksa.
+
+
+
+!!Frames
+
+The frames are defined in the {{meta}} folder, e.g.
+{{meta/noun_questions.xml}}
+
+Each frame has a unique frame.
+Variables written with capital letters, and defined.
+
+{{{
+  <q id="npar1">
+    <qtype>N-PAR</qtype>
+    <question>
+      <text>Mitä SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>syöđä</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-PAR</text>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Par"/>
+        <sem class="FOOD_DISH"/>
+      </element>
+    </answer>
+  </q>
+}}}
+
+For each variabke, there is an <element> explaining it.
+
+!!semantical_sets.xml file
+
+This file must exist, and it must have the same
+sets as the rest of the system.
+
+!!Paradigm files
+
+In meta we also need {{n_paradigm.xml}}, the tag list, listed 
+exactly as the output of the fst. Note, no initial +, for historical
+reasons.
+
+!!The file tags
+
+Contains all tags, but again without the initial plus.
+
+!!grammar_defaults.xml
+
+Not in use here, but needed by the system.
+Here we find the agreement.
+
+!!fillings.xml
+
+We also have constants, like what, yesterday.
+We have declared all those in the file fillings.xml, in order
+to feed them to the mysql.
+
+!!restrictions in the lexicon files
+
+When we generate the base, some lemmata do not ahve paradigms or 
+have missing forms.
+
+So, you have the tag gen_only="none", and with gen_only="none"
+the word is used only for Leksa. Also foreign names we may have in Leksa
+but we do not want to inflect it for Morpha.
+
+We may have gen_only="Inf, Ind", which generates only infinitive and
+indicative, and no other forms of the paradigm.
+
+!!Feedback
+
+We will use Zaliznjak. We do not need to implement this yet.
+
+
+!!!Progress plan
+
+* Draft of course goals by the end of this week? (meeting with Laura)
+** Take the sme goals and edit them
+* Simple MorfaC file
+** Based upon [ped/fkv/https://victorio.uit.no/langtech/trunk/ped/fkv]
+* make rus/meta/semantical_sets.xml 
+* fill in the n_rusnob.xml etc. files
+* Fran and Rob to do this soon.
+* Check by Lene and implementation by Heli, and then a demo on Friday.
+
+
+
+
