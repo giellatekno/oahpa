@@ -2,7 +2,7 @@ from django.template import Context, RequestContext, loader
 from django.db.models import Q
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _ 
 
 from myv_oahpa.conf.tools import switch_language_code
 
@@ -62,6 +62,27 @@ class Gameview(object):
 	that method.)
 
 	"""
+
+	def register_logs(self, request, game, settings_form):
+		""" Grab all the logs that were generated from a form, and
+		append them to the request session """
+		request.user_logs_generated = [
+			f.last_log for f in game.form_list
+			if hasattr(f, 'last_log')
+		]
+		# Use this to track whether the user switches away from the
+		# current exercise, if they do, then we can optionally stop
+		# tracking activity.
+
+		exercise_params = request.path_info + self.create_deeplink(game, settings_form)
+		request.session['current_exercise_params'] = exercise_params
+
+		request.session['all_correct'] = game.all_correct in [1, True, 'True', 'true']
+
+		request.session['set_completed'] = request.session['all_correct'] or \
+											game.show_correct in [1, True, 'True', 'true']
+
+		request.session['new_game'] = game.is_new_game
 
 	def __init__(self, settingsclass, gameclass):
 		self.SettingsClass = settingsclass
@@ -209,6 +230,11 @@ class Gameview(object):
 				self.settings[k] = settings_source[k]
 
 		# Settings values which aren't set from the form, but from the session
+		if request.session.has_key('country'):
+			self.settings['user_country'] = request.session['country']
+		else:
+			self.settings['user_country'] = False
+
 		if request.session.has_key('dialect'):
 			self.settings['dialect'] = request.session['dialect']
 
@@ -219,8 +245,17 @@ class Gameview(object):
 			if not self.settings['language']:
 				self.settings['language'] = request.LANGUAGE_CODE
 				request.session['django_language'] = request.LANGUAGE_CODE
+        
+                print "get_settings_form language: "+self.settings['language']
 				
 				
+		if request.user.is_authenticated():
+			request_user = request.user
+		else:
+			request_user = False
+
+		self.settings['user'] = request_user
+
 		#if hasattr(request, 'LANGUAGE_CODE'):
 		#	self.settings['language'] = request.LANGUAGE_CODE
 
@@ -252,24 +287,24 @@ class Gameview(object):
 		# and check whether or not the answers are correct or incorrect.
 
 		game = self.GameClass(self.settings)
-		
+
 		self.set_gamename()
 
 		if is_new_game:
 			game = self.change_game_settings(game)
 			game.new_game()
+			game.is_new_game = True
 		else:
 			game = self.change_game_settings(game)
 			game.check_game(settings_form.data)
 			game.get_score(settings_form.data)
+			game.is_new_game = False
 
 			if 'test' in settings_form.data:
 				game.count = 1
 
 			if "show_correct" in settings_form.data:
 				game.show_correct = 1
-
-		
 
 		return self.context(request, game, settings_form)
 
@@ -293,6 +328,7 @@ class Leksaview(Gameview):
 		self.settings['gamename_key'] = "%s - %s" % (semtype, transtype)
 		
 	def context(self, request, game, settings_form):
+		self.register_logs(request, game, settings_form)
 
 		return Context({
 			'settingsform': settings_form,
@@ -318,7 +354,7 @@ class LeksaPlaceview(Gameview):
 				return False
 
 		self.settings['allsem'] = []
-		self.settings['semtype'] = "NAME"
+		self.settings['semtype'] = "PLACE_LEKSA"
 		self.settings['geography'] = 'world'
 		self.settings['frequency'] = ['common'] # added
 
@@ -364,6 +400,8 @@ class LeksaPlaceview(Gameview):
 		self.settings['gamename_key'] = "Place - %s - %s" % (geog, freq)
 
 	def context(self, request, game, settings_form):
+		self.register_logs(request, game, settings_form)
+
 		return Context({
 			'settingsform': settings_form,
 			'settings' : self.settings,
@@ -392,12 +430,12 @@ def leksa_game(request, place=False):
 
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
-		if sess_lang == 'myv':  # was: sme
-			sess_lang = 'rus'  # was: nob
+		if sess_lang == 'myv':
+			sess_lang = 'eng' # was: nob
 	else:
-		sess_lang = 'fin'
+		sess_lang = 'eng' # was: nob
 
-	default_langpair = 'myv%s' % sess_lang  # was: sme
+	default_langpair = 'myv%s' % sess_lang
 
 	c = leksagame.create_game(request, initial_transtype=default_langpair)
 
@@ -419,6 +457,7 @@ class Numview(Gameview):
 		return keys
 
 	def context(self, request, game, settings_form):
+		self.register_logs(request, game, settings_form)
 
 		return Context({
 			'settingsform': settings_form,
@@ -479,26 +518,38 @@ def dato(request):
 				context_instance=RequestContext(request))
 
 
+# Translation of gamenames takes place in the templates mgame_n.html etc. 
+# because they have to be available in two different languages - in Saami on the 
+# interface and in the interface language chosen by the user in the translation 
+# tooltips.
 class Morfaview(Gameview):
 	gamenames = {
-		'ATTR':  _('Practise attributes'),
-		'A-ATTR':  _('Practise attributes'),
-		'A-NOM':  _('Practise adjectives in nominative'),
-		'A-ILL':  _('Practise adjectives in illative'),
-		'A-ACC':  _('Practise adjectives in accusative'),
-		'A-COM':  _('Practise adjectives in comitative'),
-		'A-ESS':  _('Practise adjectives in essive'),
-		'A-GEN':  _('Practise adjectives in genitive'),
-		'A-NOM-PL':  _('Practise adjectives in plural'),
-		'N-LOC':  _('Practise adjectives in locative'),
-		'A-COMP':  _('Practise comparative'),
-		'A-SUPERL':  _('Practise superlative'),
-		'V-DER':  _('Practise verb derivation'),
-		'V-DER-PASS':  _('Practise verb passive derivation'),
+		'ATTR': _('Practise attributes'),
+		'A-ATTR': _('Practise attributes'),
+		'A-NOM': _('Practise adjectives in nominative'),
+		'A-ILL': _('Practise adjectives in illative'),
+		'A-ACC': _('Practise adjectives in accusative'),
+		'A-COM': _('Practise adjectives in comitative'),
+		'A-ESS': _('Practise adjectives in essive'),
+		'A-GEN': _('Practise adjectives in genitive'),
+		'A-NOM-PL': _('Practise adjectives in plural'),
+		'N-LOC': _('Practise adjectives in locative'),
+		'A-COMP': _('Practise comparative'),
+		'A-SUPERL': _('Practise superlative'),
+		'V-DER': _('Practise verb derivation'),
+		'V-DER-PASS': _('Practise verb passive derivation'),
 		'DER-PASSV': _('Practise verb passive derivation'),
-		'A-DER-V':  _('Practise adjective to verb derivation'),
-		'ATTRPOS':  _('Practise attributes in positive'),
-		'ATTRCOMP':  _('Practise attributes in comparative'),
+		'A-DER-V': _('Practise adjective to verb derivation'),
+		'N-PX-GROUP1': _('Practise noun possessive suffixes'),
+		'N-PX-GROUP2': _('Practise noun possessive suffixes'),
+		'N-PX-GROUP3': _('Practise noun possessive suffixes'),
+		'PX-ACC': _('Practise noun possessive suffixes in accusative'),
+		'PX-ILL': _('Practise noun possessive suffixes in illative'),
+		'PX-LOC': _('Practise noun possessive suffixes in locative'),
+		'PX-GEN': _('Practise noun possessive suffixes in genitive'),
+		'PX-COM': _('Practise noun possessive suffixes in comitative'),
+		'ATTRPOS': _('Practise attributes in positive'),
+		'ATTRCOMP': _('Practise attributes in comparative'),
 		'ATTRSUP':  _('Practise attributes in superlative'),
 		'PREDPOS':  _('Practise predicative in positive'),
 		'PREDCOMP':  _('Practise predicative in comparative'),
@@ -508,12 +559,18 @@ class Morfaview(Gameview):
 		'NOM':  _('Practise nominative'),
 		'N-NOM':  _('Practise nominative'),
 		'N-ILL':  _('Practise illative'),
-		'N-ACC':  _('Practise accusative'),
 		'N-COM':  _('Practise comitative'),
 		'N-ESS':  _('Practise essive'),
 		'N-GEN':  _('Practise genitive'),
 		'N-NOM-PL':  _('Practise plural'),
-		'N-LOC':  _('Practise locative'),
+		'N-INE':  _('Practise inessive'),
+		'N-DAT':  _('Practise dative'),
+		'N-ELA':  _('Practise elative'),
+		'N-ABL':  _('Practise ablative'),
+		'N-ABE':  _('Practise abessive'),
+		'N-COMP':  _('Practise comparative'),
+		'N-PRL':  _('Practise prolative'),
+		'N-TRA':  _('Practise translative'),
 		'N-MIX':  _('Practise a mix'),
 		'V-MIX':  _('Practise a mix'),
 		'A-MIX':  _('Practise a mix'),
@@ -555,17 +612,17 @@ class Morfaview(Gameview):
 		'V-COND':  _('Practise conditional'),
 		'V-IMPRT':  _('Practise imperative'),
 		'V-POT':  _('Practise potential'),
-		'P-PERS':  _('Practise '),
+		'P-PERS':  _('Practise personal pronouns'),
 		'P-RECIPR':  _('Practise reciprocative pronouns'),
 		'P-REFL':  _('Practise reflexive pronouns'),
-    	'P-REL': _('Practise relative pronouns'),
+		'P-REL': _('Practise relative pronouns'),
 		'P-DEM':  _('Practise demonstrative pronouns'),
 	}
 
 	def syll_settings(self,settings_form):
 
 		def true_false_filter(val):
-			if val in ['on', 'On', u'on', u'On']:
+			if val in ['on', 'On', u'on', u'On','True']:
 				return True
 			else:
 				return False
@@ -588,8 +645,16 @@ class Morfaview(Gameview):
 
 		if true_false_filter(trisyl):
 			self.settings['syll'].append('3syll')
+			settings_form.data['trisyllabic'] = 'on'
+		else:
+			settings_form.data['trisyllabic'] = None
+	
 		if true_false_filter(cont):
 			self.settings['syll'].append('Csyll')
+			settings_form.data['contracted'] = 'on'
+		else:
+			settings_form.data['contracted'] = None
+
 		if len(self.settings['syll']) == 0:
 			self.settings['syll'].append('2syll')
 
@@ -630,8 +695,9 @@ class Morfaview(Gameview):
 			if self.settings['pos'] == 'Num':
 				return ['num_context']
 
-
 	def context(self, request, game, settings_form):
+		self.register_logs(request, game, settings_form)
+
 		return RequestContext(request, {
 			'settingsform': settings_form,
 			'settings' : self.settings,
@@ -705,6 +771,13 @@ class Morfaview(Gameview):
 			else:
 				gamename_key = self.settings['derivation_type_context']
 
+		# Px
+		if self.settings['pos'] == "Px":
+			if self.settings['gametype'] == "bare":
+				gamename_key = self.settings['possessive_type']
+			else:
+				gamename_key = self.settings['possessive_case_context']
+
 		self.settings['gamename'] = self.gamenames[gamename_key]
 		names = [self.settings['pos'], gamename_key]
 
@@ -725,16 +798,15 @@ class Morfaview(Gameview):
 		#	num_type = self.settings['num_type']
 		#	names.append(num_type) 
 
-		self.settings['gamename_key'] = ' - '.join(names) 
-		
-
+		self.settings['gamename_key'] = ' - '.join(names)
 
 # @timeit
 @trackGrade("Morfa")
 def morfa_game(request, pos):
 	"""
-		View for Morfa game. Requires pos argument, ['N', 'V', 'A', 'Num']
+		View for Morfa game. Requires pos argument, ['N', 'V', 'A', 'Num', 'Px']
 	"""
+
 	mgame = Morfaview(MorfaSettings, BareGame)
 
 	mgame.settings['pos'] = pos.capitalize()
@@ -744,6 +816,8 @@ def morfa_game(request, pos):
 		template = 'mgame_l.html'
 	elif pos == 'Der':
 		template = 'mgame_der.html'
+	elif pos == 'Px':
+		template = 'mgame_px.html'
 	else:
 		template = 'mgame_%s.html' % pos.lower()[0]
 
@@ -769,6 +843,8 @@ def cmgame(request, pos):
 		p = 'l'
 	elif pos == 'Der':
 		p = 'der'
+        elif pos == 'Px':
+		  p = 'px'
 	else:
 		p = pos.lower()[0]
 
@@ -778,115 +854,50 @@ def cmgame(request, pos):
 	return render_to_response(template, c,
 				context_instance=RequestContext(request))
 
-class Vastaview:
 
-	def init_settings(self):
+class Vastaview(Gameview):
 
-		show_data=0
-		self.settings = {}
-		
-	def create_vastagame(self,request):
+	def additional_settings(self, settings_form):
+		self.settings['level'] = settings_form.data.get('level', '1')
 
-		count=0
-		correct=0
+	def change_game_settings(self, game):
+		# These are set before new_game is called
+		game.gametype = "qa"
+		game.num_fields = 2
+		return game
+	
+	def set_gamename(self):
+		if 'gamename_key' not in self.settings:
+			gamename = 'level %s' % self.settings['level']
+			self.settings['gamename_key'] = gamename
 
-		self.settings['gametype'] = "qa"
-		
-		if request.method == 'POST':
-			data = request.POST.copy()
-
-			# Settings form is checked and handled.
-			settings_form = VastaSettings(request.POST)
-
-			for k in settings_form.data.keys():
-				self.settings[k] = settings_form.data[k]
-
-			if request.session.has_key('dialect'):
-				self.settings['dialect'] = request.session['dialect']
-
-			if request.session.has_key('django_language'):
-				self.settings['language'] = request.session['django_language']
-			else:
-				self.settings['language'] = request.COOKIES.get("django_language", None)
-
-			self.settings['allcase_context']=settings_form.allcase_context
-			self.settings['allvtype_context']=settings_form.allvtype_context
-			self.settings['allnum_context']=settings_form.allnum_context
-			self.settings['alladj_context']=settings_form.alladj_context
-			self.settings['allsem']=settings_form.allsem
-
-			if settings_form.data.has_key('book'):
-				self.settings['book'] = settings_form.books[settings_form.data['book']]
-
-			# Vasta
-			game = QAGame(self.settings)
-			game.init_tags()
-			game.num_fields = 2
-
-			game.gametype="qa"
-
-			# If settings are changed, a new game is created
-			# Otherwise the game is created using the user input.
-			if "settings" in data:
-				game.new_game()
-			else:
-				game.check_game(data)
-				game.get_score(data)
-
-		# If there is no POST data, default settings are applied
-		else:
-			settings_form = VastaSettings()
-
-			self.settings['allsem']=settings_form.allsem
-			self.settings['allcase_context']=settings_form.allcase_context
-			self.settings['allvtype_context']=settings_form.allvtype_context
-			self.settings['allnum_context']=settings_form.allnum_context
-			self.settings['alladj_context']=settings_form.alladj_context
-			self.settings['level'] = '1'  # added by Heli
-
-			for k in settings_form.default_data.keys():
-				self.settings[k] = settings_form.default_data[k]
-
-			if request.session.has_key('dialect'):
-				self.settings['dialect'] = request.session['dialect']
-
-			if request.session.has_key('django_language'):
-				self.settings['language'] = request.session['django_language']
-			else:
-				self.settings['language'] = request.COOKIES.get("django_language", None)
-
-			# Vasta
-			game = QAGame(self.settings)
-			game.init_tags()
-			game.gametype="qa"
-			game.num_fields = 2
-
-			game.new_game()
-
-		all_correct = 0
-		if game.form_list[0].error == "correct":
-			all_correct = 1
+	def context(self, request, game, settings_form):
+		self.register_logs(request, game, settings_form)
 
 		c = Context({
 			'settingsform': settings_form,
+			'settings': self.settings,
 			'forms': game.form_list,
 			'messages': game.form_list[0].messages,
 			'count': game.count,
+			'score': game.score,
 			'comment': game.comment,
-			'all_correct': all_correct,
+			'all_correct': game.all_correct,
+			'show_correct': game.show_correct,
 			'gametype': "qa",
+			'deeplink': self.create_deeplink(game, settings_form)
 			})
 		return c
 
 
+@trackGrade("Vasta F")
 def vasta(request):
 
-	vastagame = Vastaview()
-	vastagame.init_settings()
-	vastagame.settings['gametype'] = "qa"
+	vastagame = Vastaview(VastaSettings, QAGame)
 
-	c = vastagame.create_vastagame(request)
-	return render_to_response('vasta.html', c, context_instance=RequestContext(request))
+	c = vastagame.create_game(request)
+	return render_to_response('vasta.html', c,
+								context_instance=RequestContext(request))
 
 
 class Cealkkaview(Gameview):
@@ -903,21 +914,24 @@ class Cealkkaview(Gameview):
 	def change_game_settings(self, game):
 		""" This is run before Game.new_game() is called.
 		"""
-
 		game.num_fields = 2
 		return game
 		
 	def set_gamename(self):
-		if 'gamename_key' not in self.settings:
-			self.settings['gamename_key'] = self.settings['gametype']
+		self.settings['gamename_key'] = 'level %s' % str(self.settings['level'])
 	
 	def context(self, request, game, settings_form):
+		self.register_logs(request, game, settings_form)
+		# TODO: seems to be fine, but settings['level'] on the first visit is
+		# all, not 1, even though the menu shows level 1
 
 		c = Context({
 			'settingsform': settings_form,
+			'settings': self.settings,
 			'forms': game.form_list,
 			'messages': game.form_list[0].messages,
 			'count': game.count,
+			'score': game.score,
 			'comment': game.comment,
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
@@ -956,9 +970,10 @@ class Sahkaview(Cealkkaview):
 	
 	def additional_settings(self, settings_form):
 		self.settings['gametype'] = 'sahka'
-		self.settings['image'] = 'sahka.png'
-		self.settings['wordlist'] = ''
+		self.settings['image'] = settings_form.data.get('image')
+		self.settings['wordlist'] = settings_form.data.get('wordlist')
 		self.settings['dialogue'] = settings_form.data.get('dialogue', '')
+		self.settings['attempts'] = int(settings_form.data.get('attempts',0))
 
 		if 'topicnumber' not in self.settings:
 			self.settings['topicnumber'] = 0
@@ -990,11 +1005,17 @@ class Sahkaview(Cealkkaview):
 			game.settings['dialogue'] = settings_form.data.get('dialogue', '')
 			game.settings['topicnumber'] = 0
 			game.settings['wordlist'] = ""
+			game.settings['attempts'] = 0
 			game.num_fields = 1
 			game.update_game(1)
 		else:
 			game.num_fields = int(settings_form.data.get('num_fields', 1))
+
 			game.check_game(settings_form.data)
+			#game.get_score(settings_form.data)
+
+			if "show_correct" in settings_form.data:
+				game.show_correct = 1
 
 			# If the last answer was correct, add new field
 			# 
@@ -1002,18 +1023,24 @@ class Sahkaview(Cealkkaview):
 				game.update_game(
 					len(game.form_list)+1, 
 					game.form_list[game.num_fields-2])
+				game.settings['attempts'] = 0
+			else:
+				game.settings['attempts'] = game.settings['attempts'] + 1
 		
 		settings_form.init_hidden(
 			game.settings['topicnumber'],
 			game.num_fields,
   			game.settings['dialogue'],
   			game.settings['image'],
-  			game.settings['wordlist'])
+  			game.settings['wordlist'],
+  			game.settings['attempts'])
+  		#print game.num_fields," nr of attempts ",game.settings['attempts']
 
 		return self.context(request, game, settings_form)
 
 
 	def context(self, request, game, settings_form):
+		self.register_logs(request, game, settings_form)
 
 		def getmessages(g):
 			if len(g.form_list) > 0:
@@ -1024,13 +1051,15 @@ class Sahkaview(Cealkkaview):
 		errormsg = ""
 		for f in game.form_list:
 			errormsg = errormsg + f.errormsg
-			
+		
 		c = Context({
 			'settingsform': settings_form,
+			'settings': self.settings,
 			'forms': game.form_list,
 			'messages': getmessages(game),
 			'errormsg': errormsg,
 			'count': game.count,
+			'attempts': game.settings['attempts'],
 			'score': game.score,
 			'comment': game.comment,
 			'gametype': self.settings['gametype'],

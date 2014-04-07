@@ -19,7 +19,7 @@ _D = open('/dev/null', 'w')
 try:
 	fstdir = settings.FST_DIRECTORY
 except:
-	fstdir = "/opt/smi/sme/bin"
+	fstdir = "/opt/smi/myv/bin"
 
 try:
 	lookup = settings.LOOKUP_TOOL
@@ -31,7 +31,9 @@ try:
 except:
 	language = "myv"
 
-numfst = fstdir + "/" + language + "-num.fst"
+#numfst = fstdir + "/" + language + "-num.fst"
+numfst = fstdir + "/" + "transcriptor-numbers2text-desc.xfst"
+gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst" 
 
 
 STDERR = sys.stderr
@@ -92,7 +94,7 @@ def Popen(cmd, data=False, ret_err=False, ret_proc=False):
 
 
 def FSTLookup(data, fst_file):
-	gen_fst = fstdir + "/%s" % fst_file 
+	gen_fst = fst_file 
 	# cmd = 'hfst-optimized-lookup /opt/local/share/omorfi/mor-omorfi.apertium.hfst.ol'
 	cmd = lookup + " -flags mbTT -utf8 -d " + gen_fst
 	
@@ -129,27 +131,44 @@ class Paradigm:
 		
 
 	def handle_tags(self, tagfile, add_db):
+		""" The function is called from install.py and its aim is to install the contents of the tag file (e.g. tags.txt) in the database.
+		The function installs all tags if add_db=True, otherwise it reads
+		all of the tags and produces a dictionary of the tag as the key
+		and the tag set it belongs to as the value.
+		"""
 
-		with open(tagfile, "r") as F:
-			# Read tags, remove newlines
-			tags = [a.strip() for a in F.readlines()]
+		if add_db:
+			with open(tagfile, "r") as F:
+				# Read tags, remove newlines
+				tags = [a.strip() for a in F.readlines()]
 
-		tagclass = ""
-		for line in tags:
-			if line.startswith("#"):
-				tagclass = line.lstrip("#")
-			else:
-				string = line.strip().replace('*', '')
-				self.tagset[string] = tagclass
-				if add_db and tagclass and string:
-					#print "adding " + tagclass + " " + string
-					tagset, created = Tagset.objects.get_or_create(tagset=tagclass)
-					pos, created = Tagname.objects.get_or_create(tagname=string, tagset=tagset)
-					print "%s added to %s" % (string, tagclass)
-
+			tagclass = ""
+			for line in tags:
+				if line.startswith("#"):
+					tagclass = line.lstrip("#")
+				else:
+					string = line.strip().replace('*', '')
+					self.tagset[string] = tagclass
+					if add_db and tagclass and string:
+						string = string.replace('%', '')
+						#print "adding " + tagclass + " " + string
+						tagset, created = Tagset.objects.get_or_create(tagset=tagclass)
+						pos, created = Tagname.objects.get_or_create(tagname=string, tagset=tagset)
+						print "%s added to %s" % (string, tagclass)
+		else:
+			tagname_tagset = Tagname.objects.all().values_list('tagname', 'tagset__tagset')
+			tagset_dict = dict()
+			for k, v in tagname_tagset:
+				if k in tagset_dict:
+					tagset_dict[k].append(v)
+				else:
+					tagset_dict[k] = [v]
+			self.tagset = tagset_dict
 
 
 	def read_paradigms(self, paradigmfile, tagfile, add_database):
+		""" The function is called from install.py and its aim is to install the contents of the paradigm file (e.g. paradigms.txt) into the database.
+		"""
 		if not self.tagset:
 			self.handle_tags(tagfile)
 
@@ -158,6 +177,7 @@ class Paradigm:
 		
 		while True:
 			line = fileObj.readline()
+			#print >> STDOUT, 'A line from paradigms: %s' % line
 			
 			if not line: break
 			if not line.strip(): continue
@@ -174,6 +194,7 @@ class Paradigm:
 				print >> STDERR, ' * Error on line: %s' % line
 				sys.exit()
 			self.paradigms[pos].append(line)
+			# print >> STDERR, '%s paradigm: %s' % (pos,self.paradigms[pos])
 
 	def create_paradigm_no_gen(self, lemma, pos, baseform, wordforms):
 		""" Creates paradigm objects as does create_paradigm, but using data
@@ -201,8 +222,9 @@ class Paradigm:
 			g.form, g.tags = wordform
 			for t in g.tags:
 				if self.tagset.has_key(t):
-					tagclass = self.tagset[t]
-					g.classes[tagclass] = t
+					tagclasses = self.tagset[t]
+					for tagclass in tagclasses:
+						g.classes[tagclass] = t
 			self.paradigm.append(g)
 			
 	def collect_gen_data(self, lemma, pos, hid, wordtype, gen_only, forms):
@@ -235,6 +257,8 @@ class Paradigm:
 		# }
 
 		# Using gen_only now
+		# commented out everything about gen_only, hid, wordtype:
+		"""
 		
 		if not gen_only.strip():
 			gen_only = False
@@ -248,44 +272,50 @@ class Paradigm:
 
 		if pos.upper() == 'PROP':
 			pos = 'N'
+		"""
 
 		if not self.tagset:
 			self.handle_tags()
 
 		lookups = ""
+		"""
 		if not hid.strip():
 			hid = ""
 		else:
 			hid = '+' + hid
+		"""
 		
 		# If wordtype is defined, then the wordtype is inserted after
 		# the first tag element, which should be the part of speech.
 		# If hid is defined simultaneously, this should not mess with that.
 
+		"""
 		if not wordtype.strip():
 			wordtype = ""
 		else:
-			wordtype = '+' + wordtype.capitalize()
+			w, rest = wordtype[0], wordtype[1::]
+			wordtype = '+' + w.capitalize() + rest
+		"""
 
 		if self.paradigms.has_key(pos):
 			for a in self.paradigms[pos]:
-				if wordtype.strip():
-					if not wordtype in a:
-						_pos, _, _rest = a.partition('+')
-						tag = "%s%s+%s" % (_pos, wordtype, _rest)
-				else:
-					tag = a
+				#if wordtype.strip():
+				#	if not wordtype in a:
+				#		_pos, _, _rest = a.partition('+')
+				#		tag = "%s%s+%s" % (_pos, wordtype, _rest)
+				#else:
+				#	tag = a
 				
-				if gen_only:
-					for c in gen_only:
-						if c in tag:
-							lookups = lookups + lemma + hid + "+" + tag
-				else:
-					if not lemma:
-						raise TypeError
-					lookups = lookups + lemma + hid + "+" + tag
+				#if gen_only:
+				#	for c in gen_only:
+				#		if c in tag:
+				#			lookups = lookups + lemma + hid + "+" + tag
+				#else:
+				if not lemma:
+				    raise TypeError
+				lookups = lookups + lemma + hid + "+" + a  # was: tag instead of a
 
-		lookups += '\n\n\n'
+				lookups += '\n\n\n'
 		self.generate_data.append(lookups)
 
 	
@@ -307,21 +337,23 @@ class Paradigm:
 				gen_dialects[dialect] = d_data
 
 		self.master_paradigm = gen_dialects.copy()
-		for dialect, gen_file in gen_dialects.items():
-			lookups = FSTLookup(data, fst_file=gen_file[0])
-			lookup_dictionary = {}
+		#for dialect, gen_file in gen_dialects.items():
+		dialect = 'main'  # HU: There are no dialects defined for myv. I have defined this just to make the program work.
+		lookups = FSTLookup(data, fst_file=gen_norm_fst)
+		lookup_dictionary = {}
 			
-			for line in lookups.split('\n\n'):
-				items = line.split('\n')
-				for item in items:
-					result = item.split('\t')
-					lemma = result[0].partition('+')[0]
-					try:
-						lookup_dictionary[lemma] += item + '\n'
-					except KeyError:
-						lookup_dictionary[lemma] = item + '\n'
+		for line in lookups.split('\n\n'):
+			# print >> STDOUT, 'line in lookups: %s' % line
+			items = line.split('\n')
+			for item in items:
+				result = item.split('\t')
+				lemma = result[0].partition('+')[0]
+				try:
+				    lookup_dictionary[lemma] += item + '\n'
+				except KeyError:
+				    lookup_dictionary[lemma] = item + '\n'
 		
-			self.master_paradigm[dialect] = lookup_dictionary
+		self.master_paradigm[dialect] = lookup_dictionary
 		
 		
 	def get_paradigm(self, lemma, pos, forms, dialect=False, wordtype=None):
@@ -399,12 +431,13 @@ class Paradigm:
 
 					for t in g.tags.split('+'):
 						if self.tagset.has_key(t):
-							tagclass=self.tagset[t]
-							g.classes[tagclass] = t
+							tagclasses = self.tagset[t]
+							for tagclass in tagclasses:
+								g.classes[tagclass] = t
 
 					# if wordtype is specified (G3, Actor, etc.,), we want only
 					# these forms, otherwise we want only forms without a
-					# wordtype
+					# wordtype, these are assigned to the Nountype group in tags.txt.
 					if wordtype is not None:
 						wordtype = wordtype.upper()
 						g_wordtype = g.classes.get('Subclass', False)
@@ -417,6 +450,11 @@ class Paradigm:
 							continue
 					else:
 						g_wordtype = g.classes.get('Subclass', False)
+						# subclass is also part of another tag group,
+						# thus not only a subclass, so none.
+						# Kind of hacky, for Der/PassL which
+						if g_wordtype in g.classes.values():
+							g_wordtype = False
 						if g_wordtype:
 							continue
 						else:
@@ -459,10 +497,8 @@ class Paradigm:
 		
 		# generator call
 		# Moving paths up
-		# fstdir = "/opt/smi/sme/bin"
+		# fstdir = "/opt/smi/myv/bin"
 		# lookup = "/usr/local/bin/lookup"
-
-		gen_norm_fst = fstdir + "/i%s-norm.fst" % language
 		
 		# None of these dialects in sma. Obs! Dialects! sme-specific!!!
 		# gen_gg_restr_fst = fstdir + "/isme-KJ.restr.fst"			
@@ -489,6 +525,7 @@ class Paradigm:
 					extraforms[tagstring] = wordform
 					print >> STDOUT, "adding extra wordform..", wordform
 
+		# TODO: reproduce word type stuff up here
 		for line in lines_tmp:
 			if not line.strip(): continue
 			matchObj=genObj.search(line)
@@ -503,8 +540,9 @@ class Paradigm:
 				print repr(g.tags)
 				for t in g.tags.split('+'):
 					if self.tagset.has_key(t):
-						tagclass=self.tagset[t]
-						g.classes[tagclass]=t
+						tagclasses = self.tagset[t]
+						for tagclass in tagclasses:
+							g.classes[tagclass] = t
 				print g.classes
 				raw_input()
 				self.paradigm.append(g)
@@ -520,7 +558,7 @@ class Paradigm:
 		print >> _D, 'generate_numerals called'
 		
 		# Moving paths up
-		# language = "sme"
+		# language = "myv"
 		# #fstdir = "/opt/smi/" + language + "/bin"
 		# #lookup = /usr/local/bin/lookup
 		# 

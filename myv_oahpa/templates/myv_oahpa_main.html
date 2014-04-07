@@ -110,15 +110,8 @@
 		<div id="content">
 			{% block main_content %}
 			<ul id="games_menu">
-        <!---        <li class="game">
-					<a href="{% url morfa_s.noun %}">
-						<span>MORFA-S</span><br />
-						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-S" /><br />
-						<span>{% trans "Practise morphology" %}</span>
-					</a>
-				</li>
 				
-                <li class="game">
+              <!--  <li class="game">
 					<a href="{% url vasta_s %}">
 						<span>VASTA</span><br />
 						<img src="{{ MEDIA_URL }}/images/vasta.png" alt="VASTA" /><br />
@@ -133,8 +126,15 @@
 					</a>
 				</li>
 			
-<!---			<ul id="games_menu">
-
+			
+                <li class="game">
+					<a href="{% url morfa_s.noun %}">
+						<span>MORFA-S</span><br />
+						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-S" /><br />
+						<span>{% trans "Practise morphology" %}</span>
+					</a>
+				</li>
+				
 				<li class="game">
                     <a href="{% url morfa_c.noun %}">
 						<span>MORFA-C</span><br />
@@ -142,7 +142,7 @@
 						<span>{% trans "Practise morphology in context" %}</span>
 					</a>
 				</li>
-				<li class="game">
+		<!--		<li class="game">
                     <a href="{% url sahka %}">
 						<span>SAHKA</span><br />
 						<img src="{{ MEDIA_URL }}/images/sahka.png" alt="SAHKA" /><br />

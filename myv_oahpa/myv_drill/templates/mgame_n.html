@@ -14,13 +14,14 @@
 	{% ifequal settings.gametype "bare" %}
 	<li><label for="id_{{ settingsform.case.name }}">{% trans "Case" %}</label>
 		{{ settingsform.case }}</li>
-	<li><label>{% trans "Stem" %}</label>
+    <li><label>{{ settingsform.singular_only }}{% trans " singular only" %}</label></li>
+<!--	<li><label>{% trans "Stem" %}</label>
 		<ul>
 			<li>{{ settingsform.bisyllabic }} <label for="id_{{ settingsform.bisyllabic.name }}">{% trans "bisyllabic" %}</label></li>
 			<li>{{ settingsform.trisyllabic }} <label for="id_{{ settingsform.trisyllabic.name }}">{% trans "trisyllabic" %}</label></li>
 			<li>{{ settingsform.contracted }} <label for="id_{{ settingsform.contracted.name }}">{% trans "contracted" %}</label></li>
 		</ul>
-	</li>
+	</li> -->
 	{% else %}
 	<li><label for="id_{{ settingsform.case_context.name }}">{% trans "Case" %}</label>
 		{{ settingsform.case_context }}</li>
