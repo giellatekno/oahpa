@@ -52,7 +52,7 @@
       <text>SUBJ пьют N-ACC</text>
       <element id="N-ACC">
         <grammar tag="N+Sg+Acc"/>
-        <sem class="DRINKS"/>
+        <sem class="DRINK"/>
       </element>
     </answer>
   </q>
@@ -70,7 +70,14 @@
       <text>SUBJ едят N-ACC</text>
       <element id="N-ACC">
         <grammar tag="N+Sg+Acc"/>
-        <sem class="FOODS"/>
+        <sem class="FOOD_DISH"/>
+      </element>
+    </answer>
+    <answer>
+      <text>SUBJ едят N-ACC</text>
+      <element id="N-ACC">
+        <grammar tag="N+Sg+Acc"/>
+        <sem class="FOOD_GROCERY"/>
       </element>
     </answer>
   </q>
@@ -81,7 +88,7 @@
       <text>Что делают SUBJ</text>
       <element id="SUBJ">
         <grammar tag="N+Pl+Nom"/>
-        <sem class="OCCUPATIONS"/>
+        <sem class="PROFESSION"/>
       </element>
     </question>
     <answer>
@@ -98,7 +105,7 @@
       <text>Что SUBJ делал вчера</text>
       <element id="SUBJ">
         <grammar tag="N+Sg+Nom"/>
-        <sem class="HUMAN_A"/>
+        <sem class="HUMAN"/>
       </element>
     </question>
     <answer>
