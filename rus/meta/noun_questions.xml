@@ -1,28 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <questions>
-  <q id="npar1">
+  <q id="loc_location">
     <qtype>N-LOC</qtype>
     <question>
       <text>Где SUBJ</text>
       <element id="SUBJ">
-            <grammar tag="N+Sg+Nom"/>
+        <grammar tag="N+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
     </question>
     <answer>
       <text>SUBJ в LOCATION</text> <!-- Отец в лесу -->
       <element id="LOCATION">
-            <grammar tag="N+Sg+Loc2"/>
-            <sem class="LOCATION-V-LOC2"/>
+        <grammar tag="N+Sg+Loc2"/>
+        <sem class="LOCATION-V-LOC2"/>
       </element>
     </answer>
     <answer>
-      <text>SUBJ в LOCATION</text> <-- Отец в городе -->
+      <text>SUBJ на LOCATION</text> <!-- Отец на полу -->
       <element id="LOCATION">
-            <grammar tag="N+Sg+Loc"/>
-            <sem class="LOCATION-V-LOC"/>
+        <grammar tag="N+Sg+Loc2"/>
+        <sem class="LOCATION-NA-LOC2"/>
+      </element>
+    </answer>
+    <answer>
+      <text>SUBJ в LOCATION</text> <!-- Отец в городе -->
+      <element id="LOCATION">
+        <grammar tag="N+Sg+Loc"/>
+        <sem class="LOCATION-V-LOC"/>
+      </element>
+    </answer>
+    <answer>
+      <text>SUBJ на LOCATION</text> <!-- Отец на острове -->
+      <element id="LOCATION">
+        <grammar tag="N+Sg+Loc"/>
+        <sem class="LOCATION-NA-LOC"/>
+      </element>
+    </answer>
+  </q>
+  
+  <q id="acc_drink">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Что SUBJ обычно пьют</text>
+      <element id="SUBJ">
+        <grammar tag="N+Pl+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </question>
+    <answer>
+      <text>SUBJ пьют DRINK</text>
+      <element id="DRINK">
+        <grammar tag="N+Sg+Acc"/>
+        <sem class="DRINKS"/>
+      </element>
+    </answer>
+  </q>
+
+  <q id="acc_eat">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Что SUBJ обычно едят</text>
+      <element id="SUBJ">
+        <grammar tag="N+Pl+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </question>
+    <answer>
+      <text>SUBJ едят FOOD</text>
+      <element id="FOOD">
+        <grammar tag="N+Sg+Acc"/>
+        <sem class="FOODS"/>
+      </element>
+    </answer>
+  </q>
+
+  <q id="prs_occupations">
+    <qtype>V-PRS</qtype>
+    <question>
+      <text>Что делают SUBJ</text>
+      <element id="SUBJ">
+        <grammar tag="N+Pl+Nom"/>
+        <sem class="OCCUPATIONS"/>
+      </element>
+    </question>
+    <answer>
+      <text>SUBJ MAINV</text>
+      <element id="MAINV">
+        <grammar tag="V+Impf+IV+Prs+Pl3"/>
+      </element>
+    </answer>
+  </q>
+
+  <q id="pst_yesterday">
+    <qtype>V-PST</qtype>
+    <question>
+      <text>Что SUBJ делал вчера</text>
+      <element id="SUBJ">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="HUMAN_A"/>
+      </element>
+    </question>
+    <answer>
+      <text>SUBJ MAINV</text>
+      <element id="MAINV">
+        <grammar tag="V+Impf+IV+Pst+Sg3"/>
       </element>
     </answer>
   </q>
 </questions>
-
