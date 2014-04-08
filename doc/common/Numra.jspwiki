@@ -66,15 +66,47 @@ The transducers behind numra are (where $LANG is the iso code for your language)
 
 The files governing the four programs are ''num.html, num_ord.html, clock.html, date.html''. These files are found here:
 
-* for sme, smn, sjd, rus: ''ped/OAHPA/drill/templates/'', where
-** OAHPA = univ_oahpa, smn_oahpa, sjd_oahpa, rus_oahpa, etc. (in $GTHOME/ped/ )
-* for sma and other languages: ''pedversions/smaoahpa/smadrill/templates/''
+* for sme: ''ped/univ_oahpa/drill/templates/'', 
+* for sma: ''pedversions/smaoahpa/smadrill/templates/''
+* for all other languages: ''ped/LANG_oahpa/LANG_drill/templates/'', where
+** LANG = the iso code of the language in question
 
-These files refer to the fsts on gtoahpa and gtlab, in the opt catalogue there.
+These files refer to the fsts on gtoahpa and gtlab, in the opt catalogue there. Oahpe versions
+with an url ''testing.oahpa.no'' are on __gtlab__, 
+versions with url ''oahpa.no'' are on __gtoahpa__.
+
 
 !!!Documentation of the content production
 
 * [Documentation for linguists defeloping Numra content|http://oahpa.no/addlang/developernumra.html]
+
+
+!!!Documentation on the interplay between fsts and the django code
+
+!!Generating questions
+
+# generere spm och facit (create_form)
+##  - hours = random(0..23)
+##  - minutes = 
+### random(0, 30)  (level=easy)
+### random(0, 15, 30, 45) (level=medium)
+### random(0 .. 59) (level=hard)
+##  - "hours:minutes" are piped to ''lookup transcriptor-clock2text-desc.xfst > norm_list''
+##   - create a KlokkaQuestion object where
+###        question = hours:minutes
+###        acceptable answers = norm_list
+###        facit = norm_list 
+           (in the new setup this should be the output of the facit-gen-fst 
+           which generates exactly one variant)
+
+!!Analysing answers
+# analysere svar (check_answer)
+## - user's answer is piped to ''lookup transcriptor-text2clock-desc.xfst > num_list''
+## - if there is a (textual time, numeric time) pair in num_list such that 
+      user's answer = textual time and 
+      question = numeric time then accept the user's answer, otherwise reject
+
+Note that the ''facit-gen-fst'' is still not made.
 
 
 !!!The different types of Numra
