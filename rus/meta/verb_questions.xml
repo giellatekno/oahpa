@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+  <q id="prs_occupations">
+    <qtype>V-PRS</qtype>
+    <question>
+      <text>Что делают SUBJ</text>
+      <element id="SUBJ">
+        <grammar tag="N+Pl+Nom"/>
+        <sem class="PROFESSION"/>
+      </element>
+    </question>
+    <answer>
+      <text>SUBJ MAINV</text>
+      <element game='morpha' task='yes' id="MAINV">
+        <grammar tag="V+Impf+IV+Prs+Pl3"/>
+        <sem class="mACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+
+  <q id="pst_yesterday">
+    <qtype>V-PST</qtype>
+    <question>
+      <text>Что SUBJ делал вчера</text>
+      <element id="SUBJ">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="PROFESSION"/>
+      </element>
+    </question>
+    <answer>
+      <text>SUBJ MAINV</text>
+      <element game='morpha' task='yes' id="MAINV">
+        <grammar tag="V+Impf+IV+Pst+Sg3"/>
+        <sem class="mACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+</questions>
+
