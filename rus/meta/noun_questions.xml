@@ -11,28 +11,28 @@
     </question>
     <answer>
       <text>SUBJ в N-LOC</text> <!-- Отец в лесу -->
-      <element id="LOCATION">
+      <element game='morpha' task='yes' id="N-LOC">
         <grammar tag="N+Sg+Loc2"/>
         <sem class="LOCATION-V-LOC2"/>
       </element>
     </answer>
     <answer>
       <text>SUBJ на N-LOC</text> <!-- Отец на полу -->
-      <element id="LOCATION">
+      <element game='morpha' task='yes' id="N-LOC">
         <grammar tag="N+Sg+Loc2"/>
         <sem class="LOCATION-NA-LOC2"/>
       </element>
     </answer>
     <answer>
       <text>SUBJ в N-LOC</text> <!-- Отец в городе -->
-      <element id="LOCATION">
+      <element game='morpha' task='yes' id="N-LOC">
         <grammar tag="N+Sg+Loc"/>
         <sem class="LOCATION-V-LOC"/>
       </element>
     </answer>
     <answer>
       <text>SUBJ на N-LOC</text> <!-- Отец на острове -->
-      <element id="LOCATION">
+      <element game='morpha' task='yes' id="N-LOC">
         <grammar tag="N+Sg+Loc"/>
         <sem class="LOCATION-NA-LOC"/>
       </element>
@@ -50,7 +50,7 @@
     </question>
     <answer>
       <text>SUBJ пьют N-ACC</text>
-      <element id="N-ACC">
+      <element game='morpha' task='yes' id="N-ACC">
         <grammar tag="N+Sg+Acc"/>
         <sem class="DRINK"/>
       </element>
@@ -68,51 +68,18 @@
     </question>
     <answer>
       <text>SUBJ едят N-ACC</text>
-      <element id="N-ACC">
+      <element game='morpha' task='yes' id="N-ACC">
         <grammar tag="N+Sg+Acc"/>
         <sem class="FOOD_DISH"/>
       </element>
     </answer>
     <answer>
       <text>SUBJ едят N-ACC</text>
-      <element id="N-ACC">
+      <element game='morpha' task='yes' id="N-ACC">
         <grammar tag="N+Sg+Acc"/>
         <sem class="FOOD_GROCERY"/>
       </element>
     </answer>
   </q>
-
-  <q id="prs_occupations">
-    <qtype>V-PRS</qtype>
-    <question>
-      <text>Что делают SUBJ</text>
-      <element id="SUBJ">
-        <grammar tag="N+Pl+Nom"/>
-        <sem class="PROFESSION"/>
-      </element>
-    </question>
-    <answer>
-      <text>SUBJ MAINV</text>
-      <element id="MAINV">
-        <grammar tag="V+Impf+IV+Prs+Pl3"/>
-      </element>
-    </answer>
-  </q>
-
-  <q id="pst_yesterday">
-    <qtype>V-PST</qtype>
-    <question>
-      <text>Что SUBJ делал вчера</text>
-      <element id="SUBJ">
-        <grammar tag="N+Sg+Nom"/>
-        <sem class="HUMAN"/>
-      </element>
-    </question>
-    <answer>
-      <text>SUBJ MAINV</text>
-      <element id="MAINV">
-        <grammar tag="V+Impf+IV+Pst+Sg3"/>
-      </element>
-    </answer>
-  </q>
 </questions>
+
