@@ -76,6 +76,11 @@
     font-size: 175%;
 }
 
+#course_goal div.progress.progress-striped > div {
+    color: #333;
+    text-shadow: 2px 2px 1px #CCC;
+}
+
 #courses .course_block table {
     margin-top: 0em;
     margin-left: 0em;
@@ -256,10 +261,31 @@ ul.courselist li {
 	margin-bottom: .25em;
 }
 
-#courses .star {
+#courses .star, #course_goal .star {
     color: goldenrod;
     text-shadow: 1px 1px 3px #333;
     font-size: 150%;
+}
+
+.pie_label_first_try , .pie_label_correct {
+    display: block;
+    width: 7px;
+    line-height: 7px;
+    float: left;
+    margin-top: 5px;
+    margin-right: 2px;
+}
+
+.align-bottom {
+    text-align: bottom;
+}
+
+.pie_label_first_try {
+    background-color: #FFB331;
+}
+
+.pie_label_correct {
+    background-color: #0058B2;
 }
 
 #courses .star.clear {
@@ -326,3 +352,20 @@ ul.row li {
 	padding-bottom: .25em;
 }
 
+
+#user_goal_history table th {
+    border-bottom: 1px solid #ccc;
+}
+
+#user_goal_history .correct_checking strong {
+    font-weight: 500;
+    color: #C00;
+}
+
+#user_goal_history table th , #user_goal_history table td {
+    padding: 5px;
+}
+
+#user_goal_history table .even {
+    background-color: #eee;
+}

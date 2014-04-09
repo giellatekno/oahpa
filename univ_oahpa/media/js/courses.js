@@ -35,10 +35,16 @@ function GoalController($scope, $http, $element, $cookies) {
              $scope.current_set_count = data.current_set_count;
              $scope.navigated_away = data.navigated_away;
              $scope.max_rounds = data.max_rounds;
+             $scope.goal.rounded = Math.round($scope.goal.progress);
              $scope.correct_threshold = data.correct_threshold;
              $scope.progress_class = 'progress-bar-info';
+             if ($scope.goal.progress >= $scope.correct_threshold) {
+                 $scope.above = true;
+             } else {
+                 $scope.above = false;
+             }
              if ($scope.max_rounds) {
-                 $scope.progress_percent = ($scope.current_set_count / $scope.max_rounds) * 100;
+                 $scope.progress_percent = ($scope.current_set_count - 1 / $scope.max_rounds) * 100;
                  if ($scope.progress_percent > 100) {
                     $scope.progress_percent = 100;
                  }
