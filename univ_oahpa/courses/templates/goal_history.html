@@ -117,8 +117,8 @@
                                     {{ c }}<br /> 
                                 {% endfor %}
                             </td>
-                            <td>{% for i in w.user_inputs %}
-                                    {{ i }}<br />
+                            <td class="correct_checking">{% for i in w.user_inputs %}{% with w.correct_answer|first as corr %}{% for h in i|highlight_differences:corr %}{% if h.highlight %}<strong>{% endif %}{{ h.char }}{% if h.highlight %}</strong>{% endif %}{% endfor %}{% endwith %}
+                                {% if not forloop.last %}<br />{% endif %}
                                 {% endfor %}
                             </td>
                         </tr>

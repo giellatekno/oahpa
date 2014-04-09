@@ -34,3 +34,38 @@ def goals_with_progress(coursegoal, student):
         if len(g.usergoalinstance_set.filter(user_id=user.id)) > 0:
             gs.append(g)
     return gs
+
+@register.filter(name='highlight_differences')
+def highlight_differences(a, b):
+    import difflib
+
+    s = difflib.SequenceMatcher(a=a, b=b)
+    chars = []
+    print dir(s)
+    matches = []
+    for block in s.get_matching_blocks():
+        print block
+    matches = s.matching_blocks
+
+    okay = []
+    for (_a, _b, _len) in matches:
+        if _len > 0:
+            okay.extend(range(_a, _a + _len))
+        else:
+            okay.append(_a)
+
+    for i, c in enumerate(a):
+        if i in okay:
+            highlight = False
+        else:
+            highlight = True
+        chars.append({
+            'char': c,
+            'highlight': highlight
+        })
+    return chars
+
+
+
+
+

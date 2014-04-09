@@ -1,5 +1,8 @@
 ﻿# Current development:
 
+ TODO: progress on set requires user to do 5/5 + 1, for actual completion.
+ slightly confusing, fix
+
  TODO: history chart also needs total exercises answered
  TODO: only show errors that happened more than once?
  TODO: stringdiff? 

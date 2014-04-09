@@ -302,7 +302,7 @@ class CourseGoal(models.Model):
     def cumulative_instance_threshold(self, ugis):
         progresses = [float(ugi.progress) for ugi in ugis]
         if len(progresses) > 0:
-            progress = sum(progresses)/float(self.goal_count) * 100
+            progress = sum(progresses)/float(self.goal_count)
         else:
             progress = 0.0
         return progress
