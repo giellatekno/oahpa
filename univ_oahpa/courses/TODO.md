@@ -1,5 +1,9 @@
 ﻿# Current development:
 
+ TODO: history chart also needs total exercises answered
+ TODO: only show errors that happened more than once?
+ TODO: stringdiff? 
+
  TODO: only count rounds with actual progress, so no one can hit new set until
  the count is up, and then submit one
 

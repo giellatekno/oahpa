@@ -14,6 +14,8 @@
         {% comment %}TODO: test if it's already in progress or
         been done and restyle, or sort by completed
         date? {% endcomment %}
+
+        {# stars #}
         <td>
             {% if goal|complete_for:user %}
                 <span class="star">&#9733;</span>
@@ -21,6 +23,8 @@
                 <span class="star clear">&#9733;</span>
             {% endif %}
         </td>
+
+        {# Goal begin/redo links #}
         <td>
             {% if goal|goal_instances_for:user|length > 0 %}
                 {% if goal|complete_for:user %}
@@ -32,9 +36,12 @@
                 <a class="begin_goal" href="{% url courses.views.begin_course_goal goal.id %}"><span class="label label-success">Begin</span></a>
             {% endif %}
         </td>
+
         <td>{{ goal.short_name }}</td>
+
         {% if goal|goal_instances_for:user %}
             {% with goal|goal_instances_for:user|first as g %}
+            {# progress percentage #}
             <td class="current_progress">
                 {{ g.progress|format_percent }}
             </td>

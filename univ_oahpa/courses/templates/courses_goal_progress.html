@@ -49,7 +49,7 @@
               </div>
             </div>
             <div class="correct_rate">
-                <span class="stat_value"><% goal.progress * 100 %>%</span> <span class="stat_total">of <% correct_threshold %>%</span>
+                <span class="stat_value"><% goal.rounded %>%</span> <span ng-hide="above" class="stat_total">of <% correct_threshold %>%</span> <span ng-show="above" class="star">&#9733;</span></span>
             </div>
             <ul>
                 <li ng-if="goal.is_complete">You can keep playing, or <a

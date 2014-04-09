@@ -517,7 +517,7 @@ class Goal(models.Model):
             'total_answered': amount_answered,
             'correct_first_try': len(correct_on_first_try),
             'correct': len(all_correct),
-            'progress': float(len(all_correct)) / float(amount_answered)
+            'progress': (float(len(all_correct)) / float(amount_answered)) * 100
         }
 
         return result_args
@@ -530,7 +530,7 @@ class UserGoalInstance(models.Model):
     opened = models.BooleanField(default=True)
     attempt_count = models.IntegerField(default=1)
 
-    progress = models.DecimalField(decimal_places=2, max_digits=4, default=0.0)
+    progress = models.DecimalField(decimal_places=4, max_digits=11, default=0.0)
 
     is_complete = models.BooleanField(default=False)
     rounds = models.IntegerField(default=1)
@@ -558,7 +558,7 @@ class UserGoalInstance(models.Model):
                 self.progress = evaluated.get('progress')
                 self.save()
             if evaluated.get('progress', False):
-                flo = '%.1f' % (evaluated['progress'] * 100)
+                flo = '%.1f' % (evaluated['progress'])
                 evaluated['progress_pretty'] =  flo + '%'
                 evaluated['correct_minus_first'] = evaluated['correct'] - evaluated['correct_first_try']
             else:

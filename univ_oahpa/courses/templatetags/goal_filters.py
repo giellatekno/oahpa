@@ -12,7 +12,7 @@ def goal_instances_for(goal, user):
 
 @register.filter(name='format_percent')
 def format_percent(_float):
-    _perc = "%s" % (_float*100).to_eng_string()
+    _perc = "%s" % round(_float, 2)
     return _perc + '%'
 
 @register.filter(name='goals')
