@@ -41,10 +41,9 @@ def highlight_differences(a, b):
 
     s = difflib.SequenceMatcher(a=a, b=b)
     chars = []
-    print dir(s)
     matches = []
-    for block in s.get_matching_blocks():
-        print block
+    s.get_matching_blocks()
+
     matches = s.matching_blocks
 
     okay = []
