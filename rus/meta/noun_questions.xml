@@ -11,28 +11,28 @@
     </question>
     <answer>
       <text>SUBJ в N-LOC</text> <!-- Отец в лесу -->
-      <element game='morpha' task='yes' id="N-LOC">
-        <grammar tag="N+Sg+Loc2"/>
+      <element game='morfa' task='yes' id="N-LOC">
+        <grammar tag="N+Sg+Prp"/> <!-- Loc2 tag is Prp -->
         <sem class="LOCATION-V-LOC2"/>
       </element>
     </answer>
     <answer>
       <text>SUBJ на N-LOC</text> <!-- Отец на полу -->
-      <element game='morpha' task='yes' id="N-LOC">
-        <grammar tag="N+Sg+Loc2"/>
+      <element game='morfa' task='yes' id="N-LOC">
+        <grammar tag="N+Sg+Prp"/>
         <sem class="LOCATION-NA-LOC2"/>
       </element>
     </answer>
     <answer>
       <text>SUBJ в N-LOC</text> <!-- Отец в городе -->
-      <element game='morpha' task='yes' id="N-LOC">
+      <element game='morfa' task='yes' id="N-LOC">
         <grammar tag="N+Sg+Loc"/>
         <sem class="LOCATION-V-LOC"/>
       </element>
     </answer>
     <answer>
       <text>SUBJ на N-LOC</text> <!-- Отец на острове -->
-      <element game='morpha' task='yes' id="N-LOC">
+      <element game='morfa' task='yes' id="N-LOC">
         <grammar tag="N+Sg+Loc"/>
         <sem class="LOCATION-NA-LOC"/>
       </element>
@@ -50,7 +50,7 @@
     </question>
     <answer>
       <text>SUBJ пьют N-ACC</text>
-      <element game='morpha' task='yes' id="N-ACC">
+      <element game='morfa' task='yes' id="N-ACC">
         <grammar tag="N+Sg+Acc"/>
         <sem class="DRINK"/>
       </element>
@@ -68,14 +68,14 @@
     </question>
     <answer>
       <text>SUBJ едят N-ACC</text>
-      <element game='morpha' task='yes' id="N-ACC">
+      <element game='morfa' task='yes' id="N-ACC">
         <grammar tag="N+Sg+Acc"/>
         <sem class="FOOD_DISH"/>
       </element>
     </answer>
     <answer>
       <text>SUBJ едят N-ACC</text>
-      <element game='morpha' task='yes' id="N-ACC">
+      <element game='morfa' task='yes' id="N-ACC">
         <grammar tag="N+Sg+Acc"/>
         <sem class="FOOD_GROCERY"/>
       </element>
