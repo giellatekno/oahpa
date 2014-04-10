@@ -1,0 +1,53 @@
+!!! Møte 10.04.14
+
+Til stades: Ryan, Lene, Trond
+
+!! Saksliste
+* Innlogging 
+* Sporing av brukerprogresjonen
+
+!!Læringsmål
+Robert skal lage læringsmål for russisk og Sissel før sørsamisk. Disse sjekkes inn i course-mappa.
+
+!! Sporing av brukerprogresjonen
+
+Ryan har arbeidet med dette:
+* kursmål vs. mål: kursmål er ei gruppe for ulike mål (delmål / tasks)
+* på kvart mål, får studenten sjå historikk over det dei gjorde før, på ulike prøvar: antall rett, og antall rett første gongen, osv. eg ogso prøvde noko nytt som me ikkje tala om før. fordi modulen sporar korrekt svar og brukar input, er det mogleg å visa brukarar feil svar, og ord dei må træna på. Eg køyrer ogso ein diff-funksjon på desse, og me får då sjå spesifiske bokstavar som ikkje var rette.
+* læraroversikt: læraren er ikkje spamma på første sida, og kan klikke på studentar for å sjå detaljert oppsumering over det som er gjort, ikkje gjort, og statistikk (men, fuom. dette er ikkje heilt samme som studenten ser, og det er enda meir å gjera på denne sida for lærarane)
+* læraroversikt: læraren får definera kursmål, med drag and drop frå liste over mål dei laga sjølv. på veg: allereie definerte mål/coursemål, slik at ein ikkje treng arbeide hardt for å få eit kurs i gang.
+
+!TILTAK:
+* Leksa: Words to work on: Ord som brukeren ikke klarer, kan "samles" til et valg: 
+* Morfa: Liste med de siste 15 ordene som var feil, med diff (slik som nå)
+* Statistikktabell, endringar:
+** I dag: success -- score -- correct/first try rounds -- last_attempt
+*** der correct = 12, first try = 11 (for totalt 12), dvs. brøk 12/11
+** Vi vil ha: success -- score -- first try/later tries -- rounds -- last_attempt
+*** der first try = 11, later tries = 1, dvs. brøk 11/1
+*** evt. kan vi kalle "score" for "correct"
+* Kor mange gonger har studenten arbeidd
+
+* delmål (http://testing.oahpa.no/courses_davvi/courses/create/goal/)
+** Kor langt er studenten frå delmålet (oppgitt i prosent, t.d. 71%, for 5 av 7 godkjente sett)
+** Korrektprosent = 80% (dvs. ein feil per fem-sett) er default
+** Sets answered = Minimum sets sets tried ==> Sets accomplished / achieved / fulfilled / accepted 
+* Læreren skal se 3 ting: 
+** lag kursmål 
+** gi beskjed til dine studenter 
+** liste over studenter med last login, login count og progress av hele kursmålet
+* Dyplinking for Sahka 
+ 
+!! Innlogging 
+# Læreren oppretter konto som student: administrator gir rettigheter som lærer
+# Studenter oppretter konto som student og velger kurs: læreren godkjenner studentene sine
+# Læreren og administrator kan opprette kurs, og velge/kopiere kursmal, evt tilpasser den
+## standard for namn? Tre komponentar: kursnamn_kursarrangör_semester
+## Læraren sender lenkje, og studentane blir registrert på rett kurs
+# Studentar som ikkje er studentar på eit visst kurs kan lage sine eigne kursmål / velje mal
+
+
+!!Neste møte
+mandag 28.4 kl 19 norsk tid
+
+
