@@ -15,25 +15,25 @@
 {% block navbar %}
 <ul class="sidelist">
 	<li class="selected"><a href="{% url leksa %}">{% trans 'Words' %}</a></li>
-	<li><a href="{% url leksa.sted %}">{% trans 'Names' %}</a></li>
+	<!-- <li><a href="{% url leksa.sted %}">{% trans 'Names' %}</a></li> -->
 </ul>
 {% endblock %}
 
 {% block veiledning %}
 {% ifequal LANGUAGE_CODE "sme" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.html
+http://oahpa.no/sme/useoahpa/leksa.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.fin.html
+http://oahpa.no/sme/useoahpa/leksa.fin.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "en" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.eng.html
+http://oahpa.no/sme/useoahpa/leksa.eng.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.nno.html
+http://oahpa.no/sme/useoahpa/leksa.nno.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sv" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.nno.html
+http://oahpa.no/sme/useoahpa/leksa.nno.html
 {% endifequal %}
 {% endblock %}
 

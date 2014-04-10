@@ -132,14 +132,14 @@ PRONOUN_SUBCLASSES = (
 )
 
 CASE_CONTEXT_CHOICES = (
-	('N-NOM-PL', _('plural')),
+#	('N-NOM-PL', _('plural')),
 	('N-ACC', _('accusative')),
-	('N-GEN', _('genitive')),
+#	('N-GEN', _('genitive')),
 #	('N-ILL', _('illative')),
 	('N-LOC', _('locative')),
 #	('N-COM', _('comitative')),
 #	('N-ESS', _('essive')),
-	('N-MIX', _('mix')),
+#	('N-MIX', _('mix')),
 )
 
 NOUN_TYPE_CHOICES =(
@@ -861,7 +861,7 @@ class OahpaSettings(forms.Form):
 					'pron_type': 'Pers',
 					'proncase' : 'N-NOM', # Need a new default case here
 					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
-					'case_context' : 'N-NOM',
+					'case_context' : 'N-ACC', # was: N-NOM
 					'vtype_context' : 'V-PRS',
 					'pron_context' : 'P-PERS',
 					'num_context' : 'NUM-ATTR',
@@ -939,24 +939,24 @@ class OahpaQuestion(forms.Form):
 		self.is_tcomm = ""
 		forms = []
 		relaxings = []
-		#if hasattr(self, 'translang'): commented out these two lines, because otherwise relax was not working in Morfa
-		if self.translang == 'rus': 
-			# Relax spellings.
-			accepted_answers = [force_unicode(item) for item in accepted_answers]
-			forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
-			#print "relaxed forms: ", forms
-			# need to subtract legal answers and make an only relaxed list.
-			relaxings = [item for item in forms if force_unicode(item) not in accepted_answers]
-		elif self.gametype == 'leksa': # this applies only to Leksa
-			# PI: commented out at this stage
-			# # add infinitives as possible answers
-			if self.word.pos == 'V':
-				if self.translang in infinitives_sub and infinitives_add:
-					infin_s = infinitives_sub[self.translang]
-				        infin_a = infinitives_add[self.translang]
-				        lemma = re.compile(infin_s)
-				        infins = [lemma.sub(infin_a, force_unicode(ax)) for ax in accepted_answers]
-				        accepted_answers = infins + accepted_answers
+		if hasattr(self, 'translang'): # commented out these two lines, because otherwise relax was not working in Morfa
+			if self.translang == 'rus': 
+				# Relax spellings.
+				accepted_answers = [force_unicode(item) for item in accepted_answers]
+				forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
+                                #print "relaxed forms: ", forms
+				# need to subtract legal answers and make an only relaxed list.
+				relaxings = [item for item in forms if force_unicode(item) not in accepted_answers]
+			elif self.gametype == 'leksa': # this applies only to Leksa
+				# PI: commented out at this stage
+				# # add infinitives as possible answers
+				if self.word.pos == 'V':
+					if self.translang in infinitives_sub and infinitives_add: 
+						infin_s = infinitives_sub[self.translang]
+						infin_a = infinitives_add[self.translang]
+						lemma = re.compile(infin_s)
+						infins = [lemma.sub(infin_a, force_unicode(ax)) for ax in accepted_answers]
+						accepted_answers = infins + accepted_answers
 
                 #forms = accepted_answers  # This is wrong: the relaxed pairs are overwritten!
 
@@ -1125,7 +1125,7 @@ class MorfaSettings(OahpaSettings):
 	derivation_type = forms.ChoiceField(initial='V-DER-PASS', choices=DERIVATION_CHOICES, widget=forms.Select)
 	derivation_type_context = forms.ChoiceField(initial='DER-PASSV', choices=DERIVATION_CHOICES_CONTEXT, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
-	case_context = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
+	case_context = forms.ChoiceField(initial='N-ACC', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
 	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
 	pron_context = forms.ChoiceField(initial='P-PERS', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)

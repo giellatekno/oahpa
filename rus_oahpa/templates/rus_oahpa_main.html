@@ -155,7 +155,7 @@
 			<h3>{% trans "Online reference materials" %}</h3>
 			{% endcomment %}
 			<p class="intro" align="centre">{% trans "Oahpa is an internet program for learners of Russian. The program can be adjusted to different topics and levels of difficulty, and it generates new task sets automatically." %}</p>
-			{% comment %}
+<!--			{% comment %}
 			<p>{% trans "Oahpa is connected with online reference materials." %}</p>
 			{% endcomment %}
 			<ul class="linklist">
@@ -177,13 +177,13 @@
             {% ifequal LANGUAGE_CODE "sv" %}
                 <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
             {% endifequal %}
-<!--            {% ifequal LANGUAGE_CODE "fi" %}
+            {% ifequal LANGUAGE_CODE "fi" %}
 
                 <li><a href="http://victorio.uit.no/webdict/index_sjd-rus.html">{% trans "Russian" %}-{% trans "Norwegian" %} {% trans "web dictionary" %}</a></li>
             {% else %}
 				<li><a href="http://victorio.uit.no/webdict/index_sjd-rus.html">{% trans "Norwegian" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
             {% endifequal %}
-            <!--
+            
             {% ifequal LANGUAGE_CODE "sme" %}
 				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.html">{% trans "Russian grammar" %}</a></li>
             {% endifequal %}
@@ -202,10 +202,10 @@
             {% ifequal LANGUAGE_CODE "sv" %}
 				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.nob.html">{% trans "Russian grammar" %}</a></li>
             {% endifequal %}
-            -->
+            
 			</ul>
 
-<!---			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p> -->
+			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p> -->
 			{% endblock %}
 		</div>
 
@@ -220,7 +220,7 @@
 			{% endblock %}
 
 			  <p>
-				  {% trans "Copyright 2011 Universitetet i Troms&oslash; " %}<br />
+				  {% trans "Copyright 2011-2014 UiT Norges arktiske universitet" %}<br />
 			{% trans "Contact" %} oahpa@hum.uit.no</p>
 			</div>
 		</div>
