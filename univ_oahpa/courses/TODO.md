@@ -1,25 +1,77 @@
 ﻿# Current development:
 
- goal -> task / delmål
- coursegoal -> (course)goal
+ * TODO: try to relabel as much as possible, goal -> task / delmål
+          coursegoal -> (course)goal
 
- correct / later tries
+ * TODO: table overview format, description could be automatically generated
+   from settings and made "pretty" from what exists already
 
-{{{
-    Nr     Task        Description               Progress            Sets answ
-          (nå: Goal) 
-    1    Lære tall                                                   samandrag av det under
-    1.1 Tall 1         Numra string-tall 0-100   (andel av mål)      hvor mange gang gjort   
-    1.2 Tall 2         Numra tall-string 0-100   (andel av mål)      hvor mange gang gjort   
-    1.3 Klokke         Numra string-tall 0-100   (andel av mål)      hvor mange gang gjort   
-    1.4 Dato           Numra tall-string 0-100   (andel av mål)      hvor mange gang gjort    
+    {{{
+        Nr     Task        Description               Progress            Sets answ
+              (nå: Goal) 
+        1    Lære tall                                                   samandrag av det under
+        1.1 Tall 1         Numra string-tall 0-100   (andel av mål)      hvor mange gang gjort   
+        1.2 Tall 2         Numra tall-string 0-100   (andel av mål)      hvor mange gang gjort   
+        1.3 Klokke         Numra string-tall 0-100   (andel av mål)      hvor mange gang gjort   
+        1.4 Dato           Numra tall-string 0-100   (andel av mål)      hvor mange gang gjort    
 
-    2    Bøye verb                                                   samandrag av det under
-    2.1 Presens        Morfa adfasdfs             (andel av mål)     hvor mange gang gjort   
-    2.2 Preteritum     Morfa adfasdfs             (andel av mål)     hvor mange gang gjort   
-}}}
+        2    Bøye verb                                                   samandrag av det under
+        2.1 Presens        Morfa adfasdfs             (andel av mål)     hvor mange gang gjort   
+        2.2 Preteritum     Morfa adfasdfs             (andel av mål)     hvor mange gang gjort   
+    }}}
+
+* Leksa: Words to work on: Ord som brukeren ikke klarer, kan "samles" til et valg: 
+  * Morfa: Liste med de siste 15 ordene som var feil, med diff (slik som nå)
+  * Statistikktabell, endringar:
+
+* TODO: table formatting 
+  + now:: success -- score -- correct/first try rounds -- last_attempt
+  + TODO: success -- score -- first try/later tries -- rounds -- last_attempt
+  + evt. kan vi kalle "score" for "correct"
+  + also, the swedish cake needs work:
+    * der correct = 12, first try = 11 (for totalt 12), dvs. brøk 12/11
+    * der first try = 11, later tries = 1, dvs. brøk 11/1
+  + Kor mange gonger har studenten arbeidd
+
+* TODO: task/delmål (http://testing.oahpa.no/courses_davvi/courses/create/goal/)
+ * Kor langt er studenten frå delmålet (oppgitt i prosent, t.d. 71%, for 5 av 7 godkjente sett)
+ * Korrektprosent = 80% (dvs. ein feil per fem-sett) er default
+ * Sets answered = Minimum sets sets tried ==> Sets accomplished / achieved / fulfilled / accepted 
+
+* TODO: instructor course actions:
+ * create course goal
+ * send notification to student(s)
+ * student list
+ * remove instructor course goal progress from this page-- they can just log in
+   as a student if they wish to test (alt.: instructor can enter a 'student'
+   mode to preview?)
+
+* TODO: Dyplinking for Sahka 
+ 
+* TODO: login needs to be split into two things, student and instructor login,
+  and this needs to work with cookie auth. NB cookie auth is disabled for now,
+  just for ease of development, but this can be turned back on.
+
+* TODO: course invitation links
+
+# Læreren oppretter konto som student: administrator gir rettigheter som lærer
+# Studenter oppretter konto som student og velger kurs: læreren godkjenner studentene sine
+# Læreren og administrator kan opprette kurs, og velge/kopiere kursmal, evt tilpasser den
+## standard for namn? Tre komponentar: kursnamn_kursarrangör_semester
+## Læraren sender lenkje, og studentane blir registrert på rett kurs
+# Studentar som ikkje er studentar på eit visst kurs kan lage sine eigne kursmål / velje mal
+
+
+ TODO: messaging/notification system
+   - possible module: https://github.com/pinax/django-notification 
 
  TODO: share link for course registration: allow instructor to change it to something new (just a new hash)
+
+ TODO: course goal edit page: link to create new associated task, save
+ coursegoal automatically, provide user edit window with coursegoal ID so that
+ this will be added on save
+
+ TODO: goal edit page:  delete needs feedback
 
  TODO: historical stats - view for non-course-connected stuff, course is over,
  student still wants to see previous learning history
@@ -29,7 +81,6 @@
 
  TODO: history chart also needs total exercises answered
  TODO: only show errors that happened more than once?
- TODO: stringdiff? 
 
  TODO: only count rounds with actual progress, so no one can hit new set until
  the count is up, and then submit one
