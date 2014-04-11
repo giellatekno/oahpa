@@ -275,6 +275,7 @@ class GoalParametersView(viewsets.ModelViewSet):
         new_obj['url_base'] = url_base
 
         success = True
+        print new_obj
         goal = Goal.objects.create(created_by=request.user, **new_obj)
 
         if success:
@@ -287,7 +288,6 @@ class GoalParametersView(viewsets.ModelViewSet):
             response_parameters['goal'] = {}
             response_parameters['goal']['id'] = goal.id
             response_parameters['goal']['short_name'] = goal.short_name
-            response_parameters['goal']['description'] = goal.description
             response_parameters['goal']['begin_url'] = goal.begin_url
         else:
             response_parameters['error'] = "Could not create the goal."

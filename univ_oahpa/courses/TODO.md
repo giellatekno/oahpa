@@ -1,5 +1,29 @@
 ﻿# Current development:
 
+ goal -> task / delmål
+ coursegoal -> (course)goal
+
+ correct / later tries
+
+{{{
+    Nr     Task        Description               Progress            Sets answ
+          (nå: Goal) 
+    1    Lære tall                                                   samandrag av det under
+    1.1 Tall 1         Numra string-tall 0-100   (andel av mål)      hvor mange gang gjort   
+    1.2 Tall 2         Numra tall-string 0-100   (andel av mål)      hvor mange gang gjort   
+    1.3 Klokke         Numra string-tall 0-100   (andel av mål)      hvor mange gang gjort   
+    1.4 Dato           Numra tall-string 0-100   (andel av mål)      hvor mange gang gjort    
+
+    2    Bøye verb                                                   samandrag av det under
+    2.1 Presens        Morfa adfasdfs             (andel av mål)     hvor mange gang gjort   
+    2.2 Preteritum     Morfa adfasdfs             (andel av mål)     hvor mange gang gjort   
+}}}
+
+ TODO: share link for course registration: allow instructor to change it to something new (just a new hash)
+
+ TODO: historical stats - view for non-course-connected stuff, course is over,
+ student still wants to see previous learning history
+
  TODO: progress on set requires user to do 5/5 + 1, for actual completion.
  slightly confusing, fix
 
@@ -73,6 +97,8 @@
 
 
  TODO: feedback click tracking
+
+
 
 # Added installation notes:
 
