@@ -6,7 +6,7 @@ from django.conf.urls.defaults import *
 # @login_required decorator
 
 from django.contrib.auth.views import login, logout
-from courses.views import cookie_login, cookie_logout
+from courses.views import cookie_login, cookie_logout, split_login
 
 # Have to rename login/ to standard_login/ so that the cookie login falls back
 # to standard login without unlimited redirects.  users who go to login/ and do
@@ -14,9 +14,10 @@ from courses.views import cookie_login, cookie_logout
 # up being logged in.
 
 urlpatterns = patterns('django.contrib.auth.views',
-    url(r'^standard_login/$', login, {'template_name': 'auth/login.html'}),
+    url(r'^standard_login/$', login, {'template_name': 'auth/login.html'}, name="standard_login"),
     url(r'^logout/$', logout, {'template_name': 'auth/logout.html'}, name="courses_logout"),
-    url(r'^login/$', cookie_login, name="courses_login"),
+    url(r'^login/$', split_login, name="courses_login"),
+    url(r'^cookie_login/$', cookie_login, name="cookie_login"),
     url(r'^cookie_logout/$', cookie_logout),
 )
 

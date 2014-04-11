@@ -39,9 +39,6 @@
  * Sets answered = Minimum sets sets tried ==> Sets accomplished / achieved / fulfilled / accepted 
 
 * TODO: instructor course actions:
- * create course goal
- * send notification to student(s)
- * student list
  * remove instructor course goal progress from this page-- they can just log in
    as a student if they wish to test (alt.: instructor can enter a 'student'
    mode to preview?)

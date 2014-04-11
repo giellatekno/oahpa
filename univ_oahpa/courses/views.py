@@ -25,6 +25,21 @@ from django.contrib.auth.decorators import login_required
 
 from models import UserProfile, Course, UserGrade, Activity
 
+def split_login(request, next_page=None):
+
+    if not next_page:
+        # TODO: change next url for deep links
+        next_page = '/%s/courses/' % URL_PREFIX
+
+    c = {}
+    c['next_page'] = next_page
+
+    template = 'split_login.html'
+    return render_to_response(template,
+                              c,
+                              context_instance=RequestContext(request))
+
+
 def cookie_login(request, next_page=None, required=False, **kwargs):
     """ Check for existing site.uit.no cookie
     """
