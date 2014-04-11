@@ -182,6 +182,15 @@ class Course(models.Model):
             self.token = self.generate_new_key()
         super(Course, self).save(*args, **kwargs)
 
+    @property
+    def invitation_link(self):
+        from settings import URL_PREFIX
+        parts = (
+            URL_PREFIX,
+            self.token,
+        )
+        return "http://oahpa.no/%s/courses/enroll/?key=%s" % parts
+
     def generate_new_key(self):
         from itsdangerous import URLSafeTimedSerializer
         from settings import SECRET_KEY

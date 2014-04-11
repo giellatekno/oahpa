@@ -53,6 +53,8 @@
    - TODO: next included in split login
 
 * TODO: course invitation links
+  - TODO: course invitation link reset page should be confirmation, with
+  	message of what will happen.
 
 # Læreren oppretter konto som student: administrator gir rettigheter som lærer
 # Studenter oppretter konto som student og velger kurs: læreren godkjenner studentene sine

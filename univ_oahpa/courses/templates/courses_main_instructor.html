@@ -60,6 +60,14 @@ TODO: internationalization strings
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-lg-12">
+                            <h4>Course invitation link</h4>
+                            <textarea class="invite_link" readonly>{{ course.invitation_link }}</textarea>
+                            <br />
+                            <a class="btn btn-danger btn-sm" href="{{ URL_PREFIX }}/courses/reset_token/">Reset invitation link</a>
+                        </div>
+
                 {% endfor %}
                 {# endcache #}
             </div>
