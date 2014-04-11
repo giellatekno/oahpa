@@ -3,12 +3,14 @@
  * TODO: try to relabel as much as possible, goal -> task / delmål
           coursegoal -> (course)goal
 
+ * TODO: course goal edit thing should split into two columns too.
+
  * TODO: table overview format, description could be automatically generated
    from settings and made "pretty" from what exists already
 
     {{{
         Nr     Task        Description               Progress            Sets answ
-              (nå: Goal) 
+             (nå: Goal) 
         1    Lære tall                                                   samandrag av det under
         1.1 Tall 1         Numra string-tall 0-100   (andel av mål)      hvor mange gang gjort   
         1.2 Tall 2         Numra tall-string 0-100   (andel av mål)      hvor mange gang gjort   
@@ -48,6 +50,7 @@
 * TODO: login needs to be split into two things, student and instructor login,
   and this needs to work with cookie auth. NB cookie auth is disabled for now,
   just for ease of development, but this can be turned back on.
+   - TODO: next included in split login
 
 * TODO: course invitation links
 

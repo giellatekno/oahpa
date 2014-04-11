@@ -169,12 +169,25 @@ class Course(models.Model):
     # students = models.ManyToManyField(User, related_name='studentships')
     site_link = models.URLField(verify_exists=False, max_length=200, blank=True, null=True)
     end_date = models.DateTimeField(null=True, default=None, blank=True)
+    token = models.CharField(max_length=128, blank=True, null=True, help_text="Token generated for share links. Only generate these, do not enter manually.")
 
     @property
     def students(self):
         us = UserProfile.objects.filter(user__courserelationship__course=self)\
                                 .distinct()
         return us
+
+    def save(self, *args, **kwargs):
+        if self.token is None:
+            self.token = self.generate_new_key()
+        super(Course, self).save(*args, **kwargs)
+
+    def generate_new_key(self):
+        from itsdangerous import URLSafeTimedSerializer
+        from settings import SECRET_KEY
+        dangerous_signer = URLSafeTimedSerializer(SECRET_KEY)
+        course_token = dangerous_signer.dumps(48)
+        return course_token
 
     def __unicode__(self):
         if self.identifier:
