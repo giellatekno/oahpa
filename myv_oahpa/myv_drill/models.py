@@ -701,6 +701,8 @@ class Tag(models.Model):
 	# possessive = models.CharField(max_length=5)
 	# subclass = models.CharField(max_length=10)
 	tense = models.CharField(max_length=5)
+	definite = models.CharField(max_length=5)
+	possessive = models.CharField(max_length=5)
 
 	class Admin:
 		pass
@@ -723,9 +725,10 @@ class Tag(models.Model):
 			'personnumber': 'Person-Number',
 #			'polarity': 'Polarity',
 			'pos': 'Wordclass',
-#			'possessive': 'Possessive',
+			'possessive': 'Possessive',
 #			'subclass': 'Subclass',
 			'tense': 'Tense',
+			'definite': 'Definite',
 			#'gender': 'Gender',
 		}
 
@@ -771,7 +774,7 @@ class Form(models.Model):
 
 	def getBaseform(self, match_num=False, return_all=False):
 		""" Gets the base form (e.g., citation/dictionary form) for
-			the wordform. Nouns -> Nom+Sg, Verbs -> Inf
+			the wordform. Nouns -> Sg+Nom+Indef, Verbs -> Inf
 
 			@param match_num:
 				True - If the form supplied is a noun and plural
@@ -823,7 +826,7 @@ class Form(models.Model):
 				number = 'Sg'
 			baseform_num = self.word.form_set.filter(tag__case='Nom')
 
-			baseform = baseform_num.filter(tag__number=number)
+			baseform = baseform_num.filter(tag__number=number,tag__definite='Indef')
 			if baseform.count() == 0 and number == 'Sg' and baseform_num.count() > 0:
 				baseform = baseform_num
 		elif self.tag.pos == 'Pron':

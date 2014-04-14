@@ -318,18 +318,23 @@ class Game(object):
 class BareGame(Game):
 
 	casetable = {
-		'N-NOM-PL': ('Nom', ['Pl']),
-		'N-GEN': ('Gen', ['Sg','Pl']),
+	    'N-NOM-DEF': ('Nom', ['Sg'], 'Def'),
+		'N-NOM-PL': ('Nom', ['Pl'], 'Indef'),
+		'N-GEN': ('Gen', ['Sg'], 'Def'),
+		'N-PL-GEN': ('Gen', ['Pl'], 'Def'),
 		'N-DAT': ('DatCx', ['Sg','Pl']),
 		'N-ILL': ('Ill', ['Sg','Pl']),
-		'N-INE': ('Ine', ['Sg','Pl']),
+		'N-INE': ('Ine', ['SP'], 'Indef'),
 		'N-ELA': ('Ela', ['Sg','Pl']),
-		'N-ABL': ('Abl', ['Sg','Pl']),
+		'N-ABL': ('Abl', ['SP'], 'Indef'),
+		'N-ABL-DEF': ('Abl', ['SP'], 'Def'),
 		'N-ABE': ('Abe', ['Sg','Pl']),
 		'N-COM': ('Com', ['Sg','Pl']),
 		'N-COMP': ('CompCx', ['Sg','Pl']),
 		'N-PRL': ('Prl', ['Sg','Pl']),
-		'N-TRA': ('Tra', ['Sg','Pl']),
+		'N-TRA': ('Tra', ['SP'], 'Indef'),
+		#'N-PX': ('Nom', ['Sg'], 'PxSg3'), # px will be handled separately
+        #'N-PX-PL': ('Nom', ['Pl'], 'PxSg3'),
 		'': '',
 	}
 
@@ -508,7 +513,7 @@ class BareGame(Game):
 		# 	syll = ['']
 
 		if pos in ['N', 'Num', 'Pron']:
-			case, number = self.casetable[pos_tables[pos]]
+			case, number, definite = self.casetable[pos_tables[pos]] # definite added by Heli
 		else:
 			case = self.casetable[pos_tables[pos]]
 		grade = self.casetable.get('grade', '')
@@ -642,6 +647,7 @@ class BareGame(Game):
 				TAG_QUERY = TAG_QUERY & Q(number='Sg')
 			else:
 				TAG_QUERY = TAG_QUERY & Q(number__in=number)
+			TAG_QUERY = TAG_QUERY & Q(definite=definite) # added for myv
 
 
 
@@ -920,11 +926,12 @@ class BareGame(Game):
 		# there is no number, and with Nominative, where the test is
 		# about turning nominative singular into nominative plural,
 		# thus all baseforms should be singular.
+		# For Erzya nouns, we use Sg+Nom+Indef as a base form. No number matching.
 
-		if tag.case in ['Nom'] or tag.attributive:
-			match_number = False
-		else:
-			match_number = True
+		#if tag.case in ['Nom'] or tag.attributive:
+		match_number = False
+		#else:
+		#	match_number = True
 		
 
 		def baseformFilter(form):

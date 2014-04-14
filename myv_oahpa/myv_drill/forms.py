@@ -53,17 +53,23 @@ POS_CHOICES = (
 )
 
 CASE_CHOICES = (
-    ('N-GEN', _('Genitive')),
-    ('N-DAT', _('Dative')),
+    ('N-GEN', _('Singular genitive definite')),
+    ('N-PL-GEN', _('Plural genitive definite')),
+    ('N-NOM-DEF', _('Singular nominative definite')),
+    ('N-NOM-PL', _('Plural nominative indefinite')),
+    #('N-DAT', _('Dative')),
     #('N-ILL', _('Illative')),
-    ('N-INE', _('Inessive')),
-    ('N-ELA', _('Elative')),
-    ('N-ABL', _('Ablative')),
-    ('N-ABE', _('Abessive')),
+    ('N-INE', _('Inessive indefinite')),
+    #('N-ELA', _('Elative')),
+    #('N-PX', _('Sg Nom + possessive suffix')),
+    #('N-PX-PL', _('Pl Nom + possessive suffix')),
+    ('N-TRA', _('Translative indefinite')),
+    ('N-ABL', _('Ablative indefinite')),
+    ('N-ABL-DEF', _('Ablative definite')),
+    #('N-ABE', _('Abessive')),
     #('N-COM', _('Comitative')),
-    ('N-COMP', _('Comparative')),
-    ('N-PRL', _('Prolative')),
-    ('N-TRA', _('Translative')),
+    #('N-COMP', _('Comparative')),
+    #('N-PRL', _('Prolative')),   
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -846,7 +852,7 @@ class OahpaSettings(forms.Form):
 					'adj_context' : 'ATTRPOS',
 					'book' : 'all',
 					'noun_type': 'N-MASC-INANIM',
-					'singular_only' : True}
+					'singular_only' : False}
 
 
 
@@ -1104,7 +1110,7 @@ class MorfaSettings(OahpaSettings):
 	grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
 
 	# HU added
-	singular_only = forms.BooleanField(required=False, initial=True)
+	singular_only = forms.BooleanField(required=False, initial=False)
 
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
