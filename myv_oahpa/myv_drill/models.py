@@ -819,7 +819,7 @@ class Form(models.Model):
 		# 			match_num=match_num,
 		# 			return_all=False)
 
-		if self.tag.pos in ['N', 'n', 'Num']:
+		if self.tag.pos in ['N', 'n', 'Num', 'Prop']: # Prop added by Heli
 			if match_num:
 				number = self.tag.number
 			else:
