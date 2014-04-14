@@ -327,7 +327,7 @@ class BareGame(Game):
 		'N-INE': ('Ine', ['SP'], 'Indef'),
 		'N-ELA': ('Ela', ['Sg','Pl']),
 		'N-ABL': ('Abl', ['SP'], 'Indef'),
-		'N-ABL-DEF': ('Abl', ['SP'], 'Def'),
+		'N-ABL-DEF': ('Abl', ['Sg'], 'Def'),
 		'N-ABE': ('Abe', ['Sg','Pl']),
 		'N-COM': ('Com', ['Sg','Pl']),
 		'N-COMP': ('CompCx', ['Sg','Pl']),

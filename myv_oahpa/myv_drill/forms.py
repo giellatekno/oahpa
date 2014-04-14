@@ -65,7 +65,7 @@ CASE_CHOICES = (
     #('N-PX-PL', _('Pl Nom + possessive suffix')),
     ('N-TRA', _('Translative indefinite')),
     ('N-ABL', _('Ablative indefinite')),
-    ('N-ABL-DEF', _('Ablative definite')),
+    ('N-ABL-DEF', _('Singular ablative definite')),
     #('N-ABE', _('Abessive')),
     #('N-COM', _('Comitative')),
     #('N-COMP', _('Comparative')),
