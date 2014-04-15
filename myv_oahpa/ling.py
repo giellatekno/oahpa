@@ -419,6 +419,8 @@ class Paradigm:
 				tag = tag.partition('\t')[0]
 				# 'V+Ind+Prt+Pl3'
 				# Never gets hid number, due to testing above
+				
+				#print >> STDOUT, 'lemma: %s fullform: %s tag: %s' % (lem, fullform, tag) 
 
 				if fullform.find('?') == -1:
 					g = Entry()
@@ -429,6 +431,7 @@ class Paradigm:
 					g.hid = hid
 					g.tags = tag
 
+					# Here something happens to the tags that occur in several tagsets. Todo: make it possible to use the same tag in different tagsets.
 					for t in g.tags.split('+'):
 						if self.tagset.has_key(t):
 							tagclasses = self.tagset[t]

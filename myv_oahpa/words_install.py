@@ -897,7 +897,7 @@ class Words(object):
 			# dialects, rather than iterating through dialects and going
 			# through wordforms once for each dialect.
 
-			paradigms_to_create = dict() # OrderedDict()
+			paradigms_to_create = OrderedDict() # OrderedDict()
 			# TODO: sorted by tag
 			for dialect in dialect_objects:
 				if VERBOSE:
@@ -917,6 +917,7 @@ class Words(object):
 					tag = form.tags
 					wform = form.form
 					key = '%s|%s' % (tag, wform)
+					#print >> _STDOUT, 'tag and form: %s' % key
 
 					if key in paradigms_to_create:
 						form_info = paradigms_to_create[key]
@@ -959,14 +960,15 @@ class Words(object):
 						'pos':				g.get('Wordclass', ""),
 						'number':			g.get('Number',""),
 						'case':			g.get('Case',""),
-						#'possessive':		g.get('Possessive',""),
+						'definite':       g.get('Definite',""),
+						'possessive':		g.get('Possessive',""),
 						'grade':			g.get('Grade',""),
 						'infinite':		g.get('Infinite',""), 
 						'personnumber':	g.get('Person-Number',""),
 						#'polarity':		g.get('Polarity',""),
 						'tense':			g.get('Tense',""),
 						'mood':			g.get('Mood',""), 
-						#'subclass':		g.get('Subclass',""),
+						'subclass':		g.get('Subclass',""),
 						'attributive':		g.get('Attributive',""),
 					}
 
@@ -975,6 +977,7 @@ class Words(object):
 					except Tag.DoesNotExist:
 						t = Tag.objects.create(**tag_kwargs)
 
+					#print >> _STDOUT, "tag to be saved: %s" % t
 					t.save()
 
 					# form = Form(fullform=f.form,tag=t,word=w)	
