@@ -1,0 +1,26 @@
+!!!Restarting the httpd server
+
+On {{{gtweb}}}, two httpd services are used. {{{nginx}}} is the primary system
+for serving all projects, however {{{apache/httpd}}} is used to run certain CGI
+and MT scripts which Nginx does not have support for. This is done via reverse
+proxy.
+
+!! In case of emergencies... 
+
+On gtoahpa, if for some reason the processes do not restart via chkconfig, 
+inspect via {{{ps aux}}} or {{{top}}} to find out what is or isn't running.
+
+Once missing processes have been identified, the proper order that all services
+should be started in (given dependencies between them) is:
+
+ * mysqld
+ * nginx
+ * httpd
+ * NDS processes (nds-vada, nds-sanat, nds-valks, etc.)
+ * gielese-mongodb
+ * gielese
+
+For this use the command {{{ sudo service NAME start }}}, or alternatively
+restart, if necessary.
+
+For further documentation on this, see the various sections in [common httpdserver|httpdserver.html].
