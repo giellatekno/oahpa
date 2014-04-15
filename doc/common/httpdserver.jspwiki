@@ -1,6 +1,6 @@
 !!!Restarting the httpd server
 
-On {{gtoahpa}} and {{gtlab}}, we use nginx for serving HTML
+On {{gtoahpa}}, {{gtweb}} and {{gtlab}}, we use nginx for serving HTML
 and other applications. 
 
 !! In case of emergencies... 
@@ -11,16 +11,16 @@ inspect via {{ps aux}} or {{top}} to find out what is or isn't running.
 Once missing processes have been identified, the proper order that all services
 should be started in (given dependencies between them) is:
 
- * mysqld
- * nginx
- * php-fpm
- * lookupserv
- * univ_oahpa / smaoahpa / rusoahpa / ...
+# mysqld
+# nginx
+# php-fpm
+# lookupserv
+# univ_oahpa / smaoahpa / rusoahpa / ...
 
 For this use the command {{{ sudo service NAME start }}}, or alternatively
 restart, if necessary.
 
-!!Nginx (gtoahpa, gtlab)
+!!Nginx (gtoahpa, gtweb, gtlab)
 
 Updates to code do not require restarting nginx, unless updating configuration
 files specifically for nginx. However, should the system reboot and nginx not 
