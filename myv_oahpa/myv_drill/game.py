@@ -521,7 +521,8 @@ class BareGame(Game):
 
 		pos_mood_tense = {
 			"PRS":	("Ind", "Prs", ""),
-			"PRT":	("Ind", "Prt", ""),
+			"PRT1":	("Ind", "Prt1", ""),
+			"PRT2":	("Ind", "Prt2", ""),
 			"PRF":	("", "", "PrfPrc"),
 			"GER":	("", "", "Ger"),
 			"COND":   ("Cond", "Prs", ""),

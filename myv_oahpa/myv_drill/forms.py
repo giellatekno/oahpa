@@ -31,7 +31,8 @@ NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
 		  'Pl1':'eat', 'Pl2':'ehpet', 'Pl3':'eai'}
 
 TENSE_PRESENTATION = {
-	'Prt': u'исяк',
+	'Prt1': u'исяк',
+	'Prt2': u'исяк', # ??
 	'Prs': u'течи',
 }
 
@@ -142,12 +143,12 @@ PRONOUN_SUBCLASSES = (
 )
 
 CASE_CONTEXT_CHOICES = (
-   ('N-GEN', _('Genitive')),
+   #('N-GEN', _('Genitive')),
     #('N-ILL', _('Illative')),
     #('N-INE', _('Inessive')),
     #('N-ELA', _('Elative')),
     #('N-ADE', _('Adessive')),
-    #('N-ABL', _('Ablative')),
+    ('N-ABL', _('Ablative')),
     #('N-ALL', _('Allative')),
 #	('N-MIX', _('mix')),
 )
@@ -256,7 +257,8 @@ NUM_TYPE_CHOICES = (
 
 VTYPE_CHOICES = (
 	('PRS', _('present')),
-	('PRT', _('past')),
+	('PRT1', _('past1')),
+	('PRT2', _('past2')),
 #	('PRF', _('perfect')),
 #	('GER', _('gerund')),
 #	('COND', _('conditional')),
@@ -265,8 +267,9 @@ VTYPE_CHOICES = (
 )
 
 VERB_QUESTION_ANSWER = {
-	'V-PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
-	'V-PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
+	'V-PRS': [('+V+TV+Der/Омс+Inf+Ill', 'V+Ind+Prs+Person-Number')],
+	'V-PRT1': [('+V+TV+Der/Омс+Inf+Ill', 'V+Ind+Prt1+Person-Number')],
+	'V-PRT2': [('+V+TV+Der/Омс+Inf+Ill', 'V+Ind+Prt2+Person-Number')],
 #	'PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
 #	'PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
 #	'PRF': [('V+Inf', 'V+PrfPrc')],
@@ -280,7 +283,8 @@ VERB_FILTER_DEFINITION = ['stem', 'source']
 
 VTYPE_CONTEXT_CHOICES = (
 	('V-PRS', _('present')),
-	('V-PRT', _('past')),
+	('V-PRT1', _('past1')),
+	('V-PRT2', _('past2')),
 #	('V-PRF', _('perfect')),
 #	('V-GER', _('gerund')),
 #	('V-COND', _('conditional')),
@@ -838,7 +842,7 @@ class OahpaSettings(forms.Form):
 					'pron_type': 'Pers',
 					'proncase' : 'N-NOM', # Need a new default case here
 					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
-					'case_context' : 'N-GEN',
+					'case_context' : 'N-ABL',
 					'vtype_context' : 'V-PRS',
 					'pron_context' : 'P-PERS',
 					'num_context' : 'NUM-ATTR',
@@ -1098,7 +1102,7 @@ class MorfaSettings(OahpaSettings):
 	derivation_type = forms.ChoiceField(initial='V-DER-PASS', choices=DERIVATION_CHOICES, widget=forms.Select)
 	derivation_type_context = forms.ChoiceField(initial='DER-PASSV', choices=DERIVATION_CHOICES_CONTEXT, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
-	case_context = forms.ChoiceField(initial='N-GEN', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
+	case_context = forms.ChoiceField(initial='N-ABL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
 	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
 	pron_context = forms.ChoiceField(initial='P-PERS', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)
@@ -1216,7 +1220,7 @@ class MorfaQuestion(OahpaQuestion):
 					# TODO: conneg only in Prs
 
 			# Odne 'today', ikte 'yesterday'
-			if (tag.tense in ['Prs','Prt']) and (tag.mood == 'Ind'):
+			if (tag.tense in ['Prs','Prt1','Prt2']) and (tag.mood == 'Ind'):
 				time = TENSE_PRESENTATION.get(tag.tense, False)
 				self.pron = ' '.join([time, pronoun])
 
@@ -1585,7 +1589,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 	"""
 
 	select_words = select_words
-	qtype_verbs = set(['MAINV', 'V-PRS', 'V-PRT', 'V-COND','V-IMPRT', 'TEST']) # added MAINV for myv
+	qtype_verbs = set(['MAINV', 'V-PRS', 'V-PRT1', 'V-PRT2', 'V-COND','V-IMPRT', 'TEST']) # added MAINV for myv
 
 	def generate_fields(self,answer_size, maxlength):
 		self.fields['answer'] = forms.CharField(max_length = maxlength, \

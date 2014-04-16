@@ -685,7 +685,7 @@ class Tagname(models.Model):
 		return smart_unicode(self.tagname)
 
 class Tag(models.Model):
-	string = models.CharField(max_length=40, unique=True) # tag sequence
+	string = models.CharField(max_length=50, unique=True) # tag sequence, 40 was too short
 	# TODO: pos = models.CharField(max_length=12)
 	attributive = models.CharField(max_length=5)
 	case = models.CharField(max_length=6)
