@@ -14,6 +14,7 @@ __all__ = [
     'FeedbackLogSerializer',
     'StatusSerializer',
     'CourseGoalSerializer',
+    'NotificationSerializer',
 ]
 
 class GoalParamSerializer(serializers.ModelSerializer):
@@ -78,3 +79,17 @@ class StatusSerializer(serializers.HyperlinkedModelSerializer):
                   'last_attempt', 'grade', 'correct_first_try',
                   'is_complete')
 
+from notifications.models import Notification
+
+class NotificationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Notification
+        fields = ('recipient',
+                  'description',
+                  'level',
+                  'public',
+                  'recipient',
+                  'timestamp',
+                  'unread',
+                  'verb',)

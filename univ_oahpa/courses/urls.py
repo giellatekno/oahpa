@@ -36,12 +36,14 @@ from .data_api import ( UserStatsViewSet
                       , GoalParametersView
                       , FeedbackLogView
                       , CourseGoalView
+                      , NotificationsView
                       )
 
 router = routers.DefaultRouter()
 router.register(r'stats', UserStatsViewSet)
 router.register(r'goals', GoalParametersView, base_name='params')
 router.register(r'coursegoals', CourseGoalView, base_name='coursegoals')
+router.register(r'notifications', NotificationsView, base_name='notifications')
 router.register(r'feedback', FeedbackLogView)
 
 urlpatterns += patterns('univ_oahpa.courses.views',

@@ -64,8 +64,18 @@
 # Studentar som ikkje er studentar på eit visst kurs kan lage sine eigne kursmål / velje mal
 
 
- TODO: messaging/notification system
-   - possible module: https://github.com/pinax/django-notification 
+ TODO: messaging/notification system, needs two things: notifications and messaging.
+   - django-notifications-hq: https://github.com/brantyoung/django-notifications
+   - django-messages: https://github.com/arneb/django-messages
+   - potentially also: https://github.com/justquick/django-activity-stream
+
+ TODO: notify instructor when a student uses a join link to enter the class:
+ present them options for what to do: delete notification, remove student, view
+ their profile
+
+ TODO: notify user recipient when they have been sent a message.
+
+
 
  TODO: share link for course registration: allow instructor to change it to something new (just a new hash)
 
@@ -166,6 +176,9 @@ Middleware:
 installed apps:
     'univ_oahpa.courses',
     'rest_framework',
+    # ... 
+    'notifications',
+    'django_messages',
 
 # Oppsummering fra prosjektbeskrivelsen:
 

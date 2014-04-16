@@ -314,3 +314,47 @@ class GoalParametersView(viewsets.ModelViewSet):
         # data['courses'] = [(c.id, c.name) for c in request.user.get_profile().instructorships]
         return data
 
+from notifications.models import Notification
+
+# TODO: permissions
+class NotificationsView(viewsets.ModelViewSet):
+
+    model = Notification()
+    queryset = Notification.objects.all()
+    serializer_class = NotificationSerializer
+
+    def get_queryset(self):
+        return self.queryset.filter(recipient=self.request.user).unread()
+
+    def create(self, request):
+        from notifications import notify
+
+        notify.send(request.user,
+                    recipient=request.user,
+                    description=request.DATA.get('description'),
+                    verb=u'tested notifications',)
+
+        return Response({'success': True})
+
+    # def create(self, request):
+    #     target_user_ids = request.DATA.get('users').split(',')
+
+    #     success = True
+    #     response_parameters = {} 
+
+    #     from_user = request.user
+    #     # TODO: all users in course option
+    #     to_users = User.objects.get(id__in=target_user_ids)
+
+    #     try:
+    #         notification.send( [to_users]
+    #                          , "course_message"
+    #                          , {"from_user": from_user}
+    #                          )
+    #     except Exception, e:
+    #         print e
+    #         success = False
+
+    #     response_parameters['success'] = success
+
+    #     return Response(response_parameters)
