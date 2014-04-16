@@ -7,32 +7,38 @@
     {% csrf_token %} 
     {{ form.non_field_errors }}
 
+    <br class="clearfix" />
     <div class="form-group">
         {{ form.recipient.errors }}
-        <label class="col-sm-2 control-label" for="id_recipient">Recipient:</label>
-        <div class="col-sm-10">
+        <label class="col-sm-2 col-md-2 col-lg-2 control-label" for="id_recipient">Recipient:</label>
+        <div class="col-sm-6 col-md-6 col-lg-6">
             {{ form.recipient }}
         </div>
     </div>
+    <br class="clearfix" />
 
     <div class="form-group">
         {{ form.subject.errors }}
-        <label class="col-sm-2 control-label" for="id_subject">Email subject:</label>
-        <div class="col-sm-10">
+        <label class="col-sm-2 col-md-2 col-lg-2 control-label" for="id_subject">Email subject:</label>
+        <div class="col-sm-6 col-md-6 col-lg-6">
             {{ form.subject }}
         </div>
     </div>
 
+    <br class="clearfix" />
+
     <div class="form-group">
         {{ form.body.errors }}
-        <label class="col-sm-2 control-label" for="id_body">Body:</label>
-        <div class="col-sm-10">
+        <label class="col-sm-2 col-md-2 col-lg-2 control-label" for="id_body">Body:</label>
+        <div class="col-sm-6 col-md-6 col-lg-6">
             {{ form.body }}
         </div>
     </div>
 
+    <br class="clearfix" />
+
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
+        <div class="col-sm-offset-2 col-sm-6">
             <input type="submit" value="{% trans "Send" %} &raquo;"/>
         </div>
     </div>
