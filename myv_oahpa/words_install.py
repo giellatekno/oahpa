@@ -996,8 +996,8 @@ class Words(object):
 									f.form, 
 									', '.join(list(names)))
 							
-							_outstr = u"Created form: %s\t%s\t\t%s" % fmt
-							OUT_STRS.append(_outstr)
+							#_outstr = 'Created form: %s' % f.form.encode('utf-8') # was: fmt, but caused unicode error
+							#OUT_STRS.append(_outstr)
 
 					del form
 
