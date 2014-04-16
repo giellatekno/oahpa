@@ -92,4 +92,5 @@ class NotificationSerializer(serializers.ModelSerializer):
                   'recipient',
                   'timestamp',
                   'unread',
+                  'id',
                   'verb',)

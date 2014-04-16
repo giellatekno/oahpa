@@ -1,14 +1,39 @@
-{% extends 'univ_oahpa.html' %}
+{% extends 'courses_main.html' %}
+
+{% block extrajs %}
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/courses.css"/>
+{% endblock %}
+
 {% load i18n %}
 {% load url from future %} 
-{% block bodyclass %}about{% endblock %}
+
+{% block disable_form_start %}{% endblock %}
+{% block disable_form_end %}{% endblock %}
+
 {% block content %}  
-{% endblock %}
-{% block sidebar %}
-<ul class="subnavilist">
-    <li><a href="{% url 'messages_inbox' %} ">&raquo;&nbsp;{% trans "Inbox" %}</a></li>
-    <li><a href="{% url 'messages_outbox' %} ">&raquo;&nbsp;{% trans "Sent Messages" %}</a></li>
-    <li><a href="{% url 'messages_compose' %} ">&raquo;&nbsp;{% trans "New Message" %}</a></li>
-    <li><a href="{% url 'messages_trash' %} ">&raquo;&nbsp;{% trans "Trash" %}</a></li>
-</ul>
+	<div id="courses" class="bootstrap-styles">
+	    <div class="container col-md-12 col-sm-12 col-lg-12">
+	        <div class="row">
+	            <h2>Messages</h2>
+	        </div>
+	    </div>
+	    <div class="container col-md-12 col-sm-12 col-lg-12">
+	        <div class="row">
+	            <div class="col-md-4 col-sm-4 col-lg-4">
+                    <ul id="subnav" class="nav nav-stacked">
+                        <li><a href="{% url 'messages_inbox' %} ">{% trans "Inbox" %}</a></li>
+                        <li><a href="{% url 'messages_compose' %} ">{% trans "New Message" %}</a></li>
+                        <li><a href="{% url 'messages_outbox' %} ">{% trans "Sent Messages" %}</a></li>
+                        <li><a href="{% url 'messages_trash' %} ">{% trans "Trash" %}</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 col-sm-8 col-lg-8">
+	                {% block messages_content %}
+	                {% endblock %}
+                </div>
+	        </div>
+	    </div>
+	</div>
 {% endblock %}

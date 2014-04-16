@@ -13,6 +13,10 @@ TODO: internationalization strings
     <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
     <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
 	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/courses.css"/>
+
+	<script src="{{ MEDIA_URL }}/js/angular.min.js" type="text/javascript"></script>
+	<script src="{{ MEDIA_URL }}/js/angular-cookies.js" type="text/javascript"></script>
+	<script src="{{ MEDIA_URL }}/js/courses.js" type="text/javascript"></script> 
 {% endblock %}
 
 {% block imgprefix %}numra{% endblock %}
@@ -21,7 +25,7 @@ TODO: internationalization strings
 
 {% block content %}
     {# Add blocktrans and trans tags #}
-	<div id="courses" class="bootstrap-styles">
+	<div id="courses" class="bootstrap-styles" ng-app="Courses">
         <div class="row">
 	        <div class="col-md-3 col-sm-3 col-lg-3">
                 <h4>{% trans 'Welcome' %}, {{ user.username }}!</h4>
@@ -30,11 +34,11 @@ TODO: internationalization strings
                     {% if user.is_staff %}
                     <li><a href="/{{ URL_PREFIX }}/courses/?student_view=True">{% trans "Grade summary" %}</a></li>
                     <li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
+			        <li><a href="/{{ URL_PREFIX }}/messages/inbox/">messages</a></li>
                     {% endif %}
                 </ul>
                 <h4>Notifications</h4>
-                <div id="notifications">
-                </div>
+                {% include 'user_notifications_block.html' %}
             </div>
 	        <div class="col-md-9 col-sm-9 col-lg-9">
                 {# cache 300 courses user.username #}

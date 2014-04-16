@@ -1,0 +1,8 @@
+﻿<div id="notifications" ng-controller="NotificationController" ng-source="/{{ URL_PREFIX }}/courses/api/notifications/">
+  <div ng-repeat="note in notifications" data-notification-id="<% note.id %>" class="notification panel panel-<% note.level %>">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+      <p class="text"><% note.verb %><span ng-show="note.description">: <% note.description %></span></p>
+    </div>
+  </div>
+</div>
