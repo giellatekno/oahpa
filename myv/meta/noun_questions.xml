@@ -14,18 +14,18 @@
   <q id="nabl1">
     <qtype>N-ABL</qtype>
     <question>
-      <text>Мезде SUBJ MAINV</text>
+      <text>Мезде SUBJ ярсамс</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom+Def"/>
         <sem class="PEOPLE"/>
       </element>
-      <element id="MAINV">
-        <grammar tag="V+TV+Ind+Prs+ScSg3"/> <!-- was V+Act+Ind+Prs+Sg3 -->
+     <!-- <element id="MAINV">
+        <grammar tag="V+TV+Ind+Prs+ScSg3"/>  was V+Act+Ind+Prs+Sg3 
         <id>ярсамс</id>
-      </element>
+      </element> -->
     </question>
     <answer> 
-      <text>SUBJ MAINV N-ABL</text>
+      <text>SUBJ ярсамс N-ABL</text>
       <element game='morfa' id="N-ABL" task="yes">
         <grammar tag="N+SP+Abl+Indef"/>
         <sem class="FOOD_DISH"/>
