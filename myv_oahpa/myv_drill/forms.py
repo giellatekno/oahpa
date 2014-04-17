@@ -1724,11 +1724,12 @@ class ContextMorfaQuestion(OahpaQuestion):
 
 		# If the asked word is in Pl, generate nominal form
 
+		print 'answer tag element', answer_tag_el
 		if answer_tag_el.pos == "N":
 			if qtype == "COLL-NUM":
 				self.lemma = answer_word_el.lemma
 			else:
-				if answer_tag_el.number=="Sg" or answer_tag_el.case=="Ess" or answer_tag_el.case=="Nom":  #was: qtype="N-NOM-PL"
+				if answer_tag_el.number=="Sg" or answer_tag_el.number=="SP" or answer_tag_el.case=="Ess" or answer_tag_el.case=="Nom":  #was: qtype="N-NOM-PL" SP added for myv
 					self.lemma = answer_word_el.lemma
 				else:
 					nplforms = Form.objects.filter(word__pk=answer_word, tag__string='N+Pl+Nom')

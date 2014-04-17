@@ -113,6 +113,7 @@ class QAGame(Game):
 			if possible_words.count() > 0:
 				word = possible_words.order_by('?')[0]
 
+		#print 'word', word
 		form_set_filter = self.filter_forms_by_dialect(
 							word.form_set.filter(tag=tag_el.id))
 		
@@ -434,23 +435,24 @@ class QAGame(Game):
 		return qwords
 
 	def filter_forms_by_dialect(self, form_set):
-		""" Filters forms by the current session dialect
+		""" Filters forms by the current session dialect. Commented out for myv ATM.
 		"""
 
-		if self.settings.has_key('dialect'):
-			dialect = self.settings['dialect']
-		else:
-			dialect = DEFAULT_DIALECT
+		#dialect = 'main'
+		#if self.settings.has_key('dialect'):
+		#	dialect = self.settings['dialect']
+		#else:
+		#	dialect = DEFAULT_DIALECT
 
-		excl = form_set.exclude(dialects__dialect='NG')
+		#excl = form_set.exclude(dialects__dialect='NG')
 
-		if excl.count() > 0:
-			form_set = excl
+		#if excl.count() > 0:
+		#	form_set = excl
 
-		dialect_forms = form_set.filter(dialects__dialect=dialect)
+		#dialect_forms = form_set.filter(dialects__dialect=dialect)
 
-		if dialect_forms.count() > 0:
-			form_set = dialect_forms
+		#if dialect_forms.count() > 0:
+		#	form_set = dialect_forms
 
 		return form_set
 
@@ -688,6 +690,7 @@ class QAGame(Game):
 			else:
 				amainvtag_string = qmainvtag_string
 				
+			#print 'MAINV tag', amainvtag_string
 			mainv_tag = Tag.objects.get(string=amainvtag_string)
 			mainv_tags.append(mainv_tag)
 			
