@@ -6,6 +6,7 @@ __all__ = [
     'CanCreateAndUpdateFeedbackLog',
     'GetOnly',
     'CanCreateAndUpdateGoal',
+    'CanCreateAndUpdateNotification',
     'CanCreateAndUpdateCourseGoal',
 ]
 
@@ -65,3 +66,14 @@ class CanCreateAndUpdateCourseGoal(permissions.BasePermission):
         else:
             return obj.created_by == request.user
         return False
+
+class CanCreateAndUpdateNotification(permissions.BasePermission):
+
+    def has_permission(self, request, view, obj=None):
+        return True
+
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
+        return obj.recipient == request.user

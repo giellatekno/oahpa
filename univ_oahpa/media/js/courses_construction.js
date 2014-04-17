@@ -218,6 +218,8 @@ function GoalConstructorController($scope, $http, $element, $cookies) {
 
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
     $http.defaults.headers.put['X-CSRFToken'] = $cookies.csrftoken;
+    $http.defaults.headers.delete = {};
+    $http.defaults.headers.delete['X-CSRFToken'] = $cookies.csrftoken;
 
     $http.get(params_url)
          .success(function(data){

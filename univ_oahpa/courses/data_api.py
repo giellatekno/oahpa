@@ -318,10 +318,12 @@ from notifications.models import Notification
 
 # TODO: permissions
 class NotificationsView(viewsets.ModelViewSet):
+	# NB: allows to delete also
 
     model = Notification()
     queryset = Notification.objects.all()
     serializer_class = NotificationSerializer
+    permission_classes = (CanCreateAndUpdateNotification, )
 
     def get_queryset(self):
         return self.queryset.filter(recipient=self.request.user).unread()

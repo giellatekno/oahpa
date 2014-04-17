@@ -69,12 +69,14 @@
    - django-messages: https://github.com/arneb/django-messages
    - potentially also: https://github.com/justquick/django-activity-stream
 
+
  TODO: notify instructor when a student uses a join link to enter the class:
  present them options for what to do: delete notification, remove student, view
  their profile
 
- TODO: notify user recipient when they have been sent a message.
+ TODO: notify user recipient when they have received a message.
 
+ TODO: group notifications 
 
 
  TODO: share link for course registration: allow instructor to change it to something new (just a new hash)
