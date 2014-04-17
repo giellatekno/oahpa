@@ -1,5 +1,7 @@
 ﻿# Current development:
 
+ * TODO: generalize courses pages navigation
+
  * TODO: try to relabel as much as possible, goal -> task / delmål
           coursegoal -> (course)goal
 
@@ -54,6 +56,7 @@
 
 * TODO: course invitation links
   - TODO: course invitation reset
+  - TODO: course invitation process for invitees
   - TODO: course invitation link reset page should be confirmation, with
   	message of what will happen.
   - TODO: make the page look nicer
@@ -68,9 +71,14 @@
 
  TODO: student can email instructor via easy link?
 
+ TODO: fix design of messaging pages
+
  TODO: notify instructor when a student uses a join link to enter the class:
  present them options for what to do: delete notification, remove student, view
  their profile
+
+ TODO: instructor will have more notifications, need to change the design for
+ them-- students see the simple format, instructors get table?
 
  TODO: group notifications by kind so the menu isn't too crazy
 
