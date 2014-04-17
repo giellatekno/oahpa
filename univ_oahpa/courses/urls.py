@@ -25,6 +25,7 @@ from views import ( courses_main
                   , instructor_student_detail
                   , begin_course_goal
                   , courses_goal_construction
+                  , course_invite
                   , courses_stats
                   , goal_history
                   , courses_coursegoal_construction
@@ -57,6 +58,8 @@ urlpatterns += patterns('univ_oahpa.courses.views',
         name="courses_coursegoal_construction"),
     url(r'^create/goal/$', courses_goal_construction,
         name="courses_goal_construction"),
+    url(r'^invite/$', course_invite,
+        name="course_invite"),
     url(r'^stats/$', courses_stats, name="courses_stats"),
     url(r'^api/', include(router.urls)),
     url(r'^(?P<cid>\d+)/(?P<uid>\d+)/$', instructor_student_detail),

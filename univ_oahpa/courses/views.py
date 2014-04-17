@@ -422,3 +422,13 @@ def begin_course_goal(request, goal_id):
 
     return HttpResponseRedirect(goal.start_url())
 
+
+@user_passes_test(instructor_group)
+def course_invite(request):
+    c = {}
+    profile = request.user.get_profile()
+    c['profile'] = profile
+    template = 'invite_students.html'
+    return render_to_response(template,
+                              c,
+                              context_instance=RequestContext(request))

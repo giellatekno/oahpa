@@ -64,19 +64,13 @@
 # Studentar som ikkje er studentar på eit visst kurs kan lage sine eigne kursmål / velje mal
 
 
- TODO: messaging/notification system, needs two things: notifications and messaging.
-   - django-notifications-hq: https://github.com/brantyoung/django-notifications
-   - django-messages: https://github.com/arneb/django-messages
-   - potentially also: https://github.com/justquick/django-activity-stream
-
+ TODO: student can email instructor via easy link?
 
  TODO: notify instructor when a student uses a join link to enter the class:
  present them options for what to do: delete notification, remove student, view
  their profile
 
- TODO: notify user recipient when they have received a message.
-
- TODO: group notifications 
+ TODO: group notifications by kind so the menu isn't too crazy
 
 
  TODO: share link for course registration: allow instructor to change it to something new (just a new hash)
@@ -181,6 +175,11 @@ installed apps:
     # ... 
     'notifications',
     'django_messages',
+
+## New packages in use
+
+- django-notifications-hq: https://github.com/brantyoung/django-notifications
+- django-messages: https://github.com/arneb/django-messages
 
 # Oppsummering fra prosjektbeskrivelsen:
 

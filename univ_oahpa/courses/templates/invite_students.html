@@ -15,10 +15,6 @@ TODO: internationalization strings
     <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
     <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
 	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/courses.css"/>
-
-	<script src="{{ MEDIA_URL }}/js/angular.min.js" type="text/javascript"></script>
-	<script src="{{ MEDIA_URL }}/js/angular-cookies.js" type="text/javascript"></script>
-	<script src="{{ MEDIA_URL }}/js/coursepage.js" type="text/javascript"></script> 
 {% endblock %}
 
 {% block imgprefix %}numra{% endblock %}
@@ -40,10 +36,9 @@ TODO: internationalization strings
 			        <li><a href="/{{ URL_PREFIX }}/messages/inbox/">messages</a></li>
                     {% endif %}
                 </ul>
-                <h4>Notifications</h4>
-                {% include 'user_notifications_block.html' %}
             </div>
 	        <div class="col-md-9 col-sm-9 col-lg-9">
+	            <h3>Course invitation</h3>
                 {# cache 300 courses user.username #}
                 {% for course in profile.instructorships %}
                     <div class="row">
@@ -53,19 +48,13 @@ TODO: internationalization strings
                     </div>
 
                     <!-- <p class="goal_note">You have not defined any goals for this course.</p> -->
+
                     <div class="row">
-	                    <div class="col-md-12 col-sm-12 col-lg-12">
-                            <h4>Students</h4>
-                            {% include 'student_roster_table.html' %}
+                        <div class="col-md-12 col-sm-12 col-lg-12">
+                            <textarea class="invite_link" readonly>{{ course.invitation_link }}</textarea>
+                            <br />
+                            <a class="btn btn-danger btn-sm" href="{{ URL_PREFIX }}/courses/reset_token/">Reset invitation link</a>
                         </div>
-                    </div>
-                    <div class="row">
-	                    <div class="col-md-12 col-sm-12 col-lg-12">
-                            <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_coursegoal_construction %}">Create a course goal</a>
-                            <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_goal_construction %}">Create a goal</a>
-                            <a id="create_self_goal" class="btn btn-success" href="#">Send message</a>
-                        </div>
-                    </div>
 
                 {% endfor %}
                 {# endcache #}
@@ -76,4 +65,5 @@ TODO: internationalization strings
 {% endblock %}
 
 {# vim: set ts=4 sw=4 tw=0 syntax=htmldjango : #}
+
 

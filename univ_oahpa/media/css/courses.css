@@ -23,6 +23,7 @@
 
 #courses {
 	padding: 0 2em;
+	min-height: 340px;
 }
 
 #courses #create_self_goal {
@@ -171,6 +172,11 @@
     margin: .5em 1.5em;
 }
 
+#courses .course_students {
+    margin-left: 0 !important;
+    margin-bottom: 2em;
+}
+
 #courses .course_goals th {
     font-weight: bold;
     font-size: 90%;
@@ -184,6 +190,13 @@
 
 #courses .course_goals .description {
     width: 12em;
+}
+
+#courses .invite_link {
+    font-size: 100%;
+    width: 20em;
+    height: 5em;
+    padding: .5em .5em;
 }
 
 /* This is the goal block thingy that shows up while playing */
@@ -368,4 +381,44 @@ ul.row li {
 
 #user_goal_history table .even {
     background-color: #eee;
+}
+
+#split_login .jumbotron  {
+    background-color: #FFF;
+}
+
+#split_login .jumbotron h3 {
+    font-weight: 300;
+}
+
+#courses .btn-danger {
+    color: #FFF;
+    text-shadow: 0px 0px 1px #333;
+}
+
+#split_login .jumbotron a.btn {
+    color: #FFF;
+    font-weight: bold;
+    text-shadow: 0px 0px 2px #333;
+}
+
+#split_login .login_button {
+    margin-right: 1em;
+}
+
+#notifications {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.notification {
+    margin-bottom: 5px;
+    font-size: 85%;
+    position: relative;
+    display: block;
+    min-height: 25px;
+}
+
+.notification p.text {
+    margin-top: 1em;
 }
