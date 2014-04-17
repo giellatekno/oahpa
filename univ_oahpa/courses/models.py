@@ -761,4 +761,11 @@ post_delete.connect(course_relationship_postdelete, sender=CourseRelationship,
 pre_save.connect(user_presave, sender=User,
     dispatch_uid="univ_oahpa.courses.models.pre_save")
 
+import settings
+# Not using notification, but using notifications-hq
+if "notification" not in settings.INSTALLED_APPS and "notifications" in settings.INSTALLED_APPS:
+    from django_messages.models import Message
+    from .signals import new_message_notification
+    post_save.connect(new_message_notification, sender=Message)
+
 # vim: set ts=4 sw=4 tw=72 syntax=python :

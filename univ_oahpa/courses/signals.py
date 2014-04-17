@@ -187,4 +187,22 @@ def user_presave(sender, instance, **kwargs):
 
     return True
 
+@disable_for_loaddata
+def new_message_notification(sender, instance, signal, *args, **kwargs):
+    """
+    This function sends an email and is called via Django's signal framework.
+    """
+    from notifications import notify
+
+    if 'created' in kwargs and kwargs['created']:
+        try:
+            notify.send(
+                instance.sender,
+                recipient=instance.recipient,
+                verb=u'received a message',
+                action_object=instance,
+            )
+        except Exception, e:
+            pass
+
 # vim: set ts=4 sw=4 tw=72 syntax=python :
