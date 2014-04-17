@@ -16,18 +16,18 @@
     <question>
       <text>Мезде SUBJ MAINV</text>
       <element id="SUBJ">
-            <grammar tag="N+Sg+Nom+Def"/>
+            <grammar tag="N+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
-        <grammar tag="V+IV+Ind+Prs+ScSg3"/>  <!-- was V+Act+Ind+Prs+Sg3 --> 
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
         <id>ярсамс</id>
       </element>
     </question>
     <answer> 
       <text>SUBJ MAINV N-ABL</text>
-      <element game='morfa' id="N-ABL" task="yes">
-        <grammar tag="N+SP+Abl+Indef"/>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Par"/>
         <sem class="FOOD_DISH"/>
       </element>
     </answer>
@@ -37,44 +37,22 @@
     <question>
       <text>Мезде SUBJ MAINV</text>
       <element id="SUBJ">
-            <grammar tag="N+Sg+Nom+Def"/>
+            <grammar tag="N+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
-        <grammar tag="V+IV+Ind+Prs+ScSg3"/>
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
         <id>симемс</id>
       </element>
     </question>
     <answer> 
       <text>SUBJ MAINV N-ABL</text>
-      <element game='morfa' id="N-ABL" task="yes">
-        <grammar tag="N+SP+Abl+Indef"/>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Par"/>
         <sem class="DRINK"/>
       </element>
     </answer>
   </q>
-<!--  <q id="ntra1">
-    <qtype>N-TRA</qtype>
-    <question>
-      <text>Кодамо кельсэ SUBJ MAINV</text>
-      <element id="SUBJ">
-            <grammar tag="N+Sg+Nom+Def"/>
-        <sem class="PEOPLE"/>
-      </element>
-      <element id="MAINV">
-        <grammar tag="V+Act+Ind+Prs+Sg3"/>
-        <id>кортамс</id>
-      </element>
-    </question>
-    <answer> 
-      <text>SUBJ MAINV N-TRA</text>
-      <element game='morfa' id="N-TRA" task="yes">
-        <grammar tag="N+SP+Tra+Indef"/>
-        <sem class="LANGUAGE"/>
-      </element>
-    </answer>
-  </q>
--->
 <!--  <q id="NLat">
     <qtype>N-LAT</qtype>
    <question>
