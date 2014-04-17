@@ -53,8 +53,10 @@
    - TODO: next included in split login
 
 * TODO: course invitation links
+  - TODO: course invitation reset
   - TODO: course invitation link reset page should be confirmation, with
   	message of what will happen.
+  - TODO: make the page look nicer
 
 # Læreren oppretter konto som student: administrator gir rettigheter som lærer
 # Studenter oppretter konto som student og velger kurs: læreren godkjenner studentene sine
@@ -71,7 +73,6 @@
  their profile
 
  TODO: group notifications by kind so the menu isn't too crazy
-
 
  TODO: share link for course registration: allow instructor to change it to something new (just a new hash)
 

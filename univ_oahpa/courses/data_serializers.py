@@ -64,7 +64,7 @@ class CourseGoalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Goal
         fields = ('id', 'course', 'created_by', 'short_name',
-                  'combined_name', 'description', 'goals', 'threshold',
+                  'combined_name', 'goals', 'threshold',
                   'percent_goals_completed')
 
 class FeedbackLogSerializer(serializers.ModelSerializer):
