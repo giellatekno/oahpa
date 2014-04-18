@@ -198,8 +198,9 @@ def new_message_notification(sender, instance, signal, *args, **kwargs):
         try:
             notify.send(
                 instance.sender,
+                actor=instance.sender,
                 recipient=instance.recipient,
-                verb=u'received a message',
+                verb=u'sent you message',
                 action_object=instance,
             )
         except Exception, e:
