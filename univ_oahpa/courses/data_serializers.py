@@ -81,12 +81,32 @@ class StatusSerializer(serializers.HyperlinkedModelSerializer):
 
 from notifications.models import Notification
 
+from django.contrib.contenttypes.models import ContentType
+
+class TaggedObjectRelatedField(serializers.RelatedField):
+    """
+    A custom field to use for the `tagged_object` generic relationship.
+    """
+
+    def to_native(self, value):
+        """
+        Serialize tagged objects to a simple textual representation.
+        """
+        from django.contrib.auth.models import User
+        if isinstance(value, User):
+            return 'User: ' + value.username
+        raise Exception('Unexpected type of tagged object')
+
 class NotificationSerializer(serializers.ModelSerializer):
+
+    actor = TaggedObjectRelatedField('actor')
 
     class Meta:
         model = Notification
         fields = ('recipient',
                   'description',
+                  'actor',
+                  'target_object_id',
                   'level',
                   'public',
                   'recipient',

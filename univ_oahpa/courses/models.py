@@ -182,7 +182,7 @@ class Course(models.Model):
             self.token = self.generate_new_key()
         super(Course, self).save(*args, **kwargs)
 
-    def add_student(self, u, notify=True):
+    def add_student(self, u, send_notification=True):
         from django.contrib.auth.models import Group
         from notifications import notify
 
@@ -202,12 +202,14 @@ class Course(models.Model):
             course_instructors = [a.user for a in self.courserelationship_set.filter(relationship_type=instructor_group)]
 
             for recipient in course_instructors:
-                notify.send(
-                    u,
-                    recipient=recipient,
-                    verb=u'enrolled in the course',
-                    action_object=r,
-                )
+                if send_notification:
+                    notify.send(
+                        u,
+                        actor=u,
+                        recipient=recipient,
+                        verb=u'enrolled in the course',
+                        action_object=r,
+                    )
 
         return success, error_msg
 
