@@ -18,7 +18,7 @@ from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.contrib.auth.views import login, logout
 from django.core.urlresolvers import reverse
 
-from courses.views import cookie_login, cookie_logout
+from courses.auth_views import cookie_login, cookie_logout
 from courses.models import Course
 
 __all__ = ['CookieAuthMiddleware', 'CookieAuth']

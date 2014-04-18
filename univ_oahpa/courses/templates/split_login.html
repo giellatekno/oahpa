@@ -26,8 +26,8 @@
     </div>
     <div class="jumbotron">
       <h3>Login to continue</h3>
-      <a href="{% url courses.views.cookie_login %}" class="btn btn-success login_button">Student login</a>
-      <a href="/{{ URL_PREFIX }}/courses/standard_login/" class="btn btn-info login_button">Instructor login</a>
+      <a href="{% url courses.auth_views.cookie_login %}?next={{ next_page }}" class="btn btn-success login_button">Student login</a>
+      <a href="/{{ URL_PREFIX }}/courses/standard_login/?next={{ next_page }}" class="btn btn-info login_button">Instructor login</a>
     </div>
 {% endif %}
 

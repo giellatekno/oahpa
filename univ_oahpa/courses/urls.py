@@ -6,7 +6,7 @@ from django.conf.urls.defaults import *
 # @login_required decorator
 
 from django.contrib.auth.views import login, logout
-from courses.views import cookie_login, cookie_logout, split_login
+from courses.auth_views import cookie_login, cookie_logout, split_login
 
 # Have to rename login/ to standard_login/ so that the cookie login falls back
 # to standard login without unlimited redirects.  users who go to login/ and do
@@ -29,6 +29,7 @@ from views import ( courses_main
                   , courses_stats
                   , goal_history
                   , courses_coursegoal_construction
+                  , course_enroll
                   )
 
 from rest_framework import routers
@@ -58,10 +59,13 @@ urlpatterns += patterns('univ_oahpa.courses.views',
         name="courses_coursegoal_construction"),
     url(r'^create/goal/$', courses_goal_construction,
         name="courses_goal_construction"),
-    url(r'^invite/$', course_invite,
-        name="course_invite"),
+
+    url(r'^invite/$', course_invite, name="course_invite"),
+    url(r'^enroll/$', course_enroll, name="course_enroll"),
     url(r'^stats/$', courses_stats, name="courses_stats"),
+
     url(r'^api/', include(router.urls)),
+
     url(r'^(?P<cid>\d+)/(?P<uid>\d+)/$', instructor_student_detail),
     url(r'^$', courses_main, name="courses_index"),
 )

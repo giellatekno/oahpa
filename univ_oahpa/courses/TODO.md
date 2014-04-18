@@ -73,9 +73,10 @@
 
  TODO: fix design of messaging pages
 
- TODO: notify instructor when a student uses a join link to enter the class:
- present them options for what to do: delete notification, remove student, view
- their profile
+ TODO: improve notification for student enrollment
+   - data serialization is tricky for multiple object types to get username in
+   - include some sort of action link, that leads to user's course profile for
+   	 instructor, with unenroll option or something
 
  TODO: instructor will have more notifications, need to change the design for
  them-- students see the simple format, instructors get table?

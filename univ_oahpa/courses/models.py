@@ -182,6 +182,35 @@ class Course(models.Model):
             self.token = self.generate_new_key()
         super(Course, self).save(*args, **kwargs)
 
+    def add_student(self, u, notify=True):
+        from django.contrib.auth.models import Group
+        from notifications import notify
+
+        student_group = Group.objects.get(name='students')
+        instructor_group = Group.objects.get(name='instructors')
+
+        success = True
+        error_msg = False
+
+        try:
+            r = self.courserelationship_set.create(relationship_type=student_group, user=u)
+        except Exception, e:
+            success = False
+            error_msg = 'Already exists'
+
+        if success:
+            course_instructors = [a.user for a in self.courserelationship_set.filter(relationship_type=instructor_group)]
+
+            for recipient in course_instructors:
+                notify.send(
+                    u,
+                    recipient=recipient,
+                    verb=u'enrolled in the course',
+                    action_object=r,
+                )
+
+        return success, error_msg
+
     @property
     def invitation_link(self):
         from settings import URL_PREFIX

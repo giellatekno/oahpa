@@ -6,7 +6,6 @@ from .models import Goal, UserGoalInstance
 
 URL_PREFIX = settings.URL_PREFIX
 
-
 def render_to_response(*args, **kwargs):
     """ Append an attribute onto the response so that we can grab the context
     from it in the track decorator. It has to be an attribute so that it
@@ -24,82 +23,6 @@ def render_to_response(*args, **kwargs):
 from django.contrib.auth.decorators import login_required
 
 from models import UserProfile, Course, UserGrade, Activity
-
-def split_login(request, next_page=None):
-
-    if not next_page:
-        # TODO: change next url for deep links
-        next_page = '/%s/courses/' % URL_PREFIX
-
-    c = {}
-    c['next_page'] = next_page
-
-    template = 'split_login.html'
-    return render_to_response(template,
-                              c,
-                              context_instance=RequestContext(request))
-
-
-def cookie_login(request, next_page=None, required=False, **kwargs):
-    """ Check for existing site.uit.no cookie
-    """
-    from django.conf import settings
-    from django.contrib import auth
-
-    if not next_page:
-        # TODO: change next url for deep links
-        next_page = '/%s/courses/' % URL_PREFIX
-    if request.user.is_authenticated():
-        message = "You are logged in as %s." % request.user.username
-        request.user.message_set.create(message=message)
-        return HttpResponseRedirect(next_page)
-
-    matching_cookies = [(c, v) for c, v in request.COOKIES.iteritems() 
-                                if c.startswith(settings.COOKIE_NAME)]
-
-    try:
-        cookie_name, wp_cookie = matching_cookies[0]
-        wp_username, session, session_hex = wp_cookie.split('%7C')
-        cookie_uid = wp_username
-    except:
-        cookie_uid = False
-
-    if cookie_uid:
-        user = auth.authenticate(cookie_uid=cookie_uid)
-        if user is not None:
-            auth.login(request, user)
-            name = user.username
-            message = "Login succeeded. Welcome, %s." % name
-            user.message_set.create(message=message)
-            return HttpResponseRedirect(next_page)
-        # elif settings.CAS_RETRY_LOGIN or required:
-            # return HttpResponseRedirect(_login_url(service))
-        else:
-            error = "<h1>Forbidden</h1><p>Login failed.</p>"
-            return HttpResponseForbidden(error)
-    else:
-        return HttpResponseRedirect('/%s/courses/standard_login/' % URL_PREFIX) 
-        # TODO: check
-
-
-def cookie_logout(request, next_page=None, **kwargs):
-    """
-    """
-
-    from django.contrib.auth import logout
-
-    logout(request)
-
-    # TODO: redirect to kursa logout link
-
-    # This can't redirect to cookie_logout, or else there are unlimited
-    # redirects.
-
-    if not next_page:
-        next_page = '/%s/courses/logout/' % URL_PREFIX
-
-    return HttpResponseRedirect(next_page)
-
 
 def trackGrade(gamename, request, c):
     """ Takes a name of the game, request, and the context, and produces
@@ -432,3 +355,69 @@ def course_invite(request):
     return render_to_response(template,
                               c,
                               context_instance=RequestContext(request))
+
+def course_enroll(request):
+    from django.core.urlresolvers import reverse
+
+    # invite stored in 'key' parameter.
+    # http://oahpa.no/davvi/courses/enroll/?key=NDg.BioJAg.E2-Y6uBwr6_35Qhk03uBamTTnHc
+
+
+    # TODO: if user isn't logged in, store the invite key in the session
+    # before redirecting them to log in (we assume they already have a
+    # user account because of cookie auth).
+
+    # TODO: when user lands on this page, pop the stored key if it
+    # exists, and key isn't set.
+
+    # TODO: enroll user in course
+
+    # TODO: notify instructors of enrollment changes (post-save signal
+    # instead?)
+    enrollment_key = request.GET.get('key', False)
+    session_key = False
+
+    if request.user.is_anonymous():
+        request.session['enrollment_key'] = enrollment_key
+        next_page = '/%s/courses/enroll/' % URL_PREFIX
+        return HttpResponseRedirect(reverse('courses_login') + '?next=' + next_page)
+
+    if not enrollment_key:
+        try:
+            enrollment_key = request.session.get('enrollment_key')
+            session_key = True
+        except:
+            pass
+
+    if enrollment_key:
+        course = Course.objects.get(token=enrollment_key)
+    else:
+        course = False
+
+    enrolled = False
+
+    # notify these when the enrollment works
+    enrolled, error = course.add_student(request.user)
+
+    c = {
+        'enrollment_key': enrollment_key,
+        'session_key': session_key,
+        'target_course': course,
+        'incoming_user': request.user,
+    }
+
+    if enrolled:
+        try:
+            enrollment_key = request.session.get('enrollment_key')
+            session_key = True
+        except:
+            pass
+    else:
+        c['error'] = error
+
+
+    return render_to_response('course_enroll.html',
+                              c,
+                              context_instance=RequestContext(request))
+
+
