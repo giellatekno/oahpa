@@ -267,9 +267,9 @@ VTYPE_CHOICES = (
 )
 
 VERB_QUESTION_ANSWER = {
-	'V-PRS': [('+V+TV+Der/Омс+Inf+Ill', 'V+Ind+Prs+Person-Number')],
-	'V-PRT1': [('+V+TV+Der/Омс+Inf+Ill', 'V+Ind+Prt1+Person-Number')],
-	'V-PRT2': [('+V+TV+Der/Омс+Inf+Ill', 'V+Ind+Prt2+Person-Number')],
+	'V-PRS': [('+V+IV+Der/Омс+Inf+Ill', 'V+Ind+Prs+Person-NumberSC')], # was 'V+Ind+Prs+Person-Number'
+	'V-PRT1': [('+V+IV+Der/Омс+Inf+Ill', 'V+Ind+Prt1+Person-NumberSC')], # was 'V+Ind+Prt1+Person-Number'
+	'V-PRT2': [('+V+IV+Der/Омс+Inf+Ill', 'V+Ind+Prt2+Person-NumberSC')], # was 'V+Ind+Prt2+Person-Number'
 #	'PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
 #	'PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
 #	'PRF': [('V+Inf', 'V+PrfPrc')],
