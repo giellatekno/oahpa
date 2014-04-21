@@ -1,46 +1,43 @@
 {% extends "django_messages/base.html" %} 
 {% load i18n %} 
+{% block messages_subtitle %}
+{% trans "Compose Message"%}
+{% endblock %}
 {% block messages_content %} 
-<h1>{% trans "Compose Message"%}</h1>
 
-<form action="" method="post" role="form" class="form-horizontal">
+<form action="" method="post" role="form">
     {% csrf_token %} 
-    {{ form.non_field_errors }}
-
-    <br class="clearfix" />
+    {% if form.non_field_errors %}
     <div class="form-group">
+        <label class="col-sm-2 col-md-2 col-lg-2 control-label">Errors</label>
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            {{ form.non_field_errors }}
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="form-group">
+        <label for="id_recipient">To:</label>
+        <br />
+        {{ form.recipient }}
         {{ form.recipient.errors }}
-        <label class="col-sm-2 col-md-2 col-lg-2 control-label" for="id_recipient">Recipient:</label>
-        <div class="col-sm-6 col-md-6 col-lg-6">
-            {{ form.recipient }}
-        </div>
     </div>
-    <br class="clearfix" />
 
     <div class="form-group">
+        <label for="id_subject">Subject:</label>
+        <br />
+        {{ form.subject }}
         {{ form.subject.errors }}
-        <label class="col-sm-2 col-md-2 col-lg-2 control-label" for="id_subject">Email subject:</label>
-        <div class="col-sm-6 col-md-6 col-lg-6">
-            {{ form.subject }}
-        </div>
     </div>
 
-    <br class="clearfix" />
-
     <div class="form-group">
+        <label for="id_body">Body:</label>
+        {{ form.body }}
         {{ form.body.errors }}
-        <label class="col-sm-2 col-md-2 col-lg-2 control-label" for="id_body">Body:</label>
-        <div class="col-sm-6 col-md-6 col-lg-6">
-            {{ form.body }}
-        </div>
     </div>
 
-    <br class="clearfix" />
-
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-6">
-            <input type="submit" value="{% trans "Send" %} &raquo;"/>
-        </div>
+        <input type="submit" value="{% trans "Send" %} &raquo;"/>
     </div>
 </form>
 

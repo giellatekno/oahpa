@@ -2,10 +2,11 @@
 {% load i18n %} 
 {% load url from future %}
 
+{% block messages_subtitle %}Inbox{% endblock %}
 {% block messages_content %}
-<h3>{% trans "Inbox" %}</h3>
 {% if message_list %} 
 <table class="messages">
+	<h3>&nbsp;</h3>
     <thead>
         <tr><th>{% trans "Sender" %}</th><th>{% trans "Subject" %}</th><th>{% trans "Received" %}</th><th>{% trans "Action" %}</th></tr>
     </thead>

@@ -80,6 +80,9 @@
 
  TODO: instructor will have more notifications, need to change the design for
  them-- students see the simple format, instructors get table?
+ 
+   - notifications for messages have wrong subject: you want to know who sent
+   	 you a message
 
  TODO: group notifications by kind so the menu isn't too crazy
 

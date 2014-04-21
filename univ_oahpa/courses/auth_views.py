@@ -5,6 +5,8 @@ from django.conf import settings
 from .models import Goal, UserGoalInstance
 from .views import render_to_response
 
+from settings import URL_PREFIX
+
 def split_login(request):
 
     next_page = request.GET.get('next', False)

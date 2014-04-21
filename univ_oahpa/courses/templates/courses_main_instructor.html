@@ -37,7 +37,13 @@ TODO: internationalization strings
                     <li><a href="/{{ URL_PREFIX }}/courses/?student_view=True">{% trans "Grade summary" %}</a></li>
                     <li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
                     <li><a href="/{{ URL_PREFIX }}/courses/invite/">{% trans "Invite students" %}</a></li>
-			        <li><a href="/{{ URL_PREFIX }}/messages/inbox/">messages</a></li>
+                    {% load inbox %}
+                    {% inbox_count as in_count %}
+                    {% if in_count > 0 %}
+			            <li><a href="/{{ URL_PREFIX }}/messages/inbox/">Messages <strong>({{ in_count }})</strong></a></li>
+			        {% else %}
+			            <li><a href="/{{ URL_PREFIX }}/messages/inbox/">Messages</a></li>
+			        {% endif %}
                     {% endif %}
                 </ul>
                 <h4>Notifications</h4>
@@ -63,7 +69,7 @@ TODO: internationalization strings
 	                    <div class="col-md-12 col-sm-12 col-lg-12">
                             <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_coursegoal_construction %}">Create a course goal</a>
                             <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_goal_construction %}">Create a goal</a>
-                            <a id="create_self_goal" class="btn btn-success" href="#">Send message</a>
+                            <a id="create_self_goal" class="btn btn-success" href="/{{ URL_PREFIX }}/messages/compose/">Send message</a>
                         </div>
                     </div>
 
