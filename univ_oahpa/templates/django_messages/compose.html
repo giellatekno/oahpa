@@ -1,5 +1,65 @@
 {% extends "django_messages/base.html" %} 
 {% load i18n %} 
+{% block extrajs %}
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/courses.css"/>
+	<link rel="stylesheet" href="{{ MEDIA_URL }}/css/token-input.css" type="text/css" />
+	<link rel="stylesheet" href="{{ MEDIA_URL }}/css/token-input-facebook.css" type="text/css" />
+    <script type="text/javascript" src="{{ MEDIA_URL }}/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}/js/jquery.tokeninput.js"></script>
+
+
+    <script type="text/javascript">
+        // https://github.com/philippWassibauer/django-threaded-messages/blob/387b6b766e8c55e1a354041e2688d076b2cbb260/threaded_messages/templates/django_messages/compose.html
+        $().ready(function() {
+            var recipient =  $("#id_recipient").val();
+            $("#id_recipient").val("")
+            $("#id_recipient").tokenInput("{% url recipient_search %}?format=json", {
+                classes: {
+                    tokenList: "token-input-list-facebook",
+                    token: "token-input-token-facebook",
+                    tokenDelete: "token-input-delete-token-facebook",
+                    selectedToken: "token-input-selected-token-facebook",
+                    highlightedToken: "token-input-highlighted-token-facebook",
+                    dropdown: "token-input-dropdown-facebook",
+                    dropdownItem: "token-input-dropdown-item-facebook",
+                    dropdownItem2: "token-input-dropdown-item2-facebook",
+                    selectedDropdownItem: "token-input-selected-dropdown-item-facebook",
+                    inputToken: "token-input-input-token-facebook"
+                },
+                {% if recipient %}
+                prePopulate: [{id:recipient, name:recipient}],
+                {% endif %}
+                hintText: "{% trans "Type in a search term" %}",
+                noResultsText: "{% trans "No results" %}",
+                searchingText: "{% trans "Searching" %}...",
+                queryParam: "term",
+            });
+             /*
+            $( "#id_recipient" ).autocomplete({
+                minLength: 2,
+                source: "{% url recipient_search %}?format=json",
+                focus: function( event, ui ) {
+                    return false;
+                },
+                select: function( event, ui ) {
+                    $("#id_recipient").val(ui.item.username)
+                }
+            })
+            .data( "autocomplete" )._renderItem = function( ul, item ) {
+                return $( "<li></li>" )
+                    .data( "item.autocomplete", item )
+                    .append( "<a href='"+ item.url +"'>"+
+                            "<div class='icon'><img src='"+item.img+"' width='50px' height='50px' /></div>" +
+                            "<div class='description'>"+item.name + "</div><div style='clear: both;'></div></a>" )
+                    .appendTo( ul );
+            };   */
+               
+            $("#id_recipient").focus()
+        });
+    </script>
+{% endblock %}
 {% block messages_subtitle %}
 {% trans "Compose Message"%}
 {% endblock %}
@@ -37,7 +97,7 @@
     </div>
 
     <div class="form-group">
-        <input type="submit" value="{% trans "Send" %} &raquo;"/>
+        <input class="btn btn-success" type="submit" value="{% trans "Send" %} &raquo;"/>
     </div>
 </form>
 
