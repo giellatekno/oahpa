@@ -9,9 +9,13 @@ TODO: link in user interface
 {% endcomment %}
 
 {% block extrajs %}
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
 	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/courses.css"/>
+
+	<script src="{{ MEDIA_URL }}/js/angular.min.js" type="text/javascript"></script>
+	<script src="{{ MEDIA_URL }}/js/angular-cookies.js" type="text/javascript"></script>
+	<script src="{{ MEDIA_URL }}/js/coursepage.js" type="text/javascript"></script> 
 {% endblock %}
 
 {% block page_class %}fixed{% endblock %}
@@ -19,58 +23,74 @@ TODO: link in user interface
 
 {% block content %}
 	{# Add blocktrans and trans tags #}
-	<div id="courses" class="bootstrap-styles">
-	    <div class="container col-md-12 col-sm-12 col-lg-12">
+	<div id="courses" class="bootstrap-styles" ng-app="CoursePage">
+	    <div class="container">
 	        <div class="row">
-		        <ul id="subnav" class="nav nav-tabs">
-			        <li class="active"><a href="/{{ URL_PREFIX }}/courses/">Courses &amp; Goals</a></li>
-			        <li><a href="/{{ URL_PREFIX }}/courses/stats/">stats</a></li>
-			        <li><a href="/{{ URL_PREFIX }}/messages/inbox/">messages</a></li>
-			        {% if profile.is_instructor %}
-			        <li><a href="/{{ URL_PREFIX }}/courses/">{% trans "Course overview" %}</a></li>
-			        {% endif %}
-			        {% if user.is_staff %}
-			        <li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
-			        {% endif %}
-			        <li><a href="{% url univ_oahpa.courses.urls.logout %}">{% trans "Log out" %}</a></li>
-		        </ul>
-	        </div>
+	            <div class="col-md-7 col-sm-7 col-lg-7">
 
-		    <div class="row">
-		        <div class="col-md-12">
+	                <div class="row">
+		                <ul id="subnav" class="nav nav-tabs">
+			                <li class="active"><a href="/{{ URL_PREFIX }}/courses/">Courses &amp; Goals</a></li>
+			                <li><a href="/{{ URL_PREFIX }}/courses/stats/">stats</a></li>
+			                <li><a href="/{{ URL_PREFIX }}/messages/inbox/">messages</a></li>
+			                {% if profile.is_instructor %}
+			                <li><a href="/{{ URL_PREFIX }}/courses/">{% trans "Course overview" %}</a></li>
+			                {% endif %}
+			                {% if user.is_staff %}
+			                <li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
+			                {% endif %}
+			                <li><a href="{% url univ_oahpa.courses.urls.logout %}">{% trans "Log out" %}</a></li>
+		                </ul>
+	                </div>
 
-		            <h3>{% trans 'Welcome' %}, {{ user.username }}!</h3>
+		            <div class="row">
+		                <div class="col-md-12 col-sm-12 col-lg-12">
 
-			        <div class="goals_overview">
-			            <h4 class="section_header">{% trans "Your goals" %}</h4>
-		                {% if user_defined_goals|length > 0 %}
-			                {% with user_defined_goals as goal_set %}
-				                {% include 'goal_table_list.html' %}
-			                {% endwith %}
-			            {% endif %}
-			            <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_goal_construction %}">Create a goal</a>
-			        </div>
+		                    <div class="col-md-7 col-sm-7 col-lg-7">
+		                        <h3>{% trans 'Welcome' %}, {{ user.username }}!</h3>
+		                    </div>
+		                    <div class="col-md-5 col-sm-5 col-lg-5">
+                                {% include 'user_notifications_block.html' %}
+                            </div>
+                        </div>
+                    </div>
 
-		            {% if is_student %}
+		            <div class="row">
+		                <div class="col-md-12 col-sm-12 col-lg-12">
+			                <div class="goals_overview">
+			                    <h4 class="section_header">{% trans "Your personal goals" %}</h4>
+		                        {% if user_defined_goals|length > 0 %}
+			                        {% with user_defined_goals as goal_set %}
+				                        {% include 'goal_table_list.html' %}
+			                        {% endwith %}
+			                    {% endif %}
+			                    <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_goal_construction %}">Create a goal</a>
+			                </div>
 
-		                <hr />
+		                    {% if is_student %}
 
-			            <div class="courselist bootstrap-styles">
-			                <h4 class="section_header">{% trans "Your course goals" %} </h4>
-			                {% for course in courses %}
-			                    {% include 'courses_course_block.html' %}
-			                {% endfor %}
-			            </div>
-		            {% else %}
-		                <div class="instructor_block">
-		                    <p>{% trans "You are a course instructor." %} {% trans "To view your own grade summary," %} <a href="/{{ URL_PREFIX }}/courses/?student_view=True">{% trans "click here" %}</a></p>
-			                    <p><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "View students' grades" %}</a></p>
-			            </div>
-		            {% endif %}
+		                        <hr />
+
+			                    <div class="courselist bootstrap-styles">
+			                        <h4 class="section_header">{% trans "Your course goals" %} </h4>
+			                        {% for course in courses %}
+			                            {% include 'courses_course_block.html' %}
+			                        {% endfor %}
+			                    </div>
+		                    {% else %}
+		                        <div class="instructor_block">
+		                            <p>{% trans "You are a course instructor." %} {% trans "To view your own grade summary," %} <a href="/{{ URL_PREFIX }}/courses/?student_view=True">{% trans "click here" %}</a></p>
+			                            <p><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "View students' grades" %}</a></p>
+			                    </div>
+		                    {% endif %}
+		                </div>
+		            </div>
+
 		        </div>
-		    </div>
+	        </div>
 		</div>
 	</div>
 
 {% endblock %}
 
+{# vim: set ts=4 sw=4 tw=0 syntax=htmldjango : #}

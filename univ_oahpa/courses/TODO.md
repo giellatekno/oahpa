@@ -68,9 +68,13 @@
 ## Læraren sender lenkje, og studentane blir registrert på rett kurs
 # Studentar som ikkje er studentar på eit visst kurs kan lage sine eigne kursmål / velje mal
 
+ TODO: student user: stats page needs to also include links to course goal
+ history, just to make this more apparent. currently only has general stats
+
  TODO: autocomplete on message thing needs css tweaks
 
- TODO: course instructors can add all students
+ TODO: course instructors can add all students to message subject, students see
+ who their instructors are.
 
  TODO: student can send a message to instructor(s) via easy link?
 
