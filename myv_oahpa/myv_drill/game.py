@@ -675,6 +675,8 @@ class BareGame(Game):
 							Q(tense=tense) & \
 							Q(mood=mood) & \
 							Q(infinite=infinite)
+			if tense in ['Prs', 'Prt1', 'Prt2'] and mood == 'Ind': # Only intransitive verbs in the games PRS, PRT1 and PRT2 
+				TAG_QUERY = TAG_QUERY & Q(string__contains='+IV+')
 
 			if tense != 'Prs':
 				TAG_EXCLUDES = Q(string__contains='ConNeg')
