@@ -3,7 +3,7 @@ This page contains documentation for programmers. See also the
 [Numra for developers|http://oahpa.no/addlang/developernumra.html] page, 
 which contains documentations for linguists making the automata for the actual languages.
 
-The files are, as always, in ped/LANG_oahpa/.
+The files are, as always, in ped/LANG_oahpa/, except for North Sámi where the the prefix ''univ'' is used instead of sme.
 
 !!!Class inheritance structure
 
@@ -11,7 +11,7 @@ The class inheritance structure for the three Numra modes ''Numra'', ''Klokka''
 and ''Dato'' is the same in both the classes in LANG_drill/game.py and LANG_drill/forms.py,
 with the classes getting progressively simpler, where Dato is the simplest. 
 (Note: Exchange "LANG" with the relevant language code, note that for sma it is smadrill and
-for sme it is just drill)
+for sme it is univ_drill)
 
 Overall, methods and classes in LANG_drill/views.py call methods in LANG_drill/game.py, 
 which creates LANG_drill/forms.py classes. This pattern is found throughout the rest 
@@ -20,7 +20,7 @@ the Forms classes handle the creation of form objects and their validation, and
 the Game classes handle evaluation of whether answers are correct or not as well 
 as the selection of words or numbers from the FSTs.
 
-There is room for some decoupling of functionality in LANG_drill/forms.py and LANG_drill/games.py as development progresses.
+There is room for some decoupling of functionality in LANG_drill/forms.py and LANG_drill/game.py as development progresses.
 
 * Common for all Numra-games:
 ** settings.py: FST_DIRECTORY, L1
@@ -39,7 +39,7 @@ There is room for some decoupling of functionality in LANG_drill/forms.py and LA
 * Klokka
 * forms.py:
 * game.py: Klokka (subclass of NumGame)
-** Subclass contains filenames of the question/answer FSTs, and depends on settigns.FST_DIRECTORY
+** Subclass contains filenames of the question/answer FSTs, and depends on settings.FST_DIRECTORY
 ** Subclass of NumGame, results in need to only override NumGame.get_db_info and NumGame.create_form
 
 * Dato
@@ -59,13 +59,13 @@ There is room for some decoupling of functionality in LANG_drill/forms.py and LA
     the rest are extended via the {% extends %} template tag.
 
 {{{
-templates/smaoahpa_main.html
-	templates/smaoahpa.html
-		smadrill/templates/game.html
-			smadrill/templates/num.html
-				smadrill/templates/num_ord.html
-				smadrill/templates/clock.html
-				smadrill/templates/dato.html
+templates/LANG_oahpa_main.html
+	templates/LANG_oahpa.html
+		LANG_drill/templates/game.html
+			LANG_drill/templates/num.html
+				LANG_drill/templates/num_ord.html
+				LANG_drill/templates/clock.html
+				LANG_drill/templates/dato.html
 }}}
 
 !!!Intro
@@ -80,12 +80,12 @@ The transducers behind numra are (where $LANG is the iso code for your language)
 
 The files governing the four programs are ''num.html, num_ord.html, clock.html, date.html''. These files are found here:
 
-* for sme: ''ped/univ_oahpa/drill/templates/'', 
+* for sme: ''ped/univ_oahpa/univ_drill/templates/'', 
 * for sma: ''pedversions/smaoahpa/smadrill/templates/''
 * for all other languages: ''ped/LANG_oahpa/LANG_drill/templates/'', where
 ** LANG = the iso code of the language in question
 
-These files refer to the fsts on gtoahpa and gtlab, in the opt catalogue there. Oahpe versions
+These files refer to the fsts on gtoahpa and gtlab, in the opt catalogue there. Oahpa versions
 with an url ''testing.oahpa.no'' are on __gtlab__, 
 versions with url ''oahpa.no'' are on __gtoahpa__.
 
@@ -99,7 +99,7 @@ versions with url ''oahpa.no'' are on __gtoahpa__.
 
 !!Generating questions
 
-# generere spm och facit (create_form)
+# generate a question and the correct answer(s) (create_form)
 ##  - hours = random(0..23)
 ##  - minutes = 
 ### random(0, 30)  (level=easy)
@@ -109,12 +109,12 @@ versions with url ''oahpa.no'' are on __gtoahpa__.
 ##   - create a KlokkaQuestion object where
 ###        question = hours:minutes
 ###        acceptable answers = norm_list
-###        facit = norm_list 
+###        correct answer(s) = norm_list 
            (in the new setup this should be the output of the facit-gen-fst 
            which generates exactly one variant)
 
 !!Analysing answers
-# analysere svar (check_answer)
+# analyse the answer (check_answer)
 ## - user's answer is piped to ''lookup transcriptor-text2clock-desc.xfst > num_list''
 ## - if there is a (textual time, numeric time) pair in num_list such that 
       user's answer = textual time and 
