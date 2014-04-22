@@ -11,7 +11,7 @@
 
 
     <script type="text/javascript">
-        // https://github.com/philippWassibauer/django-threaded-messages/blob/387b6b766e8c55e1a354041e2688d076b2cbb260/threaded_messages/templates/django_messages/compose.html
+        // https://github.com/philippWassibauer/django-threaded-messages/ ... compose.html
         $().ready(function() {
             var recipient =  $("#id_recipient").val();
             $("#id_recipient").val("")
@@ -36,26 +36,7 @@
                 searchingText: "{% trans "Searching" %}...",
                 queryParam: "term",
             });
-             /*
-            $( "#id_recipient" ).autocomplete({
-                minLength: 2,
-                source: "{% url recipient_search %}?format=json",
-                focus: function( event, ui ) {
-                    return false;
-                },
-                select: function( event, ui ) {
-                    $("#id_recipient").val(ui.item.username)
-                }
-            })
-            .data( "autocomplete" )._renderItem = function( ul, item ) {
-                return $( "<li></li>" )
-                    .data( "item.autocomplete", item )
-                    .append( "<a href='"+ item.url +"'>"+
-                            "<div class='icon'><img src='"+item.img+"' width='50px' height='50px' /></div>" +
-                            "<div class='description'>"+item.name + "</div><div style='clear: both;'></div></a>" )
-                    .appendTo( ul );
-            };   */
-               
+
             $("#id_recipient").focus()
         });
     </script>

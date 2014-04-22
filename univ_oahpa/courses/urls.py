@@ -30,6 +30,7 @@ from views import ( courses_main
                   , goal_history
                   , courses_coursegoal_construction
                   , course_enroll
+                  , recipient_search
                   )
 
 from rest_framework import routers
@@ -68,6 +69,8 @@ urlpatterns += patterns('univ_oahpa.courses.views',
 
     url(r'^(?P<cid>\d+)/(?P<uid>\d+)/$', instructor_student_detail),
     url(r'^$', courses_main, name="courses_index"),
+
+    url(r"^recipient-search/$", recipient_search, name="recipient_search"),
 )
 
 # vim: set ts=4 sw=4 tw=72 syntax=python :

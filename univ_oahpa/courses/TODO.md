@@ -68,23 +68,20 @@
 ## Læraren sender lenkje, og studentane blir registrert på rett kurs
 # Studentar som ikkje er studentar på eit visst kurs kan lage sine eigne kursmål / velje mal
 
+ TODO: autocomplete on message thing needs css tweaks
 
- TODO: student can email instructor via easy link?
+ TODO: course instructors can add all students
 
- TODO: fix design of messaging pages
+ TODO: student can send a message to instructor(s) via easy link?
 
  TODO: improve notification for student enrollment
-   - data serialization is tricky for multiple object types to get username in
    - include some sort of action link, that leads to user's course profile for
    	 instructor, with unenroll option or something
 
  TODO: instructor will have more notifications, need to change the design for
  them-- students see the simple format, instructors get table?
  
-   - notifications for messages have wrong subject: you want to know who sent
-   	 you a message
-
- TODO: group notifications by kind so the menu isn't too crazy
+   - group notifications by kind so the menu isn't too crazy
 
  TODO: share link for course registration: allow instructor to change it to something new (just a new hash)
 
@@ -188,6 +185,9 @@ installed apps:
     # ... 
     'notifications',
     'django_messages',
+
+TEMPLATE_LOADERS:
+	'django.template.loaders.app_directories.Loader',
 
 ## New packages in use
 

@@ -421,3 +421,32 @@ def course_enroll(request):
                               context_instance=RequestContext(request))
 
 
+
+@login_required
+def recipient_search(request):
+	# https://github.com/philippWassibauer/django-threaded-messages
+    from django.contrib.auth.models import User
+    from django.db.models import Q
+
+    from django.core.urlresolvers import reverse
+    from django.http import HttpResponse
+    import simplejson
+
+    # TODO: filter by user's fellow students/instructors/etc.
+    term = request.GET.get("term")
+    users = User.objects.filter(Q(first_name__icontains=term)|
+                                Q(last_name__icontains=term)|
+                                Q(username__icontains=term)|
+                                Q(email__icontains=term))
+    if request.GET.get("format") == "json":
+        data = []
+        for user in users:
+            # avatar_img_url = avatar_url(user, size=50)
+            data.append({"id": user.username,
+                         # "url": reverse("profile_detail",args=(user.username,)),
+                         "name": "%s %s"%(user.first_name, user.last_name),
+                         # "img": avatar_img_url
+                        })
+
+        return HttpResponse(simplejson.dumps(data),
+                            mimetype='application/json')
