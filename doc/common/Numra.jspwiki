@@ -1,12 +1,26 @@
-Documentation for programmers
+
+This page contains documentation for programmers. See also the 
+[Numra for developers|http://oahpa.no/addlang/developernumra.html] page, 
+which contains documentations for linguists making the automata for the actual languages.
+
+The files are, as always, in ped/LANG_oahpa/.
 
 !!!Class inheritance structure
 
-The class inheritance structure for Numra, Klokka and Dato is the same in both the classes in smadrill.game and smadrill.forms, with the classes getting progressively simpler, where Dato is the simplest.
+The class inheritance structure for the three Numra modes ''Numra'', ''Klokka'' 
+and ''Dato'' is the same in both the classes in LANG_drill/game.py and LANG_drill/forms.py,
+with the classes getting progressively simpler, where Dato is the simplest. 
+(Note: Exchange "LANG" with the relevant language code, note that for sma it is smadrill and
+for sme it is just drill)
 
-Overall, methods and classes in smadrill.views call methods in smadrill.game, which creates smadrill.forms classes. This pattern is found throughout the rest of the game types. Views also handle POST/GET responses and requests, Forms handle the creation of form objects and their validation, and Game classes handle evaluation of whether answers are correct or not as well as the selection of words or numbers from the FSTs.
+Overall, methods and classes in LANG_drill/views.py call methods in LANG_drill/game.py, 
+which creates LANG_drill/forms.py classes. This pattern is found throughout the rest 
+of the game types. The Views classes also handle POST/GET responses and requests, 
+the Forms classes handle the creation of form objects and their validation, and 
+the Game classes handle evaluation of whether answers are correct or not as well 
+as the selection of words or numbers from the FSTs.
 
-There is room for some decoupling of functionality in smadrill.forms and smadrill.games as development progresses.
+There is room for some decoupling of functionality in LANG_drill/forms.py and LANG_drill/games.py as development progresses.
 
 * Common for all Numra-games:
 ** settings.py: FST_DIRECTORY, L1
