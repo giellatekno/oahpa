@@ -1,131 +1,127 @@
 ﻿# Current development:
 
- * TODO: generalize courses pages navigation
+## Oahpa
 
- * TODO: messages: run markdown on everything
+TODO: Dyplinking for Sahka 
 
- * TODO: try to relabel as much as possible, goal -> task / delmål
-          coursegoal -> (course)goal
+## Goals / Tasks
 
- * TODO: course goal edit thing should split into two columns too.
+TODO: goal edit page:  delete needs feedback
 
- * TODO: table overview format, description could be automatically generated
-   from settings and made "pretty" from what exists already
+TODO: stem-type check boxes do not work yet in task construction
 
-    {{{
-        Nr     Task        Description               Progress            Sets answ
-             (nå: Goal) 
-        1    Lære tall                                                   samandrag av det under
-        1.1 Tall 1         Numra string-tall 0-100   (andel av mål)      hvor mange gang gjort   
-        1.2 Tall 2         Numra tall-string 0-100   (andel av mål)      hvor mange gang gjort   
-        1.3 Klokke         Numra string-tall 0-100   (andel av mål)      hvor mange gang gjort   
-        1.4 Dato           Numra tall-string 0-100   (andel av mål)      hvor mange gang gjort    
+TODO: course goal edit page: link to create new associated task, save
+coursegoal automatically, provide user edit window with coursegoal ID so that
+this will be added on save
 
-        2    Bøye verb                                                   samandrag av det under
-        2.1 Presens        Morfa adfasdfs             (andel av mål)     hvor mange gang gjort   
-        2.2 Preteritum     Morfa adfasdfs             (andel av mål)     hvor mange gang gjort   
-    }}}
+TODO: progress on set requires user to do 5/5 + 1, for actual completion.
+slightly confusing, fix
 
-* Leksa: Words to work on: Ord som brukeren ikke klarer, kan "samles" til et valg: 
-  * Morfa: Liste med de siste 15 ordene som var feil, med diff (slik som nå)
+TODO: goal progression consistency
+  - increment round if user doesn't answer at all but clicks on new set
 
-* TODO: table formatting 
-  + now:: success -- score -- correct/first try rounds -- last_attempt
-  + TODO: success -- score -- first try/later tries -- rounds -- last_attempt
-  + evt. kan vi kalle "score" for "correct"
-  + also, the swedish cake needs work:
-    * der correct = 12, first try = 11 (for totalt 12), dvs. brøk 12/11
-    * der first try = 11, later tries = 1, dvs. brøk 11/1
-  + Kor mange gonger har studenten arbeidd
+  - prevent refresh and blank rounds: need a form set count with a unique hash
+    or something, so if submit count for that hash goes above 1, we know that
+    it's resubmitted
 
-* TODO: task/delmål (http://testing.oahpa.no/courses_davvi/courses/create/goal/)
+## Statistics
+
+TODO: incorrect word help
+  - Leksa: Words to work on: Ord som brukeren ikke klarer, kan "samles" til et valg: 
+  - Morfa: Liste med de siste 15 ordene som var feil, med diff (slik som nå)
+
+TODO: task/delmål (http://testing.oahpa.no/courses_davvi/courses/create/goal/)
  * Kor langt er studenten frå delmålet (oppgitt i prosent, t.d. 71%, for 5 av 7 godkjente sett)
  * Korrektprosent = 80% (dvs. ein feil per fem-sett) er default
  * Sets answered = Minimum sets sets tried ==> Sets accomplished / achieved / fulfilled / accepted 
 
-* TODO: Dyplinking for Sahka 
- 
+TODO: history chart also needs total exercises answered
+
+
+## Feedback stuff
+
+TODO: feedback click tracking
+
+## Messaging / Notifications
+
+TODO: course instructors can add all students to message subject, students see
+who their instructors are.
+
+TODO: student can send a message to instructor(s) via easy link?
+
+TODO: improve notification for student enrollment
+  - include some sort of action link, that leads to user's course profile for
+    instructor, with unenroll option or something
+
+
+## Courses / Admin / Registration / Invitation
+
+TODO: share link for course registration: allow instructor to change it to something new (just a new hash)
+
+
 * TODO: course invitation links
   - TODO: course invitation reset
   - TODO: course invitation link reset page should be confirmation, with
-  	message of what will happen.
+    message of what will happen.
   - TODO: make the page look nicer
 
-# Læreren oppretter konto som student: administrator gir rettigheter som lærer
-# Studenter oppretter konto som student og velger kurs: læreren godkjenner studentene sine
-# Læreren og administrator kan opprette kurs, og velge/kopiere kursmal, evt tilpasser den
-## standard for namn? Tre komponentar: kursnamn_kursarrangör_semester
-## Læraren sender lenkje, og studentane blir registrert på rett kurs
-# Studentar som ikkje er studentar på eit visst kurs kan lage sine eigne kursmål / velje mal
+User access:
 
- TODO: student user: stats page needs to also include links to course goal
- history, just to make this more apparent. currently only has general stats
+* Læreren oppretter konto som student: administrator gir rettigheter som lærer
+* Studenter oppretter konto som student og velger kurs: læreren godkjenner studentene sine
+* Læreren og administrator kan opprette kurs, og velge/kopiere kursmal, evt tilpasser den
+    + standard for namn? Tre komponentar: kursnamn_kursarrangör_semester
+    + Læraren sender lenkje, og studentane blir registrert på rett kurs
+* Studentar som ikkje er studentar på eit visst kurs kan lage sine eigne kursmål / velje mal
 
- TODO: autocomplete on message thing needs css tweaks
 
- TODO: course instructors can add all students to message subject, students see
- who their instructors are.
+## Appearance / design stuff
 
- TODO: student can send a message to instructor(s) via easy link?
+TODO: autocomplete on message thing needs css tweaks
 
- TODO: improve notification for student enrollment
-   - include some sort of action link, that leads to user's course profile for
-   	 instructor, with unenroll option or something
+TODO: generalize courses pages navigation
+TODO: messages: run markdown on everything
+
+TODO: student user: stats page needs to also include links to course goal
+history, just to make this more apparent. currently only has general stats
+
+TODO: table overview format, description could be automatically generated
+from settings and made "pretty" from what exists already
+
+ {{{
+     Nr     Task        Description               Progress            Sets answ
+          (nå: Goal) 
+     1    Lære tall                                                   samandrag av det under
+     1.1 Tall 1         Numra string-tall 0-100   (andel av mål)      hvor mange gang gjort   
+     1.2 Tall 2         Numra tall-string 0-100   (andel av mål)      hvor mange gang gjort   
+     1.3 Klokke         Numra string-tall 0-100   (andel av mål)      hvor mange gang gjort   
+     1.4 Dato           Numra tall-string 0-100   (andel av mål)      hvor mange gang gjort    
+
+     2    Bøye verb                                                   samandrag av det under
+     2.1 Presens        Morfa adfasdfs             (andel av mål)     hvor mange gang gjort   
+     2.2 Preteritum     Morfa adfasdfs             (andel av mål)     hvor mange gang gjort   
+ }}}
+
+TODO: table formatting 
+ + now:: success -- score -- correct/first try rounds -- last_attempt
+ + TODO: success -- score -- first try/later tries -- rounds -- last_attempt
+ + evt. kan vi kalle "score" for "correct"
+ + also, the swedish cake needs work:
+   * der correct = 12, first try = 11 (for totalt 12), dvs. brøk 12/11
+   * der first try = 11, later tries = 1, dvs. brøk 11/1
+ + Kor mange gonger har studenten arbeidd
 
  TODO: instructor will have more notifications, need to change the design for
  them-- students see the simple format, instructors get table?
  
    - group notifications by kind so the menu isn't too crazy
 
- TODO: share link for course registration: allow instructor to change it to something new (just a new hash)
+## Before launch
 
- TODO: course goal edit page: link to create new associated task, save
- coursegoal automatically, provide user edit window with coursegoal ID so that
- this will be added on save
-
- TODO: goal edit page:  delete needs feedback
-
- TODO: historical stats - view for non-course-connected stuff, course is over,
- student still wants to see previous learning history
-
- TODO: progress on set requires user to do 5/5 + 1, for actual completion.
- slightly confusing, fix
-
- TODO: history chart also needs total exercises answered
-
- TODO: cumulative progress vs. total goals completed?
-   - only use recent-most runthrough? 
-
- TODO: update the course goal when it's complete, after last submit?
-    re-evaluate with each request to /stats/
-
- TODO: fixtures for sample goals
-  - default coursegoal sets that can be copied to courses.
-
- TODO: stem-type buttons
-
-
- TODO: goal progression consistency
-   - increment round if user doesn't answer at all but clicks on new set
-
-   - prevent refresh and blank rounds: need a form set count with a unique hash
-   	 or something, so if submit count for that hash goes above 1, we know that
-   	 it's resubmitted
-
- TODO: disable non-JSON views when not in debug?
-
- TODO: optional goal tracking stop, or allow resume if they navigate
-     back?
-
- TODO: how does View work with this?
-
- TODO: make it clear on the courses page that someone is still working
- on a goal, so that when they have multiple available they'll know what's
- going on
-
- TODO: feedback click tracking
-
-
+TODO: disable non-JSON views when not in debug?
+ 
+TODO: fixtures for sample goals
+ - default coursegoal sets that can be copied to courses.
 
 # Added installation notes:
 
@@ -145,7 +141,7 @@ installed apps:
     'django_messages',
 
 TEMPLATE_LOADERS:
-	'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.app_directories.Loader',
 
 ## New packages in use
 
