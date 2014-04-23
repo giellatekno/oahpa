@@ -32,7 +32,7 @@ NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
 
 TENSE_PRESENTATION = {
 	'Prt1': u'исяк',
-	'Prt2': u'исяк', # ??
+	'Prt2': u'седе икеле',
 	'Prs': u'течи',
 }
 
@@ -54,19 +54,19 @@ POS_CHOICES = (
 )
 
 CASE_CHOICES = (
-    ('N-GEN', _('Singular genitive definite')),
-    ('N-PL-GEN', _('Plural genitive definite')),
-    ('N-NOM-DEF', _('Singular nominative definite')),
-    ('N-NOM-PL', _('Plural nominative indefinite')),
+    ('N-GEN', _('Definite genitive singular')),
+    ('N-PL-GEN', _('Definite genitive plural')),
+    ('N-NOM-DEF', _('Definite nominative singular')),
+    ('N-NOM-PL', _('Indefinite nominative plural')),
     #('N-DAT', _('Dative')),
     #('N-ILL', _('Illative')),
-    ('N-INE', _('Inessive indefinite')),
+    ('N-INE', _('Indefinite inessive')),
     #('N-ELA', _('Elative')),
     #('N-PX', _('Sg Nom + possessive suffix')),
     #('N-PX-PL', _('Pl Nom + possessive suffix')),
-    ('N-TRA', _('Translative indefinite')),
-    ('N-ABL', _('Ablative indefinite')),
-    ('N-ABL-DEF', _('Singular ablative definite')),
+    ('N-TRA', _('Indefinite translative')),
+    ('N-ABL', _('Indefinite ablative')),
+    ('N-ABL-DEF', _('Definite ablative singular')),
     #('N-ABE', _('Abessive')),
     #('N-COM', _('Comitative')),
     #('N-COMP', _('Comparative')),
@@ -257,8 +257,8 @@ NUM_TYPE_CHOICES = (
 
 VTYPE_CHOICES = (
 	('PRS', _('present')),
-	('PRT1', _('past1')),
-	('PRT2', _('past2')),
+	('PRT1', _('pret1')),
+	('PRT2', _('pret2')),
 #	('PRF', _('perfect')),
 #	('GER', _('gerund')),
 #	('COND', _('conditional')),
@@ -283,8 +283,8 @@ VERB_FILTER_DEFINITION = ['stem', 'source']
 
 VTYPE_CONTEXT_CHOICES = (
 	('V-PRS', _('present')),
-	('V-PRT1', _('past1')),
-	('V-PRT2', _('past2')),
+	('V-PRT1', _('pret1')),
+	('V-PRT2', _('pret2')),
 #	('V-PRF', _('perfect')),
 #	('V-GER', _('gerund')),
 #	('V-COND', _('conditional')),
