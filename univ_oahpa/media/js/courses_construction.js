@@ -1,4 +1,7 @@
-﻿function listContainsObject(_list, _obj, field) {
+﻿/* jshint strict: false */
+/* jshint camelcase: false */
+
+function listContainsObject(_list, _obj, field) {
     for (var i = 0; i < _list.length; i++) {
         if(_list[i][field] == _obj[field]) {
             return i;
@@ -16,6 +19,8 @@ var CoursesConstruction = angular.module('CoursesConstruction', ['ngCookies', 'u
     });
 
 function CourseGoalConstructorController($scope, $http, $element, $cookies) {
+    'use strict';
+
     var coursegoal_url = $element.attr('ng-source-coursegoal') ;
     var goal_url = $element.attr('ng-source-goal') ;
 
@@ -143,6 +148,7 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
        $http.delete(delete_url, config)
             .success( function(data) {
                 $scope.deleted = true;
+                $scope.goal_deleted = true;
                 $scope.edit = false;
                 $scope.finalized = true;
             });
@@ -199,7 +205,7 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
   
 }
 
-function GoalConstructorController($scope, $http, $element, $cookies) {
+function TaskConstructorController($scope, $http, $element, $cookies) {
     var params_url = $element.attr('ng-source') ;
 
     $scope.main_type = 'numra';
@@ -208,24 +214,31 @@ function GoalConstructorController($scope, $http, $element, $cookies) {
     $scope.form_success = false;
     $scope.editing_existing = false;
 
+    $scope.goal_created = false;
+    $scope.goal_edited = false;
+    $scope.goal_deleted = false;
+
     $scope.reset = function() {
         $scope.user_goal.params = {};
-    }
+    };
 
     $scope.beginGoal = function() {
         window.location = window.location.origin + $scope.goal.begin_url ;
-    }
+    };
 
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
     $http.defaults.headers.put['X-CSRFToken'] = $cookies.csrftoken;
     $http.defaults.headers.delete = {};
     $http.defaults.headers.delete['X-CSRFToken'] = $cookies.csrftoken;
 
+    // Get user's goals
     $http.get(params_url)
          .success(function(data){
              $scope.existing_goals = data.goals;
+             $scope.goal_deleted = false;
          });
 
+    // Get all the parameters for the form
     $http({method: 'OPTIONS', url: params_url})
          .success(function(data){
              $scope.results = data.parameters;
@@ -246,16 +259,20 @@ function GoalConstructorController($scope, $http, $element, $cookies) {
              $scope.instructor_courses = data.courses;
          });
 
+    // Delete a goal
     $scope.deleteGoal = function() {
        var config = {
            withCredentials: true,
        };
        var delete_url = params_url + $scope.edit_goal_id + '/' ;
        $http.delete(delete_url, config)
-            .success( function(data) {
-                console.log(data);
+            .success(function(data) {
+                $scope.goal_deleted = true;
+                $scope.goal_edited = false;
+                $scope.goal_created = false;
+                $scope.form_success = true;
             });
-    }
+    };
 
     // TODO: fail behavior
     $scope.submitForm = function() {
@@ -267,6 +284,7 @@ function GoalConstructorController($scope, $http, $element, $cookies) {
             withCredentials: true,
         };
         $scope.form_submitted = true;
+
         // TODO: what do for edit existing?
         // $scope.editing_existing;
 
@@ -283,6 +301,7 @@ function GoalConstructorController($scope, $http, $element, $cookies) {
                     } else {
                         $scope.message = data.message;
                         $scope.goal = data.goal;
+                        $scope.goal_edited = true;
                     }
                 });
 
@@ -298,6 +317,7 @@ function GoalConstructorController($scope, $http, $element, $cookies) {
                 } else {
                     $scope.message = data.message;
                     $scope.goal = data.goal;
+                    $scope.goal_created = true;
                 }
             });
        }

@@ -6,7 +6,7 @@
     <div class="col-lg-9 col-sm-9 col-md-9">
 
     <div class="goal_in_progress"
-        ng-controller="GoalConstructorController" ng-source="/{{ URL_PREFIX }}/courses/api/goals/">
+        ng-controller="TaskConstructorController" ng-source="/{{ URL_PREFIX }}/courses/api/goals/">
 
         <select class="form-control"
                 id="selectToEdit"
@@ -19,31 +19,21 @@
         </select>
 
         <br />
-        <div id="delete_msg" ng-show="goal_deleted">
-            <p class="lead">You successfully deleted the goal "<% goal.short_name %>".</p>
-            <a type="button" class="btn btn-info" href="{{ URL_PREFIX }}/courses/">Course overview</a>
-        </div>
-        <div id="success_msg" ng-show="form_success">
-            <p ng-hide="editing_existing" class="lead">You successfully created the goal "<% goal.short_name %>".</p>
-            <p ng-show="editing_existing" class="lead">You successfully
-                edited the goal "<% goal.short_name %>".</p>
-            <button ng-click="beginGoal()" type="button" class="btn btn-success">Begin</button>
-            <button type="button" class="btn btn-info">Course overview</button>
-        </div>
 
-        <form novalidate ng-if="results" ng-submit="submitForm()"
-            id="new_goal" ng-hide="form_success" role="form">
+        <form novalidate ng-show="results" ng-submit="submitForm()"
+            id="new_goal" ng-hide="form_succcess && results" role="form">
             {% csrf_token %}
             <fieldset ng-disabled="{{ form_submitted }}">
             {# TODO: for which course? for now self-defined #}
 
             {# Here we define meta info, name, description, etc. #}
-            <div class="row">
+            <div class="row" ng-hide="form_success">
                 <div class="col-md-11 col-md-offset-1">
                     <p class="lead goal_intro">Create a goal to track your progress on a feature of
                         grammar.</p>
                 </div>
             </div>
+
 
             <div class="row">
 
@@ -343,6 +333,20 @@
                     <button type="button" class="btn btn-warning">Reset</button>
                     <button type="button" ng-click="deleteGoal()" ng-show="editing_existing" class="btn
                         btn-danger">Delete this goal</button>
+                </div>
+            </div>
+
+            {# Form result feedback notification #}
+            <div class="row">
+                <div class="col-md-11 col-md-offset-1">
+                    <div id="success_msg" ng-show="form_success">
+                        <p ng-show="goal_deleted" class="lead">You successfully deleted the goal.</p>
+                        <p ng-show="goal_created" class="lead">You successfully created the goal "<% goal.short_name %>".</p>
+                        <p ng-show="goal_edited" class="lead">You successfully
+                            edited the goal "<% goal.short_name %>".</p>
+                        <button ng-click="beginGoal()" type="button" class="btn btn-success">Begin</button>
+                        <button type="button" class="btn btn-info">Course overview</button>
+                    </div>
                 </div>
             </div>
             </fieldset>

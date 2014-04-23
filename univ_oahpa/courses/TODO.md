@@ -2,11 +2,12 @@
 
 ## Oahpa
 
-TODO: Dyplinking for Sahka 
+TODO: Dyplinking for Sahka
 
 ## Goals / Tasks
 
-TODO: goal edit page:  delete needs feedback
+TODO: goal edit page - after deletion user should be able to choose to create a
+new gaol
 
 TODO: stem-type check boxes do not work yet in task construction
 
