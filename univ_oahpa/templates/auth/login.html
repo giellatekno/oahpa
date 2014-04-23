@@ -27,7 +27,6 @@
                     <p class="lead">{% trans "You are currently logged in." %} <a href="{% url univ_oahpa.courses.urls.logout %}">{% trans "Log out?" %}</a></p>
                     {% else %}
                         {% if not form.errors %}
-                            <p class="lead">{% trans "Please log in to continue." %}</p>
                         {% else %}
                             <br />
                         {% endif %}

@@ -2,22 +2,39 @@
 {% load i18n %} 
 {% load url from future %}
 
-{% block content %}
-<h1>{% trans "View Message" %}</h1>
-<dl class="message-headers">
-    <dt>{% trans "Subject" %}</dt>
-    <dd><strong>{{ message.subject }}</strong></dd>
-    <dt>{% trans "Sender" %}</dt>
-    <dd>{{ message.sender }}</dd>
-    <dt>{% trans "Date" %} </dt>
-    <dd>{{ message.sent_at|date:_("DATETIME_FORMAT")}}</dd>
-    <dt>{% trans "Recipient" %}</dt>
-    <dd>{{ message.recipient }}</dd>
-</dl>
-{{ message.body|linebreaksbr }}<br /><br />
+{# TODO: nav #}
 
-{% ifequal message.recipient.pk user.pk %}
-<a href="{% url 'messages_reply' message.id %}">{% trans "Reply" %}</a>
-{% endifequal %}
-<a href="{% url 'messages_delete' message.id %}">{% trans "Delete" %}</a>
+{% block content %}
+<br />
+<br />
+<div class="bootstrap-styles">
+    <div class="container col-lg-12 col-md-12 col-sm-12">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <ul class="nav nav-stacked">
+                    <li><a href="{{ URL_PREFIX }}/messages/inbox/">{% trans "Inbox" %}</a></li>
+                {% ifequal message.recipient.pk user.pk %}
+                    <li><a class="" href="{% url 'messages_reply' message.id %}">{% trans "Reply" %}</a></li>
+                {% endifequal %}
+                    <li><a class="" href="{% url 'messages_delete' message.id %}">{% trans "Delete" %}</a></li>
+                </ul>
+                <hr />
+                <ul class="nav nav-stacked">
+                    <li class="disabled heading"><a href="#">{% trans "From" %}: {{ message.sender }}</a></li>
+                    <li class="disabled heading"><a href="#">{% trans "Date" %}: {{ message.sent_at|date:_("DATETIME_FORMAT")}}</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <h3><strong>{{ message.subject }}</strong></h3>
+                <div class="message_text">
+                    {{ message.body|linebreaksbr }}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
 {% endblock %}
