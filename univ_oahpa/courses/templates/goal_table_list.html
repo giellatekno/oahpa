@@ -4,6 +4,7 @@
     <tr>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
+        <th>&nbsp;</th>
         <th>Task</th>
         <th>Score</th>
         <th>Sets answered</th>
@@ -23,6 +24,8 @@
                 <span class="star clear">&#9733;</span>
             {% endif %}
         </td>
+
+        <td>{% if goal_number %}{{ goal_number }}.{% endif %}{{ forloop.counter }}</td>
 
         {# Goal begin/redo links #}
         <td>

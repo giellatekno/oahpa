@@ -2,6 +2,8 @@
 
  * TODO: generalize courses pages navigation
 
+ * TODO: messages: run markdown on everything
+
  * TODO: try to relabel as much as possible, goal -> task / delmål
           coursegoal -> (course)goal
 
@@ -26,7 +28,6 @@
 
 * Leksa: Words to work on: Ord som brukeren ikke klarer, kan "samles" til et valg: 
   * Morfa: Liste med de siste 15 ordene som var feil, med diff (slik som nå)
-  * Statistikktabell, endringar:
 
 * TODO: table formatting 
   + now:: success -- score -- correct/first try rounds -- last_attempt
@@ -42,21 +43,10 @@
  * Korrektprosent = 80% (dvs. ein feil per fem-sett) er default
  * Sets answered = Minimum sets sets tried ==> Sets accomplished / achieved / fulfilled / accepted 
 
-* TODO: instructor course actions:
- * remove instructor course goal progress from this page-- they can just log in
-   as a student if they wish to test (alt.: instructor can enter a 'student'
-   mode to preview?)
-
 * TODO: Dyplinking for Sahka 
  
-* TODO: login needs to be split into two things, student and instructor login,
-  and this needs to work with cookie auth. NB cookie auth is disabled for now,
-  just for ease of development, but this can be turned back on.
-   - TODO: next included in split login
-
 * TODO: course invitation links
   - TODO: course invitation reset
-  - TODO: course invitation process for invitees
   - TODO: course invitation link reset page should be confirmation, with
   	message of what will happen.
   - TODO: make the page look nicer
@@ -102,20 +92,9 @@
  slightly confusing, fix
 
  TODO: history chart also needs total exercises answered
- TODO: only show errors that happened more than once?
-
- TODO: only count rounds with actual progress, so no one can hit new set until
- the count is up, and then submit one
 
  TODO: cumulative progress vs. total goals completed?
    - only use recent-most runthrough? 
-
- TODO: instructor's student detail page has a link to history, but this does
- not allow instructors to view student history yet
-
- TODO: registration for course
-
- TODO: some color for completion stars
 
  TODO: update the course goal when it's complete, after last submit?
     re-evaluate with each request to /stats/
@@ -125,49 +104,24 @@
 
  TODO: stem-type buttons
 
- TODO: log feedback
 
- TODO: increment round if user doesn't answer at all but clicks on new
- set
+ TODO: goal progression consistency
+   - increment round if user doesn't answer at all but clicks on new set
 
- TODO: prevent refresh re-submit
-   - need a form set count with a unique hash or something, so if submit count
-   	 for that hash goes above 1, we know that it's resubmitted
-
- TODO: show completed status in progress box, tell user they can stop or
- keep going
-
- TODO: include goal summary / status on courses page
-
- TODO: make courses look better
+   - prevent refresh and blank rounds: need a form set count with a unique hash
+   	 or something, so if submit count for that hash goes above 1, we know that
+   	 it's resubmitted
 
  TODO: disable non-JSON views when not in debug?
 
- TODO: translate new strings
-
  TODO: optional goal tracking stop, or allow resume if they navigate
      back?
-
- TODO: 
- * signal and cookie interference might be messing with course
-   registration
-
-
- TODO: try getting this moving on testing.oahpa.no, but document things
- that don't work 'cause they're probably settings i forgot to explain.
-
- TODO: implement some of the sample goal criteria, maybe store these as
- fixtures or something?
-
- TODO: something in admin is broken so adding a user to a course
- manually does not work
 
  TODO: how does View work with this?
 
  TODO: make it clear on the courses page that someone is still working
  on a goal, so that when they have multiple available they'll know what's
  going on
-
 
  TODO: feedback click tracking
 

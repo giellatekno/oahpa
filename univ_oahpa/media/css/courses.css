@@ -425,9 +425,9 @@ ul.row li {
 
 /* Messaging */
 
-#courses .nav li.heading a {
+#courses .nav li.disabled.heading a {
     font-weight: 300;
-    color: #777;
+    color: #777 !important;
     border-bottom: 1px solid #CCC;
 }
 
@@ -443,4 +443,8 @@ ul.row li {
 
 #courses table.messages {
     margin-bottom: 2em;
+}
+
+#courses a.btn {
+    color: #FFF !important;
 }

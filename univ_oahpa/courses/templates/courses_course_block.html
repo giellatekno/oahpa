@@ -27,7 +27,7 @@
 				{% if coursegoal|goals|length > 0 %}
 				    <div class="coursegoal row">
 				        <div class="col-md-4 col-sm-4 col-lg-4">
-				            <h4>{{ coursegoal.short_name }}</h4>
+				            <h4>{{ forloop.counter }}. {{ coursegoal.short_name }}</h4>
 				            <h5 class="cumulative_progress">{{ coursegoal|cumulative_progress:user }}</h5>
 				            {% if coursegoal|complete_for:user %}
 				                <h5 class="complete">Complete!</h5>
@@ -41,7 +41,7 @@
 				            {% endif %}
 				        </div>
 				        <div class="col-md-8 col-sm-8 col-lg-8">
-				            {% with coursegoal|goals as goal_set %}
+				            {% with coursegoal|goals as goal_set and forloop.counter as goal_number%}
 				                {% include 'goal_table_list.html' %}
 				            {% endwith %}
 				        </div>
