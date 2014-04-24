@@ -267,9 +267,9 @@ VTYPE_CHOICES = (
 )
 
 VERB_QUESTION_ANSWER = {
-	'V-PRS': [('+V+IV+Der/Омс+Inf+Ill', 'V+Ind+Prs+Person-NumberSC')], # was 'V+Ind+Prs+Person-Number'
-	'V-PRT1': [('+V+IV+Der/Омс+Inf+Ill', 'V+Ind+Prt1+Person-NumberSC')], # was 'V+Ind+Prt1+Person-Number'
-	'V-PRT2': [('+V+IV+Der/Омс+Inf+Ill', 'V+Ind+Prt2+Person-NumberSC')], # was 'V+Ind+Prt2+Person-Number'
+	'V-PRS': [('V+IV+Der/Омс+Inf+Ill', 'V+Ind+Prs+Person-NumberSC')], # was 'V+Ind+Prs+Person-Number'
+	'V-PRT1': [('V+IV+Der/Омс+Inf+Ill', 'V+Ind+Prt1+Person-NumberSC')], # was 'V+Ind+Prt1+Person-Number'
+	'V-PRT2': [('V+IV+Der/Омс+Inf+Ill', 'V+Ind+Prt2+Person-NumberSC')], # was 'V+Ind+Prt2+Person-Number'
 #	'PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
 #	'PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
 #	'PRF': [('V+Inf', 'V+PrfPrc')],
@@ -282,9 +282,9 @@ VERB_QUESTION_ANSWER = {
 VERB_FILTER_DEFINITION = ['stem', 'source']
 
 VTYPE_CONTEXT_CHOICES = (
-	('V-PRS', _('present')),
-	('V-PRT1', _('pret1')),
-	('V-PRT2', _('pret2')),
+	#('V-PRS', _('present')),
+	('V-PRT1', _('pret1')), 
+	('V-PRT2', _('pret2')), 
 #	('V-PRF', _('perfect')),
 #	('V-GER', _('gerund')),
 #	('V-COND', _('conditional')),
@@ -843,7 +843,7 @@ class OahpaSettings(forms.Form):
 					'proncase' : 'N-NOM', # Need a new default case here
 					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
 					'case_context' : 'N-ABL',
-					'vtype_context' : 'V-PRS',
+					'vtype_context' : 'V-PRT1', # was: V-PRS
 					'pron_context' : 'P-PERS',
 					'num_context' : 'NUM-ATTR',
 					'num_level' : '1',
@@ -1104,7 +1104,7 @@ class MorfaSettings(OahpaSettings):
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
 	case_context = forms.ChoiceField(initial='N-ABL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
-	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
+	vtype_context = forms.ChoiceField(initial='V-PRT1', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
 	pron_context = forms.ChoiceField(initial='P-PERS', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)
 	wordform_type = forms.ChoiceField(initial='', choices=WORDFORM_TYPE_CHOICES, widget=forms.Select)
 	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
@@ -1608,7 +1608,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 
 		qtype=question.qtype
 		if qtype in self.qtype_verbs:
-			qtype = 'PRS'
+			qtype = 'PRT1' # was: PRS
 
 		question_widget = forms.HiddenInput(attrs={'value' : question.id})
 		answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})
