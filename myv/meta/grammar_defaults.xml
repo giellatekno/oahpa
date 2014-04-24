@@ -7,6 +7,11 @@
      <!-- <grammar pos="Pron" tag="Pron+Pers+Person-Number+Nom"/> -->
       <grammar pos="N" tag="N+NumberN+Nom+Definite"/>
     </element>
+    
+     <!-- <grammar pos="Pron" tag="Pron+Pers+Person-Number+Nom"/> -->
+    <element id="ADJ">
+      <grammar pos="A"/>
+    </element>
     <!-- <element id="HAB">
       <grammar pos="Pron" tag="Pron+Pers+Person-Number+Loc"/>
       <grammar pos="Interr" tag="Pron+Interr+NumberN+Loc"/> 
@@ -33,6 +38,9 @@
     </element> -->
     <element id="MAINV">
       <grammar pos="V" tag="V+Transitivity+Mood+Tense+Person-NumberSC"/>
+    </element> 
+    <element id="VERB1">
+      <grammar pos="V" tag="V+Transitivity+Mood+Tense+Person-NumberSC"/>
     </element>  
     <!-- <element id="N-ILL">
       <grammar pos="N" tag="N+NumberN+Ill"/>
@@ -44,7 +52,7 @@
       <grammar pos="N" tag="N+NumberN+Com"/>
     </element> -->
     <element id="N-ABL">
-      <grammar pos="N" tag="N+NumberN+Abl"/>
+      <grammar pos="N" tag="N+NumberN+Abl+Definite"/>
     </element>
     <!-- <element id="N-GEN">
       <grammar pos="N" tag="N+NumberN+Gen"/>
