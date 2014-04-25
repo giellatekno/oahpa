@@ -2,7 +2,7 @@ from django.template import Context, RequestContext, loader
 from django.db.models import Q
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404
-from django.utils.translation import ugettext_lazy as _ 
+from django.utils.translation import ugettext_lazy as _
 
 from univ_oahpa.conf.tools import switch_language_code
 
@@ -990,7 +990,7 @@ class Sahkaview(Cealkkaview):
 		# and check whether or not the answers are correct or incorrect.
 		#
 		game = self.GameClass(self.settings)
-		
+
 		self.set_gamename()
 
 		if is_new_game:
@@ -1000,10 +1000,12 @@ class Sahkaview(Cealkkaview):
 			game.settings['topicnumber'] = 0
 			game.settings['wordlist'] = ""
 			game.settings['attempts'] = 0
+			game.is_new_game = True
 			game.num_fields = 1
 			game.update_game(1)
 		else:
 			game.num_fields = int(settings_form.data.get('num_fields', 1))
+			game.is_new_game = False
 
 			game.check_game(settings_form.data)
 			#game.get_score(settings_form.data)
@@ -1064,7 +1066,7 @@ class Sahkaview(Cealkkaview):
 			'all_correct': game.all_correct,
 			'wordlist' : game.settings['wordlist'],
 			'dialogue' : game.settings['dialogue'],
-			# 'deeplink': self.create_deeplink(game, settings_form),
+			'deeplink': self.create_deeplink(game, settings_form),
 			})
 		return c
 
