@@ -107,6 +107,9 @@ class Gameview(object):
 		"""
 		keys = self.SettingsClass().fields.keys()
 
+		if not keys:
+			keys = settings_form.data.keys()
+
 		values = {}
 
 		for key in keys:
