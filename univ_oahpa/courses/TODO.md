@@ -1,13 +1,9 @@
 ﻿# Current development:
 
-## Oahpa
-
-TODO: Dyplinking for Sahka
-
 ## Goals / Tasks
 
 TODO: goal edit page - after deletion user should be able to choose to create a
-new gaol
+new goal
 
 TODO: stem-type check boxes do not work yet in task construction
 
@@ -54,6 +50,12 @@ TODO: improve notification for student enrollment
   - include some sort of action link, that leads to user's course profile for
     instructor, with unenroll option or something
 
+TODO: instructor will have more notifications, need to change the design for
+them-- students see the simple format, instructors get table?
+ 
+   - group notifications by kind so the menu isn't too crazy
+
+TODO: messages: run markdown on everything
 
 ## Courses / Admin / Registration / Invitation
 
@@ -81,9 +83,8 @@ User access:
 TODO: autocomplete on message thing needs css tweaks
 
 TODO: generalize courses pages navigation
-TODO: messages: run markdown on everything
 
-TODO: student user: stats page needs to also include links to course goal
+TODO: student user - stats page: needs to also include links to course goal
 history, just to make this more apparent. currently only has general stats
 
 TODO: table overview format, description could be automatically generated
@@ -104,18 +105,10 @@ from settings and made "pretty" from what exists already
  }}}
 
 TODO: table formatting 
- + now:: success -- score -- correct/first try rounds -- last_attempt
- + TODO: success -- score -- first try/later tries -- rounds -- last_attempt
- + evt. kan vi kalle "score" for "correct"
  + also, the swedish cake needs work:
    * der correct = 12, first try = 11 (for totalt 12), dvs. brøk 12/11
    * der first try = 11, later tries = 1, dvs. brøk 11/1
  + Kor mange gonger har studenten arbeidd
-
- TODO: instructor will have more notifications, need to change the design for
- them-- students see the simple format, instructors get table?
- 
-   - group notifications by kind so the menu isn't too crazy
 
 ## Before launch
 
