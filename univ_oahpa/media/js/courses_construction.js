@@ -138,7 +138,7 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
 
     $scope.refresh = function() {
         location.reload();
-    }
+    };
 
     $scope.deleteCourseGoal = function() {
        var config = {
@@ -152,10 +152,10 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
                 $scope.edit = false;
                 $scope.finalized = true;
             });
-    }
+    };
 
     $scope.saveSorting = function() {
-        $scope.course_goal.goals  = []
+        $scope.course_goal.goals  = [];
         for (var i = 0; i < $scope.sorting.length; i++) {
             var obj = $scope.sorting[i];
             $scope.course_goal.goals.push(obj.id);
@@ -208,8 +208,13 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
 function TaskConstructorController($scope, $http, $element, $cookies) {
     var params_url = $element.attr('ng-source') ;
 
+    var default_new_goal = {
+        threshold: 80,
+        minimum_sets_attempted: 5,
+    };
+
     $scope.main_type = 'numra';
-    $scope.user_goal = {};
+    $scope.user_goal = default_new_goal;
     $scope.form_submitted = false;
     $scope.form_success = false;
     $scope.editing_existing = false;
@@ -242,13 +247,11 @@ function TaskConstructorController($scope, $http, $element, $cookies) {
     $http({method: 'OPTIONS', url: params_url})
          .success(function(data){
              $scope.results = data.parameters;
-             var k, list, v;
 
              $scope.main_types = (function() {
                var _results;
                _results = [];
-               for (k in data.parameters.tree) {
-                 v = data.parameters.tree[k];
+               for (var k in data.parameters.tree) {
                  _results.push({'label': data.parameters.tree[k].label, 'value': k});
                }
                return _results;
@@ -266,7 +269,7 @@ function TaskConstructorController($scope, $http, $element, $cookies) {
        };
        var delete_url = params_url + $scope.edit_goal_id + '/' ;
        $http.delete(delete_url, config)
-            .success(function(data) {
+            .success(function() {
                 $scope.goal_deleted = true;
                 $scope.goal_edited = false;
                 $scope.goal_created = false;
@@ -291,7 +294,9 @@ function TaskConstructorController($scope, $http, $element, $cookies) {
         var p, v;
         var cleaned_params = {};
 
-        for (p in $scope.user_goal.params) {
+        var params = $scope.user_goal.params;
+
+        for (p in params) {
           v = params[p];
           if (v === false) {
             continue;
@@ -347,8 +352,8 @@ function TaskConstructorController($scope, $http, $element, $cookies) {
                  $scope.user_goal_create = $scope.user_goal ;
                  $scope.user_goal = data ;
                  $scope.editing_existing = true;
-             })
+             });
 
-    }
+    };
 
 }
