@@ -287,6 +287,20 @@ function TaskConstructorController($scope, $http, $element, $cookies) {
 
         // TODO: what do for edit existing?
         // $scope.editing_existing;
+        //
+        var p, v;
+        var cleaned_params = {};
+
+        for (p in $scope.user_goal.params) {
+          v = params[p];
+          if (v === false) {
+            continue;
+          } else {
+            cleaned_params[p] == v;
+          }
+        }
+
+        $scope.user_goal.params = cleaned_params;
 
         if ($scope.editing_existing) {
            var update_url = params_url + $scope.edit_goal_id + '/' ;

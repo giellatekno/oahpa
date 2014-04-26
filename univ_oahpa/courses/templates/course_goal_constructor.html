@@ -244,12 +244,14 @@
                                     <p><% option_values[p].name %></p>
                                 </div>
 
+                                {% comment %}
                                 <!-- TODO: no value when not selected?
                                     also, somehow tricky when selected
                                     and unselected unselected values
                                     need to not be stored
                                 -->
-                                {% comment %}
+                                {% endcomment %}
+
                                 <input class="form-control"
                                         id="goal_correct_first_try"
                                         ng-if="option_values[p].boolean"
@@ -258,7 +260,6 @@
                                         type="checkbox"
                                         ng-model="user_goal.params[p]"
                                 >
-                                {% endcomment %}
 
                                 <select class="form-control"
                                         id="selectMainType"
@@ -298,6 +299,7 @@
                                                         ng-if="option_values[p].boolean"
                                                         name="user_goal.params[p]"
                                                         ng-true-value="on"
+                                                        ng-false-value="<% null %>"
                                                         type="checkbox"
                                                         ng-model="user_goal.params[p]"
                                                 >
@@ -322,6 +324,12 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-md-12">
+                    <pre><% user_goal %></pre>
+                </div>
+            </div>
+            
             <div class="row" ng-show="user_goal.main_type">
 
                 <div class="col-md-1">

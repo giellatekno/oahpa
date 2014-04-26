@@ -5,8 +5,6 @@
 TODO: goal edit page - after deletion user should be able to choose to create a
 new goal
 
-TODO: stem-type check boxes do not work yet in task construction
-
 TODO: course goal edit page: link to create new associated task, save
 coursegoal automatically, provide user edit window with coursegoal ID so that
 this will be added on save
@@ -33,7 +31,6 @@ TODO: task/delmål (http://testing.oahpa.no/courses_davvi/courses/create/goal/)
  * Sets answered = Minimum sets sets tried ==> Sets accomplished / achieved / fulfilled / accepted 
 
 TODO: history chart also needs total exercises answered
-
 
 ## Feedback stuff
 
@@ -76,7 +73,6 @@ User access:
     + standard for namn? Tre komponentar: kursnamn_kursarrangör_semester
     + Læraren sender lenkje, og studentane blir registrert på rett kurs
 * Studentar som ikkje er studentar på eit visst kurs kan lage sine eigne kursmål / velje mal
-
 
 ## Appearance / design stuff
 
