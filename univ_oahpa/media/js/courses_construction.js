@@ -3,7 +3,7 @@
 
 function listContainsObject(_list, _obj, field) {
     for (var i = 0; i < _list.length; i++) {
-        if(_list[i][field] == _obj[field]) {
+        if(_list[i][field] === _obj[field]) {
             return i;
         }
     }
@@ -17,6 +17,14 @@ var CoursesConstruction = angular.module('CoursesConstruction', ['ngCookies', 'u
         $interpolateProvider.endSymbol('%>');
         $httpProvider.defaults.withCredentials = true;
     });
+
+function applyHeaderToken($http, $cookies) {
+    $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+    $http.defaults.headers.put['X-CSRFToken'] = $cookies.csrftoken;
+    $http.defaults.headers.delete = {};
+    $http.defaults.headers.delete['X-CSRFToken'] = $cookies.csrftoken;
+    return $http;
+}
 
 function CourseGoalConstructorController($scope, $http, $element, $cookies) {
     'use strict';
@@ -36,16 +44,18 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
     $scope.sortableOptions = {
         placeholder: "sortable-placeholder",
         connectWith: ".connected-sorting",
-    }
+    };
 
+    // $http = applyHeaderToken($http, $cookies);
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
     $http.defaults.headers.put['X-CSRFToken'] = $cookies.csrftoken;
     $http.defaults.headers.delete = {};
     $http.defaults.headers.delete['X-CSRFToken'] = $cookies.csrftoken;
 
     $scope.populateGoal = function() {
-       // If this is null, clear things and return
-       if ($scope.edit_goal_id === null) {
+
+        // If this is null, clear things and return
+        if ($scope.edit_goal_id === null) {
            $scope.course_goal = {};
            $scope.intermediate = false;
            $scope.edit = false;
@@ -63,56 +73,61 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
             }
 
            return false;
-       }
+        }
 
-       var get_url = coursegoal_url + $scope.edit_goal_id + '/' ;
-        
-        $http.get(get_url)
-             .success( function(data){
-                 // TODO: allow user to restore this
-                 $scope.course_goal_create = $scope.user_goal ;
-                 $scope.course_goal = data ;
-                 $scope.intermediate = true;
-                 $scope.edit = true;
+        // TODO: this is returning an undefined for some reason, 
+        // need to only un this if the edit id exists
+        var get_url = coursegoal_url + $scope.edit_goal_id + '/' ;
 
-                 $scope.sorting = [];
-                 $scope.not_in_use = [];
+        if ($scope.edit_goal_id != undefined) {
+            $http.get(get_url).success( function(data){
 
-                 // Re-add all the goals that we grabbed while
-                 // initializing
-                 for (var i = 0; i < $scope.goals.length; i++) {
-                     var goal = $scope.goals[i];
+                // TODO: allow user to restore this
+                $scope.course_goal_create = $scope.user_goal ;
+                $scope.course_goal = data ;
+                $scope.intermediate = true;
+                $scope.edit = true;
 
-                     $scope.not_in_use.push({
-                         text: goal.short_name,
-                         id: goal.id,
-                         value: i+1
-                     });
-                 }
+                $scope.sorting = [];
+                $scope.not_in_use = [];
 
-                 // Now iterate through the response goals, if they're
-                 // assigned already, remove from $scope.not_in_use
-                 for (var i = 0; i < data.goals.length; i++) {
+                // Re-add all the goals that we grabbed while
+                // initializing
+                for (var i = 0; i < $scope.goals.length; i++) {
+                    var goal = $scope.goals[i];
 
-                     var goal = data.goals[i];
+                    $scope.not_in_use.push({
+                        text: goal.short_name,
+                        id: goal.id,
+                        value: i+1
+                    });
+                }
 
-                     var item = {
-                         text: goal.short_name,
-                         id: goal.id,
-                         value: i+1
-                     };
+                // Now iterate through the response goals, if they're
+                // assigned already, remove from $scope.not_in_use
+                for (var i = 0; i < data.goals.length; i++) {
 
-                     var ind_of = listContainsObject($scope.not_in_use, item, 'id');
+                    var goal = data.goals[i];
 
-                     if (ind_of >= -1) {
-                       $scope.not_in_use.pop(ind_of);
-                     }
+                    var item = {
+                        text: goal.short_name,
+                        id: goal.id,
+                        value: i+1
+                    };
 
-                     $scope.sorting.push(item);
-                 }
+                    var ind_of = listContainsObject($scope.not_in_use, item, 'id');
 
-             })
-    }
+                    if (ind_of >= -1) {
+                      $scope.not_in_use.pop(ind_of);
+                    }
+
+                    $scope.sorting.push(item);
+                }
+
+            });
+        }
+
+    };
 
     $scope.submitForm = function() {
         var config = {
@@ -141,68 +156,65 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
     };
 
     $scope.deleteCourseGoal = function() {
-       var config = {
-           withCredentials: true,
-       };
-       var delete_url = coursegoal_url + $scope.course_goal.id + '/' ;
-       $http.delete(delete_url, config)
-            .success( function(data) {
-                $scope.deleted = true;
-                $scope.goal_deleted = true;
-                $scope.edit = false;
-                $scope.finalized = true;
-            });
+        var config = {
+            withCredentials: true,
+        };
+
+        var delete_url = coursegoal_url + $scope.course_goal.id + '/' ;
+
+        $http.delete(delete_url, config).success( function(data) {
+            $scope.deleted = true;
+            $scope.goal_deleted = true;
+            $scope.edit = false;
+            $scope.finalized = true;
+        });
     };
 
     $scope.saveSorting = function() {
         $scope.course_goal.goals  = [];
+
         for (var i = 0; i < $scope.sorting.length; i++) {
             var obj = $scope.sorting[i];
             $scope.course_goal.goals.push(obj.id);
         }
+        
         var config = {
             withCredentials: true,
         };
 
         var update_url = coursegoal_url + $scope.course_goal.id + '/' ;
-        $http.put(update_url, $scope.course_goal, config)
-             .success( function(data) {
-                if (!data.success) {
-                    $scope.errorName = data.errors;
-
-                } else {
-                    $scope.finalized = true;
-                }
-             });
-        
+        $http.put(update_url, $scope.course_goal, config).success( function(data) {
+            if (!data.success) {
+                $scope.errorName = data.errors;
+            } else {
+                $scope.finalized = true;
+            }
+        });
     };
 
-    $http.get(coursegoal_url)
-         .success(function(data){
-             $scope.coursegoals = data.results;
-         });
+    // Get existing course goals that user has access to.
+    $http.get(coursegoal_url).success(function(data){
+        $scope.coursegoals = data.results;
+    });
 
-    $http({method: 'OPTIONS', url: coursegoal_url})
-         .success(function(data){
-             $scope.courses = data.courses;
-         });
+    // Get available courses and other options
+    $http({method: 'OPTIONS', url: coursegoal_url}).success(function(data){
+        $scope.courses = data.courses;
+    });
 
-    $http.get(goal_url)
-         .success(function(data){
-             $scope.goals = data.goals;
-             for (var i = 0; i < data.goals.length; i++) {
-                 var goal = data.goals[i];
-
-                 $scope.not_in_use.push({
-                     text: goal.short_name,
-                     id: goal.id,
-                     value: i+1
-                 });
-             }
-         });
-
-  
-  
+    // Push the Tasks that the user has access to into the not in use box.
+    $http.get(goal_url).success(function(data){
+        $scope.goals = data.goals;
+        for (var i = 0; i < data.goals.length; i++) {
+            var goal = data.goals[i];
+        
+            $scope.not_in_use.push({
+                text: goal.short_name,
+                id: goal.id,
+                value: i+1
+            });
+        }
+    });
 }
 
 function TaskConstructorController($scope, $http, $element, $cookies) {
