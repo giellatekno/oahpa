@@ -305,13 +305,14 @@ function TaskConstructorController($scope, $http, $element, $cookies) {
         var cleaned_params = {};
 
         var params = $scope.user_goal.params;
+        console.log(params);
 
         for (p in params) {
           v = params[p];
           if (v === false) {
             continue;
           } else {
-            cleaned_params[p] == v;
+            cleaned_params[p] = v;
           }
         }
 
@@ -319,6 +320,7 @@ function TaskConstructorController($scope, $http, $element, $cookies) {
 
         if ($scope.editing_existing) {
            var update_url = params_url + $scope.edit_goal_id + '/' ;
+           console.log($scope.user_goal);
            $http.put(update_url, $scope.user_goal, config)
                 .success( function(data) {
                     $scope.form_success = true;
