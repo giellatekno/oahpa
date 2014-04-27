@@ -425,7 +425,7 @@ class Goal(models.Model):
         """
         from django.core.urlresolvers import reverse
 
-        return reverse('begin_course_goal', kwargs={'goal_id': self.id})
+        return reverse('begin_course_task', kwargs={'task_id': self.id})
 
     def start_url(self):
         """ This is the exercise start page that the user will see when

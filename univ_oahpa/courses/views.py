@@ -317,13 +317,13 @@ def goal_history(request, goal_id, user_id=None):
                               c,
                               context_instance=RequestContext(request))
 
-def begin_course_goal(request, goal_id):
+def begin_course_task(request, task_id):
     """ Mark the session with the goal ID, and redirect the user to the
     goal's start page.
     """
     from .models import Goal, UserActivityLog
 
-    goal_id = int(goal_id)
+    task_id = int(task_id)
 
     # Reset any session variables for tracking progress
     if 'all_correct' in request.session:
@@ -358,19 +358,22 @@ def begin_course_goal(request, goal_id):
 
     # Check that the user has the goal
     user_courses = request.user.get_profile().courses
-    user_course_goals = [goal for course in user_courses
-                              for goal in course.goal_set.all()
-                        ] + list(Goal.objects.filter(created_by=request.user,
-                                                course=None))
+    user_own_goals = list(Goal.objects.filter(created_by=request.user,
+                                              course=None))
+
+    user_course_goals = [coursegoalgoal.goal for course in user_courses
+                              for coursegoal in course.coursegoal_set.all()
+                              for coursegoalgoal in coursegoal.goals.all()
+                        ] + user_own_goals
 
     goal_ids = list(set([int(g.id) for g in user_course_goals]))
 
-    if not goal_id in goal_ids:
+    if not task_id in goal_ids:
         return HttpResponseForbidden("This is missing, or you do not have access.")
 
     # TODO: redirect to beginning of course goal
 
-    goal = Goal.objects.get(id=goal_id)
+    goal = Goal.objects.get(id=task_id)
 
     # Reset goal progress
     # TODO: will this need to be connected to a usergoalinstance? 

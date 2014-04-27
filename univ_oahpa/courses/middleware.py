@@ -129,6 +129,9 @@ class GradingMiddleware(object):
                 try: result.pop('correct_minus_first')
                 except: pass
 
+                try: result.pop('correct_later_tries')
+                except: pass
+
                 user_goal_instance = UserGoalInstance.objects.filter(user=request.user, goal=goal, opened=True)
                 if not user_goal_instance:
                     UserGoalInstance.objects.create(user=request.user,

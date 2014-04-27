@@ -23,7 +23,7 @@ urlpatterns = patterns('django.contrib.auth.views',
 
 from views import ( courses_main
                   , instructor_student_detail
-                  , begin_course_goal
+                  , begin_course_task
                   , courses_goal_construction
                   , course_invite
                   , courses_stats
@@ -55,8 +55,8 @@ urlpatterns += patterns('univ_oahpa.courses.views',
         name="goal_history"),
     url(r'^goal/history/(?P<goal_id>\d+)/$', goal_history,
         name="goal_history"),
-    url(r'^goal/begin/(?P<goal_id>\d+)/$', begin_course_goal,
-        name="begin_course_goal"),
+    url(r'^goal/begin/(?P<task_id>\d+)/$', begin_course_task,
+        name="begin_course_task"),
     url(r'^create/coursegoal/$', courses_coursegoal_construction,
         name="courses_coursegoal_construction"),
     url(r'^create/goal/$', courses_goal_construction,
