@@ -483,9 +483,7 @@ def recipient_search(request):
         for user in users:
             # avatar_img_url = avatar_url(user, size=50)
             data.append({"id": user.username,
-                         # "url": reverse("profile_detail",args=(user.username,)),
-                         "name": "%s %s"%(user.first_name, user.last_name),
-                         # "img": avatar_img_url
+                         "name": "%s" % str(user),
                         })
 
         return HttpResponse(simplejson.dumps(data),
