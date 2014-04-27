@@ -1,4 +1,4 @@
-{% extends 'univ_oahpa.html' %}
+﻿{% extends 'univ_oahpa.html' %}
 {% load i18n %}
 {% load goal_filters %}
 {% get_current_language as LANGUAGE_CODE %}
@@ -39,28 +39,26 @@ TODO: link in user interface
 
 		            <div class="row">
 		                <div class="col-md-12 col-sm-12 col-lg-12">
-		                    <div class="col-md-7 col-sm-7 col-lg-7">
-		                        <h4>&nbsp;</h4>
-		                    </div>
-		                    <div class="col-md-5 col-sm-5 col-lg-5">
-                                {% include 'user_notifications_block.html' %}
-                            </div>
-                        </div>
-                    </div>
+			                <div class="goals_overview">
+			                    <div class="col-md-4 col-sm-4 col-lg-4">
+			                        <h4>{% trans "Your personal goals" %}</h4>
+				                    <div class="well">
+				                        <p>Track your own progress outside of
+				                            courses with personal goals.</p>
+				                    </div>
+			                    </div>
 
-		            <div class="row">
-		                {% if is_student %}
-			                <div class="courselist bootstrap-styles">
-			                    {% for course in courses %}
-			                        {% include 'courses_course_block.html' %}
-			                    {% endfor %}
+		                        <div class="col-md-8 col-sm-8 col-lg-8">
+		                            {% if user_defined_goals|length > 0 %}
+			                            {% with user_defined_goals as goal_set %}
+				                            {% include 'goal_table_list.html' %}
+			                            {% endwith %}
+			                        {% endif %}
+			                        <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_goal_construction %}">Create a goal</a>
+			                    </div>
 			                </div>
-		                {% else %}
-		                    <div class="instructor_block">
-		                        <p>{% trans "You are a course instructor." %} {% trans "To view your own grade summary," %} <a href="/{{ URL_PREFIX }}/courses/?student_view=True">{% trans "click here" %}</a></p>
-			                        <p><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "View students' grades" %}</a></p>
-			                </div>
-		                {% endif %}
+
+		                </div>
 		            </div>
 
 		        </div>
@@ -71,3 +69,4 @@ TODO: link in user interface
 {% endblock %}
 
 {# vim: set ts=4 sw=4 tw=0 syntax=htmldjango : #}
+

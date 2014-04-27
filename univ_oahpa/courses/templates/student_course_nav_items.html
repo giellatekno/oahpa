@@ -1,0 +1,8 @@
+{% load i18n %}
+
+<li class="inactive"><a href="#">{{ user.username }}</a></li>
+<li><a href="{% url univ_oahpa.courses.urls.courses_main %}">Courses</a></li>
+<li><a href="{% url univ_oahpa.courses.urls.personal_goals %}">Personal Goals</a></li>
+<li><a href="{% url univ_oahpa.courses.urls.courses_stats %}">Learning History</a></li>
+<li><a href="{% url django_messages.urls.inbox %}">Messages</a></li>
+<li><a href="{% url univ_oahpa.courses.urls.logout %}">{% trans "Log out" %}</a></li>

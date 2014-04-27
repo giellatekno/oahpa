@@ -31,6 +31,7 @@ from views import ( courses_main
                   , courses_coursegoal_construction
                   , course_enroll
                   , recipient_search
+                  , personal_goals
                   )
 
 from rest_framework import routers
@@ -60,6 +61,8 @@ urlpatterns += patterns('univ_oahpa.courses.views',
         name="courses_coursegoal_construction"),
     url(r'^create/goal/$', courses_goal_construction,
         name="courses_goal_construction"),
+
+    url(r'^personal_goals/$', personal_goals, name="personal_goals"),
 
     url(r'^invite/$', course_invite, name="course_invite"),
     url(r'^enroll/$', course_enroll, name="course_enroll"),

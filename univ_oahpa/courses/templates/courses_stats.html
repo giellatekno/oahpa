@@ -18,15 +18,7 @@
 	    <div class="container col-md-12 col-sm-12 col-lg-12">
 	        <div class="row">
 		        <ul id="subnav" class="nav nav-tabs">
-			        <li><a href="/{{ URL_PREFIX }}/courses/">Courses &amp; Goals</a></li>
-			        <li class="active"><a href="/{{ URL_PREFIX }}/courses/stats/">stats</a></li>
-			        {% if profile.is_instructor %}
-			        <li><a href="/{{ URL_PREFIX }}/courses/">{% trans "Course overview" %}</a></li>
-			        {% endif %}
-			        {% if user.is_staff %}
-			        <li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
-			        {% endif %}
-			        <li><a href="{% url univ_oahpa.courses.urls.logout %}">{% trans "Log out" %}</a></li>
+		            {% include 'student_course_nav_items.html' %}
 		        </ul>
 	        </div>
 
@@ -39,7 +31,39 @@
 			                <br /> 
 			                <br /> 
 				            {% load pretty_logs %}
-				            <h3>{% trans "Learning stats" %}</h3>
+				            <h3>{% trans "Goal learning history" %}</h3>
+
+                            {# TODO: preview of words to work on to entice user to click? #}
+                            <ul class="history_list">
+		                    {% for course in courses %}
+		                        {% if course.coursegoal_set.all|length > 0 %}
+			                        {% for coursegoal in course.coursegoal_set.all %}
+				                        {% if coursegoal|goals|length > 0 %}
+				                            {% with coursegoal|goals as goal_set and forloop.counter as goal_number %}
+                                                {% for goal in goal_set %}
+
+                                                    {% if goal|goal_instances_for:user %}
+                                                            <li>
+                                                                <a class="goal_history" href="{% url courses.views.goal_history goal.id %}">
+                                                                    {{ goal_number }}.{{ forloop.counter }}) {{coursegoal.short_name }}: {{ goal.short_name }} 
+                                                                </a>
+                                                                <ul class="history_list_attributes">
+                                                                    <li>{{ goal|goal_instances_for:user|length }} attempt(s)</li>
+                                                                </ul>
+                                                            </li>
+                                                    {% endif %}
+
+				                                {% endfor %}
+				                            {% endwith %}
+				                        {% endif %}
+				                    {% endfor %}
+				                {% endif %}
+				            {% endfor %}
+                            </ul>
+
+				            <p>Note: these are only the tasks that you have made progress on.</p>
+
+				            <h3>{% trans "General learning stats" %}</h3>
 				            <p>{% trans "The following scores represent your progress in the games available in Oahpa. Instructors will see your scores as shown below, but will also be able to see individual scores from every game. Good luck!" %}</p>
 				            <dl class="course_progress">
 					            {% for summary in summaries %}
