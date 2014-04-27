@@ -420,8 +420,6 @@ def course_enroll(request):
                               c,
                               context_instance=RequestContext(request))
 
-
-
 @login_required
 def recipient_search(request):
 	# https://github.com/philippWassibauer/django-threaded-messages

@@ -52,6 +52,7 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
     $http.defaults.headers.delete = {};
     $http.defaults.headers.delete['X-CSRFToken'] = $cookies.csrftoken;
 
+    // This is the ng-change function for the existing course goal selector.
     $scope.populateGoal = function() {
 
         // If this is null, clear things and return
@@ -75,11 +76,9 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
            return false;
         }
 
-        // TODO: this is returning an undefined for some reason, 
-        // need to only un this if the edit id exists
         var get_url = coursegoal_url + $scope.edit_goal_id + '/' ;
 
-        if ($scope.edit_goal_id != undefined) {
+        if ($scope.edit_goal_id !== undefined) {
             $http.get(get_url).success( function(data){
 
                 // TODO: allow user to restore this
@@ -126,7 +125,6 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
 
             });
         }
-
     };
 
     $scope.submitForm = function() {
@@ -366,6 +364,16 @@ function TaskConstructorController($scope, $http, $element, $cookies) {
                  $scope.editing_existing = true;
              });
 
+    };
+
+    $scope.newTaskPopup = function() {
+        // TODO: 
+        // Save existing goal to get ID
+        //
+        // Display a modal for creating a task
+        //
+        // When the user saves, refresh the unassigned tasks
+        //
     };
 
 }

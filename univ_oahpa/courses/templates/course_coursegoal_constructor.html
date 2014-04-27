@@ -7,7 +7,25 @@
         ng-controller="CourseGoalConstructorController" 
         ng-source-coursegoal="/{{ URL_PREFIX }}/courses/api/coursegoals/"
         ng-source-goal="/{{ URL_PREFIX }}/courses/api/goals/">
-    <div class="col-lg-9 col-sm-9 col-md-9">
+
+    <div class="row">
+        <div class="col-lg-offset-1 col-md-offset-1 col-lg-6 col-sm-6 col-md-6" ng-hide="finalized">
+            <h3>Create a course goal</h3>
+            <select class="form-control"
+                    id="selectToEdit"
+                    name="edit_goal"
+                    ng-change="populateGoal()"
+                    ng-show="!form_success"
+                    ng-options="g.id as g.combined_name for g in coursegoals"
+                    ng-model="edit_goal_id">
+                <option value="">Edit an existing course goal</option>
+            </select>
+            <br />
+            <br />
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-sm-12 col-md-12">
         <div class="row" ng-show="finalized">
             <p class="lead" ng-show="created">The new Course Goal "<% course_goal.short_name %>" has been created.</p>
             <p class="lead" ng-show="deleted">The new Course Goal "<% course_goal.short_name %>" has been deleted.</p>
@@ -16,19 +34,6 @@
             <button href="#" ng-click="refresh()" class="btn btn-info">Create another</button>
         </div>
 
-        <div class="row" ng-hide="finalized">
-
-                <select class="form-control"
-                        id="selectToEdit"
-                        name="edit_goal"
-                        ng-change="populateGoal()"
-                        ng-show="!form_success"
-                        ng-options="g.id as g.combined_name for g in coursegoals"
-                        ng-model="edit_goal_id">
-                    <option value="">Edit an existing course goal</option>
-                </select>
-
-        </div>
 
         <div class="row" ng-hide="finalized">
 
@@ -150,15 +155,19 @@
             </div>
             <div class="col-md-11">
                 <div class="col-md-6">
-                    <p class="sortable-note">Drop things here</p>
+                    <p class="sortable-note">Drag and drop...</p>
                     <ul ng-model="sorting" ui-sortable="sortableOptions" class="connected-sorting nav nav-pills nav-stacked target-region">
                         <li ng-repeat="goal in sorting"><a href="#"><% $index + 1 %>.) <% goal.text %></a></li>
                     </ul>
                 </div>
-                <div class="col-md-6">
-                    <p class="sortable-note">Your goals</p>
+                <div class="col-md-1">
+                    <span class="median_illustration_arrow">&larr;</span>
+                </div>
+                <div class="col-md-5">
+                    <p class="sortable-note">Your Tasks</p>
                     <ul ng-model="not_in_use" ui-sortable="sortableOptions" class="connected-sorting source-region nav nav-pills nav-stacked">
                         <li ng-repeat="goal in not_in_use"><a href="#"><% goal.text %></a></li>
+                        <li class="add-task"><a ng-click="newTaskPopup()" href="#">+ Create a task</a></li>
                     </ul>
                 </div>
             </div>

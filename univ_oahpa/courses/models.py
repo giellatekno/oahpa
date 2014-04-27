@@ -569,6 +569,7 @@ class Goal(models.Model):
             'rounds': max(question_sets),
             'total_answered': amount_answered,
             'correct_first_try': len(correct_on_first_try),
+            'correct_later_tries': len(all_correct) - len(correct_on_first_try),
             'correct': len(all_correct),
             'progress': (float(len(all_correct)) / float(amount_answered)) * 100
         }
@@ -614,6 +615,7 @@ class UserGoalInstance(models.Model):
                 flo = '%.1f' % (evaluated['progress'])
                 evaluated['progress_pretty'] =  flo + '%'
                 evaluated['correct_minus_first'] = evaluated['correct'] - evaluated['correct_first_try']
+                # evaluated['correct_later_tries'] = evaluated['correct'] - evaluated['correct_later_tries']
             else:
                 evaluated['progress_pretty'] = ''
                 evaluated['correct_minus_first'] = ''

@@ -51,7 +51,7 @@
         </div>
         <div class="row">
             <div class="col-lg-8 col-md-8">
-                {% cache 100 user_course_goals student.user.username goal.id %}
+                {# cache 100 user_course_goals student.user.username goal.id #}
                     <table class="course_goals">
                         <tr>
                             <th>success</th>
@@ -72,7 +72,7 @@
                                 </td>
                                 <td>{{ goal.evaluation.progress_pretty }}</td>
                                 <td><span class="piechart">{{ goal.evaluation.correct_minus_first }},{{ goal.evaluation.correct_first_try }}</span></td>
-                                <td>{{ goal.evaluation.correct }} / {{ goal.evaluation.correct_first_try }} </td>
+                                <td>{{ goal.evaluation.correct }} / {{ goal.evaluation.correct_later_tries }} </td>
                                 <td>{{ goal.evaluation.rounds }}</td>
                                 <td>{{ goal.last_attempt|date:"DATE_FORMAT" }}</td>
                             </tr>
@@ -81,12 +81,12 @@
                         <tr>
                             <th>&nbsp;</th>
                             <th>&nbsp;</th>
-                            <th class="align-bottom" colspan=2><span class="pie_label_correct">&nbsp;</span> correct <br /><span class="pie_label_first_try">&nbsp;</span> first try</th>
+                            <th class="align-bottom" colspan=2><span class="pie_label_correct">&nbsp;</span> later tries <br /><span class="pie_label_first_try">&nbsp;</span> first try</th>
                             <th>&nbsp;</th>
                             <th>&nbsp;</th>
                         </tr>
                     </table>
-                {% endcache %}
+                {# endcache #}
             </div>
             <div class="col-lg-4 col-md-4">
                 <dl class="dl-horizontal">
