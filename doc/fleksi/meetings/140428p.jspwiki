@@ -1,0 +1,101 @@
+!!! Møte 10.04.14
+
+Til stades: Ryan, Lene, Trond
+
+!! Saksliste
+* Gjennomgang av nye ting
+* Trello
+
+!!Gjennomgang av ting som er implementert
+
+! notifications system 
+* Lærer får melding om nye studenter
+* Student får melding fra systemet/lærer (kort melding)
+
+! messages system 
+Læreren og studenter sender meldinger til hverandre
+
+! course invitations
+Hver kurs har en link og læreren kan sende den til studentene
+
+! History: ting frå sist gang er retta opp:
+No har vi: success -- score -- first try/later tries -- rounds -- last_attempt
+* der first try = 11, later tries = 1, dvs. brøk 11/1
+* og  "correct" er korrekte svar
+
+
+! sahka deep links 
+Er implementert på gtlab
+
+!! Endringer som skal gjøres
+! Lærerinnlogging
+Lærar får "Personal goals" i ulike stadar: burde rydde det bort. Inbox får student navigation.
+* Egne mål og history skal bort
+
+
+
+! Studentens statustabell
+Endringer
+* Redo- og Begin-knapper
+** Raud redo -> blå More?
+** Grøn redo -> grøn Continue
+** Grøn Begin -> grøn Begin (som før)
+* Prosent heilt på toppen, rett under kurstittelen, som viser overgripande
+kursresultat.
+
+! Ordoversikt i history
+
+* __Leksa__ ordoversikt: 
+I dag er den som for Morfa, men den skal vere ulik. Vi skal ikkje ha __svaret__,
+men __oppgåva__. Altså: Ikkje at vi ikkje klarte å skrive ''okse'', men at det
+var ''burru'' vi ikkje visste kva som var på norsk.
+
+
+I dag: \\
+Words to work on
+|| Incorrect count || Correct answer || Your errors
+| 2	| okse | aowfeijoife
+
+Skal vere: \\
+Words to work on
+|| Incorrect count || Taskword
+| 2	| burru 
+
+
+
+* __Morfa__ history ordoversikt:
+
+Presentere de siste 20 feilene
+
+
+! Anonymitet ved innlogging:
+
+Vi prøver det slik:
+
+* Studenten loggar seg på kurs 4321 som Trondtr eller som DonaldDuck.
+* Maskina lagrar studentane som 4321_321 og 4321_593, dvs. som 
+kursnummer + arbitrære nummer. Kvar gong Trondtr loggar seg på
+blir han så registrert som 321, osb.
+
+Til studentane kan vi så seie at "svara dine blir logga,
+men loggen kan ikkje bli knytta til brukarnamnet ditt."
+
+! Morfa-S og Numra fungerar ikkje på gtlab
+
+!!TILTAKSLISTE:
+* __Lene__ inviterer Lene og Trond på gmail som flere teststudenter
+* __Ryan__ fikser det som ikke fungerer (Morfa-S, osv.)
+* __Ryan__ djuplinking i Sahka på gtoahpa
+* __Lene, Trond__ tester og sender tilbakemeldinger på mail
+* __Ryan__ fikser redo
+* __Ryan__ fikser history osv på lista over
+* __Lene__ sender mail om rus og sma kursmål
+* __Lene Trond__ registrerer seg på Trello
+
+
+
+
+!!Neste møte
+mandag 12.5 kl 23 norsk tid
+
+
