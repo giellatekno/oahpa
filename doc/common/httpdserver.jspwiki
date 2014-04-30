@@ -84,6 +84,23 @@ usual subcommands: restart, stop, start.
     sudo service smaoahpa restart
 }}}
 
+!!Tomcat webserver (gtlab)
+
+This is where the instances of Konteaksta are running. After upgrade of the server, as well as adding new components to Konteaksta, it is always recommended to restart Tomcat. It is also the first thing to try if Konteaksta gives "server error". To restart Tomcat:
+
+{{{
+    sudo $CATALINA_HOME/bin/shutdown.sh
+    sudo $CATALINA_HOME/bin/startup.sh
+}}}
+
+For compiling and redeploying Konteaksta (if needed):
+
+{{{
+    cd /home/teaksta
+    svn up
+    ./make_teaksta.sh
+}}}
+
 !!Apache/httpd (victorio)
 
 Updates to the code require restart of the httpd-server. Sometimes

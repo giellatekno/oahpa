@@ -10,5 +10,13 @@ Updating the code on gtlab
 
 * cd /home/teaksta
 * svn up
-* ... tbw.
+* ./make_teaksta.sh
+
+Sometimes the restart of the Tomcat web server is needed as well:
+
+* cd $CATALINA_HOME
+* sudo bin/shutdown.sh
+* sudo bin/startup.sh
+
+The logs of running Konteaksta can be found in the directory $CATALINA_HOME/logs/.
 
