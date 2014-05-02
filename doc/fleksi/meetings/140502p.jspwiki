@@ -1,0 +1,72 @@
+!!! Møte 02.05.14
+
+Til stades: Heli, Lene, Trond.
+
+!!!Saker: 
+* Oahpa for flere språk
+* Forbedring av koden
+* Konteaksta
+* Firefox-plugin for Konteaksta
+* Bugzilla
+* Neste møte
+
+
+!!Oahpa for flere språk
+Oahpa er implementert for flere språk
+* Kvensk: ok
+* Russisk: opp til Francis og Robert
+* Livisk og erza demoversjoner fungerer
+* Cree: vi kommer tilbake til det, fsten er ikke moden for Morfa enda
+
+!TILTAK:
+* __Lene__ skriver mail til russiskgruppa
+
+!!Forbedring av koden
+* Like filnavn osv
+** lik/stor bokstav for PoS filnavn og i xml-formatet
+*** Status: Gamle språk har liten, nye språk har stor.
+*** Men rett opp i dei gamle språka som ikkje er i bruk (smn, sms, ...)
+** semantical_sets => semantic_sets
+** dokumentasjor for å lage demoversjon: http://oahpa.no/addlang/index.html
+* Skille språkspesifikk kode fra den andre koden
+* Spørsmål om namnekonvensjonar:
+** src/A_liv.xml 
+** engliv/A_engliv.xml = og så slike namn for omvendt
+
+!TILTAK:
+* __Heli__ ser på dette når hun har tid.
+
+!!Konteaksta
+
+!Dokumentasjonen
+Lene har endra navn på dokumentasjonsside fra teaksta til 
+* http://giellatekno.uit.no/ped/nudoc/konteaksta.html
+
+!Ting å arbeide med:
+* Oppgavene tar lang tid å generere. Heli kan se på muligheta av
+** å ha linker til färdiga sidor
+** speede up generering av sidor
+* Dynamiske sammensetninger fungerer ikke alltid
+** muligens kombinasjon med bindestrek
+* Ikke alle web-sider fungerer med Konteaksta. Heli vil se på disse:
+** skuvla.info (sjekk evt med Ryan)
+** nrk.no - formatering
+** sapmi.uit.no (Trond følger opp denne)
+* Logo
+Lene tar kontakt med Kjellaug om logo
+
+!!Firefox-plugin for Konteaksta
+Heli ser på denne
+
+!! Bugzilla
+* 1759  fungerer ikke på http://skuvla.info
+* 1760  Om generering av distractors og fasit
+* 1758  Komme tilbake til index-siden etter google-søk 
+** denne må løses med informasjon til brukeren
+
+Heli arbeider videre med disse.
+
+!! Neste møte.
+Fredag 16. mai kl 15.
+
+
