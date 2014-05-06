@@ -31,9 +31,9 @@
         <td>
             {% if goal|goal_instances_for:user|length > 0 %}
                 {% if goal|complete_for:user %}
-                    <a class="begin_goal" href="{% url courses.views.begin_course_task goal.id %}"><span class="label label-danger">Redo</span></a>
+                    <a class="begin_goal" href="{% url courses.views.begin_course_task goal.id %}"><span class="label label-info">More?</span></a>
                 {% else %}
-                    <a class="begin_goal" href="{% url courses.views.begin_course_task goal.id %}"><span class="label label-success">Redo</span></a>
+                    <a class="begin_goal" href="{% url courses.views.begin_course_task goal.id %}"><span class="label label-success">Continue</span></a>
                 {% endif %}
             {% else %}
                 <a class="begin_goal" href="{% url courses.views.begin_course_task goal.id %}"><span class="label label-success">Begin</span></a>

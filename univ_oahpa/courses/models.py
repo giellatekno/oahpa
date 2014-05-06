@@ -337,15 +337,35 @@ class CourseGoal(models.Model):
         return ugis
 
     @property
-    def goal_count(self):
+    def task_count(self):
         return self.goals.all().count()
 
     def progress_for(self, user):
         """ Return user's progress as a formatted string.
         """
         ugis = self.newest_user_goal_instances(user)
-        progress = self.cumulative_instance_threshold(ugis)
-        progress_str = "%.0f" % progress
+
+        grading_value = 0.0
+
+        if len(ugis) > 0:
+
+            if self.percent_goals_completed:
+                complete_count = self.instance_completion_rate(ugis)
+            else:
+                complete_count = False
+
+            if self.threshold:
+                threshold_reached = self.cumulative_instance_threshold(ugis)
+            else:
+                threshold_reached = False
+
+            if self.percent_goals_completed:
+                grading_value = complete_count
+            elif self.threshold:
+                grading_value = threshold_reached
+
+        progress_str = "%.0f" % grading_value
+
         return progress_str + '%'
 
     def is_complete(self, user):
@@ -355,14 +375,14 @@ class CourseGoal(models.Model):
     def cumulative_instance_threshold(self, ugis):
         progresses = [float(ugi.progress) for ugi in ugis]
         if len(progresses) > 0:
-            progress = sum(progresses)/float(self.goal_count)
+            progress = sum(progresses)/float(self.task_count)
         else:
             progress = 0.0
         return progress
 
     def instance_completion_rate(self, ugis):
         completes = sum([1.0 for ugi in ugis if ugi.is_complete])
-        return (completes/self.goal_count) * 100.0
+        return (completes/self.task_count) * 100.0
 
     def user_completed(self, user):
         # TODO: only count the goals above the threshold with sets

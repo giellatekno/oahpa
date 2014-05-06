@@ -105,28 +105,54 @@
             </div>
 
             <div class="col-md-11">
-                <div class="col-sm-6 col-md-6">
-                    <div class="form-group">
-                        <div class="">
-                            <label for="goal_percent_correct"
-                                class="control-label">Percent correct</label>
-                        </div>
+                <div class="row">
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-group">
+                            <div class="">
+                                <label for="goal_percent_correct"
+                                    class="control-label">Avg. correct percentage</label>
+                            </div>
 
-                        {# Loop the main set of options #}
+                            {# Loop the main set of options #}
 
-                        <div class="input-group">
-                            <input class="form-control"
-                                    id="goal_percent"
-                                    name="goal_percent"
-                                    type="number"
-                                    ng-min="20"
-                                    ng-max="100"
-                                    required
-                                    ng-model="course_goal.threshold">
-                            <span class="input-group-addon">%</span>
+                            <div class="input-group">
+                                <input class="form-control"
+                                        id="goal_percent"
+                                        name="goal_percent"
+                                        type="number"
+                                        ng-min="20"
+                                        ng-max="100"
+                                        required
+                                        ng-model="course_goal.threshold">
+                                <span class="input-group-addon">%</span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-sm-1 col-md-1">
+                        ... or ... 
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-group">
+                            <div class="">
+                                <label for="goal_percent_correct"
+                                    class="control-label">Percent complete</label>
+                            </div>
+
+                            {# Loop the main set of options #}
+
+                            <div class="input-group">
+                                <input class="form-control"
+                                        id="goal_percent_complete"
+                                        name="goal_percent_complete"
+                                        type="number"
+                                        ng-min="20"
+                                        ng-max="100"
+                                        required
+                                        ng-model="course_goal.percent_goals_completed">
+                                <span class="input-group-addon">%</span>
+                            </div>
+                        </div>
+                    </div>
             </div>
 
         </div>
