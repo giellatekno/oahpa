@@ -2,6 +2,10 @@
 
 register = template.Library()
 
+@register.filter(name='course_completion_rate')
+def course_completion_rate(course, user):
+    return course.user_completion_rate(user)
+
 @register.filter(name='complete_for')
 def complete_for(a, user):
     return a.user_completed(user)

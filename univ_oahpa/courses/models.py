@@ -235,6 +235,21 @@ class Course(models.Model):
         else:
             return u"%s" % self.name
 
+    def user_completion_rate(self, user):
+        coursegoals = self.coursegoal_set.all()
+
+        completed = sum([1.0 for c in coursegoals if c.user_completed(user)])
+        print completed
+
+        if completed > 0:
+            rate = (completed/coursegoals.count())*100.0
+        else:
+            rate = 0.0
+
+        return rate
+
+
+
 class CourseRelationship(models.Model):
     """ This model contains information about the relationships of
         student-to-course and instructor-to-course, and provides expiration
@@ -283,12 +298,6 @@ class CourseGoal(models.Model):
     threshold = models.FloatField(default=80.0, help_text="Complete goals must average this amount.", blank=True, null=True)
     percent_goals_completed = models.FloatField(default=80.0, help_text="This percentage of associated goals must be completed", blank=True, null=True)
 
-    # TODO: maybe progression should be defined in related model
-    # instead of many2many, so goals can be shared with different
-    # orderings
-
-    # goals = models.ManyToManyField('Goal', related_name='goals')
-
     def __unicode__(self):
         return u"%s - %s" % (self.course, self.short_name)
 
@@ -297,6 +306,8 @@ class CourseGoal(models.Model):
         return u"%s (%s)" % (self.short_name, self.course)
 
     def user_goal_instances(self, user):
+        """ Get all user goal instances for the user.
+        """
 
         def get_instances(goal):
             return goal.usergoalinstance_set.filter(user=user)
@@ -313,6 +324,8 @@ class CourseGoal(models.Model):
         return ugis
 
     def newest_user_goal_instances(self, user):
+        """ For each task, get the newest worked on instance for the user.
+        """
 
         def get_newest(ugi_set):
             if ugi_set.count() == 0:
@@ -338,7 +351,11 @@ class CourseGoal(models.Model):
 
     @property
     def task_count(self):
-        return self.goals.all().count()
+        """ Count the tasks for this instance
+        """
+        if not hasattr(self, '_task_count') is None:
+            self._task_count = self.goals.all().count()
+        return self._task_count
 
     def progress_for(self, user):
         """ Return user's progress as a formatted string.
@@ -368,10 +385,6 @@ class CourseGoal(models.Model):
 
         return progress_str + '%'
 
-    def is_complete(self, user):
-        # TODO: 
-        pass
-
     def cumulative_instance_threshold(self, ugis):
         progresses = [float(ugi.progress) for ugi in ugis]
         if len(progresses) > 0:
@@ -385,8 +398,9 @@ class CourseGoal(models.Model):
         return (completes/self.task_count) * 100.0
 
     def user_completed(self, user):
-        # TODO: only count the goals above the threshold with sets
-        # complete? orrrr
+        """ Depending on the kind of value supplied for the completion
+        rate (avg. vs. total), return True or False for whether this
+        CourseGoal is completed. """
 
         ugis = self.newest_user_goal_instances(user)
 
@@ -403,12 +417,10 @@ class CourseGoal(models.Model):
         else:
             threshold_reached = False
 
-        if self.percent_goals_completed and self.threshold:
-            return complete_count and threshold_reached
-        elif self.percent_goals_completed and not self.threshold:
-            return threshold_reached
-        elif not self.percent_goals_completed and self.threshold:
+        if self.percent_goals_completed:
             return complete_count
+        elif self.threshold:
+            return threshold_reached
 
         return False
 
