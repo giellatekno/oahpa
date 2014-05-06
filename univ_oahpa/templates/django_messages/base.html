@@ -14,6 +14,7 @@
 
 {% block content %}  
 	<div id="courses" class="bootstrap-styles">
+	    {% if courses_user_profile.is_student %}
 	    <div class="container col-md-12 col-sm-12 col-lg-12">
 	        <div class="row">
 		        <ul id="subnav" class="nav nav-tabs">
@@ -21,6 +22,18 @@
 		        </ul>
 	        </div>
 	    </div>
+	    {% endif %}
+
+	    {% if courses_user_profile.is_instructor %}
+	    <div class="container col-md-12 col-sm-12 col-lg-12">
+	        <div class="row">
+		        <ul id="subnav" class="nav nav-tabs">
+		            {% include 'instructor_course_nav_items.html' %}
+		        </ul>
+	        </div>
+	    </div>
+	    {% endif %}
+
 	    <div class="container col-md-12 col-sm-12 col-lg-12">
 	        <div class="row">
 	            <div class="col-md-4 col-sm-4 col-lg-4">

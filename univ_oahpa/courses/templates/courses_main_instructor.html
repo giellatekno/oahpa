@@ -28,28 +28,19 @@ TODO: internationalization strings
 {% block content %}
     {# Add blocktrans and trans tags #}
 	<div id="courses" class="bootstrap-styles" ng-app="CoursePage">
+	    <div class="row">
+	        <div class="col-md-12 col-sm-12 col-lg-12">
+
+	            <div class="row">
+	                <br />
+		            <ul id="subnav" class="nav nav-tabs">
+		                {% include 'instructor_course_nav_items.html' %}
+		            </ul>
+	            </div>
+	        </div>
+	    </div>
         <div class="row">
-	        <div class="col-md-3 col-sm-3 col-lg-3">
-                <h4>{% trans 'Welcome' %}, {{ user.username }}!</h4>
-                <ul id="subnav">
-                    {#  <li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li> #}
-                    {% if user.is_staff %}
-                    <li><a href="/{{ URL_PREFIX }}/courses/?student_view=True">{% trans "Grade summary" %}</a></li>
-                    <li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
-                    <li><a href="/{{ URL_PREFIX }}/courses/invite/">{% trans "Invite students" %}</a></li>
-                    {% load inbox %}
-                    {% inbox_count as in_count %}
-                    {% if in_count > 0 %}
-			            <li><a href="/{{ URL_PREFIX }}/messages/inbox/">Messages <strong>({{ in_count }})</strong></a></li>
-			        {% else %}
-			            <li><a href="/{{ URL_PREFIX }}/messages/inbox/">Messages</a></li>
-			        {% endif %}
-                    {% endif %}
-                </ul>
-                <h4>Notifications</h4>
-                {% include 'user_notifications_block.html' %}
-            </div>
-	        <div class="col-md-9 col-sm-9 col-lg-9">
+	        <div class="col-md-12 col-sm-12 col-lg-12">
                 {# cache 300 courses user.username #}
                 {% for course in profile.instructorships %}
                     <div class="row">
@@ -60,21 +51,28 @@ TODO: internationalization strings
 
                     <!-- <p class="goal_note">You have not defined any goals for this course.</p> -->
                     <div class="row">
-	                    <div class="col-md-12 col-sm-12 col-lg-12">
+                        <div class="col-md-3 col-sm-3 col-lg-3">
+                            <ul class="nav nav-stacked">
+                                <li><a href="/{{ URL_PREFIX }}/courses/invite/">{% trans "Invite students" %}</a></li>
+                                <li><a href="{% url courses.views.courses_coursegoal_construction %}">Create a course goal</a></li>
+                                <li><a href="{% url courses.views.courses_goal_construction %}">Create a goal</a></li>
+                                <li><a href="/{{ URL_PREFIX }}/messages/compose/">Send message</a></li>
+                            </ul>
+                        </div>
+	                    <div class="col-md-offset-1 col-lg-offset-1 col-sm-offset-1 col-md-8 col-sm-8 col-lg-8">
                             <h4>Students</h4>
                             {% include 'student_roster_table.html' %}
-                        </div>
-                    </div>
-                    <div class="row">
-	                    <div class="col-md-12 col-sm-12 col-lg-12">
-                            <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_coursegoal_construction %}">Create a course goal</a>
-                            <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_goal_construction %}">Create a goal</a>
-                            <a id="create_self_goal" class="btn btn-success" href="/{{ URL_PREFIX }}/messages/compose/">Send message</a>
                         </div>
                     </div>
 
                 {% endfor %}
                 {# endcache #}
+            </div>
+        </div>
+	    <div class="row">
+	        <div class="col-md-12 col-sm-12 col-lg-12">
+                <h4>Notifications</h4>
+                {% include 'user_notifications_block.html' %}
             </div>
         </div>
     </div>
