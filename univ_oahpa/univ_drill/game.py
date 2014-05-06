@@ -11,6 +11,7 @@ from django.shortcuts import get_list_or_404, render_to_response
 from django.core.exceptions import ObjectDoesNotExist
 from random import randint
 
+import logging
 import os
 import re
 import itertools
@@ -19,8 +20,6 @@ import univ_oahpa.settings
 
 from random import choice
 from .forms import PRONOUNS_LIST
-
-MORFAS_LOG_FILE = os.path.join(os.getcwd(), 'univ_drill/morfas_log.txt')
 
 try:
 	L1 = univ_oahpa.settings.L1
@@ -542,7 +541,7 @@ class BareGame(Game):
 			"Px": possessive_type,  # possessive_type is about semtypes (family, other, all)
 		}
 
-		logfile = open(MORFAS_LOG_FILE, 'w')
+		morfas_log = logging.getLogger('morfa-s')
 		semtypes = False  # needed for Px
 		sylls = []
 		bisyl = ['2syll', 'bisyllabic']
@@ -741,7 +740,7 @@ class BareGame(Game):
 						Q(number__in=number)
 		if pos == 'Px':
 			TAG_QUERY = TAG_QUERY & Q(case=case)
-			logfile.write(pos+" "+case+" ")
+			morfas_log.info(pos+" "+case+" ")
 		
 		# filter can include several queries, exclude must have only one
 		# to work successfully
@@ -810,7 +809,7 @@ class BareGame(Game):
 
 		try:
 			tag = tags.order_by('?')[0]
-			logfile.write(tag.string)
+			morfas_log.info(tag.string)
 			no_form = True
 			count = 0
 			while no_form and count < 10: 
