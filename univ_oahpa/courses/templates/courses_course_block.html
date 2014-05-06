@@ -4,7 +4,6 @@
 <div class="row">
 	<div class="col-md-8 col-sm-8 col-lg-8">
 		<h3 class="course_name">{{ course.identifier }} &ndash; {{ course.name }}</h3>
-		<h5>{{ course|course_completion_rate:user }}</h5>
         <ul class="nav nav-pills">
 		{% if course.site_link %}
 			<li><a class="course_link" href="{{ course.site_link }}" target="BLANK">{% trans "Course pages" %}</a></li>
@@ -13,6 +12,9 @@
                 <li><a id="" class="" href="{% url courses.views.courses_goal_construction %}">Create a goal</a></li>
 			{% endif %}
 		{% endif %}
+		{% if course|course_completion_rate:user > 0.0 %}
+		    <li><a href="#">{{ course|course_completion_rate:user|floatformat }}% complete!</a></li>
+	    {% endif %}
         </ul>
     </div>
 	<div class="col-md-4 col-sm-4 col-lg-4">

@@ -46,7 +46,7 @@
             {% with goal|goal_instances_for:user|first as g %}
             {# progress percentage #}
             <td class="current_progress">
-                {{ g.progress|format_percent }}
+                {{ g.progress|floatformat }}%
             </td>
             <td class="current_progress sets">
                 {{ g.rounds }}
