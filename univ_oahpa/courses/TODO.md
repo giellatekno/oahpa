@@ -18,6 +18,7 @@ installed apps:
     # ... 
     'notifications',
     'django_messages',
+    'django_forms_bootstrap',
 
 TEMPLATE_LOADERS:
     'django.template.loaders.app_directories.Loader',

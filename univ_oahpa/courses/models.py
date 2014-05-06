@@ -19,7 +19,7 @@ import datetime
 ####
 
 class UserProfile(models.Model):
-    """ This is more of a handy organizational object for now, 
+    """ This is more of a handy organizational object for now,
         and makes some things easier. Unfortunately, some other models
         here need to use the User model, and some need to use the
         UserProfile model. Would like to change this to make extending
@@ -245,7 +245,7 @@ class CourseRelationship(models.Model):
 
         On creation of the relationship, the date is copied from the course.
     """
-    DATE_HELP = ("Leave this blank to copy the course end date." 
+    DATE_HELP = ("Leave this blank to copy the course end date."
                  "If you wish to specify no end date, you will need to come back, "
                  "and remove it after adding the instructor.")
 

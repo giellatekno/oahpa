@@ -4,7 +4,13 @@ from rest_framework import mixins
 from rest_framework.response import Response
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
-from .models import UserGoalInstance, CourseGoal, Goal, GoalParameter, UserFeedbackLog, CourseGoalGoal
+from .models import ( UserGoalInstance
+                    , CourseGoal
+                    , Goal
+                    , GoalParameter
+                    , UserFeedbackLog
+                    , CourseGoalGoal
+                    )
 
 from .data_permissions import *
 from .data_serializers import *
@@ -134,11 +140,6 @@ class CourseGoalView(viewsets.ModelViewSet):
             response_parameters['goal'] = self.serializer_class(data=new_goal).data
 
         return Response(response_parameters)
-
-    # def user_goals(self):
-    #     goals = GoalSerializer(data=self.request.user.goal_set.filter()).data
-    #     print goals
-    #     return goals
 
     def metadata(self, request):
         """ This returns stuff when the OPTIONS verb is used,
@@ -275,7 +276,7 @@ class GoalParametersView(viewsets.ModelViewSet):
         new_obj['url_base'] = url_base
 
         success = True
-        print new_obj
+
         goal = Goal.objects.create(created_by=request.user, **new_obj)
 
         if success:
@@ -316,9 +317,9 @@ class GoalParametersView(viewsets.ModelViewSet):
 
 from notifications.models import Notification
 
-# TODO: permissions
+# TODO: test permissions
+# -  allows to delete also ?
 class NotificationsView(viewsets.ModelViewSet):
-	# NB: allows to delete also
 
     model = Notification()
     queryset = Notification.objects.all()
@@ -337,26 +338,3 @@ class NotificationsView(viewsets.ModelViewSet):
                     verb=u'tested notifications',)
 
         return Response({'success': True})
-
-    # def create(self, request):
-    #     target_user_ids = request.DATA.get('users').split(',')
-
-    #     success = True
-    #     response_parameters = {} 
-
-    #     from_user = request.user
-    #     # TODO: all users in course option
-    #     to_users = User.objects.get(id__in=target_user_ids)
-
-    #     try:
-    #         notification.send( [to_users]
-    #                          , "course_message"
-    #                          , {"from_user": from_user}
-    #                          )
-    #     except Exception, e:
-    #         print e
-    #         success = False
-
-    #     response_parameters['success'] = success
-
-    #     return Response(response_parameters)
