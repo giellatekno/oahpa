@@ -96,7 +96,7 @@ class GradingMiddleware(object):
                                                                  .order_by('-last_attempt')
 
                     # Mark this instance as no longer being active.
-                    if user_goal_instance is not None:
+                    if user_goal_instance is not None and len(user_goal_instance) > 0:
                         user_goal_instance[0].opened = False
                         user_goal_instance[0].save()
 
