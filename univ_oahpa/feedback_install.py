@@ -303,6 +303,8 @@ class Feedback_install(object):
 			mid=el.getAttribute("id")
 			order = ""
 			order = el.getAttribute("order")
+			user_level = ""
+			user_level = el.getAttribute("user_level")
 			# message = ""
 			# When XML contains <![CDATA[]]> there is no need to treat the data
 			# differently, as <a /> nodes will be treated as text
@@ -318,7 +320,7 @@ class Feedback_install(object):
 			fm, created = Feedbackmsg.objects.get_or_create(msgid=mid)
 			fm.save()
 
-			fmtext, created=Feedbacktext.objects.get_or_create(language=lang,feedbackmsg=fm,order=order)
+			fmtext, created=Feedbacktext.objects.get_or_create(language=lang,feedbackmsg=fm,order=order,user_level=user_level)
 			fmtext.message=message
 			fmtext.save()
 
