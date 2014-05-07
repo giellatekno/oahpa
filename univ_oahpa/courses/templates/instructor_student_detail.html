@@ -3,10 +3,12 @@
 {% load cache %}
 {% load goal_filters %}
 
+{% load staticfiles %}
+
 {% block extrajs %}
-    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
-    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/courses.css"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap_namespaced.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/courses.css" %}" />
 {% endblock %}
 
 {% get_current_language as LANGUAGE_CODE %}

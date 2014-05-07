@@ -13,6 +13,8 @@ Middleware:
     'courses.middleware.GradingMiddleware',
 
 installed apps:
+    'django.contrib.staticfiles',
+
     'univ_oahpa.courses',
     'rest_framework',
     # ... 
@@ -22,6 +24,10 @@ installed apps:
 
 TEMPLATE_LOADERS:
     'django.template.loaders.app_directories.Loader',
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 
 ## New packages in use
 

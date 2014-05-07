@@ -1,12 +1,15 @@
 {% extends 'univ_oahpa.html' %}
+
 {% load i18n %}
 {% load goal_filters %}
+{% load staticfiles %}
+
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block extrajs %}
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/courses.css"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap_namespaced.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/courses.css" %}" />
 {% endblock %}
 
 {% block page_class %}fixed{% endblock %}

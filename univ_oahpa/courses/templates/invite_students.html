@@ -3,6 +3,7 @@
 {% load cache %}
 {% load goal_filters %}
 {% get_current_language as LANGUAGE_CODE %}
+{% load staticfiles %}
 
 
 {% comment %}
@@ -13,9 +14,9 @@ TODO: internationalization strings
 {% block main_js %}{% endblock %}
 
 {% block extrajs %}
-    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
-    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/courses.css"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap_namespaced.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/courses.css" %}" />
 {% endblock %}
 
 {% block imgprefix %}numra{% endblock %}

@@ -9,6 +9,7 @@ var Courses = angular.module('Courses', ['ngCookies']).
         $httpProvider.defaults.withCredentials = true;
     });
 
+// Feedback
 Courses.controller('TooltipController', function($scope, $http, $element, $cookies) {
 
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;

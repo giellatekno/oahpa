@@ -689,7 +689,6 @@ class UserFeedbackLog(models.Model):
         return '1'
 
 
-
 class UserActivityLog(models.Model):
     """ Tracking user activity, question/answer completion, and feedback
     use.
