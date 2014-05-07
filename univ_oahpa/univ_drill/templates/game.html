@@ -7,8 +7,8 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block extrajs %}
-	    <script src="{% static "js/jquery-1.6.4.min.js" %}" type="text/javascript"></script>
-	    <script src="{% static "js/main.js" %}" type="text/javascript"></script> 
+    	<script src="{{ MEDIA_URL }}/js/jquery-1.6.4.min.js" type="text/javascript"></script>
+	    <script src="{{ MEDIA_URL }}/js/main.js" type="text/javascript"></script> 
 
         {% if courses_user %}
 		    <script src="{% static "js/angular.min.js" %}" type="text/javascript"></script>
@@ -22,11 +22,11 @@
 {% endblock %}
 
 {% block content %}
+<div ng-app="Courses">
 {% ifnotequal gametype "sahka" %}
 {% ifnotequal gametype "sahka_main" %}
 <hr/>
 <div id="game_right_float">
-	<div ng-app="Courses">
     
         <div id="instructions">
             <p>{% block gamename %}{% endblock %}</p>
@@ -37,7 +37,7 @@
         {% endif %}
 	
 	{% block tooltips %}
-	<div id="tooltips" ng-controller="TooltipController">
+	<div id="tooltips">
 		{% for form in forms %}
 			{% block tooltip %}
 			{% endblock %}
@@ -54,12 +54,11 @@
 		
 	</div>
     {% endblock %}
-	</div>
 </div>
 {% endifnotequal %}
 {% endifnotequal %}
 
-<div id="game_left">
+<div id="game_left" ng-controller="TooltipController" ng-source="/{{ URL_PREFIX }}/courses/api/feedback/">
 	<dl id="question_set" class="{% block questionsetclass %}{% endblock %}">
 	{% for form in forms %}
 	
@@ -231,5 +230,6 @@
 
 </div>
 
+</div>
 {% endblock %}
 

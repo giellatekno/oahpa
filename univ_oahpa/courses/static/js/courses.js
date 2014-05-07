@@ -10,28 +10,59 @@ var Courses = angular.module('Courses', ['ngCookies']).
     });
 
 // Feedback
+// idea:
+// http://stackoverflow.com/questions/14574365/angularjs-dropdown-directive-hide-when-clicking-outside
+//
 Courses.controller('TooltipController', function($scope, $http, $element, $cookies) {
+    var feedback_url = $element.attr('ng-source') ;
 
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
     $http.defaults.headers.put['X-CSRFToken'] = $cookies.csrftoken;
     $http.defaults.headers.delete = {};
     $http.defaults.headers.delete['X-CSRFToken'] = $cookies.csrftoken;
 
-    $scope.model = {};
-    $scope.visible_elements = 0;
-    $scope.feedbacks = $element.find('.feedback:visible');
-    setInterval(function(){
-        $scope.feedbacks = $element.find('.feedback:visible');
-        console.log("poll");
-    }, 1500);
+    $element.find('.feedback_link').bind('click', function($event){
+        var feedback_link = $($event.target).parents('.feedback_link');
 
-    $scope.$watchCollection('feedbacks', function(n, o) {
-        console.log('listening');
-        console.log([n, o]);
-        console.log($scope.feedbacks);
-        $scope.feedbacks = $element.find('.feedback:visible');
+        var feedback_count = feedback_link.attr('id').split('_')[1].split('-')[1];
+
+        var feedback_id = '#feedback-' + feedback_count;
+        var feedback_div = $(document).find(feedback_id);
+        var feedback_msg_ids = $(feedback_div).attr('data-feedback-msgids');
+
+        var answer_id = feedback_count + '-answer';
+
+        var user_input = $(document).find('input[name=' + answer_id + ']').val();
+        var correct_answer = $(document).find('a#link_tooltip-' + feedback_count).html();
+
+        // msg_ids, question id in set, question lemma, current user input.
+
+        var feedback_data = {
+            feedback_texts: feedback_msg_ids, 
+            user_input: user_input, 
+            correct_answer: correct_answer
+        };
+
+        var config = {
+            withCredentials: true,
+        };
+
+        $http.post(feedback_url, feedback_data, config)
+         .success( function(data) {
+            console.log("logged feedback");
+         });
+
     });
 
+    $http.get(feedback_url).success(function(data){
+
+        $scope.registerFeedback = function() {
+            console.log('click');
+        };
+
+    });
+
+    $scope.model = {};
 
 });
 
@@ -40,6 +71,9 @@ Courses.controller('GoalController', function($scope, $http, $element, $cookies)
 
     $http.get(stats_url).success(function(data){
          $scope.success = data.results;
+         if (data.results.length == 0) {
+             return false;
+         }
          $scope.goal = data.results[0];
          $scope.current_set_count = data.current_set_count;
          $scope.navigated_away = data.navigated_away;
