@@ -19,8 +19,9 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 !! For alle Practise:
 * Vi bruker ikke ord med Der/* tag, eller Qst
 
-!! ConNeg form av verb
+!! ConNeg form av verb - med trigger
 * Oppgavene inneholder taggene Ind+Prs+ConNeg og Ind+Prt+ConNeg 
+* Trigger (blå farge?): ii+V+IV+Neg+Ind+?
 * Distractors av samme lemma:
 ** V+Ind+Prs+Sg1 
 ** V+Ind+Prs+Sg2  
@@ -29,10 +30,10 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 ** V+Ind+Prt+Sg2 
 ** V+Ind+Prt+Sg3
 
-!! Finitte verb, indikativ 
-* Oppgavene inneholder en av disse taggene i tillegg til "Ind": Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 
+!! Finitte verb 
+* Oppgavene inneholder en av disse taggene i tillegg til "V": Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3, også Neg: f.eks. V+IV+Neg+Ind+Sg3
 * Vi satser på å ikke oppgi tiden (Prt, Prs), studenten skal finne ut selv hva hun trur er best. 
-* Distractors av samme lemma: 
+* Distractors av samme lemma __Ind__: 
 ** V+Ind+Prs+ConNeg 
 ** V+Ind+Prt+ConNeg
 ** V+Inf  
@@ -48,7 +49,46 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 ** V+Ind+Prt+Du3  
 ** V+Ind+Prs+Du1  
 ** V+Ind+Prs+Du2  
-** V+Ind+Prs+Du3  
+** V+Ind+Prs+Du3 
+* Distractors av samme lemma __Imprt__: 
+** V+Imprt+Sg1  
+** V+Imprt+Sg2  
+** V+Imprt+Sg3  
+** V+Imprt+Du1  
+** V+Imprt+Du2  
+** V+Imprt+Du3  
+** V+Imprt+Pl1  
+** V+Imprt+Pl2  
+** V+Imprt+Pl3 
+* Distractors av samme lemma __Cond__: 
+** V+Cond+Prs+Sg1  
+** V+Cond+Prs+Sg2  
+** V+Cond+Prs+Sg3  
+** V+Cond+Prs+Du1  
+** V+Cond+Prs+Du2  
+** V+Cond+Prs+Du3  
+** V+Cond+Prs+Pl1  
+** V+Cond+Prs+Pl2  
+** V+Cond+Prs+Pl3 
+* Distractors av samme lemma __Pot__: 
+** V+Pot+Prs+Sg1  
+** V+Pot+Prs+Sg2  
+** V+Pot+Prs+Sg3  
+** V+Pot+Prs+Du1  
+** V+Pot+Prs+Du2  
+** V+Pot+Prs+Du3  
+** V+Pot+Prs+Pl1  
+** V+Pot+Prs+Pl2  
+* Distractors for __Neg__: 
+** ii+V+Neg+Ind+Sg1  
+** ii+V+Neg+Ind+Sg2  
+** ii+V+Neg+Ind+Sg3  
+** ii+V+Neg+Ind+Du1  
+** ii+V+Neg+Ind+Du2  
+** ii+V+Neg+Ind+Du3  
+** ii+V+Neg+Ind+Pl1  
+** ii+V+Neg+Ind+Pl2  
+** ii+V+Neg+Ind+Pl3 
 
 
 !! Infinitte verb
@@ -87,9 +127,11 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 ** N+Pl+Loc 
 ** N+Pl+Com
 
+!! Finn substantivet (både Pl og Sg) – colorize og click
+* innholder taggen N
 
 
-!! Skrive riktig konjunksjon – colorize og click
+!! Finn konjunksjon – colorize og click
 * innholder taggene CS og CC
 
 !! Finn subjektet – colorize og click
