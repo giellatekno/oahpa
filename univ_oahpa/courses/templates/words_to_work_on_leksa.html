@@ -6,10 +6,9 @@
         <th>Correct answer</th>
         <th>Your errors</th>
     </tr>
-    {% for w in incorrects|dictsortreversed:"count" %}
+    {% for w in incorrects|slice:":15" %}
         <tr class="{% cycle 'even' 'odd' %}">
-            <td>{{ w.question }}
-            </td>
+            <td>{{ w.question }}</td>
             <td class="correct_checking">
                 {% for i in w.user_inputs %}
                     {{ i }}

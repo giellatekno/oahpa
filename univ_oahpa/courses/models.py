@@ -700,7 +700,6 @@ class UserActivityLog(models.Model):
     user_input = models.TextField()
     question = models.TextField()
 
-
     question_set = models.IntegerField(default=1)
     question_tries = models.IntegerField(default=1)
 
@@ -710,7 +709,7 @@ class UserActivityLog(models.Model):
     # anything else isn't needed.
     in_game = models.TextField()
 
-    # TODO: datetime?
+    date = models.DateTimeField(auto_now_add=True, editable=False)
 
     # stats = LearningManager()
     # objects = models.Manager()
@@ -724,6 +723,8 @@ def incorrects_by_frequency(user, goal=None):
                                               usergoalinstance__goal=goal)
     else:
         objs = UserActivityLog.objects.filter(user=user, is_correct=False)
+
+    objs = objs.order_by('-date')
 
     incorrects = defaultdict(dict)
 

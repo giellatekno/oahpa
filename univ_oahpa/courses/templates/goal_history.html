@@ -52,10 +52,11 @@
         </div>
         <div class="row">
             <div class="col-lg-8 col-md-8">
-                {# cache 100 user_course_goals student.user.username goal.id #}
+                {% cache 60 user_course_goals student.user.username goal.id %}
                     <table class="course_goals">
                         <tr>
                             <th>success</th>
+                            <th>total questions answered</th>
                             <th>correct</th>
                             <th class="align-bottom" colspan=2>first try / later tries</th>
                             <th>rounds</th>
@@ -64,6 +65,7 @@
                     {% for goal in goal_instances %}
                         {% if goal.evaluation %}
                             <tr class="{% cycle 'even' 'odd' %}">
+                                </td>
                                 <td>
                                     {% if goal.is_complete %}
                                         <span class="star">&#9733;</span>
@@ -71,6 +73,7 @@
                                         <span class="star clear">&#9733;</span>
                                     {% endif %}
                                 </td>
+                                <td>{{ goal.total_answered }}
                                 <td>{{ goal.evaluation.progress_pretty }}</td>
                                 <td><span class="piechart">{{ goal.evaluation.correct_minus_first }},{{ goal.evaluation.correct_first_try }}</span></td>
                                 <td>{{ goal.evaluation.correct }} / {{ goal.evaluation.correct_later_tries }} </td>
@@ -87,7 +90,7 @@
                             <th>&nbsp;</th>
                         </tr>
                     </table>
-                {# endcache #}
+                {% endcache %}
             </div>
             <div class="col-lg-4 col-md-4">
                 <dl class="dl-horizontal">
@@ -109,6 +112,8 @@
 
         <div class="row">
             <div class="col-lg-9 col-md-9">
+                {% cache 60 user_words_to_work_on student.user.username goal.id %}
+
                 {% if 'leksa' in goal.main_type %}
                     {% include 'words_to_work_on_leksa.html' %}
                 {% endif %}
@@ -117,6 +122,7 @@
                     {% include 'words_to_work_on_morfa.html' %}
                 {% endif %}
 
+                {% endcache %}
             </div>
         </div>
     </div>
