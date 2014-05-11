@@ -2,6 +2,12 @@
 
 register = template.Library()
 
+@register.filter(name="parameter_value")
+def goal_parameter_value(goal, parameter):
+	for p in goal.params.all():
+		if p.parameter == parameter:
+			return p.value
+
 @register.filter(name='course_completion_rate')
 def course_completion_rate(course, user):
     return course.user_completion_rate(user)

@@ -1,0 +1,23 @@
+﻿{% load goal_filters %}
+<h3>Words to work on</h3>
+
+<table>
+    <tr>
+        <th>Correct answer</th>
+        <th>Your errors</th>
+    </tr>
+    {% for w in incorrects|dictsortreversed:"count" %}
+        <tr class="{% cycle 'even' 'odd' %}">
+            <td>{{ w.question }}
+            </td>
+            <td class="correct_checking">
+                {% for i in w.user_inputs %}
+                    {{ i }}
+                {% if not forloop.last %}<br />{% endif %}
+                {% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+

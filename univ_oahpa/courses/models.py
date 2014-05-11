@@ -698,6 +698,8 @@ class UserActivityLog(models.Model):
     is_correct = models.BooleanField()
     correct_answer = models.TextField()
     user_input = models.TextField()
+    question = models.TextField()
+
 
     question_set = models.IntegerField(default=1)
     question_tries = models.IntegerField(default=1)
@@ -726,12 +728,14 @@ def incorrects_by_frequency(user, goal=None):
     incorrects = defaultdict(dict)
 
     for o in objs:
+        print o
         if o.correct_answer not in incorrects:
             incorrects[o.correct_answer] = {
                 'count': 0,
             }
 
         incorrects[o.correct_answer]['count'] += 1
+        incorrects[o.correct_answer]['question'] = o.question
         incorrects[o.correct_answer]['correct_answer'] = list(set(o.correct_answer.split(',')))
 
         if 'user_inputs' in incorrects[o.correct_answer]:
@@ -755,7 +759,7 @@ def create_activity_log_from_drill_logs(request, user, drill_logs, current_user_
         ('correct', 'correct_answer'),
         # ('qid', 'qid'),
         # ?
-        # ('example', 'example'),
+        ('example', 'question'),
         # ?
         # ('feedback', 'feedback'),
         # ?

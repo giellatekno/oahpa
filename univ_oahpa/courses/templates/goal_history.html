@@ -98,37 +98,28 @@
                         <dt>Correct on first try</dt> <dd>&nbsp;</dd>
                     {% endif %}
                 </dl>
+                <dl class="dl-horizontal">
+                    {% for parameter in goal.params.all %}
+                    <dt>{{ parameter.parameter }}</dt>
+                    <dd>{{ parameter.value }}</dd>
+                    {% endfor %}
+                </dl>
             </div>
         </div>
 
         <div class="row">
             <div class="col-lg-9 col-md-9">
-                <h3>Words to work on</h3>
+                {% if 'leksa' in goal.main_type %}
+                    {% include 'words_to_work_on_leksa.html' %}
+                {% endif %}
 
-                <table>
-                    <tr>
-                        <th>Incorrect count</th>
-                        <th>Correct answer</th>
-                        <th>Your errors</th>
-                    </tr>
-                    {% for w in incorrects|dictsortreversed:"count" %}
-                        <tr class="{% cycle 'even' 'odd' %}">
-                            <td>{{ w.count }}</td>
-                            <td>{% for c in w.correct_answer %}
-                                    {{ c }}<br /> 
-                                {% endfor %}
-                            </td>
-                            <td class="correct_checking">{% for i in w.user_inputs %}{% with w.correct_answer|first as corr %}{% for h in i|highlight_differences:corr %}{% if h.highlight %}<strong>{% endif %}{{ h.char }}{% if h.highlight %}</strong>{% endif %}{% endfor %}{% endwith %}
-                                {% if not forloop.last %}<br />{% endif %}
-                                {% endfor %}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </table>
+                {% if 'morfa' in goal.main_type %}
+                    {% include 'words_to_work_on_morfa.html' %}
+                {% endif %}
+
             </div>
         </div>
     </div>
     </div>
 
 {% endblock %}
-
