@@ -102,9 +102,9 @@
                     {% endif %}
                 </dl>
                 <dl class="dl-horizontal">
-                    {% for parameter in goal.params.all %}
-                    <dt>{{ parameter.parameter }}</dt>
-                    <dd>{{ parameter.value }}</dd>
+                    {% for name, parameter in goal.summary %}
+                    <dt>{{ name }}</dt>
+                    <dd>{{ parameter }}</dd>
                     {% endfor %}
                 </dl>
             </div>

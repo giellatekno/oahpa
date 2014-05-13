@@ -450,6 +450,11 @@ class Goal(models.Model):
     correct_first_try = models.BooleanField(default=False, help_text="Only count answers correct on the first try")
 
     @property
+    def summary(self):
+        for p in self.params.all():
+            yield p.pretty_parameter
+
+    @property
     def begin_url(self):
         """ Confusing, I know.
         This constructs the URL that hte user is redirected to for
@@ -667,6 +672,19 @@ class GoalParameter(models.Model):
     goal = models.ForeignKey(Goal, related_name='params')
     parameter = models.CharField(max_length=64)
     value = models.CharField(max_length=64)
+
+    @property
+    def pretty_parameter(self):
+        from .data_utils import prepare_goal_params
+        _, param_values = prepare_goal_params()
+        param = param_values.get(self.parameter, False)
+        if not param:
+            return self.value
+        name = param.get('name')
+        opt = param.get('options', {}).get(self.value, {})
+        return (name, opt)
+
+
 
 from univ_drill.models import Feedbackmsg, Feedbacktext
 
