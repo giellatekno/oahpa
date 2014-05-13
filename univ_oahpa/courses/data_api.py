@@ -28,7 +28,7 @@ class UserStatsViewSet(viewsets.ModelViewSet):
         rq = super(UserStatsViewSet, self).list(request)
 
         # Insert some things for easier display
-        rq.data['current_set_count'] = request.session['question_set_count']
+        rq.data['current_set_count'] = request.session.get('question_set_count', 0)
         rq.data['max_rounds'] = request.session.get('max_rounds', False)
         rq.data['correct_threshold'] = request.session.get('correct_threshold', False)
         rq.data['navigated_away'] = request.session.get('navigated_away', 0)
