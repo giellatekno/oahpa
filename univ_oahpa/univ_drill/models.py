@@ -939,17 +939,17 @@ class Feedbacktext(models.Model):
 	language = models.CharField(max_length=6)
 	feedbackmsg = models.ForeignKey(Feedbackmsg)
 	order = models.CharField(max_length=3, blank=True)
+	user_level = models.IntegerField(max_length=3, default=1)
 	
 	def __unicode__(self):
 		attrs = [
 				self.language,
 				self.order,
-				self.message, 
+				self.user_level,
+				self.message,
 			]
 		S = unicode('/'.join([a for a in attrs if a.strip()])).encode('utf-8')
 		return smart_unicode(self.language + u':' + self.message)
-
-	
 
 
 ########### CONTEXT-MORFA, VASTA

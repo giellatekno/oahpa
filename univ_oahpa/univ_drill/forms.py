@@ -748,14 +748,25 @@ def get_feedback(self, wordform, language):
 
 	language = switch_language_code(language)
 	
+	# TODO: user_level depends on the wordform and the user's feedback
+	# log entries.
+
+	# TODO: need to also select the nearest level to the user's level,
+	# so that if the user's level has no message, then we get the
+	# highest level available.
 	feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
-					.order_by('feedbacktext__order')
+					.order_by('feedbacktext__order')\
+					.order_by('feedbacktext__user_level')
 	
 	feedback_messages = []
 	feedback_ids = []
 
+	# TODO: default ordering of feedback by user_level, so that 1 always
+	# comes up first.
 	for feedback in feedbacks:
-		texts = feedback.feedbacktext_set.filter(language=language).order_by('order')
+		texts = feedback.feedbacktext_set.filter(language=language)\
+											.order_by('order')\
+											.order_by('user_level')
 		feedback_messages.extend([a.message for a in texts])
 		feedback_ids.append(feedback.msgid)
 
