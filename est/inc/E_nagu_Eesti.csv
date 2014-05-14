@@ -31,8 +31,8 @@ kes?|who?|кто?|wer?|kuka? ketkä?|1
 Kuidas läheb?|How is it going? How are you?|Как дела? Как идут дела?|Wie geht’s?|Mitä kuuluu? Miten voit?|1
 kus?|where?|где?|wo? worin?|missä?|1
 kuu|moon, month|луна|Mond, Monat|kuukausi|1
-kõrv|ear|ухо|Ohr|korva|1
-käsi|hand|рука|Hand|käsi|1
+kõrv|ear|ухо|Ohr|korva|1|BODYPART
+käsi|hand|рука|Hand|käsi|1|BODYPART
 lai|wide|широкий|breit|leveä, laaja|1
 linn|town|город|Stadt|kaupunki|1
 Lõuna-Eesti|Southern Estonia|Южная Эстония|Südestland|Etelä Viro|1
@@ -51,18 +51,18 @@ nagu|like|как, будто|wie|niinkuin|1
 nemad on|they are|они (есть), они|sie sind|he ovat|1
 nad on|they are|они (есть), они|sie sind|he ovat|1
 nende nimi|their name|их имя|ihr Name|heidän nimi|1
-nina|nose|нос|Nase|nenä|1
+nina|nose|нос|Nase|nenä|1|BODYPART
 nimi|name|имя|Name|nimi|1
 nägemist|see you|до свидания!|auf Wiedersehen!|näkemiin|1
 nägemiseni|see you|до свидания!|auf Wiedersehen!|näkemiin|1
-nägu|face|лицо|Gesicht|kasvot|1
+nägu|face|лицо|Gesicht|kasvot|1|BODYPART
 näopilt|portrait|портрет|Porträt, Bildnis|potretti, kasvokuva|1
 olema|to be|быть, находиться|sein (Verb), sein|olla|1
 palun|please|пожалуйста|bitte, bitte schön|ole hyvä, olkaa hyvä|1
 parem|right|правый|rechter|oikea|1
-pea|head|голова|Kopf|pää|1
+pea|head|голова|Kopf|pää|1|BODYPART
 pealinn|capital city|столица|Hauptstadt|pääkaupunki|1
-poiss|boy|мальчик|Junge, Knabe|poika|1
+poiss|boy|мальчик|Junge, Knabe|poika|1|FAMILY
 pole viga|not bad|ничего|nicht schlecht|ei moittimista|1
 praegu|now|сейчас, теперь|jetzt, zur Zeit|nyt, tällä hetkellä|1
 Põhja-Eesti|Northern Estonia|Северная Эстония|Nordestland|Pohjois Viro|1
@@ -92,7 +92,7 @@ tere!|hello|здравствуй, здравствуйте привет!|hallo, 
 tervist!|hello|здравствуй, здравствуйте, привет!|hallo, guten Tag!|hei, terve, moi!|1
 tubli|good (at smth), good|хороший, отличный|schlau, gescheit|hyvä, kelpo, kunnon|1
 tõesti|really|действительно|wirklich|todella, tosiaan|1
-tüdruk|girl|девочка|Mädchen|tyttö|1
+tüdruk|girl|девочка|Mädchen|tyttö|1|FAMILY
 vabandust|sorry|извини, извините|Entschuldigung!|anteeksi|1
 vana|old|старый, старинный|alt|vanha|1
 vasak|left|левый|links|vasen|1
@@ -106,7 +106,7 @@ aeglasemalt|more slowly|медленнее|langsamer|hitaammin|2
 ainult|only|только|nur|ainoa|2
 aru saama|to understand|понимать|verstehen|ymmärtää, käsittää|2
 eestlane|Estonian|эстонец, эстонка|Este|virolainen|2
-ema|mother|мама, мать|Mutter|äiti|2
+ema|mother|мама, мать|Mutter|äiti|2|FAMILY
 emakeel|mother tongue|родной язык|Muttersprache|äidinkieli|2
 grammatika|grammar|грамматика|Grammatik|kielioppi|2
 Hiina|China|Китай|China|Kiina|2
@@ -117,7 +117,7 @@ iga|every|каждый|jede|joka|2
 Inglismaa|England|Англия|England|Englanti|2
 inglane|Englishman|англичанин, англичанка|Engländer|englantilainen|2
 inimene|person|человек|Mensch, Person|ihminen|2
-isa|father|папа, отец|Vater|isä|2
+isa|father|папа, отец|Vater|isä|2|FAMILY
 Itaalia|Italy|Италия|Italien|Italia|2
 itaallane|Italian|итальянец, итальянка|Italiener|italialainen|2
 juba|already|уже|schon|jo, -han, -hän|2
@@ -154,7 +154,7 @@ poolakas|Pole|поляк, полька|Pole|puolalainen|2
 Prantsusmaa|France|Франция|Frankreich|Ranska|2
 prantslane|Frenchman|француз, француженка|Franzose|ranskalainen|2
 päris|quite|довольно|ziemlich|aika, melko|2
-pärit olema|быть родом|(her)kommen, herkommen, kommen|olla kotoisin|2
+pärit olema|come from|быть родом|(her)kommen, herkommen, kommen|olla kotoisin|2
 raamat|book|книга|Buch|kirja|2
 rahvus|nationality|национальность|Nation|kansa|2
 raske|difficult, heavy|трудный, тяжёлый|schwierig, schwer|vaikea, raskeas|2
@@ -211,7 +211,6 @@ mulle|to me|мне|mir|minulle|3
 mägi|mountain, hill|гора|Berg|mäki|3
 null|zero|ноль|Null|nolla|3
 number|number|номер|Nummer, Zahl|numero|3
-numbreid|3
 olgu|okay|ладно|in Ordnung|okei|3
 oma|one’s own|свой|eigene|oma|3
 proua|Mrs.|госпожа|Frau|rouva|3
@@ -255,27 +254,27 @@ hall|grey|серый|grau|harmaa|4
 hele|light|светлый|hell|vaalea|4
 istuma|to sit|сидеть|sitzen|istua|4
 jalgade peal|on one’s feet|на ногах|auf den Beinen|jaloilleen|4
-jalgratas|велосипед|Fahrrad|polkupyörä|4
+jalgratas|bicycle, bike|велосипед|Fahrrad|polkupyörä|4
 jälle|again|опять|wieder, nochmals|taas, jälleen|4
 järv|lake|озеро|See|järvi|4
-kass|cat|кот, кошка|Katze|kissa|4
+kass|cat|кот, кошка|Katze|kissa|4|ANIMAL_PET
 keda?|whom?|кого?|wen?|kenet?|4
 kelle?|whose?|чей? чья? чьё?|wessen? wem?|kenen?|4
 kellel on?|who has?|у кого есть?|wer hat?|kenellä on?|4
 kellele meeldib?|who likes?|кому нравится?|wer mag? wem gefällt?|kuka pitää?|4
-koer|dog|собака|Hund|koira|4
+koer|dog|собака|Hund|koira|4|ANIMAL_PET
 kollane|yellow|жёлтый|gelb|keltainen|4
 kott|bag|сумка, мешок|Tasche, Tüte, Beutel|kassi, laukku|4
 kõndima|to walk|ходить, шагать|spazieren, zu Fuß gehen|kävellä|4
 küll|indeed|да|tatsächlich, doch|kyllä, -pas, -päs|4
-laps|child|ребёнок|Kind|lapsi|4
+laps|child|ребёнок|Kind|lapsi|4|FAMILY
 laud|table|стол|Tisch|pöytä|4
 lill|flower|цветок|Blume|kukka|4
 loom|animal|зверь|Tier|eläin|4
 luuletus|poem|стихотворение|Gedicht|runo|4
 lühike|short|короткий|kurz|lyhyt|4
 meeldima|to like|нравиться|mögen|pitää, tykätä|4
-mees|man, husband|мужчина, муж|Mann|mies, aviomies|4
+mees|man, husband|мужчина, муж|Mann|mies, aviomies|4|FAMILY
 mida?|what?|что?|was?|mitä?|4
 mille?|of what?|чего?|wovon?|minkä?|4
 minul on|I have|у меня есть|ich habe|minulla on|4
@@ -289,7 +288,7 @@ mitu|several|несколько|mehrere|moni|4
 mitu?|how many?|сколько?|wieviel? wie viel? wie viele?|kuinka monta?|4
 muretsema|to worry|волноваться|sich sorgen|murehtia|4
 must|black, dirty|чёрный, грязный|schwarz, schmutzig|musta|4
-naine|woman, wife|женщина, жена|Frau|nainen, aviovaimo|4
+naine|woman, wife|женщина, жена|Frau|nainen, aviovaimo|4|FAMILY
 need|they, these|эти|diese|nämä, ne|4
 nimetav|nominative|кто? что?|Nominativ|nominatiivi|4
 omastav|genitive|кого? чего? чей?|Genitiv|genitiivi|4osastav|partitive|кого? что? чего?|Partitiv|partitiivi|4
@@ -298,7 +297,7 @@ peal|on|на|auf|päällä|4
 pere|family|семья|Familie|perhe|4
 pikk|long, tall|длинный, высокий|lang|pitkä|4
 pliiats|pencil|карандаш|Bleistift|lyijykynä|4
-poeg|son|сын|Sohn|poika|4
+poeg|son|сын|Sohn|poika|4|FAMILY
 pole|am not, is not, has not, have not|нет|nicht, ist nicht|ei ole|4
 ei ole|am not, is not, has not, have not|нет|nicht, ist nicht|ei ole|4
 pruun|brown|коричневый|braun|ruskea|4
@@ -315,15 +314,15 @@ teine|other, another, second|второй, другой|anderer, zweiter|toinen|
 tool|chair|стул|Stuhl|tuoli|4
 tume|dark|тёмный|dunkel|tumma|4
 töö|work|работа|Arbeit|työ|4
-tütar|daughter|дочь|Tochter|tytär|4
+tütar|daughter|дочь|Tochter|tytär|4|FAMILY
 vaatama|to look at, watch|смотреть|schauen, anschauen|katsoa|4
 valge|white|белый|weiß|valkoinen|4
 vari|shadow|тень|Schatten|varjo|4
-vend|brother|брат|Bruder|veli|4
+vend|brother|брат|Bruder|veli|4|FAMILY
 vihik|notebook|тетрадь|Heft|vihko|4
 või|or|или|oder|tai|4
 värv|color|цвет|Farbe|väri|4
-õde|sister|сестра|Schwester|sisko|4
+õde|sister|сестра|Schwester|sisko|4|FAMILY
 ära|don’t, don't...!|не|nicht… !|älä|4
 ärge|don’t, don't...!|не|nicht… !|älkää|4
 aasta|year|год|Jahr|vuosi|5|5
@@ -354,7 +353,7 @@ kuidas?|how?|как?|wie?|kuinka?|5
 kui palju?|how much?|сколько?|wieviel? wie viel? wie viele?|kuinka paljon?|5
 laev|ship|корабль|Schiff|laiva|5
 laupäev|Saturday|суббота|Samstag|lauantai|5
-lehm|cow|корова|Kuh|lehmä|5
+lehm|cow|корова|Kuh|lehmä|5|ANIMAL_DOM
 lennuk|plane|самолёт|Flugzeug|lentokone|5
 loeng|lecture|лекция|Vorlesung|luento|5
 lõpp|end|конец|Ende|loppu|5
@@ -363,7 +362,6 @@ läheb|goes|идёт|geht|lähtee|5
 lähedal|close|вблизи|nahe|lähellä|5
 maksma|to pay|стоить, платить|bezahlen, kosten|maksaa|5
 meeter|meter|метр|Meter|metri|5
-meetreid|5
 miks?|why?|почему?|warum?|miksi?|5
 millal?|when?|когда?|wann?|milloin?|5
 millega?|by what? with what?|чем? с чем?|womit?|millä?|5
@@ -375,7 +373,7 @@ nädal|week|неделя|Woche|viikko|5
 nädalavahetus|weekend|конец недели|Wochenende|viikonvaihde|5
 peab|has to|должен, надо|muss|pitää, täytyy|5
 peatus|stop, post|остановка|Haltestelle|pysäkki|5
-piim|milk|молоко|Milch|maito|5
+piim|milk|молоко|Milch|maito|5|DRINK
 pilet|ticket|билет|Fahrkarte, Eintrittskarte|(matka)lippu, matkalippu, lippu|5
 pool|half|половина|halb|puoli|5
 praam|ferry|паром|Fähre|lautta|5
@@ -413,7 +411,7 @@ suur tänu|(big) thank you! thank you! big thank you!|большое спаси�
 tähtis|important|важный|wichtig|tärkeä|5
 täpselt|exactly|точно|genau|täsmälleen|5
 uks|door|дверь|Tür|ovi|5
-vanemad|parents|родители|Eltern|vanhemmat|5
+vanemad|parents|родители|Eltern|vanhemmat|5|FAMILY
 vara|early|рано|früh|aikaisin|5
 veab|transports|возит|transportiert|kuljettaa, vetää|5
 veerand viis|a quarter past four|четверть пятого|viertel nach vier|vartti yli neljä|5
@@ -432,7 +430,7 @@ aed|garden|сад, огород|Garten|puutarha|6
 alati|always|всегда|immer|aina, alati|6
 algus|beginning|начало|Anfang|alku|6
 all|under|под|unter|alla|6
-ei... ega|neither… nor|ни... ни|weder... noch|ei… eikä|6
+ei ... ega|neither … nor|ни ... ни|weder ... noch|ei … eikä|6
 enam|more, any more|больше|mehr|enämmän, enää|6
 huvitav|interesting|интересный|interessant|kiinnostava|6
 hüppas|jumped|прыгал|hüpfte|hyppäsi|6
@@ -441,9 +439,9 @@ jalutama|to walk|гулять|spazieren|kävellä|6
 jooksma|to run|бегать|rennen, laufen|juosta|6
 jõgi|river|река|Fluss|joki|6
 jõulud|Christmas|Рождество|Weihnachten|joulu|6
-jänes|rabbit, hare|заяц|Hase|jänis|6
+jänes|rabbit, hare|заяц|Hase|jänis|6|ANIMAL_WILD
 keskel|in the middle of|посередине|inmitten von|keskellä|6
-kevad|spring|весна|Frühling|kevät|6
+kevad|spring|весна|Frühling|kevät|6|TIME_SEASON
 koht|place|место|Ort|kohta|6
 kraad|degree|градус|Grad|aste|6
 kuid|but|но|sondern, aber|mutta, vaan|6
@@ -455,11 +453,11 @@ külm|cold|холодно|kalt|kylmä|6
 laulma|to sing|петь|singen|laulaa|6
 leht|leaf|лист|Blatt|lehti|6
 lendama|to fly|летать|fliegen|lentää|6
-lind|bird|птица|Vogel|lintu|6
+lind|bird|птица|Vogel|lintu|6|BIRD
 loss|castle|замок|Schloss|linna|6
 lumemees|snowman|снеговик|Schneemann|lumiukko|6
 lumememm|snow-woman|снежная баба|Schneefrau|lumiakka|6
-lumi|snow|снег|Schnee|lumi|6
+lumi|snow|снег|Schnee|lumi|6|WEATHER
 lund sajab|it’s snowing, it is snowing|идёт снег|es schneit|sataa lunta|6
 lõbus|jolly, amusing|весёлый|freudig|hauska, huvittava|6
 mets|forest, woods|лес|Wald|metsä|6
@@ -486,17 +484,17 @@ püha|state holiday|праздник|Feiertag|pyhä, juhlapäivä|6
 reis|trip, journey|путешествие, поездка|Reise|matka|6
 reisima|to travel|путешествовать|reisen|matkustaa|6
 saar|island|остров|Insel|saari|6
-sadama|to rain|идти (о дожде), идти|regnen|satama|6
+sadama|to rain|идти (о дожде), идти|regnen|satama|6|WEATHER_V
 sest|because|потому что|weil|koska|6
 soe|warm|тёплый|warm|lämmin|6
 soovima|to wish|желать|wünschen|toivoa|6
-sulama|to melt|таять|schmelzen|sulattaa|6
-suvi|summer|лето|Sommer|kesä|6
+sulama|to melt|таять|schmelzen|sulattaa|6|WEATHER_V
+suvi|summer|лето|Sommer|kesä|6|TIME_SEASON
 suvila|summer house|дача|Ferienhaus|kesämökki|6
-sügis|autumn, fall|осень|Herbst|syksy|6
+sügis|autumn, fall|осень|Herbst|syksy|6|TIME_SEASON
 sünnipäev|birthday|день рождения|Geburtstag|syntymäpäivä|6
 tahtma|to want|хотеть, желать|wollen|tahtoa, haluta|6
-talv|winter|зима|Winter|talvi|6
+talv|winter|зима|Winter|talvi|6|TIME_SEASON
 tavaliselt|usually|обычно|normalerweise|tavallisesti|6
 tervis|health|здоровье|Gesundheit|terveys|6
 terviseks!|cheers!|на здоровье!|Prost! zum Wohl!|terveydeksi!|6
@@ -505,10 +503,10 @@ tuba|room|комната|Zimmer|huone|6
 tugev|strong|сильный|stark|voimakas, vahva|6
 tuju|mood|настроение|Stimmung, Laune|mieliala, tuuli|6
 tuletorn|lighthouse|маяк|Leuchtturm|majakka|6
-tuul|wind|ветер|Wind|tuuli|6
+tuul|wind|ветер|Wind|tuuli|6|WEATHER
 ujuma|to swim|плавать|schwimmen|uida|6
 vaheaeg|school holiday|школьные каникулы|Ferien|loma|6
-vihm|rain|дождь|Regen|sade|6
+vihm|rain|дождь|Regen|sade|6|WEATHER
 vihmatrall|rain party|праздник дождя|Regenfeier|sateen juhla|6
 vihmavari|umbrella|зонтик|Regenschirm|sateenvarjo|6
 värviline|colorful|цветной|farbenfroh|värillinen|6
@@ -516,37 +514,37 @@ värviline|colorful|цветной|farbenfroh|värillinen|6
 õnn|happiness, luck|счастье|Glück, Freude|onni|6
 abielu|marriage|брак|Ehe|avioliitto|7
 abielluma|to get married|жениться|heiraten|mennä naimisiin|7
-abikaasa|spouse|супруг, супруга|Ehepartner|aviopuoliso, puoliso|7
+abikaasa|spouse|супруг, супруга|Ehepartner|aviopuoliso, puoliso|7|FAMILY
 all|under|под|unter|alla|7
 ees|in front of|впереди|vor|edellä, edessä|7
-elukaaslane|partner|спутник жизни|Lebensgefährte, Lebensgefährtin|elämänkumppani|7hakkama|to begin, to start doing|начинать|anfangen|ryhtyä, ruveta|7
+elukaaslane|partner|спутник жизни|Lebensgefährte, Lebensgefährtin|elämänkumppani|7|FAMILYhakkama|to begin, to start doing|начинать|anfangen|ryhtyä, ruveta|7
 heidavad magama|they go to sleep|ложатся спать|sie gehen schlafen|menevät nukkumaan|7
-hiir|mouse|мышь|Maus|hiiri|7
+hiir|mouse|мышь|Maus|hiiri|7|ANIMAL_WILD
 imelik|strange|странный|seltsam|ihmeellinen|7
 juurde|to|к|zu|luokse|7
-juust|cheese|сыр|Käse|juusto|7
+juust|cheese|сыр|Käse|juusto|7|FOOD
 kasvama|to grow|расти|wachsen|kasvaa|7
 kingitus|gift, present|подарок|Geschenk|lahja|7
 kinkima|to make a gift|подарить|schenken|antaa lahja|7
-kirss|cherry|вишня|Kirsche|kirsikka|7
+kirss|cherry|вишня|Kirsche|kirsikka|7|FOOD
 korras|in order|в порядке|in Ordnung|kunnossa|7
 köök|kitchen|кухня|Küche|keittiö|7
 lahutatud|divorced|разведен|geschieden|eronnut|7
-lapselaps|grandchild|внук, внучка|Enkelkind|lapsenlapsi|7
+lapselaps|grandchild|внук, внучка|Enkelkind|lapsenlapsi|7|FAMILY
 lasteaed|preschool|детский сад|Kindergarten|lastentarha|7
 laul|song|песня|Lied|laulu|7
 läbi|through|после, сквозь, через|durch, über, nach|läpi, lävitse|7
 magama|to sleep|спать|schlafen|nukkua|7
-mesi|honey|мёд|Honig|hunaja|7
-mesilane|bee|пчела, пчёлка|Biene|mehiläinen|7
+mesi|honey|мёд|Honig|hunaja|7|FOOD
+mesilane|bee|пчела, пчёлка|Biene|mehiläinen|7|ANIMAL_DOM
 mesipuu|beehive|улей|Bienenstock|mehiläispönttö|7
 naer|laughter|смех, хохот|Gelächter|nauru|7
 noor|young|молодой, юный|jung|nuori|7
 närima|to gnaw|грызть, обгрызать,|nagen, kauen|nakertaa|7
-onu|uncle|дядя|Onkel|setä|7
+onu|uncle|дядя|Onkel|setä|7|FAMILY
 pidama|to have to, must|должен, быть обязанным|müssen|pitää|7
 pidu|party|праздник|Fest|juhla, juhlat|7
-pirn|pear|груша|Birne|päärynä|7
+pirn|pear|груша|Birne|päärynä|7|FOOD
 pulm|wedding|свадьба|Hochzeit|häät|7
 pärast|after|потом, через, спустя|nach, danach|jälkeen|7
 pärima|to ask a question|спрашивать|fragen|kysyä|7
@@ -555,14 +553,14 @@ sugulane|relative|родственник, родственница|Verwandte, Ve
 surema|to die|умереть, скончаться|sterben|kuolla|7
 surnud|dead|умер|tot|kuollut|7
 taga|behind|позади|hinter|takana|7
-tädi|aunt|тётя|Tante|täti|7
+tädi|aunt|тётя|Tante|täti|7|FAMILY
 tähendama|to mean|означать|bedeuten|tarkoittaa|7
 vallaline|single|неженатый, холостой|ledig|naimaton, sinkku|7
 vanus|age|возраст|Alter|ikä|7
 õnneks|fortunately|к счастью|glücklicherweise|onneksi|7
 õu|yard|двор|Hof|piha|7
-äi|father-in-law|свёкор, тесть|Schwiegervater|appi|7
-ämm|mother-in-law|свекровь, тёща|Schwiegermutter|anoppi|7
+äi|father-in-law|свёкор, тесть|Schwiegervater|appi|7|FAMILY
+ämm|mother-in-law|свекровь, тёща|Schwiegermutter|anoppi|7|FAMILY
 öö läbi|all night long|всю ночь|die ganze Nacht|koko yön|7
 aitama|to help|помогать|helfen|auttaa|8
 arvuti|computer|компьютер|Computer|tietokone|8
@@ -571,24 +569,24 @@ eksam|exam|экзамен|Prüfung, Klausur|tutkinto, tentti, koe|8
 enne|before|до|vor, bevor|ennen|8
 film|movie|фильм|Film|elokuva|8
 huvi|interest|интерес|Interesse|kiinnostus|8
-jalgpall|football|футбол|Fußball|jalkapallo|8
+jalgpall|football|футбол|Fußball|jalkapallo|8|SPORT
 jõusaal|fitness club, gym|тренажёрный зал|Fitnessstudio|kuntosali|8
-kala|fish|рыба|Fisch|kala|8
+kala|fish|рыба|Fisch|kala|8|FOOD
 kindlasti|for sure|обязательно|sicher, bestimmt|varmasti|8
 kino|cinema|кинотеатр, кино|Kino|elokuvateatteri|8
 kirik|church|церковь|Kirche|kirkko|8
 kogu|all|весь, целый|alle, ganz|koko, kokonainen|8
 kohtuma|to meet|встречаться|sich treffen, treffen|tavata|8
-kontsert|концерт|Konzert|konsertti|8
+kontsert|concert|концерт|Konzert|konsertti|8
 koor|choir|хор|Chor|kuoro|8
 koristama|to clean|убирать|putzen, aufräumen|siivota|8
-korvpall|basketball|баскетбол|Basketball|koripallo|8
+korvpall|basketball|баскетбол|Basketball|koripallo|8|SPORT
 kuulama|to listen|слушать|zuhören, anhören|kuunnella|8
 kuulma|to hear|слышать|hören|kuulla|8
 kuupäev|date|дата, число|Datum|päivämäärä|8
 lihtne|simple|простой|einfach|helppo|8
 liiga|too, too much|слишком|zu, zu viel|liian|8
-lõuna|lunch; south|обед; юг|Mittagessen; Süden|päivällinen; etelä|8
+lõuna|lunch, south|обед, юг|Mittagessen, Süden|päivällinen, etelä|8
 midagi|something|что-нибудь|etwas|jotakin|8
 mitu korda?|how many times?|сколько раз?|wieviel Mal?|kuinka monta kertaa?|8
 muusika|music|музыка|Musik|musiikki|8
@@ -601,77 +599,77 @@ puhkepäev|day off|выходной день|Ruhetag|lepopäivä|8
 saal|hall|зал|Saal|sali|8
 seepärast|therefore|потому что|deshalb|sen takia, siksi|8
 sportlik|athletic|спортивный|sportlich|urheilullinen|8
-suusatama|to ski|кататься на лыжах|Skifahren|hiihtää|8
+suusatama|to ski|кататься на лыжах|Skifahren|hiihtää|8|SPORT
 sõbranna|female friend|подруга|Freundin|ystävätär|8
 teater|theater|театр|Theater|teatteri|8
 tegevus|activity|деятельность|Beschäftigung|toiminta|8
-tennis|tennis|теннис|Tennis|tennis|8
+tennis|tennis|теннис|Tennis|tennis|8|SPORT
 terve päev|the whole day|целый день|den ganzen Tag|koko päivä|8
-trenn|training|тренировка|Training|harjoitus, treeni|8
-uisutama|to skate|кататься на коньках|Schlittschuhlaufen|luistaa|8
+trenn|training|тренировка|Training|harjoitus, treeni|8|SPORT
+uisutama|to skate|кататься на коньках|Schlittschuhlaufen|luistaa|8|SPORT
 vaba|free|свободный|frei|vabaa|8
-võrkpall|volleyball|волейбол|Volleyball|lentopallo|8
+võrkpall|volleyball|волейбол|Volleyball|lentopallo|8|SPORT
 üldiselt|generally|в общем|normalerweise|yleisesti|8
 ajaleht|newspaper|газета|Zeitung|sanomalehti|9
 andma|to give|давать, вручать|geben|antaa|9
-apelsin|orange|апельсин|Orange|appelsiini|9
-banaan|banana|банан|Banane|banaani|9
+apelsin|orange|апельсин|Orange|appelsiini|9|FOOD
+banaan|banana|банан|Banane|banaani|9|FOOD
 dušš|shower|душ|Dusche|suihku|9
 eelmine|previous, last|предыдущий, прошлый|vorherig|edellinen|9
 esik|entrance hall|прихожая|Diele|eteinen|9
 hambaid pesema|to brush one’s teeth|чистить зубы|Zähne putzen|pestä hampaitaan|9
 hammas|tooth|зуб|Zahn|hammas|9
 helisema|to ring|звенеть|klingeln|soittaa|9
-hommikusöök|завтрак|Frühstück|aamiainen|9
+hommikusöök|breakfast|завтрак|Frühstück|aamiainen|9
 hommikust sööma|to have breakfast|завтракать|frühstücken|syödä aamiaista|9
 ilma|without|без|ohne|ilman, vailla|9
-jogurt|yogurt|йогурт|Joghurt|jugurtti|9
-jooma|to drink|пить|trinken|juoda|9
+jogurt|yogurt|йогурт|Joghurt|jugurtti|9|FOOD
+jooma|to drink|пить|trinken|juoda|9|FOOD_DRINK_V
 kahvel|fork|вилка|Gabel|haarukka|9
 kauss|bowl|чаша, чашка, миска|Schüssel|kulho|9
 klaas|glass|стакан|Glas|lasi|9
 keskkool|high school|средняя школа|Oberstufe|oppikoulu|9
 king|shoe|ботинок|Schuh|kenkä|9
-kinni|closed|закрыт|geschlossen|suljettu|9kohv|coffee|кофе|Kaffee|kahvi|9
+kinni|closed|закрыт|geschlossen|suljettu|9kohv|coffee|кофе|Kaffee|kahvi|9|DRINK
 kohvik|café|кафе|Café|kahvila|9
 kohvimasin|coffee maker|кофеварка|Kaffeemaschine|kahvinkeitin|9
 konverents|conference|конференция|Konferenz|kongressi|9
-kook|cake|пирожное|Kuchen|leivos, torttu|9
+kook|cake|пирожное|Kuchen|leivos, torttu|9|FOOD
 kruus|mug|кружка|Becher|muki|9
 kuni|till|до|bis|saakka, asti|9
 kähku|quickly|быстро|schnell, rasch|nopeasti|9
 lahti|open|открыт|geöffnet|auki|9
-leib|bread, dark bread|хлеб|Brot, dunkles Brot|leipä|9
+leib|bread, dark bread|хлеб|Brot, dunkles Brot|leipä|9|FOOD
 lina|sheet, linen|простыня, лён|Laken, Lein|liina, lakana, pellava|9
 lusikas|spoon|ложка|Löffel|lusikka|9
-mahl|juice|сок|Saft|mehu, tuoremehu|9
+mahl|juice|сок|Saft|mehu, tuoremehu|9|DRINK
 mantel|jacket, coat|пальто|Mantel|takki, päällystakki|9
 minevik|the past, past tense|прошлое, прошедшее время|Vergangenheit, Imperfekt|menneisyys, imperfekti|9
 mitte kunagi|not ever|никогда|niemals|ei koskaan, ei ikinä|9
-moos|jam|варенье|Marmelade|hillo|9
+moos|jam|варенье|Marmelade|hillo|9|FOOD
 möödunud|last|прошедший, прошлый|vergangen|viime|9
 nuga|knife|нож|Messer|veitsi|9
-omlett|omelet|омлет|Omelette|munakas|9
+omlett|omelet|омлет|Omelette|munakas|9|FOOD
 paar|pair|пара|Paar|pari|9
 panema|to put|класть, положить|stellen, legen, setzen|laitaa, panna|9
 pann|pan|сковорода|Pfanne|pannu|9
 pesema|to wash|мыть|waschen|pestä|9
-pirukas|пирог|Pirogge|piirakka|9
+pirukas|пирог|Pirogge|piirakka|9|FOOD
 pott|pot|кастрюля|Topf|kattila|9
-puder|porridge|каша|Brei|puuro|9
+puder|porridge|каша|Brei|puuro|9|FOOD
 päikesekiir|sun ray|луч солнца|Sonnenstrahl|auringonsäde|9
-sai|white bread|булка|Weißbrot|leipä, vehnäleipä|9
-salat|salad, lettuce|салат|Salat|salaatti|9
+sai|white bread|булка|Weißbrot|leipä, vehnäleipä|9|FOOD
+salat|salad, lettuce|салат|Salat|salaatti|9|FOOD
 sageli|often|часто|oft|useasti, usein|9
 selg|back|спина|Rücken|selkä|9
-sink|ham|ветчина|Schinken|kinkku|9
+sink|ham|ветчина|Schinken|kinkku|9|FOOD
 sobima|to fit|подходить, годиться|passen, stimmen|sopia|9
-suhkur|sugar|сахар|Zucker|sokeri|9
+suhkur|sugar|сахар|Zucker|sokeri|9|FOOD
 söök|meal|еда, пища|Mahl, Essen|ateria|9
-sööma|to eat|есть, кушать|essen|syödä|9
+sööma|to eat|есть, кушать|essen|syödä|9|FOOD_DRINK_V
 taldrik|plate|тарелка|Teller|lautanen|9
 tass|cup|чашка|Tasse|kuppi|9
-tee|tea|чай|Tee|tee|9
+tee|tea|чай|Tee|tee|9|DRINK
 tee|road, path|дорога|Straße|tie|9
 tekk|blanket|одеяло|Decke|peitto|9
 tihti|often|часто|oft|useasti, usein|9
@@ -681,91 +679,91 @@ valmis|ready|готовый|bereit|valmis|9
 vannituba|bathroom|ванная|Badezimmer|kylpyhuone|9
 veekann|kettle|чайник|Kanne|vesikannu|9
 veekeetja|kettle, water boiler|чайник|Wasserkocher|vedenkeitin|9
-vesi|water|вода|Wasser|vesi|9
-vorst|sausage|колбаса|Wurst|makkara|9
-või|butter|масло|Butter|voi|9
-võileib|open sandwich|бутерброд|(belegtes) Butterbrot, Butterbrot|voileipä|9
+vesi|water|вода|Wasser|vesi|9|DRINK
+vorst|sausage|колбаса|Wurst|makkara|9|FOOD
+või|butter|масло|Butter|voi|9|FOOD
+võileib|open sandwich|бутерброд|(belegtes) Butterbrot, Butterbrot|voileipä|9|FOOD
 võima|to be able to, to be allowed|мочь|dürfen, können, erlaubt sein|voida, kyetä|9
 võtma|to take|брать, взять|nehmen|ottaa|9
 äratuskell|alarm clock|будильник|Wecker|herätyskello|9
-ajakirjanik|journalist|журналист|Journalist|lehtimies, toimittaja|10alustama|to start|начинать|anfangen|aloittaa, alkaa, ryhtyä|10
-amet|profession, position|профессия|Beruf|ammatti, toimi|10
+ajakirjanik|journalist|журналист|Journalist|lehtimies, toimittaja|10|PROFESSIONalustama|to start|начинать|anfangen|aloittaa, alkaa, ryhtyä|10
+amet|profession, position|профессия|Beruf|ammatti, toimi|10|JOB
 ankeet|form|анкета|Formular|lomake, kyselylomake|10
-arst|doctor|врач, доктор|Arzt|lääkäri|10
-automehaanik|car mechanic|автомеханик|Automechaniker|automekaanikko|10
-bussijuht|bus driver|водитель автобуса|Busfahrer|bussikuljettaja|10
+arst|doctor|врач, доктор|Arzt|lääkäri|10|PROFESSION
+automehaanik|car mechanic|автомеханик|Automechaniker|automekaanikko|10|PROFESSION
+bussijuht|bus driver|водитель автобуса|Busfahrer|bussikuljettaja|10|PROFESSION
 doktoriõpe|PhD studies|докторантура|Doktorat|lääkäriopiskelija|10
 ehitama|to build|строить|bauen|rakentaa|10
 ehitus|construction site|строительство|Gebäude|rakennus|10
 ehk|or|или|oder|ehkä, voi|10
-elukutse|profession|профессия|Beruf|ammatti|10
-eriala|specialty, field|специальность|Fachrichtung|erikoisala|10
-ettekandja|waitress|официантка|Kellnerin|tarjoilija|10
-firma|company|фирма|Firma|firma|10
+elukutse|profession|профессия|Beruf|ammatti|10|JOB
+eriala|specialty, field|специальность|Fachrichtung|erikoisala|10|JOB
+ettekandja|waitress|официантка|Kellnerin|tarjoilija|10|PROFESSION
+firma|company|фирма|Firma|firma|10|JOB
 gümnaasium|highschool|гимназия|Gymnasium|lukio|10
 haigla|hospital|больница|Krankenhaus|sairaala|10
-hambaarst|dentist|зубной врач|Zahnarzt|hammaslääkäri|10
+hambaarst|dentist|зубной врач|Zahnarzt|hammaslääkäri|10|PROFESSION
 haridus|education|образование|Ausbildung, Bildung|koulutus, sivistys|10
 hotell|hotel|отель|Hotel|hotelli|10
-infotehnoloog|IT specialist|IT-специалист|Informatiker|informaatioteknologi|10
-intervjuu|interview|интервью|Interview|haastattelu|10
+infotehnoloog|IT specialist|IT-специалист|Informatiker|informaatioteknologi|10|PROFESSION
+intervjuu|interview|интервью|Interview|haastattelu|10|JOB
 iseseisvus|independence|независимость|Unabhängigkeit|itsenäisyys|10
-juuksur|hairdresser|парикмахер|Frisör|kampaaja, parturi|10
+juuksur|hairdresser|парикмахер|Frisör|kampaaja, parturi|10|PROFESSION
 kauplus|store, shop|магазин|Laden, Geschäft|kauppa|10
-kelner|waiter|официант|Kellner|tarjoilija|10
+kelner|waiter|официант|Kellner|tarjoilija|10|PROFESSION
 keskharidus|secondary education|среднее образование|Abitur|oppikoulusivistys|10
 keskus|center|центр|Zentrum|keskus|10
 kodakondsus|citizenship|гражданство|Staatsbürgerschaft|kanslaisuus|10
-kokk|cook, chef|повар|Koch|kokki|10
-koristaja|cleaner|уборщик, уборщица|Putzfrau, Putzmann|siivooja|10
+kokk|cook, chef|повар|Koch|kokki|10|PROFESSION
+koristaja|cleaner|уборщик, уборщица|Putzfrau, Putzmann|siivooja|10|PROFESSION
 kordama|repeat, review|повторять|wiederholen|kerrata|10
 kuulutus|advertisement|объявление|Werbung, Ankündigung|mainos|10
 kuurort|resort|курорт|Kurort|kylpylä, spa|10
 kutsekool|vocational school|проф. техн. училище|Berufsschule|ammatikoulu|10
 kõne|call, speech|разговор, речь|Gespräch, Rede|puhe|10
 kõrgharidus|higher education|высшее образование|Hochschulausbildung|akateeminen sivistys|10
-lapsehoidja|babysitter|няня|Babysitter|lastenhoitaja|10
+lapsehoidja|babysitter|няня|Babysitter|lastenhoitaja|10|PROFESSION
 leidma|to find|найти|finden|löytää|10
 lõpetama|to end|заканчивать|beenden, abschließen|lopettaa|10
 magistriõpe|MA studies|магистратура|Magisterstudium|maisterinkoulutus|10
 majakas|light house|маяк|Leuchtturm|majakka|10
-medõde|nurse|медсестра|Krankenschwester|sairaanhoitaja|10
+medõde|nurse|медсестра|Krankenschwester|sairaanhoitaja|10|PROFESSION
 mitmes?|which one (number)? which one?|который по счёту?|wievielte? der/die/das wievielte?|kuinka mones?|10
-müüja|salesperson|продавец, продавщица|Verkäufer, Verkäuferin|myyjä|10
+müüja|salesperson|продавец, продавщица|Verkäufer, Verkäuferin|myyjä|10|PROFESSION
 müüma|to sell|продавать|verkaufen|myydä|10
 nali|joke|шутка|Witz|vitsi|10
 nõnda|so|так|so, also|niin, näin, noin, siten|10
 ostma|to buy|купить, покупать|kaufen|ostaa|10
 otsima|to look for|искать|suchen|hakea|10
 pakkuma|to offer, to provide|предлагать|anbieten|tarjota|10
-palk|salary|заработная плата|Gehalt|palkka|10
+palk|salary|заработная плата|Gehalt|palkka|10|JOB
 papagoi|parrot|попугай|Papagei|papukaija|10
 politsei|police|полиция|Polizei|poliisi|10
-politseinik|policeman|полицейский|Polizist|poliisimies|10
+politseinik|policeman|полицейский|Polizist|poliisimies|10|PROFESSION
 pood|store, shop|магазин|Geschäft, Laden|puoti|10
 pommitama|to bomb|бомбить|bombardieren|pommittaa|10
-postiljon|mailman|почтальон|Briefträger, Briefträgerin|postilijooni|10põllumees|farmer|земледелец|Landwirt|maanviljelijä|10
-raamatupidaja|accountant|бухгалтер|Buchhalter, Buchhalterin|kirjanpitäjä|10
+postiljon|mailman|почтальон|Briefträger, Briefträgerin|postilijooni|10|PROFESSIONpõllumees|farmer|земледелец|Landwirt|maanviljelijä|10|PROFESSION
+raamatupidaja|accountant|бухгалтер|Buchhalter, Buchhalterin|kirjanpitäjä|10|PROFESSION
 rahvusvaheline|international|международный|international|kansainvälinen|10
 restoran|restaurant|ресторан|Restaurant|ravintola|10
-sekretär|secretary|секретарь|Sekretär, Sekretärin|sihteeri|10
+sekretär|secretary|секретарь|Sekretär, Sekretärin|sihteeri|10|PROFESSION
 suurepärane|wonderful, great|великолепный|wunderbar|erinomainen|10
 tähtpäev|holiday|знаменaтельная дата|Feiertag|merkkipäivä|10
-turvamees|security guard|охранник|Wachmann|turvamies|10
-tõlk|interpreter|переводчик, переводчица|Dolmetscher, Dolmetscherin|tulkki, kielenkääntäjä|10
-töökuulutus|work advertisement|объявление о работе|Stellenangebot|työpaikkailmoitus|10
+turvamees|security guard|охранник|Wachmann|turvamies|10|PROFESSION
+tõlk|interpreter|переводчик, переводчица|Dolmetscher, Dolmetscherin|tulkki, kielenkääntäjä|10|PROFESSION
+töökuulutus|work advertisement|объявление о работе|Stellenangebot|työpaikkailmoitus|10|JOB
 vajama|to need|нуждаться|brauchen|tarvita|10
-vaja olema|to need|быть нужным, понадобиться brauchen|tarvita|10
+vaja olema|to need|быть нужным, понадобиться|brauchen|tarvita|10
 varem|earlier|раньше|früher|aikaisemmin, ennen|10
 võidupüha|Victory Day|День победы|Siegesfeiertag|voitonpäivä|10
 välismaa|foreign country|заграница|Ausland|ulkomaa|10
 õnnelik|happy|счастливый|glücklich|onnellinen|10
-ärimees|businessman|бизнесмен|Geschäftsmann|liikemies|10
+ärimees|businessman|бизнесмен|Geschäftsmann|liikemies|10|PROFESSION
 ülestõusmispüha|Easter|Пасха|Ostern|pääsiäinen|10
 allahindlus|discount, sale|скидка, распродажа|Preisnachlass|alennusmyynti, ale|11
-ananass|pineapple|ананас|Ananas|ananas|11
-apelsin|orange|апельсин|Orange|appelsiini|11
-arbuus|watermelon|арбуз|Wassermelone|vesimeloni|11
+ananass|pineapple|ананас|Ananas|ananas|11|FOOD
+apelsin|orange|апельсин|Orange|appelsiini|11|FOOD
+arbuus|watermelon|арбуз|Wassermelone|vesimeloni|11|FOOD
 gramm|gram|грамм|Gramm|gramma|11
 hapu|sour|кислый|sauer|hapan|11
 hernes|pea|горох|Erbse|herne|11
@@ -775,50 +773,49 @@ inetu|ugly|некрасивый|hässlich|ruma|11
 isegi|even|даже|sogar, selbst|jopa, vieläpä|11
 just|just|как раз, только что|gerade, eben, genau|aivan, ihan, juuri|11
 juurvili|vegetable, root vegetable|овощ|Gemüse, Wurzelgemüse|juurekset|11
-juust|cheese|сыр|Käse|juusto|11
-jäätis|ice cream|мороженое|Eis|jäätelö|11
-kaalikas|turnip|брюква|Steckrübe|lanttu|11
+juust|cheese|сыр|Käse|juusto|11|FOOD
+jäätis|ice cream|мороженое|Eis|jäätelö|11|FOOD
+kaalikas|turnip|брюква|Steckrübe|lanttu|11|FOOD
 kaaluma|to weigh|взвешивать|wiegen|painaa|11
 kaasa võtma|to take with|брать с собой|mitnehmen|ottaa mukaan|11
 kaer|oats|овес|Hafer|kaura|11
 kahju|unfortunate|жаль|schade|haitta, tappio|11
 kallis|expensive|дорогой|teuer|kallis|11
-kana|chicken|курица|Hähnchen|kana|11
-kapsas|cabbage|капуста|Kohl|kaali|11
+kana|chicken|курица|Hähnchen|kana|11|FOOD
+kapsas|cabbage|капуста|Kohl|kaali|11|FOOD
 karp|box|коробка|Schale|rasia, lipas|11
-kartul|potato|картофель|Kartoffel|peruna|11
+kartul|potato|картофель|Kartoffel|peruna|11|FOOD
 kast|box, crate|ящик|Kiste, Kasten|laatikko|11
-kasu|benefit, profit|польза|Vorteil; Nutzen|hyöty|11
+kasu|benefit, profit|польза|Vorteil, Nutzen|hyöty|11
 kasulik|useful|полезный|nützlich|hyödyllinen|11
 kaup|purchase, goods|товар|Ware|tavara, kauppa|11
-keefir|kefir|кефир|Kefir|kefiiri|11
+keefir|kefir|кефир|Kefir|kefiiri|11|DRINK
 keskmine|middle|средний|mittlerer, mittlere, mittleres|keski, keskimmäinen|11
-ketšup|ketchup|кетчуп|Ketchup|ketsuppi|11
+ketšup|ketchup|кетчуп|Ketchup|ketsuppi|11|FOOD
 kilekott|plastic bag|пластикатовый пакет|Plastiktasche|muovipussi|11
 kilo|kilogram|килограмм|Kilo|kilo|11
 kirja panema|write down|записывать|aufschreiben|kirjoittaa muistiin|11
-kodujuust|cottage cheese|домашний творог|Hüttenkäse|kotijuusto|11
-kohupiim|curds|творог|Quark|maitorahka, rahka|11
+kodujuust|cottage cheese|домашний творог|Hüttenkäse|kotijuusto|11|FOOD
+kohupiim|curds|творог|Quark|maitorahka, rahka|11|FOOD
 kole|ugly|страшный, ужасный|hässlich|kauhea, kamala|11kokku|total|всего|zusammen|yhteen, kokoon|11
 komm|candy|конфета|Bonbon|karkki|11
 koor|cream, coffee cream|сливки|Sahne|kerma, kahvikerma|11
 kuri|angry|злой|böse|ilkeä|11
-kurk|cucumber|огурец|Gurke|kurkku|11
+kurk|cucumber|огурец|Gurke|kurkku|11|FOOD
 kõigepealt|first of all|сначала|erstens, zuallererst|ennen kaikkea|11
-köögivili|vegetable|овощ|Gemüse|kasvikset|11
-küpsis|cookie|печенье|Keks|keksi|11
+köögivili|vegetable|овощ|Gemüse|kasvikset|11|FOOD
+küpsis|cookie|печенье|Keks|keksi|11|FOOD
 küüslauk|garlic|чеснок|Knoblauch|valkosipuli|11
-lillkapsas|цветная капуста|Blumenkohl|kukkakaali|11
-liha|meat|мясо|Fleisch|liha|11
+lillkapsas|цветная капуста|Blumenkohl|kukkakaali|11|FOOD
+liha|meat|мясо|Fleisch|liha|11|FOOD
 loodus|nature|природа|Natur|luonto|11
-lubama|to allow|разрешать|erlauben; versprechen|luvata|11
-maasikas|strawberry|клубника|Erdbeere|mansikka|11
-maasikaid|11
+lubama|to allow|разрешать|erlauben, versprechen|luvata|11
+maasikas|strawberry|клубника|Erdbeere|mansikka|11|FOOD
 magus|sweet|сладкий|süß|makea|11
 mahtuma|to fit|вмещаться|passen|mahtua|11
 maitsev|delicious, tasty|вкусный|lecker, schmackhaft|maukas|11
-makaron|noodles|макароны|Nudeln|makaroni|11
-mandariin|mandarin|мандарин|Mandarine|mandariini|11
+makaron|noodles|макароны|Nudeln|makaroni|11|FOOD
+mandariin|mandarin|мандарин|Mandarine|mandariini|11|FOOD
 mõned|some|некоторые|einige|muutamat|11
 mõtlema|to think|думать|denken|ajatella|11
 müük|sale|продажа|Verkauf|myynti|11
@@ -828,38 +825,38 @@ ost|purchase|покупка|Einkauf|osto, ostos|11
 otsas olema|finished|закончилось|aus sein, leer sein|loppua|11
 pakend|package|пакет, упаковка|Verpackung|pakkaus|11
 pakk|package|пачка, пакет|Paket|paketti|11
-peet|beet root|свёкла|Rote Beete|punajuuri|11
+peet|beet root|свёкла|Rote Beete|punajuuri|11|FOOD
 pipar|pepper|перец|Pfeffer|pippuri|11
-porgand|carrot|морковка|Karotte|porkkana|11
+porgand|carrot|морковка|Karotte|porkkana|11|FOOD
 proovima|to try|пробовать|probieren|kokeilla|11
 pudel|bottle|бутылка|Flasche|pullo|11
 puhas|clean|чистый|sauber|puhdas|11
 purk|jar|банка|Glas|purkki, tölkki|11
-puuvili|fruit|фрукт|Obst|hedelmä|11
-pähkel|nut|орех|Nuss|pähkinä|11
+puuvili|fruit|фрукт|Obst|hedelmä|11|FOOD
+pähkel|nut|орех|Nuss|pähkinä|11|FOOD
 päästma|to save|спасать|retten|pelastaa|11
 rohkem|more|больше|mehr|enemmän|11
-sepik|whole wheat bread|пшеничный хлеб|Vollkornmischbrot|hiivaleipä|11
-sibul|onion|лук|Zwiebel|sipuli|11
-sidrun|lemon|лимон|Zitrone|sitruuna|11
-seen|mushroom|гриб|Pilz|sieni|11
+sepik|whole wheat bread|пшеничный хлеб|Vollkornmischbrot|hiivaleipä|11|FOOD
+sibul|onion|лук|Zwiebel|sipuli|11|FOOD
+sidrun|lemon|лимон|Zitrone|sitruuna|11|FOOD
+seen|mushroom|гриб|Pilz|sieni|11|FOOD
 silt|label, tag, sign|табличка, этикетка|Schild|taulu, kyltti|11
 soodus|discount|льготный|günstig|tarjous|11
 sool|salt|соль|Salz|suola|11
 säästma|to save|экономить|sparen|säästää|11
-šokolaad|chocolate|шоколад|Schokolade|suklaa|11
+šokolaad|chocolate|шоколад|Schokolade|suklaa|11|FOOD
 tasu|reward, fee, charge|плата, оплата|Belohnung, Gebühr|maksu, palkkio|11
 tervislik|healthy|здоровый|gesund|terveellinen|11
 toit|food|пища, еда|Essen|ruoka|11
 toitumine|nutrition|питание|Ernährung|ravinto, ravitsemus|11
-tomat|tomato|помидор, томат|Tomate|tomaatti|11
+tomat|tomato|помидор, томат|Tomate|tomaatti|11|FOOD
 turg|market|рынок, базар|Markt|tori|11
 tükk|piece|штука, кусок|Stück|pala|11
-uba|bean|боб, фасоль|Bohne|papu|11
+uba|bean|боб, фасоль|Bohne|papu|11|FOOD
 varsti|soon|скоро|bald|pian|11vastu|against|против|gegen|vastaan|11
 veidi|a little|немного|wenig|vähän|11
-viinamari|grape|виноград|Weintraube|viinirypäle, rypäle|11
-viiner|frankfurter|сосиска|Wiener Würstchen|nakki|11
+viinamari|grape|виноград|Weintraube|viinirypäle, rypäle|11|FOOD
+viiner|frankfurter|сосиска|Wiener Würstchen|nakki|11|FOOD
 võrdlema|to compare|сравнивать|vergleichen|verrata|11
 vähem|less|меньше|weniger|vähemmän|11
 õli|oil|масло|Öl|öljy|11
@@ -871,9 +868,9 @@ arve|bill, check|счёт|Rechnung|lasku|12
 avama|to open|открывать|öffnen|avata|12
 baar|bar|бар|Bar, Kneipe|baari|12
 edasi|forward|дальше|weiter|eteenpäin|12
-forell|trout|форель|Forelle|purotaimen|12
-hamburger|hamburger|гамбургер|Hamburger|hampurilainen|12
-heeringas|herring|селёдка|Hering|silli|12
+forell|trout|форель|Forelle|purotaimen|12|FOOD, FISH
+hamburger|hamburger|гамбургер|Hamburger|hampurilainen|12|FOOD
+heeringas|herring|селёдка|Hering|silli|12|FOOD, FISH
 hääl|voice|голос|Stimme|ääni|12
 ikka|still|по-прежнему|wirklich|aina|12
 jutt|story|разговор, рассказ|Geschichte, Erzählung|puhe, keskustelu, juttu|12
@@ -882,14 +879,14 @@ kann|kettle, teapot|кувшин|Kanne|kannu, kaadin|12
 kapp|cupboard, wardrobe|шкаф|Schrank|kaappi|12
 kasutama|to use|использовать|benutzen|käyttää|12
 keema|to boil|кипеть|kochen|keittää|12
-kilu|sprat|килька|Sprotte, Breitling|anjovis, kilohaili|12
+kilu|sprat|килька|Sprotte, Breitling|anjovis, kilohaili|12|FOOD, FISH
 kinni panema|to close|закрыть|schließen|sulkea|12
 kinni panema|to book|резервировать|reservieren|varata|12
-kokk|cook, chef|повар|Koch|kokki|12
+kokk|cook, chef|повар|Koch|kokki|12|PROFESSION
 kokku saama|to meet|встречаться|sich treffen|kokoontua|12
-kringel|sweet pretzel|крендель|süßes Gebäck|rinkeli|12
+kringel|sweet pretzel|крендель|süßes Gebäck|rinkeli|12|FOOD
 kutsuma|to invite|приглашать|einladen|kutsua|12
-kuulus|Известный|berühmt|kuuluisa|12
+kuulus|famous|Известный|berühmt|kuuluisa|12
 kõik|all, everybody|все|alle|kaikki|12
 kõik|all|всё|alles|kaikki|12
 kõht|belly, stomach|живот|Bauch|vatsa|12
@@ -897,13 +894,13 @@ külaline|guest|гость|Gast|vieras|12
 külastaja|guest, visitor|посетитель|Besucher|vieras|12
 lahti tegema|to open|открывать|öffnen|avata|12
 loomulikult|of course|естественно|natürlich|tietysti|12
-lõhe|salmon|лосось|Lachs|lohi|12
+lõhe|salmon|лосось|Lachs|lohi|12|FOOD, FISH
 mari|berry|ягода|Beere|marja|12
-mustikas|blueberry|черника|Heidelbeere|mustikka|12
+mustikas|blueberry|черника|Heidelbeere|mustikka|12|FOOD
 mõnus|pleasant, cosy|приятный|angenehm|mukava|12
 näitama|to show|показывать|zeigen|näyttää|12
 nälg|hunger|голод|Hunger|nälkä|12
-praad|main course|жаркое|Hauptgericht|paisti|12
+praad|main course|жаркое|Hauptgericht|paisti|12|FOOD
 puhas|clean|чистый|sauber|puhdas|12
 seekord|this time|на этот раз|diesmal|tällä kertaa|12
 seltskond|company, party|компания|Gesellschaft|seura, seurue|12
@@ -917,16 +914,16 @@ tähistama|to celebrate|праздновать|feiern|viettää, merkitä|12
 tähtis|important|важный|wichtig|tärkeä|12
 täis|full|полный|voll|täysi|12
 tühi|empty|пустой|leer|tyhjä|12
-vaarikas|raspberry|малина|Himbeere|vadelma|12
-vahukoor|whipped cream|взбитые сливки|Schlagsahne|kermavaahto|12
+vaarikas|raspberry|малина|Himbeere|vadelma|12|FOOD
+vahukoor|whipped cream|взбитые сливки|Schlagsahne|kermavaahto|12|FOOD
 valama|to pour|наливать|einschütten|kaataa|12
 valik|choice|выбор|Auswahl, Wahl|valinta|12
 valima|to choose|выбирать, избирать|wählen|valita|12
 vanill|vanilla|ваниль|Vanille|vanilja|12
-vein|wine|вино|Wein|viini|12
+vein|wine|вино|Wein|viini|12|DRINK
 värske|fresh|свежий|frisch|tuore|12
 väsinud|tired|усталый|müde|väsynyt|12
-õlu|beer|пиво|Bier|olut|12
+õlu|beer|пиво|Bier|olut|12|DRINK
 üllatus|surprise|сюрприз|Überraschung|yllätys|12
 ahi|oven, stove|печь|Ofen|uuni|13
 elamu|dwelling house|жилой дом, жильё|Wohnhaus|asuintalo|13
@@ -960,20 +957,20 @@ male|chess|шахматы|Schach|shakki|13
 mugav|comfortable|удобный|bequem|mukava|13
 muu|other, others|иное, прочее|sonstige, sonstiges|muu|13
 mööbel|furniture|мебель|Möbel|huonekalu|13
-naaber|сосед|Nachbar|naapuri|13
+naaber|neighbour, neighbor|сосед|Nachbar|naapuri|13
 nõud|dishes|посуда|Geschirr|astia|13
 ohtlik|dangerous|опасный|gefährlich|vaarallinen|13
 oluline|important|важный|bedeutsam, wichtig|olennainen|13
 omanik|owner|владелец|Eigentümer|omistaja|13
 peaaegu|almost|почти|fast|lähes|13
-parandama|to repair|ремонтировать|reparieren; ausbessern|korjata|13
+parandama|to repair|ремонтировать|reparieren, ausbessern|korjata|13
 pesu|laundry, underwear|белье|Wäsche|pyykki, alusvaatteet|13
 pesumasin|washing machine|стиральная машина|Waschmaschine|pesukone|13
 piir|boarder|граница|Grenze|raja|13
 pliit|cooking range|плита|Herd|liesi|13pooleli|unfinished|наполовину|halbfertig|puolittain|13
 puudus|disadvantage|недостаток|Nachteil|puute|13
 põrand|floor|пол|Fußboden|lattia|13
-rahulik|peaceful|спокойный|ruhig; friedlich|rauhallinen|13
+rahulik|peaceful|спокойный|ruhig, friedlich|rauhallinen|13
 rajoon|district, neighborhood|район|Bezirk|asuinalue, alue|13
 remont|renovation|ремонт|Renovierung|remontti|13
 rida|row|ряд|Reihe|rivi|13
@@ -990,7 +987,7 @@ tooma|to bring|приносить|bringen, holen|tuoda|13
 trepikoda|stairwell|подъезд|Treppenhaus|porraskäytävä|13
 trepp|staircase|лестница, крыльцо|Treppe|porras|13
 vaade|view|вид|Aussicht, Ausblick|näköala, näkymä|13
-vaikne|silent, quiet|тихий|ruhig; leise|hiljainen|13
+vaikne|silent, quiet|тихий|ruhig, leise|hiljainen|13
 valgus|light|свет|Licht|valo|13
 valjusti|aloud|громко|laut|kuuluvasti|13
 vihane|angry|злой|böse|vihainen|13
@@ -1005,7 +1002,7 @@ värvima|to paint|красить|färben|maalata|13
 akulaadija|charger|зарядное устройство|Ladegerät|laturi|14
 alumine|lower|нижний|niedriger|alempi|14
 erinev|different|различный|verschieden|erilainen|14
-hambahari|зубная щетка|Zahnbürste|hammasharja|14
+hambahari|toothbrush, tooth-brush|зубная щетка|Zahnbürste|hammasharja|14
 hoidma|to keep|хранить|halten|pitää|14
 hüüdma|to call, to shout|звать|schreien|huutaa|14
 joonistama|to draw|рисовать|zeichnen|piirtää|14
@@ -1013,13 +1010,13 @@ ju|really|так как|doch, nun wirklich|-han, -hän|14
 juhtuma|to happen|случаться|passieren|tapahtua|14
 juttu ajama|to talk|беседовать|sich unterhalten|keskustella|14
 jutustama|to tell|рассказывать|erzählen|tarinoida|14
-jõudma|to arrive, to manage|добраться, смочь|etwas schaffen, ankommen ehtiä|14
+jõudma|to arrive, to manage|добраться, смочь|etwas schaffen, ankommen|ehtiä|14
 kaduma|to get lost|теряться, исчезать|verloren gehen|kadota|14
 kardin|curtain|гардина, занавеска|Gardine|verho|14
 keegi|somebody|кто-то, кто-нибудь|jemand|joku|14
 kraanikauss|sink, wash basin|раковина|Waschbecken, Spüle|pesuallas|14
 kära|noise, clamor|шум|Lärm, Aufruhr|melu|14
-käsklause|imperative sentence|повелительное предложение Imperative|komento lause|14
+käsklause|imperative sentence|повелительное предложение|Imperative|komento lause|14
 käärid|scissors|ножницы|Schere|sakset|14
 külmik|refrigerator|холодильник|Kühlschrank|jääkaappi|14
 küünal|candle|свеча|Kerze|kynttilä|14
@@ -1033,7 +1030,7 @@ nurk|corner|угол|Ecke|nurkka|14
 ometi|yet|все-таки|bloß, doch, trotzdem|kuitenkin|14
 padi|pillow, cushion|подушка|Kissen|tyyny|14
 parajasti|at the moment|в этот момент|eben, gerade|parastaikaa|14
-peegel|зеркало|Spiegel|peili|14
+peegel|mirror|зеркало|Spiegel|peili|14
 pikendusjuhe|extension cord|удлинитель|Verlängerungskabel|jatkojohto|14
 prügi|trash|мусор|Müll, Abfall|jäte|14
 põõsas|bush, shrub|куст|Strauch|pensas|14
@@ -1060,7 +1057,7 @@ võti|key|ключ|Schlüssel|avain|14
 ülemine|upper|верхний|obere, oberer, oberes|ylempi|14
 ümmargune|round|круглый|rund|pyöreä|14
 alates|since|начиная с|seit|alkaen|15
-armas|dear; lovely|милый|lieb, teuer|rakas|15
+armas|dear, lovely|милый|lieb, teuer|rakas|15
 asemel|instead of|взамен|statt, anstelle|sijasta|15
 edasi astuma|to step in, to step forward|проходить вперед|eintreten|astua eteenpäin|15
 hakkliha|minced meat|фарш|Hackfleisch|jauheliha|15
@@ -1099,7 +1096,7 @@ seeme|seed|семя|Same, Samen|siemen|15
 segama|to mix, to disturb|мешать, беспокоить|vermischen, mischen, stören|sekoittaa, häiritä|15
 sisse tulema|to come in|входить|hereinkommen|tulla sisälle|15
 soolane|salty|солёный|salzig|suolainen|15
-süda|сердце|Herz|sydän|15
+süda|heart|сердце|Herz|sydän|15
 tangud|wheat grain|крупа|Schrot|suurimot, ryynit|15
 tegelikult|in fact|на самом деле|eigentlich|oikeastaan|15
 teravili|grain|зерно|Korn, Getreide|vilja, viljakasvi|15
@@ -1184,7 +1181,7 @@ teenustasu|service fee|стоимость услуги|Bearbeitungsgebühr|palve
 tähitud|registered mail|заказной|Einschreiben|kirjattu|17
 täitma|to fill out, fill in|заполнять|füllen, ausfüllen|täyttää|17
 udu|fog|туман|Nebel|sumu|17
-võimalik|possible|возможно|möglich|17
+võimalik|possible|возможно|möglich|mahdollinen, mahdollista|17
 välimus|appearance|внешность, вид|das Äußere|ulkonäkö|17
 õhk|air|воздух|Luft|ilma|17
 üle kandma|to transfer|переводить|überweisen|siirtää|17
@@ -1201,7 +1198,7 @@ kampsun|sweater, cardigan|свитер|Pullover|neule, villatakki|18
 kandma|to wear|носить|tragen|kantaa|18
 kangas|fabric|ткань|Stoff|kangas|18
 kaustik|notebook|толстая тетрадь|Notizblock|muistivihko, lehtiö|18
-kestma|to last; continue|длиться|dauern|kestää|18
+kestma|to last, continue|длиться|dauern|kestää|18
 kilekaaned|plastic sleeve|пластиковая папка|Aktenhülle|muovikannet|18
 king|shoe|ботинок|Schuh|kenkä|18
 kinnas|glove, mitten|рукавица, варежка|Handschuh|käsine|18
@@ -1224,7 +1221,7 @@ puhastama|to clean|чистить|säubern|puhdistaa|18
 püksid|pants|штаны, брюки|Hose|housut|18
 ruuduline|checked, checkered|клетчатый, в клетку|kariert|ruudullinen|18
 röster|toaster|тостер|Toaster|leivänpaahdin, paahdin|18
-saabas|сапог|Stiefel|saapas|18
+saabas|boot|сапог|Stiefel|saapas|18
 seelik|skirt|юбка|Rock|hame|18
 sokk|sock|носок|Socke|sukka|18
 suhteliselt|comparatively|относительно|verhältnismäßig|suhteellisesti|18
@@ -1234,8 +1231,7 @@ täpiline|dotted|пятнистый|gepunktet|pilkullinen|18
 vajutama|to press|давить|drücken|painaa|18
 õhuke|thin|тонкий|dünn|ohut|18
 ülikond|suit, men's suit|костюм, костюм мужской, мужской костюм|Anzug|puku|18
-|18
-arvatavasti|probably|возможно|wahrscheinlich|luultavasti|19|19
+arvatavasti|probably|возможно|wahrscheinlich|luultavasti|19
 ausalt|honestly|честно|ehrlicherweise|rehellisesti|19
 ettevaatus|caution|осторожность|Vorsicht|varovaisuus|19
 gripp|flu|грипп|Grippe|flunssa|19
@@ -1272,7 +1268,7 @@ nohu|stuffy nose, runny nose|насморк|Schnupfen|nuha|19
 nutikas|smart, wise|находчивый|schlau|älykäs, nokkela|19
 paha|bad|плохой, неприятный|schlecht, schlimm|paha, kehno|19
 palavik|temperature, fever|температура|Fieber|kuume|19
-patsient|пациент|Patient|potilas|19
+patsient|patient|пациент|Patient|potilas|19
 pehme|soft|мягкий|weich|pehmeä|19
 pisik|virus, bacteria|микроб|Bazillus|mikrobi|19
 pits|shot glass|рюмка|Schnapsglas|ryyppylasi, pikari|19
@@ -1318,7 +1314,7 @@ hoiatus|warning, notice|предупреждение|Warnung|varoitus|20
 hunt|wolf|волк|Wolf|susi|20
 ilves|lynx|рысь|Luchs|ilves|20
 juhe|cord|провод|Kabel|johto|20
-kaotama|to lose|потерять|20
+kaotama|to lose|потерять|verlieren|kadottaa, hukata, menettää|20
 karv|fur|мех|Fell|karva|20
 kiirustama|to hurry|спешить|sich beeilen|kiirehtiä|20
 kinni jääma|to get stuck|застревать|stecken bleiben|jäädä kiinni|20
@@ -1354,8 +1350,8 @@ võõras|unknown, strange|чужой|fremd, unbekannt|vieras, tuntematon|20
 võitma|to win|побеждать|gewinnen|voittaa|20
 õhtupoolik|afternoon|послеобеденное время|Nachmittag|iltapäivä|20
 õnnetus|accident|несчастье, авария|Unglück, Unfall|onnettomuus|20
-alluv|subordinate|подчинённый|Untergebener|alainen|21|21
-aruanne|отчёт, ведомость|Bericht, Report|selonteko|21
+alluv|subordinate|подчинённый|Untergebener|alainen|21
+aruanne|report|отчёт, ведомость|Bericht, Report|selonteko|21
 arutama|to discuss|обсуждать|besprechen, erörtern|pohtia, harkita|21
 avaldus|application|заявление|Antrag|lausunto, hakemus|21
 eesmärk|aim, goal, purpose|цель, назначение|Ziel|tavoite, tarkoitus|21
@@ -1372,7 +1368,7 @@ komandeering|business trip|командировка|Geschäftsreise|työmatka, v
 koolitus|training|обучение|Schulung|koulutus|21
 koosolek|meeting|собрание|Meeting|kokous, palaveri|21
 korraldama|to arrange|организовывать|veranstalten, regeln|järjestää|21
-meeleolu|spirits; mood|настроение|Stimmung|mieliala|21
+meeleolu|spirits, mood|настроение|Stimmung|mieliala|21
 nõnda|so|так, таким образом|so, also|niin, sillä tavalla|21
 nõupidamine|meeting|совещание, совет|Tagung|neuvottelu|21
 oskus|skill|умение, владение|Fähigkeit|taito|21
@@ -1380,17 +1376,17 @@ otsekohe|immediately|сразу|sofort|heti, oikopäätä|21
 otsustama|to decide|принимать решение|entscheiden|päättää|21
 paindlik|flexible|гибкий|biegsam, flexibel|taipuisa, joustava|21
 peamiselt|mainly|преимущественно|hauptsächlich|pääosin|21
-pingeline|tense; intensive|напряженный|angespannt, intensiv|jännittynyt, kireä|21
+pingeline|tense, intensive|напряженный|angespannt, intensiv|jännittynyt, kireä|21
 rahul|satisfied|доволен|zufrieden|tyytyväinen|21
 suhted|relationships|отношения|Beziehungen|suhteet|21
 suhtlema|to communicate|общаться|kommunizieren|kommunikoida|21
 teenima|to earn|зарабатывать|verdienen|ansaita|21
-tegelema|to deal with|заниматься|sich mit etw. beschäftigen toimia, harjoittaa|21
+tegelema|to deal with|заниматься|sich beschäftigen| toimia, harjoittaa|21
 toimuma|to take place|происходить|passieren|tapahtua|21
 tootmine|production|производство|Herstellung, Produktion|tuottaa|21
 täht|letter, star|буква, звезда|Buchstabe, Stern|kirjain|21
 tähtaeg|deadline|срок|Frist|määräaika|21
-tööriist|tool; instrument|инструмент|Werkzeug, Instrument|työkalu|21
+tööriist|tool, instrument|инструмент|Werkzeug, Instrument|työkalu|21
 vahel|sometimes|иногда|manchmal|joskus|21
 vahetus|shift, change|смена, обмен|Schicht, Wechsel|vaihto, vuoro|21
 vaimne|mental|умственный, духовный|geistig, intellektuell|henkinen, hengen-|21
