@@ -284,10 +284,8 @@ describing their goal.""")
 class CourseGoal(models.Model):
     """ This is a grouping of goals connected to a course.
 
-    TODO: course goal evaluation for sub goals for user.
     TODO: fixtures with default set that can be copied to another
     course.
-
     """
 
     course = models.ForeignKey(Course, null=True, blank=True)

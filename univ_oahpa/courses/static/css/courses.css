@@ -133,8 +133,11 @@
 }
 
 #courses .complete , #courses .not_complete {
-    font-size: 120%;
+    font-size: 70%;
     font-weight: 200;
+    margin-left: .5em;
+    margin-top: .25em;
+    float: right;
 }
 
 #courses .complete {
@@ -475,3 +478,22 @@ ul.row li {
     font-size: 110%;
 }
 
+ul.course_completion {
+    position: absolute;
+    right: .75em;
+    color: #CCC;
+}
+
+.course_completion .course_completion_rate {
+    background-color: #EFE;
+    color: #090;
+    border-radius: 75%;
+    display: block;
+    height: 75px;
+    width: 75px;
+    font-weight: 100;
+    
+    line-height: 75px;
+    text-align: center;
+    font-size: 170%;
+}

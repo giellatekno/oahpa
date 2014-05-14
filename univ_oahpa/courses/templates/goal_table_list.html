@@ -9,8 +9,7 @@
         {% comment %}
         <th>&nbsp;</th>
         {% endcomment %}
-        <th>Correct</th>
-        <th>Sets answered</th>
+        <th>Progress</th>
         <th>&nbsp;</th>
     </tr>
 {% for goal in goal_set %}
@@ -53,9 +52,6 @@
             {# progress percentage #}
             <td class="current_progress">
                 {{ g.progress|floatformat }}%
-            </td>
-            <td class="current_progress sets">
-                {{ g.rounds }}
             </td>
             <td class="current_progress sets">
                 <a class="goal_history" href="{% url courses.views.goal_history goal.id %}"><span class="label label-primary">History</span></a>

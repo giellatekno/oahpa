@@ -12,12 +12,14 @@
                 <li><a id="" class="" href="{% url courses.views.courses_goal_construction %}">Create a goal</a></li>
 			{% endif %}
 		{% endif %}
-		{% if course|course_completion_rate:user > 0.0 %}
-		    <li><a href="#">{{ course|course_completion_rate:user|floatformat }}% complete!</a></li>
-	    {% endif %}
         </ul>
     </div>
 	<div class="col-md-4 col-sm-4 col-lg-4">
+	{% if course|course_completion_rate:user > 0.0 %}
+	    <ul class="course_completion">
+		    <li class="course_completion_rate">{{ course|course_completion_rate:user|floatformat }}%</li>
+		</ul>
+	{% endif %}
     </div>
 </div>
 
@@ -31,12 +33,13 @@
 				    <div class="coursegoal row">
 				        <div class="col-md-4 col-sm-4 col-lg-4">
 				            <h4>{{ forloop.counter }}. {{ coursegoal.short_name }}</h4>
-				            <h5 class="cumulative_progress">{{ coursegoal|cumulative_progress:user }}</h5>
-				            {% if coursegoal|complete_for:user %}
-				                <h5 class="complete">Complete!</h5>
-				            {% else %}
-				                <h5 class="not_complete">Not complete</h5>
-				            {% endif %}
+				            <h5 class="cumulative_progress">{{ coursegoal|cumulative_progress:user }}
+				                {% if coursegoal|complete_for:user %}
+				                    <span class="complete">Complete!</span>
+				                {% else %}
+				                    <span class="not_complete">Not complete</span>
+				                {% endif %}
+                            </h5>
 				            {% if coursegoal.description %}
 				                <div class="well">
 				                    <p class="goal_description">{{ coursegoal.description }}</p>
