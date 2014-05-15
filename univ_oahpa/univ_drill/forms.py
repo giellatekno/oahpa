@@ -793,7 +793,6 @@ def get_feedback(self, wordform, language):
 	### print 'attrsuffix:' + wordform.word.attrsuffix
 	### print 'compsuffix:' + wordform.word.compsuffix
 
-
 	### print 'feedback:' + self.feedback
 	### print '--'
 	### # NOTE: debug
