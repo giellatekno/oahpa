@@ -20,3 +20,28 @@ Sometimes the restart of the Tomcat web server is needed as well:
 
 The logs of running Konteaksta can be found in the directory $CATALINA_HOME/logs/.
 
+!!!File structure
+
+The files are in {{$GTHOME/apps/teaksta/sme/src/main}}
+
+Tasks (tagsequences etc. are defined in {{src/main/webapp/activities/}}.
+Each task has its folder.
+
+* Adverbial/           
+* InfiniteVerbs/       
+* Object/              
+* SubstantivePlural/   
+* VerbConjugation/     
+* Conjunctions/        
+* NegVerbs/            
+* Subject/             
+* SubstantiveSingular/ 
+* activity.dtd 
+
+For each folder, there are two files:
+
+* activity.xml
+* help.jsp
+
+The former gives key-value pairs.
+The latter gives the help text provided to the user.
