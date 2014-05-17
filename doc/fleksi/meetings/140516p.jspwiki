@@ -1,0 +1,209 @@
+!!! Møte 16.05.14
+
+Til stades: Heli, Lene, Trond.
+
+!!!Saker: 
+* Konteaksta
+* Firefox-plugin for Konteaksta
+* Neste møte
+
+
+!!Konteaksta
+
+!Heli har gjort sedan sist:
+* testade skuvla.info, jag har skrivit om detta i bugzilla
+* alltså: jag måste göra någonting med tidsfaktorn - skuvla.info fungerar inte på finite verb därför att där har jag även implementerat facitgenerering, så det är väldigt många anrop till FST-ar som tar mycket tid. tidsfaktorn är viktigt oavsett, så jag tror det är nästa sak som jag ska jobba med, innan jag börjar implementera nya uppgiftstyper osv.
+* nya uppgiftstyper - där har jag också börjat, men det är inte färdig / online
+* Russisk Konteaksta (demo med Substantive Singular) uppe på gtlab.uit.no:8080/WERTirus
+
+!Lene har gjort:
+* Prøvd å ta kontakt med Kjellaug, ikke fått svar
+* Funnet egnete tekster på internett, og lagt inn urler i dokumentasjonen
+* Sett på oppgavetyper, gjort forbedringer
+* Testa, funnet ting som ikke fungerer helt:
+
+!Ting som ikke fungerer helt:
+* Problemer med skuvla.info. Test med kort fil: http://skuvla.info/skolehist/uskav2-s.htm fungerer med konjunksjoner => det må være tidsfaktoren som er problemet
+* sammensetningssymbol # kommer til syne i lemma (se img lihttosadjai)
+**  Das vuolde leat muhtin _ _ _ (artihkal#sávaldat):
+Oppgaven fungerer likevel, dvs den godtar svaret uten #
+* Konteaksta genererer ikke nok oppgaver. Dvs på sider med få negasjoner, så generer den likevel ikke alle. Dette er et problem for konstruksjoner som ikke er frekvente i internettekstene => Ändra i koden så att om det är fler än 10 på sidan, då ta inte alla men annars ta med alla.
+* Oppgaven infinitte verb: her kommer ikke Actio+Ess med (img infinitte) - grunnen er TV vs IV, Lene har nå forbedra tagdefinisjoner i fila
+* Oppgaven substativer flertall: her kommer N+Ess med (img flertall) - Lene har nå fjerna Ess fra SubstantivePlural/activity.xml
+* Fornying av functions.cg3: view-seksjonen skal kommenteres inn =>
+functions-konteaksta.cg3. Den ligg no i /opt på gtlab, med view-seksjonen kommentert inn.
+* Oppgavene substantiver entall: her kommer ikke alle med (img davgi): http://www.samimuseum.fi/maahisweb/sapmi/sa_poikajastaalo.html. Grunnen er at ordet gir flere analyser. => Om det finns ambiguous morf analys då ta med ord, om det finns en analys som passar in i mönster.
+* http://giellatekno.uit.no/ped/maintenance.html. På denne siden er det ting om Oahpa-databasen som ikke er med i den nye dokumentasjonen til Oahpa.
+
+!Problem med preprocess
+Konteaksta får annet resultat for preprocess, enn vi får lokalt og på server.
+Vi forstår ikkje preprosesseringa her.
+
+! I hvilken fil kan jeg sjekke hvilke tagger som er definert for hver oppgave?
+Uppgifter (tagsekvenser osv) är definierade i src/main/webapp/activities/
+Där finns det en katalog för varje uppgift och längst ner i activity.xml finns FinVerbTags=""
+
+! Problemer med gtlab-serveren?
+Den er treg, dette må vi se på. For lite kapasitet? Prosesser som tar mye kapasitet? operativsystemet? Kan vi justere tida for timeout?
+
+Data for tidsbruk, gtlab, gtoahpa, lokalt:
+
+{{{
+langs/smn
+smn gtlab: make clean && time make
+real	0m39.689s <===
+user	0m33.633s
+sys	0m1.096s
+
+smn gtoahpa: make clean && time make
+real	0m3.630s <===
+user	0m2.357s
+sys	0m0.295s
+
+smn Trond si maskin: make clean && time make
+real	0m27.906s
+user	0m26.349s
+sys	0m1.044s
+
+
+time echo boahtit | usme
+analyse gtlab home/trond/main/langs
+real	0m0.444s
+user	0m0.399s
+sys	0m0.029s
+
+time echo boahtit | lookup /opt/smi/sme/bin/sme.fst 
+analyse gtlab /opt/smi/sme
+real	0m0.679s
+user	0m0.462s
+sys	0m0.158s
+}}}
+
+!Tiltaksliste:
+* __Trond__ tar kontakt med it-folkene på UiT om å få raskere prosessor på gtlab
+* __Heli__ prioriterer optimaliseringa av spørringa
+* __Heli__ fikser problemet med at sammensetningssymbol # kommer til syne i lemma
+* __Heli__ lager html-fil for hver oppgave
+* __Heli__ dokumenter preprosesseringa i Konteaksta, slik at vi kan repetere den
+* __Heli__ forbedrer dokumentasjonen for Konteaksta: http://giellatekno.uit.no/ped/common/KonteakstaTechnicalDocumentation.html
+* __Heli__ endrer i koden så att om det är fler än 10 på sidan, då ta inte alla men annars ta med alla.
+* __Heli__ endrer koden slik at om det finns ambiguous morf analys då ta med ord, om det finns en analys som passar in i mönster.
+* __Lene__ tar en gjennomgang av tagger i activity-filene
+* __Lene__ legger til anbefalte sider for oppgavetyper
+* __Trond__ legger inn mangler i dokumetasjonen for Oahpa: http://giellatekno.uit.no/ped/common/OahpaTechnicalDocumentation.html
+* __Trond__ diskuterer med Sjur om automatisering av functions-konteaksta.cg3 -fila.
+* __Alle__ undersøker skilnaden mellom preprosessering 
+
+
+!!Firefox-plugin for Konteaksta
+Heli arbeider videre med denne etter at de andre tingene på lista her
+
+!! Neste møte.
+Vi avtaler det seinere.
+
+!!Vedlegg om preprosessering:
+
+{{{
+smedis "Dávggi vuolan"
+... pos disambiguating ...
+"<Dávggi>"
+	"dávgi" Sem/DummyTag N <sme> Sg Acc
+"<vuolan>"
+	"vuollat" V <sme> TV Ind Prs Sg1 @+FMAINV
+
+tf-hsl-m0016:~ ttr000$ smesyn "Dávggi vuolan"
+... syntax analysis ...
+"<Dávggi>"
+	"dávgi" N Sg Acc @OBJ>
+"<vuolan>"
+	"vuollat" V TV Ind Prs Sg1 @+FMAINV
+
+
+echo "Dávggi vuolan" | preprocess | usme | lookup2cg | vislcg3 -g /opt/smi/sme/bin/sme-dis.rle | vislcg3 -g /opt/smi/sme/bin/functions.cg3 
+"<Dávggi>"
+	"dávgi" N Sg Acc @OBJ>
+"<vuolan>"
+	"vuollat" V TV Ind Prs Sg1 @+FMAINV
+
+-rw-r--r-- 1 root root 117207 mai    9 21:11 /opt/smi/sme/bin/functions.cg3
+-rw-r--r-- 1 root root 680374 mai   16 03:39 /opt/smi/sme/bin/sme-dis.rle
+Oppdatert:
+-rw-r--r-- 1 root root 117606 mai   16 16:29 /opt/smi/sme/bin/functions.cg3
+
+"<Dávggi>"
+        "Dávgi" N Prop Sem/Obj Sg Acc @OBJ>
+        "dávgi" N Sg Acc @OBJ>
+        
+Text analysis pipeline: 
+bin/cat /home/teaksta/output/cg3input1400250489628.tmp | 
+
+
+                    /usr/local/bin/lookup -flags mbTT -utf8 /opt/smi/sme/bin/sme.fst | /home/heli/main/gt/script/lookup2cg | /usr/local/bin/vislcg3 -g /opt/smi/sme/bin/sme-dis.rle | /usr/local/bin/vislcg3 -g /opt/smi/sme/bin/functions.cg3
+~>echo "Dávggi vuolan" |  tr ' ' '\n'  | lookup -flags mbTT /opt/smi/sme/bin/sme.fst | lookup2cg | vislcg3 -g /opt/smi/sme/bin/sme-dis.rle | vislcg3 -g /opt/smi/sme/bin/functions.cg3 
+0%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 100%
+"<Dávggi>"
+	"dávgi" N Sg Acc @OBJ>
+"<vuolan>"
+	"vuollat" V TV Ind Prs Sg1 @+FMAINV
+
+~>usme
+Dávgi
+Dávgi	Dávgi+N+Prop+Sem/Obj+Sg+Nom
+Dávgi	dávgi+Sem/DummyTag+N+Sg+Nom
+
+
+
+echo 'Gánda: "Dávggi vuolan."' | preprocess | lookup -flags mbTT /opt/smi/sme/bin/sme.fst | lookup2cg | vislcg3 -g /opt/smi/sme/bin/sme-dis.rle | vislcg3 -g /opt/smi/sme/bin/functions.cg3 
+0%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 100%
+"<Gánda>"
+	"gánda" N Sg Nom @HNOUN
+"<:>"
+	":" CLB
+"<">"
+	""" PUNCT
+"<Dávggi>"
+	"Dávgi" N Prop Sem/Obj Sg Acc @OBJ>
+	"dávgi" N Sg Acc @OBJ>
+"<vuolan>"
+	"vuollat" V TV Ind Prs Sg1 @+FMAINV
+"<.>"
+	"." CLB
+
+"<">"
+	""" PUNCT
+
+echo 'Gánda: "Dávggi vuolan."' | preprocess 
+Gánda
+:
+"
+Dávggi
+vuolan
+.
+"
+
+activities$ echo 'Gánda: "Dávggi vuolan."' | preprocess 
+Gánda
+:
+"
+Dávggi
+vuolan
+.
+"
+
+
+Lene lokalt:
+activities$ smesyn 'Gánda: "Dávggi vuolan."'
+... syntax analysis ...
+"<Gánda>"
+	"gánda" N Sg Nom @HNOUN
+"<:>"
+	":" CLB
+"<Dávggi>"
+	"dávgi" N Sg Acc @OBJ>
+"<vuolan>"
+	"vuollat" V TV Ind Prs Sg1 @+FMAINV
+"<.>"
+	"." CLB
+}}}
+
+
