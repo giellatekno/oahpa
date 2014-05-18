@@ -5,8 +5,9 @@
 
 !!!Technical dokumentation
 
-Updating the code on gtlab
+The core of Konteaksta is implemented as a Java servlet on Tomcat Apache web server. 
 
+Updating the code on gtlab
 
 * cd /home/teaksta
 * svn up
@@ -22,10 +23,10 @@ The logs of running Konteaksta can be found in the directory $CATALINA_HOME/logs
 
 !!!File structure
 
-The files are in {{$GTHOME/apps/teaksta/sme/src/main}}
+The source code of North Sámi Konteaksta is in {{$GTHOME/apps/teaksta/sme/src/main}}.
 
-Tasks (tagsequences etc. are defined in {{src/main/webapp/activities/}}.
-Each task has its folder.
+Exercise topics are defined in {{src/main/webapp/activities/}}.
+Each topic has its folder.
 
 * Adverbial/           
 * InfiniteVerbs/       
@@ -36,12 +37,45 @@ Each task has its folder.
 * NegVerbs/            
 * Subject/             
 * SubstantiveSingular/ 
-* activity.dtd 
+ 
 
 For each folder, there are two files:
 
 * activity.xml
 * help.jsp
 
-The former gives key-value pairs.
+The former defines preprossessing and post-processing pipelines (those are defined in separate xml-files that can be found under the {{desc/}}-folder) and tag sequences that identify the words that are relevant for the exercise.
+
 The latter gives the help text provided to the user.
+
+Instructions of how to add a new exercise topic are in the file {{$GTHOME/apps/teaksta/sme/EXTENDING}}.
+
+!!!How the program works
+
+Konteaksta front page is {{src/main/webapp/index.html}}. It is written in HTML and Javascript. When pressing the button "Go!" the Java servlet will be run that does the following:
+
+1. preprocessing: 
+** extracting the textual content from the webpage
+** tokenisation
+** sentence boundary detection
+** linguistic annotation ({{src/main/java/werti/uima/ae/Vislcg3Annotator.java}})
+*** morphological analysis (FST)
+*** morphological disambiguation (CG)
+*** shallow syntactic parsing (CG)
+
+2. postprocessing (one of the <Topic>Enhancer.java files in {{src/main/java/werti/uima/enhancer/}}): 
+** Selection of the tokens that are relevant for the topic
+** Enhancement - enriching the HTML code with additional attributes. The relevant tokens will be marked and provided with attributes as __lemma__, __distractors__ and __answer__.
+
+3. Loads the enhanced page to the browser. The four different exercise types (color, click, multiple choice, cloze) are implemented in Javascript.
+
+!!!Example of enhanced HTML code
+
+{{<span id="WERTi-span- Ind Prt-2" 	     
+      class="wertiviewtoken  wertiviewVerbConjugation" 
+      lemma="leat" 
+      distractors="leat lean leat leahkit leame leamen leahkime lea " 
+      answer="lei leai ">  lei
+</span>}}
+
+If the enhancement does not work as expected we usually can find out why by looking at the page's source.
