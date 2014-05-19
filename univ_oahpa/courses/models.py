@@ -683,9 +683,6 @@ class GoalParameter(models.Model):
         return (name, opt)
 
 
-
-from univ_drill.models import Feedbackmsg, Feedbacktext
-
 class UserFeedbackLog(models.Model):
     user = models.ForeignKey(User)
     goal = models.ForeignKey(Goal, null=True, blank=True)
@@ -695,7 +692,7 @@ class UserFeedbackLog(models.Model):
 
     datetime = models.DateTimeField(auto_now_add=True)
 
-    feedback_texts = models.TextField(Feedbacktext)
+    feedback_texts = models.TextField()
 
     # TODO: how much detailed info do we want on when the user clicked?
     # TODO: methods for determining whether user has reached a given
@@ -731,6 +728,7 @@ class UserActivityLog(models.Model):
     # objects = models.Manager()
 
 def incorrects_by_frequency(user, goal=None):
+
     from collections import defaultdict
 
     if goal:

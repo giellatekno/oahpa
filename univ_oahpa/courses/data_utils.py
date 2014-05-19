@@ -104,6 +104,12 @@ def prepare_goal_params(rq=None):
         'derivation_type_context': {'options': dict(DERIVATION_CHOICES),
                    'select': True,
                   'name': 'Derivation type'},
+        'adjcase': {'options': dict(ADJCASE_CHOICES),
+                 'select': True,
+                 'name': 'Adjective case'},
+        'grade': {'options': dict(GRADE_CHOICES),
+                 'select': True,
+                 'name': 'Grade'},
 
         # TODO: adj grade choices in context?
     }
@@ -135,7 +141,7 @@ def prepare_goal_params(rq=None):
                     'path': '/leksa/sted/',
                     'label': 'Placenames',
                     'value': 'leksa_place',
-                    'params': ['geography', 'common', 'transtype'],
+                    'params': ['geography', 'common', 'transtype', 'source'],
                 }
             ],
             'label': 'Leksa',
@@ -163,7 +169,7 @@ def prepare_goal_params(rq=None):
                 },
                 {
                     'path': '/numra/dato/',
-                    'label': 'Time',
+                    'label': 'Date',
                     'value': 'numra_dato',
                     'params': ['numgame'],
                 },
@@ -203,8 +209,12 @@ def prepare_goal_params(rq=None):
                     'value': 'morfa_s_num',
                     'path': '/morfas/l/',
                 },
-                # TODO: Morfa-S Adj
-                # TODO: Morfa-S Pronouns
+                {
+                    'params': ['grade', 'adjcase', 'book', 'stem_type'] + STEM_TYPE,
+                    'label': 'Morfa-S Adjectives',
+                    'value': 'morfa_s_adj',
+                    'path': '/morfas/a/',
+                },
                 # TODO: Morfa-S Numerals
                 # TODO: Morfa-S Derivations
             ],
