@@ -192,9 +192,10 @@
                 <div class="col-md-5">
                     <p class="sortable-note">Your Tasks</p>
                     <ul ng-model="not_in_use" ui-sortable="sortableOptions" class="connected-sorting source-region nav nav-pills nav-stacked">
-                        <li ng-repeat="goal in not_in_use"><a href="#"><% goal.text %></a></li>
+                        <li ng-hide="goal.assigned && hide_assigned" ng-repeat="goal in not_in_use"><a href="#"><% goal.text %></a></li>
                         <li class="add-task"><a ng-click="newTaskPopup()" href="#">+ Create a task</a></li>
                     </ul>
+                    <input type="checkbox" ng-model="hide_assigned">Hide tasks for other goals</input>
                 </div>
             </div>
 

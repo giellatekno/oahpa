@@ -25,6 +25,7 @@ class GoalParamSerializer(serializers.ModelSerializer):
 # TODO: edit/put
 class GoalSerializer(serializers.ModelSerializer):
     begin_url = serializers.CharField(source='begin_url', read_only=True)
+    assigned = serializers.CharField(source='assigned', read_only=True)
     params = GoalParamSerializer(many=True)
     # TODO: validate that name and desc aren't empty
 
@@ -38,7 +39,7 @@ class GoalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Goal
         fields = ('id', 'short_name', 'begin_url', 'course', 'params',
-                  'main_type', 'sub_type', 'threshold',
+                  'main_type', 'sub_type', 'threshold', 'assigned',
                   'minimum_sets_attempted', 'correct_first_try')
 
 class CourseGoalGoalSerializer(serializers.ModelSerializer):

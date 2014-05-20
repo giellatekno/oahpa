@@ -4,30 +4,32 @@ Moving stuff to trello
 
 # Added installation notes:
 
-Context processors:
-    "univ_oahpa.courses.context_processors.courses_user",
-    "django.core.context_processors.csrf",
+    Context processors:
+        "univ_oahpa.courses.context_processors.courses_user",
+        "django.core.context_processors.csrf",
 
-Middleware:
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'courses.middleware.GradingMiddleware',
+    Middleware:
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'courses.middleware.GradingMiddleware',
 
-installed apps:
-    'django.contrib.staticfiles',
+    installed apps:
+        'django.contrib.staticfiles',
 
-    'univ_oahpa.courses',
-    'rest_framework',
-    # ... 
-    'notifications',
-    'django_messages',
-    'django_forms_bootstrap',
+        'univ_oahpa.courses',
+        'rest_framework',
+        # ... 
+        'notifications',
+        'django_messages',
+        'django_forms_bootstrap',
 
-TEMPLATE_LOADERS:
-    'django.template.loaders.app_directories.Loader',
+    TEMPLATE_LOADERS:
+        'django.template.loaders.app_directories.Loader',
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
+    STATICFILES_FINDERS = (
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    )
+
+    COOKIE_NAME_STARTSWITH = 'wordpress_logged_in_'
 
 ## New packages in use
 

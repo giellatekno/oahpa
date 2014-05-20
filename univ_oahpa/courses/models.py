@@ -423,7 +423,7 @@ class CourseGoal(models.Model):
 
 class CourseGoalGoal(models.Model):
     coursegoal = models.ForeignKey('CourseGoal', related_name="goals")
-    goal = models.ForeignKey('Goal')
+    goal = models.ForeignKey('Goal', related_name="courses")
 
 class Goal(models.Model):
     """ This is a course goal object, which is connected to criteria.
@@ -445,6 +445,12 @@ class Goal(models.Model):
     threshold = models.FloatField(default=80.0, help_text="Percentage user must get correct. E.g. 80.0")
     minimum_sets_attempted = models.IntegerField(default=5, help_text="Amount of sets user must try to be finished.")
     correct_first_try = models.BooleanField(default=False, help_text="Only count answers correct on the first try")
+
+    @property
+    def assigned(self):
+        """ Return boolean for whether this course is assigned.
+        """
+        return (self.course and True) or self.courses.count() > 0
 
     @property
     def summary(self):

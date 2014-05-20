@@ -68,6 +68,7 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
 
                 $scope.not_in_use.push({
                     text: goal.short_name,
+                    assigned: goal.assigned,
                     id: goal.id,
                     value: i+1
                 });
@@ -97,6 +98,7 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
 
                     $scope.not_in_use.push({
                         text: goal.short_name,
+                        assigned: goal.assigned,
                         id: goal.id,
                         value: i+1
                     });
@@ -110,6 +112,7 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
 
                     var item = {
                         text: goal.short_name,
+                        assigned: goal.assigned,
                         id: goal.id,
                         value: i+1
                     };
@@ -208,6 +211,7 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
         
             $scope.not_in_use.push({
                 text: goal.short_name,
+                assigned: goal.assigned,
                 id: goal.id,
                 value: i+1
             });
