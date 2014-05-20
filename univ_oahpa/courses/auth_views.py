@@ -38,7 +38,7 @@ def cookie_login(request, next_page=None, required=False, **kwargs):
         return HttpResponseRedirect(next_page)
 
     matching_cookies = [(c, v) for c, v in request.COOKIES.iteritems() 
-                                if c.startswith(settings.COOKIE_NAME)]
+                                if c.startswith(settings.COOKIE_NAME_STARTSWITH)]
 
     try:
         cookie_name, wp_cookie = matching_cookies[0]
