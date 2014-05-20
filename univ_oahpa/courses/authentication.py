@@ -23,6 +23,11 @@ from courses.models import Course
 
 __all__ = ['CookieAuthMiddleware', 'CookieAuth']
 
+import logging
+
+dev_log = logging.getLogger('dev_log')
+dev_log.error('omg')
+
 class CookieAuthMiddleware(object):
     """ Middleware that allows cookie authentication """
 
@@ -30,6 +35,8 @@ class CookieAuthMiddleware(object):
         matching_cookies = [(c, v) for c, v in request.COOKIES.iteritems()
                                     if c.startswith(settings.COOKIE_NAME)]
 
+        dev_log.error('mc')
+        dev_log.error(repr(matching_cookies))
         try:
             cookie_name, wp_cookie = matching_cookies[0]
             wp_username, session, session_hex = wp_cookie.split('%7C')
