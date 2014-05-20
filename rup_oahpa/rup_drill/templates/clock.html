@@ -1,0 +1,24 @@
+{% extends "num.html" %}
+{% load i18n %}
+
+{% block navbar %}
+{% with "klokka" as gamename_nav %}
+    {% include 'numra_submenu.html' %}
+{% endwith %}
+{% endblock %}
+
+{% block instructions %}
+  {% ifequal gametype "string" %}
+    {% trans "Enter the time in the digital clock format. (E.g. 10:21)" %}
+  {% else %}
+    {% trans "Enter the time in Erzya." %}
+  {% endifequal %}
+{% endblock %}
+
+
+{% block setting_items %}
+	<li><label for="id_{{ settingsform.gametype.name }}">{% trans "Select how many points of time to include." %}</label>
+		{{ settingsform.gametype }}</li>
+	<li><label for="id_{{ settingsform.numgame.name }}">{% trans "Select the direction" %}</label>{{ settingsform.numgame }}</li>
+{% endblock %}
+

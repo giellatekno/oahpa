@@ -1,0 +1,66 @@
+{% extends 'rup_oahpa.html' %}
+{% load i18n %}
+{% load goal_filters %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block extrajs %}
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
+{% endblock %}
+
+{% block page_class %}fixed{% endblock %}
+{% block imgprefix %}numra{% endblock %}
+
+{% block content %}
+	{# Add blocktrans and trans tags #}
+	<div id="courses" class="bootstrap-styles">
+	    <div class="container col-md-12 col-sm-12 col-lg-12">
+	        <div class="row">
+		        <ul id="subnav" class="nav nav-tabs">
+			        <li><a href="/{{ URL_PREFIX }}/courses/">Courses &amp; Goals</a></li>
+			        <li class="active"><a href="/{{ URL_PREFIX }}/courses/stats/">stats</a></li>
+			        {% if profile.is_instructor %}
+			        <li><a href="/{{ URL_PREFIX }}/courses/">{% trans "Course overview" %}</a></li>
+			        {% endif %}
+			        {% if user.is_staff %}
+			        <li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
+			        {% endif %}
+			        <li><a href="{% url rup_oahpa.courses.urls.logout %}">{% trans "Log out" %}</a></li>
+		        </ul>
+	        </div>
+
+		    <div class="row">
+		        <div class="col-md-12">
+			        <div class="user_stats_block">
+			            {% if new_profile %}
+				            <p>{% trans "You don't have any scores yet, go play some games!" %}</p>
+			            {% else %}
+			                <br /> 
+			                <br /> 
+				            {% load pretty_logs %}
+				            <h3>{% trans "Learning stats" %}</h3>
+				            <p>{% trans "The following scores represent your progress in the games available in Oahpa. Instructors will see your scores as shown below, but will also be able to see individual scores from every game. Good luck!" %}</p>
+				            <dl class="course_progress">
+					            {% for summary in summaries %}
+					            <dt>{% for a in summary.game.name|filter_log %}{{ a }}{% if not forloop.last %} - {% endif %}{% endfor %}</dt>
+						            <dd>
+							            <ul>
+								            <li>{% trans "Average" %} &mdash; {{ summary.average }}</li>
+								            <li>{% trans "Highest score" %} &mdash; {{ summary.maximum }}</li>
+								            <li>{% trans "Lowest score" %} &mdash; {{ summary.minimum }}</li>
+								            <li>{% trans "Number of tries" %} &mdash; {{ summary.count }}</li>
+							            </ul>		
+						            </dd>
+					            {% endfor %}
+				            </dl>
+
+			            {% endif %}
+			        </div>
+		        </div>
+		    </div>
+		</div>
+	</div>
+
+{% endblock %}
+
+
