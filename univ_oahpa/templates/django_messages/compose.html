@@ -1,14 +1,16 @@
 {% extends "django_messages/base.html" %} 
 {% load i18n %} 
+{% load staticfiles %}
 {% block extrajs %}
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap-theme.css"/>
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/bootstrap_namespaced.css"/>
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/courses.css"/>
-	<link rel="stylesheet" href="{{ MEDIA_URL }}/css/token-input.css" type="text/css" />
-	<link rel="stylesheet" href="{{ MEDIA_URL }}/css/token-input-facebook.css" type="text/css" />
-    <script type="text/javascript" src="{{ MEDIA_URL }}/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}/js/jquery.tokeninput.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap_namespaced.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/courses.css" %}"/>
 
+    <link rel="stylesheet" type="text/css" href="{% static "css/token-input.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/token-input-facebook.css" %}"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static "js/jquery-1.11.0.min.js" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "js/jquery.tokeninput.js" %}"/>
 
     <script type="text/javascript">
         // https://github.com/philippWassibauer/django-threaded-messages/ ... compose.html
