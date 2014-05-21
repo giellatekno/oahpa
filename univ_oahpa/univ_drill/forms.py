@@ -743,20 +743,54 @@ def set_settings(self):
 # DEBUG = open('/dev/ttys001', 'w')
 # DEBUG = open('/dev/null', 'w')
 
+def nearest_matching_level(wf_feedbacks, level):
+	""" Filter feedbacks for the user's level, if the level is too high,
+	and none exist, return the highest level of feedbacks available. """
 
-def get_feedback(self, wordform, language):
+	matching_feedbacks = []
+
+	levels = wf_feedbacks.values_list('feedbacktext__user_level', flat=True)
+	if levels.count() > 0:
+		_max_lev = max(levels)
+	
+		matching_level = level in levels
+		_match = [l for l in levels if l < level]
+		if len(_match) > 0:
+			highest_non_matching = max(_match)
+		else:
+			highest_non_matching = 1
+	
+		if matching_level:
+			matching_feedbacks.extend( wf_feedbacks.filter(feedbacktext__user_level=level) )
+		else:
+			matching_feedbacks.extend( wf_feedbacks.filter(feedbacktext__user_level=highest_non_matching) )
+	
+
+	return matching_feedbacks
+
+def get_feedback(self, wordform, language, user_level=False):
 
 	language = switch_language_code(language)
-	
+
 	# TODO: user_level depends on the wordform and the user's feedback
 	# log entries.
 
 	# TODO: need to also select the nearest level to the user's level,
 	# so that if the user's level has no message, then we get the
 	# highest level available.
-	feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
-					.order_by('feedbacktext__order')\
-					.order_by('feedbacktext__user_level')
+
+
+	if user_level:
+		feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
+						.order_by('feedbacktext__order')\
+						.order_by('feedbacktext__user_level')
+		feedbacks = nearest_matching_level(feedbacks, user_level)
+	else:
+		feedbacks = wordform.feedback.filter(feedbacktext__language=language, feedbacktext__user_level=1)\
+						.order_by('feedbacktext__order')
+		if feedbacks.count() == 0:
+			feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
+							.order_by('feedbacktext__order')
 	
 	feedback_messages = []
 	feedback_ids = []
@@ -792,6 +826,7 @@ def get_feedback(self, wordform, language):
 	### print 'soggi:' + wordform.word.soggi
 	### print 'attrsuffix:' + wordform.word.attrsuffix
 	### print 'compsuffix:' + wordform.word.compsuffix
+
 
 	### print 'feedback:' + self.feedback
 	### print '--'
