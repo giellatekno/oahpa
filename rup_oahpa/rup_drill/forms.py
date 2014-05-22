@@ -297,7 +297,7 @@ VTYPE_CONTEXT_CHOICES = (
 LEVEL_CHOICES = (
 	('l1', _('Level 1')),
 	('l2', _('Level 1-2')),
-	('l3', _('Level 1-3')),
+#	('l3', _('Level 1-3')),
 	('all', _('All')),
 )
 
@@ -362,12 +362,12 @@ TRANS_CHOICES = (
 )
 
 NUMLANGUAGE_CHOICES = (
-	('rup', _('Erzya')),
+	('rup', _('Aromanian')),
 )
 
 SEMTYPE_CHOICES = (
     ('HUMAN', _('humans')),
-    ('FOOD/DRINK', _('food or drink')),
+    ('FOOD-DRINK', _('food or drink')),
     ('all', _('all')),
 )
 
