@@ -43,22 +43,16 @@
 						<select id="language_select" name="language" onChange="javascript:this.form.submit();">
 
 						  
-						{% ifequal LANGUAGE_CODE "no" %}
-							<option value="no" selected="selected">Norsk</option>
+						{% ifequal LANGUAGE_CODE "ron" %}
+							<option value="no" selected="selected">Româna</option>
 						{% else %}
-							<option value="no">Norsk</option>
+							<option value="no">Româna</option>
 						{% endifequal %}
 							  
-						{% ifequal LANGUAGE_CODE "ru" %}
-							<option value="ru" selected="selected">Pусский язык</option>
+						{% ifequal LANGUAGE_CODE "rup" %}
+							<option value="rup" selected="selected">Armãneshe</option>
 						{% else %}
-							<option value="ru">Pусский язык</option>
-						{% endifequal %}
-							  
-						{% ifequal LANGUAGE_CODE "fi" %}
-						 	<option value="fi" selected="selected">Suomi</option> 
-						{% else %}
-						 	<option value="fi">Suomi</option> 
+							<option value="rup">Armãneshe</option>
 						{% endifequal %}
 							  
 						{% ifequal LANGUAGE_CODE "en" %}
