@@ -431,7 +431,7 @@ def leksa_game(request, place=False):
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
 		if sess_lang == 'rup':
-			sess_lang = 'eng' # was: nob
+			sess_lang = 'ron' # was: nob
 	else:
 		sess_lang = 'eng' # was: nob
 
