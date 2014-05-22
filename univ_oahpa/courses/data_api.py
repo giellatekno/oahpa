@@ -2,6 +2,8 @@
 from rest_framework import mixins
 
 from rest_framework.response import Response
+from rest_framework import status
+
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
 from .models import ( UserGoalInstance
@@ -60,8 +62,24 @@ class FeedbackLogView(viewsets.ModelViewSet):
     model = UserFeedbackLog
     serializer_class = FeedbackLogSerializer
 
-    def pre_save(self, obj):
-        obj.user = self.request.user
+    def create(self, request):
+        data = request.DATA
+
+        with_ids = []
+
+        for d in data:
+            _d = d.copy()
+            _d['user'] = request.user.id
+            with_ids.append(_d)
+
+        serialized = self.serializer_class(data=with_ids, many=True)
+
+        if serialized.is_valid():
+            serialized.save()
+            headers = self.get_success_headers(serialized.data)
+            return Response(serialized.data, status=status.HTTP_201_CREATED, headers=headers)
+
+        return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def get_queryset(self):
         user = self.request.user

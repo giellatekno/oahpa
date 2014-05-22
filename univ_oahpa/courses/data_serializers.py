@@ -69,9 +69,10 @@ class CourseGoalSerializer(serializers.ModelSerializer):
                   'percent_goals_completed')
 
 class FeedbackLogSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = UserFeedbackLog
-        fields = ('feedback_texts', 'user_input', 'correct_answer', 'datetime')
+        fields = ('feedback_texts', 'user_input', 'correct_answer', 'datetime', 'user')
 
 class StatusSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

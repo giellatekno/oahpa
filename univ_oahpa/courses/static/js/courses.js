@@ -37,10 +37,16 @@ Courses.controller('TooltipController', function($scope, $http, $element, $cooki
 
         // msg_ids, question id in set, question lemma, current user input.
 
-        var feedback_data = {
-            feedback_texts: feedback_msg_ids, 
-            user_input: user_input, 
-            correct_answer: correct_answer
+        var feedback_data = []
+          , feedback_names = feedback_msg_ids.split(',');
+    
+        for (i = 0, _len = feedback_names.length; i < _len; i++) {
+            var msg = feedback_names[i];
+            feedback_data.push({
+                feedback_texts: msg, 
+                user_input: user_input, 
+                correct_answer: correct_answer
+            });
         };
 
         var config = {
