@@ -344,18 +344,17 @@ class Dialect(models.Model):
 		return smart_unicode(S)
 
 def Translations2(target_lang):
-	if target_lang in ["nob", "rup", "eng", "dan", "no"]:
-		if target_lang == "nob" or "no":	related = 'translations2nob'
+	if target_lang in ["ron", "rup", "eng"]:
+		if target_lang == "ron":	related = 'translations2ron'
 		if target_lang == "rup":	related = 'translations2rup'
 		if target_lang == "eng":	related = 'translations2eng'
-		if target_lang == "fin":	related = 'translations2fin'
 		return related
 	else:
 		return None
 
 # class Nob(models.Manager):
 # 	def get_query_set(self):
-# 		return super(Nob, self).get_query_set().filter(language='nob')
+# 		return super(Nob, self).get_query_set().filter(language='ron')
 
 # PI suggestion: could we make these choice fields?
 
@@ -447,7 +446,7 @@ def leksa_filter(Model,
 class Word(models.Model):
 	"""
 		>>> a = Word.objects.create(lemma='omg')
-		>>> a.wordnob_set.create(lemma='bbq')
+		>>> a.wordron_set.create(lemma='bbq')
 	"""
 	wordid = models.CharField(max_length=200, db_index=True)
 	language = models.CharField(max_length=5, default='rup', db_index=True)
@@ -520,10 +519,9 @@ class Word(models.Model):
 
 		from functools import partial
 
-		self.translations2nob = partial(self.translations2, target_lang='nob')()
+		self.translations2ron = partial(self.translations2, target_lang='ron')()
 		self.translations2eng = partial(self.translations2, target_lang='eng')()
 		self.translations2rup = partial(self.translations2, target_lang='rup')()
-		self.translations2fin = partial(self.translations2, target_lang='fin')()
 
 	def create(self, *args, **kwargs):
 		morphtag = self.morphTag()

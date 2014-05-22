@@ -1997,7 +1997,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["nob","eng","rup"]: language="ron"
+    if not language in ["ron","eng","rup"]: language="ron"
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():
@@ -2550,12 +2550,12 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     constant=""
     found=False
     #Interface language
-    if not language: language = "nob"
+    if not language: language = "ron"
     language = switch_language_code(language)
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["nob","sme","fin","eng","swe"]: language="nob"
+    if not language in ["ron","rup","eng"]: language="ron"
 
     for w in msgstrings.keys():
         if found: break

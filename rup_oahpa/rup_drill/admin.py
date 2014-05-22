@@ -12,7 +12,7 @@ class FormInline(admin.TabularInline):
 # TODO:
 # class WordTranslationInline(admin.TabularInline):
 # 	model = WordTranslation.word.through
-# 	raw_id_fields = ('wordnob',)
+# 	raw_id_fields = ('wordron',)
 
 class WordAdmin(admin.ModelAdmin):
 	list_display = ('lemma','wordid','pos','stem', 'sem_types_admin', 'source_admin') #, 'soggi', 'valency')
@@ -20,7 +20,7 @@ class WordAdmin(admin.ModelAdmin):
 	search_fields = ['lemma', 'semtype__semtype']
 	inlines = [FormInline] # TODO: , WordTranslationInline]
 	# raw_id_fields = ('wordtranslation_set', )
-	# raw_id_fields = ['translations2nob']
+	# raw_id_fields = ['translations2ron']
 
 class FormAdmin(admin.ModelAdmin):
 	# list_display = ('fullform', 'tag',)
