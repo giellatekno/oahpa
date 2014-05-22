@@ -349,16 +349,16 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-	('rupeng', _('Erzya to English')),
-	('engrup', _('English to Erzya')),
-	('rupfin', _('Erzya to Finnish')),
-	('finrup', _('Finnish to Erzya')),
-    ('rupnob', _('Erzya to Norwegian')),
-    ('nobrup', _('Norwegian to Erzya')),
-	('ruprus', _('Erzya to Russian')),
-	('rusrup', _('Russian to Erzya')),
-	('rupsme', _('Erzya to North Saami')),
-	('smerup', _('North Saami to Erzya')),
+#	('rupeng', _('Erzya to English')),
+#	('engrup', _('English to Erzya')),
+#	('rupfin', _('Erzya to Finnish')),
+#	('finrup', _('Finnish to Erzya')),
+#    ('rupnob', _('Erzya to Norwegian')),
+#    ('nobrup', _('Norwegian to Erzya')),
+#	('ruprus', _('Erzya to Russian')),
+#	('rusrup', _('Russian to Erzya')),
+	('rupron', _('Aromanian to Romanian')),
+	('ronrup', _('Romanian to Aromanian')),
 )
 
 NUMLANGUAGE_CHOICES = (
