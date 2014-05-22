@@ -5,7 +5,7 @@
 
 !!!Technical dokumentation
 
-The core of Konteaksta is implemented as a Java servlet on Tomcat Apache web server. 
+The core of Konteaksta is implemented as a Java servlet on Apache Tomcat web server. 
 
 Updating the code on gtlab
 
@@ -19,7 +19,7 @@ Sometimes the restart of the Tomcat web server is needed as well:
 * sudo bin/shutdown.sh
 * sudo bin/startup.sh
 
-The logs of running Konteaksta can be found in the directory $CATALINA_HOME/logs/.
+The logs of running Konteaksta can be found in the directory {{$CATALINA_HOME/logs/}}.
 
 !!!File structure
 
@@ -54,20 +54,20 @@ Instructions of how to add a new exercise topic are in the file {{$GTHOME/apps/t
 
 Konteaksta front page is {{src/main/webapp/index.html}}. It is written in HTML and Javascript. When pressing the button "Go!" the Java servlet will be run that does the following:
 
-1. preprocessing: 
-** extracting the textual content from the webpage
-** tokenisation
-** sentence boundary detection
-** linguistic annotation ({{src/main/java/werti/uima/ae/Vislcg3Annotator.java}})
-*** morphological analysis (FST)
-*** morphological disambiguation (CG)
-*** shallow syntactic parsing (CG)
+# preprocessing: 
+## extracting the textual content from the webpage
+## tokenisation
+## sentence boundary detection
+## linguistic annotation ({{src/main/java/werti/uima/ae/Vislcg3Annotator.java}})
+### morphological analysis (FST)
+### morphological disambiguation (CG)
+### shallow syntactic parsing (CG)
 
-2. postprocessing (one of the <Topic>Enhancer.java files in {{src/main/java/werti/uima/enhancer/}}): 
-** Selection of the tokens that are relevant for the topic
-** Enhancement - enriching the HTML code with additional attributes. The relevant tokens will be marked and provided with attributes as __lemma__, __distractors__ and __answer__.
+# postprocessing (one of the ''Topic''Enhancer.java files in {{src/main/java/werti/uima/enhancer/}}): 
+## Selection of the tokens that are relevant for the topic
+## Enhancement - enriching the HTML code with additional attributes. The relevant tokens will be marked and provided with attributes as __lemma__, __distractors__ and __answer__.
 
-3. Loads the enhanced page to the browser. The four different exercise types (color, click, multiple choice, cloze) are implemented in Javascript.
+# Loads the enhanced page to the browser. The four different exercise types (color, click, multiple choice, cloze) are implemented in Javascript.
 
 !!!Example of enhanced HTML code
 
