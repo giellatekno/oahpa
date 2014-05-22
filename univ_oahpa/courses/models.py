@@ -687,6 +687,30 @@ class GoalParameter(models.Model):
         opt = param.get('options', {}).get(self.value, {})
         return (name, opt)
 
+class LevelAssessment(models.Manager):
+
+    """ For each amount of logs for a particular text, increment the user
+    level for this text. """
+    level_increment = 5
+
+    def get_user_logs(self, user, feedback_texts):
+        return self.model.objects.filter(feedback_texts__in=feedback_texts,
+                                         user=user)
+
+    def get_user_level(self, user, feedback_texts):
+        from collections import Counter
+
+        logs = self.get_user_logs(user, feedback_texts)\
+                         .values_list('feedback_texts', flat=True)
+
+        # Dictionary of {'text': 4, 'text2': 3}
+        counted = Counter(logs)
+
+        levels = {}
+        for k, v in counted.iteritems():
+            levels[k] = 1 + int(v) / int(self.level_increment)
+
+        return levels
 
 class UserFeedbackLog(models.Model):
     user = models.ForeignKey(User)
@@ -699,13 +723,11 @@ class UserFeedbackLog(models.Model):
 
     feedback_texts = models.TextField()
 
-    # TODO: how much detailed info do we want on when the user clicked?
-    # TODO: methods for determining whether user has reached a given
-    # threshold for feedback levels
+    objects = models.Manager()
+    levels = LevelAssessment()
 
-    def get_user_feedback_level(self, user):
-        return '1'
-
+    def __unicode__(self):
+        return "%s: %s" % (self.user.username, self.feedback_texts)
 
 class UserActivityLog(models.Model):
     """ Tracking user activity, question/answer completion, and feedback
@@ -731,6 +753,7 @@ class UserActivityLog(models.Model):
 
     # stats = LearningManager()
     # objects = models.Manager()
+
 
 def incorrects_by_frequency(user, goal=None):
 
