@@ -42,17 +42,46 @@
 						<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
 						<select id="language_select" name="language" onChange="javascript:this.form.submit();">
 
-						  
+						{% ifequal LANGUAGE_CODE "rup" %}
+							<option value="rup" selected="selected">Armãneshte</option>
+						{% else %}
+							<option value="rup">Armãneshte</option>
+						{% endifequal %}
+
 						{% ifequal LANGUAGE_CODE "ro" %}
 							<option value="ro" selected="selected">Română</option>
 						{% else %}
 							<option value="ro">Română</option>
 						{% endifequal %}
-							  
-						{% ifequal LANGUAGE_CODE "rup" %}
-							<option value="rup" selected="selected">Armãneshte</option>
+
+							  <!-- Македонски mk mkd -->
+						{% ifequal LANGUAGE_CODE "mk" %}
+							<option value="mk" selected="selected">Македонски</option>
 						{% else %}
-							<option value="rup">Armãneshte</option>
+							<option value="mk">Македонски</option>
+						{% endifequal %}
+
+							  <!-- Српски / srpski ??? -->
+
+							  <!-- Ελληνικά el ell -->
+						{% ifequal LANGUAGE_CODE "el" %}
+							<option value="el" selected="selected">Ελληνικά</option>
+						{% else %}
+							<option value="el">Ελληνικά</option>
+						{% endifequal %}
+
+							  <!-- Shqip sq sqi -->
+						{% ifequal LANGUAGE_CODE "sq" %}
+							<option value="sq" selected="selected">Shqip</option>
+						{% else %}
+							<option value="sq">Shqip</option>
+						{% endifequal %}
+							  
+							  <!-- Български bg bul -->
+						{% ifequal LANGUAGE_CODE "bg" %}
+							<option value="bg" selected="selected">Български</option>
+						{% else %}
+							<option value="bg">Български</option>
 						{% endifequal %}
 							  
 						{% ifequal LANGUAGE_CODE "en" %}
