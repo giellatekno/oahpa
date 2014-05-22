@@ -1,9 +1,7 @@
-
+!!!Technical documentation
 
 * [The main Konteaksta background document|../nudoc/konteaksta.html]
 * The test url: [http://gtlab.uit.no:8080/teaksta]
-
-!!!Technical dokumentation
 
 The core of Konteaksta is implemented as a Java servlet on Apache Tomcat web server. 
 
@@ -62,20 +60,20 @@ Konteaksta front page is {{src/main/webapp/index.html}}. It is written in HTML a
 ### morphological analysis (FST)
 ### morphological disambiguation (CG)
 ### shallow syntactic parsing (CG)
-
 # postprocessing (one of the ''Topic''Enhancer.java files in {{src/main/java/werti/uima/enhancer/}}): 
 ## Selection of the tokens that are relevant for the topic
 ## Enhancement - enriching the HTML code with additional attributes. The relevant tokens will be marked and provided with attributes as __lemma__, __distractors__ and __answer__.
-
 # Loads the enhanced page to the browser. The four different exercise types (color, click, multiple choice, cloze) are implemented in Javascript.
 
 !!!Example of enhanced HTML code
 
-{{<span id="WERTi-span- Ind Prt-2" 	     
+{{{
+<span id="WERTi-span- Ind Prt-2" 	     
       class="wertiviewtoken  wertiviewVerbConjugation" 
       lemma="leat" 
       distractors="leat lean leat leahkit leame leamen leahkime lea " 
       answer="lei leai ">  lei
-</span>}}
+</span>
+}}}
 
 If the enhancement does not work as expected we usually can find out why by looking at the page's source.
