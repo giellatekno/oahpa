@@ -712,6 +712,16 @@ class LevelAssessment(models.Manager):
 
         return levels
 
+    def get_minimum_incomplete_level(self, user, wf_feedbacks):
+        feedback_texts = wf_feedbacks.values_list('msgid', flat=True)
+        levels = self.get_user_level(user, feedback_texts)
+        # assuming a level increment, return the highest incomplete
+        # level
+        print feedback_texts
+        print levels
+
+        return 2
+
 class UserFeedbackLog(models.Model):
     user = models.ForeignKey(User)
     goal = models.ForeignKey(Goal, null=True, blank=True)

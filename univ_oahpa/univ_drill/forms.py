@@ -768,17 +768,26 @@ def nearest_matching_level(wf_feedbacks, level):
 
 	return matching_feedbacks
 
+try:
+	from courses.models import UserFeedbackLog
+except:
+	UserFeedbackLog = False
+
 def get_feedback(self, wordform, language, user_level=False):
+	# TODO: testing only
+	# user_level = 2
+	language = 'sme'
+
+	# results in msgs with all levels, need to filter down to the
+	# correct level.
+	if self.user and UserFeedbackLog:
+		# feedbacks irrespective of level
+		texts = wordform.feedback.filter(feedbacktext__language=language)
+
+		if len(texts) > 0:
+			user_level = UserFeedbackLog.levels.get_minimum_incomplete_level(self.user, texts)
 
 	language = switch_language_code(language)
-
-	# TODO: user_level depends on the wordform and the user's feedback
-	# log entries.
-
-	# TODO: need to also select the nearest level to the user's level,
-	# so that if the user's level has no message, then we get the
-	# highest level available.
-
 
 	if user_level:
 		feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
@@ -786,7 +795,7 @@ def get_feedback(self, wordform, language, user_level=False):
 						.order_by('feedbacktext__user_level')
 		feedbacks = nearest_matching_level(feedbacks, user_level)
 	else:
-		feedbacks = wordform.feedback.filter(feedbacktext__language=language, feedbacktext__user_level=1)\
+		feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
 						.order_by('feedbacktext__order')
 		if feedbacks.count() == 0:
 			feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
@@ -1322,6 +1331,7 @@ class MorfaQuestion(OahpaQuestion):
 		self.translang = 'sme'
 		self.dialect = dialect
 		kwargs['correct_val'] = correct_val
+		self.user = kwargs.get('user', False)
 		super(MorfaQuestion, self).__init__(*args, **kwargs)
 		
 		# initialize variables
