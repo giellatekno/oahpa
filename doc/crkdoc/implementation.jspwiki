@@ -2,9 +2,9 @@
 
 !!Leksa
 * Files in crk/src/
-** n_crk.xml
-* Files in fkv/src/engcrk/ 
-** n_engcrk.xml
+** N_crk.xml
+* Files in crk/src/engcrk/ 
+** N_engcrk.xml
 * Semantic supersets meta/semantic_sets.xml 
 ** HUMAN: 
 *** PERSON, BODY, CLOTH, KIN
@@ -20,11 +20,23 @@
 ** advan
 
 !!Morfa S
-Will come
+!Nouns
+* Plural (almost all nouns)
+* Diminutive (most nouns) - Safe way: give the diminutive and ask for the base form?
+* Loc (we restrict the generation wiht gen_only-tag in the N_crk.xml):
+** pahkwêsikan, pîsim, tehtapiwin, mîcisowkamik, sônîyâwkamik, mîcimâpoy, wâwi, meskanaw, maskisin, tohtôsâpoy, nipîy, maskihkiwâpoy, sîwihtâkan, tohtôsâpôpimiy, wîyâkan, minihkwewîyâkanis, masinahikan, wâskahikan, wîkiwân, ôcênâs, mistikowat, iskwâhtêm, iskotêw, wiyâkanis, ôsi, atâwewikamik, ôtenaw, mîkiwâhp, wîkiwin
+* Px (we restrict the generation wiht gen_only-tag in the N_crk.xml). The bodyparts we'll have only with a single owner, and some of them only as singular, like head, mouth.
+** minôs, okimâw, asikan, wîkimâkan, atim, mitâs, otânisimâw, okosisimâw, onîkihikomâw, omosômimâw, ôhkomimâw, nîtisân, otôtemimâw, okâwîmâw, okâwîmâw, nôsisim, onâpêmimâw, wîkiwân, misit, mistikwân , mîscakâs (only Pl), mîskât, mitôn, miskîsik, mikot, mîhtawakay, mîyaw,  niskotâkay, mîpit, mahkwan, mispiton, micihciy
 
+!Verbs
 
-!!Morfa C
-Will come
+!!Morfa C 
+We should use some very frequent sentences - here are some thoughts, more to come
+* nouns: plural (e.g. Who are coming? Xs are coming. What did you buy? In bought Xs).
+* nouns: loc (Where is X? X is in Y) (Where goes/go X? X goes/go to Y)
+* nouns: Px 
+* verbs: Did you X yesterday? Yes, I ..... yesterday. / No, I didn't ..... yesterday.
+* verbs: Do you  X ? Yes, ..... . / No, I don't ..... .
 
 !!Generating forms
 Files are in meta: n_paradigms.txt, tags.txt
@@ -36,4 +48,4 @@ Files are in meta: n_paradigms.txt, tags.txt
 * A new exercise: money - inputformat $3.50, and the other way round
 
 !!FST
-All FSTs are at gtlab.uit.no in  /opt/smi/crk
+All FSTs will be places at gtlab.uit.no in  /opt/smi/crk
