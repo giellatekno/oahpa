@@ -51,14 +51,18 @@
   <q id="vprt1">
     <qtype>V-PRT</qtype>
     <question>
-      <text>MAINV cî otâkosîhk</text>
+      <text>MAINV cî N-LOC</text>
       <element id="MAINV">
             <grammar tag="V+IA+Ind+Prt+2Sg"/>
         <id>pimohte</id>
       </element>
+      <element id="N-LOC">
+            <grammar tag="N+IN+Loc"/>
+        <sem class="PLACE"/>
+      </element>
     </question>
     <answer> 
-      <text>Ehâ , MAINV otâkosîhk</text>
+      <text>Ehâ , MAINV N-LOC</text>
       <element game='morfa' id="MAINV" content="MAINV" task="yes">
         <grammar tag="V+IA+Ind+Prt+1Sg"/>
       </element>
@@ -98,17 +102,21 @@
       </element>
     </answer>
   </q>
-  <q id="vprt1">
+  <q id="vprt4">
     <qtype>V-PRT</qtype>
     <question>
-      <text>MAINV cî otâkosîhk</text>
+      <text>MAINV cî N-LOC</text>
       <element id="MAINV">
             <grammar tag="V+IA+Ind+Prt+2Pl"/>
         <id>pimohte</id>
       </element>
+      <element id="N-LOC">
+            <grammar tag="N+IN+Loc"/>
+        <sem class="PLACE"/>
+      </element>
     </question>
     <answer> 
-      <text>Ehâ , MAINV otâkosîhk</text>
+      <text>Ehâ , MAINV N-LOC</text>
       <element game='morfa' id="MAINV" content="MAINV" task="yes">
         <grammar tag="V+IA+Ind+Prt+1Pl"/>
       </element>
