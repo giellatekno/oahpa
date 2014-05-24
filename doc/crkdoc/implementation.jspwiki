@@ -2,53 +2,45 @@
 
 !!Leksa
 * Files in crk/src/
-** N_crk.xml
-* Files in crk/src/engcrk/ 
-** N_engcrk.xml
-* Semantic supersets meta/semantic_sets.xml 
-** HUMAN: 
-*** PERSON, BODY, CLOTH, KIN
-** NATURE-ANIMALS: 
-*** ANIMAL, ANIMALPART, NATURE
-** FOOD-DRINK: 
-*** DRINK, FOOD_DISH, FOOD_GROCERY
-** OBJECTS: 
-*** KITCHEN, THING, VEHICLE
-
-* Books
-** GG1
-** advan
+** N_crk.xml, V_crk.xml
+* Files in crk/engcrk/ 
+** N_engcrk.xml, V_engcrk.xml
+* Semantic supersets meta/semantic_sets.xml (added to forms.py)
+* Books (added to forms.py)
 
 !!Morfa S
-!Nouns
-* Plural (almost all nouns)
-* Diminutive (most nouns) - Safe way: give the diminutive and ask for the base form?
-* Loc (we restrict the generation wiht gen_only-tag in the N_crk.xml):
-** pahkwêsikan, pîsim, tehtapiwin, mîcisowkamik, sônîyâwkamik, mîcimâpoy, wâwi, meskanaw, maskisin, tohtôsâpoy, nipîy, maskihkiwâpoy, sîwihtâkan, tohtôsâpôpimiy, wîyâkan, minihkwewîyâkanis, masinahikan, wâskahikan, wîkiwân, ôcênâs, mistikowat, iskwâhtêm, iskotêw, wiyâkanis, ôsi, atâwewikamik, ôtenaw, mîkiwâhp, wîkiwin
-* Px (we restrict the generation wiht gen_only-tag in the N_crk.xml). The bodyparts we'll have only with a single owner, and some of them only as singular, like head, mouth.
-** minôs, okimâw, asikan, wîkimâkan, atim, mitâs, otânisimâw, okosisimâw, onîkihikomâw, omosômimâw, ôhkomimâw, nîtisân, otôtemimâw, okâwîmâw, okâwîmâw, nôsisim, onâpêmimâw, wîkiwân, misit, mistikwân , mîscakâs (only Pl), mîskât, mitôn, miskîsik, mikot, mîhtawakay, mîyaw,  niskotâkay, mîpit, mahkwan, mispiton, micihciy
+!Nouns (we restrict the generation wiht gen_only-tag in the N_crk.xml)
+(added to forms.py)
+* N-PL
+* N-DIM (most nouns) - Safe way: give the diminutive and ask for the base form?
+* N-LOC
+* N-PX: The bodyparts we'll have only with a single owner, and some of them only as singular, like head, mouth.
 
-!Verbs
-Start with VAI
-* All persons, also Prt and Fut.
-* Use pronouns. The Obv: Mary's friend... or something like that 
+!Verbs (added to forms.py)
+Pronouns are added to forms.py, but should be presented in parathesis
+* V-PRS
+* V-PRT
+* V-FUT
 
-!!Morfa C 
-We should use some very frequent sentences - here are some thoughts, more to come
-* nouns: plural (e.g. Who are coming? Xs are coming. What did you buy? In bought Xs).
-* nouns: loc (Where is X? X is in Y) (Where goes/go X? X goes/go to Y)
-* nouns: Px 
-* verbs: Did you X yesterday? Yes, I ..... yesterday. / No, I didn't ..... yesterday.
-* verbs: Do you  X ? Yes, ..... . / No, I don't ..... .
+!!Morfa C  (added to forms.py)
+* meta/verb_questions.xml
+** V-PRS
+** V-PRT
+** V-FUT
+* meta/noun_questions.xml
+** N-PL
+** N-LOC
+** N-PX
+* fillings.xml and grammar_defaults.xml done
 
 !!Generating forms
-Files are in meta: n_paradigms.txt, tags.txt. We'll use the gen_only-attribute.
+Files are in meta: n_paradigms.txt, v_paradigms.txt, tags.txt. We'll use the gen_only-attribute.
 
 !!Numra
-* Sourcefiles here: langs/crk/src/transcriptions/
-** numbers.lexc, clock.lexc, date.lexc, money.lexc
-* Dates: inputformat 3. May
-* A new exercise: money - inputformat $3.50, and the other way round
+* numbers (not Ord)
+* clock (only one level)
+* dates: inputformat 3. May
+* money: inputformat $3.50
 
 !!FST
 All FSTs will be places at gtlab.uit.no in  /opt/smi/crk
