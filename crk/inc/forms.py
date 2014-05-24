@@ -237,6 +237,7 @@ NUM_TYPE_CHOICES = (
 VTYPE_CHOICES = (
 	('PRS', _('present')),
 	('PRT', _('past')),
+	('FUT', _('future')),
 #	('PRF', _('perfect')),
 #	('GER', _('gerund')),
 #	('COND', _('conditional')),
@@ -247,6 +248,7 @@ VTYPE_CHOICES = (
 VERB_QUESTION_ANSWER = {
 	'V-PRS': [('V+IA', 'V+IA+Ind+Prs+Person-Number')],
 	'V-PRT': [('V+IA', 'V+IA+Ind+Prt+Person-Number')],
+	'V-FUT': [('V+IA', 'V+IA+Ind+Fut+Person-Number')],
 #	'PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
 #	'PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
 #	'PRF': [('V+Inf', 'V+PrfPrc')],
@@ -261,6 +263,7 @@ VERB_FILTER_DEFINITION = ['stem', 'source']
 VTYPE_CONTEXT_CHOICES = (
 	('V-PRS', _('present')),
 	('V-PRT', _('past')),
+	('V-FUT', _('future')),
 #	('V-PRF', _('perfect')),
 #	('V-GER', _('gerund')),
 #	('V-COND', _('conditional')),
