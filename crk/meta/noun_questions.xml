@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+  <q id="nloc1">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Tânitê SUBJ</text>
+      <element id="SUBJ">
+            <grammar tag="N+AN+Number"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ N-LOC</text>
+      <element game='morfa' id="N-LOC" task="yes">
+        <grammar tag="N+IN+Loc"/>
+        <sem class="PLACE"/>
+      </element>
+    </answer>
+  </q>
+  <q id="nloc2">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Tânitê MAINV</text>
+      <element id="MAINV">
+        <grammar tag="V+IA+Ind+Prs+2Sg"/>
+        <id>pimohte</id>
+      </element>
+    </question>
+    <answer> 
+      <text>MAINV N-LOC</text>
+      <element game='morfa' id="N-LOC" task="yes">
+        <grammar tag="N+IN+Loc"/>
+        <sem class="PLACE"/>
+      </element>
+    </answer>
+  </q>
+  <q id="npx1">
+    <qtype>N-PX</qtype>
+    <question>
+      <text>SUBJ cî ana</text>
+      <element id="SUBJ">
+            <grammar tag="N+AN+Sg+Px2Sg"/>
+        <sem class="KIN"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Ehâ, N-PX awa</text>
+      <element game='morfa' id="N-PX" content="SUBJ" task="yes">
+        <grammar tag="N+AN+Sg+Px1Sg"/>
+      </element>
+    </answer>
+  </q>
+</questions>
+
