@@ -37,14 +37,17 @@ Each topic has its folder.
 * SubstantiveSingular/ 
  
 
-For each folder, there are two files:
+For each folder, there are three files:
 
 * activity.xml
 * help.jsp
+* recommended_pages.html
 
-The former defines preprossessing and post-processing pipelines (those are defined in separate xml-files that can be found under the {{desc/}}-folder) and tag sequences that identify the words that are relevant for the exercise.
+{{activity.xml}} defines preprossessing and post-processing pipelines (those are defined in separate xml-files that can be found under the {{desc/}}-folder) and tag sequences that identify the words that are relevant for the exercise.
 
-The latter gives the help text provided to the user.
+{{help.jsp}} gives the help text provided to the user (in the old WERTi interface).
+
+{{recommended_pages.html}} lists pages that teachers recommend to use as a basis of exercises on this topic. When adding new URL-s to these files please keep to the same structure of the <a> elements.
 
 Instructions of how to add a new exercise topic are in the file {{$GTHOME/apps/teaksta/sme/EXTENDING}}.
 
