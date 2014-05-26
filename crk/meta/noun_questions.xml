@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <questions>
+  <q id="npl1">
+    <qtype>N-PL</qtype>
+    <question>
+      <text>Awîniki N-LOC</text>
+      <element id="N-LOC">
+        <grammar tag="N+IN+Loc"/>
+        <sem class="PLACE"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ N-LOC</text>
+      <element game='morfa' id="SUBJ" task="yes">
+            <grammar tag="N+AN+Pl"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </answer>
+  </q>
   <q id="nloc1">
     <qtype>N-LOC</qtype>
     <question>
