@@ -299,31 +299,23 @@ POSSESSIVE_CHOICE_SEMTYPES = dict((
 	('N-PX-GROUP3', ['MORFAPOSS']),
 ))
 
-#POSSESSIVE_GROUP1_CASE = (
-#	('N-NOM', _('nominative')),
-#	('N-ACC', _('accusative')),
-#	('N-COM', _('comitative')),
-#	('N-GEN', _('genitive')),
-#	('N-ILL', _('illative')),
-#	('N-LOC', _('locative')),
-#)
-#
-#POSSESSIVE_GROUP2_CASE = (
-#	('N-ACC', _('accusative')),
-#	('N-ILL', _('illative')),
-#	('N-LOC', _('locative')),
-#	('N-COM', _('comitative')),
-#	('N-GEN', _('genitive')),
-#)
-#
-#POSSESSIVE_GROUP3_CASE = (
-#    ('N-NOM', _('nominative')),
-#	('N-ACC', _('accusative')),
-#	('N-ILL', _('illative')),
-#	('N-LOC', _('locative')),
-#	('N-COM', _('comitative')),
-#	('N-GEN', _('genitive')),
-#)
+POSSESSIVE_GROUP1_CASE = (
+	('N-2SG', _('your (Sg)')),
+	('N-3SG', _('his/her')),
+	('N-4SG', _('obviative')),
+)
+
+POSSESSIVE_GROUP2_CASE = (
+	('N-2SG', _('your (Sg)')),
+	('N-3SG', _('his/her')),
+	('N-4SG', _('obviative')),
+)
+
+POSSESSIVE_GROUP3_CASE = (
+	('N-2SG', _('your (Sg)')),
+	('N-3SG', _('his/her')),
+	('N-4SG', _('obviative')),
+)
 
 #POSSESSIVE_CONTEXT_CHOICES = (
 #	('PX-ACC', _('accusative')),
