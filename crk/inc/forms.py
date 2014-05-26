@@ -283,7 +283,7 @@ LEVEL_CHOICES = (
 
 POSSESSIVE_CHOICES = (
 	('N-PX-GROUP1', _('Family')),
-	('N-PX-GROUP2', _('Other')),
+	('N-PX-GROUP2', _('Body')),
 	('N-PX-GROUP3', _('All')),
 )
 
@@ -293,11 +293,11 @@ POSSESSIVE_NUMBER_CHOICES = (
 #	('N-PL', _('Plural')),
 )
 
-#POSSESSIVE_CHOICE_SEMTYPES = dict((
-#	('N-PX-GROUP1', ['FAMILY']),
-#	('N-PX-GROUP2', ['BODYPART', 'ANIMAL', 'PXPROPERTY',]),
-#	('N-PX-GROUP3', ['BODYPART', 'ANIMAL', 'PXPROPERTY', 'FAMILY',]),
-#))
+POSSESSIVE_CHOICE_SEMTYPES = dict((
+	('N-PX-GROUP1', ['KIN']), # and MORFAPOSS
+	('N-PX-GROUP2', ['BODY']), # and MORFAPOSS
+	('N-PX-GROUP3', ['MORFAPOSS']),
+))
 
 #POSSESSIVE_GROUP1_CASE = (
 #	('N-NOM', _('nominative')),
@@ -335,11 +335,11 @@ POSSESSIVE_NUMBER_CHOICES = (
 
 
 
-#POSSESSIVE_QUESTION_ANSWER = {
-#	'N-PX-GROUP1': [('N+NumberN+Nom', 'N+NPxNumber+PxCase1+Possessive')],
-#	'N-PX-GROUP2': [('N+NumberN+Nom', 'N+NPxNumber+PxCase2+Possessive')],
-#	'N-PX-GROUP3': [('N+NumberN+Nom', 'N+NPxNumber+PxCase3+Possessive')],
-#}
+POSSESSIVE_QUESTION_ANSWER = {
+	'N-PX-GROUP1': [('N+Animacy+Sg+Px1Sg', 'N+Animacy+Sg+Possessive')],
+	'N-PX-GROUP2': [('N+Animacy+Sg+Px1Sg', 'N+Animacy+Sg+Possessive')],
+	'N-PX-GROUP3': [('N+Animacy+Sg+Px1Sg', 'N+Animacy+Sg+Possessive')],
+}
 
 POSSESSIVE_FILTER_DEFINITION = ['semtype']  # Heli
 
