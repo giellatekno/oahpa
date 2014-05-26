@@ -5,40 +5,38 @@
 ** N_crk.xml, V_crk.xml
 * Files in crk/engcrk/ 
 ** N_engcrk.xml, V_engcrk.xml
-* Semantic supersets meta/semantic_sets.xml (added to forms.py)
+* Semantic supersets meta/semantic_sets.xml (and added to forms.py)
 * Books (added to forms.py)
 
 !!Morfa S
-!Nouns (we restrict the generation wiht gen_only-tag in the N_crk.xml)
-(added to forms.py)
+!Nouns (we restrict the generation by using gen_only-tag in the N_crk.xml)
+(the task types with tags are added to forms.py)
 * N-PL
-* N-DIM (most nouns) - Safe way: give the diminutive and ask for the base form?
+* N-DIM : The student gets the diminutive and is asked for the base form
 * N-LOC
-* N-PX: The bodyparts we'll have only with a single owner, and some of them only as singular, like head, mouth.
+* N-PX: Baseform is N+Animacy+Sg+Px1Sg Tasks: Px2Sg, Px3Sg, Px4Sg. 
 
 !Verbs (added to forms.py)
-Pronouns are added to forms.py, but should be presented in parathesis
+Pronouns are added as context to forms.py, but should be presented in paranthesis
 * V-PRS
 * V-PRT
-* V-FUT
 
 !!Morfa C  (added to forms.py)
 * meta/verb_questions.xml
 ** V-PRS
 ** V-PRT
-** V-FUT
 * meta/noun_questions.xml
 ** N-PL
 ** N-LOC
 ** N-PX
-* fillings.xml and grammar_defaults.xml done
+* fillings.xml and grammar_defaults.xml are done
 
 !!Generating forms
-Files are in meta: n_paradigms.txt, v_paradigms.txt, tags.txt. We'll use the gen_only-attribute.
+Files are in meta: n_paradigms.txt, v_paradigms.txt, tags.txt. NB: gen_only-attribute.
 
 !!Numra
 * numbers (not Ord)
-* clock (only one level)
+* clock (all in one level)
 * dates: inputformat 3. May
 * money: inputformat $3.50
 
