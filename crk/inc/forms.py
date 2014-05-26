@@ -217,7 +217,7 @@ NUM_BARE_CHOICES = (
 NUMERAL_QUESTION_ANSWER = {
 	# gametype			question		answer
 #	'N-ESS': [('Num+NumberN+Nom', 'Num+Ess')],
-	'N-LOC': [('Num+NumberN+Nom', 'Num+NumberN+Loc')],
+#	'N-LOC': [('Num+NumberN+Nom', 'Num+NumberN+Loc')],
 #	'N-ILL': [('Num+NumberN+Nom', 'Num+NumberN+Ill')],
 }
 
@@ -230,14 +230,14 @@ NUM_LEVEL_CHOICES = (
 
 NUM_TYPE_CHOICES = (
     ('CARD', _('cardinal')),
-    ('ORD', _('ordinal')),
-    ('COLL', _('collective')),
+#    ('ORD', _('ordinal')),
+#    ('COLL', _('collective')),
 )
 
 VTYPE_CHOICES = (
 	('PRS', _('present')),
 	('PRT', _('past')),
-	('FUT', _('future')),
+#	('FUT', _('future')),
 #	('PRF', _('perfect')),
 #	('GER', _('gerund')),
 #	('COND', _('conditional')),
@@ -248,7 +248,7 @@ VTYPE_CHOICES = (
 VERB_QUESTION_ANSWER = {
 	'V-PRS': [('V+IA', 'V+IA+Ind+Prs+Person-Number')],
 	'V-PRT': [('V+IA', 'V+IA+Ind+Prt+Person-Number')],
-	'V-FUT': [('V+IA', 'V+IA+Ind+Fut+Person-Number')],
+#	'V-FUT': [('V+IA', 'V+IA+Ind+Fut+Person-Number')],
 #	'PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
 #	'PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
 #	'PRF': [('V+Inf', 'V+PrfPrc')],
@@ -263,7 +263,7 @@ VERB_FILTER_DEFINITION = ['stem', 'source']
 VTYPE_CONTEXT_CHOICES = (
 	('V-PRS', _('present')),
 	('V-PRT', _('past')),
-	('V-FUT', _('future')),
+#	('V-FUT', _('future')),
 #	('V-PRF', _('perfect')),
 #	('V-GER', _('gerund')),
 #	('V-COND', _('conditional')),
