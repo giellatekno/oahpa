@@ -281,6 +281,69 @@ LEVEL_CHOICES = (
 )
 
 
+POSSESSIVE_CHOICES = (
+	('N-PX-GROUP1', _('Family')),
+	('N-PX-GROUP2', _('Other')),
+	('N-PX-GROUP3', _('All')),
+)
+
+POSSESSIVE_NUMBER_CHOICES = (
+	('N-SG', _('Singular')),
+#	('N-DU', _('Dual')),
+#	('N-PL', _('Plural')),
+)
+
+#POSSESSIVE_CHOICE_SEMTYPES = dict((
+#	('N-PX-GROUP1', ['FAMILY']),
+#	('N-PX-GROUP2', ['BODYPART', 'ANIMAL', 'PXPROPERTY',]),
+#	('N-PX-GROUP3', ['BODYPART', 'ANIMAL', 'PXPROPERTY', 'FAMILY',]),
+#))
+
+#POSSESSIVE_GROUP1_CASE = (
+#	('N-NOM', _('nominative')),
+#	('N-ACC', _('accusative')),
+#	('N-COM', _('comitative')),
+#	('N-GEN', _('genitive')),
+#	('N-ILL', _('illative')),
+#	('N-LOC', _('locative')),
+#)
+#
+#POSSESSIVE_GROUP2_CASE = (
+#	('N-ACC', _('accusative')),
+#	('N-ILL', _('illative')),
+#	('N-LOC', _('locative')),
+#	('N-COM', _('comitative')),
+#	('N-GEN', _('genitive')),
+#)
+#
+#POSSESSIVE_GROUP3_CASE = (
+#    ('N-NOM', _('nominative')),
+#	('N-ACC', _('accusative')),
+#	('N-ILL', _('illative')),
+#	('N-LOC', _('locative')),
+#	('N-COM', _('comitative')),
+#	('N-GEN', _('genitive')),
+#)
+
+#POSSESSIVE_CONTEXT_CHOICES = (
+#	('PX-ACC', _('accusative')),
+#	('PX-ILL', _('illative')),
+#	('PX-LOC', _('locative')),
+#	('PX-COM', _('comitative')),
+#	('PX-GEN', _('genitive')),
+#)
+
+
+
+#POSSESSIVE_QUESTION_ANSWER = {
+#	'N-PX-GROUP1': [('N+NumberN+Nom', 'N+NPxNumber+PxCase1+Possessive')],
+#	'N-PX-GROUP2': [('N+NumberN+Nom', 'N+NPxNumber+PxCase2+Possessive')],
+#	'N-PX-GROUP3': [('N+NumberN+Nom', 'N+NPxNumber+PxCase3+Possessive')],
+#}
+
+POSSESSIVE_FILTER_DEFINITION = ['semtype']  # Heli
+
+
 DERIVATION_CHOICES = (
  	('V-DER-PASS', _('passive derivation')),
  	('A-DER-V', _('adjective->verb derivation')),
