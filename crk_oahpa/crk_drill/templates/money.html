@@ -1,0 +1,17 @@
+{% extends "dato.html" %}
+{% load i18n %}
+
+{% block navbar %}
+	{% with "money" as gamename_nav %}
+        {% include 'numra_submenu.html' %}
+	{% endwith %}
+{% endblock %}
+
+{% block instructions %}
+  {# TODO: strings for instructions. #}
+  {% ifequal gametype "string" %}
+    {% trans "Write the sum of money with numbers, preceded by the dollar sign (for example, $2.50)." %}
+  {% else %}
+    {% trans "Write the sum of money in Plains Cree (for example, nîso newopehikanak)." %}
+  {% endifequal %}
+{% endblock %}
