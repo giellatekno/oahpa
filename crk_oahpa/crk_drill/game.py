@@ -1380,22 +1380,22 @@ class Dato(Klokka):
 		# List of tuples with all possible days
 		# built from (month, maxdays)
 
-		months = [(x, dayrange(y)) for x, y in [(1, 31),
-												(2, 29),
-												(3, 31),
-												(4, 30),
-												(5, 31),
-												(6, 30),
-												(7, 31),
-												(8, 31),
-												(9, 30),
-												(10, 31),
-												(11, 30),
-												(12, 31)]]
+		months = [(x, dayrange(y)) for x, y in [('January', 31),
+												('February', 29),
+												('March', 31),
+												('April', 30),
+												('May', 31),
+												('June', 30),
+												('July', 31),
+												('August', 31),
+												('September', 30),
+												('October', 31),
+												('November', 30),
+												('December', 31)]]
 
 		month, days = choice(months)
 
-		date = '%d.%d.' % (choice(days), month)
+		date = '%d. %s' % (choice(days), month)
 
 		db_info['numeral_id'] = str(date)
 		
