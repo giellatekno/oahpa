@@ -1231,7 +1231,7 @@ class Klokka(NumGame):
 
 	def get_db_info(self, db_info):
 
-		hour = str(randint(0, 23))
+		hour = str(randint(1, 12))
 
 		if len(hour) == 1:
 			hour = '0' + hour
