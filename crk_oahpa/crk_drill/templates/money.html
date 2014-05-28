@@ -10,8 +10,8 @@
 {% block instructions %}
   {# TODO: strings for instructions. #}
   {% ifequal gametype "string" %}
-    {% trans "Write the sum of money with numbers, preceded by the dollar sign (for example, $2.50)." %}
+    {% trans "Write the sum of money with numbers, preceded by $ (ex. $2.50)." %}
   {% else %}
-    {% trans "Write the sum of money in Plains Cree (e.x. nîso newopehikanak)." %}
+    {% trans "Write the sum of money in words (ex. nîso newopehikanak)." %}
   {% endifequal %}
 {% endblock %}
