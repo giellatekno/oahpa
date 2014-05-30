@@ -170,7 +170,7 @@ class Paradigm:
 		""" The function is called from install.py and its aim is to install the contents of the paradigm file (e.g. paradigms.txt) into the database.
 		"""
 		if not self.tagset:
-			self.handle_tags(tagfile)
+			self.handle_tags(tagfile, True) # True added because the function expects that argument as well. True = add the tags to the DB
 
 		fileObj = codecs.open(paradigmfile, "r", "utf-8" )
 		posObj = re.compile(r'^(?:\+)?(?P<posString>[\w]+)\+.*$', re.U)

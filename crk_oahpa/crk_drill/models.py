@@ -362,7 +362,7 @@ def Translations2(target_lang):
 class MorphPhonTag(models.Model): # redone for Russian
 	stem		 = models.CharField(max_length=20)
 	gender           = models.CharField(max_length=20)
-	animate          = models.CharField(max_length=20)
+	animacy          = models.CharField(max_length=20)
 	inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
 	# stress_class     = models.CharField(max_length=20) # Zaliznyak's stress class
 	declension       = models.CharField(max_length=20) # Doing it this way until an fst is up
@@ -376,7 +376,7 @@ class MorphPhonTag(models.Model): # redone for Russian
 	def __unicode__(self):
 		attrs = [self.stem,
 			 self.gender,
-			 self.animate,
+			 self.animacy,
 			 self.declension,
 			 self.inflection_class,
 #			 self.stress_class,
@@ -388,7 +388,7 @@ class MorphPhonTag(models.Model): # redone for Russian
 	class Meta:
 		unique_together = ("stem",
 				   "gender",
-				   "animate",
+				   "animacy",
 				   "declension",
 				   "inflection_class",
 #				   "stress_class",
@@ -456,7 +456,7 @@ class Word(models.Model):
 	presentationform = models.CharField(max_length=5) # PI: what's this?
 	pos = models.CharField(max_length=12) # Accomodate larger PoS
 	stem = models.CharField(max_length=20)
-	animate = models.CharField(max_length=20) # PI: could be boolean?
+	animacy = models.CharField(max_length=20) 
 	gender = models.CharField(max_length=20)
 	declension = models.CharField(max_length=20)
 	loc2 = models.BooleanField(default=False) # indicates if the word has Locative2 or not
@@ -497,7 +497,7 @@ class Word(models.Model):
 		if not mphon:
 			kwargs = {
 				'gender':	self.gender,
-				'animate':	self.animate,
+				'animacy':	self.animacy,
 				'declension':	self.declension,
 				'reflexive':	self.reflexive,
 				'inflection_class': self.inflection_class

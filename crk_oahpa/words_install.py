@@ -16,7 +16,7 @@ _D = open('/dev/null', 'w')
 
 COUNT_ONLY = False
 
-supported_langs = ['crk', 'nob', 'fin', 'eng', 'est', 'rus']
+supported_langs = ['crk', 'nob', 'fin', 'eng']
 
 # # # 
 # 
@@ -113,7 +113,8 @@ class Analysis(object):
 			'tense': self.classes.get('Tense',""),
 			'mood': self.classes.get('Mood',""), 
 			'subclass': self.classes.get('Subclass',""),
-			'attributive': self.classes.get('Attributive',"")
+			'attributive': self.classes.get('Attributive',""),
+			'animacy': self.classes.get('Animacy',""),
 		}
 
 		t, created = Tag.objects.get_or_create(**tag_kwargs)
@@ -204,6 +205,7 @@ class Entry(object):
 			("nr", None),
 			("p3p", None),
 			("pos", None),
+			("animacy", None),
 			("gradation", None),
 			("diphthong", None),
 			("rime", None),
@@ -968,6 +970,7 @@ class Words(object):
 						'mood':			g.get('Mood',""), 
 						#'subclass':		g.get('Subclass',""),
 						'attributive':		g.get('Attributive',""),
+						'animacy':        g.get('Animacy',""),
 					}
 
 					try:

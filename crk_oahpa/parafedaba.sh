@@ -33,7 +33,7 @@ echo "==================================================="
 
  echo "==================================================="
  echo "feeding db with $DPS/N_crk2X.xml"
- $P install.py --file $DPS/N_crk2X.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>error.log
+ $P install.py --file $DPS/N_crk.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>error.log
  echo " "
  echo "done"
  echo "==================================================="
@@ -60,16 +60,16 @@ echo "==================================================="
 # echo "done"
 # echo "==================================================="
 
- echo "==================================================="
- echo "feeding db with $DPS/A_crk2X.xml"
- $P install.py --file $DPS/A_crk2X.xml --tagfile $META/tags.txt --paradigmfile $META/A_paradigms.txt 2>>error.log
- echo " "
- echo "done"
- echo "==================================================="
+ #echo "==================================================="
+ #echo "feeding db with $DPS/A_crk2X.xml"
+ #$P install.py --file $DPS/A_crk2X.xml --tagfile $META/tags.txt --paradigmfile $META/A_paradigms.txt 2>>error.log
+ #echo " "
+ #echo "done"
+ #echo "==================================================="
 
  echo "==================================================="
- echo "feeding db with $DPS/V_crk2X.xml"
- $P install.py --file $DPS/V_crk2X.xml --tagfile $META/tags.txt --paradigmfile $META/V_paradigms.txt 2>>error.log
+ echo "feeding db with $DPS/V_crk.xml"
+ $P install.py --file $DPS/V_crk.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
@@ -155,12 +155,12 @@ echo "==================================================="
 # ##
 
 
-echo "==================================================="
-echo "feeding db with $DPF/N_fincrk.xml"
-$P install.py --file $DPF/N_fincrk.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
+#echo "==================================================="
+#echo "feeding db with $DPF/N_fincrk.xml"
+#$P install.py --file $DPF/N_fincrk.xml 2>>error.log
+#echo " "
+#echo "done"
+#echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $DPF/num_fincrk.xml"
@@ -169,19 +169,19 @@ echo "==================================================="
 # echo "done"
 # echo "==================================================="
 
-echo "==================================================="
-echo "feeding db with $DPF/V_fincrk.xml"
-$P install.py --file $DPF/V_fincrk.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
+#echo "==================================================="
+#echo "feeding db with $DPF/V_fincrk.xml"
+#$P install.py --file $DPF/V_fincrk.xml 2>>error.log
+#echo " "
+#echo "done"
+#echo "==================================================="
 
-echo "==================================================="
-echo "feeding db with $DPF/A_fincrk.xml"
-$P install.py --file $DPF/A_fincrk.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
+#echo "==================================================="
+#echo "feeding db with $DPF/A_fincrk.xml"
+#$P install.py --file $DPF/A_fincrk.xml 2>>error.log
+#echo " "
+#echo "done"
+#echo "==================================================="
 
 
 # echo "==================================================="
@@ -224,12 +224,12 @@ echo " "
 echo "done"
 echo "==================================================="
 
-echo "==================================================="
-echo "feeding db with $DPW/A_engcrk.xml"
-$P install.py --file $DPW/A_engcrk.xml
-echo " "
-echo "done"
-echo "==================================================="
+#echo "==================================================="
+#echo "feeding db with $DPW/A_engcrk.xml"
+#$P install.py --file $DPW/A_engcrk.xml
+#echo " "
+#echo "done"
+#echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $DPW/adv_swecrk.xml"
@@ -252,106 +252,6 @@ echo "==================================================="
 # echo "done"
 # echo "==================================================="
 
-##
-## estcrk
-##
-
-echo "==================================================="
-echo "feeding db with $DPE/N_estcrk.xml"
-$P install.py --file $DPE/N_estcrk.xml
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with $DPE/V_estcrk.xml"
-$P install.py --file $DPE/V_estcrk.xml
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with $DPE/A_estcrk.xml"
-$P install.py --file $DPE/A_estcrk.xml
-echo " "
-echo "done"
-echo "==================================================="
-
-##       
-## latcrk                                                                         
-##                                                                                     
-
-echo "==================================================="
-echo "feeding db with $DPL/N_latcrk.xml"
-$P install.py --file $DPL/N_latcrk.xml
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with $DPL/V_latcrk.xml"
-$P install.py --file $DPL/V_latcrk.xml
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with $DPL/A_latcrk.xml"
-$P install.py --file $DPL/A_latcrk.xml
-echo " "
-echo "done"
-echo "==================================================="
-
-##                                                                                
-## ruscrk                                                                        
-##                                                                                                                                                           
-
-echo "==================================================="
-echo "feeding db with $DPR/N_ruscrk.xml"
-$P install.py --file $DPR/N_ruscrk.xml
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with $DPR/V_ruscrk.xml"
-$P install.py --file $DPR/V_ruscrk.xml
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with $DPR/A_ruscrk.xml"
-$P install.py --file $DPR/A_ruscrk.xml
-echo " "
-echo "done"
-echo "==================================================="
-
-##                                                                                
-## smecrk                                                                         
-##                                                                                
-                                                                                   
-
-echo "==================================================="
-echo "feeding db with $DPD/N_smecrk.xml"
-$P install.py --file $DPD/N_smecrk.xml
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with $DPD/V_smecrk.xml"
-$P install.py --file $DPD/V_smecrk.xml
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with $DPD/A_smecrk.xml"
-$P install.py --file $DPD/A_smecrk.xml
-echo " "
-echo "done"
-echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $DPS/grammaticalwords_crknob.xml"

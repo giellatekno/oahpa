@@ -15,7 +15,7 @@ class FormInline(admin.TabularInline):
 # 	raw_id_fields = ('wordnob',)
 
 class WordAdmin(admin.ModelAdmin):
-	list_display = ('lemma','wordid','pos','stem', 'sem_types_admin', 'source_admin','gender','animate', 'declension', 'reflexive')
+	list_display = ('lemma','wordid','pos','stem', 'sem_types_admin', 'source_admin','gender','animacy', 'declension', 'reflexive')
 	list_filter = ['pos','stem','semtype','source', 'declension']
 	search_fields = ['lemma', 'semtype__semtype']
 	inlines = [FormInline] # TODO: , WordTranslationInline]
