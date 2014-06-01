@@ -15,3 +15,10 @@
     {% trans "Write the sum of money in words (ex. nîso newopehikanak)." %}
   {% endifequal %}
 {% endblock %}
+
+{% block setting_items %}
+	<li><label for="id_{{ settingsform.numgame.name }}">{% trans "Expression of money numeric to words or vice versa." %}</label>
+	    {{ settingsform.numgame }}</li>
+</ul>
+{% endblock %}
+
