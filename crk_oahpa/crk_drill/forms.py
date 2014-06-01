@@ -395,7 +395,7 @@ NUMLANGUAGE_CHOICES = (
 SEMTYPE_CHOICES = (
     ('HUMAN', _('human')),
     ('FOOD-DRINK', _('food/drink')),
-    ('OBJECTS', _('things')),
+    ('THINGS', _('things')),
     ('NATURE-ANIMALS', _('nature/animals')),
     ('all', _('all')),
 )
@@ -410,13 +410,13 @@ NUM_CHOICES = (
 )
 
 NUMGAME_CHOICES = (
-	('string', _('String to numeral')),
-	('numeral', _('Numeral to string')),
+	('string', _('Word to numeral')),
+	('numeral', _('Numeral to word')),
 )
 
 NUMGAME_CHOICES_PL = (
-	('string', _('Strings to numerals')),
-	('numeral', _('Numerals to strings')),
+	('string', _('Words to numerals')),
+	('numeral', _('Numerals to words')),
 )
 
 # These are not actually used in Forms, but used as a way to sneak these
