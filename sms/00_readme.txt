@@ -8,26 +8,38 @@ Notes on the CURRENT Oahpa user interface
 Book menue
 ==> includes only "all", but in the current version we have already two "books", hence:
 1. "all"
-2. "200"
-3. "100"
+2. "kurss"
+3. "200"
+4. "100"
 
 Spellrelax does not work yet
- ==> to be debugged
+ ==> to be implemented for Leksa
+1. 
+ˊ => richtig
 
-==>apostrophes (already inluded in spellrelax source code)
- ==> done (checked by Trond)
- ==>we also need spellrelax for Skolt Saami ẹ ~ e (the first one always to be shown, the second one to be accepted)
- ==> done (checked by Trond)
+´ => falsch aber muss für Leksa implementiert werden
 
-In Numra, the ordinals do still not work 
-===> the actuall words are from sme
+ʹ => falsch aber muss für Leksa implementiert werden
+
+2.
+ʼ => richtig
+
+' => falsch aber muss für leksa implementiert werden
+
+3 ẹ ~ e
+
+4. ˈ (kann ohne geschrieben werden)
+Bsp: asdfˈoiuy => asdfoiuy
+
+* spellrelax for Russian (ё ~ е)
+
 
 Link to the dictionary
 ==> perhaps also a link to saan.oahpa.no?
 
 Possible improvement in smsoahpa userinterface:
 html-based input tool for special Skolt Saami letters, like we had earlier in the webdicts for sjd and sms
- ==> cip: not before Inari 
+
 
 =====
 Wishes for the NEXT Oahpa compilation
@@ -107,102 +119,6 @@ The usual cycle:
 
  ==> re-build the smsoahpa db on the server
 
-======
-FUTURE
-======
-Future compilations (perhaps): 
-* spellrelax for Russian (ё ~ е)
-
-*"termm" - different term(inological) lists, which are not completely included in the textbook or the basic vocabulary lists.
- == not before newyear
-
-=====
-Cip (old note):
-For Opahpa-update, only entries with book=200 be use:
-sms2X>grep '<e ' _spittOutCorpus/*.xml | wc -l
-     269
-
-_spittOutCorpus>grep '<e ' *.xml | cut -d ':' -f1 | sort | uniq -c | sort -nr
- 102 n_sms2X.xml
-  76 v_sms2X.xml
-  48 a_sms2X.xml
-  16 adv_sms2X.xml
-  13 pro_sms2X.xml
-   7 con_sms2X.xml
-   5 num_sms2X.xml
-   1 ord_sms2X.xml
-   1 adp_sms2X.xml
-
-A further point to take into accout:
-
-_200-book_entry>grep '<e ' *.xml | wc -l
-     269
-_200-book_entry>grep '<mg' *.xml | wc -l
-     306
-
- ==> tansform mg-dict-format into mg-oahpa-format:
-     i.e., one entry per mg!
-
-=====
-Cip: 
-
-sms db update 20130114:
-
-  43          <xg oahpa="excl" kurss="no">
-  44             <x pos="n">eeˊǩǩed</x>
-  45             <xtg xml:lang="rus">
-  46                <xt pos="n">лет</xt>
-  47             </xtg>
-  48             <xtg xml:lang="fin">
-  49                <xt pos="n">vuotta</xt>
-  50             </xtg>
-  51          </xg>
-
- ==> Das ist nichts!
-
-<tg xml:lang="LANG">
-  <t .../>
-  <t .../>
-  <t .../>
-</tg>
-
-check pos values:
-
->          <l pos="mwe_n">fremre lår</l>
->       </lg>
->       <sources>
->          <book name="200" BEDLAN_ID="220"/>
->       </sources>
->       <mg>
->          <semantics>
->             <sem class="BODY">PART</sem>
->          </semantics>
->          <tg xml:lang="sms">
->             <t pos="a">ruõidd</t>
->          </tg>
->       </mg>
->    </e>
-
-
-check pos and l value (it seems to be a re-item):
-   <l pos="a">ikke av planter</l>
-   <l pos="a">av planter</l>
-
-aha: this is not a <t> but a <tr> and what is YOUR interpretation of it?
-
-            <tr>anything but plants</tr>
-            <tr>ikke av planter</tr>
-
-Das mag ich nicht (vgl. mit dem element semantics oder example):
-         <tg xml:lang="eng">
-            <t pos="adv" oahpa="pref">therefore</t>
-            <te>for that reason</te>
-         </tg>
-
-rus2sms
-         <l pos="con">потому что</l>
-         <l pos="con">потому, что</l>
-
 =====
 
 To correct 20130920:
@@ -213,32 +129,6 @@ To correct 20130920:
    Trond, Sjur: Done.
    
 =====
- - some comments on the new sms lexical data that has to be used for oahpa:
-
- 1. inconsistencies in structures:
-
-    (a)
-         <tg xml:lang="sju">
-            <t pos="a" pred="jårˈbada">jårbs</t>
-            <t pos="a">mulˈlòda</t>
-         </tg>
- 
-    (b)
-         <tg xml:lang="eng" style="obs" oahpa="excl">
-            <t pos="adv">whither</t>
-         </tg>
-         <tg xml:lang="eng" oahpa="pref">
-            <t pos="adv">where</t>
-         </tg>
-         <tg xml:lang="eng">
-            <t pos="mwe_adv">to where</t>
-         </tg>
-         <tg xml:lang="fin" oahpa="pref">
-            <t pos="adv">mihin</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="adv">minne</t>
-         </tg>
 
 =================
  - TODO: update localisation stuff
