@@ -52,6 +52,11 @@ class CookieAuthMiddleware(object):
         """
         from django.contrib import auth
 
+        auth_source = request.session.get('auth_source', 'standard')
+
+        if auth_source == 'standard':
+            return None
+
         if view_func == cookie_login:
             return cookie_login(request, *view_args, **view_kwargs)
         elif view_func == cookie_logout:
@@ -67,6 +72,7 @@ class CookieAuthMiddleware(object):
                     user = auth.authenticate(cookie_uid=cookie_user)
                     if user is not None:
                         auth.login(request, user)
+                        request.session['auth_source'] = 'cookie'
             else:
                 if request.user.is_authenticated():
                     return HttpResponseRedirect(reverse(cookie_logout))

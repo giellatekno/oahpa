@@ -70,6 +70,11 @@ def cookie_logout(request, next_page=None, **kwargs):
 
     from django.contrib.auth import logout
 
+    try:
+        del request.session['auth_source']
+    except:
+        pass
+
     logout(request)
 
     # TODO: redirect to kursa logout link
