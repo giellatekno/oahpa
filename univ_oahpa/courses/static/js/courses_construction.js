@@ -10,6 +10,10 @@ function listContainsObject(_list, _obj, field) {
     return -1;
 }
 
+// TODO: http://stackoverflow.com/questions/20181323/passing-data-between-controllers-in-angular-js
+//   when a task is created, need to broadcast it to the
+//   CourseGoalController for inclusion in the list.
+
 var CoursesConstruction = angular.module('CoursesConstruction', ['ngCookies', 'ui.sortable']).
     config(function($interpolateProvider, $httpProvider) {
         // set template expression symbols
@@ -38,12 +42,26 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
     $scope.not_in_use = [];
     $scope.edit = false;
     $scope.intermediate = false;
+    $scope.adding_sub_goal = false;
 
     // TODO: return to not in use:
     // http://codepen.io/thgreasi/pen/uFile?editors=111
     $scope.sortableOptions = {
         placeholder: "sortable-placeholder",
         connectWith: ".connected-sorting",
+    };
+
+    // /davvi/courses/create/coursegoal/add/goal/
+    $scope.newTaskPopup = function(e) {
+        var page_target = $(e.target).attr('ng-add-target');
+        $scope.adding_sub_goal = true;
+        $(document).find('#add_goal_container').show()
+        return e.preventDefault();
+        
+        // TODO: 
+        // Save existing goal to get ID
+        //
+        // When the user saves, refresh the unassigned tasks
     };
 
     // $http = applyHeaderToken($http, $cookies);
@@ -196,6 +214,7 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
     // Get existing course goals that user has access to.
     $http.get(coursegoal_url).success(function(data){
         $scope.coursegoals = data.results;
+
     });
 
     // Get available courses and other options
@@ -217,6 +236,7 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
             });
         }
     });
+
 }
 
 function TaskConstructorController($scope, $http, $element, $cookies) {
@@ -372,14 +392,5 @@ function TaskConstructorController($scope, $http, $element, $cookies) {
 
     };
 
-    $scope.newTaskPopup = function() {
-        // TODO: 
-        // Save existing goal to get ID
-        //
-        // Display a modal for creating a task
-        //
-        // When the user saves, refresh the unassigned tasks
-        //
-    };
 
 }

@@ -61,7 +61,7 @@ def cookie_login(request, next_page=None, required=False, **kwargs):
             error = "<h1>Forbidden</h1><p>Login failed.</p>"
             return HttpResponseForbidden(error)
     else:
-        return HttpResponseRedirect('/%s/courses/standard_login/' % URL_PREFIX) 
+        return HttpResponseRedirect('/%s/courses/standard_login/' % URL_PREFIX)
         # TODO: check
 
 def cookie_logout(request, next_page=None, **kwargs):

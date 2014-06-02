@@ -65,9 +65,19 @@ def trackGrade(gamename, request, c):
                                                 total=total)
 
 @login_required
+def courses_coursegoal_sub_goal_add(request):
+    template = 'course_goal_constructor_iframe.html'
+    c = { }
+    return render_to_response(template,
+                              c,
+                              context_instance=RequestContext(request))
+
+@login_required
 def courses_goal_construction(request):
     template = 'courses_main_goals.html'
-    c = {'coursegoal': False}
+    c = {'coursegoal': False,
+         'for_iframe': False
+        }
     return render_to_response(template,
                               c,
                               context_instance=RequestContext(request))
@@ -75,7 +85,9 @@ def courses_goal_construction(request):
 @login_required
 def courses_coursegoal_construction(request):
     template = 'courses_main_goals.html'
-    c = {'coursegoal': True}
+    c = {'coursegoal': True,
+         'for_iframe': False
+        }
     return render_to_response(template,
                               c,
                               context_instance=RequestContext(request))

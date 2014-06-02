@@ -29,6 +29,7 @@ from views import ( courses_main
                   , courses_stats
                   , goal_history
                   , courses_coursegoal_construction
+                  , courses_coursegoal_sub_goal_add
                   , course_enroll
                   , recipient_search
                   , personal_goals
@@ -57,6 +58,8 @@ urlpatterns += patterns('univ_oahpa.courses.views',
         name="goal_history"),
     url(r'^goal/begin/(?P<task_id>\d+)/$', begin_course_task,
         name="begin_course_task"),
+    url(r'^create/coursegoal/add/goal/$', courses_coursegoal_sub_goal_add,
+        name="courses_coursegoal_sub_goal_add"),
     url(r'^create/coursegoal/$', courses_coursegoal_construction,
         name="courses_coursegoal_construction"),
     url(r'^create/goal/$', courses_goal_construction,
