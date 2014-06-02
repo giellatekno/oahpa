@@ -572,7 +572,7 @@ class Word(models.Model):
 
 		pos_base = {
 			'V': 'Inf',
-			'N': 'Nom',
+			'N': 'Sg', # Usually: Nom. But the baseform in crk is N+AN+Sg or N+IN+Sg
 			'A': 'Attr',
 			'Pron': 'Nom',
 		}
@@ -689,6 +689,7 @@ class Tag(models.Model):
 	# TODO: pos = models.CharField(max_length=12)
 	attributive = models.CharField(max_length=5)
 	case = models.CharField(max_length=5)
+	animacy = models.CharField(max_length=5)
 	# conneg = models.CharField(max_length=5)
 	grade = models.CharField(max_length=10)
 	infinite = models.CharField(max_length=10)
@@ -698,7 +699,8 @@ class Tag(models.Model):
 	gender = models.CharField(max_length=5)
 	# polarity = models.CharField(max_length=5)
 	pos = models.CharField(max_length=12)
-	# possessive = models.CharField(max_length=5)
+	possessive = models.CharField(max_length=10)
+	derivation = models.CharField(max_length=7)
 	# subclass = models.CharField(max_length=10)
 	tense = models.CharField(max_length=5)
 
@@ -715,6 +717,7 @@ class Tag(models.Model):
 			# object attribute: tagset name
 			'attributive': 'Attributive',
 			'case': 'Case',
+			'animacy': 'Animacy',
 #			'conneg': 'ConNeg',
 #			'grade': 'Grade',
 #			'infinite': 'Infinite',
@@ -723,7 +726,8 @@ class Tag(models.Model):
 			'personnumber': 'Person-Number',
 #			'polarity': 'Polarity',
 			'pos': 'Wordclass',
-#			'possessive': 'Possessive',
+			'possessive': 'Possessive',
+			'derivation': 'Derivation',
 #			'subclass': 'Subclass',
 			'tense': 'Tense',
 			'gender': 'Gender',
@@ -821,7 +825,7 @@ class Form(models.Model):
 				number = self.tag.number
 			else:
 				number = 'Sg'
-			baseform_num = self.word.form_set.filter(tag__case='Nom')
+			baseform_num = self.word.form_set.filter(tag__case='') # was: Nom
 
 			baseform = baseform_num.filter(tag__number=number)
 			if baseform.count() == 0 and number == 'Sg' and baseform_num.count() > 0:

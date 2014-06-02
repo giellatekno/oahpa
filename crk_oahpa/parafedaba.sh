@@ -1,7 +1,8 @@
 #!/bin/sh
 
 P="python2.7"
-GTHOME="/home/heli/main/ped"
+#GTHOME="/home/heli/main/ped"
+GTHOME="/Users/mslm/main/ped"
 LANGDIR="crk"
 DATA=$GTHOME/$LANGDIR
 DPS="$DATA/src"
@@ -24,7 +25,7 @@ echo "done"
 echo "==================================================="
 
 ##
-## Trying to set up Livonian
+## Trying to set up Plains Cree Oahpa
 
 
 ##
@@ -101,12 +102,12 @@ echo "==================================================="
 # ## nobcrk
 # ##
 
-echo "==================================================="
-echo "feeding db with $DPN/N_nobcrk.xml"
-$P install.py --file $DPN/N_nobcrk.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
+#echo "==================================================="
+#echo "feeding db with $DPN/N_nobcrk.xml"
+#$P install.py --file $DPN/N_nobcrk.xml 2>>error.log
+#echo " "
+#echo "done"
+#echo "==================================================="
 
 #echo "==================================================="
 #echo "feeding db with $DPN/num_nobcrk.xml"
@@ -115,19 +116,19 @@ echo "==================================================="
 #echo "done"
 #echo "==================================================="
 
- echo "==================================================="
- echo "feeding db with $DPN/V_nobcrk.xml"
- $P install.py --file $DPN/V_nobcrk.xml 2>>error.log
- echo " "
- echo "done"
- echo "==================================================="
+ #echo "==================================================="
+ #echo "feeding db with $DPN/V_nobcrk.xml"
+ #$P install.py --file $DPN/V_nobcrk.xml 2>>error.log
+ #echo " "
+ #echo "done"
+ #echo "==================================================="
  
- echo "==================================================="
- echo "feeding db with $DPN/A_nobcrk.xml"
- $P install.py --file $DPN/A_nobcrk.xml 2>>error.log
- echo " "
- echo "done"
- echo "==================================================="
+ #echo "==================================================="
+ #echo "feeding db with $DPN/A_nobcrk.xml"
+ #$P install.py --file $DPN/A_nobcrk.xml 2>>error.log
+ #echo " "
+ #echo "done"
+ #echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $DPN/adv_nobcrk.xml"
@@ -334,17 +335,17 @@ echo "==================================================="
 # $P manage.py fixtagattributes
 
 echo "==================================================="
-echo "installing Morfa-C questions for nouns"
-$P install.py -g $META/grammar_defaults.xml -q $META/noun_questions.xml 2>>error.log
-echo " "
-echo "done"
+#echo "installing Morfa-C questions for nouns"
+#$P install.py -g $META/grammar_defaults.xml -q $META/noun_questions.xml 2>>error.log
+#echo " "
+#echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "installing Morfa-C questions for verbs"
-$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions.xml 2>>error.log
-echo " "
-echo "done"
+#echo "installing Morfa-C questions for verbs"
+#$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions.xml 2>>error.log
+#echo " "
+#echo "done"
 echo "==================================================="
 
 # echo "==================================================="
@@ -487,13 +488,9 @@ echo "==================================================="
 # echo "done"
 # echo "==================================================="
 
-# # TODO:
-# # fixtagattributes
-# # mergetags
 
-# $P manage.py fixattributes
-# $P manage.py mergetags
-# $P manage.py fixattributes
+$P manage.py fixtagattributes
+$P manage.py mergetags
 
 # echo "==================================================="
 # echo "adding feedback to verbs"

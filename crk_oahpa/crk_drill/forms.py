@@ -66,7 +66,7 @@ NOUN_QUESTION_ANSWER = {
 	# gametype			question		answer
 	'N-PL': [('N+Animacy+Sg', 'N+Animacy+Pl')],
 	'N-LOC': [('N+Animacy+Sg', 'N+Animacy+Loc')],
-	'N-DIM': [('N+Animacy+Der/Dim+N+Animacy+Sg', 'N+Animacy+Sg')],
+	'N-DIM': [('N+Animacy+Sg', 'N+Animacy+Der/Dim+N+Animacy+Sg')],
 }
 
 NOUN_FILTER_DEFINITION = ['animacy', 'declension', 'gender', 'source']
@@ -863,7 +863,7 @@ class OahpaSettings(forms.Form):
 					'contracted': False,
 					'level' : 'all',
 					'lemmacount' : '2',
-					'case': 'N-PAR',
+					'case': 'N-PL',
 					'pos' : 'N',
 					'vtype' : 'PRS',
 					'adjcase' : 'NOM',
@@ -871,7 +871,7 @@ class OahpaSettings(forms.Form):
 					'pron_type': 'Pers',
 					'proncase' : 'N-NOM', # Need a new default case here
 					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
-					'case_context' : 'N-PAR',
+					'case_context' : 'N-PL',
 					'vtype_context' : 'V-PRS',
 					'pron_context' : 'P-PERS',
 					'num_context' : 'NUM-ATTR',
@@ -1125,7 +1125,7 @@ class MorfaSettings(OahpaSettings):
 		$home/morfa/ came from, because instead of an
 		exception there was a relatively unhelpful 404 error.
 	"""
-	case = forms.ChoiceField(initial='N-PAR', choices=CASE_CHOICES, widget=forms.Select)
+	case = forms.ChoiceField(initial='N-PL', choices=CASE_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES

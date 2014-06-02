@@ -323,14 +323,10 @@ class Game(object):
 class BareGame(Game):
 
 	casetable = {
-		'N-NOM-PL': ('Nom', ['Pl']),
-		'N-GEN': ('Gen', ['Sg','Pl']),
-		'N-PAR': ('Par', ['Sg','Pl']),
-		'N-ILL': ('Ill', ['Sg','Pl']),
-		'N-INE': ('Ine', ['Sg','Pl']),
-		'N-ELA': ('Ela', ['Sg','Pl']),
-		'N-DAT': ('Dat', ['Sg','Pl']),
-		'N-INS': ('Ins', ['Sg','Pl']),
+		'N-PL': ("", ["Pl"], "", ""),
+		'N-LOC': ("Loc", [""] , "", ""),
+		'N-DIM': ("", ["Sg"], "", "Der/Dim"),
+		'N-PX': ("", ["Sg", "Pl"], "Px", ""),
 		'': '',
 	}
 
@@ -512,7 +508,7 @@ class BareGame(Game):
 		# 	syll = ['']
 
 		if pos in ['N', 'Num', 'Pron']:
-			case, number = self.casetable[pos_tables[pos]]
+			case, number, possessive, derivation = self.casetable[pos_tables[pos]]
 		else:
 			case = self.casetable[pos_tables[pos]]
 		grade = self.casetable.get('grade', '')
@@ -642,10 +638,12 @@ class BareGame(Game):
 						# regardless of whether it's Actor, Coll, etc.
 
 		if pos == 'N':
-			if singular_only:   # if the user has checked the box "singular only"
-				TAG_QUERY = TAG_QUERY & Q(number='Sg')
+			#if singular_only:   # if the user has checked the box "singular only"
+			#	TAG_QUERY = TAG_QUERY & Q(number='Sg')
+			if possessive == '':
+				TAG_QUERY = TAG_QUERY & Q(number__in=number, possessive=possessive, derivation=derivation)
 			else:
-				TAG_QUERY = TAG_QUERY & Q(number__in=number)
+				TAG_QUERY = TAG_QUERY & Q(number__in=number, possessive__contains='Px')
 
 
 
@@ -690,13 +688,12 @@ class BareGame(Game):
 
 		# filter can include several queries, exclude must have only one
 		# to work successfully
-		if pos != 'Der':
-			tags = Tag.objects.exclude(string__contains='Der')\
-								.filter(TAG_QUERY)\
+		#if pos != 'Der':
+		#	tags = Tag.objects.exclude(string__contains='Der').filter(TAG_QUERY)\
 								#.exclude(polarity='Neg')    # PI: aha, might need subclass after all
 								#.exclude(subclass='Prop')\
-		else:
-			tags = Tag.objects.filter(TAG_QUERY)# \
+		#else:
+		tags = Tag.objects.filter(TAG_QUERY)# \
 							    # 	.exclude(subclass='Prop')\
 							    # 	.exclude(polarity='Neg')
 
@@ -922,6 +919,7 @@ class BareGame(Game):
 			correct = form_list.filter(tag__string__contains='PassL')
 
 		correct = form_list[0]
+		print "correct form: ", correct
 
 		# Due to the pronoun ambiguity potential (gii 'who', gii 'which'),
 		# we need to make sure that the word is the right one.
@@ -937,10 +935,11 @@ class BareGame(Game):
 		# about turning nominative singular into nominative plural,
 		# thus all baseforms should be singular.
 
-		if tag.case in ['Nom'] or tag.attributive:
-			match_number = False
-		else:
-			match_number = True
+		#if tag.case == '': # was: tag.case in ['Nom'] or tag.attributive:
+		#	match_number = False
+		#else:
+		#	match_number = True
+		match_number = False # it is different for crk
 		
 
 		def baseformFilter(form):
