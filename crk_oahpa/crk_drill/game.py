@@ -643,7 +643,7 @@ class BareGame(Game):
 			if possessive == '':
 				TAG_QUERY = TAG_QUERY & Q(number__in=number, possessive=possessive, derivation=derivation)
 			else:
-				TAG_QUERY = TAG_QUERY & Q(number__in=number, possessive__contains='Px')
+				TAG_QUERY = TAG_QUERY & Q(number__in=number, possessive__contains='Px', derivation=derivation)
 
 
 
@@ -964,18 +964,21 @@ class BareGame(Game):
 				return bfs
 
 			bfs = form.getBaseform(match_num=match_number, return_all=True)
+			#if (bfs.count() == 0):  # the word does not have a diminutive
+			#	return [form.word]  
 
-			excluded = bfs.exclude(dialects__dialect='NG')
-			if excluded.count() == 0:
-				excluded = bfs
+			#excluded = bfs.exclude(dialects__dialect='NG')
+			#if excluded.count() == 0:
+			#   excluded = bfs
+			return list(bfs)
 
-			filtered = excluded.filter(dialects__dialect=UI_Dialect)
+			#filtered = excluded.filter(dialects__dialect=UI_Dialect)
 
 			# If no non-NG forms are found, then we have to display those.
-			if filtered.count() == 0 and excluded.count() > 0:
-				return list(excluded)
-			else:
-				return list(filtered)
+			#if filtered.count() == 0 and excluded.count() > 0:
+			#	return list(excluded)
+			#else:
+			#	return list(filtered)
 
 		base_forms = map(baseformFilter, form_list)
 
@@ -984,7 +987,7 @@ class BareGame(Game):
 			base_forms = sum(base_forms, [])
 		except TypeError:
 			pass
-
+				
 		# Just in case multiple are returned, get the first.
 		# TODO: make sure no forms that are needed are being lost here.
 		try:
@@ -998,7 +1001,7 @@ class BareGame(Game):
 
 		# Just the ones we want to present for just one dialect
 		#presentation = form_list.filter(dialects=Q_DIALECT)
-
+		
 		if pos == 'Der':
 			presentation = presentation.filter(tag__string__contains='PassL')
 
@@ -1025,6 +1028,17 @@ class BareGame(Game):
 		if not db_info.get('conneg', False):
 			db_info['conneg'] = False
 
+		# For the task 'N-DIM' the reverse task is created at first and then the form and the baseform will be swapped. The reason is that every word does not have a diminutive.
+		if (self.settings['case'] == 'N-DIM'):
+				tmp = form_list
+				form_list = base_forms
+				form = base_forms[0]
+				correct = base_forms[0]
+				base_forms = tmp
+				baseform = tmp[0]
+				accepted_answers = [correct]
+				presentation_ng = [correct.fullform]
+				
 		morph = (MorfaQuestion(
 					word=word,
 					tag=tag,

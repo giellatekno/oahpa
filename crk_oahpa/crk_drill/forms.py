@@ -66,7 +66,7 @@ NOUN_QUESTION_ANSWER = {
 	# gametype			question		answer
 	'N-PL': [('N+Animacy+Sg', 'N+Animacy+Pl')],
 	'N-LOC': [('N+Animacy+Sg', 'N+Animacy+Loc')],
-	'N-DIM': [('N+Animacy+Sg', 'N+Animacy+Der/Dim+N+Animacy+Sg')],
+	'N-DIM': [('N+Animacy+Der/Dim+N+Animacy+Sg', 'N+Animacy+Sg')],
 }
 
 NOUN_FILTER_DEFINITION = ['animacy', 'declension', 'gender', 'source']

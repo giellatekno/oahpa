@@ -825,8 +825,14 @@ class Form(models.Model):
 				number = self.tag.number
 			else:
 				number = 'Sg'
-			baseform_num = self.word.form_set.filter(tag__case='') # was: Nom
+			#if (self.tag.string == 'N+AN+Sg' or self.tag.string == 'N+IN+Sg'):  # task N-DIM
+			#	baseform_num = self.word.form_set.filter(tag__case='', tag__possessive='', tag__derivation='Der/Dim')
+			if self.tag.possessive == '': # N-PL and N-LOC
+				baseform_num = self.word.form_set.filter(tag__case='', tag__possessive='', tag__derivation='')
+			else:  # N-PX
+				baseform_num = self.word.form_set.filter(tag__case='', tag__possessive='Px1Sg', tag__derivation='')
 
+			#print 'baseforms before number filtering:', baseform_num
 			baseform = baseform_num.filter(tag__number=number)
 			if baseform.count() == 0 and number == 'Sg' and baseform_num.count() > 0:
 				baseform = baseform_num
