@@ -25,8 +25,6 @@ class GradingMiddleware(object):
         #     request.session['question_set_count'] = 1
 
         # Increment individual question/answer tries
-        print 'increment_session_answer_counts'
-        print request.user_logs_generated
         for log in request.user_logs_generated:
             if log.correct in request.session['question_try_count']:
                 # Increment and add to answered, thus count stops
@@ -94,7 +92,6 @@ class GradingMiddleware(object):
 
                 if (current != previous) and (not sahka_condition):
                     print " -- user navigated to new page, stop tracking --"
-                    print "    " + repr( (current, previous) )
 
                     user_goal_instance = UserGoalInstance.objects.filter( user=request.user
                                                                         , id=current_user_goal
@@ -117,13 +114,9 @@ class GradingMiddleware(object):
 
             self.increment_session_answer_counts(request)
 
-            print "Request generated <%d> logs." % len(request.user_logs_generated)
             ual = create_activity_log_from_drill_logs(request, request.user,
                                                       request.user_logs_generated,
                                                       current_user_goal=current_user_goal)
-
-            if ual is not None:
-                print "Created <%s>" % ual
 
             self.reset_increments(request)
 
