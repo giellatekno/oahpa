@@ -115,6 +115,11 @@ def prepare_goal_params(rq=None):
                   'select': True,
                   'name': 'Level'},
 
+        'dialogue': {'options': dict(DIALOGUE_CHOICES),
+                  'select': True,
+                  'name': 'Dialogue'},
+
+
         # TODO: adj grade choices in context?
     }
 
@@ -284,6 +289,19 @@ def prepare_goal_params(rq=None):
             ],
             'label': 'Vasta',
             'value': 'vasta'
+        },
+        'sahka': {
+            'subtypes': [
+                {
+                    'params': ['dialogue'],
+                    'label': 'Sahka',
+                    'value': 'sahka',
+                    'path': '/sahka/',
+                },
+                {},
+            ],
+            'label': 'Sahka',
+            'value': 'sahka'
         },
 
     }

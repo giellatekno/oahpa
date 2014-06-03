@@ -176,7 +176,6 @@ class CourseGoalView(viewsets.ModelViewSet):
             for c in request.user.get_profile().instructorships
         ]
 
-        # data['goals'] = self.user_goals()
         return data
 
 class GoalParametersView(viewsets.ModelViewSet):
