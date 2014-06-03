@@ -773,10 +773,12 @@ try:
 except:
 	UserFeedbackLog = False
 
-def get_feedback(self, wordform, language, user_level=False):
+def get_feedback(self, wordform, language):
+	user_level = 1
+
 	# TODO: testing only
 	# user_level = 2
-	language = 'sme'
+	# language = 'sme'
 
 	# results in msgs with all levels, need to filter down to the
 	# correct level.
