@@ -66,6 +66,7 @@ class Gameview(object):
 	def register_logs(self, request, game, settings_form):
 		""" Grab all the logs that were generated from a form, and
 		append them to the request session """
+		# in sahka this may be a tuple
 		request.user_logs_generated = [
 			f.last_log for f in game.form_list
 			if hasattr(f, 'last_log')

@@ -2442,11 +2442,13 @@ def sahka_is_correct(self,utterance,targets,language):
 
 	if not self.messages:
 		self.error = "correct"
+		self.iscorrect = True
 
 	for answer in self.dia_messages:
 		answer = answer.lstrip("dia-")
 		if answer == "target":
 			self.target = answer
+	self.log_response()
 
 	
 class SahkaSettings(OahpaSettings):
@@ -2492,12 +2494,45 @@ class SahkaQuestion(OahpaQuestion):
 	sahka_is_correct = sahka_is_correct
 	vasta_is_correct = vasta_is_correct
 
+	def log_response(self):
+		import datetime
+
+		today = datetime.date.today()
+		# print ','.join(self.correct_anslist)
+
+		log_kwargs = {
+			'userinput': self.userans,
+			'correct': ','.join(self.correct_anslist),
+			'iscorrect': self.iscorrect,
+			'example': self.utterance,
+			# 'tasklemmas': self.example,
+			'game': self.gametype,
+			'date': today
+		}
+		if self.user:
+			log_kwargs['username'] = self.user.username
+		if self.user_country:
+			log_kwargs['user_country'] = self.user_country
+
+		log = Log.objects.create(**log_kwargs)
+		self.last_log = log
+
 	def __init__(self, utterance, qwords, targets, global_targets, language, userans_val, correct_val, *args, **kwargs):				 
 		
 		self.init_variables("", userans_val, [])
 
 		utterance_widget = forms.HiddenInput(attrs={'value' : utterance.id})
 		facit_widget = forms.HiddenInput(attrs={'value' : utterance.facit})		
+
+		if 'user' in kwargs:
+			self.user = kwargs.pop('user')
+		else:
+			self.user = False
+
+		if 'user_country' in kwargs:
+			self.user_country = kwargs.pop('user_country')
+		else:
+			self.user_country = False
 		
 		super(SahkaQuestion, self).__init__(*args, **kwargs)
 

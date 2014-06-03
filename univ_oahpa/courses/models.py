@@ -826,6 +826,8 @@ def create_activity_log_from_drill_logs(request, user, drill_logs, current_user_
 
     question_tries = request.session['question_try_count']
 
+    useractivitylog = None
+
     for drill_log in drill_logs:
         activity_log_attrs = {}
 
@@ -860,9 +862,9 @@ def create_activity_log_from_drill_logs(request, user, drill_logs, current_user_
                                 user_input=activity_log_attrs['user_input'],
                                 is_correct=activity_log_attrs['is_correct'])
         else:
-            UserActivityLog.objects.create(**activity_log_attrs)
+            useractivitylog = UserActivityLog.objects.create(**activity_log_attrs)
 
-    return
+    return useractivitylog
 
 from django.db.models.signals import post_save, pre_save, post_delete
 from .signals import *
