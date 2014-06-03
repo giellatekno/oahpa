@@ -111,6 +111,10 @@ def prepare_goal_params(rq=None):
                  'select': True,
                  'name': 'Grade'},
 
+        'level': {'options': dict(VASTAS_LEVELS),
+                  'select': True,
+                  'name': 'Level'},
+
         # TODO: adj grade choices in context?
     }
 
@@ -263,6 +267,25 @@ def prepare_goal_params(rq=None):
             'label': 'Morfa-C',
             'value': 'morfa_c'
         },
+        'vasta': {
+            'subtypes': [
+                {
+                    'params': ['level'],
+                    'label': 'Vasta-S',
+                    'value': 'vasta_s',
+                    'path': '/vastas/',
+                },
+                {
+                    'params': ['level'],
+                    'label': 'Vasta-F',
+                    'value': 'vasta_f',
+                    'path': '/vastaf/',
+                },
+            ],
+            'label': 'Vasta',
+            'value': 'vasta'
+        },
+
     }
 
     return GOAL_CHOICE_TREE, GOAL_PARAMETER_CHOICE_VALUES
