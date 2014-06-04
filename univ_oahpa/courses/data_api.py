@@ -72,6 +72,11 @@ class FeedbackLogView(viewsets.ModelViewSet):
             _d['user'] = request.user.id
             with_ids.append(_d)
 
+        fb_texts = list(set([a.get('feedback_texts') for a in with_ids if a.get('feedback_texts', False)]))
+
+        if len(fb_texts) > 0:
+            print UserFeedbackLog.levels.get_user_level(request.user, fb_texts)
+
         serialized = self.serializer_class(data=with_ids, many=True)
 
         if serialized.is_valid():

@@ -717,10 +717,8 @@ class LevelAssessment(models.Manager):
         levels = self.get_user_level(user, feedback_texts)
         # assuming a level increment, return the highest incomplete
         # level
-        print feedback_texts
-        print levels
 
-        return 2
+        return levels
 
 class UserFeedbackLog(models.Model):
     user = models.ForeignKey(User)
