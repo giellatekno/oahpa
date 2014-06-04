@@ -1,7 +1,7 @@
 # list of command making jspwiki document
 
 # a. all nouns
-cat $GTHOME/gt/sma/src/noun-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|grep -v 'Use/Sub'|tr '[+:]' ' '| cut -d" " -f1|tr -d '[#^]'|sort|uniq > t1
+cat $GTHOME/gt/sma/src/noun-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|grep -v 'Err/Sub'|tr '[+:]' ' '| cut -d" " -f1|tr -d '[#^]'|sort|uniq > t1
 
 # b. dict nouns
 cat $GTHOME/words/dicts/smanob/src/n_smanob.xml|grep '<l '|tr '<' '>'|cut -d">" -f3 > t2
