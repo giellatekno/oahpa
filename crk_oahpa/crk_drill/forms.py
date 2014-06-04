@@ -1670,7 +1670,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 		self.gametype = 'morfac' # not sure if this is ok
 
 		qtype=question.qtype
-		if qtype in self.qtype_verbs:
+		if qtype in self.qtype_verbs:  # ???
 			qtype = 'PRS'
 
 		question_widget = forms.HiddenInput(attrs={'value' : question.id})
@@ -1794,11 +1794,11 @@ class ContextMorfaQuestion(OahpaQuestion):
 				if answer_tag_el.number=="Sg" or answer_tag_el.case=="Ess" or answer_tag_el.case=="Nom":  #was: qtype="N-NOM-PL"
 					self.lemma = answer_word_el.lemma
 				else:
-					nplforms = Form.objects.filter(word__pk=answer_word, tag__string='N+Pl+Nom')
+					nplforms = Form.objects.filter(word__pk=answer_word, tag__string__in=['N+AN+Pl','N+IN+Pl']) # was: tag__string='N+Pl+Nom'
 					if nplforms.count() > 0:
 						self.lemma = nplforms[0].fullform
 					else:
-						self.lemma = answer_word_el.lemma + " (plural) fix this"
+						self.lemma = answer_word_el.lemma + " (plural)" # was: (plural) fix this
 
 		if qtype == "ORD-NUM":
 			self.lemma = answer_word_el.lemma

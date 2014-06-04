@@ -56,13 +56,13 @@ class QAGame(Game):
 		self.QAPN={	'Sg':'Sg',			#  
 					'Pl':'Pl',			#  
 					
-					'Sg1':'Sg2',		# Mun? Don.
-					'Sg2':'Sg1',		# Don? Mun.
-					'Sg3':'Sg3',		# Son? Son.
+					'1Sg':'2Sg',		# Mun? Don.
+					'2Sg':'1Sg',		# Don? Mun.
+					'3Sg':'3Sg',		# Son? Son.
 					
-					'Pl1':'Pl2',		# Mii? Dii.
-					'Pl2':'Pl1',		# Dii? Mii.
-					'Pl3':'Pl3'}		# Sii? Sii.
+					'1Pl':'2Pl',		# Mii? Dii.
+					'2Pl':'1Pl',		# Dii? Mii.
+					'3Pl':'3Pl'}		# Sii? Sii.
 					
 					
 
@@ -869,6 +869,7 @@ class QAGame(Game):
 		question_query = Q(qtype__contains=qtype) & Q(gametype="morfa")
 		if books:
 			question_query = question_query & (Q(source__name__in=books) | Q(source__name="all" ))
+		print "question query", question_query
 
 		### Generate question. If it fails, select another one.
 		i, max_ = 0, 20
@@ -880,7 +881,7 @@ class QAGame(Game):
 				question = question.order_by('?')[0]
 			else:
 				errormsg = 'Database may not be properly loaded. No questions found for query.'
-				errormsg += '\n qtype: %s' % repr(qtype)
+				errormsg += '\n qtype was: %s' % repr(qtype)
 				raise Http404(errormsg)
 
 			qwords = None
