@@ -347,7 +347,7 @@ def begin_course_task(request, task_id):
     if 'prev_new_game' in request.session:
         del request.session['prev_new_game']
 
-    request.session['question_set_count'] = 1
+    request.session['question_set_count'] = 0
     request.session['question_try_count'] = {}
     request.session['answered'] = {}
 

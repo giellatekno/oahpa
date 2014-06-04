@@ -93,7 +93,7 @@ Courses.controller('GoalController', function($scope, $http, $element, $cookies)
              $scope.above = false;
          }
          if ($scope.max_rounds) {
-             $scope.progress_percent = ($scope.current_set_count - 1 / $scope.max_rounds) * 100;
+             $scope.progress_percent = ($scope.current_set_count / $scope.max_rounds) * 100;
              if ($scope.progress_percent > 100) {
                 $scope.progress_percent = 100;
              }
