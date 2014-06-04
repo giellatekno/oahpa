@@ -569,8 +569,11 @@ class BareGame(Game):
 
 		TAG_QUERY = Q(pos=pos)
 
-		# Exclude derivations by default
-		TAG_EXCLUDES = None # Q(subclass__contains='Der') #PI removed
+		if pos == 'V':
+		      TAG_EXCLUDES = Q(personnumber__contains='4') # persons 4Sg and 4Pl are excluded
+		else:
+		      # Exclude derivations by default
+		      TAG_EXCLUDES = None # Q(subclass__contains='Der') #PI removed
 
 		FORM_FILTER = False
 
@@ -671,8 +674,8 @@ class BareGame(Game):
 							Q(mood=mood) & \
 							Q(infinite=infinite)
 
-			if tense != 'Prs':
-				TAG_EXCLUDES = Q(string__contains='ConNeg')
+			#if tense != 'Prs':
+			#	TAG_EXCLUDES = TAG_EXCLUDES | Q(string__contains='ConNeg')
 
 		if pos == 'A':
 			if pos2 == 'Num':

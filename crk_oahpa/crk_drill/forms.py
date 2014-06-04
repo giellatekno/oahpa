@@ -19,12 +19,12 @@ from random import choice
 
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
-PRONOUNS_LIST = {'1Sg':'nîya', '2Sg':'kîya', '3Sg':'wîya',
-		  '1Pl':'nîyanân', '12Pl':'kîyânaw', '3Pl':'wîyawâw'}
+PRONOUNS_LIST = {'1Sg': u'nîya', '2Sg': u'kîya', '3Sg': u'wîya',
+		  '1Pl': u'nîyanân', '2Pl': u'kîyawâw', '12Pl': u'kîyânaw', '3Pl': u'wîyawâw'}
 
 # DEMONSTRATIVE_PRESENTATION plus Sg3/Pl3
-PASSIVE_PRONOUNS_LIST = {'1Sg':'nîya', '2Sg':'kîya', '3Sg':'wîya',
-		  '1Pl':'nîyanân', '12Pl':'kîyânaw', '3Pl':'wîyawâw'}
+PASSIVE_PRONOUNS_LIST = {'1Sg': u'nîya', '2Sg': u'kîya', '3Sg': u'wîya',
+		  '1Pl': u'nîyanân', '2Pl': u'kîyawâw', '12Pl': u'kîyânaw', '3Pl': u'wîyawâw'}
 
 
 NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',

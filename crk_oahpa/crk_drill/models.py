@@ -571,7 +571,7 @@ class Word(models.Model):
 		"""
 
 		pos_base = {
-			'V': 'Inf',
+			'V': '', # Usually: Inf. crk: V+IA, V+II, V+TA, V+TI
 			'N': 'Sg', # Usually: Nom. But the baseform in crk is N+AN+Sg or N+IN+Sg
 			'A': 'Attr',
 			'Pron': 'Nom',
@@ -878,10 +878,7 @@ class Form(models.Model):
 				baseform = baseform_num
 
 		elif self.tag.pos in ['V', 'v']:
-			if self.word.lemma in [u'lea', u'ii']:
-				kwarg = {'tag__personnumber': 'Sg3'}
-			else:
-				kwarg = {'tag__infinite': 'Inf'}
+			kwarg = {'tag__personnumber':'', 'tag__tense':''}
 
 			# Non-derived verbs need to exclude Der
 			baseform = self.word.form_set.exclude(tag__string__contains='Der')\

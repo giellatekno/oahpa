@@ -206,6 +206,7 @@ class Entry(object):
 			("p3p", None),
 			("pos", None),
 			("animacy", None),
+			("trans_anim", "animacy"), # for verbs: transitivity-animacy
 			("gradation", None),
 			("diphthong", None),
 			("rime", None),

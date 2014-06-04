@@ -589,7 +589,8 @@ class Paradigm:
 			for form in self.paradigm:
 				form.form = form.form.replace("#","")
 				g=form.classes
-				t,created=Tag.objects.get_or_create(string=form.tags,pos=g.get('Wordclass', ""),\
+				
+			t,created=Tag.objects.get_or_create(string=form.tags,pos=g.get('Wordclass', ""),\
 													number=g.get('Number',""),case=g.get('Case',""),\
 													possessive=g.get('Possessive',""),grade=g.get('Grade',""),\
 													infinite=g.get('Infinite',""), \
@@ -599,8 +600,10 @@ class Paradigm:
 													subclass=g.get('Subclass',""), \
 													attributive=g.get('Attributive',""))
 				
-				t.save()
-				form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w)
-				form.save()
+				
+			t.save()
+			print >> STDERR, "form: %s tag: %s" % (form.form, form.tags)
+			form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w)
+			form.save()
 
 
