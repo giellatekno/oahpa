@@ -1263,7 +1263,7 @@ class MorfaQuestion(OahpaQuestion):
 			# Odne 'today', ikte 'yesterday'
 			if (tag.tense in ['Prs','Prt']) and (tag.mood == 'Ind'):
 				time = TENSE_PRESENTATION.get(tag.tense, False)
-				self.pron = ' '.join([time, pronoun])
+				self.pron = '(%s) %s' % (pronoun, time) #' '.join([time, pronoun])
 
 			if ("+Der/Pass" in tag.string) and ("+V" in tag.string):
 				# Odne mun ___
