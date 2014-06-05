@@ -1788,22 +1788,12 @@ class ContextMorfaQuestion(OahpaQuestion):
 
 		# If the asked word is in Pl, generate nominal form
 
-		if answer_tag_el.pos == "N":
-			if qtype == "COLL-NUM":
-				self.lemma = answer_word_el.lemma
-			else:
-				if answer_tag_el.number=="Sg" or answer_tag_el.case=="Ess" or answer_tag_el.case=="Nom":  #was: qtype="N-NOM-PL"
-					self.lemma = answer_word_el.lemma
-				else:
-					nplforms = Form.objects.filter(word__pk=answer_word, tag__string__in=['N+AN+Pl','N+IN+Pl']) # was: tag__string='N+Pl+Nom'
-					if nplforms.count() > 0:
-						self.lemma = nplforms[0].fullform
-					else:
-						self.lemma = answer_word_el.lemma + " (plural)" # was: (plural) fix this
-
-		if qtype == "ORD-NUM":
-			self.lemma = answer_word_el.lemma
-
+		if answer_tag_el.pos == "N" or qtype == "ORD-NUM":
+		      if qtype == 'N-PX':
+		          self.lemma = False
+		      else:
+			     self.lemma = answer_word_el.lemma
+				
 		if answer_tag_el.pos == "Pron":
 			# Hide task word for Recipr and Refl
 			if qtype in ["P-REFL", "P-RECIPR", "P-REL"]:
