@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <r xml:lang="rus">
+   <e id="кто_pro" stat="pref">
+      <lg>
+         <l pos="pro">кто</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+         <book name="200" BEDLAN_ID="*194"/>
+         <book name="100"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">PEOPLE</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="pro" stat="pref">ǩii</t>
+            <t pos="cs" sem-cl="SENSE" src="kurss 3" rus-stat="yes">kååˊtt</t>
+         </tg>
+      </mg>
+   </e>
    <e id="что_pro" stat="pref">
       <lg>
          <l pos="pro">что</l>
@@ -16,6 +35,71 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="pro" stat="pref">mii</t>
+            <t pos="cs" sem-cl="SENSE" src="kurss 3" rus-stat="yes">kååˊtt</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="который_pro" stat="pref">
+      <lg>
+         <l pos="pro">который</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">COGNITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="cs" stat="pref">kååˊtt</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="никого_pro" stat="pref">
+      <lg>
+         <l pos="pro">никого</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">PEOPLE</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="pro" stat="pref">ni ǩeän</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="ничего_pro" stat="pref">
+      <lg>
+         <l pos="pro">ничего</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">QUANTITY</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="pro" stat="pref">ni mâiˊd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="сам_pro" stat="pref">
+      <lg>
+         <l pos="pro">сам</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">PEOPLE</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="pro" stat="pref">jiõčč</t>
          </tg>
       </mg>
    </e>
@@ -54,29 +138,12 @@
          </tg>
       </mg>
    </e>
-   <e id="много_pro" stat="pref">
-      <lg>
-         <l pos="pro">много</l>
-      </lg>
-      <sources>
-         <book name="kurss" lesson="phon"/>
-         <book name="200" BEDLAN_ID="*100"/>
-         <book name="100"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SENSE">QUANTITY</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="pro" stat="pref">mäŋgg</t>
-         </tg>
-      </mg>
-   </e>
    <e id="всё_pro" stat="pref">
       <lg>
          <l pos="pro">всё</l>
       </lg>
       <sources>
+         <book name="kurss" lesson="3"/>
          <book name="200" BEDLAN_ID="*1"/>
          <book name="100"/>
       </sources>
@@ -137,61 +204,6 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="pro" stat="pref">ton</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="тот_pro" stat="pref">
-      <lg>
-         <l pos="pro">тот</l>
-      </lg>
-      <sources>
-         <book name="kurss" lesson="dict"/>
-         <book name="200" BEDLAN_ID="*168"/>
-         <book name="100"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">POSITION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="pro" stat="pref">tut</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="этот_pro" stat="pref">
-      <lg>
-         <l pos="pro">этот</l>
-      </lg>
-      <sources>
-         <book name="kurss" lesson="1"/>
-         <book name="200" BEDLAN_ID="*174"/>
-         <book name="100"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">POSITION</sem>
-            <sem class="SENSE">COGNITION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="pro" stat="pref">tät</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="кто_pro" stat="pref">
-      <lg>
-         <l pos="pro">кто</l>
-      </lg>
-      <sources>
-         <book name="kurss" lesson="1"/>
-         <book name="200" BEDLAN_ID="*194"/>
-         <book name="100"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="HUMAN">PEOPLE</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="pro" stat="pref">ǩii</t>
          </tg>
       </mg>
    </e>

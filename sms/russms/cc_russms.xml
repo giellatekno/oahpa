@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <r xml:lang="rus">
-   <e id="и_cc" stat="pref">
+   <e id="или_cc" stat="pref">
+      <lg>
+         <l pos="cc">или</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">COGNITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="cc" stat="pref">avi</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="но_cc" stat="pref">
+      <lg>
+         <l pos="cc">но</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">COGNITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="cc" stat="pref">a</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_и_cc" stat="pref">
       <lg>
          <l pos="cc">и</l>
       </lg>
@@ -14,6 +46,24 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="cc" stat="pref">da</t>
+            <t pos="cc" sem-cl="SENSE" src="200 2" rus-stat="yes">ja</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_и_cc" stat="pref">
+      <lg>
+         <l pos="cc">и</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">COGNITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="cc" stat="pref">ja</t>
+            <t pos="cc" sem-cl="SENSE" src="kurss 1-200 2" rus-stat="yes">da</t>
          </tg>
       </mg>
    </e>

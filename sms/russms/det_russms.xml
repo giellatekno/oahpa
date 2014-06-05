@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<r xml:lang="rus">
+   <e id="тот_det" stat="pref">
+      <lg>
+         <l pos="det">тот</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="dict"/>
+         <book name="200" BEDLAN_ID="*168"/>
+         <book name="100"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">POSITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="det" stat="pref">tut</t>
+            <t pos="det" sem-cl="SENSE" src="kurss 3" rus-stat="yes">tõt</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_этот_det" stat="pref">
+      <lg>
+         <l pos="det">этот</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+         <book name="200" BEDLAN_ID="*174"/>
+         <book name="100"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">POSITION</sem>
+            <sem class="SENSE">COGNITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="det" stat="pref">tät</t>
+            <t pos="det" sem-cl="SENSE" src="kurss 3" rus-stat="yes">tõt</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_этот_det" stat="pref">
+      <lg>
+         <l pos="det">этот</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="det" stat="pref">tõt</t>
+            <t pos="det"
+               sem-cl="SPACE-SENSE"
+               src="kurss 1-200 *174-100"
+               rus-stat="yes">tät</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="такой_det" stat="pref">
+      <lg>
+         <l pos="det">такой</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="det" stat="pref">nåkkam</t>
+         </tg>
+      </mg>
+   </e>
+</r>
