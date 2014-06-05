@@ -53,12 +53,10 @@
 	  <xsl:for-each select="./r/e">
 	    <xsl:for-each select="mg[semantics]/tg[@xml:lang = $tlang]/t">
 	      <xsl:variable name="c_pos" select="if (./@pos and not(./@pos = '')) then ./@pos else ../../../lg/l/@pos"/>
-	      <!-- mwe_-issue should be corrected in the input: this prefix is useless -->
-	      <xsl:variable name="cc_pos" select="if (starts-with($c_pos, 'mwe_')) then substring-after($c_pos, 'mwe_') else $c_pos"/>
 	      
 	      <xsl:if test="$debug">
 		<xsl:message terminate="no">
-		  <xsl:value-of select="concat($cc_pos, ' ___  ' , ., $nl)"/>
+		  <xsl:value-of select="concat($c_pos, ' ___  ' , ., $nl)"/>
 		</xsl:message>
 	      </xsl:if>
 
@@ -66,7 +64,7 @@
 	      
 	      <e>
 		<!-- this should be changed in the input files -->
-		<xsl:if test="(./@oahpa) and (./@oahpa = 'pref')">
+		<xsl:if test="(./@stat) and (./@stat = 'pref')">
 		  <xsl:attribute name="stat">
 		    <xsl:value-of select="'pref'"/>
 		  </xsl:attribute>
@@ -79,7 +77,7 @@
 		  </xsl:attribute>
 		</xsl:if>
 		<lg>
-		  <l pos="{$cc_pos}">
+		  <l pos="{$c_pos}">
 		    <xsl:value-of select="normalize-space(.)"/>
 		  </l>
 		</lg>
