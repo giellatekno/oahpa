@@ -1410,8 +1410,19 @@ class Dato(Klokka):
 												('December', 31)]]
 
 		month, days = choice(months)
+		
+		day = str(choice(days))
+		
+		if day[-1:] == '1':
+			ord_suffix = 'st'
+		elif day[-1:] == '2':
+			ord_suffix = 'nd'
+		elif day[-1:] == '3':
+			ord_suffix = 'rd'
+		else:
+			ord_suffix = 'th'
 
-		date = '%d. %s' % (choice(days), month)
+		date = '%s of %s' % (day+ord_suffix, month)
 
 		db_info['numeral_id'] = str(date)
 		
