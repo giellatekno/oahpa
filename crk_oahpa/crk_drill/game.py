@@ -760,45 +760,20 @@ class BareGame(Game):
 		try: 
 			
 			WORD_FILTER = Q()
-			tag = tags.order_by('?')[0]
-				    
-			# Process the selection from the noun_type menu (incorporates gender, animacy and inflection type):
-			"""if noun_type == "N-NEUT":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='nt')
-			elif noun_type == "N-MASC-INANIM":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='m',word__animate='nn')
-			elif noun_type == "N-MASC-ANIM":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='m',word__animate='aa')
-			elif noun_type == "N-FEM-8":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='f', word__inflection_class__contains='8')
-			elif noun_type == "N-FEM-other":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='f') & (Q(word__lemma__endswith='а') | Q(word__lemma__endswith='я'))"""
+			if pos == 'N':
+			     if case == 'Loc':
+				    WORD_FILTER = Q(word__semtype__semtype='MORFALOC')
+			     elif possessive != '':
+				    WORD_FILTER = Q(word__semtype__semtype='MORFAPOSS')
+			     else:
+				    WORD_FILTER = Q(word__semtype__semtype='MORFAS')
 				
-			SOURCE_FILTER = Q() 
-			"""if source.lower() != 'all':
-				if source == "l1":
-				    SOURCE_FILTER = Q(word__chapter__in=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5'])
-				elif source == "l2":
-				    SOURCE_FILTER =  Q(word__chapter__in=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5','L6','L7','L8','L9','L10','L11','L12'])
-				elif source == "l3":
-				    SOURCE_FILTER = Q(word__chapter__in=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5','L6','L7','L8','L9','L10','L11','L12','L13','L14','L15','L16','L17'])"""
-
-                           
-			""" commented out for testing without noun_class
-			normalized_noun_class = [item.lower().capitalize() for item in noun_class.split('-')]
-			for item in normalized_noun_class:
-				tagname = Tagname.objects.get(tagname=item)
-				tagset = tagname.tagset
-				# Oh Lisp macros, where are ye?
-				if tagset.tagset == 'Animate':
-					WORD_FILTER = WORD_FILTER & Q(word__animate=tagname.tagname.lower())
-				elif tagset.tagset == 'Declension':
-					WORD_FILTER = WORD_FILTER & Q(word__declension=tagname.tagname.lower())
-				elif tagset.tagset == 'Gender':
-					WORD_FILTER = WORD_FILTER & Q(word__gender=tagname.tagname.lower())
-            """
-
+			tag = tags.order_by('?')[0]
 			
+			# if source and source not in ['all', 'All']: 
+			#	SOURCE_FILTER = Q(word__source__name=source)
+			#else:
+			SOURCE_FILTER = Q()
 			no_form = True
 			count = 0
 			while no_form and count < 10:
@@ -810,11 +785,6 @@ class BareGame(Game):
 
 				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)
 				
-
-				# PI: commented out, b/c at this stage
-				# where the Morfa-S semtype has not
-				# been set up we just end up whacking
-				# the random_word set
 
 				# if not tag.pos in ['Pron', 'Num'] and \
 				# 	tag.string.find('Der') < 0:
@@ -837,8 +807,6 @@ class BareGame(Game):
 				if random_word.count() > 0:
 					random_form = random_word.order_by('?')[0]
 					random_word = random_form.word
-					#random_loc2 = random_word.loc2
-					#print random_word
 					no_form = False
 					break
 				elif random_word.count() == 1:
