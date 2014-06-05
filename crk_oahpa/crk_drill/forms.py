@@ -56,7 +56,7 @@ CASE_CHOICES = (
     ('N-PL', _('Plural')),
     ('N-LOC', _('Locative')),
     ('N-DIM', _('Diminutive')),
-    ('N-PX', _('Possessive')),
+    #('N-PX', _('Possessive')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -880,6 +880,10 @@ class OahpaSettings(forms.Form):
 					'num_type' : 'CARD',  # added by Heli
 					'derivation_type' : 'V-DER-PASS',
 					'derivation_type_context' : 'DER-PASSV', # was V-DER
+					'possessive_type': 'N-PX-GROUP1',
+					'possessive_number': 'N-SG',
+					'possessive_case': "N-2SG",
+					
 					'geography': 'world',
 					'frequency' : [],
 					'num_bare' : 'N-NOM', # Need a new default case here
@@ -1136,6 +1140,9 @@ class MorfaSettings(OahpaSettings):
 	num_type = forms.ChoiceField(initial='CARD',choices=NUM_TYPE_CHOICES, widget=forms.Select)
 	derivation_type = forms.ChoiceField(initial='V-DER-PASS', choices=DERIVATION_CHOICES, widget=forms.Select)
 	derivation_type_context = forms.ChoiceField(initial='DER-PASSV', choices=DERIVATION_CHOICES_CONTEXT, widget=forms.Select)
+	possessive_case = forms.ChoiceField(initial='N-2SG', choices=POSSESSIVE_GROUP1_CASE, widget=forms.Select, required=False)
+	possessive_type = forms.ChoiceField(initial='N-PX-GROUP1', choices=POSSESSIVE_CHOICES, widget=forms.Select)
+	possessive_number = forms.ChoiceField(initial='N-SG', choices=POSSESSIVE_NUMBER_CHOICES, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
 	case_context = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)

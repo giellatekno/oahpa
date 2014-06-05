@@ -1,0 +1,23 @@
+{% extends "mgame.html" %}
+{% load i18n %}
+
+{% block gamename %}{% trans settings.gamename %}{% endblock %}
+{% block instructions %}
+    {% trans 'Write possessive forms.' %}
+{% endblock %}
+
+
+{% block subsetting %}
+
+{% ifequal settings.gametype "bare" %}
+<!--	<li><label for="id_{{ settingsform.possessive_type.name }}"> {% trans "Set" %}</label>
+		{{ settingsform.possessive_type }}</li> -->
+    <li><label for="id_{{ settingsform.possessive_case.name }}">{% trans "Case" %}</label>
+		{{ settingsform.possessive_case }}</li>
+{% endifequal %}
+
+{% block book %}
+{% endblock %}
+
+{% endblock %}
+

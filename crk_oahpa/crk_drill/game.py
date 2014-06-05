@@ -326,7 +326,10 @@ class BareGame(Game):
 		'N-PL': ("", ["Pl"], "", ""),
 		'N-LOC': ("Loc", [""] , "", ""),
 		'N-DIM': ("", ["Sg"], "", "Der/Dim"),
-		'N-PX': ("", ["Sg", "Pl"], "Px", ""),
+		#'N-PX': ("", ["Sg", "Pl"], "Px", ""),
+		'N-2SG': ("", ["Sg"], "Px2Sg", ""),
+		'N-3SG': ("", ["Sg"], "Px3Sg", ""),
+		'N-4SG': ("", ["Sg"], "Px4Sg", ""),
 		'': '',
 	}
 
@@ -465,6 +468,8 @@ class BareGame(Game):
 		pron_type = True and self.settings.get('pron_type') or   ""
 		proncase = True and self.settings.get('proncase') or   ""
 		derivation_type = True and self.settings.get('derivation_type') or   ""
+		possessive_type = True and self.settings.get('possessive_type') or   ""
+		possessive_case = True and self.settings.get('possessive_case') or   ""
 #		grade = True and self.settings.get('grade')  or  ""
 		num_type = True and self.settings.get('num_type') or ""  # added to get num_type from settings
 		source = self.settings['book']
@@ -489,8 +494,9 @@ class BareGame(Game):
 			"V":	"",
 			"Pron": proncase,
 			"Der": derivation_type,
+			"Px": possessive_case, # or possessive_type?
 		}
-
+		
 		# sylls = []
 		# bisyl = ['2syll', 'bisyllabic']
 		# trisyl = ['3syll', 'trisyllabic']
@@ -507,10 +513,11 @@ class BareGame(Game):
 		# if pos == 'Pron':
 		# 	syll = ['']
 
-		if pos in ['N', 'Num', 'Pron']:
+		if pos in ['N', 'Num', 'Pron', 'Px']:
 			case, number, possessive, derivation = self.casetable[pos_tables[pos]]
-		else:
-			case = self.casetable[pos_tables[pos]]
+        
+		#else:
+		#	case = self.casetable[pos_tables[pos]]
 		grade = self.casetable.get('grade', '')
 		num_type = self.casetable.get('num_type', '') # added by Heli, changed by Pavel to skip an exception, change this back I suppose
 
@@ -567,7 +574,10 @@ class BareGame(Game):
 
 		maxnum, i = 20, 0
 
-		TAG_QUERY = Q(pos=pos)
+		if pos == 'Px':
+		  TAG_QUERY = Q(pos='N')
+		else:
+		  TAG_QUERY = Q(pos=pos)
 
 		if pos == 'V':
 		      TAG_EXCLUDES = Q(personnumber__contains='4') # persons 4Sg and 4Pl are excluded
@@ -640,13 +650,13 @@ class BareGame(Game):
 						Q(case=case)
 						# regardless of whether it's Actor, Coll, etc.
 
-		if pos == 'N':
+		if pos in ['N', 'Px']:
 			#if singular_only:   # if the user has checked the box "singular only"
 			#	TAG_QUERY = TAG_QUERY & Q(number='Sg')
-			if possessive == '':
-				TAG_QUERY = TAG_QUERY & Q(number__in=number, possessive=possessive, derivation=derivation)
-			else:
-				TAG_QUERY = TAG_QUERY & Q(number__in=number, possessive__contains='Px', derivation=derivation)
+			#if possessive == '':
+			TAG_QUERY = TAG_QUERY & Q(number__in=number, possessive=possessive, derivation=derivation)
+			#else:
+				#TAG_QUERY = TAG_QUERY & Q(number__in=number, possessive__contains='Px', derivation=derivation)
 
 
 
@@ -760,11 +770,11 @@ class BareGame(Game):
 		try: 
 			
 			WORD_FILTER = Q()
-			if pos == 'N':
+			if pos == 'Px':
+				    WORD_FILTER = Q(word__semtype__semtype='MORFAPOSS')
+			elif pos == 'N':
 			     if case == 'Loc':
 				    WORD_FILTER = Q(word__semtype__semtype='MORFALOC')
-			     elif possessive != '':
-				    WORD_FILTER = Q(word__semtype__semtype='MORFAPOSS')
 			     else:
 				    WORD_FILTER = Q(word__semtype__semtype='MORFAS')
 				
