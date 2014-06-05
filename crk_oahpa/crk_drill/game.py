@@ -1381,7 +1381,9 @@ class Dato(Klokka):
 		
 		day = str(choice(days))
 		
-		if day[-1:] == '1':
+		if day in ['11', '12', '13']:
+			ord_suffix = 'th'
+		elif day[-1:] == '1':
 			ord_suffix = 'st'
 		elif day[-1:] == '2':
 			ord_suffix = 'nd'
