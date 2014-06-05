@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--+
-    | script to revert sma-oahpa dictionaries from slang to tlang (nob or swe)
-    | Usage: java net.sf.saxon.Transform -it main THIS_SCRIPT inDir=DICT_DIR
+    | script to revert sms-oahpa lexical data from slang to tlang 
+    | Usage: java net.sf.saxon.Transform -it:main THIS_SCRIPT inDir=/PATH/TO/THE/INPUT_DIR/RELATIVE/TO/THIS/SCRIPT outDir=/PATH/TO/THE/OUTPUT_DIR/RELATIVE/TO/THIS/SCRIPT
     +-->
 
 <xsl:stylesheet version="2.0"
@@ -51,8 +51,9 @@
       <xsl:result-document href="{$outDir}/{concat($posFile, '_', $tlang, $slang)}.{$e}" format="{$of}">
 	<r xml:lang="{$tlang}">
 	  <xsl:for-each select="./r/e">
-	    <xsl:for-each select="mg[semantics]/tg[@xml:lang = $tlang]/t]">
+	    <xsl:for-each select="mg[semantics]/tg[@xml:lang = $tlang]/t">
 	      <xsl:variable name="c_pos" select="if (./@pos and not(./@pos = '')) then ./@pos else ../../../lg/l/@pos"/>
+	      <!-- mwe_-issue should be corrected in the input: this prefix is useless -->
 	      <xsl:variable name="cc_pos" select="if (starts-with($c_pos, 'mwe_')) then substring-after($c_pos, 'mwe_') else $c_pos"/>
 	      
 	      <xsl:if test="$debug">
