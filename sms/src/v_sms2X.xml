@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <r xml:lang="sms">
-   <e meta="04">
+   <e mg_c="1">
       <lg>
          <l pos="v">ceäˊlǩǩed</l>
       </lg>
@@ -15,14 +15,14 @@
             <sem class="SENSE">COGNITION</sem>
          </semantics>
          <tg xml:lang="rus">
-            <t pos="v" oahpa="pref" imperf="высказать">сказать</t>
+            <t pos="v" impf="высказать" stat="pref">сказать</t>
             <t pos="v">говорить</t>
          </tg>
          <tg xml:lang="sjd">
             <t pos="v">це̄ӆӆькэ</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="v" oahpa="pref">sanoa</t>
+            <t pos="v" stat="pref">sanoa</t>
             <t pos="v">lausua</t>
             <t pos="v">puhua</t>
          </tg>
@@ -30,11 +30,11 @@
             <t pos="v">say</t>
          </tg>
          <tg xml:lang="deu">
-            <t pos="v" oahpa="pref">sagen</t>
+            <t pos="v">sagen</t>
             <t pos="v">sprechen</t>
          </tg>
          <tg xml:lang="nob">
-            <t pos="v" oahpa="pref">si</t>
+            <t pos="v" stat="pref">si</t>
             <t pos="v">snakke</t>
          </tg>
          <tg xml:lang="sme">
@@ -47,49 +47,85 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
       <lg>
-         <l pos="v" person="3" number="sg">ij</l>
-         <etymology>
-            <etymon type="inher" source="uralic">e-</etymon>
-            <cognate xml:lang="sjd">эйй</cognate>
-         </etymology>
+         <l pos="v" subjectrectio="loc">feˊrttjed</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="*113"/>
-         <book name="100"/>
+         <book name="kurss" lesson="3"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="SENSE">COGNITION</sem>
+            <sem class="WORK"/>
          </semantics>
-         <tg xml:lang="rus">
-            <t pos="pcle">не</t>
+         <tg xml:lang="eng">
+            <t pos="v">need</t>
          </tg>
-         <tg xml:lang="sjd">
-            <t pos="v" person="3" number="sg">эйй</t>
+         <tg xml:lang="rus">
+            <t pos="v">надо</t>
+            <t pos="v">нужно</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="v" person="3" number="sg">ei</t>
-         </tg>
-         <tg xml:lang="eng">
-            <t pos="pcle">not</t>
-         </tg>
-         <tg xml:lang="deu">
-            <t pos="pcle">nicht</t>
+            <t pos="v">täytyä</t>
          </tg>
          <tg xml:lang="nob">
-            <t pos="pcle">ikke</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v" person="3" number="sg">ii</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v" person="3" number="sg">ii</t>
+            <t pos="v">trenge</t>
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">fiˊttjed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+            <sem class="LANG">SPEECH</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">understand</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">ymmärtää</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">понимать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">forstå</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">hoiˊddjed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">cure</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">hoitaa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="заботиться">позаботиться</t>
+            <t pos="v">лечить</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">behandle</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
       <lg>
          <l pos="v">išttâd</l>
       </lg>
@@ -104,7 +140,7 @@
             <sem class="WORK">SCHOOL</sem>
          </semantics>
          <tg xml:lang="rus">
-            <t pos="v">сесть</t>
+            <t pos="v" impf="сесть">сидеть</t>
          </tg>
          <tg xml:lang="sjd">
             <t pos="v">ышштэ</t>
@@ -125,29 +161,78 @@
             <t pos="v">čohkkát</t>
          </tg>
          <tg xml:lang="smn">
-            <t pos="v">čokkáđ</t>
+            <t pos="v">čokkáđ</t>
          </tg>
-         <xg oahpa="excl" kurss="xxx">
-            <x type="phrase" pos="mwe_v">išttâd åårrad</x>
-            <xtg xml:lang="fin">
-               <t pos="v">istua</t>
-            </xtg>
-            <xtg xml:lang="sme">
-               <xt pos="v">čohkkát</xt>
-            </xtg>
-            <xtg xml:lang="sju">
-               <xt pos="v">tjåhkàhit</xt>
-            </xtg>
-         </xg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">jiõŋŋâd</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="60"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+            <sem class="ENVIR">WEATHER</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">freeze</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="замёрзнуть">мёрзнуть</t>
+            <t pos="v" impf="замёрзнуть" t_type="sr">мерзнуть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">fryse</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">jäätyä</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">muorji</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">galbmeet</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">jiẹˊlled</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="95"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">PEOPLE</sem>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">live</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">жить</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">leve</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">elää</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">eallit</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">viessoot</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
       <lg>
          <l pos="v">juukkâd</l>
-         <etymology>
-            <etymon type="inher" source="finnougric">juɣe-</etymon>
-            <cognate xml:lang="sjd">югкэ</cognate>
-         </etymology>
       </lg>
       <sources>
          <book name="200" BEDLAN_ID="*33"/>
@@ -184,13 +269,106 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">juurdčed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+         <book name="200" BEDLAN_ID="173"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">COGNITION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">think</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="подумать">думать</t>
+            <t pos="v">размышлять</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">tenke</t>
+            <t pos="v">resonnere</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">ajatella</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">jurddašit</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">ussjadit</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">juˊrdded</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">believe</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">luulla</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">думать</t>
+            <t pos="v">полагать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">tro</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="2">
+      <lg>
+         <l pos="v">jälsted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">FAMILY</sem>
+            <sem class="HOUSE">DWELLING</sem>
+            <sem class="SPACE">POSITION</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v" stat="pref">жить</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">live</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">asua</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">leve</t>
+            <t pos="v" stat="pref">bo</t>
+         </tg>
+      </mg>
+      <mg>
+         <semantics>
+            <sem class="HOUSE">DWELLING</sem>
+            <sem class="SPACE">POSITION</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">находиться</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
       <lg>
          <l pos="v">jääˊmmed</l>
-         <etymology>
-            <etymon type="inher" source="uralic">jama-</etymon>
-            <cognate xml:lang="sjd">я̄мме</cognate>
-         </etymology>
       </lg>
       <sources>
          <book name="200" BEDLAN_ID="*29"/>
@@ -203,7 +381,7 @@
             <sem class="SENSE">EMOTION</sem>
          </semantics>
          <tg xml:lang="rus">
-            <t pos="v">умирать</t>
+            <t pos="v" impf="умереть">умирать</t>
          </tg>
          <tg xml:lang="sjd">
             <t pos="v">я̄мме</t>
@@ -224,18 +402,213 @@
             <t pos="v">jápmit</t>
          </tg>
          <tg xml:lang="sju">
-            <t pos="xxx">jàbˈmeet</t>
+            <t pos="v">jàbˈmeet</t>
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">jåårǥled</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="181"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">turn</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">вращать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">snu</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">kääntyä</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">jorgalit</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">jårgèdit</t>
+            <t pos="v">jårgèhtit</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">jååˊtted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v" stat="pref">ехать</t>
+            <t pos="v">двигаться</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">dra</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">drive</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">kulkea</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">kaaˊfstõõllâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD">DISH</sem>
+            <sem class="HUMAN">FAMILY</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v" stat="pref">кофейничать</t>
+            <t pos="v">пить кофе</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">kahvistella</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">drikke kaffe</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">drink coffee</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">kaunnâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">POSITION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">be situated</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">löytää</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">находить</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">befinne seg</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">kolggâd</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="54"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ENVIR">ELEMENT</sem>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">flow</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="потечь">течь</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">strømme</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">virrata</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">golgat</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">gålˈgat</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">kollˊjed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">слышаться</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">kuulua</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">være hørbar</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">is audible</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">kueˊdˈded</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="217"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+            <sem class="HUMAN">POSSESSION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">carry</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="понести">нести</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">bære</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">kantaa</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">guoddit</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">güedˈdeet</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
       <lg>
          <l pos="v">kuullâd</l>
-         <etymology>
-            <etymon type="inher" source="U?">kule</etymon>
-            <etymon type="inher" source="FU">kule</etymon>
-            <cognate xml:lang="sjd">куллэ</cognate>
-         </etymology>
       </lg>
       <sources>
          <book name="200" BEDLAN_ID="*72"/>
@@ -273,18 +646,54 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
       <lg>
-         <l pos="v">kuärrad</l>
-         <etymology>
-            <etymon type="xxx" source="saamic">kɔ̄rɔ̄-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
+         <l pos="v">kuäivvad</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="139"/>
+         <book name="200" BEDLAN_ID="30"/>
       </sources>
-      <mg term="DUODJI">
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">dig</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="выкопать" stat="pref">копать</t>
+            <t pos="v" impf="вырыть">рыть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">grave</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">kaivaa</t>
+         </tg>
+         <tg xml:lang="sjd">
+            <t pos="v">куаййвэ</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">goaivut</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">gåỳvoot</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="2">
+      <lg>
+         <l pos="v">kuärrad</l>
+      </lg>
+      <sources>
+         <book name="200"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <sources>
+         <book name="200"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <mg>
          <semantics>
             <sem class="CLOTH">PART</sem>
             <sem class="WORK">ECONOMY</sem>
@@ -293,7 +702,7 @@
             <t pos="v">коадтӭ</t>
          </tg>
          <tg xml:lang="rus">
-            <t pos="v" imperf="связать">вязать</t>
+            <t pos="v" impf="связать">вязать</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="v">knit</t>
@@ -305,7 +714,7 @@
             <t pos="v">neuloa</t>
          </tg>
       </mg>
-      <mg term="DUODJI">
+      <mg>
          <semantics>
             <sem class="CLOTH">PART</sem>
             <sem class="WORK">ECONOMY</sem>
@@ -317,7 +726,7 @@
             <t pos="v">куаррэ</t>
          </tg>
          <tg xml:lang="rus">
-            <t pos="v" imperf="сшить">шить</t>
+            <t pos="v" impf="сшить">шить</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="v">sew</t>
@@ -333,13 +742,144 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">kuärŋŋad</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">лазить</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">kiivetä</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">klatre</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">climb</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">kââmted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v" stat="pref">рухнуть</t>
+            <t pos="v">грохнуть</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">romahtaa</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">velte</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">crashe</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">kâˊlmmed</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="60"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">freeze</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="замёрзнуть">мёрзнуть</t>
+            <t pos="v" impf="замёрзнуть" t_type="sr">мерзнуть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">fryse</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">jäätyä</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">galbmot</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">galbmeet</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">kâˊlmstõõllâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">be cold</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">palella</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">зябнуть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">fryse</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">käinnad</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">be embarrassed</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">стыдиться</t>
+            <t pos="v" stat="pref">стесняться</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">ujostella</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">bli sjenert</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
       <lg>
          <l pos="v">käˊcǩǩed</l>
-         <etymology>
-            <etymon type="inher" source="finnopermic">kačka-</etymon>
-            <cognate xml:lang="sjd">ка̄ццькэ</cognate>
-         </etymology>
       </lg>
       <sources>
          <book name="200" BEDLAN_ID="*13"/>
@@ -352,10 +892,8 @@
             <sem class="SENSE">EMOTION</sem>
          </semantics>
          <tg xml:lang="rus">
-            <t pos="v" imperf="укусить">кусать</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="разгрызть">грызть</t>
+            <t pos="v" impf="укусить">кусать</t>
+            <t pos="v" impf="разгрызть">грызть</t>
          </tg>
          <tg xml:lang="sjd">
             <t pos="v">ка̄ццькэ</t>
@@ -381,13 +919,73 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">kåbllad</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="53"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+            <sem class="ENVIR">ELEMENT</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">float</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="n">плыть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="n">svømme</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="n">kellua</t>
+         </tg>
+         <tg xml:lang="sjd">
+            <t pos="n">коабблэ</t>
+         </tg>
+         <tg xml:lang="smn">
+            <t pos="n">koble</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="n">govdut</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="n">gåbˈdoot</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">kåččad</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">invite</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">звать</t>
+            <t pos="v">приглашать</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">kutsua</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">invitere</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
       <lg>
          <l pos="v">kåˊdded</l>
-         <etymology>
-            <etymon type="inher" source="uralic">kunta-</etymon>
-            <cognate xml:lang="sjd">коаннҍтэ</cognate>
-         </etymology>
       </lg>
       <sources>
          <book name="200" BEDLAN_ID="*86"/>
@@ -426,13 +1024,251 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">kõõjjeed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN"/>
+            <sem class="LANG">SPEECH</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">inquire</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">опрашивать</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">kysellä</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">etterspørre</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">kõõččâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">ask</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">kysyä</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">спрашивать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">spørre</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">kõččâd</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="42"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">fall</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="упасть">падать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">falle</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">pudota</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">gahččat</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">gahtjat</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">laullad</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="142"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">SOCIAL</sem>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">sing</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="спеть">петь</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">synge</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">laulaa</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">lávlut</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">làuloot</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">laˊsǩǩeed</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="26"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">SCHOOL</sem>
+            <sem class="SENSE">QUANTITY</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">count</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="сосчитать">считать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">telle</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">laskea</t>
+         </tg>
+         <tg xml:lang="sjd">
+            <t pos="v">ло̄гкэ</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">lohkat</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">laˊǧǧsted</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="176"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">throw</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="бросить">бросать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">kaste</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">heittää</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">bálkestit</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">åårgastit</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">leeˊd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE"/>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">быть</t>
+            <t pos="v">являться</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">olla</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">være</t>
+         </tg>
+         <tg xml:lang="deu">
+            <t pos="v">sein</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">be</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">lieˊnˈnjsted</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="*94"/>
+         <book name="100"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">POSITION</sem>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v" short="lie">lie down</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">лежать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v" short="ligge">ligge ner</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">maata</t>
+         </tg>
+         <tg xml:lang="smn">
+            <t pos="v">leännjuđ</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">vealˈlát</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">veälˈlàhit</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
       <lg>
          <l pos="v">liâššâd</l>
-         <etymology>
-            <etymon type="loan" source="rus?">лежать</etymon>
-            <cognate xml:lang="sjd">ле̄шшэ</cognate>
-         </etymology>
       </lg>
       <sources>
          <book name="200" BEDLAN_ID="*94"/>
@@ -453,8 +1289,7 @@
             <t pos="v">maata</t>
          </tg>
          <tg xml:lang="eng">
-            <t pos="v" oahpa="pref">lie</t>
-            <t pos="mwe_v">lie down</t>
+            <t pos="v" short="lie">lie down</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="v">liegen</t>
@@ -470,20 +1305,257 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">loojjted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">have diarrhea</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">olla ripulissa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">есть понос</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">ha diaré</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">luõˊdˈdjed</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="155"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">split</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="разколоть">разкалывать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">kløyve</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">halkaista</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">luddet</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">luadˈdoot</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">maaššâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">чувствовать себя уютно</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">viihtyä</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">trives bra</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">feel good</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">maaˊlˈjed</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="226"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD">DISH</sem>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v" stat="pref">grind</t>
+            <t pos="v">mill</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="смолоть">молть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">male</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">jauhaa</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">milˈlet</t>
+            <t pos="v">molˈlet</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">mainsted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="LANG">SPEECH</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v" impf="разговаривать">говорить</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">jutella</t>
+            <t pos="v">puhua</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">snakke</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">tell</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">meärkkad</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">mark</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">merkitä</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">клеймить</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">markere</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">miẹˊcsted</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="80"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+            <sem class="FOOD">NATURE</sem>
+            <sem class="ENVIR">TOPONOMY</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">hunt</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">охотиться</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">jage</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">metsästää</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">bivdit</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">biwˈdeet</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">muˊštted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">remember</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">muistaa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">помнить</t>
+            <t pos="v">запоминать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">huske</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">mååjjmed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">smile</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">hymyillä</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">улыбаться</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">smile</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
       <lg>
          <l pos="v">mõõnnâd</l>
-         <audio>
-            <a dialect="muo" speaker="ZMN"
-               href="http://corpus1.mpi.nl/qfs1/media-archive/dobes_data/Kola-Saami/Recordings/Language/KSDP/Skolt/Lexicon/Vocabulary/Media/moyoynnayd_SKO111210_ZMN.wav"/>
-         </audio>
-         <infl>
-            <form gloss="3sg.prs">mâânn</form>
-         </infl>
-         <etymology>
-            <etymon type="xxx" source="uralic">mene-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
       </lg>
       <sources>
          <book name="kurss" lesson="1"/>
@@ -514,23 +1586,426 @@
          <tg xml:lang="sju">
             <t pos="v">mannat</t>
          </tg>
-         <xg oahpa="excl" kurss="yes">
-            <x pos="v">mâânn ǩidd</x>
-            <xtg xml:lang="rus">
-               <xt pos="v">закроется</xt>
-            </xtg>
-         </xg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
       <lg>
-         <l pos="v">poorrâd</l>
-         <etymology>
-            <etymon type="inher" source="uralic">pure-</etymon>
-            <cognate xml:lang="sjd">по̄ррэ</cognate>
-         </etymology>
+         <l pos="v">neälggad</l>
       </lg>
       <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD"/>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">голодать</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">nälkiintyä</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">være sulten</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">be hungry</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">njeˊʒʒed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">тащить</t>
+            <t pos="v">тянуть</t>
+            <t pos="v">таскать</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">kiskoa</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">trekke</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">njiimmâd</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="163"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">FAMILY</sem>
+            <sem class="FOOD">NATURE</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">suck</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="пососать">сосать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">suge</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">imeä</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">njammat</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">njammat</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">njuärsted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+            <sem class="ZOO"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">catch with a lasso</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">heittää suopungilla</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">ловить арканом</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">jage med lasso</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">njuˊnnʼjed</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="148"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ZOO">MAMMAL</sem>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">scent</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="почуять">чуять</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">spore</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">vainuta</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">haksit</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">hapˈseet</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">njääˊljsted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD"/>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">be tasty</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">быть вкусным</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">maistua hyvältä</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">smake bra</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">noorrâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">collect</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">собирать</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">koota</t>
+            <t pos="v" stat="pref">kerätä</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">samle</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">oiˊǧǧeed</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="120"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">push</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">двигать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">skyve</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">työntää</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">hoigat</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">nårˈdat</t>
+            <t pos="v">nahkèlit</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">ooccâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">find</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">hakea</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">искать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">hente</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">peiˊtted</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="216"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">POSSESSION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">hide</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="спрятать">прятать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v" stat="pref">gjemme</t>
+            <t pos="v">skjule</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">piilottaa</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">čiehkat</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">tjiahkat</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">peˊštted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="TIME"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">last</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">длиться</t>
+            <t pos="v">продолжаться</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">kestää</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">vare</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">piijjâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">put</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">положить</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">panna</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">sette</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">piâssâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">reach</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">попадать</t>
+            <t pos="v">добираться</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">päästä</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">nå</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">pleässjed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+            <sem class="HUMAN"/>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">танцевать</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">tanssia</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">danse</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">dance</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">ponjsted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">fetch down</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">väännähyttää</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" stat="pref">свалить</t>
+            <t pos="v">погнуть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v" stat="pref">kaste ned</t>
+            <t pos="v">felle ned</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">poorrâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
          <book name="200" BEDLAN_ID="*39"/>
          <book name="100"/>
       </sources>
@@ -540,7 +2015,9 @@
             <sem class="BODY">HEALTH</sem>
          </semantics>
          <tg xml:lang="rus">
-            <t pos="v">есть</t>
+            <t pos="v" stat="pref">есть</t>
+            <t pos="v">кушать</t>
+            <t pos="v">питаться</t>
          </tg>
          <tg xml:lang="sjd">
             <t pos="v">по̄ррэ</t>
@@ -565,13 +2042,34 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">preuggad</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ZOO"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">make sound</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">roukua</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">издавать звуки</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">lage lyd</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
       <lg>
          <l pos="v">pueˊlled</l>
-         <etymology>
-            <etymon type="inher" source="finnougric">palˊa</etymon>
-            <cognate xml:lang="sjd">пӯлле</cognate>
-         </etymology>
       </lg>
       <sources>
          <book name="200" BEDLAN_ID="*20"/>
@@ -583,7 +2081,7 @@
             <sem class="ENVIR">ELEMENT</sem>
          </semantics>
          <tg xml:lang="rus">
-            <t pos="v" imperf="сгореть">гореть</t>
+            <t pos="v" impf="сгореть">гореть</t>
          </tg>
          <tg xml:lang="sjd">
             <t pos="v">пӯлле</t>
@@ -608,19 +2106,15 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
       <lg>
          <l pos="v">pueˊtted</l>
-         <lv variant="dial" source="1991">puẹˊtted</lv>
-         <etymology>
-            <etymon type="inher" source="saamic">pɔ̄tē-</etymon>
-            <cognate xml:lang="sjd">пуэдтӭ</cognate>
-         </etymology>
       </lg>
       <sources>
-         <book name="kurss" lesson="1"/>
-         <book name="200" BEDLAN_ID="*25"/>
+         <book name="200"/>
          <book name="100"/>
+         <book name="kurss" lesson="1"/>
+         <book name="lookkamkerjj" lesson="1"/>
       </sources>
       <mg>
          <semantics>
@@ -628,9 +2122,9 @@
             <sem class="SPACE">MOTION</sem>
          </semantics>
          <tg xml:lang="rus">
-            <t pos="v" oahpa="pref">прийти</t>
-            <t pos="v">прибыть</t>
+            <t pos="v" impf="прийти" stat="pref">приходить</t>
             <t pos="v">приехать</t>
+            <t pos="v">прибыть</t>
          </tg>
          <tg xml:lang="sjd">
             <t pos="v">пуэдтӭ</t>
@@ -650,44 +2144,219 @@
          <tg xml:lang="sme">
             <t pos="v">boahtit</t>
          </tg>
-         <tg xml:lang="sme">
-            <t pos="v">boahtit</t>
-         </tg>
          <tg xml:lang="sju">
             <t pos="v">bååhteet</t>
          </tg>
-         <xg oahpa="excl" kurss="no">
-            <x pos="v">puäˊđ!</x>
-            <xtg xml:lang="rus">
-               <xt pos="v">приходи!</xt>
-               <xt pos="v">иди!</xt>
-            </xtg>
-            <xtg xml:lang="rus">
-               <xt pos="v">come!</xt>
-               <xt pos="mwe_v">come in!</xt>
-            </xtg>
-            <xtg xml:lang="fin">
-               <xt pos="v">tule!</xt>
-            </xtg>
-         </xg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">puˊhtted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">bring</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">tuoda</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">приносить</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">bringe</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">päkkad</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">order</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">käskeä</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">приказывать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">beordre</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">päˊštted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">roast</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">печь</t>
+            <t pos="v">жарить</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">paistaa</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">steike</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="2">
+      <lg>
+         <l pos="v">pååssad</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="165"/>
+         <book name="200" BEDLAN_ID="16"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">blow</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">дуть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">blåse</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">puhaltaa</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">bossut</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">bùssoot</t>
+         </tg>
+      </mg>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">swell</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">пухнуть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">svulme</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v" stat="pref">ajettua</t>
+            <t pos="v">paisua</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">bohtanit</t>
+            <t pos="v">báisat</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">buhtanit</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">påǥsted</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="90"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+            <sem class="HUMAN">FAMILY</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">laugh</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="посмеяться">смеяться</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v" stat="pref">le</t>
+            <t pos="v">skratte</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">nauraa</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">boagustit</t>
+            <t pos="v">čaibmat</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">tjaimadiht</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">põõllâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+         <book name="200" BEDLAN_ID="46"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">fear</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="побояться">бояться</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">frykte</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">pelätä</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">ballat</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">ballat</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="2">
       <lg>
          <l pos="v">põõssâd</l>
-         <audio>
-            <a dialect="muo" speaker="ZMN"
-               href="http://corpus1.mpi.nl/qfs1/media-archive/dobes_data/Kola-Saami/Recordings/Language/KSDP/Skolt/Lexicon/Vocabulary/Media/pyyssayd_SKO111211_ZMN_5.wav"/>
-            <a dialect="xxx" speaker="EL"
-               href="http://corpus1.mpi.nl/qfs1/media-archive/dobes_data/Kola-Saami/Recordings/Language/KSDP/Skolt/Lexicon/Vocabulary/Media/pyyssayd_SKO111220_EL.wav"/>
-         </audio>
-         <etymology>
-            <etymon type="xxx" source="finnovolgaic">pese-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
       </lg>
       <sources>
          <book name="kurss" lesson="phon"/>
+         <book name="kurss" lesson="4"/>
          <book name="200" BEDLAN_ID="186"/>
       </sources>
       <mg>
@@ -719,7 +2388,7 @@
             <sem class="CLOTH">PART</sem>
          </semantics>
          <tg xml:lang="eng">
-            <t pos="v" oahpa="pref">launder</t>
+            <t pos="v" stat="pref">launder</t>
             <t pos="v">wash</t>
          </tg>
          <tg xml:lang="rus">
@@ -739,15 +2408,319 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
       <lg>
-         <l pos="v">siõrrâd</l>
-         <infl>
-            <form gloss="3pl.prs">seäˊrre</form>
-         </infl>
+         <l pos="v">raajjâd</l>
       </lg>
       <sources>
-         <book name="kurss" lesson="dict"/>
+         <book name="200" BEDLAN_ID="210"/>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">produce</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" stat="pref">производить</t>
+            <t pos="v" impf="сделать">делать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v" stat="pref">lagre</t>
+            <t pos="v">gjøre</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v" stat="pref">tuottaa</t>
+            <t pos="v">tehdä</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">dahkat</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">dahkat</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">rekknâˊstted</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="26"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">QUANTITY</sem>
+            <sem class="WORK">SCHOOL</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v" stat="pref">calculate</t>
+            <t pos="v">count</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="посчитать">считать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">regne</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">laskea</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">rēhkenastit</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">ryökˈnat</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">reäkkâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+         <book name="kurss" lesson="4"/>
+         <book name="200" BEDLAN_ID="222"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">SOCIAL</sem>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">плакать</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">itkeä</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">gråte</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v" stat="pref">cry</t>
+            <t pos="v">weep</t>
+         </tg>
+         <tg xml:lang="sjd">
+            <t pos="v">ря̄кгэ</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">čierrut</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">tjeärroot</t>
+            <t pos="v">vàlloot</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">ruâkksed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">laugh</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">naurahtaa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" stat="pref">смеяться</t>
+            <t pos="v">усмехнуться</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">le</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">ruâpseed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">flush</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">punastua</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">краснеть</t>
+            <t pos="v">покраснеть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">rødme</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">ruõtˈtâd</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="135"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ZOO">MAMMAL</sem>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">scratch</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="поцарапать">царапать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">rive</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">raapia</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">ruohkkat</t>
+            <t pos="v">gazzut</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">kruahkat</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">ruˊvvjed</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="131"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">rub</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="потереть">тереть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">gni</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v" stat="pref">hieroa</t>
+            <t pos="v">hangata</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">skuhppet</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">rääppad</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="30"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">dig</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="выкопать" stat="pref">копать</t>
+            <t pos="v" impf="вырыть">рыть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">grave</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">kuopia</t>
+         </tg>
+         <tg xml:lang="sjd">
+            <t pos="v">ра̄бпэ</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">goaivut</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v" variant="baalleet">bàlleet</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">sekkad</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="199"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">wipe</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="протереть" stat="pref">протирать</t>
+            <t pos="v" impf="стереть">стирать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">viske</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">pyyhkiä</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">sihkkut</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">siltteed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="fin">
+            <t pos="v">osata</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">уметь</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">kunne</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">siõrrâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
          <book name="200" BEDLAN_ID="118"/>
       </sources>
       <mg>
@@ -762,14 +2735,15 @@
             <t pos="v">сӣррэ</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="v" oahpa="pref">leikkiä</t>
+            <t pos="v" stat="pref">leikkiä</t>
             <t pos="v">pelata</t>
          </tg>
          <tg xml:lang="rus">
             <t pos="v">играть</t>
          </tg>
          <tg xml:lang="nob">
-            <t pos="v">leike</t>
+            <t pos="v" stat="pref">leike</t>
+            <t pos="v">spille</t>
          </tg>
          <tg xml:lang="sme">
             <t pos="v">speallat</t>
@@ -780,19 +2754,172 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">soiˊttjed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="LANG">SPEECH</sem>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">call</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">ringe</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">soittaa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">звонить</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">suukkâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">грести</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">soutaa</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">ro</t>
+         </tg>
+         <tg xml:lang="deu">
+            <t pos="v">rudern</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">suåppâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">arrange</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">договариваться</t>
+            <t pos="v">подходить</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">avgjøre</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">sopia</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">sââjjad</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="131"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">TOOL</sem>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">grind</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="наточить">точить</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">slipe</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">hioa</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">ruvˈvet</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">säˊtted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="dict"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="adv">perhaps</t>
+            <t pos="adv">can be</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">saattaa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">может быть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="adv">kanskje</t>
+            <t pos="adv">kan være</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">taarbšed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">POSSESSION</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v" stat="pref">нуждаться</t>
+            <t pos="v">надо</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">tarvita</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">trenge</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">need</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
       <lg>
          <l pos="v">tieˊtted</l>
-         <infl>
-            <class>2.1.3.4</class>
-            <form gloss="1sg.prs">teâđam</form>
-            <form gloss="conneg.prs">tieˊđ</form>
-         </infl>
-         <etymology>
-            <etymon type="loan" source="finnic">*tētä-</etymon>
-            <etymon type="inher" source="kolasaamic"/>
-            <cognate xml:lang="sjd" pos="n">те̄дт</cognate>
-         </etymology>
       </lg>
       <sources>
          <book name="kurss" lesson="1"/>
@@ -830,12 +2957,228 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">tiârrâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ZOO"/>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">run</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">laukkoa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">бежать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">rase</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">tiõrvted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">SOCIAL</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">greet</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">hilse</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">tervehtiä</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="здороваться">поздороваться</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">tobddâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">know</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">vite</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">tuntea</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">чувствовать</t>
+            <t pos="v" stat="pref">знать</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">tollstõõllâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN"/>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">сидеть у костра</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">tulistella</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">fyre bål</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">having campfire</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">tuõˊlˈlʼjed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+         <book name="200" BEDLAN_ID="77"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">REINDEER</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v" short="hold">hold tight</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v" short="pitää">pitää kiinni</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">держать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v" short="holde">holde fast</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">doallat</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">adnèhtit</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">tuärrad</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="49"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">fight</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">бороться</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">kjempe</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">tapella</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">doarrut</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">dååròdit</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">tuˊtǩǩeed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">investigate</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">undersøke</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">tutkia</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">обследовать</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">tuˊvdded</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD">DISH</sem>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">cover</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">dekke</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">peitellä</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">укрывать</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
       <lg>
          <l pos="v">tuẹjˈjeed</l>
-         <infl>
-            <form gloss="2sg.prs">tuẹjjääk</form>
-         </infl>
       </lg>
       <sources>
          <book name="kurss" lesson="1"/>
@@ -846,20 +3189,17 @@
             <sem class="WORK">ECONOMY</sem>
          </semantics>
          <tg xml:lang="eng">
-            <t pos="v" oahpa="pref">make</t>
-            <t pos="v">do</t>
-            <te>produce</te>
+            <t pos="v">produce</t>
+            <t pos="v">make</t>
          </tg>
          <tg xml:lang="rus">
-            <t pos="v" imperf="сделать">делать</t>
+            <t pos="v" impf="сделать">делать</t>
          </tg>
          <tg xml:lang="fin">
             <t pos="v">tehdä</t>
          </tg>
          <tg xml:lang="nob">
             <t pos="v">gjøre</t>
-         </tg>
-         <tg xml:lang="nob">
             <t pos="v">lage</t>
          </tg>
          <tg xml:lang="sme">
@@ -870,54 +3210,94 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
       <lg>
-         <l pos="v">tuõˊlˈlʼjed</l>
-         <lv variant="dial" source="1991">tueˊlˈlʼjed</lv>
-         <infl>
-            <form gloss="imp.sg">tueˊlle</form>
-         </infl>
+         <l pos="v">tättad</l>
       </lg>
       <sources>
-         <book name="kurss" lesson="dict"/>
-         <book name="200" BEDLAN_ID="77"/>
+         <book name="kurss" lesson="4"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="WORK">REINDEER</sem>
+            <sem class="HUMAN">POSSESSION</sem>
+            <sem class="SENSE">EMOTION</sem>
          </semantics>
          <tg xml:lang="eng">
-            <t pos="v">hold</t>
+            <t pos="v">wish</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="v" oahpa="pref">pitää</t>
-            <t pos="mwe_v">pitää kiinni</t>
+            <t pos="v">tahtoa</t>
          </tg>
          <tg xml:lang="rus">
-            <t pos="v">держать</t>
+            <t pos="v">хотеть</t>
+            <t pos="v">желать</t>
          </tg>
          <tg xml:lang="nob">
-            <t pos="v" oahpa="pref">holde</t>
-            <t pos="mwe_v" oahpa="pref">holde fast</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">doallat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">adnèhtit</t>
+            <t pos="v">ønske</t>
          </tg>
       </mg>
    </e>
-   <e meta="03">
+   <e mg_c="1">
       <lg>
-         <l pos="v">urččâd</l>
-         <lv variant="dial" source="1991">uˊrččâd</lv>
-         <infl>
-            <form gloss="3sg.prs">orčč</form>
-         </infl>
+         <l pos="v">täävvad</l>
       </lg>
       <sources>
-         <book name="kurss" lesson="dict"/>
+         <book name="200" BEDLAN_ID="156"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD">DISH</sem>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">squeeze</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="втиснуть">втискивать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v" stat="pref">kveste</t>
+            <t pos="v">knuse</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">puristaa</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">čárvut</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">deäptjoot</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">tääˊvted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="fin">
+            <t pos="v" stat="pref">tavoittaa</t>
+            <t pos="v">napata</t>
+            <t pos="v">siepata</t>
+            <t pos="v">tarttua</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">fange inn</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">urččâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
          <book name="200" BEDLAN_ID="221"/>
       </sources>
       <mg>
@@ -935,7 +3315,8 @@
             <t pos="v">бегать</t>
          </tg>
          <tg xml:lang="nob">
-            <t pos="v">springe</t>
+            <t pos="v" stat="pref">springe</t>
+            <t pos="v">løpe</t>
          </tg>
          <tg xml:lang="sme">
             <t pos="v">viehkat</t>
@@ -945,19 +3326,37 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
       <lg>
-         <l pos="v">uˊvdded</l>
-         <infl>
-            <form gloss="3sg.prs">oudd</form>
-         </infl>
-         <etymology>
-            <etymon type="inher" source="finnougric">amta-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
+         <l pos="v">uuˊrčted</l>
       </lg>
       <sources>
-         <book name="kurss" lesson="dict"/>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">REINDEER</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">drive</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">juoksuttaa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">гонять</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">drive</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">uˊvdded</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
          <book name="200" BEDLAN_ID="*63"/>
          <book name="100"/>
       </sources>
@@ -968,7 +3367,7 @@
             <sem class="SENSE">EMOTION</sem>
          </semantics>
          <tg xml:lang="rus">
-            <t pos="v" oahpa="pref">дать</t>
+            <t pos="v" stat="pref">дать</t>
             <t pos="v">отдать</t>
             <t pos="v">раздать</t>
          </tg>
@@ -982,7 +3381,7 @@
             <t pos="v">give</t>
          </tg>
          <tg xml:lang="deu">
-            <t pos="v" oahpa="pref">geben</t>
+            <t pos="v">geben</t>
             <t pos="v">schenken</t>
          </tg>
          <tg xml:lang="nob">
@@ -996,17 +3395,142 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">vaarõõttâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">mind</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">varoa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">остерегаться</t>
+            <t pos="v">опасаться</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">akte</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">vaˊstteed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="LANG">SPEECH</sem>
+            <sem class="SENSE">COGNITION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">answer</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">отвечать</t>
+         </tg>
+         <tg xml:lang="deu">
+            <t pos="v">antworten</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">svare</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">vastata</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">veäncceed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN"/>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v" stat="pref">обвенчать</t>
+            <t pos="v">венчать</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">vihkiä</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">gifte</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">marry</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">viiššâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">feel like</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">viitsiä</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">хотеть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">ha lyst</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">viǯǯâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v" short="принести">сходить и принести</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">noutaa</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v" short="hente">gå og hente</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v" short="bring">go and bring</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
       <lg>
          <l pos="v">vueiˊnned</l>
-         <infl>
-            <form gloss="3sg.prs">vuäinn</form>
-            <form gloss="conneg.prs">vuäinnam</form>
-         </infl>
-         <etymology>
-            <etymon type="inher" source="saamic">ɔ̄jnē</etymon>
-            <cognate xml:lang="sjd">уййнэ</cognate>
-         </etymology>
       </lg>
       <sources>
          <book name="kurss" lesson="1"/>
@@ -1021,7 +3545,7 @@
             <t pos="v">nähdä</t>
          </tg>
          <tg xml:lang="rus">
-            <t pos="v" oahpa="pref">видеть</t>
+            <t pos="v" stat="pref">видеть</t>
             <t pos="v">замечать</t>
          </tg>
          <tg xml:lang="nob">
@@ -1044,59 +3568,261 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
       <lg>
-         <l pos="v">vuẹˊđđed</l>
-         <etymology>
-            <etymon type="inher" source="finnougric">oδa-</etymon>
-            <cognate xml:lang="sjd">вуэдтӭ</cognate>
-         </etymology>
+         <l pos="v">vueiˊtted</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="*146"/>
-         <book name="100"/>
+         <book name="kurss" lesson="1"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="SPACE">POSITION</sem>
-            <sem class="BODY">HEALTH</sem>
+            <sem class="WORK"/>
          </semantics>
-         <tg xml:lang="rus">
-            <t pos="v">спать</t>
+         <tg xml:lang="eng">
+            <t pos="v">can</t>
          </tg>
-         <tg xml:lang="sjd">
-            <t pos="v">вуэдтӭ</t>
+         <tg xml:lang="rus">
+            <t pos="v">мочь</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="v">nukkua</t>
-         </tg>
-         <tg xml:lang="eng">
-            <t pos="v">sleep</t>
-         </tg>
-         <tg xml:lang="deu">
-            <t pos="v">schlafen</t>
+            <t pos="v">voida</t>
+            <t pos="v">jaksaa</t>
          </tg>
          <tg xml:lang="nob">
-            <t pos="v">sove</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">oađđit</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">nohkkat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">å̀ddeet</t>
+            <t pos="v">kunne</t>
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">vuejjad</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">drive</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">ехать</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">ajaa</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">kjøre</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">vueˊhssed</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="183"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+            <sem class="FOOD">DISH</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">vomit</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="стошнить">тошнить</t>
+            <t pos="v" impf="вырвать" stat="pref">рвать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">kaste opp</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">oksentaa</t>
+         </tg>
+         <tg xml:lang="smn">
+            <t pos="v">vyeksiđ</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">vuoksit</t>
+            <t pos="v">vuovssadit</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">vüekˈseet</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">vueˊlǧǧed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">идти</t>
+            <t pos="v">уходить</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">lähteä</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">dra</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">vueˊlǧǧeed</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="176"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">throw</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="бросить">бросать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">kaste</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v" stat="pref">nakata</t>
+            <t pos="v">heittää</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">suohpput</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">slìrrat</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">vueˊrdded</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">SOCIAL</sem>
+            <sem class="SPACE">POSITION</sem>
+         </semantics>
+         <tg xml:lang="fin">
+            <t pos="v">odottaa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">ждать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">vente</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">wait</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">vuäǯǯad</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">SOCIAL</sem>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">can</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="получить">получать</t>
+            <t pos="v" stat="pref">мочь</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">saada</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">få</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">vuäˊstted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+            <sem class="FOOD">GROCERY</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">покупать</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">ostaa</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">kjøpe</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">vuõiŋŋâd</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="19"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">breathe</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">дышать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">ånde</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">hengittää</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">vuoigŋat</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">vuaigŋjat</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="2">
       <lg>
          <l pos="v">vuõjjâd</l>
-         <etymology>
-            <etymon type="inher" source="uralic">uje-</etymon>
-            <cognate xml:lang="sjd">вӯйе</cognate>
-         </etymology>
       </lg>
       <sources>
          <book name="200" BEDLAN_ID="*166"/>
@@ -1164,18 +3890,183 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">vuẹjjad</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">drive</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">ехать</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">ajaa</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">kjøre</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">vuẹjted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">trail</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">ajattaa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">гнать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">forfølge</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">vuẹˊđđed</l>
+      </lg>
+      <sources>
+         <book name="200"/>
+         <book name="100"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">POSITION</sem>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">спать</t>
+         </tg>
+         <tg xml:lang="sjd">
+            <t pos="v">вуэдтӭ</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">nukkua</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">sleep</t>
+         </tg>
+         <tg xml:lang="deu">
+            <t pos="v">schlafen</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">sove</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">oađđit</t>
+            <t pos="v">nohkkat</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">å̀ddeet</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">västtled</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="76"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">swipe</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">бить</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">slå</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">huitaista</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">časkit</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">lå̀skat</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">väällad</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD"/>
+         </semantics>
+         <tg xml:lang="fin">
+            <t pos="v">kaataa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="налить">лить</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">helle</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">pour</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">vääˊlʼjed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD"/>
+         </semantics>
+         <tg xml:lang="fin">
+            <t pos="v">leipoa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">печь</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">bake</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">bake</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
       <lg>
          <l pos="v">väˊldded</l>
-         <infl>
-            <form gloss="1sg.prs">vääldam</form>
-            <form gloss="3sg.prs">väldd</form>
-            <form gloss="imp.sg">vääˊld</form>
-         </infl>
-         <etymology>
-            <etymon type="xxx" source="saamic">vāltē-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
       </lg>
       <sources>
          <book name="kurss" lesson="1"/>
@@ -1190,9 +4081,7 @@
          </tg>
          <tg xml:lang="rus">
             <t pos="v">взять</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" oahpa="pref">брать</t>
+            <t pos="v" stat="pref">брать</t>
          </tg>
          <tg xml:lang="fin">
             <t pos="v">ottaa</t>
@@ -1209,32 +4098,11 @@
          <tg xml:lang="sju">
             <t pos="v">vàlldeet</t>
          </tg>
-         <xg oahpa="excl" kurss="no">
-            <x pos="mwe_v">vääldam ǩidd</x>
-            <xtg xml:lang="rus">
-               <xt pos="v">поймаю</xt>
-            </xtg>
-         </xg>
-         <xg oahpa="excl" kurss="yes">
-            <x type="imp" pos="mwe_v">täˊst, vääˊld!</x>
-            <xtg xml:lang="fin">
-               <xt pos="mwe_v">tässä, ota!</xt>
-               <xt pos="mwe_v" oahpa="pref">ole hyvä!</xt>
-            </xtg>
-            <xtg xml:lang="rus">
-               <xt pos="v">возьми!</xt>
-               <xt pos="mwe_v" oahpa="pref">пожалуйста, будь добр!</xt>
-            </xtg>
-         </xg>
       </mg>
    </e>
-   <e meta="04">
+   <e mg_c="1">
       <lg>
          <l pos="v">väˊʒʒed</l>
-         <etymology>
-            <etymon type="inher" source="finnougric">wanča-</etymon>
-            <cognate xml:lang="sjd">ва̄ннҍцэ</cognate>
-         </etymology>
       </lg>
       <sources>
          <book name="kurss" lesson="phon"/>
@@ -1248,7 +4116,6 @@
          </semantics>
          <tg xml:lang="rus">
             <t pos="v">идти</t>
-            <tr>пешком</tr>
          </tg>
          <tg xml:lang="fin">
             <t pos="v">kävellä</t>
@@ -1273,15 +4140,563 @@
          </tg>
       </mg>
    </e>
-   <e meta="05">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">âskkeed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">PEOPLE</sem>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">embrace</t>
+            <t pos="v">hug</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">halata</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">обнимать</t>
+         </tg>
+         <tg xml:lang="deu">
+            <t pos="v">umarmen</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="2">
+      <lg>
+         <l pos="v">âˊpssed</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="148"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">smell</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">пахнуть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">lukte</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">haista</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">háistit</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">hapˈseet</t>
+         </tg>
+      </mg>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">smell</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="понюхать">нюхать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">lukte</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">haistaa</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">hapˈseet</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">âˊvveed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">leak</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">vuotaa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">течь</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">lekke</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">äiggad</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">SOCIAL</sem>
+            <sem class="WORK">ECONOMY</sem>
+            <sem class="TIME">POINT</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">планировать</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">aikoa</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">ville</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">plan</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">ääˊveed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">SOCIAL</sem>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="fin">
+            <t pos="v">avata</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">открывать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">åpne</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">open</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">äˊlǧǧed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="TIME">POINT</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">start</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">begynne</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">alkaa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">начинать</t>
+            <t pos="v">начинаться</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">årsted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">PEOPLE</sem>
+            <sem class="SPACE">POSITION</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">останавливаться</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">pysähtyä</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">stoppe</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">stop</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">åskkad</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="dict"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">PEOPLE</sem>
+            <sem class="SENSE">EMOTION</sem>
+            <sem class="HUMAN">RELIGION</sem>
+         </semantics>
+         <tg xml:lang="fin">
+            <t pos="v">uskoa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">верить</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">tru</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">believe</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">õlggâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">POSSESSION</sem>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v">быть нужным</t>
+            <t pos="v" stat="pref">нуждаться</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">pitää</t>
+            <t pos="v">täytyä</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">trenge</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">õsttâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="v" stat="pref">успевать</t>
+            <t pos="v">достигать</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v" stat="pref">ehtiä</t>
+            <t pos="v">joutaa</t>
+            <t pos="v">saavuttaa</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">hinne</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">čiõkkâd</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="216"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">POSSESSION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">hide</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" stat="pref">закопать</t>
+            <t pos="v">закрыть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v" stat="pref">skjule</t>
+            <t pos="v">gjemme</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">piilottaa</t>
+         </tg>
+         <tg xml:lang="sjd">
+            <t pos="v">чӣгкэ</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">čiehkat</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">tjiahkat</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">čolggâd</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="154"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+            <sem class="FOOD">DISH</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">spit</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="наплевать">плевать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">spytte</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">sylkeä</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">čolgat</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">tjålˈgat</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">čouggâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">SCHOOL</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">draw</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">тянуть</t>
+            <t pos="v">таскать</t>
+            <t pos="v">тащить</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">vetää</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">tegne</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">čueˊcced</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">be ill</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">särkeä</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">болеть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">være syk</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">čuârvvad</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">scream</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">huutaa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">кричать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">skrike</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">čuâvvad</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">follow</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">seurata</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">следовать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">følge</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">čuäˊjted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">show</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">показывать</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">näyttää</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">vise</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">čuõpˈpâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+         <book name="200" BEDLAN_ID="27"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD">NATURE</sem>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">cut</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" stat="pref">резать</t>
+            <t pos="v">разрезать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">skjære</t>
+            <t pos="v">klippe</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">leikata</t>
+         </tg>
+         <tg xml:lang="sjd">
+            <t pos="v">чӯһпэ</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">čuohppat</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">tjuallat</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">čuõˊǧǧeed</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="157"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+            <sem class="SENSE">MOTION</sem>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">stab</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">колоть</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">stikke</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">pistää</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="v">čugget</t>
+            <t pos="v">cáhkit</t>
+         </tg>
+         <tg xml:lang="sju">
+            <t pos="v">sàggòhtit</t>
+            <t pos="v">tjuagˈgoot</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
       <lg>
          <l pos="v">čuẹǯʼǯad</l>
-         <lv variant="dial">čuâǯˈǯad</lv>
-         <lv variant="dial">čuäǯˈǯad</lv>
-         <etymology>
-            <etymon type="inher" source="finnougric">saŋća-</etymon>
-            <cognate xml:lang="sjd">чуэннче</cognate>
-         </etymology>
       </lg>
       <sources>
          <book name="200" BEDLAN_ID="*158"/>
@@ -1318,107 +4733,7 @@
          </tg>
       </mg>
    </e>
-   <e meta="04">
-      <lg>
-         <l pos="v">ǩeˊrdded</l>
-         <etymology>
-            <etymon type="inher" source="finnosaamic">kīri-</etymon>
-            <cognate xml:lang="sjd">кыррьтэ</cognate>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="*56"/>
-         <book name="100"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ZOO">BIRD</sem>
-            <sem class="SPACE">MOTION</sem>
-            <sem class="WORK">TRAVEL</sem>
-         </semantics>
-         <tg xml:lang="rus">
-            <t pos="v" oahpa="pref">летать</t>
-            <t pos="v">лететь</t>
-         </tg>
-         <tg xml:lang="sjd">
-            <t pos="v">кыррьтэ</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">lentää</t>
-         </tg>
-         <tg xml:lang="eng">
-            <t pos="v">fly</t>
-         </tg>
-         <tg xml:lang="deu">
-            <t pos="v">fliegen</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">fly</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">girdit</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">haalèhtit</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">âˊpssed</l>
-         <etymology>
-            <etymon type="xxx" source="uralic">ipɜ ~ ipɜ-sɜ (ipsɜ)</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="148"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SENSE">PERCEPTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">smell</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v">пахнуть</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">lukte</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">haista</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">háistit</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">hapˈseet</t>
-         </tg>
-      </mg>
-      <mg>
-         <semantics>
-            <sem class="SENSE">PERCEPTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">smell</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="понюхать">нюхать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">lukte</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">haistaa</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">hapˈseet</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
+   <e mg_c="1">
       <lg>
          <l pos="v">čâˊcǩǩed</l>
       </lg>
@@ -1450,193 +4765,7 @@
          </tg>
       </mg>
    </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">čiõkkâd</l>
-         <etymology>
-            <etymon type="xxx" source="finnosaamic">śäki-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="216"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="HUMAN">POSSESSION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">hide</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" oahpa="pref">закопать</t>
-            <t pos="v">закрыть</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v" oahpa="pref">skjule</t>
-            <t pos="v">gjemme</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">piilottaa</t>
-         </tg>
-         <tg xml:lang="sjd">
-            <t pos="v">чӣгкэ</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">čiehkat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">tjiahkat</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">čolggâd</l>
-         <etymology>
-            <etymon type="xxx" source="finnougric">śülˊke-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="154"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="BODY">HEALTH</sem>
-            <sem class="FOOD">DISH</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">spit</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="наплевать">плевать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">spytte</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">sylkeä</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">čolgat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">tjålˈgat</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">čõõnnâd</l>
-         <etymology>
-            <etymon type="xxx" source="saamic">će̮ne̮-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="177"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="xxx"/>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">tie</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="завязать">завязывать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">binde</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">sitoa</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">čatnat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">tjadˈnat</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">čuõˊǧǧeed</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="157"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-            <sem class="SENSE">MOTION</sem>
-            <sem class="BODY">HEALTH</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">stab</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v">колоть</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">stikke</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">pistää</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">čugget</t>
-            <t pos="v">cáhkit</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">sàggòhtit</t>
-            <t pos="v">tjuagˈgoot</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">čuõpˈpâd</l>
-         <etymology>
-            <etymon type="inher" source="finnougric?">ćappɜ-</etymon>
-            <cognate xml:lang="sjd">чӯһпэ</cognate>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="27"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="FOOD">NATURE</sem>
-            <sem class="WORK">ECONOMY</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">cut</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" oahpa="pref">резать</t>
-            <t pos="v">разрезать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">skjære</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">leikata</t>
-         </tg>
-         <tg xml:lang="sjd">
-            <t pos="v">чӯһпэ</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">čuohppat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">tjuallat</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
+   <e mg_c="1">
       <lg>
          <l pos="v">čärvvad</l>
       </lg>
@@ -1655,7 +4784,7 @@
             <t pos="v">presse</t>
          </tg>
          <tg xml:lang="rus">
-            <t pos="v" imperf="выжать">выжимать</t>
+            <t pos="v" impf="выжать">выжимать</t>
          </tg>
          <tg xml:lang="fin">
             <t pos="v">puristaa</t>
@@ -1668,152 +4797,264 @@
          </tg>
       </mg>
    </e>
-   <e meta="05">
+   <e mg_c="1">
       <lg>
-         <l pos="v">jiẹˊlled</l>
-         <etymology>
-            <etymon type="xxx" source="uralic">elä-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
+         <l pos="v">čõõnnâd</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="95"/>
+         <book name="200" BEDLAN_ID="177"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="HUMAN">PEOPLE</sem>
-            <sem class="BODY">HEALTH</sem>
+            <sem class="WORK"/>
          </semantics>
          <tg xml:lang="eng">
-            <t pos="v">live</t>
+            <t pos="v">tie</t>
          </tg>
          <tg xml:lang="rus">
-            <t pos="v">жить</t>
+            <t pos="v" impf="завязать">завязывать</t>
          </tg>
          <tg xml:lang="nob">
-            <t pos="v">leve</t>
+            <t pos="v">binde</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="v">elää</t>
+            <t pos="v">sitoa</t>
          </tg>
          <tg xml:lang="sme">
-            <t pos="v">eallit</t>
+            <t pos="v">čatnat</t>
          </tg>
          <tg xml:lang="sju">
-            <t pos="v">viessoot</t>
+            <t pos="v">tjadˈnat</t>
          </tg>
       </mg>
    </e>
-   <e meta="05">
+   <e mg_c="2">
       <lg>
-         <l pos="v">juurdčed</l>
+         <l pos="v">šõddâd</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="173"/>
+         <book name="kurss" lesson="2"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <sources>
+         <book name="kurss" lesson="2"/>
+         <book name="lookkamkerjj" lesson="1"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="SENSE">COGNITION</sem>
+            <sem class="HUMAN">FAMILY</sem>
          </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">think</t>
+         <tg xml:lang="fin">
+            <t pos="v">syntyä</t>
+            <t pos="v">be born</t>
          </tg>
          <tg xml:lang="rus">
-            <t pos="v" imperf="подумать">думать</t>
+            <t pos="v" impf="рождаться">родиться</t>
          </tg>
          <tg xml:lang="nob">
-            <t pos="v">tenke</t>
+            <t pos="v">fødes</t>
+         </tg>
+      </mg>
+      <mg>
+         <semantics>
+            <sem class="ENVIR"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">appear</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="v">ajatella</t>
+            <t pos="v">tulla</t>
          </tg>
-         <tg xml:lang="sme">
-            <t pos="v">jurddašit</t>
+         <tg xml:lang="rus">
+            <t pos="v">становиться</t>
          </tg>
-         <tg xml:lang="sju">
-            <t pos="v">ussjadit</t>
+         <tg xml:lang="nob">
+            <t pos="v" short="bli">bli til</t>
          </tg>
       </mg>
    </e>
-   <e meta="05">
+   <e mg_c="1">
       <lg>
-         <l pos="v">jåårǥled</l>
-         <etymology>
-            <etymon type="xxx" source="saamic">jorke̮-lē ~ jork-ēhtē-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
+         <l pos="v">ǩeˊrdded</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="181"/>
+         <book name="200" BEDLAN_ID="*56"/>
+         <book name="100"/>
       </sources>
       <mg>
          <semantics>
+            <sem class="ZOO">BIRD</sem>
             <sem class="SPACE">MOTION</sem>
+            <sem class="WORK">TRAVEL</sem>
          </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">turn</t>
-         </tg>
          <tg xml:lang="rus">
-            <t pos="v">вращать</t>
+            <t pos="v" stat="pref">летать</t>
+            <t pos="v">лететь</t>
          </tg>
-         <tg xml:lang="nob">
-            <t pos="v">snu</t>
+         <tg xml:lang="sjd">
+            <t pos="v">кыррьтэ</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="v">kääntyä</t>
+            <t pos="v">lentää</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">fly</t>
+         </tg>
+         <tg xml:lang="deu">
+            <t pos="v">fliegen</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">fly</t>
          </tg>
          <tg xml:lang="sme">
-            <t pos="v">jorgalit</t>
+            <t pos="v">girdit</t>
          </tg>
          <tg xml:lang="sju">
-            <t pos="v">jårgèdit</t>
-            <t pos="v">jårgèhtit</t>
+            <t pos="v">haalèhtit</t>
          </tg>
       </mg>
    </e>
-   <e meta="05">
+   <e mg_c="1">
       <lg>
-         <l pos="v">kâˊlmmed</l>
-         <etymology>
-            <etymon type="xxx" source="finnopermic">külmä</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
+         <l pos="v">ǩeˊtted</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="60"/>
+         <book name="kurss" lesson="2"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY">HEALTH</sem>
+            <sem class="FOOD">DISH</sem>
          </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">freeze</t>
-         </tg>
          <tg xml:lang="rus">
-            <t pos="v" imperf="замёрзнуть" oahpa="pref">мёрзнуть</t>
-            <t pos="v" imperf="замёрзнуть">мерзнуть</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">fryse</t>
+            <t pos="v" stat="pref">варить</t>
+            <t pos="v">готовить</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="v">jäätyä</t>
+            <t pos="v">keittää</t>
          </tg>
-         <tg xml:lang="sme">
-            <t pos="v">galbmot</t>
+         <tg xml:lang="nob">
+            <t pos="v">koke</t>
          </tg>
-         <tg xml:lang="sju">
-            <t pos="v">galbmeet</t>
+         <tg xml:lang="eng">
+            <t pos="v">cook</t>
          </tg>
       </mg>
    </e>
-   <e meta="05">
+   <e mg_c="1">
+      <lg>
+         <l pos="v">ǩiirted</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">hurry</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">kiirehtiä</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v">торопиться</t>
+            <t pos="v" stat="pref">спешить</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v" stat="pref">haste</t>
+            <t pos="v">skynde</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">ǩiiččeed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">see</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v">katsella</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" stat="pref">смотреть</t>
+            <t pos="v">глядеть</t>
+            <t pos="v">разглядывать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">se</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">ǩiõččâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="fin">
+            <t pos="v">katsoa</t>
+            <t pos="v">katsoa</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="смотреть">посмотреть</t>
+            <t pos="v">разглядывать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v">se</t>
+            <t pos="v">betrakte</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="v">see</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
+      <lg>
+         <l pos="v">ǩiččlõddâd</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+            <sem class="WORK">SCHOOL</sem>
+         </semantics>
+         <tg xml:lang="eng">
+            <t pos="v">test</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="v" stat="pref">koetella</t>
+            <t pos="v">kokeilla</t>
+         </tg>
+         <tg xml:lang="rus">
+            <t pos="v" impf="пробовать" stat="pref">попробовать</t>
+            <t pos="v">экспериментировать</t>
+            <t pos="v">испытывать</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="v" stat="pref">prøve</t>
+            <t pos="v">forsøke</t>
+         </tg>
+      </mg>
+   </e>
+   <e mg_c="1">
       <lg>
          <l pos="v">ǩiẹˊssed</l>
-         <etymology>
-            <etymon type="xxx" source="saamic">kɛ̄sē-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
       </lg>
       <sources>
          <book name="200" BEDLAN_ID="119"/>
@@ -1827,11 +5068,11 @@
             <t pos="v">pull</t>
          </tg>
          <tg xml:lang="rus">
-            <t pos="v" imperf="потянуть">тянуть</t>
+            <t pos="v" impf="потянуть">тянуть</t>
          </tg>
          <tg xml:lang="nob">
             <t pos="v">trekke</t>
-            <t pos="v" oahpa="pref">dra</t>
+            <t pos="v" stat="pref">dra</t>
          </tg>
          <tg xml:lang="fin">
             <t pos="v">vetää</t>
@@ -1841,1150 +5082,6 @@
          </tg>
          <tg xml:lang="sju">
             <t pos="v">giesseet</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">kõččâd</l>
-         <etymology>
-            <etymon type="xxx" source="saamic">ke̮ćće̮</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="42"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">fall</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="упасть">падать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">falle</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">pudota</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">gahččat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">gahtjat</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">kolggâd</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="54"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ENVIR">ELEMENT</sem>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">flow</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="потечь">течь</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">strømme</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">virrata</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">golgat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">gålˈgat</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">kueˊdˈded</l>
-         <etymology>
-            <etymon type="xxx" source="uralic">kanta</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="217"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-            <sem class="HUMAN">POSSESSION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">carry</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="понести">нести</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">bære</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">kantaa</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">guoddit</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">güedˈdeet</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">kuäivvad</l>
-         <etymology>
-            <etymon type="xxx" source="FP, U?">kojwa-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="30"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">dig</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" oahpa="pref" imperf="выкопать">копать</t>
-            <t pos="v" imperf="вырыть">рыть</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">grave</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">kaivaa</t>
-         </tg>
-         <tg xml:lang="sjd">
-            <t pos="v">куаййвэ</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">goaivut</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">gåỳvoot</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">kåbllad</l>
-         <etymology>
-            <etymon type="inher" source="saamic">koplē</etymon>
-            <cognate xml:lang="kar">kuploa</cognate>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="53"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">MOTION</sem>
-            <sem class="ENVIR">ELEMENT</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">float</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="n">плыть</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="n">svømme</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="n">kellua</t>
-         </tg>
-         <tg xml:lang="sjd">
-            <t pos="n">коабблэ</t>
-         </tg>
-         <tg xml:lang="smn">
-            <t pos="n">koble</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="n">govdut</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="n">gåbˈdoot</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">laullad</l>
-         <lv variant="dial" source="1991">läullad</lv>
-         <etymology>
-            <etymon type="inher" source="finnosaamic?"/>
-            <etymon type="inher" source="finnic">lavla-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="142"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="HUMAN">SOCIAL</sem>
-            <sem class="SENSE">EMOTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">sing</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="спеть">петь</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">synge</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">laulaa</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">lávlut</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">làuloot</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">lieˊnˈnjsted</l>
-         <etymology>
-            <etymon type="inher" source="eastsaamic?"/>
-            <cognate xml:lang="smn">leännjuđ</cognate>
-            <cognate xml:lang="rus?">лениться</cognate>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="*94"/>
-         <book name="100"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">POSITION</sem>
-            <sem class="BODY">HEALTH</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v" oahpa="pref">lie</t>
-            <t pos="mwe_v">lie down</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v">лежать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v" oahpa="pref">ligge</t>
-            <t pos="mwe_v">ligge ner</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">maata</t>
-         </tg>
-         <tg xml:lang="smn">
-            <t pos="v">leännjuđ</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">vealˈlát</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">veälˈlàhit</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">luõˊdˈdjed</l>
-         <etymology>
-            <etymon type="xxx" source="saamic">lōntɔ̄-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="155"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">split</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="разколоть">разкалывать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">kløyve</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">halkaista</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">luddet</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">luadˈdoot</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">maaˊlˈjed</l>
-         <etymology>
-            <etymon type="loan" source="northgermanic?"/>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="226"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="FOOD">DISH</sem>
-            <sem class="WORK">ECONOMY</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">mill</t>
-            <t pos="v" oahpa="pref">grind</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="смолоть">молть</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">male</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">jauhaa</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">milˈlet</t>
-            <t pos="v">molˈlet</t>
-         </tg>
-      </mg>
-      <mg oahpa="excl">
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">crush</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">murskata</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">miẹˊcsted</l>
-         <lv variant="dial" source="1991">miẹˊccsted</lv>
-         <etymology>
-            <etymon type="loan" source="fin?">metsästää</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="80"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-            <sem class="FOOD">NATURE</sem>
-            <sem class="INVIR">TOPONOMY</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">hunt</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v">охотиться</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">jage</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">metsästää</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">bivdit</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">biwˈdeet</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">njiimmâd</l>
-         <etymology>
-            <etymon type="xxx" source="uralic">ńime-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="163"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="HUMAN">FAMILY</sem>
-            <sem class="FOOD">NATURE</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">suck</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="пососать">сосать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">suge</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">imeä</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">njammat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">njammat</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">njuˊnnʼjed</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="148"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ZOO">MAMMAL</sem>
-            <sem class="SENSE">PERCEPTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">scent</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="почуять">чуять</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">spore</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">vainuta</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">haksit</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">hapˈseet</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">oiˊǧǧeed</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="120"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">push</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v">двигать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">skyve</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">työntää</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">hoigat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">nårˈdat</t>
-            <t pos="v">nahkèlit</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">peiˊtted</l>
-         <etymology>
-            <etymon type="loan" source="finnic"/>
-            <cognate xml:lang="est">(ära) peita</cognate>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="216"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="HUMAN">POSSESSION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">hide</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="спрятать">прятать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">skjule</t>
-            <t pos="v" oahpa="pref">gjemme</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">piilottaa</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">čiehkat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">tjiahkat</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">põõllâd</l>
-         <etymology>
-            <etymon type="xxx" source="uralic">pele-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="46"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SENSE">EMOTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">fear</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="побояться">бояться</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">frykte</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">pelätä</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">ballat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">ballat</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">påǥsted</l>
-         <lv variant="dial" source="1991">pååǥǥsted</lv>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="90"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SENSE">EMOTION</sem>
-            <sem class="HUMAN">FAMILY</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">laugh</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="посмеяться">смеяться</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v" oahpa="pref">le</t>
-            <t pos="v">skratte</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">nauraa</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">boagustit</t>
-            <t pos="v">čaibmat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">tjaimadiht</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">pååssad</l>
-         <etymology>
-            <etymon type="xxx" source="uralic">pušɜ-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="165"/>
-         <book name="200" BEDLAN_ID="16"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SENSE">PERCEPTION</sem>
-            <sem class="BODY">HEALTH</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">blow</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v">дуть</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">blåse</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">puhaltaa</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">bossut</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">bùssoot</t>
-         </tg>
-      </mg>
-      <mg>
-         <semantics>
-            <sem class="BODY">HEALTH</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">swell</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v">пухнуть</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">svulme</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">paisua</t>
-            <t pos="v" oahpa="pref">ajettua</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">bohtanit</t>
-            <t pos="v">báisat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">buhtanit</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">raajjâd</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="210"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">produce</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v">производить</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">lagre</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v" oahpa="pref">tuottaa</t>
-            <t pos="v">tehdä</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">dahkat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">dahkat</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">rekknâˊstted</l>
-         <etymology>
-            <etymon type="xxx" source="xxx"/>
-            <cognate xml:lang="swe">räkna</cognate>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="26"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SENSE">QUANTITY</sem>
-            <sem class="WORK">SCHOOL</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v" oahpa="pref">calculate</t>
-            <t pos="v">count</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="посчитать">считать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">regne</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">laskea</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">rēhkenastit</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">ryökˈnat</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">reäkkad</l>
-         <etymology>
-            <etymon type="loan" source="finnic"/>
-            <cognate xml:lang="fin">rääkyä</cognate>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="222"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SENSE">EMOTION</sem>
-            <sem class="HUMAN">FAMILY</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v" oahpa="pref">cry</t>
-            <t pos="v">weep</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v">плакать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">gråte</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">itkeä</t>
-         </tg>
-         <tg xml:lang="sjd">
-            <t pos="v">ря̄кгэ</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">čierrut</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">tjeärroot</t>
-            <t pos="v">vàlloot</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">ruˊvvjed</l>
-         <etymology>
-            <etymon type="xxx" source="saamic">ruvije̮-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="131"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">rub</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="потереть">тереть</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">gni</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v" oahpa="pref">hieroa</t>
-            <t pos="v">hangata</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">skuhppet</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">ruõtˈtâd</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="135"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ZOO">MAMMAL</sem>
-            <sem class="SENSE">EMOTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">scratch</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="поцарапать">царапать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">rive</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">raapia</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">ruohkkat</t>
-            <t pos="v">gazzut</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">kruahkat</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">sââjjad</l>
-         <etymology>
-            <etymon type="xxx" source="finnovolgaic">šiŋa-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="131"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">TOOL</sem>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">grind</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="наточить">точить</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">slipe</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">hioa</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">ruvˈvet</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">sekkad</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="199"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">wipe</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" oahpa="pref" imperf="протереть">протирать</t>
-            <t pos="v" imperf="стереть">стирать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">viske</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">pyyhkiä</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">sihkkut</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">šõllâd</l>
-         <der gloss="attr">šõˊlles</der>
-         <etymology>
-            <etymon type="loan" source="finnic"/>
-            <etymon type="inher" source="saamic">še̮le̮</etymon>
-            <cognate xml:lang="fin">sileä</cognate>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="150"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SENSE">PERCEPTION</sem>
-         </semantics>
-         <tg xml:lang="deu">
-            <t pos="a">eben</t>
-            <t pos="a">glatt</t>
-         </tg>
-         <tg xml:lang="eng">
-            <t pos="a">smooth</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="a">гладкий</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="a">glatt</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="a">sileä</t>
-         </tg>
-         <tg xml:lang="smn">
-            <t pos="a">šoollad</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="a">livttis</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="a">jalˈga</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">tuärrad</l>
-         <etymology>
-            <etymon type="inher" source="uralic">torɜ-</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="49"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-            <sem class="SENSE">EMOTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">fight</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v">бороться</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">kjempe</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">tapella</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">doarrut</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">dååròdit</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">täävvad</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="156"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="FOOD">DISH</sem>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">squeeze</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="втиснуть">втискивать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v" oahpa="pref">kveste</t>
-            <t pos="v">knuse</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">puristaa</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">čárvut</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">deäptjoot</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">vueˊhssed</l>
-         <etymology>
-            <etymon type="inher" source="finnopermic">okse-</etymon>
-            <etymon type="inher" source="saamic">vōksē</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="183"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="BODY">HEALTH</sem>
-            <sem class="FOOD">DISH</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">vomit</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="стошнить">тошнить</t>
-            <t pos="v" oahpa="pref" imperf="вырвать">рвать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="mwe_v">kaste opp</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">oksentaa</t>
-         </tg>
-         <tg xml:lang="smn">
-            <t pos="v">vyeksiđ</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">vuoksit</t>
-            <t pos="v">vuovssadit</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">vüekˈseet</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">vueˊlǧǧeed</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="176"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">throw</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v" imperf="бросить">бросать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">kaste</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v" oahpa="pref">nakata</t>
-            <t pos="v">heittää</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">suohpput</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">slìrrat</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">vuõiŋŋâd</l>
-         <etymology>
-            <etymon type="xxx" source="uralic">wajŋe</etymon>
-            <cognate xml:lang="xxx"/>
-         </etymology>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="19"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="BODY">HEALTH</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">breathe</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v">дышать</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">ånde</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">hengittää</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">vuoigŋat</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">vuaigŋjat</t>
-         </tg>
-      </mg>
-   </e>
-   <e meta="05">
-      <lg>
-         <l pos="v">västtled</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="76"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-         </semantics>
-         <tg xml:lang="eng">
-            <t pos="v">swipe</t>
-         </tg>
-         <tg xml:lang="rus">
-            <t pos="v">бить</t>
-         </tg>
-         <tg xml:lang="nob">
-            <t pos="v">slå</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="v">huitaista</t>
-         </tg>
-         <tg xml:lang="sme">
-            <t pos="v">časkit</t>
-         </tg>
-         <tg xml:lang="sju">
-            <t pos="v">lå̀skat</t>
          </tg>
       </mg>
    </e>
