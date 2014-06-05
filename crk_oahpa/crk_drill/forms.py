@@ -1794,6 +1794,8 @@ class ContextMorfaQuestion(OahpaQuestion):
 		      else:
 			     self.lemma = answer_word_el.lemma
 				
+		if answer_tag_el.pos == "V":
+		      self.lemma = False
 		if answer_tag_el.pos == "Pron":
 			# Hide task word for Recipr and Refl
 			if qtype in ["P-REFL", "P-RECIPR", "P-REL"]:
