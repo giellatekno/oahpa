@@ -72,11 +72,7 @@
 	<strong>{% trans "Reference materials" %}</strong>
 	<ul class="sidelist small">
 	<!--	<li><a href="{% block veiledning %}{% endblock %}">{% trans "Instructions" %}</a></li> -->
-        {% ifequal LANGUAGE_CODE "fi" %}
-            <li><a target="_blank" href="http://sanat.oahpa.no/crk/fin">{% trans "Dictionary" %}</a></li>
-        {% else %}
-            <li><a target="_blank" href="http://sanat.oahpa.no/crk/est">{% trans "Dictionary" %}</a></li>
-        {% endifequal %}
+        <li><a target="_blank" href="http://pikiskwewina.oahpa.no/">{% trans "Dictionary" %}</a></li>
 
         <!-- {% ifequal LANGUAGE_CODE "sme" %}
             <li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.html">{% trans "Grammar" %}</a></li>
