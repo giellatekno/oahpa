@@ -32,7 +32,11 @@ Spellrelax does not work yet
 Bsp: asdfˈoiuy => asdfoiuy
 
 * spellrelax for Russian (ё ~ е)
+   ==> done (in sms2rus)
 
+NB: 
+ - spellrelax for Oahpa is relevant ONLY for the transations because
+    Leksa will never present relaxed forms!
 
 Link to the dictionary
 ==> perhaps also a link to saan.oahpa.no?
