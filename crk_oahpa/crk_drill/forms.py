@@ -396,6 +396,7 @@ SEMTYPE_CHOICES = (
     ('HUMAN', _('human')),
     ('FOOD-DRINK', _('food/drink')),
     ('THINGS', _('things')),
+    ('PLACE', _('places')),
     ('NATURE-ANIMALS', _('nature/animals')),
     ('all', _('all')),
 )
