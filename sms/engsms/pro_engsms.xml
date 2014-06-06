@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <r xml:lang="eng">
+   <e id="nobody_pro" stat="pref">
+      <lg>
+         <l pos="pro">nobody</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">PEOPLE</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="pro" stat="pref">ni ǩeän</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="nothing_pro" stat="pref">
+      <lg>
+         <l pos="pro">nothing</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">QUANTITY</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="pro" stat="pref">ni mâiˊd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="self_pro" stat="pref">
+      <lg>
+         <l pos="pro">self</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">PEOPLE</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="pro" stat="pref">jiõčč</t>
+         </tg>
+      </mg>
+   </e>
    <e id="what_pro" stat="pref">
       <lg>
          <l pos="pro">what</l>
@@ -54,29 +102,12 @@
          </tg>
       </mg>
    </e>
-   <e id="many_pro" stat="pref">
-      <lg>
-         <l pos="pro">many</l>
-      </lg>
-      <sources>
-         <book name="kurss" lesson="phon"/>
-         <book name="200" BEDLAN_ID="*100"/>
-         <book name="100"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SENSE">QUANTITY</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="pro" stat="pref">mäŋgg</t>
-         </tg>
-      </mg>
-   </e>
    <e id="all_pro" stat="pref">
       <lg>
          <l pos="pro">all</l>
       </lg>
       <sources>
+         <book name="kurss" lesson="3"/>
          <book name="200" BEDLAN_ID="*1"/>
          <book name="100"/>
       </sources>
@@ -137,7 +168,7 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="pro" stat="pref">ton</t>
-            <t pos="pro" sem-cl="HUMAN" src="200 206" nob-stat="yes">tij</t>
+            <t pos="pro" sem-cl="HUMAN" src="200 206" eng-stat="yes">tij</t>
          </tg>
       </mg>
    </e>
@@ -154,44 +185,10 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="pro" stat="pref">tij</t>
-            <t pos="pro" sem-cl="HUMAN" src="kurss 1-200 *207-100" nob-stat="yes">ton</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="that_pro" stat="pref">
-      <lg>
-         <l pos="pro">that</l>
-      </lg>
-      <sources>
-         <book name="kurss" lesson="dict"/>
-         <book name="200" BEDLAN_ID="*168"/>
-         <book name="100"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">POSITION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="pro" stat="pref">tut</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="this_pro" stat="pref">
-      <lg>
-         <l pos="pro">this</l>
-      </lg>
-      <sources>
-         <book name="kurss" lesson="1"/>
-         <book name="200" BEDLAN_ID="*174"/>
-         <book name="100"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">POSITION</sem>
-            <sem class="SENSE">COGNITION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="pro" stat="pref">tät</t>
+            <t pos="pro"
+               sem-cl="HUMAN"
+               src="kurss 1-200 *207-100"
+               eng-stat="yes">ton</t>
          </tg>
       </mg>
    </e>

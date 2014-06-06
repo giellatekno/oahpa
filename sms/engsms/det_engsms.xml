@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<r xml:lang="eng">
+   <e id="that_det" stat="pref">
+      <lg>
+         <l pos="det">that</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="dict"/>
+         <book name="200" BEDLAN_ID="*168"/>
+         <book name="100"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">POSITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="det" stat="pref">tut</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_this_det" stat="pref">
+      <lg>
+         <l pos="det">this</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+         <book name="200" BEDLAN_ID="*174"/>
+         <book name="100"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">POSITION</sem>
+            <sem class="SENSE">COGNITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="det" stat="pref">tät</t>
+            <t pos="det" sem-cl="SENSE" src="kurss 3" eng-stat="yes">tõt</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_this_det" stat="pref">
+      <lg>
+         <l pos="det">this</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="det" stat="pref">tõt</t>
+            <t pos="det"
+               sem-cl="SPACE-SENSE"
+               src="kurss 1-200 *174-100"
+               eng-stat="yes">tät</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="one of_det" stat="pref">
+      <lg>
+         <l pos="det">one of</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="det" stat="pref">måttam</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="such_det" stat="pref">
+      <lg>
+         <l pos="det">such</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="det" stat="pref">nåkkam</t>
+         </tg>
+      </mg>
+   </e>
+</r>

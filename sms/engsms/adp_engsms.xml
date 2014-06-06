@@ -1,11 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <r xml:lang="eng">
-   <e id="from_adp" stat="pref">
+   <e id="after_adp" stat="pref">
+      <lg>
+         <l pos="adp">after</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="TIME">POINT</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">mâŋŋa</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_to_adp" stat="pref">
+      <lg>
+         <l pos="adp">to</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">ool</t>
+            <t pos="adp" sem-cl="SPACE" src="kurss phon" eng-stat="yes">luzz</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_to_adp" stat="pref">
+      <lg>
+         <l pos="adp">to</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">luzz</t>
+            <t pos="adp" sem-cl="SPACE" src="kurss 5" eng-stat="yes">ool</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="with_adp" stat="pref">
+      <lg>
+         <l pos="adp">with</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">mieˊldd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="before_adp" stat="pref">
+      <lg>
+         <l pos="adp">before</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="TIME">POINT</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">ouddâl</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="around_adp" stat="pref">
+      <lg>
+         <l pos="adp">around</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">POSITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">pirr</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="back_adp" stat="pref">
+      <lg>
+         <l pos="adp">back</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">tueˊǩǩen</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="on_adp" stat="pref">
+      <lg>
+         <l pos="adp">on</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">POSITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">âˊlnn</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_from_adp" stat="pref">
       <lg>
          <l pos="adp">from</l>
       </lg>
       <sources>
-         <book name="kurss" lesson="dict"/>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">âˊlnn</t>
+            <t pos="adp"
+               sem-cl="HUMAN-SPACE"
+               src="kurss 3-200 5"
+               eng-stat="yes">åˊrnn</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_from_adp" stat="pref">
+      <lg>
+         <l pos="adp">from</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
          <book name="200" BEDLAN_ID="5"/>
       </sources>
       <mg>
@@ -15,6 +171,7 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="adp" stat="pref">åˊrnn</t>
+            <t pos="adp" sem-cl="SPACE" src="kurss 2-kurss 2" eng-stat="yes">âˊlnn</t>
          </tg>
       </mg>
    </e>
@@ -23,7 +180,7 @@
          <l pos="adp">at</l>
       </lg>
       <sources>
-         <book name="kurss" lesson="dict"/>
+         <book name="kurss" lesson="3"/>
          <book name="200" BEDLAN_ID="5"/>
       </sources>
       <mg>
@@ -33,6 +190,38 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="adp" stat="pref">åˊrnn</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="in process of time_adp" stat="pref">
+      <lg>
+         <l pos="adp">in process of time</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="TIME">CYCLE</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="n" stat="pref">ääiˊj ǩeeˊjjest</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="on four weels_adp" stat="pref">
+      <lg>
+         <l pos="adp">on four weels</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="n" stat="pref">neellji kååˊlzivuiˊm</t>
          </tg>
       </mg>
    </e>

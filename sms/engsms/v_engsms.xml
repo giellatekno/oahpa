@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <r xml:lang="eng">
+   <e id="prepared_v" stat="pref">
+      <lg>
+         <l pos="v">prepared</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN"/>
+            <sem class="FOOD"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="a" stat="pref">vaalmâš</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="capture_v" stat="pref">
+      <lg>
+         <l pos="v">capture</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+            <sem class="ZOO">REINDEER</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">tääˊvted ǩidd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="we need_v" stat="pref">
+      <lg>
+         <l pos="v">we need</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">meeˊst feˊrttai</t>
+         </tg>
+      </mg>
+   </e>
    <e id="say_v" stat="pref">
       <lg>
          <l pos="v">say</l>
@@ -16,6 +66,74 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="v" stat="pref">ceäˊlǩǩed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_need_v" stat="pref">
+      <lg>
+         <l pos="v">need</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">feˊrttjed</t>
+            <t pos="v" sem-cl="HUMAN" src="kurss phon-kurss 2" eng-stat="yes">taarbšed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_need_v" stat="pref">
+      <lg>
+         <l pos="v">need</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">POSSESSION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">taarbšed</t>
+            <t pos="v" sem-cl="WORK" src="kurss 3" eng-stat="yes">feˊrttjed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="understand_v" stat="pref">
+      <lg>
+         <l pos="v">understand</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+            <sem class="LANG">SPEECH</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">fiˊttjed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="cure_v" stat="pref">
+      <lg>
+         <l pos="v">cure</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">hoiˊddjed</t>
          </tg>
       </mg>
    </e>
@@ -38,6 +156,78 @@
          </tg>
       </mg>
    </e>
+   <e id="1_freeze_v" stat="pref">
+      <lg>
+         <l pos="v">freeze</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="60"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+            <sem class="ENVIR">WEATHER</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">jiõŋŋâd</t>
+            <t pos="v" sem-cl="BODY" src="200 60" eng-stat="yes">kâˊlmmed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_freeze_v" stat="pref">
+      <lg>
+         <l pos="v">freeze</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="60"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">kâˊlmmed</t>
+            <t pos="v" sem-cl="BODY-ENVIR" src="200 60" eng-stat="yes">jiõŋŋâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_live_v" stat="pref">
+      <lg>
+         <l pos="v">live</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="95"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">PEOPLE</sem>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">jiẹˊlled</t>
+            <t pos="v" sem-cl="HUMAN-HOUSE-SPACE" src="kurss 1" eng-stat="yes">jälsted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_live_v" stat="pref">
+      <lg>
+         <l pos="v">live</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">FAMILY</sem>
+            <sem class="HOUSE">DWELLING</sem>
+            <sem class="SPACE">POSITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">jälsted</t>
+            <t pos="v" sem-cl="HUMAN-BODY" src="200 95" eng-stat="yes">jiẹˊlled</t>
+         </tg>
+      </mg>
+   </e>
    <e id="drink_v" stat="pref">
       <lg>
          <l pos="v">drink</l>
@@ -53,6 +243,62 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="v" stat="pref">juukkâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="think_v" stat="pref">
+      <lg>
+         <l pos="v">think</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+         <book name="200" BEDLAN_ID="173"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">COGNITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">juurdčed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_believe_v" stat="pref">
+      <lg>
+         <l pos="v">believe</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">juˊrdded</t>
+            <t pos="v"
+               sem-cl="HUMAN-SENSE-HUMAN"
+               src="kurss dict"
+               eng-stat="yes">åskkad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_believe_v" stat="pref">
+      <lg>
+         <l pos="v">believe</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="dict"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">PEOPLE</sem>
+            <sem class="SENSE">EMOTION</sem>
+            <sem class="HUMAN">RELIGION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">åskkad</t>
+            <t pos="v" sem-cl="SENSE" src="kurss 4" eng-stat="yes">juˊrdded</t>
          </tg>
       </mg>
    </e>
@@ -75,6 +321,193 @@
          </tg>
       </mg>
    </e>
+   <e id="turn_v" stat="pref">
+      <lg>
+         <l pos="v">turn</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="181"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">jåårǥled</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_drive_v" stat="pref">
+      <lg>
+         <l pos="v">drive</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">jååˊtted</t>
+            <t pos="v" sem-cl="WORK" src="kurss 6" eng-stat="yes">uuˊrčted</t>
+            <t pos="v" sem-cl="WORK-SPACE" src="kurss 3" eng-stat="yes">vuejjad</t>
+            <t pos="v" sem-cl="SPACE-WORK" src="kurss 1" eng-stat="yes">vuẹjjad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_drive_v" stat="pref">
+      <lg>
+         <l pos="v">drive</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">REINDEER</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">uuˊrčted</t>
+            <t pos="v"
+               sem-cl="WORK"
+               src="kurss 2-lookkamkerjj 1"
+               eng-stat="yes">jååˊtted</t>
+            <t pos="v" sem-cl="WORK-SPACE" src="kurss 3" eng-stat="yes">vuejjad</t>
+            <t pos="v" sem-cl="SPACE-WORK" src="kurss 1" eng-stat="yes">vuẹjjad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="3_drive_v" stat="pref">
+      <lg>
+         <l pos="v">drive</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">vuejjad</t>
+            <t pos="v"
+               sem-cl="WORK"
+               src="kurss 2-lookkamkerjj 1"
+               eng-stat="yes">jååˊtted</t>
+            <t pos="v" sem-cl="WORK" src="kurss 6" eng-stat="yes">uuˊrčted</t>
+            <t pos="v" sem-cl="SPACE-WORK" src="kurss 1" eng-stat="yes">vuẹjjad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="4_drive_v" stat="pref">
+      <lg>
+         <l pos="v">drive</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">vuẹjjad</t>
+            <t pos="v"
+               sem-cl="WORK"
+               src="kurss 2-lookkamkerjj 1"
+               eng-stat="yes">jååˊtted</t>
+            <t pos="v" sem-cl="WORK" src="kurss 6" eng-stat="yes">uuˊrčted</t>
+            <t pos="v" sem-cl="WORK-SPACE" src="kurss 3" eng-stat="yes">vuejjad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="drink coffee_v" stat="pref">
+      <lg>
+         <l pos="v">drink coffee</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD">DISH</sem>
+            <sem class="HUMAN">FAMILY</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">kaaˊfstõõllâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="be situated_v" stat="pref">
+      <lg>
+         <l pos="v">be situated</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">POSITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">kaunnâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="flow_v" stat="pref">
+      <lg>
+         <l pos="v">flow</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="54"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ENVIR">ELEMENT</sem>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">kolggâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="is audible_v" stat="pref">
+      <lg>
+         <l pos="v">is audible</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">kollˊjed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="carry_v" stat="pref">
+      <lg>
+         <l pos="v">carry</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="217"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+            <sem class="HUMAN">POSSESSION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">kueˊdˈded</t>
+         </tg>
+      </mg>
+   </e>
    <e id="hear_v" stat="pref">
       <lg>
          <l pos="v">hear</l>
@@ -94,12 +527,51 @@
          </tg>
       </mg>
    </e>
+   <e id="1_dig_v" stat="pref">
+      <lg>
+         <l pos="v">dig</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="30"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">kuäivvad</t>
+            <t pos="v" sem-cl="WORK" src="200 30" eng-stat="yes">rääppad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_dig_v" stat="pref">
+      <lg>
+         <l pos="v">dig</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="30"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">rääppad</t>
+            <t pos="v" sem-cl="WORK" src="200 30" eng-stat="yes">kuäivvad</t>
+         </tg>
+      </mg>
+   </e>
    <e id="knit_v" stat="pref">
       <lg>
          <l pos="v">knit</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="139"/>
+         <book name="200"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <sources>
+         <book name="200"/>
+         <book name="lookkamkerjj" lesson="1"/>
       </sources>
       <mg>
          <semantics>
@@ -116,7 +588,12 @@
          <l pos="v">sew</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="139"/>
+         <book name="200"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <sources>
+         <book name="200"/>
+         <book name="lookkamkerjj" lesson="1"/>
       </sources>
       <mg>
          <semantics>
@@ -125,6 +602,71 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="v" stat="pref">kuärrad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="climb_v" stat="pref">
+      <lg>
+         <l pos="v">climb</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">kuärŋŋad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="crashe_v" stat="pref">
+      <lg>
+         <l pos="v">crashe</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">kââmted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="be cold_v" stat="pref">
+      <lg>
+         <l pos="v">be cold</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">kâˊlmstõõllâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="be embarrassed_v" stat="pref">
+      <lg>
+         <l pos="v">be embarrassed</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">käinnad</t>
          </tg>
       </mg>
    </e>
@@ -147,6 +689,39 @@
          </tg>
       </mg>
    </e>
+   <e id="float_v" stat="pref">
+      <lg>
+         <l pos="v">float</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="53"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+            <sem class="ENVIR">ELEMENT</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">kåbllad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="invite_v" stat="pref">
+      <lg>
+         <l pos="v">invite</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">kåččad</t>
+         </tg>
+      </mg>
+   </e>
    <e id="kill_v" stat="pref">
       <lg>
          <l pos="v">kill</l>
@@ -166,28 +741,143 @@
          </tg>
       </mg>
    </e>
-   <e id="1_lie_v" stat="pref">
+   <e id="inquire_v" stat="pref">
       <lg>
-         <l pos="v">lie</l>
+         <l pos="v">inquire</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="*94"/>
-         <book name="100"/>
+         <book name="kurss" lesson="5"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="SPACE">POSITION</sem>
-            <sem class="BODY">HEALTH</sem>
+            <sem class="HUMAN"/>
+            <sem class="LANG">SPEECH</sem>
          </semantics>
          <tg xml:lang="sms">
-            <t pos="v" stat="pref">liâššâd</t>
-            <t pos="v" sem-cl="SPACE-BODY" src="200 *94-100" nob-stat="yes">lieˊnˈnjsted</t>
+            <t pos="v" stat="pref">kõõjjeed</t>
          </tg>
       </mg>
    </e>
-   <e id="2_lie_v" stat="pref">
+   <e id="ask_v" stat="pref">
       <lg>
-         <l pos="v">lie</l>
+         <l pos="v">ask</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">kõõččâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="fall_v" stat="pref">
+      <lg>
+         <l pos="v">fall</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="42"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">kõččâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="sing_v" stat="pref">
+      <lg>
+         <l pos="v">sing</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="142"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">SOCIAL</sem>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">laullad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="count_v" stat="pref">
+      <lg>
+         <l pos="v">count</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="26"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">SCHOOL</sem>
+            <sem class="SENSE">QUANTITY</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">laˊsǩǩeed</t>
+            <t pos="v" sem-cl="SENSE-WORK" src="200 26" eng-stat="yes">rekknâˊstted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_throw_v" stat="pref">
+      <lg>
+         <l pos="v">throw</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="176"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">laˊǧǧsted</t>
+            <t pos="v" sem-cl="SPACE" src="200 176" eng-stat="yes">vueˊlǧǧeed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_throw_v" stat="pref">
+      <lg>
+         <l pos="v">throw</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="176"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">vueˊlǧǧeed</t>
+            <t pos="v" sem-cl="SPACE" src="200 176" eng-stat="yes">laˊǧǧsted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="be_v" stat="pref">
+      <lg>
+         <l pos="v">be</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">leeˊd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_lie down_v" stat="pref">
+      <lg>
+         <l pos="v">lie down</l>
       </lg>
       <sources>
          <book name="200" BEDLAN_ID="*94"/>
@@ -200,7 +890,193 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="v" stat="pref">lieˊnˈnjsted</t>
-            <t pos="v" sem-cl="SPACE-BODY" src="200 *94-100" nob-stat="yes">liâššâd</t>
+            <t pos="v" sem-cl="SPACE-BODY" src="200 *94-100" eng-stat="yes">liâššâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_lie down_v" stat="pref">
+      <lg>
+         <l pos="v">lie down</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="*94"/>
+         <book name="100"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">POSITION</sem>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">liâššâd</t>
+            <t pos="v" sem-cl="SPACE-BODY" src="200 *94-100" eng-stat="yes">lieˊnˈnjsted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="have diarrhea_v" stat="pref">
+      <lg>
+         <l pos="v">have diarrhea</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">loojjted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="split_v" stat="pref">
+      <lg>
+         <l pos="v">split</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="155"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">luõˊdˈdjed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="feel good_v" stat="pref">
+      <lg>
+         <l pos="v">feel good</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">maaššâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_grind_v" stat="pref">
+      <lg>
+         <l pos="v">grind</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="226"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD">DISH</sem>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">maaˊlˈjed</t>
+            <t pos="v" sem-cl="WORK-SPACE" src="200 131" eng-stat="yes">sââjjad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_grind_v" stat="pref">
+      <lg>
+         <l pos="v">grind</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="131"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">TOOL</sem>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">sââjjad</t>
+            <t pos="v" sem-cl="FOOD-WORK" src="200 226" eng-stat="yes">maaˊlˈjed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="tell_v" stat="pref">
+      <lg>
+         <l pos="v">tell</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="LANG">SPEECH</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">mainsted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="mark_v" stat="pref">
+      <lg>
+         <l pos="v">mark</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">meärkkad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="hunt_v" stat="pref">
+      <lg>
+         <l pos="v">hunt</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="80"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+            <sem class="FOOD">NATURE</sem>
+            <sem class="ENVIR">TOPONOMY</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">miẹˊcsted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="remember_v" stat="pref">
+      <lg>
+         <l pos="v">remember</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">muˊštted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="smile_v" stat="pref">
+      <lg>
+         <l pos="v">smile</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">mååjjmed</t>
          </tg>
       </mg>
    </e>
@@ -221,11 +1097,261 @@
          </tg>
       </mg>
    </e>
+   <e id="be hungry_v" stat="pref">
+      <lg>
+         <l pos="v">be hungry</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">neälggad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="suck_v" stat="pref">
+      <lg>
+         <l pos="v">suck</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="163"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">FAMILY</sem>
+            <sem class="FOOD">NATURE</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">njiimmâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="catch with a lasso_v" stat="pref">
+      <lg>
+         <l pos="v">catch with a lasso</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+            <sem class="ZOO"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">njuärsted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="scent_v" stat="pref">
+      <lg>
+         <l pos="v">scent</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="148"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ZOO">MAMMAL</sem>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">njuˊnnʼjed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="be tasty_v" stat="pref">
+      <lg>
+         <l pos="v">be tasty</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD"/>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">njääˊljsted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="collect_v" stat="pref">
+      <lg>
+         <l pos="v">collect</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">noorrâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="push_v" stat="pref">
+      <lg>
+         <l pos="v">push</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="120"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">oiˊǧǧeed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="find_v" stat="pref">
+      <lg>
+         <l pos="v">find</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">ooccâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_hide_v" stat="pref">
+      <lg>
+         <l pos="v">hide</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="216"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">POSSESSION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">peiˊtted</t>
+            <t pos="v" sem-cl="HUMAN" src="200 216" eng-stat="yes">čiõkkâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_hide_v" stat="pref">
+      <lg>
+         <l pos="v">hide</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="216"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">POSSESSION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">čiõkkâd</t>
+            <t pos="v" sem-cl="HUMAN" src="200 216" eng-stat="yes">peiˊtted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="last_v" stat="pref">
+      <lg>
+         <l pos="v">last</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="TIME"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">peˊštted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="put_v" stat="pref">
+      <lg>
+         <l pos="v">put</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">piijjâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="reach_v" stat="pref">
+      <lg>
+         <l pos="v">reach</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">piâssâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="dance_v" stat="pref">
+      <lg>
+         <l pos="v">dance</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+            <sem class="HUMAN"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">pleässjed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="fetch down_v" stat="pref">
+      <lg>
+         <l pos="v">fetch down</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">ponjsted</t>
+         </tg>
+      </mg>
+   </e>
    <e id="eat_v" stat="pref">
       <lg>
          <l pos="v">eat</l>
       </lg>
       <sources>
+         <book name="kurss" lesson="4"/>
          <book name="200" BEDLAN_ID="*39"/>
          <book name="100"/>
       </sources>
@@ -236,6 +1362,22 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="v" stat="pref">poorrâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="make sound_v" stat="pref">
+      <lg>
+         <l pos="v">make sound</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ZOO"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">preuggad</t>
          </tg>
       </mg>
    </e>
@@ -262,9 +1404,10 @@
          <l pos="v">come</l>
       </lg>
       <sources>
-         <book name="kurss" lesson="1"/>
-         <book name="200" BEDLAN_ID="*25"/>
+         <book name="200"/>
          <book name="100"/>
+         <book name="kurss" lesson="1"/>
+         <book name="lookkamkerjj" lesson="1"/>
       </sources>
       <mg>
          <semantics>
@@ -276,12 +1419,149 @@
          </tg>
       </mg>
    </e>
+   <e id="bring_v" stat="pref">
+      <lg>
+         <l pos="v">bring</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">puˊhtted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="order_v" stat="pref">
+      <lg>
+         <l pos="v">order</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">päkkad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="roast_v" stat="pref">
+      <lg>
+         <l pos="v">roast</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">päˊštted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="blow_v" stat="pref">
+      <lg>
+         <l pos="v">blow</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="165"/>
+         <book name="200" BEDLAN_ID="16"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">pååssad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="swell_v" stat="pref">
+      <lg>
+         <l pos="v">swell</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="165"/>
+         <book name="200" BEDLAN_ID="16"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">pååssad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_laugh_v" stat="pref">
+      <lg>
+         <l pos="v">laugh</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="90"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+            <sem class="HUMAN">FAMILY</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">påǥsted</t>
+            <t pos="v" sem-cl="SENSE" src="kurss 6" eng-stat="yes">ruâkksed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_laugh_v" stat="pref">
+      <lg>
+         <l pos="v">laugh</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">ruâkksed</t>
+            <t pos="v" sem-cl="SENSE-HUMAN" src="200 90" eng-stat="yes">påǥsted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="fear_v" stat="pref">
+      <lg>
+         <l pos="v">fear</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+         <book name="200" BEDLAN_ID="46"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">põõllâd</t>
+         </tg>
+      </mg>
+   </e>
    <e id="wash_v" stat="pref">
       <lg>
          <l pos="v">wash</l>
       </lg>
       <sources>
          <book name="kurss" lesson="phon"/>
+         <book name="kurss" lesson="4"/>
          <book name="200" BEDLAN_ID="186"/>
       </sources>
       <mg>
@@ -300,6 +1580,7 @@
       </lg>
       <sources>
          <book name="kurss" lesson="phon"/>
+         <book name="kurss" lesson="4"/>
          <book name="200" BEDLAN_ID="186"/>
       </sources>
       <mg>
@@ -311,12 +1592,131 @@
          </tg>
       </mg>
    </e>
+   <e id="produce_v" stat="pref">
+      <lg>
+         <l pos="v">produce</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="210"/>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">raajjâd</t>
+            <t pos="v" sem-cl="WORK" src="kurss 1-200 210" eng-stat="yes">tuẹjˈjeed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="calculate_v" stat="pref">
+      <lg>
+         <l pos="v">calculate</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="26"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">QUANTITY</sem>
+            <sem class="WORK">SCHOOL</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">rekknâˊstted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="cry_v" stat="pref">
+      <lg>
+         <l pos="v">cry</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+         <book name="kurss" lesson="4"/>
+         <book name="200" BEDLAN_ID="222"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">SOCIAL</sem>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">reäkkâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="flush_v" stat="pref">
+      <lg>
+         <l pos="v">flush</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">ruâpseed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="scratch_v" stat="pref">
+      <lg>
+         <l pos="v">scratch</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="135"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ZOO">MAMMAL</sem>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">ruõtˈtâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="rub_v" stat="pref">
+      <lg>
+         <l pos="v">rub</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="131"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">ruˊvvjed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="wipe_v" stat="pref">
+      <lg>
+         <l pos="v">wipe</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="199"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">sekkad</t>
+         </tg>
+      </mg>
+   </e>
    <e id="play_v" stat="pref">
       <lg>
          <l pos="v">play</l>
       </lg>
       <sources>
-         <book name="kurss" lesson="dict"/>
+         <book name="kurss" lesson="3"/>
          <book name="200" BEDLAN_ID="118"/>
       </sources>
       <mg>
@@ -329,7 +1729,40 @@
          </tg>
       </mg>
    </e>
-   <e id="know_v" stat="pref">
+   <e id="call_v" stat="pref">
+      <lg>
+         <l pos="v">call</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="LANG">SPEECH</sem>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">soiˊttjed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="arrange_v" stat="pref">
+      <lg>
+         <l pos="v">arrange</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">suåppâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_know_v" stat="pref">
       <lg>
          <l pos="v">know</l>
       </lg>
@@ -345,32 +1778,109 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="v" stat="pref">tieˊtted</t>
+            <t pos="v" sem-cl="SENSE" src="kurss 3" eng-stat="yes">tobddâd</t>
          </tg>
       </mg>
    </e>
-   <e id="make_v" stat="pref">
+   <e id="2_know_v" stat="pref">
       <lg>
-         <l pos="v">make</l>
+         <l pos="v">know</l>
       </lg>
       <sources>
-         <book name="kurss" lesson="1"/>
-         <book name="200" BEDLAN_ID="210"/>
+         <book name="kurss" lesson="3"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="WORK">ECONOMY</sem>
+            <sem class="SENSE">PERCEPTION</sem>
          </semantics>
          <tg xml:lang="sms">
-            <t pos="v" stat="pref">tuẹjˈjeed</t>
+            <t pos="v" stat="pref">tobddâd</t>
+            <t pos="v"
+               sem-cl="WORK-SENSE"
+               src="kurss 1-200 *88-100"
+               eng-stat="yes">tieˊtted</t>
          </tg>
       </mg>
    </e>
-   <e id="hold_v" stat="pref">
+   <e id="1_run_v" stat="pref">
       <lg>
-         <l pos="v">hold</l>
+         <l pos="v">run</l>
       </lg>
       <sources>
-         <book name="kurss" lesson="dict"/>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ZOO"/>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">tiârrâd</t>
+            <t pos="v"
+               sem-cl="SPACE-SENSE"
+               src="kurss 6-200 221"
+               eng-stat="yes">urččâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_run_v" stat="pref">
+      <lg>
+         <l pos="v">run</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+         <book name="200" BEDLAN_ID="221"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">urččâd</t>
+            <t pos="v" sem-cl="ZOO-SPACE" src="kurss 6" eng-stat="yes">tiârrâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="greet_v" stat="pref">
+      <lg>
+         <l pos="v">greet</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">SOCIAL</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">tiõrvted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="having campfire_v" stat="pref">
+      <lg>
+         <l pos="v">having campfire</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN"/>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">tollstõõllâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="hold tight_v" stat="pref">
+      <lg>
+         <l pos="v">hold tight</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
          <book name="200" BEDLAN_ID="77"/>
       </sources>
       <mg>
@@ -382,21 +1892,107 @@
          </tg>
       </mg>
    </e>
-   <e id="run_v" stat="pref">
+   <e id="fight_v" stat="pref">
       <lg>
-         <l pos="v">run</l>
+         <l pos="v">fight</l>
       </lg>
       <sources>
-         <book name="kurss" lesson="dict"/>
-         <book name="200" BEDLAN_ID="221"/>
+         <book name="200" BEDLAN_ID="49"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="SPACE">MOTION</sem>
+            <sem class="WORK">ECONOMY</sem>
             <sem class="SENSE">EMOTION</sem>
          </semantics>
          <tg xml:lang="sms">
-            <t pos="v" stat="pref">urččâd</t>
+            <t pos="v" stat="pref">tuärrad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="investigate_v" stat="pref">
+      <lg>
+         <l pos="v">investigate</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">tuˊtǩǩeed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="cover_v" stat="pref">
+      <lg>
+         <l pos="v">cover</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD">DISH</sem>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">tuˊvdded</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="wish_v" stat="pref">
+      <lg>
+         <l pos="v">wish</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">POSSESSION</sem>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">tättad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_squeeze_v" stat="pref">
+      <lg>
+         <l pos="v">squeeze</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="156"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD">DISH</sem>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">täävvad</t>
+            <t pos="v" sem-cl="FOOD-SPACE" src="200 156" eng-stat="yes">čärvvad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_squeeze_v" stat="pref">
+      <lg>
+         <l pos="v">squeeze</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="156"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD">DISH</sem>
+            <sem class="SPACE">RELATION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">čärvvad</t>
+            <t pos="v" sem-cl="FOOD-SPACE" src="200 156" eng-stat="yes">täävvad</t>
          </tg>
       </mg>
    </e>
@@ -405,7 +2001,7 @@
          <l pos="v">give</l>
       </lg>
       <sources>
-         <book name="kurss" lesson="dict"/>
+         <book name="kurss" lesson="4"/>
          <book name="200" BEDLAN_ID="*63"/>
          <book name="100"/>
       </sources>
@@ -420,7 +2016,90 @@
          </tg>
       </mg>
    </e>
-   <e id="see_v" stat="pref">
+   <e id="mind_v" stat="pref">
+      <lg>
+         <l pos="v">mind</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">vaarõõttâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="answer_v" stat="pref">
+      <lg>
+         <l pos="v">answer</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="LANG">SPEECH</sem>
+            <sem class="SENSE">COGNITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">vaˊstteed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="marry_v" stat="pref">
+      <lg>
+         <l pos="v">marry</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN"/>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">veäncceed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="feel like_v" stat="pref">
+      <lg>
+         <l pos="v">feel like</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">viiššâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="go and bring_v" stat="pref">
+      <lg>
+         <l pos="v">go and bring</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">viǯǯâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_see_v" stat="pref">
       <lg>
          <l pos="v">see</l>
       </lg>
@@ -435,24 +2114,139 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="v" stat="pref">vueiˊnned</t>
+            <t pos="v" sem-cl="SENSE" src="kurss 6" eng-stat="yes">ǩiiččeed</t>
+            <t pos="v" sem-cl="SENSE" src="kurss 2" eng-stat="yes">ǩiõččâd</t>
          </tg>
       </mg>
    </e>
-   <e id="sleep_v" stat="pref">
+   <e id="2_see_v" stat="pref">
       <lg>
-         <l pos="v">sleep</l>
+         <l pos="v">see</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="*146"/>
-         <book name="100"/>
+         <book name="kurss" lesson="6"/>
       </sources>
       <mg>
          <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">ǩiiččeed</t>
+            <t pos="v"
+               sem-cl="SENSE"
+               src="kurss 1-200 *137-100"
+               eng-stat="yes">vueiˊnned</t>
+            <t pos="v" sem-cl="SENSE" src="kurss 2" eng-stat="yes">ǩiõččâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="3_see_v" stat="pref">
+      <lg>
+         <l pos="v">see</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">PERCEPTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">ǩiõččâd</t>
+            <t pos="v"
+               sem-cl="SENSE"
+               src="kurss 1-200 *137-100"
+               eng-stat="yes">vueiˊnned</t>
+            <t pos="v" sem-cl="SENSE" src="kurss 6" eng-stat="yes">ǩiiččeed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_can_v" stat="pref">
+      <lg>
+         <l pos="v">can</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">vueiˊtted</t>
+            <t pos="v"
+               sem-cl="HUMAN-WORK"
+               src="kurss phon-lookkamkerjj 1"
+               eng-stat="yes">vuäǯǯad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_can_v" stat="pref">
+      <lg>
+         <l pos="v">can</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">SOCIAL</sem>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">vuäǯǯad</t>
+            <t pos="v" sem-cl="WORK" src="kurss 1" eng-stat="yes">vueiˊtted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="vomit_v" stat="pref">
+      <lg>
+         <l pos="v">vomit</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="183"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+            <sem class="FOOD">DISH</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">vueˊhssed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="wait_v" stat="pref">
+      <lg>
+         <l pos="v">wait</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">SOCIAL</sem>
             <sem class="SPACE">POSITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">vueˊrdded</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="breathe_v" stat="pref">
+      <lg>
+         <l pos="v">breathe</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="19"/>
+      </sources>
+      <mg>
+         <semantics>
             <sem class="BODY">HEALTH</sem>
          </semantics>
          <tg xml:lang="sms">
-            <t pos="v" stat="pref">vuẹˊđđed</t>
+            <t pos="v" stat="pref">vuõiŋŋâd</t>
          </tg>
       </mg>
    </e>
@@ -493,6 +2287,90 @@
          </tg>
       </mg>
    </e>
+   <e id="trail_v" stat="pref">
+      <lg>
+         <l pos="v">trail</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">vuẹjted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="sleep_v" stat="pref">
+      <lg>
+         <l pos="v">sleep</l>
+      </lg>
+      <sources>
+         <book name="200"/>
+         <book name="100"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">POSITION</sem>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">vuẹˊđđed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="swipe_v" stat="pref">
+      <lg>
+         <l pos="v">swipe</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="76"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">västtled</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="pour_v" stat="pref">
+      <lg>
+         <l pos="v">pour</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">väällad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="bake_v" stat="pref">
+      <lg>
+         <l pos="v">bake</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">vääˊlʼjed</t>
+         </tg>
+      </mg>
+   </e>
    <e id="take_v" stat="pref">
       <lg>
          <l pos="v">take</l>
@@ -529,43 +2407,6 @@
          </tg>
       </mg>
    </e>
-   <e id="stand_v" stat="pref">
-      <lg>
-         <l pos="v">stand</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="*158"/>
-         <book name="100"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">TRAVEL</sem>
-            <sem class="SPACE">POSITION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">čuẹǯʼǯad</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="fly_v" stat="pref">
-      <lg>
-         <l pos="v">fly</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="*56"/>
-         <book name="100"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ZOO">BIRD</sem>
-            <sem class="SPACE">MOTION</sem>
-            <sem class="WORK">TRAVEL</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">ǩeˊrdded</t>
-         </tg>
-      </mg>
-   </e>
    <e id="1_smell_v" stat="pref">
       <lg>
          <l pos="v">smell</l>
@@ -598,54 +2439,87 @@
          </tg>
       </mg>
    </e>
-   <e id="hit_v" stat="pref">
+   <e id="leak_v" stat="pref">
       <lg>
-         <l pos="v">hit</l>
+         <l pos="v">leak</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="76"/>
+         <book name="kurss" lesson="4"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="SENSE">EMOTION</sem>
-            <sem class="BODY">HEALTH</sem>
+            <sem class="FOOD"/>
          </semantics>
          <tg xml:lang="sms">
-            <t pos="v" stat="pref">čâˊcǩǩed</t>
+            <t pos="v" stat="pref">âˊvveed</t>
          </tg>
       </mg>
    </e>
-   <e id="1_hide_v" stat="pref">
+   <e id="plan_v" stat="pref">
       <lg>
-         <l pos="v">hide</l>
+         <l pos="v">plan</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="216"/>
+         <book name="kurss" lesson="1"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="HUMAN">POSSESSION</sem>
+            <sem class="HUMAN">SOCIAL</sem>
+            <sem class="WORK">ECONOMY</sem>
+            <sem class="TIME">POINT</sem>
          </semantics>
          <tg xml:lang="sms">
-            <t pos="v" stat="pref">čiõkkâd</t>
-            <t pos="v" sem-cl="HUMAN" src="200 216" nob-stat="yes">peiˊtted</t>
+            <t pos="v" stat="pref">äiggad</t>
          </tg>
       </mg>
    </e>
-   <e id="2_hide_v" stat="pref">
+   <e id="open_v" stat="pref">
       <lg>
-         <l pos="v">hide</l>
+         <l pos="v">open</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="216"/>
+         <book name="kurss" lesson="2"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="HUMAN">POSSESSION</sem>
+            <sem class="HUMAN">SOCIAL</sem>
+            <sem class="WORK">ECONOMY</sem>
          </semantics>
          <tg xml:lang="sms">
-            <t pos="v" stat="pref">peiˊtted</t>
-            <t pos="v" sem-cl="HUMAN" src="200 216" nob-stat="yes">čiõkkâd</t>
+            <t pos="v" stat="pref">ääˊveed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="start_v" stat="pref">
+      <lg>
+         <l pos="v">start</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="TIME">POINT</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">äˊlǧǧed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="stop_v" stat="pref">
+      <lg>
+         <l pos="v">stop</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">PEOPLE</sem>
+            <sem class="SPACE">POSITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">årsted</t>
          </tg>
       </mg>
    </e>
@@ -666,19 +2540,101 @@
          </tg>
       </mg>
    </e>
-   <e id="tie_v" stat="pref">
+   <e id="draw_v" stat="pref">
       <lg>
-         <l pos="v">tie</l>
+         <l pos="v">draw</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="177"/>
+         <book name="kurss" lesson="5"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="xxx"/>
+            <sem class="WORK">SCHOOL</sem>
          </semantics>
          <tg xml:lang="sms">
-            <t pos="v" stat="pref">čõõnnâd</t>
+            <t pos="v" stat="pref">čouggâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="be ill_v" stat="pref">
+      <lg>
+         <l pos="v">be ill</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">čueˊcced</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="scream_v" stat="pref">
+      <lg>
+         <l pos="v">scream</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">čuârvvad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="follow_v" stat="pref">
+      <lg>
+         <l pos="v">follow</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">čuâvvad</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="show_v" stat="pref">
+      <lg>
+         <l pos="v">show</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">čuäˊjted</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="cut_v" stat="pref">
+      <lg>
+         <l pos="v">cut</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="6"/>
+         <book name="200" BEDLAN_ID="27"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD">NATURE</sem>
+            <sem class="WORK">ECONOMY</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">čuõpˈpâd</t>
          </tg>
       </mg>
    </e>
@@ -700,121 +2656,143 @@
          </tg>
       </mg>
    </e>
-   <e id="cut_v" stat="pref">
+   <e id="stand_v" stat="pref">
       <lg>
-         <l pos="v">cut</l>
+         <l pos="v">stand</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="27"/>
+         <book name="200" BEDLAN_ID="*158"/>
+         <book name="100"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="FOOD">NATURE</sem>
-            <sem class="WORK">ECONOMY</sem>
+            <sem class="WORK">TRAVEL</sem>
+            <sem class="SPACE">POSITION</sem>
          </semantics>
          <tg xml:lang="sms">
-            <t pos="v" stat="pref">čuõpˈpâd</t>
+            <t pos="v" stat="pref">čuẹǯʼǯad</t>
          </tg>
       </mg>
    </e>
-   <e id="1_squeeze_v" stat="pref">
+   <e id="hit_v" stat="pref">
       <lg>
-         <l pos="v">squeeze</l>
+         <l pos="v">hit</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="156"/>
+         <book name="200" BEDLAN_ID="76"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">EMOTION</sem>
+            <sem class="BODY">HEALTH</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">čâˊcǩǩed</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="tie_v" stat="pref">
+      <lg>
+         <l pos="v">tie</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="177"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">čõõnnâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="appear_v" stat="pref">
+      <lg>
+         <l pos="v">appear</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <sources>
+         <book name="kurss" lesson="2"/>
+         <book name="lookkamkerjj" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ENVIR"/>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">šõddâd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="fly_v" stat="pref">
+      <lg>
+         <l pos="v">fly</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="*56"/>
+         <book name="100"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ZOO">BIRD</sem>
+            <sem class="SPACE">MOTION</sem>
+            <sem class="WORK">TRAVEL</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="v" stat="pref">ǩeˊrdded</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="cook_v" stat="pref">
+      <lg>
+         <l pos="v">cook</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
       </sources>
       <mg>
          <semantics>
             <sem class="FOOD">DISH</sem>
-            <sem class="SPACE">RELATION</sem>
          </semantics>
          <tg xml:lang="sms">
-            <t pos="v" stat="pref">čärvvad</t>
-            <t pos="v" sem-cl="FOOD-SPACE" src="200 156" nob-stat="yes">täävvad</t>
+            <t pos="v" stat="pref">ǩeˊtted</t>
          </tg>
       </mg>
    </e>
-   <e id="2_squeeze_v" stat="pref">
+   <e id="hurry_v" stat="pref">
       <lg>
-         <l pos="v">squeeze</l>
+         <l pos="v">hurry</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="156"/>
+         <book name="kurss" lesson="6"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="FOOD">DISH</sem>
-            <sem class="SPACE">MOTION</sem>
+            <sem class="WORK"/>
          </semantics>
          <tg xml:lang="sms">
-            <t pos="v" stat="pref">täävvad</t>
-            <t pos="v" sem-cl="FOOD-SPACE" src="200 156" nob-stat="yes">čärvvad</t>
+            <t pos="v" stat="pref">ǩiirted</t>
          </tg>
       </mg>
    </e>
-   <e id="live_v" stat="pref">
+   <e id="test_v" stat="pref">
       <lg>
-         <l pos="v">live</l>
+         <l pos="v">test</l>
       </lg>
       <sources>
-         <book name="200" BEDLAN_ID="95"/>
+         <book name="kurss" lesson="6"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="HUMAN">PEOPLE</sem>
-            <sem class="BODY">HEALTH</sem>
+            <sem class="SENSE">PERCEPTION</sem>
+            <sem class="WORK">SCHOOL</sem>
          </semantics>
          <tg xml:lang="sms">
-            <t pos="v" stat="pref">jiẹˊlled</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="think_v" stat="pref">
-      <lg>
-         <l pos="v">think</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="173"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SENSE">COGNITION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">juurdčed</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="turn_v" stat="pref">
-      <lg>
-         <l pos="v">turn</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="181"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">jåårǥled</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="freeze_v" stat="pref">
-      <lg>
-         <l pos="v">freeze</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="60"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="BODY">HEALTH</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">kâˊlmmed</t>
+            <t pos="v" stat="pref">ǩiččlõddâd</t>
          </tg>
       </mg>
    </e>
@@ -832,492 +2810,6 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="v" stat="pref">ǩiẹˊssed</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="fall_v" stat="pref">
-      <lg>
-         <l pos="v">fall</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="42"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">kõččâd</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="flow_v" stat="pref">
-      <lg>
-         <l pos="v">flow</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="54"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ENVIR">ELEMENT</sem>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">kolggâd</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="carry_v" stat="pref">
-      <lg>
-         <l pos="v">carry</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="217"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-            <sem class="HUMAN">POSSESSION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">kueˊdˈded</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="dig_v" stat="pref">
-      <lg>
-         <l pos="v">dig</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="30"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">kuäivvad</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="float_v" stat="pref">
-      <lg>
-         <l pos="v">float</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="53"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">MOTION</sem>
-            <sem class="ENVIR">ELEMENT</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">kåbllad</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="sing_v" stat="pref">
-      <lg>
-         <l pos="v">sing</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="142"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="HUMAN">SOCIAL</sem>
-            <sem class="SENSE">EMOTION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">laullad</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="split_v" stat="pref">
-      <lg>
-         <l pos="v">split</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="155"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">luõˊdˈdjed</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="1_grind_v" stat="pref">
-      <lg>
-         <l pos="v">grind</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="226"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="FOOD">DISH</sem>
-            <sem class="WORK">ECONOMY</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">maaˊlˈjed</t>
-            <t pos="v" sem-cl="WORK-SPACE" src="200 131" nob-stat="yes">sââjjad</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_grind_v" stat="pref">
-      <lg>
-         <l pos="v">grind</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="131"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">TOOL</sem>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">sââjjad</t>
-            <t pos="v" sem-cl="FOOD-WORK" src="200 226" nob-stat="yes">maaˊlˈjed</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="crush_v" stat="pref">
-      <lg>
-         <l pos="v">crush</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="226"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">maaˊlˈjed</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="hunt_v" stat="pref">
-      <lg>
-         <l pos="v">hunt</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="80"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-            <sem class="FOOD">NATURE</sem>
-            <sem class="INVIR">TOPONOMY</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">miẹˊcsted</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="suck_v" stat="pref">
-      <lg>
-         <l pos="v">suck</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="163"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="HUMAN">FAMILY</sem>
-            <sem class="FOOD">NATURE</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">njiimmâd</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="scent_v" stat="pref">
-      <lg>
-         <l pos="v">scent</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="148"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ZOO">MAMMAL</sem>
-            <sem class="SENSE">PERCEPTION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">njuˊnnʼjed</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="push_v" stat="pref">
-      <lg>
-         <l pos="v">push</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="120"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">oiˊǧǧeed</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="fear_v" stat="pref">
-      <lg>
-         <l pos="v">fear</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="46"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SENSE">EMOTION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">põõllâd</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="laugh_v" stat="pref">
-      <lg>
-         <l pos="v">laugh</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="90"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SENSE">EMOTION</sem>
-            <sem class="HUMAN">FAMILY</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">påǥsted</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="blow_v" stat="pref">
-      <lg>
-         <l pos="v">blow</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="165"/>
-         <book name="200" BEDLAN_ID="16"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SENSE">PERCEPTION</sem>
-            <sem class="BODY">HEALTH</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">pååssad</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="swell_v" stat="pref">
-      <lg>
-         <l pos="v">swell</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="165"/>
-         <book name="200" BEDLAN_ID="16"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="BODY">HEALTH</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">pååssad</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="produce_v" stat="pref">
-      <lg>
-         <l pos="v">produce</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="210"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">raajjâd</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="calculate_v" stat="pref">
-      <lg>
-         <l pos="v">calculate</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="26"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SENSE">QUANTITY</sem>
-            <sem class="WORK">SCHOOL</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">rekknâˊstted</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="cry_v" stat="pref">
-      <lg>
-         <l pos="v">cry</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="222"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SENSE">EMOTION</sem>
-            <sem class="HUMAN">FAMILY</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">reäkkad</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="rub_v" stat="pref">
-      <lg>
-         <l pos="v">rub</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="131"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">ruˊvvjed</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="scratch_v" stat="pref">
-      <lg>
-         <l pos="v">scratch</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="135"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ZOO">MAMMAL</sem>
-            <sem class="SENSE">EMOTION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">ruõtˈtâd</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="wipe_v" stat="pref">
-      <lg>
-         <l pos="v">wipe</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="199"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">sekkad</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="fight_v" stat="pref">
-      <lg>
-         <l pos="v">fight</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="49"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-            <sem class="SENSE">EMOTION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">tuärrad</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="vomit_v" stat="pref">
-      <lg>
-         <l pos="v">vomit</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="183"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="BODY">HEALTH</sem>
-            <sem class="FOOD">DISH</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">vueˊhssed</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="throw_v" stat="pref">
-      <lg>
-         <l pos="v">throw</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="176"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="SPACE">MOTION</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">vueˊlǧǧeed</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="breathe_v" stat="pref">
-      <lg>
-         <l pos="v">breathe</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="19"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="BODY">HEALTH</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">vuõiŋŋâd</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="swipe_v" stat="pref">
-      <lg>
-         <l pos="v">swipe</l>
-      </lg>
-      <sources>
-         <book name="200" BEDLAN_ID="76"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="WORK">ECONOMY</sem>
-         </semantics>
-         <tg xml:lang="sms">
-            <t pos="v" stat="pref">västtled</t>
          </tg>
       </mg>
    </e>
