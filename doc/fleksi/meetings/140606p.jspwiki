@@ -1,0 +1,147 @@
+!!! Møte 6.06.14
+
+Til stades: Ryan, Lene, Trond
+
+!! Saksliste
+* NDS 
+* Ovttas
+* Synliggjøring av Ryan og Heli 
+* Gjennomgang av oppsettet for kursinnlogginga
+* Testing av kursinnlogging
+
+
+!! NDS 
+
+! NDS på ovttas.no
+
+[http://prod.ovttas.no/node/1353]
+
+fungerer no: openbeta.prod.ovttas.no/sma/node/2612
+(skal vera løyst i løpet av dagen) 
+
+
+__TILTAK__
+* Diskutere med ovttas om utfylling av ordboka __Trond__ 
+
+! bruk ifylgje loggen: 
+
+$ wc -l user_log.txt \\
+545593 user_log.txt
+
+
+{{{
+ 213002 sme	nob
+ 130093 nob	sme
+  55054 sma	nob
+  47906 sme	fin
+  45458 fin	sme
+  40189 nob	sma
+  12132 SoMe	nob
+   1330 SoMe	fin
+     32 	sme
+     ... og so ser eg det dukker oopp nokre feilmeldingar i brukarlogg-- må fikse og. 
+}}}     
+
+
+!Hjelp på ovttas
+
+Informasjonen vi får når vi har bokmerke på ei side, bør være link til den sida som omhandler ordboka på det språket det gjelder
+
+
+!NDS for cree
+
+16000 ord, imponerande robust. Mykje rart i koden, men svært bra.
+
+
+!! Synliggjøring av Ryan og Heli 
+
+* __Trond__: Agitprop
+[Giellatekno kontaktinfo|http://giellatekno.uit.no/Giellatekno.nob.html] \\
+er det mulig å tilby dem en side med lenke derfra for mer info/CV osv?
+* giellatekno-side er uproblematisk
+* alternativt kan de lenke opp til en side som de har et annet sted?
+* det er nok vanskelig å få til på UiT side offisielle sider
+
+__TILTAK__
+* __Trond__ legger inn Heli og Ryan inn i giellateknos kontaktsider, lager sider for begge innafor giellateknos sider, og sender mail til begge om dette etterpå.
+
+
+!! Gjennomgang av oppsettet for kursinnlogginga
+
+Det meste av det vi avtalte på forrige møte er gjort.
+
+!Morfologisk tilbakemelding
+Vi kan sjå for oss to løysingar, ei trenivåløysing, eller ei
+løysing med error-fst.
+
+!Eksempel akkusativ med trenivåløysing:
+# Nivå 1
+## "guolli" har bisyllabic stem - 
+## and shall have weak grade
+## Remember dipht simpl because of
+## the suffix is -id
+# Nivå 2
+## Remember "guolli" stem 
+## weak og strong grade?
+## Is there dipht simpl?
+## Wich suffix?
+# Nivå 3
+## "guolli" is a freqvent noun - 
+## you should know it now!
+## (blank)
+## (blank)
+
+Hjelpefunksjonen i Morfa fungerer lokalt på Ryans maskin, men ikke på nett enda. Ryan prøver ut 3 nivåer på hjelpeteksten. Dette skal vente litt fordi vi vil teste:
+
+
+!Bruk av error-fst?
+
+gulliid	guolli+Ani+N+CGErr+Pl+Acc
+
+CGErr => husk stadieveksling
+
+oppgaven i morfa S er "guolli" Pl Acc 
+
+{{{
+gulliid
+gulliid	guolli+Ani+N+CGErr+Pl+Acc  <==
+gulliid	guolli+Ani+N+CGErr+Pl+Gen
+gulliid	gullat+V+TV+Der/NomAg+N+Pl+Acc <== feil lemma
+gulliid	gullat+V+TV+Der/NomAg+N+Pl+Gen
+gulliid	gulli+Hum+N+NomAg+Pl+Acc <== feil lemma
+gulliid	gulli+Hum+N+NomAg+Pl+Gen
+}}}
+
+
+klikk på hjelp: analyse og sendes til en analysator med pedfst (med errorformer), 
+og __deretter__, hvis ikke treff, så får man backup-tilbakemelding 
+(dagens tilbakemelding)
+
+
+__TILTAK__
+* __Lene__ dokumenterer bruka v error fst, og Ryan kommenterer løsninga
+* __Ryan__: cookies & testing.oahpa.no fungerar ikkje no, men dei kan slåast på 
+* __Ryan__ historikk: tall og dato (__ikkje gjort__)
+* __Ryan__ Endre "Learn Sámi in 10 days" til "SAM-1031"
+* __Ryan eller Lene__ noterar hvilke kursmålslinker ikkje fungerar, og fikser
+* __Ryan__ fikser slik at man ser sammenlagt % av kursmål når man logger inn
+
+!! Testing av kursinnlogging
+Lene og Trond sender invitasjoner til test-studenter, med kopi til Ryan, som så lager innlogging for hver av dem. Det er viktig å få testa mye før neste møte.
+
+!Debugging, innloggingssystem
+
+
+* [http://testing.oahpa.no/courses_davvi/courses/]
+* [http://testing.oahpa.no/courses_davvi/courses/standard_login/]
+* [http://testing.oahpa.no/courses_davvi/media//images/_big.png]
+
+To sekund, deretter gulgrå side og:
+
+"/home/ryan/gtsvn/ped/univ_oahpa/media/images/_big.png" does not exist
+
+
+!!Neste møte
+tirsdag 17.6 kl. 13 edmonton tid, kl. 14 minnesota tid
+
+
