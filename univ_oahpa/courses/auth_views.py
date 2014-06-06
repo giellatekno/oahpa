@@ -34,7 +34,7 @@ def cookie_login(request, next_page=None, required=False, **kwargs):
         next_page = '/%s/courses/' % URL_PREFIX
     if request.user.is_authenticated():
         message = "You are logged in as %s." % request.user.username
-        request.user.message_set.create(message=message)
+        # request.user.message_set.create(message=message)
         return HttpResponseRedirect(next_page)
 
     matching_cookies = [(c, v) for c, v in request.COOKIES.iteritems() 
@@ -53,7 +53,7 @@ def cookie_login(request, next_page=None, required=False, **kwargs):
             auth.login(request, user)
             name = user.username
             message = "Login succeeded. Welcome, %s." % name
-            user.message_set.create(message=message)
+            # user.message_set.create(message=message)
             return HttpResponseRedirect(next_page)
         # elif settings.CAS_RETRY_LOGIN or required:
             # return HttpResponseRedirect(_login_url(service))
