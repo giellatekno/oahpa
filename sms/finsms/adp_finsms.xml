@@ -1,11 +1,163 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <r xml:lang="fin">
+   <e id="jälkeen_adp" stat="pref">
+      <lg>
+         <l pos="adp">jälkeen</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="TIME">POINT</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">mâŋŋa</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="päälle_adp" stat="pref">
+      <lg>
+         <l pos="adp">päälle</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">ool</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="mukana_adp" stat="pref">
+      <lg>
+         <l pos="adp">mukana</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">mieˊldd</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="luo_adp" stat="pref">
+      <lg>
+         <l pos="adp">luo</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="phon"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">luzz</t>
+            <t pos="adp" sem-cl="HUMAN-SPACE" src="kurss 1" fin-stat="yes">årra</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="ennen_adp" stat="pref">
+      <lg>
+         <l pos="adp">ennen</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="TIME">POINT</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">ouddâl</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="takana_adp" stat="pref">
+      <lg>
+         <l pos="adp">takana</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">tueˊǩǩen</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_päällä_adp" stat="pref">
+      <lg>
+         <l pos="adp">päällä</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">POSITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">âˊlnn</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_päällä_adp" stat="pref">
+      <lg>
+         <l pos="adp">päällä</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <sources>
+         <book name="kurss" lesson="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">âˊlnn</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="luokse_adp" stat="pref">
+      <lg>
+         <l pos="adp">luokse</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">PEOPLE</sem>
+            <sem class="SPACE">MOTION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="adp" stat="pref">årra</t>
+         </tg>
+      </mg>
+   </e>
    <e id="luota_adp" stat="pref">
       <lg>
          <l pos="adp">luota</l>
       </lg>
       <sources>
-         <book name="kurss" lesson="dict"/>
+         <book name="kurss" lesson="3"/>
          <book name="200" BEDLAN_ID="5"/>
       </sources>
       <mg>
@@ -23,7 +175,7 @@
          <l pos="adp">luona</l>
       </lg>
       <sources>
-         <book name="kurss" lesson="dict"/>
+         <book name="kurss" lesson="3"/>
          <book name="200" BEDLAN_ID="5"/>
       </sources>
       <mg>
@@ -33,6 +185,22 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="adp" stat="pref">åˊrnn</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="ajan kuluttua_adp" stat="pref">
+      <lg>
+         <l pos="adp">ajan kuluttua</l>
+      </lg>
+      <sources>
+         <book name="kurss" lesson="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="TIME">CYCLE</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="n" stat="pref">ääiˊj ǩeeˊjjest</t>
          </tg>
       </mg>
    </e>

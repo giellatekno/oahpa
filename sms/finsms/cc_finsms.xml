@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <r xml:lang="fin">
-   <e id="ja_cc" stat="pref">
+   <e id="1_ja_cc" stat="pref">
       <lg>
          <l pos="cc">ja</l>
       </lg>
@@ -14,6 +14,24 @@
          </semantics>
          <tg xml:lang="sms">
             <t pos="cc" stat="pref">da</t>
+            <t pos="cc" sem-cl="SENSE" src="200 2" fin-stat="yes">ja</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_ja_cc" stat="pref">
+      <lg>
+         <l pos="cc">ja</l>
+      </lg>
+      <sources>
+         <book name="200" BEDLAN_ID="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SENSE">COGNITION</sem>
+         </semantics>
+         <tg xml:lang="sms">
+            <t pos="cc" stat="pref">ja</t>
+            <t pos="cc" sem-cl="SENSE" src="kurss 1-200 2" fin-stat="yes">da</t>
          </tg>
       </mg>
    </e>
