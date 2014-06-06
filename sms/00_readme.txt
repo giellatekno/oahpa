@@ -122,17 +122,7 @@ The usual cycle:
    sms_filter_merged.xsl inFile=.....
 
  ==> re-build the smsoahpa db on the server
-
-=====
-
-To correct 20130920:
- - ordinals >>> string2numeral: put the correct fst, the current one is the same as numeral2string
-   test answers in ordinals >>> numeral2string: sms-inum.fst does not exist.
-   Trond: Done.
-   TODO: Look at the makefile procedure that did not make it automatially
-   Trond, Sjur: Done.
-   
-=====
+      - todo
 
 =================
- - TODO: update localisation stuff
+ - TODO next: spellrelax for reverted data before db feeding 
