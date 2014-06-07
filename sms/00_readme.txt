@@ -30,6 +30,7 @@ Spellrelax does not work yet
 
 4. ˈ (kann ohne geschrieben werden)
 Bsp: asdfˈoiuy => asdfoiuy
+ ==> done for all X2sms
 
 * spellrelax for Russian (ё ~ е)
    ==> done (in sms2rus)
