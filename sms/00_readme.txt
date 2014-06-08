@@ -126,5 +126,7 @@ The usual cycle:
       - todo
 
 =================
-  sms-oahpa is now updated without spellrelax:
- - TODO next: spellrelax for reverted data before db feeding 
+ - spellrelax for reverted data
+   ==> done
+ - update db with spellrelax
+   ==> done
