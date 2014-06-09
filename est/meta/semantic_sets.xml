@@ -9,6 +9,7 @@
   </subclasses>
   <subclasses class="HUMAN">  
     <sem class="FAMILY"/>
+    <sem class="PROFESSION"/>
     <sem class="HUMAN_A"/>
     <sem class="HUMAN_V"/>
     <sem class="MOVEMENT_V"/>
@@ -22,4 +23,30 @@
     <sem class="mMAL"/>
     <sem class="mPERSNAME"/>
   </subclasses>
+  <subclasses class="ANIMAL">  
+      <sem class="ANIMAL_DOM"/>  <!-- domestic --> 
+      <sem class="ANIMAL_WILD"/>
+      <sem class="ANIMAL_PET"/>
+      <sem class="ANIMAL_OTHER"/>
+      <sem class="BIRD"/> <!-- can fly, also insects -->
+      <sem class="FISH"/> <!-- living in water, so it contains also some animals --> 
+      <sem class="ANIMAL_V"/> <!-- what animals do and we do to animals -->
+      <sem class="ANIMAL_A"/>
+    </subclasses>
+    <subclasses class="BODY">  
+      <sem class="BODYPART"/> 
+      <sem class="BODYPART_PL"/>
+      <sem class="ILLNESS"/> 
+       <sem class="BODY_V"/> 
+       <sem class="BODY_A"/>
+       <sem class="BODY_OTHER"/> 
+    </subclasses>
+    <subclasses class="CLOTHES"> 
+      <sem class="CLOTHING"/>
+      <sem class="CLOTHING_PL"/>
+      <sem class="CLOTHING_OTHER"/>
+      <sem class="CLOTHING_V"/> 
+      <sem class="CLOTHING_A"/>
+      <sem class="COLOUR"/>
+    </subclasses>
 </lexicon>
