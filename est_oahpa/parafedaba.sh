@@ -1,9 +1,9 @@
 #!/bin/sh
 
 P="python2.7"
-GTHOME="/home/heli/main/ped"
+EST_HOME="/home/est_oahpa"
 LANGDIR="est"
-DATA=$GTHOME/$LANGDIR
+DATA=$EST_HOME/$LANGDIR
 DPS="$DATA/src"
 INC="$DATA/inc"
 META="$DATA/meta"
@@ -14,15 +14,15 @@ DPW="$DATA/engest"
 DPR="$DATA/rusest"
 #WORDS=$GTHOME/words/dicts/smenob/src
 
-echo "==================================================="
-echo "installing tags and paradigms for Morfa"
-$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>error.log
-echo " "
-echo "done"
-echo "==================================================="
+#echo "==================================================="
+#echo "installing tags and paradigms for Morfa"
+#$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>error.log
+#echo " "
+#echo "done"
+#echo "==================================================="
 
 ##
-## Trying to set up estonian
+## Trying to set up Estonian Oahpa
 
 
 ##

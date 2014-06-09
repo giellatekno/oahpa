@@ -10,8 +10,8 @@
 {% block instructions %}
   {# TODO: strings for instructions. #}
   {% ifequal gametype "string" %}
-    {% trans "Write a numeral followed by fullstop (for example, 32.). Please keep to this format." %}
+    {% trans "Write a number followed by fullstop (for example, 30.). Please keep to this format." %}
   {% else %}
-    {% trans "Write the ordinal numbers in Võro (for example, katsas)." %}
+    {% trans "Write the ordinal numbers with words (for example, kolmekümnes)." %}
   {% endifequal %}
 {% endblock %}

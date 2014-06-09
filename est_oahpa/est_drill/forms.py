@@ -938,7 +938,7 @@ class OahpaQuestion(forms.Form):
 		if (hasattr(self, 'gametype') and self.gametype == 'leksa'): # this applies only to Leksa, was: elif
 			# PI: commented out at this stage
 			# # add infinitives as possible answers
-			if self.word.pos in ['V', 'X']:
+			if self.word.pos == 'V':
 				if self.translang in infinitives_sub and infinitives_add:
 					infin_s = infinitives_sub[self.translang]
 				        infin_a = infinitives_add[self.translang]
@@ -964,7 +964,7 @@ class OahpaQuestion(forms.Form):
 # #
 
 class LeksaSettings(OahpaSettings):
-	semtype = forms.ChoiceField(initial='HUMAN', choices=SEMTYPE_CHOICES) # was: HUMAN
+	semtype = forms.ChoiceField(initial='all', choices=SEMTYPE_CHOICES) # was: HUMAN
 	transtype = forms.ChoiceField(choices=TRANS_CHOICES, widget=forms.Select)
 	# For placename quizz
 	#geography = forms.ChoiceField(initial='world', choices=GEOGRAPHY_CHOICES)
@@ -1039,7 +1039,7 @@ class LeksaQuestion(OahpaQuestion):
 		else:
 			self.lemma = word.definition
 
-		if word.pos.upper() in ['V', 'X']:
+		if word.pos.upper() == 'V':
 			if word.language in infinitives_sub and infinitives_add:
 				infin_s = infinitives_sub[word.language]
 				infin_a = infinitives_add[word.language]
