@@ -118,6 +118,10 @@
                     {% include 'words_to_work_on_leksa.html' %}
                 {% endif %}
 
+                {% if 'numra' in goal.main_type %}
+                    {% include 'words_to_work_on_numra.html' %}
+                {% endif %}
+
                 {% if 'morfa' in goal.main_type %}
                     {% include 'words_to_work_on_morfa.html' %}
                 {% endif %}
