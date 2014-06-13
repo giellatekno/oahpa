@@ -3,14 +3,14 @@
   <q id="npl1">
     <qtype>N-PL</qtype>
     <question>
-      <text>Awîniki N-LOC</text>
+      <text>Awîniki êhayâcik N-LOC</text>
       <element id="N-LOC">
         <grammar tag="N+IN+Loc"/>
         <sem class="PLACE"/>
       </element>
     </question>
     <answer> 
-      <text>SUBJ N-LOC</text>
+      <text>SUBJ N-LOC êhayâcik</text>
       <element game='morfa' id="SUBJ" task="yes">
             <grammar tag="N+AN+Pl"/>
         <sem class="PEOPLE"/>
@@ -20,14 +20,14 @@
   <q id="nloc1">
     <qtype>N-LOC</qtype>
     <question>
-      <text>Tânitê SUBJ</text>
+      <text>Tân'tê SUBJ</text>
       <element id="SUBJ">
             <grammar tag="N+AN+Number"/>
         <sem class="PEOPLE"/>
       </element>
     </question>
     <answer> 
-      <text>SUBJ N-LOC</text>
+      <text>SUBJ N-LOC ehayat</text>
       <element game='morfa' id="N-LOC" task="yes">
         <grammar tag="N+IN+Loc"/>
         <sem class="PLACE"/>
@@ -37,14 +37,14 @@
   <q id="nloc2">
     <qtype>N-LOC</qtype>
     <question>
-      <text>Tânitê MAINV</text>
+      <text>Tân'tê MAINV</text>
       <element id="MAINV">
         <grammar tag="V+IA+Ind+Prt+2Sg"/>
         <id>pimohte</id>
       </element>
     </question>
     <answer> 
-      <text>MAINV N-LOC</text>
+      <text>MAINV N-LOC isi</text>
       <element game='morfa' id="N-LOC" task="yes">
         <grammar tag="N+IN+Loc"/>
         <sem class="PLACE"/>
