@@ -289,7 +289,6 @@ POSSESSIVE_CHOICES = (
 
 POSSESSIVE_NUMBER_CHOICES = (
 	('N-SG', _('Singular')),
-#	('N-DU', _('Dual')),
 #	('N-PL', _('Plural')),
 )
 
@@ -561,17 +560,25 @@ def relax(strict):
 	relax_pairs = {
 		# key: value
 		# value is accepted for key - have changed the order in the pairs because the key must be unique
-		# TODO: Write more key:value pairs for Plain Cree.
-	   u'â': u'а',
-	   #u'е́': u'е',
-	   #u'и́': u'и',
-	   #u'о́': u'о',
-	   #u'у́': u'у',
-	   #u'ы́': u'ы',
-	   #u'э́': u'э',
-	   #u'ю́': u'ю',
-	   #u'я́': u'я',
-	   #u'ё': u'е',
+		# TODO: evaluate these key:value pairs for Plain Cree, especially the last four.
+		# For sma we had two levels: 1. always accept øö äæ, 2. accept i for ï, but with a comment
+		# We should consider the same for the four last ones.
+	   u'â': u'ā', # a + combining macron U+0304
+	   u'ê': u'ē', # e + combining macron U+0304
+	   u'î': u'ī', # i + combining macron U+0304
+	   u'ô': u'ō', # o + combining macron U+0304
+	   u'â': u'ā,' # precombined a macron
+	   u'ê': u'ē,' # precombined e macron
+	   u'î': u'ī,' # precombined i macron
+	   u'ô': u'ō,' # precombined o macron
+	   u'â': u'â', # a + combining circumflex accent U+0302
+	   u'ê': u'ê', # e + combining circumflex accent U+0302
+	   u'î': u'î', # i + combining circumflex accent U+0302
+	   u'ô': u'ô', # o + combining circumflex accent U+0302
+	   u'â': u'a', # Accepting short for long ???
+	   u'ê': u'e', # Accepting short for long ???
+	   u'î': u'i', # Accepting short for long ???
+	   u'ô': u'o'  # Accepting short for long ???
 	}
 
 	# Create an iterator. We want to generate as many possibilities as
