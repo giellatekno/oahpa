@@ -561,9 +561,8 @@ def relax(strict):
 	relax_pairs = {
 		# key: value
 		# value is accepted for key - have changed the order in the pairs because the key must be unique
-		# For Russian: spellrelax for je vs jo, vowels with and without stress marks
-		# Write the rules for Kven if any!
-	   #u'а́': u'а',
+		# TODO: Write more key:value pairs for Plain Cree.
+	   u'â': u'а',
 	   #u'е́': u'е',
 	   #u'и́': u'и',
 	   #u'о́': u'о',
