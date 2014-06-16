@@ -385,6 +385,8 @@ VASTAS_NR_OF_TASKWORDS = (
 TRANS_CHOICES = (
 	('crkeng', _('Cree to English')),
 	('engcrk', _('English to Cree')),
+	('crkfra', _('Cree to French')),
+	('fracrk', _('French to Cree')),
 )
 
 NUMLANGUAGE_CHOICES = (
@@ -2065,7 +2067,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     #if language == "no" : language = "eng"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["nob","sme","fin","eng","swe"]: language="eng"
+    if not language in ["nob","sme","fin","eng","swe","crk","fra"]: language="eng"
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():
