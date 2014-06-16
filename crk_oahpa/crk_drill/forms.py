@@ -564,26 +564,26 @@ def relax(strict):
 
 	relax_pairs = {
 		# key: value
-		# value is accepted for key - have changed the order in the pairs because the key must be unique
+		# key is accepted for value - have changed the order in the pairs because the key must be unique!
 		# TODO: evaluate these key:value pairs for Plain Cree, especially the last four.
 		# For sma we had two levels: 1. always accept øö äæ, 2. accept i for ï, but with a comment
 		# We should consider the same for the four last ones.
-	   u'â': u'ā', # a + combining macron U+0304
-	   u'ê': u'ē', # e + combining macron U+0304
-	   u'î': u'ī', # i + combining macron U+0304
-	   u'ô': u'ō', # o + combining macron U+0304
-	   u'â': u'ā', # precombined a macron
-	   u'ê': u'ē', # precombined e macron
-	   u'î': u'ī', # precombined i macron
-	   u'ô': u'ō', # precombined o macron
-	   u'â': u'â', # a + combining circumflex accent U+0302
-	   u'ê': u'ê', # e + combining circumflex accent U+0302
-	   u'î': u'î', # i + combining circumflex accent U+0302
-	   u'ô': u'ô', # o + combining circumflex accent U+0302
-	   u'â': u'a', # Accepting short for long ???
-	   u'ê': u'e', # Accepting short for long ???
-	   u'î': u'i', # Accepting short for long ???
-	   u'ô': u'o'  # Accepting short for long ???
+	   u'ā' : u'â', # a + combining macron U+0304
+	   u'ē' : u'ê', # e + combining macron U+0304
+	   u'ī' : u'î', # i + combining macron U+0304
+	   u'ō' : u'ô', # o + combining macron U+0304
+	   u'ā' : u'â', # precombined a macron
+	   u'ē' : u'ê', # precombined e macron
+	   u'ī' : u'î', # precombined i macron
+	   u'ō' : u'ô', # precombined o macron
+	   u'â' : u'â', # a + combining circumflex accent U+0302
+	   u'ê' : u'ê', # e + combining circumflex accent U+0302
+	   u'î' : u'î', # i + combining circumflex accent U+0302
+	   u'ô' : u'ô', # o + combining circumflex accent U+0302
+	   u'a' : u'â', # Accepting short for long ???
+	   u'e' : u'ê', # Accepting short for long ???
+	   u'i' : u'î', # Accepting short for long ???
+	   u'o' : u'ô' # Accepting short for long ???
 	}
 
 	# Create an iterator. We want to generate as many possibilities as
@@ -597,7 +597,7 @@ def relax(strict):
 	#print "list of permutations ",perms_flat
 
 	# Individual possibilities
-	relaxed_perms = [sub_str(relaxed, R, S) for R, S in searches]
+	relaxed_perms = [sub_str(relaxed, R, S) for S, R in searches]
 	#print relaxed_perms
 
 	# Possibilities applied one by one
