@@ -1256,6 +1256,7 @@ class MorfaQuestion(OahpaQuestion):
 			self.case = tag.case
 
 		self.tag = tag.string
+		self.animacy = tag.animacy # added for crk, in order to display animate / inanimate nouns in different colors
 
 		if tag.pos == "V":
 			if not self.pron:
