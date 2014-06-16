@@ -567,10 +567,10 @@ def relax(strict):
 	   u'ê': u'ē', # e + combining macron U+0304
 	   u'î': u'ī', # i + combining macron U+0304
 	   u'ô': u'ō', # o + combining macron U+0304
-	   u'â': u'ā,' # precombined a macron
-	   u'ê': u'ē,' # precombined e macron
-	   u'î': u'ī,' # precombined i macron
-	   u'ô': u'ō,' # precombined o macron
+	   u'â': u'ā', # precombined a macron
+	   u'ê': u'ē', # precombined e macron
+	   u'î': u'ī', # precombined i macron
+	   u'ô': u'ō', # precombined o macron
 	   u'â': u'â', # a + combining circumflex accent U+0302
 	   u'ê': u'ê', # e + combining circumflex accent U+0302
 	   u'î': u'î', # i + combining circumflex accent U+0302
