@@ -17,7 +17,7 @@ def grammarlinks(request):
 	from crk_drill.models import Grammarlinks
 	from conf.tools import switch_language_code
 	
-	default_lang = 'nob'
+	default_lang = 'eng' # was: nob
 	
 	try:
 		lang = switch_language_code(request.session.get('django_language'))

@@ -75,14 +75,14 @@ NOUN_FILTER_DEFINITION = ['animacy', 'declension', 'gender', 'source']
 # Dem - akk, gen, ill, lok, kom
 CASE_CHOICES_PRONOUN = (
 	('N-PL', _('plural')),
-	('N-GEN', _('Genitive')),
-    ('N-PAR', _('Partitive')),
-    ('N-ILL', _('Illative')),
-    ('N-INE', _('Inessive')),
-    ('N-ELA', _('Elative')),
-    ('N-ADE', _('Adessive')),
-    ('N-ABL', _('Ablative')),
-    ('N-ALL', _('Allative')),
+	#('N-GEN', _('Genitive')),
+    #('N-PAR', _('Partitive')),
+    #('N-ILL', _('Illative')),
+    #('N-INE', _('Inessive')),
+    #('N-ELA', _('Elative')),
+    #('N-ADE', _('Adessive')),
+    #('N-ABL', _('Ablative')),
+    #('N-ALL', _('Allative')),
 )
 
 PRONOUN_QUESTION_ANSWER = {
@@ -149,15 +149,16 @@ WORDFORM_TYPE_CHOICES = (
 
 ADJCASE_CHOICES = (
 	('N-PL', _('plural')),
-	('ATTR', _('attributive')),
-	('A-GEN', _('Genitive')),
-    ('A-PAR', _('Partitive')),
-    ('A-ILL', _('Illative')),
-    ('A-INE', _('Inessive')),
-    ('A-ELA', _('Elative')),
-    ('A-ADE', _('Adessive')),
-    ('A-ABL', _('Ablative')),
-    ('A-ALL', _('Allative')),)
+#	('ATTR', _('attributive')),
+#	('A-GEN', _('Genitive')),
+ #   ('A-PAR', _('Partitive')),
+  #  ('A-ILL', _('Illative')),
+   # ('A-INE', _('Inessive')),
+    #('A-ELA', _('Elative')),
+    #('A-ADE', _('Adessive')),
+    #('A-ABL', _('Ablative')),
+    #('A-ALL', _('Allative')),
+)
 
 ADJECTIVE_QUESTION_ANSWER = {
 	# gametype			question		answer
@@ -359,6 +360,7 @@ BOOK_CHOICES = (
     ('advan', _('Advanced')),
 )
 
+
 FREQUENCY_CHOICES = (
 	('rare', _('rare')),
 	('common', _('common')),
@@ -366,8 +368,8 @@ FREQUENCY_CHOICES = (
 
 GEOGRAPHY_CHOICES = (
 	('world', _('world')),
-	('sapmi', _('sapmi')), # was: sápmi, maybe characters with diacritics not allowed in drop-down menus
-	('suopma', _('suopma')),
+#	('sapmi', _('sapmi')), # was: sápmi, maybe characters with diacritics not allowed in drop-down menus
+#	('suopma', _('suopma')),
 )
 
 VASTA_LEVELS = (
@@ -381,6 +383,7 @@ VASTAS_NR_OF_TASKWORDS = (
 	('3', _('3')),
 	('4', _('4')),
 )
+
 
 TRANS_CHOICES = (
 	('crkeng', _('Cree to English')),
