@@ -302,19 +302,19 @@ POSSESSIVE_CHOICE_SEMTYPES = dict((
 POSSESSIVE_GROUP1_CASE = (
 	('N-2SG', _('your (Sg)')),
 	('N-3SG', _('his/her')),
-	('N-4SG', _('obviative')),
+	#('N-4SG', _('obviative')),
 )
 
 POSSESSIVE_GROUP2_CASE = (
 	('N-2SG', _('your (Sg)')),
 	('N-3SG', _('his/her')),
-	('N-4SG', _('obviative')),
+	#('N-4SG', _('obviative')),
 )
 
 POSSESSIVE_GROUP3_CASE = (
 	('N-2SG', _('your (Sg)')),
 	('N-3SG', _('his/her')),
-	('N-4SG', _('obviative')),
+	#('N-4SG', _('obviative')),
 )
 
 #POSSESSIVE_CONTEXT_CHOICES = (

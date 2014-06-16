@@ -12,14 +12,14 @@
 
 {% block subsetting %}
 	{% ifequal settings.gametype "bare" %}
-	<li><label for="id_{{ settingsform.case.name }}">{% trans "Case" %}</label>
+	<li><label for="id_{{ settingsform.case.name }}">{% trans "Type" %}</label>
 		{{ settingsform.case }}</li>
   <!--  <li><label>{{ settingsform.singular_only }}{% trans " singular only" %}</label></li> -->
 	<!-- <li><label for="id_{{ settingsform.noun_type.name }}">{% trans "Type" %}</label>
 	        {{ settingsform.noun_type }}</li>
 	</li> --> 
 	{% else %}
-	<li><label for="id_{{ settingsform.case_context.name }}">{% trans "Case" %}</label>
+	<li><label for="id_{{ settingsform.case_context.name }}">{% trans "Type" %}</label>
 		{{ settingsform.case_context }}</li>
 	{% endifequal %}
 {% endblock %}
