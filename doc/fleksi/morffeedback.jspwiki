@@ -1,0 +1,58 @@
+!!!Bruk av errorfst i Morfa
+
+!!errorfst fungerer slik i Vasta/Sahka:
+
+{{{
+echo 'Spørsmål delimiter svar' | preprocess | lookup errorsme |\ 
+lookup2cg | vislcg3 -g pedsme.cg3 > tagger 
+}}}
+Det som blir generert her er triggere for feedback i fila ped/sme/meta/messages_vasta.xml. 
+
+message_vasta.xml innholder feedback både til syntakstisk, morfologisk og discourse, f.eks.:
+
+* Beklager – systemet fungerer ikke for øyeblikket.
+* Du skal her svare med samme verbet som det spørres med.
+* Du har kanskje glemt å skrive á i WORDFORM
+* Er du sikker på at du svarer med riktig tid?
+
+Morfologisk/ortografisk feedback, taggen er merket med err, f.eks. message id="err-long"
+
+{{{
+<message id="err-longA">Du har kanskje glemt å skrive á i WORDFORM</message>
+}}}
+
+!!Forslag for bruk i Morfa:
+Vi bruker errorfst for sme for Morfa feedback slik: 
+# gi feedback på grunnlag av errortagg
+# hvis ingen errortagg: gi generell morfologisk feedback i hht oppgave (som dagens system)
+
+!Detaljer til 1:
+Oppgavetypen i Morfa, vil automatisk avgrense ( "disambuere") mulige tolkinger av analysen, eks: oppgaven er å bøye 'skuvla' i lokativ. Studenten skriver 'skuvlas' som gir analysen:
+{{{
+skuvlas
+skuvlas	skuvla+Org+Plc+N+CGErr+Sg+Acc+PxSg3
+skuvlas	skuvla+Org+Plc+N+CGErr+Sg+Gen+PxSg3
+skuvlas	skuvla+Org+Plc+N+CGErr+Sg+Loc  <=======
+}}}
+Det er bare Loc-analysen som er interessant her, og den til CGErr som trigger til message: \\
+'Husk stadieveksling: Veksling i konsonantgruppa mellom 1. og 2. stavinga i siste takta, f.eks. giella - gielas. Klikk for å lese mer.' 
+
+!!Hva som må gjøres:
+Vi bruker errorfst for sme som Lene har laget tidligere (implementeres slik som den er), men 
+# Lene lager ei egen fil for message, slik at vi kan tilpasse den  til Morfabruk. Vi trenger f.eks. ikke slike "Mente du illativ?", fordi oppgaven var å lage illativ.
+# Ryan implementerer dette i Morfa for sme, både for MorfaC og MorfaS
+# Lene kan vurdere legge til en del:
+## kjente subformer
+## feilstavinger tatt fra log
+## flere typer av systematiske morfologiske feil 
+# Bør dette lages som en API-tjeneste, dvs at Morfa bruker den slik (API-tjeneste som også evt kan brukes av grammar checker?)
+# Neste steg er å implementere dette for Crk
+
+
+
+
+
+
+
+
+
