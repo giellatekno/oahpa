@@ -15,7 +15,7 @@ message_vasta.xml innholder feedback både til syntakstisk, morfologisk og disco
 * Du har kanskje glemt å skrive á i WORDFORM
 * Er du sikker på at du svarer med riktig tid?
 
-Morfologisk/ortografisk feedback, taggen er merket med err, f.eks. message id="err-long"
+Morfologisk/ortografisk feedback, taggen er merket med err, f.eks. message id="err-longA"
 
 {{{
 <message id="err-longA">Du har kanskje glemt å skrive á i WORDFORM</message>
@@ -27,7 +27,7 @@ Vi bruker errorfst for sme for Morfa feedback slik:
 # hvis ingen errortagg: gi generell morfologisk feedback i hht oppgave (som dagens system)
 
 !Detaljer til 1:
-Oppgavetypen i Morfa, vil automatisk avgrense ( "disambuere") mulige tolkinger av analysen, eks: oppgaven er å bøye 'skuvla' i lokativ. Studenten skriver 'skuvlas' som gir analysen:
+Oppgavetypen i Morfa, vil automatisk avgrense ( "disambiguere") mulige tolkinger av analysen, eks: oppgaven er å bøye 'skuvla' i lokativ. Studenten skriver 'skuvlas' som gir analysen:
 {{{
 skuvlas
 skuvlas	skuvla+Org+Plc+N+CGErr+Sg+Acc+PxSg3
@@ -43,7 +43,7 @@ Vi bruker errorfst for sme som Lene har laget tidligere (implementeres slik som 
 # Ryan implementerer dette i Morfa for sme, både for MorfaC og MorfaS
 # Lene kan vurdere legge til en del:
 ## kjente subformer
-## feilstavinger tatt fra log
+## feilstavinger tatt fra logg
 ## flere typer av systematiske morfologiske feil 
 # Bør dette lages som en API-tjeneste, dvs at Morfa bruker den slik (API-tjeneste som også evt kan brukes av grammar checker?)
 # Neste steg er å implementere dette for Crk
