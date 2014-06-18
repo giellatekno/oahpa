@@ -19,6 +19,14 @@ Quick start
 
 3. Run `python manage.py migrate` to create the errorapi models.
 
+4. Navigate to the test page (TODO: include url) and click words to see if
+   everything runs. 
+
+## So far...
+
+This isn't able to be installed as a module, but: track requirements for the
+package in requirements.txt, and make sure that as much as possible can be done
+through this module or settings in `settings.py`. 
 
 ## Developing
 
