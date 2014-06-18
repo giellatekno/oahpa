@@ -78,14 +78,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
 	      {% if settings.pos == "Pron" or settings.pos == "Num" %}
 		      {{ form.lemma }}
 		  {% else %} {# pos = N,V,A - link to translation #}
-		      <a href="#" class="link_tooltip" id="link_tooltip-{{ forloop.counter }}"
-		      		{% if form.animacy == "AN" %}
-		               style="color:rgb(6, 199, 12)" 
-		          {% endif %}        
-		          {% if form.animacy == "IN" %}
-		              style="color:purple"
-		          {% endif %}
-              >
+		      <a href="#" class="link_tooltip" id="link_tooltip-{{ forloop.counter }}">
 		          {{ form.lemma }}   
 		      </a>		      
 		  {% endif %}

@@ -65,7 +65,13 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.nno.html
 <input type="submit" name="settings" value="{% trans "New set" %}" />
 
 {% block question %}
+<span 
+{% if form.animacy == "AN" %}
+		  style="color:purple" 
+{% endif %}        
+>
 {{ form.lemma }}
+</span>
 {% endblock %}
 
 {% block submit %}

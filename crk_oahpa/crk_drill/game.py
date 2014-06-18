@@ -775,6 +775,8 @@ class BareGame(Game):
 			elif pos == 'N':
 			     if case == 'Loc':
 				    WORD_FILTER = Q(word__semtype__semtype='MORFALOC')
+			     elif number == ['Pl']:
+				    WORD_FILTER = Q(word__semtype__semtype='MORFA-PL')
 			     else:
 				    WORD_FILTER = Q(word__semtype__semtype='MORFAS')
 				

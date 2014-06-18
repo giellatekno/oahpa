@@ -1055,6 +1055,7 @@ class LeksaQuestion(OahpaQuestion):
 		self.sourcelang = transtype[0:3]
 		self.word = word
 		self.gametype = 'leksa'
+		self.animacy = word.animacy # Added for Cree, in order to color the animate nouns. Thanks to this assigment operation the template has access to the animacy information.
 		kwargs['correct_val'] = correct_val
 		super(LeksaQuestion, self).__init__(*args, **kwargs)
 
@@ -1072,7 +1073,7 @@ class LeksaQuestion(OahpaQuestion):
 		
 		if type(word) == Word: 
                     if self.sourcelang == 'rus':
-                        self.lemma = word.lemma_stressed  # for Rusian the words will be presented with stress marks
+                        self.lemma = word.lemma_stressed  # for Russian the words will be presented with stress marks
                     else:
                         self.lemma = word.lemma # for other languages 'lemma_stressed' does not exist
 		else:
