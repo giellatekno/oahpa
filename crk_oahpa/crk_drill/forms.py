@@ -356,6 +356,7 @@ DERIVATION_CHOICES_CONTEXT = (
 BOOK_CHOICES = (
     ('all', _(u'all')),
     ('GG1', _('Book1')),
+    ('Audio', _('Audiofiles')),
 #    ('GG2', _('Book2')),
     ('advan', _('Advanced')),
 )
