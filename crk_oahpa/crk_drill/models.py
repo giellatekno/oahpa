@@ -456,7 +456,8 @@ class Word(models.Model):
 	presentationform = models.CharField(max_length=5) # PI: what's this?
 	pos = models.CharField(max_length=12) # Accomodate larger PoS
 	stem = models.CharField(max_length=20)
-	animacy = models.CharField(max_length=20) 
+	animacy = models.CharField(max_length=20)
+	trans_anim = models.CharField(max_length=20) # for verbs: transitivity-animacy 
 	gender = models.CharField(max_length=20)
 	declension = models.CharField(max_length=20)
 	loc2 = models.BooleanField(default=False) # indicates if the word has Locative2 or not
@@ -464,7 +465,7 @@ class Word(models.Model):
 	reflexive = models.NullBooleanField(blank=True)
 	inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
 	zaliznjak = models.CharField(max_length=20)
-
+	audio = models.CharField(max_length=20) # audio file name
 	wordclass = models.CharField(max_length=8)
 	# valency = models.CharField(max_length=10)
 	hid = models.IntegerField(max_length=3, null=True, default=None) # PI: what's this?

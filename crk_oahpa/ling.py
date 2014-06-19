@@ -598,7 +598,7 @@ class Paradigm:
 													polarity=g.get('Polarity',""),\
 													tense=g.get('Tense',""),mood=g.get('Mood',""), \
 													subclass=g.get('Subclass',""), \
-													attributive=g.get('Attributive',""))
+													attributive=g.get('Attributive',""), animacy=g.get('Animacy',""))
 				
 				
 			t.save()

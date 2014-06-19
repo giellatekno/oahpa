@@ -114,7 +114,7 @@ class Analysis(object):
 			'mood': self.classes.get('Mood',""), 
 			'subclass': self.classes.get('Subclass',""),
 			'attributive': self.classes.get('Attributive',""),
-			'animacy': self.classes.get('Animacy',""),
+			#'animacy': self.classes.get('Animacy',""),
 		}
 
 		t, created = Tag.objects.get_or_create(**tag_kwargs)
@@ -206,7 +206,8 @@ class Entry(object):
 			("p3p", None),
 			("pos", None),
 			("animacy", None),
-			("trans_anim", "animacy"), # for verbs: transitivity-animacy
+			("trans_anim", None), # for verbs: transitivity-animacy
+			("audio", None),
 			("gradation", None),
 			("diphthong", None),
 			("rime", None),
@@ -682,14 +683,16 @@ class Words(object):
 		# TODO: sometimes translations are added despite no changes
 		changes_to_xml = True
 		changes_to_paradigm = True
-		# Intialize null variables
-		stem, forms, gradation, rime						=	[""]*4
+		# Initialize null variables
+		stem, forms, gradation, rime, animacy, trans_anim, audio  =	[""]*7
 		wordclass, attrsuffix, compsuffix, soggi, valency	=	[""]*5
 		compare, frequency, geography, presentationform, excl_dialect	=	[""]*5
 
 		diphthong = "no"
 		
 		exist_kwargs = {}
+
+		#print >> _STDOUT, "entry:", entry
 
 		# Store first unique fields
 		wid = entry.lemma
@@ -763,6 +766,15 @@ class Words(object):
 
 		if entry.rime:
 			rime = entry.rime
+			
+		if entry.animacy:
+			animacy = entry.animacy
+			
+		if entry.trans_anim:
+			trans_anim = entry.trans_anim
+			
+		if entry.audio:
+			audio = entry.audio
 
 
 		trisyllabic = ['3syll', '3', 'trisyllabic']
@@ -827,7 +839,10 @@ class Words(object):
 			OUT_STRS.append(frequency)
 			OUT_STRS.append(geography)
 			w.geography = geography
-			w.hid = hid 
+			w.hid = hid
+			w.audio = audio
+			w.animacy = animacy
+			w.trans_anim = trans_anim 
 			w.save()
 
 		dialect_objects = []
@@ -971,7 +986,7 @@ class Words(object):
 						'mood':			g.get('Mood',""), 
 						#'subclass':		g.get('Subclass',""),
 						'attributive':		g.get('Attributive',""),
-						'animacy':        g.get('Animacy',""),
+						#'animacy':        g.get('Animacy',""),
 					}
 
 					try:

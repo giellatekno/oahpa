@@ -1057,6 +1057,7 @@ class LeksaQuestion(OahpaQuestion):
 		self.word = word
 		self.gametype = 'leksa'
 		self.animacy = word.animacy # Added for Cree, in order to color the animate nouns. Thanks to this assigment operation the template has access to the animacy information.
+		self.audio = word.audio # pronounciation
 		kwargs['correct_val'] = correct_val
 		super(LeksaQuestion, self).__init__(*args, **kwargs)
 

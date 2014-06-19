@@ -65,6 +65,13 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.nno.html
 <input type="submit" name="settings" value="{% trans "New set" %}" />
 
 {% block question %}
+<script>
+function playSound(soundfile) {
+    var audio=document.getElementById("pronounce{{ form.audio }}");
+    audio.src=soundfile;
+    audio.play();
+}
+</script>
 <span 
 {% if form.animacy == "AN" %}
 		  style="color:#2E2EFE" 
@@ -72,6 +79,14 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.nno.html
 >
 {{ form.lemma }}
 </span>
+    <audio id="pronounce{{ form.audio }}"></audio> 
+    <a onclick=playSound("{{ MEDIA_URL }}/audio/{{ form.audio }}.wav") href="#">
+    {% if form.audio %}
+        <img src="{{ MEDIA_URL }}/images/loudspeaker.jpg" heigth="15px" width="20px"/>
+    {% endif %}
+    </a>
+ 
+
 {% endblock %}
 
 {% block submit %}
