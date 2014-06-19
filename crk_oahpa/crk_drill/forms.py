@@ -1080,14 +1080,14 @@ class LeksaQuestion(OahpaQuestion):
 		else:
 			self.lemma = word.definition
 
-		if word.pos.upper() == 'V':
-			if word.language in infinitives_sub and infinitives_add:
-				infin_s = infinitives_sub[word.language]
-				infin_a = infinitives_add[word.language]
-
-				lemma = re.compile(infin_s)
-				lemmax = lemma.sub(infin_a, force_unicode(self.lemma))
-				self.lemma = force_unicode(lemmax)
+		#if word.pos.upper() == 'V':  # There is no infinitive in Cree!
+		#	if word.language in infinitives_sub and infinitives_add:
+		#		infin_s = infinitives_sub[word.language]
+		#		infin_a = infinitives_add[word.language]
+#
+#				lemma = re.compile(infin_s)
+#				lemmax = lemma.sub(infin_a, force_unicode(self.lemma))
+#				self.lemma = force_unicode(lemmax)
 
 		self.init_variables(possible=translations,
 							userans_val=userans_val,
@@ -1109,17 +1109,17 @@ class LeksaQuestion(OahpaQuestion):
 		if stat_pref:
 			self.correct_ans = stat_pref
 
-		# Displayed answer also needs infinitive marking
+		# Displayed answer also needs infinitive marking - but NO infinitive in Cree!
 		# Needs to happen last because of stat_pref
-		if word.pos.upper() == 'V':
-			if self.translang in infinitives_sub and infinitives_add:
-				infin_s = infinitives_sub[self.translang]
-				infin_a = infinitives_add[self.translang]
+		#if word.pos.upper() == 'V':
+		#	if self.translang in infinitives_sub and infinitives_add:
+		#		infin_s = infinitives_sub[self.translang]
+		#		infin_a = infinitives_add[self.translang]
 
-				lemma = re.compile(infin_s)
+		#		lemma = re.compile(infin_s)
 
-				self.correct_ans = [lemma.sub(infin_a, force_unicode(ax)) for ax in self.correct_ans]
-				self.correct_ans = [force_unicode(ax) for ax in self.correct_ans]
+		#		self.correct_ans = [lemma.sub(infin_a, force_unicode(ax)) for ax in self.correct_ans]
+		#		self.correct_ans = [force_unicode(ax) for ax in self.correct_ans]
 
 
 
