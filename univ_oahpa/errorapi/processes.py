@@ -1,4 +1,4 @@
-﻿from logging import ERROR_FST_LOG
+﻿from .log import ERROR_FST_LOG
 
 class XFST(object):
 
@@ -13,16 +13,22 @@ class XFST(object):
 
         analysis_chunks = [a for a in _output.split('\n\n') if a.strip()]
 
+        def split_tag(t):
+            return t.split('+')
+
+        def split_analysis(a):
+            lem, _, tag = a.partition('+')
+            return (lem, split_tag(tag))
+
         cleaned = []
         for chunk in analysis_chunks:
             lemmas = []
             analyses = []
 
             for part in chunk.split('\n'):
-                lemma, _, analysis = part.partition('\t')
-                lemmas.append(lemma)
-                analyses.append(analysis)
-torm minneapolis
+                wordform, _, analysis = part.partition('\t')
+                lemmas.append(wordform)
+                analyses.append(split_analysis(analysis))
             lemma = list(set(lemmas))[0]
 
             append_ = (lemma, analyses)
