@@ -782,10 +782,10 @@ class BareGame(Game):
 				
 			tag = tags.order_by('?')[0]
 			
-			# if source and source not in ['all', 'All']: 
-			#	SOURCE_FILTER = Q(word__source__name=source)
-			#else:
-			SOURCE_FILTER = Q()
+			if source and source not in ['all', 'All']: 
+				SOURCE_FILTER = Q(word__source__name=source)
+			else:
+				SOURCE_FILTER = Q()
 			no_form = True
 			count = 0
 			while no_form and count < 10:
