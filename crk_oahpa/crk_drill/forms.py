@@ -1849,10 +1849,10 @@ class ContextMorfaQuestion(OahpaQuestion):
 		# Remove leading whitespace and capitalize.
 		astring = astring.lstrip()
 		qstring = qstring.lstrip()
-		astring = astring[0].capitalize() + astring[1:]
-		qstring = qstring[0].capitalize() + qstring[1:]
+		# astring = astring[0].capitalize() + astring[1:]  # No capital letters in the beginning of a sentence in Cree
+		# qstring = qstring[0].capitalize() + qstring[1:]
 
-		qstring = qstring + "?"
+		# qstring = qstring + "?" # no question mark in Cree
 		# Add dot if the last word is not the open question.
 		if astring.count("!")==0 and not astring[-1]=="Q":
 			astring = astring + "."
