@@ -16,7 +16,6 @@ import simplejson
 
 ERROR_FST_SETTINGS = settings.ERROR_FST_SETTINGS
 
-
 class FeedbackFST(object):
 
     def get_all_feedback_for_form(self, input_wordform):
@@ -45,6 +44,7 @@ feedback_messages = FeedbackMessageStore(*error_files)
 def error_feedback_view(request):
 
     # TODO: include the task
+    # TODO: @tag2 attribute
 
     response_data = {
         'success': False,
@@ -55,6 +55,7 @@ def error_feedback_view(request):
             'success': True,
         }
         lookup_query = request.DATA.get('lookup', False)
+        task = request.DATA.get('task', False)
         if lookup_query:
             results = feedback.get_all_feedback_for_form(lookup_query.decode('utf-8'))
             response_data['fst'] = results
@@ -63,17 +64,20 @@ def error_feedback_view(request):
             for wf, analyses in results:
                 for lem, tag in analyses:
                     # TODO: tagsets instead?
-                    error_tags.extend(
+                    existing_errors = \
                         set(tag) & set(feedback_messages.error_tags)
-                    )
-
-            response_data['error_tags'] = error_tags
+                    error_tags.extend(existing_errors)
 
             error_tags = list(set(error_tags))
 
+            response_data['error_tags'] = error_tags
+
             response_messages = []
             for err_tag in error_tags:
-                message = feedback_messages.get_message('nob', err_tag)
+                if task:
+                    message = feedback_messages.get_message('nob', err_tag, task=task)
+                else:
+                    message = feedback_messages.get_message('nob', err_tag)
 
                 response_messages.append({
                     'tag': err_tag,

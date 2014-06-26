@@ -63,7 +63,10 @@
     def error_tags(self):
         if not hasattr(self, '_error_tags'):
             # Extract tags we care about from XML
-            self._error_tags = ['CGErr', 'DiphErr']
+            e_tags = []
+            for l, msgs in self.messages.iteritems():
+                e_tags.extend(msgs.keys())
+            self._error_tags = e_tags
         return self._error_tags
 
     def get_message(self, iso, error_tag, task=False):
@@ -87,6 +90,8 @@
 
     def parse(self, file_path):
         """ Reads the XML file and stores all messages """
+
+        # TODO @tag2 attribute on message, how should this work?
 
         from xml.dom import minidom as _dom
         from collections import defaultdict
@@ -113,9 +118,9 @@
 
     def __init__(self, *xml_paths):
 
+        self.messages = {}
         for x in xml_paths:
             self.parse(x)
 
 if __name__ == "__main__":
     m = FeedbackMessageStore('../sme/meta/morfaerrorfstmessages.xml')
-    print m.get_message('nob', 'CGErr', task='Pl+Acc')
