@@ -345,20 +345,20 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-	('vroeng', _('Võro  to English')),
-	('engvro', _('English to Võro')),
-        ('vrofin', _('Võro to Finnish')),
-        ('finvro', _('Finnish to Võro')),   
-        ('vroest', _('Võro to Estonian')),
-        ('estvro', _('Estonian to Võro')),
-        ('vrolat', _('Võro to Latvian')),
-        ('latvro', _('Latvian to Võro')),
-        ('vrosme', _('Võro to North Saami')),
-        ('smevro', _('North Saami to Võro')),
-        ('vronob', _('Võro to Norwegian')),
-        ('nobvro', _('Norwegian to Võro')), 
-        ('vrorus', _('Võro to Russian')),
-        ('rusvro', _('Russian to Võro')),
+        ('vroest', u'Võro to Estonian'),
+        ('estvro', u'Estonian to Võro'),
+	    #('vroeng', _('Võro to English')),
+	    #('engvro', _('English to Võro')),
+        ('vrofin', u'Võro to Finnish'),
+        ('finvro', u'Finnish to Võro'),           
+        #('vrolat', _('Võro to Latvian')),
+        #('latvro', _('Latvian to Võro')),
+        #('vrosme', _('Võro to North Saami')),
+        #('smevro', _('North Saami to Võro')),
+        #('vronob', _('Võro to Norwegian')),
+        #('nobvro', _('Norwegian to Võro')), 
+        #('vrorus', _('Võro to Russian')),
+        #('rusvro', _('Russian to Võro')),
 )
 
 NUMLANGUAGE_CHOICES = (
@@ -2003,12 +2003,12 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     constant=""
     found=False
     #Interface language
-    if not language: language = "nob"
+    if not language: language = "est" # was: nob
     language = switch_language_code(language)
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["nob","sme","fin","eng","swe","vro"]: language="nob"
+    if not language in ["est","lat","fin","eng","rus","vro"]: language="est" # was: nob
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():
@@ -2561,12 +2561,12 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     constant=""
     found=False
     #Interface language
-    if not language: language = "nob"
+    if not language: language = "est"
     language = switch_language_code(language)
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["nob","sme","fin","eng","swe"]: language="nob"
+    if not language in ["rus","est","fin","eng","lat","vro"]: language="est"
 
     for w in msgstrings.keys():
         if found: break

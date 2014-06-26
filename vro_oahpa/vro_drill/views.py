@@ -430,10 +430,10 @@ def leksa_game(request, place=False):
 
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
-		if sess_lang == 'vro':
-			sess_lang = 'eng' # was: nob
+		if sess_lang in ['vro', 'eng']:
+			sess_lang = 'est' # was: nob
 	else:
-		sess_lang = 'eng' # was: nob
+		sess_lang = 'est' # was: nob
 
 	default_langpair = 'vro%s' % sess_lang
 
