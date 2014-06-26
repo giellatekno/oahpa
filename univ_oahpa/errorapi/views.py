@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 from django.conf import settings
 
 from rest_framework import viewsets
@@ -6,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
 
+from .messages import *
 from .processes import XFST
 from .log import ERROR_FST_LOG
 
@@ -13,95 +16,6 @@ import simplejson
 
 ERROR_FST_SETTINGS = settings.ERROR_FST_SETTINGS
 
-class FeedbackMessageStore(object):
-    """ Reads and stores messages in memory.
-    """
-
-    # Example of format. This will be rewritten on file load.
-    messages = {
-        'sme': {
-            'CGErr': [
-                {
-                    "string": "Message string.",
-                    "task": "Sg+Gen",
-                    "tag": "CGErr",
-                },
-                {
-                    "string": "Message string.",
-                    "task": "Sg+Loc",
-                    "tag": "CGErr",
-                },
-            ],
-            'DiphErr': [
-                {
-                    "string": "Message string.",
-                    "task": "Sg+Gen",
-                    "tag": "DiphErr",
-                },
-                {
-                    "string": "Message string.",
-                    "task": "Sg+Loc",
-                    "tag": "DiphErr",
-                },
-            ],
-        },
-        'nob': {
-            'CGErr': [
-                {
-                    "string": "Message string.",
-                    "task": "Sg+Gen",
-                    "tag": "CGErr",
-                },
-                {
-                    "string": "Message string.",
-                    "task": "Sg+Loc",
-                    "tag": "CGErr",
-                },
-            ],
-            'DiphErr': [
-                {
-                    "string": "Message string.",
-                    "task": "Sg+Gen",
-                    "tag": "DiphErr",
-                },
-                {
-                    "string": "Message string.",
-                    "task": "Sg+Loc",
-                    "tag": "DiphErr",
-                },
-            ],
-        },
-    }
-
-    @property
-    def error_tags(self):
-        if not hasattr(self, '_error_tags'):
-            # Extract tags we care about from XML
-            self._error_tags = ['CGErr', 'DiphErr']
-        return self._error_tags
-
-    def get_message(self, iso, error_tag, task=False):
-        """
-            >>> messagestore.get_message("sme", "CGErr")
-            "You forgot consonant gradation!"
-            >>> messagestore.get_message("sme", "CGErr", task="Sg+Gen")
-            "You forgot consonant gradation (genitive sg.)!"
-        """
-
-        message = self.messages.get(iso, {}).get(error_tag, error_tag)
-
-        return message
-
-    def parse(self):
-        """ Reads the XML file and stores all messages """
-        # TODO:
-
-        return
-
-    def __init__(self, xml_path):
-        self.path = xml_path
-        self.parse()
-        # TODO:
 
 class FeedbackFST(object):
 
@@ -121,11 +35,17 @@ class FeedbackFST(object):
             ERROR_FST_SETTINGS.get('fst_path'),
         )
 
+
+error_files = ERROR_FST_SETTINGS.get('error_message_files', {}).values()
+
 feedback = FeedbackFST()
-feedback_messages = FeedbackMessageStore('xmlfile.xml')
+feedback_messages = FeedbackMessageStore(*error_files)
 
 @api_view(['GET', 'POST'])
 def error_feedback_view(request):
+
+    # TODO: include the task
+
     response_data = {
         'success': False,
     }
@@ -154,7 +74,7 @@ def error_feedback_view(request):
             response_messages = []
             for err_tag in error_tags:
                 message = feedback_messages.get_message('nob', err_tag)
-                
+
                 response_messages.append({
                     'tag': err_tag,
                     'message': message
