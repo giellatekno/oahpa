@@ -10,11 +10,11 @@ print STDOUT "<r xml:lang=\"vro\">\n";
 while (<>) 
 {
 	chomp ;
-	my ($lemma, $pos, $transl_est) = split /\|/ ;
+	my ($lemma, $pos, $transl_est, $transl_fin) = split /\|/ ;
     #my @semclasses = split /, /, $semclasses ;
 	#my @transl_eng = split /[,;\?\!]+\s*/, $transl_eng ;
 	#my @transl_rus = split /[,;\?\!]+\s*/, $transl_rus ;
-	#my @transl_deu = split /[,;\?\!]+\s*/, $transl_deu ;
+	my @transl_fin = split /[,;\?\!]+\s*/, $transl_fin ;
 	my @transl_est = split /[,;\?\!]+\s*/, $transl_est ;
 	print STDOUT "  <e>\n";
 	print STDOUT "    <lg>\n";
@@ -62,19 +62,19 @@ while (<>)
 	#}
 	#print STDOUT "      </tg>\n";
 	
-	#$i = 0;
-	#print STDOUT "      <tg xml:lang=\"fin\">\n";
-	#foreach $tr (@transl_fin)
-	#{
-	#	if ($i == 0) {
-	#	  print STDOUT "        <t stat=\"pref\">$tr</t>\n";
-     #   }
-	#	else {
-	#	  print STDOUT "        <t>$tr</t>\n";
-     #   }
-	#	$i++;
-	#}
-	#print STDOUT "      </tg>\n";
+	$i = 0;
+	print STDOUT "      <tg xml:lang=\"fin\">\n";
+	foreach $tr (@transl_fin)
+	{
+		if ($i == 0) {
+		  print STDOUT "        <t stat=\"pref\">$tr</t>\n";
+        }
+		else {
+		  print STDOUT "        <t>$tr</t>\n";
+        }
+		$i++;
+	}
+	print STDOUT "      </tg>\n";
     print STDOUT "    </mg>\n";
     print STDOUT "  </e>\n";
 }
