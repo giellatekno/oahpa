@@ -53,14 +53,19 @@ POS_CHOICES = (
 )
 
 CASE_CHOICES = (
+    #('N-NOM-PL', _('Nominative Plural')),
     ('N-GEN', _('Genitive')),
     ('N-PAR', _('Partitive')),
-    ('N-DAT', _('Dative')),
     ('N-ILL', _('Illative')),
     ('N-INE', _('Inessive')),
     ('N-ELA', _('Elative')),
-    ('N-INS', _('Instrumental')),
-    #('N-ALL', _('Allative')),
+    ('N-ALL', _('Allative')),
+    ('N-ADE', _('Adessive')),
+    ('N-ABL', _('Ablative')),
+    ('N-TRA', _('Translative')),
+    ('N-TER', _('Terminative')),
+    ('N-ABESS', _('Abessive')),
+    ('N-COM', _('Comitative')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new

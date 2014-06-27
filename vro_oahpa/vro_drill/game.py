@@ -329,8 +329,13 @@ class BareGame(Game):
 		'N-ILL': ('Ill', ['Sg','Pl']),
 		'N-INE': ('Ine', ['Sg','Pl']),
 		'N-ELA': ('Ela', ['Sg','Pl']),
-		'N-DAT': ('Dat', ['Sg','Pl']),
-		'N-INS': ('Ins', ['Sg','Pl']),
+		'N-ALL': ('All', ['Sg','Pl']),
+		'N-ADE': ('Ade', ['Sg','Pl']),
+		'N-ABL': ('Abl', ['Sg','Pl']),
+        'N-TRA': ('Tra', ['Sg','Pl']),
+        'N-TER': ('Ter', ['Sg','Pl']),
+        'N-ABESS': ('Abe', ['Sg','Pl']),
+        'N-COM': ('Com', ['Sg','Pl']),
 		'': '',
 	}
 

@@ -430,7 +430,7 @@ def leksa_game(request, place=False):
 
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
-		if sess_lang in ['vro', 'eng']:
+		if sess_lang in ['vro', 'eng']: # maybe need to remove 'eng' from this list later on 
 			sess_lang = 'est' # was: nob
 	else:
 		sess_lang = 'est' # was: nob
@@ -557,18 +557,20 @@ class Morfaview(Gameview):
 		'NUM-ATTR':  _('Practise numeral attributes'),
 		'NOMPL':  _('Practise plural'),
 		'NOM':  _('Practise nominative'),
-		'N-NOM':  _('Practise nominative'),
-		'N-ILL':  _('Practise illative'),
+		'N-GEN':  _('Practise genitive'),		
 		'N-PAR':  _('Practise partitive'),
+		'N-ILL':  _('Practise illative'),
+        'N-INE': _('Practise inessive'),
+        'N-ELA': _('Practise elative'),
+        'N-ALL':  _('Practise allative'),
+        'N-ADE': _('Practise adessive'),
+        'N-ABL':  _('Practise ablative'),
+        'N-TRA': _('Practise translative'),
+        'N-TER': _('Practise terminative'),
+        'N-ESS':  _('Practise essive'),
+        'N-ABESS': _('Practise abessive'),
 		'N-COM':  _('Practise comitative'),
-		'N-ESS':  _('Practise essive'),
-		'N-GEN':  _('Practise genitive'),
 		'N-NOM-PL':  _('Practise plural'),
-		'N-INE':  _('Practise inessive'),
-		'N-DAT':  _('Practise dative'),
-		'N-INS':  _('Practise instrumental'),
-		'N-ABL':  _('Practise ablative'),
-		'N-ALL':  _('Practise allative'),
 		'N-MIX':  _('Practise a mix'),
 		'V-MIX':  _('Practise a mix'),
 		'A-MIX':  _('Practise a mix'),
