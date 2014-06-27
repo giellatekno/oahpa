@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 from django.conf import settings
+from django.shortcuts import render_to_response
 
 from rest_framework import viewsets
 from rest_framework import mixins
@@ -143,3 +144,5 @@ def error_feedback_view(request):
 
     return Response(response_data)
 
+def test_page(request):
+	return render_to_response('test_page.html')
