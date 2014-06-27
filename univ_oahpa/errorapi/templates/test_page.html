@@ -15,15 +15,22 @@
 	<script src="{% static "js/error_api.js" %}" type="text/javascript"></script> 
 </head>
 
-<body lang="{% if session_locale %}{{ session_locale }}{% endif %}">
-    <p>This page is intended to be a bare demo of the essentials to implement
-        the Error service on a page.</p>
+<body lang="{% if session_locale %}{{ session_locale }}{% endif %}" class="bootstrap-styles" ng-app="ErrorAPI">
 
-    <h3>Test words</h3>
+    <!-- TODO:
+        * ng-error-watch - directive for specifying what elements to watch for
+        clicks.
+    -->
+    <div class="container" ng-controller="ErrorRequester" ng-error-watch"ul.samples a">
+        <p>This page is intended to be a bare demo of the essentials to implement
+            the Error service on a page.</p>
 
-    <ul>
-        <li>viessui</li>
-    </ul>
+        <h3>Test words</h3>
+
+        <ul class="samples">
+            <li><a href="#">viessui</a></li>
+        </ul>
+    </div>
 
 </body>
 
