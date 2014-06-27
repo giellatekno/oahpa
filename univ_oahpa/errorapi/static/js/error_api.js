@@ -16,33 +16,39 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
 
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
 
-    $element.find('ul.samples a').bind('click', function($event){
-        var feedback_link = $($event.target).parents('a');
-        var form = $(feedback_link).html()
-        console.log(form);
+    $element.find('a[data-error-fst]').bind('click', function($event){
 
-    
+        var feedback_link = $($event.target).parents('a');
+
+        // Prepare request
+        var form  = $(feedback_link).html();
+        var task  = $(feedback_link).attr('data-task');
+        var lemma = $(feedback_link).attr('data-lemma');
+
         // JSON? 
         var feedback_data = {
             'lookup': form,
         }
+
+        if (task) {
+            feedback_data['task'] = task;
+        }
+
+        if (lemma) {
+            feedback_data['lemma'] = lemma;
+        }
+
+        console.log([form, task, lemma]);
+    
         var config = {
             withCredentials: true,
         };
 
         $http.post(feedback_url, feedback_data, config)
-         .success( function(data) {
-             console.log(data);
-         });
+             .success( function(data) {
+                 console.log(data);
+             });
 
     });
-
-    // $http.get(feedback_url).success(function(data){
-
-    //     $scope.registerFeedback = function() {
-    //         console.log('click');
-    //     };
-
-    // });
 
 });

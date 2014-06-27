@@ -21,15 +21,32 @@
         * ng-error-watch - directive for specifying what elements to watch for
         clicks.
     -->
-    <div class="container" ng-controller="ErrorRequester" ng-error-watch"ul.samples a">
+
+    <div class="container">
         <p>This page is intended to be a bare demo of the essentials to implement
             the Error service on a page.</p>
 
+        <p>Accessing the service requires <code>ng-app="ErrorAPI"</code>,
+            <code>ng-controller="ErrorRequester"</code> on the container that
+            will be watched for links, as well as a <code>data-error-watch</code> attribute to define
+            the kinds of links that will be clickable.  /p>
+            
+            
+        <p>Individual links that are intended to trigger the lookup can
+            optionally be marked with <code>data-lemma</code> or
+            <code>data-task</code> attributes to constrain morphological
+            feedback messages.</p>
+
         <h3>Test words</h3>
 
-        <ul class="samples">
-            <li><a href="#">viessui</a></li>
-        </ul>
+        <div ng-controller="ErrorRequester" data-error-watch="ul.samples a">
+            <ul class="samples">
+                <li>Basic lookup: <a data-error-fst href="#">viessui</a></li>
+                <li>Constrain to lemma with data-lemma attr: <a data-error-fst href="#" data-lemma="viessu">viessui</a></li>
+                <li>Constrain to task with data-task attr: <a data-error-fst href="#" data-task="Pl+Acc">viessuide</a></li>
+                <li>Constrain to task and lemma: <a data-error-fst href="#" data-lemma="viessu" data-task="Pl+Acc">viessuide</a></li>
+            </ul>
+        </div>
     </div>
 
 </body>
