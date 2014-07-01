@@ -40,11 +40,41 @@
         <h3>Test words</h3>
 
         <div ng-controller="ErrorRequester" data-error-watch=".samples a" data-lookup-url="/davvi/errorapi/lookup/">
+            <p>Try some test words</p>
             <ul class="samples">
                 <li>Basic lookup: <a href="#">viessui</a></li>
                 <li>Constrain to lemma with data-lemma attr: <a href="#" data-lemma="viessu">viessui</a></li>
                 <li>Constrain to task with data-task attr: <a href="#" data-task="Pl+Acc">viessuide</a></li>
                 <li>Constrain to task and lemma: <a href="#" data-lemma="viessu" data-task="Pl+Acc">viessuide</a></li>
+            </ul>
+            <p> ... or enter one </p>
+
+            <form>
+                <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <input type="lookup" ng-model="text_input" class="form-control" id="lookupExample" placeholder="Enter a word">
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <input type="lookup" ng-model="task" class="form-control" id="lookupExample" placeholder="Optional: enter task">
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <input type="lookup" ng-model="lemma" class="form-control" id="lookupExample" placeholder="Optional: enter expected lemma">
+                    </div>
+                </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <h3>Example output</h3>
+            <ul class="messages" ng-repeat="message in messages">
+                <li ng-repeat="m in message.message"><% m.tag %>, <% m.task %>: <% m.string %></li>
             </ul>
         </div>
     </div>

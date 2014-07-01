@@ -21,20 +21,42 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
         var css_selector = "a[data-error-fst]";
     }
 
-    // $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+    $element.find("form").bind('submit', function($event){
 
-    console.log(css_selector);
-    console.log("watching:");
-    console.log($element.find(css_selector)) ;
+        var feedback_data = {
+            'lookup': $scope.text_input,
+        }
+        if ($scope.task) {
+            feedback_data['task'] = $scope.task;
+        }
+        if ($scope.lemma) {
+            feedback_data['lemma'] = $scope.lemma;
+        }
+
+        var config = {
+            withCredentials: true,
+            headers: { 'Content-Type': 'application/json' }
+        };
+
+        feedback_data = JSON.stringify(feedback_data);
+
+        $http.post(feedback_url, feedback_data, config)
+             .success( function(data) {
+                 $scope.response = data;
+                 if(data.messages.length > 0) {
+                     $scope.messages = data.messages;
+                 } else {
+                     $scope.messages = false;
+                 }
+             });
+        
+    });
 
     $element.find(css_selector).bind('click', function($event){
 
         $event.preventDefault();
 
-        console.log($event);
-        console.log($event.target);
-
-        var feedback_link = $($event.target).parents('a');
+        var feedback_link = $($event.target);
 
         // Prepare request
         var form  = $(feedback_link).html();
@@ -58,11 +80,19 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
     
         var config = {
             withCredentials: true,
+            headers: { 'Content-Type': 'application/json' }
         };
+
+        feedback_data = JSON.stringify(feedback_data);
 
         $http.post(feedback_url, feedback_data, config)
              .success( function(data) {
-                 console.log(data);
+                 $scope.response = data;
+                 if(data.messages.length > 0) {
+                     $scope.messages = data.messages;
+                 } else {
+                     $scope.messages = false;
+                 }
              });
 
     });
