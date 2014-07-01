@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap_namespaced.css" %}"/>
 
+	<script src="{% static "js/jquery-1.11.0.min.js" %}" type="text/javascript"></script>
 	<script src="{% static "js/angular.min.js" %}" type="text/javascript"></script>
 	<script src="{% static "js/angular-cookies.js" %}" type="text/javascript"></script>
 	<script src="{% static "js/error_api.js" %}" type="text/javascript"></script> 
@@ -29,8 +30,7 @@
         <p>Accessing the service requires <code>ng-app="ErrorAPI"</code>,
             <code>ng-controller="ErrorRequester"</code> on the container that
             will be watched for links, as well as a <code>data-error-watch</code> attribute to define
-            the kinds of links that will be clickable.  /p>
-            
+            the kinds of links that will be clickable. </p>
             
         <p>Individual links that are intended to trigger the lookup can
             optionally be marked with <code>data-lemma</code> or
@@ -39,12 +39,12 @@
 
         <h3>Test words</h3>
 
-        <div ng-controller="ErrorRequester" data-error-watch="a[data-error-fst]">
+        <div ng-controller="ErrorRequester" data-error-watch=".samples a" data-lookup-url="/davvi/errorapi/lookup/">
             <ul class="samples">
-                <li>Basic lookup: <a data-error-fst href="#">viessui</a></li>
-                <li>Constrain to lemma with data-lemma attr: <a data-error-fst href="#" data-lemma="viessu">viessui</a></li>
-                <li>Constrain to task with data-task attr: <a data-error-fst href="#" data-task="Pl+Acc">viessuide</a></li>
-                <li>Constrain to task and lemma: <a data-error-fst href="#" data-lemma="viessu" data-task="Pl+Acc">viessuide</a></li>
+                <li>Basic lookup: <a href="#">viessui</a></li>
+                <li>Constrain to lemma with data-lemma attr: <a href="#" data-lemma="viessu">viessui</a></li>
+                <li>Constrain to task with data-task attr: <a href="#" data-task="Pl+Acc">viessuide</a></li>
+                <li>Constrain to task and lemma: <a href="#" data-lemma="viessu" data-task="Pl+Acc">viessuide</a></li>
             </ul>
         </div>
     </div>

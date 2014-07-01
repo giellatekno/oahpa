@@ -11,12 +11,28 @@ var ErrorAPI = angular.module('ErrorAPI', ['ngCookies']).
 
 
 ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies) {
-    // var feedback_url = $element.attr('ng-source') ;
-    var feedback_url = "/davvi/errorapi/lookup/";
+    var feedback_url = $element.attr('data-lookup-url') ;
 
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
 
-    $element.find('a[data-error-fst]').bind('click', function($event){
+    if ($element.attr('data-error-watch')) {
+        var css_selector = $element.attr('data-error-watch');
+    } else {
+        var css_selector = "a[data-error-fst]";
+    }
+
+    // $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+
+    console.log(css_selector);
+    console.log("watching:");
+    console.log($element.find(css_selector)) ;
+
+    $element.find(css_selector).bind('click', function($event){
+
+        $event.preventDefault();
+
+        console.log($event);
+        console.log($event.target);
 
         var feedback_link = $($event.target).parents('a');
 
