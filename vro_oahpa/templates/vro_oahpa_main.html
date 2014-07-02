@@ -162,20 +162,12 @@
                 </li>
 			</ul>
 			</br>
-			{% comment %}
-			<h3>{% trans "Online reference materials" %}</h3>
-			{% endcomment %}
-			<p class="intro" align="centre">{% trans "Oahpa is an internet program for learners of Võro. The program can be adjusted to different topics and levels of difficulty, and it generates new task sets automatically." %}</p>
 			
-		<!--	<p>{% trans "Oahpa is connected with online reference materials." %}</p> -->
+			<p class="intro" align="centre">{% trans "Oahpa is an internet program for learners of Võro. The program can be adjusted to different topics and levels of difficulty, and it generates new task sets automatically." %}</p>
+		<!--	<h3>{% trans "Online reference materials" %}</h3> -->
+		
 			<ul class="linklist">
-           <!-- {% ifequal LANGUAGE_CODE "sme" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "fi" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "en" %}
+{% comment %}            {% ifequal LANGUAGE_CODE "en" %}
                 <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "no" %}
@@ -187,13 +179,14 @@
             {% ifequal LANGUAGE_CODE "sv" %}
                 <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
             {% endifequal %}
-            {% ifequal LANGUAGE_CODE "fi" %} -->
+{% endcomment %}
 
-                <li><a target="_blank" href="http://sanat.oahpa.no/liv/fin">{% trans "Livonian" %}-{% trans "Finnish" %} {% trans "web dictionary" %}</a></li>
-            <!--{% else %}
+                <li><a target="_blank" href="http://sonad.oahpa.no/vro/est">{% trans "Võro" %}-{% trans "Estonian" %} {% trans "web dictionary" %}</a></li>
+{% comment %}
+             {% else %}
 				<li><a href="http://victorio.uit.no/webdict/index_sjd-rus.html">{% trans "Norwegian" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
-            {% endifequal %} -->
-            <!--
+            {% endifequal %}
+            
             {% ifequal LANGUAGE_CODE "sme" %}
 				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.html">{% trans "Russian grammar" %}</a></li>
             {% endifequal %}
@@ -212,7 +205,7 @@
             {% ifequal LANGUAGE_CODE "sv" %}
 				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.nob.html">{% trans "Russian grammar" %}</a></li>
             {% endifequal %}
-            -->
+ {% endcomment %}
 			</ul>
 
 <!---			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p> -->
