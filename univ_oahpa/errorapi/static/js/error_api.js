@@ -26,6 +26,8 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
         var feedback_data = {
             'lookup': $scope.text_input,
         }
+        $scope.no_errors = false;
+
         if ($scope.task) {
             feedback_data['task'] = $scope.task;
         }
@@ -45,8 +47,10 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
                  $scope.response = data;
                  if(data.messages.length > 0) {
                      $scope.messages = data.messages;
+                     $scope.no_errors = false;
                  } else {
                      $scope.messages = false;
+                     $scope.no_errors = true;
                  }
              });
         
@@ -90,8 +94,10 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
                  $scope.response = data;
                  if(data.messages.length > 0) {
                      $scope.messages = data.messages;
+                     $scope.no_errors = false;
                  } else {
                      $scope.messages = false;
+                     $scope.no_errors = true;
                  }
              });
 

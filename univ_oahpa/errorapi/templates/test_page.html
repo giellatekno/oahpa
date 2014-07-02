@@ -91,6 +91,7 @@
                     <div class="row">
                         <br />
                         <h3>API output</h3>
+                        <p ng-show="no_errors">No errors :)</p>
                         <ul class="messages" ng-repeat="message in messages">
                             <li ng-repeat="m in message.message"><% m.tag %>, <% m.task %>: <% m.string %></li>
                         </ul>

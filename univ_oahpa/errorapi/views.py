@@ -115,6 +115,7 @@ def error_feedback_view(request):
 
     # TODO: include the task
     # TODO: @tag2 attribute
+    # TODO: error notice for when fst file is not found
     # TODO: template tag for including all the script/css prerequisites
     # in other modules (i.e., univ_drill). f.ex.: 
     #    {% errorapi_scripts %}
