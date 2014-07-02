@@ -115,6 +115,9 @@ def error_feedback_view(request):
 
     # TODO: include the task
     # TODO: @tag2 attribute
+    # TODO: template tag for including all the script/css prerequisites
+    # in other modules (i.e., univ_drill). f.ex.: 
+    #    {% errorapi_scripts %}
 
     response_data = {
         'success': False,
