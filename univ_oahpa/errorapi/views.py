@@ -36,10 +36,12 @@ class FeedbackFST(object):
 
         return error_tags
 
-    def _messages_for_error_tags(self, error_tags, display_lang, task=False):
+    def _messages_for_error_tags(self, error_tags, display_lang, task=False, wordform='WORDFORM'):
         error_messages = []
 
-        # TODO: replace WORDFORM with input_wordform
+        def replace_string(msg):
+            msg["string"] = msg["string"].replace('WORDFORM', '"%s"' % wordform)
+            return msg
 
         for err_tag in error_tags:
             if task:
@@ -48,7 +50,7 @@ class FeedbackFST(object):
                 message = self.message_store.get_message(display_lang, err_tag)
             error_messages.append({
                 'tag': err_tag,
-                'message': message
+                'message': map(replace_string, message)
             })
 
         return error_messages
@@ -71,7 +73,7 @@ class FeedbackFST(object):
 
         error_tags = self._error_tags_from_fst(fst_response)
 
-        error_messages = self._messages_for_error_tags(error_tags, display_lang, task=task)
+        error_messages = self._messages_for_error_tags(error_tags, display_lang, task=task, wordform=input_wordform)
 
         return {
             'fst': fst_response,
@@ -116,9 +118,6 @@ def error_feedback_view(request):
     # TODO: include the task
     # TODO: @tag2 attribute
     # TODO: error notice for when fst file is not found
-    # TODO: template tag for including all the script/css prerequisites
-    # in other modules (i.e., univ_drill). f.ex.: 
-    #    {% errorapi_scripts %}
 
     response_data = {
         'success': False,
@@ -149,4 +148,4 @@ def error_feedback_view(request):
     return Response(response_data)
 
 def test_page(request):
-	return render_to_response('test_page.html')
+    return render_to_response('test_page.html')
