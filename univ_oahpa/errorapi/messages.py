@@ -65,8 +65,9 @@
             # Extract tags we care about from XML
             e_tags = []
             for l, msgs in self.messages.iteritems():
-                e_tags.extend(msgs.keys())
-            self._error_tags = e_tags
+                _ks = sum( [list(k) for k in msgs.keys()], [])
+                e_tags.extend(_ks)
+            self._error_tags = set(e_tags)
         return self._error_tags
 
     def get_message(self, iso, error_tag, task=False):
@@ -76,6 +77,9 @@
             >>> messagestore.get_message("sme", "CGErr", task="Sg+Gen")
             "You forgot consonant gradation (genitive sg.)!"
         """
+        from sets import ImmutableSet
+
+        error_tag = ImmutableSet(error_tag)
 
         messages = self.messages.get(iso, {}).get(error_tag, False)
 
@@ -92,6 +96,7 @@
         """ Reads the XML file and stores all messages """
 
         # TODO @tag2 attribute on message, how should this work?
+        from sets import ImmutableSet
 
         from xml.dom import minidom as _dom
         from collections import defaultdict
@@ -105,13 +110,18 @@
         parsed_messages = defaultdict(list)
 
         for m in messages:
-            tag = m.getAttribute('tag')
+            tag = [m.getAttribute('tag')]
+            tag2 = m.getAttribute('tag2')
+            if tag2 is not None:
+                if tag2.strip():
+                    tag.append(tag2)
+            tags = ImmutableSet(tag)
             task = m.getAttribute('task')
             string = m.firstChild.wholeText
-            parsed_messages[tag].append({
+            parsed_messages[tags].append({
                 "string": string,
                 "task": task,
-                "tag": tag,
+                "tags": tags,
             })
 
         self.messages[lang] = parsed_messages

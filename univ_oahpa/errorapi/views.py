@@ -1,5 +1,7 @@
 # -*- encoding: utf-8 -*-
 
+import os, sys
+
 from django.conf import settings
 from django.shortcuts import render_to_response
 
@@ -24,13 +26,16 @@ class FeedbackFST(object):
         the tags available in the message store.
         """
 
+        from sets import ImmutableSet
+
         error_tags = []
         for wf, analyses in fst_response:
             for lem, tag in analyses:
                 # TODO: tagsets instead?
                 existing_errors = \
                     set(tag) & set(self.message_store.error_tags)
-                error_tags.extend(existing_errors)
+                if len(existing_errors) > 0:
+                    error_tags.append(ImmutableSet(existing_errors))
 
         error_tags = list(set(error_tags))
 
@@ -43,15 +48,21 @@ class FeedbackFST(object):
             msg["string"] = msg["string"].replace('WORDFORM', '"%s"' % wordform)
             return msg
 
+        # For this part need to get a message with the maximal match,
+        # so:
+        #   ['Acc', 'CGErr', 'Gen']
+        #  can match ['Acc', 'CGErr']
+
         for err_tag in error_tags:
             if task:
                 message = self.message_store.get_message(display_lang, err_tag, task=task)
             else:
                 message = self.message_store.get_message(display_lang, err_tag)
-            error_messages.append({
-                'tag': err_tag,
-                'message': map(replace_string, message)
-            })
+            if message:
+                error_messages.append({
+                    'tag': err_tag,
+                    'message': map(replace_string, message)
+                })
 
         return error_messages
 
@@ -82,11 +93,19 @@ class FeedbackFST(object):
         }
 
     def __init__(self, message_store):
+
         self.lookup_proc = XFST(
             ERROR_FST_SETTINGS.get('lookup_tool'),
             ERROR_FST_SETTINGS.get('fst_path'),
         )
         self.message_store = message_store
+
+_fst_file = ERROR_FST_SETTINGS.get('fst_path')
+
+if not os.path.isfile(_fst_file):
+    print >> sys.stderr, "FST file at <%s> does not exist."
+    print >> sys.stderr, "Check the path in settings.py and try again."
+    sys.exit()
 
 error_files = ERROR_FST_SETTINGS.get('error_message_files', {}).values()
 feedback_messages = FeedbackMessageStore(*error_files)
@@ -115,9 +134,7 @@ def error_feedback_view(request):
 
     """
 
-    # TODO: include the task
     # TODO: @tag2 attribute
-    # TODO: error notice for when fst file is not found
 
     response_data = {
         'success': False,
