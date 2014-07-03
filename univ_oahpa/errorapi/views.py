@@ -60,7 +60,7 @@ class FeedbackFST(object):
                 message = self.message_store.get_message(display_lang, err_tag)
             if message:
                 error_messages.append({
-                    'tag': err_tag,
+                    'tags': err_tag,
                     'message': map(replace_string, message)
                 })
 
