@@ -25,6 +25,7 @@ class GradingMiddleware(object):
         #     request.session['question_set_count'] = 1
 
         # Increment individual question/answer tries
+
         for log in request.user_logs_generated:
             if log.correct in request.session['question_try_count']:
                 # Increment and add to answered, thus count stops
@@ -55,6 +56,28 @@ class GradingMiddleware(object):
             request.session['question_set_count'] += 1
             request.session['answered'] = {}
 
+    def request_goal_instances(self):
+        current_user_goal = request.session.get('current_user_goal', False)
+
+        if not current_user_goal:
+            return False
+
+        return UserGoalInstance.objects.filter( user=request.user
+                                              , id=current_user_goal
+                                              , opened=True
+                                              )\
+                                       .order_by('-last_attempt')
+
+    def exit_goal_tracking(self):
+        """ If there's a problem deleting one of these keys there's
+        something really wrong, no need for try blocks.
+        """
+
+        del request.session['current_user_goal']
+        del request.session['current_exercise_params']
+        del request.session['previous_exercise_params']
+
+
     def process_response(self, request, response):
         """ Here the goal is to process the grading that pertains to the
         user's current activity, which is marked on the session object,
@@ -62,8 +85,12 @@ class GradingMiddleware(object):
 
         from .models import Goal, UserGoalInstance
 
+        # If there's no session, we can't do anything
         if not hasattr(request, 'session'):
             return response
+
+        # Increment a variable to determine if the user has navigated
+        # away.
 
         if request.session.get('navigated_away', False):
             if request.session['navigated_away'] > 0:
@@ -77,7 +104,6 @@ class GradingMiddleware(object):
         user_isnt_anon = request.user.is_authenticated()
         request_logs_exist = hasattr(request, 'user_logs_generated')
 
-        # TODO: need to actually set this on the session somewhere
         current_user_goal = request.session.get('current_user_goal', False)
 
         if request_logs_exist and user_isnt_anon and current_user_goal:
@@ -87,17 +113,17 @@ class GradingMiddleware(object):
             # a goal.
             if current and previous:
                 is_sahka = ('sahka' in current) and ('sahka' in previous)
+                is_vasta = ('vasta' in current) and ('vasta' in previous)
+
                 same_dialogue = current.startswith(previous)
                 sahka_condition = is_sahka and same_dialogue
 
-                if (current != previous) and (not sahka_condition):
+                user_navigated_away = (current != previous) and (not sahka_condition)
+
+                if user_navigated_away:
                     print " -- user navigated to new page, stop tracking --"
 
-                    user_goal_instance = UserGoalInstance.objects.filter( user=request.user
-                                                                        , id=current_user_goal
-                                                                        , opened=True
-                                                                        )\
-                                                                 .order_by('-last_attempt')
+                    user_goal_instance = self.request_goal_instances()
 
                     # Mark this instance as no longer being active.
                     if user_goal_instance is not None and len(user_goal_instance) > 0:
@@ -105,11 +131,12 @@ class GradingMiddleware(object):
                         user_goal_instance[0].save()
 
                     request.session['previous_exercise_params'] = current
-                    del request.session['current_user_goal']
-                    del request.session['current_exercise_params']
-                    del request.session['previous_exercise_params']
+
+                    self.exit_goal_tracking()
+
                     if request.session.get('navigated_away', False):
                         request.session['navigated_away'] += 1
+
                     return response
 
             self.increment_session_answer_counts(request)
@@ -123,7 +150,6 @@ class GradingMiddleware(object):
             ugi = UserGoalInstance.objects.get(id=current_user_goal)
             goal = ugi.goal
 
-            # TODO: this is for debug only.
             result = ugi.evaluate_instance()
 
             if result is not None:

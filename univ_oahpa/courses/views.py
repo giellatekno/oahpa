@@ -15,7 +15,6 @@ def render_to_response(*args, **kwargs):
     from django.shortcuts import render_to_response
 
     response = render_to_response(*args, **kwargs)
-    # response.response_args = args
     response.context = args[1]
 
     return response
@@ -46,7 +45,6 @@ def trackGrade(gamename, request, c):
     try:
         SETTINGS = c['settingsform'].data
     except TypeError:
-        print repr(c)
         return
 
     if c['show_correct'] == 1 or c['all_correct'] == 1:
