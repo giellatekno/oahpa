@@ -71,6 +71,9 @@ class FeedbackFST(object):
         """ Accepts a wordform, returns feedback error tags and
         messages.
         """
+        # TODO: cache input-output for some period of time, or until
+        # last update + created date of FST file is changed? 
+
         fst_response = self.lookup_proc.lookup([input_wordform])
 
         if intended_lemma:
