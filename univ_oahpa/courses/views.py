@@ -408,6 +408,36 @@ def course_invite(request):
                               c,
                               context_instance=RequestContext(request))
 
+@user_passes_test(instructor_group)
+def reset_invite_link(request, cid):
+    template = 'reset_invite_link.html'
+    c = {}
+
+    instructor = request.user.get_profile()
+    instructor_courses = list([int(a.id) for a in instructor.instructorships])
+    if not request.user.is_superuser:
+        if cid not in instructor_courses:
+            error = 'This is not your course.'
+            return HttpResponseForbidden(error)
+
+    course = Course.objects.get(id=cid)
+
+    if request.method == 'GET':
+        c['confirmation'] = True
+    elif request.method == 'POST':
+        course.token = course.generate_new_key()
+        course.save()
+        c['confirmation'] = False
+        c['reset_success'] = True
+        c['course'] = course
+
+        new_link = 'TODO'
+        c['new_link'] = new_link
+
+    return render_to_response(template,
+                              c,
+                              context_instance=RequestContext(request))
+
 def course_enroll(request):
     from django.core.urlresolvers import reverse
 
@@ -474,7 +504,7 @@ def course_enroll(request):
 
 @login_required
 def recipient_search(request):
-	# https://github.com/philippWassibauer/django-threaded-messages
+    # https://github.com/philippWassibauer/django-threaded-messages
     from django.contrib.auth.models import User
     from django.db.models import Q
 

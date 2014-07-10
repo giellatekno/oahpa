@@ -33,6 +33,7 @@ from views import ( courses_main
                   , course_enroll
                   , recipient_search
                   , personal_goals
+                  , reset_invite_link
                   )
 
 from rest_framework import routers
@@ -68,6 +69,7 @@ urlpatterns += patterns('univ_oahpa.courses.views',
     url(r'^personal_goals/$', personal_goals, name="personal_goals"),
 
     url(r'^invite/$', course_invite, name="course_invite"),
+    url(r'^reset_token/(?P<cid>\d+)/$', reset_invite_link, name="course_invite"),
     url(r'^enroll/$', course_enroll, name="course_enroll"),
     url(r'^stats/$', courses_stats, name="courses_stats"),
 
