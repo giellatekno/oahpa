@@ -1,51 +1,67 @@
-!!! Møte 20.06.14
+!!! Møte 11.07.14
 
-Til stades: Ryan, Lene, Trond
+Til stades: Ryan, Lene,
 
 !! Saksliste
-* NDS 
-* Morfologisk feedback
-* Gjennomgang av oppsettet for kursinnlogginga
-* Testing av kursinnlogging
+* Kursinnlogginga
+* Morfologisk feedback API
+* NDS
 
-
-!! NDS 
-Haida: Få mwe i Haida, og punktum som bokstav (dvs. bokst.bokst som ord).
-Dette skal vere i plugin. Skriv du inn ordet med punktum går det bra. 
-Det same problemet gjeld nenetsisk.
-
-Miniparadigme: Sjå på det, evt. betre å lage dokumentasjon.
-Det skal bli lagt inn i config. 
-
-__TILTAK__
-* __Ryan__: dokumentasjon om paradigmesystem? 
-
-!! Morfologisk feedback
-
-Mogleg demo ferdig i neste veke. Ideen er god, og vi vil gjerne sjå på det.
-Ryan ser på det og skriv evt. mail.
 
 !! Kursinnlogging
 Ryan arbeider videre og sender spørsmål etterhvert. 
 
-Spörjeskjema ved innlogging?
+Tiltak:
+
+* __Ryan__: samla prosent burde endrast til ei samling av Task til staden for Course Goals 
+* __Ryan__: djuplinking er feil i leksa i Chrome i Leksa. ein får geografi/common-attributtar i lenka
+* __Ryan__: Task til desse med /sted/ skal endrast til vanleg /leksa/ 
+* __Ryan__: MorfaS adjektiver funker ikke på gtlab
+* __Ryan__: Vasta-S nesten fungerar, sporing fungerar, men ikkje Vasta-S 
+* __Ryan__: spørreskjema på første innlogging
+* __Ryan__: lager lokalisering og sender epost når det er gjort: nob, sme, fin, swe, eng
+* __Ryan__: lager spørreskjema for første innlogging
+
+
+Kursmållenker for Leksa, i denne rekkefølgen:
+{{{
+http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=smenob
+http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=nobsme
+http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_2&geography=world&common=1&semtype=all&transtype=smenob
+http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_2&geography=world&common=1&semtype=all&transtype=nobsme
+}}}
+
+Djuplinkinga fungerer ikkje heilt i Leksa på testing.oahpa.no, men fungerar på oahpa.no-- skilnaden er at common og geografi dukker opp i vanleg Leksa, dei burde slettast:
+{{{
+-> http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_1&transtype=smenob&semtype=all
+-> http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_2&transtype=nobsme&semtype=all
+}}}
+
+Spørreskjema ved første innlogging:
 * Du forblir anonym
-* Kva er morsmålet ditt?
-* Aldersgruppe (3-4 grupper)
-* Vi vil bruke det til forsking
+* Kva er morsmålet ditt? norsk/svensk/dansk, finsk/meänkieli/kvensk, nordsamisk, annet samisk språk, russisk, engelsk, tysk, annet:
+* Aldersgruppe: under 18, 18-25, 26-45, 46+
+* Har kan noe samisk fra før? ingenting, såvidt, litt, mye
+* Info: Vi vil bruke loggen til forsking for å se hva som er vanskelig og lett for studenter avhengig av morsmål. Brukere vil ikke bli identifiserte, kun referert i logg med nummer.
 
-__TILTAK__:
-* __Ryan__: nivåoppsett er ikkje relevant, gå gjennom feedback_install og ta bort level-attributt. 
-* __Ryan__ historikk: tall og dato (__ikkje gjort__)
-* __Ryan eller Lene__ noterar hvilke kursmålslinker ikkje fungerar, og fikser
-* __Ryan__ fikser slik at man ser sammenlagt % av kursmål når man logger inn
-* __Ryan__ lager lokalisering og sender epost når det er gjort: nob, sme, fin, swe, eng
-* __Ryan__ lager spørreskjema for første innlogging
 
-!! Testing av kursinnlogging
-Lene og Trond sender invitasjoner til test-studenter, med kopi til Ryan, som så lager innlogging for hver av dem. Det er viktig å få testa mye før neste møte.
+!! Morfologisk feedback API
+{{{
+http://testing.oahpa.no/courses_davvi/errorapi/test_page/
+}}}
+wordform  task        lemma
+girjii    ingenting    girji < får feedback for både substantiv og verb
+girjii    Sg+Ill    girji  < får feedback for bare substantiv
+girjái 
 
-!!Neste møte
-ondag 9.7 kl. 7 norsk tid, kl. 23 Edmonton tid, kl. 24 Minnesota tid
+
+Tiltak:
+* __Ryan__: fikser eit par bugger med testskjema
+
+!! NDS
+
+Sti for å endre info i den grå boksen for pikiskwewina:
+gtsvn/apps/dicts/nds/src/neahtta/configs/language_specific_rules/templates/pikiskwewina/search_info.template
+
 
 
