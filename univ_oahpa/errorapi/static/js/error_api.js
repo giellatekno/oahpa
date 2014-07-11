@@ -47,6 +47,9 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
                  $scope.response = data;
                  if(data.messages.length > 0) {
                      $scope.messages = data.messages;
+                     $scope.analyzer = data.fst[0];
+                     window.analyzer = data.fst[0];
+                     console.log(data.fst[0]);
                      $scope.no_errors = false;
                  } else {
                      $scope.messages = false;
@@ -94,6 +97,7 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
                  $scope.response = data;
                  if(data.messages.length > 0) {
                      $scope.messages = data.messages;
+                     $scope.analyzer = data.fst;
                      $scope.no_errors = false;
                  } else {
                      $scope.messages = false;

@@ -34,13 +34,13 @@
 
             <div class="col-lg-9 col-md-9">
 
-            <h2>Error lookup service</h2>
-            <p>This page is intended to be a bare demo and documentation of the
-                essentials to implement the Error service on a page. For
-                documentation on the API endpoint, see the auto-generated
-                docuemntation at /davvi/errorapi/lookup/</p>
+                <h2>Error lookup service</h2>
+                <p>This page is intended to be a bare demo and documentation of the
+                    essentials to implement the Error service on a page. For
+                    documentation on the API endpoint, see the auto-generated
+                    docuemntation at /davvi/errorapi/lookup/</p>
 
-            <h3>Demo</h3>
+                <h3>Demo</h3>
 
             <div ng-app="ErrorAPI">
                 <div ng-controller="ErrorRequester" 
@@ -90,26 +90,44 @@
 
                 <div class="container-fluid">
                     <div class="row">
-                        <br />
                         <h3>API output</h3>
-                        <p ng-show="no_errors">No errors :)</p>
-                        <ul class="messages" ng-repeat="message in messages">
-                            <li ng-repeat="m in message.message">(<% m.tags.join(', ') %>), <% m.task %>: <% m.string %></li>
-                        </ul>
                     </div>
                 </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <p ng-show="no_errors">No errors :)</p>
+                            <ul class="messages" ng-repeat="message in messages">
+                                <li ng-repeat="m in message.message">(<% m.tags.join(', ') %>), <% m.task %>: <% m.string %></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <table class="fst_output">
+                                <tr><td><% analyzer[0] %></td></tr>
+                                <tr ng-repeat="analysis in analyzer[1]">
+                                    <td class="lemma"><% analysis[0] %></td>
+                                    <td class="tag"><% analysis[1].join('+') %></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <h3>Click-to-lookup service installation</h3>
-            <p>Accessing the service requires <code>ng-app="ErrorAPI"</code>,
-                <code>ng-controller="ErrorRequester"</code> on the container that
-                will be watched for links, as well as some attribute, or class
-                to define the kinds of links that will be clickable. Whatever
-                unique attribute it is needs to be marked on the
-                <code>ng-controller="ErrorRequester"</code> element with the
-                attribute <code>data-error-watch</code> and a CSS selector to
-                target those elements.</p>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                <h3>Click-to-lookup service installation</h3>
+                <p>Accessing the service requires <code>ng-app="ErrorAPI"</code>,
+                    <code>ng-controller="ErrorRequester"</code> on the container that
+                    will be watched for links, as well as some attribute, or class
+                    to define the kinds of links that will be clickable. Whatever
+                    unique attribute it is needs to be marked on the
+                    <code>ng-controller="ErrorRequester"</code> element with the
+                    attribute <code>data-error-watch</code> and a CSS selector to
+                    target those elements.</p>
 
             <blockquote>
                 <code><pre>{% filter force_escape %}<div ng-app="ErrorAPI">
@@ -122,13 +140,13 @@
             <li>Constrain to lemma with data-lemma attr: <a href="#" data-lemma="viessu">viessui</a></li>
         </ul>
 
-    </div>
-</div>
-{% endfilter %}</pre></code></blockquote>
+            </div>
+        </div>
+    {% endfilter %}</pre></code></blockquote>
 
-            <h3>Rendering output</h3>
+                <h3>Rendering output</h3>
 
-            <p>Output uses Angular.js snippets. The template used below, for example is: </p>
+                <p>Output uses Angular.js snippets. The template used below, for example is: </p>
             
 <blockquote><code><pre>{% filter force_escape %}
 <ul class="messages" ng-repeat="message in messages">
@@ -143,6 +161,9 @@
                 integrate with existing, complex systems within Oahpa with
                 least disturbance.</p>
 
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

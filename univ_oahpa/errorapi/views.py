@@ -162,7 +162,7 @@ def error_feedback_view(request):
             message_kwargs['intended_lemma'] = intended_lemma
 
         if lookup_query:
-            lookup_query = lookup_query.decode('utf-8')
+            lookup_query = lookup_query
             response_data = feedback.get_all_feedback_for_form(lookup_query, **message_kwargs)
 
     return Response(response_data)
