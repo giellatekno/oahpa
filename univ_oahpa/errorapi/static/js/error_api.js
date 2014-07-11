@@ -1,7 +1,7 @@
 ﻿/* jshint strict: false */
 /* jshint camelcase: false */
 
-var ErrorAPI = angular.module('ErrorAPI', ['ngCookies']).
+var ErrorAPI = angular.module('ErrorAPI', ['ngCookies', 'angular-loading-bar']).
     config(function($interpolateProvider, $httpProvider) {
         // set template expression symbols
         $interpolateProvider.startSymbol('<%');
