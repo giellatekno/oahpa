@@ -78,12 +78,17 @@ class FeedbackFST(object):
 
         if intended_lemma:
 
-            def lemma_filter((wf, analyses)):
-                for lem, tag in analyses:
-                    if lem == intended_lemma:
-                        return (wf, analyses)
+            def lemma_filter(o):
+                result = []
+                for (wf, analyses) in o:
+                    filtered = []
+                    for lem, tag in analyses:
+                        if unicode(lem) == unicode(intended_lemma):
+                            filtered.append((lem, tag))
+                    result.append((wf, filtered))
+                return result
 
-            fst_response = filter(lemma_filter, fst_response)
+            fst_response = lemma_filter(fst_response)
 
         error_tags = self._error_tags_from_fst(fst_response)
 

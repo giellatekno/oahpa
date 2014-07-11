@@ -10,7 +10,21 @@ var ErrorAPI = angular.module('ErrorAPI', ['ngCookies', 'angular-loading-bar']).
     });
 
 
+
 ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies) {
+    function handle_api_response (data) {
+        $scope.response = data;
+        if(data.messages.length > 0) {
+            $scope.messages = data.messages;
+            $scope.analyzer = data.fst[0];
+            $scope.no_errors = false;
+        } else {
+            $scope.messages = false;
+            $scope.analyzer = false
+            $scope.no_errors = true;
+        }
+    }
+
     var feedback_url = $element.attr('data-lookup-url') ;
 
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
@@ -32,7 +46,7 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
             feedback_data['task'] = $scope.task;
         }
         if ($scope.lemma) {
-            feedback_data['lemma'] = $scope.lemma;
+            feedback_data['intended_lemma'] = $scope.lemma;
         }
 
         var config = {
@@ -43,19 +57,7 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
         feedback_data = JSON.stringify(feedback_data);
 
         $http.post(feedback_url, feedback_data, config)
-             .success( function(data) {
-                 $scope.response = data;
-                 if(data.messages.length > 0) {
-                     $scope.messages = data.messages;
-                     $scope.analyzer = data.fst[0];
-                     window.analyzer = data.fst[0];
-                     console.log(data.fst[0]);
-                     $scope.no_errors = false;
-                 } else {
-                     $scope.messages = false;
-                     $scope.no_errors = true;
-                 }
-             });
+             .success(handle_api_response);
         
     });
 
@@ -80,7 +82,7 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
         }
 
         if (lemma) {
-            feedback_data['lemma'] = lemma;
+            feedback_data['intended_lemma'] = lemma;
         }
 
         console.log([form, task, lemma]);
@@ -93,17 +95,7 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
         feedback_data = JSON.stringify(feedback_data);
 
         $http.post(feedback_url, feedback_data, config)
-             .success( function(data) {
-                 $scope.response = data;
-                 if(data.messages.length > 0) {
-                     $scope.messages = data.messages;
-                     $scope.analyzer = data.fst;
-                     $scope.no_errors = false;
-                 } else {
-                     $scope.messages = false;
-                     $scope.no_errors = true;
-                 }
-             });
+             .success(handle_api_response);
 
     });
 
