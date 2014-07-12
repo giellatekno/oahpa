@@ -23,7 +23,7 @@ Tiltak:
 * __Ryan__: lager spørreskjema for første innlogging
 
 
-Kursmållenker for Leksa, i denne rekkefølgen:
+!Kursmållenker for Leksa, i denne rekkefølgen:
 {{{
 http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=smenob
 http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=nobsme
@@ -37,21 +37,24 @@ Djuplinkinga fungerer ikkje heilt i Leksa på testing.oahpa.no, men fungerar på
 -> http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_2&transtype=nobsme&semtype=all
 }}}
 
-Spørreskjema ved første innlogging:
+!Spørreskjema ved første innlogging:
 * Du forblir anonym
 * Kva er morsmålet ditt? norsk/svensk/dansk, finsk/meänkieli/kvensk, nordsamisk, annet samisk språk, russisk, engelsk, tysk, annet:
 * Aldersgruppe: under 18, 18-25, 26-45, 46+
-* Har kan noe samisk fra før? ingenting, såvidt, litt, mye
-* Info: Vi vil bruke loggen til forsking for å se hva som er vanskelig og lett for studenter avhengig av morsmål. Brukere vil ikke bli identifiserte, kun referert i logg med nummer.
+* Kan du noe samisk fra før? ingenting, såvidt, litt, mye
+* Kan du et annet språk enn morsmålet ditt og evt litt samisk? ja nei 
+* Info: Vi vil bruke loggen til forsking for å se hva som er vanskelig og lett for studenter avhengig av morsmål, alder osv. Brukere vil ikke bli identifiserte, kun referert i logg med nummer.
 
 
 !! Morfologisk feedback API
 {{{
 http://testing.oahpa.no/courses_davvi/errorapi/test_page/
 }}}
-wordform  task        lemma
-girjii    ingenting    girji < får feedback for både substantiv og verb
-girjii    Sg+Ill    girji  < får feedback for bare substantiv
+
+||wordform || task    ||    lemma || asdf 
+|girjii |   -  |     girji |   < får feedback for både substantiv og verb
+|girjii  |     Sg+Ill  |     girji |    < får feedback for bare substantiv
+
 girjái 
 
 
@@ -60,7 +63,7 @@ Tiltak:
 
 !! NDS
 
-Sti for å endre info i den grå boksen for pikiskwewina:
+!Sti for å endre info i den grå boksen for pikiskwewina:
 gtsvn/apps/dicts/nds/src/neahtta/configs/language_specific_rules/templates/pikiskwewina/search_info.template
 
 
