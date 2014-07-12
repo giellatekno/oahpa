@@ -238,8 +238,9 @@ class Course(models.Model):
     def user_completion_rate(self, user):
         coursegoals = self.coursegoal_set.all()
 
-        completed = sum([1.0 for c in coursegoals if c.user_completed(user)])
-        print completed
+        completed = sum([1.0 for c in coursegoals
+                             for cgg in c.goals.all()
+                             if cgg.goal.user_completed(user)])
 
         if completed > 0:
             rate = (completed/coursegoals.count())*100.0
