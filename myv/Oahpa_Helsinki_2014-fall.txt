@@ -6,19 +6,58 @@ Heli Uibo
 
 AKU would like to organize an Oahpa ICALL course this fall for potentially active developers in the Oahpa computer-assisted learning environment.
 
+IDEA / COURSE TITLE
+Modeling new languages after the FLAG SHIP oahpa.no/davvi.
+
+Prerequisite: there exist an Oahpa instance for language xxx.
+Purpose of the course: the participants learn how to add linguistic content to xxx_oahpa.
+
 DURATION
 The proposed time span is one week
 
 WHO IS THE COURSE INTENDED FOR
-Languages with at least some Giellatekno-HFST support
+Teachers and linguists of languages with at least some Giellatekno-HFST support.
+Languages for which there are people who develop the linguistic content:
+1. definitely these: 
+myv - oahpa.no/erzya
+mrj
+yrk - oahpa.no/yrkoahpa
+kpv - testing.oahpa.no/kpvoahpa
+udm
 
-INTRODUCTION:
-Modeling new languages after the FLAG SHIP oahpa.no/davvi.
-
+2. maybe also:
+liv - testing.oahpa.no/livokel
+vro - testing.oahpa.no/voro
+izh
+vep
+mdf
+mar
 
 LANGUAGES USED
-English/Finnish/Russian
-[Who is the course for and who will teach it?]
+English/Finnish/Russian (Russian probably preferred by most of the participants)
+
+INSTRUCTORS
+Jack Rueter - linguistic issues, FSTs
+Trond Trosterud - Giellatekno overview, infrastructure, FSTs
+Heli Uibo - Oahpa setup and maintenance
+All - creation of linguistic resources for xxx_oahpa
+
+SCHEDULE
+Monday: Giellatekno overview (infrastructure, projects, tools, Oahpa)
+Homework by Thursday: think about the productive Morfa-C frames in your language - which cases, which verbs?
+Tuesday: Presentations by the participants about their languages and existing resources (textbooks a.o. teaching materials, corpora, language technology tools)
+Wednesday: hands-on 
+1. Setting up user accounts, basic SVN.
+2. Leksa 
+Creating word lists in csv format. Checking in new files and updating the existing ones. svn ci -> Heli updates the db -> online check. 
+How to choose the vocabulary for Leksa. Textbook word lists, frequency dictionaries.
+Place names.
+Thursday: hands-on
+1. Setting up Morfa-S. Case list, possible additional menus.
+2. Writing Morfa-C frames.
+Friday: discussion, sum up and future 
+New ideas, thoughts that have come up while implementing Oahpa for your language. 
+How to proceed with the development of your Oahpa. 
 
 REQUIRED TOOLS
 What computers do we need to support?
@@ -26,7 +65,14 @@ Linux, Mac, Windows?
 Connectivity
 sudo rights?
 
-PRELIMINARY READING
+PRELIMINARY READING etc. (tasks for participants)
+1. Look for and take along some learning materials (textbooks, workbooks, dictionaries). Best if they (also) exist in electronic format but paper format is also ok. 
+2. Think about the issues that need special pedagogical focus in your language, e.g. using some case(s).
+3. Look at some Oahpa instances online (oahpa.no/davvi, testing.oahpa.no/rusoahpa, testing.oahpa.no/fkv_oahpa, testing.oahpa.no/crk_oahpa), get inspiration and think about the analogies/differences with your language. (?)
+
+TECHNICAL PREPARATIONS
+Heli - set up empty Oahpa-s for mrj, udm, (izh, vep, mdf, mar)
+Heli - update the existing Oahpa-s if the source files have been updated meanwhile
 
 
 Possible time slots
@@ -36,7 +82,7 @@ Possible time slots
 YOUR SUGGESTIONS
 
 +++
-Helsinki
+Helsinki (or Tartu?)
 22.9.-27.9.
 
 
