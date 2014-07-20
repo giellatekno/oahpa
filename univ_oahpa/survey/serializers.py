@@ -21,15 +21,15 @@ class QASerializer(serializers.ModelSerializer):
 
 class SurveyQuestionSerializer(serializers.ModelSerializer):
 
-    answers = QASerializer(source='question_answer', many=True, required=False)
+    answer_values = serializers.RelatedField(many=True, required=False)
 
     class Meta:
         model = SurveyQuestion
-        fields = ('question_text', 'question_type', 'answers', )
+        fields = ('question_text', 'question_type', 'answer_values', )
 
 class SurveySerializer(serializers.ModelSerializer):
 
-    questions = SurveyQuestionSerializer(many=True, required=False)
+    questions = SurveyQuestionSerializer()
 
     class Meta:
         model = Survey

@@ -32,20 +32,31 @@ class Survey(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField()
 
-    questions = models.ManyToManyField('SurveyQuestion', related_name='questions')
-
 class SurveyQuestion(models.Model):
     """ Contains the survey question, and question type. Connects to any
     possible answer objects.
     """
     # TODO: Internationalization language
+    survey = models.ForeignKey('Survey', related_name='questions')
 
     question_text = models.TextField()
     question_type = models.CharField(max_length=18, choices=question_types)
 
-    question_answer = models.ManyToManyField("SurveyQuestionAnswerValue", related_name='answers', null=True, blank=True)
+    def __unicode__(self):
+        return self.question_text
+
+    def __repr__(self):
+        if len(self.question_text) > 15:
+            return self.question_text[0:15]
+        else:
+            return self.question_text
 
 # TODO: translation
+
+#   https://github.com/deschler/django-modeltranslation
+#   https://github.com/Yaco-Sistemas/django-transmeta/
+#   https://pythonhosted.org/django-translatable/
+
 # class SurveyQuestionTranslations(models.Model):
 #     question = models.ForeignKey('SurveyQuestion')
 # 
@@ -57,8 +68,17 @@ class SurveyQuestionAnswerValue(models.Model):
     for a choice. UserSurveyQuestionAnswer will only be auto-populated
     from this, not related by foreignkey
     """
-    question = models.ForeignKey(SurveyQuestion)
+    question = models.ForeignKey(SurveyQuestion, related_name='answer_values')
     answer_text = models.TextField()
+
+    def __unicode__(self):
+        return self.answer_text
+
+    def __repr__(self):
+        if len(self.answer_text) > 15:
+            return self.answer_text[0:15]
+        else:
+            return self.answer_text
 
 ## User survey results
 
@@ -70,8 +90,6 @@ class UserSurvey(models.Model):
     user = models.ForeignKey(User)
 
     completed = models.DateTimeField(auto_now_add=True)
-
-    answers = models.ManyToManyField("UserSurveyQuestionAnswer", related_name='user_answers')
 
 class UserSurveyQuestionAnswer(models.Model):
     """ This object will store user answers, regardless of whether it
