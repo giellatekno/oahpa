@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 
 __all__ = [
     'IsAuthenticated',
+    'GetOnly',
 ]
 
 ### class CanCreateAndUpdateGoal(permissions.BasePermission):
@@ -22,14 +23,14 @@ __all__ = [
 ###             return obj.created_by == request.user
 ###         return False
 
-### class GetOnly(permissions.BasePermission):
-### 
-###     def has_permission(self, request, view, obj=None):
-###         if request.method == 'GET':
-###             return True
-###         return False
-### 
-###     def has_object_permission(self, request, view, obj):
-###         if request.method == 'GET':
-###             return True
-###         return False
+class GetOnly(permissions.BasePermission):
+
+    def has_permission(self, request, view, obj=None):
+        if request.method == 'GET':
+            return True
+        return False
+
+    def has_object_permission(self, request, view, obj):
+        if request.method == 'GET':
+            return True
+        return False

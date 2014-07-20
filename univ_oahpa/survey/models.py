@@ -27,51 +27,58 @@ question_types = [
 ## Survey definition
 
 class Survey(models.Model):
-	""" Main survey object
-	"""
-    title = models.CharField()
+    """ Main survey object
+    """
+    title = models.CharField(max_length=50)
     description = models.TextField()
 
-    questions = models.ManyToManyField(SurveyQuestion, related_name='questions')
+    questions = models.ManyToManyField('SurveyQuestion', related_name='questions')
 
 class SurveyQuestion(models.Model):
-	""" Contains the survey question, and question type. Connects to any
-	possible answer objects.
-	"""
-	question_text = models.TextField()
-	question_type = models.CharField(choices=question_types)
+    """ Contains the survey question, and question type. Connects to any
+    possible answer objects.
+    """
+    # TODO: Internationalization language
 
-	question_answer = models.ManyToManyField(SurveyQuestionAnswerValue, related_name='answers')
+    question_text = models.TextField()
+    question_type = models.CharField(max_length=18, choices=question_types)
 
+    question_answer = models.ManyToManyField("SurveyQuestionAnswerValue", related_name='answers', null=True, blank=True)
+
+# TODO: translation
+# class SurveyQuestionTranslations(models.Model):
+#     question = models.ForeignKey('SurveyQuestion')
+# 
+#     language = models.CharField(max_length=5)
+#     text = models.TextField()
 
 class SurveyQuestionAnswerValue(models.Model):
-	""" A model for defining answer values for question types that allow
-	for a choice. UserSurveyQuestionAnswer will only be auto-populated
-	from this, not related by foreignkey
-	"""
-	question = models.ForeignKey(SurveyQuestion)
-	answer_text = models.TextField()
+    """ A model for defining answer values for question types that allow
+    for a choice. UserSurveyQuestionAnswer will only be auto-populated
+    from this, not related by foreignkey
+    """
+    question = models.ForeignKey(SurveyQuestion)
+    answer_text = models.TextField()
 
 ## User survey results
 
 class UserSurvey(models.Model):
-	""" This is the user survey instance, to connect individual user
-	answers together.
-	"""
+    """ This is the user survey instance, to connect individual user
+    answers together.
+    """
     survey = models.ForeignKey(Survey)
     user = models.ForeignKey(User)
 
     completed = models.DateTimeField(auto_now_add=True)
 
-    answers = models.ManyToManyField(UserSurveyQuestionAnswer, related_name='user_answers')
+    answers = models.ManyToManyField("UserSurveyQuestionAnswer", related_name='user_answers')
 
 class UserSurveyQuestionAnswer(models.Model):
-	""" This object will store user answers, regardless of whether it
-	comes from a database-specified choice, or user-entered free text.
-	"""
+    """ This object will store user answers, regardless of whether it
+    comes from a database-specified choice, or user-entered free text.
+    """
 
     user_survey = models.ForeignKey(UserSurvey)
     question = models.ForeignKey(SurveyQuestion)
     answer_text = models.TextField()
-
 

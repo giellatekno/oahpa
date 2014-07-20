@@ -17,15 +17,15 @@ class QASerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SurveyQuestionAnswerValue
-        fields = ('answer_text')
+        fields = ('answer_text', )
 
 class SurveyQuestionSerializer(serializers.ModelSerializer):
 
-    answers = QASerializer(many=True, required=False)
+    answers = QASerializer(source='question_answer', many=True, required=False)
 
     class Meta:
         model = SurveyQuestion
-        fields = ('question_text', 'question_type', 'answers')
+        fields = ('question_text', 'question_type', 'answers', )
 
 class SurveySerializer(serializers.ModelSerializer):
 
@@ -33,9 +33,9 @@ class SurveySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Survey
-        fields = ('title', 'description',)
+        fields = ('title', 'description', 'questions', )
 
-### 
+
 ###     def transform_params(self, obj, value):
 ###         """ Need to switch all these to dictionaries
 ###         """
