@@ -535,19 +535,41 @@ def relax(strict):
 
 	relax_pairs = {
 		# key: value
-		# value is accepted for key - have changed the order in the pairs because the key must be unique
-		# For Russian: spellrelax for je vs jo, vowels with and without stress marks
-		# Write the rules for Kven if any!
-	   #u'а́': u'а',
-	   #u'е́': u'е',
-	   #u'и́': u'и',
-	   #u'о́': u'о',
-	   #u'у́': u'у',
-	   #u'ы́': u'ы',
-	   #u'э́': u'э',
-	   #u'ю́': u'ю',
-	   #u'я́': u'я',
-	   #u'ё': u'е',
+		# key is accepted for value
+		# For Russian: spellrelax for 'е' vs 'ё', vowels with and without stress marks
+		# The spell-relax rules for Võro:
+	   u'b́' : u'bʼ',
+	   u'b' : u'bʼ',
+	   u'd́': u'dʼ',
+	   u'd': u'dʼ',
+	   u'f ́': u'fʼ',
+	   u'f': u'fʼ',
+	   u'ǵ': u'gʼ',
+	   u'g': u'gʼ', 
+	   u'h́': u'hʼ',
+	   u'h': u'hʼ',
+	   u'ḱ': u'kʼ',
+	   u'k': u'kʼ',
+	   u'ĺ': u'lʼ',
+	   u'l': u'lʼ',
+	   u'ḿ': u'mʼ',
+	   u'm' : u'mʼ',
+	   u'ń' :  u'nʼ',
+	   u'n' : u'nʼ',
+	   u'ṕ' : u'pʼ',
+	   u'p' : u'pʼ',
+	   u'ŕ' : u'rʼ',
+	   u'r' : u'rʼ',
+	   u'ś' : u'sʼ',
+	   u's' : u'sʼ',
+	   u't́' : u'tʼ',
+	   u't' : u'tʼ',
+	   u'v́' : u'vʼ',
+	   u'v' : u'vʼ',
+	   # different apostrophe-like characters are accepted:
+	   u'\'' : u'ʼ', # the regular apostrophe
+	   u'´' : u'ʼ',
+	   u'`' : u'ʼ',
 	}
 
 	# Create an iterator. We want to generate as many possibilities as
@@ -561,7 +583,7 @@ def relax(strict):
 	#print "list of permutations ",perms_flat
 
 	# Individual possibilities
-	relaxed_perms = [sub_str(relaxed, R, S) for R, S in searches]
+	relaxed_perms = [sub_str(relaxed, R, S) for S, R in searches]
 	#print relaxed_perms
 
 	# Possibilities applied one by one
