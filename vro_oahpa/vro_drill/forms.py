@@ -1014,6 +1014,7 @@ class LeksaQuestion(OahpaQuestion):
 		self.translang = transtype[-3::]
 		self.sourcelang = transtype[0:3]
 		self.word = word
+		self.audio = word.audio # pronounciation
 		self.gametype = 'leksa'
 		kwargs['correct_val'] = correct_val
 		super(LeksaQuestion, self).__init__(*args, **kwargs)

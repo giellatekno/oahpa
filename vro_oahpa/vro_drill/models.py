@@ -463,6 +463,7 @@ class Word(models.Model):
 	gen2 = models.BooleanField(default=False) # indicates if the word has Genitive2 or not
 	reflexive = models.NullBooleanField(blank=True)
 	inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
+	audio = models.CharField(max_length=20) # audio file name
 	zaliznjak = models.CharField(max_length=20)
 
 	wordclass = models.CharField(max_length=8)
