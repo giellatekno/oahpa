@@ -43,9 +43,9 @@
 						<select id="language_select" name="language" onChange="javascript:this.form.submit();">
 
 						{% ifequal LANGUAGE_CODE "mrj" %}
-							<option value="mrj" selected="selected">Võrokiil</option>
+							<option value="mrj" selected="selected">Hill Mari</option>
 						{% else %}
-							<option value="mrj">Võrokiil</option>
+							<option value="mrj">Hill Mari</option>
 						{% endifequal %}
 						{% ifequal LANGUAGE_CODE "fi" %}
 							<option value="fi" selected="selected">Suomi</option>
@@ -107,7 +107,7 @@
 		<div id="header">
 			{% block header_content %}
 			<h1><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!" /></h1>
-			<h2>Tere!</h2>
+			<h2>Шäлä!</h2>
 			{% endblock %}
 		</div>
 
@@ -163,7 +163,7 @@
 			</ul>
 			</br>
 			
-			<p class="intro" align="centre">{% trans "Oahpa is an internet program for learners of Võro. The program can be adjusted to different topics and levels of difficulty, and it generates new task sets automatically." %}</p>
+			<p class="intro" align="centre">{% trans "Oahpa is an internet program for learners of Hill Mari. The program can be adjusted to different topics and levels of difficulty, and it generates new task sets automatically." %}</p>
 		<!--	<h3>{% trans "Online reference materials" %}</h3> -->
 		
 			<ul class="linklist">
@@ -181,7 +181,7 @@
             {% endifequal %}
 {% endcomment %}
 
-                <li><a target="_blank" href="http://sonad.oahpa.no/mrj/est">{% trans "Võro" %}-{% trans "Estonian" %} {% trans "web dictionary" %}</a></li>
+                <li><a target="_blank" href="http://muter.oahpa.no/mrj/fin/">{% trans "Hill Mari" %}&nbsp;-&nbsp;{% trans "Finnish" %} {% trans "web dictionary" %}</a></li>
 {% comment %}
              {% else %}
 				<li><a href="http://victorio.uit.no/webdict/index_sjd-rus.html">{% trans "Norwegian" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
@@ -223,7 +223,7 @@
 			{% endblock %}
 
 			  <p>
-				  {% trans "Copyright 2011-2014 Universitetet i Troms&oslash; " %}<br />
+				  {% trans "Copyright 2011-2014 UiT Norges arktiske universitet  " %}<br />
 			{% trans "Contact" %} oahpa@hum.uit.no</p>
 			</div>
 		</div>

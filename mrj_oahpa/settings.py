@@ -93,10 +93,10 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
-# http://testing.oahpa.no/voro/
+# http://testing.oahpa.no/mrj_oahpa/
 
 # URL_PREFIX = 'smaoahpa'
-URL_PREFIX = 'voro'
+URL_PREFIX = 'mrj_oahpa'
 # URL_PREFIX = '책arjel'
 
 # Absolute path to the directory that holds media.
@@ -180,7 +180,7 @@ LANGUAGES = (
         #('sjd', 'Kildin Sami'),
         ('ru', 'Russian'),
         ('sme', 'North Sami'),
-    ('mrj', 'Võro'),
+    ('mrj', 'Hill Mari'),
 	('no', 'Norwegian'),
 	#('sv', 'Swedish'),
 	('en', 'English'),
@@ -247,7 +247,7 @@ NONGEN_DIALECT = 'NG'
 
 # maybe some of these actually should be options in the install script...
 
-MAIN_LANGUAGE = ('mrj', 'Võro')
+MAIN_LANGUAGE = ('mrj', 'Hill Mari')
 L1 = MAIN_LANGUAGE[0]
 
 #if os.uname()[1] == 'victorio.uit.no':

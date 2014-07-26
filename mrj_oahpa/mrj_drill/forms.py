@@ -350,24 +350,24 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-        ('mrjest', u'Võro to Estonian'),
-        ('estmrj', u'Estonian to Võro'),
-	    #('mrjeng', _('Võro to English')),
-	    #('engmrj', _('English to Võro')),
-        ('mrjfin', u'Võro to Finnish'),
-        ('finmrj', u'Finnish to Võro'),           
-        #('mrjlat', _('Võro to Latvian')),
-        #('latmrj', _('Latvian to Võro')),
-        #('mrjsme', _('Võro to North Saami')),
-        #('smemrj', _('North Saami to Võro')),
-        #('mrjnob', _('Võro to Norwegian')),
-        #('nobmrj', _('Norwegian to Võro')), 
-        #('mrjrus', _('Võro to Russian')),
-        #('rusmrj', _('Russian to Võro')),
+        ('mrjest', u'Hill Mari to Estonian'),
+        ('estmrj', u'Estonian to Hill Mari'),
+	    #('mrjeng', _('Hill Mari to English')),
+	    #('engmrj', _('English to Hill Mari')),
+        ('mrjfin', u'Hill Mari to Finnish'),
+        ('finmrj', u'Finnish to Hill Mari'),           
+        #('mrjlat', _('Hill Mari to Latvian')),
+        #('latmrj', _('Latvian to Hill Mari')),
+        #('mrjsme', _('Hill Mari to North Saami')),
+        #('smemrj', _('North Saami to Hill Mari')),
+        #('mrjnob', _('Hill Mari to Norwegian')),
+        #('nobmrj', _('Norwegian to Hill Mari')), 
+        #('mrjrus', _('Hill Mari to Russian')),
+        #('rusmrj', _('Russian to Hill Mari')),
 )
 
 NUMLANGUAGE_CHOICES = (
-	('mrj', _('Võro')),
+	('mrj', _('Hill Mari')),
 )
 
 SEMTYPE_CHOICES = (
@@ -537,7 +537,7 @@ def relax(strict):
 		# key: value
 		# key is accepted for value
 		# For Russian: spellrelax for 'е' vs 'ё', vowels with and without stress marks
-		# The spell-relax rules for Võro:
+		# The spell-relax rules for Hill Mari:
 	   u'b́' : u'bʼ',
 	   u'b' : u'bʼ',
 	   u'd́': u'dʼ',

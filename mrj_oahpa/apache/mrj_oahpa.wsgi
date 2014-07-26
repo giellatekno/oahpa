@@ -3,7 +3,7 @@ import os, sys
 ## sys.path = []
 ## # sys.path.append('/usr/lib/python2.6/site-packages/django')
 sys.path.append('/home/mrj_oahpa/mrj_oahpa')
-sys.path.append('/home/mrj_oahpa')mrj
+sys.path.append('/home/mrj_oahpa')
 
 ## import django ## ## 
 ## 
