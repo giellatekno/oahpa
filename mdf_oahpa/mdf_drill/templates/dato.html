@@ -1,0 +1,28 @@
+{% extends "num.html" %}
+{% load i18n %}
+
+{% block navbar %}
+{% with "dato" as gamename_nav %}
+    {% include 'numra_submenu.html' %}
+{% endwith %}
+{% endblock %}
+
+
+
+{% block instructions %}
+  {# TODO: strings for instructions. #}
+  {% ifequal gametype "string" %}
+    {% trans "Enter the date in numeric format (ex. 17.8.)" %}
+  {% else %}
+    {% trans "Write the date in Moksha." %}
+  {% endifequal %}
+{% endblock %}
+
+
+{% block setting_items %}
+	<li><label for="id_{{ settingsform.numgame.name }}">{% trans "Expression of dates numeric to words or vice versa." %}</label>
+	    {{ settingsform.numgame }}</li>
+</ul>
+{% endblock %}
+
+
