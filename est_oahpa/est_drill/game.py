@@ -323,15 +323,29 @@ class Game(object):
 class BareGame(Game):
 
 	casetable = {
-		'N-NOM-PL': ('Nom', ['Pl']),
-		'N-GEN': ('Gen', ['Sg','Pl']),
-		'N-PAR': ('Par', ['Sg','Pl']),
-		'N-ILL': ('Ill', ['Sg','Pl']),
-		'N-INE': ('Ine', ['Sg','Pl']),
-		'N-ELA': ('Ela', ['Sg','Pl']),
-		'N-DAT': ('Dat', ['Sg','Pl']),
-		'N-INS': ('Ins', ['Sg','Pl']),
-		'': '',
+		#'N-NOM-PL': ('Nom', ['Pl']),  # comment in after the tags have been standardised
+		#'N-GEN': ('Gen', ['Sg','Pl']),
+		#'N-PAR': ('Par', ['Sg','Pl']),
+		#'N-ILL': ('Ill', ['Sg','Pl']),
+		#'N-INE': ('Ine', ['Sg','Pl']),
+		#'N-ELA': ('Ela', ['Sg','Pl']),
+		#'N-DAT': ('Dat', ['Sg','Pl']),
+		#'N-INS': ('Ins', ['Sg','Pl']),
+		#'': '',
+		'N-NOM-PL': ('nom', ['Pl']),
+		'N-GEN': ('gen', ['Sg','Pl']),
+		'N-PAR': ('part', ['Sg','Pl']),
+		'N-ILL': ('ill', ['Sg','Pl']),
+		'N-INE': ('in', ['Sg','Pl']),
+		'N-ELA': ('el', ['Sg','Pl']),
+		'N-ALL': ('all', ['Sg','Pl']),
+		'N-ADE': ('ad', ['Sg','Pl']),
+		'N-ABL': ('abl', ['Sg','Pl']),
+		'N-TRL': ('tr', ['Sg','Pl']),
+		'N-TER': ('term', ['Sg','Pl']),
+		'N-ESS': ('es', ['Sg','Pl']),
+		'N-ABESS': ('abes', ['Sg','Pl']),
+		'N-COM': ('kom', ['Sg','Pl']),
 	}
 
 
@@ -808,7 +822,9 @@ class BareGame(Game):
 				if tag.pos == 'Pron':
 					tag = tags.order_by('?')[0]
 
-				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)
+				# random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)
+				random_word = tag.form_set # no filter atm
+				print random_word
 				
 
 				# PI: commented out, b/c at this stage
@@ -922,7 +938,7 @@ class BareGame(Game):
 			correct = form_list.filter(tag__string__contains='PassL')
 
 		correct = form_list[0]
-
+		
 		# Due to the pronoun ambiguity potential (gii 'who', gii 'which'),
 		# we need to make sure that the word is the right one.
 		if pos == 'Pron':
@@ -937,10 +953,11 @@ class BareGame(Game):
 		# about turning nominative singular into nominative plural,
 		# thus all baseforms should be singular.
 
-		if tag.case in ['Nom'] or tag.attributive:
-			match_number = False
-		else:
-			match_number = True
+		#if tag.case in ['Nom'] or tag.attributive:
+		#	match_number = False
+		#else:
+		#	match_number = True
+		match_number = False # no number matching. the presented form will always be sg+nom
 		
 
 		def baseformFilter(form):

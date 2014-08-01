@@ -821,7 +821,7 @@ class Form(models.Model):
 				number = self.tag.number
 			else:
 				number = 'Sg'
-			baseform_num = self.word.form_set.filter(tag__case='Nom')
+			baseform_num = self.word.form_set.filter(tag__case__in=['Nom','nom'])
 
 			baseform = baseform_num.filter(tag__number=number)
 			if baseform.count() == 0 and number == 'Sg' and baseform_num.count() > 0:
