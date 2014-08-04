@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN"
+"http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+   <header>
+      <title>Numra for developers</title>
+   </header>
+   <body>
+      <p>Here starts the documentation for making Numra work for new languages.</p>
+      <section>
+         <title>Numeral system</title>
+         <p>The task is to make transducers for the number system. Our transducers are made simultaneously
+          with both the <a
+         href="http://fsmbook.com">Xerox Finite State Transducer</a> and the 
+         <a href="http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/">the HFST
+         Finite State Transducer</a> compilers. The former is better documented (see reference above) and easier to set
+         up and use, but the latter is open source, and also more stable. The current Oahpa setup uses xfst
+         compilers.</p>
+         <p>In our current implementation of Numra, we offer running numbers (ordinal and cardinal), clock, and date
+         expressions.</p>
+         <p>In itself, Numra might be run without automata as well, just with a list of number - word pairs, but we find
+         it easier to make automata.</p>
+      </section>
+      <section>
+         <title>Running numbers</title>
+         <p>The task is to match number to word. The order may be the same (like in Mari: <code>вит = 5, латвит =
+         15</code>, or it may be different (like in English: <code>five = t, fifteen = 15</code>). You may make the
+         system from skratch, or use one of ours as a starting point.</p>
+         <p>At Giellatekno, we have number automata for various languages: <a
+         href="https://victorio.uit.no/langtech/trunk/langs/sjd/src/transcriptions/numbers.lexc">Kildin</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/sje/src/transcriptions/numbers.lexc">Pite</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/sma/src/transcriptions/numbers.lexc">South</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/sme/src/transcriptions/numbers.lexc">North</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/smj/src/transcriptions/numbers.lexc">Lule</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/smn/src/transcriptions/numbers.lexc">Inari</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/sms/src/transcriptions/numbers.lexc">Skolt</a> Saami, and <a
+         href="https://victorio.uit.no/langtech/trunk/langs/fin/src/transcriptions/numbers.lexc">Finnish</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/fkv/src/transcriptions/numbers.lexc">Kven</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/kom/src/transcriptions/numbers.lexc">Komi</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/mhr/src/transcriptions/numbers.lexc">Meadow Mari</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/mrj/src/transcriptions/numbers.lexc">Hill Mari</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/myv/src/transcriptions/numbers.lexc">Erzya</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/mdf/src/transcriptions/numbers.lexc">Moksha</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/liv/src/transcriptions/numbers.lexc">Livonian</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/yrk/src/transcriptions/numbers.lexc">Nenets</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/nno/src/transcriptions/numbers.lexc">Norwegian</a> and <a
+         href="https://victorio.uit.no/langtech/trunk/langs/rus/src/transcriptions/numbers.lexc">Russian</a>.</p>
+         <p>Note that some of them are on an experimental stage, and may contain errors.</p>
+         <p>Pick one, or start from skratch, and make your transducer. Include both ordinals and cardinals. In Oahpa, we
+         stop at 1000, so in this context there is no need to continue beyond that.</p>
+      </section>
+      <section>
+         <title>Clock</title>
+         <p>The task is to match numerically written time expression (11:45) to word (quarter to twelve).</p>
+         <p>At Giellatekno, we have clock automata for various languages: <a
+         href="https://victorio.uit.no/langtech/trunk/langs/sma/src/transcriptions/clock.lexc">South</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/sme/src/transcriptions/clock.lexc">North</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/smj/src/transcriptions/clock.lexc">Lule</a> Saami, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/fin/src/transcriptions/clock.lexc">Finnish</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/fkv/src/transcriptions/clock.lexc">Kven</a> and <a
+         href="https://victorio.uit.no/langtech/trunk/langs/rus/src/transcriptions/clock.lexc">Russian</a>.</p>
+         <p>We use flag diacritics. The reason for this is that the clock is written in the order hour - minute, but
+         spoken in the order minute - hours (seventeen past ten = 10:17). In order to get this we put a mark on the hour
+         number. When the hour word is added later, we check it against the mark. We thus generate twelve versions of
+         the same hour, but remove 11 of them, the 11 not having a matching hour mark. For documentation, see the Flag
+         Diacritics chapter in Beesley and Karttunens book on finite-state transducers.</p>
+      </section>
+      <section>
+         <title>Date</title>
+         <p>The task is to match numerically written date expression (18/9) to word (September the eighteenth).</p>
+         <p>At Giellatekno, we have date automata for at least these languages: <a
+         href="https://victorio.uit.no/langtech/trunk/langs/sma/src/transcriptions/date.lexc ">South</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/sme/src/transcriptions/date.lexc ">North</a>, <a
+         href="https://victorio.uit.no/langtech/trunk/langs/smn/src/transcriptions/date.lexc ">Inari</a> Saami, and <a
+         href="https://victorio.uit.no/langtech/trunk/langs/fkv/src/transcriptions/date.lexc ">Kven</a> and  <a
+         href="https://victorio.uit.no/langtech/trunk/langs/rus/src/transcriptions/date.lexc ">Russian</a>.</p>
+      </section>
+      <section>
+         <title>Compiling the files</title>
+         <p>The source files can be made in any text editor. Compile in the language directory (e.g. <code>$GTHOME/langs/fkv</code> for Kven)
+         by writing <code>make</code>. The files can be tested by the commands:</p>
+         <ul>
+            <li>lookup src/transcriptor-clock2text.xfst	</li>
+            <li>lookup src/transcriptor-date2text.xfst	</li>
+            <li>lookup src/transcriptor-number2text.xfst</li>
+            <li>lookup src/transcriptor-text2clock.xfst	</li>
+            <li>lookup src/transcriptor-text2date.xfst	</li>
+            <li>lookup src/transcriptor-text2number.xfst</li>
+         </ul>
+
+      </section>
+   </body>
+</document>

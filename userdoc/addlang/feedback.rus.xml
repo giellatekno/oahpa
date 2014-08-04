@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document>
+	<header>
+		<title>Giving feedback to the student</title>
+	</header>
+	<body>
+		<p>
+Here are some more documentation if you want to know more than just make the demos.</p>
+		<p>
+For al the programs, if the answer is correct, it turns green. If not, the student gets metalinguistic feedback.</p>
+		<section>
+			<title>Feedback in Morfa</title>
+
+<p>In the l-element in the lexicon, is meta-information stored, for selecting the appropriate words for the exercises (e.g. different kind of stems or inflection classes), and for providing detailed feedback on possible morphological errors. From  N_smenob.xml:</p>
+
+
+<source>
+&lt;l diphthong="yes" gradation="yes" pos="n" finis="0" stemvowel="i" 
+stem="2syll">guolli&lt;/l>
+</source>
+
+<p>This information combined with the information about the task itself implies tags that trigger messages in the chosen user interface language. For example for plural accusative for bisyllabic lemmas with diphthong and stemvowel <code>i</code>. From feedback_nouns.xml:</p>
+
+<source>
+
+&lt;l stem="2syll" diphthong="yes" stemvowel="i"> 
+&lt;msg case="Acc" number="Pl">diphthongsimplification&lt;/msg> 
+</source>
+
+<p>This produces the tag <code>diphthongsimplification</code>, triggering a message in any language. From messages.eng.xml:</p>
+
+<source>
+
+&lt;message order="C" id="diphthongsimplification">Remember 
+diphthong simplification because of &lt;/message>
+</source>
+
+
+<p>Many small messages are linked together to a longer message: Another combination of the morphophonological information of the lemma and the task gives a tag which triggers the message about weak grade and another one is <code>the suffix is -id</code>. All the feedback messages starts with a message about the stem type:</p>
+
+  <p><img alt="Oahpainstallation" width="80%" src="../images/morfaCvehkiin.png" /></p>
+
+</section>
+		<section>
+			<title>Feedback in Leksa</title>
+<p>Coming..</p>
+</section>
+		<section>
+			<title>Feedback in Vasta and Sahka</title>
+<p>Coming..</p>
+</section>
+
+	</body>
+</document>

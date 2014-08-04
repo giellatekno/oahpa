@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+
+<document>
+	<header>
+		<title>Making OAHPA! for other languages</title>
+	</header>
+	<body>
+		<p>
+Это - документация для того, как сделать OAHPA! работа для новых языков (мы принимаем Вас, знакома с OAHPA! уже). Мы начинаем с трех из программ, Leksa, Morfa-C и Numra, и цель состоит в том, чтобы сделать демонстрационный пример из каждого из них по крайней мере с 50 аннотациями плюс слова числа в различных контекстах.</p>
+		<section>
+			<title>Почему порт Oahpa! на другие языки?</title>
+			<p>
+Мы надеемся достоинство Oahpa! выступает за себя: «Такая вещь была бы хороша иметь для нашего языка также!». Не только имеет Oahpa! доказанный быть рабочей интерактивной платформой изучения, это - также открытый источник. Так, это - предложение пропустить тяжелый шаг переизобретения колеса, и вместо этого использовать нашу платформу, или принятую нами или управляемую на Вашей собственной системе.
+</p>            
+            
+		</section>
+		<section>
+			<title>Для которых языков?</title>
+			<p>
+В принципе, Oahpa! может использоваться для любого языка. По сравнению со многими другими интерактивными подходами изучения, Oahpa! особенно хорошо подходит для языков, обладающих богатой морфологией, и для задач, где система принимает вход свободной формы от студента, как в программах Vasta и Sahka. Обратите внимание на то, что эти программы предполагают прочный синтаксический анализатор для рассматриваемого языка.
+			</p>
+<p>
+Вот три бумаги о Oahpa. Последний - о Sahka и Vasta, которые требуют синтаксического анализатора:
+</p>
+    <ul>
+  <li><a href="http://dspace.utlib.ee/dspace/bitstream/handle/10062/9546/paper38.pdf?sequence=1">Interactive pedagogical programs based on constraint grammar.</a> </li>
+ <li><a href="http://www.ep.liu.se/ecp_article/index.en.aspx?issue=086;article=003">Generating modular grammar exercises with finite-state transducers.</a> and <a href="morfaslides.pdf">Presentation held 22.5.13</a></li>
+<li><a href="http://dspace.utlib.ee/dspace/bitstream/10062/14287/1/antonsen_etal.pdf">Constraint Grammar in Dialogue Systems</a></li>
+    </ul>
+		</section>
+		<section>
+			<title>Кто может участвовать в этой работенка</title>
+<p>Кто-либо, но</p>
+<ul>
+<li>- Вы будете нуждаться в подключении к Интернету.</li>
+<li>- у Вашего языка должен быть письменный стандарт. Словари и хорошая грамматика также не причинят боль.</li>
+<li>- Знакомство с компьютерами и/или формальным лингвистическим фоном пригодится.</li>
+<li>- Обучение опыта будет полезно, особенно если Вам уже сгруппируют списки словаря согласно студенческому уровню, теме, и т.д.</li>
+</ul>
+
+<p>Обратите внимание на то, что мы работаем под общедоступным режимом, и независимо от того, что издано через наши серверы, будет доступно для использования, бесплатно, и исходный код будет доступен для дальнейшего развития. Это означает, что, если Вы планируете создание закрытой, коммерческой обучающей окружающей среды, Вы можете использовать наш кодекс для того (согласно нормальной практике GPL), но независимо от того, что надето, наши серверы будут открыты и свободны.</p>
+
+		</section>
+		<section>
+		<title>Какой Oahpa! программы?</title>
+					<p>
+Каждый раз, когда Вы хотите начать развивать Oahpa! для Вашего собственного языка, или просто хотят проверить его, мы думаем две программы изучения, Leksa и Morfa-C - хорошее начало. Они не нуждаются в слишком много грамматические ресурсы, они важны для двух центральных тем изучения (словарь и сгибание слова), и они производят хорошее впечатление некоторых Oahpa! s основная функциональность. Чтобы использовать его к его полному, Вы будете нуждаться в доступе к прочным морфологическим и синтаксическим анализаторам для Вашего языка, но это не будет необходимо для Leksa и Morfa-C.
+			</p>
+            <section>
+			<title>Leksa</title>
+			<p>
+Викторины Word - забава, и полезный, чтобы обучать словарь. Игра Leksa предназначается для учеников, которые учат новый язык, возможно также для нуждающихся учеников письма практики. Программа должна принять синонимы. Leksa работает с обоих языковых направлений.</p>
+<p><a href="http://oahpa.no/davvi/"><strong>Здесь</strong></a>
+ Вы видите, как Северный Sámi Leksa работает. Выберите язык инструкции в правильном краю, прежде чем Вы выберете Leksa.
+</p>
+<p><a href="developerleksa.html">О Leksa для разработчиков</a></p>
+		</section>	
+		<section>
+			<title>Morfa</title>
+			<p>
+The pupil may practice word inflection in a systematic way - either with singleton words (Morfa-S) or words in sentences, in order to learn the context in which to use the wordforms (Morfa-C). The student may choose part-of-speech.  We have chosen to help you to make Morfa-C because you then get Morfa-S for free if you add more lemmas (and word forms).</p>
+<p><a href="http://oahpa.no/davvi/"><strong>Here</strong></a> you can see how the North Sámi Morfa-S and Morfa-C work. Choose instruction language in the right margin before you choose the program. 
+                
+</p>
+<p><a href="developermorfa.html">About Morfa for developers</a></p>
+
+		</section>
+		<section>
+			<title>Numra</title>
+			<p>
+The pupil may practice number understanding and generation in a systematic way - either by writing numbers out as words (<code>7</code> as <code>seven</code>) or vice versa, by writing number words as numerals. The task may involve different number formats (plain numerals, ordinals (<code>first, second, twenty-fifth…</code>), clock formats (<code>16:15 a quarter past four</code>) expressions for dates.</p>
+
+<p>
+The program is based upon a set of simple transducers which generate the expressions, and a random function that generates tasks and checks the pupil's performance.
+</p>
+
+<p><a href="http://oahpa.no/aarjel/"><strong>Here</strong></a> you can see how the South Sámi Numra works. Choose instruction language in the right margin before you choose the Numra program. 
+                
+</p>
+<p><a href="developernumra.html">About Numra for developers</a></p>
+
+		</section>
+		<section>
+		<title>Vasta and Sahka</title>
+					<p>
+These programs require a syntactic analyser. <a href="vastasahka.html">About Vasta and Sahka</a>.</p>
+		</section>
+		<section>
+		<title>Contact information</title>
+					<p>
+If this sounds interesting, feel free to contact us.  <a href="mailto:oahpa@hum.uit.no">Send us an e-mail</a>.</p>
+		</section>
+		</section>
+	</body>
+</document>
