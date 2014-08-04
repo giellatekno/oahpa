@@ -3,41 +3,44 @@
 
 <document>
 	<header>
-		<title>Leksa for developers</title>
+		<title>Leksa для разработчиков</title>
 	</header>
 	<body>
 		<p>
-Here starts the documentation for making Leksa work for new languages. The goal is to make a demo with at least 55 words. The lexicon will be used also for Morfa-C. <a href="http://oahpa.no/davvi/"><strong>Here</strong></a> you can see how the North Saami Leksa works. Choose instruction language in the right margin before you choose Leksa.
+Здесь начинает документацию для того, чтобы заставить Leksa работать на новые языки. Цель состоит в том, чтобы сделать демонстрационный пример по крайней мере с 55 словами. Словарь будет использоваться также для Morfa-C. Здесь Вы видите, как Северный Saami Leksa работает. Выберите язык инструкции в правильном краю, прежде чем Вы выберете Leksa.
 </p>
 
 		<section>
 			<title>Lemmas</title>
-<p>You need some lemmas for the lexicon from different semantic categories: HUMAN and FOOD/DRINK. We will give the lemmas semantic classes so it will be easier to combine them in different semantic categories, and some of them we can use also in Morfa-C:</p>
+<p>
+Вы нуждаетесь в некоторых аннотациях для словаря от различных семантических категорий: ЧЕЛОВЕК и ЕДА/НАПИТОК. Мы дадим аннотациям семантические классы, таким образом, будет легче объединить их в различных семантических категориях, и некоторые из них, мы можем использовать также в Morfa-C:
+</p>
 
 			<ul>
-			<li>- the verb for "to live (in a place)", semantic class "HUMAN_V"</li> 
-			<li>- the verb "to eat", semantic class "FOODDRINK_V" and "HUMAN_V"  </li> 
-			<li>- the verb "to drink", semantic class "FOODDRINK_V" and "HUMAN_V" </li> 
-			<li>- at least 5 verbs for making food (e.g. steak, cook, bake), semantic classes "FOODDRINK_V" </li>
-			<li>- at least 5 nouns for beverages (e.g. water, milk, beer), semantic class "DRINK" </li>
-			<li>- 5 nouns for food you will have for dinner (e.g. porridge, soup, steak), semantic classe "FOOD_DISH"</li>
-			<li>- 5 nouns for food you will by in a shop (e.g. flour, sugar, fruit), semantic class "FOOD_GROCERY"</li>
-			<li>- 5 nouns places where you can live (e.g. city, town, village), semantic class "PLACE"</li>
-			<li>- at least 5 nouns for family members beings , semantic class "FAMILY" </li>
-			<li>- at least 5 nouns for other human beings (e.g. boy, woman, teacher), semantic class "PEOPLE" </li>
-			<li>- at least 5 adjectives about human beings, (e.g. strong, old, young, clever), semantic class "HUMAN_A"</li>
-			<li>- at least 5 adjectives about food, (e.g. warm, cold, sour, sweet), semantic class "FOOD_A"</li>
+			<li>- глагол для, "чтобы жить (в месте)", семантический класс "HUMAN_V"</li> 
+			<li>- глагол, "чтобы поесть", семантический класс "FOODDRINK_V" и "HUMAN_V"</li> 
+			<li>- глагол, "чтобы пить", семантический класс "FOODDRINK_V" и "HUMAN_V"</li> 
+			<li>- по крайней мере 5 глаголов для того, чтобы сделать еду (например, стейк, приготовьте, испеките), семантические классы "FOODDRINK_V"</li>
+			<li>- по крайней мере 5 существительных для напитков (например, вода, молоко, пиво), семантический класс "НАПИТОК"</li>
+			<li>- 5 существительных для еды Вы будете иметь на обед (например, овсянка, суп, стейк), семантический Classe "FOOD_DISH"</li>
+			<li>- 5 существительных для еды Вы будете в магазине (например, мука, сахар, фрукты), семантический класс "FOOD_GROCERY"</li>
+			<li>- 5 существительных помещают, где Вы можете жить (например, город, город, деревня), семантический класс "PLACE"</li>
+			<li>- по крайней мере 5 существительных для существ членов семьи, семантический класс "FAMILY"</li>
+			<li>- по крайней мере 5 существительных для других людей (например, мальчик, женщина, учитель), семантический класс "PEOPLE" </li>
+			<li>- по крайней мере 5 прилагательных о людях, (например, сильный, старый, молодой, умный), семантический класс "HUMAN_A"</li>
+			<li>- по крайней мере 5 прилагательных о еде, (например, теплый, холодный, кислый, сладкий), семантический класс "FOOD_A"</li>
 			</ul>
 			
-<p>Give in addition the semantic class "mACTIVITY" to all verbs which can be an answer to the question: "What did the girl do yesterday?" (e.g. bake). The initial m tells that this is a morfaset, outside the systems of semantic categories.</p>		
-<p>Give a book or level name to all entries, e.g. half of them K1 and half of them K2.</p>		
+<p>Дайте, кроме того, семантический класс "mACTIVITY" ко всем глаголам, которые могут быть ответом на вопрос: "Что девочка вчера сделала?" (например, пекут). Начальная буква m говорит, что это - morfaset вне систем семантических категорий.</p>		
+<p>Дайте книгу или имя уровня ко всем записям, например, половину из них K1 и половина из них K2.</p>		
 
 </section>
 
 				
 		<section>
 			<title>XML-format</title>
-<p>You put the lemmas into xml-format. There should be one file for each of the parts of speech. Add names to the files with the language code first, like we have done for North Saami with translation to Norwegian <code>V_smenob.xml, N_smenobxml, A_smenob.xml</code>. The "best" translation, that we want as key answer, gets attribute stat="pref".</p>
+<p>XML-формат
+Вы помещаете аннотации в xml-формат. Должен быть один файл для каждой из частей речи. Добавьте, что имена к файлам с языком кодируют сначала, как мы сделали для Северного Saami с переводом на норвежский V_smenob.xml, N_smenobxml, A_smenob.xml. "Лучший" перевод, который мы хотим как ключевой ответ, получает статистику stat="pref".</p>
 		<source>
 &lt;?xml version="1.0" encoding="utf-8"?>
 &lt;r xml:lang="sme">
@@ -61,12 +64,12 @@ Here starts the documentation for making Leksa work for new languages. The goal 
  &lt;/e>
 &lt;/r>		
 </source>
-<p>One way of making the lexicon, is to start with a csv-file, with double underscore as delimiter: </p>
+<p>Один способ сделать словарь, должен начаться с csv-файла, с двойного подчеркивают как разделитель: </p>
 <source>
 mielki __ N __ melk, mjølk __ DRINK, FOOD_GROCERY
 </source>
-<p>and use the script main/ped/script/uusv2oahpa_xml.xsl</p>
-<p>If one word have different meanings belonging to different semantic classes, this is the way of doing it:</p>
+<p>и используйте подлинник main/ped/script/uusv2oahpa_xml.xsl</p>
+<p>Если у одного слова есть различные значения, принадлежащие различным семантическим классам, это - способ сделать его:</p>
 <source>
 beaivi __ N __ day __ TIME
 beaivi __ N __ sun __ NATUR
@@ -74,8 +77,9 @@ beaivi __ N __ sun __ NATUR
 		</section>
 		
 		<section>
-			<title>Lexicon files the other direction</title>
-<p>The translations with attribute stat="pref" will be lemmas in the lexicon, which goes the other language direction, and the name of the file will be e.g. N_tlangslang.xml Also here may be synonyms in the translation field. You only need the Leksa semantic categories  (HUMAN and FOOD/DRINK), but it does no harm if you add all the semantic classes from the original files.</p>
+			<title>Лексикалные файли регистрирует другое направление</title>
+<p>
+Переводы со статистикой признака = "приставка" будет аннотациями в словаре, который идет другое языковое направление, и название файла будет, например, N_tlangslang.xml Также вот могут быть синонимы в области перевода. Вы только нуждаетесь в Leksa семантические категории (ЧЕЛОВЕК и ЕДА/НАПИТОК), но это не причиняет вреда, если Вы добавляете все семантические классы от оригинальных файлов.</p>
 		<source>
 &lt;?xml version="1.0" encoding="utf-8"?>
 &lt;r xml:lang="nob">
@@ -97,11 +101,12 @@ beaivi __ N __ sun __ NATUR
  &lt;/e>
 &lt;/r>		
 		</source>
-<p>There are scripts for this in main/ped/script/ , documentet in 00_README.txt</p>
+<p>Есть подлинники для этого в main/ped/script/, documentet в 00_README.txt</p>
 		</section>
 		<section>
-			<title>Handling of semantic sets in Leksa</title>
-<p>We put togehter semantic classes into semantic categories with the file semanticsets.xml</p>
+			<title>Обработка семантических наборов в Leksa</title>
+<p>
+Мы помещаем togehter семантические классы в семантические категории с файлом semanticsets.xml</p>
 		<source>
 &lt;/?xml version="1.0" encoding="utf-8"?>
 &lt;/lexicon>
@@ -124,20 +129,22 @@ beaivi __ N __ sun __ NATUR
 </section>
 
 		<section>
-			<title>Your Leksa demo</title>
-<p>You have now made the xml-files for a Leksa demo with at least 48 words. The demo has these options:</p>
+			<title>Ваш демонстрационный пример Leksa</title>
+<p>Вы теперь сделали xml-файлы для демонстрационного примера Leksa по крайней мере с 48 словами. У демонстрационного примера есть эти варианты:</p>
 			<ul>
-			<li>- language direction </li> 
-            <li>- 2 semantic categore containing nouns, verbs and adjectives: HUMAN and FOOD/DRINK. The other semantic classes are for Morfa-C. </li>
-			<li>- two book or level choices</li> 
+			<li>- языковое направление </li> 
+            <li>- 2 семантических categore, содержащие существительные, глаголы и прилагательные: ЧЕЛОВЕК и ЕДА/НАПИТОК. Другие семантические классы для Morfa-C. </li>
+			<li>- два заказывают или выбор уровня</li> 
 
 		</ul>			</section>
 
 		<section>
-			<title>Further work</title>
-<p>You can add more lemmas to each semantic class. You can make more semantic classes, e.g. NATURE.  </p>
+			<title>Дальнейшая работа</title>
+<p>Вы можете добавить больше аннотаций к каждому семантическому классу. Вы можете сделать больше семантических классов, например, NATURE.  </p>
    
-<p>Sometimes the translation will be an explanation, and it can be difficult to use the word in the Leksa from one of the languages to another one. You can make exeption for the word about in the xml-file. The word will still be used in Morfa-C.</p>
+<p>
+Иногда перевод будет объяснением, и может быть трудно использовать слово в Leksa с одного из языков к другому. Вы можете сделать exeption для слова о в xml-файле. Слово будет все еще использоваться в Morfa-C.
+</p>
 		<source>
 		&lt;e exclude="leksa">
 		   </source>
