@@ -3,16 +3,21 @@
 
 <document>
 	<header>
-		<title>Morfa for developers</title>
+		<title>Morfa для разработчиков</title>
 	</header>
 	<body>
 		<p>
-Here starts the documentation for making Morfa work for new languages. The goal is to make a demo of Morfa-C with 2-3 task templates and the lemmas from Leksa. <a href="http://oahpa.no/davvi/"><strong>Here</strong></a> you can see how the North Sámi Morfa-S and Morfa-C work. Choose instruction language in the right margin before you choose the program. 
+Здесь начинает документацию для того, чтобы заставить Morfa работать на новые языки. Цель состоит в том, чтобы сделать демонстрационный пример Morfa-C с 2-3 шаблонами задачи и аннотациями от Leksa.   <a href="http://oahpa.no/davvi/"><strong>Здесь</strong></a> Вы видите, как Северный Sámi Morfa-S и Morfa-C работают. Выберите язык инструкции в правильном краю, прежде чем Вы выберете программу
 </p>
 		<section>
-			<title>Tasks for Morfa-C</title>
-<p>Now starts the fun part of the work. Using the semantic classes in the lexicon you can make tasks for the students. They get a lemma in base form, and their task is to inflect it. What kind of tasks depends on the language. Your tools are the semantic sets of FAMILY and PEOPLE nouns, HUMAN_A adjectives, PLACE nouns, MOVEMENT_V verbs, ACTIVITY verbs, FOOD and DRINK nouns and FOOD_A adjectives.</p>
-<p>The semantic classes in the lexicon make it possible to make e.g. these templates:</p>
+			<title>Задачи для Morfa-C</title>
+<p>
+Теперь начинает забавную часть работы. Используя семантические классы в словаре Вы можете сделать задачи для студентов. Они получают аннотацию в основной форме, и их задача состоит в том, чтобы склонять ее. Какие задачи зависит от языка. Ваши инструменты - семантические наборы family (СЕМЬИ) и PEOPLE (ЛЮДЕЙ) существительные, прилагательные HUMAN_A, существительные PLACE (МЕСТА), глаголы MOVEMENT_V, глаголы ACTIVITY (ДЕЯТЕЛЬНОСТИ), существительные  FOOD and DRINK (ЕДЫ и ПИТЬЯ) и прилагательные FOOD_A.
+</p>
+
+<p>
+Семантические классы в словаре позволяют сделать, например, эти шаблоны:
+</p>
 <ul>
 <li>- Where does your FAMILY live? My FAMILY lives in ______ (PLACE).</li>
 <li>- What does PEOPLE drink? PEOPLE drinks ______ (DRINK).</li>
@@ -27,8 +32,10 @@ Here starts the documentation for making Morfa work for new languages. The goal 
 		</section>			
 		
 		<section>
-			<title>Question-answer-pair templates in xml-format</title>
-<p>The template contains both variables and constants. This is an example of a question-answer-pair template in North Saami. The first text is "What SUBJ did yesterday?", the next one is "Yesterday SUBJ MAINV". The line with game="morfa" implies that the task for the student is to write the correct word form of the MAINV.</p>
+			<title>Шаблоны пары ответа вопроса в xml-формате</title>
+<p>
+Шаблон содержит и переменные и константы. Это - пример шаблона пары ответа вопроса в Северном Saami. Первый текст, "Что SUBJ вчера сделала?", следующий - "Вчера SUBJ MAINV". Линия с игрой = "morfa" подразумевает, что задача для студента состоит в том, чтобы написать правильную словоформу MAINV.
+</p>
 		<source>
    &lt;q id="prtSg">
     &lt;qtype>PRT&lt;/qtype>
@@ -54,7 +61,9 @@ Here starts the documentation for making Morfa work for new languages. The goal 
   
  </source>
 
-<p>This first template generate tasks like "What the old teacher did yesterday?" "bake" "Yesterday the teacher ____ " . As you see, the variable ADJ is just for giving variation. The qtype is PRT: to inflect verbs in past tense. It will be useful when you have made so many templates that you will sort them as options for the student. But we will not use it in the demo. Every template has an id to make it easier to remove them.</p><p> One example with inflecting adjectives in plural:</p>
+<p>
+This first template generate tasks like "What the old teacher did yesterday?" "bake" "Yesterday the teacher ____ " . As you see, the variable ADJ is just for giving variation. The qtype is PRT: to inflect verbs in past tense. It will be useful when you have made so many templates that you will sort them as options for the student. But we will not use it in the demo. Every template has an id to make it easier to remove them.</p><p> One example with inflecting adjectives in plural:
+</p>
 
 		<source>
    &lt;q id="AdjPred">
