@@ -62,7 +62,7 @@
  </source>
 
 <p>
-This first template generate tasks like "What the old teacher did yesterday?" "bake" "Yesterday the teacher ____ " . As you see, the variable ADJ is just for giving variation. The qtype is PRT: to inflect verbs in past tense. It will be useful when you have made so many templates that you will sort them as options for the student. But we will not use it in the demo. Every template has an id to make it easier to remove them.</p><p> One example with inflecting adjectives in plural:
+Этот первый шаблон производит задачи как, "Что старый учитель вчера сделал?" "испеките" "Вчера учитель ____". Как Вы видите, переменное ADJ только для предоставления изменения. qtype - PRT: склонять глаголы в прошедшем времени. Будет полезно, когда Вы сделали столько шаблонов, что Вы сортируете их как возможности для студента. Но мы не будем использовать его в демонстрационном примере. У каждого шаблона есть id, чтобы облегчить удалять их.</p> <p> Один пример со склонением прилагательных во множественном числе:
 </p>
 
 		<source>
@@ -84,7 +84,8 @@ This first template generate tasks like "What the old teacher did yesterday?" "b
     &lt;/answer> 
   &lt;/q>		
   </source>
-<p>The first text is "How are the SUBJ?", the next one is "They are ADJ". The line with game="morfa" implies that the task for the student is to write the correct word form of the ADJ. This template will generate tasks like "How are the girls?" "clever" "They are ______ (plural form in North Saami) ". </p><p> One example with inflecting nouns in illative:</p>
+<p>
+Первый текст, "Как SUBJ?", следующий, "Они - ADJ". Линия с игрой game="morfa" подразумевает, что задача для студента состоит в том, чтобы написать правильную словоформу ADJ. Этот шаблон произведет задачи как, "Как девочки?" "умный" "Они - ______ (множественная форма в Северном Saami)". </p> <p> Один пример со склонением существительных в заключительном:</p>
 		<source>
   &lt;q id="nill">
     &lt;qtype>N-ILL&lt;/qtype>
@@ -109,18 +110,22 @@ This first template generate tasks like "What the old teacher did yesterday?" "b
   &lt;/q>
 	
   </source>
-<p>The first text is "Where to SUBJ MAINV?", the next one is "SUBJ MAINV N-ILL". The line with game="morfa" implies that the task for the student is to write the correct word form of the N-ILL. This template will generate tasks like "Where to your sister runs?" "school" "Sister runs ______ (illative case in Saami) " . </p>
+<p>
+Первый текст "Куда SUBJ MAINV?", следующий - "SUBJ MAINV N-ILL". Линия с игрой game="morfa" подразумевает, что задача для студента состоит в том, чтобы написать правильную словоформу N-ILL. Этот шаблон произведет задачи как "Куда Ваша сестра бегает?" "школа" "Сестра бегает ______ (иллативный подеж в Saami)".
+</p>
 
-<p>For the demo we do it simply. E.g. we don't use pronouns in the answer, which in principle is easy, but then we have to take in account that in some languages there are genders. We have also an agreement fuction e.g. between SUBJ and MAINV which one could use.</p>
+<p>Для демонстрационного примера мы делаем это просто. Например, мы не используем местоимения в ответе, который в принципе легок, но тогда мы должны взять в счете, что на некоторых языках есть полы. У нас есть также соглашение fuction, например, между SUBJ и MAINV, который мог использовать.
+</p>
 
-  <p>Save the templates in a file with the language code, e.g. <code>questions.sme.xml</code></p>	
+  <p>Сохраните шаблоны в файле с языковым кодексом, например <code>questions.sme.xml</code></p>	
 
 
 		</section>
 
 		<section>
-			<title>Word forms</title>
-<p>The lexicon contains lemmas. The Morfa-C tasks need word forms, which are generated with an FST. For that you need files, like v_paradigm.txt, telling what forms to generate. </p>
+			<title>Словоформы</title>
+<p>Словарь содержит аннотации. Задачи Morfa-C нуждаются в словоформах, которые произведены с FST. Для этого Вы нуждаетесь в файлах, как v_paradigm.txt, говоря что формы произвести.
+</p>
   <source>
 V+Inf
 V+Ind+Prs+Sg1
@@ -128,7 +133,7 @@ V+Ind+Prs+Sg2
 V+Ind+Prs+Sg3
 V+Ind+Prs+Pl1
 ..  </source>	
-<p><a href="generation.html">Read more about generation of word forms.</a></p>
+<p><a href="generation.html">Читайте больше о поколении словоформ.</a></p>
   <p><img alt="Oahpainstallation" width="80%" src="../images/Oahpa_system_overview.png" /></p>
 <!-- <p> If you can't do it for your language, then you have to write the word forms manually. The work depends on the templates, there you see which word forms you need for each lemma, also the basis forms. The word forms have to be in this format (tab-separated): </p>
   <source> 
@@ -149,7 +154,8 @@ V+Ind+Prs+Pl1
 
 		<section>
 			<title>Morfa-S</title>
-<p>Morfa-S is based on generated word forms. You have to decide what options there should be, take a look at the North Saami Morfa-S. </p> <p> Morfa-S offers help if the student wants to know how to make the word form. The help-information is generated based on the combination of the morphological tags and the task itself. This will be explained <a href="feedback.html">here</a>.</p>
+<p>Morfa-S основан на произведенных словоформах. Вы должны решить, каковы варианты там должны быть, смотреть на Северный Saami Morfa-S. </p> <p> Morfa-S предлагает помощь, если студент хочет знать, как сделать словоформу. Информация помощи произведена основанная на комбинации морфологических признаков и самой задачи. Это будет объяснено здесь
+ <a href="feedback.html">здесь</a>.</p>
 
 		</section>
 		<section>
