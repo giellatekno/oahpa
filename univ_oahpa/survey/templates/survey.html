@@ -23,24 +23,77 @@
 
 {% block content %}
     <div id="surveys" ng-app="Surveys" class="bootstrap-styles">
-        <div ng-controller="SurveyClient" ng-source="/{{ URL_PREFIX }}/surveys/api/surveys/">
+        <div ng-controller="SurveyClient" ng-source="/{{ URL_PREFIX }}/survey/api/surveys/">
             <div class="col-lg-9 col-sm-9 col-md-9">
 
-                <form novalidate ng-show="results" ng-submit="submitForm()" id="new_goal" ng-hide="form_succcess && results" role="form">
+                <form novalidate ng-show="results" 
+                                 ng-submit="submitForm()" 
+                                 id="new_goal"
+                                 ng-hide="form_succcess && results" 
+                                 role="form">
 
-                    <div class="row">
+                    <div class="row" ng-repeat="survey in surveys">
 
                         <div class="col-md-1">
                             <span class="step_number">1</span>
                         </div>
 
                         <div class="col-md-11">
-                            <% surveys %>
-                            <% survey %>
+                            <h3><% survey.title %></h3>
+                            <blockquote><p><% survey.description %></p></blockquote>
+                            <h5>Questions:</h5>
+                            <div ng-repeat="question in survey.questions">
+                                <div class="form-group">
+                                    {% comment %}
+                                    <pre><% question %></pre>
+                                    {% endcomment %}
+                                    <label for=""><% question.question_text %></label>
+
+                                    <textarea class="form-control"
+                                           ng-if="question.question_type == 'freeform text'"
+                                           {# TODO: question_id in API #}
+                                           name="question.question_id"
+                                           required
+                                           {# TODO: survey.id in API #}
+                                           ng-model="survey_answers[survey.id][question.id]">
+                                       </textarea>
+
+                                    <select class="form-control"
+                                            id="selectMainType"
+                                            name="main_type"
+                                            ng-if="question.question_type == 'single choice'"
+                                            ng-options="value as label for (value, label) in question.answer_values"
+                                            ng-model="survey_answers[survey.id][question.id]">
+
+                                    </select>
+
+                                    <hr />
+                                </div>
+                                {% comment %}
+                                    ng-model="survey_answers[survey.id][question.id]"
+                                {% endcomment %}
+                            </div>
                         </div>
 
                     </div>
+
+                    <div class="row">
+
+                        <div class="col-md-1">
+                            <span class="step_number">&nbsp;</span>
+                        </div>
+
+                        <div class="col-md-11">
+                            <button type="button" ng-click="submitForm()" class="btn btn-info">Submit</button>
+                            <button type="button" class="btn btn-warning">Reset</button>
+                        </div>
+                    </div>
                 </form>
+
+                <pre><% survey_answers %></pre>
+                <h4>response</h4>
+                <pre><% survey_answers %></pre>
+                <h5 ng-if="success">success</h5>
 
             </div>
         </div>

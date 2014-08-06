@@ -72,4 +72,5 @@ def test_page(request):
 
 	context = {}
 
-	return render_to_response('survey.html', context, context_instance=RequestContext(request))
+	return render_to_response('survey.html', context,
+	                       context_instance=RequestContext(request))
