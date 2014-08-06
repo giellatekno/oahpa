@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 
 # TODO: middleware for watching for displaying the survey
-# 
-#       - must consider option that multiple surveys could be present at
-#         any time
-# 
-#       - must consider that existing users who haven't been surveyed
-#         need to be surveyed on some login
+#
+#  - must consider option that multiple surveys could be present at
+#    any time
+#
+#  - must consider that existing users who haven't been surveyed
+#    need to be surveyed on some login
 
 from django.db import models
 
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User, Group
 
-## 
+##
 ## Survey
 ##
 
@@ -59,7 +59,7 @@ class SurveyQuestion(models.Model):
 
 # class SurveyQuestionTranslations(models.Model):
 #     question = models.ForeignKey('SurveyQuestion')
-# 
+#
 #     language = models.CharField(max_length=5)
 #     text = models.TextField()
 
@@ -88,6 +88,7 @@ class UserSurvey(models.Model):
     """
     survey = models.ForeignKey(Survey)
     user = models.ForeignKey(User)
+    # TODO: anonymize user in export process
 
     completed = models.DateTimeField(auto_now_add=True)
 

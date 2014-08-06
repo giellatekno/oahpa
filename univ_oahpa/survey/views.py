@@ -9,7 +9,6 @@ from .models import Survey, UserSurvey
 from .permissions import *
 from .serializers import *
 
-
 class Auth(object):
     authentication_classes = (SessionAuthentication, BasicAuthentication)
 
@@ -54,4 +53,23 @@ class UserSurveyView(viewsets.ModelViewSet):
 
     pass
 
+def render_to_response(*args, **kwargs):
+    """ Append an attribute onto the response so that we can grab the context
+    from it in the track decorator. It has to be an attribute so that it
+    doesn't depend on the function returning the response to be decorated by
+    @trackGrade to get proper output. """
 
+    from django.shortcuts import render_to_response
+
+    response = render_to_response(*args, **kwargs)
+    response.context = args[1]
+
+    return response
+
+from django.template import Context, RequestContext, loader
+
+def test_page(request):
+
+	context = {}
+
+	return render_to_response('survey.html', context, context_instance=RequestContext(request))

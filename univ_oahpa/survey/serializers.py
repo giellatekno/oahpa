@@ -10,7 +10,6 @@ __all__ = [
     'QASerializer',
     'SurveyQuestionSerializer',
     'SurveySerializer',
-
 ]
 
 class QASerializer(serializers.ModelSerializer):
@@ -34,11 +33,3 @@ class SurveySerializer(serializers.ModelSerializer):
     class Meta:
         model = Survey
         fields = ('title', 'description', 'questions', )
-
-
-###     def transform_params(self, obj, value):
-###         """ Need to switch all these to dictionaries
-###         """
-###         if value is not None:
-###             return dict([(p.get('parameter'), p.get('value')) for p in value])
-###         return None
