@@ -66,11 +66,12 @@ class Gameview(object):
 	def register_logs(self, request, game, settings_form):
 		""" Grab all the logs that were generated from a form, and
 		append them to the request session """
-		# in sahka this may be a tuple
+
 		request.user_logs_generated = [
 			f.last_log for f in game.form_list
 			if hasattr(f, 'last_log')
 		]
+
 		# Use this to track whether the user switches away from the
 		# current exercise, if they do, then we can optionally stop
 		# tracking activity.
@@ -317,8 +318,8 @@ class Leksaview(Gameview):
 
 	def additional_settings(self, settings_form):
 		self.settings['allsem'] = settings_form.allsem
-		self.settings['frequency'] = None
-		self.settings['geography'] = None
+		# self.settings['frequency'] = None
+		# self.settings['geography'] = None
 
 		# settings_form.default_data['transtype'] = default_langpair
 
