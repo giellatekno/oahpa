@@ -68,9 +68,9 @@ def render_to_response(*args, **kwargs):
 
 from django.template import Context, RequestContext, loader
 
-def test_page(request):
+def answer(request):
 
-	context = {}
+    context = {}
 
-	return render_to_response('survey.html', context,
-	                       context_instance=RequestContext(request))
+    return render_to_response('survey.html', context,
+                           context_instance=RequestContext(request))

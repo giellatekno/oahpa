@@ -18,10 +18,10 @@ from django.contrib.auth.models import User, Group
 ##
 
 question_types = [
-    ('freeform text', 'text'),
-    ('single choice', 'choice'),
-    ('multiple choice', 'multichoice'),
-    ('yes/no', 'boolean'),
+    ('text', 'freeform text',),
+    ('choice', 'single choice',),
+    ('multichoice', 'multiple choice',),
+    ('boolean', 'yes/no',),
 ]
 
 ## Survey definition
@@ -31,6 +31,11 @@ class Survey(models.Model):
     """
     title = models.CharField(max_length=50)
     description = models.TextField()
+
+    # TODO: target a particular course or courses, or all users.
+
+    def __unicode__(self):
+        return self.title
 
 class SurveyQuestion(models.Model):
     """ Contains the survey question, and question type. Connects to any
@@ -43,13 +48,10 @@ class SurveyQuestion(models.Model):
     question_type = models.CharField(max_length=18, choices=question_types)
 
     def __unicode__(self):
-        return self.question_text
-
-    def __repr__(self):
         if len(self.question_text) > 15:
-            return self.question_text[0:15]
+            return "%s: %s" % (self.survey, self.question_text[0:15])
         else:
-            return self.question_text
+            return "%s: %s" % (self.survey, self.question_text)
 
 # TODO: translation
 
@@ -72,13 +74,9 @@ class SurveyQuestionAnswerValue(models.Model):
     answer_text = models.TextField()
 
     def __unicode__(self):
-        return self.answer_text
-
-    def __repr__(self):
-        if len(self.answer_text) > 15:
-            return self.answer_text[0:15]
-        else:
-            return self.answer_text
+        return "(%s) %s: %s" % (self.question.question_type,
+                                self.question.question_text,
+                                self.answer_text)
 
 ## User survey results
 
