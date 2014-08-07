@@ -49,11 +49,13 @@
                                     {% endcomment %}
                                     <label for=""><% question.question_text %></label>
 
+                                    {% comment %} TODO: conditional required
+                                                  switch? {% endcomment %}
                                     <textarea class="form-control"
-                                           ng-if="question.question_type == 'freeform text'"
+                                           ng-if="question.question_type == 'text'"
                                            {# TODO: question_id in API #}
                                            name="question.question_id"
-                                           required
+                                           ng-required="question.required"
                                            {# TODO: survey.id in API #}
                                            ng-model="survey_answers[survey.id][question.id]">
                                        </textarea>
@@ -61,8 +63,9 @@
                                     <select class="form-control"
                                             id="selectMainType"
                                             name="main_type"
-                                            ng-if="question.question_type == 'single choice'"
-                                            ng-options="value as label for (value, label) in question.answer_values"
+                                            ng-if="question.question_type == 'choice'"
+                                            ng-required="question.required"
+                                            ng-options="a.id as a.answer_text for a in question.answer_values"
                                             ng-model="survey_answers[survey.id][question.id]">
 
                                     </select>

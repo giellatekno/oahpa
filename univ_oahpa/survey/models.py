@@ -44,6 +44,10 @@ class SurveyQuestion(models.Model):
     # TODO: Internationalization language
     survey = models.ForeignKey('Survey', related_name='questions')
 
+    # required boolean field
+
+    required = models.BooleanField(default=True)
+
     question_text = models.TextField()
     question_type = models.CharField(max_length=18, choices=question_types)
 
@@ -98,4 +102,3 @@ class UserSurveyQuestionAnswer(models.Model):
     user_survey = models.ForeignKey(UserSurvey)
     question = models.ForeignKey(SurveyQuestion)
     answer_text = models.TextField()
-

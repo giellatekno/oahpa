@@ -22,8 +22,9 @@ class EditLinkToInlineObject(object):
 
 class SurveyQuestionAdmin(EditLinkToInlineObject, admin.TabularInline):
     model = SurveyQuestion
-    inlines = [SurveyQuestionAnswerValueInlineAdmin]
     readonly_fields = ('edit_answers', )
+
+    inlines = [SurveyQuestionAnswerValueInlineAdmin]
 
 class SurveyAdmin(admin.ModelAdmin):
     """ The main survey object with inlines for answers.
