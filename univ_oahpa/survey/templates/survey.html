@@ -49,14 +49,10 @@
                                     {% endcomment %}
                                     <label for=""><% question.question_text %></label>
 
-                                    {% comment %} TODO: conditional required
-                                                  switch? {% endcomment %}
                                     <textarea class="form-control"
                                            ng-if="question.question_type == 'text'"
-                                           {# TODO: question_id in API #}
                                            name="question.question_id"
                                            ng-required="question.required"
-                                           {# TODO: survey.id in API #}
                                            ng-model="survey_answers[survey.id][question.id]">
                                        </textarea>
 
@@ -72,9 +68,6 @@
 
                                     <hr />
                                 </div>
-                                {% comment %}
-                                    ng-model="survey_answers[survey.id][question.id]"
-                                {% endcomment %}
                             </div>
                         </div>
 
@@ -93,9 +86,11 @@
                     </div>
                 </form>
 
+                {# TODO: response processing #}
                 <pre><% survey_answers %></pre>
                 <h4>response</h4>
 
+                {# TODO: success #}
                 <pre><% survey_answers %></pre>
                 <h5 ng-if="success">success</h5>
 

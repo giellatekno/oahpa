@@ -70,7 +70,7 @@ def gtlab():
 
 @task
 def redeploy():
-    """ SVN up the config files """
+    """ SVN up some places and re-run the fastcgi initiation process """
     if env.no_svn_up:
         print(yellow("** skipping svn up **"))
         return
