@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from .models import ( Survey
                     , UserSurvey
+                    , UserSurveyQuestionAnswer
                     , SurveyQuestion
                     , SurveyQuestionAnswerValue
                     )
@@ -10,6 +11,7 @@ __all__ = [
     'QASerializer',
     'SurveyQuestionSerializer',
     'SurveySerializer',
+    'UserSurveySerializer',
 ]
 
 class QASerializer(serializers.ModelSerializer):
@@ -33,3 +35,20 @@ class SurveySerializer(serializers.ModelSerializer):
     class Meta:
         model = Survey
         fields = ('id', 'title', 'description', 'questions', )
+
+class UserQASerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = UserSurveyQuestionAnswer
+        fields = ('question', 'answer_text', )
+
+
+class UserSurveySerializer(serializers.ModelSerializer):
+
+    user_answers = UserQASerializer(many=True, required=False)
+    user_anon = serializers.CharField(source='user_anonymized',
+                                      read_only=True)
+
+    class Meta:
+        model = UserSurvey
+        fields = ('survey', 'user_anon', 'completed', 'user_answers', )

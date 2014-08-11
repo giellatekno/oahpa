@@ -37,6 +37,10 @@ class Survey(models.Model):
     def __unicode__(self):
         return self.title
 
+TYPE_H = """<strong>NB</strong>: For single and multiple choice
+answers, you must specify answer options. Yes/no and Freeform need no
+choices. """
+
 class SurveyQuestion(models.Model):
     """ Contains the survey question, and question type. Connects to any
     possible answer objects.
@@ -49,7 +53,7 @@ class SurveyQuestion(models.Model):
     required = models.BooleanField(default=True)
 
     question_text = models.TextField()
-    question_type = models.CharField(max_length=18, choices=question_types)
+    question_type = models.CharField(max_length=18, choices=question_types, help_text=TYPE_H)
 
     def __unicode__(self):
         if len(self.question_text) > 15:
@@ -94,11 +98,15 @@ class UserSurvey(models.Model):
 
     completed = models.DateTimeField(auto_now_add=True)
 
+    @property
+    def user_anonymized(self):
+        return "TODO: "
+
 class UserSurveyQuestionAnswer(models.Model):
     """ This object will store user answers, regardless of whether it
     comes from a database-specified choice, or user-entered free text.
     """
 
-    user_survey = models.ForeignKey(UserSurvey)
+    user_survey = models.ForeignKey(UserSurvey, related_name="user_answers")
     question = models.ForeignKey(SurveyQuestion)
     answer_text = models.TextField()

@@ -47,7 +47,7 @@
                                     {% comment %}
                                     <pre><% question %></pre>
                                     {% endcomment %}
-                                    <label for=""><% question.question_text %></label>
+                                    <label class="required-<% question.required %>" for=""><% question.question_text %></label>
 
                                     <textarea class="form-control"
                                            ng-if="question.question_type == 'text'"
@@ -56,7 +56,7 @@
                                            ng-model="survey_answers[survey.id][question.id]">
                                        </textarea>
 
-                                    <select class="form-control"
+                                       <select class="form-control required-<% question.required %>"
                                             id="selectMainType"
                                             name="main_type"
                                             ng-if="question.question_type == 'choice'"

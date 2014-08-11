@@ -12,6 +12,14 @@ from .serializers import *
 class Auth(object):
     authentication_classes = (SessionAuthentication, BasicAuthentication)
 
+# TODO: PostOnly permission, remove list mixins
+class AnswerView(Auth, mixins.CreateModelMixin, mixins.ListModelMixin,
+                 mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+
+    model = UserSurvey
+    serializer_class = UserSurveySerializer
+    permission_classes = (IsAuthenticated, )
+
 class SurveyView(Auth, mixins.ListModelMixin, mixins.RetrieveModelMixin,
                  viewsets.GenericViewSet):
     """ This view gets the survey meta data, and survey parameters.
@@ -21,7 +29,7 @@ class SurveyView(Auth, mixins.ListModelMixin, mixins.RetrieveModelMixin,
     """
 
     serializer_class = SurveySerializer
-    permission_classes = (IsAuthenticated, GetOnly)
+    permission_classes = (IsAuthenticated, )
 
     queryset = Survey.objects.all()
 

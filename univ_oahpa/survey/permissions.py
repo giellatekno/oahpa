@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 __all__ = [
     'IsAuthenticated',
     'GetOnly',
+    'PostOnly',
 ]
 
 ### class CanCreateAndUpdateGoal(permissions.BasePermission):
@@ -34,3 +35,16 @@ class GetOnly(permissions.BasePermission):
         if request.method == 'GET':
             return True
         return False
+
+class PostOnly(permissions.BasePermission):
+
+    def has_permission(self, request, view, obj=None):
+        if request.method == 'POST':
+            return True
+        return False
+
+    def has_object_permission(self, request, view, obj):
+        if request.method == 'POST':
+            return True
+        return False
+

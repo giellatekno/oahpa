@@ -1,5 +1,5 @@
 ﻿from django.contrib import admin
-from .models import Survey, UserSurvey, SurveyQuestion, SurveyQuestionAnswerValue
+from .models import Survey, UserSurvey, SurveyQuestion, SurveyQuestionAnswerValue, UserSurveyQuestionAnswer
 
 from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
@@ -20,18 +20,29 @@ class EditLinkToInlineObject(object):
         else:
             return ''
 
-class SurveyQuestionAdmin(EditLinkToInlineObject, admin.TabularInline):
+class SurveyQuestionInlineAdmin(EditLinkToInlineObject, admin.TabularInline):
     model = SurveyQuestion
     readonly_fields = ('edit_answers', )
+    extra = 1
 
+class SurveyQuestionAdmin(admin.ModelAdmin):
+    model = SurveyQuestion
     inlines = [SurveyQuestionAnswerValueInlineAdmin]
 
 class SurveyAdmin(admin.ModelAdmin):
     """ The main survey object with inlines for answers.
     """
-    inlines = [SurveyQuestionAdmin]
+    inlines = [SurveyQuestionInlineAdmin]
+
+class UserSurveyQuestionAnswer(admin.TabularInline):
+	model = UserSurveyQuestionAnswer
+
+class UserSurveyAdmin(admin.ModelAdmin):
+	model = UserSurvey
+
+	inlines = [UserSurveyQuestionAnswer]
 
 admin.site.register(Survey, SurveyAdmin)
-admin.site.register(SurveyQuestion)
-admin.site.register(SurveyQuestionAnswerValue)
-admin.site.register(UserSurvey)
+admin.site.register(SurveyQuestion, SurveyQuestionAdmin)
+# admin.site.register(SurveyQuestionAnswerValue)
+admin.site.register(UserSurvey, UserSurveyAdmin)
