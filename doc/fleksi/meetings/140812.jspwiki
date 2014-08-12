@@ -1,0 +1,97 @@
+!!! Møte 12.08.14
+
+Til stades: Lene, Leena
+
+!!!Saker: 
+* Leksa
+* Numra
+* MorfaS
+* MorfaC
+* Kursmateriell
+* Neste møte
+
+
+!!Leksa
+Leksa fungerer fkv-nob. To semantiske kategorier. Vi har 50-60 ord. \\
+Grunnlaget for Leksa skal være Meiđän joukko - for kurset KVE-0100. 
+Eira har laga ordliste kapittel for kapittel, ialt 14 kapitler. 4 + 5 + 5 kapitler.
+
+{{{
+Grunnkurs 1
+Grunnkurs 2
+Grunnkurs 3
+}}}
+
+main/ped/fkv/inc/wordlist.csv 
+
+
+kainulainen __ N __ n42 __ kven __ kainulainen __ kven __ MJ1 __ PEOPLE
+norjalainen __ N __ n42 __ nordmann __ norjalainen __ norwegian __ GK1 __PEOPLE
+
+{{{
+ <e>
+      <lg>
+         <l pos="N" stem="n42">kainulainen</l>
+      <sources>
+         <book name="MJ1"/> eller  <book name="GK1"/>
+      </sources>
+      </lg>
+      <mg>
+        <semantics>
+            <sem class="PEOPLE" />
+         </semantics>
+         <tg xml:lang="nob">
+            <t stat="pref" pos="N">kven</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t stat="pref" pos="N">kainulainen</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t stat="pref" pos="N">kven</t>
+         </tg>
+      </mg>
+   </e>
+
+}}}
+
+!TILTAK:
+* __Leena__ arbeider med wordlist.csv
+
+ 
+!!Numra
+Det er noen feil. 
+Du kan få partitiv kymmentä når man skal ha nominativ: kymmenen. 
+
+!TILTAK:
+* __Lene__ fikser nominativen.
+* __Leena__ fikser skrivefeil i src/transcriptions/numbers.lexc
+* __Leena__ sjekker ordenstall og dato og klokke. (skrivefeil rettes i clock.lexc og date.lexc)
+
+!!MorfaS
+
+Vi må finne ut hvor langt analysatoren er kommet. Vi kan bruke de delene av analysatoren som er ferdig, vi kan også unngå å bruke ord som ikke ennå fungerer riktig i analysatoren.
+
+I oahpa er det implementert:
+substantiv: partitiv, genetiv, 6 lokalkasus, men bare entall.
+verb: presens og preteritum
+
+!!MorfaC
+fkv/meta/questions.xml
+Det er implementert noen demooppgaver. Vi arbeider videre når Morfa S og Leksa er på plass.
+
+!!Kursmateriell
+Øystein Lund ved Result skal hjelpe til med å få kursmateriellet på nettet.
+
+!!Neste møte
+Mandag 18. august kl 13.00. Leena kan ta kontakt før, hvis behov.
+
+
+
+
+
+
+
+
+
+
+
