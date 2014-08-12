@@ -10,13 +10,9 @@ function listContainsObject(_list, _obj, field) {
     return -1;
 }
 
-// TODO: http://stackoverflow.com/questions/20181323/passing-data-between-controllers-in-angular-js
-//   when a task is created, need to broadcast it to the
-//   CourseGoalController for inclusion in the list.
-
 // TODO: loading status
 //
-var Surveys = angular.module('Surveys', ['ngCookies', ]).
+var Surveys = angular.module('Surveys', ['ngCookies', 'angular-loading-bar']).
     config(function($interpolateProvider, $httpProvider) {
         // set template expression symbols
         $interpolateProvider.startSymbol('<%');
@@ -30,6 +26,7 @@ function SurveyClient($scope, $http, $element, $cookies) {
     var survey_source = $element.attr('ng-source') + 'surveys/' ;
     var answer_target = $element.attr('ng-source') + 'answer/' ;
     $scope.survey_answers = {};
+    $scope.form_success = false;
 
     // $http = applyHeaderToken($http, $cookies);
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
@@ -85,6 +82,7 @@ function SurveyClient($scope, $http, $element, $cookies) {
         $http.post(answer_target, post_data[0], config)
          .success( function(data) {
             $scope.form_success = true;
+            $scope.response = true;
             $scope.response = data;
             $scope.results = data;
             if (data.errors) {
@@ -95,6 +93,7 @@ function SurveyClient($scope, $http, $element, $cookies) {
                 $scope.success = false;
             } 
         }).error( function(data, status, headers, config) {
+            $scope.response = true;
             var permitted = [
                 400,
             ];
