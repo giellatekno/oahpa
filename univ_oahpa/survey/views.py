@@ -47,9 +47,9 @@ class SurveyView(Auth, mixins.ListModelMixin, mixins.RetrieveModelMixin,
 
         qs = self.queryset
 
-        if not user.is_superuser:
-            qs = self.queryset.exclude(usersurvey__user=user,
-                                       usersurvey__completed__isnull=False)
+        # if not user.is_superuser:
+        qs = self.queryset.exclude(usersurvey__user=user,
+                                   usersurvey__completed__isnull=False)
 
         return qs
 

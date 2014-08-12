@@ -41,7 +41,7 @@ class UserSurveyAdmin(admin.ModelAdmin):
 	model = UserSurvey
 
 	inlines = [UserSurveyQuestionAnswer]
-	list_display = ('user_anonymized', 'completed')
+	list_display = ('user_anonymized', 'completed', 'survey')
 	exclude = ('user', )
 	ordering = ('-completed', )
 

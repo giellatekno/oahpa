@@ -28,20 +28,20 @@
         <div ng-controller="SurveyClient" ng-source="/{{ URL_PREFIX }}/survey/api/">
             <div class="col-lg-9 col-sm-9 col-md-9">
 
-                <p class="lead" ng-show="surveys.length == 0">
+                <p class="lead" ng-show="!survey">
                     {% blocktrans %}No surveys to fill out at this time.{% endblocktrans %}
                 </p>
                 <div ng-hide="response">
-                    <form novalidate ng-if="surveys.length > 0" 
+                    <form novalidate ng-if="survey" 
                                      ng-submit="submitForm($event)" 
                                      id="new_goal"
                                      target="/{{ URL_PREFIX }}/survey/api/answers/"
                                      role="form">
 
-                        <div class="row" ng-repeat="survey in surveys">
+                        <div class="row">
 
                             <div class="col-md-1">
-                                <span class="step_number">1</span>
+                                <span class="step_number">&nbsp;</span>
                             </div>
 
                             <div class="col-md-11">
@@ -85,7 +85,7 @@
                             </div>
 
                             <div class="col-md-11">
-                                <div ng-show="surveys.length > 0">
+                                <div ng-show="survey">
                                     <button type="button" ng-click="submitForm()" class="btn btn-info">Submit</button>
                                     <button type="button" class="btn btn-warning">Reset</button>
                                 </div>
@@ -97,6 +97,12 @@
                 {# TODO: success #}
                 <div ng-if="form_success" class="form_success">
                     <h5>Thank you!</h5>
+                    <div ng-show="next_survey_button">
+                        <blockquote>
+                            <p>{% blocktrans %}If you have time for one more survey, you may fill it out by clicking next.{% endblocktrans %}</p>
+                            <a href="/{{ URL_PREFIX }}/survey/answer/" class="btn btn-success next-survey">Next &rarr;</a>
+                        </blockquote>
+                    </div>
                 </div>
 
                 {% comment %}

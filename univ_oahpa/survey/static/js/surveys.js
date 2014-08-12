@@ -27,6 +27,7 @@ function SurveyClient($scope, $http, $element, $cookies) {
     var answer_target = $element.attr('ng-source') + 'answer/' ;
     $scope.survey_answers = {};
     $scope.form_success = false;
+    $scope.next_survey_button = false;
 
     // $http = applyHeaderToken($http, $cookies);
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
@@ -119,14 +120,16 @@ function SurveyClient($scope, $http, $element, $cookies) {
 
     // Push the Tasks that the user has access to into the not in use box.
     $http.get(survey_source).success(function(data){
-        $scope.surveys = data.results;
-
-        // init answer models
-
-        var _i, _len ;
-        for (_i = 0, _len = $scope.surveys.length; _i < _len; _i++) {
-            var survey = $scope.surveys[_i];
-            $scope.survey_answers[survey.id] = {};
+        $scope.survey = false;
+        if (data.results.length > 0) {
+            $scope.survey = data.results[0];
+        }
+        if (data.results.length > 1) {
+            $scope.next_survey_button = true;
+        }
+        $scope.survey_answers = {};
+        if ($scope.survey) {
+            $scope.survey_answers[$scope.survey.id] = {};
         }
     })
 }
