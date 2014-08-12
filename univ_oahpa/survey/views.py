@@ -18,7 +18,7 @@ class AnswerView(Auth, viewsets.GenericViewSet, mixins.CreateModelMixin):
 
     model = UserSurvey
     serializer_class = UserSurveySerializer
-    permission_classes = (IsAuthenticated, CanCreateSurvey, PostOnly)
+    permission_classes = (IsAuthenticated, PostOnly, CanCreateSurvey)
 
     def pre_save(self, obj):
         obj.user = self.request.user
@@ -49,7 +49,7 @@ class SurveyView(Auth, mixins.ListModelMixin, mixins.RetrieveModelMixin,
 
         if not user.is_superuser:
             qs = self.queryset.exclude(usersurvey__user=user,
-                                       usersurvey__completed__isnull=True)
+                                       usersurvey__completed__isnull=False)
 
         return qs
 

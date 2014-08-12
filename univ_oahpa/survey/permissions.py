@@ -53,19 +53,23 @@ class PostOnly(permissions.BasePermission):
 
 class CanCreateSurvey(permissions.BasePermission):
 
-    def has_object_permission(self, request, view, obj=None):
+    def has_object_permission(self, request, view, obj):
         print "CanCreateSurvey: Has object permission"
+        print request
+        print view
+        print obj
+        return False
         if request.method == 'POST':
             print "CanCreateSurvey: POST"
             if obj is not None:
-                surveys = UserSurvey.objects.filter(user=request.user, id=obj.id).count()
+                surveys = UserSurvey.objects.filter(user=request.user, id=obj.id).exists()
             else:
                 print "None"
                 return False
 
-            if obj and surveys > 0:
+            if obj and surveys:
                 return False
-            elif obj and surveys == 0:
+            elif obj and not surveys:
                 return True
 
             return False

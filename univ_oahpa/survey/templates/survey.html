@@ -26,11 +26,13 @@
         <div ng-controller="SurveyClient" ng-source="/{{ URL_PREFIX }}/survey/api/">
             <div class="col-lg-9 col-sm-9 col-md-9">
 
-                <form novalidate ng-show="results" 
+                <p class="lead" ng-show="surveys.length == 0">
+                    {% blocktrans %}No surveys to fill out at this time.{% endblocktrans %}
+                </p>
+                <form novalidate ng-show="surveys.length > 0 && !form_success" 
                                  ng-submit="submitForm($event)" 
                                  id="new_goal"
                                  target="/{{ URL_PREFIX }}/survey/api/answers/"
-                                 ng-hide="form_succcess && results" 
                                  role="form">
 
                     <div class="row" ng-repeat="survey in surveys">
@@ -42,7 +44,6 @@
                         <div class="col-md-11">
                             <h3><% survey.title %></h3>
                             <blockquote><p><% survey.description %></p></blockquote>
-                            <h5>Questions:</h5>
                             <div ng-repeat="question in survey.questions">
                                 <div class="form-group">
                                     {% comment %}
@@ -81,19 +82,30 @@
                         </div>
 
                         <div class="col-md-11">
-                            <button type="button" ng-click="submitForm()" class="btn btn-info">Submit</button>
-                            <button type="button" class="btn btn-warning">Reset</button>
+                            <div ng-show="surveys.length > 0">
+                                <button type="button" ng-click="submitForm()" class="btn btn-info">Submit</button>
+                                <button type="button" class="btn btn-warning">Reset</button>
+                            </div>
                         </div>
                     </div>
                 </form>
 
-                {# TODO: response processing #}
-                <pre><% survey_answers %></pre>
-                <h4>response</h4>
-
                 {# TODO: success #}
+                <div ng-if="form_success">
+                    <h5>Thank you!</h5>
+                </div>
+
+                {% comment %}
                 <pre><% survey_answers %></pre>
-                <h5 ng-if="success">success</h5>
+                {% endcomment %}
+
+                <div ng-if="form_error || validation_errors">
+                    <h5>Error</h5>
+                    <p class="lead error"><% form_error %></p>
+                    <ul ng-if="validation_errors.length > 0">
+                        <li ng-repeat="error in validation_errors"><% error %></li>
+                    </ul>
+                </div>
 
             </div>
         </div>

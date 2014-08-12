@@ -1,5 +1,7 @@
 from rest_framework import serializers
 
+from django.utils.translation import ugettext_lazy as _
+
 from .models import ( Survey
                     , UserSurvey
                     , UserSurveyQuestionAnswer
@@ -44,7 +46,6 @@ class UserQASerializer(serializers.ModelSerializer):
         model = UserSurveyQuestionAnswer
         fields = ('question', 'answer_text', )
 
-
 class UserSurveySerializer(serializers.ModelSerializer):
 
     user_answers = UserQASerializer(many=True, required=False)
@@ -55,3 +56,21 @@ class UserSurveySerializer(serializers.ModelSerializer):
     class Meta:
         model = UserSurvey
         fields = ('survey', 'user_anon', 'completed', 'user_answers', )
+
+    def validate(self, attrs):
+        """ Return a validation error to handle the unique_together
+        constraint, of one user submission per survey, but do this after
+        the main validation of everything else.
+        """
+
+        attrs = super(UserSurveySerializer, self).validate(attrs)
+
+        # Return a failure if a survey exists for the values already.
+        survey = attrs.get('survey')
+        user = self.context.get('request').user
+        exists = self.Meta.model.objects.filter(user_id=user.id,
+                                                survey_id=survey.id).exists()
+        if exists:
+            raise serializers.ValidationError(_("You have already submitted this survey once."))
+
+        return attrs
