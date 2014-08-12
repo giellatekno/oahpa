@@ -95,12 +95,17 @@ class UserSurvey(models.Model):
     survey = models.ForeignKey(Survey)
     user = models.ForeignKey(User)
     # TODO: anonymize user in export process
+    # TODO: store anonymized by hash, prevent duplicates by checking
+    # unique on hash.
 
     completed = models.DateTimeField(auto_now_add=True)
 
     @property
     def user_anonymized(self):
-        return "TODO: "
+        return abs(hash(self.user.username))
+
+    class Meta:
+        unique_together = ('user', 'survey', )
 
 class UserSurveyQuestionAnswer(models.Model):
     """ This object will store user answers, regardless of whether it

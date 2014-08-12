@@ -6,6 +6,7 @@ from rest_framework import status
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
 from .models import Survey, UserSurvey
+
 from .permissions import *
 from .serializers import *
 
@@ -13,12 +14,14 @@ class Auth(object):
     authentication_classes = (SessionAuthentication, BasicAuthentication)
 
 # TODO: PostOnly permission, remove list mixins
-class AnswerView(Auth, mixins.CreateModelMixin, mixins.ListModelMixin,
-                 mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+class AnswerView(Auth, viewsets.GenericViewSet, mixins.CreateModelMixin):
 
     model = UserSurvey
     serializer_class = UserSurveySerializer
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, CanCreateSurvey, PostOnly)
+
+    def pre_save(self, obj):
+        obj.user = self.request.user
 
 class SurveyView(Auth, mixins.ListModelMixin, mixins.RetrieveModelMixin,
                  viewsets.GenericViewSet):
@@ -35,8 +38,8 @@ class SurveyView(Auth, mixins.ListModelMixin, mixins.RetrieveModelMixin,
 
     def get_queryset(self):
         """ If non-admin user, return unsurveyed surveys only as
-        queryset.
-        """
+        queryset. """
+
         user = self.request.user
 
         if user.is_anonymous():

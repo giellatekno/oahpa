@@ -41,6 +41,9 @@ class UserSurveyAdmin(admin.ModelAdmin):
 	model = UserSurvey
 
 	inlines = [UserSurveyQuestionAnswer]
+	list_display = ('user_anonymized', 'completed')
+	exclude = ('user', )
+	ordering = ('-completed', )
 
 admin.site.register(Survey, SurveyAdmin)
 admin.site.register(SurveyQuestion, SurveyQuestionAdmin)

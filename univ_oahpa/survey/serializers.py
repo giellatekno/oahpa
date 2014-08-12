@@ -38,6 +38,8 @@ class SurveySerializer(serializers.ModelSerializer):
 
 class UserQASerializer(serializers.ModelSerializer):
 
+    question = serializers.PrimaryKeyRelatedField()
+
     class Meta:
         model = UserSurveyQuestionAnswer
         fields = ('question', 'answer_text', )
@@ -47,7 +49,8 @@ class UserSurveySerializer(serializers.ModelSerializer):
 
     user_answers = UserQASerializer(many=True, required=False)
     user_anon = serializers.CharField(source='user_anonymized',
-                                      read_only=True)
+                                      read_only=True, required=False)
+    description = serializers.DateTimeField(required=False)
 
     class Meta:
         model = UserSurvey
