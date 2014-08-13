@@ -34,16 +34,54 @@ class SurveyAdmin(admin.ModelAdmin):
     """
     inlines = [SurveyQuestionInlineAdmin]
 
+    def export_survey_result_csv(self, request, queryset):
+        from django.core import serializers
+        from django.http import HttpResponse
+
+        from cStringIO import StringIO
+        import csv
+
+        # only serialize one at a time
+
+        if queryset.count() > 1:
+            # TODO: message about error
+            # return redirect? 
+            pass
+
+        handle = StringIO()
+        csvwriter = csv.writer(handle)
+
+        survey = queryset[0]
+        csv_rows = survey.serialize_survey()
+
+        csvwriter.writerows(csv_rows)
+        contents = handle.getvalue()
+        handle.close()
+        print contents
+
+        self.message_user(request, "Survey exported.")
+        response = HttpResponse(content_type="text/csv")
+        response['Content-Disposition'] = 'attachment; filename="%s"' % "survey-results.csv"
+        response.content = contents
+        return response
+
+    export_survey_result_csv.short_description = "Download a CSV of all survey results."
+
+    actions = [export_survey_result_csv]
+
+
 class UserSurveyQuestionAnswer(admin.TabularInline):
-	model = UserSurveyQuestionAnswer
+    model = UserSurveyQuestionAnswer
+
+
 
 class UserSurveyAdmin(admin.ModelAdmin):
-	model = UserSurvey
+    model = UserSurvey
 
-	inlines = [UserSurveyQuestionAnswer]
-	list_display = ('user_anonymized', 'completed', 'survey')
-	exclude = ('user', )
-	ordering = ('-completed', )
+    inlines = [UserSurveyQuestionAnswer]
+    list_display = ('user_anonymized', 'completed', 'survey')
+    exclude = ('user', )
+    ordering = ('-completed', )
 
 admin.site.register(Survey, SurveyAdmin)
 admin.site.register(SurveyQuestion, SurveyQuestionAdmin)

@@ -37,6 +37,51 @@ class Survey(models.Model):
     def __unicode__(self):
         return self.title
 
+    def serialize_survey(self):
+        """ Return a list of lists representing rows and columns of a CSV.
+        """
+        questions = [(a.id, a.question_text, a.question_type) for a in
+                     self.questions.all().order_by('id')]
+
+        question_columns = ["%s (%s)" % (text.encode('utf-8'), _type.encode('utf-8'))
+                            for (_id, text, _type) in questions]
+
+        columns = [
+            'user',
+            'completed',
+        ] + question_columns
+
+        answer_rows = []
+
+        responses = self.usersurvey_set.all()
+
+        for r in responses:
+            answers = r.user_answers.all().order_by('id')
+            user_answer_values = []
+
+            for (q, text, _type) in questions:
+                ans = answers.filter(question_id=q)
+                # TODO: answers are currently the choice IDs, need to grab
+                # proper answer for these.
+
+                # TODO: if question type is freeform, serialize answer,
+                # otherwise confirm that it's an int and search for the
+                # answer value.
+                if ans.exists():
+                    user_answer_values.append(ans[0].answer_text.encode('utf-8'))
+                else:
+                    user_answer_values.append("NO ANSWER")
+
+            row = [
+                r.user_anonymized,
+                r.completed.strftime('%Y.%d.%m'), # strftime
+            ] + user_answer_values
+
+            answer_rows.append(row)
+
+        all_rows = [columns] + answer_rows
+        return all_rows
+
 TYPE_H = """<strong>NB</strong>: For single and multiple choice
 answers, you must specify answer options. Yes/no and Freeform need no
 choices. """
