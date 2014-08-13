@@ -29,10 +29,24 @@ class SurveyQuestionAdmin(admin.ModelAdmin):
     model = SurveyQuestion
     inlines = [SurveyQuestionAnswerValueInlineAdmin]
 
+class SurveyResponseInline(admin.TabularInline):
+    model = UserSurvey
+    readonly_fields = ('user_anonymized', 'completed', )
+    exclude = ('user', )
+    extra = 0
+
 class SurveyAdmin(admin.ModelAdmin):
     """ The main survey object with inlines for answers.
     """
-    inlines = [SurveyQuestionInlineAdmin]
+    # TODO: inline for response
+    inlines = [SurveyQuestionInlineAdmin, SurveyResponseInline]
+
+    list_display = ('title', 'user_responses_submitted', )
+
+    def user_responses_submitted(self, inst):
+        return inst.usersurvey_set.count()
+
+    user_responses_submitted.admin_order_field = 'response_count'
 
     def export_survey_result_csv(self, request, queryset):
         from django.core import serializers
@@ -43,10 +57,9 @@ class SurveyAdmin(admin.ModelAdmin):
 
         # only serialize one at a time
 
-        if queryset.count() > 1:
-            # TODO: message about error
-            # return redirect? 
-            pass
+        if queryset.count() > 1 or queryset.count() == 0:
+            self.message_user(request, "Can only export one survey at a time.")
+            return False
 
         handle = StringIO()
         csvwriter = csv.writer(handle)
@@ -65,7 +78,7 @@ class SurveyAdmin(admin.ModelAdmin):
         response.content = contents
         return response
 
-    export_survey_result_csv.short_description = "Download a CSV of all survey results."
+    export_survey_result_csv.short_description = "Download a CSV of one survey's results (NB: only choose one)."
 
     actions = [export_survey_result_csv]
 
