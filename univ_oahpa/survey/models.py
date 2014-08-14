@@ -1,13 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# TODO: middleware for watching for displaying the survey
-#
-#  - must consider option that multiple surveys could be present at
-#    any time
-#
-#  - must consider that existing users who haven't been surveyed
-#    need to be surveyed on some login
-
 from django.db import models
 
 from django.utils.translation import gettext_lazy as _
@@ -154,7 +146,7 @@ class UserSurvey(models.Model):
     """ This is the user survey instance, to connect individual user
     answers together.
     """
-    survey = models.ForeignKey(Survey)
+    survey = models.ForeignKey(Survey, related_name='responses')
     user = models.ForeignKey(User)
     # TODO: anonymize user in export process
     # TODO: store anonymized by hash, prevent duplicates by checking
