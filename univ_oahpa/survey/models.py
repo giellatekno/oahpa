@@ -55,22 +55,39 @@ class Survey(models.Model):
 
         responses = self.usersurvey_set.all()
 
+        def user_answer_to_db_answer(q, user_answer_str):
+            try:
+                ans_id = int(user_answer_str)
+                db_value = self.questions.get(id=q).answer_values.get(id=ans_id)
+            except ValueError:
+                return "ERROR: Client sent invalid answer"
+            except Exception, self.DoesNotExist:
+                return "ERROR: retrieving value"
+            return db_value.answer_text.encode('utf-8')
+
+        def serialize_answer(ans):
+            if _type == 'text':
+                # append bare value
+                serialized_value = ans[0].answer_text.encode('utf-8')
+            elif _type == 'boolean':
+                serialized_value = str(ans[0].answer_text)
+            elif _type in ['choice', 'multichoice']:
+                serialized_value = user_answer_to_db_answer(q, ans[0].answer_text)
+            return serialized_value
+
         for r in responses:
             answers = r.user_answers.all().order_by('id')
             user_answer_values = []
 
             for (q, text, _type) in questions:
                 ans = answers.filter(question_id=q)
-                # TODO: answers are currently the choice IDs, need to grab
-                # proper answer for these.
 
-                # TODO: if question type is freeform, serialize answer,
-                # otherwise confirm that it's an int and search for the
-                # answer value.
                 if ans.exists():
-                    user_answer_values.append(ans[0].answer_text.encode('utf-8'))
+                    user_answer_value = serialize_answer(ans)
                 else:
-                    user_answer_values.append("NO ANSWER")
+                    user_answer_value = "NO ANSWER"
+
+                user_answer_values.append(user_answer_value)
 
             row = [
                 r.user_anonymized,
