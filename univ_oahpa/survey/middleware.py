@@ -39,6 +39,11 @@ class SurveyCheckMiddleware(object):
             if request.survey_check_view == False:
                 return response
 
+        if 'ignored_surveys' not in request.session:
+            ignored = request.session['ignored_surveys'] = []
+        else:
+            ignored = request.session['ignored_surveys']
+
         if 'survey_check' not in request.session:
             request.session['survey_check'] = 0
         else:
@@ -55,11 +60,14 @@ class SurveyCheckMiddleware(object):
         u = request.user
 
         # Assuming one response per survey
-        responses = Survey.objects.filter(responses__user=u).count()
+        responses = Survey.objects.exclude(id__in=ignored)\
+                                  .filter(responses__user=u).count()
+
         surveys = Survey.objects.all().count()
 
         if responses < surveys:
             # "User can fill out survey."
+            print 'survey displayed'
             request.session['display_survey_notice'] = True
         else:
             # "User has no surveys"

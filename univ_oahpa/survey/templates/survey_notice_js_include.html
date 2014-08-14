@@ -1,0 +1,26 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static "css/ngDialog.css" %}"/>
+<link rel="stylesheet" type="text/css" href="{% static "css/ngDialog-theme-default.css" %}"/>
+<link rel="stylesheet" type="text/css" href="{% static "css/surveys.css" %}"/>
+
+{% if angular_exists %}
+{% else %}
+    <script src="{% static "js/angular.min.js" %}"     type="text/javascript"></script>
+    <script src="{% static "js/angular-cookies.js" %}" type="text/javascript"></script>
+{% endif %}
+<script src="{% static "js/ngDialog.js" %}"         type="text/javascript"></script> 
+
+{% if surveys_exists %}
+{% else %}
+<script src="{% static "js/surveys.js" %}"         type="text/javascript"></script> 
+{% endif %}
+
+<script type="text/ng-template" id="surveyNoticeTemplate">
+    <div class="dialog-contents">
+        Some message
+        <button ng-click="closeThisDialog()">Cancel</button>
+        <button ng-click="confirm()">Confirm</button>
+    </div>
+</script>
+

@@ -12,13 +12,32 @@ function listContainsObject(_list, _obj, field) {
 
 // TODO: loading status
 //
-var Surveys = angular.module('Surveys', ['ngCookies', 'angular-loading-bar']).
+var Surveys = angular.module('Surveys', ['ngCookies', 'angular-loading-bar', 'ngDialog']).
     config(function($interpolateProvider, $httpProvider) {
         // set template expression symbols
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
         $httpProvider.defaults.withCredentials = true;
     });
+
+Surveys.config(['ngDialogProvider', function(ngDialogProvider) {
+    ngDialogProvider.setDefaults({
+        className: 'ngdialog-theme-default',
+        // plain: true,
+        showClose: true,
+        closeByDocument: true,
+        closeByEscape: true
+    });
+}]);
+
+function CanHasSurveyNotice($scope, $cookies) {
+    console.log("open");
+    d = ngDialog.open({ 
+        template: 'surveyNoticeTemplate',
+        scope: $scope,
+    });
+    console.log(d);
+}
 
 function SurveyClient($scope, $http, $element, $cookies) {
     'use strict';
