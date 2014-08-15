@@ -1,0 +1,313 @@
+
+Meeting, AKU Oahpa, 15.8.2014
+
+Present: Heli, Jaska, Trond
+
+!!!Agenda
+* Status
+* Participants
+* Aika
+
+
+
+!!!Status
+
+!!Documentation
+
+Documentation in russian is MT-translated: [http://oahpa.no/addlang/index.rus.html]
+numra, morfa has been proofread.
+
+__TODO__
+* Correct [http://oahpa.no/addlang/developerleksa.rus.html]
+** ped/userdocs/addlang/developerleksa.rus.xml
+* Correct [http://oahpa.no/addlang/index.rus.html]
+
+
+!!Budget
+
+* Tromsø:
+** Heli: 300€ hotel, ferry ticket, food, wages
+** Trond: Matka, ruoka
+* AKU
+** Jaska.
+** Jargal: room-n-board, travel
+** Oleg Kazanin: room-n-board, travel
+
+ 
+!!!Participants
+* bxr
+** Jargal Badagarov, Ulan Ude (rus, eng)
+* izh 
+** Heinike Heinsoo (fin, rus, eng)
+** Timo Rantakaulio? (fin, rus, eng)
+* kpv 
+** Galina Punegova (=>Kokkonen), StPb (rus)
+** Galina Misharina?, Hki (fin, rus, )
+** Svetlana Lumme?, Turku (rus, fin, eng?)?
+* mdf 
+** Oleg Kazanin, StPb (rus, eng)
+* mhr 
+** Andrei Chemyshev?, Syktyvkar (rus, eng?)
+* mrj 
+** Julia Kuprina, Hki (rus, fin, eng?)
+* myv
+** Ivan Ryabov, Saransk (rus, deu)
+** Jelena Klementjeva, Saransk (rus)
+* olo 
+** Natalia Giloeva, Jsuu (fin, rus)
+* yrk 
+** Lotta Jalava, Hki (fin, eng, rus)
+** Sven-Eerik Soosaar, Hki (fin, eng, rus)
+* sms
+** Eino Koponen, Hki
+** Markus Juutinen, Hki
+* udm 
+** Svetlana Yedigarova, Hki (fin, rus)
+** Nadi Muš, Tln (est, rus, fin)
+* vep 
+** -
+
+
+
+* bxr 
+** Nothing yet
+* izh 
+** Alpha
+* kpv 
+** Old Oahpa from Bodø, some content (numra, leksa)
+* mdf 
+** Alpha version of Leksa and Numra
+* mhr 
+** Alpha version of Leksa and Numra
+* mrj 
+** Alpha version of Leksa and Numra
+** Lexical material incoming (Julia)
+* myv 
+** Some more content, lemma: 35N, 19V, 12A, 12Prop
+** MorfaS, MorfaC up and running
+* olo 
+** So far no lexicon
+** 
+* yrk 
+** Old Oahpa from Bodø. 
+* sms 
+** Appr. 100 words, Numra, Leksa
+* udm 
+** Alpha
+
+!!Languages with Oahpa setup
+
+* bxr - no setup
+* izh - [http://testing.oahpa.no/izh_oahpa]
+* kpv - [http://oahpa.no/kpvoahpa]
+* mdf - [http://testing.oahpa.no/mdf_oahpa]
+* mhr - [http://testing.oahpa.no/mhr_oahpa]
+* mrj - [http://testing.oahpa.no/mrj_oahpa]
+* myv - [http://oahpa.no/erzya]
+* olo - [http://testing.oahpa.no/olo_oahpa]
+* sms - [http://oahpa.no/nuorti]
+* udm - [http://testing.oahpa.no/udm_oahpa]
+* vep - [http://testing.oahpa.no/vep_oahpa]
+* yrk - [http://oahpa.no/yrkoahpa]
+
+
+__TODO__: 
+
+Set up bxr_oahpa (__Heli__)
+
+main/ped/userdoc/addlang
+
+!!!Aika
+
+
+
+!!!Technical preparations
+
+Computers: Mac, Windows
+
+
+SVN: checkin access to all participants
+
+Jaska provides Trond with a list of
+username realname e-mail-address contactinfo
+
+* Windows setup
+** TortoiseSVN
+** EditPadLite
+* Mac setup
+** xcode
+** svn
+** SubEthaEdit
+** Check out {{gtcore, lang/ownlanguage, ped}}
+* Linux setup
+* Gedit
+
+__TODO__
+* Ask participants about computer skills (Jaska MAKES and distributes: questionnaire: computer experience, command line, terminal, OAHPA, program vs. document, experience installing programs, internet vs. IE,...)
+
+
+!!!Content
+
+* Make and publish a program
+* Make a webpage for the course x 2 (eng, rus) (__T, J__)
+
+
+
+Things to do:
+
+Giellatekno overview
+
+targetlang_pos_semclass_rus1, rus2_fin1, fin2_eng
+
+Ferdig semantisk sett
+Ferdig sett av semantisk annoterte russiske ord?
+
+{{{
+кай_N_ANIMAL_чайка маленькая_small seagull
+оа̄з_N_ANIMAL_паук_spider
+пуар_N_ANIMAL_овод_gadfly
+пуаз_N_ANIMAL_олень_reindeer
+оа̄к_N_ANIMAL_лосиха_лосиха
+пӯра_N_ANIMAL_птенцы_baby birds
+кӣгк_N_ANIMAL_кукушка_cuckoo
+те̄хммэ руччкесь_A_COLOR, CLOTHES_коричневый_brown
+а̄лехь_A_COLOR, CLOTHES_синий_dark blue
+чӯввесь а̄лехь_A_COLOR, CLOTHES_голубой_blue
+
+   8 ABSTRACT
+   3 ACTIVITY
+   2 ANIMAL
+  23 ANIMAL_DOM
+  24 ANIMAL_OTHER
+  23 ANIMAL_WILD
+  28 BIRD
+   3 BODYPART
+  93 BODY_OTHER
+   2 BUILDING
+  19 CHURCH_OTHER
+   7 CLOSE_PEOPLE
+  51 CLOTHES
+   2 COLOR
+  24 CUTLERY
+  55 DIM_SET
+  10 DRINK
+   4 FAMILY
+  40 FISH
+  11 FOOD
+   7 FOOD_DISH
+  32 FOOD_GROCERY
+   2 FOOD_OTHER
+  36 FOOD_TRADITIONAL
+   5 GRAMMAR_TERMINOLOGY
+  29 HANDICRAFT_MATERIAL
+   1 HANDICRAFT_MATERIALS
+  20 HANDICRAFT_PROD
+  12 HANDICRAFT_TOOLS
+  11 HEALTH_OTHER
+   1 HUMAN_RELATED
+  24 ILLNESS
+  15 INSECT
+  71 LIVING_PLACE
+  67 LIVING_PLACE_HOME
+   2 LIVING_PLACE_NATURE
+  13 MONTH
+   1 NAME_OTHER
+  17 NATURE
+   1 NUMBER
+  10 PEOPLE
+   3 PEOPLE_OTHER
+  41 PLACE_NATURE
+  42 PLACE_WATER
+  58 PLANT_OTHER
+  13 PROFESSION
+  66 RELATIVE
+  72 SCHOOL_EDUCATION
+  43 TIME_EXPRESSION
+  15 TRAVEL
+  29 WEATHER
+  12 WEEKDAY
+}}}
+
+
+Kildin Saami has  2849 nouns, a bit too much
+
+Vi kan ta rus - eng - fin
+
+{{{
+             <sem class="SCHOOL_EDUCATION"/>
+            <sem class="TIME_EXPRESSION"/>
+            <t stat="pref">поздравление
+
+            <sem class="SCHOOL_EDUCATION"/>
+            <sem class="SCHOOL_EDUCATION"/>
+            <t stat="pref">барабан
+
+            <sem class="LIVING_PLACE_NATURE"/>
+            <sem class="TRAVEL"/>
+            <t stat="pref">чум
+
+            <sem class="ANIMAL_WILD"/>
+            <t stat="pref">зверь
+
+            <sem class="PEOPLE_OTHER"/>
+            <t stat="pref">молодежь
+
+            <sem class="DRINK"/>
+            <t stat="pref">молоко
+   <e>
+      <lg>
+         <l pos="n">рыбпехь</l>
+      </lg>
+      <sources>
+         <book name="l1"/>
+         <book name="Saamkilsyjjt"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="CLOTHES"/>
+         </semantics>
+         <tg xml:lang="rus">
+            <t stat="pref">платок</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t stat="pref">cloth</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t stat="pref">cloth_SME</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t stat="pref">klede</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t stat="pref">liina</t>
+            <t>vaate</t>
+         </tg>
+         <tg xml:lang="ger">
+            <t stat="pref">Stoff</t>
+         </tg>
+      </mg>
+   </e>
+}}} 
+ 
+Sett at vi tar sjd_oahpa
+
+For how many of the 2800 rus nouns in sjd_oahpa do we already have a myv parallel?
+
+One possibility:
+
+* Most common 1500 N + 500 V + 500 A in Russian (__Trond__)
+* semclass from sjd_oahpa					  (__Heli__)
+* Look them up in target lang and in fin, eng (__Heli__)
+* Script leksa lexicon file from that		  (__Heli__)
+* spend course on testing and refining		  (__Heli__)
+
+Then add words not turning up.
+* Phrases to Morfa-C: 
+* (puhua, kirjoittaa, lukea, laulaa, ymmärtää) + (suomi) =>MAINV LANG+Tra
+
+
+
+!!!Next meeting
+
+
+Aug 22nd 0900 Swedish time.
