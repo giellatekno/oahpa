@@ -1,7 +1,7 @@
 kainulainen __ N __ n42 __ kven __ kainulainen __ Kven __ MJ1 __ PEOPLE
 norjalainen __ N __ n42 __ nordmann __ norjalainen __ Norwegian __ GK1 __PEOPLE
 aamu __ N __ n21 __ morgen __ aamu __ morning __ MJ1 __ TIME
-!! adressi __ N __ n22odd __ adress __ osoite __ address __ MJ4 __ ??
+!! adressi __ N __ n22odd __ adress __ osoite __ address __ MJ4 __ PEOPLE_ID
 aika __ N __ n21 __ tid __ aika __ time __ MJ2 __ TIME
 aikamasiini __ N __ n22odd __ tidsmaskin __ aikakone __ time machine __ MJ14 __ VEHICLE
 aikamatka __ N __ n21 __ tidsreise __ aikamatka __ time travel __ MJ14 __ TRAVELLING
@@ -10,710 +10,374 @@ anorakki __ N __ n22 __ anorakk __ anorakki __ anorak __ MJ8 __ CLOTHING
 asfalttitie __ N __ n1 __ asfaltvei __ asfalttitie __ asfalt road __ MJ5 __ ROAD
 assii __ N __ n23ii __ sak __ asia __ subject  __ MJ3 __ ABSTRACT 
 
-!!asumapari __ N __ n21 __ sambuer __ avopuoliso __ ?? __ MJ11 __ FAMILY
+asumapari __ N __ n21 __ sambuer __ avopuoliso __ partner __ MJ11 __ FAMILY
 aurinko __ N __ n22odd __ sol __ aurinko __ sun __ MJ1 __ NATURE 
 aviisi __ N __ n22odd __ avis __ sanomalehti __ newspaper __ MJ14 __ TEXT
 avvain __ N __ n32m __ nøkkel __ avain __ key __ MJ13 __ TOOL
 daattamasiini __ N __ n22odd __ datamaskin __ tietokone __ computer __ MJ11 __ TOOL
 
-dilli __ N __ n21 __ dill __ tilli __ dill __ MJ10 __ FOOD_GROCERY
-dongerihousut __ N __ n21pl __ drongeribukser __ farkut __ ? __ MJ8 __ CLOTHING_PL
-??ehđotus __ N __ n41 __ forslag __ ehdotus __ suggestion __ MJ14 __ THOUGHT 
+dilli __ N __ n21 __ dill __ tilli __ dill __ MJ10 __ FOOD_OTHER
+dongerihousut __ N __ n21pl __ drongeribukser __ farkut __ jeans __ MJ8 __ CLOTHING_PL
+ehđotus __ N __ n41 __ forslag __ ehdotus __ suggestion __ MJ14 __ THOUGHT 
 elämä __ N __ n22odd __ liv __ elämä __ life __ MJ14 __ ABSTRACT
 eno __ N __ n21 __ onkel __ eno __ uncle __ MJ11 __ FAMILY
 
 faari __ N __ n21 __ far __ isä __ father __ MJ5 __ FAMILY
-!!fati __ N __ n21 __ fat __ vati __ plate __ MJ10 __ KITCHEN
+fati __ N __ n21 __ fat __ vati __ plate __ MJ10 __ KITCHEN
 fiksuuni __ N __ n22odd __ fiksjon __ fiktio __ fiction __ MJ7 __ TEXT
-!!filmi __ N __ n21 __ film __ elokuva __ film __ MJ6 __ TEXT_OTHER
+filmi __ N __ n21 __ film __ elokuva __ film __ MJ6 __ TEXT_OTHER
 flyyi __ N __ n21 __ fly __ lentokone __ air plane __ MJ7 __ VEHICLE
 
-frisyyri __ N __ n22odd __ frisyr __ kampaus __ hairstyle __ MJ10 __ ??
+!!frisyyri __ N __ n22odd __ frisyr __ kampaus __ hairstyle __ MJ10 __ THING
 frisööri __ N __ n22odd __ frisør __ kampaaja __ hairdresser __ MJ7 __ PROFESSION
 fryysi __ N __ n21 __ fryseboks __ pakastin __ freezer __ MJ10 __ KITCHEN
-!!haiju __ N __ n21 __ lukt __ haju __ smell __ MJ10 __ 
+!!haiju __ N __ n21 __ lukt __ haju __ smell __ MJ10 __ PERCEPTION 
 hamet __ N __ n33t __ skjørt __ hame __ skirt __ MJ8 __ CLOTHING
-hamina __ N __ n22odd __ havn __ satama __ harbour __ MJ5 __  
+hamina __ N __ n22odd __ havn __ satama __ harbour __ MJ5 __ NATURE_PLACE 
 
-hammas __ N __ n33s __ tann __ hammas __ tooth __ MJ9 __
-hamppu __ N __ n21 __ hamp __ hamppu __ hemp __ MJ9 __
-herraväki __ N __ n21 __ herskap __ herrasväki __ gentry __ MJ10 __
-hilla __ N __ n21 __ molte __ hilla __ cloudberry __ MJ10 __
-histooria __ N __ n22oi __ historie __ historia __ history __ MJ3 __
-!!hoppu __ N __ n21 __ hast, travelthet __ kiire __ hurry __ MJ3 __
-housut __ N __ n21pl __ bukser __ housut __ trousers __ MJ8 __
-huoli __ N __ n21ie __ bekymring __ huoli __ concern __ MJ14 __
-huonet __ N __ n33t __ hus __ talo __ house __ MJ5 __
-hykset __ N __ n41pl __ hår __ hiukset __ hair __ MJ9 __
-hylly __ N __ n21 __ hylle __ hylly __ shelf __ MJ8 __
-hyysikkä __ N __ n22odd __ do __ vessa __ toilet __ MJ10 __
-höystö __ N __ n21 __ krydder __ mauste __ spice __ MJ10 __
+hammas __ N __ n33s __ tann __ hammas __ tooth __ MJ9 __ BODYPART
+hamppu __ N __ n21 __ hamp __ hamppu __ hemp __ MJ9 __ THING
+herraväki __ N __ n21 __ herskap __ herrasväki __ gentry __ MJ10 __ PEOPLE
+hilla __ N __ n21 __ molte __ hilla __ cloudberry __ MJ10 __ FOOD_OTHER
+histooria __ N __ n22oi __ historie __ historia __ history __ MJ3 __ ABSTRACT
+hoppu __ N __ n21 __ hast, travelthet __ kiire __ hurry __ MJ3 __ ABSTRACT
+housut __ N __ n21pl __ bukser __ housut __ trousers __ MJ8 __ CLOTHING
+huoli __ N __ n21ie __ bekymring __ huoli __ concern __ MJ14 __ ABSTRACT
+huonet __ N __ n33t __ hus __ talo __ house __ MJ5 __ BUILDING
+hykset __ N __ n41pl __ hår __ hiukset __ hair __ MJ9 __ BODYPART_PL
+hylly __ N __ n21 __ hylle __ hylly __ shelf __ MJ8 __ ROOM_OTHER
+hyysikkä __ N __ n22odd __ do __ vessa __ toilet __ MJ10 __ ROOM
+höystö __ N __ n21 __ krydder __ mauste __ spice __ MJ10 __ KITCHEN_OTHER
 
-idee __ N __ n23 __ idé __ idea __ idea __ MJ14 __
-ihmet __ N __ n21 __ under __ ihme __ wonder __ MJ9 __
-ihminen __ N __ n42 __ menneske __ ihminen __ human being __ MJ2 __
-ilta __ N __ n21 __ kveld __ ilta __ evening __ MJ1 __
-ilma __ N __ n21 __ vær __ ilma __ weather __ MJ1 __
-institutti __ N __ n22 __ institutt __ instituutti __ institution __ MJ3 __
-isovanhiimet __ N __ nx __ besteforeldre __ isovanhemmat __ grand parents __ MJ13 __
-itä __ N __ n21 __ øst __ itä __ east __ MJ14 __
+idee __ N __ n23 __ idé __ idea __ idea __ MJ14 __ ABSTRACT
+ihmet __ N __ n21 __ under __ ihme __ wonder __ MJ9 __ ABSTRACT
+ihminen __ N __ n42 __ menneske __ ihminen __ human being __ MJ2 __ PEOPLE
+ilta __ N __ n21 __ kveld __ ilta __ evening __ MJ1 __ TIME
+ilma __ N __ n21 __ vær __ ilma __ weather __ MJ1 __ WEATHER
+??institutti __ N __ n22 __ institutt __ instituutti __ institution __ MJ3 __BUILDING
+isovanhiimet __ N __ nx __ besteforeldre __ isovanhemmat __ grand parents __ MJ13 __ FAMILY
+itä __ N __ n21 __ øst __ itä __ east __ MJ14 __ NATURE
 
-jakka __ N __ n21 __ jakke __ jakku __ jacket __ MJ8 __
-jalka __ N __ n21 __ fot __ jalka __ foot __ MJ8 __
-jalkapallo __ N __ n21 __ fotball __ jalkapallo __ football __ MJ9 __
+jakka __ N __ n21 __ jakke __ jakku __ jacket __ MJ8 __ CLOTHING
+jalka __ N __ n21 __ fot __ jalka __ foot __ MJ8 __ BODYPART
+jalkapallo __ N __ n21 __ fotball __ jalkapallo __ football __ MJ9 __ THING
 jano __ N __ n21 __ tørst __ jano __ thirst __ MJ1 __
-joggekenkä __ N __ n21 __ joggesko __ lenkkikenkä __ sneaker __ MJ8 __
-joki __ N __ n21 __ elv __ joki __ river __ MJ5 __
-juoma __ N __ n21 __ drikk __ juoma __ drink __ MJ10 __
-juusto __ N __ n21 __ ost __ juusto __ cheese __ MJ10 __
-järvi __ N __ n21ie __ innsjø __ järvi __ lake __ MJ5 __
-jääkaappi __ N __ n21 __ kjøleskap __ jääkaappi __ fridge __ MJ10 __
-kaappi __ N __ n21 __ skap __ kaappi __ cupbord __ MJ11 __
-katu __ N __ n21 __ gate __ katu __ street __ MJ9 __
-!!kafea __ N __ n22oi __ kafé __ kahvila __ café __ MJ1 __
+joggekenkä __ N __ n21 __ joggesko __ lenkkikenkä __ sneaker __ MJ8 __ CLOTHING
+joki __ N __ n21 __ elv __ joki __ river __ MJ5 __ NATURE
+juoma __ N __ n21 __ drikk __ juoma __ drink __ MJ10 __ DRINK
+juusto __ N __ n21 __ ost __ juusto __ cheese __ MJ10 __ FOOD_GROCERY
+järvi __ N __ n21ie __ innsjø __ järvi __ lake __ MJ5 __ NATURE
+jääkaappi __ N __ n21 __ kjøleskap __ jääkaappi __ fridge __ MJ10 __ KITCHEN
+kaappi __ N __ n21 __ skap __ kaappi __ cupbord __ MJ11 __ KITCHEN
+katu __ N __ n21 __ gate __ katu __ street __ MJ9 __ NATURE
+!!kafea __ N __ n22oi __ kafé __ kahvila __ café __ MJ1 __ BUILDING
 
 
-kaffi __ N __ n21 __ kaffe __ kahvi __ coffee __ MJ1 __
-kaffijuusto __ N __ n21 __ kaffeost __ kahvijuusto __ coffee cheese __ MJ10 __
-kaffikattila __ N __ n22oi __ kaffekjele __ kahvipannu __ coffee kettle __ MJ11 __
-kaffikuppi __ N __ n21 __ kaffekopp __ kahvikuppi __ cup __ MJ12 __
-kainu __ N __ n21 __ kvensk __ kveeni __ Kven language __ MJ1 __
-kakko __ N __ n21 __ kake __ kakku __ cake __ MJ2 __
-kalafaprikki __ N __ n22odd __ fiskefabrikk __ kalatehdas __ fish factory __ MJ13 __
-kalavelli __ N __ n21 __ fiskesuppe __ kalakeitto __ fish soup __ MJ5 __
-kanki __ N __ n21 __ gang __ eteinen __ entré __ MJ10 __
-kansankorkkeekoulu __ N __ n21 __ folkehøyskole __ kansankorkeakoulu __ folk university college __ MJ13 __
-kattila __ N __ n22oi __ kjele __ kattila __ kettle __ MJ11 __
-??kattilakahvi__ N __ n21 __ pannekaffe __ pannukahvi __ kettle??? __ MJ11 __
-??katto __ N __ n21 __ tak __ katto __ ceiling, roof __ MJ9 __
-kaula __ N __ n21 __ hals __ kaula __ neck __ MJ9 __
-kauppa __ N __ n21 __ butikk __ kauppa __ shop __ MJ9 __
-kauppareissu __ N __ n21 __ tur til butikken __ kappareissu __ a trip to the shop __ MJ10 __
-kaupunki __ N __ n22odd __ by __ kaupunki __ city __ MJ8 __
-kaveri __ N __ n22odd __ kamerat __ kaveri __ friend __ MJ4 __
+kaffi __ N __ n21 __ kaffe __ kahvi __ coffee __ MJ1 __ DRINK
+kaffijuusto __ N __ n21 __ kaffeost __ kahvijuusto __ coffee cheese __ MJ10 __ FOOD_OTHER
+kaffikattila __ N __ n22oi __ kaffekjele __ kahvipannu __ coffee kettle __ MJ11 __ KITCHEN
+kaffikuppi __ N __ n21 __ kaffekopp __ kahvikuppi __ cup __ MJ12 __KITCHEN
+kainu __ N __ n21 __ kvensk __ kveeni __ Kven language __ MJ1 __ PEOPLE
+kakko __ N __ n21 __ kake __ kakku __ cake __ MJ2 __ FOOD_DISH
+kalafaprikki __ N __ n22odd __ fiskefabrikk __ kalatehdas __ fish factory __ MJ13 __ BUILDING
+kalavelli __ N __ n21 __ fiskesuppe __ kalakeitto __ fish soup __ MJ5 __ FOOD_DISH
+kanki __ N __ n21 __ gang __ eteinen __ entré __ MJ10 __ ROOM
+kansankorkkeekoulu __ N __ n21 __ folkehøyskole __ kansankorkeakoulu __ folk university college __ MJ13 __ SCHOOL
+kattila __ N __ n22oi __ kjele __ kattila __ kettle __ MJ11 __ KITCHEN
+kattilakahvi__ N __ n21 __ pannekaffe __ pannukahvi __ coffee __ MJ11 __ DRINK 
+kaula __ N __ n21 __ hals __ kaula __ neck __ MJ9 __ BODYPART
+kauppa __ N __ n21 __ butikk __ kauppa __ shop __ MJ9 __ SHOP
+???kauppareissu __ N __ n21 __ tur til butikken __ kappareissu __ a trip to the shop __ MJ10 __ ROAD
+kaupunki __ N __ n22odd __ by __ kaupunki __ city __ MJ8 __ NATURE
+kaveri __ N __ n22odd __ kamerat __ kaveri __ friend __ MJ4 __ FAMILY
 
-kello __ N __ n21 __ klokka __ kello __ clock __ MJ4 __
-kenkä __ N __ n21 __ sko __ kenkä __ shoe __ MJ8 __
-????kenttä __ N __ n21 __ gårdsplass, slette, eng __ piha, niitty __ yard,flatmark, meadow __ MJ1 __
-kerta __ N __ n21 __ gang __ kerta __ once __ MJ12 __
-keskipäivä __ N __ n21 __ middag, midt på dagen __ päivällinen, keskipäivä__ dinner __ MJ7 __
-kesä __ N __ n21 __ sommer __ kesä __ summer __ MJ5 __
-!!kesälä
-!!kevväilä __ N __ n21 __ på våren __ keväällä __ in springtime __ MJ12 __
-!!kieli __ N __ n21ie __ språk, tunge __ kieli __ language, tongue __ MJ1 __
-kino __ N __ n21 __ kino __ elokuvateatteri __ cinema __ MJ6 __
-kinosali __ N __ n21 __ kinosal __ elokuvasali __ cinema auditorium __ MJ7 __
-kirja __ N __ n21 __ bok __ kirja __ book __ MJ1 __
-kirjailiija __ N __ n22oi __ forfatter __ kirjailija __ writer __ MJ1 __
-klasi __ N __ n21 __ vindu __ ikkuna __ window __ MJ2 __
-kleninki __ N __ n22 __ kjole __ leninki __ dress __ MJ8 __
+kello __ N __ n21 __ klokka __ kello __ clock __ MJ4 __ TIME
+kenkä __ N __ n21 __ sko __ kenkä __ shoe __ MJ8 __ CLOTHING
+kenttä __ N __ n21 __ gårdsplass, slette, eng __ piha, niitty __ yard,flatmark, meadow __ MJ1 __ NATURE
+kerta __ N __ n21 __ gang __ kerta __ once __ MJ12 __ TIME 
+keskipäivä __ N __ n21 __ middag, midt på dagen __ päivällinen, keskipäivä__ dinner __ MJ7 __ FOOD_OTHER, TIME
+kesä __ N __ n21 __ sommer __ kesä __ summer __ MJ5 __ TIME
 
-kläppi __ N __ n21 __ barn __ lapsi __ child __ MJ12 __
-konto __ N __ n21 __ tåke __ sumu __ fog __ MJ14 __
-kortti __ N __ n21 __ kort __ kortti __ card __ MJ2 __
-korva __ N __ n21 __ øre __ korva __ ear __ MJ9 __
-kotohuonet __ N __ n33t __ hjemhus __ kotitalo __ house __ MJ5 __
-kotokylä __ N __ n21 __ hjembygd __ kotikylä __ native district __ MJ5 __
-kotopaikka __ N __ n21 __ hjemplass __ kotipaikka __ district of origin __ MJ5 __
-kototalo __ N __ n21 __ barndomshjem __ kotitalo __ parents´home __ MJ11 __
-koulu __ N __ n21 __ skole __ koulu __ school __ MJ12 __
-kranni __ N __ n21 __ nabo __ naapuri __ neighbour __ MJ11 __
-kroppi __ N __ n21 __ kropp __ vartalo __ body __ MJ12 __
-kruunu __ N __ n21 __ krone __ kruunu __ crown __ MJ2 __
-kukka __ N __ n21 __ blomster __ kukka __ flower __ MJ10 __
-kulta __ N __ n21 __ kjære __ kulta __ darling __ MJ13 __
+kieli __ N __ n21ie __ språk, tunge __ kieli __ language, tongue __ MJ1 __ LANGUAGE, BODYPART
+kino __ N __ n21 __ kino __ elokuvateatteri __ cinema __ MJ6 __ BUILDING
+kinosali __ N __ n21 __ kinosal __ elokuvasali __ cinema auditorium __ MJ7 __ ROOM
+kirja __ N __ n21 __ bok __ kirja __ book __ MJ1 __ TEXT
+kirjailiija __ N __ n22oi __ forfatter __ kirjailija __ writer __ MJ1 __ PROFESSION
+klasi __ N __ n21 __ vindu __ ikkuna __ window __ MJ2 __ ROOM_PART
+kleninki __ N __ n22 __ kjole __ leninki __ dress __ MJ8 __ CLOTHING
 
-kulttuuri __ N __ n22odd __ kultur __ kulttuuri __ culture __ MJ1 __
-kumppani __ N __ n22odd __ kamerat __ kumppani __ friend?? __ MJ13 __
-kuningas __ N __ n33sodd __ konge __ kuningas __ king __ MJ7 __
-kuppi __ N __ n21 __ kopp __ kuppi __ cup __ MJ8 __
-kvartti __ N __ n21 __ kvarter __ vartti __ fifteen minutes __ MJ11 __
-kuva __ N __ n21 __ bilde __ kuva __ picture __ MJ14 __
-kylrötteri __ N __ n22odd __ gulrot __ porkkana __ carrot __ MJ10 __
-kylä __ N __ n21 __ bygd, grend, landsby __ kylä __ village __ MJ5 __
-kysymys __ N __ n41 __ spørsmål __ kysymys __ question __ MJ14 __
-käsi __ N __ n31si __ håndl __ käsi __ hand __ MJ9 __
-käsifuuni __ N __ n21 __ mobiltelefon __ kännykkä __ mobile phone __ MJ3 __
-köökki __ N __ n21 __ kjøkken __ keittiö __ kitchen __ MJ10 __
+kläppi __ N __ n21 __ barn __ lapsi __ child __ MJ12 __ FAMILY
+konto __ N __ n21 __ tåke __ sumu __ fog __ MJ14 __WEATHER
+kortti __ N __ n21 __ kort __ kortti __ card __ MJ2 __ THING
+korva __ N __ n21 __ øre __ korva __ ear __ MJ9 __ BODYPART
+kotohuonet __ N __ n33t __ hjemhus __ kotitalo __ house __ MJ5 __ BUILDING
+kotokylä __ N __ n21 __ hjembygd __ kotikylä __ native district __ MJ5 __ NATURE_PLACE
+kotopaikka __ N __ n21 __ hjemplass __ kotipaikka __ district of origin __ MJ5 __ NATURE_PLACE
+kototalo __ N __ n21 __ barndomshjem __ kotitalo __ parents´home __ MJ11 __ BUILDING
+???koulu __ N __ n21 __ skole __ koulu __ school __ MJ12 __ SCHOOL, BUILDING
+??kranni __ N __ n21 __ nabo __ naapuri __ neighbour __ MJ11 __ FAMILY
+??kroppi __ N __ n21 __ kropp __ vartalo __ body __ MJ12 __ BODYPART??
+kruunu __ N __ n21 __ krone __ kruunu __ crown __ MJ2 __ FINANCE
+kukka __ N __ n21 __ blomster __ kukka __ flower __ MJ10 __ NATURE_OTHER
+kulta __ N __ n21 __ kjære __ kulta __ darling __ MJ13 __ FAMILY
+
+kulttuuri __ N __ n22odd __ kultur __ kulttuuri __ culture __ MJ1 __ ABSTRACT
+kumppani __ N __ n22odd __ kamerat __ kumppani __ friend __ MJ13 __ FAMILY
+??kuningas __ N __ n33sodd __ konge __ kuningas __ king __ MJ7 __ PROFESSION
+kuppi __ N __ n21 __ kopp __ kuppi __ cup __ MJ8 __ KITCHEN, CONTAINER
+kvartti __ N __ n21 __ kvarter __ vartti __ fifteen minutes __ MJ11 __ TIME
+kuva __ N __ n21 __ bilde __ kuva __ picture __ MJ14 __ THING
+kylrötteri __ N __ n22odd __ gulrot __ porkkana __ carrot __ MJ10 __ FOOD_GROCERY
+kylä __ N __ n21 __ bygd, grend, landsby __ kylä __ village __ MJ5 __ NATURE_PLACE
+kysymys __ N __ n41 __ spørsmål __ kysymys __ question __ MJ14 __ ABSTRACT
+käsi __ N __ n31si __ håndl __ käsi __ hand __ MJ9 __ BODYPART
+käsifuuni __ N __ n21 __ mobiltelefon __ kännykkä __ mobile phone __ MJ3 __ THING
+köökki __ N __ n21 __ kjøkken __ keittiö __ kitchen __ MJ10 __ ROOM
 
 
-laakerilehti __ N __ n21ie __ læurbærblad __ laakerinlehti __ bay leaf __ MJ10 __
-laattii __ N __ n23ii __ gulv __ lattia __ floor __ MJ13 __
-labyrintti __ N __ n22 __ labyrint __ labyrintti __ labyrinth __ MJ14 __
-laiva __ N __ n21 __ båt __ vene __ boat __ MJ14 __
-lakki __ N __ n21 __ lue __ lakki __ cap __ MJ14 __
-lappii __ N __ n23ii __ spade __ lapio __ spade __ MJ14 __
-lapsi __ N __ n31lapsi __ barn __ lapsi __ child __ MJ11 __
+laakerilehti __ N __ n21ie __ læurbærblad __ laakerinlehti __ bay leaf __ MJ10 __ FOOD_OTHER
+laattii __ N __ n23ii __ gulv __ lattia __ floor __ MJ13 __ ROOM_PART
+labyrintti __ N __ n22 __ labyrint __ labyrintti __ labyrinth __ MJ14 __ ROOM
+laiva __ N __ n21 __ båt __ vene __ boat __ MJ14 __ VEHICLE
+lakki __ N __ n21 __ lue __ lakki __ cap __ MJ14 __ CLOTHING
+lappii __ N __ n23ii __ spade __ lapio __ spade __ MJ14 __ THING
+lapsi __ N __ n31lapsi __ barn __ lapsi __ child __ MJ11 __ FAMILY
+laukku __ N __ n21 __ veske __ laukku __ bag __ MJ3 __ CONTAINER
+lauvantai __ N __ n1 __ lørdag __ lauantai __ Saturday __ MJ7 __ TIME
+lehti __ N __ n21ie __ blad __ lehti __ leaf __ MJ12 __ NATURE_OTHER
+leipä __ N __ n21 __ brød __ leipä __ bread __ MJ10 __FOOD_GROCERY
+leipäfati __ N __ n21 __ brødfat __ leipävati __ bread plate __ MJ10 __KITCHEN
+leuka __ N __ n21 __ hake __ leuka __ chin __ MJ9 __ BODYPART
+liitteri __ N __ n22odd __ liter __ litra __ litre __ MJ10 __ KITCHEN
+lintu __ N __ n21 __ fugle __ lintu __ bird __ MJ12 __ BIRD
+loota __ N __ n21 __ eske __ laatikko __ box __ MJ8 __ CONTAINER
+loppu __ N __ n21 __ slutt __ loppu __ end __ MJ7 __ ABSTRACT
+lumi __ N __ n21m __ snø __ lumi __ snow __ MJ1 __ SNOW
+lusikka __ N __ n22oi __ skjed __ lusikka __ spoon __ MJ10 __ KITCHEN
+luku __ N __ n21 __ tall __ luku __ number __ MJ7 __ ABSTRACT
+??läksy __ N __ n21 __ lekse __ läksy __ home work __ MJ4 __ SCHOOL
+lööki __ N __ n21 __ løk __ sipuli __ onion __ MJ10 __ FOOD_GROCERY
 
-laukku __ N __ n21 __ veske __ laukku __ bag __ MJ3 __
-lauvantai __ N __ n1 __ lørdag __ lauantai __ Saturday __ MJ7 __
-lehti __ N __ n21ie __ blad __ lehti __ leaf __ MJ12 __
-leipä __ N __ n21 __ brød __ leipä __ bread __ MJ10 __
-leipäfati __ N __ n21 __ brødfat __ leipävati __ bread plate __ MJ10 __
-leuka __ N __ n21 __ hake __ leuka __ chin __ MJ9 __
-liitteri __ N __ n22odd __ liter __ litra __ litre __ MJ10 __
-lintu __ N __ n21 __ fugle __ lintu __ bird __ MJ12 __
-loota __ N __ n21 __ eske __ laatikko __ box __ MJ8 __
-loppu __ N __ n21 __ slutt __ loppu __ end __ MJ7 __
-lumi __ N __ n21m __ snø __ lumi __ snow __ MJ1 __
-lusikka __ N __ n22oi __ skjed __ lusikka __ spoon __ MJ10 __
-luku __ N __ n21 __ tall __ luku __ number __ MJ7 __
-läksy __ N __ n21 __ lekse __ läksy __ home work __ MJ4 __
-lööki __ N __ n21 __ løk __ sipuli __ onion __ MJ10 __
-
-maailma __ N __ n21 __ verden __ maailama __ world __ MJ13 __
-maapala __ N __ n21 __ jordstykke __ maapala __ plot __ MJ11 __
-maa __ N __ n1 __ jord, land __ maa __ ground, land __ MJ11 __
-maito __ N __ n21 __ melk __ maito __ milk __ MJ2, MJ12 __
-maisema __ N __ n22 __ landskap __ maisema __ landscape __ MJ5 __
-maksovehjet__ N __ n33t __ betalingsterminal __ korttiterminaali??? __ ??? __ MJ2 __ TOOL
-margariini __ N __ n22 __ margarin __ margariini __ margarine __ MJ10 __
-marja __ N __ n21 __ bær __ marja __ berry __ MJ12 __
-marmelaati __ N __ n22 __ marmelade __ marmelaati __ marmelade __ MJ2 __
-masiini __ N __ n22odd __ maskin __ kone __ machine __ MJ14 __
-matematikki __ N __ n22odd __ matematikk __ matematiikka __ mathematics __ MJ3 __
-materivanhiimet __ N __ nx __ forfedre __ esivanhemmat __ ancestors __ MJ14 __
+???maailma __ N __ n21 __ verden __ maailama __ world __ MJ13 __ NATURE
+maapala __ N __ n21 __ jordstykke __ maapala __ plot, parcel of land __ MJ11 __ NATURE
+??maa __ N __ n1 __ jord, land __ maa __ ground, land __ MJ11 __ NATURE
+maito __ N __ n21 __ melk __ maito __ milk __ MJ2, MJ12 __ DRINK
+maisema __ N __ n22 __ landskap __ maisema __ landscape __ MJ5 __ NATURE_OTHER
+maksovehjet__ N __ n33t __ kortautomat __ korttiautomaatti __ ??? __ MJ2 __ TOOL
+margariini __ N __ n22 __ margarin __ margariini __ margarine __ MJ10 __ FOOD_GROCERY
+marja __ N __ n21 __ bær __ marja __ berry __ MJ12 __ FOOD_OTHER
+marmelaati __ N __ n22 __ marmelade __ marmelaati __ marmelade __ MJ2 __ FOOD_GROCERY
+masiini __ N __ n22odd __ maskin __ kone __ machine __ MJ14 __ TOOL
+matematikki __ N __ n22odd __ matematikk __ matematiikka __ mathematics __ MJ3 __ EDUCATION
+materivanhiimet __ N __ nx __ forfedre __ esivanhemmat __ ancestors __ MJ14 __ FAMILY
 meri __ N __ n21 __ hav, sjø __ meri __ ocean, sea __ MJ5 __ NATURE_PLACE
-mies __ N __ n31mies __ mann __ mies __ man __ MJ5, MJ11 __
-mieli __ N __ n21ie __ mening, humør __ mieli __ meaning, temper __ MJ11 __
-musikki __ N __ n22odd __ musikk __ musiikki __ music __ MJ13 __
-mustikka __ N __ n22oi __ blåbær __ mustikka __ blueberry __ MJ12 __
-muori __ N __ n21 __ mor __ äiti __ mother __ MJ5 __
+mies __ N __ n31mies __ mann __ mies __ man __ MJ5, MJ11 __ HUMAN
+??mieli __ N __ n21ie __ mening, humør __ mieli __ meaning, temper __ MJ11 __ ABSTRACT, FEELING
+??musikki __ N __ n22odd __ musikk __ musiikki __ music __ MJ13 __ 
+mustikka __ N __ n22oi __ blåbær __ mustikka __ blueberry __ MJ12 __ FOOD_OTHER
+muori __ N __ n21 __ mor __ äiti __ mother __ MJ5 __ FAMILY
 
-
-S maailma 13
-S maapala
-S maapala 11
-S maata 11
-S maiđon maittoo 2
-S Maisema maisemaa 5
-S maittoo 12
-S maksovehjet maksovehjettä 2
-S margariinii 10
-S marjoi 12
-S Marmelaati marmelaattii 2
-S masiinin 14
-S matematikin 4
-S matematikkii 3
-S materivanhiimiitten materivanhiimet 14
-S meren 5
-S miehet 7
-S mielessä mieli 11
-S mies
-S mies 11
-S mies miestä 5
-S muori 5
-S muori 7
-S muorin 11
-S Musikki 13
-S mustikoita mustikoitten 12
-
-naama __ N __ n21 __ ansikt __ kasvot, naama __ face __ MJ9 __
-nahkasaapas __ N __ n33s __ skinnstøvel __ nahkasaapas __ boot __ MJ8 __
-nainen __ N __ n42 __ kvinne __ nainen __ woman __ MJ7 __
-nasunaliteetti __ N __ n21 __ nasjonalitet __ kansallisuus __ nationality __ MJ12 __
-nenä __ N __ n21 __ nese __ nenä __ nose __ MJ9, MJ11 __
-nepu __ N __ n21 __ søskenbarn __ serkku __ cousin __ MJ11 __
+naama __ N __ n21 __ ansikt __ kasvot, naama __ face __ MJ9 __ BODYPART
+nahkasaapas __ N __ n33s __ skinnstøvel __ nahkasaapas __ boot __ MJ8 __ CLOTHING
+nainen __ N __ n42 __ kvinne __ nainen __ woman __ MJ7 __ PEOPLE
+nasunaliteetti __ N __ n21 __ nasjonalitet __ kansallisuus __ nationality __ MJ12 __ ABSTRACT
+nenä __ N __ n21 __ nese __ nenä __ nose __ MJ9 __ BODYPART
+nepu __ N __ n21 __ søskenbarn __ serkku __ cousin __ MJ11 __ FAMILY
 netti __ N __ n21 __ Internett __ netti __ Internett __ MJ9 __
-niemi __ N __ n21ie __ nes __ niemi __ headland __ MJ5 __
-nimi __ N __ n21ie __ navn __ nimi __ name __ MJ7 __
-nojatooli __ N __ n21 __ lenestol __ nojatuoli __ armchair __ MJ11 __
-nälkä __ N __ n21 __ sult __ nälkä __ hunger __ MJ2, MJ10 __
-näkö __ N __ n21 __ lys, syn __ valo, näkö __ light __ MJ12 __
+niemi __ N __ n21ie __ nes __ niemi __ headland __ MJ5 __ NATURE_PLACE
+nimi __ N __ n21ie __ navn __ nimi __ name __ MJ7 __ PEOPLE_ID
+nojatooli __ N __ n21 __ lenestol __ nojatuoli __ armchair __ MJ11 __ ROOM_OTHER
+nälkä __ N __ n21 __ sult __ nälkä __ hunger __ MJ2 __ ABSTRACT
+näkö __ N __ n21 __ lys, syn __ valo, näkö __ light __ MJ12 __ ROOM_OTHER
 
-S naama 9
-S naaman 12
-S nahkasaapphaita 8
-S Naiset 7
-S nasunaliteettii 12
-S nenä 11
-S nenä 9
-S Nepula
-S Nepula 11
-S netistä 9
-S niemee 5
-S nimi 7
-S nojatooliissa 11
-S nälkä 10
-S nälkä 12
-S nälkä 2
-S nävön 12
+opettaaja __ N __ n22 __ lærer __ opettaja __ teacher __ MJ4 __ PROFESSION
+opetus __ N __ n41 __ undervisning __ opetus __ teaching __ MJ13 __ EDUCATION
+oppitiima __ N __ n21 __ leksjon, undervisningstime __ oppitunti __ lesson __ MJ4 __ EDUCATION
+??orkesteri __ N __ n22 __ orkester __ orkesteri __ orchestra __ MJ13 __ ???
+??osa __ N __ n21 __ del, andel __ osa __ part __ MJ14 __ 
+ostosentteri __ N __ n21 __ kjøpesenter __ ostoskeskus __ shopping centre  __ MJ8 __ BUILDING
+outa __ N __ n21 __ skog __ metsä __ forest __ MJ5 __ NATURE_PLACE
+ovi __ N __ n21ie __ dør __ ovi __ door __ MJ5 __ ROOM_PART
+ovikello __ N __ n21 __ dørklokke __ ovikello __ door bell __ MJ10 __ROOM_OTHER
 
-opettaaja __ N __ n22 __ lærer __ opettaja __ teacher __ MJ4, MJ14 __
-opetus __ N __ n41 __ undervisning __ opetus __ teaching __ MJ13 __
-oppitiima __ N __ n21 __ leksjon, undervisningstime __ oppitunti __ lesson __ MJ4 __
-orkesteri __ N __ n22 __ orkester __ orkesteri __ orchestra __ MJ13 __
-??osa __ N __ n21 __ del, andel __ osa __ part __ MJ14 __
-ostosentteri __ N __ n21 __ kjøpesenter __ ostoskeskus __ shopping centre  __ MJ8 __
-outa __ N __ n21 __ skog __ metsä __ forest __ MJ5 __
-ovi __ N __ n21ie __ dør __ ovi __ door __ MJ5 __
-ovikello __ N __ n21 __ dørklokke __ ovikello __ door bell __ MJ10 __
+paaro __ N __ n21 __ bølge __ aalto __wave __ MJ5 __ NATURE_WATER
+paati __ N __ n21 __ baderom __ kylpyhuone __ bathroom __ MJ12 __ ROOM
+??paikka __ N __ n21 __ sted __ paikka __ place __ MJ4 __ NATURE_PLACE
+paita __ N __ n21 __ skjorte __ paita __ shirt __ MJ9 __ CLOTHING
+??pakka __ N __ n21 __ pakke __ paketti __ package __ MJ9 __ CONTAINER
+peili __ N __ n21 __ speil __ peili __ mirror  __ MJ9 __ ROOM_OTHER
+peret__ N __ n33t __ familie __ perhe __ family __ MJ11 __ FAMILY
+perjantai __ N __ n1 __ fredag __ perjantai __ Friday __ MJ4 __ TIME
+persoona __ N __ n22odd __ person __ persoona __ person __ MJ7 __ HUMAN
+piili __ N __ n21 __ bil __ auto __ car __ MJ5 __ VEHICLE
+piletti __ N __ n22odd __ bilett __ lippu __ ticket __ MJ7 __ THING
+pippuri __ N __ n22odd __ pepper __ pippuri __ pepper __ MJ10 __ FOOD_GROCERY
 
 
-S opettaaja 4
-S opettaaja opettaajala 14
-S opetusta 13
-S oppitiima oppitiimale 4
-S Orkesteri orkesterin 13
-S osasta 14
-S ostosentterhiin 8
-S outa 5
-S oven 10
-S ovi 5
-S ovikello 10
-
-paaro __ N __ n21 __ bølge __ aalto __wave __ MJ5 __
-paati __ N __ n21 __ baderom __ kylpyhuone __ bathroom __ MJ12 __
-paikka __ N __ n21 __ sted __ paikka __ place __ MJ4 __
-paita __ N __ n21 __ skjorte __ paita __ shirt __ MJ9 __
-pakka __ N __ n21 __ pakke __ paketti __ package __ MJ9 __
-peili __ N __ n21 __ speil __ peili __ mirror  __ MJ9 __
-peret__ N __ n33t __ familie __ perhe __ family __ MJ11 __
-perjantai __ N __ n1 __ fredag __ perjantai __ Friday __ MJ4 __
-persoona __ N __ n22odd __ person __ persoona __ person __ MJ7 __
-piili __ N __ n21 __ bil __ auto __ car __ MJ5 __
-piletti __ N __ n22odd __ bilett __ lippu __ ticket __ MJ7 __
-pippuri __ N __ n22odd __ pepper __ pippuri __ pepper __ MJ10 __
-
-S paaroi 5
-S paathiin 12
-S paiđan 9
-S paikassa paikkhaan 4
-S paikka 11
-S paikka 5
-S paikka 6
-S paikkaa paikkhoin 14
-S paita 10
-S paita paittaa paittoi 8
-S pakkaa pakkoi pakoissa 9
-S peili 9
-S peret perheele 11
-S perheen 12
-S perjantaina 4
-S persoona 7
-S piilii 7
-S piililä 14
-S piililä 5
-S piletit 7
-S pippurii 10
-
-plyysi __ N __ n21 __ bluse __ pusero __ bluse __ MJ8 __
-poika __ N __ n21 __ gutt __ poika __ boy __ MJ3 __
-polli __ N __ n21 __ bolle __ pulla __ bun __ MJ9 __
-polvi __ N __ n21ie __ kne __ polvi __ knee __ MJ8 __
-poro __ N __ n21 __ rein __ poro __ reindeer __ MJ7 __
-??porstuu __ N __ n23 __ gang __ eteinen __ entré __ MJ10 __
-poski __ N __ n21ie __ kinn __ poski __ cheek __ MJ9 __
-praatti __ N __ n21 __ prat __ keskustelu, puhe __ talk __ MJ14 __
-praattijoukko __ N __ n21 __ diskusjonsgruppe __ keskusteluryhmä __ discussion group __ MJ14 __
-pretta __ N __ n21 __ brett __ tarjotin __ tray __ MJ2 __
-prikku __ N __ n21 __ prikk, flekk __ pilkku, tahra __ prick, stain __ MJ9 __
-pryyssi __ N __ n21 __ brus __ limsa  __ soft drink __ MJ2 __
-prööviloma __ N __ n21 __ prøverom __ sovitushuone __ dressing room __ MJ9 __
-puhuminen __ N __ n42 __ prat __ puhuminen __ talking __ MJ14 __
+plyysi __ N __ n21 __ bluse __ pusero __ bluse __ MJ8 __ CLOTHING
+poika __ N __ n21 __ gutt __ poika __ boy __ MJ3 __ FAMILY
+polli __ N __ n21 __ bolle __ pulla __ bun __ MJ9 __ FOOD_DISH
+polvi __ N __ n21ie __ kne __ polvi __ knee __ MJ8 __ BODYPART
+poro __ N __ n21 __ rein __ poro __ reindeer __ MJ7 __ ANIMAL_OTHER
+porstuu __ N __ n23 __ gang __ eteinen __ entré __ MJ10 __ ROOM
+poski __ N __ n21ie __ kinn __ poski __ cheek __ MJ9 __ BODYPART
+??praatti __ N __ n21 __ prat __ keskustelu, puhe __ talk __ MJ14 __ LANGUAGE
+??praattijoukko __ N __ n21 __ diskusjonsgruppe __ keskusteluryhmä __ discussion group __ MJ14 __PEOPLE
+pretta __ N __ n21 __ brett __ tarjotin __ tray __ MJ2 __ KITCHEN
+???prikku __ N __ n21 __ prikk, flekk __ pilkku, tahra __ prick, stain __ MJ9 __ BODYPART, CLOTHING_OTHER
+pryyssi __ N __ n21 __ brus __ limsa  __ soft drink __ MJ2 __ DRINK
+prööviloma __ N __ n21 __ prøverom __ sovitushuone __ dressing room __ MJ8 __ SHOP
+???puhuminen __ N __ n42 __ prat __ puhuminen __ talking __ MJ14 __ LANGUAGE, ACTION
 
 
-S plyysin plyysistä plyysit 8
-S poika 11
-S poika 13
-S poika 5
-S poika poikkaa 3
-S pojat 10
-S pojat poikkii 7
-S pollit 9
-S polvet 8
-S polvet 9
-S poroila 7
-S poronki 12
-S porstuussa 10
-S Posket 11
-S posket 9
-S praatthiin 14
-S praattijoukon 14
-S pretan Pretat pretta 2
-S prikku 9
-S pryyssii 2
-S pröövilomassa 9
-S pröövilomassa pröövilomhaan 8
-S puhumista 14
-
-pumpulipuhet __ N __ n33t __ tullprat __ pötypuhe __ rubbish __ MJ2 __
-puoli __ N __ n21ie __ halv, side __ puoli __ half, side __ MJ4 __
-puola __ N __ n21 __ tyttebær __ puolukka __ cowberry __ MJ12 __
-purjolööki __ N __ n21 __ purreløk __ purjosipuli __ leek __ MJ10 __
-pussi __ N __ n21 __ pose __ pussi __ bag __ MJ9 __
-puteetti __ N __ n22odd __ potet __ peruna __ potato __ MJ10 __
-putikki __ N __ n22odd __ butikk __ kauppa __ shop __ MJ8 __
-puuro __ N __ n21 __ grøt __ puuro __ porridge __ MJ14 __
-pyssi __ N __ n21 __ buss __ bussi __ buss __ MJ14 __
-pyssyjokilainen __ N __ n42 __ børselvværing __ pyssyjokilainen __ a person from Pyssyjoki __ MJ12 __
-
-S Pumpulipuhheita 2
-S puolen 10
-S puoli 10
-S puoli 4
-S puoli 6
-S puoli 7
-S puoloi puoloin 12
-S purjolöökkii 10
-S pussii pussiissa 9
-S puteettii 10
-S Putikissa 8
-S putikissa putikista 9
-S puuroo 14
-S pyssilä 14
-S pyssilä 5
-S pyssin 3
-S Pyssyjokilaiset pyssyjokilaisten 12
-
-päivä __ N __ n21 __ dag __ päivä __ day __ MJ2 __
-pääassii __ N __ n23ii __ hovedsak __ pääasia __ main thing __ MJ10 __
-päälinen __ N __ n42odd __ fløte __ kerma __ cream __ MJ2 __
-päälyspiimä __ N __ n21 __ rømme __ hapanmaitotuote __ sour cream __ MJ2 __
-päälysruoka __ N __ n21 __ dessert __ jälkiruoka __ dessert __ MJ10 __
-pää __ N __ n1 __ hode, ende __ pää __ head, end __ MJ8 __
-päänalainen __ N __ n42odd __ pute __ tyyny __ pillow __ MJ12 __
-pöllö __ N __ n21 __ ugle __ pöllö __ owl __ MJ12 __
-pöytä __ N __ n21 __ bord __ pöytä __ board __ MJ2 __
 
 
-S päivä 13
-S päivä 3
-S päivän 6
-S päivänä 12
-S päivänä 7
-S päivää 1
-S päivää 10
-S päivää 2
-S pääassiita 10
-S päälistä 2
-S päälyspiimä 2
-S päälysruokkaa päälysruvan 11
-S päälysruvaksi 10
-S pään 12
-S päänalaisheen 12
-S päätä 8
-S pöllö 12
-S pöyđäle pöyttää 10
-S pöyđältä 12
-S pöyđälä 6
-S pöyđän 13
-S pöythään 2
+pumpulipuhet __ N __ n33t __ tullprat __ pötypuhe __ rubbish __ MJ2 __ LANGUAGE
+???puoli __ N __ n21ie __ halv, side __ puoli __ half, side __ MJ4 __ ABSTRACT
+puola __ N __ n21 __ tyttebær __ puolukka __ cowberry __ MJ12 __ FOOD_OTHER
+purjolööki __ N __ n21 __ purreløk __ purjosipuli __ leek __ MJ10 __ FOOD_GROCERY
+pussi __ N __ n21 __ pose __ pussi __ bag __ MJ9 __ CONTAINER
+puteetti __ N __ n22odd __ potet __ peruna __ potato __ MJ10 __ FOOD_GROCERY
+putikki __ N __ n22odd __ butikk __ kauppa __ shop __ MJ8 __ SHOP
+puuro __ N __ n21 __ grøt __ puuro __ porridge __ MJ14 __FOOD_DISH
+pyssi __ N __ n21 __ buss __ bussi __ buss __ MJ3 __ VEHICLE
+pyssyjokilainen __ N __ n42 __ børselvværing __ pyssyjokilainen __ a person from Pyssyjoki __ MJ12 __ PEOPLE
 
-raita __ N __ n21 __ stripe __ raita __ stripe __ MJ8 __
-???rakastettu __ N __ nx __ kjæreste __ tyttö-/poikaystävä __ girl-/boyfriend __ MJ13 __
-rakkhaus __ N __ n32s __ kjærlighet __ rakkaus __ love __ MJ12 __
-ranta __ N __ n21 __ strand __ ranta __ strand __ MJ5 __
-rauha __ N __ n21 __ fred __ rauha __ peace __ MJ12 __
-reisi __ N __ n21ie __ lår __ reisi __ thigh __ MJ9 __
-reisu __ N __ n21 __ tur, reise __ retki, matka __ trip, journey __ MJ7 __
-remu __ N __ n21 __ bråk __ melu __ noice __ MJ7 __
-restaurantti __ N __ n22 __ restaurant __ ravintola __ restaurant __ MJ7 __
+päivä __ N __ n21 __ dag __ päivä __ day __ MJ1 __ TIME
+pääassii __ N __ n23ii __ hovedsak __ pääasia __ main thing __ MJ10 __ ABSTRACT
+päälinen __ N __ n42odd __ fløte __ kerma __ cream __ MJ2 __ FOOD_GROCERY
+päälyspiimä __ N __ n21 __ rømme __ hapanmaitotuote __ sour cream __ MJ2 __ FOOD_GROCERY
+päälysruoka __ N __ n21 __ dessert __ jälkiruoka __ dessert __ MJ10 __ FOOD_DISH
+pää __ N __ n1 __ hode, ende __ pää __ head, end __ MJ8 __ BODYPART
+päänalainen __ N __ n42odd __ pute __ tyyny __ pillow __ MJ12 __ ROOM_OTHER
+pöllö __ N __ n21 __ ugle __ pöllö __ owl __ MJ12 __ BIRD
+pöytä __ N __ n21 __ bord __ pöytä __ table __ MJ2 __ ROOM_OTHER
+raita __ N __ n21 __ stripe __ raita __ stripe __ MJ8 __ CLOTHING_OTHER
+rakastettu __ N __ nx __ kjæreste __ tyttö-/poikaystävä __ girl-/boyfriend __ MJ13 __ FAMILY
+rakkhaus __ N __ n32s __ kjærlighet __ rakkaus __ love __ MJ12 __ FEELING
+ranta __ N __ n21 __ strand __ ranta __ strand __ MJ5 __ NATURE_PLACE
+rauha __ N __ n21 __ fred __ rauha __ peace __ MJ12 __ ABSTRACT
+reisi __ N __ n21ie __ lår __ reisi __ thigh __ MJ9 __ BODYPART
+reisu __ N __ n21 __ tur, reise __ retki, matka __ trip, journey __ MJ7 __ TRAVELLING
+??remu __ N __ n21 __ bråk __ melu __ noice __ MJ7 __ ABSTRACT??
+restaurantti __ N __ n22 __ restaurant __ ravintola __ restaurant __ MJ7 __ BUILDING
+rinta __ N __ n21 __ bryst __ rinta __ breast, chest __ MJ9 __ BODYPART
+rinnet __ N __ n33t __ skråning, li __ rinne __ hillside __ MJ5 __ NATURE_PLACE
+rommaani __ N __ n22odd __ roman __ romaani __ novel __ MJ1 __ TEXT
+ruija __ N __ n21 __ norsk __ norja __ Norwegian language __ MJ13 __ LANGUAGE
+ruijalainen __ N __ n42 __ nordmann __ norjalainen __ Norwegian __ MJ13 __ PEOPLE
+ruoka __ N __ n21 __ mat __ ruoka __ food __ MJ7 __ FOOD_OTHER
+ruuttapiili __ N __ n21 __ rutebil __ vuorolinja-auto __ bus, coach __ MJ14 __ VEHICLE
 
-S raittoin 8
-S rakastettu 13
-S rakkhaus 12
-S Rakkhaus 13
-S rannassa 5
-S rannassa 8
-S rauha 12
-S reiđet 9
-S reisu reisun 7
-S remu 7
-S restaurantthiin 7
-
-rinta __ N __ n21 __ bryst __ rinta __ breast, chest __ MJ9 __
-rinnet __ N __ n33t __ skråning, li __ rinne __ hillside __ MJ5 __
-rommaani __ N __ n22odd __ roman __ romaani __ novel __ MJ1 __
-ruija __ N __ n21 __ norsk __ norja __ Norwegian language __ MJ13 __
-ruijalainen __ N __ n42 __ nordmann __ norjalainen __ Norwegian __ MJ13 __
-ruoka __ N __ n21 __ mat __ ruoka __ food __ MJ10 __
-ruuttapiili __ N __ n21 __ rutebil __ vuorolinja-auto __ bus, coach __ MJ14 __
- 
-S Rinnat 9
-S rintheessä 5
-S rinttaa 13
-S rommaani 1
-S ruijaa 13
-S ruijaa ruijaksi ruijan 12
-S ruijaksi 1
-S ruijalaisten 12
-S ruoka ruokkaa 10
-S ruokkaa 12
-S ruuttapiililä 14
-S Ruvan 11
-S ruvasta 7
+??koko__ N __ n21 __ størrelse __ koko __ size __ MJ8 __ CLOTHING
+saapas __ N __ n21 __ støvel __ saapas __ boot __ MJ8 __ CLOTHING
+saari__ N __ n21 __ øy __ saari __ island __ MJ5 __ NATURE_PLACE
+saita __ N __ n21 __ sei __ seiti __ saithe, coalfish __ MJ10 __ FOOD_GROCERY, ANIMAL_SALTFISH
+saiti __ N __ n21 __ side __ sivu __ side __ MJ14 __ TEXT
+seinä __ N __ n21 __ vegg __ seinä __ wall __ MJ11 __ ROOM_PART
+servitööri __ N __ n21 __ servitør __ tarjoilija __ waiter, waitress __ MJ13 __ PROFESSION
+sika__ N __ n21 __ gris __ sika __ pig __ MJ9 __ ANIMAL_DOM
+siljo __ N __ n21 __ gårdsplass __ piha __ yard __ MJ5 __ NATURE_PLACE
+silmä __ N __ n21 __ øye __ silmä __ eye __ MJ9 __ BODYPART
+sisar __ N __ n32__ søster __ sisar __ sister __ MJ5 __FAMILY
+???sota __ N __ n21 __ krig __ sota __ war __ MJ12 __ ACTION
+soffa __ N __ n21 __ sofa __ sohva __ sofa __ MJ6 __ ROOM_OTHER
+sokkeri __ N __ n22odd __ sukker __ sokeri __ sugar __ MJ2 __ FOOD_GROCERY
+???sotamies __ N __ n31mies __ soldat __ sotilas __ solder __ MJ12 __ PROFESSION
 
 
-koko__ N __ n21 __ størrelse __ koko __ size __ MJ8 __
-saapas __ N __ n21 __ støvel __ saapas __ boot __ MJ8 __
-saari__ N __ n21 __ øy __ saari __ island __ MJ5 __
-saita __ N __ n21 __ sei __ seiti __ saithe, coalfish __ MJ10 __
-saiti __ N __ n21 __ side __ sivu __ side __ MJ14 __
-seinä __ N __ n21 __ vegg __ seinä __ wall __ MJ11 __
-servitööri __ N __ n21 __ servitør __ tarjoilija __ waiter, waitress __ MJ13 __
 
-S S-koko 8
-S saapphaat 8
-S saapphaatki 10
-S saarta 5
-S saitile 14
-S saittaa 10
-S science fictionii 14
-S Seinälä 11
-S Servitööri 13
-
-sika__ N __ n21 __ gris __ sika __ pig __ MJ9 __
-siljo __ N __ n21 __ gårdsplass __ piha __ yard __ MJ5 __
-silmä __ N __ n21 __ øye __ silmä __ eye __ MJ9 __
-sisar __ N __ n32__ søster __ sisar __ sister __ MJ11 __
-sota __ N __ n21 __ krig __ sota __ war __ MJ12 __
-soffa __ N __ n21 __ sofa __ sohva __ sofa __ MJ6 __
-sokkeri __ N __ n22odd __ sukker __ sokeri __ sugar __ MJ2 __
-sotamies __ N __ n31mies __ soldat __ sotilas __ solder __ MJ12 __
-
-S sijala 9
-S siljola 5
-S silmhiin 13
-S silmät 11
-S silmät 9
-S sisar 11
-S sisar 5
-S sisaret 12
-S sođan 12
-S soffala 6
-S soffala soffale
-S soffala soffale 11
-S sokkeri sokkerii sokkerit 2
-S sokkerii 12
-S sota sottaa 12
-S sotamiehet sotamiehii 12
-
-spesiaalikaffi __ N __ n21 __ spesialkaffe __ erikoiskahvi __ special coffee __ MJ2 __
-spesiaaliputiikki __ N __ n22odd __ spesialbutikk __ erikoisliike __ special shop __ MJ8 __
-sukka __ N __ n21 __ strømpe __ sukka __ sock __ MJ8 __
-suku __ N __ n21 __ slekt __ suku __ family, relatives __ MJ11 __
-sukulaatikakko __ N __ n21 __ sjokoladekake __ suklaakakku __ chocolate cake __ MJ2 __
-sunnuntai __ N __ n1 __ søndag __ sunnuntai __ Sunday __ MJ14 __
-suola __ N __ n21 __ salt __ suola __ salt __ MJ10 __
-suu __ N __ n1 __ munn __ suu __ mouth __ MJ9 __
+spesiaalikaffi __ N __ n21 __ spesialkaffe __ erikoiskahvi __ special coffee __ MJ2 __ FOOD_GROCERY
+spesiaaliputiikki __ N __ n22odd __ spesialbutikk __ erikoisliike __ special shop __ MJ8 __ SHOP
+sukka __ N __ n21 __ strømpe __ sukka __ sock __ MJ8 __ CLOTHING
+suku __ N __ n21 __ slekt __ suku __ family, relatives __ MJ11 __ FAMILY
+sukulaatikakko __ N __ n21 __ sjokoladekake __ suklaakakku __ chocolate cake __ MJ2 __FOOD_DISH
+sunnuntai __ N __ n1 __ søndag __ sunnuntai __ Sunday __ MJ14 __ TIME
+suola __ N __ n21 __ salt __ suola __ salt __ MJ10 __ FOOD_GROCERY
+suu __ N __ n1 __ munn __ suu __ mouth __ MJ9 __ BODYPART
 
 
-S spesiaalikaffii 2
-S spesiaaliputikki spesiaaliputikkii 8
-S sukat 8
-S sukat 9
-S suku 11
-S sukulaatikakko sukulaatikakon 2
-S sunnuntai 14
-S suolaa 10
-S suu 11
-S Suu 9
-S suvun 12
-
-svingi __ N __ n21 __ sving __ sving __ swing __ MJ13 __
-sykkeli __ N __ n21 __ sykkel __ pyörä __ cycle __ MJ14 __
-syksy __ N __ n21 __ høst __ syksy __ autumn __ MJ1 __
-syntymämerkki __ N __ n21 __ fødselsmerke __ syntymämerkki __ birthmark __ MJ11 __
-syyspäivä __ N __ n21 __ høstdag __ syyspäivä __ autumn day __ MJ1 __
-sänky __ N __ n21 __ seng __ sänky __ bed __ MJ5 __
-särmi __ N __ n21 __ skjerm __ valkokangas __ screen __ MJ11 __
-säätieđotus __ N __ n21 __ værmelding __ säätiedotus __ weather report __ MJ1 __
-sölkä __ N __ n21 __ rygg __ selkä __ back __ MJ9 __
-
-S svingii svingistä 13
-S sykkelillä 14
-S syksy 1
-S syksy 12
-S syntymämerkki
-S syntymämerkki 11
-S syyspäivä 1
-S sängyssä 5
-S sänkhyyn 12
-S särmi 11
-S säätieđotuksessa 1
-S Sölkä 9
-
-T-paita __ N __ n21 __ T-skjorte __ T-paita __ T-shirt __ MJ8 _
-taksi __ N __ n21 __ drosje __ taksi __ taxi __ MJ14 __
-talo __ N __ n21 __ gård, hus __ maatila, maatalo __ farming house __ MJ11 __
-talvi __ N __ n21ie __ vinter __ talvi __ winter __ MJ8 __
-talriikki __ N __ n22odd __ tallerk __ lautanen __ plate __ MJ10 __
-tango __ N __ n21 __ tango __ tango __ tango __ MJ13 __
-tansimusikki __ N __ n22odd __ dansemusikk __ tanssimusiikki __ dance music __ MJ13 __
-
-S T-paiđan 8
-S taksila 14
-S talo talossa 11
-S talriikit talriikkii 10
-S talvela 8
-S tango tangoo 13
-S tansimusikkii 13
-
-tee __ N __ n1 __ te __ tee __ tea __ MJ2 __
-??tie __ N __ n1 __ vei __ tie __ way __ MJ5 __
-tiima __ N __ n21 __ time __ tunti __ hour __ MJ4 __
-tiski __ N __ n21 __ disk __ tiski, myyntipöytä __ counter __ MJ2 __
-tomppeli __ N __ n22odd __ dumrian, tosk __ tomppeli __ fool __ MJ11 __
-tooki __ N __ n21 __ tog __ juna __ train __ MJ7 __
-
-S teestä teetä 12
-S teetä 2
-S tietä 5
-S tiima 13
-S tiima 4
-S tiimaa 10
-S tiskilä tiskin 2
-S tomppeli 11
-S tomppeli 12
-S tomppeliitten 12
-S tookila 14
-S tookkii 7
-
-tooli __ N __ n21 __ stol __ tuoli __ stool __ MJ10 __
-??adj??tosi __ N __ n31si __ sann __ tosi __ true __ MJ7 __
-tröijy __ N __ n21 __ ulltrøie __ villapaita __ pullover __ MJ8 __
-tunturi __ N __ n22odd __ fjell __ tunturi __ mountain __ MJ5 __
-tuorestai __ N __ n1 __ torsdag __ torstai __ Thursday __ MJ14 __
-tupapöytä __ N __ n21 __ stuebord __ pöytä __ board __ MJ11 __
-tupa __ N __ n21 __ hus, stue __ tupa __ cottage, living room __ MJ10 __
-tyskäläinen __ N __ n42 __ tysker __ saksalainen __ German __ MJ12 __
-tytär __ N __ n32 __ datter __ tytär __ daughter __ MJ2 __
-tyyny __ N __ n21 __ pyte __ tyyny __ pillow __ MJ12 __
-tällinki __ N __ n22odd __ stativ __ teline __ rack __ MJ8 __
-täti __ N __ n21 __ tante __ täti __ aunt __ MJ11 __
-
-S toolii 10
-S totta 14
-S totta 7
-S tröijyn 8
-S tunturhiin Tunturissa 12
-S tunturista 5
-S tuorestaina 14
-S tupapöyđän 11
-S tuphaan tuvassa 10
-S tuphaan tuvassa 11
-S TVtä 14
-S tyskäläinen tyskäläisen tyskäläiset 12
-S tyttären tyttäret 4
-S tyttären tytär 13
-S tyttäriitten 12
-S tyttärillä tytär 7
-S tytär 10
-S tytär 11
-S tytär 2
-S tytär 3
-S tytär 5
-S tytär 8
-S tyynyn 12
-S tällingissä 8
-S täti 11
-
-universiteetti __ N __ n21 __ løk __ sipuli __ onion __ MJ1 __
-uni __ N __ n21 __ løk __ sipuli __ onion __ MJ12 __
-vaara __ N __ n21 __ løk __ sipuli __ onion __ MJ5 __
-vaatetkauppa __ N __ n21 __ løk __ sipuli __ onion __ MJ8 __
-vaatet __ N __ n21 __ løk __ sipuli __ onion __ MJ5 __
-vaatetputiikki __ N __ n21 __ løk __ sipuli __ onion __ MJ8 __
-vaffeli __ N __ n21 __ løk __ sipuli __ onion __ MJ2 __
-vaimo __ N __ n21 __ løk __ sipuli __ onion __ MJ5 __
-
-S universiteetin 1
-S universiteetin 12
-S universiteetin 14
-S universiteetin universiteetissa universiteetthiin 3
-S unnii 12
-S vaara vaaran 5
-S vaatetkauppa vaatetkauppaa vaatetkauppoi 8
-S vaatetputikkiita 8
-S vaattheet 10
-S vaattheet 5
-S vaattheet vaattheetki vaattheista vaattheita 9
-S vaattheet vaattheista vaattheita 8
-S vaffeli vaffelin vaffelit 2
-S vaffelit 4
-S vaimo 5
-S vaimot 12
-
-vanhapoika __ N __ n21 __ løk __ sipuli __ onion __ MJ11 __
-vanhiimet __ N __ n21 __ løk __ sipuli __ onion __ MJ13 __
-vankka __ N __ n21 __ løk __ sipuli __ onion __ MJ5 __
-vastaus __ N __ n21 __ løk __ sipuli __ onion __ MJ14 __
-vatta __ N __ n21 __ løk __ sipuli __ onion __ MJ9 __
-vehjet __ N __ n21 __ løk __ sipuli __ onion __ MJ14 __
-veitti __ N __ n21 __ løk __ sipuli __ onion __ MJ10 __
-veli __ N __ n21 __ løk __ sipuli __ onion __ MJ5 __
-
-S vanhaapoika 11
-S vanhiimet vanhiimiitten 13
-S vankka Vankkaa 5
-S vastauksii 14
-S Vatta 9
-S vehkheelä 14
-S veittet 10
-S veli 11
-S veli 5
-S veljet 12
-
-velli __ N __ n21 __ løk __ sipuli __ onion __ MJ10 __
-veneh __ N __ n21 __ løk __ sipuli __ onion __ MJ5 __
-vesi __ N __ n21 __ løk __ sipuli __ onion __ MJ10 __
-vesimuki __ N __ n21 __ løk __ sipuli __ onion __ MJ10 __
-vesta __ N __ n21 __ løk __ sipuli __ onion __ MJ14 __
-vieras __ N __ n21 __ løk __ sipuli __ onion __ MJ10 __
-viholinen __ N __ n21 __ løk __ sipuli __ onion __ MJ12 __
-viikko __ N __ n21 __ løk __ sipuli __ onion __ MJ13 __
-viini __ N __ n21 __ løk __ sipuli __ onion __ MJ7 __
-virta __ N __ n21 __ løk __ sipuli __ onion __ MJ5 __
-voi __ N __ n21 __ løk __ sipuli __ onion __ MJ10 __
-vuono __ N __ n21 __ løk __ sipuli __ onion __ MJ5 __
-
-S vellhiin velli vellissä 10
-S venheelä 7
-S venheelä venheitä 5
-S Vesi 10
-S vesimukin 10
-S vestasta 14
-S vierhaat 12
-S vierhaita 10
-S viholinen 12
-S viikossa 13
-S viinii 13
-S viinii 7
-S virta 5
-S voita 10
-S voita 12
-S vuonhoon vuonon vuonossa 5
+??svingi __ N __ n21 __ sving __ sving __ swing __ MJ13 __ THING
+sykkeli __ N __ n21 __ sykkel __ pyörä __ cycle __ MJ14 __ VEHICLE
+syksy __ N __ n21 __ høst __ syksy __ autumn __ MJ1 __ TIME
+syntymämerkki __ N __ n21 __ fødselsmerke __ syntymämerkki __ birthmark __ MJ11 __ BODYPART
+syyspäivä __ N __ n21 __ høstdag __ syyspäivä __ autumn day __ MJ1 __ TIME
+sänky __ N __ n21 __ seng __ sänky __ bed __ MJ5 __ ROOM_OTHER
+särmi __ N __ n21 __ skjerm __ valkokangas __ screen __ MJ11 __ THING
+säätieđotus __ N __ n21 __ værmelding __ säätiedotus __ weather report __ MJ1 __ TEXT
+sölkä __ N __ n21 __ rygg __ selkä __ back __ MJ9 __ BODYPART
 
 
-ystävä __ N __ n21 __ løk __ sipuli __ onion __ MJ14 __
-yöelämä __ N __ n21 __ løk __ sipuli __ onion __ MJ13 __
-yöklubi __ N __ n21 __ løk __ sipuli __ onion __ MJ14 __
-yöpaita __ N __ n21 __ løk __ sipuli __ onion __ MJ12 __
-yöpöytä __ N __ n21 __ løk __ sipuli __ onion __ MJ12 __
-yö __ N __ n21 __ løk __ sipuli __ onion __ MJ12 __
+T-paita __ N __ n21 __ T-skjorte __ T-paita __ T-shirt __ MJ8 __ CLOTHING
+taksi __ N __ n21 __ drosje __ taksi __ taxi __ MJ14 __ VEHICLE
+talo __ N __ n21 __ gård, hus __ maatila, maatalo __ farming house __ MJ11 __ BUILDING
+talvi __ N __ n21ie __ vinter __ talvi __ winter __ MJ8 __ TIME
+talriikki __ N __ n22odd __ tallerk __ lautanen __ plate __ MJ10 __ KITCHEN
+??tango __ N __ n21 __ tango __ tango __ tango __ MJ13 __ THING
+??tansimusikki __ N __ n22odd __ dansemusikk __ tanssimusiikki __ dance music __ MJ13 __ THING
+tee __ N __ n1 __ te __ tee __ tea __ MJ2 __ DRINK
+tie __ N __ n1 __ vei __ tie __ way __ MJ5 __ ROAD
+tiima __ N __ n21 __ time __ tunti __ hour __ MJ4 __ TIME
+tiski __ N __ n21 __ disk __ tiski, myyntipöytä __ counter __ MJ2 __ ROOM_OTHER
+tomppeli __ N __ n22odd __ dumrian, tosk __ tomppeli __ fool __ MJ11 __HUMAN
+tooki __ N __ n21 __ tog __ juna __ train __ MJ7 __ VEHICLE
+tooli __ N __ n21 __ stol __ tuoli __ stool __ MJ10 __ ROOM_OTHER
+??adj??tosi __ N __ n31si __ sann __ tosi __ true __ MJ7 __ ABSTRACT
+tröijy __ N __ n21 __ ulltrøie __ villapaita __ pullover __ MJ8 __ CLOTHING
+tunturi __ N __ n22odd __ fjell __ tunturi __ mountain __ MJ5 __ NATURE
+tuorestai __ N __ n1 __ torsdag __ torstai __ Thursday __ MJ14 __ TIME
+tupapöytä __ N __ n21 __ stuebord __ pöytä __ table __ MJ11 __ ROOM_OTHER
+tupa __ N __ n21 __ hus, stue __ tupa __ cottage, living room __ MJ10 __ BUILDING, ROOM
+tyskäläinen __ N __ n42 __ tysker __ saksalainen __ German __ MJ12 __ PEOPLE
+tytär __ N __ n32 __ datter __ tytär __ daughter __ MJ2 __ FAMILY
+tyyny __ N __ n21 __ pyte __ tyyny __ pillow __ MJ12 __ ROOM_OTHER
+tällinki __ N __ n22odd __ stativ __ teline __ rack __ MJ8 __ ROOM_OTHER
+täti __ N __ n21 __ tante __ täti __ aunt __ MJ11 __ FAMILY
 
 
-S yrno yrno:n 1
-S ystävät 14
-S yöelämää 13
-S yöklubhiin 14
-S yöklubhiin Yöklubissa 13
-S yöpaiđan 12
-S yöpöyđältä 12
-S yötä 12
+universiteetti __ N __ n21 __ universitet __ yliopisto __ university __ MJ1 __ SCHOOL
+uni __ N __ n21 __ drøm __ uni __ dream __ MJ12 __ ABSTRACT
+vaara __ N __ n21 __ fare __ vaara __ danger __ MJ5 __ NATURE_PLACE
+vaatetkauppa __ N __ n21 __ klesbutikk __ vaatekauppa __ clothes shop __ MJ8 __ SHOP
+vaatet __ N __ n21 __ klær __ vaate __ cloth __ MJ5 __ CLOTHING
+vaatetputiikki __ N __ n21 __ klesbutikk __ vaatekauppa __ clothes shop __ MJ8 __ SHOP
+vaffeli __ N __ n21 __ vaffel __ vohveli __ waffle __ MJ2 __ FOOD_OTHER
+vaimo __ N __ n21 __ kone __ vaimo __ wife __ MJ5 __ FAMILY
 
-äiji __ N __ n21 __ løk __ sipuli __ onion __ MJ5 __
-ämmi __ N __ n21 __ løk __ sipuli __ onion __ MJ5 __
-ääni __ N __ n21 __ løk __ sipuli __ onion __ MJ6 __
-ööli __ N __ n21 __ løk __ sipuli __ onion __ MJ7 __
 
-S äiji 11
-S äiji äijiki 5
-S äijin 13
-S ämmi 11
-S ämmi 5
-S ämmin 13
-S ääni 6
-S öölin 7
+vanhapoika __ N __ n21 __ ungkar __ vanhapoika __ bachelor __ MJ11 __ PEOPLE
+vanhiimet __ N __ n21 __ foreldre __ vanhemmat __ parents __ MJ13 __ FAMILY
+vankka __ N __ n21 __ dal __ laakso __ valley __ MJ5 __ NATURE_PLACE
+??vastaus __ N __ n21 __ svar __ vastaus __ answer __ MJ14 __ ACTION
+vatta __ N __ n21 __ mage __ vatsa __ stomach __ MJ9 __ BODYPART
+vehjet __ N __ n21 __ utstyr, greie, innretning  __ vehje __ equipment __ MJ14 __TOOL
+veitti __ N __ n21 __ kniv __ veitsi __ knife __ MJ10 __ KITCHEN
+veli __ N __ n21 __ bror __ veli __ brother __ MJ5 __ FAMILY
+
+
+
+velli __ N __ n21 __ suppe, velling __ keitto, velli __ soup __ MJ10 __ FOOD_DISH
+veneh __ N __ n21 __ båt __ vene __ boat __ MJ5 __ VEHICLE
+vesi __ N __ n21 __ vann __ vesi __ water __ MJ10 __ DRINK
+vesimuki __ N __ n21 __ vannmugg __ vesimuki __ water mug __ MJ10 __ KITCHEN
+vesta __ N __ n21 __ vest __ länsi __ west __ MJ14 __ NATURE
+vieras __ N __ n21 __ gjest __ vieras __ guest __ MJ10 __ PEOPLE
+viholinen __ N __ n21 __ fiende __ vihollinen __ enimy __ MJ12 __ PEOPLE
+viikko __ N __ n21 __ uke __ viikko __ week __ MJ13 __ TIME
+viini __ N __ n21 __ vin __ viini __ wine __ MJ7 __ DRINK
+virta __ N __ n21 __ strøm __ virta __ stream __ MJ5 __ NATURE_PLACE
+voi __ N __ n21 __ smør __ voi __ butter __ MJ10 __ FOOD_GROCERY
+vuono __ N __ n21 __ fjord __ vuono __ fjord __ MJ5 __ NATURE_PLACE
+ystävä __ N __ n21 __ venn __ ystävä __ friend __ MJ14 __ FAMILY
+yöelämä __ N __ n21 __ nattliv __ yöelämä __ night life __ MJ13 __ ABSTRACT
+yöklubi __ N __ n21 __ nattklubb __ yökerho __ night club __ MJ14 __ ROOM
+yöpaita __ N __ n21 __ nattdrakt __ yöpaita __ onion __ MJ12 __CLOTHING
+yöpöytä __ N __ n21 __ nattbord __ yöpöytä __ night table __ MJ12 __ CLOTHING
+yö __ N __ n21 __ natt __ yö __ night __ MJ12 __ TIME
+äiji __ N __ n21 __ bestefar __ ukki, isoisä __ grand father __ MJ5 __ FAMILY
+ämmi __ N __ n21 __ bestemor __ mummi, isoäiti __ grand mother __ MJ5 __ FAMILY
+?? ääni __ N __ n21 __ stemme __ ääni __ voice __ MJ6 __ THING
+ööli __ N __ n21 __ øl __ olut __ beer __ MJ7 __ FOOD_GROCERY
+
+
 
