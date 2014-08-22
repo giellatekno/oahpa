@@ -1,0 +1,205 @@
+
+
+
+
+Meeting, AKU Oahpa, 22.8.2014
+
+Present: Heli, Jaska, Trond
+
+!!!Agenda
+* Status
+* Participants
+* Aika
+
+
+
+!!!Status
+
+!!Venäjän sanat
+* Most common 1500 N + 500 V + 500 A in Russian (__Trond__)
+
+!!Dokumentaatio
+* Correct [http://oahpa.no/addlang/index.rus.html] - not done
+* Burjaatin oahpa tehty (testing.oahpa.no/bxr_oahpa) -- Burjaatin sivu TODO: (__Trond__)
+
+!!Osallistujat
+* Kutsut lähetetty
+* Käyttäjänimet saatu, __Trond__ tekee tilit
+* Monille: ''Windows + EditPadLite + TortoiseSVN''
+** Kaikki: Katso näitä. 
+** __Trond__: Tsekkaa [dokumentaatio|http://giellatekno.uit.no/doc/tools/ForWindowsUsers.html]
+
+!!!Kurssin nettisivu
+
+* Mihin, ja kuka tekee? ... Silloin kun
+* Aikamäärä: Keskiviikko 27.8.
+* Nettipaikka: Sekä gt että AKU
+
+!!Topics
+# Methodologies for distributed cooperation on language technology
+# What is Oahpa - the pedagogical philosophy
+# What lingustic content to include - and how to add it
+# Practical work
+# Project planning
+
+# ?How to join Oahpa development with language research
+
+
+
+!!!Course planning day by day
+
+
+!!Preparing before the course
+* Setting up user accounts, basic SVN.
+
+!!Day 0:
+* Preliminary course in Unix, svn, etc, for people not having done this before.
+* All participants shall have checked out (at least) the ped catalogue and 
+  a working version of their own fst on their own machine
+  (cf. the [getting started|http://giellatekno.uit.no/doc/infra/GettingStarted.html] page.)
+* basic SVN course. What is it, how to update, check in, etc.
+
+
+!!Monday: 
+
+! Introduction
+* Giellatekno overview (infrastructure, projects, tools, Oahpa) (__Heli, Trond__)
+* Presentations by the participants about their languages and existing resources 
+  (textbooks a.o. teaching materials, corpora, language technology tools)
+* Methodologies for distributed cooperation on language technology
+** If needed: Practical instruction divided into groups
+*** Group 1: For the local guru (Heli)
+*** Group 2: For the computer illiterate (Jack)
+*** Installing, general help (Trond)
+
+! Eventually
+Start with Leksa
+
+
+!!Tuesday: 
+
+! Leksa 
+* The key role of Leksa in Oahpa (these are the words we use for different purposes)
+** How to choose the vocabulary for Leksa. Textbook word lists, frequency dictionaries.
+* Creating word lists in csv format. 
+** [Semantic set template|https://victorio.uit.no/langtech/trunk/ped/rus/meta/semantical_sets.xml]
+** [Lexicon template for nouns|https://victorio.uit.no/langtech/trunk/ped/rus/src/N_rusnob.xml]
+** [Lexicon template for verbs|https://victorio.uit.no/langtech/trunk/ped/rus/src/v_rusnob.xml]
+* Checking in new files and updating the existing ones. 
+* svn ci -> Heli updates the db -> online check. 
+
+! Morfa-S
+* Drafting the case/number and person/number/tense forms to be included (Individuals should have this all thought out before hand ... )
+* Evaluating the fsts
+* Setting up the infrastructure for the respective exercises
+
+* __Homework by Thursday__: 
+** think about the productive Morfa-C frames in your language - which cases, which verbs?
+
+!!Wednesday: 
+hands-on
+! Numra 
+* Evaluating existing Numras
+* How to improve them:
+** Learning how to correct automata
+** Learning how to extend Numra to ordinal, date, clock.
+
+! Leksa, Morfa-S
+* Continuing work
+
+
+!!Thursday: 
+hands-on
+* Setting up Morfa-S. Case list, possible additional menus.
+* Writing Morfa-C frames.
+* Extending Leksa: Place names. The names that are different in the indigenous language
+
+!!Friday:
+* General discussion
+** New ideas, thoughts that have come up while implementing Oahpa for your language. 
+** Discussing how to integrate Oahpa in language courses. Presenting kursa
+* Workshop: We write grant applications
+** Background: Different groups plan to get funding
+** We either do brainstorming or (if possible) work in groups on concrete proposals
+* Summing up and future work
+** How to proceed with the development of your Oahpa. 
+
+
+{{{
+
+понедельник: 
+Введение 
+
+Обзор Giellatekno (инфраструктурные, проекты, инструменты, Oahpa) (Heli, Тронд) 
+Выступления участников об их языков и имеющихся ресурсов (учебники ао учебные материалы, корпусы, технологии Языковые инструменты) 
+Методологии распределенной сотрудничества в области технологии языка 
+При необходимости: Практическая инструкция разделены на группы 
+Группа 1: Для местного гуру (Heli) 
+Группа 2: Для компьютера неграмотных (Jack) 
+Установка, генеральный помощь (Тронд) 
+В конце концов 
+Начните с Leksa 
+
+вторник: 
+Leksa 
+
+Ключевая роль Leksa в Oahpa (это слова, которые мы используем для различных целей) 
+Как выбрать словарь для Leksa. Учебник списки слов, частотные словари. 
+Создание списков слов в формате CSV. 
+Семантический набор шаблонов 
+Шаблон Лексикон для существительных 
+Шаблон Лексикон для глаголов 
+Проверка в новых файлах и обновление существующих. 
+SVN CI -> Heli обновляет БД -> онлайн проверки. 
+Morfa-S 
+
+Составление случай / номер и лицо / число / временных форм, которые будут включены (Люди должны иметь это все продумано заранее ...) 
+Оценка ПФТС 
+Настройка инфраструктуры для соответствующих упражнений 
+Домашнее задание по четверг: 
+думать о производительных кадров Morfa-C на Вашем языке - который случаях, которые глаголов? 
+среда: 
+практический 
+
+Numra 
+
+Оценка существующих Numras 
+Как улучшить их: 
+Обучение, как исправить автоматы 
+Обучение, как продлить Numra порядковому, дату, часы. 
+Лекса, Morfa-S 
+
+Продолжая работы 
+Четверг: 
+практический 
+
+Настройка Morfa-S. Список Case, возможные дополнительные меню. 
+Дать Morfa-C кадров. 
+Продление Лекса: Названия мест. Имена, которые отличаются в коренном языке 
+пятница: 
+
+Общая дискуссия 
+Новые идеи, мысли, которые пришли в ходе реализации Oahpa для вашего языка. 
+Обсуждая, как интегрировать Oahpa в языковых курсах. Представляя Kursa 
+Семинар: Мы пишем заявки на получение грантов 
+Справочная информация: Различные группы планируют получить финансирование 
+Мы либо вообще мозговой штурм или (если это возможно) работать в группах над конкретными предложениями 
+Подведение итогов и будущая работа 
+Как приступить к разработке вашего Oahpa.
+}}}
+
+
+
+!!Programmet
+
+* Kommentarar frå Lene
+* Korrekturlese russisk (Heli, Jaska)
+* Sette opp program på gt (Trond) og Aku (Jaska)
+
+
+
+!!!Neste møte
+
+29.8.2014 9:30 Finsk tid
+
+
