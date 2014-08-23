@@ -48,8 +48,8 @@ class SurveyView(Auth, mixins.ListModelMixin, mixins.RetrieveModelMixin,
         qs = self.queryset
 
         # if not user.is_superuser:
-        qs = self.queryset.exclude(usersurvey__user=user,
-                                   usersurvey__completed__isnull=False)
+        qs = self.queryset.exclude(responses__user=user,
+                                   responses__completed__isnull=False)
 
         return qs
 
@@ -78,6 +78,7 @@ def render_to_response(*args, **kwargs):
     return response
 
 from django.template import Context, RequestContext, loader
+from django.http import HttpResponse
 
 def answer(request):
 
@@ -85,3 +86,20 @@ def answer(request):
 
     return render_to_response('survey.html', context,
                            context_instance=RequestContext(request))
+
+def dismiss(request):
+    """ Add ignored surveys to the session so that user is not notified.
+    """
+    if request.method == 'POST':
+        if 'ignored_surveys' not in request.session:
+            request.session['ignored_surveys'] = []
+
+        new_ids = request.POST.get('ids').split(',')
+        request.session['ignored_surveys'].extend(new_ids)
+
+        request.session['ignored_surveys'] = list(set(request.session['ignored_surveys']))
+
+    okay = HttpResponse("Ok", content_type="application/json")
+    okay.status_code = 200
+    return okay
+

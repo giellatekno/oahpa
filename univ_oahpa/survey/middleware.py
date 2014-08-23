@@ -9,7 +9,7 @@ from .models import Survey
 
 class SurveyCheckMiddleware(object):
 
-    check_increment = 5
+    check_increment = 2
 
     def process_view(self, request, view_func, view_args, view_kwargs):
         """ Mark view as counting for survey check purposes.
@@ -52,6 +52,11 @@ class SurveyCheckMiddleware(object):
         if request.session['survey_check'] % self.check_increment == 0:
             request.session['survey_check'] = 0
         else:
+            try: del request.session['display_survey_notice']
+            except: pass
+            try: del request.session['survey_ids_available']
+            except: pass
+
             return response
 
         # TODO: allow user to opt out of being alerted for individual
@@ -61,14 +66,21 @@ class SurveyCheckMiddleware(object):
 
         # Assuming one response per survey
         responses = Survey.objects.exclude(id__in=ignored)\
-                                  .filter(responses__user=u).count()
+                                  .filter(responses__user=u)
+
+        unanswered = Survey.objects.exclude(id__in=ignored)\
+                                   .exclude(responses__user=u)
+
+        responses_count = responses.count()
 
         surveys = Survey.objects.all().count()
+        survey_ids_available = ','.join(map(str, unanswered.values_list('id', flat=True)))
 
-        if responses < surveys:
+        if len(unanswered) > 0:
             # "User can fill out survey."
             print 'survey displayed'
             request.session['display_survey_notice'] = True
+            request.session['survey_ids_available'] = survey_ids_available 
         else:
             # "User has no surveys"
             request.session['display_survey_notice'] = False

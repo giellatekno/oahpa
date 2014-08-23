@@ -44,7 +44,7 @@ class SurveyAdmin(admin.ModelAdmin):
     list_display = ('title', 'user_responses_submitted', )
 
     def user_responses_submitted(self, inst):
-        return inst.usersurvey_set.count()
+        return inst.responses.count()
 
     user_responses_submitted.admin_order_field = 'response_count'
 

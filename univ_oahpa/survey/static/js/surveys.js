@@ -20,7 +20,15 @@ var Surveys = angular.module('Surveys', ['ngCookies', 'angular-loading-bar', 'ng
         $httpProvider.defaults.withCredentials = true;
     });
 
-Surveys.config(['ngDialogProvider', function(ngDialogProvider) {
+var Notices = angular.module('Notices', ['ngCookies', 'angular-loading-bar', 'ngDialog']).
+    config(function($interpolateProvider, $httpProvider) {
+        // set template expression symbols
+        $interpolateProvider.startSymbol('<%');
+        $interpolateProvider.endSymbol('%>');
+        $httpProvider.defaults.withCredentials = true;
+    });
+
+Notices.config(['ngDialogProvider', function(ngDialogProvider) {
     ngDialogProvider.setDefaults({
         className: 'ngdialog-theme-default',
         // plain: true,
@@ -30,9 +38,9 @@ Surveys.config(['ngDialogProvider', function(ngDialogProvider) {
     });
 }]);
 
-function CanHasSurveyNotice($scope, $cookies) {
+function CanHasSurveyNotice($scope, $cookies, $ngDialog) {
     console.log("open");
-    d = ngDialog.open({ 
+    d = $ngDialog.open({ 
         template: 'surveyNoticeTemplate',
         scope: $scope,
     });

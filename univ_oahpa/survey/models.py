@@ -45,7 +45,7 @@ class Survey(models.Model):
 
         answer_rows = []
 
-        responses = self.usersurvey_set.all()
+        responses = self.responses.all()
 
         def user_answer_to_db_answer(q, user_answer_str):
             try:
@@ -148,7 +148,7 @@ class UserSurvey(models.Model):
     """
     survey = models.ForeignKey(Survey, related_name='responses')
     user = models.ForeignKey(User)
-    # TODO: anonymize user in export process
+
     # TODO: store anonymized by hash, prevent duplicates by checking
     # unique on hash.
 
