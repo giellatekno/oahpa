@@ -506,6 +506,7 @@ import re
 
 from est_oahpa.settings import INFINITIVE_SUBTRACT as infinitives_sub
 from est_oahpa.settings import INFINITIVE_ADD as infinitives_add
+from est_oahpa.settings import INFINITIVE as infinitive
 
 def relax(strict):
 	"""Returns a list of relaxed possibilities, making changes by relax_pairs.
@@ -938,13 +939,16 @@ class OahpaQuestion(forms.Form):
 		if (hasattr(self, 'gametype') and self.gametype == 'leksa'): # this applies only to Leksa, was: elif
 			# PI: commented out at this stage
 			# # add infinitives as possible answers
-			if self.word.pos == 'V':
+			if self.word.pos in ['V', 'X']: # X: in case the verb does not have pos attribute set to "V" in the dictionary yet.
 				if self.translang in infinitives_sub and infinitives_add:
-					infin_s = infinitives_sub[self.translang]
+				        infin_s = infinitives_sub[self.translang]
 				        infin_a = infinitives_add[self.translang]
+				        inf = infinitive[self.translang]
 				        lemma = re.compile(infin_s)
+				        
 				        infins = [lemma.sub(infin_a, force_unicode(ax)) for ax in accepted_answers]
-				        accepted_answers = infins + accepted_answers
+				        infins_without_marker = [re.sub(inf, '', force_unicode(ax)) for ax in infins] # If the verbs are given with the infinitive marker in the dictionary.
+				        accepted_answers = infins + infins_without_marker + accepted_answers
 
                 #forms = accepted_answers  # This is wrong: the relaxed pairs are overwritten!
 
