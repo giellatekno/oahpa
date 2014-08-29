@@ -1,0 +1,440 @@
+
+
+
+
+Meeting, AKU Oahpa, 29.8.2014
+
+Present: Heli, Jaska, Trond
+
+!!!Agenda
+* Status
+* Participants
+* Seuraava kokous
+
+
+!!!Status
+* Program is online
+* 650 venäjän sanaa
+* Burjaatin dokumentaatio ei vielä online (Trond)
+
+!!!Participants
+
+
+!!!Sisältö
+
+!!Leksa
+
+Lähtökohta:
+
+# 650 sanaa vs. Kildin Saami list
+# 70 Liivi, vuorimari, x
+# 1791 Kiltinänsaame
+
+Intersection of 1-3,  or of 1+3 and 2+3.
+
+* main/ped/liv/src/A_liv2X.xml 
+* main/ped/liv/src/N_liv2X.xml 
+* main/ped/liv/src/V_liv2X.xml 
+
+Sanat + semanttinen luokittelu
+
+__TODO__: (Heli)
+
+* Suunnitella Leksa-malli valmiiksi täytettäväksi.
+* Runko tehdään valmiiksi xml-muodossa sjd:n perusteella.
+
+utgångspunkt:
+* sjd -> rus, eng, ...
+** fjern sjd, fyll ut med eigne ord
+* erzya -> rus, fin, eng
+* sen jälkeen käännetään koneellisesti
+
+sjd * intersection 1, 2 men fjern lemmat
+nya versioner => endre "sjd" till "xxx" etc.
+
+{{{
+   <e>
+      <lg>
+         <l pos="n">барбанн</l>
+      </lg>
+      <sources>
+         <book name="l2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SCHOOL_EDUCATION"/>
+         </semantics>
+         <tg xml:lang="rus">
+            <t stat="pref">барабан</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t stat="pref">drum</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t stat="pref">rumpu</t>
+         </tg>
+         <tg xml:lang="deu">
+            <t stat="pref">Trommel</t>
+         </tg>
+      </mg>
+   </e>
+}}}
+
+Languages that do not have Oahpa lexicon yet:
+bxr, izh, olo, mdf, mhr, mrj!, udm
+
+something:
+kpv, myv, yrk
+
+
+!!!Språk
+
+Undervisningsspråk är ryska, hjälp på andra språk.
+
+!!! Hur många deltagare?
+
+Maks 15
+* bxr
+** Jargal Badagarov, Ulan Ude (rus, eng)
+* izh 
+** Heinike Heinsoo, Timo Rantakaulio? (fin, rus, eng)
+* kpv 
+** Galina Punegova, StPb (fin, rus, eng) ?
+** ?Galina Misharina?, Hki (fin, rus, )
+** Svetlana Lumme (rus, fin, eng?)?
+* mdf 
+** Oleg Kazanin
+* mhr 
+** Sveta Hämäläinen, Syktyvkar (rus, eng?)
+* mrj 
+** Julia Kuprina, Patrick O'Rourke, Hki (rus, fin, eng?)
+* myv
+** Ivan Ryabov, Saransk (rus, deu)
+** Jelena Klementjeva, Saransk (rus)
+* olo 
+** Giloeva, Jsuu (fin, rus)
+* yrk 
+** Lotta Jalava, Hki (fin, eng, rus)
+** Sven-Erik Soosaar (?Laptander)
+* udm 
+** Svetlana Yedigarova, Hki (fin, rus)
+** Nadi Muš, Tln (est, rus, fin)
+
+Usernames + passwords: Hki + GT
+
+
+TODO (__Heli__)
+Restart:
+oahpa.no/erzya
+oahpa.no/yrkoahpa
+
+Renew the FSTs:
+kpvoahpa/numra/cardinals
+/ordinals
+
+main/langs/kpv/src/
+
+TODO (--Heli__)
+* add link to oahpa.no/davvi on the front page of all alpha-oahpas
+* svn up for all oahpas before the course
+* compile the fsts and copy to /opt/smi/ before the course
+* Links to NDS dictionaries
+
+
+!!!Seuraava kokous
+
+4.9.2014 9:30 Finsk tid
+
+
+0000
+
+Meeting, AKU Oahpa, 4.8.2014
+
+Present: Heli, Jaska, Trond
+
+!!!Agenda
+* Participants
+* Language of instruction
+* Budget
+* Course goals
+* Course planning day by day
+* Documentation
+* List of Languages
+* Next meeting
+
+
+!!!Participants
+
+* bxr
+** Jargal Badagarov, Ulan Ude (rus, eng)
+* izh 
+** Timo Rantakaulio? (fin, rus, eng)
+* kpv 
+** Paula Kokkonen?, StPb (fin, rus, eng) ?
+** Galina Misharina?, Hki (fin, rus, )
+** Enye Lav? (rus, fin, eng?)?
+* mdf 
+** -
+* mhr 
+** Andrei Chemyshev?, Syktyvkar (rus, eng?)
+* mrj 
+** Julia Kuprina, Hki (rus, fin, eng?)
+* myv
+** Ivan Ryabov, Saransk (rus, deu)
+** Jelena Klementjeva, Saransk (rus)
+* olo 
+** Giloeva?, Jsuu (fin, rus)
+* yrk 
+** Lotta Jalava, Hki (fin, eng, rus)
+* udm 
+** Svetlana Yedigarova, Hki (fin, rus)
+** Nadi Muš, Tln (est, rus, fin)
+* vep 
+** -
+
+
+__TODO__:
+
+* Check the ones on the list and fill in evt. empty slots (__Jaska__)
+
+!!!Language of instruction
+
+* Preferably Russian
+* Slides in Russian, talk in English at least in the beginning
+
+
+!!!Budget
+
+!!Costs
+
+* Travel (Jaska)
+* Accommodation (Jaska)
+* Salary, Heli (Tromsø)
+
+!!Income
+
+AKU, UiT, own financing?
+
+
+__TODO__:
+Specify costs  (__T, J__)
+Look at financing (__T, J__)
+
+
+!!!Course goals
+How do we create linguistic content for Oahpa
+
+During the week we will 
+* set up Oahpas for the participating languages at the following level
+** Numra (Evaluate, a preliminary version is set up on beforehand)
+** Leksa (Words, semantic sets !!)
+** Morfa-S (Noun case-number and verb setup)
+** Morfa-C (Make some frames, set them up and see them work)
+* plan for further work on the respective Oahpa versions
+* plan how to integrate Oahpa in course curricula
+
+
+
+!!!Course planning day by day
+
+
+!!Preparing before the course
+* Setting up user accounts, basic SVN.
+
+!!Day 0:
+* Preliminary course in Unix, svn, etc, for people not having done this before.
+* All participants shall have checked out (at least) the ped catalogue and 
+  a working version of their own fst on their own machine
+  (cf. the [getting started|http://giellatekno.uit.no/doc/infra/GettingStarted.html] page.)
+* basic SVN course. What is it, how to update, check in, etc.
+
+
+!!Day 1: 
+
+! Introduction
+* Giellatekno overview (infrastructure, projects, tools, Oahpa) (__Heli, Trond__)
+* Presentations by the participants about their languages and existing resources 
+  (textbooks a.o. teaching materials, corpora, language technology tools)
+
+! Leksa 
+* Creating word lists in csv format. 
+** [Semantic set template|https://victorio.uit.no/langtech/trunk/ped/rus/meta/semantical_sets.xml]
+** [Lexicon template for nouns|https://victorio.uit.no/langtech/trunk/ped/rus/src/N_rusnob.xml]
+** [Lexicon template for verbs|https://victorio.uit.no/langtech/trunk/ped/rus/src/v_rusnob.xml]
+* Checking in new files and updating the existing ones. 
+* svn ci -> Heli updates the db -> online check. 
+* How to choose the vocabulary for Leksa. Textbook word lists, frequency dictionaries.
+
+!!Day 2: 
+* More Leksa
+* Morfa-S
+** Drafting the case/number and person/number/tense forms to be included (Individuals should have this all thought out before hand ... )
+** Evaluating the fsts
+** Setting up the infrastructure for the respective exercises
+
+* __Homework by Thursday__: 
+** think about the productive Morfa-C frames in your language - which cases, which verbs?
+
+!!Day 3: 
+hands-on
+! Numra 
+* Evaluating existing Numras
+* How to improve them:
+** Learning how to correct automata
+** Learning how to extend Numra to ordinal, date, clock.
+
+! Leksa, Morfa-S
+* Continuing work
+
+
+!!Day 4: 
+hands-on
+* Setting up Morfa-S. Case list, possible additional menus.
+* Writing Morfa-C frames.
+* Extending Leksa: Place names. The names that are different in the indigenous language
+
+!!Day 5: 
+* General discussion
+** New ideas, thoughts that have come up while implementing Oahpa for your language. 
+** Discussing how to integrate Oahpa in language courses. Presenting kursa
+* Summing up and future work
+** How to proceed with the development of your Oahpa. 
+
+
+__TODO__:
+
+* Work with the content of the program (__orgkom__)
+
+!!!Documentation
+
+!!PRELIMINARY READING etc. (tasks for participants)
+
+# Links on the Giellatekno pages
+## [How to build Oahpa programs|http://oahpa.no/addlang/index.html]
+## [How to build Oahpa programs (in Russian)|http://oahpa.no/addlang/index.rus.html]
+## [About the Giellatekno infrastructure|http://giellatekno.uit.no/doc/index.html]
+# Look at an existing Oahpa, for Kildin Saami:
+## [Kildin Saami Oahpa|http://oahpa.no/kiilt/]
+## [The underlying source files|https://victorio.uit.no/langtech/trunk/ped/sjd/]
+# Look for and take along some learning materials (textbooks, workbooks, dictionaries). Best if they (also) exist in electronic format but paper format is also ok. 
+# Think about the issues that need special pedagogical focus in your language, e.g. using some case(s).
+# Look at some Oahpa instances online ([North Saami Oahpa|http://oahpa.no/davvi], testing.oahpa.no/rusoahpa, testing.oahpa.no/fkv_oahpa, testing.oahpa.no/crk_oahpa), get inspiration and think about the analogies/differences with your language. (?)
+
+!!The Oahpa pages for developers
+
+... are today in English. In Russian as well?
+We want the "for developer" pages in Russian as well.
+
+
+__TODO__:
+
+* Set up dummy files (__Trond__)
+* Machine translate + correct translation (__barnraising project: all__)
+* Integrate result in existing pages (links from above) __Trond, Heli__
+
+
+!! Documentation pages for each Oahpa version
+
+Set up dummy pages (__Trond__)
+
+
+!!!List of languages involved: 
+
+!!Languages with Oahpa setup
+
+* bxr - no setup
+* izh - testing.oahpa.no/izh_oahpa
+* kpv - oahpa.no/kpvoahpa
+* mdf - testing.oahpa.no/mdf_oahpa
+* mhr - testing.oahpa.no/mhr_oahpa
+* mrj - testing.oahpa.no/mrj_oahpa
+* myv - oahpa.no/erzya
+* olo - testing.oahpa.no/olo_oahpa
+* udm - testing.oahpa.no/udm_oahpa
+* vep - testing.oahpa.no/vep_oahpa
+* yrk - oahpa.no/yrkoahpa
+
+
+__TODO__: 
+
+Set up bxr_oahpa (__Heli__)
+
+!!Languages with transcriptors for Numra
+
+* bxr - no
+* izh - no
+* kpv - yes
+* mdf - yes
+* mhr - yes
+* mrj - yes
+* myv - yes
+* olo - yes
+* udm - no (numbers, clock Jaska)
+* vep - no
+* yrk - yes
+
+
+__TODO__: 
+
+Make at least ordinals for the missing ones (Jaska, Trond)
+bjargal@mail.ru
+
+
+!!Status for automata for the different languages
+
+Grades:
+
+* A = comprehensive (speller quality)
+* B = Good (can be basis for text analysis, albeit with errors)
+* C = Basic vocabulary (expected to generate most Morfa-S words)
+* D = Parts of the vocabulary (Generates only part of what Morfa-S wants)
+
+Status:
+
+* bxr - D
+* izh - C
+* kpv - B
+* mdf - B
+* mhr - B
+* mrj - B
+* myv - B
+* olo - C
+* udm - B
+* vep - D
+* yrk - C
+
+
+!! Place names for leksa
+
+* bxr - 
+* izh - 
+* kpv - 
+* mdf - 
+* mhr - 
+* mrj - 
+* myv - 
+* olo - 
+* udm - 
+* vep - 
+* yrk - 
+
+
+!! Languages for which there are concrete plans for Oahpa work
+
+* bxr - 
+* izh - 
+* kpv - 
+* mdf - 
+* mhr - 
+* mrj - yes (Kuprina Course)
+* myv - yes (Jerina course)
+* olo - yes (Giloeva course book)
+* udm - 
+* vep - 
+* yrk - 
+
+
+!!!Next meeting
+
+
+Aug 15th 0900 Swedish time.
