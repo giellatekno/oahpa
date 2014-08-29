@@ -1057,7 +1057,7 @@ class NumGame(Game):
 		cleaned = []
 		for num in num_tmp:
 			line = num.strip()
-			# line = line.replace(' ','')
+			#line = line.replace(' ','')
 			if line:
 				nums = line.split('\t')
 				if len(nums) == 3:
@@ -1135,7 +1135,7 @@ class NumGame(Game):
 		num_list = []
 		for num in num_tmp:
 			line = num.strip()
-			line = line.replace(' ','')
+			#line = line.replace(' ','')
 			if line:
 				nums = line.split('\t')
 				num_list.append(nums[a].decode('utf-8'))
