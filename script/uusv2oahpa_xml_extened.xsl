@@ -50,8 +50,8 @@
 </xsl:function>
 
   <xsl:param name="inFile" select="'default.csv'"/>
-  <xsl:param name="src_lang" select="'fkv'"/>
-  <xsl:param name="tgt_lang" select="'nob'"/>
+  <xsl:param name="src_lang" select="'crk'"/>
+  <xsl:param name="tgt_lang" select="'eng'"/>
 
   <xsl:variable name="e" select="'xml'"/>
   <xsl:variable name="outDir" select="'xml-out'"/>
@@ -72,50 +72,52 @@
 	    <xsl:for-each select="$lines">
 	      <!-- two underscores as field separator -->
 	      <xsl:variable name="current_lemma" select="tokenize(., '__')"/>
-	      <e>
-		<xsl:variable name="lemma" select="normalize-space($current_lemma[1])"/>
-		<xsl:variable name="pos" select="normalize-space($current_lemma[2])"/>
-		<xsl:variable name="type" select="normalize-space($current_lemma[3])"/>
-		<xsl:variable name="translations" select="normalize-space($current_lemma[4])"/>
-		<xsl:variable name="sem_classes" select="normalize-space($current_lemma[5])"/>
-		<xsl:variable name="books" select="normalize-space($current_lemma[6])"/>
-		<lg>
-		  <l pos="{$pos}" type="{$type}">
-		    <xsl:copy-of select="$lemma"/>
-		  </l>
-		  <!-- default structure for the book elements -->
-		  <sources>
-		    <xsl:for-each select="tokenize($books, ',')">
-		      <book name="normalize-space(.)"/>
-		    </xsl:for-each>
-		  </sources>
-		</lg>
-		<mg>
-		  <semantics>
-		    <!-- COMMA as separator between SEM_CLASS values -->
-		    <xsl:for-each select="tokenize($sem_classes, ',')">
-		      <sem class="{normalize-space(.)}"/>
-		    </xsl:for-each>
-		  </semantics>
-		  <tg xml:lang="{$tgt_lang}">
-		    <!-- COMMA as separator between TRANSLATION values -->
-		    <xsl:for-each select="tokenize($translations, ',')">
-		    <!-- as a default all translations get the same
-			 pos value as the lemma -->
-		      <t pos="{$pos}">
-			<!-- additionally, the first translations gets
-			the attribute-value pair stat="pref" --> 
-			<xsl:if test="position() = 1">
-			  <xsl:attribute name="stat">
-			    <xsl:value-of  select="'pref'"/>
-			  </xsl:attribute>
-			</xsl:if>
-			<xsl:value-of select="normalize-space(.)"/>
-		      </t>
-		    </xsl:for-each>
-		  </tg>
-		</mg>
-	      </e>
+	      <xsl:if test="not(count($current_lemma)=0)">
+		<e>
+		  <xsl:variable name="lemma" select="normalize-space($current_lemma[1])"/>
+		  <xsl:variable name="pos" select="normalize-space($current_lemma[2])"/>
+		  <xsl:variable name="type" select="normalize-space($current_lemma[3])"/>
+		  <xsl:variable name="translations" select="normalize-space($current_lemma[4])"/>
+		  <xsl:variable name="sem_classes" select="normalize-space($current_lemma[5])"/>
+		  <xsl:variable name="books" select="normalize-space($current_lemma[6])"/>
+		  <lg>
+		    <l pos="{$pos}" type="{$type}">
+		      <xsl:copy-of select="$lemma"/>
+		    </l>
+		    <!-- default structure for the book elements -->
+		    <sources>
+		      <xsl:for-each select="tokenize($books, ',')">
+			<book name="{normalize-space(.)}"/>
+		      </xsl:for-each>
+		    </sources>
+		  </lg>
+		  <mg>
+		    <semantics>
+		      <!-- COMMA as separator between SEM_CLASS values -->
+		      <xsl:for-each select="tokenize($sem_classes, ',')">
+			<sem class="{normalize-space(.)}"/>
+		      </xsl:for-each>
+		    </semantics>
+		    <tg xml:lang="{$tgt_lang}">
+		      <!-- COMMA as separator between TRANSLATION values -->
+		      <xsl:for-each select="tokenize($translations, ',')">
+			<!-- as a default all translations get the same
+			     pos value as the lemma -->
+			<t pos="{$pos}">
+			  <!-- additionally, the first translations gets
+			       the attribute-value pair stat="pref" --> 
+			  <xsl:if test="position() = 1">
+			    <xsl:attribute name="stat">
+			      <xsl:value-of  select="'pref'"/>
+			    </xsl:attribute>
+			  </xsl:if>
+			  <xsl:value-of select="normalize-space(.)"/>
+			</t>
+		      </xsl:for-each>
+		    </tg>
+		  </mg>
+		</e>
+	      </xsl:if>
 	    </xsl:for-each>
 	  </r>
 	</xsl:variable>
