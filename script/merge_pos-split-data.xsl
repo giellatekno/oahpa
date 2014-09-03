@@ -76,8 +76,8 @@
   
   <!-- Output dir, files -->
   <xsl:variable name="outDir" select="concat('to_filter_', $slang)"/>
-  <xsl:param name="slang" select="'nob'"/>
-  <xsl:param name="tlang" select="'fkv'"/>
+  <xsl:param name="slang" select="'eng'"/>
+  <xsl:param name="tlang" select="'crk'"/>
 
   <!-- Patterns for the feature values -->
   <xsl:variable name="output_format" select="'xml'"/>

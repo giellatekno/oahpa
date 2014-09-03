@@ -20,9 +20,9 @@
   <!-- input dir -->
   <xsl:param name="inDir" select="'xml-out'"/>
   <!-- source language -->
-  <xsl:param name="slang" select="'fkv'"/>
+  <xsl:param name="slang" select="'crk'"/>
   <!-- target language: nob is default! -->
-  <xsl:param name="tlang" select="'nob'"/>
+  <xsl:param name="tlang" select="'eng'"/>
   <!-- Output dir, files -->
   <xsl:param name="outDir" select="concat('_reverted2', $tlang)"/>
   <xsl:variable name="of" select="'xml'"/>
@@ -74,9 +74,9 @@
 		  <l pos="{$c_pos}">
 		    <xsl:copy-of select="./@*[not(local-name() = 'pos')][not(local-name() = 'stat')]"/>
 		    <xsl:value-of select="normalize-space(.)"/>
-		  </l>		  
+		  </l>
+		  <xsl:copy-of select="../../../lg/sources" copy-namespaces="no"/> <!-- adjust path according to the input files -->
 		</lg>
-		<xsl:copy-of select="../../../sources" copy-namespaces="no"/> <!-- adjust path according to the input files -->
 		<mg>
 		  <xsl:copy-of select="../../semantics" copy-namespaces="no"/>
 		  <tg xml:lang="{$slang}">

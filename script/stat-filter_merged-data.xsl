@@ -41,8 +41,8 @@
   
   <!-- parameters -->
   <xsl:param name="inFile" select="'default.xml'"/>
-  <xsl:param name="slang" select="'nob'"/>
-  <xsl:param name="tlang" select="'fkv'"/>
+  <xsl:param name="slang" select="'eng'"/>
+  <xsl:param name="tlang" select="'crk'"/>
   <xsl:param name="outDir" select="concat($slang,$tlang)"/>
   
   <!-- Patterns for the feature values -->
