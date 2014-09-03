@@ -18,13 +18,15 @@ question_types = [
 
 ## Survey definition
 
+TARGET = "If you wish to make this visble only to users in a certain course, select it here."
+
 class Survey(models.Model):
     """ Main survey object
     """
     title = models.CharField(max_length=50)
     description = models.TextField()
 
-    # TODO: target a particular course or courses, or all users.
+    target_course = models.ForeignKey('courses.course', blank=True, null=True, help_text=TARGET)
 
     def __unicode__(self):
         return self.title
@@ -160,6 +162,8 @@ class UserSurvey(models.Model):
 
     class Meta:
         unique_together = ('user', 'survey', )
+        verbose_name = 'Response'
+        verbose_name_plural = 'Responses'
 
 class UserSurveyQuestionAnswer(models.Model):
     """ This object will store user answers, regardless of whether it

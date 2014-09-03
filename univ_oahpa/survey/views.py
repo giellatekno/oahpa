@@ -40,6 +40,8 @@ class SurveyView(Auth, mixins.ListModelMixin, mixins.RetrieveModelMixin,
         """ If non-admin user, return unsurveyed surveys only as
         queryset. """
 
+        from django.db.models import Q
+
         user = self.request.user
 
         if user.is_anonymous():
@@ -50,6 +52,11 @@ class SurveyView(Auth, mixins.ListModelMixin, mixins.RetrieveModelMixin,
         # if not user.is_superuser:
         qs = self.queryset.exclude(responses__user=user,
                                    responses__completed__isnull=False)
+
+        qs = qs.filter(Q(target_course__isnull=True) |
+                       Q(target_course__in=user.get_profile().courses))
+
+        # visibility field? 
 
         return qs
 
