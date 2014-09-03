@@ -5,4 +5,3 @@ def display_survey_notice(request):
         'display_survey_notice': request.session.get('display_survey_notice', False),
         'survey_ids_available': request.session.get('survey_ids_available', False),
     }
-

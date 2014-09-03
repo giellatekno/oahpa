@@ -6,10 +6,11 @@ from courses.models import create_activity_log_from_drill_logs
 from django.contrib.auth.models import AnonymousUser
 
 from .models import Survey
+from django.db.models import Q
 
 class SurveyCheckMiddleware(object):
 
-    check_increment = 2
+    check_increment = 7
 
     def process_view(self, request, view_func, view_args, view_kwargs):
         """ Mark view as counting for survey check purposes.
@@ -59,9 +60,6 @@ class SurveyCheckMiddleware(object):
 
             return response
 
-        # TODO: allow user to opt out of being alerted for individual
-        # surveys (store in session)
-
         u = request.user
 
         # Assuming one response per survey
@@ -71,14 +69,15 @@ class SurveyCheckMiddleware(object):
         unanswered = Survey.objects.exclude(id__in=ignored)\
                                    .exclude(responses__user=u)
 
+        unanswered = unanswered.filter(Q(target_course__isnull=True) |
+                                       Q(target_course__in=u.get_profile().courses))
+
         responses_count = responses.count()
 
-        surveys = Survey.objects.all().count()
         survey_ids_available = ','.join(map(str, unanswered.values_list('id', flat=True)))
 
         if len(unanswered) > 0:
             # "User can fill out survey."
-            print 'survey displayed'
             request.session['display_survey_notice'] = True
             request.session['survey_ids_available'] = survey_ids_available 
         else:

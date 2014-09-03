@@ -38,7 +38,6 @@ class SurveyResponseInline(admin.TabularInline):
 class SurveyAdmin(admin.ModelAdmin):
     """ The main survey object with inlines for answers.
     """
-    # TODO: inline for response
     inlines = [SurveyQuestionInlineAdmin, SurveyResponseInline]
 
     list_display = ('title', 'user_responses_submitted', )
@@ -98,5 +97,4 @@ class UserSurveyAdmin(admin.ModelAdmin):
 
 admin.site.register(Survey, SurveyAdmin)
 admin.site.register(SurveyQuestion, SurveyQuestionAdmin)
-# admin.site.register(SurveyQuestionAnswerValue)
 admin.site.register(UserSurvey, UserSurveyAdmin)

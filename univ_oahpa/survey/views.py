@@ -13,7 +13,6 @@ from .serializers import *
 class Auth(object):
     authentication_classes = (SessionAuthentication, BasicAuthentication)
 
-# TODO: PostOnly permission, remove list mixins
 class AnswerView(Auth, viewsets.GenericViewSet, mixins.CreateModelMixin):
 
     model = UserSurvey
@@ -26,9 +25,6 @@ class AnswerView(Auth, viewsets.GenericViewSet, mixins.CreateModelMixin):
 class SurveyView(Auth, mixins.ListModelMixin, mixins.RetrieveModelMixin,
                  viewsets.GenericViewSet):
     """ This view gets the survey meta data, and survey parameters.
-
-    TODO: list un-surveyed surveys for non-admin users only, so no one
-    will be able to see something they cannot take.
     """
 
     serializer_class = SurveySerializer
@@ -59,17 +55,6 @@ class SurveyView(Auth, mixins.ListModelMixin, mixins.RetrieveModelMixin,
         # visibility field? 
 
         return qs
-
-class UserSurveyView(viewsets.ModelViewSet):
-    """ This view only handles submission and creation of user survey
-    instances.
-
-    TODO:
-    TODO: permissions - only one submission per user per session
-    TODO: permissions - anonymous submissions not allowed
-    """
-
-    pass
 
 def render_to_response(*args, **kwargs):
     """ Append an attribute onto the response so that we can grab the context

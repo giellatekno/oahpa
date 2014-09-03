@@ -10,8 +10,6 @@ function listContainsObject(_list, _obj, field) {
     return -1;
 }
 
-// TODO: loading status
-//
 var Surveys = angular.module('Surveys', ['ngCookies', 'angular-loading-bar']).
     config(function($interpolateProvider, $httpProvider) {
         // set template expression symbols
@@ -29,7 +27,6 @@ function SurveyClient($scope, $http, $element, $cookies) {
     $scope.form_success = false;
     $scope.next_survey_button = false;
 
-    // $http = applyHeaderToken($http, $cookies);
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
 
     //  GET output, serialize to POST
@@ -87,7 +84,6 @@ function SurveyClient($scope, $http, $element, $cookies) {
             $scope.response = data;
             $scope.results = data;
             if (data.errors) {
-                // TODO: add some error spans to form
                 $scope.form_error = data.non_field_errors;
                 $scope.validation_errors = data;
                 // other errors go here.
@@ -106,17 +102,6 @@ function SurveyClient($scope, $http, $element, $cookies) {
             }
         });
     };
-
-    // Get existing course goals that user has access to.
-    // $http.get(coursegoal_url).success(function(data){
-    //     $scope.coursegoals = data.results;
-
-    // });
-
-    // Get available courses and other options
-    // $http({method: 'OPTIONS', url: coursegoal_url}).success(function(data){
-    //     $scope.courses = data.courses;
-    // });
 
     // Push the Tasks that the user has access to into the not in use box.
     $http.get(survey_source).success(function(data){
