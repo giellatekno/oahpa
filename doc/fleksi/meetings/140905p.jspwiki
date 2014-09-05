@@ -1,0 +1,154 @@
+!!! Møte 05.09.14
+
+Til stades: Heli, Lene, Trond.
+
+!!!Saker: 
+# Serverhastighet
+# Optimalisering av spørring
+# Pipeline
+# Endring av oppgaveoppsett
+# Konteaksta-cg3 inn i makefil
+# Dokumentasjon av Konteksta
+# Dokumentasjon av Oahpa
+# Html-oppsett av museets samiske tekster
+# Firefox-plugin for Konteaksta
+# Inkludering av Konteaksta i kursinnlogging
+# Workshop om fleksi-prosjektet 
+# Neste møte
+
+!!Serverhastighet
+Trond har testet hastigheta på serverne, og klarer ikke å resultatet feilen fra sist. Han har skrevet mail til it-avd om å få raskere prosessor på gtlab. Tilbud fra Steinar om å øke cpu på serveren, noe som vi takker ja til.
+
+Testa på sms, ikkje smn:
+
+{{{
+gtlab:
+real	2m57.532s
+user	2m43.779s
+sys	0m2.506s
+
+gtweb
+real	3m5.451s
+user	2m56.728s
+sys	0m2.029s
+
+divvunserver:
+real	2m49.514s
+user	2m52.029s
+sys	0m6.738s
+
+Trond si maskin:
+real	9m20.065s
+user	9m16.887s
+sys	0m2.148s
+}}}
+
+! Tiltak:
+* __Trond__ gir beskjed til Steinar om å få raskere prosessor på gtlab
+
+
+!!Optimalisering av spørring
+
+Generering av distraktors tar mest tid, for multiple choice. 
+1) Sende ordene som skal genereres samla til FST
+2) De anbefalte sidene burde være mulige å lagre ferdige
+
+! Tiltak:
+* __Heli__ prioriterer å arbeide med optimaliseringa av spørringa
+
+
+!!Pipeline
+
+
+Pipeline:
+
+{{{
+cat text | \
+preprocess --abbr=/opt/smi/sme/bin/abbr.txt --corr=/opt/smi/sme/bin/corr.txt | \
+lookup -flags mbTT /opt/smi/sme/bin/sme.fst | \
+lookup2cg | \
+vislcg3 -g /opt/smi/sme/bin/disambiguation.cg3 | \
+vislcg3 -g /opt/smi/sme/bin/functions.cg3
+}}}
+
+! Tiltak:
+* __Heli__ endrer pipeline i Konteaksta, og oppdaterer den i dokumentasjonen
+* __Lene__ tester output etterpå
+
+
+
+!!Endring av oppgaveoppsett
+Heli har endret i koden så att om det är fler än 10 på sidan, då ta inte alla men annars ta med alla og har endret koden slik at om det finns ambiguous morf analys då ta med ord, om det finns en analys som passar in i mönster, i aktivitetene: colour og click.
+
+! Tiltak:
+* __Lene__ tester  
+* __Lene__ sjekker tagger i activity-filene
+
+
+!!Konteaksta-cg3 inn i makefil
+
+! Tiltak:
+* __Trond__ diskuterer med Sjur om automatisering av functions-konteaksta.cg3 -fila.
+
+Nederst i functions.cg3 er det reglar som gjeld berre for konteaksta.
+I functions.cg3 er den magiske teksten: \\
+{{#IncludeforKonteaksta}} - for linjer som kommenteres inn for Konteaksta
+
+Vi vil ha eit magisk m4-aktig oppsett som gjer at vi får to filer:
+# fila functions.cg3 (fila som i dag og utan linjene "for konteaksta")
+# ei fil functions-konteaksta.cg3 (derivert frå fila som i dag men med linjene "for konteaksta")
+
+!!Dokumentasjon av Konteksta
+
+	
+! Tiltak:
+*__Heli__ forbedrer dokumentasjonen for Konteaksta: 
+[Her|http://giellatekno.uit.no/ped/common/KonteakstaTechnicalDocumentation.html].
+* {{$GTHOME/apps/teaksta/sme/EXTENDING}} - hur man lägger till en ny topic i Konteaksta skal få
+jspwiki-format og lenkes til dokumentasjonssida.
+
+
+!!Dokumentasjon for Oahpa
+Trond har sett på dokumentasjonen. Dokumentasjonen vart skrive då vi hadde ein og to Oahpa. Det kommer ikke fram at vi har flere Oahpaer, og at de er på to forskjellige servere.
+
+! Tiltak:
+* __Trond, Heli__ legger inn mangler i dokumentasjonen for Oahpa: [http://giellatekno.uit.no/ped/common/OahpaTechnicalDocumentation.html]
+** Restarting av Oahpa (sida finst men er for kryptisk: [http://giellatekno.uit.no/ped/common/httpdserver.html] 
+** Lokalisering (messages og translations): [http://giellatekno.uit.no/ped/common/Localisation.html]
+** Legge inn info fra tidligere maintenance-dokumentet (f.eks. kommandoer for å stryke og legge til enkeltord med paradigmer), men også linke til dokumentet 
+
+
+!!html-oppsett av museets samiske tekster
+Forbedring av html-oppsett av museets samiske tekster for Sápmi-utstillinga. 
+
+! Tiltak:
+* __Lene, Trond__ følger opp. 
+
+
+!!Firefox-plugin for Konteaksta
+
+! Tiltak:
+* __Heli__ arbeider videre med denne
+
+!!Inkludering av Konteaksta i kursinnlogging
+Tas opp først med Ryan. 
+
+! Tiltak:
+* __Lene__ tar dette opp først med Ryan
+
+
+!!Workshop om fleksi-prosjektet 
+
+Planlagt til fredag 19.9
+Fra vår plan: Arrangere workshop, invitere andre språkfag, hensikten er å dele
+
+Vi utsetter dette til kursinnlogginga er helt ferdig (bl.a. mangler lokalisering osv) og Firefox-plugin. Vi inviterer til en gjesteforelesning med Detmar, pluss teaser om selve workshopen.
+
+
+!!Neste møte.
+
+Fredag 3. oktober kl 9.00, men vi har kontakt underveis.
+
+
+
+
