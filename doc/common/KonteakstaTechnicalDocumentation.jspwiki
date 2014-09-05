@@ -19,9 +19,25 @@ Sometimes the restart of the Tomcat web server is needed as well:
 
 The logs of running Konteaksta can be found in the directory {{$CATALINA_HOME/logs/}}.
 
+
+!!!Pipeline
+
+The pipeline is:
+
+
+{{{
+cat text | \
+preprocess --abbr=/opt/smi/sme/bin/abbr.txt --corr=/opt/smi/sme/bin/corr.txt | \
+lookup -flags mbTT /opt/smi/sme/bin/sme.fst | \
+lookup2cg | \
+vislcg3 -g /opt/smi/sme/bin/disambiguation.cg3 | \
+vislcg3 -g /opt/smi/sme/bin/functions.cg3
+}}}
+
 !!!File structure
 
 The source code of North Sámi Konteaksta is in {{$GTHOME/apps/teaksta/sme/src/main}}.
+
 
 Exercise topics are defined in {{src/main/webapp/activities/}}.
 Each topic has its folder.
