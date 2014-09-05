@@ -1,0 +1,633 @@
+!!!Maintenance 
+
+This document contains the basic instructions for updating the content
+of the games on victorio. Technical maintenance is described in
+separate document. 
+
+All the data is stored in xml-files which are installed to mysql
+database. Oahpa-programs are developed using Python Web framework
+[Django|http://www.djangoproject.com/]. Oahpa web pages are basic
+html, which is enriched with templates and information retrieved from
+the database. 
+
+Everyday maintentance consists of updating the information in the
+database and editing the html-code.
+
+All the commands described in this document have to be run in victorio.
+
+!!!Install Django locally
+
+To test applications and interfaces, install Django to your own
+computer (as with the documentation system forrest). Follow the
+instructions in [Django Quick install guide|http://docs.djangoproject.com/en/dev/intro/install/]: Install
+Python (you probably have it already) and Install Django. Select the
+option "Install an official release", to assure compatibility with
+victorio. 
+
+Go to victorio and start mysql with the administrator username and password. 
+Grant access to you: 
+
+{{{
+$ mysql -u root -p
+mysql> GRANT all ON oahpa.* TO 'your-username'@'your-own-ip-address';
+}}}
+
+Edit the file ped/oahpa/settings.py in your own computer with the information
+
+{{{
+DATABASE_USER = 'your-username'
+DATABASE_PASSWORD = ''
+DATABASE_HOST = 'victorio.uit.no'
+DATABASE_PORT = '' (port number)
+}}}
+
+And, finally, you need to create a sami language directory. Django should be installed in /Library/Python/2.5/site-packages/ -directory. Look at that directory for django/conf/locale -directory. Create sme
+language directory and copy the locale settings there from no:
+
+{{{
+mkdir your_pythonlib/django/conf/locale/sme
+cp your_pythonlib/django/conf/locale/no/django.* $(djangopath)/django/conf/locale/sme/
+}}}
+
+Then start the web development server in your own computer:
+
+{{{
+cd ped/oahpa/
+python manage.py runserver
+}}}
+
+The pages should be available in
+[http://127.0.0.1:8000/oahpa/]. Consult
+the Django manual if there are problems with this part. With the
+remote logging to the database, you need to ask saara. 
+
+In the sandbox, it is possible to test the changes to the code and to
+html pages. After the pages are working, check them in to svn and
+update the official version in victorio. 
+
+!!Some caveats with the local installation on MacOS:
+
+* if you have two different python versions, both in {{{/usr/bin/python}}} and in {{{/opt/local/bin/python}}}
+you have to configure the Django installation as required (see, for instance, [this site|http://stackoverflow.com/questions/118813/how-do-i-uninstall-python-from-osx-leopard-so-that-i-can-use-the-macports-versi])
+* if you have problems starting the sandbox web server and get the following error:
+{{{
+~/Django/someAppl>python manage.py  runserver 
+Validating models...
+Unhandled exception in thread started by <function inner_run at 0x6c1f70>
+Traceback (most recent call last):
+...............
+    from django.db import models, connection
+  File "/opt/local/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5/site-packages/django/db/__init__.py", line 22, in <module>
+    backend = __import__('%s.base' % settings.DATABASE_ENGINE, {}, {}, [''])
+ImportError: No module named dummy.base
+}}}
+
+you might lack the py25-hashlib package
+
+{{{
+sudo port install py25-hashlib
+}}}
+
+!!!Your own database
+
+Sometimes it would be good idea to have a replicate also from the
+oahpa-database, e.g. when you are testing new games. First install
+mysql: [http://dev.mysql.com/downloads/mysql/5.1.html]. See also database installation instructions in
+[http://docs.djangoproject.com/en/dev/topics/install/#database-installation]. 
+
+Look at the file {{/etc/my.cnf}}. It should have these utf8-values:
+
+{{{
+[client]
+default-character-set=utf8
+
+[mysqld]
+default-character-set=utf8
+collation_server=utf8_bin
+character_set_server=utf8
+character_set_client=utf8
+}}}
+
+Start the server with command:
+
+{{{
+sudo mysqld_safe &
+}}}
+
+Set root password and create a new user account:
+
+{{{
+mysqladmin -u root password "mypassword"
+}}}
+
+Look for manuals to create own user etc, but you may use the root as
+well. Next, create the database:
+
+{{{
+mysql -u root -p
+mysql> create database oahpa character set utf8 collate utf8_bin;
+mysql> exit;
+}}}
+
+Change the local settings in ped/oahpa/settings.py:
+
+{{{
+DATABASE_USER = 'root'
+DATABASE_PASSWORD = 'myspassword'
+DATABASE_HOST = ''
+}}}
+
+
+Add the PYTHONPATH of the OAHPA! project in your .bashrc file:
+{{{
+export PYTHONPATH=$(YOUR-PATH-TO)/gtsvn/ped:$(YOUR-PATH-TO)/gtsvn/ped/oahpa:$(YOUR-PATH-TO)/gtsvn/ped/oahpa/drill
+}}}
+Adjust paths in ped/oahpa/ling.py:
+{{{
+fstdir="$(YOUR-PATH-TO)/gtsvn/gt/sme/bin"
+lookup = "$(YOUR-PATH-TO)/bin/lookup"
+}}}
+
+Adjust paths in ped/oahpa/drill/game.py:
+{{{
+fstdir="$(YOUR-PATH-TO)/gtsvn/gt/" + language + "/bin"
+lookup ="$(YOUR-PATH-TO)/bin/lookup"
+}}}
+
+Start installing the database information:
+
+{{{
+cd ped/oahpa
+python manage.py syncdb
+python install.py -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt -b
+python install.py -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt -f ../sme/xml/nouns.xml
+}}}
+
+Install everything you need starting from the lexicons.
+
+Start Django locally:
+
+{{{
+python manage.py runserver
+}}}
+
+!! Possible problem:
+* if you get a DB connection error, for instance
+{{{
+Can't connect to local MySQL server through socket '/var/mysql/mysql.sock'
+}}}
+
+first, find the mysql socket
+{{{
+~>mysqladmin variables | grep socket
+| socket                                  | /tmp/mysql.sock 
+}}}
+and then, change the value of the DATABASE_HOST in ped/oahpa/settings.py accordingly:
+{{{
+DATABASE_HOST = '/tmp/mysql.sock'
+}}}
+
+
+!!!HTML
+
+!!Overall look
+
+* CSS-settings reside in {{ped/oahpa/media/css/oahpa.css}}
+* Mainpage __oahpa.no__ is defined in
+  {{ped/oahpa/drill/templates/oahpa_main.html}}
+* Basic look for all the games (divs, menubars) are given in file
+  {{ped/oahpa/templates/oahpa.html}}
+* The file game.html contains the basic functionality for all the games.
+* Morhpology games are controlled by the file {{mgame.html}}
+
+In addition, it is possible to alter the pages of individual games by
+editing the files
+
+{{{
+ped/oahpa/drill/templates/mgame_n.html (Morfa for nouns)
+ped/oahpa/drill/templates/mgame_l.html (Morfa numerals)
+ped/oahpa/drill/templates/mgame_a.html (Morfa for adjectives)
+ped/oahpa/drill/templates/mgame_v.html (Morfa for verbs)
+ped/oahpa/drill/templates/quizz.html (Leksa common nouns)
+ped/oahpa/drill/templates/quizz_n.html (Leksa placenames)
+ped/oahpa/drill/templates/num.html (Numra cardinal)
+ped/oahpa/drill/templates/num_ord.html (Numra ordinals)
+ped/oahpa/drill/templates/vasta.html
+ped/oahpa/drill/templates/sahka.html
+}}}
+
+Game pages involve definitions from several html-pages. For example, S-MORFA: mgame_x.html, mgame.html, game.html and oahpa.html. 
+
+The files contain template tags such as:
+
+{{{
+{% block navbar %}
+..
+{% endblock %}
+}}}
+
+They enable several pages to be generated from one source file. In
+addition, some variables are inside double braces. However, the rest
+of the page is plain html and it may be edited as any html-file. If there is an error you may always return to the previous svn-version. Remember to test.
+
+!!Examples
+
+If you want to update a text in English, write inside the trans-tags in the html-file for the main page or the game :
+
+{{{
+{% trans ".." %}
+}}}
+
+To make a new box for option xxx in Leksa Placenames under geography choices, you have to add this to the files:
+
+{{{
+1. oahpa/drill/forms.py: 
+GEOGRAPHY_CHOICES =  ('xxx', _('xxx')), 
+and     # For placename quizz
+    xxx = forms.BooleanField(required=False,initial=0)
+
+
+2. oahpa/drill/views.py:         
+if 'xxx' in settings_form.data:
+            self.settings['geography'].append('xxx')
+
+3. oahpa/drill/templates/quizz_n.html: 
+{{ settingsform.xxx }}{% trans "xxx" %}<br/>
+
+}}}
+
+
+
+!!Javascripts
+Disregarding a couple of exceptions, the Javascripts used are given in file:
+
+{{{
+ped/oahpa/media/js/oahpa.js
+}}}
+
+In addition, there are couple of other scripts, one for fixing the png-images in earlier IE versions using pngfix.js.
+Another two tooltip2.js and prototype.js are used for the translation tooltip. 
+
+!!!FSTs
+Oahpa is dependent on linguistic resources which are located in /opt/smi/sme/bin/. Compile the new versions of the fsts when needed.
+
+{{{
+ped-sme.fst
+sme-num.fst
+isme-norm.fst
+isme-GG.restr.fst
+isme-KJ.restr.fst
+}}}
+
+!!Lookup server
+
+The lookup-process for the analyzer {{ped-sme.fst}}, used in Vasta
+and Sahka, is running all the time. The lookup is implemented as
+server, callable by different processes. When started, it reads the file
+{{/opt/smi/sme/bin/ped-sme.fst}} and provides analyses based on exactly this fst. 
+
+__NB:__ Any update of the FST requires a restart of the lookup server!
+
+* __(re-)starting__ the server:
+** go to {{/home/oahpa/ped/src}}
+** type the command {{sudo ./lookupserv restart}}
+* __testing__ the server using the commad-line tool, that takes one word at a time:
+** go to {{/home/oahpa/ped/src}}
+** type the command {{sudo python client.py}}
+* __checking__ the log file for the lookup output from Sahka and Vasta on victorio:
+** inspect the file {{/var/log/lserv.log}} with you editor of choice
+
+!!!Updating the database
+
+The script install.py is used for updating the database. First, cd to
+the ped/oahpa directory and then test the script.
+{{{
+cd ped/oahpa/
+python install.py -h
+}}}
+
+Changes in the database are visible in the interface straight
+away. Running a same installation script several times is not
+harmful. The same command that is used for installing the information
+can be used for updating.
+
+
+!!Lexicons
+
+Information of individual words such as lemmas, stem information,
+semantic classes and source information is added or updated using command:
+
+{{{
+python install.py -f ../sme/xml/nouns.xml
+}}}
+
+Forms and tags are updated when the tagfile and paradigmfile are given
+as well:
+
+{{{
+python install.py -f ../sme/xml/nouns.xml -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt
+}}}
+
+This command generates paradigm for all the words in nouns.xml and
+updates forms for both dialects: KJ and GG. Running the script may
+take a while. If you have a list of words you want to add to the
+database, it is possible create a temporary file for them so that you
+do not need to generate paradigms for all the words. Remember to add
+the words to the lexicon file for future updates.
+
+Remove words from the database one by one by giving the word id (or lemma) and the part of speech as option:
+
+{{{
+python install.py -w beana -p N
+}}}
+
+If you have deleted entries in the lexicon file, specify an extra
+option -d to delete unexisting entries. This option can be used only when
+the whole lexicon file is installed, since it compares the xml-file to
+the database content of certain pos.
+
+{{{
+python install.py -d -f ../sme/xml/nouns.xml
+}}}
+
+To add the new words to the semantic supersets, update the semantic
+classes [Semantic classes|maintenance.html#Semantic+classes].
+
+Both Sami and Norwegian lexicons are installed using the same command. The
+language information is extracted from the xml-file. Do not specify paradigm 
+or tag information for nob-files:
+
+{{{
+python install.py -f ../nob/xml/nouns.xml
+}}}
+
+Finally, the installation commands here only update old and add new
+information. If you want to remove all the words that do not appear in
+the xml-file. Use carefully, this will delete all the nouns that appear 
+in other files.
+
+{{{
+python install.py --delete -f ../sme/xml/nouns.xml
+}}}
+
+This command both updates and removes all the extra entries of pos
+N. The pos N is derived from the pos information of the first entry.
+
+!!Numerals
+Numerals are generated and installed using __fst__. Command:
+
+{{{
+python install.py -n
+}}}
+
+!!Placenames
+Placenames stored in sme/xml/propernouns.xml are installed differently
+than the other lexicons, since the Norwegian translations are
+implied. Use the option "--places" for them.
+
+{{{
+python install.py --places -f ../sme/xml/propernouns.xml
+}}}
+
+Use option -d to remove entries from the database the same way as from
+[lexicons|maintenance.html#Lexicons].
+
+!!Semantic classes
+
+The grouping of semantic classes is defined in
+ped/sme/xml/semantic_sets.xml. Database is updated by the command:
+{{{
+python install.py -s ../sme/xml/semantic_sets.xml
+}}}
+The semantic set information is used among others in Leksa. To update
+the menu that appears in Leksa main page, edit the variable
+{{SEMTYPE_CHOICES}} in ped/oahpa/forms.py:
+{{{
+SEMTYPE_CHOICES = (
+    ('FAMILY', _('family')),
+    ('PROFESSION', _('profession')),
+    ...
+)
+}}}
+
+The string in small letters is the string that appears in the menu in
+English version. To translate for the other languages, follow the
+steps in [Localisation|maintenance.html#Localisation]. In addition, 
+the changes in {{forms.py}} require that the server is restarted 
+(sudo httpd restart). 
+
+!!!Vasta and Morfa-C
+Morfa-C and Vasta share the same mechanism for installing the
+questions. Questions are defined e.g. in
+sme/xml/questions_vasta.xml. In addition some defaults for certain
+elements (such as subject) are defined in
+sme/xml/grammar_defaults.xml. Command for updating the questions:
+{{{
+python install.py -g ../sme/xml/grammar_defaults.xml -q ../sme/xml/questions_nouns.xml
+}}}
+
+Everything inside the question xml-file may be changed and the database
+will be updated during the next. With one exception: if a question is
+removed and there is no new question with the same id, it has to be
+specifically deleted using command: 
+{{{
+python install.py --qid <question_id>
+.. or by using the question text
+python install.py --qid "Maid SUBJ MAINV"
+}}}
+Of course the latter command will delete all the questions with that
+string. However, the deletion with the string may be useful if the qid
+was forgotten. Rerun of the installation script for the question file
+will restore the accidentally deleted questions.
+
+Available tags and paradigms are stored to the database beforehand and
+searched during the installation of the questions. If you have changed
+tag names in the lexicon (this occurs very rarely), then run the
+command: 
+{{{
+python install.py -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt -b
+}}}
+
+!!!Feedback
+
+Install first the feedback messages, preferably for all languages:
+{{{
+python install.py -m ../sme/xml/messages.xml
+python install.py -m ../sme/xml/messages.sme.xml
+}}}
+After that, install the feedback files for each pos. This may take
+some time, even hours, especially for nouns and adjectives.
+{{{
+python install.py -e ../sme/xml/feedback_verbs.xml -f ../sme/xml/verbs.xml
+..
+}}}
+
+You may update the content of the feedback messages, or add new
+languages without installing the feedback again. However, new feedback
+messages as well as new ids require reinstallation of the releveant
+feedback files. Vice versa, changes in the feedback file do not
+require reinstallation of the messages.
+
+!!!Sahka
+
+Sahka contains pictures which have to be synchronized with the
+contents of the database, so the whole process is explained here in
+separate section.
+
+!!Updating the database
+Create the dialogue file and store it e.g. to
+ped/sme/xml/dialoguefile.xml. Give the dialogue a unique name in the 
+xml-structure, such as:
+
+{{{
+<dialogue name="firstmeeting_man">
+}}}
+
+Install it to database using the command:
+
+{{{
+cd ped/oahpa
+python install.py -k ../sme/xml/dialoguefile.xml
+}}}
+
+The script will give errors on links that do not point to an utterance
+and some information of wordsets and such.
+
+When you want to update an existing dialogue, use the same command:
+
+{{{
+cd ped/oahpa
+python install.py -k ../sme/xml/dialoguefile.xml
+}}}
+
+It will first remove the old dialogue and then install it as it was new. Do not
+change the dialogue name if you are updating an existing one.
+
+!!Images
+Preferably in jpg-format. Collect the images and scale them to size,
+where width of the image is 150-180px (perhaps we should decide which
+size). Height of the picture can be anything. Internet Exporer
+requires this size, the other browsers will work regardless of the
+size of the image.
+
+Store the images to directory ped/oahpa/media/img/, with the same name
+as they are specified in the dialoguefile.xml. In dialoguefile.xml,
+use only the name of the image, not the full path.
+
+If you are installing a new game, update the file
+ped/oahpa/drill/templates/sahka.html. The file contains a table where
+all the images are stored as links to new dialogues:
+
+{{{
+<td>
+<a href="javascript:submitSahka('firstmeeting_man');">
+<img width="100" src="/oahpa/media/man.jpg"/>
+<p>{% trans "Meeting with Hansa" %}</p></a>
+</td>
+}}}
+
+Copy one such td, to a suitable place inside the table, specify a
+width to the image that fits to the page. Remember to change the name
+of the file, and finally, add the name of the dialogue to the javascript
+section. In the example above the dialogue name is "firstmeeting_man."
+
+!!CG-script
+
+Copy the file sme-ped.cg3 to /opt/smi/sme/bin.
+There is a Makefile as well.
+
+!!!Other
+
+!!Comments
+In the drills, a comment is displayed after the user presses "Show
+correct answers" These comments are installed by:
+{{{
+python install.py -c ../sme/xml/comments.nob.xml
+}}}
+Running the script deletes all the old comments and creates everything anew.
+
+!!Grammarlinks
+To update the links that appear on the top left corner, edit the file
+ped/sme/src/grammatikklinker.txt. Then install using command:
+{{{
+python install.py -i ../sme/src/grammatikklinker.txt
+}}}
+
+
+!!!Localisation
+
+Translations for the texts in the interface are provided in files:
+
+{{{
+ped/oahpa/locale/fi/LC_MESSAGES/django.po
+ped/oahpa/locale/sme/LC_MESSAGES/django.po
+ped/oahpa/locale/no/LC_MESSAGES/django.po
+ped/oahpa/locale/en/LC_MESSAGES/django.po
+}}}
+
+The English file is needed for the names and strings that contain
+Unicode. The English texts in the html-pages should be ascii.
+
+Whenever the texts in the page are updated, the translations need to be checked and updated as well. 
+{{{
+cd ped/oahpa
+django-admin.py makemessages -a
+svn ci -m "new generated files" locale/fi/LC_MESSAGES/django.po
+   ... etc. for the other files. 
+}}}
+
+After that, work on the respective django.po files, and check them
+in again. Search for word "#fuzzy" from django.po. It means that the
+English content has changed and the system tries to guess the correct
+translation. Check the translation and remove all the lines that
+contain "#fuzzy", otherwise the translation does not work.
+
+After fixing the files update the official directory and compile the messages.
+
+{{{
+cd ped/oahpa/
+svn up
+django-admin.py compilemessages
+}}}
+
+
+
+!!!Restarting the httpd server
+
+Updates to the code require restart of the httpd-server. Sometimes
+updates to the localisation require that too. The restart is otherwise
+harmless, but may distrub someone who is playing the came (although
+that is not very probable).
+
+Restarting the server (requires sudo rights):
+{{{
+sudo /etc/init.d/httpd restart
+}}}
+
+
+Earlier, there was a memory leak problem, which should not be among us
+anymore. However if victorio is very slow, check the memory by writing:
+{{{ps aux | grep http}}}
+
+If the result indicates memory use too close to 100, this is a clear
+problem indication. The answer is to restart the apache web server,
+and thereafter, if need, to [restart mysqld|maintenance.html#Mysql].
+
+
+!!!Mysql 
+
+In general, the database does not have to be directly accessed, but
+sometimes it is necessary. The database tables created by Django may
+be updated, removed and so on using mysql directly. The name of the
+database is oahpa, username and password are available from .. 
+
+Sometimes, there may be a problem with the mysqld (a clear indication
+of a problem is that the games are not working at all). It may be that
+mysqld has stopped working. Start it again:
+{{{
+sudo /etc/init.d/mysqld start
+}}}
+
+!!!Admin-interface
+
+Still undocumented.
