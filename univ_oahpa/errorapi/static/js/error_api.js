@@ -73,7 +73,9 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
         function handle_api_feedback_popover (data) {
             handle_api_response(data);
 
-            $('.popover').remove();
+            if (window.last_feedback) {
+                last_feedback.popover('destroy');
+            }
 
             if ($scope.messages) {
 
@@ -103,8 +105,10 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
                 title: 'Feedback',
                 content: message_body_snippet,
                 html: true,
+                trigger: 'hover focus',
             });
             feedback_link.popover('show');
+            window.last_feedback = feedback_link;
         }
 
         // Prepare request
