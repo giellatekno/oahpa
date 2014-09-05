@@ -22,9 +22,11 @@ This document tries to give an overview of what is where and why, in the {{ped}}
 ** Well, forrest files.
 * __images__
 ** Images for Sahka are found here
+* __LANG__
+** This is where all the __content__ files for the program is (see below)
 * __LANGoahpa__
 ** (or rather LANG_oahpa)
-** This is where all the files for the program is (see below)
+** This is where all the __technical__ files for the program is (see below)
 * __qa-test__
 ** This catalogue is obsolete
 * __sma, sme, smj__
@@ -45,8 +47,8 @@ These catalogues are heterogenous, for historical reasons.
 
 (often called '' the sma format'', named after the first language to use it)
 
-The target language catalogues (sma, etc, ) have the following content 
-(here sma as example langage):
+The target language catalogues LANG (i.e. crk, est, sma, etc, ) have the following content 
+(here __sma__ as example langage):
 
 * catalogues corp, inc, meta-data, old-xml, out-xml, __are all obsolete__ and should be removed
 ** __Ryan, Heli: check this__
@@ -58,7 +60,10 @@ The target language catalogues (sma, etc, ) have the following content
 
 !The old sme format
 
-The sma and sme catalogues are very different, for the following reason: oahpa proper (the programmer's files) are in $GTLANG/ped for sme, but in pedversions/smaoahpa for sma. There are some sma files in $GTLANG/ped, though, namely the lexica for Leksa.
+The sma and sme catalogues are very different, for the following
+reason: oahpa proper (the programmer's files) are in $GTLANG/ped for
+sme, but in pedversions/smaoahpa for sma. There are some sma files in
+$GTLANG/ped, though, namely the lexica for Leksa.
 
 * __corp__
 ** At the moment, this contains files for VISL
