@@ -95,7 +95,7 @@ class Survey(models.Model):
 
 TYPE_H = """<strong>NB</strong>: For single and multiple choice
 answers, you must specify answer options. Yes/no and Freeform need no
-choices. """
+choices."""
 
 class SurveyQuestion(models.Model):
     """ Contains the survey question, and question type. Connects to any
@@ -120,8 +120,12 @@ class SurveyQuestion(models.Model):
 # TODO: translation
 
 #   https://github.com/deschler/django-modeltranslation
+#        - no changes to model structure required
+#        - use this one, unless it's unsupported (which it may somehow 
+#        be)
+
 #   https://github.com/Yaco-Sistemas/django-transmeta/
-#   https://pythonhosted.org/django-translatable/
+#       - metaclasses
 
 # class SurveyQuestionTranslations(models.Model):
 #     question = models.ForeignKey('SurveyQuestion')
