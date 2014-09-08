@@ -1,0 +1,185 @@
+Võro Oahpa koosolek 19.02.2014
+osalejad: Sulev, Jack, Heli
+Päevakord:
+* semantilised klassid (nagu mains/ped/sme/src)
+* Oahpa sõnastiku struktuur
+* Võro Oahpa URL
+* Võro FST
+-------------------
+* semantilised klassid ja sõnastiku struktuur
+Esialgu lähtume langolandi klassidest. (?) Pärast võib lisada juurde, kui vaja.
+
+
+ greetings - family
+ house - city
+ transport - Post
+ geography - climate
+ nature - animals
+ food - fruit - vegetable
+ body - clothes - sport
+ colors
+ numbers - geometry
+ time - days - months
+ pronouns - questions
+
+sme-Oahpa sem. klassid:
+SEMTYPE_CHOICES = (
+    ('FAMILY', _('family')), 
+    ('HUMAN', _('human')),
+    ('HUMAN-LIKE', _('human-like')),
+    ('ANIMAL', _('animal')),
+    ('FOOD/DRINK', _('food/drink')),
+    ('TIME', _('time')),
+    ('CONCRETES', _('concretes')),
+    ('BODY', _('body')),
+    ('CLOTHES', _('clothes')),
+    ('BUILDINGS/ROOMS', _('buildings/rooms')),
+    ('CITY', _('city')), 
+    ('NATUREWORDS', _('naturewords')),
+    ('LEISURETIME/AT_HOME', _('leisuretime/at_home')),
+    ('CHRISTMAS', _('christmas')),
+    ('PLACES', _('places')),
+    ('LITERATURE', _('literature')),
+    ('SCHOOL/EDUCATION', _('school/education')),
+    ('ABSTRACTS', _('abstracts')),
+    ('WORK/ECONOMY/TOOLS', _('work/economy/tools')),
+    ('MULTIWORD', _('Multiword')),
+    ('all', _('all')),
+)
+
+main/gtcore/schemas/fiu-dict-schema.xsd 
+
+  <xs:attribute name="class">
+      <xs:simpleType>
+         <xs:restriction base="xs:string">
+<!-- Super set: ABSTRACTS -->
+            <xs:enumeration value="ABSTRACT"/>
+<!-- Super set: ABSTRACTS -->
+            <xs:enumeration value="ABSTRACT_A"/>
+<!-- Super set: ABSTRACTS -->
+            <xs:enumeration value="ACTION"/>
+<!-- Super set: ABSTRACTS -->
+            <xs:enumeration value="ACTION_V"/>
+<!-- Super set: MORFAS -->
+            <xs:enumeration value="ACTOR"/>
+<!-- Super set: MORFAS -->
+            <xs:enumeration value="ACTIVITY_V"/>
+<!-- Super set: ABSTRACTS -->
+            <xs:enumeration value="AMOUNT"/>
+<!-- Super set: ANIMATE -->
+            <xs:enumeration value="ANIMATE"/>
+<!-- Super set: ANIMAL -->
+            <xs:enumeration value="ANIMAL_A"/>
+<!-- Super set: BIRD_FISH -->
+            <xs:enumeration value="ANIMAL_BIRDHUNT"/>
+<!-- Super set: ANIMAL -->
+            <xs:enumeration value="ANIMAL_DOM"/>
+<!-- Super set: BIRD_FISH -->
+            <xs:enumeration value="ANIMAL_FISH"/>
+<!-- Super set: ANIMAL -->
+            <xs:enumeration value="ANIMAL_HUNT"/>
+<!-- Super set: ANIMAL -->
+            <xs:enumeration value="ANIMAL_OTHER"/>
+<!-- Super set: ANIMAL -->
+            <xs:enumeration value="ANIMAL_PET"/>
+<!-- Super set: ANIMAL -->
+            <xs:enumeration value="ANIMAL_PREDITOR"/>
+<!-- Super set: BIRD_FISH -->
+            <xs:enumeration value="ANIMAL_SALTFISH"/>
+<!-- Super set: ANIMAL -->
+            <xs:enumeration value="ANIMAL_SOUND_V"/>
+<!-- Super set: ANIMAL -->
+            <xs:enumeration value="ANIMAL_V"/>
+<!-- Super set: ANIMAL -->
+            <xs:enumeration value="ANIMAL_WILD"/>
+<!-- Super set: LEISURETIME/AT_HOME -->
+            <xs:enumeration value="ARRANGEMENT"/>
+            <xs:enumeration value="ARRANGEMENT_PL"/>
+<!-- Super set: HUMAN_DOING -->
+            <xs:enumeration value="AUX_V"/>
+<!-- Super set: OBJECT -->
+            <xs:enumeration value="BATHROOM"/>
+<!-- Super set: OBJECT -->
+            <xs:enumeration value="BELONGINGS"/>
+<!-- Super set: BIRD_FISH -->
+            <xs:enumeration value="BIRD"/>
+            <xs:enumeration value="BIRD_FISH_OTHER"/>
+<!-- Super set: BIRD_FISH -->
+            <xs:enumeration value="BIRD_FISH_V"/>
+<!-- Super set: BODY -->
+            <xs:enumeration value="BODYPART"/>
+<!-- Super set: BODY -->
+            <xs:enumeration value="BODYPART_PL"/>
+<!-- Super set: BODY -->
+            <xs:enumeration value="BODY_A"/>
+<!-- Super set: BODY -->
+            <xs:enumeration value="BODY_ADV"/>
+<!-- Super set: BODY -->
+            <xs:enumeration value="BODY_OTHER"/>
+<!-- Super set: BODY -->
+            <xs:enumeration value="BODY_V"/>
+<!-- Super set: BUILDING/ROOMS -->
+            <xs:enumeration value="BUILDING"/>
+<!-- Super set: BUILDING/ROOMS -->
+            <xs:enumeration value="BUILDING_ROOM_A"/>
+            <xs:enumeration value="CARDS"/>
+<!-- Super set: LEISURETIME/AT_HOME -->
+            <xs:enumeration value="CHRISTMAS"/>
+            <xs:enumeration value="CITY"/>
+<!-- Super set: CLOTHES -->
+            <xs:enumeration value="CLOTHES"/>
+            <xs:enumeration value="CLOTHES_A"/>
+<!-- Super set: CLOTHES -->
+            <xs:enumeration value="CLOTHES_V"/>
+<!-- Super set: MORFAS -->
+            <xs:enumeration value="CLOTHES_WORK"/>
+<!-- Super set: CLOTHES -->
+            <xs:enumeration value="CLOTHING"/>
+            <xs:enumeration value="CLOTHING_A"/>
+<!-- Super set: CLOTHES -->
+            <xs:enumeration value="CLOTHING_OTHER"/>
+<!-- Super set: CLOTHES -->
+            <xs:enumeration value="CLOTHING_PL"/>
+            <xs:enumeration value="CLOTHING_V"/>
+<!-- Super set: CLOTHES -->
+            <xs:enumeration value="COLOUR"/>
+...
+
+!!! Vaja teha:
+* sõnaliikide märgendid (Heli)
+* mõelda, kas ja kuidas klassifitseerida sõnu muuttüübi järgi - tunnused, võib-olla eraldi verbide ja nimisõnade jaoks. iga tunnuse jaoks eraldi tulp (Sulev)
+* kui on mitu tõlget, siis komaga eraldatud loend, aga eelistatuim tõlge esimesena
+//e/lg/st/@Contlex = muuttüüp
+* soomekeelsed tõlked (Jack -> üliõpilased)
+
+* Võro Oahpa URL ?
+davvi
+aarjel
+rusoahpa
+sjdoahpa
+
+vro_oahpa
+voro_oahpa
+voro
+
+testing.oahpa.no/voro
+
+* Võro FST
+main/langs/vro/src
+--
+cd main/langs/vro
+make
+--
+
+oahpa.no
+
+* Projekt "Flexibel utdanning" Tromsö ülikoolis - paneme püsti suurema hulga Oahpasid, sealhulgas
+mrj, myv, olo, liv, yrk.
+Järjekord: Numra, MorfaS, Leksa, MorfaC
+
+* Võro numbriautomaat Numra jaoks
+Jack saab arvsõnad ja numbrid võro sõnaraamatust
+Sulev saadab Jackile kuupäevad, nädlalpäevad, kellaajad
+
+
+

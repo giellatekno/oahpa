@@ -5,7 +5,21 @@ and other applications.
 
 !! In case of emergencies... 
 
-On gtoahpa, if for some reason the processes do not restart via chkconfig, 
+If an Oahpa on __gtlab__ (e.g. testing.oahpa.no/fkv_oahpa) gives "__404 Not found__" error then it means that nginx is running but the Oahpa (fastcgi) process has been stopped. For checking if the particular Oahpa process is running give the command:
+
+{{{
+    ps -ef | grep 'fkv_oahpa'
+}}}
+
+If this command does not output 5-6 lines of fastcgi processes then you need to start the Oahpa process again. For doing that, go to the respective Oahpa's home directory, e.g. {{{/home/fkv_oahpa/fkv_oahpa}}} and give the command (as sudo, if needed):
+
+{{{
+    fkv_oahpa.sh --run
+}}}
+
+If all the Oahpa instances on gtlab are down (for example after server reboot) then you can start all the Oahpas at once, using the script {{{start_all_oahpas.sh}}} located in the directory {{{/home/oahpa_scripts}}} (requires sudo rights).
+
+On __gtoahpa__, if for some reason the processes do not restart via chkconfig, 
 inspect via {{ps aux}} or {{top}} to find out what is or isn't running.
 
 Once missing processes have been identified, the proper order that all services
@@ -15,10 +29,10 @@ should be started in (given dependencies between them) is:
 # nginx
 # php-fpm
 # lookupserv
-# univ_oahpa / smaoahpa / rusoahpa / ...
+# univ_oahpa / smaoahpa / ...
 
 For this use the command {{{ sudo service NAME start }}}, or alternatively
-restart, if necessary.
+restart, if necessary. Please note that the newer Oahpas on gtoahpa (myv, yrk, ...) cannot be started via sudo service start. See the section about fastcgi processes for instructions.
 
 !!Nginx (gtoahpa, gtweb, gtlab)
 
@@ -42,7 +56,7 @@ If for some reason the system is running slowly, inspect processes running,
 using {{{top}}} or {{{htop}}}, the latter of which is a more updated and easier
 to interpret tool.
 
-!!Fastcgi processes (gtoahpa, gtlab)
+!!Fastcgi processes (gtoahpa)
 
 Stacks using nginx also use separate processes for python, and php
 applications. For __python and Django applications__, these are managed
@@ -76,7 +90,7 @@ php-fpm. To restart this process:
 	sudo service php-fpm restart
 }}}
 
-On both gtoahpa and gtlab, univ_oahpa, smaoahpa and rusoahpa have their own
+On gtoahpa, univ_oahpa and smaoahpa have their own
 init.d scripts, so they may also be restarted via the service command, with the
 usual subcommands: restart, stop, start.
 
