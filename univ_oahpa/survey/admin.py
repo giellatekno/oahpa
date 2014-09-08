@@ -85,8 +85,6 @@ class SurveyAdmin(admin.ModelAdmin):
 class UserSurveyQuestionAnswer(admin.TabularInline):
     model = UserSurveyQuestionAnswer
 
-
-
 class UserSurveyAdmin(admin.ModelAdmin):
     model = UserSurvey
 
