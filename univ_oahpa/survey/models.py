@@ -23,10 +23,12 @@ TARGET = "If you wish to make this visble only to users in a certain course, sel
 class Survey(models.Model):
     """ Main survey object
     """
+    from courses.models import Course
+
     title = models.CharField(max_length=50)
     description = models.TextField()
 
-    target_course = models.ForeignKey('courses.course', blank=True, null=True, help_text=TARGET)
+    target_course = models.ForeignKey(Course, blank=True, null=True, help_text=TARGET)
 
     def __unicode__(self):
         return self.title

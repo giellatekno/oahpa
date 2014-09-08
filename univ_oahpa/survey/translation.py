@@ -15,7 +15,7 @@
 
 """
 
-from modeltranslation.translator import translator, TranslationOptions
+from modeltranslation.translator import translator, TranslationOptions, AlreadyRegistered
 
 from .models import Survey, SurveyQuestion, SurveyQuestionAnswerValue
 
