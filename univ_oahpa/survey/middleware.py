@@ -45,6 +45,8 @@ class SurveyCheckMiddleware(object):
         else:
             ignored = request.session['ignored_surveys']
 
+        # TODO: or if the user has just logged in? 
+
         if 'survey_check' not in request.session:
             request.session['survey_check'] = 0
         else:

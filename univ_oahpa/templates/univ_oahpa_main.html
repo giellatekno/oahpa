@@ -255,35 +255,7 @@
 	{% include 'google_analytics_snippet.html' %}
 
 	{% if display_survey_notice %}
-        <div id="survey_notice" class="bootstrap-styles">
-            <p>Do you wish to take a survey about Oahpa! or your online
-                course?</p>
-            <a class="btn btn-success" href="/{{ URL_PREFIX }}/survey/answer/">Yes</a>
-            <a data-survey-ids="{{ survey_ids_available }}" id="dismiss_surveys" class="btn btn-warning" href="/{{ URL_PREFIX }}/survey/dismiss/">No</a>
-            <p class="small">We will periodically ask you until you choose an option.</p>
-        </div>
-        <script type="text/javascript">
-            $(document).ready( function() {
-
-            	var nope = $('#dismiss_surveys');
-
-            	nope.click( function(e) {
-
-            	    var data = {
-                        ids: nope.attr('data-survey-ids'),
-                        csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value
-            	    };
-
-            	    $.post(nope.attr('href'), data).done( function(data) {
-            	    	$('#survey_notice').fadeOut();
-            	    });
-
-            	    e.preventDefault();
-
-            	});
-
-            });
-        </script>
+	    {% include 'survey_notice.html' %}
 	{% endif %}
 
     </body>
