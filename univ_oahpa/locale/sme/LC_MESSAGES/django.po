@@ -7,14 +7,158 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-01 14:05+0100\n"
+"POT-Creation-Date: 2014-09-16 00:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
+
+#: courses/models.py:281
+msgid ""
+"This is a plain-text description shown to students\n"
+"describing their goal."
+msgstr ""
+
+#: courses/templates/courses_course_block.html:9
+#, fuzzy
+msgid "Course pages"
+msgstr "Kurssa ovdáneami"
+
+#: courses/templates/courses_main.html:62
+msgid "You are a course instructor."
+msgstr "Don lea oahpaheaddji"
+
+#: courses/templates/courses_main.html:62
+msgid "To view your own grade summary,"
+msgstr ""
+
+#: courses/templates/courses_main.html:62
+msgid "click here"
+msgstr ""
+
+#: courses/templates/courses_main.html:63
+msgid "View students' grades"
+msgstr "Čájet studeanttaid bohtosiid"
+
+#: courses/templates/courses_main_goals.html:37
+#: courses/templates/instructor_course_nav_items.html:13
+#: courses/templates/student_course_nav_items.html:8
+#: templates/univ_oahpa.html:122 templates/admin/base.html:36
+#: templates/registration/password_change_done.html:3
+#: templates/registration/password_change_form.html:4
+msgid "Log out"
+msgstr "Logge olggos"
+
+#: courses/templates/courses_main_goals.html:39
+msgid "Course overview"
+msgstr "Kurssa ovdáneami"
+
+#: courses/templates/courses_main_goals.html:42
+#: courses/templates/instructor_course_nav_items.html:12
+#: courses/templates/invite_students.html:36
+msgid "Admin interface"
+msgstr ""
+
+#: courses/templates/courses_main_instructor.html:57
+#: courses/templates/invite_students.html:37
+#, fuzzy
+msgid "Invite students"
+msgstr "Čájet studeanttaid bohtosiid"
+
+#: courses/templates/courses_stats.html:32
+msgid "You don't have any scores yet, go play some games!"
+msgstr "Dus eai leat vuos bohtosat, álgge geavahit Oahpa!"
+
+#: courses/templates/courses_stats.html:37
+msgid "Goal learning history"
+msgstr ""
+
+#: courses/templates/courses_stats.html:69
+msgid "General learning stats"
+msgstr ""
+
+#: courses/templates/courses_stats.html:70
+msgid ""
+"The following scores represent your progress in the games available in "
+"Oahpa. Instructors will see your scores as shown below, but will also be "
+"able to see individual scores from every game. Good luck!"
+msgstr ""
+"Čuovvovaš bohtosat čájehit du ovdáneami Oahpa-hárjehusain. Oahpaheaddji "
+"oaidná bohtosiid nugo dás vuolábealde, muhto beassá maid oaidnit čuoggáid "
+"juohke hárjehusas. Sávvat lihku!"
+
+#: courses/templates/courses_stats.html:76
+msgid "Average"
+msgstr "Gaskamearálaččat"
+
+#: courses/templates/courses_stats.html:77
+msgid "Highest score"
+msgstr "Buoremus boađus"
+
+#: courses/templates/courses_stats.html:78
+msgid "Lowest score"
+msgstr "Du čuoggát:"
+
+#: courses/templates/courses_stats.html:79
+msgid "Number of tries"
+msgstr "Galle geahččaleami"
+
+#: courses/templates/instructor_student_detail.html:34
+#: courses/templates/student_roster_table.html:6
+msgid "last login"
+msgstr "Maŋimus sisaloggen"
+
+#: courses/templates/instructor_student_detail.html:36
+#: courses/templates/student_roster_table.html:7
+msgid "login count"
+msgstr ""
+
+#: courses/templates/instructor_student_detail.html:78
+msgid "exercise"
+msgstr "Hárjehusat"
+
+#: courses/templates/instructor_student_detail.html:79
+msgid "average"
+msgstr "Gaskamearálaččat"
+
+#: courses/templates/instructor_student_detail.html:80
+msgid "minimum"
+msgstr ""
+
+#: courses/templates/instructor_student_detail.html:81
+msgid "maximum"
+msgstr ""
+
+#: courses/templates/instructor_student_detail.html:82
+msgid "game count"
+msgstr ""
+
+#: courses/templates/invite_students.html:31
+msgid "Welcome"
+msgstr "Bures boahtin"
+
+#: courses/templates/invite_students.html:35
+msgid "Grade summary"
+msgstr "Bohtosiid čoahkkáigeassu"
+
+#: courses/templates/personal_goals.html:45
+msgid "Your personal goals"
+msgstr ""
+
+#: courses/templates/split_login.html:18
+msgid "Your username and password didn't match. Please try again."
+msgstr "Dovddaldat ja čiegussátni eai heiven oktii. Geahččal ođđasit."
+
+#: courses/templates/split_login.html:22 templates/auth/login.html:28
+msgid "You are currently logged in."
+msgstr ""
+
+#: courses/templates/split_login.html:22 templates/auth/login.html:28
+msgid "Log out?"
+msgstr "Logget olggos?"
 
 #: extern/django_openid_provider/openid_provider/models.py:12
 msgid "OpenID"
@@ -32,6 +176,19 @@ msgstr "Luohtátgo dán siidui?"
 #: templates/404.html:8 templates/500.html:8
 msgid "Error"
 msgstr "Feaila"
+
+#: survey/serializers.py:74
+msgid "You have already submitted this survey once."
+msgstr ""
+
+#: survey/templates/survey.html:32
+msgid "No surveys to fill out at this time."
+msgstr ""
+
+#: survey/templates/survey.html:101
+msgid ""
+"If you have time for one more survey, you may fill it out by clicking next."
+msgstr ""
 
 #: templates/404.html:9
 msgid "Page not found."
@@ -54,9 +211,9 @@ msgstr "Grammatihkkačilgehusat"
 msgid "Reference materials"
 msgstr "Resurssat"
 
-#: templates/univ_oahpa.html:95 templates/univ_oahpa_main.html:183
-#: templates/univ_oahpa_main.html.py:186 templates/univ_oahpa_main.html:189
-#: templates/univ_oahpa_main.html.py:192 templates/univ_oahpa_main.html:195
+#: templates/univ_oahpa.html:95 templates/univ_oahpa_main.html:192
+#: templates/univ_oahpa_main.html.py:195 templates/univ_oahpa_main.html:198
+#: templates/univ_oahpa_main.html.py:201 templates/univ_oahpa_main.html:204
 msgid "Veiledning"
 msgstr "Bagadus"
 
@@ -78,80 +235,72 @@ msgstr "Online kurssat"
 msgid "View progress"
 msgstr "Čájet ovdáneami"
 
-#: templates/univ_oahpa.html:122 templates/admin/base.html:48
-#: templates/courses/courses_main.html:17
-#: templates/registration/password_change_done.html:3
-#: templates/registration/password_change_form.html:4
-msgid "Log out"
-msgstr "Logge olggos"
-
-#: templates/univ_oahpa.html:124 templates/admin/login.html:26
-#: templates/auth/login.html:33
+#: templates/univ_oahpa.html:124 templates/admin/login.html:49
 #: templates/registration/password_reset_complete.html:14
 msgid "Log in"
 msgstr "Logge sisa"
 
-#: templates/univ_oahpa.html:158 templates/univ_oahpa_main.html:239
+#: templates/univ_oahpa.html:164 templates/univ_oahpa_main.html:249
 msgid "HELP"
 msgstr ""
 
-#: templates/univ_oahpa.html:158 templates/univ_oahpa_main.html:239
+#: templates/univ_oahpa.html:164 templates/univ_oahpa_main.html:249
 msgid "To get the translation of the user interface text to "
 msgstr ""
 
-#: templates/univ_oahpa.html:162 templates/univ_oahpa_main.html:243
+#: templates/univ_oahpa.html:168 templates/univ_oahpa_main.html:253
 msgid "hold down the [Alt] key while pointing at the text with the mouse."
 msgstr ""
 
-#: templates/univ_oahpa_main.html:45 univ_drill/templates/language_menu.html:8
+#: templates/univ_oahpa_main.html:54 univ_drill/templates/language_menu.html:8
 msgid "Interface language"
 msgstr "Veahkkegiella"
 
-#: templates/univ_oahpa_main.html:87 univ_drill/templates/dialect_menu.html:7
+#: templates/univ_oahpa_main.html:96 univ_drill/templates/dialect_menu.html:7
 msgid "Northern Sami dialect"
 msgstr "Suopman"
 
-#: templates/univ_oahpa_main.html:93 templates/univ_oahpa_main.html.py:96
-#: templates/univ_oahpa_main.html:100
+#: templates/univ_oahpa_main.html:102 templates/univ_oahpa_main.html.py:105
+#: templates/univ_oahpa_main.html:109
 #: univ_drill/templates/dialect_menu.html:13
 #: univ_drill/templates/dialect_menu.html:16
 #: univ_drill/templates/dialect_menu.html:20
 msgid "GG"
 msgstr "Guovdageaidnu"
 
-#: templates/univ_oahpa_main.html:94 templates/univ_oahpa_main.html.py:97
-#: templates/univ_oahpa_main.html:101
+#: templates/univ_oahpa_main.html:103 templates/univ_oahpa_main.html.py:106
+#: templates/univ_oahpa_main.html:110
 #: univ_drill/templates/dialect_menu.html:14
 #: univ_drill/templates/dialect_menu.html:17
 #: univ_drill/templates/dialect_menu.html:21
 msgid "KJ"
 msgstr "Kárášjohka"
 
-#: templates/univ_oahpa_main.html:128
+#: templates/univ_oahpa_main.html:137
 msgid "Practise morphology"
 msgstr "Hárjehala sojahit sániid"
 
-#: templates/univ_oahpa_main.html:136
+#: templates/univ_oahpa_main.html:145
 msgid "Answer to questions"
 msgstr "Vástit gažaldagaide"
 
-#: templates/univ_oahpa_main.html:143
+#: templates/univ_oahpa_main.html:152
 msgid "Words and translations"
 msgstr "Sánit ja jorgalusat"
 
-#: templates/univ_oahpa_main.html:154
+#: templates/univ_oahpa_main.html:163
 msgid "Practise morphology in context"
 msgstr "Hárjehala sojahit sániid cealkagis"
 
-#: templates/univ_oahpa_main.html:161
+#: templates/univ_oahpa_main.html:170
 msgid "Dialogue game"
 msgstr "Ságastallamat"
 
-#: templates/univ_oahpa_main.html:168
+#: templates/univ_oahpa_main.html:177
 msgid "Practise numerals"
 msgstr "Hárjehala loguid"
 
-#: templates/univ_oahpa_main.html:176
+#: templates/univ_oahpa_main.html:185
 msgid ""
 "Oahpa is an internet program for youth and grownups learning North Sámi. The "
 "program can be adjusted to different themes and levels of difficulty, and it "
@@ -161,45 +310,45 @@ msgstr ""
 "oahpahallame davvisámegiela. Prográmma sáhtát heivehit fáttáid ja dási "
 "mielde, ja ođđa bargobihtát ráhkaduvvojit automáhtalaččat."
 
-#: templates/univ_oahpa_main.html:198 templates/univ_oahpa_main.html.py:200
+#: templates/univ_oahpa_main.html:207 templates/univ_oahpa_main.html.py:209
 msgid "North Sámi"
 msgstr "Davvisámegiella"
 
-#: templates/univ_oahpa_main.html:198
+#: templates/univ_oahpa_main.html:207
 msgid "Finnish"
 msgstr "Suoma"
 
-#: templates/univ_oahpa_main.html:198 templates/univ_oahpa_main.html.py:200
+#: templates/univ_oahpa_main.html:207 templates/univ_oahpa_main.html.py:209
 msgid "dictionary"
 msgstr "neahttasátnegirji"
 
-#: templates/univ_oahpa_main.html:200
+#: templates/univ_oahpa_main.html:209
 msgid "Norwegian"
 msgstr "dárogiella"
 
-#: templates/univ_oahpa_main.html:203 templates/univ_oahpa_main.html.py:206
-#: templates/univ_oahpa_main.html:209 templates/univ_oahpa_main.html.py:212
-#: templates/univ_oahpa_main.html:215
+#: templates/univ_oahpa_main.html:212 templates/univ_oahpa_main.html.py:215
+#: templates/univ_oahpa_main.html:218 templates/univ_oahpa_main.html.py:221
+#: templates/univ_oahpa_main.html:224
 msgid "North Sámi grammar"
 msgstr "Davvisámegiela grammatihkka"
 
-#: templates/univ_oahpa_main.html:219
+#: templates/univ_oahpa_main.html:229
 msgid "Are you visiting this site as part of a course?"
 msgstr "Leatgo dás kurssa oktavuođas?"
 
-#: templates/univ_oahpa_main.html:219
+#: templates/univ_oahpa_main.html:229
 msgid "Log in here"
 msgstr "Logge sisa dás"
 
-#: templates/univ_oahpa_main.html:228
+#: templates/univ_oahpa_main.html:238
 msgid "Link to this exercise"
 msgstr "Liŋka dán hárjehussii"
 
-#: templates/univ_oahpa_main.html:234
+#: templates/univ_oahpa_main.html:244
 msgid "Copyright 2013 Universitetet i Troms&oslash; "
 msgstr "Copyright 2014 UiT Norgga árktalaš universtehta"
 
-#: templates/univ_oahpa_main.html:235
+#: templates/univ_oahpa_main.html:245
 msgid "Contact "
 msgstr "Váldde oktavuođa minguin:"
 
@@ -211,13 +360,13 @@ msgstr "Siidu ii gávdno."
 msgid "We're sorry, but the requested page could not be found."
 msgstr "Dađi bahábut eat gávnna siiddu maid leat ohcame."
 
-#: templates/admin/500.html:4 templates/admin/app_index.html:8
-#: templates/admin/base.html:55 templates/admin/change_form.html:18
-#: templates/admin/change_list.html:42
-#: templates/admin/delete_confirmation.html:6
-#: templates/admin/delete_selected_confirmation.html:6
-#: templates/admin/invalid_setup.html:4 templates/admin/object_history.html:6
-#: templates/admin/auth/user/change_password.html:11
+#: templates/admin/500.html:7 templates/admin/app_index.html:8
+#: templates/admin/base.html:45 templates/admin/change_form.html:21
+#: templates/admin/change_list.html:43
+#: templates/admin/delete_confirmation.html:8
+#: templates/admin/delete_selected_confirmation.html:8
+#: templates/admin/invalid_setup.html:7 templates/admin/object_history.html:8
+#: templates/admin/auth/user/change_password.html:15
 #: templates/registration/logged_out.html:4
 #: templates/registration/password_change_done.html:4
 #: templates/registration/password_change_form.html:5
@@ -228,19 +377,19 @@ msgstr "Dađi bahábut eat gávnna siiddu maid leat ohcame."
 msgid "Home"
 msgstr "Ruoktu"
 
-#: templates/admin/500.html:4
+#: templates/admin/500.html:8
 msgid "Server error"
 msgstr "Bálváfeaila"
 
-#: templates/admin/500.html:6
+#: templates/admin/500.html:12
 msgid "Server error (500)"
 msgstr "Bálváfeaila (500)"
 
-#: templates/admin/500.html:9
+#: templates/admin/500.html:15
 msgid "Server Error <em>(500)</em>"
 msgstr "Bálváfeaila <em>(500)</em>"
 
-#: templates/admin/500.html:10
+#: templates/admin/500.html:16
 msgid ""
 "There's been an error. It's been reported to the site administrators via e-"
 "mail and should be fixed shortly. Thanks for your patience."
@@ -269,7 +418,7 @@ msgstr "Velg alle %(total_count)s %(module_name)s"
 msgid "Clear selection"
 msgstr "Sihko válljemiid"
 
-#: templates/admin/app_index.html:10 templates/admin/index.html:19
+#: templates/admin/app_index.html:11 templates/admin/index.html:19
 #, python-format
 msgid "%(name)s"
 msgstr "%(name)s"
@@ -284,9 +433,9 @@ msgstr "Bures boahtin,"
 msgid "Documentation"
 msgstr "Dokumentašuvdna"
 
-#: templates/admin/base.html:41
-#: templates/admin/auth/user/change_password.html:15
-#: templates/admin/auth/user/change_password.html:48
+#: templates/admin/base.html:35
+#: templates/admin/auth/user/change_password.html:19
+#: templates/admin/auth/user/change_password.html:53
 #: templates/registration/password_change_done.html:3
 #: templates/registration/password_change_form.html:4
 msgid "Change password"
@@ -300,43 +449,57 @@ msgstr "Django neahttahálddašeaddji"
 msgid "Django administration"
 msgstr "Djangohálddahus"
 
-#: templates/admin/change_form.html:21 templates/admin/index.html:29
+#: templates/admin/change_form.html:24 templates/admin/index.html:29
 msgid "Add"
 msgstr "Lasit"
 
-#: templates/admin/change_form.html:28 templates/admin/object_history.html:10
+#: templates/admin/change_form.html:34 templates/admin/object_history.html:12
 msgid "History"
 msgstr "Historjá"
 
-#: templates/admin/change_form.html:29
+#: templates/admin/change_form.html:35
 #: templates/admin/edit_inline/stacked.html:9
-#: templates/admin/edit_inline/tabular.html:28
+#: templates/admin/edit_inline/tabular.html:30
 msgid "View on site"
 msgstr "Čájet neahttabáikkis"
 
-#: templates/admin/change_form.html:39 templates/admin/change_list.html:71
-#: templates/admin/auth/user/change_password.html:24
+#: templates/admin/change_form.html:46 templates/admin/change_list.html:69
+#: templates/admin/login.html:18
+#: templates/admin/auth/user/change_password.html:29
 #: templates/registration/password_change_form.html:15
 msgid "Please correct the error below."
 msgid_plural "Please correct the errors below."
 msgstr[0] "Divus vuolábeal feailla."
 msgstr[1] "Divus vuolábeal feaillaid."
 
-#: templates/admin/change_list.html:63
+#: templates/admin/change_list.html:60
 #, python-format
 msgid "Add %(name)s"
 msgstr "Lasit %(name)s"
 
-#: templates/admin/change_list.html:82
+#: templates/admin/change_list.html:80
 msgid "Filter"
 msgstr "Filtera"
 
-#: templates/admin/delete_confirmation.html:10
-#: templates/admin/submit_line.html:4
+#: templates/admin/change_list_results.html:17
+msgid "Remove from sorting"
+msgstr ""
+
+#: templates/admin/change_list_results.html:18
+#, python-format
+msgid "Sorting priority: %(priority_number)s"
+msgstr ""
+
+#: templates/admin/change_list_results.html:19
+msgid "Toggle sorting"
+msgstr ""
+
+#: templates/admin/delete_confirmation.html:12
+#: templates/admin/submit_line.html:4 templates/django_messages/view.html:19
 msgid "Delete"
 msgstr "Sihko"
 
-#: templates/admin/delete_confirmation.html:16
+#: templates/admin/delete_confirmation.html:19
 #, python-format
 msgid ""
 "Deleting the %(object_name)s '%(escaped_object)s' would result in deleting "
@@ -347,7 +510,17 @@ msgstr ""
 "av beslekta objekt, men brukerkontoen din har ikke tilgangsrettigheter til å "
 "slette følgende objekttyper:"
 
-#: templates/admin/delete_confirmation.html:23
+#: templates/admin/delete_confirmation.html:27
+#, fuzzy, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
+"following protected related objects:"
+msgstr ""
+"Det å slette %(object_name)s '%(escaped_object)s' vil resultere i slettinga "
+"av beslekta objekt, men brukerkontoen din har ikke tilgangsrettigheter til å "
+"slette følgende objekttyper:"
+
+#: templates/admin/delete_confirmation.html:35
 #, python-format
 msgid ""
 "Are you sure you want to delete the %(object_name)s \"%(escaped_object)s\"? "
@@ -356,31 +529,41 @@ msgstr ""
 "Er du sikker på at du vil slette %(object_name)s \"%(escaped_object)s\"? "
 "Alle beslektede elementer som er vist her vil bli slettet:"
 
-#: templates/admin/delete_confirmation.html:28
-#: templates/admin/delete_selected_confirmation.html:33
+#: templates/admin/delete_confirmation.html:40
+#: templates/admin/delete_selected_confirmation.html:45
 msgid "Yes, I'm sure"
 msgstr "Ja, jeg er sikker"
 
-#: templates/admin/delete_selected_confirmation.html:9
+#: templates/admin/delete_selected_confirmation.html:11
 msgid "Delete multiple objects"
 msgstr "Slett flere objekter"
 
-#: templates/admin/delete_selected_confirmation.html:15
-#, python-format
+#: templates/admin/delete_selected_confirmation.html:18
+#, fuzzy, python-format
 msgid ""
-"Deleting the %(object_name)s would result in deleting related objects, but "
-"your account doesn't have permission to delete the following types of "
-"objects:"
+"Deleting the selected %(objects_name)s would result in deleting related "
+"objects, but your account doesn't have permission to delete the following "
+"types of objects:"
 msgstr ""
 "Det å slette %(object_name)s vil resultere i slettinga av beslekta objekt, "
 "men brukerkontoen din har ikke tilgangsrettigheter til å slette følgende "
 "objekttyper:"
 
-#: templates/admin/delete_selected_confirmation.html:22
-#, python-format
+#: templates/admin/delete_selected_confirmation.html:26
+#, fuzzy, python-format
 msgid ""
-"Are you sure you want to delete the selected %(object_name)s objects? All of "
-"the following objects and their related items will be deleted:"
+"Deleting the selected %(objects_name)s would require deleting the following "
+"protected related objects:"
+msgstr ""
+"Det å slette %(object_name)s vil resultere i slettinga av beslekta objekt, "
+"men brukerkontoen din har ikke tilgangsrettigheter til å slette følgende "
+"objekttyper:"
+
+#: templates/admin/delete_selected_confirmation.html:34
+#, fuzzy, python-format
+msgid ""
+"Are you sure you want to delete the selected %(objects_name)s? All of the "
+"following objects and their related items will be deleted:"
 msgstr ""
 "Er du sikker på at du vil slette %(object_name)s elementer? Alle beslektede "
 "elementer som er vist her vil bli slettet:"
@@ -419,7 +602,7 @@ msgstr "Ingen er tilgjengelig"
 msgid "Unknown content"
 msgstr "Ukjent innhold"
 
-#: templates/admin/invalid_setup.html:7
+#: templates/admin/invalid_setup.html:13
 msgid ""
 "Something's wrong with your database installation. Make sure the appropriate "
 "database tables have been created, and make sure the database is readable by "
@@ -429,27 +612,34 @@ msgstr ""
 "relevante databasetabellene har blitt laget, og forsikre deg om at databasen "
 "er lesbar for den relevante brukeren."
 
-#: templates/admin/login.html:19
+#: templates/admin/login.html:34
 msgid "Username:"
 msgstr "Dovddaldat:"
 
-#: templates/admin/login.html:22
+#: templates/admin/login.html:38
 msgid "Password:"
 msgstr "Čiegussátni:"
 
-#: templates/admin/object_history.html:22
+#: templates/admin/login.html:45
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: templates/admin/object_history.html:24
 msgid "Date/time"
 msgstr "Dáhton/áigi"
 
-#: templates/admin/object_history.html:23
+#: templates/admin/object_history.html:25
 msgid "User"
 msgstr "Geavaheaddji"
 
-#: templates/admin/object_history.html:24
+#: templates/admin/object_history.html:26
+#: templates/django_messages/inbox.html:11
+#: templates/django_messages/outbox.html:10
+#: templates/django_messages/trash.html:10
 msgid "Action"
 msgstr "Doaibma"
 
-#: templates/admin/object_history.html:38
+#: templates/admin/object_history.html:40
 msgid ""
 "This object doesn't have a change history. It probably wasn't added via this "
 "admin site."
@@ -465,18 +655,18 @@ msgstr "Čájet buot"
 msgid "Save"
 msgstr "Vurke"
 
-#: templates/admin/search_form.html:8
+#: templates/admin/search_form.html:7
 msgid "Search"
 msgstr "Oza"
 
-#: templates/admin/search_form.html:10
+#: templates/admin/search_form.html:9
 #, python-format
-msgid "1 result"
+msgid "%(counter)s result"
 msgid_plural "%(counter)s results"
-msgstr[0] "1 resultat"
-msgstr[1] "%(counter) resulter"
+msgstr[0] ""
+msgstr[1] ""
 
-#: templates/admin/search_form.html:10
+#: templates/admin/search_form.html:9
 #, python-format
 msgid "%(full_result_count)s total"
 msgstr "%(full_result_count)s resultater"
@@ -505,56 +695,40 @@ msgstr ""
 msgid "Enter a username and password."
 msgstr "Čále dovddaldaga ja čiegussáni."
 
-#: templates/admin/auth/user/change_password.html:28
+#: templates/admin/auth/user/change_password.html:33
 #, python-format
 msgid "Enter a new password for the user <strong>%(username)s</strong>."
 msgstr "Lag et nytt passord for brukeren <strong>%(username)s</strong>"
 
-#: templates/admin/auth/user/change_password.html:35
+#: templates/admin/auth/user/change_password.html:40
 msgid "Password"
 msgstr "Čiegussátni"
 
-#: templates/admin/auth/user/change_password.html:41
+#: templates/admin/auth/user/change_password.html:46
 #: templates/registration/password_change_form.html:37
 msgid "Password (again)"
 msgstr "Čiegussátni (oktii vel)"
 
-#: templates/admin/auth/user/change_password.html:42
+#: templates/admin/auth/user/change_password.html:47
 msgid "Enter the same password as above, for verification."
 msgstr "Čále bajábeal čiegussáni nuppádis, nannen dihte"
 
-#: templates/admin/edit_inline/stacked.html:64
-#: templates/admin/edit_inline/tabular.html:110
+#: templates/admin/edit_inline/stacked.html:67
+#: templates/admin/edit_inline/tabular.html:115
 #, python-format
 msgid "Add another %(verbose_name)s"
 msgstr "Oppgi nok et %(verbose_name)s"
 
-#: templates/admin/edit_inline/stacked.html:67
-#: templates/admin/edit_inline/tabular.html:113
+#: templates/admin/edit_inline/stacked.html:70
+#: templates/admin/edit_inline/tabular.html:118
 msgid "Remove"
 msgstr "Sihko"
 
-#: templates/admin/edit_inline/tabular.html:15
+#: templates/admin/edit_inline/tabular.html:17
 msgid "Delete?"
 msgstr "Sihko?"
 
-#: templates/auth/login.html:11
-msgid "Your username and password didn't match. Please try again."
-msgstr "Dovddaldat ja čiegussátni eai heiven oktii. Geahččal ođđasit."
-
-#: templates/auth/login.html:15
-msgid "You are currently logged in."
-msgstr ""
-
-#: templates/auth/login.html:15
-msgid "Log out?"
-msgstr "Logget olggos?"
-
-#: templates/auth/login.html:17
-msgid "Please log in to continue."
-msgstr "Logges sisa jus háliidat joatkit..."
-
-#: templates/auth/login.html:38
+#: templates/auth/login.html:56
 msgid ""
 "If you are participating in a course at <a href=\"http://kursa.oahpa.no/"
 "\">http://kursa.oahpa.no/</a> and are seeing this page, you must log in "
@@ -587,124 +761,137 @@ msgid ""
 "logged out from Kursa, and you will need to log in again."
 msgstr ""
 
-#: templates/courses/courses_main.html:19
-msgid "Course overview"
-msgstr "Kurssa ovdáneami"
-
-#: templates/courses/courses_main.html:22
-#: templates/courses/courses_main_instructor.html:22
-msgid "Admin interface"
+#: templates/django_messages/base.html:44
+#: templates/django_messages/new_message.html:15
+#: templates/django_messages/view.html:15
+msgid "Inbox"
 msgstr ""
 
-#: templates/courses/courses_main.html:25
-#: templates/courses/courses_main_instructor.html:25
-msgid "Welcome"
-msgstr "Bures boahtin"
+#: templates/django_messages/base.html:45
+#, fuzzy
+msgid "New Message"
+msgstr "Diehtu:"
 
-#: templates/courses/courses_main.html:27
-msgid "Enrolled in…"
-msgstr "Kurssa oasseváldi"
+#: templates/django_messages/base.html:46
+#: templates/django_messages/outbox.html:6
+#, fuzzy
+msgid "Sent Messages"
+msgstr "Sádde dieđu"
 
-#: templates/courses/courses_main.html:32
-msgid "View course lessons"
-msgstr "Mana gursasiidduide"
+#: templates/django_messages/base.html:47
+msgid "Trash"
+msgstr ""
 
-#: templates/courses/courses_main.html:39
-msgid "You don't have any scores yet, go play some games!"
-msgstr "Dus eai leat vuos bohtosat, álgge geavahit Oahpa!"
+#: templates/django_messages/compose.html:36
+msgid "Type in a search term"
+msgstr ""
 
-#: templates/courses/courses_main.html:41
+#: templates/django_messages/compose.html:37
+#, fuzzy
+msgid "No results"
+msgstr "1 resultat"
+
+#: templates/django_messages/compose.html:38
+#, fuzzy
+msgid "Searching"
+msgstr "Oza"
+
+#: templates/django_messages/compose.html:47
+#, fuzzy
+msgid "Compose Message"
+msgstr "Diehtu:"
+
+#: templates/django_messages/compose.html:83
+msgid "Send"
+msgstr ""
+
+#: templates/django_messages/inbox.html:11
+#: templates/django_messages/trash.html:10
+msgid "Sender"
+msgstr ""
+
+#: templates/django_messages/inbox.html:11
+#: templates/django_messages/outbox.html:10
+#: templates/django_messages/trash.html:10
+#, fuzzy
+msgid "Subject"
+msgstr "Diŋggat"
+
+#: templates/django_messages/inbox.html:11
+msgid "Received"
+msgstr ""
+
+#: templates/django_messages/inbox.html:23
+#: templates/django_messages/outbox.html:19
+#: templates/django_messages/trash.html:19
+#: templates/django_messages/view.html:24
+msgid "DATETIME_FORMAT"
+msgstr ""
+
+#: templates/django_messages/inbox.html:24
+#: templates/django_messages/outbox.html:20
+#, fuzzy
+msgid "delete"
+msgstr "Sihko"
+
+#: templates/django_messages/inbox.html:30
+#: templates/django_messages/outbox.html:26
+#: templates/django_messages/trash.html:26
+#, fuzzy
+msgid "No messages."
+msgstr "Sádde dieđu"
+
+#: templates/django_messages/new_message.html:6
+#, python-format
 msgid ""
-"The following scores represent your progress in the games available in "
-"Oahpa. Instructors will see your scores as shown below, but will also be "
-"able to see individual scores from every game. Good luck!"
-msgstr ""
-"Čuovvovaš bohtosat čájehit du ovdáneami Oahpa-hárjehusain. Oahpaheaddji "
-"oaidná bohtosiid nugo dás vuolábealde, muhto beassá maid oaidnit čuoggáid "
-"juohke hárjehusas. Sávvat lihku!"
-
-#: templates/courses/courses_main.html:45
-msgid "Course progress"
-msgstr "Kurssa ovdáneami"
-
-#: templates/courses/courses_main.html:51
-msgid "Average"
-msgstr "Gaskamearálaččat"
-
-#: templates/courses/courses_main.html:52
-msgid "Highest score"
-msgstr "Buoremus boađus"
-
-#: templates/courses/courses_main.html:53
-msgid "Lowest score"
-msgstr "Du čuoggát:"
-
-#: templates/courses/courses_main.html:54
-msgid "Number of tries"
-msgstr "Galle geahččaleami"
-
-#: templates/courses/courses_main.html:62
-#: templates/courses/courses_main_instructor.html:27
-msgid "You are a course instructor."
-msgstr "Don lea oahpaheaddji"
-
-#: templates/courses/courses_main.html:62
-msgid "To view your own grade summary,"
+"Hello %(recipient)s,\n"
+"\n"
+"you received a private message from %(sender)s with\n"
+"the following contents:"
 msgstr ""
 
-#: templates/courses/courses_main.html:62
-msgid "click here"
+#: templates/django_messages/new_message.html:14
+#, python-format
+msgid "Sent from %(site_url)s"
 msgstr ""
 
-#: templates/courses/courses_main.html:63
-msgid "View students' grades"
-msgstr "Čájet studeanttaid bohtosiid"
-
-#: templates/courses/courses_main_instructor.html:21
-msgid "Grade summary"
-msgstr "Bohtosiid čoahkkáigeassu"
-
-#: templates/courses/courses_main_instructor.html:32
-msgid "Course content is available online"
+#: templates/django_messages/new_message.html:16
+#: templates/django_messages/view.html:17
+msgid "Reply"
 msgstr ""
 
-#: templates/courses/courses_main_instructor.html:39
-#: templates/courses/instructor_student_detail.html:24
-msgid "last login"
-msgstr "Maŋimus sisaloggen"
-
-#: templates/courses/courses_main_instructor.html:40
-#: templates/courses/instructor_student_detail.html:25
-msgid "login count"
+#: templates/django_messages/outbox.html:10
+msgid "Recipient"
 msgstr ""
 
-#: templates/courses/courses_main_instructor.html:46
-#: templates/courses/instructor_student_detail.html:31
-msgid "exercise"
-msgstr "Hárjehusat"
-
-#: templates/courses/courses_main_instructor.html:47
-#: templates/courses/instructor_student_detail.html:32
-msgid "average"
-msgstr "Gaskamearálaččat"
-
-#: templates/courses/courses_main_instructor.html:48
-#: templates/courses/instructor_student_detail.html:33
-msgid "minimum"
+#: templates/django_messages/outbox.html:10
+msgid "Sent"
 msgstr ""
 
-#: templates/courses/courses_main_instructor.html:49
-#: templates/courses/instructor_student_detail.html:34
-msgid "maximum"
+#: templates/django_messages/trash.html:6
+#, fuzzy
+msgid "Deleted Messages"
+msgstr "Sádde dieđu"
+
+#: templates/django_messages/trash.html:10
+#: templates/django_messages/view.html:24
+#, fuzzy
+msgid "Date"
+msgstr "Dáhton/áigi"
+
+#: templates/django_messages/trash.html:20
+#, fuzzy
+msgid "undelete"
+msgstr "Sihko"
+
+#: templates/django_messages/trash.html:29
+msgid ""
+"Deleted Messages are removed from the trash at unregular intervals, don't "
+"rely on this feature for long-time storage."
 msgstr ""
 
-#: templates/courses/courses_main_instructor.html:50
-#: templates/courses/instructor_student_detail.html:35
-msgid "game count"
-msgstr ""
-
-#: templates/courses/courses_main_instructor.html:62
-msgid "More information about this student"
+#: templates/django_messages/view.html:23
+msgid "From"
 msgstr ""
 
 #: templates/registration/logged_out.html:8
@@ -890,7 +1077,7 @@ msgstr "Nominatiivva máŋggaidlohku"
 
 #: univ_drill/forms.py:67 univ_drill/forms.py:94 univ_drill/forms.py:131
 #: univ_drill/forms.py:160 univ_drill/forms.py:207 univ_drill/forms.py:217
-#: univ_drill/forms.py:310 univ_drill/forms.py:318 univ_drill/forms.py:326
+#: univ_drill/forms.py:310 univ_drill/forms.py:318 univ_drill/forms.py:327
 #: univ_drill/forms.py:335
 msgid "accusative"
 msgstr "Akkusatiiva"
@@ -898,27 +1085,27 @@ msgstr "Akkusatiiva"
 #: univ_drill/forms.py:68 univ_drill/forms.py:95 univ_drill/forms.py:116
 #: univ_drill/forms.py:133 univ_drill/forms.py:161 univ_drill/forms.py:208
 #: univ_drill/forms.py:218 univ_drill/forms.py:313 univ_drill/forms.py:319
-#: univ_drill/forms.py:327 univ_drill/forms.py:336
+#: univ_drill/forms.py:328 univ_drill/forms.py:336
 msgid "illative"
 msgstr "Illatiiva"
 
 #: univ_drill/forms.py:69 univ_drill/forms.py:96 univ_drill/forms.py:117
 #: univ_drill/forms.py:134 univ_drill/forms.py:162 univ_drill/forms.py:209
 #: univ_drill/forms.py:219 univ_drill/forms.py:314 univ_drill/forms.py:320
-#: univ_drill/forms.py:328 univ_drill/forms.py:337
+#: univ_drill/forms.py:329 univ_drill/forms.py:337
 msgid "locative"
 msgstr "Lokatiiva"
 
 #: univ_drill/forms.py:70 univ_drill/forms.py:97 univ_drill/forms.py:118
 #: univ_drill/forms.py:135 univ_drill/forms.py:163 univ_drill/forms.py:210
 #: univ_drill/forms.py:220 univ_drill/forms.py:311 univ_drill/forms.py:321
-#: univ_drill/forms.py:329 univ_drill/forms.py:338
+#: univ_drill/forms.py:330 univ_drill/forms.py:338
 msgid "comitative"
 msgstr "Komitatiiva"
 
 #: univ_drill/forms.py:71 univ_drill/forms.py:98 univ_drill/forms.py:132
 #: univ_drill/forms.py:164 univ_drill/forms.py:312 univ_drill/forms.py:322
-#: univ_drill/forms.py:330 univ_drill/forms.py:339
+#: univ_drill/forms.py:331 univ_drill/forms.py:339
 msgid "genitive"
 msgstr "Genetiiva"
 
@@ -1098,7 +1285,7 @@ msgstr "Guvttiidlohku"
 msgid "Plural"
 msgstr "Máŋggaidlohku"
 
-#: univ_drill/forms.py:309 univ_drill/forms.py:331
+#: univ_drill/forms.py:309 univ_drill/forms.py:326
 msgid "nominative"
 msgstr "Nominatiiva"
 
@@ -1425,288 +1612,288 @@ msgstr "bárahisstávvalmáddagat"
 msgid "contracted"
 msgstr "kontrákta máddagat"
 
-#: univ_drill/views.py:502 univ_drill/views.py:503
+#: univ_drill/views.py:532 univ_drill/views.py:533
 msgid "Practise attributes"
 msgstr "Hárjehala attribuhttahámiid"
 
-#: univ_drill/views.py:504
+#: univ_drill/views.py:534
 msgid "Practise adjectives in nominative"
 msgstr "Hárjehala adjektiivvaid nominatiivvas."
 
-#: univ_drill/views.py:505
+#: univ_drill/views.py:535
 msgid "Practise adjectives in illative"
 msgstr "Hárjehala adjektiivvaid illatiivvas."
 
-#: univ_drill/views.py:506
+#: univ_drill/views.py:536
 msgid "Practise adjectives in accusative"
 msgstr "Hárjehala adjektiivvaid akkusatiivvas."
 
-#: univ_drill/views.py:507
+#: univ_drill/views.py:537
 msgid "Practise adjectives in comitative"
 msgstr "Hárjehala adjektiivvaid komitatiivvas."
 
-#: univ_drill/views.py:508
+#: univ_drill/views.py:538
 msgid "Practise adjectives in essive"
 msgstr "Hárjehala adjektiivvaid essiivvas."
 
-#: univ_drill/views.py:509
+#: univ_drill/views.py:539
 msgid "Practise adjectives in genitive"
 msgstr "Hárjehala adjektiivvaid genetiivvas."
 
-#: univ_drill/views.py:510
+#: univ_drill/views.py:540
 msgid "Practise adjectives in plural"
 msgstr "Hárjehala adjektiivvaid eanetlogus."
 
-#: univ_drill/views.py:511
+#: univ_drill/views.py:541
 msgid "Practise adjectives in locative"
 msgstr "Hárjehala adjektiivvaid lokatiivvas."
 
-#: univ_drill/views.py:512
+#: univ_drill/views.py:542
 msgid "Practise comparative"
 msgstr "Hárjehala komparatiivva."
 
-#: univ_drill/views.py:513
+#: univ_drill/views.py:543
 msgid "Practise superlative"
 msgstr "Hárjehala superlatiivva."
 
-#: univ_drill/views.py:514
+#: univ_drill/views.py:544
 msgid "Practise verb derivation"
 msgstr "Hárjehala suorggidahttit vearbbaid"
 
-#: univ_drill/views.py:515 univ_drill/views.py:516
+#: univ_drill/views.py:545 univ_drill/views.py:546
 msgid "Practise verb passive derivation"
 msgstr "Hárjehala suorggidahttit passiiva vearbbaid"
 
-#: univ_drill/views.py:517
+#: univ_drill/views.py:547
 msgid "Practise adjective to verb derivation"
 msgstr "Hárjehala suorggidahttit vearbbaid adjektiivvain"
 
-#: univ_drill/views.py:518 univ_drill/views.py:519 univ_drill/views.py:520
+#: univ_drill/views.py:548 univ_drill/views.py:549 univ_drill/views.py:550
 msgid "Practise noun possessive suffixes"
 msgstr "Hárjehala oamastangehčosiid."
 
-#: univ_drill/views.py:521
+#: univ_drill/views.py:551
 msgid "Practise noun possessive suffixes in accusative"
 msgstr "Hárjehala oamastangehčosiid akkusatiivvas."
 
-#: univ_drill/views.py:522
+#: univ_drill/views.py:552
 msgid "Practise noun possessive suffixes in illative"
 msgstr "Hárjehala oamastangehčosiid illatiivvas."
 
-#: univ_drill/views.py:523
+#: univ_drill/views.py:553
 msgid "Practise noun possessive suffixes in locative"
 msgstr "Hárjehala oamastangehčosiid lokatiivvas."
 
-#: univ_drill/views.py:524
+#: univ_drill/views.py:554
 msgid "Practise noun possessive suffixes in genitive"
 msgstr "Hárjehala oamastangehčosiid genetiivvas."
 
-#: univ_drill/views.py:525
+#: univ_drill/views.py:555
 msgid "Practise noun possessive suffixes in comitative"
 msgstr "Hárjehala oamastangehčosiid komitatiivvas."
 
-#: univ_drill/views.py:526
+#: univ_drill/views.py:556
 msgid "Practise attributes in positive"
 msgstr "Hárjehala positiivva attribuhttahámiid."
 
-#: univ_drill/views.py:527
+#: univ_drill/views.py:557
 msgid "Practise attributes in comparative"
 msgstr "Hárjehala komparatiivva attribuhttahámiid."
 
-#: univ_drill/views.py:528
+#: univ_drill/views.py:558
 msgid "Practise attributes in superlative"
 msgstr "Hárjehala superlatiivva attribuhttahámiid."
 
-#: univ_drill/views.py:529
+#: univ_drill/views.py:559
 msgid "Practise predicative in positive"
 msgstr "Hárjehala predikatiivva positiivvas."
 
-#: univ_drill/views.py:530
+#: univ_drill/views.py:560
 msgid "Practise predicative in comparative"
 msgstr "Hárjehala predikatiivva komparatiivvas."
 
-#: univ_drill/views.py:531
+#: univ_drill/views.py:561
 msgid "Practise predicative in superlative"
 msgstr "Hárjehala predikatiivva superlatiivvas."
 
-#: univ_drill/views.py:532
+#: univ_drill/views.py:562
 msgid "Practise numeral attributes"
 msgstr "Hárjehala lohkosániid attribuhttahámiid."
 
-#: univ_drill/views.py:533 univ_drill/views.py:541
+#: univ_drill/views.py:563 univ_drill/views.py:571
 msgid "Practise plural"
 msgstr "Hárjehala eanetlogu nominatiivva."
 
-#: univ_drill/views.py:534 univ_drill/views.py:535
+#: univ_drill/views.py:564 univ_drill/views.py:565
 msgid "Practise nominative"
 msgstr "Hárjehala nominatiivva."
 
-#: univ_drill/views.py:536
+#: univ_drill/views.py:566
 msgid "Practise illative"
 msgstr "Hárjehala illatiivva."
 
-#: univ_drill/views.py:537
+#: univ_drill/views.py:567
 msgid "Practise accusative"
 msgstr "Hárjehala akkusatiivva."
 
-#: univ_drill/views.py:538
+#: univ_drill/views.py:568
 msgid "Practise comitative"
 msgstr "Hárjehala komitatiivva."
 
-#: univ_drill/views.py:539
+#: univ_drill/views.py:569
 msgid "Practise essive"
 msgstr "Hárjehala essiivva."
 
-#: univ_drill/views.py:540
+#: univ_drill/views.py:570
 msgid "Practise genitive"
 msgstr "Hárjehala genetiivva."
 
-#: univ_drill/views.py:542
+#: univ_drill/views.py:572
 msgid "Practise locative"
 msgstr "Hárjehala lokatiivva."
 
-#: univ_drill/views.py:543 univ_drill/views.py:544 univ_drill/views.py:545
-#: univ_drill/views.py:546
+#: univ_drill/views.py:573 univ_drill/views.py:574 univ_drill/views.py:575
+#: univ_drill/views.py:576
 msgid "Practise a mix"
 msgstr "Hárjehala seaghuvvon bargobihtáid."
 
-#: univ_drill/views.py:547
+#: univ_drill/views.py:577
 msgid "Practise numerals in illative"
 msgstr "Hárjehala lohkosániid illatiivvas."
 
-#: univ_drill/views.py:548
+#: univ_drill/views.py:578
 msgid "Practise numerals in accusative"
 msgstr "Hárjehala lohkosániid akkusatiivvas."
 
-#: univ_drill/views.py:549
+#: univ_drill/views.py:579
 msgid "Practise numerals in comitative"
 msgstr "Hárjehala lohkosániid komitatiivvas."
 
-#: univ_drill/views.py:550
+#: univ_drill/views.py:580
 msgid "Practise numerals in essive"
 msgstr "Hárjehala lohkosániid essiivvas."
 
-#: univ_drill/views.py:551
+#: univ_drill/views.py:581
 msgid "Practise numerals in genitive"
 msgstr "Hárjehala lohkosániid genetiivvas."
 
-#: univ_drill/views.py:552
+#: univ_drill/views.py:582
 msgid "Practise numerals in plural"
 msgstr "Hárjehala lohkosániid eanetlogus."
 
-#: univ_drill/views.py:553
+#: univ_drill/views.py:583
 msgid "Practise numerals in locative"
 msgstr "Hárjehala lohkosániid lokatiivvas."
 
-#: univ_drill/views.py:554
+#: univ_drill/views.py:584
 msgid "Practise collective numerals"
 msgstr "Hárjehala čoahkkeloguid."
 
-#: univ_drill/views.py:555
+#: univ_drill/views.py:585
 msgid "Practise ordinal numbers"
 msgstr "Hárjehala ortnetloguid."
 
-#: univ_drill/views.py:556
+#: univ_drill/views.py:586
 msgid "Practise ordinal numerals in illative"
 msgstr "Hárjehala ortnetloguid illatiivvas."
 
-#: univ_drill/views.py:557
+#: univ_drill/views.py:587
 msgid "Practise ordinal numerals in accusative"
 msgstr "Hárjehala ortnetloguid akkusatiivvas."
 
-#: univ_drill/views.py:558
+#: univ_drill/views.py:588
 msgid "Practise ordinal numerals in comitative"
 msgstr "Hárjehala ortnetloguid komitatiivvas."
 
-#: univ_drill/views.py:559
+#: univ_drill/views.py:589
 msgid "Practise ordinal numerals in essive"
 msgstr "Hárjehala ortnetloguid essiivvas."
 
-#: univ_drill/views.py:560
+#: univ_drill/views.py:590
 msgid "Practise ordinal numerals in genitive"
 msgstr "Hárjehala ortnetloguid genetiivvas."
 
-#: univ_drill/views.py:561
+#: univ_drill/views.py:591
 msgid "Practise ordinal numerals in plural"
 msgstr "Hárjehala ortnetloguid eanetlogus."
 
-#: univ_drill/views.py:562
+#: univ_drill/views.py:592
 msgid "Practise ordinal numerals in locative"
 msgstr "Hárjehala lohkosániid lokatiivvas."
 
-#: univ_drill/views.py:563
+#: univ_drill/views.py:593
 msgid "Practise collective numerals in illative"
 msgstr "Hárjehala lohkosániid illatiivvas."
 
-#: univ_drill/views.py:564
+#: univ_drill/views.py:594
 msgid "Practise collective numerals in accusative"
 msgstr "Hárjehala lohkosániid akkusatiivvas."
 
-#: univ_drill/views.py:565
+#: univ_drill/views.py:595
 msgid "Practise collective numerals in comitative"
 msgstr "Hárjehala čoahkkeloguid komitatiivvas."
 
-#: univ_drill/views.py:566
+#: univ_drill/views.py:596
 msgid "Practise collective numerals in essive"
 msgstr "Hárjehala čoahkkeloguid essiivvas."
 
-#: univ_drill/views.py:567
+#: univ_drill/views.py:597
 msgid "Practise collective numerals in genitive"
 msgstr "Hárjehala čoahkkeloguid genetiivvas."
 
-#: univ_drill/views.py:568
+#: univ_drill/views.py:598
 msgid "Practise collective numerals in plural"
 msgstr "Hárjehala čoahkkeloguid eanetlogus."
 
-#: univ_drill/views.py:569
+#: univ_drill/views.py:599
 msgid "Practise collective numerals in locative"
 msgstr "Hárjehala čoahkkeloguid lokatiivvas."
 
-#: univ_drill/views.py:570 univ_drill/views.py:577
+#: univ_drill/views.py:600 univ_drill/views.py:607
 msgid "Practise present"
 msgstr "Hárjehala preseanssa."
 
-#: univ_drill/views.py:571 univ_drill/views.py:578
+#: univ_drill/views.py:601 univ_drill/views.py:608
 msgid "Practise past"
 msgstr "Hárjehala preterihta."
 
-#: univ_drill/views.py:572 univ_drill/views.py:579
+#: univ_drill/views.py:602 univ_drill/views.py:609
 msgid "Practise perfect"
 msgstr "Hárjehala perfeavtta."
 
-#: univ_drill/views.py:573 univ_drill/views.py:580
+#: univ_drill/views.py:603 univ_drill/views.py:610
 msgid "Practise gerund"
 msgstr "Hárjehala gerunda."
 
-#: univ_drill/views.py:574 univ_drill/views.py:581
+#: univ_drill/views.py:604 univ_drill/views.py:611
 msgid "Practise conditional"
 msgstr "Hárjehala konditionála."
 
-#: univ_drill/views.py:575 univ_drill/views.py:582
+#: univ_drill/views.py:605 univ_drill/views.py:612
 msgid "Practise imperative"
 msgstr "Hárjehala imperatiivva."
 
-#: univ_drill/views.py:576 univ_drill/views.py:583
+#: univ_drill/views.py:606 univ_drill/views.py:613
 msgid "Practise potential"
 msgstr "Hárjehala potentiála."
 
-#: univ_drill/views.py:584
+#: univ_drill/views.py:614
 msgid "Practise personal pronouns"
 msgstr "Hárjehala persovnnalaš pronomeniid."
 
-#: univ_drill/views.py:585
+#: univ_drill/views.py:615
 msgid "Practise reciprocative pronouns"
 msgstr "Hárjehala resiprohka pronomeniid"
 
-#: univ_drill/views.py:586
+#: univ_drill/views.py:616
 msgid "Practise reflexive pronouns"
 msgstr "Hárjehala refleksiiva pronomeniid."
 
-#: univ_drill/views.py:587
+#: univ_drill/views.py:617
 msgid "Practise relative pronouns"
 msgstr "Hárjehala relatiiva pronomeniid."
 
-#: univ_drill/views.py:588
+#: univ_drill/views.py:618
 msgid "Practise demonstrative pronouns"
 msgstr "Hárjehala čujuheaddji pronomeniid."
 
@@ -1738,28 +1925,28 @@ msgstr "Čále dáhtona sámegillii (omd. geassemánu 3. b.)"
 msgid "Expression of dates numeric to words or vice versa."
 msgstr "Čále dáhtona mánnonamain dahje loguiguin"
 
-#: univ_drill/templates/game.html:126
+#: univ_drill/templates/game.html:143
 msgid "help"
 msgstr "Veahkki"
 
-#: univ_drill/templates/game.html:132
+#: univ_drill/templates/game.html:149
 msgid "This is almost correct!"
 msgstr "Measta riekta!"
 
-#: univ_drill/templates/game.html:190 univ_drill/templates/leksa.html:80
+#: univ_drill/templates/game.html:207 univ_drill/templates/leksa.html:80
 #: univ_drill/templates/vasta.html:96
 msgid "Test answers"
 msgstr "Iskka vástádusaid"
 
-#: univ_drill/templates/game.html:193 univ_drill/templates/leksa.html:83
+#: univ_drill/templates/game.html:210 univ_drill/templates/leksa.html:83
 msgid "Show the correct answers"
 msgstr "Čájet rivttes vástádusaid"
 
-#: univ_drill/templates/game.html:201
+#: univ_drill/templates/game.html:218
 msgid "Congratulations!"
 msgstr "Buorre!"
 
-#: univ_drill/templates/game.html:204
+#: univ_drill/templates/game.html:221
 msgid "Your score:"
 msgstr "Du čuoggát:"
 
@@ -2056,9 +2243,8 @@ msgid ""
 "names. The blue words are given in the primary form. Your task is to write "
 "them in the correct grammatical form."
 msgstr ""
-"Vástit olles cealkagiin. Muitte čállit namaid stuora "
-"álgobustávain. Alit sánit leat vuođđohámis ja galget leat mielde "
-"vástádusas, muhto rivttes hámis."
+"Vástit olles cealkagiin. Muitte čállit namaid stuora álgobustávain. Alit "
+"sánit leat vuođđohámis ja galget leat mielde vástádusas, muhto rivttes hámis."
 
 #: univ_drill/templates/vasta.html:57
 msgid ""
@@ -2197,6 +2383,15 @@ msgstr "Sádde dieđu"
 msgid "Thank you for you feedback!"
 msgstr "Giitu máhcahusa ovddas!"
 
+#~ msgid "Please log in to continue."
+#~ msgstr "Logges sisa jus háliidat joatkit..."
+
+#~ msgid "Enrolled in…"
+#~ msgstr "Kurssa oasseváldi"
+
+#~ msgid "View course lessons"
+#~ msgstr "Mana gursasiidduide"
+
 #~ msgid ""
 #~ "Answer to the questions with full sentences. Be aware of that if there is "
 #~ "moai/mii in the question, you have to answer with doai/dii. "
@@ -2251,9 +2446,6 @@ msgstr "Giitu máhcahusa ovddas!"
 
 #~ msgid "Animal"
 #~ msgstr "Eallit"
-
-#~ msgid "Object"
-#~ msgstr "Diŋggat"
 
 #~ msgid "Concretes"
 #~ msgstr "Konkreahtat"
