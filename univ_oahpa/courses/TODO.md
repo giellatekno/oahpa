@@ -232,7 +232,6 @@ Mål-basert oppgåvor:
  * Student assignment/goals list
  * Instructor feedback
 
-
 # Questions
 
 ## Course goals:

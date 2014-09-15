@@ -238,12 +238,19 @@ class Course(models.Model):
     def user_completion_rate(self, user):
         coursegoals = self.coursegoal_set.all()
 
-        completed = sum([1.0 for c in coursegoals
-                             for cgg in c.goals.all()
-                             if cgg.goal.user_completed(user)])
+        # TODO: percentage of all tasks, not coursegoals
 
-        if completed > 0:
-            rate = (completed/coursegoals.count())*100.0
+        completed_tasks = 0.0
+        task_count = 0.0
+
+        for coursegoal in coursegoals:
+            for task in coursegoal.goals.all():
+                task_count += 1.0
+                if task.goal.user_completed(user):
+                    completed_tasks += 1.0
+
+        if completed_tasks > 0.0 and task_count > 0.0:
+            rate = (completed_tasks/task_count)*100.0
         else:
             rate = 0.0
 
@@ -293,7 +300,7 @@ class CourseGoal(models.Model):
     short_name = models.CharField(max_length=42)
     description = models.TextField(help_text=GOAL_HELP_TEXT)
 
-    threshold = models.FloatField(default=80.0, help_text="Complete goals must average this amount.", blank=True, null=True)
+    threshold = models.FloatField(help_text="Complete goals must average this amount.", blank=True, null=True)
     percent_goals_completed = models.FloatField(default=80.0, help_text="This percentage of associated goals must be completed", blank=True, null=True)
 
     def __unicode__(self):
@@ -364,12 +371,19 @@ class CourseGoal(models.Model):
 
         if len(ugis) > 0:
 
-            if self.percent_goals_completed:
+            print "--"
+            print self.short_name
+            print self.instance_completion_rate(ugis)
+            # print "-"
+            # print self.threshold
+            # print self.cumulative_instance_threshold(ugis)
+            print "--"
+            if self.percent_goals_completed is not None:
                 complete_count = self.instance_completion_rate(ugis)
             else:
                 complete_count = False
 
-            if self.threshold:
+            if self.threshold is not None:
                 threshold_reached = self.cumulative_instance_threshold(ugis)
             else:
                 threshold_reached = False
@@ -392,7 +406,9 @@ class CourseGoal(models.Model):
         return progress
 
     def instance_completion_rate(self, ugis):
+        print ugis
         completes = sum([1.0 for ugi in ugis if ugi.is_complete])
+        print completes
         return (completes/self.task_count) * 100.0
 
     def user_completed(self, user):
@@ -509,10 +525,14 @@ class Goal(models.Model):
 
         calc_progress = (float(up) / float(user_goal_instance.total_answered)) * 100
 
+        # TODO: while testing, found that problem is:
+        # user_goal_instance.rounds was not incremented when the goal
+        # was complete.
+
         if self.minimum_sets_attempted:
             completed_min_rounds = user_goal_instance.rounds >= self.minimum_sets_attempted
         else:
-            completed_min_rouds = True
+            completed_min_rounds = True
 
         passed_percent_correct = calc_progress >= self.threshold
 
