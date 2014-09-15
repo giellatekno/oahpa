@@ -62,6 +62,12 @@ class SurveyCheckMiddleware(object):
 
         u = request.user
 
+        if not u:
+            return response
+
+        if u.is_anonymous():
+            return response
+
         # Assuming one response per survey
         responses = Survey.objects.exclude(id__in=ignored)\
                                   .filter(responses__user=u)

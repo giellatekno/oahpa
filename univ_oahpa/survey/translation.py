@@ -15,19 +15,19 @@
 
 """
 
-from modeltranslation.translator import translator, TranslationOptions, AlreadyRegistered
+# from modeltranslation.translator import translator, TranslationOptions, AlreadyRegistered
 
-from .models import Survey, SurveyQuestion, SurveyQuestionAnswerValue
+# from .models import Survey, SurveyQuestion, SurveyQuestionAnswerValue
 
-class SurveyOptions(TranslationOptions):
-    fields = ('title', 'description', )
+# class SurveyOptions(TranslationOptions):
+#     fields = ('title', 'description', )
 
-class SurveyQuestionOptions(TranslationOptions):
-    fields = ('question_text', )
+# class SurveyQuestionOptions(TranslationOptions):
+#     fields = ('question_text', )
 
-class SurveyQuestionAnswerValueOptions(TranslationOptions):
-    fields = ('answer_text', )
+# class SurveyQuestionAnswerValueOptions(TranslationOptions):
+#     fields = ('answer_text', )
 
-translator.register(Survey, SurveyOptions)
-translator.register(SurveyQuestion, SurveyQuestionOptions)
-translator.register(SurveyQuestionAnswerValue, SurveyQuestionAnswerValueOptions)
+# translator.register(Survey, SurveyOptions)
+# translator.register(SurveyQuestion, SurveyQuestionOptions)
+# translator.register(SurveyQuestionAnswerValue, SurveyQuestionAnswerValueOptions)
