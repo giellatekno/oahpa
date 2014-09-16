@@ -56,6 +56,7 @@ class GradingMiddleware(object):
             request.session['answered'] = {}
 
     def request_goal_instances(self, request):
+        from .models import UserGoalInstance
         current_user_goal = request.session.get('current_user_goal', False)
 
         if not current_user_goal:
@@ -67,7 +68,7 @@ class GradingMiddleware(object):
                                               )\
                                        .order_by('-last_attempt')
 
-    def exit_goal_tracking(self):
+    def exit_goal_tracking(self, request):
         """ If there's a problem deleting one of these keys there's
         something really wrong, no need for try blocks.
         """
@@ -131,7 +132,7 @@ class GradingMiddleware(object):
 
                     request.session['previous_exercise_params'] = current
 
-                    self.exit_goal_tracking()
+                    self.exit_goal_tracking(request)
 
                     if request.session.get('navigated_away', False):
                         request.session['navigated_away'] += 1
