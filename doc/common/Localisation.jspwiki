@@ -26,6 +26,10 @@ svn ci -m "new generated files" locale/fi/LC_MESSAGES/django.po
    ... etc. for the other files. 
 }}}
 
+If the Oahpa installation uses virtualenv you might need to specify that
+makemessages ignore virtualenv directories, otherwise many more strings will be
+included than need to be. ex: {{python manage.py makemessages -a --ignore=env/*}}
+
 (Note: For this to work, your manage.py and your django installation
 must be tune with each other. See the django documentation.)
 
