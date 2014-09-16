@@ -371,13 +371,6 @@ class CourseGoal(models.Model):
 
         if len(ugis) > 0:
 
-            print "--"
-            print self.short_name
-            print self.instance_completion_rate(ugis)
-            # print "-"
-            # print self.threshold
-            # print self.cumulative_instance_threshold(ugis)
-            print "--"
             if self.percent_goals_completed is not None:
                 complete_count = self.instance_completion_rate(ugis)
             else:
@@ -406,9 +399,7 @@ class CourseGoal(models.Model):
         return progress
 
     def instance_completion_rate(self, ugis):
-        print ugis
         completes = sum([1.0 for ugi in ugis if ugi.is_complete])
-        print completes
         return (completes/self.task_count) * 100.0
 
     def user_completed(self, user):
@@ -573,7 +564,7 @@ class Goal(models.Model):
             logs = logs.filter(usergoalinstance__attempt_count=_max)
 
         if logs.count() == 0:
-            print " -- nothing yet -- "
+            # print " -- nothing yet -- "
             return None
 
         question_sets = self.student_set_count(user, logs)
@@ -607,24 +598,24 @@ class Goal(models.Model):
             eventually = get_correct(set_logs)
             answered = get_total_answered_for_round(set_logs)
 
-            print "round: " + repr(q)
-            print "correct on first:   %d" % first_try.count()
-            print "correct eventually: %d" % eventually.count()
-            print "attempted:          %d" % answered
-            print '--'
+            # print "round: " + repr(q)
+            # print "correct on first:   %d" % first_try.count()
+            # print "correct eventually: %d" % eventually.count()
+            # print "attempted:          %d" % answered
+            # print '--'
 
             correct_on_first_try.extend(get_correct_on_first_try(set_logs))
             all_correct.extend(eventually)
             amount_answered += answered
 
-        print
-        print '---'
-        print "rounds:           %d" % max(question_sets)
-        print "answered:         %d" % amount_answered
-        print "correct on first: %d" % len(correct_on_first_try)
-        print "correct at all:   %d" % len(all_correct)
-        print '---'
-        print
+        # print
+        # print '---'
+        # print "rounds:           %d" % max(question_sets)
+        # print "answered:         %d" % amount_answered
+        # print "correct on first: %d" % len(correct_on_first_try)
+        # print "correct at all:   %d" % len(all_correct)
+        # print '---'
+        # print
 
         result_args = {
             'rounds': max(question_sets),
@@ -643,11 +634,13 @@ class UserGoalInstance(models.Model):
 
     # only one may be 'opened' at a time
     opened = models.BooleanField(default=True)
+    # amount of times user has attempted exercise
     attempt_count = models.IntegerField(default=1)
 
     progress = models.DecimalField(decimal_places=4, max_digits=11, default=0.0)
 
     is_complete = models.BooleanField(default=False)
+    # Number of repetitions in the current attempt
     rounds = models.IntegerField(default=1)
     total_answered = models.IntegerField(default=0)
     correct = models.IntegerField(default=0)
@@ -800,7 +793,6 @@ def incorrects_by_frequency(user, goal=None):
     incorrects = defaultdict(dict)
 
     for o in objs:
-        print o
         if o.correct_answer not in incorrects:
             incorrects[o.correct_answer] = {
                 'count': 0,

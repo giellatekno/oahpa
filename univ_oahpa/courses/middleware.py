@@ -49,7 +49,6 @@ class GradingMiddleware(object):
         new_set = request.session.get('new_game')
         prev_new_set = request.session['prev_new_game']
         new_sets = new_set and prev_new_set
-        print 'new sets: ' + repr(new_sets)
 
         if request.session.get('set_completed', False) or new_sets:
             request.session['question_try_count'] = {}
@@ -121,7 +120,7 @@ class GradingMiddleware(object):
                 user_navigated_away = (current != previous) and (not sahka_condition)
 
                 if user_navigated_away:
-                    print " -- user navigated to new page, stop tracking --"
+                    # print " -- user navigated to new page, stop tracking --"
 
                     user_goal_instance = self.request_goal_instances()
 
@@ -161,6 +160,7 @@ class GradingMiddleware(object):
 
                 try: result.pop('correct_later_tries')
                 except: pass
+                result['rounds'] = request.session['question_set_count']
 
                 user_goal_instance = UserGoalInstance.objects.filter(user=request.user, goal=goal, opened=True)
                 if not user_goal_instance:
@@ -170,8 +170,6 @@ class GradingMiddleware(object):
                     user_goal_instance.update(**result)
 
                 complete = goal.is_complete(user_goal_instance[0])
-                print 'completed? ' + repr(complete)
-                print 'new-game? ' + repr(request.session['new_game'])
 
         request.session['previous_exercise_params'] = \
                 request.session.get('current_exercise_params', False)
