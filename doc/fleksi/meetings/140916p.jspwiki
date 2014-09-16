@@ -1,0 +1,92 @@
+!!! Møte 16.09.14
+
+Til stades: Ryan, Lene, Trond
+
+!! Saksliste
+* Morfologisk feedback API
+* Spørreskjema ved første innlogging:
+* Kursinnlogginga
+
+!! Morfologisk feedback API
+http://testing.oahpa.no/courses_davvi/errorapi/test_page/
+
+FST på gtlab i /opt/smi/sme/bin/ped-errortag-sme.fst
+
+xml: ../sme/meta/morfaerrorfstmessages.xml
+
+Bare Ryan kan omstarte den foreløpig.
+
+! Tiltak:
+* __Ryan__: errorapi - må vera innlogga no (HTTP standard auth vindaugo dukker opp); det er ikkje sånn me vil ha det
+* __Lene__ flytte og tilpasse kildefilene til newinfra, denne vil etterhvert bli kompilert der
+* __Ryan__: implementerer i morfa-s illativ for testing 
+
+!! Spørreskjema ved første innlogging:
+
+Ny versjon av spørreskjemaet (etter diskusjon på møtet):
+* Kva er morsmålet ditt? norsk/svensk/dansk, finsk/meänkieli/kvensk, nordsamisk, annet samisk språk, russisk, engelsk, tysk, annet:
+* Aldersgruppe: under 18, 18-25, 26-45, 46+
+* Kan du noe samisk fra før? ingenting, såvidt, litt, mye
+* Har du lært et annet nytt språk enn engelsk etter at du begynte på skolen? ja nei 
+** Følger du et samiskkurs med lærer?
+** Kan noen i husstanden din samisk?
+* Info: Vi vil bruke loggen til forsking for å se hva som er vanskelig og lett for studenter avhengig av morsmål, alder osv. Brukere vil ikke bli identifiserte, kun referert i logg med nummer.
+
+Informasjonen skal lagres og kunne brukes knyttes til bruker-ID.
+
+Eksportert CSV: 
+{{{
+  user,completed,Kva er morsmålet ditt? (choice),Kan du noe samisk fra før? (choice),Aldersgruppe (choice)
+  4727053889359667644,2014.16.09,norsk/svensk/dansk,såvidt,46+
+  2835731962866600674,2014.16.09,norsk/svensk/dansk,såvidt,26-45
+}}}
+
+ http://testing.oahpa.no/courses_davvi/survey/answer/
+
+*__Ryan__: moglegheit til obligatorisk spørreskjema på første innlogging 
+
+
+!! Kursinnlogginga
+Lærerinnlogging: Kursinvitasjon må følge kurset (dvs at man får bare den relevante linken å sende til studentene).
+
+__Tiltak: __
+* __Ryan__  invitasjon - invite students link next to individual courses displays all possible invitations; not just the one
+* __Ryan__ samla prosent burde endrast til ei samling av Task til staden for Course Goals. Samla prosent fungerer ikkje no. For kvar task som er fullført skal du ha utteljing på prosent, men du skal ikkje trenge å gjere all morfologi for å få prosent.
+
+* Problem: Prosenten i Oahpa, når man arbeider, nullstillar seg.
+
+* __Ryan__: Task til desse med /sted/ skal endrast til vanleg /leksa/ 
+
+* __Ryan__ Sahka, Vasta og MorfaC må fungere på gtlab \\
+Det fungerer framleis ikkje, sjølv med ny installering. Ryan ser meir på det.
+
+! Lokalisering
+__Lene, Trond__ fyller ut i lokaliseringsfiler
+
+[http://giellatekno.uit.no/ped/common/Localisation.html]
+
+{{{
+ped/univ_oahpa/locale/sme/LC_MESSAGES/django.po #etc, for dei andre språka
+
+Lokalt (eksporterer nye meldingar):
+python manage.py makemessages -a --ignore=env/*
+
+Pä server
+cd /home/univ_oahpa #gtoahpa
+cd /ryan/sin/eigen/konto #gtlab
+svn up
+python manage.py compilemessages
+}}}
+
+!Kursmållenker for Leksa, i denne rekkefølgen, ikke stedsnavn
+
+{{{
+http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=smenob
+http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=nobsme
+http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_2&geography=world&common=1&semtype=all&transtype=smenob
+http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_2&geography=world&common=1&semtype=all&transtype=nobsme
+}}}
+
+!! Neste møte
+Mandag 22. september kl 16.00 norsk tid. Trond er da bortreist og kan ikke delta.
+
