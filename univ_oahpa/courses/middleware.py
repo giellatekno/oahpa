@@ -55,7 +55,7 @@ class GradingMiddleware(object):
             request.session['question_set_count'] += 1
             request.session['answered'] = {}
 
-    def request_goal_instances(self):
+    def request_goal_instances(self, request):
         current_user_goal = request.session.get('current_user_goal', False)
 
         if not current_user_goal:
@@ -122,7 +122,7 @@ class GradingMiddleware(object):
                 if user_navigated_away:
                     # print " -- user navigated to new page, stop tracking --"
 
-                    user_goal_instance = self.request_goal_instances()
+                    user_goal_instance = self.request_goal_instances(request)
 
                     # Mark this instance as no longer being active.
                     if user_goal_instance is not None and len(user_goal_instance) > 0:
