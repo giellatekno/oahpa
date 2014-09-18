@@ -80,7 +80,7 @@ from django.conf import settings
 from django.shortcuts import render_to_response
 
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 
 from .messages import *
 from .processes import FeedbackFST
@@ -100,6 +100,8 @@ feedback_messages = FeedbackMessageStore(*error_files)
 feedback = FeedbackFST(feedback_messages)
 
 @api_view(['GET', 'POST'])
+@authentication_classes([])
+@permission_classes([])
 def error_feedback_view(request):
     """ Error lookup view takes a JSON object containing the following
     parameters:
