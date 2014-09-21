@@ -102,7 +102,7 @@
 		<div id="content">
 			{% block main_content %}
 			<ul id="games_menu">
-        <!---        <li class="game">
+                <li class="game">
 					<a href="{% url morfa_s.noun %}">
 						<span>MORFA-S</span><br />
 						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-S" /><br />
@@ -110,7 +110,7 @@
 					</a>
 				</li>
 				
-                <li class="game">
+              <!--  <li class="game">
 					<a href="{% url vasta_s %}">
 						<span>VASTA</span><br />
 						<img src="{{ MEDIA_URL }}/images/vasta.png" alt="VASTA" /><br />
@@ -125,7 +125,7 @@
 					</a>
 				</li>
 			
-<!---			<ul id="games_menu">
+			<!-- <ul id="games_menu"> -->
 
 				<li class="game">
                     <a href="{% url morfa_c.noun %}">
@@ -134,7 +134,7 @@
 						<span>{% trans "Practise morphology in context" %}</span>
 					</a>
 				</li>
-				<li class="game">
+			<!--	<li class="game">
                     <a href="{% url sahka %}">
 						<span>SAHKA</span><br />
 						<img src="{{ MEDIA_URL }}/images/sahka.png" alt="SAHKA" /><br />
@@ -155,7 +155,7 @@
 			<p class="intro">{% trans "Oahpa is an internet program for youth and grownups learning Tundra Nenets. The program can be adjusted to different themes and levels of difficulty, and it generates new task sets automatically." %}</p>
 			{% comment %}
 			<p>{% trans "Oahpa is connected with online reference materials." %}</p>
-			{% endcomment %}
+			
 			<ul class="linklist">
             {% ifequal LANGUAGE_CODE "sme" %}
 				<li><a href="http://oahpa.no/yrk/index.eng.html">{% trans "Veiledning" %}</a></li>
@@ -170,13 +170,14 @@
                 <li><a href="http://oahpa.no/yrk/index.nob.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
             <li><a href="http://oahpa.no/davvi" style="font-size:13px">North Saami Oahpa</a></li>
-<!--
+            {% endcomment %}
+            <ul class="linklist">
             {% ifequal LANGUAGE_CODE "fi" %}
-                <li><a href="http://victorio.uit.no/webdict/index_yrk-fin.html">{% trans "Tundra Nenets" %}-{% trans "Finnish" %} {% trans "web dictionary" %}</a></li>
+                <li><a href="http://vada.oahpa.no/">{% trans "Tundra Nenets " %}-{% trans " Finnish" %} {% trans "web dictionary" %}</a></li>
             {% else %}
-				<li><a href="http://victorio.uit.no/webdict/index_yrk-fin.html">{% trans "Tundra Nenets" %}-{% trans "Finnish" %} {% trans "web dictionary" %}</a></li>
+				<li><a href="http://vada.oahpa.no/yrk/eng/">{% trans "Tundra Nenets " %}-{% trans " English" %} {% trans "web dictionary" %}</a></li>
             {% endifequal %}
--->            
+           
             <!--
             {% ifequal LANGUAGE_CODE "sme" %}
 				<li><a href="http://oahpa.no/yrk/gramm/grammatihkka.html">{% trans "Tundra Nenets grammar" %}</a></li>
@@ -214,7 +215,7 @@
 			{% endblock %}
 
 			  <p>
-				  {% trans "Copyright 2011 Universitetet i Troms&oslash; " %}<br />
+				  {% trans "Copyright 2011-2014 Universitetet i Troms&oslash; " %}<br />
 			{% trans "Contact" %} oahpa@hum.uit.no</p>
 			</div>
 		</div>

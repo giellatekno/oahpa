@@ -165,6 +165,7 @@
 			<p>{% trans "Oahpa is connected with online reference materials." %}</p>
 			{% endcomment %}
 			<ul class="linklist">
+			
             {% ifequal LANGUAGE_CODE "fi" %}
                 <li><a href="http://oahpa.no/sms/index.fin.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
@@ -177,19 +178,21 @@
             {% ifequal LANGUAGE_CODE "ru" %}
                 <li><a href="http://oahpa.no/sms/index.rus.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
-        {% ifequal LANGUAGE_CODE "no" %}
+        
+            {% ifequal LANGUAGE_CODE "fi" %}
+            <li><a target="_blank" href="http://valks.oahpa.no/myv/fin">{% trans "Erzya" %}-{% trans "Finnish" %} {% trans "web dictionary" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "en" %}
+            <li><a target="_blank" href="http://valks.oahpa.no/myv/eng">{% trans "Erzya" %}-{% trans "English" %} {% trans "web dictionary" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "ru" %}
+            <li><a target="_blank" href="http://valks.oahpa.no/myv/rus">{% trans "Erzya" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "no" %}
             <li><a target="_blank" href="http://valks.oahpa.no/myv/eng">{% trans "Dictionary" %}</a></li>
-        {% endifequal %}
-        {% ifequal LANGUAGE_CODE "fi" %}
-            <li><a target="_blank" href="http://valks.oahpa.no/myv/fin">{% trans "Dictionary" %}</a></li>
-        {% endifequal %}
-        {% ifequal LANGUAGE_CODE "en" %}
-            <li><a target="_blank" href="http://valks.oahpa.no/myv/eng">{% trans "Dictionary" %}</a></li>
-        {% endifequal %}
-        {% ifequal LANGUAGE_CODE "ru" %}
-            <li><a target="_blank" href="http://valks.oahpa.no/myv/rus">{% trans "Dictionary" %}</a></li>
-        {% endifequal %}
-            <!--please check, whether or not the following code is correct; if it is, please remove the comment, and let this part compile as well (during the next compilation, it is not important now)
+            {% endifequal %}
+        
+                    <!--please check, whether or not the following code is correct; if it is, please remove the comment, and let this part compile as well (during the next compilation, it is not important now)
             {% ifequal LANGUAGE_CODE "sme" %}
 				<li><a href="http://oahpa.no/sms/grammar/grammar.eng.html">{% trans "Skolt Sámi grammar" %}</a></li>
             {% endifequal %}

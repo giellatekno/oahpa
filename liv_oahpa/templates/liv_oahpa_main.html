@@ -186,13 +186,19 @@
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "sv" %}
                 <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "fi" %} -->
-
-                <li><a target="_blank" href="http://sanat.oahpa.no/liv/fin">{% trans "Livonian" %}-{% trans "Finnish" %} {% trans "web dictionary" %}</a></li>
-            <!--{% else %}
-				<li><a href="http://victorio.uit.no/webdict/index_sjd-rus.html">{% trans "Norwegian" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
             {% endifequal %} -->
+            {% ifequal LANGUAGE_CODE "fi" %} 
+                <li><a target="_blank" href="http://sonad.oahpa.no/liv/fin/">{% trans "Livonian" %}-{% trans "Finnish" %} {% trans "web dictionary" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "et" %} 
+                <li><a target="_blank" href="http://sonad.oahpa.no/liv/est/">{% trans "Livonian" %}-{% trans "Estonian" %} {% trans "web dictionary" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "lv" %} 
+                <li><a target="_blank" href="http://sonad.oahpa.no/liv/lav/">{% trans "Livonian" %}-{% trans "Latvian" %} {% trans "web dictionary" %}</a></li>
+            {% endifequal %}
+            {% else %}
+				<li><a href="http://sonad.oahpa.no/liv/fin/">{% trans "Livonian" %}-{% trans "Finnish" %} {% trans "web dictionary" %}</a></li>
+            {% endifequal %}
             <!--
             {% ifequal LANGUAGE_CODE "sme" %}
 				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.html">{% trans "Russian grammar" %}</a></li>

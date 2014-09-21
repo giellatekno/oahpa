@@ -433,19 +433,19 @@ echo "==================================================="
 # $P manage.py mergetags
 # $P manage.py fixtagattributes
 
-#echo "==================================================="
-#echo "installing Morfa-C questions for nouns"
-#$P install.py -g $META/grammar_defaults.xml -q $META/noun_questions.xml 2>>error.log
-#echo " "
-#echo "done"
-#echo "==================================================="
+echo "==================================================="
+echo "installing Morfa-C questions for nouns"
+$P install.py -g $META/grammar_defaults.xml -q $META/noun_questions.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-#echo "==================================================="
-#echo "installing Morfa-C questions for verbs"
-#$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions.xml 2>>error.log
-#echo " "
-#echo "done"
-#echo "==================================================="
+echo "==================================================="
+echo "installing Morfa-C questions for verbs"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 # echo "==================================================="
 # echo "installing Morfa-C questions for pronoun"
