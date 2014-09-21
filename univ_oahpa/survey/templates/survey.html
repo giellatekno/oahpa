@@ -49,23 +49,18 @@
                                 <blockquote><p><% survey.description %></p></blockquote>
                                 <div ng-repeat="question in survey.questions">
                                     <div class="form-group">
-                                        {% comment %}
-                                        <pre><% question %></pre>
-                                        {% endcomment %}
-                                        <label class="required-<% question.required %>" for=""><% question.question_text %></label>
+                                        <label class="required-true" for=""><% question.question_text %></label>
 
                                         <textarea class="form-control"
                                                ng-if="question.question_type == 'text'"
                                                name="question.question_id"
-                                               ng-required="question.required"
                                                ng-model="survey_answers[survey.id][question.id]">
                                            </textarea>
 
-                                           <select class="form-control required-<% question.required %>"
+                                           <select class="form-control required-true"
                                                 id="selectMainType"
                                                 name="main_type"
                                                 ng-if="question.question_type == 'choice'"
-                                                ng-required="question.required"
                                                 ng-options="a.id as a.answer_text for a in question.answer_values"
                                                 ng-model="survey_answers[survey.id][question.id]">
 
@@ -102,10 +97,6 @@
                         </blockquote>
                     </div>
                 </div>
-
-                {% comment %}
-                <pre><% survey_answers %></pre>
-                {% endcomment %}
 
                 <div ng-if="form_error || validation_errors" class="form_errors">
                     <h5>Error</h5>

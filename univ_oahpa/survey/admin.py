@@ -69,7 +69,6 @@ class SurveyAdmin(admin.ModelAdmin):
         csvwriter.writerows(csv_rows)
         contents = handle.getvalue()
         handle.close()
-        print contents
 
         self.message_user(request, "Survey exported.")
         response = HttpResponse(content_type="text/csv")

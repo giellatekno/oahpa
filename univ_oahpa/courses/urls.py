@@ -68,8 +68,9 @@ urlpatterns += patterns('univ_oahpa.courses.views',
 
     url(r'^personal_goals/$', personal_goals, name="personal_goals"),
 
+    url(r'^invite/(?P<c_id>\d+)/$', course_invite, name="course_invite"),
     url(r'^invite/$', course_invite, name="course_invite"),
-    url(r'^reset_token/(?P<cid>\d+)/$', reset_invite_link, name="course_invite"),
+    url(r'^reset_token/(?P<cid>\d+)/$', reset_invite_link, name="reset_invite_link"),
     url(r'^enroll/$', course_enroll, name="course_enroll"),
     url(r'^stats/$', courses_stats, name="courses_stats"),
 

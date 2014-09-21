@@ -399,10 +399,20 @@ def begin_course_task(request, task_id):
 
 
 @user_passes_test(instructor_group)
-def course_invite(request):
+def course_invite(request, c_id=None):
+
+    if c_id:
+        c_id = int(c_id)
+
+    def by_id(course):
+        if c_id == None:
+            return True
+        return course.id == c_id
+
     c = {}
     profile = request.user.get_profile()
     c['profile'] = profile
+    c['course_invites'] = filter(by_id, profile.instructorships)
     template = 'invite_students.html'
     return render_to_response(template,
                               c,

@@ -54,7 +54,7 @@ TODO: internationalization strings
                     <div class="row">
                         <div class="col-md-3 col-sm-3 col-lg-3">
                             <ul class="nav nav-stacked">
-                                <li><a href="/{{ URL_PREFIX }}/courses/invite/">{% trans "Invite students" %}</a></li>
+                                <li><a href="/{{ URL_PREFIX }}/courses/invite/{{ course.id }}/">{% trans "Invite students" %}</a></li>
                                 <li><a href="{% url courses.views.courses_coursegoal_construction %}">Create a course goal</a></li>
                                 <li><a href="{% url courses.views.courses_goal_construction %}">Create a goal</a></li>
                                 <li><a href="/{{ URL_PREFIX }}/messages/compose/">Send message</a></li>

@@ -108,7 +108,7 @@ class SurveyQuestion(models.Model):
 
     # required boolean field
 
-    required = models.BooleanField(default=True)
+    # required = models.BooleanField(default=True)
 
     question_text = models.TextField()
     question_type = models.CharField(max_length=18, choices=question_types, help_text=TYPE_H)
