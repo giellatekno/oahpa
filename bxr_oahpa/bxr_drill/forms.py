@@ -372,7 +372,7 @@ NUMLANGUAGE_CHOICES = (
 
 SEMTYPE_CHOICES = (
     ('HUMAN', _('human')),
-    ('FOOD/DRINK', _('food/drink')),
+    ('FOOD_DRINK', _('food/drink')),
     ('all', _('all')),
 )
 
