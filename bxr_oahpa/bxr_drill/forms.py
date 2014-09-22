@@ -350,24 +350,24 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-        ('bxrest', u'Buriat to Estonian'),
-        ('estbxr', u'Estonian to Buriat'),
-	    #('bxreng', _('Buriat to English')),
-	    #('engbxr', _('English to Buriat')),
-        ('bxrfin', u'Buriat to Finnish'),
-        ('finbxr', u'Finnish to Buriat'),           
-        #('bxrlat', _('Buriat to Latvian')),
-        #('latbxr', _('Latvian to Buriat')),
-        #('bxrsme', _('Buriat to North Saami')),
-        #('smebxr', _('North Saami to Buriat')),
-        #('bxrnob', _('Buriat to Norwegian')),
-        #('nobbxr', _('Norwegian to Buriat')), 
-        #('bxrrus', _('Buriat to Russian')),
-        #('rusbxr', _('Russian to Buriat')),
+        #('bxrest', u'Buryad to Estonian'),
+        #('estbxr', u'Estonian to Buryad'),
+        ('bxrrus', _('Buryad to Russian')),
+        ('rusbxr', _('Russian to Buryad')),
+	    ('bxreng', _('Buryad to English')),
+	    ('engbxr', _('English to Buryad')),
+        ('bxrfin', u'Buryad to Finnish'),
+        ('finbxr', u'Finnish to Buryad'),           
+        ('bxrdeu', _('Buryad to German')),
+        ('deubxr', _('German to Buryad')),
+        #('bxrsme', _('Buryad to North Saami')),
+        #('smebxr', _('North Saami to Buryad')),
+        #('bxrnob', _('Buryad to Norwegian')),
+        #('nobbxr', _('Norwegian to Buryad')),         
 )
 
 NUMLANGUAGE_CHOICES = (
-	('bxr', _('Buriat')),
+	('bxr', _('Buryad')),
 )
 
 SEMTYPE_CHOICES = (
@@ -537,7 +537,7 @@ def relax(strict):
 		# key: value
 		# key is accepted for value
 		# For Russian: spellrelax for 'е' vs 'ё', vowels with and without stress marks
-		# The spell-relax rules for Buriat:
+		# The spell-relax rules for Buryad:
 	   u'b́' : u'bʼ',
 	   u'b' : u'bʼ',
 	   u'd́': u'dʼ',
@@ -2031,12 +2031,12 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     constant=""
     found=False
     #Interface language
-    if not language: language = "est" # was: nob
+    if not language: language = "eng" # was: nob
     language = switch_language_code(language)
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["est","lat","fin","eng","rus","bxr"]: language="est" # was: nob
+    if not language in ["rus","bxr","deu","fin","eng"]: language="eng" # was: nob
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():
@@ -2589,12 +2589,12 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     constant=""
     found=False
     #Interface language
-    if not language: language = "est"
+    if not language: language = "eng"
     language = switch_language_code(language)
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["rus","est","fin","eng","lat","bxr"]: language="est"
+    if not language in ["rus","fin","eng","lat","bxr"]: language="eng"
 
     for w in msgstrings.keys():
         if found: break
