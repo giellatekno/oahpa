@@ -1,0 +1,582 @@
+#Subclass
+Prop
+Pers
+Dem
+Interr
+Refl
+Recipr
+Rel
+Indefinite
+Qu
+Card
+Ord
+Act
+Pass
+#Derivation
+#Nountype
+#Passive
+#Demtype
+#Possessive
+PxSg1
+PxSg2
+PxSg3
+PxDu1
+PxDu2
+PxDu3
+PxPl1
+PxPl2
+PxPl3
+#Polarity
+Neg
+#Tense
+Prs
+Prt1
+Prt2
+#Punctuation
+ABBR
+ACR
+CLB
+PUNCT
+LEFT
+RIGHT
+#Number
+Sg
+Du
+Pl
+#NumberN
+Sg
+Pl
+SP
+#DerivedRoot
+V*
+N*
+A*
+#Case
+Nom
+Acc
+Gen
+Dat
+Loc
+Abl
+Pros
+#NPxNumber
+Sg
+Du
+Pl
+%
+#PxCase1
+Nom
+Acc
+Gen
+Dat
+Loc
+Abl
+Pros
+#Numeraltype
+Date
+Range
+#Infinite
+InfImprf
+InfPrf
+PrcImprf
+PrcPrf
+PrcNeg
+PrcFut
+GerFin
+Subord
+Aud
+Evas	
+Ger 	
+ConNeg
+ConNegII
+Neg 	
+ImprtII
+PrsPrc
+Sup 	
+VGen 	
+VAbess
+#Attributive
+Attr
+#Person-NumberSC
+ScSg1
+ScSg2
+ScSg3
+ScDu1
+ScDu2
+ScDu3
+ScPl1
+ScPl2
+ScPl3
+#Person-Number-ConNegSC
+ScSg1
+ScSg2
+ScSg3
+ScDu1
+ScDu2
+ScDu3
+ScPl1
+ScPl2
+ScPl3
+#Person-NumberOC
+OcSg1
+OcSg2
+OcSg3
+OcDu1
+OcDu2
+OcDu3
+OcPl1
+OcPl2
+OcPl3
+#Person-NumberRC
+RcSg1
+RcSg2
+RcSg3
+RcDu1
+RcDu2
+RcDu3
+RcPl1
+RcPl2
+RcPl3
+#Person-Number-ConNegOC
+OcSg1
+OcSg2
+OcSg3
+OcDu1
+OcDu2
+OcDu3
+OcPl1
+OcPl2
+OcPl3
+#Compound
+SgCmp
+SgNomCmp
+SgGenCmp
+PlGenCmp
+#Transitivity
+TV
+IV
+VR
+#Mood
+Ind
+Pot
+Conj
+Imprt
+Opt
+Hort
+Mod/appr
+Mod/des
+Mod/futappr
+Mod/hyp
+Mod/int
+Mod/narr
+Mod/nec
+Mod/obl
+Mod/rep
+Mod/sup
+Mod/perfappr
+Mod/perfprob
+Mod/prob
+#Syntax
+#Wordclass
+N
+A
+V
+Adv
+Pron
+Interj
+Pcle
+Num
+#Clitic
+#Nametype
+Ani
+Fem
+Mal
+Obj
+Org
+Plc
+Sur
+Tit
+#Grade
+Comp
+Superl
+#Connegative
+ConNeg
+
+
+
+!!!Morphology
+INTRODUCTION TO THE MORPHOLOGICAL ANALYSER OF NENETS
+
+
+!!Analysis symbols
+The morphological analyses of wordforms of the TUNDRA NENETS language are presented
+in this system in terms of following symbols.
+(It is highly suggested to follow existing standards when adding new tags).
+ * __+WORK__ WORK HAS TO BE DONE Do not remove, replaces +TYÄ
+The parts-of-speech are:
+
+ * __+N	__
+ * __+A	__
+ * __+Adv__
+ * __+V	__
+
+ * __+Pron__
+ * __+CS	__
+ * __+CC	__
+ * __+Adp__
+ * __+Po	__
+ * __+Pr	__
+ * __+Interj__
+ * __+Pcle__
+ * __+Num__
+
+
+
+The parts of speech are further split up into:
+
+ * __+Prop__
+ * __+Pers__
+ * __+Dem__
+ * __+Interr__
+ * __+Refl__
+ * __+Recipr__
+ * __+Rel__
+ * __+Indef__
+
+
+Adv
+ * __+Manner__
+ * __+Refr__ (referential),
+ * __+Temp__
+
+The Usage extents are marked using the following tags:
+ * __+Err/Sub__
+ * __+Use/-Spell__
+ * __+Use/SpellNoSugg__ recognized but not suggested in speller
+
+ * __+Rus__ (100% Russian homograph)
+
+
+Dialects
+
+ * __+Dial/W__ (Western dialects),
+ * __+Dial/T__ (Taimyr dialect  ),
+ * __+Dial/E__ (Eastern dialects),
+
+
+The nominals are inflected in the following Case and Number
+
+ * __+Sg__
+ * __+Du__
+ * __+Pl__
+ * __+Acc__
+ * __+Gen__ (Genitive)
+ * __+Abl__
+ * __+Dat__
+ * __+Loc__
+ * __+Nom__
+ * __+Pros__ (Prosecutive)
+ * __+Tra__
+ * __+Abe__
+ * __+Adc__
+ * __+Ins__
+ * __+Apr__
+ * __+Ine__
+ * __+Ill__
+ * __+Ela__
+ * __+Egr__
+ * __+Prl__
+ * __+Pred	__ = predestinative
+
+are these needed?:
+
+ * __+Appr__
+ * __+Advc__
+ * __+Ter__
+ * __+Pro__
+ * __+Car__
+ * __+Equ__
+
+derivative suffixes before case endings
+ * __+Lim__ limitative
+
+
+The possession is marked as such:
+
+
+ * __+PxSg1__
+ * __+PxSg2__
+ * __+PxSg3__
+ * __+PxDu1__
+ * __+PxDu2__
+ * __+PxDu3__
+ * __+PxPl1__
+ * __+PxPl2__
+ * __+PxPl3__
+
+The comparative forms are:
+ * __+Pos__
+ * __+Comp__
+ * __+Superl__
+
+Numerals are classified under:
+
+ * __+Attr__
+ * __+Card__
+ * __+Ord__
+
+Verb moods are:
+
+ * __+Ind__
+ * __+Pot__
+ * __+Conj__
+ * __+Imprt__
+ * __+Opt__
+ * __+Hort__
+ * __+Mod/appr__ approximative imperfective
+ * __+Mod/des__ desiderative
+ * __+Mod/futappr__ approximative futuritive
+ * __+Mod/hyp__ hyperprobablitative
+ * __+Mod/int__ interrogative
+ * __+Mod/narr__ narrative
+ * __+Mod/nec__ necessitativee
+ * __+Mod/obl__ obligative
+ * __+Mod/rep__ reputative
+ * __+Mod/sup__ superprobabilitative
+ * __+Mod/perfappr__ approximative perfective
+ * __+Mod/perfprob__ perfective probabilitative
+ * __+Mod/prob__ imperfective probabilitative
+
+
+Verb tenses are:
+
+ * __+Aor__
+ * __+Prt__
+ * __+Prt1__
+ * __+Prt2__
+
+Verb personal forms are:
+
+Subject
+
+One of the two following
+
+ * __+Sg1__
+ * __+Sg2__
+ * __+Sg3__
+ * __+Pl1__
+ * __+Pl2__
+ * __+Pl3__
+
+ * __+ScSg1__
+ * __+ScSg2__
+ * __+ScSg3__
+ * __+ScDu1__
+ * __+ScDu2__
+ * __+ScDu3__
+ * __+ScPl1__
+ * __+ScPl2__
+ * __+ScPl3__
+
+Object
+ * __+OcSg3__
+ * __+OcDu3__
+ * __+OcPl3__
+
+Other verb forms are
+
+ * __+InfImprf__
+ * __+InfPrf__
+ * __+PrcImprf__
+ * __+PrcPrf__
+ * __+PrcNeg__
+ * __+PrcFut__
+ * __+GerFin__
+ * __+Subord__
+ * __+Aud	__
+ * __+Evas	__
+ * __+Ger 	__
+ * __+ConNeg__
+ * __+ConNegII__
+ * __+Neg 	__
+ * __+ImprtII__
+ * __+PrsPrc__
+ * __+Sup 	__
+ * __+VGen 	__
+ * __+VAbess__
+
+Abbreviated words are classified with:
+
+ * __+ABBR__
+ * __+ACR__
+
+Special symbols are classified with:
+
+ * __+CLB__
+ * __+PUNCT__
+ * __+LEFT__
+ * __+RIGHT__
+
+The verbs are syntactically split according to transitivity:
+
+ * __+TV__
+ * __+IV__
+
+ * __+Aux__ auxilliary verb
+
+
+
+Special multiword units are analysed with:
+
+ * __+Multi__
+
+Non-dictionary words can be recognised with:
+
+ * __+Guess__
+
+Question and Focus particles:
+
+ * __+Qst__
+ * __+Foc__
+
+
+Semantics are classified with
+
+ * __+Sem/Mal 	__
+ * __+Sem/Fem 	__
+ * __+Sem/Sur 	__
+ * __+Sem/Plc 	__
+ * __+Sem/Org	__
+ * __+Sem/Obj	__
+ * __+Sem/Ani	__
+ * __+Sem/Hum	__
+ * __+Sem/Plant	__
+ * __+Sem/Group	__
+ * __+Sem/Time 	__
+ * __+Sem/Txt	__
+ * __+Sem/Route	__
+ * __+Sem/Measr__
+ * __+Sem/Wthr	__
+ * __+Sem/Build__
+ * __+Sem/Edu	__
+ * __+Sem/Veh	__
+ * __+Sem/Clth	__
+
+
+Derivations are classified under the morphophonetic form of the suffix, the
+source and target part-of-speech.
+
+ * __+V→N__
+ * __+V→V__
+ * __+V→A__
+ * __+Der/xxx__
+ * __+Der/MWN__ modifier without noun head
+ * __+Der/Pr__ this is used with predication of nominals and deverbal modalities
+
+
+
+!!Morphophonology
+
+To represent phonologic variations in word forms we use the following
+symbols in the lexicon files:
+ * __%{ая%}__ in Pros
+ * __%{оё%}__ in +N+Sg+Nom+PxPl3
+ * __%{рл%}	__ +N+Sg+Nom+PxSg2
+
+ * __%{аяуюØ%}__ хан+N+Sg+Acc+PxSg1: ханув, ханав
+ * __%{увм%}__ +N+Sg+Pros
+ * __%{вм%}	__ +N+Sg+Nom+PxSg1
+
+And following triggers to control variation
+ * __{front}__
+ * __{back}__
+ * __%^SCSG2__ this allows n2d +V+Ind+Aor+ScSg2:%>н°%^SCSG2
+ * __%^PLNOM__ disallows i2e +N+Pl+Nom+PxDu1+Der/Pr+V+Ind+Aor+ScPl3
+ * __%^PalVariation__ This allows for тарД1%>д%{оё%}нзь
+
+
+ * __%{ауоэØ%}__  А1:а А1:у А1:о А1:э schwa
+
+ * __%{ауоэиыØ%}__ before pros
+
+This is the schwa or reduced vowel occurring after x in case endings
+
+ * __А2__ Alternating between zero and а
+
+ * __Д1__
+ * __С1__
+ * __Н1__
+ * __Ӈ1__ = These are proto-glottals
+
+ * __Г1__
+ * __В1__
+ * __Е1__
+ * __Е2__
+ * __Ы1__
+ * __Ы2__ = These are for developing underlying morphology rules
+
+!!Triggers
+
+ * __%^A2O__ Initially this is used for the noun "я" to enable a:o
+ * __%^A2I__ for я:и in пя
+ * __%^MLenition__ м:в м:б
+ * __%^VowLower__ vowel lowering ы:э у:о
+ * __%^VowRaise__ э:ы о:у
+ * __%^VowLoss__ stem-final vowel is lost in plural accusative form
+ * __%^StemVowFronting__ хасава:хасев
+ * __%^VowFronting__ хадась:хадэйнинзь
+ * __%^PalLoss__ in combination with stem-final vowel loss
+ * __%^HardFronting__ яля:ялэ
+
+We have manually optimised the structure of our lexicon using the following
+flag diacritics to restrict morhpological combinatorics:
+
+ * __@P.NeedNoun.ON@__
+ * __@D.NeedNoun.ON@__
+ * __@C.NeedNoun@__
+
+Object conjugation
+
+ * __@P.CONJ.ObjAll@__
+ * __@R.CONJ.ObjAll@__
+ * __@C.CONJ@	__
+
+
+!!!The __Root__ lexicon
+
+
+The word forms in Nenets start from the lexeme roots of basic
+word classes, or optionally from prefixes:
+
+ * __adjectives ;	__
+ * __adpositions ;	__
+ * __adverbs ;		__
+ * __interjections ;__
+ * __nouns ;		__
+ * __pronouns ;	__
+ * __propernouns ;	__
+ * __quantifiers ;	__
+ * __verbs ;		__
+
+
+ * __V_NEWWORDS ;		__ This is for feeding new verbs.
+ * __Punctuation ;__
+
+ * __CONJUNCTION ;__
+ * __SUBJUNCTION ;__
+ * __INTERJECTION ;__
+ * __POSTPOSITION ;__
+
+
+
+
+
+
+
+
+
+
+
+
+
+
