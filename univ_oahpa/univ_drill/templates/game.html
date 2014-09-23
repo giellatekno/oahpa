@@ -7,18 +7,26 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block extrajs %}
-    	<script src="{{ MEDIA_URL }}/js/jquery-1.6.4.min.js" type="text/javascript"></script>
+        <script src="{% static "js/jquery-1.11.0.min.js" %}" type="text/javascript"></script>
+        <script src="{% static "js/tooltip.js" %}" type="text/javascript"></script>
+        <script src="{% static "js/popover.js" %}" type="text/javascript"></script>
 	    <script src="{{ MEDIA_URL }}/js/main.js" type="text/javascript"></script> 
 
-        {% if courses_user %}
+            <link rel="stylesheet" type="text/css" href="{% static "css/errorapi.css" %}"/>
 		    <script src="{% static "js/angular.min.js" %}" type="text/javascript"></script>
+            <script src="{% static "js/loading-bar.min.js" %}" type="text/javascript"></script>
 		    <script src="{% static "js/angular-cookies.js" %}" type="text/javascript"></script>
-		    <script src="{% static "js/courses.js" %}" type="text/javascript"></script> 
 
             <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.css" %}" />
             <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap_namespaced.css" %}" />
-            <link rel="stylesheet" type="text/css" href="{% static "css/courses.css" %}" />
+
+		<script src="{% static "js/courses.js" %}" type="text/javascript"></script> 
+        <link rel="stylesheet" type="text/css" href="{% static "css/courses.css" %}" />
+        {% comment %}
+        {% if courses_user %}
 	    {% endif %}
+	    {% endcomment %}
+
 {% endblock %}
 
 {% block content %}
@@ -58,7 +66,14 @@
 {% endifnotequal %}
 {% endifnotequal %}
 
-<div id="game_left" ng-controller="TooltipController" ng-source="/{{ URL_PREFIX }}/courses/api/feedback/">
+{% comment %}
+        <div ng-controller="ErrorRequester" 
+             data-error-watch="a.errorapi"
+             data-lookup-url="/davvi/errorapi/lookup/">
+        <div id="game_left" ng-controller="TooltipController" ng-source="/{{ URL_PREFIX }}/courses/api/feedback/">
+{% endcomment %}
+
+<div id="game_left" ng-controller="ErrorRequester" data-lookup-url="/{{ URL_PREFIX }}/errorapi/lookup/">
 	<dl id="question_set" class="{% block questionsetclass %}{% endblock %}">
 	{% for form in forms %}
 	
@@ -135,6 +150,7 @@
             {% endif %}  {# if show_correct #}
 		
 		
+            <span class="bootstrap-styles">
             {% ifequal form.error "error" %}
 			<!-- Feedback -->
                 {% if form.feedback %}
@@ -144,13 +160,26 @@
                     </span>
                     </a>
                 {% else %}
-                    <img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
+                    {# constraining this to a specific flag, just for testing. #}
+                    {% comment %}
+                        {% if form.errorapi_feedback %}
+				        {% else %}
+                            <img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
+				        {% endif %}
+                    {% endcomment %}
+
+                    <a data-error-fst href="#" data-lemma="{{ form.lemma }}" data-input-form="{{ form.userans }}" data-task="{{ form.user_task }}">
+                        <img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
+					    {% trans_to "help" "sme"%}
+				    </a>
+				    
                     {% if form.tcomm %}
                         <t class="interface">{% trans_to "This is almost correct!" "sme" %}<span class="invisible">{% trans "This is almost correct!" %}</span></t>
                     {% endif %}
                 {% endif %}
 		
             {% endifequal %}
+            </span>
 	
             </span>
         {% endif %}  {# if form.answer #}

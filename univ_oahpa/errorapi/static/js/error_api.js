@@ -101,18 +101,21 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
                 message_body_snippet = "<p>No errors :)</p>";
             }
 
+            var _wrapped_template = '<div class="bootstrap-styles"><div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div></div>';
             feedback_link.popover({
+                template: _wrapped_template,
                 title: 'Feedback',
                 content: message_body_snippet,
                 html: true,
                 trigger: 'hover focus',
             });
+
             feedback_link.popover('show');
             window.last_feedback = feedback_link;
         }
 
         // Prepare request
-        var form  = $(feedback_link).html();
+        var form  = $(feedback_link).attr('data-input-form') || $(feedback_link).html();
         var task  = $(feedback_link).attr('data-task');
         var lemma = $(feedback_link).attr('data-lemma');
 
