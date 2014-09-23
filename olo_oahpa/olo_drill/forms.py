@@ -350,10 +350,10 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-        ('oloest', u'Livvi to Estonian'),
-        ('estolo', u'Estonian to Livvi'),
-	    #('oloeng', _('Livvi to English')),
-	    #('engolo', _('English to Livvi')),
+        #('oloest', u'Livvi to Estonian'),
+        #('estolo', u'Estonian to Livvi'),
+	    ('oloeng', _('Livvi to English')),
+	    ('engolo', _('English to Livvi')),
         ('olofin', u'Livvi to Finnish'),
         ('finolo', u'Finnish to Livvi'),           
         #('ololat', _('Livvi to Latvian')),
@@ -362,8 +362,8 @@ TRANS_CHOICES = (
         #('smeolo', _('North Saami to Livvi')),
         #('olonob', _('Livvi to Norwegian')),
         #('nobolo', _('Norwegian to Livvi')), 
-        #('olorus', _('Livvi to Russian')),
-        #('rusolo', _('Russian to Livvi')),
+        ('olorus', _('Livvi to Russian')),
+        ('rusolo', _('Russian to Livvi')),
 )
 
 NUMLANGUAGE_CHOICES = (
@@ -2031,12 +2031,12 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     constant=""
     found=False
     #Interface language
-    if not language: language = "est" # was: nob
+    if not language: language = "eng" # was: nob
     language = switch_language_code(language)
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["est","lat","fin","eng","rus","olo"]: language="est" # was: nob
+    if not language in ["est","lat","fin","eng","rus","olo"]: language="eng" # was: nob
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():
@@ -2589,12 +2589,12 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     constant=""
     found=False
     #Interface language
-    if not language: language = "est"
+    if not language: language = "eng"
     language = switch_language_code(language)
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["rus","est","fin","eng","lat","olo"]: language="est"
+    if not language in ["rus","est","fin","eng","lat","olo"]: language="eng"
 
     for w in msgstrings.keys():
         if found: break
