@@ -108,5 +108,25 @@
     </answer>
   </q>
 </questions>
-
+<q id="nacc2">
+    <qtype>N-ACC</qtype>
+    <qtype>N-MIX</qtype>
+    <question>
+      <text>Midä SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>ostua</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ACC</text>
+      <element game='morfa' id="N-ACC" task="yes">
+	<sem class="CLOTHING"/>
+      </element>
+ </answer>
+  </q>
+</questions>
 
