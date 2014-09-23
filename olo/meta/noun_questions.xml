@@ -85,5 +85,28 @@
     </answer>
   </q>
 </questions>
+<q id="nloc3pl">
+    <qtype>N-LOC</qtype>
+    <qtype>N-MIX</qtype>
+    <question>
+      <text>Kus SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Nountype+Pl+Nom"/>
+	<sem class="ANIMAL_DOM"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Pl3"/>
+	<id>olla</id>
+      </element>
+    </question>
+    <answer> 
+      <text>Sii MAINV N-LOC</text>
+      <element game='morfa' id="N-LOC" task="yes">
+	<grammar tag="N+Nountype+Sg+Loc"/>
+	<sem class="PLACE_NATURE"/>
+      </element>
+    </answer>
+  </q>
+</questions>
 
 
