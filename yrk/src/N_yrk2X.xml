@@ -314,7 +314,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="HUMAN"/>
+            <sem class="HUMAN">PEOPLE</sem>
          </semantics>
          <tg xml:lang="eng">
             <t pos="N">man</t>
@@ -330,10 +330,11 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="HUMAN"/>
+            <sem class="HUMAN">PEOPLE</sem>
          </semantics>
          <tg xml:lang="eng">
-            <t pos="N">woman</t>
+            <t stat="pref">woman</t>
+            <t pos="N">wife</t>
          </tg>
       </mg>
    </e>
@@ -346,7 +347,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="HUMAN"/>
+            <sem class="HUMAN">PEOPLE</sem>
          </semantics>
          <tg xml:lang="eng">
             <t pos="N">child</t>
@@ -365,7 +366,7 @@
             <sem class="HUMAN"/>
          </semantics>
          <tg xml:lang="eng">
-            <t pos="N">old man</t>
+            <t stat="pref">old man</t>
             <t pos="N">husband</t>
          </tg>
       </mg>
@@ -396,10 +397,38 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="HUMAN"/>
+            <sem class="HUMAN">PEOPLE</sem>
          </semantics>
+         <tg xml:lang="rus">
+            <t stat="pref">девочка</t>
+         </tg>
          <tg xml:lang="eng">
             <t pos="N">young girl</t>
+         </tg>
+      </mg>
+   </e>
+      <e>
+      <lg>
+         <l pos="n">луца</l>
+      </lg>
+      <sources>
+         <book name=""/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN">PEOPLE</sem>
+         </semantics>
+         <tg xml:lang="rus">
+            <t pos="n">русский</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t stat="pref">Russian</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="n">venäläinen</t>
+         </tg>
+         <tg xml:lang="nob">
+            <t pos="n">russer</t>
          </tg>
       </mg>
    </e>
@@ -835,7 +864,8 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="BODYPART"/>
+            <sem class="BODY">PART</sem>
+            <sem class="SENSE">PERCEPTION</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">ухо</t>
@@ -915,7 +945,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY_OTHER"/>
+            <sem class="BODY">PART</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">стопа</t>
@@ -967,7 +997,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY_OTHER"/>
+            <sem class="BODY">PART</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">рука</t>
@@ -993,7 +1023,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY_OTHER"/>
+            <sem class="BODY">PART</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">колено</t>
@@ -1048,7 +1078,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY_OTHER"/>
+            <sem class="BODY">PART</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">рот</t>
@@ -1069,24 +1099,20 @@
          <l pos="n">ик</l>
       </lg>
       <sources>
-         <book name="l1"/>
          <book name=""/>
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY_OTHER"/>
-            <sem class="PLACE_WATER"/>
+            <sem class="BODY">PART</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">шея</t>
-            <t>исток</t>
          </tg>
          <tg xml:lang="eng">
             <t stat="pref">neck</t>
-            <t>source</t>
          </tg>
          <tg xml:lang="fin">
-            <t stat="pref">lähde</t>
+            <t stat="pref">kaula</t>
          </tg>
          <tg xml:lang="deu">
             <t stat="pref">Nacken</t>
@@ -1102,7 +1128,8 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY_OTHER"/>
+            <sem class="BODY">PART</sem>
+            <sem class="SENSE">PERCEPTION</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">нос</t>
@@ -1204,7 +1231,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY_OTHER"/>
+            <sem class="BODY">PART</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">кожа</t>
@@ -1437,7 +1464,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY_OTHER"/>
+            <sem class="BODY">PART</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">губа</t>
@@ -1462,7 +1489,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY_OTHER"/>
+            <sem class="BODY">PART</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">зуб</t>
@@ -1487,7 +1514,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY_OTHER"/>
+            <sem class="BODY">PART</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">шея</t>
@@ -1512,7 +1539,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY_OTHER"/>
+            <sem class="HUMAN">PERSON</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">лицо</t>
@@ -1537,7 +1564,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY_OTHER"/>
+            <sem class="BODY">PART</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">палец</t>
@@ -1562,7 +1589,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY_OTHER"/>
+            <sem class="BODY">PART</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">голова</t>
@@ -1587,7 +1614,10 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY_OTHER"/>
+            <sem class="BODY">PART</sem>
+            <sem class="LANG">SPEECH</sem>
+            <sem class="SENSE">PERCEPTION</sem>
+            <sem class="FOOD">DISH</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">рот</t>
@@ -1637,7 +1667,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="BODY_OTHER"/>
+            <sem class="BODY">PART</sem>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">плечо</t>
@@ -1646,7 +1676,9 @@
             <t stat="pref">shoulder</t>
          </tg>
          <tg xml:lang="fin">
-            <t stat="pref">lapa</t>
+            <t stat="pref">olkapää</t>
+            <t>lapa</t>
+            <t>hartia</t>
          </tg>
          <tg xml:lang="deu">
             <t stat="pref">shoulder_GER</t>
@@ -1674,6 +1706,7 @@
          </tg>
          <tg xml:lang="fin">
             <t stat="pref">keho</t>
+            <t>vartalo</t>
          </tg>
          <tg xml:lang="deu">
             <t stat="pref">trunk_GER</t>
@@ -1743,8 +1776,8 @@
             <sem class="FOOD_TRADITIONAL"/>
          </semantics>
          <tg xml:lang="rus">
-            <t stat="pref">кость</t>
-            <t>скелет</t>
+            <t stat="pref">скелет</t>
+            <t>кость</t>
          </tg>
          <tg xml:lang="eng">
             <t stat="pref">skeleton</t>
@@ -3899,7 +3932,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="CHURCH_OTHER"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">религия</t>
@@ -3924,7 +3957,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="CHURCH_OTHER"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">небеса</t>
@@ -4049,7 +4082,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="RELATIVE"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">брак</t>
@@ -4074,7 +4107,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="CULTURE"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">команда</t>
@@ -4099,7 +4132,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="PROPERTY"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">отношения</t>
@@ -4124,7 +4157,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="GRAMMAR_TERMINOLOGY"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">пол</t>
@@ -4144,7 +4177,7 @@
       <lg>
          <l pos="n">хадабава</l>
          <sources>
-            <book name="xxx"/>
+            <book name="ACTIVITY"/>
          </sources>
       </lg>
       <mg>
@@ -4174,7 +4207,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="LIVING_PLACE"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">тюрьма</t>
@@ -4199,7 +4232,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="CULTURE"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">технология</t>
@@ -4224,7 +4257,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="PROPERTY"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">энергия</t>
@@ -4249,7 +4282,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="ACTIVITY"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">выборы</t>
@@ -4274,7 +4307,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="TEXT"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">журнал</t>
@@ -4299,7 +4332,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="TEXT"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">газета</t>
@@ -4324,7 +4357,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="FOOD"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">яд</t>
@@ -4374,7 +4407,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="CULTURE"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">спорт</t>
@@ -4399,7 +4432,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="CULTURE"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">спортивная гонка</t>
@@ -4424,7 +4457,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="SCHOOL_EDUCATION"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">упражнения</t>
@@ -4449,7 +4482,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="CULTURE"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">игра</t>
@@ -4474,7 +4507,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="ABSTRACT"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">знак</t>
@@ -4499,7 +4532,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="CULTURE"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">наука</t>
@@ -4524,7 +4557,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="CULTURE"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">песня</t>
@@ -4549,7 +4582,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="CULTURE"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">песня</t>
@@ -4575,7 +4608,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="CULTURE"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">музыкальный инструмент</t>
@@ -4600,7 +4633,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="CULTURE"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">музыка</t>
@@ -4625,7 +4658,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="CULTURE"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">искусство</t>
@@ -4825,7 +4858,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="ACTIVITY"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">мечта</t>
@@ -4850,7 +4883,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="LIVING_PLACE_HOME"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">спальня</t>
@@ -4875,7 +4908,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="LIVING_PLACE_HOME"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">ванная</t>
@@ -6475,7 +6508,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="LANG"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">точка</t>
@@ -6500,7 +6533,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="LANG"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">согласный</t>
@@ -6520,12 +6553,12 @@
       <lg>
          <l pos="n">гласной муʼ</l>
          <sources>
-            <book name="xxx"/>
+            <book name=""/>
          </sources>
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="LANG"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">гласный</t>
@@ -6550,7 +6583,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="ENVIR"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">свет</t>
@@ -6575,7 +6608,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="BODY"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">боль</t>
@@ -6595,12 +6628,12 @@
       <lg>
          <l pos="n">прилагательное</l>
          <sources>
-            <book name="xxx"/>
+            <book name=""/>
          </sources>
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="LANG"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">прилагательное</t>
@@ -6625,7 +6658,7 @@
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="ENVIR"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">север</t>
@@ -6645,12 +6678,12 @@
       <lg>
          <l pos="n">яля ерˮ мин</l>
          <sources>
-            <book name="xxx"/>
+            <book name=""/>
          </sources>
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="ENVIR"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">юг</t>
@@ -6670,12 +6703,12 @@
       <lg>
          <l pos="n">восток</l>
          <sources>
-            <book name="xxx"/>
+            <book name=""/>
          </sources>
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="ENVIR"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">восток</t>
@@ -6695,12 +6728,12 @@
       <lg>
          <l pos="n">яляʼ тарпˮ</l>
          <sources>
-            <book name="xxx"/>
+            <book name=""/>
          </sources>
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="ENVIR"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">запад</t>
@@ -6720,12 +6753,12 @@
       <lg>
          <l pos="n">яляʼ падё</l>
          <sources>
-            <book name="xxx"/>
+            <book name=""/>
          </sources>
       </lg>
       <mg>
          <semantics>
-            <sem class="YYY"/>
+            <sem class="ENVIR"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">запад</t>
@@ -6745,12 +6778,12 @@
       <lg>
          <l pos="n">воскресенье</l>
          <sources>
-            <book name="xxx"/>
+            <book name=""/>
          </sources>
       </lg>
       <mg>
          <semantics>
-            <sem class="TIME"/>
+            <sem class="WEEKDAY"/>
          </semantics>
          <tg xml:lang="rus">
             <t pos="n" stat="pref">воскресенье</t>
