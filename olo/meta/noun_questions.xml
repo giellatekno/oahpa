@@ -128,5 +128,69 @@
       </element>
  </answer>
   </q>
+<q id="nill10">
+    <qtype>N-ILL</qtype>
+    <qtype>N-MIX</qtype>
+    <question>
+      <text>Kunne SUBJ MAINV</text>
+      <element id="SUBJ">
+		<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>kävellä</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ILL</text>
+      <element game='morfa' id="N-ILL" task="yes">
+	<grammar tag="N+Nountype+Sg+Ill"/>
+	<sem class="BUILDING"/>
+      </element>
+    </answer>
+  </q>
+<q id="nloc1pl">
+    <qtype>N-Ela</qtype>
+    <qtype>N-MIX</qtype>
+    <question>
+      <text>Kuspäi SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Nountype+Pl+Nom"/>
+	<sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Pl3"/>
+	<id>ajua</id>
+      </element>
+    </question>
+    <answer> 
+      <text>Hyö MAINV N-LOC</text>
+      <element game='morfa' id="N-LOC" task="yes">
+	<grammar tag="N+Prop+Sg+Ela"/>
+	<sem class="LIVING_PLACE"/>
+      </element>
+    </answer>
+  </q>
+<q id="nall1pl">
+    <qtype>N-All</qtype>
+    <qtype>N-MIX</qtype>
+    <question>
+      <text>Kelle SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Tense+Person-Number"/>
+	  <id>suuttuo</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-All</text>
+      <element game='morfa' id="N-ALL" task="yes">
+	<grammar tag="N+Nountype+Pl+All"/>
+	<sem class="PEOPLE"/>
+      </element>
+    </answer>
+  </q>
 </questions>
 
