@@ -3,18 +3,12 @@
 <!DOCTYPE lexicon  PUBLIC '-//XMLmind//DTD lexicon//FI'  '../../dtd/questions.dtd'>
 -->
 
-<!-- xml-structure for questions in morphdrill -->
-<!-- Questions for verbs. Not yet potential -->
+<!-- xml-structure for questions in Morfa C -->
 <questions>
-
-<!-- This will be challenging; the SUBJ values in the question and the answer -->
-<!-- are different. It the question there is PxSg2, and in the answer PxSg1. -->
-<!--  -->
-<!--  -->
-  <q id="nabl1">
+  <q id="npar1">
     <qtype>N-ABL</qtype>
     <question>
-      <text>Мезде SUBJ MAINV</text>
+      <text>Мезде SUBJ MAINV</text> <!-- What does X drink? X drinks Y. -->
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
         <sem class="PEOPLE"/>
@@ -32,10 +26,10 @@
       </element>
     </answer>
   </q>
-  <q id="nabl2">
+  <q id="npar2">
     <qtype>N-ABL</qtype>
     <question>
-      <text>Мезде SUBJ MAINV</text>
+      <text>Мезде SUBJ MAINV</text>  <!-- What does X eat? X eats Y. -->
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
         <sem class="PEOPLE"/>
@@ -53,7 +47,7 @@
       </element>
     </answer>
   </q>
-    <q id="npar3">
+  <q id="npar3">
     <qtype>N-PAR</qtype>
     <question>
       <text>Mitä SUBJ MAINV</text> <!-- What does X buy? X buys Y. -->
@@ -117,36 +111,6 @@
       </element>
     </answer>
   </q> 
-<!--  <q id="NLat">
-    <qtype>N-LAT</qtype>
-   <question>
-      <text>Ков тонь SUBJ MAINV</text>
-      <element id="SUBJ">
-        <sem class="FAMILY"/>
-	<grammar tag="N+Sg+Nom+PxSg2"/>
-      </element>
-      <element id="MAINV">
-        <sem class="MOVEMENT_V"/>
-	<grammar tag="V+Ind+Prs+ScSg3"/>
-      </element>
-    </question>
-    <answer> 
-      <text>N-PXSG1 MAINV N-LAT</text>
-      <element id="N-PXSG1" content="SUBJ">
-        <agreement id="SUBJ"/>
-	<grammar tag="N+Sg+Nom+PxSg1"/>
-      </element>
-      <element id="MAINV" content="MAINV">
-        <agreement id="MAINV"/>
-	<grammar tag="V+Ind+Prs+ScSg3"/>
-      </element>
-      <element game='morfa' id="N-LAT" task="yes" >
-	<sem class="PLACE"/>
-	<grammar tag="N+Sem/Plc+SP+Lat+Indef"/>
-      </element>
-    </answer>
-  </q> 
--->
 </questions>
 
 
