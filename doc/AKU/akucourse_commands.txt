@@ -1,0 +1,146 @@
+
+* bxr 
+* izh 
+* kpv 
+* mdf 
+* mhr 
+* mrj 
+* myv 
+* olo 
+* udm 
+* vep 
+* yrk 
+
+* bxr - [http://testing.oahpa.no/izh_oahpa]
+* fkv - [http://testing.oahpa.no/fkv_oahpa]
+* izh - [http://testing.oahpa.no/izh_oahpa]
+* kpv - [http://oahpa.no/kpvoahpa]
+* mdf - [http://testing.oahpa.no/mdf_oahpa]
+* mhr - [http://testing.oahpa.no/mhr_oahpa]
+* mrj - [http://testing.oahpa.no/mrj_oahpa]
+* myv - [http://oahpa.no/erzya]
+* olo - [http://testing.oahpa.no/olo_oahpa]
+* smn - [http://oahpa.no/aanaar]
+* udm - [http://testing.oahpa.no/udm_oahpa]
+* vep - [http://testing.oahpa.no/vep_oahpa]
+* yrk - [http://oahpa.no/yrkoahpa]
+
+
+svn ci -m "Folder bxrdoc/gen izhdoc/gen kpvdoc/gen mdfdoc/gen mhrdoc/gen mrjdoc/gen myvdoc/gen olodoc/gen udmdoc/gen vepdoc/gen yrkdoc/gen fkvdoc/gen smndoc/gen
+
+
+
+cat common/TestClock.txt | lookup ~/main/langs/bxr/src/transcriptor-clock2text-desc.xfst > bxrdoc/gen/clocktest.txt
+
+cat common/TestClock.txt | lookup ~/main/langs/fkv/src/transcriptor-clock2text-desc.xfst > fkvdoc/gen/clocktest.txt
+
+cat common/TestClock.txt | lookup ~/main/langs/izh/src/transcriptor-clock2text-desc.xfst > izhdoc/gen/clocktest.txt
+
+cat common/TestClock.txt | lookup ~/main/langs/kpv/src/transcriptor-clock2text-desc.xfst > kpvdoc/gen/clocktest.txt
+
+cat common/TestClock.txt | lookup ~/main/langs/mdf/src/transcriptor-clock2text-desc.xfst > mdfdoc/gen/clocktest.txt
+
+cat common/TestClock.txt | lookup ~/main/langs/mhr/src/transcriptor-clock2text-desc.xfst > mhrdoc/gen/clocktest.txt
+
+cat common/TestClock.txt | lookup ~/main/langs/mrj/src/transcriptor-clock2text-desc.xfst > mrjdoc/gen/clocktest.txt
+
+cat common/TestClock.txt | lookup ~/main/langs/myv/src/transcriptor-clock2text-desc.xfst > myvdoc/gen/clocktest.txt
+
+cat common/TestClock.txt | lookup ~/main/langs/olo/src/transcriptor-clock2text-desc.xfst > olodoc/gen/clocktest.txt
+
+cat common/TestClock.txt | lookup ~/main/langs/smn/src/transcriptor-clock2text-desc.xfst > smndoc/gen/clocktest.txt
+
+cat common/TestClock.txt | lookup ~/main/langs/udm/src/transcriptor-clock2text-desc.xfst > udmdoc/gen/clocktest.txt
+
+cat common/TestClock.txt | lookup ~/main/langs/vep/src/transcriptor-clock2text-desc.xfst > vepdoc/gen/clocktest.txt
+
+cat common/TestClock.txt | lookup ~/main/langs/yrk/src/transcriptor-clock2text-desc.xfst > yrkdoc/gen/clocktest.txt
+
+
+
+cat common/TestDate.txt | lookup ~/main/langs/bxr/src/transcriptor-date2text-desc.xfst > bxrdoc/gen/datetest.txt
+
+cat common/TestDate.txt | lookup ~/main/langs/fkv/src/transcriptor-date2text-desc.xfst > fkvdoc/gen/datetest.txt
+
+cat common/TestDate.txt | lookup ~/main/langs/izh/src/transcriptor-date2text-desc.xfst > izhdoc/gen/datetest.txt
+
+cat common/TestDate.txt | lookup ~/main/langs/kpv/src/transcriptor-date2text-desc.xfst > kpvdoc/gen/datetest.txt
+
+cat common/TestDate.txt | lookup ~/main/langs/mdf/src/transcriptor-date2text-desc.xfst > mdfdoc/gen/datetest.txt
+
+cat common/TestDate.txt | lookup ~/main/langs/mhr/src/transcriptor-date2text-desc.xfst > mhrdoc/gen/datetest.txt
+
+cat common/TestDate.txt | lookup ~/main/langs/mrj/src/transcriptor-date2text-desc.xfst > mrjdoc/gen/datetest.txt
+
+cat common/TestDate.txt | lookup ~/main/langs/myv/src/transcriptor-date2text-desc.xfst > myvdoc/gen/datetest.txt
+
+cat common/TestDate.txt | lookup ~/main/langs/olo/src/transcriptor-date2text-desc.xfst > olodoc/gen/datetest.txt
+
+cat common/TestDate.txt | lookup ~/main/langs/smn/src/transcriptor-date2text-desc.xfst > smndoc/gen/datetest.txt
+
+cat common/TestDate.txt | lookup ~/main/langs/udm/src/transcriptor-date2text-desc.xfst > udmdoc/gen/datetest.txt
+
+cat common/TestDate.txt | lookup ~/main/langs/vep/src/transcriptor-date2text-desc.xfst > vepdoc/gen/datetest.txt
+
+cat common/TestDate.txt | lookup ~/main/langs/yrk/src/transcriptor-date2text-desc.xfst > yrkdoc/gen/datetest.txt
+
+
+
+cat common/TestNumerals.txt | lookup ~/main/langs/bxr/src/transcriptor-numbers2text-desc.xfst > bxrdoc/gen/numeraltest.txt
+
+cat common/TestNumerals.txt | lookup ~/main/langs/fkv/src/transcriptor-numbers2text-desc.xfst > fkvdoc/gen/numeraltest.txt
+
+cat common/TestNumerals.txt | lookup ~/main/langs/izh/src/transcriptor-numbers2text-desc.xfst > izhdoc/gen/numeraltest.txt
+
+cat common/TestNumerals.txt | lookup ~/main/langs/kpv/src/transcriptor-numbers2text-desc.xfst > kpvdoc/gen/numeraltest.txt
+
+cat common/TestNumerals.txt | lookup ~/main/langs/mdf/src/transcriptor-numbers2text-desc.xfst > mdfdoc/gen/numeraltest.txt
+
+cat common/TestNumerals.txt | lookup ~/main/langs/mhr/src/transcriptor-numbers2text-desc.xfst > mhrdoc/gen/numeraltest.txt
+
+cat common/TestNumerals.txt | lookup ~/main/langs/mrj/src/transcriptor-numbers2text-desc.xfst > mrjdoc/gen/numeraltest.txt
+
+cat common/TestNumerals.txt | lookup ~/main/langs/myv/src/transcriptor-numbers2text-desc.xfst > myvdoc/gen/numeraltest.txt
+
+cat common/TestNumerals.txt | lookup ~/main/langs/olo/src/transcriptor-numbers2text-desc.xfst > olodoc/gen/numeraltest.txt
+
+cat common/TestNumerals.txt | lookup ~/main/langs/smn/src/transcriptor-numbers2text-desc.xfst > smndoc/gen/numeraltest.txt
+
+cat common/TestNumerals.txt | lookup ~/main/langs/udm/src/transcriptor-numbers2text-desc.xfst > udmdoc/gen/numeraltest.txt
+
+cat common/TestNumerals.txt | lookup ~/main/langs/vep/src/transcriptor-numbers2text-desc.xfst > vepdoc/gen/numeraltest.txt
+
+cat common/TestNumerals.txt | lookup ~/main/langs/yrk/src/transcriptor-numbers2text-desc.xfst > yrkdoc/gen/numeraltest.txt
+
+
+
+cat common/TestOrdinals.txt | lookup ~/main/langs/bxr/src/transcriptor-numbers2text-desc.xfst > bxrdoc/gen/ordinaltest.txt
+
+cat common/TestOrdinals.txt | lookup ~/main/langs/fkv/src/transcriptor-numbers2text-desc.xfst > fkvdoc/gen/ordinaltest.txt
+
+cat common/TestOrdinals.txt | lookup ~/main/langs/izh/src/transcriptor-numbers2text-desc.xfst > izhdoc/gen/ordinaltest.txt
+
+cat common/TestOrdinals.txt | lookup ~/main/langs/kpv/src/transcriptor-numbers2text-desc.xfst > kpvdoc/gen/ordinaltest.txt
+
+cat common/TestOrdinals.txt | lookup ~/main/langs/mdf/src/transcriptor-numbers2text-desc.xfst > mdfdoc/gen/ordinaltest.txt
+
+cat common/TestOrdinals.txt | lookup ~/main/langs/mhr/src/transcriptor-numbers2text-desc.xfst > mhrdoc/gen/ordinaltest.txt
+
+cat common/TestOrdinals.txt | lookup ~/main/langs/mrj/src/transcriptor-numbers2text-desc.xfst > mrjdoc/gen/ordinaltest.txt
+
+cat common/TestOrdinals.txt | lookup ~/main/langs/myv/src/transcriptor-numbers2text-desc.xfst > myvdoc/gen/ordinaltest.txt
+
+cat common/TestOrdinals.txt | lookup ~/main/langs/olo/src/transcriptor-numbers2text-desc.xfst > olodoc/gen/ordinaltest.txt
+
+cat common/TestOrdinals.txt | lookup ~/main/langs/smn/src/transcriptor-numbers2text-desc.xfst > smndoc/gen/ordinaltest.txt
+
+cat common/TestOrdinals.txt | lookup ~/main/langs/udm/src/transcriptor-numbers2text-desc.xfst > udmdoc/gen/ordinaltest.txt
+
+cat common/TestOrdinals.txt | lookup ~/main/langs/vep/src/transcriptor-numbers2text-desc.xfst > vepdoc/gen/ordinaltest.txt
+
+cat common/TestOrdinals.txt | lookup ~/main/langs/yrk/src/transcriptor-numbers2text-desc.xfst > yrkdoc/gen/ordinaltest.txt
+
+
+
+
+
