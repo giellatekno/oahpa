@@ -3,19 +3,25 @@
 <!DOCTYPE lexicon  PUBLIC '-//XMLmind//DTD lexicon//FI'  '../../dtd/questions.dtd'>
 -->
 
-<!-- xml-structure for questions in Morfa C -->
+<!-- xml-structure for questions in morphdrill -->
+<!-- Questions for verbs. Not yet potential -->
 <questions>
-  <q id="npar1">
+
+<!-- This will be challenging; the SUBJ values in the question and the answer -->
+<!-- are different. It the question there is PxSg2, and in the answer PxSg1. -->
+<!--  -->
+<!--  -->
+  <q id="nabl1">
     <qtype>N-ABL</qtype>
     <question>
-      <text>Мезде SUBJ MAINV</text> <!-- What does X drink? X drinks Y. -->
+      <text>Мезьда SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
-        <id>ярсамс</id>
+        <id>ярхцамс</id>
       </element>
     </question>
     <answer> 
@@ -26,17 +32,17 @@
       </element>
     </answer>
   </q>
-  <q id="npar2">
+  <q id="nabl2">
     <qtype>N-ABL</qtype>
     <question>
-      <text>Мезде SUBJ MAINV</text>  <!-- What does X eat? X eats Y. -->
+      <text>Мезьда SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
-        <id>симемс</id>
+        <id>симомс</id>
       </element>
     </question>
     <answer> 
@@ -47,70 +53,36 @@
       </element>
     </answer>
   </q>
-  <q id="npar3">
-    <qtype>N-PAR</qtype>
-    <question>
-      <text>Mitä SUBJ MAINV</text> <!-- What does X buy? X buys Y. -->
+<!--  <q id="NLat">
+    <qtype>N-LAT</qtype>
+   <question>
+      <text>Ков тонь SUBJ MAINV</text>
       <element id="SUBJ">
-            <grammar tag="N+Sg+Nom"/>
         <sem class="FAMILY"/>
+	<grammar tag="N+Sg+Nom+PxSg2"/>
       </element>
       <element id="MAINV">
-        <grammar tag="V+Act+Ind+Prs+Sg3"/>
-        <id>ostaat</id>
+        <sem class="MOVEMENT_V"/>
+	<grammar tag="V+Ind+Prs+ScSg3"/>
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-PAR</text>
-      <element game='morfa' id="N-PAR" task="yes">
-        <grammar tag="N+Sg+Par"/>
-        <sem class="FOOD_GROCERY"/>
+      <text>N-PXSG1 MAINV N-LAT</text>
+      <element id="N-PXSG1" content="SUBJ">
+        <agreement id="SUBJ"/>
+	<grammar tag="N+Sg+Nom+PxSg1"/>
       </element>
-    </answer>
-  </q>
-  <q id="nill1">
-    <qtype>N-ILL</qtype>
-    <qtype>N-MIX</qtype>
-    <question>
-      <text>Gosa SUBJ MAINV</text> <!-- Where did X go? X went (in)to Y. -->
-      <element id="SUBJ">
-		<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      <element id="MAINV" content="MAINV">
+        <agreement id="MAINV"/>
+	<grammar tag="V+Ind+Prs+ScSg3"/>
       </element>
-      <element id="MAINV">
-	<grammar tag="V+Ind+Tense+Person-Number"/>
-	<id>mannat</id>
-      </element>
-    </question>
-    <answer> 
-      <text>SUBJ MAINV N-ILL</text>
-      <element game='morfa' id="N-ILL" task="yes">
-	<grammar tag="N+Prop+Sg+Ill"/>
-	<sem class="mPLACENAME"/>
-      </element>
-    </answer>
-  </q>
-  <q id="nloc1sg">
-    <qtype>N-LOC</qtype>
-    <qtype>N-MIX</qtype>
-    <question>
-      <text>Gos SUBJ MAINV</text> <!-- Where is X? X is in Y. -->
-      <element id="SUBJ">
-	<grammar tag="N+Nountype+Sg+Nom"/>
-	<sem class="mPEOPLE"/>
-      </element>
-      <element id="MAINV">
-	<grammar tag="V+Ind+Tense+Sg3"/>
-	<id>leat</id>
-      </element>
-    </question>
-    <answer> 
-      <text>Son MAINV N-LOC</text>
-      <element game='morfa' id="N-LOC" task="yes">
-	<grammar tag="N+Prop+Sg+Loc"/>
-	<sem class="mPLACENAME"/>
+      <element game='morfa' id="N-LAT" task="yes" >
+	<sem class="PLACE"/>
+	<grammar tag="N+Sem/Plc+SP+Lat+Indef"/>
       </element>
     </answer>
   </q> 
+-->
 </questions>
 
 
