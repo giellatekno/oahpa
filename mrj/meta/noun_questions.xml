@@ -8,14 +8,14 @@
   <q id="npar1">
     <qtype>N-ABL</qtype>
     <question>
-      <text>Мезде SUBJ MAINV</text> <!-- What does X drink? X drinks Y. -->
+      <text>Мам SUBJ MAINV</text> <!-- What does X drink? X drinks Y. -->
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
-        <id>ярсамс</id>
+        <id>качкаш</id>
       </element>
     </question>
     <answer> 
@@ -29,14 +29,14 @@
   <q id="npar2">
     <qtype>N-ABL</qtype>
     <question>
-      <text>Мезде SUBJ MAINV</text>  <!-- What does X eat? X eats Y. -->
+      <text>Мам SUBJ MAINV</text>  <!-- What does X eat? X eats Y. -->
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
-        <id>симемс</id>
+        <id>йӱӓш</id>
       </element>
     </question>
     <answer> 
@@ -50,14 +50,14 @@
   <q id="npar3">
     <qtype>N-PAR</qtype>
     <question>
-      <text>Mitä SUBJ MAINV</text> <!-- What does X buy? X buys Y. -->
+      <text>Мам SUBJ MAINV</text> <!-- What does X buy? X buys Y. -->
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
         <sem class="FAMILY"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
-        <id>ostaat</id>
+        <id>нӓлӓш</id>
       </element>
     </question>
     <answer> 
@@ -72,13 +72,13 @@
     <qtype>N-ILL</qtype>
     <qtype>N-MIX</qtype>
     <question>
-      <text>Gosa SUBJ MAINV</text> <!-- Where did X go? X went (in)to Y. -->
+      <text>Кышкы SUBJ MAINV</text> <!-- Where did X go? X went (in)to Y. -->
       <element id="SUBJ">
 		<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
-	<id>mannat</id>
+	<id>кыдалаш</id>
       </element>
     </question>
     <answer> 
@@ -93,14 +93,14 @@
     <qtype>N-LOC</qtype>
     <qtype>N-MIX</qtype>
     <question>
-      <text>Gos SUBJ MAINV</text> <!-- Where is X? X is in Y. -->
+      <text>Кышты SUBJ MAINV</text> <!-- Where is X? X is in Y. -->
       <element id="SUBJ">
 	<grammar tag="N+Nountype+Sg+Nom"/>
 	<sem class="mPEOPLE"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Sg3"/>
-	<id>leat</id>
+	<id>ылаш</id>
       </element>
     </question>
     <answer> 
