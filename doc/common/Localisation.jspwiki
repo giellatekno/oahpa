@@ -44,7 +44,7 @@ After fixing the files update the official directory and compile the messages.
 {{{
 cd ped/oahpa/
 svn up
-python manage.py compilemessages
+python manage.py compilemessages --ignore=env/*
 }}}
 
 If you are not allowed to compile the messages (the machine requires
