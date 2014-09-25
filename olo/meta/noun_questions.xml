@@ -54,7 +54,7 @@
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
         <id>ostua</id>
       </element>
-    </question>
+    </question> 
     <answer> 
       <text>SUBJ MAINV N-PAR</text>
       <element game='morfa' id="N-PAR" task="yes">
@@ -84,7 +84,6 @@
       </element>
     </answer>
   </q>
-</questions>
 <q id="nloc3pl">
     <qtype>N-LOC</qtype>
     <qtype>N-MIX</qtype>
@@ -100,14 +99,13 @@
       </element>
     </question>
     <answer> 
-      <text>Sii MAINV N-LOC</text>
+      <text>Hyö MAINV N-LOC</text>
       <element game='morfa' id="N-LOC" task="yes">
 	<grammar tag="N+Nountype+Sg+Loc"/>
 	<sem class="PLACE_NATURE"/>
       </element>
     </answer>
   </q>
-</questions>
 <q id="nacc2">
     <qtype>N-ACC</qtype>
     <qtype>N-MIX</qtype>
@@ -134,11 +132,32 @@
     <question>
       <text>Kunne SUBJ MAINV</text>
       <element id="SUBJ">
-		<grammar tag="Pron+Pers+Person-Number+Nom"/>
+		<grammar tag="N+Sg+Nom"/>
       </element>
       <element id="MAINV">
-	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<grammar tag="V+Ind+Prs+Sg3"/>
 	<id>kävellä</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ILL</text>
+      <element game='morfa' id="N-ILL" task="yes">
+	<grammar tag="N+Nountype+Sg+Ill"/>
+	<sem class="BUILDING"/>
+      </element>
+    </answer>
+  </q>
+<q id="nill11">
+    <qtype>N-ILL</qtype>
+    <qtype>N-MIX</qtype>
+    <question>
+      <text>Kunne SUBJ MAINV</text>
+      <element id="SUBJ">
+		<grammar tag="N+Sg+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Sg3"/>
+	<id>mennä</id>
       </element>
     </question>
     <answer> 
@@ -171,6 +190,28 @@
       </element>
     </answer>
   </q>
+<q id="nloc1pl">
+    <qtype>N-Ela</qtype>
+    <qtype>N-MIX</qtype>
+    <question>
+      <text>Kuspäi SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Nountype+Pl+Nom"/>
+	<sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Pl3"/>
+	<id>soudua</id>
+      </element>
+    </question>
+    <answer> 
+      <text>Hyö MAINV N-LOC</text>
+      <element game='morfa' id="N-LOC" task="yes">
+	<grammar tag="N+Prop+Sg+Ela"/>
+	<sem class="LIVING_PLACE"/>
+      </element>
+    </answer>
+  </q>
 <q id="nall1pl">
     <qtype>N-All</qtype>
     <qtype>N-MIX</qtype>
@@ -192,27 +233,172 @@
       </element>
     </answer>
   </q>
-  <q id="nloc1sg">
-    <qtype>N-LOC</qtype>
+  <q id="nine1sg">
+    <qtype>N-INE</qtype>
     <qtype>N-MIX</qtype>
     <question>
-      <text>Gos SUBJ MAINV</text> <!-- Where is X? X is in Y. -->
+      <text>Kus SUBJ MAINV</text> <!-- Where is X? X is in Y. -->
       <element id="SUBJ">
 	<grammar tag="N+Nountype+Sg+Nom"/>
 	<sem class="mPEOPLE"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Sg3"/>
-	<id>leat</id>
+	<id>eliä</id>
       </element>
     </question>
     <answer> 
-      <text>Son MAINV N-LOC</text>
-      <element game='morfa' id="N-LOC" task="yes">
-	<grammar tag="N+Prop+Sg+Loc"/>
+      <text>Häi MAINV N-INE</text>
+      <element game='morfa' id="N-INE" task="yes">
+	<grammar tag="N+Prop+Sg+Ine"/>
 	<sem class="mPLACENAME"/>
       </element>
     </answer>
   </q> 
+  <q id="npar4">
+    <qtype>N-PAR</qtype>
+    <question>
+      <text>Midä SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>keittiä</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-PAR</text>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Par"/>
+        <sem class="FOOD_DISH"/>
+      </element>
+    </answer>
+  </q>  <q id="npar5">
+    <qtype>N-PAR</qtype>
+    <question>
+      <text>Midä SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>keitellä</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-PAR</text>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Par"/>
+        <sem class="FOOD_DISH"/>
+      </element>
+    </answer>
+  </q>
+  <q id="npar6">
+    <qtype>N-PAR</qtype>
+    <question>
+      <text>Midä SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>särbiä</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-PAR</text>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Par"/>
+        <sem class="FOOD_DISH"/>
+      </element>
+    </answer>
+  </q>
+  <q id="npar7">
+    <qtype>N-PAR</qtype>
+    <question>
+      <text>Midä SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>ahmie</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-PAR</text>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Par"/>
+        <sem class="FOOD_DISH"/>
+      </element>
+    </answer>
+ <q id="npar8">
+    <qtype>N-PAR</qtype>
+    <question>
+      <text>Midä SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>ryypätä</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-PAR</text>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Par"/>
+        <sem class="DRINK"/>
+      </element>
+    </answer>
+  </q>
+<q id="npar9">
+    <qtype>N-PAR</qtype>
+    <question>
+      <text>Midä SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>pastua</id>
+      </element>
+      </question>
+    <answer> 
+      <text>SUBJ MAINV N-PAR</text>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Par"/>
+        <sem class="FOOD_DISH"/>
+      </element>
+    </answer>
+  </q>
+<q id="npar10">
+    <qtype>N-PAR</qtype>
+    <question>
+      <text>Midä SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>žuarie</id>
+      </element>
+      </question>
+    <answer> 
+      <text>SUBJ MAINV N-PAR</text>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Par"/>
+        <sem class="FOOD_DISH"/>
+      </element>
+    </answer>
+  </q>
 </questions>
 
