@@ -47,7 +47,14 @@
 							<option value="no" selected="selected">Norsk</option>
 						{% else %}
 							<option value="no">Norsk</option>
+						{% endifequal %} 
+						
+						{% ifequal LANGUAGE_CODE "myv" %}
+							<option value="myv" selected="selected">Erzya</option>
+						{% else %}
+							<option value="myv">Erzya</option>
 						{% endifequal %}
+
 							  
 						{% ifequal LANGUAGE_CODE "ru" %}
 							<option value="ru" selected="selected">Pусский язык</option>
@@ -65,8 +72,8 @@
 							<option value="en" selected="selected">English</option>
 						{% else %}
 							<option value="en">English</option>
-						{% endifequal %}
-
+						{% endifequal %} 
+						
 					</select>
 					</dd>
 				</dl>
@@ -103,7 +110,7 @@
 		<div id="header">
 			{% block header_content %}
 			<h1><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!" /></h1>
-			<h2>Шумбрачи, ялгинем!</h2>
+			<h2>Шумбрат!</h2>
 			{% endblock %}
 		</div>
 
