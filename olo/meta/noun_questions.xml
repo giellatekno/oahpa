@@ -192,5 +192,27 @@
       </element>
     </answer>
   </q>
+  <q id="nloc1sg">
+    <qtype>N-LOC</qtype>
+    <qtype>N-MIX</qtype>
+    <question>
+      <text>Gos SUBJ MAINV</text> <!-- Where is X? X is in Y. -->
+      <element id="SUBJ">
+	<grammar tag="N+Nountype+Sg+Nom"/>
+	<sem class="mPEOPLE"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Sg3"/>
+	<id>leat</id>
+      </element>
+    </question>
+    <answer> 
+      <text>Son MAINV N-LOC</text>
+      <element game='morfa' id="N-LOC" task="yes">
+	<grammar tag="N+Prop+Sg+Loc"/>
+	<sem class="mPLACENAME"/>
+      </element>
+    </answer>
+  </q> 
 </questions>
 
