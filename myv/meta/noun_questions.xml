@@ -72,9 +72,10 @@
         <grammar tag="N+Sg+Nom+Indef"/>
         <sem class="FOOD_GROCERY"/>
       </element>
-<element id="MAINV">
+      <element id="MAINV">
         <grammar tag="V+TV+Ind+Prt1+Sg3"/>
         <id>рамамс</id>
+        </element>
     </answer>
   </q>
 <q id="nnom1">
@@ -103,6 +104,7 @@
 <element game='morfa' id="N-DATIV" task="yes">
         <grammar tag="N+Sg+Dativ+Indef"/>
         <sem class="FAMILY"/>
+</element>
     </answer>
   </q>
   <q id="nill1">
@@ -111,7 +113,7 @@
     <question>
       <text>Козонь SUBJ MAINV</text> <!-- Where did X go? X went (in)to Y. -->
       <element id="SUBJ">
-		<grammar tag="N+Sg+Nom+DefSg1/>
+		<grammar tag="N+Sg+Nom+DefSg1"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Prt1+Sg"/>
@@ -132,7 +134,7 @@
     <question>
       <text>Ков SUBJ MAINV</text> <!-- Where did X go? X went (in)to Y. -->
       <element id="SUBJ">
-		<grammar tag="N+Pl+Nom+Def/>
+		<grammar tag="N+Pl+Nom+Def"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Prs+Pl3"/>
