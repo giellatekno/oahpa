@@ -8,84 +8,84 @@
   <q id="npar1">
     <qtype>N-ABL</qtype>
     <question>
-      <text>Мезде SUBJ MAINV</text> <!-- What does X drink? X drinks Y. -->
+      <text>Ӈамгэм’ SUBJ MAINV</text> <!-- What does X drink? X drinks Y. -->
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
-        <id>ярсамс</id>
+        <id>ӈэрпась</id>
       </element>
     </question>
     <answer> 
       <text>SUBJ MAINV N-ABL</text>
       <element game='morfa' id="N-PAR" task="yes">
-        <grammar tag="N+Sg+Par"/>
-        <sem class="FOOD_DISH"/>
+        <grammar tag="N+Sg+Acc"/>
+        <sem class="DRINK"/>
       </element>
     </answer>
   </q>
   <q id="npar2">
     <qtype>N-ABL</qtype>
     <question>
-      <text>Мезде SUBJ MAINV</text>  <!-- What does X eat? X eats Y. -->
+      <text>Ӈамгэм’ SUBJ MAINV</text>  <!-- What does X eat? X eats Y. -->
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
-        <grammar tag="V+Act+Ind+Prs+Sg3"/>
-        <id>симемс</id>
+        <grammar tag="V+TV+Ind+Aor+ScSg3"/>
+        <id>ӈаворць</id>
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-ABL</text>
-      <element game='morfa' id="N-PAR" task="yes">
-        <grammar tag="N+Sg+Par"/>
-        <sem class="DRINK"/>
+      <text>SUBJ MAINV N-ACC</text>
+      <element game='morfa' id="N-ACC" task="yes">
+        <grammar tag="N+Sg+Acc"/>
+        <sem class="FOOD_DISH"/>
       </element>
     </answer>
   </q>
   <q id="npar3">
     <qtype>N-PAR</qtype>
     <question>
-      <text>Mitä SUBJ MAINV</text> <!-- What does X buy? X buys Y. -->
+      <text>Ӈамгэм’ SUBJ MAINV</text> <!-- What does X buy? X buys Y. -->
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
         <sem class="FAMILY"/>
       </element>
       <element id="MAINV">
-        <grammar tag="V+Act+Ind+Prs+Sg3"/>
-        <id>ostaat</id>
+        <grammar tag="V+TV+Ind+Aor+ScSg3"/>
+        <id>тэмдась</id>
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-PAR</text>
-      <element game='morfa' id="N-PAR" task="yes">
-        <grammar tag="N+Sg+Par"/>
+      <text>SUBJ MAINV N-ACC</text>
+      <element game='morfa' id="N-ACC" task="yes">
+        <grammar tag="N+Sg+Acc"/>
         <sem class="FOOD_GROCERY"/>
       </element>
     </answer>
   </q>
-  <q id="nill1">
-    <qtype>N-ILL</qtype>
+  <q id="ndat1">
+    <qtype>N-DAT</qtype>
     <qtype>N-MIX</qtype>
     <question>
-      <text>Gosa SUBJ MAINV</text> <!-- Where did X go? X went (in)to Y. -->
+      <text>SUBJ ханяʼ MAINV</text> <!-- Where did X go? X went (in)to Y. -->
       <element id="SUBJ">
 		<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
-	<id>mannat</id>
+	<id>минзь</id>
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-ILL</text>
-      <element game='morfa' id="N-ILL" task="yes">
-	<grammar tag="N+Prop+Sg+Ill"/>
-	<sem class="mPLACENAME"/>
+      <text>SUBJ MAINV N-DAT</text>
+      <element game='morfa' id="N-DAT" task="yes">
+	<grammar tag="N+Prop+Sg+Dat"/>
+	<sem class="PLACENAME"/>
       </element>
     </answer>
   </q>
@@ -93,21 +93,21 @@
     <qtype>N-LOC</qtype>
     <qtype>N-MIX</qtype>
     <question>
-      <text>Gos SUBJ MAINV</text> <!-- Where is X? X is in Y. -->
+      <text>SUBJ ханяна MAINV</text> <!-- Where is X? X is in Y. -->
       <element id="SUBJ">
 	<grammar tag="N+Nountype+Sg+Nom"/>
-	<sem class="mPEOPLE"/>
+	<sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Sg3"/>
-	<id>leat</id>
+	<id>мэсь</id>
       </element>
     </question>
     <answer> 
-      <text>Son MAINV N-LOC</text>
+      <text>Пыда N-LOC MAINV</text>
       <element game='morfa' id="N-LOC" task="yes">
 	<grammar tag="N+Prop+Sg+Loc"/>
-	<sem class="mPLACENAME"/>
+	<sem class="PLACENAME"/>
       </element>
     </answer>
   </q> 
