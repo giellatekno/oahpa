@@ -861,7 +861,7 @@ class OahpaSettings(forms.Form):
 					'contracted': False,
 					'level' : 'all',
 					'lemmacount' : '2',
-					'case': 'N-PAR',
+					'case': 'N-GEN',
 					'pos' : 'N',
 					'vtype' : 'PRS',
 					'adjcase' : 'NOM',
@@ -869,7 +869,7 @@ class OahpaSettings(forms.Form):
 					'pron_type': 'Pers',
 					'proncase' : 'N-NOM', # Need a new default case here
 					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
-					'case_context' : 'N-PAR',
+					'case_context' : 'N-GEN',
 					'vtype_context' : 'V-PRS',
 					'pron_context' : 'P-PERS',
 					'num_context' : 'NUM-ATTR',
@@ -1124,7 +1124,7 @@ class MorfaSettings(OahpaSettings):
 		$home/morfa/ came from, because instead of an
 		exception there was a relatively unhelpful 404 error.
 	"""
-	case = forms.ChoiceField(initial='N-PAR', choices=CASE_CHOICES, widget=forms.Select)
+	case = forms.ChoiceField(initial='N-GEN', choices=CASE_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
