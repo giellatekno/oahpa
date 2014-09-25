@@ -1072,7 +1072,7 @@ class NumGame(Game):
 		db_info['numeral_id'] = smart_str(random_num)
 
 		if self.settings['gametype'] == 'ord':
-			db_info['numeral_id'] += u"."
+			db_info['numeral_id'] += u"-хи"
 
 		return db_info
 
