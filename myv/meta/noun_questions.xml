@@ -53,96 +53,97 @@
       </element>
     </answer>
   </q>
-    <q id="npar3">
-    <qtype>N-PAR</qtype>
+    <q id="nnom1">
+    <qtype>N-NOM</qtype>
     <question>
-      <text>Mitä SUBJ MAINV</text> <!-- What does X buy? X buys Y. -->
+      <text>Мезе SUBJ MAINV ярмункасто</text> <!-- What does X buy? X buys Y. -->
       <element id="SUBJ">
-            <grammar tag="N+Sg+Nom"/>
+            <grammar tag="N+Sg+Nom+PxSg1"/>
         <sem class="FAMILY"/>
       </element>
       <element id="MAINV">
-        <grammar tag="V+Act+Ind+Prs+Sg3"/>
-        <id>ostaat</id>
+        <grammar tag="V+TV+Ind+Prt1+Sg3"/>
+        <id>рамамс</id>
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-PAR</text>
-      <element game='morfa' id="N-PAR" task="yes">
-        <grammar tag="N+Sg+Par"/>
+      <text>Сон MAINV N-NOM</text>
+      <element game='morfa' id="N-NOM" task="yes">
+        <grammar tag="N+Sg+Nom+Indef"/>
         <sem class="FOOD_GROCERY"/>
       </element>
+<element id="MAINV">
+        <grammar tag="V+TV+Ind+Prt1+Sg3"/>
+        <id>рамамс</id>
+    </answer>
+  </q>
+<q id="nnom1">
+    <qtype>N-DATIV</qtype>
+    <question>
+      <text> Кинень SUBJ MAINV ярмункасто </text> <!-- What does X buy? X buys Y. -->
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom+PxSg1"/>
+        <sem class="FAMILY"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+TV+Ind+Prt1+Sg3"/>
+        <id>рамамс</id>
+      </element>
+    </question>
+    <answer> 
+      <text>Сон MAINV N-DATIV</text>
+      <element game='morfa' id="N-NOM" task="yes">
+        <grammar tag="N+Sg+Nom+Indef"/>
+        <sem class="FAMILY"/>
+      </element>
+<element id="MAINV">
+        <grammar tag="V+TV+Ind+Prt1+Sg3"/>
+        <id>рамамс</id>
+</element>
+<element game='morfa' id="N-DATIV" task="yes">
+        <grammar tag="N+Sg+Dativ+Indef"/>
+        <sem class="FAMILY"/>
     </answer>
   </q>
   <q id="nill1">
     <qtype>N-ILL</qtype>
     <qtype>N-MIX</qtype>
     <question>
-      <text>Gosa SUBJ MAINV</text> <!-- Where did X go? X went (in)to Y. -->
+      <text>Козонь SUBJ MAINV</text> <!-- Where did X go? X went (in)to Y. -->
       <element id="SUBJ">
-		<grammar tag="Pron+Pers+Person-Number+Nom"/>
+		<grammar tag="N+Sg+Nom+DefSg1/>
       </element>
       <element id="MAINV">
-	<grammar tag="V+Ind+Tense+Person-Number"/>
-	<id>mannat</id>
+	<grammar tag="V+Ind+Prt1+Sg"/>
+	<id>совамс</id>
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-ILL</text>
+      <text>Сон MAINV N-ILL</text>
       <element game='morfa' id="N-ILL" task="yes">
-	<grammar tag="N+Prop+Sg+Ill"/>
-	<sem class="mPLACENAME"/>
+	<grammar tag="N+Sg+Ill+Indef"/>
+	<sem class="HOUSE"/>
       </element>
     </answer>
   </q>
-  <q id="nloc1sg">
-    <qtype>N-LOC</qtype>
+  <q id="nill1">
+    <qtype>N-LAT</qtype>
     <qtype>N-MIX</qtype>
     <question>
-      <text>Gos SUBJ MAINV</text> <!-- Where is X? X is in Y. -->
+      <text>Ков SUBJ MAINV</text> <!-- Where did X go? X went (in)to Y. -->
       <element id="SUBJ">
-	<grammar tag="N+Nountype+Sg+Nom"/>
-	<sem class="mPEOPLE"/>
+		<grammar tag="N+Pl+Nom+Def/>
       </element>
       <element id="MAINV">
-	<grammar tag="V+Ind+Tense+Sg3"/>
-	<id>leat</id>
+	<grammar tag="V+Ind+Prs+Pl3"/>
+	<id>молемс</id>
       </element>
     </question>
     <answer> 
-      <text>Son MAINV N-LOC</text>
-      <element game='morfa' id="N-LOC" task="yes">
-	<grammar tag="N+Prop+Sg+Loc"/>
-	<sem class="mPLACENAME"/>
-      </element>
-    </answer>
-  </q> 
-<!--  <q id="NLat">
-    <qtype>N-LAT</qtype>
-   <question>
-      <text>Ков тонь SUBJ MAINV</text>
-      <element id="SUBJ">
-        <sem class="FAMILY"/>
-	<grammar tag="N+Sg+Nom+PxSg2"/>
-      </element>
-      <element id="MAINV">
-        <sem class="MOVEMENT_V"/>
-	<grammar tag="V+Ind+Prs+ScSg3"/>
-      </element>
-    </question>
-    <answer> 
-      <text>N-PXSG1 MAINV N-LAT</text>
-      <element id="N-PXSG1" content="SUBJ">
-        <agreement id="SUBJ"/>
-	<grammar tag="N+Sg+Nom+PxSg1"/>
-      </element>
-      <element id="MAINV" content="MAINV">
-        <agreement id="MAINV"/>
-	<grammar tag="V+Ind+Prs+ScSg3"/>
-      </element>
-      <element game='morfa' id="N-LAT" task="yes" >
-	<sem class="PLACE"/>
-	<grammar tag="N+Sem/Plc+SP+Lat+Indef"/>
+      <text>Сынь MAINV N-LAT</text>
+      <element game='morfa' id="N-LAT" task="yes">
+	<grammar tag="N+Pl+Lat+Indef"/>
+	<sem class="HOUSE"/>
       </element>
     </answer>
   </q> 
