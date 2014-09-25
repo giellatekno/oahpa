@@ -14,7 +14,7 @@
   <q id="prt1Sg3">
     <qtype>V-PRT1</qtype>
    <question>
-      <text>Мезе ADJ SUBJ тейсь исяк</text> 
+      <text>Мар ADJ SUBJ толон кариз</text> 
        <element id="ADJ">
 	<sem class="HUMAN_A"/>
 	  <grammar pos="A" tag="A+Sg"/>
@@ -25,35 +25,35 @@
       </element>
     </question>
     <answer> 
-      <text>Исяк SUBJ MAINV</text>
+      <text>Толон SUBJ MAINV</text>
       <element game='morfa' id="MAINV" task="yes" >
 	<sem class="mACTIVITY"/>
-	<grammar tag="V+IV+Ind+Prt1+ScSg3"/>
+	<grammar tag="V+Ind+Prt1+Sg3"/>
       </element>
     </answer>
   </q> 
   <q id="prt2Sg3">
     <qtype>V-PRT2</qtype>
    <question>
-      <text>Мезе ADJ SUBJ теиль седе икеле</text>       
+      <text>Мар ADJ SUBJ карысал азьвыл</text>       
       <element id="ADJ">
 	   <sem class="HUMAN_A"/>
 	   <grammar pos="A" tag="A+Sg" />
       </element>
       <element id="SUBJ">
         <sem class="PEOPLE"/>
-	<grammar tag="N+Sg+Nom+Def"/>
+	<grammar tag="N+Sg+Nom"/>
       </element>
       <element id="VERB1">
         <sem class="STATECHANGE_V"/>
-	<grammar tag="V+IV+Ind+Prt1+ScSg2"/>
+	<grammar tag="V+Cond+ScSg3"/>
       </element>
     </question>
     <answer> 
-      <text>Седе икеле SUBJ MAINV</text>
+      <text>Азьвыл SUBJ MAINV</text>
       <element game='morfa' id="MAINV" task="yes" >
 	<sem class="mACTIVITY"/>
-	<grammar tag="V+IV+Ind+Prt2+ScSg3"/>
+	<grammar tag="V+IV+Ind+ScSg1"/>
       </element>
     </answer>
   </q> 
