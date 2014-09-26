@@ -5,23 +5,23 @@
 
 <!-- xml-structure for questions in Morfa C -->
 <questions>
-  <q id="npar1">
+  <q id="nacc1">
     <qtype>N-ABL</qtype>
     <question>
-      <text>Мезде SUBJ MAINV</text> <!-- What does X drink? X drinks Y. -->
+      <text>Mitä SUBJ MAINV</text> <!-- What does X drink? X drinks Y. -->
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
-        <id>ярсамс</id>
+        <id>porrad</id>
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-ABL</text>
+      <text>SUBJ MAINV N-ACC</text>
       <element game='morfa' id="N-PAR" task="yes">
-        <grammar tag="N+Sg+Par"/>
+        <grammar tag="N+Sg+Acc"/>
         <sem class="FOOD_DISH"/>
       </element>
     </answer>
