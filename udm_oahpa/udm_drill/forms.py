@@ -53,7 +53,7 @@ POS_CHOICES = (
 )
 
 CASE_CHOICES = (
-    #('N-NOM-PL', _('Nominative Plural')),
+    ('N-NOM', _('Nominative')),
     ('N-GEN', _('Genitive')),
     ('N-PAR', _('Partitive')),
     ('N-ILL', _('Illative')),
@@ -135,6 +135,7 @@ PRONOUN_SUBCLASSES = (
 )
 
 CASE_CONTEXT_CHOICES = (
+    ('N-NOM', _('Nominative')),
    # ('N-GEN', _('Genitive')),
     ('N-PAR', _('Partitive')),
     #('N-ILL', _('Illative')),
@@ -350,10 +351,10 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-        ('udmest', u'Udmurt to Estonian'),
-        ('estudm', u'Estonian to Udmurt'),
-	    #('udmeng', _('Udmurt to English')),
-	    #('engudm', _('English to Udmurt')),
+        #('udmest', u'Udmurt to Estonian'),
+        #('estudm', u'Estonian to Udmurt'),
+	    ('udmeng', _('Udmurt to English')),
+	    ('engudm', _('English to Udmurt')),
         ('udmfin', u'Udmurt to Finnish'),
         ('finudm', u'Finnish to Udmurt'),           
         #('udmlat', _('Udmurt to Latvian')),
@@ -362,8 +363,8 @@ TRANS_CHOICES = (
         #('smeudm', _('North Saami to Udmurt')),
         #('udmnob', _('Udmurt to Norwegian')),
         #('nobudm', _('Norwegian to Udmurt')), 
-        #('udmrus', _('Udmurt to Russian')),
-        #('rusudm', _('Russian to Udmurt')),
+        ('udmrus', _('Udmurt to Russian')),
+        ('rusudm', _('Russian to Udmurt')),
 )
 
 NUMLANGUAGE_CHOICES = (
@@ -861,7 +862,7 @@ class OahpaSettings(forms.Form):
 					'contracted': False,
 					'level' : 'all',
 					'lemmacount' : '2',
-					'case': 'N-PAR',
+					'case': 'N-NOM',
 					'pos' : 'N',
 					'vtype' : 'PRS',
 					'adjcase' : 'NOM',
@@ -869,7 +870,7 @@ class OahpaSettings(forms.Form):
 					'pron_type': 'Pers',
 					'proncase' : 'N-NOM', # Need a new default case here
 					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
-					'case_context' : 'N-PAR',
+					'case_context' : 'N-NOM',
 					'vtype_context' : 'V-PRS',
 					'pron_context' : 'P-PERS',
 					'num_context' : 'NUM-ATTR',
@@ -1124,7 +1125,7 @@ class MorfaSettings(OahpaSettings):
 		$home/morfa/ came from, because instead of an
 		exception there was a relatively unhelpful 404 error.
 	"""
-	case = forms.ChoiceField(initial='N-PAR', choices=CASE_CHOICES, widget=forms.Select)
+	case = forms.ChoiceField(initial='N-NOM', choices=CASE_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
@@ -1135,7 +1136,7 @@ class MorfaSettings(OahpaSettings):
 	derivation_type = forms.ChoiceField(initial='V-DER-PASS', choices=DERIVATION_CHOICES, widget=forms.Select)
 	derivation_type_context = forms.ChoiceField(initial='DER-PASSV', choices=DERIVATION_CHOICES_CONTEXT, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
-	case_context = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
+	case_context = forms.ChoiceField(initial='N-NOM', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
 	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
 	pron_context = forms.ChoiceField(initial='P-PERS', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)

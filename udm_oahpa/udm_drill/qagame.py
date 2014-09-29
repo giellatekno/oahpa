@@ -90,6 +90,8 @@ class QAGame(Game):
 			dialect = DEFAULT_DIALECT
 
 		word=None
+		print "q element", qelement
+		print "tag: ", tag_el 
 		if tag_el.pos=="Num" and self.settings.has_key('num_level') and str(self.settings['num_level'])=="1":
 			smallnum = ["1","2","3","4","5","6","7","8","9","10"]
 			word = Word.objects.filter(wordqelement__qelement=qelement,
@@ -103,8 +105,11 @@ class QAGame(Game):
 			if possible_words.count() > 0:
 				word = possible_words.order_by('?')[0]
 
-		form_set_filter = self.filter_forms_by_dialect(
-							word.form_set.filter(tag=tag_el.id))
+
+		# form_set_filter = self.filter_forms_by_dialect( word.form_set.filter(tag=tag_el.id))
+        
+                form_set_filter = word.form_set.filter(tag=tag_el.id)
+                print "We are searching a form which tag is:", tag_el.id		
 		
 		if word and form_set_filter.count()>0:
 			form = form_set_filter[0] 

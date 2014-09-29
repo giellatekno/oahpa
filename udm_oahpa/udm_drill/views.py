@@ -431,9 +431,9 @@ def leksa_game(request, place=False):
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
 		if sess_lang in ['udm', 'eng']: # maybe need to remove 'eng' from this list later on 
-			sess_lang = 'est' # was: nob
+			sess_lang = 'eng' # was: nob
 	else:
-		sess_lang = 'est' # was: nob
+		sess_lang = 'eng' # was: nob
 
 	default_langpair = 'udm%s' % sess_lang
 
@@ -557,6 +557,7 @@ class Morfaview(Gameview):
 		'NUM-ATTR':  _('Practise numeral attributes'),
 		'NOMPL':  _('Practise plural'),
 		'NOM':  _('Practise nominative'),
+		'N-NOM':  _('Practise nominative'),
 		'N-GEN':  _('Practise genitive'),		
 		'N-PAR':  _('Practise partitive'),
 		'N-ILL':  _('Practise illative'),
