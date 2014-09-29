@@ -79,16 +79,19 @@
         """
         from sets import ImmutableSet
 
+        def copy_item(m):
+            return m.copy()
+
         error_tag = ImmutableSet(error_tag)
 
         messages = self.messages.get(iso, {}).get(error_tag, False)
 
         if messages:
             if task:
-                task_messages = [a for a in messages if a.get('task', '') == task]
+                task_messages = [a for a in map(copy_item, messages) if a.get('task', '') == task]
                 return task_messages
-
-            return messages
+            else:
+                return map(copy_item, messages)
 
         return False
 
