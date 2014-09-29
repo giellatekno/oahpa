@@ -4,17 +4,17 @@
 -->
 
 <!-- xml-structure for questions in Morfa C -->
-<questions>
-  <q id="nom1">
+ <questions>
+   <q id="nom1">
     <qtype>N-NOM</qtype>
     <question>
-      <text>Мар SUBJ MAINV</text> <!-- What does X drink? X drinks Y. -->
+      <text>Мар SUBJ MAINV</text>  
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="PEOPLE"/>
+        <sem class="FAMILY"/>
       </element>
       <element id="MAINV">
-        <grammar tag="V+Ind+Prs+Sg3"/> <!-- removed Act -->
+        <grammar tag="V+Ind+Prs+Sg3"/>
         <id>юыны</id>
         <sem/>
       </element>
@@ -23,21 +23,21 @@
       <text>SUBJ MAINV N-NOM</text>
       <element game='morfa' id="N-NOM" task="yes">
         <grammar tag="N+Sg+Nom"/>
-        <sem class="DRINK"/>
+        <sem class="DRINK"/> 
       </element>
     </answer>
-  </q>
-  <q id="nom2">
+  </q> -->
+<!--  <q id="nom2">
     <qtype>N-NOM</qtype>
     <question>
-      <text>Мар SUBJ MAINV</text>  <!-- What does X eat? X eats Y. -->
+      <text>Мар SUBJ MAINV</text>   What does X eat? X eats Y.
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="PEOPLE"/>
+        <sem class="FAMILY"/>
       </element>
       <element id="MAINV">
-        <grammar tag="V+Ind+Prs+Sg3"/>  <!-- removed Act -->
-        <id>сиыны</id>
+        <grammar tag="V+Ind+Prs+Sg3"/>  
+        <id>сиыны</id> 
       </element>
     </question>
     <answer> 
@@ -47,28 +47,28 @@
         <sem class="FOOD"/>
       </element>
     </answer>
-  </q>
+  </q> -->
   <q id="nom3">
     <qtype>N-NOM</qtype>
     <question>
       <text>Мар SUBJ MAINV</text> <!-- What does X buy? X buys Y. -->
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="PEOPLE"/>
+        <sem class="FAMILY"/>
       </element>
       <element id="MAINV">
-        <grammar tag="V+Ind+Prs+Sg3"/> <!-- removed Act -->
-        <id>басьтыны</id>
+        <grammar tag="V+Ind+Prs+Sg3"/> <!-- removed Act  -->
+      <!--  <id>басьтыны</id> -->
       </element>
     </question>
     <answer> 
       <text>SUBJ MAINV N-NOM</text>
       <element game='morfa' id="N-NOM" task="yes">
         <grammar tag="N+Sg+Nom"/>
-        <sem class="FOOD_GROCERY"/>
+        <sem class="CLOTHING"/>
       </element>
     </answer>
-  </q>
+  </q> 
 <!--  <q id="nill1">
     <qtype>N-ILL</qtype>
     <qtype>N-MIX</qtype>
