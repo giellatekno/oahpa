@@ -14,7 +14,7 @@
         <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
-        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <grammar tag="V+Ind+Prs+Sg3"/> <!-- removed Act -->
         <id>юыны</id>
         <sem/>
       </element>
@@ -22,13 +22,13 @@
     <answer> 
       <text>SUBJ MAINV N-NOM</text>
       <element game='morfa' id="N-NOM" task="yes">
-        <grammar tag="N+Sg+NOM"/>
+        <grammar tag="N+Sg+Nom"/>
         <sem class="DRINK"/>
       </element>
     </answer>
   </q>
-  <q id="npar2">
-    <qtype>N-ABL</qtype>
+  <q id="nom2">
+    <qtype>N-NOM</qtype>
     <question>
       <text>Мар SUBJ MAINV</text>  <!-- What does X eat? X eats Y. -->
       <element id="SUBJ">
@@ -36,7 +36,7 @@
         <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
-        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <grammar tag="V+Ind+Prs+Sg3"/>  <!-- removed Act -->
         <id>сиыны</id>
       </element>
     </question>
@@ -48,32 +48,32 @@
       </element>
     </answer>
   </q>
-  <q id="npar3">
-    <qtype>N-PAR</qtype>
+  <q id="nom3">
+    <qtype>N-NOM</qtype>
     <question>
       <text>Мар SUBJ MAINV</text> <!-- What does X buy? X buys Y. -->
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="FAMILY"/>
+        <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
-        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <grammar tag="V+Ind+Prs+Sg3"/> <!-- removed Act -->
         <id>басьтыны</id>
       </element>
     </question>
     <answer> 
       <text>SUBJ MAINV N-NOM</text>
-      <element game='morfa' id="N-PAR" task="yes">
+      <element game='morfa' id="N-NOM" task="yes">
         <grammar tag="N+Sg+Nom"/>
         <sem class="FOOD_GROCERY"/>
       </element>
     </answer>
   </q>
-  <q id="nill1">
+<!--  <q id="nill1">
     <qtype>N-ILL</qtype>
     <qtype>N-MIX</qtype>
     <question>
-      <text>Кытчы SUBJ MAINV</text> <!-- Where did X go? X went (in)to Y. -->
+      <text>Кытчы SUBJ MAINV</text>  Where did X go? X went (in)to Y.
       <element id="SUBJ">
 		<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
@@ -86,7 +86,7 @@
       <text>SUBJ MAINV N-ILL</text>
       <element game='morfa' id="N-ILL" task="yes">
 	<grammar tag="N+Prop+Sg+Ill"/>
-	<sem class="mPLACENAME"/>
+	<sem class="PLACENAME"/>
       </element>
     </answer>
     </q> 
@@ -94,20 +94,20 @@
     <qtype>N-INE</qtype>
     <qtype>N-MIX</qtype>
     <question>
-      <text>Кытын SUBJ</text> <!-- Where is X? X is in Y. -->
+      <text>Кытын SUBJ</text> Where is X? X is in Y.
       <element id="SUBJ">
-	<grammar tag="N+Nountype+Sg+Nom"/>
-	<sem class="mPEOPLE"/>
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="PEOPLE"/>
       </element>
     </question>
     <answer> 
       <text>Со N-LOC</text>
       <element game='morfa' id="N-LOC" task="yes">
 	<grammar tag="N+Prop+Sg+Ine"/>
-	<sem class="mPLACENAME"/>
+	<sem class="PLACENAME"/>
       </element>
     </answer>
-    </q>
+    </q> -->
 </questions>
 
 
