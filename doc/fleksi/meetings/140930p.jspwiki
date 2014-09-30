@@ -1,0 +1,70 @@
+!!! Møte 30.09.14
+
+Til stades: Ryan, Lene
+
+!! Saksliste
+* Morfologisk feedback API
+* Spørreskjema ved første innlogging
+* Kursinnlogginga
+* Konteaksta i kursinnlogging
+
+!! Morfologisk feedback API
+Sjur og Lene holder på å flytte errorFST-kildefilene over i newinfra, slik at de kan kompileres med make, etter egen configure.
+
+[testside|http://testing.oahpa.no/courses_davvi/errorapi/test_page/]
+
+[I MorfaS illativ|http://testing.oahpa.no/courses_davvi/morfas/]
+
+
+Morfologisk feedback fra error-FST fungerer i illativbøyninga for substantiv lokalt på Ryans maskin, men ikke på gtlab.
+Gammel feedback er heller ikkje installert på den rett måte, så får ein mange meldingar av samme type. 
+
+
+! Tiltak:
+* __Ryan__: implementerer i morfa-s på gtlab for alle substantiv og verb for testing, og gir beskjed om når det er gjort. 
+* __Lene__: sluttfører flytting og tilpassing av kildefilene til newinfra, og legger til flere feiltyper
+
+!! Spørreskjema ved første innlogging
+Spørreskjemaet er ikke oppdatert enda.
+
+[testside|http://testing.oahpa.no/courses_davvi/survey/answer/]
+
+! Tiltak
+* __Ryan__: oppdaterer spørreskjemaet
+* __Ryan__: dokumenterer redigering og eksportering til spørreskjemaet (står i databasen) 
+
+!! Kursinnlogginga
+Lærerinnlogging: Kursinvitasjon må følge kurset (dvs at man får bare den relevante linken å sende til studentene).
+
+__Tiltak: __
+* __Ryan__: sjekk kor session data er lagra på serveren... gamle sessioner får problem med ny kode. Problem: Prosenten i Oahpa, når man arbeider, nullstillar seg.
+* __Ryan__: nullstille test student?
+* __Ryan__: Task til desse med /sted/ skal endrast til vanleg /leksa/ 
+* __Ryan__ Sahka, Vasta og MorfaC må fungere på gtlab \\
+Det fungerer framleis ikkje, sjølv med ny installering. Ryan ser meir på det.
+* __Ryan__: gul side på Sahka. Vasta-S: lookupserv var ikkje i drift
+
+
+! Lokalisering
+* __Lene, Trond__ fyller ut i lokaliseringsfiler
+* __Ryan__: lokalisering av namn til task og course info, og sender mail til Lene om hvor fila befinner 
+* __Ryan__: Morfa-C: input box er ikkje stort nok for nokre moglege svar. 
+Eksempel: Makkár stohpogálvvut leat sin viesus? (bassaladdanmašiidna) 
+
+
+!Kursmållenker for Leksa, i denne rekkefølgen, ikke stedsnavn
+
+{{{
+http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=smenob
+http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_1&geography=world&common=1&semtype=all&transtype=nobsme
+http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_2&geography=world&common=1&semtype=all&transtype=smenob
+http://testing.oahpa.no/courses_davvi/leksa/?source=sam1031_2&geography=world&common=1&semtype=all&transtype=nobsme
+}}}
+* __Ryan__: Ikke stedsnavn i linken
+
+!! Konteaksta i kursinnlogging
+
+__Ryan__: evaluerer korleis Konteaksta kan brukest i Courses
+
+!! Neste møte
+Mandag 3. oktober kl 16.00 norsk tid. 
