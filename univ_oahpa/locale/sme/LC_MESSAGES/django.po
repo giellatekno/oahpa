@@ -23,9 +23,8 @@ msgid ""
 msgstr ""
 
 #: courses/templates/courses_course_block.html:9
-#, fuzzy
 msgid "Course pages"
-msgstr "Kurssa ovdáneami"
+msgstr "Kursasiiddut"
 
 #: courses/templates/courses_main.html:62
 msgid "You are a course instructor."
@@ -64,9 +63,8 @@ msgstr ""
 
 #: courses/templates/courses_main_instructor.html:57
 #: courses/templates/invite_students.html:37
-#, fuzzy
 msgid "Invite students"
-msgstr "Čájet studeanttaid bohtosiid"
+msgstr "Bovde studeanttaid"
 
 #: courses/templates/courses_stats.html:32
 msgid "You don't have any scores yet, go play some games!"
@@ -511,14 +509,12 @@ msgstr ""
 "slette følgende objekttyper:"
 
 #: templates/admin/delete_confirmation.html:27
-#, fuzzy, python-format
 msgid ""
 "Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
 "following protected related objects:"
 msgstr ""
-"Det å slette %(object_name)s '%(escaped_object)s' vil resultere i slettinga "
-"av beslekta objekt, men brukerkontoen din har ikke tilgangsrettigheter til å "
-"slette følgende objekttyper:"
+"Jus áiggut sihkkut %(object_name) '%(escaped_object)s' de ferte sihkkut maid "
+"seammásullasaš fiillaid:"
 
 #: templates/admin/delete_confirmation.html:35
 #, python-format
@@ -526,61 +522,54 @@ msgid ""
 "Are you sure you want to delete the %(object_name)s \"%(escaped_object)s\"? "
 "All of the following related items will be deleted:"
 msgstr ""
-"Er du sikker på at du vil slette %(object_name)s \"%(escaped_object)s\"? "
-"Alle beslektede elementer som er vist her vil bli slettet:"
+"Leatgo sihkkar das ahte áiggut sihkkut %(object_name) \"%(escaped_object)s\"? "
+"Buot dát seammasullasaš fiillat sihkkojuvvojit:"
 
 #: templates/admin/delete_confirmation.html:40
 #: templates/admin/delete_selected_confirmation.html:45
 msgid "Yes, I'm sure"
-msgstr "Ja, jeg er sikker"
+msgstr "Juo, mun lean sihkar"
 
 #: templates/admin/delete_selected_confirmation.html:11
 msgid "Delete multiple objects"
-msgstr "Slett flere objekter"
+msgstr "Sihko eanet fiillaid"
 
 #: templates/admin/delete_selected_confirmation.html:18
-#, fuzzy, python-format
 msgid ""
 "Deleting the selected %(objects_name)s would result in deleting related "
 "objects, but your account doesn't have permission to delete the following "
 "types of objects:"
 msgstr ""
-"Det å slette %(object_name)s vil resultere i slettinga av beslekta objekt, "
-"men brukerkontoen din har ikke tilgangsrettigheter til å slette følgende "
-"objekttyper:"
+" %(object_name) sihkkun dahká ahte maiddái seammasullasaš fiillat "
+"sihkkojuvvojit, muhto du geavahankonttos ii leat vuoigatvuohtá dáid sihkkut: "
 
 #: templates/admin/delete_selected_confirmation.html:26
-#, fuzzy, python-format
 msgid ""
 "Deleting the selected %(objects_name)s would require deleting the following "
 "protected related objects:"
 msgstr ""
-"Det å slette %(object_name)s vil resultere i slettinga av beslekta objekt, "
-"men brukerkontoen din har ikke tilgangsrettigheter til å slette følgende "
-"objekttyper:"
+"%(object_name) sihkkun gáibida maiddái sihkkut seammasullasaš fiillaid:  "
 
 #: templates/admin/delete_selected_confirmation.html:34
-#, fuzzy, python-format
 msgid ""
 "Are you sure you want to delete the selected %(objects_name)s? All of the "
 "following objects and their related items will be deleted:"
 msgstr ""
-"Er du sikker på at du vil slette %(object_name)s elementer? Alle beslektede "
-"elementer som er vist her vil bli slettet:"
+"Leatgo sihkkar das ahte áiggut sihkkut %(object_name)? "
+"Buot dát seammasullasaš fiillat sihkkojuvvojit:"
 
 #: templates/admin/filter.html:2
-#, python-format
 msgid " By %(filter_title)s "
-msgstr " Ved %(filter_title)s "
+msgstr " %(filter_title) bokte "
 
 #: templates/admin/index.html:18
 #, python-format
 msgid "Models available in the %(name)s application."
-msgstr "Modeller tilgjengelig i %(name)s program"
+msgstr "Mállet mat gávdnojit %(name)s prográmmas"
 
 #: templates/admin/index.html:35
 msgid "Change"
-msgstr "Endre"
+msgstr "Rievdat"
 
 #: templates/admin/index.html:45
 msgid "You don't have permission to edit anything."
@@ -768,15 +757,13 @@ msgid "Inbox"
 msgstr ""
 
 #: templates/django_messages/base.html:45
-#, fuzzy
 msgid "New Message"
-msgstr "Diehtu:"
+msgstr "Ođđa diehtu:"
 
 #: templates/django_messages/base.html:46
 #: templates/django_messages/outbox.html:6
-#, fuzzy
 msgid "Sent Messages"
-msgstr "Sádde dieđu"
+msgstr "Sáddejuvvon diehtu"
 
 #: templates/django_messages/base.html:47
 msgid "Trash"
@@ -787,39 +774,35 @@ msgid "Type in a search term"
 msgstr ""
 
 #: templates/django_messages/compose.html:37
-#, fuzzy
 msgid "No results"
-msgstr "1 resultat"
+msgstr "Eai leat bohtosat"
 
 #: templates/django_messages/compose.html:38
-#, fuzzy
 msgid "Searching"
-msgstr "Oza"
+msgstr "Ohcame"
 
 #: templates/django_messages/compose.html:47
-#, fuzzy
 msgid "Compose Message"
-msgstr "Diehtu:"
+msgstr "Čále dieđu:"
 
 #: templates/django_messages/compose.html:83
 msgid "Send"
-msgstr ""
+msgstr "Sáddes"
 
 #: templates/django_messages/inbox.html:11
 #: templates/django_messages/trash.html:10
 msgid "Sender"
-msgstr ""
+msgstr "Sáddeme"
 
 #: templates/django_messages/inbox.html:11
 #: templates/django_messages/outbox.html:10
 #: templates/django_messages/trash.html:10
-#, fuzzy
 msgid "Subject"
 msgstr "Diŋggat"
 
 #: templates/django_messages/inbox.html:11
 msgid "Received"
-msgstr ""
+msgstr "Ožžon"
 
 #: templates/django_messages/inbox.html:23
 #: templates/django_messages/outbox.html:19
@@ -830,16 +813,14 @@ msgstr ""
 
 #: templates/django_messages/inbox.html:24
 #: templates/django_messages/outbox.html:20
-#, fuzzy
 msgid "delete"
 msgstr "Sihko"
 
 #: templates/django_messages/inbox.html:30
 #: templates/django_messages/outbox.html:26
 #: templates/django_messages/trash.html:26
-#, fuzzy
 msgid "No messages."
-msgstr "Sádde dieđu"
+msgstr "Eai leat dieđut"
 
 #: templates/django_messages/new_message.html:6
 #, python-format
@@ -869,20 +850,17 @@ msgid "Sent"
 msgstr ""
 
 #: templates/django_messages/trash.html:6
-#, fuzzy
 msgid "Deleted Messages"
-msgstr "Sádde dieđu"
+msgstr "Sihkkon dieđut"
 
 #: templates/django_messages/trash.html:10
 #: templates/django_messages/view.html:24
-#, fuzzy
 msgid "Date"
-msgstr "Dáhton/áigi"
+msgstr "Dáhton"
 
 #: templates/django_messages/trash.html:20
-#, fuzzy
 msgid "undelete"
-msgstr "Sihko"
+msgstr "Sihko sihkkuma"
 
 #: templates/django_messages/trash.html:29
 msgid ""

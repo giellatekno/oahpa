@@ -23,9 +23,8 @@ msgid ""
 msgstr ""
 
 #: courses/templates/courses_course_block.html:9
-#, fuzzy
 msgid "Course pages"
-msgstr "Se framgang"
+msgstr "Kurssider"
 
 #: courses/templates/courses_main.html:62
 msgid "You are a course instructor."
@@ -64,9 +63,8 @@ msgstr "Administratorgrensesnitt"
 
 #: courses/templates/courses_main_instructor.html:57
 #: courses/templates/invite_students.html:37
-#, fuzzy
 msgid "Invite students"
-msgstr "Se studentresultater"
+msgstr "Inviter studenter"
 
 #: courses/templates/courses_stats.html:32
 msgid "You don't have any scores yet, go play some games!"
@@ -408,7 +406,7 @@ msgstr "Kjør"
 
 #: templates/admin/actions.html:11
 msgid "Click here to select the objects across all pages"
-msgstr "Klikk har for å velge objekta på alle sidene"
+msgstr "Klikk har for å velge element på alle sidene"
 
 #: templates/admin/actions.html:11
 #, python-format
@@ -508,18 +506,16 @@ msgid ""
 "following types of objects:"
 msgstr ""
 "Det å slette %(object_name)s '%(escaped_object)s' vil resultere i slettinga "
-"av beslekta objekt, men brukerkontoen din har ikke tilgangsrettigheter til å "
-"slette følgende objekttyper:"
+"av beslekta elementer, men brukerkontoen din har ikke tilgangsrettigheter til å "
+"slette følgende elementtyper:"
 
 #: templates/admin/delete_confirmation.html:27
-#, fuzzy, python-format
 msgid ""
 "Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
 "following protected related objects:"
 msgstr ""
-"Det å slette %(object_name)s '%(escaped_object)s' vil resultere i slettinga "
-"av beslekta objekt, men brukerkontoen din har ikke tilgangsrettigheter til å "
-"slette følgende objekttyper:"
+"Det å slette %(object_name)s '%(escaped_object)s' vil kreve sletting "
+"av følgende beslekta element:"
 
 #: templates/admin/delete_confirmation.html:35
 #, python-format
@@ -537,37 +533,32 @@ msgstr "Ja, jeg er sikker"
 
 #: templates/admin/delete_selected_confirmation.html:11
 msgid "Delete multiple objects"
-msgstr "Slett flere objekter"
+msgstr "Slett flere elementer"
 
 #: templates/admin/delete_selected_confirmation.html:18
-#, fuzzy, python-format
 msgid ""
 "Deleting the selected %(objects_name)s would result in deleting related "
 "objects, but your account doesn't have permission to delete the following "
 "types of objects:"
 msgstr ""
-"Det å slette %(object_name)s vil resultere i slettinga av beslekta objekt, "
+"Det å slette %(object_name)s vil resultere i slettinga av beslekta element, "
 "men brukerkontoen din har ikke tilgangsrettigheter til å slette følgende "
-"objekttyper:"
+"typer:"
 
 #: templates/admin/delete_selected_confirmation.html:26
-#, fuzzy, python-format
 msgid ""
 "Deleting the selected %(objects_name)s would require deleting the following "
 "protected related objects:"
 msgstr ""
-"Det å slette %(object_name)s vil resultere i slettinga av beslekta objekt, "
-"men brukerkontoen din har ikke tilgangsrettigheter til å slette følgende "
-"objekttyper:"
+"Det å slette %(object_name)s vil kreve sletting av følgende beskytta beslekta element, "
 
 #: templates/admin/delete_selected_confirmation.html:34
-#, fuzzy, python-format
 msgid ""
 "Are you sure you want to delete the selected %(objects_name)s? All of the "
 "following objects and their related items will be deleted:"
 msgstr ""
-"Er du sikker på at du vil slette %(object_name)s elementer? Alle beslektede "
-"elementer som er vist her vil bli slettet:"
+"Er du sikker på at du vil slette de valgte %(object_name)s elementer? Alle de følgende elementer og deres beslektede "
+"elementer vil bli slettet:"
 
 #: templates/admin/filter.html:2
 #, python-format
@@ -645,7 +636,7 @@ msgid ""
 "This object doesn't have a change history. It probably wasn't added via this "
 "admin site."
 msgstr ""
-"Objektet har ingen endringshistorikk. Det ble sannsynligvis ikke lagt til "
+"Elementet har ingen endringshistorikk. Det ble sannsynligvis ikke lagt til "
 "via denne adminsida."
 
 #: templates/admin/pagination.html:10
@@ -771,15 +762,13 @@ msgid "Inbox"
 msgstr ""
 
 #: templates/django_messages/base.html:45
-#, fuzzy
 msgid "New Message"
-msgstr "Beskjed:"
+msgstr "Ny beskjed:"
 
 #: templates/django_messages/base.html:46
 #: templates/django_messages/outbox.html:6
-#, fuzzy
 msgid "Sent Messages"
-msgstr "Send melding"
+msgstr "Sendt melding"
 
 #: templates/django_messages/base.html:47
 msgid "Trash"
@@ -790,19 +779,16 @@ msgid "Type in a search term"
 msgstr ""
 
 #: templates/django_messages/compose.html:37
-#, fuzzy
 msgid "No results"
-msgstr "1 resultat"
+msgstr "Ingen resultat"
 
 #: templates/django_messages/compose.html:38
-#, fuzzy
 msgid "Searching"
-msgstr "Søk"
+msgstr "Søker"
 
 #: templates/django_messages/compose.html:47
-#, fuzzy
 msgid "Compose Message"
-msgstr "Beskjed:"
+msgstr "Skriv beskjed:"
 
 #: templates/django_messages/compose.html:83
 msgid "Send"
@@ -816,13 +802,12 @@ msgstr ""
 #: templates/django_messages/inbox.html:11
 #: templates/django_messages/outbox.html:10
 #: templates/django_messages/trash.html:10
-#, fuzzy
 msgid "Subject"
-msgstr "Ting"
+msgstr "Element"
 
 #: templates/django_messages/inbox.html:11
 msgid "Received"
-msgstr ""
+msgstr "Mottatt"
 
 #: templates/django_messages/inbox.html:23
 #: templates/django_messages/outbox.html:19
@@ -833,16 +818,14 @@ msgstr ""
 
 #: templates/django_messages/inbox.html:24
 #: templates/django_messages/outbox.html:20
-#, fuzzy
 msgid "delete"
 msgstr "Slett"
 
 #: templates/django_messages/inbox.html:30
 #: templates/django_messages/outbox.html:26
 #: templates/django_messages/trash.html:26
-#, fuzzy
 msgid "No messages."
-msgstr "Send melding"
+msgstr "Ingen melding"
 
 #: templates/django_messages/new_message.html:6
 #, python-format
@@ -872,20 +855,17 @@ msgid "Sent"
 msgstr ""
 
 #: templates/django_messages/trash.html:6
-#, fuzzy
 msgid "Deleted Messages"
-msgstr "Send melding"
+msgstr "Sletta melding"
 
 #: templates/django_messages/trash.html:10
 #: templates/django_messages/view.html:24
-#, fuzzy
 msgid "Date"
-msgstr "Dato/tid"
+msgstr "Dato"
 
 #: templates/django_messages/trash.html:20
-#, fuzzy
 msgid "undelete"
-msgstr "Slett"
+msgstr "Omgjør sletting"
 
 #: templates/django_messages/trash.html:29
 msgid ""
