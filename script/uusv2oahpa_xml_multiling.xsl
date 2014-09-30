@@ -50,9 +50,15 @@
 </xsl:function>
 
   <xsl:param name="inFile" select="'default.csv'"/>
-  <xsl:param name="src_lang" select="'crk'"/>
-  <xsl:param name="tgt_lang" select="'eng'"/>
+  <xsl:param name="src_lang" select="'fkv'"/>
+  <!-- tgt_lang is now a complex one with variable length -->
+  <!-- declare the target languages in the correct order;
+       a single underscore as separator -->
+  <!-- syntax: nob_fin_eng -->
+  <!-- LEMMA __ POS __ TYPE __ NOB __ FIN __ ENG __ SEM __ BOOK -->
+  <xsl:param name="tgt_lang" select="'nob_fin_eng'"/>
 
+  <xsl:variable name="target_counter" select="count(tokenize($tgt_lang, '_'))"/>
   <xsl:variable name="e" select="'xml'"/>
   <xsl:variable name="outDir" select="'xml-out'"/>
   <xsl:variable name="nl" select="'&#xa;'"/>
@@ -78,8 +84,19 @@
 		  <xsl:variable name="pos" select="normalize-space($current_lemma[2])"/>
 		  <xsl:variable name="type" select="normalize-space($current_lemma[3])"/>
 		  <xsl:variable name="translations" select="normalize-space($current_lemma[4])"/>
-		  <xsl:variable name="sem_classes" select="normalize-space($current_lemma[5])"/>
-		  <xsl:variable name="books" select="normalize-space($current_lemma[6])"/>
+
+		  <xsl:variable name="translations">
+		    <ts>
+		      <xsl:for-each select="tokenize($tgt_lang, '_')">
+			<t l="{.}">
+			  <xsl:value-of select="normalize-space($current_lemma[3+position()])"/>
+			</t>
+		      </xsl:for-each>
+		    </ts>
+		  </xsl:variable>
+
+		  <xsl:variable name="sem_classes" select="normalize-space($current_lemma[3+$target_counter+1])"/>
+		  <xsl:variable name="books" select="normalize-space($current_lemma[3+$target_counter+2])"/>
 		  <lg>
 		    <l pos="{$pos}" type="{$type}">
 		      <xsl:copy-of select="$lemma"/>
