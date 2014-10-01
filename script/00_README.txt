@@ -2,7 +2,9 @@ This directory contains some scripts for working
 with lexical data for oahpa.
 
 1. convert data from csv into oahpa-lexicon xml
-field separator = __ (two underscores) 
+ - 'c' in 'csv' is a very general label here (comma separated values)
+ - this is the reason why the scripts are named 'uusv': underscore underscore separated values
+field separator = __ (two underscores)
 separator between items of same type (translations, semantic classes) = , (comma)
 
  java -Xmx2024m net.sf.saxon.Transform -it:main uusv2oahpa_xml_extened.xsl inFile=wordlist.csv src_lang=crk tgt_lang=eng
