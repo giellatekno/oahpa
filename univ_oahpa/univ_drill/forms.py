@@ -2432,6 +2432,9 @@ def sahka_is_correct(self,utterance,targets,language):
 	"""
 	Analyzes the answer and returns a message.
 	"""
+
+	self.iscorrect = False
+
 	if not self.is_valid():
 		return False
 
