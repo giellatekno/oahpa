@@ -86,13 +86,13 @@
 		  <xsl:variable name="translations" select="normalize-space($current_lemma[4])"/>
 
 		  <xsl:variable name="translations">
-		    <ts>
+		    <tt>
 		      <xsl:for-each select="tokenize($tgt_lang, '_')">
 			<t l="{.}">
 			  <xsl:value-of select="normalize-space($current_lemma[3+position()])"/>
 			</t>
 		      </xsl:for-each>
-		    </ts>
+		    </tt>
 		  </xsl:variable>
 
 		  <xsl:variable name="sem_classes" select="normalize-space($current_lemma[3+$target_counter+1])"/>
@@ -115,23 +115,25 @@
 			<sem class="{normalize-space(.)}"/>
 		      </xsl:for-each>
 		    </semantics>
-		    <tg xml:lang="{$tgt_lang}">
-		      <!-- COMMA as separator between TRANSLATION values -->
-		      <xsl:for-each select="tokenize($translations, ',')">
-			<!-- as a default all translations get the same
-			     pos value as the lemma -->
-			<t pos="{$pos}">
-			  <!-- additionally, the first translations gets
-			       the attribute-value pair stat="pref" --> 
-			  <xsl:if test="position() = 1">
-			    <xsl:attribute name="stat">
-			      <xsl:value-of  select="'pref'"/>
-			    </xsl:attribute>
-			  </xsl:if>
-			  <xsl:value-of select="normalize-space(.)"/>
-			</t>
-		      </xsl:for-each>
-		    </tg>
+		    <xsl:for-each select="$translations/tt/t">
+		      <tg xml:lang="{./@l}">
+			<!-- COMMA as separator between TRANSLATION values -->
+			<xsl:for-each select="tokenize(., ',')">
+			  <!-- as a default all translations get the same
+			       pos value as the lemma -->
+			  <t pos="{$pos}">
+			    <!-- additionally, the first translations gets
+				 the attribute-value pair stat="pref" --> 
+			    <xsl:if test="position() = 1">
+			      <xsl:attribute name="stat">
+				<xsl:value-of  select="'pref'"/>
+			      </xsl:attribute>
+			    </xsl:if>
+			    <xsl:value-of select="normalize-space(.)"/>
+			  </t>
+			</xsl:for-each>
+		      </tg>
+		    </xsl:for-each>
 		  </mg>
 		</e>
 	      </xsl:if>
