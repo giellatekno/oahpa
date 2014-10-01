@@ -58,7 +58,8 @@
   <!-- LEMMA __ POS __ TYPE __ NOB __ FIN __ ENG __ SEM __ BOOK -->
   <xsl:param name="tgt_lang" select="'nob_fin_eng'"/>
 
-  <xsl:variable name="target_counter" select="count(tokenize($tgt_lang, '_'))"/>
+  <xsl:variable name="target_counter"
+		select="count(tokenize($tgt_lang, '_'))" as="xs:integer+"/>
   <xsl:variable name="e" select="'xml'"/>
   <xsl:variable name="outDir" select="'xml-out'"/>
   <xsl:variable name="nl" select="'&#xa;'"/>
@@ -83,13 +84,13 @@
 		  <xsl:variable name="lemma" select="normalize-space($current_lemma[1])"/>
 		  <xsl:variable name="pos" select="normalize-space($current_lemma[2])"/>
 		  <xsl:variable name="type" select="normalize-space($current_lemma[3])"/>
-		  <xsl:variable name="translations" select="normalize-space($current_lemma[4])"/>
 
 		  <xsl:variable name="translations">
 		    <tt>
 		      <xsl:for-each select="tokenize($tgt_lang, '_')">
-			<t l="{.}">
-			  <xsl:value-of select="normalize-space($current_lemma[3+position()])"/>
+			<xsl:variable name="cn" select="3+position()"  as="xs:integer+"/>
+			<t l="{.}" cn="{3+position()}" >
+			  <xsl:value-of select="normalize-space($current_lemma[$cn])"/>
 			</t>
 		      </xsl:for-each>
 		    </tt>
@@ -115,6 +116,11 @@
 			<sem class="{normalize-space(.)}"/>
 		      </xsl:for-each>
 		    </semantics>
+		    
+		    <!-- <check> -->
+		    <!--   <xsl:copy-of select="$translations"/> -->
+		    <!-- </check> -->
+
 		    <xsl:for-each select="$translations/tt/t">
 		      <tg xml:lang="{./@l}">
 			<!-- COMMA as separator between TRANSLATION values -->
@@ -162,7 +168,8 @@
 	
       </xsl:when>
       <xsl:otherwise>
-	<xsl:text>Cannot locate : </xsl:text><xsl:value-of select="$inFile"/>
+	<xsl:text>Cannot locate: </xsl:text><xsl:value-of
+	select="concat($inFile, $nl)"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
