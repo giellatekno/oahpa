@@ -437,13 +437,18 @@ def leksa_filter(Model,
     
     if geography:
         QUERY['geography'] = geography
-    else:
-        a = 'semtype__semtype__in'
-        if a in EXCL:
-            EXCL[a].append('PLACES')
-        else:
-            EXCL[a] = ['PLACES']
-    
+    # We were removing PLACES semantic type when leksa was in normal
+    # word mode, but problematically we need PLACES as an option. If
+    # this results in some odd behavior, will have to comment it back in
+    # and revise it.
+    # 
+    # else:
+    #     a = 'semtype__semtype__in'
+    #     if a in EXCL:
+    #         EXCL[a].append('PLACES')
+    #     else:
+    #         EXCL[a] = ['PLACES']
+    # 
     if semtype_incl:
         QUERY['semtype__semtype__in'] = list(semtype_incl)
     
