@@ -318,8 +318,10 @@ class Leksaview(Gameview):
 
 	def additional_settings(self, settings_form):
 		self.settings['allsem'] = settings_form.allsem
-		# self.settings['frequency'] = None
-		# self.settings['geography'] = None
+		# These must be set to None if they are not in use. Will fix
+		# this, but setting them results in the query failing
+		self.settings['frequency'] = None
+		self.settings['geography'] = None
 
 		# settings_form.default_data['transtype'] = default_langpair
 
