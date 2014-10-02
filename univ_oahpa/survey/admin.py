@@ -4,6 +4,22 @@ from .models import Survey, UserSurvey, SurveyQuestion, SurveyQuestionAnswerValu
 from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
 
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
+
+class TabbedTranslationMixin(object):
+
+    class Media:
+        """ These enable the tabbed translation interface. """
+        js = (
+            'modeltranslation/js/force_jquery.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
+
+
 class SurveyQuestionAnswerValueInlineAdmin(admin.TabularInline):
     model = SurveyQuestionAnswerValue
     extra = 1
@@ -25,6 +41,9 @@ class SurveyQuestionInlineAdmin(EditLinkToInlineObject, admin.TabularInline):
     readonly_fields = ('edit_answers', )
     extra = 1
 
+class TranslatedSurveyQuestionInlineAdmin(SurveyQuestionInlineAdmin, TranslationTabularInline):
+    pass
+
 class SurveyQuestionAdmin(admin.ModelAdmin):
     model = SurveyQuestion
     inlines = [SurveyQuestionAnswerValueInlineAdmin]
@@ -35,10 +54,10 @@ class SurveyResponseInline(admin.TabularInline):
     exclude = ('user', )
     extra = 0
 
-class SurveyAdmin(admin.ModelAdmin):
+class SurveyAdmin(admin.ModelAdmin, TabbedTranslationMixin):
     """ The main survey object with inlines for answers.
     """
-    inlines = [SurveyQuestionInlineAdmin, SurveyResponseInline]
+    inlines = [TranslatedSurveyQuestionInlineAdmin, SurveyResponseInline]
 
     list_display = ('title', 'user_responses_submitted', )
 
@@ -80,6 +99,8 @@ class SurveyAdmin(admin.ModelAdmin):
 
     actions = [export_survey_result_csv]
 
+class TranslatedSurveyAdmin(SurveyAdmin, TranslationAdmin):
+    pass
 
 class UserSurveyQuestionAnswer(admin.TabularInline):
     model = UserSurveyQuestionAnswer
@@ -92,6 +113,8 @@ class UserSurveyAdmin(admin.ModelAdmin):
     exclude = ('user', )
     ordering = ('-completed', )
 
-admin.site.register(Survey, SurveyAdmin)
+# admin.site.register(Survey, SurveyAdmin)
+admin.site.register(Survey, TranslatedSurveyAdmin)
+
 admin.site.register(SurveyQuestion, SurveyQuestionAdmin)
 admin.site.register(UserSurvey, UserSurveyAdmin)
