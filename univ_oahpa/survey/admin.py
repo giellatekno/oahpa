@@ -4,12 +4,13 @@ from .models import Survey, UserSurvey, SurveyQuestion, SurveyQuestionAnswerValu
 from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
 
-from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline, TabbedTranslationAdmin
 
 class TabbedTranslationMixin(object):
 
     class Media:
-        """ These enable the tabbed translation interface. """
+        """ These enable the tabbed translation interface. Also in
+            TabbedTranslationAdmin """
         js = (
             'modeltranslation/js/force_jquery.js',
             'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
@@ -54,7 +55,7 @@ class SurveyResponseInline(admin.TabularInline):
     exclude = ('user', )
     extra = 0
 
-class SurveyAdmin(admin.ModelAdmin, TabbedTranslationMixin):
+class SurveyAdmin(admin.ModelAdmin):
     """ The main survey object with inlines for answers.
     """
     inlines = [TranslatedSurveyQuestionInlineAdmin, SurveyResponseInline]
@@ -99,7 +100,7 @@ class SurveyAdmin(admin.ModelAdmin, TabbedTranslationMixin):
 
     actions = [export_survey_result_csv]
 
-class TranslatedSurveyAdmin(SurveyAdmin, TranslationAdmin):
+class TranslatedSurveyAdmin(SurveyAdmin, TabbedTranslationAdmin):
     pass
 
 class UserSurveyQuestionAnswer(admin.TabularInline):

@@ -126,9 +126,6 @@ class SurveyQuestion(models.Model):
 #        - use this one, unless it's unsupported (which it may somehow 
 #        be)
 
-#   https://github.com/Yaco-Sistemas/django-transmeta/
-#       - metaclasses
-
 # class SurveyQuestionTranslations(models.Model):
 #     question = models.ForeignKey('SurveyQuestion')
 #
