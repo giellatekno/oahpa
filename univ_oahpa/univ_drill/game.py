@@ -1525,7 +1525,7 @@ class QuizzGame(Game):
 			# self.query_set.pop(self.query_set.index(random_word))
 		except IndexError:
 			if len(self.query_set) == 0:
-				raise Http404(error)
+				raise Http404(error + "  " + repr(leksa_kwargs))
 		
 		db_info['word_id'] = random_word[0]
 		db_info['question_id'] = ""
