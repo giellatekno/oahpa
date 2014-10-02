@@ -11,6 +11,12 @@ from models import ( UserGrade
                    , CourseGoalGoal
                    )
 
+from modeltranslation.admin import ( TranslationAdmin
+                                   , TranslationTabularInline
+                                   , TabbedTranslationAdmin
+                                   )
+
+
 from models import CourseRelationship
 
 from django.db.models import Q
@@ -112,14 +118,22 @@ class CourseAdmin(admin.ModelAdmin):
 class GoalAdmin(admin.ModelAdmin):
     inlines = [GoalParamAdmin]
 
+class TranslatedGoalAdmin(GoalAdmin, TabbedTranslationAdmin):
+	pass
+
 class CourseGoalGoalAdmin(admin.TabularInline):
     model = CourseGoalGoal
 
 class CourseGoalAdmin(admin.ModelAdmin):
     inlines = [CourseGoalGoalAdmin]
 
+class TranslatedCourseGoalAdmin(CourseGoalAdmin, TabbedTranslationAdmin):
+	pass
+
 admin.site.register(Course, CourseAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Activity, ActivityAdmin)
-admin.site.register(Goal, GoalAdmin)
-admin.site.register(CourseGoal, CourseGoalAdmin)
+# admin.site.register(Goal, GoalAdmin)
+admin.site.register(Goal, TranslatedGoalAdmin)
+# admin.site.register(CourseGoal, CourseGoalAdmin)
+admin.site.register(CourseGoal, TranslatedCourseGoalAdmin)

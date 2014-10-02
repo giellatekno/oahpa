@@ -22,7 +22,7 @@
 
     Adding models to the system requires South. First, make sure the app is added in south, if not:
 
-        $ python manage.py migrate_to_south appname
+        $ python manage.py convert_to_south APPNAME
 
     Then, begin a new migration for the database for the particular app within South.
 
@@ -43,11 +43,17 @@
 
         $ python manage.py update_translation_fields
 
+    ## Deploying new translation settings on server
+
+    TODO: This.
+
 """
 
 from modeltranslation.translator import translator, TranslationOptions, AlreadyRegistered
 
 from survey.models import Survey, SurveyQuestion, SurveyQuestionAnswerValue
+
+from courses.models import Goal, CourseGoal
 
 class SurveyOptions(TranslationOptions):
     fields = ('title', 'description', )
@@ -61,3 +67,12 @@ class SurveyQuestionAnswerValueOptions(TranslationOptions):
 translator.register(Survey, SurveyOptions)
 translator.register(SurveyQuestion, SurveyQuestionOptions)
 translator.register(SurveyQuestionAnswerValue, SurveyQuestionAnswerValueOptions)
+
+class GoalTranslationOptions(TranslationOptions):
+	fields = ('short_name', )
+
+class CourseGoalTranslationOptions(TranslationOptions):
+	fields = ('short_name', 'description')
+
+translator.register(Goal, GoalTranslationOptions)
+translator.register(CourseGoal, CourseGoalTranslationOptions)

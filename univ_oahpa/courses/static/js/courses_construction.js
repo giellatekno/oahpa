@@ -83,6 +83,7 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
             // initializing
             for (var i = 0; i < $scope.goals.length; i++) {
                 var goal = $scope.goals[i];
+                console.log(goal);
 
                 $scope.not_in_use.push({
                     text: goal.short_name,
@@ -134,6 +135,7 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
                         id: goal.id,
                         value: i+1
                     };
+                    console.log(item);
 
                     var ind_of = listContainsObject($scope.not_in_use, item, 'id');
 
