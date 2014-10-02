@@ -45,6 +45,10 @@
 
     ## Deploying new translation settings on server
 
+    NB zOMG: This is a careful process, otherwise you will see some big
+    scary (and potentially condescending) errors about choosing the
+    wrong DB system which doesn't support schema transaction statements.
+
     The initial migration (0001_initial.py) will only run on the first
     machine it is applied on. Therefore, when bringing the new migration
     system over to another machine, we must fake the first migration and
