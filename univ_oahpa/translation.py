@@ -45,7 +45,34 @@
 
     ## Deploying new translation settings on server
 
-    TODO: This.
+    The initial migration (0001_initial.py) will only run on the first
+    machine it is applied on. Therefore, when bringing the new migration
+    system over to another machine, we must fake the first migration and
+    then run the rest. This applies for example, when deploying the new
+    system on gtoahpa:
+
+        $ svn up
+
+    Activate South by installing it in INSTALLED_APPS, along with any
+    other changes.
+
+        $ python manage.py syncdb
+
+    Fake the first migrations for each app:
+
+        $ python manage.py migrate APPNAME1 0001 --fake
+        $ python manage.py migrate APPNAME2 0001 --fake
+
+    Then run the remaining migrations as normal:
+
+        $ python manage.py migrate APPNAME1 0002
+        $ python manage.py migrate APPNAME2 0002
+
+        etc...
+
+    Then update the translation fields.
+
+        $ python manage.py update_translation_fields
 
 """
 
