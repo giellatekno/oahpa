@@ -67,13 +67,6 @@
 {% endifnotequal %}
 {% endifnotequal %}
 
-{% comment %}
-        <div ng-controller="ErrorRequester" 
-             data-error-watch="a.errorapi"
-             data-lookup-url="/davvi/errorapi/lookup/">
-        <div id="game_left" ng-controller="TooltipController" ng-source="/{{ URL_PREFIX }}/courses/api/feedback/">
-{% endcomment %}
-
 <div id="game_left" ng-controller="ErrorRequester" data-lookup-url="/{{ URL_PREFIX }}/errorapi/lookup/">
 	<dl id="question_set" class="{% block questionsetclass %}{% endblock %}">
 	{% for form in forms %}
@@ -155,11 +148,19 @@
             {% ifequal form.error "error" %}
 			<!-- Feedback -->
                 {% if form.feedback %}
-                    <a href="#" class="feedback_link" id="link_feedback-{{ forloop.counter }}">
+                    <a data-error-fst 
+                        data-lemma="{{ form.lemma }}" 
+                        data-input-form="{{ form.userans }}" 
+                        data-task="{{ form.user_task }}" 
+                        href="#" 
+                        class="feedback_link" 
+                        id="link_feedback-{{ forloop.counter }}">
 					<img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
 					<t class="interface">{% trans_to "help" "sme"%}<span class="invisible">{% trans "help" %}</span></t>
                     </span>
                     </a>
+                    <a>
+				    
                 {% else %}
                     {# constraining this to a specific flag, just for testing. #}
                     {% comment %}

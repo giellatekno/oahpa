@@ -1336,9 +1336,13 @@ class MorfaQuestion(OahpaQuestion):
 		self.user = kwargs.get('user', False)
 		super(MorfaQuestion, self).__init__(*args, **kwargs)
 
-		if tag.case == 'Ill':
-			self.errorapi_feedback = True
-			self.user_task = "%s+%s" % (tag.number, tag.case)
+		self.errorapi_feedback = True
+
+		if tag.pos == 'N':
+		    self.user_task = "%s+%s" % (tag.number, tag.case)
+		elif tag.pos == 'V':
+			self.user_task = tag.string
+
 		
 		# initialize variables
 		self.init_variables(possible=[], 

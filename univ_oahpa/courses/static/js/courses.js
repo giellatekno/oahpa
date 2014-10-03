@@ -67,7 +67,7 @@ Courses.controller('ErrorRequester', function($scope, $http, $element, $cookies)
 
     $element.find(css_selector).bind('click', function ($event) {
 
-        $event.preventDefault();
+        // $event.preventDefault();
 
         var feedback_link = $($event.target);
 
@@ -78,6 +78,7 @@ Courses.controller('ErrorRequester', function($scope, $http, $element, $cookies)
                 last_feedback.popover('destroy');
             }
 
+            var displayed_strings = [];
             if ($scope.messages) {
 
                 // Collect feedback messages.
@@ -91,7 +92,10 @@ Courses.controller('ErrorRequester', function($scope, $http, $element, $cookies)
 
                     for (_j = 0, _lenz = msg.message.length; _j < _lenz; _j++) {
                         m = msg.message[_j];
-                        message_body_snippet += "<li>" + m.string + "</li>";
+                        if (displayed_strings.indexOf(m.string) == -1) {
+                            message_body_snippet += "<li>" + m.string + "</li>";
+                            displayed_strings.push(m.string);
+                        }
                     }
 
                 }
@@ -99,7 +103,7 @@ Courses.controller('ErrorRequester', function($scope, $http, $element, $cookies)
 
             } else {
                 // TODO: localize
-                message_body_snippet = "<p>No errors :)</p>";
+                message_body_snippet = "<p>No feedback available.</p>";
             }
 
             feedback_link.popover({
@@ -116,6 +120,8 @@ Courses.controller('ErrorRequester', function($scope, $http, $element, $cookies)
         var form  = $(feedback_link).attr('data-input-form') || $(feedback_link).html();
         var task  = $(feedback_link).attr('data-task');
         var lemma = $(feedback_link).attr('data-lemma');
+
+        console.log("task: " + task + "; lemma: " + lemma + "; form: " + form);
 
         // JSON? 
         var feedback_data = {
@@ -139,6 +145,8 @@ Courses.controller('ErrorRequester', function($scope, $http, $element, $cookies)
 
         $http.post(feedback_url, feedback_data, config)
              .success(handle_api_feedback_popover);
+
+        return true;
 
     }); // click event
 
