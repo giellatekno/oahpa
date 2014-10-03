@@ -1,0 +1,114 @@
+!!! Møte 03.10.14
+
+Til stades: Ryan, Lene
+
+!! Saksliste
+* Morfologisk feedback API
+* Spørreskjema ved første innlogging
+* Sahka, Vasta og MorfaC fungerer ikke som de skal
+* Lokalisering
+* Konteaksta i kursinnlogging
+
+!! Morfologisk feedback API
+Sjur og Lene har flyttet errorFST-kildefilene over i newinfra, slik at de kan kompileres med make, etter egen configure. Dette er straks på plass. Da vil det være lettere å legge til flere feiltyper, og dette vil sannsynligvis også bli implementert for flere språk.
+
+[error api testside|http://testing.oahpa.no/courses_davvi/errorapi/test_page/]
+
+[I MorfaS illativ|http://testing.oahpa.no/courses_davvi/morfas/]
+
+Gammel feedback er enda ikkje installert på den rett måte, så ein får mange meldingar av samme type. 
+
+nurki Acc fungerer på api-sida, men ikke i Morfa:
+{{{
+/opt/smi/sme/bin/ped-errortag-sme.fst
+meta/morfaerrorfstmessages.xml
+
+        <message task="Sg+Acc" tag="Acc" tag2="CGErr"><![CDATA[Husk <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/stadieveksling.nob.html#Stadievekslingsm%C3%B8nstre">stadieveksling<span class="shortinfo">Veksling i konsonantgruppa mellom 1. og 2. stavinga i siste takta, f.eks. giella - giela. Klikk for å lese mer.</span></a>.]]></message>
+
+
+nurki
+nurki	Nurki+N+Prop+LowercaseErr+Plc+CGErr+Sg+Acc
+nurki	Nurki+N+Prop+LowercaseErr+Plc+CGErr+Sg+Gen
+nurki	Nurki+N+Prop+LowercaseErr+Plc+Sg+Nom
+nurki	nurki+N+CGErr+Sg+Acc
+nurki	nurki+N+CGErr+Sg+Gen
+nurki	nurki+N+Sg+Nom
+}}}
+
+! Tiltak:
+* __Ryan__: fikse problem med at meldingar dukker opp i testgrensesnittet, men ikkje i morfa-s (Pl+Acc)
+* __Ryan__: standardmeldinga kommer flere ganger i høyre vindu. Den skal komme bare en gang.
+* __Ryan__: lag ein /etc/init.d skript for omstarting, slik at alle får omstarte når som helst
+
+
+
+!! Spørreskjema ved første innlogging
+Spørreskjemaet er oppdatert, men skrivefeltene fungerer ikke. Studenten skal komme direkte til spørreskjemaet første gang hun logger inn.
+
+[spørreskjema testside|http://testing.oahpa.no/courses_davvi/survey/answer/]
+
+Lokalisering gjøres i admin-grensesnittet etter å ha logga inn som lærer.
+
+! Tiltak
+* __Ryan__: endrer fra skrivefelt til flervalg i alle svarene
+* __Ryan__: dokumenterer redigering og eksportering til spørreskjemaet (står i databasen) 
+* __Ryan__: CSRF feil når ein endrer hjelpespråket
+* __Lene__: oversetter lokaliseringa
+* __Ryan__: lagre grensesnittspråk i bruk spørreskjema
+* __Ryan__: fjern påminnelse om spørreskjema som dukker opp av og til. ein får melding på første innlogging no, då treng me ikkje påminnelse. 
+
+
+!! Sahka, Vasta og MorfaC fungerer ikke som de skal
+
+{{{
+      <message id="err-no_fst">Beklager – systemet fungerer ikke for øyeblikket.</message>
+      Regelen: 
+sme-ped.cg3 =>      MAP (&err-no_fst) TARGET QDL (NEGATE *1 WORD OR QMRK) ; 
+       N V ? 
+
+
+
+input (spørsmål + svar) | preprocess | usmePed | lookup2cg | vislcg3 -g sme-ped.cg3
+
+
+Vasta;
+Manne Biret lea nu buori mielas? Son áigut geahččat duodječájáhusa .
+   Du skal bruke substantivet som er oppgitt.
+
+
+
+}}}
+
+__Tiltak: __
+* __Ryan__ Sahka og Vasta må fungere på gtlab \\
+Det fungerer framleis ikkje, sjølv med ny installering. Ryan ser meir på det.
+* __Ryan__: tar kontakt med Heli 
+* __Ryan__: Morfa-C: input box er ikkje stort nok for nokre moglege svar. 
+Eksempel: Makkár stohpogálvvut leat sin viesus? (bassaladdanmašiidna) 
+
+!! Lokalisering
+
+
+Det mangler mange felt i lokalisering: 
+
+* Courses: kurstittel
+* Continue, History, Begin, etc.
+ 
+
+!Tiltak:
+* __Ryan__: eit par manglende trans-tagger i Courses html-filer, ogso eit par felt i databasen som ikkje kan omsetjast enno
+* __Lene, Trond__ fyller ut mer i lokaliseringsfiler når Ryan har komplettert dem
+
+
+!! Konteaksta i kursinnlogging
+Lene har snakka med Heli om dette. Heli sender mail til alle impliserte.
+
+!Tiltak:
+* __Ryan__: evaluerer korleis Konteaksta kan brukest i Courses
+
+!! Neste møte
+Torsdag 9. oktober kl 16.00 norsk tid. 
+
+
+
+
