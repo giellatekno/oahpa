@@ -190,6 +190,15 @@ def courses_main(request):
         that they have records in.
     """
 
+    if 'survey_done' in request.GET:
+        request.session['no_surveys'] = True
+
+    if request.user.get_profile().login_count < 2:
+        if 'no_surveys' not in request.session:
+            request.session['courses_survey_redirect'] = True
+            redir = '/%s/survey/answer/' % URL_PREFIX
+            return HttpResponseRedirect(redir)
+
     template = 'courses_main.html'
 
     c = {}

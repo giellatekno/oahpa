@@ -31,6 +31,9 @@
                 <p class="lead" ng-show="!survey">
                     {% blocktrans %}No surveys to fill out at this time.{% endblocktrans %}
                 </p>
+                {% if redirect %}
+                    <a href="{{ redirect }}?survey_done">{% blocktrans %}Return to your course overview.{% endblocktrans %}</a>
+                {% endif %}
                 <div ng-hide="response">
                     <form novalidate ng-if="survey" 
                                      ng-submit="submitForm($event)" 
@@ -96,6 +99,9 @@
                             <a href="/{{ URL_PREFIX }}/survey/answer/" class="btn btn-success next-survey">Next &rarr;</a>
                         </blockquote>
                     </div>
+                    {% if redirect %}
+                        <a href="{{ redirect }}?survey_done">{% blocktrans %}Return to your course overview.{% endblocktrans %}</a>
+                    {% endif %}
                 </div>
 
                 <div ng-if="form_error || validation_errors" class="form_errors">

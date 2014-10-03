@@ -10,6 +10,9 @@ from .models import Survey, UserSurvey
 from .permissions import *
 from .serializers import *
 
+from django.conf import settings
+URL_PREFIX = settings.URL_PREFIX
+
 class Auth(object):
     authentication_classes = (SessionAuthentication, BasicAuthentication)
 
@@ -75,6 +78,12 @@ from django.http import HttpResponse
 def answer(request):
 
     context = {}
+
+    if 'courses_survey_redirect' in request.session:
+        redir = '/%s/courses/' % URL_PREFIX
+        context['redirect'] = redir
+    else:
+        context['redirect'] = False
 
     return render_to_response('survey.html', context,
                            context_instance=RequestContext(request))
