@@ -2,37 +2,46 @@
 
 !!!HTML
 
+Below, catalogue names written in capitals are variables:
+* OAHPA = oahpa, nu_oahpa, univ_oahpa, bxr_oahpa, crk_oahpa, ...
+* DRILL = drill, bxr_drill, ...
+
 !!Overall look
 
-* CSS-settings reside in {{ped/OAHPA/media/css/oahpa.css}}
-** ... where OAHPA is a variable for crk_oahpa, est_oahpa, etc. Note that sme may be
-   either oahpa or univ_oahpa, dependent upon version (old/new).
-* Mainpage __oahpa.no__ is defined in
-  {{ped/OAHPA/drill/templates/oahpa_main.html}}
-* Basic look for all the games (divs, menubars) are given in file
+* The css-settings reside in {{ped/OAHPA/media/css/OAHPA.css}}
+** Note that sme oahpa is found in both either oahpa or univ_oahpa, 
+    dependent upon version (univ_oahpa is the corrent one).
+** Note also that there is a lack of correspondence in the css naming, 
+    there are paths like {{ped/bxr_oahpa/media/css/fkv_oahpa.css}}
+    TODO: Fix this.
+* The main page for OAHPA is defined in
+  {{ped/OAHPA/templates/OAHPA_main.html}}
+* The basic look for all the games (divs, menubars) are given in the file
   {{ped/OAHPA/templates/oahpa.html}}
-* The file game.html contains the basic functionality for all the games.
-* Morhpology games are controlled by the file {{mgame.html}}
+* The file game.html in {{ped/OAHPA/DRILL/templates}} contains 
+  the basic functionality for all the games.
 
 In addition, it is possible to alter the pages of individual games by
 editing the files
 
 {{{
-ped/OAHPA/drill/templates/mgame_n.html (Morfa for nouns)
-ped/OAHPA/drill/templates/mgame_l.html (Morfa numerals)
-ped/OAHPA/drill/templates/mgame_a.html (Morfa for adjectives)
-ped/OAHPA/drill/templates/mgame_v.html (Morfa for verbs)
-ped/OAHPA/drill/templates/quizz.html (Leksa common nouns)
-ped/OAHPA/drill/templates/quizz_n.html (Leksa placenames)
-ped/OAHPA/drill/templates/num.html (Numra cardinal)
-ped/OAHPA/drill/templates/num_ord.html (Numra ordinals)
-ped/OAHPA/drill/templates/vasta.html
-ped/OAHPA/drill/templates/sahka.html
+ped/OAHPA/DRILL/templates/mgame_n.html (Morfa for nouns)
+ped/OAHPA/DRILL/templates/mgame_l.html (Morfa numerals)
+ped/OAHPA/DRILL/templates/mgame_a.html (Morfa for adjectives)
+ped/OAHPA/DRILL/templates/mgame_v.html (Morfa for verbs)
+ped/OAHPA/DRILL/templates/leksa.html (Leksa common nouns)
+ped/OAHPA/DRILL/templates/leksa_place.html (Leksa placenames)
+ped/OAHPA/DRILL/templates/num.html (Numra cardinal)
+ped/OAHPA/DRILL/templates/num_ord.html (Numra ordinals)
+ped/OAHPA/DRILL/templates/clock.html (Numra clock)
+ped/OAHPA/DRILL/templates/dato.html (Numra date)
+ped/OAHPA/DRILL/templates/vasta.html
+ped/OAHPA/DRILL/templates/sahka.html
 }}}
 
 Game pages involve definitions from several html-pages. For example, S-MORFA: mgame_x.html, mgame.html, game.html and oahpa.html. 
 
-The files contain template tags such as:
+The files contain template tags like the following:
 
 {{{
 {% block navbar %}

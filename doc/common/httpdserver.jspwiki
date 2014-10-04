@@ -5,6 +5,7 @@ and other applications.
 
 !! In case of emergencies... 
 
+!gtlab (the testing oahpas)
 If an Oahpa on __gtlab__ (e.g. testing.oahpa.no/fkv_oahpa) gives "__404 Not found__" error then it means that nginx is running but the Oahpa (fastcgi) process has been stopped. For checking if the particular Oahpa process is running give the command:
 
 {{{
@@ -14,10 +15,12 @@ If an Oahpa on __gtlab__ (e.g. testing.oahpa.no/fkv_oahpa) gives "__404 Not foun
 If this command does not output 5-6 lines of fastcgi processes then you need to start the Oahpa process again. For doing that, go to the respective Oahpa's home directory, e.g. {{{/home/fkv_oahpa/fkv_oahpa}}} and give the command (as sudo, if needed):
 
 {{{
-    fkv_oahpa.sh --run
+    sudo ./fkv_oahpa.sh --run
 }}}
 
 If all the Oahpa instances on gtlab are down (for example after server reboot) then you can start all the Oahpas at once, using the script {{{start_all_oahpas.sh}}} located in the directory {{{/home/oahpa_scripts}}} (requires sudo rights).
+
+!gtlab (the testing oahpas)
 
 On __gtoahpa__, if for some reason the processes do not restart via chkconfig, 
 inspect via {{ps aux}} or {{top}} to find out what is or isn't running.
@@ -31,8 +34,12 @@ should be started in (given dependencies between them) is:
 # lookupserv
 # univ_oahpa / smaoahpa / ...
 
-For this use the command {{{ sudo service NAME start }}}, or alternatively
-restart, if necessary. Please note that the newer Oahpas on gtoahpa (myv, yrk, ...) cannot be started via sudo service start. See the section about fastcgi processes for instructions.
+For this use the command (where NAME is the name of the service / oahpa version):
+
+{{{ sudo service NAME start }}}, 
+
+or alternatively
+{{restart}} instead of {{start}}. Please note that the newer Oahpas on gtoahpa (myv, yrk, ...) cannot be started via {{sudo service start}}. See the section about fastcgi processes below for instructions.
 
 !!Nginx (gtoahpa, gtweb, gtlab)
 

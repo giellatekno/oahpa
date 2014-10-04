@@ -45,27 +45,34 @@ computer (as with the documentation system forrest). Follow the
 instructions in [Django Quick install guide|http://docs.djangoproject.com/en/dev/intro/install/]: Install
 Python (you probably have it already) and Install Django. Select the
 option "Install an official release", to assure compatibility with
-victorio. 
+django on the gtoahpa and gtlab servers.. 
 
-Go to victorio and start mysql with the administrator username and password. 
-Grant access to you: 
+Go to gtoahpa (for the stable Oahpa versons) or to gtlab 
+(for the Oahpa versions with URLs containing the word ''testing'')
+and start mysql with the administrator username and password. 
+Grant access to yourself: 
 
 {{{
 $ mysql -u root -p
 mysql> GRANT all ON oahpa.* TO 'your-username'@'your-own-ip-address';
 }}}
 
-Edit the file ped/oahpa/settings.py in your own computer with the information
+Edit the file ped/LANG_oahpa/settings.py (LANG being a variable for your
+own target language) in your own computer 
+with the following information (evt. exchanging ''gtoahpa'' with ''gtlab''):
 
 {{{
 DATABASE_USER = 'your-username'
 DATABASE_PASSWORD = ''
-DATABASE_HOST = 'victorio.uit.no'
+DATABASE_HOST = 'gtoahpa.uit.no'
 DATABASE_PORT = '' (port number)
 }}}
 
-And, finally, you need to create a sami language directory. Django should be installed in /Library/Python/2.5/site-packages/ -directory. Look at that directory for django/conf/locale -directory. Create sme
-language directory and copy the locale settings there from no:
+And, finally, you need to create a language directory for the target language.
+Django should be installed in /Library/Python/2.5/site-packages/ -directory. 
+Look at that directory for django/conf/locale -directory. Create the target
+language directory and copy the locale settings there from e.g. the ''no''
+locale directory:
 
 {{{
 mkdir your_pythonlib/django/conf/locale/sme
@@ -75,18 +82,18 @@ cp your_pythonlib/django/conf/locale/no/django.* $(djangopath)/django/conf/local
 Then start the web development server in your own computer:
 
 {{{
-cd ped/oahpa/
+cd ped/LANG_oahpa/
 python manage.py runserver
 }}}
 
 The pages should be available in
 [http://127.0.0.1:8000/oahpa/]. Consult
 the Django manual if there are problems with this part. With the
-remote logging to the database, you need to ask saara. 
+remote logging to the database, you need to ask one of the programmers. 
 
 In the sandbox, it is possible to test the changes to the code and to
 html pages. After the pages are working, check them in to svn and
-update the official version in victorio. 
+update the official version on the server. 
 
 
 !!Tronds notes on howto
@@ -97,27 +104,27 @@ Check in the control panel that MySQL is running: Click on it and see the green 
 
 MySQL browser
 
-check that in $GTHOME/ped/oahpa/, the parameters are:
+check that in $GTHOME/ped/LANG_oahpa/, the parameters are:
 
 {{{
-
+(to be filled in by a programmer)
 }}}
 
 Then start the web development server in your own computer:
 
 {{{
-cd $GTHOME/ped/oahpa/
+cd $GTHOME/ped/LANG_oahpa/
 python manage.py runserver
 }}}
 
 The pages should be available in
 [http://127.0.0.1:8000/oahpa/]. Consult
 the Django manual if there are problems with this part. With the
-remote logging to the database, you need to ask saara. 
+remote logging to the database, you need to ask the programmers. 
 
 In the sandbox, it is possible to test the changes to the code and to
 html pages. After the pages are working, check them in to svn and
-update the official version in victorio. 
+update the official version in on the relevant server (gtoahpa, gtweb). 
 
 
 
