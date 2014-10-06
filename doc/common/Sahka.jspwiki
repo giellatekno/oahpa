@@ -1,5 +1,7 @@
 
 
+!!!Forms.py etc.
+
 __To be written:__
 
 * forms.py
@@ -11,13 +13,15 @@ __To be written:__
 * views.py
 ** ...
 
-!!Intro
+!!!Intro
 
 Sahka contains pictures which have to be synchronized with the
 contents of the database, so the whole process is explained here in
 separate section.
 
-!!Updating the database
+
+!!!Updating the database
+
 Create the dialogue file and store it e.g. to
 ped/sme/xml/dialoguefile.xml. Give the dialogue a unique name in the 
 xml-structure, such as:
@@ -26,7 +30,18 @@ xml-structure, such as:
 <dialogue name="firstmeeting_man">
 }}}
 
-Install it to database using the command:
+!!!Installation of dialoguefile.xml for Sahka
+
+The script install.py is used for installing the dialoguefile for Sahka. 
+First, cd to the ped/oahpa directory and then test the script.
+
+{{{
+cd ped/oahpa/
+python install.py -h
+}}}
+
+
+Install {{dialoguefile.xml}} to the database using the command:
 
 {{{
 cd ped/oahpa

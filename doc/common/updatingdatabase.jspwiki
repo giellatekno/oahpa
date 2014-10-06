@@ -3,14 +3,15 @@
 !!!Updating the database
 
 The script install.py is used for updating the database. First, cd to
-the ped/oahpa directory and then test the script.
+the ped/OAHPA directory and then test the script.
+
 {{{
 cd ped/oahpa/
 python install.py -h
 }}}
 
 Changes in the database are visible in the interface straight
-away. Running a same installation script several times is not
+away. Running the same installation script several times is not
 harmful. The same command that is used for installing the information
 can be used for updating.
 
@@ -18,7 +19,7 @@ can be used for updating.
 !!Lexicons
 
 Information of individual words such as lemmas, stem information,
-semantic classes and source information is added or updated using command:
+semantic classes and source information is added or updated using the command:
 
 {{{
 python install.py -f ../sme/xml/nouns.xml
@@ -118,3 +119,8 @@ English version. To translate for the other languages, follow the
 steps in [Localisation|OahpaTechnicalDocumentation.html#Localisation]. In addition, 
 the changes in {{forms.py}} require that the server is restarted 
 (sudo httpd restart). 
+
+
+!!Vasta and MorfaC
+
+The installation of Vasta and MorfaC is documented in the document [VastaMorfaC.jspwiki|VastaMorfaC.html]

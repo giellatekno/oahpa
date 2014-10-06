@@ -1,16 +1,28 @@
 
+The script install.py is used for installing feedback. First, cd to
+the ped/oahpa directory and then test the script.
+
+{{{
+cd ped/oahpa/
+python install.py -h
+}}}
+
 
 Install first the feedback messages, preferably for all languages:
 {{{
 python install.py -m ../sme/xml/messages.xml
 python install.py -m ../sme/xml/messages.sme.xml
 }}}
+
 After that, install the feedback files for each pos. This may take
 some time, even hours, especially for nouns and adjectives.
+
 {{{
 python install.py -e ../sme/xml/feedback_verbs.xml -f ../sme/xml/verbs.xml
 ..
 }}}
+
+TODO: Make the documentation general, i.e. for all languages.
 
 You may update the content of the feedback messages, or add new
 languages without installing the feedback again. However, new feedback

@@ -112,6 +112,7 @@ __To be written:__
 
 !!Installing questions
 
+! Intro
 Morfa-C and Vasta share the same mechanism for installing the
 questions. Questions are defined, for example, in
 {{sme/xml/questions_vasta.xml}}. In addition some defaults for certain
@@ -125,6 +126,38 @@ for Morfa-C and Vasta to function properly, these must be updated before install
 Sometimes, additional words are required which are not in the other lexicon files.
 These are stored in a fillings file, which is installed like any other word lexicon
 file.
+
+!The command
+
+The command for updating the questions is:
+
+{{{
+python install.py -g ../sme/xml/grammar_defaults.xml -q ../sme/xml/questions_nouns.xml
+}}}
+
+Everything inside the question xml-file may be changed and the database
+will be updated during the next. With one exception: if a question is
+removed and there is no new question with the same id, it has to be
+specifically deleted using command: 
+{{{
+python install.py --qid <question_id>
+.. or by using the question text
+python install.py --qid "Maid SUBJ MAINV"
+}}}
+Of course the latter command will delete all the questions with that
+string. However, the deletion with the string may be useful if the qid
+was forgotten. Rerun of the installation script for the question file
+will restore the accidentally deleted questions.
+
+Available tags and paradigms are stored to the database beforehand and
+searched during the installation of the questions. If you have changed
+tag names in the lexicon (this occurs very rarely), then run the
+command: 
+{{{
+python install.py -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt -b
+}}}
+
+
 
 !! Adding question types
 

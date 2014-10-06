@@ -3,15 +3,16 @@ We use Constraint Grammar (CG) for analysing input to Sahka and Vasta.
 
 !!!CG-script
 
-
 In order to make it run:
 
-Copy the file oahpa/sme/src/sme-ped.cg3 to /opt/smi/sme/bin on victorio.
+Copy the file oahpa/sme/src/sme-ped.cg3 to /opt/smi/sme/bin on gtoahpa.
+
+__TODO__: We are about to migrate to new filenames. Make sure the info given 
+here is up to date.
 
 There is a Makefile in oahpa/sme/src as well, it compiles sme-ped.cg3.bin.
 
-The {{.bin}} file is dependent upon being compiled with a {{vislcg3}} compiler not
-older than the vislcg3 that runs it. Therefore, we do not use the .bin 
+The {{.bin}} file is dependent upon being compiled with a {{vislcg3}} compiler not older than the vislcg3 that runs it. Therefore, we do not use the .bin 
 file, but rather the {{.cg3}} file.
 
 The command for calling the cg3 file is found in {{oahpa/drill/forms.py}}.

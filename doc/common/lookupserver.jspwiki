@@ -3,18 +3,18 @@
 The lookup-process for the analyzer {{ped-sme.fst}}, used in Vasta
 and Sahka, is running all the time. The lookup is implemented as a
 server, callable by different processes. When started, it reads the file
-{{/opt/smi/sme/bin/ped-sme.fst}} and provides analyses based on exactly this fst. 
+{{/opt/smi/sme/bin/ped-sme.fst}} and provides analyses based on exactly this fst. For other language versions it reads the relevant files. TODO: update.
 
 The script {{lookupserv}} calls the Python program lookupserv.py in the {{sme/bin}} catalogue in opt.
 
 __NB:__ Any update of the FST requires a restart of the lookup server!
 
-* __(re-)starting__ the server:
+* __(re-)starting__ the server (gtlab, gtoahpa):
 ** go to the {{src}} folder in the {{ped}} folder of the running oapha production folder (you will find the lookupserv document there)
 ** type the command {{sudo ./lookupserv restart}}
 
-* __testing__ the server using the commad-line tool, that takes one word at a time:
-** go to {{/home/oahpa/ped/src}}
+* __testing__ the server using the commad-line tool, that takes one word at a time (OAHPA a variable for oahpa version):
+** go to {{/home/OAHPA/ped/src}}
 ** type the command {{sudo python client.py}}
 * __checking__ the log file for the lookup output from Sahka and Vasta on victorio:
 ** inspect the file {{/var/log/lserv.log}} with you editor of choice
