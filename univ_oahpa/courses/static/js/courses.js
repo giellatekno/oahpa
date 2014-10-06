@@ -22,7 +22,7 @@ Courses.controller('ErrorRequester', function($scope, $http, $element, $cookies)
             $scope.no_errors = false;
         } else {
             $scope.messages = false;
-            $scope.analyzer = false
+            $scope.analyzer = false;
             $scope.no_errors = true;
         }
 
@@ -79,6 +79,27 @@ Courses.controller('ErrorRequester', function($scope, $http, $element, $cookies)
             }
 
             var displayed_strings = [];
+
+            if ($scope.analyzer) {
+                console.log("fst input: " + $scope.analyzer[0]);
+                analyses = $scope.analyzer[1];
+
+                if (analyses) {
+                    console.log("fst results:");
+                    for (_j = 0, _lenj = analyses.length; _j < _lenj; _j++) {
+                        analysis = analyses[_j];
+                        lemma = analysis[0];
+                        tags = analysis[1];
+                        console.log(lemma + "\t" + tags.join('+'));
+                    }
+                } else {
+                    console.log("No analyses from FST.");
+                }
+
+            } else {
+                console.log("No analyses from FST.");
+            }
+
             if ($scope.messages) {
 
                 // Collect feedback messages.
@@ -86,16 +107,20 @@ Courses.controller('ErrorRequester', function($scope, $http, $element, $cookies)
                 // it was too tricky.
                 var message_body_snippet = "<ul class='errorapi_messages'>";
 
+
                 for (_i = 0, _len = $scope.messages.length; _i < _len; _i++) {
                     msg = $scope.messages[_i];
-                    console.log(msg);
 
                     for (_j = 0, _lenz = msg.message.length; _j < _lenz; _j++) {
                         m = msg.message[_j];
-                        if (displayed_strings.indexOf(m.string) == -1) {
-                            message_body_snippet += "<li>" + m.string + "</li>";
-                            displayed_strings.push(m.string);
+                        message_body_snippet += "<li>" ;
+                        if (m.title) {
+                            message_body_snippet += m.title + ": " + m.description;
                         }
+                        if (m.article) {
+                            message_body_snippet += "<br /><a href='" + m.article + ">Klikk for å lese mer</a>";
+                        }
+                        message_body_snippet += "</li>" ;
                     }
 
                 }
@@ -121,7 +146,7 @@ Courses.controller('ErrorRequester', function($scope, $http, $element, $cookies)
         var task  = $(feedback_link).attr('data-task');
         var lemma = $(feedback_link).attr('data-lemma');
 
-        console.log("task: " + task + "; lemma: " + lemma + "; form: " + form);
+        console.log("sending <task: " + task + "; intended lemma: " + lemma + "; user input: " + form + '>');
 
         // JSON? 
         var feedback_data = {
