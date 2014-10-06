@@ -8,24 +8,29 @@
         'sme': {
             'CGErr': [
                 {
-                    "string": "Message string.",
+                    "description": "Message string.",
+                    "title": "Message title.",
+                    "article": "http://path/to/article.html",
+
                     "task": "Sg+Gen",
                     "tag": "CGErr",
                 },
                 {
-                    "string": "Message string.",
+                    "description": "Message description.",
+                    "title": "Message title.",
                     "task": "Sg+Loc",
                     "tag": "CGErr",
                 },
             ],
             'DiphErr': [
                 {
-                    "string": "Message string.",
+                    "description": "Message description.",
+                    "article": "http://path/to/article.html",
                     "task": "Sg+Gen",
                     "tag": "DiphErr",
                 },
                 {
-                    "string": "Message string.",
+                    "description": "Message description.",
                     "task": "Sg+Loc",
                     "tag": "DiphErr",
                 },
@@ -34,24 +39,24 @@
         'nob': {
             'CGErr': [
                 {
-                    "string": "Message string.",
+                    "description": "Message description.",
                     "task": "Sg+Gen",
                     "tag": "CGErr",
                 },
                 {
-                    "string": "Message string.",
+                    "description": "Message description.",
                     "task": "Sg+Loc",
                     "tag": "CGErr",
                 },
             ],
             'DiphErr': [
                 {
-                    "string": "Message string.",
+                    "description": "Message description.",
                     "task": "Sg+Gen",
                     "tag": "DiphErr",
                 },
                 {
-                    "string": "Message string.",
+                    "description": "Message description.",
                     "task": "Sg+Loc",
                     "tag": "DiphErr",
                 },
@@ -120,11 +125,23 @@
                     tag.append(tag2)
             tags = ImmutableSet(tag)
             task = m.getAttribute('task')
-            string = m.firstChild.wholeText
+            article = m.getAttribute('article')
+            _title = m.getElementsByTagName("title")
+            if len(_title) > 0:
+                title = _title[0].firstChild.nodeValue.strip()
+            else:
+                title = False
+            _description = m.getElementsByTagName("description")
+            if len(_description) > 0:
+                description = _description[0].firstChild.nodeValue.strip()
+            else:
+                description = False
             parsed_messages[tags].append({
-                "string": string,
+                "title": title,
+                "description": description,
                 "task": task,
                 "tags": tags,
+                "article": article,
             })
 
         self.messages[lang] = parsed_messages
@@ -137,3 +154,6 @@
 
 if __name__ == "__main__":
     m = FeedbackMessageStore('../sme/meta/morfaerrorfstmessages.xml')
+    for k, m in m.messages.iteritems():
+        print k
+        print m

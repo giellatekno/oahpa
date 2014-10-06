@@ -1,11 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
+
   <messages xml:lang="nob"> 
+
+    <!--
+
+     About the message structure. <message /> tag must have task, and tag. `task`
+     is used by the system to recognize what the user is working on, and `tag`
+     is the morphological tag to look for in the FST output.
+
+     Optional attributes:
+      
+      * `article` - specify the link to the grammar. The system will show this
+      with text such as "Click to read more".
+
+      * `tag2` - another tag that must match in the analyses for the message to be applied.
+
+     Within the <message /> tag, there are two children that may exist.
+     <description /> is required, and <title /> is optional. If you include
+     WORDFORM in the text of either of these, it will be replaced with the
+     user's input.
+
+	    <message task="TaskName" tag="ErrorTag" article="http://oahpa.no/sme/gramm/article.language.html#section">
+	        <title>WORDFORM: Something is missing here.</title>
+	        <description>
+	            You should add what is missing.
+	        </description>
+	    </message>
+
+     -->
+
 <!--	<message id="LowercaseErr">WORDFORM skal ha stor forbokstav?</message> -->
-	<message task="Sg+Com" tag="ComVErr"><![CDATA[WORDFORM: Komitativen mangler <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.nob.html#Komitativ">vokalveksling<span class="shortinfo">Den siste vokalen endrer seg pga komitativendinga: e > i. Klikk for å lese mer.</span>.]]></message>
-	<message task="Sg+Acc" tag="Acc" tag2="CGErr"><![CDATA[Husk <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/stadieveksling.nob.html#Stadievekslingsm%C3%B8nstre">stadieveksling<span class="shortinfo">Veksling i konsonantgruppa mellom 1. og 2. stavinga i siste takta, f.eks. giella - giela. Klikk for å lese mer.</span></a>.]]></message>
-	<message task="Sg+Gen" tag="Gen" tag2="CGErr"><![CDATA[Husk <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/stadieveksling.nob.html#Stadievekslingsm%C3%B8nstre">stadieveksling<span class="shortinfo">Veksling i konsonantgruppa mellom 1. og 2. stavinga i siste takta, f.eks. giella - giela. Klikk for å lese mer.</span></a>.]]></message>
-	<message task="Sg+Loc" tag="Loc" tag2="CGErr"><![CDATA[Husk <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/stadieveksling.nob.html#Stadievekslingsm%C3%B8nstre">stadieveksling<span class="shortinfo">Veksling i konsonantgruppa mellom 1. og 2. stavinga i siste takta, f.eks. giella - giela. Klikk for å lese mer.</span></a>.]]></message>
-	<message task="Sg+Com" tag="Com" tag2="CGErr"><![CDATA[Husk <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/stadieveksling.nob.html#Stadievekslingsm%C3%B8nstre">stadieveksling<span class="shortinfo">Veksling i konsonantgruppa mellom 1. og 2. stavinga i siste takta, f.eks. giella - giela. Klikk for å lese mer.</span></a>.]]></message>
+
+	<message task="Sg+Com" tag="ComVErr" article="http://oahpa.no/sme/gramm/substantiv.nob.html#Komitativ">
+	    <title>WORDFORM: Komitativen mangler vokalveksling.</title>
+	    <description>
+	        Den siste vokalen endrer seg pga komitativendinga: e > i.
+	    </description>
+	</message>
+
+	<message task="Sg+Acc" tag="Acc" tag2="CGErr" article="http://oahpa.no/sme/gramm/stadieveksling.nob.html#Stadievekslingsm%C3%B8nstre">
+	    <title>Husk stadieveksling</title>
+	    <description>
+	       Veksling i konsonantgruppa mellom 1. og 2. stavinga i siste takta, f.eks. giella - giela.
+	    </description>
+	</message>
+
+	<message task="Sg+Gen" tag="Gen" tag2="CGErr" article="http://oahpa.no/sme/gramm/stadieveksling.nob.html#Stadievekslingsm%C3%B8nstre">
+	    <title>Husk stadieveksling</title>
+	    <description>
+	        Veksling i konsonantgruppa mellom 1. og 2. stavinga i siste takta, f.eks. giella - giela.
+	    </description>
+	</message>
+	<message task="Sg+Loc" tag="Loc" tag2="CGErr" article="http://oahpa.no/sme/gramm/stadieveksling.nob.html#Stadievekslingsm%C3%B8nstre">
+	    <title>Husk stadieveksling</title>
+	    <description>
+	        Veksling i konsonantgruppa mellom 1. og 2. stavinga i siste takta, f.eks. giella - giela.
+	    </description>
+	</message>
+	<message task="Sg+Com" tag="Com" tag2="CGErr" article="http://oahpa.no/sme/gramm/stadieveksling.nob.html#Stadievekslingsm%C3%B8nstre">
+	    <title>Husk stadieveksling</title>
+	    <description>
+	        Veksling i konsonantgruppa mellom 1. og 2. stavinga i siste takta, f.eks. giella - giela.
+	    </description>
+	</message>
 	<!-- 
 		 If the task can be anything, it's probably better to have it
 		 unmarked. 
@@ -14,15 +71,75 @@
 		 task="all"  
 
 	 -->
-	<message tag="AErr">Du har kanskje glemt å skrive á i WORDFORM</message>
-	<message tag="AiErr">Husk at istedenfor i, blir det á i WORDFORM</message>
-	<message task="Sg+Ill" tag="IllVErr"><![CDATA[Illativen mangler <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.nob.html#Illativ">vokalveksling<span class="shortinfo">Den siste vokalen i ordet endrer seg pga illativendinga: a > i, i > á, o > u. Klikk for å lese mer.</span>.]]></message>
-	<message task="Sg+Ill" tag="IllErr"><![CDATA[Husk at illativ-endelsen er -ii for ulikestavelsesord. <a target="_blank" href="http://oahpa.no/sme/gramm/substantiv.nob.html#Illativ">illativ?</a> Klikk for å lese mer.]]></message>
-	<message task="Sg+Ill" tag="DiphErr"><![CDATA[WORDFORM mangler <a class="helptext" href="#">diftongforenkling<span class="shortinfo">Diftongen mister den andre vokalen: ea - e, ie - i, uo - u, oa - o.</span></a>.]]></message>
-	<message task="Pl+Acc" tag="DiphErr"><![CDATA[WORDFORM mangler <a class="helptext" href="#">diftongforenkling<span class="shortinfo">Diftongen mister den andre vokalen: ea - e, ie - i, uo - u, oa - o.</span></a>.]]></message>
-	<message task="V+Ind+Prs+Sg1" tag="PrfPrc"><![CDATA[WORDFORM mangler <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/stadieveksling.nob.html#Stadievekslingsm%C3%B8nstre">stadieveksling<span class="shortinfo">Veksling i konsonantgruppa, f.eks. -idn- til -inn-. Klikk for å lese mer.</span>.]]></message>
-	<message task="V+Ind+Prs+Sg1" tag="PrfPrc"><![CDATA[WORDFORM mangler <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/stadieveksling.nob.html#Stadievekslingsm%C3%B8nstre">stadieveksling<span class="shortinfo">Veksling i konsonantgruppa, f.eks. -idn- til -inn-. Klikk for å lese mer.</span>.]]></message>
-	<message task="Prt" tag="Prs">Dette er nåtid? Du skal skrive fortid.</message>
-	<message task="Prs" tag="Prt">Dette er fortid? Du skal skrive nåtid.</message>
-  </messages> 
+	<message tag="AErr">
+	    <description>
+	        Du har kanskje glemt å skrive á i WORDFORM
+	    </description>
+	</message>
 
+	<message tag="AiErr">
+	    <description>
+	        Husk at istedenfor i, blir det á i WORDFORM
+	    </description>
+	</message>
+
+	<message task="Sg+Ill" tag="IllVErr" article="http://oahpa.no/sme/gramm/substantiv.nob.html#Illativ">
+	    <title>
+            Illativen mangler vokalveksling
+	    </title>
+	    Den siste vokalen i ordet endrer seg pga illativendinga: a > i, i > á, o > u.
+	</message>
+
+	<message task="Sg+Ill" tag="IllErr" article="http://oahpa.no/sme/gramm/substantiv.nob.html#Illativ">
+	    Husk at illativ-endelsen er -ii for ulikestavelsesord.
+	</message>
+
+	<message task="Sg+Ill" tag="DiphErr">
+	    <title>
+            WORDFORM mangler diftongforenkling. 
+	    </title>
+	    <description>
+            Diftongen mister den andre vokalen: ea - e, ie - i, uo - u, oa - o.
+        </description>
+    </message>
+
+	<message task="Pl+Acc" tag="DiphErr">
+	    <title>
+            WORDFORM mangler diftongforenkling
+	    </title>
+	    <description>
+            Diftongen mister den andre vokalen: ea - e, ie - i, uo - u, oa - o.
+        </description>
+	</message>
+
+	<message task="V+Ind+Prs+Sg1" tag="PrfPrc" article="http://oahpa.no/sme/gramm/stadieveksling.nob.html#Stadievekslingsm%C3%B8nstre">
+	    <title>
+            WORDFORM mangler stadieveksling
+	    </title>
+	    <description>
+            Veksling i konsonantgruppa, f.eks. -idn- til -inn-.
+	    </description>
+	</message>
+
+	<message task="V+Ind+Prs+Sg1" tag="PrfPrc" article="http://oahpa.no/sme/gramm/stadieveksling.nob.html#Stadievekslingsm%C3%B8nstre">
+	    <title>
+            WORDFORM mangler stadieveksling
+	    </title>
+	    <description>
+            Veksling i konsonantgruppa, f.eks. -idn- til -inn-.
+	    </description>
+	</message>
+
+	<message task="Prt" tag="Prs">
+	    <description>
+            Dette er nåtid? Du skal skrive fortid.
+	    </description>
+	</message>
+
+	<message task="Prs" tag="Prt">
+	    <description>
+            Dette er fortid? Du skal skrive nåtid.
+	    </description>
+	</message>
+
+</messages> 
