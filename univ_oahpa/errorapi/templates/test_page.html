@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,7 +100,7 @@
                         <div class="col-lg-12 col-md-12">
                             <p ng-show="no_errors">No errors :)</p>
                             <ul class="messages" ng-repeat="message in messages">
-                                <li ng-repeat="m in message.message">(<% m.tags.join(', ') %>), <% m.task %>: <% m.string %></li>
+                                <li ng-repeat="m in message.message">(<% m.tags.join(', ') %>), <% m.task %>.<br ng-if="m.title" /> <em ng-if="m.title"><% m.title %></em> <br /> <% m.description %> <br ng-if="m.article" /> <a href="<% m.article %>" ng-if="m.article">{% blocktrans %}Click to read more.{% endblocktrans %}</a></li>
                             </ul>
                         </div>
                     </div>

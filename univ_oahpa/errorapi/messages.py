@@ -125,7 +125,11 @@
                     tag.append(tag2)
             tags = ImmutableSet(tag)
             task = m.getAttribute('task')
-            article = m.getAttribute('article')
+            _article = m.getAttribute('article')
+            if _article.strip():
+                article = _article.strip()
+            else:
+                article = False
             _title = m.getElementsByTagName("title")
             if len(_title) > 0:
                 title = _title[0].firstChild.nodeValue.strip()
@@ -154,6 +158,3 @@
 
 if __name__ == "__main__":
     m = FeedbackMessageStore('../sme/meta/morfaerrorfstmessages.xml')
-    for k, m in m.messages.iteritems():
-        print k
-        print m

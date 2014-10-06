@@ -90,7 +90,14 @@ ErrorAPI.controller('ErrorRequester', function($scope, $http, $element, $cookies
 
                     for (_j = 0, _lenz = msg.message.length; _j < _lenz; _j++) {
                         m = msg.message[_j];
-                        message_body_snippet += "<li>" + m.string + "</li>";
+                        message_body_snippet += "<li>" ;
+                        if (m.title) {
+                            message_body_snippet += m.title + ": " + m.description;
+                        }
+                        if (m.article) {
+                            message_body_snippet += "<br /><a href='" + m.article + ">Klikk for å lese mer</a>";
+                        }
+                        message_body_snippet += "</li>" ;
                     }
 
                 }
