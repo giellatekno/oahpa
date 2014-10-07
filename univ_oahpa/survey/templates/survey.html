@@ -66,8 +66,18 @@
                                                 ng-if="question.question_type == 'choice'"
                                                 ng-options="a.id as a.answer_text for a in question.answer_values"
                                                 ng-model="survey_answers[survey.id][question.id]">
+                                            </select>
 
-                                        </select>
+                                           <div ng-if="question.question_type == 'boolean'">
+                                               <label class="radio">
+                                                   <input ng-model="survey_answers[survey.id][question.id]" type="radio" value="yes" name="<% survey.id %>-<% question.id %>-radio">
+                                                   {% blocktrans %}Yes{% endblocktrans %}
+                                               </label>
+                                               <label class="radio">
+                                                   <input ng-model="survey_answers[survey.id][question.id]" type="radio" value="no" name="<% survey.id %>-<% question.id %>-radio">
+                                                   {% blocktrans %}No{% endblocktrans %}
+                                               </label>
+                                          </div>
 
                                         <hr />
                                     </div>
