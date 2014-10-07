@@ -3,6 +3,7 @@
 {% load trans_to %}
 
 <form action="/{{ URL_PREFIX }}/dialect/" method="post">
+	{% csrf_token %}
     <dl>
         <dt><label for="dialect" class="interface">{% trans_to "Northern Sami dialect" "sme" %}<span class="invisible">{% trans "Northern Sami dialect" %}</span></label></dt>
         <dd>

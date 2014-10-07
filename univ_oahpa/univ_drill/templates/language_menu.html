@@ -4,6 +4,7 @@
 
 {% get_current_language as LANGUAGE_CODE %}
 <form action="/{{ URL_PREFIX }}/i18n/setlang/" method="post" name="newlang">
+	{% csrf_token %}
     <dl>
         <dt><label for="language_select" class="interface">{% trans_to "Interface language" "sme" %}<span class="invisible">{% trans "Interface language" %}</span></label></dt>
         <dd></dd>
