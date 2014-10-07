@@ -12,14 +12,14 @@
     <answer>
       <text>SUBJ в N-LOC</text> <!-- Отец в лесу -->
       <element game='morfa' task='yes' id="N-LOC">
-        <grammar tag="N+Sg+Prp"/> <!-- Loc2 tag is Prp -->
+        <grammar tag="N+Sg+Loc2"/> <!-- Should be +N+Msc+Inan+Sg+Loc2 -->
         <sem class="LOCATION-V-LOC2"/>
       </element>
     </answer>
     <answer>
       <text>SUBJ на N-LOC</text> <!-- Отец на полу -->
       <element game='morfa' task='yes' id="N-LOC">
-        <grammar tag="N+Sg+Prp"/>
+        <grammar tag="N+Sg+Loc2"/> <!-- Should be +N+Msc+Inan+Sg+Loc2 -->
         <sem class="LOCATION-NA-LOC2"/>
       </element>
     </answer>
