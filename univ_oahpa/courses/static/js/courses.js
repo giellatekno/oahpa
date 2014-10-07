@@ -70,6 +70,9 @@ Courses.controller('ErrorRequester', function($scope, $http, $element, $cookies)
         // $event.preventDefault();
 
         var feedback_link = $($event.target);
+        if (feedback_link[0].tagName == 'T') {
+            feedback_link = feedback_link.find('[data-error-fst]');
+        }
 
         function handle_api_feedback_popover (data) {
             handle_api_response(data);
