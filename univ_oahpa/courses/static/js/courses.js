@@ -71,7 +71,7 @@ Courses.controller('ErrorRequester', function($scope, $http, $element, $cookies)
 
         var feedback_link = $($event.target);
         if (feedback_link[0].tagName == 'T') {
-            feedback_link = feedback_link.find('[data-error-fst]');
+            feedback_link = feedback_link.parents('[data-error-fst]');
         }
 
         function handle_api_feedback_popover (data) {
