@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-16 00:51+0200\n"
+"POT-Creation-Date: 2014-10-08 02:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,14 +16,229 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: courses/models.py:281
+#: courses/models.py:288
 msgid ""
 "This is a plain-text description shown to students\n"
 "describing their goal."
 msgstr ""
 
+#: courses/templates/course_coursegoal_constructor.html:36
+msgid "Edit an existing course goal"
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:45
+#: courses/templates/course_coursegoal_constructor.html:46
+#: courses/templates/course_coursegoal_constructor.html:47
+msgid "The new Course Goal"
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:45
+msgid "has been created."
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:46
+msgid "has been deleted."
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:47
+msgid "has been edited."
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:49
+msgid "Create another course goal."
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:60
+msgid "Name"
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:80
+#: courses/templates/instructor_goal_table_list.html:8
+msgid "Description"
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:101
+msgid "Course"
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:128
+msgid "Avg. correct percentage"
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:153
+msgid "Percent complete"
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:182
+msgid "Save when you are ready, and then goals to this course goal."
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:184
+#: courses/templates/course_goal_constructor.html:344
+msgid "Submit"
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:185
+msgid "Edit"
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:186
+#: courses/templates/course_goal_constructor.html:345
+msgid "Reset"
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:199
+msgid "Drag and drop"
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:208
+msgid "Your Tasks"
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:214
+msgid "Create a task"
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:217
+msgid "Show tasks assigned to other goals"
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:228
+#: templates/admin/pagination.html:11 templates/admin/submit_line.html:3
+msgid "Save"
+msgstr ""
+
+#: courses/templates/course_coursegoal_constructor.html:230
+msgid "Delete this course goal"
+msgstr ""
+
+#: courses/templates/course_enroll.html:33
+#, python-format
+msgid ""
+"\n"
+"\t                        You've been successfully enrolled in <strong>"
+"%(target_course)s</strong>, check out\n"
+"\t                        your course profile to begin working on course "
+"goals, or\n"
+"\t                        click one of the exercises above to begin "
+"learning.\n"
+"                        "
+msgstr ""
+
+#: courses/templates/course_enroll.html:41
+msgid "Your enrollment key wasn't valid-- check with your instructor."
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:20
+msgid "Edit an existing goal"
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:35
+msgid ""
+"\n"
+"                        Create a goal to track your progress on a feature of "
+"grammar.\n"
+"                        "
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:53
+msgid "Course name"
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:66
+msgid "Select a course"
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:74
+msgid "Goal name"
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:114
+msgid "Percent correct"
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:137
+msgid "Question sets achieved"
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:163
+msgid ""
+"\n"
+"                                    Only count answers that are\n"
+"                                    correct on the first try?\n"
+"                                    "
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:192
+msgid "Game type"
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:205
+#: courses/templates/course_goal_constructor.html:280
+#: courses/templates/course_goal_constructor.html:325
+msgid "Select a type"
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:238
+msgid "Subtype"
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:347
+msgid "Delete this goal"
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:355
+msgid "You successfully deleted the goal."
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:356
+msgid "You successfully created the goal"
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:357
+msgid "You successfully edited the goal"
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:358
+#: courses/templates/goal_table_list.html:44
+msgid "Begin"
+msgstr ""
+
+#: courses/templates/course_goal_constructor.html:359
+#: courses/templates/courses_main_goals.html:39
+msgid "Course overview"
+msgstr ""
+
 #: courses/templates/courses_course_block.html:9
 msgid "Course pages"
+msgstr ""
+
+#: courses/templates/courses_course_block.html:64
+msgid ""
+"Your instructor has not yet defined any goals for this\n"
+"\t\t\t        course."
+msgstr ""
+
+#: courses/templates/courses_goal_progress.html:37
+msgid ""
+"You left the page, so your progress will no longer be tracked towards goals."
+msgstr ""
+
+#: courses/templates/courses_goal_progress.html:37
+msgid "Begin again?"
+msgstr ""
+
+#: courses/templates/courses_goal_progress.html:49
+#: courses/templates/goal_history.html:62
+msgid "rounds"
+msgstr ""
+
+#: courses/templates/courses_goal_progress.html:56
+msgid "You can keep playing, or "
+msgstr ""
+
+#: courses/templates/courses_goal_progress.html:57
+msgid "work on a new goal"
 msgstr ""
 
 #: courses/templates/courses_main.html:62
@@ -44,15 +259,12 @@ msgstr ""
 
 #: courses/templates/courses_main_goals.html:37
 #: courses/templates/instructor_course_nav_items.html:13
+#: courses/templates/instructor_student_detail.html:29
 #: courses/templates/student_course_nav_items.html:8
 #: templates/univ_oahpa.html:122 templates/admin/base.html:36
 #: templates/registration/password_change_done.html:3
 #: templates/registration/password_change_form.html:4
 msgid "Log out"
-msgstr ""
-
-#: courses/templates/courses_main_goals.html:39
-msgid "Course overview"
 msgstr ""
 
 #: courses/templates/courses_main_goals.html:42
@@ -66,12 +278,42 @@ msgstr ""
 msgid "Invite students"
 msgstr ""
 
+#: courses/templates/courses_main_instructor.html:58
+msgid "Create a course goal"
+msgstr ""
+
+#: courses/templates/courses_main_instructor.html:59
+#: courses/templates/personal_goals.html:57
+msgid "Create a goal"
+msgstr ""
+
+#: courses/templates/courses_main_instructor.html:60
+#: univ_feedback/templates/feedback.html:41
+msgid "Send message"
+msgstr ""
+
+#: courses/templates/courses_main_instructor.html:64
+msgid "Students"
+msgstr ""
+
+#: courses/templates/courses_main_instructor.html:75
+msgid "Notifications"
+msgstr ""
+
 #: courses/templates/courses_stats.html:32
 msgid "You don't have any scores yet, go play some games!"
 msgstr ""
 
 #: courses/templates/courses_stats.html:37
 msgid "Goal learning history"
+msgstr ""
+
+#: courses/templates/courses_stats.html:54
+msgid "attempt(s)"
+msgstr ""
+
+#: courses/templates/courses_stats.html:67
+msgid "Note: these are only the tasks that you have made progress on."
 msgstr ""
 
 #: courses/templates/courses_stats.html:69
@@ -101,6 +343,90 @@ msgstr ""
 msgid "Number of tries"
 msgstr ""
 
+#: courses/templates/goal_history.html:58
+msgid "success"
+msgstr ""
+
+#: courses/templates/goal_history.html:59
+msgid "total questions answered"
+msgstr ""
+
+#: courses/templates/goal_history.html:60
+msgid "correct"
+msgstr ""
+
+#: courses/templates/goal_history.html:61
+msgid "first try / later tries"
+msgstr ""
+
+#: courses/templates/goal_history.html:63
+msgid "last attempt"
+msgstr ""
+
+#: courses/templates/goal_history.html:88
+msgid "later tries"
+msgstr ""
+
+#: courses/templates/goal_history.html:88
+msgid "first try"
+msgstr ""
+
+#: courses/templates/goal_history.html:97
+msgid "Completion criteria"
+msgstr ""
+
+#: courses/templates/goal_history.html:98
+msgid "Correct threshold:"
+msgstr ""
+
+#: courses/templates/goal_history.html:99
+msgid "Minimum sets: "
+msgstr ""
+
+#: courses/templates/goal_history.html:101
+msgid "Correct on first try"
+msgstr ""
+
+#: courses/templates/goal_table_list.html:9
+msgid "Task"
+msgstr ""
+
+#: courses/templates/goal_table_list.html:14
+msgid "Progress"
+msgstr ""
+
+#: courses/templates/goal_table_list.html:39
+msgid "More?"
+msgstr ""
+
+#: courses/templates/goal_table_list.html:41
+msgid "Continue"
+msgstr ""
+
+#: courses/templates/goal_table_list.html:61
+#: courses/templates/instructor_goal_table_list.html:37
+#: templates/admin/change_form.html:34 templates/admin/object_history.html:12
+msgid "History"
+msgstr ""
+
+#: courses/templates/instructor_course_nav_items.html:4
+msgid "Overview"
+msgstr ""
+
+#: courses/templates/instructor_course_nav_items.html:8
+#: courses/templates/instructor_course_nav_items.html:10
+#: courses/templates/student_course_nav_items.html:7
+msgid "Messages"
+msgstr ""
+
+#: courses/templates/instructor_goal_table_list.html:7
+msgid "Goal"
+msgstr ""
+
+#: courses/templates/instructor_goal_table_list.html:9
+msgid "Score"
+msgstr ""
+
 #: courses/templates/instructor_student_detail.html:34
 #: courses/templates/student_roster_table.html:6
 msgid "last login"
@@ -109,6 +435,14 @@ msgstr ""
 #: courses/templates/instructor_student_detail.html:36
 #: courses/templates/student_roster_table.html:7
 msgid "login count"
+msgstr ""
+
+#: courses/templates/instructor_student_detail.html:62
+msgid "No progress yet"
+msgstr ""
+
+#: courses/templates/instructor_student_detail.html:74
+msgid "Summary of all work"
 msgstr ""
 
 #: courses/templates/instructor_student_detail.html:78
@@ -139,8 +473,68 @@ msgstr ""
 msgid "Grade summary"
 msgstr ""
 
+#: courses/templates/invite_students.html:56
+msgid ""
+"Share this link with students to invite them to\n"
+"                                your course. When they click on it, they may "
+"be\n"
+"                                required to log in through Kursa first, but\n"
+"                                after doing so, they will be enrolled and "
+"you\n"
+"                                will see them in your grade summary."
+msgstr ""
+
+#: courses/templates/invite_students.html:76
+msgid "Reset invitation link"
+msgstr ""
+
+#: courses/templates/invite_students.html:79
+msgid "Why?"
+msgstr ""
+
+#: courses/templates/invite_students.html:79
+msgid ""
+"You may need to reset\n"
+"                                    the invitation link, if you're reusing "
+"this\n"
+"                                    course as a new one, or, if someone has\n"
+"                                    shared the invitation link somewhere "
+"and\n"
+"                                    you did not wish them to do so. This "
+"will\n"
+"                                    break the old links."
+msgstr ""
+
 #: courses/templates/personal_goals.html:45
 msgid "Your personal goals"
+msgstr ""
+
+#: courses/templates/personal_goals.html:47
+msgid "Track your own progress outside of courses with personal goals."
+msgstr ""
+
+#: courses/templates/reset_invite_link.html:33
+msgid "NB: this will reset the course invite link"
+msgstr ""
+
+#: courses/templates/reset_invite_link.html:34
+msgid "Be sure to update users with the new link so they have access."
+msgstr ""
+
+#: courses/templates/reset_invite_link.html:38
+msgid "Confirm"
+msgstr ""
+
+#: courses/templates/reset_invite_link.html:43
+msgid "Success!"
+msgstr ""
+
+#: courses/templates/reset_invite_link.html:45
+msgid "Here is the new invitation link:"
+msgstr ""
+
+#: courses/templates/reset_invite_link.html:52
+msgid "Back to courses"
 msgstr ""
 
 #: courses/templates/split_login.html:18
@@ -153,6 +547,58 @@ msgstr ""
 
 #: courses/templates/split_login.html:22 templates/auth/login.html:28
 msgid "Log out?"
+msgstr ""
+
+#: courses/templates/split_login.html:29
+msgid "Login to continue"
+msgstr ""
+
+#: courses/templates/split_login.html:30
+msgid "Student login"
+msgstr ""
+
+#: courses/templates/split_login.html:31
+msgid "Instructor login"
+msgstr ""
+
+#: courses/templates/student_course_nav_items.html:4
+msgid "Courses"
+msgstr ""
+
+#: courses/templates/student_course_nav_items.html:5
+msgid "Personal Goals"
+msgstr ""
+
+#: courses/templates/student_course_nav_items.html:6
+msgid "Learning History"
+msgstr ""
+
+#: courses/templates/user_notifications_block.html:4
+msgid "No notifications."
+msgstr ""
+
+#: courses/templates/user_notifications_block.html:8
+msgid "Dismiss"
+msgstr ""
+
+#: courses/templates/words_to_work_on_leksa.html:3
+#: courses/templates/words_to_work_on_morfa.html:3
+#: courses/templates/words_to_work_on_numra.html:3
+msgid "Words to work on"
+msgstr ""
+
+#: courses/templates/words_to_work_on_leksa.html:7
+#: courses/templates/words_to_work_on_numra.html:7
+msgid "Attempts"
+msgstr ""
+
+#: courses/templates/words_to_work_on_leksa.html:8
+#: courses/templates/words_to_work_on_numra.html:8
+msgid "Question"
+msgstr ""
+
+#: errorapi/templates/test_page.html:103
+msgid "Click to read more."
 msgstr ""
 
 #: extern/django_openid_provider/openid_provider/models.py:12
@@ -180,7 +626,19 @@ msgstr ""
 msgid "No surveys to fill out at this time."
 msgstr ""
 
-#: survey/templates/survey.html:101
+#: survey/templates/survey.html:35 survey/templates/survey.html.py:113
+msgid "Return to your course overview."
+msgstr ""
+
+#: survey/templates/survey.html:74
+msgid "Yes"
+msgstr ""
+
+#: survey/templates/survey.html:78
+msgid "No"
+msgstr ""
+
+#: survey/templates/survey.html:108
 msgid ""
 "If you have time for one more survey, you may fill it out by clicking next."
 msgstr ""
@@ -206,9 +664,9 @@ msgstr ""
 msgid "Reference materials"
 msgstr ""
 
-#: templates/univ_oahpa.html:95 templates/univ_oahpa_main.html:192
-#: templates/univ_oahpa_main.html.py:195 templates/univ_oahpa_main.html:198
-#: templates/univ_oahpa_main.html.py:201 templates/univ_oahpa_main.html:204
+#: templates/univ_oahpa.html:95 templates/univ_oahpa_main.html:120
+#: templates/univ_oahpa_main.html.py:123 templates/univ_oahpa_main.html:126
+#: templates/univ_oahpa_main.html.py:129 templates/univ_oahpa_main.html:132
 msgid "Veiledning"
 msgstr "Instruction"
 
@@ -235,67 +693,43 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: templates/univ_oahpa.html:164 templates/univ_oahpa_main.html:249
+#: templates/univ_oahpa.html:164 templates/univ_oahpa_main.html:177
 msgid "HELP"
 msgstr ""
 
-#: templates/univ_oahpa.html:164 templates/univ_oahpa_main.html:249
+#: templates/univ_oahpa.html:164 templates/univ_oahpa_main.html:177
 msgid "To get the translation of the user interface text to "
 msgstr ""
 
-#: templates/univ_oahpa.html:168 templates/univ_oahpa_main.html:253
+#: templates/univ_oahpa.html:168 templates/univ_oahpa_main.html:181
 msgid "hold down the [Alt] key while pointing at the text with the mouse."
 msgstr ""
 
-#: templates/univ_oahpa_main.html:54 univ_drill/templates/language_menu.html:8
-msgid "Interface language"
-msgstr ""
-
-#: templates/univ_oahpa_main.html:96 univ_drill/templates/dialect_menu.html:7
-msgid "Northern Sami dialect"
-msgstr "Language variety"
-
-#: templates/univ_oahpa_main.html:102 templates/univ_oahpa_main.html.py:105
-#: templates/univ_oahpa_main.html:109
-#: univ_drill/templates/dialect_menu.html:13
-#: univ_drill/templates/dialect_menu.html:16
-#: univ_drill/templates/dialect_menu.html:20
-msgid "GG"
-msgstr "Guovdageaidnu"
-
-#: templates/univ_oahpa_main.html:103 templates/univ_oahpa_main.html.py:106
-#: templates/univ_oahpa_main.html:110
-#: univ_drill/templates/dialect_menu.html:14
-#: univ_drill/templates/dialect_menu.html:17
-#: univ_drill/templates/dialect_menu.html:21
-msgid "KJ"
-msgstr "Kárášjohka"
-
-#: templates/univ_oahpa_main.html:137
+#: templates/univ_oahpa_main.html:65
 msgid "Practise morphology"
 msgstr ""
 
-#: templates/univ_oahpa_main.html:145
+#: templates/univ_oahpa_main.html:73
 msgid "Answer to questions"
 msgstr ""
 
-#: templates/univ_oahpa_main.html:152
+#: templates/univ_oahpa_main.html:80
 msgid "Words and translations"
 msgstr ""
 
-#: templates/univ_oahpa_main.html:163
+#: templates/univ_oahpa_main.html:91
 msgid "Practise morphology in context"
 msgstr ""
 
-#: templates/univ_oahpa_main.html:170
+#: templates/univ_oahpa_main.html:98
 msgid "Dialogue game"
 msgstr "Dialogues"
 
-#: templates/univ_oahpa_main.html:177
+#: templates/univ_oahpa_main.html:105
 msgid "Practise numerals"
 msgstr ""
 
-#: templates/univ_oahpa_main.html:185
+#: templates/univ_oahpa_main.html:113
 msgid ""
 "Oahpa is an internet program for youth and grownups learning North Sámi. The "
 "program can be adjusted to different themes and levels of difficulty, and it "
@@ -305,45 +739,45 @@ msgstr ""
 "program can be adjusted to different themes and levels of difficulty, and it "
 "generates new task sets automatically."
 
-#: templates/univ_oahpa_main.html:207 templates/univ_oahpa_main.html.py:209
+#: templates/univ_oahpa_main.html:135 templates/univ_oahpa_main.html.py:137
 msgid "North Sámi"
 msgstr ""
 
-#: templates/univ_oahpa_main.html:207
+#: templates/univ_oahpa_main.html:135
 msgid "Finnish"
 msgstr ""
 
-#: templates/univ_oahpa_main.html:207 templates/univ_oahpa_main.html.py:209
+#: templates/univ_oahpa_main.html:135 templates/univ_oahpa_main.html.py:137
 msgid "dictionary"
 msgstr ""
 
-#: templates/univ_oahpa_main.html:209
+#: templates/univ_oahpa_main.html:137
 msgid "Norwegian"
 msgstr ""
 
-#: templates/univ_oahpa_main.html:212 templates/univ_oahpa_main.html.py:215
-#: templates/univ_oahpa_main.html:218 templates/univ_oahpa_main.html.py:221
-#: templates/univ_oahpa_main.html:224
+#: templates/univ_oahpa_main.html:140 templates/univ_oahpa_main.html.py:143
+#: templates/univ_oahpa_main.html:146 templates/univ_oahpa_main.html.py:149
+#: templates/univ_oahpa_main.html:152
 msgid "North Sámi grammar"
 msgstr ""
 
-#: templates/univ_oahpa_main.html:229
+#: templates/univ_oahpa_main.html:157
 msgid "Are you visiting this site as part of a course?"
 msgstr ""
 
-#: templates/univ_oahpa_main.html:229
+#: templates/univ_oahpa_main.html:157
 msgid "Log in here"
 msgstr ""
 
-#: templates/univ_oahpa_main.html:238
+#: templates/univ_oahpa_main.html:166
 msgid "Link to this exercise"
 msgstr ""
 
-#: templates/univ_oahpa_main.html:244
+#: templates/univ_oahpa_main.html:172
 msgid "Copyright 2013 Universitetet i Troms&oslash; "
 msgstr "Copyright 2014 UiT The Arctic University of Norway"
 
-#: templates/univ_oahpa_main.html:245
+#: templates/univ_oahpa_main.html:173
 msgid "Contact "
 msgstr "Contact "
 
@@ -444,10 +878,6 @@ msgstr ""
 
 #: templates/admin/change_form.html:24 templates/admin/index.html:29
 msgid "Add"
-msgstr ""
-
-#: templates/admin/change_form.html:34 templates/admin/object_history.html:12
-msgid "History"
 msgstr ""
 
 #: templates/admin/change_form.html:35
@@ -621,10 +1051,6 @@ msgstr ""
 
 #: templates/admin/pagination.html:10
 msgid "Show all"
-msgstr ""
-
-#: templates/admin/pagination.html:11 templates/admin/submit_line.html:3
-msgid "Save"
 msgstr ""
 
 #: templates/admin/search_form.html:7
@@ -1554,288 +1980,288 @@ msgstr "trisyllabic"
 msgid "contracted"
 msgstr "contracted"
 
-#: univ_drill/views.py:532 univ_drill/views.py:533
+#: univ_drill/views.py:534 univ_drill/views.py:535
 msgid "Practise attributes"
 msgstr ""
 
-#: univ_drill/views.py:534
+#: univ_drill/views.py:536
 msgid "Practise adjectives in nominative"
 msgstr ""
 
-#: univ_drill/views.py:535
+#: univ_drill/views.py:537
 msgid "Practise adjectives in illative"
 msgstr ""
 
-#: univ_drill/views.py:536
+#: univ_drill/views.py:538
 msgid "Practise adjectives in accusative"
 msgstr ""
 
-#: univ_drill/views.py:537
+#: univ_drill/views.py:539
 msgid "Practise adjectives in comitative"
 msgstr ""
 
-#: univ_drill/views.py:538
+#: univ_drill/views.py:540
 msgid "Practise adjectives in essive"
 msgstr ""
 
-#: univ_drill/views.py:539
+#: univ_drill/views.py:541
 msgid "Practise adjectives in genitive"
 msgstr ""
 
-#: univ_drill/views.py:540
+#: univ_drill/views.py:542
 msgid "Practise adjectives in plural"
 msgstr ""
 
-#: univ_drill/views.py:541
+#: univ_drill/views.py:543
 msgid "Practise adjectives in locative"
 msgstr ""
 
-#: univ_drill/views.py:542
+#: univ_drill/views.py:544
 msgid "Practise comparative"
 msgstr ""
 
-#: univ_drill/views.py:543
+#: univ_drill/views.py:545
 msgid "Practise superlative"
 msgstr ""
 
-#: univ_drill/views.py:544
+#: univ_drill/views.py:546
 msgid "Practise verb derivation"
 msgstr ""
 
-#: univ_drill/views.py:545 univ_drill/views.py:546
+#: univ_drill/views.py:547 univ_drill/views.py:548
 msgid "Practise verb passive derivation"
 msgstr ""
 
-#: univ_drill/views.py:547
+#: univ_drill/views.py:549
 msgid "Practise adjective to verb derivation"
 msgstr ""
 
-#: univ_drill/views.py:548 univ_drill/views.py:549 univ_drill/views.py:550
+#: univ_drill/views.py:550 univ_drill/views.py:551 univ_drill/views.py:552
 msgid "Practise noun possessive suffixes"
 msgstr "Practise possessive suffixes."
 
-#: univ_drill/views.py:551
+#: univ_drill/views.py:553
 msgid "Practise noun possessive suffixes in accusative"
 msgstr "Practise possessive suffixes in accusative."
 
-#: univ_drill/views.py:552
+#: univ_drill/views.py:554
 msgid "Practise noun possessive suffixes in illative"
 msgstr "Practise possessive suffixes in illative."
 
-#: univ_drill/views.py:553
+#: univ_drill/views.py:555
 msgid "Practise noun possessive suffixes in locative"
 msgstr "Practise possessive suffixes in locative."
 
-#: univ_drill/views.py:554
+#: univ_drill/views.py:556
 msgid "Practise noun possessive suffixes in genitive"
 msgstr "Practise possessive suffixes in genitive."
 
-#: univ_drill/views.py:555
+#: univ_drill/views.py:557
 msgid "Practise noun possessive suffixes in comitative"
 msgstr "Practise possessive suffixes in comitative."
 
-#: univ_drill/views.py:556
+#: univ_drill/views.py:558
 msgid "Practise attributes in positive"
 msgstr ""
 
-#: univ_drill/views.py:557
+#: univ_drill/views.py:559
 msgid "Practise attributes in comparative"
 msgstr ""
 
-#: univ_drill/views.py:558
+#: univ_drill/views.py:560
 msgid "Practise attributes in superlative"
 msgstr ""
 
-#: univ_drill/views.py:559
+#: univ_drill/views.py:561
 msgid "Practise predicative in positive"
 msgstr ""
 
-#: univ_drill/views.py:560
+#: univ_drill/views.py:562
 msgid "Practise predicative in comparative"
 msgstr ""
 
-#: univ_drill/views.py:561
+#: univ_drill/views.py:563
 msgid "Practise predicative in superlative"
 msgstr ""
 
-#: univ_drill/views.py:562
+#: univ_drill/views.py:564
 msgid "Practise numeral attributes"
 msgstr ""
 
-#: univ_drill/views.py:563 univ_drill/views.py:571
+#: univ_drill/views.py:565 univ_drill/views.py:573
 msgid "Practise plural"
 msgstr ""
 
-#: univ_drill/views.py:564 univ_drill/views.py:565
+#: univ_drill/views.py:566 univ_drill/views.py:567
 msgid "Practise nominative"
 msgstr ""
 
-#: univ_drill/views.py:566
+#: univ_drill/views.py:568
 msgid "Practise illative"
 msgstr ""
 
-#: univ_drill/views.py:567
+#: univ_drill/views.py:569
 msgid "Practise accusative"
 msgstr ""
 
-#: univ_drill/views.py:568
+#: univ_drill/views.py:570
 msgid "Practise comitative"
 msgstr ""
 
-#: univ_drill/views.py:569
+#: univ_drill/views.py:571
 msgid "Practise essive"
 msgstr ""
 
-#: univ_drill/views.py:570
+#: univ_drill/views.py:572
 msgid "Practise genitive"
 msgstr ""
 
-#: univ_drill/views.py:572
+#: univ_drill/views.py:574
 msgid "Practise locative"
 msgstr ""
 
-#: univ_drill/views.py:573 univ_drill/views.py:574 univ_drill/views.py:575
-#: univ_drill/views.py:576
+#: univ_drill/views.py:575 univ_drill/views.py:576 univ_drill/views.py:577
+#: univ_drill/views.py:578
 msgid "Practise a mix"
 msgstr ""
 
-#: univ_drill/views.py:577
+#: univ_drill/views.py:579
 msgid "Practise numerals in illative"
 msgstr ""
 
-#: univ_drill/views.py:578
+#: univ_drill/views.py:580
 msgid "Practise numerals in accusative"
 msgstr ""
 
-#: univ_drill/views.py:579
+#: univ_drill/views.py:581
 msgid "Practise numerals in comitative"
 msgstr ""
 
-#: univ_drill/views.py:580
+#: univ_drill/views.py:582
 msgid "Practise numerals in essive"
 msgstr ""
 
-#: univ_drill/views.py:581
+#: univ_drill/views.py:583
 msgid "Practise numerals in genitive"
 msgstr ""
 
-#: univ_drill/views.py:582
+#: univ_drill/views.py:584
 msgid "Practise numerals in plural"
 msgstr ""
 
-#: univ_drill/views.py:583
+#: univ_drill/views.py:585
 msgid "Practise numerals in locative"
 msgstr ""
 
-#: univ_drill/views.py:584
+#: univ_drill/views.py:586
 msgid "Practise collective numerals"
 msgstr ""
 
-#: univ_drill/views.py:585
+#: univ_drill/views.py:587
 msgid "Practise ordinal numbers"
 msgstr ""
 
-#: univ_drill/views.py:586
+#: univ_drill/views.py:588
 msgid "Practise ordinal numerals in illative"
 msgstr ""
 
-#: univ_drill/views.py:587
+#: univ_drill/views.py:589
 msgid "Practise ordinal numerals in accusative"
 msgstr ""
 
-#: univ_drill/views.py:588
+#: univ_drill/views.py:590
 msgid "Practise ordinal numerals in comitative"
 msgstr ""
 
-#: univ_drill/views.py:589
+#: univ_drill/views.py:591
 msgid "Practise ordinal numerals in essive"
 msgstr ""
 
-#: univ_drill/views.py:590
+#: univ_drill/views.py:592
 msgid "Practise ordinal numerals in genitive"
 msgstr ""
 
-#: univ_drill/views.py:591
+#: univ_drill/views.py:593
 msgid "Practise ordinal numerals in plural"
 msgstr ""
 
-#: univ_drill/views.py:592
+#: univ_drill/views.py:594
 msgid "Practise ordinal numerals in locative"
 msgstr ""
 
-#: univ_drill/views.py:593
+#: univ_drill/views.py:595
 msgid "Practise collective numerals in illative"
 msgstr ""
 
-#: univ_drill/views.py:594
+#: univ_drill/views.py:596
 msgid "Practise collective numerals in accusative"
 msgstr ""
 
-#: univ_drill/views.py:595
+#: univ_drill/views.py:597
 msgid "Practise collective numerals in comitative"
 msgstr ""
 
-#: univ_drill/views.py:596
+#: univ_drill/views.py:598
 msgid "Practise collective numerals in essive"
 msgstr ""
 
-#: univ_drill/views.py:597
+#: univ_drill/views.py:599
 msgid "Practise collective numerals in genitive"
 msgstr ""
 
-#: univ_drill/views.py:598
+#: univ_drill/views.py:600
 msgid "Practise collective numerals in plural"
 msgstr ""
 
-#: univ_drill/views.py:599
+#: univ_drill/views.py:601
 msgid "Practise collective numerals in locative"
 msgstr ""
 
-#: univ_drill/views.py:600 univ_drill/views.py:607
+#: univ_drill/views.py:602 univ_drill/views.py:609
 msgid "Practise present"
 msgstr ""
 
-#: univ_drill/views.py:601 univ_drill/views.py:608
+#: univ_drill/views.py:603 univ_drill/views.py:610
 msgid "Practise past"
 msgstr ""
 
-#: univ_drill/views.py:602 univ_drill/views.py:609
+#: univ_drill/views.py:604 univ_drill/views.py:611
 msgid "Practise perfect"
 msgstr ""
 
-#: univ_drill/views.py:603 univ_drill/views.py:610
+#: univ_drill/views.py:605 univ_drill/views.py:612
 msgid "Practise gerund"
 msgstr ""
 
-#: univ_drill/views.py:604 univ_drill/views.py:611
+#: univ_drill/views.py:606 univ_drill/views.py:613
 msgid "Practise conditional"
 msgstr ""
 
-#: univ_drill/views.py:605 univ_drill/views.py:612
+#: univ_drill/views.py:607 univ_drill/views.py:614
 msgid "Practise imperative"
 msgstr ""
 
-#: univ_drill/views.py:606 univ_drill/views.py:613
+#: univ_drill/views.py:608 univ_drill/views.py:615
 msgid "Practise potential"
 msgstr ""
 
-#: univ_drill/views.py:614
+#: univ_drill/views.py:616
 msgid "Practise personal pronouns"
 msgstr ""
 
-#: univ_drill/views.py:615
+#: univ_drill/views.py:617
 msgid "Practise reciprocative pronouns"
 msgstr ""
 
-#: univ_drill/views.py:616
+#: univ_drill/views.py:618
 msgid "Practise reflexive pronouns"
 msgstr ""
 
-#: univ_drill/views.py:617
+#: univ_drill/views.py:619
 msgid "Practise relative pronouns"
 msgstr ""
 
-#: univ_drill/views.py:618
+#: univ_drill/views.py:620
 msgid "Practise demonstrative pronouns"
 msgstr ""
 
@@ -1867,29 +2293,49 @@ msgstr ""
 msgid "Expression of dates numeric to words or vice versa."
 msgstr ""
 
-#: univ_drill/templates/game.html:143
+#: univ_drill/templates/dialect_menu.html:8
+msgid "Northern Sami dialect"
+msgstr "Language variety"
+
+#: univ_drill/templates/dialect_menu.html:14
+#: univ_drill/templates/dialect_menu.html:17
+#: univ_drill/templates/dialect_menu.html:21
+msgid "GG"
+msgstr "Guovdageaidnu"
+
+#: univ_drill/templates/dialect_menu.html:15
+#: univ_drill/templates/dialect_menu.html:18
+#: univ_drill/templates/dialect_menu.html:22
+msgid "KJ"
+msgstr "Kárášjohka"
+
+#: univ_drill/templates/game.html:160
 msgid "help"
 msgstr ""
 
-#: univ_drill/templates/game.html:149
+#: univ_drill/templates/game.html:181
 msgid "This is almost correct!"
 msgstr ""
 
-#: univ_drill/templates/game.html:207 univ_drill/templates/leksa.html:80
+#: univ_drill/templates/game.html:240 univ_drill/templates/leksa.html:80
 #: univ_drill/templates/vasta.html:96
 msgid "Test answers"
 msgstr ""
 
-#: univ_drill/templates/game.html:210 univ_drill/templates/leksa.html:83
+#: univ_drill/templates/game.html:243 univ_drill/templates/leksa.html:83
 msgid "Show the correct answers"
 msgstr ""
 
-#: univ_drill/templates/game.html:218
+#: univ_drill/templates/game.html:251
 msgid "Congratulations!"
 msgstr "Buorre!"
 
-#: univ_drill/templates/game.html:221
+#: univ_drill/templates/game.html:254
 msgid "Your score:"
+msgstr ""
+
+#: univ_drill/templates/language_menu.html:9
+msgid "Interface language"
 msgstr ""
 
 #: univ_drill/templates/leksa.html:18 univ_drill/templates/leksa_place.html:7
@@ -2302,10 +2748,6 @@ msgstr ""
 
 #: univ_feedback/templates/feedback.html:40
 msgid "I would like to be contacted about my question:"
-msgstr ""
-
-#: univ_feedback/templates/feedback.html:41
-msgid "Send message"
 msgstr ""
 
 #: univ_feedback/templates/thankyou.html:6
