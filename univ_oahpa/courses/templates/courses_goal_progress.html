@@ -32,8 +32,7 @@
         ng-controller="GoalController" ng-source="/{{ URL_PREFIX }}/courses/api/stats/">
         <div ng-if="navigated_away">
             <h2>Goal progress</h2>
-            <p class="error" ng-show="navigated_away">Page changed,
-                progress no longer tracked. <a href="/{{ URL_PREFIX }}/courses/">Begin again?</a></p>
+            <p class="error" ng-show="navigated_away">{% blocktrans %}You left the page, so your progress will no longer be tracked towards goals.{% endblocktrans %} <a href="/{{ URL_PREFIX }}/courses/">{% blocktrans %}Begin again?{% endblocktrans %}</a></p>
         </div>
         <div ng-if="success">
             <h2 ng-hide="goal.is_complete">Goal progress</h2>
@@ -45,15 +44,15 @@
                     aria-valuemin="1" 
                     aria-valuemax="<% max_rounds %>"
                     style="width: <% progress_percent %>%;">
-                <% current_set_count %> / <% max_rounds %> rounds
+                <% current_set_count %> / <% max_rounds %> {% blocktrans %}rounds{% endblocktrans %}
               </div>
             </div>
             <div class="correct_rate">
                 <span class="stat_value"><% goal.rounded %>%</span> <span ng-hide="above" class="stat_total">of <% correct_threshold %>%</span> <span ng-show="above" class="star">&#9733;</span></span>
             </div>
             <ul>
-                <li ng-if="goal.is_complete">You can keep playing, or <a
-                        href="/{{ URL_PREFIX }}/courses/">work on a new goal</a></li>
+                <li ng-if="goal.is_complete">{% blocktrans %}You can keep playing, or {% endblocktrans %}<a
+                        href="/{{ URL_PREFIX }}/courses/">{% blocktrans %}work on a new goal{% endblocktrans %}</a></li>
             </ul>
         </div>
     </div>

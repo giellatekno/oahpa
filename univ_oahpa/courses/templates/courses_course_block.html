@@ -59,8 +59,10 @@
 			{% endfor %}
 		{% else %}
 			<div class="col-md-12 col-sm-12 col-lg-12">
-			    <p class="goal_note">Your instructor has not yet defined
-			        any goals for this course.</p>
+			    <p class="goal_note">
+			        {% blocktrans %}Your instructor has not yet defined any goals for this
+			        course.{% endblocktrans %}
+			    </p>
 			</div>
 		{% endif %}
 

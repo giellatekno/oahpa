@@ -29,12 +29,16 @@ TODO: internationalization strings
 	        <div class="col-md-9 col-sm-9 col-lg-9">
 	            <h3>Course invitation</h3>
 	            {% if target_course %}
-	                <p class="lead">You've been successfully enrolled in <strong>{{ target_course }}</strong>, check out
-	                your course profile to begin working on course goals, or
-	                click one of the exercises above to begin learning.</p>
+	                <p class="lead">
+                        {% blocktrans %}
+	                        You've been successfully enrolled in <strong>{{ target_course }}</strong>, check out
+	                        your course profile to begin working on course goals, or
+	                        click one of the exercises above to begin learning.
+                        {% endblocktrans %}
+	                </p>
 	                <a class="btn btn-success" href="/{{ URL_PREFIX }}/courses/">Course profile</a>
 	            {% else %}
-	                <p class="lead">Your enrollment key wasn't valid-- check with your instructor.</p>
+	                <p class="lead">{% blocktrans %}Your enrollment key wasn't valid-- check with your instructor.{% endblocktrans %}</p>
 	            {% endif %}
 
 	            {% if error %}

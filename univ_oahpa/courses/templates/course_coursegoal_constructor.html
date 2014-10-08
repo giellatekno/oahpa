@@ -2,27 +2,6 @@
 
 <div ng-app="CoursesConstruction" class="bootstrap-styles">
 
-    {% comment %}
-        <div class="modal fade" id="example_modal" role="dialog" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Modal title</h4>
-              </div>
-              <div class="modal-body">
-                <p>One fine body&hellip;</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-    {% endcomment %}
-
-
     <div id="add_goal_container" style="display: none;">
         <div id="add_goal_target">
            {% comment %}
@@ -51,7 +30,7 @@
                     ng-show="!form_success"
                     ng-options="g.id as g.combined_name for g in coursegoals"
                     ng-model="edit_goal_id">
-                <option value="">Edit an existing course goal</option>
+                    <option value="">{% blocktrans %}Edit an existing course goal{% endblocktrans %}</option>
             </select>
             <br />
             <br />
@@ -60,11 +39,11 @@
 
     <div class="col-lg-12 col-sm-12 col-md-12">
         <div class="row" ng-show="finalized">
-            <p class="lead" ng-show="created">The new Course Goal "<% course_goal.short_name %>" has been created.</p>
-            <p class="lead" ng-show="deleted">The new Course Goal "<% course_goal.short_name %>" has been deleted.</p>
-            <p class="lead" ng-show="edit && !created">The new Course Goal "<% course_goal.short_name %>" has been edited.</p>
+            <p class="lead" ng-show="created">{% blocktrans %}The new Course Goal{% endblocktrans %} "<% course_goal.short_name %>" {% blocktrans %}has been created.{% endblocktrans %}</p>
+            <p class="lead" ng-show="deleted">{% blocktrans %}The new Course Goal{% endblocktrans %} "<% course_goal.short_name %>" {% blocktrans %}has been deleted.{% endblocktrans %}</p>
+            <p class="lead" ng-show="edit && !created">{% blocktrans %}The new Course Goal{% endblocktrans %} "<% course_goal.short_name %>" {% blocktrans %}has been edited.{% endblocktrans %}</p>
 
-            <button href="#" ng-click="refresh()" class="btn btn-info">Create another</button>
+            <button href="#" ng-click="refresh()" class="btn btn-info">{% blocktrans %}Create another course goal.{% endblocktrans %}</button>
         </div>
 
 
@@ -75,7 +54,7 @@
             </div>
             <div class="col-md-11">
                 <div class="form-group">
-                    <label for="goal_name" class="control-label">Course Goal Name</label>
+                    <label for="goal_name" class="control-label">{% blocktrans %}Name{% endblocktrans %}</label>
 
                     <input class="form-control"
                             id="goal_name"
@@ -95,7 +74,7 @@
             </div>
             <div class="col-md-11">
                 <div class="form-group">
-                    <label for="goal_name" class="control-label">Description</label>
+                    <label for="goal_name" class="control-label">{% blocktrans %}Description{% endblocktrans %}</label>
 
                     <textarea class="form-control"
                             id="goal_description"
@@ -116,7 +95,7 @@
             </div>
             <div class="col-md-11">
                 <div class="form-group">
-                    <label for="goal_name" class="control-label">Course</label>
+                    <label for="goal_name" class="control-label">{% blocktrans %}Course{% endblocktrans %}</label>
 
                     <select class="form-control"
                             id="selectToEdit"
@@ -143,7 +122,7 @@
                         <div class="form-group">
                             <div class="">
                                 <label for="goal_percent_correct"
-                                    class="control-label">Avg. correct percentage</label>
+                                    class="control-label">{% blocktrans %}Avg. correct percentage{% endblocktrans %}</label>
                             </div>
 
                             {# Loop the main set of options #}
@@ -168,7 +147,7 @@
                         <div class="form-group">
                             <div class="">
                                 <label for="goal_percent_correct"
-                                    class="control-label">Percent complete</label>
+                                    class="control-label">{% blocktrans %}Percent complete{% endblocktrans %}</label>
                             </div>
 
                             {# Loop the main set of options #}
@@ -197,11 +176,11 @@
             </div>
             <div class="col-md-11">
                 <div class="form-group">
-                    <p>If you're satisfied with the above, save and then add goals to this course goal.</p>
+                    <p>{% blocktrans %}Save when you are ready, and then goals to this course goal.{% endblocktrans %}</p>
                     <br />
-                    <button ng-hide="created" type="button" ng-click="submitForm()" class="btn btn-info">Submit</button>
-                    <button ng-show="created" type="button" ng-click="submitForm()" class="btn btn-info">Edit</button>
-                    <button type="button" class="btn btn-warning">Reset</button>
+                    <button ng-hide="created" type="button" ng-click="submitForm()" class="btn btn-info">{% blocktrans %}Submit{% endblocktrans %}</button>
+                    <button ng-show="created" type="button" ng-click="submitForm()" class="btn btn-info">{% blocktrans %}Edit{% endblocktrans %}</button>
+                    <button type="button" class="btn btn-warning">{% blocktrans %}Reset{% endblocktrans %}</button>
                 </div>
             </div>
 
@@ -214,7 +193,7 @@
             </div>
             <div class="col-md-11">
                 <div class="col-md-6">
-                    <p class="sortable-note">Drag and drop...</p>
+                    <p class="sortable-note">{% blocktrans %}Drag and drop{% endblocktrans %}</p>
                     <ul ng-model="sorting" ui-sortable="sortableOptions" class="connected-sorting nav nav-pills nav-stacked target-region">
                         <li ng-repeat="goal in sorting"><a href="#"><% $index + 1 %>.) <% goal.text %></a></li>
                     </ul>
@@ -223,16 +202,16 @@
                     <span class="median_illustration_arrow">&larr;</span>
                 </div>
                 <div class="col-md-5">
-                    <p class="sortable-note">Your Tasks</p>
+                    <p class="sortable-note">{% blocktrans %}Your Tasks{% endblocktrans %}</p>
                     <ul ng-model="not_in_use" ui-sortable="sortableOptions" class="connected-sorting source-region nav nav-pills nav-stacked">
                         <li ng-hide="goal.assigned && !show_assigned" ng-repeat="goal in not_in_use"><a href="#"><% goal.text %></a></li>
                         <li class="add-task">
                             <a ng-click="newTaskPopup($event)" 
                                ng-add-target="/{{ URL_PREFIX }}/courses/create/coursegoal/add/goal/"
-                               href="#">+ Create a task</a>
+                               href="#">+ {% blocktrans %}Create a task{% endblocktrans %}</a>
                             </ul>
                         </li>
-                    <input type="checkbox" ng-model="show_assigned">&nbsp;Show tasks assigned to other goals</input>
+                    <input type="checkbox" ng-model="show_assigned">&nbsp;{% blocktrans %}Show tasks assigned to other goals{% endblocktrans %}</input>
                 </div>
             </div>
 
@@ -243,9 +222,9 @@
                 <span class="step_number">4</span>
             </div>
             <div class="col-md-11">
-                <button type="button" ng-click="saveSorting()" class="btn btn-info">Save</button>
+                <button type="button" ng-click="saveSorting()" class="btn btn-info">{% blocktrans %}Save{% endblocktrans %}</button>
                 <button type="button" ng-click="deleteCourseGoal()" ng-show="edit" class="btn
-                    btn-danger">Delete this course goal</button>
+                    btn-danger">{% blocktrans %}Delete this course goal{% endblocktrans %}</button>
             </div>
         </div>
 

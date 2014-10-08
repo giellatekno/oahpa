@@ -15,7 +15,7 @@
                 ng-show="!form_success"
                 ng-options="g.id as g.short_name for g in existing_goals"
                 ng-model="edit_goal_id">
-            <option value="">Edit an existing goal</option>
+            <option value="">{% blocktrans %}Edit an existing goal{% endblocktrans %}</option>
         </select>
 
         <br />
@@ -29,8 +29,11 @@
             {# Here we define meta info, name, description, etc. #}
             <div class="row" ng-hide="form_success">
                 <div class="col-md-11 col-md-offset-1">
-                    <p class="lead goal_intro">Create a goal to track your progress on a feature of
-                        grammar.</p>
+                    <p class="lead goal_intro">
+                        {% blocktrans %}
+                        Create a goal to track your progress on a feature of grammar.
+                        {% endblocktrans %}
+                    </p>
                 </div>
             </div>
 
@@ -45,7 +48,7 @@
 
                     <div class="form-group" ng-show="instructor_courses">
                         <div class="">
-                            <label for="goal_name" class="control-label">Course name</label>
+                            <label for="goal_name" class="control-label">{% blocktrans %}Course name{% endblocktrans %}</label>
                         </div>
 
                         {# Loop the main set of options #}
@@ -58,7 +61,7 @@
                                     ng-options="opt[0] as opt[1] for opt in instructor_courses"
                                     ng-model="user_goal.course_id">
 
-                                <option value="">Select a course</option>
+                                <option value="">{% blocktrans %}Select a course{% endblocktrans %}</option>
 
                             </select>
                         </div>
@@ -66,7 +69,8 @@
 
                     <div class="form-group">
                         <div class="">
-                            <label for="goal_name" class="control-label">Goal name</label>
+                            <label for="goal_name" class="control-label">{% blocktrans %}Goal name{% endblocktrans %}</label>
+
                         </div>
 
                         {# Loop the main set of options #}
@@ -104,7 +108,7 @@
                             <div class="form-group">
                                 <div class="">
                                     <label for="goal_percent_correct"
-                                        class="control-label">Percent correct</label>
+                                        class="control-label">{% blocktrans %}Percent correct{% endblocktrans %}</label>
                                 </div>
 
                                 {# Loop the main set of options #}
@@ -127,7 +131,7 @@
                             <div class="form-group">
                                 <div class="">
                                     <label for="goal_minimum_tried"
-                                        class="control-label">Question sets achieved</label>
+                                        class="control-label">{% blocktrans %}Question sets achieved{% endblocktrans %}</label>
                                 </div>
 
                                 {# Loop the main set of options #}
@@ -153,8 +157,10 @@
                         <div class="input-group">
                             <div class="checkbox">
                                 <label>
+                                    {% blocktrans %}
                                     Only count answers that are
                                     correct on the first try?
+                                    {% endblocktrans %}
                                     <input class="form-control"
                                             id="goal_correct_first_try"
                                             name="goal_correct_first_try"
@@ -180,7 +186,7 @@
                 <div class="col-md-11">
                     <div class="form-group">
                         <div class="">
-                            <label for="selectMainType" class="control-label">Game type</label>
+                            <label for="selectMainType" class="control-label">{% blocktrans %}Game type{% endblocktrans %}</label>
                         </div>
 
                         {# Loop the main set of options #}
@@ -193,7 +199,7 @@
                                     ng-options="opt.value as opt.label for opt in main_types"
                                     ng-model="user_goal.main_type">
 
-                                <option value="">Select a type</option>
+                                <option value="">{% blocktrans %}Select a type{% endblocktrans %}</option>
 
                             </select>
                         </div>
@@ -226,7 +232,7 @@
                                     ng-show="data.subtypes.length > 1"
                                     ng-model="user_goal.sub_type">
 
-                                <option value="">Subtype</option>
+                                <option value="">{% blocktrans %}Subtype{% endblocktrans %}</option>
 
                             </select>
 
@@ -267,7 +273,7 @@
                                         ng-options="value as label for (value, label) in option_values[p].options"
                                         ng-model="user_goal.params[p]">
 
-                                    <option value="">Select a type</option>
+                                    <option value="">{% endblocktrans %}Select a type{% endblocktrans %}</option>
                                 </select>
 
                             </div>
@@ -311,7 +317,7 @@
                                                         ng-options="value as label for (value, label) in option_values[p].options"
                                                         ng-model="user_goal.params[p]">
 
-                                                    <option value="">Select a type</option>
+                                                    <option value="">{% blocktrans %}Select a type{% endblocktrans %}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -330,10 +336,10 @@
                 </div>
 
                 <div class="col-md-11">
-                    <button type="button" ng-click="submitForm()" class="btn btn-info">Submit</button>
-                    <button type="button" class="btn btn-warning">Reset</button>
+                    <button type="button" ng-click="submitForm()" class="btn btn-info">{% blocktrans %}Submit{% endblocktrans %}</button>
+                    <button type="button" class="btn btn-warning">{% blocktrans %}Reset{% endblocktrans %}</button>
                     <button type="button" ng-click="deleteGoal()" ng-show="editing_existing" class="btn
-                        btn-danger">Delete this goal</button>
+                        btn-danger">{% blocktrans %}Delete this goal{% blocktrans %}</button>
                 </div>
             </div>
 
@@ -341,12 +347,11 @@
             <div class="row">
                 <div class="col-md-11 col-md-offset-1">
                     <div id="success_msg" ng-show="form_success">
-                        <p ng-show="goal_deleted" class="lead">You successfully deleted the goal.</p>
-                        <p ng-show="goal_created" class="lead">You successfully created the goal "<% goal.short_name %>".</p>
-                        <p ng-show="goal_edited" class="lead">You successfully
-                            edited the goal "<% goal.short_name %>".</p>
-                        <button ng-click="beginGoal()" type="button" class="btn btn-success">Begin</button>
-                        <button type="button" class="btn btn-info">Course overview</button>
+                        <p ng-show="goal_deleted" class="lead">{% blocktrans %}You successfully deleted the goal.{% endblocktrans %}</p>
+                        <p ng-show="goal_created" class="lead">{% blocktrans %}You successfully created the goal{% blocktrans %} "<% goal.short_name %>".</p>
+                        <p ng-show="goal_edited" class="lead">{% blocktrans %}You successfully edited the goal{% endblocktrans %} "<% goal.short_name %>".</p>
+                        <button ng-click="beginGoal()" type="button" class="btn btn-success">{% blocktrans %}Begin{% endblocktrans %}</button>
+                        <button type="button" class="btn btn-info">{% blocktrans %}Course overview{% endblocktrans %}</button>
                     </div>
                 </div>
             </div>
