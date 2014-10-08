@@ -275,7 +275,7 @@
                                         ng-options="value as label for (value, label) in option_values[p].options"
                                         ng-model="user_goal.params[p]">
 
-                                    <option value="">{% endblocktrans %}Select a type{% endblocktrans %}</option>
+                                    <option value="">{% blocktrans %}Select a type{% endblocktrans %}</option>
                                 </select>
 
                             </div>
@@ -341,7 +341,7 @@
                     <button type="button" ng-click="submitForm()" class="btn btn-info">{% blocktrans %}Submit{% endblocktrans %}</button>
                     <button type="button" class="btn btn-warning">{% blocktrans %}Reset{% endblocktrans %}</button>
                     <button type="button" ng-click="deleteGoal()" ng-show="editing_existing" class="btn
-                        btn-danger">{% blocktrans %}Delete this goal{% blocktrans %}</button>
+                        btn-danger">{% blocktrans %}Delete this goal{% endblocktrans %}</button>
                 </div>
             </div>
 
@@ -350,7 +350,7 @@
                 <div class="col-md-11 col-md-offset-1">
                     <div id="success_msg" ng-show="form_success">
                         <p ng-show="goal_deleted" class="lead">{% blocktrans %}You successfully deleted the goal.{% endblocktrans %}</p>
-                        <p ng-show="goal_created" class="lead">{% blocktrans %}You successfully created the goal{% blocktrans %} "<% goal.short_name %>".</p>
+                        <p ng-show="goal_created" class="lead">{% blocktrans %}You successfully created the goal{% endblocktrans %} "<% goal.short_name %>".</p>
                         <p ng-show="goal_edited" class="lead">{% blocktrans %}You successfully edited the goal{% endblocktrans %} "<% goal.short_name %>".</p>
                         <button ng-click="beginGoal()" type="button" class="btn btn-success">{% blocktrans %}Begin{% endblocktrans %}</button>
                         <button type="button" class="btn btn-info">{% blocktrans %}Course overview{% endblocktrans %}</button>
