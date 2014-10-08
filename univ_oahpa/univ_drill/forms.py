@@ -791,17 +791,17 @@ def get_feedback(self, wordform, language):
 
 	language = switch_language_code(language)
 
-	if user_level:
-		feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
-						.order_by('feedbacktext__order')\
-						.order_by('feedbacktext__user_level')
-		feedbacks = nearest_matching_level(feedbacks, user_level)
-	else:
+	# if user_level:
+	# 	feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
+	# 					.order_by('feedbacktext__order')\
+	# 					.order_by('feedbacktext__user_level')
+	# 	feedbacks = nearest_matching_level(feedbacks, user_level)
+	# else:
+	feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
+					.order_by('feedbacktext__order')
+	if feedbacks.count() == 0:
 		feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
 						.order_by('feedbacktext__order')
-		if feedbacks.count() == 0:
-			feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
-							.order_by('feedbacktext__order')
 	
 	feedback_messages = []
 	feedback_ids = []
@@ -810,8 +810,8 @@ def get_feedback(self, wordform, language):
 	# comes up first.
 	for feedback in feedbacks:
 		texts = feedback.feedbacktext_set.filter(language=language)\
-											.order_by('order')\
-											.order_by('user_level')
+											.order_by('order')
+		# .order_by('user_level')
 		feedback_messages.extend([a.message for a in texts])
 		feedback_ids.append(feedback.msgid)
 
