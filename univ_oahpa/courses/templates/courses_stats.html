@@ -51,7 +51,7 @@
                                                                     {{ goal_number }}.{{ forloop.counter }}) {{coursegoal.short_name }}: {{ goal.short_name }} 
                                                                 </a>
                                                                 <ul class="history_list_attributes">
-                                                                    <li>{{ goal|goal_instances_for:user|length }} attempt(s)</li>
+                                                                    <li>{{ goal|goal_instances_for:user|length }} {% trans "attempt(s)" %}</li>
                                                                 </ul>
                                                             </li>
                                                     {% endif %}
@@ -64,7 +64,7 @@
 				            {% endfor %}
                             </ul>
 
-				            <p>Note: these are only the tasks that you have made progress on.</p>
+				            <p>{% trans "Note: these are only the tasks that you have made progress on." %}</p>
 
 				            <h3>{% trans "General learning stats" %}</h3>
 				            <p>{% trans "The following scores represent your progress in the games available in Oahpa. Instructors will see your scores as shown below, but will also be able to see individual scores from every game. Good luck!" %}</p>

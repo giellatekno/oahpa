@@ -55,12 +55,12 @@
                 {% cache 60 user_course_goals student.user.username goal.id %}
                     <table class="course_goals">
                         <tr>
-                            <th>success</th>
-                            <th>total questions answered</th>
-                            <th>correct</th>
-                            <th class="align-bottom" colspan=2>first try / later tries</th>
-                            <th>rounds</th>
-                            <th>last attempt</th>
+                            <th>{% trans "success" %}</th>
+                            <th>{% trans "total questions answered" %}</th>
+                            <th>{% trans "correct" %}</th>
+                            <th class="align-bottom" colspan=2>{% trans "first try / later tries" %}</th>
+                            <th>{% trans "rounds" %}</th>
+                            <th>{% trans "last attempt" %}</th>
                         </tr>
                     {% for goal in goal_instances %}
                         {% if goal.evaluation %}
@@ -85,7 +85,7 @@
                         <tr>
                             <th>&nbsp;</th>
                             <th>&nbsp;</th>
-                            <th class="align-bottom" colspan=2><span class="pie_label_correct">&nbsp;</span> later tries <br /><span class="pie_label_first_try">&nbsp;</span> first try</th>
+                            <th class="align-bottom" colspan=2><span class="pie_label_correct">&nbsp;</span> {% trans "later tries" %} <br /><span class="pie_label_first_try">&nbsp;</span> {% trans "first try" %}</th>
                             <th>&nbsp;</th>
                             <th>&nbsp;</th>
                         </tr>
@@ -94,11 +94,11 @@
             </div>
             <div class="col-lg-4 col-md-4">
                 <dl class="dl-horizontal">
-                    <dt>Completion criteria</dt><dd>&nbsp;</dd>
-                    <dt>Correct threshold:</dt> <dd>{{ goal.threshold }}%</dd>
-                    <dt>Minimum sets: <dd>{{ goal.minimum_sets_attempted }}</dd>
+                    <dt>{% trans "Completion criteria" %}</dt><dd>&nbsp;</dd>
+                    <dt>{% trans "Correct threshold:" %}</dt> <dd>{{ goal.threshold }}%</dd>
+                    <dt>{% trans "Minimum sets: " %}<dd>{{ goal.minimum_sets_attempted }}</dd>
                     {% if goal.correct_first_try %}
-                        <dt>Correct on first try</dt> <dd>&nbsp;</dd>
+                        <dt>{% trans "Correct on first try" %}</dt> <dd>&nbsp;</dd>
                     {% endif %}
                 </dl>
                 <dl class="dl-horizontal">

@@ -1,10 +1,11 @@
 {% load goal_filters %}
-<h3>Words to work on</h3>
+{% load i18n %}
+<h3>{% trans "Words to work on" %}</h3>
 
 <table>
     <tr>
-        <th>Attempts</th>
-        <th>Question</th>
+        <th>{% trans "Attempts" %}</th>
+            <th>{% trans "Question" %}</th>
     </tr>
     {% for w in incorrects|slice:":15" %}
         <tr class="{% cycle 'even' 'odd' %}">
@@ -13,6 +14,4 @@
         </tr>
     {% endfor %}
 </table>
-
-
 

@@ -1,10 +1,11 @@
-﻿<div id="notifications" ng-controller="NotificationController" ng-source="/{{ URL_PREFIX }}/courses/api/notifications/">
+﻿{% load i18n %}
+<div id="notifications" ng-controller="NotificationController" ng-source="/{{ URL_PREFIX }}/courses/api/notifications/">
   {% if profile.is_instructor %}
-    <p class="note" ng-hide="notifications">No notifications.</p>
+      <p class="note" ng-hide="notifications">{% trans "No notifications." %}</p>
   {% endif %}
   <div>
     <div ng-repeat="note in notifications" class="notification panel panel-<% note.level %>" data-notification-id="<% note.id %>" ng-hide="note.deleted">
-      <div class="panel-heading"><a href="#" ng-click="dismissNotification(note)">Dismiss</a></div>
+      <div class="panel-heading"><a href="#" ng-click="dismissNotification(note)">{% trans "Dismiss" %}</a></div>
       <div class="panel-body">
          <p class="text"><% note.actor %> <% note.verb %><span ng-show="note.description">: <% note.description %></span></p>
       </div>

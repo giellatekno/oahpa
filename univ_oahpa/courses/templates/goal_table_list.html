@@ -1,15 +1,16 @@
 ﻿{% load goal_filters %}
+{% load i18n %}
 
 <table class="course_goals">
     <tr>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
-        <th>Task</th>
+        <th>{% trans "Task" %}</th>
         {% comment %}
         <th>&nbsp;</th>
         {% endcomment %}
-        <th>Progress</th>
+        <th>{% trans "Progress" %}</th>
         <th>&nbsp;</th>
     </tr>
 {% for goal in goal_set %}
@@ -33,12 +34,12 @@
         <td>
             {% if goal|goal_instances_for:user|length > 0 %}
                 {% if goal|complete_for:user %}
-                    <a class="begin_goal" href="{% url courses.views.begin_course_task goal.id %}"><span class="label label-info">More?</span></a>
+                    <a class="begin_goal" href="{% url courses.views.begin_course_task goal.id %}"><span class="label label-info">{% trans "More?" %}</span></a>
                 {% else %}
-                    <a class="begin_goal" href="{% url courses.views.begin_course_task goal.id %}"><span class="label label-success">Continue</span></a>
+                    <a class="begin_goal" href="{% url courses.views.begin_course_task goal.id %}"><span class="label label-success">{% trans "Continue" %}</span></a>
                 {% endif %}
             {% else %}
-                <a class="begin_goal" href="{% url courses.views.begin_course_task goal.id %}"><span class="label label-success">Begin</span></a>
+                <a class="begin_goal" href="{% url courses.views.begin_course_task goal.id %}"><span class="label label-success">{% trans "Begin" %}</span></a>
             {% endif %}
         </td>
 
@@ -54,7 +55,7 @@
                 {{ g.progress|floatformat }}%
             </td>
             <td class="current_progress sets">
-                <a class="goal_history" href="{% url courses.views.goal_history goal.id %}"><span class="label label-primary">History</span></a>
+                <a class="goal_history" href="{% url courses.views.goal_history goal.id %}"><span class="label label-primary">{% trans "History" %}</span></a>
             </td>
             {% endwith %}
         {% else %}

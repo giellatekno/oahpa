@@ -30,26 +30,26 @@ TODO: internationalization strings
             </div>
 	        <div class="col-md-9 col-sm-9 col-lg-9">
 	            {% if confirmation %}
-	                <h2>NB: this will reset the course invite link</h2>
-	                <p>Be sure to update users with the new link so they have access.</p>
+	                <h2>{% trans "NB: this will reset the course invite link" %}</h2>
+	                <p>{% trans "Be sure to update users with the new link so they have access." %}</p>
 
                     <form role="form">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-danger">Confirm</button>
+                            <button type="submit" class="btn btn-danger">{% trans "Confirm" %}</button>
                         </div>
                     </form>
                 {% endif %}
                 {% if reset_success %}
-                    <h2>Success!</h2>
+                    <h2>{% trans "Success!" %}</h2>
                     <br />
-                    <p>Here is the new invitation link: </p>
+                    <p>{% trans "Here is the new invitation link:" %}</p>
                     <form role="form">
                         <div class="form-group">
                             <blockquote>{{ course.invitation_link }}
                             </blockquote>
                         </div>
                     </form>
-                    <a class="btn btn-success" href="../../">Back to courses</a>
+                    <a class="btn btn-success" href="../../">{% trans "Back to courses" %}</a>
                 {% endif %}
             </div>
         </div>

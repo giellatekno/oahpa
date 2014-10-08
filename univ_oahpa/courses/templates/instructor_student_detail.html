@@ -26,7 +26,7 @@ TODO: internationalization strings
 	{# Add blocktrans and trans tags #}
 	<div id="courses" class="bootstrap-styles">
 		<ul id="subnav">
-			<li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li>
+			<li><a href="{% url univ_oahpa.courses.urls.logout %}">{% trans "Log out" %}</a></li>
 		</ul>
 		<h2>{{ student }}</h2>
 
@@ -59,7 +59,7 @@ TODO: internationalization strings
 				            <h4>{{ coursegoal.short_name }}</h4>
 				        </div>
 				        <div class="col-md-10">
-				            <h5>No progress yet</h5>
+				            <h5>{% trans "No progress yet" %}</h5>
 				        </div>
                     <div class="clearfix visible-xs visible-md visible-lg"></div>
 				    {% endif %}
@@ -71,7 +71,7 @@ TODO: internationalization strings
 		<br />
 		<br />
 		<br />
-		<h3>Summary of all work</h3>
+		<h3>{% trans "Summary of all work" %}</h3>
 		<table class="grades">
 		<tr>
 			{# TODO: padding here is not working #}

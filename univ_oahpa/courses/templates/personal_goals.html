@@ -44,8 +44,7 @@ TODO: link in user interface
 			                    <div class="col-md-4 col-sm-4 col-lg-4">
 			                        <h4>{% trans "Your personal goals" %}</h4>
 				                    <div class="well">
-				                        <p>Track your own progress outside of
-				                            courses with personal goals.</p>
+				                        <p>{% trans "Track your own progress outside of courses with personal goals." %}</p>
 				                    </div>
 			                    </div>
 
@@ -55,7 +54,7 @@ TODO: link in user interface
 				                            {% include 'goal_table_list.html' %}
 			                            {% endwith %}
 			                        {% endif %}
-			                        <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_goal_construction %}">Create a goal</a>
+			                        <a id="create_self_goal" class="btn btn-success" href="{% url courses.views.courses_goal_construction %}">{% trans "Create a goal" %}</a>
 			                    </div>
 			                </div>
 

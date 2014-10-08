@@ -1,11 +1,12 @@
 ﻿{% load goal_filters %}
+{% load i18n %}
 
 <table class="course_goals">
     <tr>
         <th>&nbsp;</th>
-        <th>Goal</th>
-        <th>Description</th>
-        <th>Score</th>
+        <th>{% trans "Goal" %}</th>
+        <th>{% trans "Description" %}</th>
+        <th>{% trans "Score" %}</th>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
@@ -32,7 +33,7 @@
                 {{ g.rounds }}
             </td>
             <td class="current_progress sets">
-                <a class="goal_history" href="{% url courses.views.goal_history goal.id, student.user.id %}">History</a>
+                <a class="goal_history" href="{% url courses.views.goal_history goal.id, student.user.id %}">{% trans "History" %}</a>
             </td>
             {% endwith %}
         {% else %}

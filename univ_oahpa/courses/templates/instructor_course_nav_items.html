@@ -1,13 +1,13 @@
 {% load i18n %}
 
 <li class="inactive"><a href="#">{{ user.username }}</a></li>
-<li><a href="{% url univ_oahpa.courses.urls.courses_main %}">Overview</a></li>
+<li><a href="{% url univ_oahpa.courses.urls.courses_main %}">{% trans "Overview" %}</a></li>
 {% load inbox %}
 {% inbox_count as in_count %}
 {% if in_count > 0 %}
-<li><a href="/{{ URL_PREFIX }}/messages/inbox/">Messages <strong>({{ in_count }})</strong></a></li>
+    <li><a href="/{{ URL_PREFIX }}/messages/inbox/">{% trans "Messages" %} <strong>({{ in_count }})</strong></a></li>
 {% else %}
-<li><a href="/{{ URL_PREFIX }}/messages/inbox/">Messages</a></li>
+    <li><a href="/{{ URL_PREFIX }}/messages/inbox/">{% trans "Messages" %}</a></li>
 {% endif %}
 <li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
 <li><a href="{% url univ_oahpa.courses.urls.logout %}">{% trans "Log out" %}</a></li>
