@@ -774,7 +774,7 @@ except:
 	UserFeedbackLog = False
 
 def get_feedback(self, wordform, language):
-	user_level = 1
+	user_level = False
 
 	# TODO: testing only
 	# user_level = 2
@@ -782,12 +782,12 @@ def get_feedback(self, wordform, language):
 
 	# results in msgs with all levels, need to filter down to the
 	# correct level.
-	if self.user and UserFeedbackLog:
-		# feedbacks irrespective of level
-		texts = wordform.feedback.filter(feedbacktext__language=language)
+	# if self.user and UserFeedbackLog:
+	# 	# feedbacks irrespective of level
+	# 	texts = wordform.feedback.filter(feedbacktext__language=language)
 
-		if len(texts) > 0:
-			user_level = UserFeedbackLog.levels.get_minimum_incomplete_level(self.user, texts)
+	# 	if len(texts) > 0:
+	# 		user_level = UserFeedbackLog.levels.get_minimum_incomplete_level(self.user, texts)
 
 	language = switch_language_code(language)
 
