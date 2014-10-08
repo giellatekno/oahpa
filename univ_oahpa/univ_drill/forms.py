@@ -1028,7 +1028,7 @@ class OahpaQuestion(forms.Form):
 		if self.user_country:
 			log_kwargs['user_country'] = self.user_country
 
-		log, c = Log.objects.get_or_create(**log_kwargs)
+		log = Log.objects.create(**log_kwargs)
 		self.last_log = log
 	
 	def __init__(self, *args, **kwargs):
@@ -2341,7 +2341,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 		log_kwargs['username'] = self.user.username
 	if self.user_country:
 		log_kwargs['user_country'] = self.user_country
-	log, c = Log.objects.get_or_create(**log_kwargs)
+	log = Log.objects.create(**log_kwargs)
 	self.last_log = log
 	#log.save()		   
 	
@@ -2998,7 +2998,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		log_kwargs['username'] = self.user.username
 	if self.user_country:
 		log_kwargs['user_country'] = self.user_country
-	log, c = Log.objects.get_or_create(**log_kwargs)
+	log = Log.objects.create(**log_kwargs)
 	self.last_log = log
 	# was Log.objects.create()
 	#log.save() # not needed?		  
