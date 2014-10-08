@@ -2124,7 +2124,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	#logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastaF_and_Sahka_CGanalysis_log.txt','w')
 	
 	host = 'localhost'
-	port = 9000  # was: 9000, TODO - add to settings.py
+	port = settings.LOOKUPSERV_PORT
 	size = 1024
 
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -2671,7 +2671,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 
 	#logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/CGanalysis_log.txt', 'w')
 	host = 'localhost'
-	port = 9000  # was: 9000, TODO - add to settings.py
+	port = settings.LOOKUPSERV_PORT
 	size = 1024
 
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
