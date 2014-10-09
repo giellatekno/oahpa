@@ -298,7 +298,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with messages to feedback"
-$P install.py --messagefile $META/messages.sme.level_test.xml 2>>error.log
+$P install.py --messagefile $META/messages.sme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -516,7 +516,7 @@ $P manage.py fixattributes
 
 echo "==================================================="
 echo "adding feedback to nouns"
-$P install.py -f $DPS/n_smenob.xml --feedbackfile $META/noun_messages_level_test.xml
+$P install.py -f $DPS/n_smenob.xml --feedbackfile $META/feedback_nouns.xml
 echo " "
 echo "done"
 echo "==================================================="
