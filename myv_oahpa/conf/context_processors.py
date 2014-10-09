@@ -3,7 +3,7 @@ import myv_oahpa.settings
 try:
 	default = myv_oahpa.settings.DEFAULT_DIALECT
 except:
-	default = 'GG'
+	default = 'main'
 
 def dialect(request):
     if not request.session.get('dialect'):
@@ -17,7 +17,7 @@ def grammarlinks(request):
 	from myv_drill.models import Grammarlinks
 	from conf.tools import switch_language_code
 	
-	default_lang = 'nob'
+	default_lang = 'myv' # was: nob
 	
 	try:
 		lang = switch_language_code(request.session.get('django_language'))

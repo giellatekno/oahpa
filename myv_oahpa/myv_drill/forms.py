@@ -971,7 +971,7 @@ class LeksaSettings(OahpaSettings):
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
 	
-	default_data = {'gametype' : 'leksa', 'language' : 'myv', 'dialogue' : 'GG',
+	default_data = {'gametype' : 'leksa', 'language' : 'myv', 'dialect' : 'main',
 			#'syll' : [],
 			#'bisyllabic': False,
 			#'trisyllabic': False,
@@ -1992,12 +1992,12 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     constant=""
     found=False
     #Interface language
-    if not language: language = "nob"
+    if not language: language = "eng" # was: nob
     language = switch_language_code(language)
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["nob","sme","fin","eng","swe","myv"]: language="nob"
+    if not language in ["nob","sme","fin","eng","swe","myv"]: language="eng"
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():
@@ -2550,12 +2550,12 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     constant=""
     found=False
     #Interface language
-    if not language: language = "nob"
+    if not language: language = "eng"
     language = switch_language_code(language)
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["nob","sme","fin","eng","swe"]: language="nob"
+    if not language in ["nob","sme","fin","eng","swe","myv","rus"]: language="eng"
 
     for w in msgstrings.keys():
         if found: break
