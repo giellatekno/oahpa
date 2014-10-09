@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- <questions> is the root element -->
+<!-- <q> is -->
+<!-- <qtype> is -->
+<!-- <question> is -->
+<!-- <answer> defines the template answer(s) to the question. -->
+
+<!-- <text> is the text of the <question> or <answer> -->
+<!-- <element> defines the variable(s) used in the <text>. Should game always be 'morfa', and the task always 'yes'? Do the id properties in <answer> elements have to match the <qtype> content? -->
+<!-- <grammar> specifies the morphosyntactic tags for its <element>. How does this relate to the tag structure in the FST? -->
+<!-- <sem> defines the set of nouns that can replace the variable. Can only one set be specified here? -->
+
+<!-- how do we define adjectival agreement in <question> <text>s, such as какой это дом, какая это квартира? -->
+
 <questions>
+
   <q id="loc_location">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Где SUBJ</text>
+      <element id="SUBJ">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </question>
+    <answer>
+      <text>SUBJ в N-LOC</text> <!-- Отец в городе -->
+      <element game='morfa' task='yes' id="N-LOC">
+        <grammar tag="N+Sg+Loc"/>
+        <sem class="LOCATION-V-LOC"/>
+      </element>
+    </answer>
+    <answer>
+      <text>SUBJ на N-LOC</text> <!-- Отец на острове -->
+      <element game='morfa' task='yes' id="N-LOC">
+        <grammar tag="N+Sg+Loc"/>
+        <sem class="LOCATION-NA-LOC"/>
+      </element>
+    </answer>
+  </q>
+
+  <q id="loc_locationPlus-ija">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Где SUBJ</text>
+      <element id="SUBJ">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </question>
+    <answer>
+      <text>SUBJ в N-LOC</text> <!-- Отец в городе -->
+      <element game='morfa' task='yes' id="N-LOC">
+        <grammar tag="N+Sg+Loc"/>
+        <sem class="LOCATION-V-LOC-ija"/> <!-- what about ije? -->
+      </element>
+    </answer>
+    <answer>
+      <text>SUBJ на N-LOC</text> <!-- Отец на острове -->
+      <element game='morfa' task='yes' id="N-LOC">
+        <grammar tag="N+Sg+Loc"/>
+        <sem class="LOCATION-NA-LOC-ija"/>
+      </element>
+    </answer>
+  </q>
+
+  <q id="loc_locationPlusLoc2">
     <qtype>N-LOC</qtype>
     <question>
       <text>Где SUBJ</text>
@@ -69,17 +133,142 @@
     <answer>
       <text>SUBJ едят N-ACC</text>
       <element game='morfa' task='yes' id="N-ACC">
-        <grammar tag="N+Sg+Acc"/>
+        <grammar tag="N+Sg+Acc"/> <!-- How do we add plural? N+Pl+Acc -->
         <sem class="FOOD_DISH"/>
       </element>
     </answer>
     <answer>
       <text>SUBJ едят N-ACC</text>
       <element game='morfa' task='yes' id="N-ACC">
-        <grammar tag="N+Sg+Acc"/>
+        <grammar tag="N+Sg+Acc"/> <!-- How do we add plural? N+Pl+Acc -->
         <sem class="FOOD_GROCERY"/>
       </element>
     </answer>
   </q>
 </questions>
+
+  <q id="adj_nom">
+    <qtype>ADJ-NOM</qtype>
+    <question>
+      <text>KAKOJ это SUBJ?</text>
+      <element id="KAKOJ">
+        <grammar tag="A+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="SUBJ">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </question>
+    <answer>
+      <text>Это COLOR SUBJ</text>
+      <element game='morfa' task='yes' id="ADJ-NOM">
+        <grammar tag="A+..."/>
+        <sem class="COLOR"/>
+      </element>
+    </answer>
+    <answer>
+      <text>Это SIZE SUBJ</text>
+      <element game='morfa' task='yes' id="ADJ-NOM">
+        <grammar tag="A+..."/>
+        <sem class="SIZE"/>
+      </element>
+    </answer>
+  </q>
+
+  <q id="gen_wherefrom">
+    <qtype>N-GEN</qtype>
+    <question>
+      <text>Откуда SUBJ</text>
+      <element id="SUBJ">
+        <grammar tag="N+Pl+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </question>
+    <answer>
+      <text>SUBJ из N-GEN</text>
+      <element game='morfa' task='yes' id="N-GEN">
+        <grammar tag="N+Sg+Gen"/>
+        <sem class="GEOPLACE"/>
+      </element>
+    </answer>
+  </q>
+
+  <q id="gen_forwho">
+    <qtype>N-GEN</qtype>
+    <question>
+      <text>Это SUBJ для кого</text>
+      <element id="SUBJ">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="OBJECT"/>
+      </element>
+    </question>
+    <answer>
+      <text>Это SUBJ для N-GEN</text>
+      <element game='morfa' task='yes' id="N-GEN">
+        <grammar tag="N+Sg+Gen"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </answer>
+  </q>
+
+  <q id="dat_indobj">
+    <qtype>N-DAT</qtype>
+    <question>
+      <text>Кому SUBJ дал N-ACC</text> <!-- How to make дал agree with SUBJ? -->
+      <element id="SUBJ">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="N-ACC">
+        <grammar tag="N+Sg+Acc"/>
+        <sem class="OBJECT"/>
+      </element>
+    </question>
+    <answer>
+      <text>SUBJ дал N-ACC N-DAT</text>
+      <element game='morfa' task='yes' id="N-DAT">
+        <grammar tag="N+Sg+Dat"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </answer>
+  </q>
+
+  <q id="dat_k">
+    <qtype>N-DAT</qtype>
+    <question>
+      <text>К кому SUBJ поехал</text> <!-- How to make поехал agree with SUBJ? -->
+      <element id="SUBJ">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </question>
+    <answer>
+      <text>SUBJ поехал к N-DAT</text>
+      <element game='morfa' task='yes' id="N-DAT">
+        <grammar tag="N+Sg+Dat"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </answer>
+  </q>
+
+  <q id="dat_nravitsja">
+    <qtype>N-DAT</qtype>
+    <question>
+      <text>Кому нравится SUBJ</text>
+      <element id="SUBJ">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="OBJECT"/>
+      </element>
+    </question>
+    <answer>
+      <text>N-DAT нравится SUBJ</text>
+      <element game='morfa' task='yes' id="N-DAT">
+        <grammar tag="N+Sg+Dat"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </answer>
+  </q>
+
+
 
