@@ -179,7 +179,7 @@ def render_kwargs(D):
         line = ' %s = %s ' % (k, ', '.join(vs))
         lines.append(line)
     
-    return '\n'.join(lines)
+    return '\n'.join(lines).encode('utf-8')
 
 def get_attrs_with_defaults(element, attr_list, defaults):
     """ Collect attributes from an XML element node, if there is no
@@ -303,11 +303,11 @@ class Feedback_install(object):
             mid=el.getAttribute("id")
             order = ""
             order = el.getAttribute("order")
-            _user_lvl = el.getAttribute("user_level")
-            if _user_lvl is not None:
-                user_level = int(_user_lvl)
-            else:
-                user_level = 1
+            # _user_lvl = el.getAttribute("user_level")
+            # if _user_lvl is not None:
+            #     user_level = int(_user_lvl)
+            # else:
+            #     user_level = 1
             # message = ""
             # When XML contains <![CDATA[]]> there is no need to treat the data
             # differently, as <a /> nodes will be treated as text
@@ -323,7 +323,7 @@ class Feedback_install(object):
             fm, created = Feedbackmsg.objects.get_or_create(msgid=mid)
             fm.save()
 
-            fmtext, created=Feedbacktext.objects.get_or_create(language=lang,feedbackmsg=fm,order=order,user_level=user_level)
+            fmtext, created=Feedbacktext.objects.get_or_create(language=lang,feedbackmsg=fm,order=order,)
             fmtext.message=message
             fmtext.save()
 
