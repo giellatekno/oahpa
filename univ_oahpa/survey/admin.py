@@ -25,6 +25,10 @@ class SurveyQuestionAnswerValueInlineAdmin(admin.TabularInline):
     model = SurveyQuestionAnswerValue
     extra = 1
 
+class TranslatedAnswerValueInlineAdmin(SurveyQuestionAnswerValueInlineAdmin,
+                                       TranslationTabularInline):
+    pass
+
 class EditLinkToInlineObject(object):
     """ Include a link field to edit the object, pops out to a new tab /
     window. """
@@ -47,7 +51,10 @@ class TranslatedSurveyQuestionInlineAdmin(SurveyQuestionInlineAdmin, Translation
 
 class SurveyQuestionAdmin(admin.ModelAdmin):
     model = SurveyQuestion
-    inlines = [SurveyQuestionAnswerValueInlineAdmin]
+    inlines = [TranslatedAnswerValueInlineAdmin]
+
+class TranslatedSurveyQuestionAdmin(SurveyQuestionAdmin, TabbedTranslationAdmin):
+    pass
 
 class SurveyResponseInline(admin.TabularInline):
     model = UserSurvey
@@ -116,6 +123,5 @@ class UserSurveyAdmin(admin.ModelAdmin):
 
 # admin.site.register(Survey, SurveyAdmin)
 admin.site.register(Survey, TranslatedSurveyAdmin)
-
-admin.site.register(SurveyQuestion, SurveyQuestionAdmin)
+admin.site.register(SurveyQuestion, TranslatedSurveyQuestionAdmin)
 admin.site.register(UserSurvey, UserSurveyAdmin)
