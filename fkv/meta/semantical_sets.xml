@@ -2,23 +2,120 @@
 <!-- Specify subsets for sematic supersets here -->
 <lexicon>
 	<subclasses class="HUMAN">  
-      <sem class="PEOPLE"/>   
+      <sem class="PEOPLE"/>
       <sem class="FAMILY"/>
-      <sem class="EXPERIENCE_V"/>
-      <sem class="ACTION_V"/>
-      <sem class="FINANCE_V"/>
       <sem class="HUMAN_A"/>
+      <sem class="HUMAN_ID"/>
+      <sem class="PROFESSION"/>
+    </subclasses>
+	<subclasses class="HUMANACTIONS">  
+      <sem class="HUMAN_ADV"/>
+      <sem class="HUMAN_ID_ADV"/>
+      <sem class="HUMAN_V"/>
+      <sem class="PERCEPTION"/>
+      <sem class="THOUGHT"/>
+      <sem class="AUX_V"/>
+      <sem class="EDUCATION"/>
+      <sem class="EXPERIENCE_A"/>
+      <sem class="EXPERIENCE_V"/>
+      <sem class="FEELING"/>
+      <sem class="MOVEMENT_A"/>
+      <sem class="MOVEMENT_ADV"/>
       <sem class="MOVEMENT_V"/>
-      <sem class="VOCAL_V"/>
+      <sem class="LANGUAGE"/>
     </subclasses>
 	<subclasses class="FOOD_DRINK">  
-      <sem class="DRINK"/>
-      <sem class="DRINK_V"/>
-      <sem class="FOODDRINK_V"/>
-      <sem class="FOOD_A"/>
+      <sem class="FOOD_ADV"/>
+      <sem class="FOOD_BERRY"/>
       <sem class="FOOD_DISH"/>
       <sem class="FOOD_GROCERY"/>
-      <sem class="FOOD_V"/>
+      <sem class="FOOD_OTHER"/>
+      <sem class="DRINK"/>
       <sem class="SOUP_A"/>
+      <sem class="SOUP_ADV"/>
+    </subclasses>
+	<subclasses class="BODY_DIV">  
+      <sem class="BODYPART"/>
+      <sem class="BODYPART_A"/>
+      <sem class="BODYPART_PL"/>
+      <sem class="BODY_A"/>
+      <sem class="BODY_ADV"/>
+      <sem class="BODY_V"/>
+      <sem class="VOICE"/>
+      <sem class="VERBAL_V"/>
+    </subclasses>
+	<subclasses class="HOME">  
+      <sem class="BUILDING"/>
+      <sem class="BUILDING_A"/>
+      <sem class="BUILDING_ADV"/>
+      <sem class="BUILDING_ROOM_A"/>
+      <sem class="BUILDING_ROOM_ADV"/>
+      <sem class="ROOM"/>
+      <sem class="ROOM_ADV"/>
+      <sem class="ROOM_OTHER"/>
+      <sem class="ROOM_PART"/>
+      <sem class="FURNITURE_ADV"/>
+      <sem class="KITCHEN"/>
+      <sem class="KITCHEN_OTHER"/>
+    </subclasses>
+	<subclasses class="CITYLIFE">  
+      <sem class="ROAD"/>
+      <sem class="TRAVELLING"/>
+      <sem class="VEHICLE"/>
+      <sem class="SHOP"/>
+      <sem class="SHOP_ADV"/>
+      <sem class="SHOP_V"/>
+      <sem class="FINANCE"/>
+      <sem class="FINANCE_ADV"/>
+      <sem class="FINANCE_V"/>
+    </subclasses>
+	<subclasses class="CLOTHINGS">  
+      <sem class="CLOTHES_A"/>
+      <sem class="CLOTHING"/>
+      <sem class="CLOTHING_OTHER"/>
+      <sem class="CLOTHING_PL"/>
+      <sem class="COLOUR_A"/>
+    </subclasses>
+	<subclasses class="TIMEEXPR">  
+      <sem class="TIME"/>
+      <sem class="TIME_A"/>
+      <sem class="TIME_ADV"/>
+      <sem class="TIME_OTHER"/>
+      <sem class="TIME_V"/>
+      <sem class="TOOL"/>
+    </subclasses>
+	<subclasses class="NATURE_ANIMALS">  
+      <sem class="PLANT"/>
+      <sem class="ANIMAL_DOM"/>
+      <sem class="ANIMAL_OTHER"/>
+      <sem class="ANIMAL_SALTFISH"/>
+      <sem class="BIRD"/>
+      <sem class="NATURE"/>
+      <sem class="NATURE_A"/>
+      <sem class="NATURE_ADV"/>
+      <sem class="NATURE_OTHER"/>
+      <sem class="NATURE_PLACE"/>
+      <sem class="NATURE_V"/>
+      <sem class="NATURE_WATER"/>
+      <sem class="WEATHER"/>
+      <sem class="WEATHER_A"/>
+      <sem class="WEATHER_ADV"/>
+      <sem class="WEATHER_V"/>
+      <sem class="SNOW"/>
+    </subclasses>
+	<subclasses class="OTHER">  
+      <sem class="ABSTRACT"/>
+      <sem class="ABSTRACT_A"/>
+      <sem class="ABSTRACT_ADV"/>
+      <sem class="SCHOOL"/>
+      <sem class="SOUND"/>
+      <sem class="TEXT"/>
+      <sem class="TEXT_OTHER"/>
+      <sem class="THING"/>
+      <sem class="ACTION"/>
+      <sem class="ACTION_ADV"/>
+      <sem class="ACTION_V"/>
+      <sem class="CONTAINER"/>
+      <sem class="OBJECT_V"/>
     </subclasses>
 </lexicon>
