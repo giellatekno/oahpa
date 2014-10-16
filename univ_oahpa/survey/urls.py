@@ -11,6 +11,6 @@ router.register(r'answer', AnswerView, base_name='answer')
 
 urlpatterns = patterns('survey.views',
     url(r'^dismiss/$', 'dismiss'),
-    url(r'^answer/$', 'answer'),
+    url(r'^answer/$', 'answer', name="answer_survey"),
     url(r'^api/', include(router.urls)),
 )
