@@ -169,11 +169,9 @@ WORDFORM_TYPE_CHOICES = (
 
 ADJCASE_CHOICES = (
 	('NOMPL', _('plural')),
-	('ATTR', _('attributive')),
 	('A-GEN', _('Genitive')),
     ('A-PAR', _('Partitive')),
     ('A-ILL', _('Illative')),
-    ('A-INE', _('Inessive')),
     ('A-ELA', _('Elative')),
     ('A-ADE', _('Adessive')),
     ('A-ABL', _('Ablative')),
