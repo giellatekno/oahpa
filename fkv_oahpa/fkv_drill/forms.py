@@ -317,8 +317,9 @@ DERIVATION_CHOICES_CONTEXT = (
 
 BOOK_CHOICES = (
     ('all', _(u'all')),
-    ('K1', _('Book 1')),
-    ('K2', _('Book 2')),
+    ('MJ1', _('Del 1')), #also GK1 MJ2 MJ3 MJ4
+    ('MJ5', _('Del 2')), #also MJ6 MJ7 MJ8 MJ9
+    ('MJ10', _('Del 3')), #also MJ11 MJ12 MJ13 MJ14
 )
 
 FREQUENCY_CHOICES = (
@@ -359,7 +360,15 @@ NUMLANGUAGE_CHOICES = (
 
 SEMTYPE_CHOICES = (
     ('HUMAN', _('human')),
+    ('HUMANACTIONS', _('humanactions')),
     ('FOOD_DRINK', _('food/drink')),
+    ('BODY_DIV', _('body')),
+    ('HOME', _('at home')),
+    ('CITYLIFE', _('citylife')),
+    ('CLOTHINGS', _('clothes')),
+    ('TIMEEXPR', _('time')),
+    ('NATURE_ANIMALS', _('nature')),
+    ('OTHER', _('other')),
     ('all', _('all')),
 )
 
