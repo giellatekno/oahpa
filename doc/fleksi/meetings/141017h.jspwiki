@@ -1,0 +1,150 @@
+!!! Møte 17.10.14
+
+Til stades: Heli, Lene
+
+!!!Saker: 
+# Konteaksta inn i kursinnlogging
+# Optimalisering av spørring
+# Dokumentasjon av Konteksta
+# Dokumentasjon av Oahpa
+# Firefox-plugin for Konteaksta
+# Kvensk Oahpa
+# Flytte oahpaer til gtoahpa
+# Neste møte
+
+!!Konteaksta inn i kursinnlogging
+
+Heli har funnet en metode for at det som studenten gjør, sendes til server som en tekstfil.
+Problemet er å vite når studenten er ferdig.
+Vi ønsker å vite hvor mange oppgaver det er på siden, og hvor mange oppgaver studenten gjør riktig av de oppgavene.
+Det vil også være bra å ta vare på gale svar og fasitsvar.
+
+Exempel av registrerat data just nu:
+{{{
+Topic: SubstantiveSingular, exercise type: click, URL: http://kursa.oahpa.no/2\
+011/09/21/bardni-gii-ii-aigon-skuvlii-vuolgit/
+The user has clicked correctly 1 words out of 1.
+The user has clicked correctly 2 words out of 2.
+The user has clicked correctly 3 words out of 3.
+The user has clicked correctly 4 words out of 4.
+The user has clicked correctly 5 words out of 5.
+The user has clicked correctly 6 words out of 6.
+The user has clicked correctly 7 words out of 7.
+The user has clicked correctly 8 words out of 8.
+The user has clicked correctly 9 words out of 9.
+The user has clicked correctly 10 words out of 10.
+The user has clicked correctly 10 words out of 11.
+Topic: SubstantiveSingular, exercise type: mc, URL: http://www.samimuseum.fi/m\
+aahisweb/sapmi/sa_poikajastaalo.html
+The user has written/chosen correctly 1 words out of 1.
+The user has written/chosen correctly 2 words out of 2.
+The user has written/chosen correctly 3 words out of 3.
+The user has written/chosen correctly 3 words out of 4.
+The user has written/chosen correctly 3 words out of 5.
+The user has written/chosen correctly 3 words out of 6.
+The user has written/chosen correctly 4 words out of 7.
+The user has written/chosen correctly 4 words out of 8.
+The user has written/chosen correctly 4 words out of 9.
+The user has written/chosen correctly 4 words out of 10.
+The user has written/chosen correctly 4 words out of 11.
+The user has written/chosen correctly 5 words out of 12.
+The user has written/chosen correctly 6 words out of 13.
+Topic: SubstantiveSingular, exercise type: cloze, URL: http://avvir.no
+The user has written/chosen correctly 1 words out of 1.
+The user has written/chosen correctly 1 words out of 2.
+The user has written/chosen correctly 2 words out of 3.
+The user has written/chosen correctly 3 words out of 4.
+The user has written/chosen correctly 3 words out of 5.
+}}}
+
+!Tiltak:
+* __Heli__ skriver mail om dette til oss og Detmar og Robert
+
+!!Optimalisering av spørring
+
+Saka var: Generering av distraktors tar mest tid, for multiple choice. 
+
+# Sende ordene som skal genereres samla til FST
+# De anbefalte sidene burde være mulige å lagre ferdige
+
+
+Eduard Schaf og Robert har funnet en løsning for russisk som Heli kan bruke.
+
+! Tiltak:
+* __Heli__ prioriterer å arbeide med optimaliseringa av spørringa
+
+
+!!Pipeline
+
+Vi ønsker vår egen språkavhengige preprosessering for å ha mulighet til å rette skrivefeil i anbefalte tekster.
+
+Det er no problem med preprosessering. Det vi har no er
+__openNLP tokenizer__
+
+Bruken av openNLP kom ferdig sett opp med WERTi. Vi kan erstatte 
+det med vår eigen.
+
+! Tiltak:
+* __Heli__ endrer preprossering
+
+!!Dokumentasjon av Konteksta
+
+Her skal den tekniske dokumentasjonen om Konteaksta samles:
+[Her|http://giellatekno.uit.no/ped/common/KonteakstaTechnicalDocumentation.html].
+
+! Tiltak:
+*__Heli__ forbedrer dokumentasjonen for Konteaksta: 
+* {{$GTHOME/apps/teaksta/sme/EXTENDING}} - hur man lägger till en ny topic i Konteaksta skal få
+jspwiki-format og lenkes til dokumentasjonssida.
+
+!!Dokumentasjon for Oahpa
+Trond har sett på dokumentasjonen. Dokumentasjonen vart skrive då vi hadde ein og to Oahpa. Det kommer ikke fram at vi har flere Oahpaer, og at de er på to forskjellige servere.
+
+
+! Tiltak:
+* __Heli__ legger inn mangler i dokumentasjonen for Oahpa: [Oahpadokumentasjon|http://giellatekno.uit.no/ped/common/OahpaTechnicalDocumentation.html]
+** Lokalisering (messages og translations): [Lokalisering|http://giellatekno.uit.no/ped/common/Localisation.html]
+
+
+!!Firefox-plugin for Konteaksta
+
+! Tiltak:
+* __Heli__ arbeider videre med denne
+
+!!Kvensk Oahpa
+Kvensk oahpa skal nå implementeres på gtoahpa-server. 
+
+Det er et problem å flere bøker under samme valg i menyen forms.py: (Dette er gjort i game.py for russisk)
+
+{{{
+BOOK_CHOICES = (
+    ('all', _(u'all')),
+    ('MJ1', _('Del 1')), #also GK1 MJ2 MJ3 MJ4  <=== 
+    ('MJ5', _('Del 2')), #also MJ6 MJ7 MJ8 MJ9 <=== 
+    ('MJ10', _('Del 3')), #also MJ11 MJ12 MJ13 MJ14 <=== 
+)
+}}}
+
+Genereringa for Morfa: jeg har lagt til gen_only="none", kan også være f.eks. gen_only ="Sg+Nom,Ess" - sjekk at dette fungerer. 
+
+For MorfaS:
+Vi skal nå også ha adjektiv med i MorfaS, men foreløpig bare samme formene som for subtantiv, altså ingen komparering.
+Og vi skal ikke ha Essive og Translative for hverken substantiver eller adjektiver.
+
+forms.py er relax_pairs, (sma: ø (ö), ä (æ), i (ï))
+
+! Tiltak:
+* __Heli__ implementerer kvensk oahpa på gtoahpa-server, bygd på en fullt utvikla versjon 
+* __Heli__ endrer slik at man får en reell bookchoice i forms.py
+* __Heli__ sjekker at genonly fungerer
+
+!!Flytte oahpaer til gtoahpa
+Nye oahpaer bør kunne implementeres direkte på gtoahpa-serveren. Nye funskjoner bør utvikles på gtlab.
+
+
+!!Neste møte
+Fredag 24. oktober kl 9.00
+
+
+
+
