@@ -65,7 +65,7 @@ def trackGrade(gamename, request, c):
 @login_required
 def courses_coursegoal_sub_goal_add(request):
     template = 'course_goal_constructor_iframe.html'
-    c = { }
+    c = {'dialog': True}
     return render_to_response(template,
                               c,
                               context_instance=RequestContext(request))

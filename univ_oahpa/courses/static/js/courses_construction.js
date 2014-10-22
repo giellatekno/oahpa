@@ -44,22 +44,15 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies, ngDi
     $scope.intermediate = false;
     $scope.adding_sub_goal = false;
 
-    // TODO: return to not in use:
-    // http://codepen.io/thgreasi/pen/uFile?editors=111
     $scope.sortableOptions = {
         placeholder: "sortable-placeholder",
         connectWith: ".connected-sorting",
     };
 
-    // /davvi/courses/create/coursegoal/add/goal/
     $scope.newTaskPopup = function(e) {
-        // var page_target = $(e.target).attr('ng-add-target');
-        // $scope.adding_sub_goal = true;
-        // $(document).find('#add_goal_container').show()
-        // return e.preventDefault();
         
         ngDialog.open({
-            template: "add/goal/",
+            template: "add/goal/?dialog=True",
             preCloseCallback: function(value) {
                 // Refresh task list with the new item
                 $http.get(goal_url).success(function(data){

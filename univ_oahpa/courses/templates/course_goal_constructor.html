@@ -1,6 +1,11 @@
-﻿{% load i18n %}
+{% load i18n %}
 
 {# TODO: hide each main game type depending on what the user has selected (possible to avoid form submission of hidden things?) #}
+
+{% if dialog %}
+    <div class="inner_container">
+        <p class="lead">When you are done creating a task, close the window and continue editing your goal.</p>
+{% endif %}
 
 <form>
     {% csrf_token %}
@@ -366,3 +371,6 @@
 
 </div>
 </form>
+{% if dialog %}
+    </div>
+{% endif %}
