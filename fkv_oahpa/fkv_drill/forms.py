@@ -315,10 +315,16 @@ DERIVATION_CHOICES_CONTEXT = (
 
 BOOK_CHOICES = (
     ('all', _(u'all')),
-    ('MJ1', _('Alku 1')), #also GK1 MJ2 MJ3 MJ4
-    ('MJ5', _('Alku 2')), #also MJ6 MJ7 MJ8 MJ9
-    ('MJ10', _('Alku 3')), #also MJ11 MJ12 MJ13 MJ14
+    ('Alku1', _('Alku 1')), # MJ1 GK1 MJ2 MJ3 MJ4
+    ('Alku2', _('Alku 2')), # MJ5 MJ6 MJ7 MJ8 MJ9
+    ('Alku3', _('Alku 3')), # MJ10 MJ11 MJ12 MJ13 MJ14
 )
+
+CHAPTER_CHOICES = {
+    'Alku1' : ['MJ1','GK1','MJ2', 'MJ3', 'MJ4'],
+    'Alku2' : ['MJ5', 'MJ6', 'MJ7', 'MJ8', 'MJ9'],
+    'Alku3' : ['MJ10', 'MJ11', 'MJ12', 'MJ13', 'MJ14'],
+}
 
 FREQUENCY_CHOICES = (
 	('rare', _('rare')),
