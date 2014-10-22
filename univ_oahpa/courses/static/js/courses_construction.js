@@ -61,12 +61,8 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies, ngDi
         ngDialog.open({
             template: "add/goal/",
             preCloseCallback: function(value) {
-                console.log("pre-close");
                 // Refresh task list with the new item
-
-                // Push the Tasks that the user has access to into the not in use box.
                 $http.get(goal_url).success(function(data){
-                    $scope.goals = data.goals;
                     $scope.not_in_use = [];
                     for (var i = 0; i < data.goals.length; i++) {
                         var goal = data.goals[i];
