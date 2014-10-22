@@ -7,6 +7,8 @@ from django.db import connection
 from django.db import transaction
 
 from django.utils.encoding import smart_unicode
+from forms import CHAPTER_CHOICES
+
 class BulkManager(models.Manager):
 	""" This Manager adds additional methods to Feedback.objects. That allows
 	for bulk inserting via custom SQL query (calling INSERT INTO on a list of
@@ -430,12 +432,13 @@ def leksa_filter(Model,
 
 	if source and source not in ['all', 'All']:
 		#QUERY['source__name__in'] = [source]
-				if source == "l1":
-				    QUERY['chapter__in']=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5']
-				elif source == "l2":
-				    QUERY['chapter__in']=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5','L6','L7','L8','L9','L10','L11','L12']
-				elif source == "l3":
-				    QUERY['chapter__in']=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5','L6','L7','L8','L9','L10','L11','L12','L13','L14','L15','L16','L17']
+            QUERY['chapter__in'] = CHAPTER_CHOICES[source]
+				#if source == "l1":
+				    #QUERY['chapter__in']=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5']
+#				elif source == "l2":
+				    #QUERY['chapter__in']=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5','L6','L7','L8','L9','L10','L11','L12']
+#				elif source == "l3":
+				    #QUERY['chapter__in']=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5','L6','L7','L8','L9','L10','L11','L12','L13','L14','L15','L16','L17']
 
 	query_set = Model.objects.exclude(**EXCL).filter(**QUERY).order_by('?')[:10]
 	query_ids = query_set.values_list('id', 'lemma')
