@@ -14,7 +14,7 @@ function listContainsObject(_list, _obj, field) {
 //   when a task is created, need to broadcast it to the
 //   CourseGoalController for inclusion in the list.
 
-var CoursesConstruction = angular.module('CoursesConstruction', ['ngCookies', 'ui.sortable']).
+var CoursesConstruction = angular.module('CoursesConstruction', ['ngCookies', 'ui.sortable', 'ngDialog']).
     config(function($interpolateProvider, $httpProvider) {
         // set template expression symbols
         $interpolateProvider.startSymbol('<%');
@@ -30,7 +30,7 @@ function applyHeaderToken($http, $cookies) {
     return $http;
 }
 
-function CourseGoalConstructorController($scope, $http, $element, $cookies) {
+function CourseGoalConstructorController($scope, $http, $element, $cookies, ngDialog) {
     'use strict';
 
     var coursegoal_url = $element.attr('ng-source-coursegoal') ;
@@ -53,15 +53,35 @@ function CourseGoalConstructorController($scope, $http, $element, $cookies) {
 
     // /davvi/courses/create/coursegoal/add/goal/
     $scope.newTaskPopup = function(e) {
-        var page_target = $(e.target).attr('ng-add-target');
-        $scope.adding_sub_goal = true;
-        $(document).find('#add_goal_container').show()
-        return e.preventDefault();
+        // var page_target = $(e.target).attr('ng-add-target');
+        // $scope.adding_sub_goal = true;
+        // $(document).find('#add_goal_container').show()
+        // return e.preventDefault();
         
-        // TODO: 
-        // Save existing goal to get ID
-        //
-        // When the user saves, refresh the unassigned tasks
+        ngDialog.open({
+            template: "add/goal/",
+            preCloseCallback: function(value) {
+                console.log("pre-close");
+                // Refresh task list with the new item
+
+                // Push the Tasks that the user has access to into the not in use box.
+                $http.get(goal_url).success(function(data){
+                    $scope.goals = data.goals;
+                    $scope.not_in_use = [];
+                    for (var i = 0; i < data.goals.length; i++) {
+                        var goal = data.goals[i];
+                    
+                        $scope.not_in_use.push({
+                            text: goal.short_name,
+                            assigned: goal.assigned,
+                            id: goal.id,
+                            value: i+1
+                        });
+                    }
+                });
+            }
+        });
+        
     };
 
     // $http = applyHeaderToken($http, $cookies);

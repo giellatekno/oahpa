@@ -1,18 +1,6 @@
 ﻿{% load i18n %}
 
-{# TODO: hide each main game type depending on what the user has selected (possible to avoid form submission of hidden things?) #}
-
 <div ng-app="CoursesConstruction" class="bootstrap-styles">
-
-    <div id="add_goal_container" style="display: none;">
-        <div id="add_goal_target">
-           {% comment %}
-              TODO: add include this by remote call
-           {% endcomment %}
-
-           {% include 'course_goal_constructor.html' %}
-        </div>
-    </div>
 
 <form>
     {% csrf_token %}
