@@ -37,13 +37,10 @@ try:
 except:
 	print """Dialects not defined in settings.py...
 		DIALECTS = {
-			'main': ('isma-norm.fst', 'Unrestricted'),
-			'SH': ('isma-SH.restr.fst', 'Short forms'),
-			'L': ('isma-L.restr.fst', 'Long forms'),
-			'NG': (None, 'Non-Presented forms'),
+			'main': ('generator-oahpa-gt-norm.xfst', 'Unrestricted'),
 		}
 
-		DEFAULT_DIALECT = 'SH'
+		DEFAULT_DIALECT = 'main'
 		NONGEN_DIALECT = 'NG'
 	"""
 	sys.exit(2)
@@ -517,7 +514,8 @@ class Words(object):
 						#entry.gen_only,
 						[],
 					]
-					if (entry.pos.upper() == 'N'):  # only N paradigm generation now
+					print "lemma: %s" % entry.lemma.encode('utf-8')
+					if (entry.pos.upper() in ['N', 'V', 'A']):  # only N, A, V paradigm generation now
 						try:
 							linginfo.collect_gen_data(*paradigm_args)
 						except TypeError:

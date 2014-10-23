@@ -689,8 +689,8 @@ class Tag(models.Model):
 	attributive = models.CharField(max_length=5)
 	case = models.CharField(max_length=5)
 	# conneg = models.CharField(max_length=5)
-	# grade = models.CharField(max_length=10)
-	# infinite = models.CharField(max_length=10)
+	grade = models.CharField(max_length=10)
+	infinite = models.CharField(max_length=10)
 	mood = models.CharField(max_length=5)
 	number = models.CharField(max_length=5)
 	personnumber = models.CharField(max_length=8)
@@ -698,7 +698,7 @@ class Tag(models.Model):
 	# polarity = models.CharField(max_length=5)
 	pos = models.CharField(max_length=12)
 	# possessive = models.CharField(max_length=5)
-	# subclass = models.CharField(max_length=10)
+	subclass = models.CharField(max_length=10)
 	tense = models.CharField(max_length=5)
 
 	class Admin:
@@ -715,15 +715,15 @@ class Tag(models.Model):
 			'attributive': 'Attributive',
 			'case': 'Case',
 #			'conneg': 'ConNeg',
-#			'grade': 'Grade',
-#			'infinite': 'Infinite',
+			'grade': 'Grade',
+			'infinite': 'Infinite',
 			'mood': 'Mood',
 			'number': 'Number',
 			'personnumber': 'Person-Number',
 #			'polarity': 'Polarity',
 			'pos': 'Wordclass',
 #			'possessive': 'Possessive',
-#			'subclass': 'Subclass',
+			'subclass': 'Subclass',
 			'tense': 'Tense',
 			'gender': 'Gender',
 		}

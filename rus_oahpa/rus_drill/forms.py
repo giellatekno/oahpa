@@ -19,9 +19,8 @@ from random import choice
 
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
-PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'son',
-		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'sii',
-		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
+PRONOUNS_LIST = {'Sg1':'я', 'Sg2':'ты', 'Sg3':'он',
+		  'Pl1':'мы', 'Pl2':'вы', 'Pl3':'они'}
 
 # DEMONSTRATIVE_PRESENTATION plus Sg3/Pl3
 PASSIVE_PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'dat',
@@ -169,14 +168,12 @@ WORDFORM_TYPE_CHOICES = (
 )
 
 ADJCASE_CHOICES = (
-	('NOMPL', _('plural')),
-	('ATTR', _('attributive')),
-	('N-ACC', _('accusative')),
-	('N-ILL', _('illative')),
-	('N-LOC', _('locative')),
-	('N-COM', _('comitative')),
-	('N-GEN', _('genitive')),
-	('N-ESS', _('essive')),
+	('N-NOM-PL', _('plural')),
+	('N-ACC', _('Accusative')),
+    ('N-GEN', _('Genitive')),
+    ('N-DAT', _('Dative')),
+    ('N-INS', _('Instrumental')),
+    ('N-LOC', _('Locative')),
 )
 
 ADJECTIVE_QUESTION_ANSWER = {
@@ -255,13 +252,13 @@ NUM_TYPE_CHOICES = (
 )
 
 VTYPE_CHOICES = (
-	('PRS', _('present')),
-	('PRT', _('past')),
-	('PRF', _('perfect')),
-	('GER', _('gerund')),
-	('COND', _('conditional')),
+	#('PRS', _('present')),
+	#('PRT', _('past')),
+	#('PRF', _('perfect')),
+	#('GER', _('gerund')),
+	#('COND', _('conditional')),
 	('IMPRT', _('imperative')),
-	('POT', _('potential')),
+	#('POT', _('potential')),
 )
 
 VERB_QUESTION_ANSWER = {
@@ -855,8 +852,8 @@ class OahpaSettings(forms.Form):
 					'lemmacount' : '2',
 					'case': 'N-ACC',
 					'pos' : 'N',
-					'vtype' : 'PRS',
-					'adjcase' : 'NOM',
+					'vtype' : 'IMPRT',
+					'adjcase' : 'N-ACC',
 					'number' : '',
 					'pron_type': 'Pers',
 					'proncase' : 'N-NOM', # Need a new default case here
@@ -1117,8 +1114,8 @@ class MorfaSettings(OahpaSettings):
 	case = forms.ChoiceField(initial='N-ACC', choices=CASE_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
-	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
-	vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
+	adjcase = forms.ChoiceField(initial='N-ACC', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
+	vtype = forms.ChoiceField(initial='IMPRT', choices=VTYPE_CHOICES, widget=forms.Select)
 	num_bare = forms.ChoiceField(initial='N-GEN', choices=NUM_BARE_CHOICES, widget=forms.Select)
 	num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)
 	num_type = forms.ChoiceField(initial='CARD',choices=NUM_TYPE_CHOICES, widget=forms.Select)
@@ -1222,7 +1219,7 @@ class MorfaQuestion(OahpaQuestion):
 		if len(translations) > 0:
 			self.translations = translations[0]
 
-		if tag.pos == "N":
+		if tag.pos in ["N", "A"]:
 			self.case = tag.case
 
 		if tag.pos == 'Pron':

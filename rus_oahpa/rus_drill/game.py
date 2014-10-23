@@ -328,9 +328,9 @@ class BareGame(Game):
 		'N-DAT': ('Dat', ['Sg','Pl']),
 		'N-ACC': ('Acc', ['Sg','Pl']),
 		'N-INS': ('Ins', ['Sg','Pl']),
-		'N-LOC': ('Prp', ['Sg','Pl']),
+		'N-LOC': ('Loc', ['Sg','Pl']),
 		'N-GEN2': ('Par', ['Sg']),
-		'N-LOC2': ('Loc', ['Sg']),
+		'N-LOC2': ('Prp', ['Sg']),
 		'': '',
 	}
 
@@ -455,6 +455,7 @@ class BareGame(Game):
 
 		if self.settings.has_key('pos'):
 			pos = self.settings['pos']
+			print "pos: ", pos
 
 
 		# PI: isn't this what the second argument of .get() does?..
@@ -508,20 +509,20 @@ class BareGame(Game):
 		# 	if item in Csyl:
 		# 		sylls.append('Csyll')
 
-		# if pos == 'Pron':
-		# 	syll = ['']
-
-		case, number = self.casetable[pos_tables[pos]]
-		grade = self.casetable.get('grade', '')
-		num_type = self.casetable.get('num_type', '') # added by Heli, changed by Pavel to skip an exception, change this back I suppose
+		if pos in ['N', 'A']:
+			case, number = self.casetable[pos_tables[pos]]
+		#if pos == 'A':
+		#	grade = self.casetable.get('grade', '')
+		print "case: %s number: %s" % (case, number)
+		#num_type = self.casetable.get('num_type', '') # added by Heli, changed by Pavel to skip an exception, change this back I suppose
 
 		pos_mood_tense = {
 			"PRS":	("Ind", "Prs", ""),
 			"PRT":	("Ind", "Prt", ""),
-			"PRF":	("", "", "PrfPrc"),
+			"PRF":	("Perf", "Fut", ""),
 			"GER":	("", "", "Ger"),
 			"COND":   ("Cond", "Prs", ""),
-			"IMPRT":  ("Imprt", "", ""),
+			"IMPRT":  ("Imp", "Impf", ""),
 			"POT":	("Pot", "Prs", "")
 		}
 
@@ -693,11 +694,11 @@ class BareGame(Game):
 				 TAG_QUERY = TAG_QUERY & Q(subclass=subclass) & Q(case=case) & Q(attributive='') & Q(grade='')
 			else:
 				 TAG_QUERY = TAG_QUERY & \
-						 Q(subclass='') & \
-						Q(attributive=attributive) & \
-						Q(grade=grade) & \
 						Q(case=case) & \
 						Q(number__in=number)
+						#Q(subclass='') & \
+						#Q(attributive=attributive) & \
+						#Q(grade=grade) & \
 
 		# filter can include several queries, exclude must have only one
 		# to work successfully
@@ -734,11 +735,11 @@ class BareGame(Game):
 		#		QUERY = Q(pos__iexact=pos) & Q(presentationform__in=smallnum)
 		#	else:
 		#		QUERY = Q(pos__iexact=pos)
-		if pos == 'Num' or pos2 == 'Num':
-			  QUERY = Q(pos__iexact=pos) # & Q(form__tag__subclass=subclass) # PI
-		else:
+		#if pos == 'Num' or pos2 == 'Num':
+		#	  QUERY = Q(pos__iexact=pos) # & Q(form__tag__subclass=subclass) # PI
+		#else:
 			# levels is not what we're looking for
-			  QUERY = Q(pos__iexact=pos) & Q(stem__in=syll)
+		#	  QUERY = Q(pos__iexact=pos) & Q(stem__in=syll)
 			  #if source and source not in ['all', 'All']:
 				# QUERY = QUERY & Q(source__name=source)
 
@@ -772,6 +773,7 @@ class BareGame(Game):
 			
 			WORD_FILTER = Q()
 			tag = tags.order_by('?')[0]
+			print "tag:", tag
 			
 			# Loc2 and Gen2 need a special treatment.
 			if case == 'Loc': # exercise on Locative2
@@ -831,7 +833,10 @@ class BareGame(Game):
 				if tag.pos == 'Pron':
 					tag = tags.order_by('?')[0]
 
+				if tag.pos in ["A", "V"]:
+				    WORD_FILTER = Q()
 				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)
+				print "random word:", random_word
 				
 
 				# PI: commented out, b/c at this stage
@@ -861,7 +866,7 @@ class BareGame(Game):
 					random_form = random_word.order_by('?')[0]
 					random_word = random_form.word
 					#random_loc2 = random_word.loc2
-					#print random_word
+					print random_word
 					no_form = False
 					break
 				elif random_word.count() == 1:
@@ -874,7 +879,7 @@ class BareGame(Game):
 
 			db_info['word_id'] = random_word.id
 			db_info['tag_id'] = tag.id
-			#print db_info
+			print db_info
 			if tag.string.lower().find('conneg') > -1:
 				db_info['conneg'] = choice(PRONOUNS_LIST.keys())
 			else:

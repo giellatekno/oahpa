@@ -8,41 +8,38 @@ import os
 import re
 # import string
 import codecs
-from django.utils.encoding import force_unicode
 
 # Using django settings paths, need to make these more central.
 
-#
+# 
 # _D = open('/dev/ttys005', 'w')
 _D = open('/dev/null', 'w')
 
 
 try:
-	fstdir = settings.FST_DIRECTORY  # lexc fst - for generation of numerals
+	fstdir = settings.FST_DIRECTORY
 except:
-	fstdir = "/opt/rus/bin"
+	fstdir = "/opt/smi/rus/bin"
 
 try:
 	lookup = settings.LOOKUP_TOOL
 except:
 	lookup = "/usr/local/bin/lookup"
-	
-try:
-	apertiumdir = settings.APERTIUM_DIRECTORY  # apertium fst - for generation of substantives, verbs, adjectives
-except:
-	apertiumdir = "/home/heli/apertium/incubator/apertium-rus"
 
 try:
 	language = settings.MAIN_LANGUAGE[0]
 except:
 	language = "rus"
 
-numfst = '%s/%s-num.fst' % (fstdir, language)
-# fstdir + "/" + language + "-num.fst"
+numfst = fstdir + "/" + "transcriptions/transcriptor-numbers-digit2text.xfst"
+gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst"
+analysis_fst = fstdir + "/" + "analyser-oahpa-gt-norm.xfst" 
 
 
 STDERR = sys.stderr
 STDOUT = sys.stdout
+
+stem_info = {}
 
 #!/usr/bin/env python
 # encoding: utf-8
@@ -61,7 +58,7 @@ def Popen(cmd, data=False, ret_err=False, ret_proc=False):
 		string.
 	"""
 	PIPE = sp.PIPE
-	proc = sp.Popen(cmd.split(' '), shell=False,
+	proc = sp.Popen(cmd.split(' '), shell=False, 
 					stdout=PIPE, stderr=PIPE, stdin=PIPE)
 	if data:
 		if type(data) == str:
@@ -85,7 +82,7 @@ def Popen(cmd, data=False, ret_err=False, ret_proc=False):
 		kwargs = {}
 
 	output, err = proc.communicate(**kwargs)
-
+	
 	try:
 		if err:
 			raise Exception(cmd + err)
@@ -98,64 +95,75 @@ def Popen(cmd, data=False, ret_err=False, ret_proc=False):
 		return output
 
 
-def FSTLookup(data):
-	# gen_fst = fstdir + "/%s" % fst_file
+def FSTLookup(data, fst_file):
+	gen_fst = fst_file
+	#analysis_fst = fstdir + "/analyser-oahpa-gt-norm.xfst" 
 	# cmd = 'hfst-optimized-lookup /opt/local/share/omorfi/mor-omorfi.apertium.hfst.ol'
-	#cmd = lookup + " -flags mbTT -utf8 -d " + gen_fst # lexc
-	morf_fst = apertiumdir + "/rus.automorf.bin"  # Apertium-style morf analysis fst
-	gen_fst = apertiumdir + "/rus.autogen.bin" # Apertium-style form generating fst
-	cmd_anal = "lt-proc " + morf_fst # analysis
-	cmd_gen = "lt-proc -g " + gen_fst   # generation
-	lookups = ""
-
-	#print >> STDOUT, "The whole generation data: %s" % data
-    
+	cmd_gen = lookup + " -flags mbTT -utf8 -d " + gen_fst
+	cmd_analysis = lookup + " -flags mbTT -utf8 -d " + analysis_fst
+	previous_lemma = ""
+	new_data = ""
+	
 	if type(data) == list:
 		data = [a.strip() for a in list(set(data)) if a.strip()]
 		data = u'\n'.join(data).encode('utf-8')
 		rows = data.split('\n')
-    
+		print >> STDOUT, "Generating forms in %s" % gen_fst
 		for row in rows:
-			data_tokens = row.split("+")  # Apertium
+			print >> STDOUT, "row from paradigms: %s" % row
+			data_tokens = row.split("+")
+			if len(data_tokens) < 2:
+				continue
 			lemma = data_tokens[0]
-			gender = "no_gender"
-			animacy = "no_animacy"
-			#print >> STDOUT, "number: %s" % data_tokens[2]
-			#print >> STDOUT, "case: %s" % data_tokens[3]
-	 
-			print >> STDOUT, "Generating forms"
-			try:
-				morfanal_lemma = os.popen("echo \"" + lemma + "\" | " + cmd_anal).readlines()  # use morph analysis to obtain gender and animacy
-			except OSError:
-				print >> STDERR, "Problem in command: %s" % cmd_anal
-				sys.exit(2)
+			number = data_tokens[len(data_tokens)-2]
+			case = data_tokens[len(data_tokens)-1] 
+			gender = ""
+			animacy = ""
+
+			if data_tokens[1] == 'N' and lemma != previous_lemma:
+				try:
+					morfanal_lemma = os.popen("echo \"" + lemma + "\" | " + cmd_analysis).readlines()  # Use morph analysis to obtain gender and animacy, because this is not given in the lexicon.
+				except OSError:
+					print >> STDERR, "Problem in command: %s" % cmd_analysis
+					sys.exit(2)
 	
-			#print >> STDOUT, "morf analysis of lemma: %s" % morfanal_lemma[0]
-			readings = morfanal_lemma[0].split("/")  # needed to handle morphpologically ambiguous lemmas
-			#print >> STDOUT, "the first reading: %s" % readings[1]
-			# Split the reading to individual tags:
-			tagsequence = readings[1].replace("<"," ")
-			tagsequence = tagsequence.replace(">"," ")
-			tags = tagsequence.split()
-			print >> STDOUT, "lemma: %s" % (tags[0])
-			if tagsequence.find("*") == -1 and tags[1] == 'n':
-			 gender = tags[2]
-			 print >> STDOUT, "gender: %s" % gender
-			 animacy = tags[3]
-			 print >> STDOUT, "animacy: %s" % animacy
-			generator_input = readings[1].replace("sg", force_unicode(data_tokens[2]).encode('utf-8').lower())
+				if morfanal_lemma:
+				    print >> STDOUT, "morf analysis of lemma: %s" % morfanal_lemma[0]
+				    readings = morfanal_lemma[0].split("\t")  # needed to handle morphpologically ambiguous lemmas
+				    lemmaplus = lemma + "+"
+				    for reading in readings:
+				        if reading.find(lemmaplus) == 0: # the morphological reading that starts with the given lemma immediately followed by '+'
+				            correct_reading = reading
+				    #print >> STDOUT, "the first reading: %s" % readings[1]
+				    print >> STDOUT, "the correct reading: %s" % correct_reading
+				    # Split the reading to individual tags:
+				    tags = correct_reading.split("+")
+				    print >> STDOUT, "lemma: %s" % (tags[0])
+				    if morfanal_lemma[0].strip()[-2::] != '+?' and tags[1] == 'N':
+				        if tags[2] == 'Prop': # Proper nouns have more tags in the sequence, e.g. Европа+N+Prop+Sem/Alt+Fem+Inan+Sg+Nom
+				            gender = tags[4]
+				            animacy = tags[5]
+				            tags = tags[1] + '+' + tags[2] + '+' + tags[3] + '+' + gender + '+' + animacy + '+' + number + '+' + case
+				        else:
+				            gender = tags[2]
+				            animacy = tags[3]
+				            tags = tags[1] + '+' + gender + '+' + animacy + '+' + number + '+' + case
+				        print >> STDOUT, "gender: %s" % gender
+				        print >> STDOUT, "animacy: %s" % animacy				    
+				        stem_info[lemma] = [gender, animacy]
+				        row = lemma + '+' + tags + "\n"
+				    previous_lemma = lemma
+			new_data += row + "\n"
 			
-			#print >> STDOUT, "number replaced by sg: %s" % generator_input
-			generator_input = generator_input.replace("nom", force_unicode(data_tokens[3]).encode('utf-8').lower())  # nouns: data_tokens[2]=Sg/Pl, data_tokens[3]=case
-			#print >> STDOUT, "generator input: %s" % generator_input
-			try:
-				forms = os.popen("echo \"^" + force_unicode(generator_input).encode('utf-8') + "$\" | " + cmd_gen).readlines()
-			except OSError:
-				print >> STDERR, "Problem in command: %s" % cmd_gen
-				sys.exit(2) 
-		       
-			lookups = lookups + row + "\t" + gender + "\t" + animacy + "\t" + forms[0] + "\n"
-			print >> STDOUT, "generated form: %s" % forms[0]
+	print >> STDOUT, "Input of the generator: %s" % new_data
+	try:
+            lookups = Popen(cmd_gen, new_data) # was: data
+	except OSError:
+            print >> STDERR, "Problem in command: %s" % cmd_gen
+            sys.exit(2)
+	lookups = lookups.decode('utf-8')
+	print >> STDOUT, "Output of the generator: %s" % lookups 
+	
 	return lookups
 
 
@@ -175,30 +183,42 @@ class Paradigm:
 		self.paradigms = {}
 		self.paradigm = []
 		self.generate_data = []
-		self.stem_info = {} # for saving gender and animacy
+		
 
-
-	def handle_tags(self, tagfile, add_db):  
+	def handle_tags(self, tagfile, add_db):
 		""" The function is called from install.py and its aim is to install the contents of the tag file (e.g. tags.txt) in the database.
+		The function installs all tags if add_db=True, otherwise it reads
+		all of the tags and produces a dictionary of the tag as the key
+		and the tag set it belongs to as the value.
 		"""
 
-		with open(tagfile, "r") as F:
-			# Read tags, remove newlines
-			tags = [a.strip() for a in F.readlines()]
+		if add_db:
+			with open(tagfile, "r") as F:
+				# Read tags, remove newlines
+				tags = [a.strip() for a in F.readlines()]
 
-		tagclass = ""
-		for line in tags:
-			if line.startswith("#"):
-				tagclass = line.lstrip("#")
-			else:
-				string = line.strip().replace('*', '')
-				self.tagset[string] = tagclass
-				if add_db and tagclass and string:
-					#print "adding " + tagclass + " " + string
-					tagset, created = Tagset.objects.get_or_create(tagset=tagclass)
-					pos, created = Tagname.objects.get_or_create(tagname=string, tagset=tagset)
-					print "%s added to %s" % (string, tagclass)
-
+			tagclass = ""
+			for line in tags:
+				if line.startswith("#"):
+					tagclass = line.lstrip("#")
+				else:
+					string = line.strip().replace('*', '')
+					self.tagset[string] = tagclass
+					if add_db and tagclass and string:
+						string = string.replace('%', '')
+						#print "adding " + tagclass + " " + string
+						tagset, created = Tagset.objects.get_or_create(tagset=tagclass)
+						pos, created = Tagname.objects.get_or_create(tagname=string, tagset=tagset)
+						print "%s added to %s" % (string, tagclass)
+		else:
+			tagname_tagset = Tagname.objects.all().values_list('tagname', 'tagset__tagset')
+			tagset_dict = dict()
+			for k, v in tagname_tagset:
+				if k in tagset_dict:
+					tagset_dict[k].append(v)
+				else:
+					tagset_dict[k] = [v]
+			self.tagset = tagset_dict
 
 
 	def read_paradigms(self, paradigmfile, tagfile, add_database):
@@ -209,15 +229,16 @@ class Paradigm:
 
 		fileObj = codecs.open(paradigmfile, "r", "utf-8" )
 		posObj = re.compile(r'^(?:\+)?(?P<posString>[\w]+)\+.*$', re.U)
-
+		
 		while True:
 			line = fileObj.readline()
-
+			#print >> STDOUT, 'A line from paradigms: %s' % line
+			
 			if not line: break
 			if not line.strip(): continue
-
+			
 			matchObj = posObj.search(line)
-
+			
 			if matchObj:
 				pos = matchObj.expand(r'\g<posString>')
 			try:
@@ -228,15 +249,16 @@ class Paradigm:
 				print >> STDERR, ' * Error on line: %s' % line
 				sys.exit()
 			self.paradigms[pos].append(line)
+			# print >> STDERR, '%s paradigm: %s' % (pos,self.paradigms[pos])
 
 	def create_paradigm_no_gen(self, lemma, pos, baseform, wordforms):
 		""" Creates paradigm objects as does create_paradigm, but using data
 			stored in XML. This data is already parsed in words_install, for the
 			most part, but passed off here. Best way for least work.
-		"""
-
+		""" 
+		
 		pos = pos.upper()
-
+		
 		if pos == 'PROP':
 			pos = 'N'
 
@@ -244,9 +266,9 @@ class Paradigm:
 			self.handle_tags()
 
 		self.paradigm = []
-
+		
 		# instead of lookups, we have wordforms
-
+		
 		for wordform in wordforms:
 			g = Entry()
 			g.classes = {}
@@ -255,11 +277,12 @@ class Paradigm:
 			g.form, g.tags = wordform
 			for t in g.tags:
 				if self.tagset.has_key(t):
-					tagclass = self.tagset[t]
-					g.classes[tagclass] = t
+					tagclasses = self.tagset[t]
+					for tagclass in tagclasses:
+						g.classes[tagclass] = t
 			self.paradigm.append(g)
-
-	def collect_gen_data(self, lemma, pos, forms): # hid, wordtype, gen_only - deleted
+			
+	def collect_gen_data(self, lemma, pos, forms): #hid, wordtype, gen_only, forms):
 		"""
 			Collects tags and paradigms to be passed off to the FST for generation.
 			Tags and items to be generated are filtered based on following parameters
@@ -271,11 +294,13 @@ class Paradigm:
 		"""
 
 		pos = pos.capitalize()
-
+		print >> STDOUT, 'pos: %s' % pos
+		print >> STDOUT, 'lemma: %s' % lemma.encode('utf-8')
+		
 		# if context is defined as one of these, then we only generate
 		# forms that have a tag with one of the following items as a
 		# substring of that tag.
-
+		
 		# E.g., context='upers' abrodh
 		# abrodh	+V+Prs+Sg1	=> NO
 		# abrodh	+V+Prs+Sg2	=> NO
@@ -291,6 +316,7 @@ class Paradigm:
 		# Using gen_only now
 		# commented out everything about gen_only, hid, wordtype:
 		"""
+		
 		if not gen_only.strip():
 			gen_only = False
 		else:
@@ -315,46 +341,53 @@ class Paradigm:
 		else:
 			hid = '+' + hid
 		"""
-
+		
 		# If wordtype is defined, then the wordtype is inserted after
 		# the first tag element, which should be the part of speech.
 		# If hid is defined simultaneously, this should not mess with that.
+
 		"""
 		if not wordtype.strip():
 			wordtype = ""
 		else:
-			wordtype = '+' + wordtype.capitalize()
-	        """
-		if self.paradigms.has_key(pos):  # composition of the input strings for the wordform generator 
+			w, rest = wordtype[0], wordtype[1::]
+			wordtype = '+' + w.capitalize() + rest
+		"""
+
+		if self.paradigms.has_key(pos):
 			for a in self.paradigms[pos]:
 				#if wordtype.strip():
 				#	if not wordtype in a:
 				#		_pos, _, _rest = a.partition('+')
 				#		tag = "%s%s+%s" % (_pos, wordtype, _rest)
 				#else:
-				        #tag = a
-
+				#	tag = a
+				
 				#if gen_only:
 				#	for c in gen_only:
 				#		if c in tag:
 				#			lookups = lookups + lemma + hid + "+" + tag
 				#else:
-				if not lemma:
-					raise TypeError
-				lookups = lookups + lemma + "+" + a
-
-		lookups += '\n\n\n'
+				print >> STDOUT, 'lemma: %s' % lemma.encode('utf-8')
+				print >> STDOUT, 'tag string: %s' % a
+				#if not lemma:
+				 #   print >> STDOUT, 'there is no lemma!'
+				  #  raise TypeError
+				print >> STDOUT, "lookup string: %s+%s " % (lemma,a)  
+				lookups = lookups + lemma + "+" + a  # was: tag instead of a
+				lookups += '\n'
+		print >> STDOUT, "data for generation: %s" % lookups
 		self.generate_data.append(lookups)
 
-
-	def generate_all(self, dialects):
-
+	
+	def generate_all(self, dialects):		
+		
 		if not self.tagset:
 			print >> STDERR, 'No tags generated or supplied'
 			self.handle_tags()
-
+		
 		data = self.generate_data[:]
-
+		
 		# concatenate all data to be run through one gen command
 		# isma-SH.restr.fst
 		# isma-norm.fst
@@ -365,67 +398,49 @@ class Paradigm:
 				gen_dialects[dialect] = d_data
 
 		self.master_paradigm = gen_dialects.copy()
-		#for dialect, gen_file in gen_dialects.items():  no dialects so far
+		#for dialect, gen_file in gen_dialects.items():
 		dialect = 'main'  # HU: There are no dialects defined for rus. I have defined this just to make the program work.
-		lookups = FSTLookup(data)
+		lookups = FSTLookup(data, fst_file=gen_norm_fst)
 		lookup_dictionary = {}
-
+			
 		for line in lookups.split('\n\n'):
-			print >> STDOUT, 'line in lookups: %s' % line
+			# print >> STDOUT, 'line in lookups: %s' % line
 			items = line.split('\n')
 			stem_info = []
 			for item in items:
-				print >> STDOUT, 'item: %s' % item
 				result = item.split('\t')
-				for token in result:
-					print >> STDOUT,'token: %s' % token
 				lemma = result[0].partition('+')[0]
-				#gender = result[2]
-				#animacy = result[3]
-				#stem_info.append(gender)
-				#stem_info.append(animacy)
-				if lemma:
-				#if result.len() > 3:
-					#print >> STDOUT,'lemma: %s, wordform: %s' % (result[0], result[1])				
-					#lemma = force_unicode(lemma).encode('utf-8')
-					#stem_info[0] = FSToutput[1]
-					#stem_info[1] = FSToutput[2]
-					gender = result[1]
-					animacy = result[2]
-					stem_info.append(gender)
-					stem_info.append(animacy)
-					self.stem_info[lemma] = stem_info
-					print >> STDOUT, 'lemma: %s stem info: %s' % (lemma, self.stem_info[lemma])
-					try:
-						lookup_dictionary[lemma] += item + '\n'
-						#print >> STDOUT, 'lookupdict: %s' % lookup_dictionary[lemma]
-					except KeyError:
-						lookup_dictionary[lemma] = item + '\n'
-						
-		#print >> STDOUT, 'lemma: %s, dialect: %s' % (lemma, dialect)
+				#tags = result[0].partition('+')[2]
+				#if lemma:
+				 #   morfanal_lemma = FSTLookup(lemma, analysis_fst)
+				  #  gender = get_stem_info(lemma)[0]
+				   # animacy = get_stem_info(lemma)[1]
+				    #item = lemma + '+' + gender + '+' + animacy + '+' + tags 
+				    #stem_info.append(gender)
+				    #stem_info.append(animacy)
+				    #self.stem_info[lemma] = stem_info
+				    #print >> STDOUT, 'lemma: %s stem info: %s' % (lemma, self.stem_info[lemma])
 
-		#print >> STDOUT, 'lookup_dictionary: %s' % lookup_dictionary
+				try:
+				    lookup_dictionary[lemma] += item + '\n'
+				except KeyError:
+				    lookup_dictionary[lemma] = item + '\n'
+		
 		self.master_paradigm[dialect] = lookup_dictionary
-
-
+		
 	def get_stem_info(self, lemma):
-		return self.stem_info[lemma]
-        
+		return stem_info[lemma]	# was: self.stem_info[lemma]
+	
 	def get_paradigm(self, lemma, pos, forms, dialect=False, wordtype=None):
 		if not dialect:
 			dialect = 'main'
-		for form in self.master_paradigm[dialect]:
-			print >> STDOUT, 'form in paradigm: %s' % form
-		#print >> STDOUT, 'the whole lookupdict: %s' % self.master_paradigm
-
+		
 		extraforms = {}
-		print >> STDOUT, 'lemma: %s' % lemma.encode('utf-8')
-		lemma = lemma.encode('utf-8')
 
 		try:
 			lines_tmp = self.master_paradigm[dialect][lemma].split('\n')
 		except Exception, e:
-			print >> STDERR, 'No forms generated for %s in dialect %s' % (lemma, dialect)
+			print >> STDERR, 'No forms generated for %s in dialect %s' % (lemma.encode('utf-8'), dialect.encode('utf-8'))
 			lines_tmp = False
 			if not forms:
 				self.paradigm = False
@@ -440,17 +455,17 @@ class Paradigm:
 					print >> STDOUT, "adding extra wordform..", wordform.encode('utf-8')
 		# HIDCHANGES
 		if lines_tmp:
-
+			
 			self.paradigm = []
-
+			
 			for line in lines_tmp:
-
+				
 				if not line.strip():
 					continue
-				else:
+				else: 
 					line = line.strip()
-
-				# line:
+				
+				# line: 
 				# govledh+2+V+Ind+Prt+Pl3\tgovlin
 				# lea+V+Ind+Prt+Pl3\tlij
 
@@ -475,10 +490,12 @@ class Paradigm:
 				except ValueError:
 					hid = ''
 					tag = ''.join(hid_test)
-
+				
 				tag = tag.partition('\t')[0]
 				# 'V+Ind+Prt+Pl3'
 				# Never gets hid number, due to testing above
+				
+				#print >> STDOUT, 'lemma: %s fullform: %s tag: %s' % (lem, fullform, tag) 
 
 				if fullform.find('?') == -1:
 					g = Entry()
@@ -489,14 +506,16 @@ class Paradigm:
 					g.hid = hid
 					g.tags = tag
 
+					# Here something happens to the tags that occur in several tagsets. Todo: make it possible to use the same tag in different tagsets.
 					for t in g.tags.split('+'):
 						if self.tagset.has_key(t):
-							tagclass=self.tagset[t]
-							g.classes[tagclass] = t
+							tagclasses = self.tagset[t]
+							for tagclass in tagclasses:
+								g.classes[tagclass] = t
 
 					# if wordtype is specified (G3, Actor, etc.,), we want only
 					# these forms, otherwise we want only forms without a
-					# wordtype
+					# wordtype, these are assigned to the Nountype group in tags.txt.
 					if wordtype is not None:
 						wordtype = wordtype.upper()
 						g_wordtype = g.classes.get('Subclass', False)
@@ -509,6 +528,11 @@ class Paradigm:
 							continue
 					else:
 						g_wordtype = g.classes.get('Subclass', False)
+						# subclass is also part of another tag group,
+						# thus not only a subclass, so none.
+						# Kind of hacky, for Der/PassL which
+						if g_wordtype in g.classes.values():
+							g_wordtype = False
 						if g_wordtype:
 							continue
 						else:
@@ -526,48 +550,46 @@ class Paradigm:
 
 		return self.paradigm
 
-
+	
 	def create_paradigm(self, lemma, pos, forms, dialect=False):
-
+		
 		pos = pos.capitalize()
-
+		
 		if not self.tagset:
 			self.handle_tags()
-
+		
 		self.paradigm = []
-
+		
 		# TODO: is this preventing matching south sámi forms?
 		# How can we do this so we don't need to constantly rewrite this to specify a new alphabet?
-
+		
 		# genObj_re = r'^(?P<lemmaString>[\wáŋčžšđŧ]+)\+(?P<tagString>[\w\+]+)[\t\s]+(?P<formString>[\wáŋčžšđŧ]*)$'
 		genObj_re = r'^(?P<lemmaString>[\w]+)\+(?P<tagString>[\w\+]+)[\t\s]+(?P<formString>[\w]*)$'
-
+		
 		genObj=re.compile(genObj_re, re.U)
 		lookups = ""
-
+		
 		if self.paradigms.has_key(pos):
 			for a in self.paradigms[pos]:
 				lookups = lookups + lemma + "+" + a
-
+		
 		# generator call
 		# Moving paths up
-		# fstdir = "/opt/smi/sme/bin"
+		# fstdir = "/opt/smi/rus/bin"
 		# lookup = "/usr/local/bin/lookup"
-
-		gen_norm_fst = fstdir + "/i%s-norm.fst" % language
-
+		
 		# None of these dialects in sma. Obs! Dialects! sme-specific!!!
-		# gen_gg_restr_fst = fstdir + "/isme-KJ.restr.fst"
-		# gen_kj_restr_fst = fstdir + "/isme-GG.restr.fst"
+		# gen_gg_restr_fst = fstdir + "/isme-KJ.restr.fst"			
+		# gen_kj_restr_fst = fstdir + "/isme-GG.restr.fst"			
 		print >> _D, lookups.encode('utf-8')
 		gen_norm_lookup = "echo \"" + lookups.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_norm_fst
-
+		
 		# gen_gg_restr_lookup = "echo \"" + lookups.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_gg_restr_fst
 		# gen_kj_restr_lookup = "echo \"" + lookups.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_kj_restr_fst
-
+		
 		# TODO: check where de/code is?
 		lines_tmp = [a.decode('utf-8') for a in os.popen(gen_norm_lookup).readlines()]
-
+		
 		# lines_gg_restr_tmp = os.popen(gen_gg_restr_lookup).readlines()
 		# lines_kj_restr_tmp = os.popen(gen_kj_restr_lookup).readlines()
 
@@ -581,6 +603,7 @@ class Paradigm:
 					extraforms[tagstring] = wordform
 					print >> STDOUT, "adding extra wordform..", wordform
 
+		# TODO: reproduce word type stuff up here
 		for line in lines_tmp:
 			if not line.strip(): continue
 			matchObj=genObj.search(line)
@@ -595,8 +618,9 @@ class Paradigm:
 				print repr(g.tags)
 				for t in g.tags.split('+'):
 					if self.tagset.has_key(t):
-						tagclass=self.tagset[t]
-						g.classes[tagclass]=t
+						tagclasses = self.tagset[t]
+						for tagclass in tagclasses:
+							g.classes[tagclass] = t
 				print g.classes
 				raw_input()
 				self.paradigm.append(g)
@@ -610,15 +634,15 @@ class Paradigm:
 		Create paradigms and store to db
 		"""
 		print >> _D, 'generate_numerals called'
-
+		
 		# Moving paths up
-		# language = "sme"
+		# language = "rus"
 		# #fstdir = "/opt/smi/" + language + "/bin"
 		# #lookup = /usr/local/bin/lookup
-		#
-		# fstdir = "/Users/saara/gt/" + language + "/bin"
+		# 
+		# fstdir = "/Users/saara/gt/" + language + "/bin"		
 		# lookup = "/Users/saara/bin/lookup"
-		#
+		# 
 		# numfst = fstdir + "/" + language + "-num.fst"
 
 		for num in range(1,20):
@@ -652,7 +676,9 @@ class Paradigm:
 													tense=g.get('Tense',""),mood=g.get('Mood',""), \
 													subclass=g.get('Subclass',""), \
 													attributive=g.get('Attributive',""))
-
+				
 				t.save()
 				form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w)
 				form.save()
+
+
