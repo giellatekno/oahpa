@@ -61,6 +61,8 @@ CASE_CHOICES = (
     ('N-ADE', _('Adessive')),
     ('N-ABL', _('Ablative')),
     ('N-ALL', _('Allative')),
+    ('N-TRA', _('Translative')),
+    ('N-ESS', _('Essive')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -175,7 +177,10 @@ ADJCASE_CHOICES = (
     ('A-ELA', _('Elative')),
     ('A-ADE', _('Adessive')),
     ('A-ABL', _('Ablative')),
-    ('A-ALL', _('Allative')),)
+    ('A-ALL', _('Allative')),
+    ('A-TRA', _('Translative')),
+    ('A-ESS', _('Essive')),
+)
 
 ADJECTIVE_QUESTION_ANSWER = {
 	# gametype			question		answer
@@ -842,7 +847,7 @@ class OahpaSettings(forms.Form):
 					'case': 'N-PAR',
 					'pos' : 'N',
 					'vtype' : 'PRS',
-					'adjcase' : 'NOM',
+					'adjcase' : 'A-PAR',
 					'number' : '',
 					'pron_type': 'Pers',
 					'proncase' : 'N-NOM', # Need a new default case here
@@ -1104,7 +1109,7 @@ class MorfaSettings(OahpaSettings):
 	case = forms.ChoiceField(initial='N-PAR', choices=CASE_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
-	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
+	adjcase = forms.ChoiceField(initial='A-PAR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
 	vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
 	num_bare = forms.ChoiceField(initial='N-GEN', choices=NUM_BARE_CHOICES, widget=forms.Select)
 	num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)

@@ -1,52 +1,38 @@
 #!/bin/sh
 
 P="python2.7"
-GTHOME="/home/rusoahpa"
-LANGDIR="rus"
+GTHOME="/Users/mslm/main/ped"
+LANGDIR="fkv"
 DATA=$GTHOME/$LANGDIR
 DPS="$DATA/src"
 INC="$DATA/inc"
-META="$DATA/meta-data"
-DPN="$DATA/nobrus"
-#DPF="$DATA/finsme"
-#DPW="$DATA/swesme"
+META="$DATA/meta"
+DPN="$DATA/nobfkv"
+DPF="$DATA/finfkv"
+DPW="$DATA/engfkv"
 #WORDS=$GTHOME/words/dicts/smenob/src
 
 echo "==================================================="
 echo "installing tags and paradigms for Morfa"
-#$P install.py -r $META/paradigms.txt -t $META/tags.txt -b #2>>../logs/error.log
+$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 ##
-## Trying to set up Russian
-
-echo "==================================================="
-echo "installing MiPListAlpha.xml"
-$P install.py --file $INC/MiPListAlpha_corrected.xml --tagfile $META/tags.txt --paradigmfile $META/paradigms.txt #2>../logs/error.log
-echo " "
-echo "done"
-echo "==================================================="
-
-#echo "==================================================="
-#echo "feeding db with $DPS/n_ru.xml"
-#$P install.py --file $DPS/n_rus.xml --tagfile $META/tags.txt --paradigmfile $META/paradigms.txt 2>../logs/error.log
-#echo " "
-#echo "done"
-#echo "==================================================="
+## Trying to set up Kven
 
 
 ##
-##  sme->X
+##  fkv->X
 ##
 
-# echo "==================================================="
-# echo "feeding db with $DPS/n_smenob.xml"
-# $P install.py --file $DPS/n_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+ echo "==================================================="
+ echo "feeding db with $DPS/N_fkv.xml"
+ $P install.py --file $DPS/N_fkv.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $META/names.xml"
@@ -56,33 +42,33 @@ echo "==================================================="
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPS/prop_smenob.xml"
-# $P install.py --file $DPS/prop_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
+# echo "feeding db with $DPS/prop_fkvnob.xml"
+# $P install.py --file $DPS/prop_fkvnob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 
 # echo "==================================================="
-# echo "feeding db with $DPS/num_smenob.xml"
-# $P install.py --file $DPS/num_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/num_paradigms.txt 2>>error.log
+# echo "feeding db with $DPS/num_fkvnob.xml"
+# $P install.py --file $DPS/num_fkvnob.xml --tagfile $META/tags.txt --paradigmfile $META/num_paradigms.txt 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPS/a_smenob.xml"
-# $P install.py --file $DPS/a_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/a_paradigms.txt 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+ echo "==================================================="
+ echo "feeding db with $DPS/A_fkv.xml"
+ $P install.py --file $DPS/A_fkv.xml --tagfile $META/tags.txt --paradigmfile $META/a_paradigms.txt 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPS/v_smenob.xml"
-# $P install.py --file $DPS/v_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+ echo "==================================================="
+ echo "feeding db with $DPS/V_fkv.xml"
+ $P install.py --file $DPS/V_fkv.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
 # # NOTE: --append here, so that the install only adds the forms, but doesn't delete existing ones.
 # echo "==================================================="
@@ -93,189 +79,192 @@ echo "==================================================="
 # echo "==================================================="
 
 
+echo "==================================================="
+echo "feeding db with $DPS/Adv_fkv.xml"
+$P install.py --file $DPS/Adv_fkv.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPS/MWE_fkv.xml"
+$P install.py --file $DPS/MWE_fkv.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+# ##
+# ## nobfkv
+# ##
+
+ echo "==================================================="
+ echo "feeding db with $DPN/N_nobfkv.xml"
+ $P install.py --file $DPN/N_nobfkv.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
+
 # echo "==================================================="
-# echo "feeding db with $DPS/adv_smenob.xml"
-# $P install.py --file $DPS/adv_smenob.xml 2>>error.log
+# echo "feeding db with $DPN/num_nobfkv.xml"
+# $P install.py --file $DPN/num_nobfkv.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
+ echo "==================================================="
+ echo "feeding db with $DPN/V_nobfkv.xml"
+ $P install.py --file $DPN/V_nobfkv.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
+ 
+ echo "==================================================="
+ echo "feeding db with $DPN/A_nobfkv.xml"
+ $P install.py --file $DPN/A_nobfkv.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPN/Adv_nobfkv.xml"
+$P install.py --file $DPN/Adv_nobfkv.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPN/MWE_nobfkv.xml"
+$P install.py --file $DPN/MWE_nobfkv.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
 # echo "==================================================="
-# echo "feeding db with $DPS/multiword_smenob.xml"
-# $P install.py --file $DPS/multiword_smenob.xml 2>>error.log
+# echo "feeding db with $DPN/prop_nobfkv.xml"
+# $P install.py --file $DPN/prop_nobfkv.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # ##
-# ## nobsme
+# ## finfkv
 # ##
 
+
+echo "==================================================="
+echo "feeding db with $DPF/N_finfkv.xml"
+$P install.py --file $DPF/N_finfkv.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
 # echo "==================================================="
-# echo "feeding db with $DPN/a_nobsme.xml"
-# $P install.py --file $DPN/a_nobsme.xml 2>>error.log
+# echo "feeding db with $DPF/num_finfkv.xml"
+# $P install.py --file $DPF/num_finfkv.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPN/n_nobsme.xml"
-# $P install.py --file $DPN/n_nobsme.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPF/V_finfkv.xml"
+$P install.py --file $DPF/V_finfkv.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPF/A_finfkv.xml"
+$P install.py --file $DPF/A_finfkv.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+
+echo "==================================================="
+echo "feeding db with $DPF/Adv_finfkv.xml"
+$P install.py --file $DPF/Adv_finfkv.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPF/MWE_finfkv.xml"
+$P install.py --file $DPF/MWE_finfkv.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPN/num_nobsme.xml"
-# $P install.py --file $DPN/num_nobsme.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPN/v_nobsme.xml"
-# $P install.py --file $DPN/v_nobsme.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPN/adv_nobsme.xml"
-# $P install.py --file $DPN/adv_nobsme.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPN/mwe_nobsme.xml"
-# $P install.py --file $DPN/mwe_nobsme.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPN/prop_nobsme.xml"
-# $P install.py --file $DPN/prop_nobsme.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# ##
-# ## finsme
-# ##
-
-# echo "==================================================="
-# echo "feeding db with $DPF/a_finsme.xml"
-# $P install.py --file $DPF/a_finsme.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPF/n_finsme.xml"
-# $P install.py --file $DPF/n_finsme.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPF/num_finsme.xml"
-# $P install.py --file $DPF/num_finsme.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPF/v_finsme.xml"
-# $P install.py --file $DPF/v_finsme.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPF/adv_finsme.xml"
-# $P install.py --file $DPF/adv_finsme.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPF/mwe_finsme.xml"
-# $P install.py --file $DPF/mwe_finsme.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPF/prop_finsme.xml"
-# $P install.py --file $DPF/prop_finsme.xml 2>>error.log
+# echo "feeding db with $DPF/prop_finfkv.xml"
+# $P install.py --file $DPF/prop_finfkv.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 ##
-## swesme - has not been created for the new format yet
+## engfkv
 ##
 
+
+echo "==================================================="
+echo "feeding db with $DPW/N_engfkv.xml"
+$P install.py --file $DPW/N_engfkv.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPW/V_engfkv.xml"
+$P install.py --file $DPW/V_engfkv.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPW/A_engfkv.xml"
+$P install.py --file $DPW/A_engfkv.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPW/Adv_engfkv.xml"
+$P install.py --file $DPW/Adv_engfkv.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPW/MWE_engfkv.xml"
+$P install.py --file $DPW/MWE_engfkv.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+#echo "==================================================="
+#echo "feeding db with $DPW/prop_swefkv.xml"
+#$P install.py --file $DPW/prop_swefkv.xml
+#echo " "
+#echo "done"
+#echo "==================================================="
+
 # echo "==================================================="
-# echo "feeding db with $DPW/a_swesme.xml"
-# $P install.py --file $DPW/a_swesme.xml
+# echo "feeding db with $DPS/grammaticalwords_fkvnob.xml"
+# $P install.py --file $DPS/grammaticalwords_fkvnob.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPW/n_swesme.xml"
-# $P install.py --file $DPW/n_swesme.xml
+# echo "feeding db with $DPS/pron_fkv.xml"
+# $P install.py --file $DPS/pron_fkv.xml --tagfile $META/tags.txt  2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPW/v_swesme.xml"
-# $P install.py --file $DPW/v_swesme.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPW/adv_swesme.xml"
-# $P install.py --file $DPW/adv_swesme.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPW/multiword_swesme.xml"
-# $P install.py --file $DPW/multiword_swesme.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPW/prop_swesme.xml"
-# $P install.py --file $DPW/prop_swesme.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPS/grammaticalwords_smenob.xml"
-# $P install.py --file $DPS/grammaticalwords_smenob.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPS/pron_sme.xml"
-# $P install.py --file $DPS/pron_sme.xml --tagfile $META/tags.txt  2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPS/derverb_sme.xml"
-# $P install.py --file $DPS/derverb_sme.xml --tagfile $META/tags.txt --append  2>>error.log # TODO: test append with this
+# echo "feeding db with $DPS/derverb_fkv.xml"
+# $P install.py --file $DPS/derverb_fkv.xml --tagfile $META/tags.txt --append  2>>error.log # TODO: test append with this
 # echo " "
 # echo "done"
 # echo "==================================================="
@@ -297,17 +286,17 @@ echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with messages to feedback"
-# $P install.py --messagefile $META/messages.sme.xml 2>>error.log
+# $P install.py --messagefile $META/messages.fkv.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with messages to feedback"
-# $P install.py --messagefile $META/messages.eng.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+#echo "==================================================="
+#echo "feeding db with messages to feedback"
+#$P install.py --messagefile $META/messages.eng.xml 2>>error.log
+#echo " "
+#echo "done"
+#echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with messages to feedback"
@@ -329,29 +318,29 @@ echo "==================================================="
 # # Morfa-C
 
 
-# echo "==================================================="
-# echo "installing Morfa-C word fillings"
-# $P install.py -f $META/fillings_smenob.xml --paradigmfile $META/paradigms.txt --tagfile $META/tags.txt 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "installing Morfa-C word fillings"
+$P install.py -f $META/fillings.xml --paradigmfile $META/paradigms.txt --tagfile $META/tags.txt 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 # $P manage.py mergetags
 # $P manage.py fixtagattributes
 
-# echo "==================================================="
-# echo "installing Morfa-C questions for nouns"
-# $P install.py -g $META/grammar_defaults.xml -q $META/noun_questions.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "installing Morfa-C questions for nouns"
+$P install.py -g $META/grammar_defaults.xml -q $META/noun_questions.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-# echo "==================================================="
-# echo "installing Morfa-C questions for verbs"
-# $P install.py -g $META/grammar_defaults.xml -q $META/verb_questions.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "installing Morfa-C questions for verbs"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 # echo "==================================================="
 # echo "installing Morfa-C questions for pronoun"
@@ -429,7 +418,7 @@ echo "==================================================="
 
 # echo "==================================================="
 # echo "Installing feedback messages for vasta - in North Sámi"
-# $P install.py --messagefile $META/messages_vasta.sme.xml 2>>error.log
+# $P install.py --messagefile $META/messages_vasta.fkv.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
@@ -502,29 +491,22 @@ echo "==================================================="
 # $P manage.py fixattributes
 
 # echo "==================================================="
-# echo "adding feedback to nouns"
-# $P install.py -f $DPS/n_smenob.xml --feedbackfile $META/feedback_nouns.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
 # echo "adding feedback to verbs"
-# $P install.py -f $DPS/v_smenob.xml --feedbackfile $META/feedback_verbs.xml
+# $P install.py -f $DPS/v_fkvnob.xml --feedbackfile $META/feedback_verbs.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
 # echo "adding feedback to adjectives"
-# $P install.py -f $DPS/a_smenob.xml --feedbackfile $META/feedback_adjectives.xml
+# $P install.py -f $DPS/a_fkvnob.xml --feedbackfile $META/feedback_adjectives.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
 # echo "adding feedback to numerals"
-# $P install.py -f $DPS/num_smenob.xml --feedbackfile $META/feedback_numerals.xml
+# $P install.py -f $DPS/num_fkvnob.xml --feedbackfile $META/feedback_numerals.xml
 # echo " "
 # echo "done"
 # echo "==================================================="

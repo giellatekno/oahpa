@@ -13,7 +13,7 @@
 {% ifequal settings.gametype "bare" %}
     <li><label for="id_{{ settingsform.adjcase.name }}">{% trans "Case" %}</label>
 		{{ settingsform.adjcase }}</li>
-	<li><label for="id_{{ settingsform.grade.name }}">{% trans "Grade" %}</label>
+	<!-- <li><label for="id_{{ settingsform.grade.name }}">{% trans "Grade" %}</label>
 		{{ settingsform.grade }}</li>
 	<li><label>{% trans "Stem" %}</label>
 		<ul>
@@ -21,7 +21,7 @@
 			<li>{{ settingsform.trisyllabic }} <label for="id_{{ settingsform.trisyllabic.name }}">{% trans "trisyllabic" %}</label></li>
 			<li>{{ settingsform.contracted }} <label for="id_{{ settingsform.contracted.name }}">{% trans "contracted" %}</label></li>
 		</ul>
-	</li>
+	</li> -->
 
 {% else %}
 	<li><label for="id_{{ settingsform.adj_context.name }}">{% trans "Type" %}</label>

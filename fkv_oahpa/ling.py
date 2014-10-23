@@ -257,33 +257,31 @@ class Paradigm:
 		# }
 
 		# Using gen_only now
-		# commented out everything about gen_only, hid, wordtype:
-		"""
 		
 		if not gen_only.strip():
 			gen_only = False
 		else:
 			gen_only = [a.strip() for a in gen_only.split(',') if a.strip()]
-			# try:
-				# context = contexts[context]
-			# except:
-				# print >> STDERR, "*** Context (%s) not found" % context.encode('utf-8')
-				# context = False
+			#try:
+			#	context = contexts[context]
+			#except:
+			#	print >> STDERR, "*** Context (%s) not found" % context.encode('utf-8')
+			#	context = False
 
 		if pos.upper() == 'PROP':
 			pos = 'N'
-		"""
 
 		if not self.tagset:
 			self.handle_tags()
 
 		lookups = ""
-		"""
+		
+		# commented out wordtype for the time being
+		
 		if not hid.strip():
 			hid = ""
 		else:
 			hid = '+' + hid
-		"""
 		
 		# If wordtype is defined, then the wordtype is inserted after
 		# the first tag element, which should be the part of speech.
@@ -304,16 +302,20 @@ class Paradigm:
 				#		_pos, _, _rest = a.partition('+')
 				#		tag = "%s%s+%s" % (_pos, wordtype, _rest)
 				#else:
-				#	tag = a
+				tag = a
 				
-				#if gen_only:
-				#	for c in gen_only:
-				#		if c in tag:
-				#			lookups = lookups + lemma + hid + "+" + tag
-				#else:
-				if not lemma:
-				    raise TypeError
-				lookups = lookups + lemma + hid + "+" + a  # was: tag instead of a
+				if gen_only:
+				    if gen_only[0] == "none":
+				        print >> STDOUT, lemma, ' was marked as gen_only=none.'
+				        continue
+				    else:
+					   for c in gen_only:
+					       if c in tag:
+					           lookups = lookups + lemma + hid + "+" + tag                
+				else:
+				    if not lemma:
+				        raise TypeError
+				lookups = lookups + lemma + hid + "+" + tag 
 
 				lookups += '\n\n\n'
 		self.generate_data.append(lookups)
@@ -340,6 +342,7 @@ class Paradigm:
 		#for dialect, gen_file in gen_dialects.items():
 		dialect = 'main'  # HU: There are no dialects defined for fkv. I have defined this just to make the program work.
 		lookups = FSTLookup(data, fst_file=gen_norm_fst)
+		#print "FSTLookup produced: ", lookups
 		lookup_dictionary = {}
 			
 		for line in lookups.split('\n\n'):
@@ -379,6 +382,7 @@ class Paradigm:
 					extraforms[tagstring] = wordform
 					print >> STDOUT, "adding extra wordform..", wordform.encode('utf-8')
 		# HIDCHANGES
+		#print >> STDOUT, 'get_paradigms: lines_tmp', lines_tmp
 		if lines_tmp:
 			
 			self.paradigm = []
@@ -399,6 +403,7 @@ class Paradigm:
 				# ('lea', '+', '2+V+Ind+Prt+Pl3\tlij')
 
 				fullform = line.split('\t')[-1]
+				#print >> STDOUT, 'fullform: ', fullform
 				# 'govlin'
 				# '?+'
 				# 'lij'
@@ -417,6 +422,7 @@ class Paradigm:
 					tag = ''.join(hid_test)
 				
 				tag = tag.partition('\t')[0]
+				#print >> STDOUT, 'tag: ', tag
 				# 'V+Ind+Prt+Pl3'
 				# Never gets hid number, due to testing above
 
@@ -438,7 +444,8 @@ class Paradigm:
 					# if wordtype is specified (G3, Actor, etc.,), we want only
 					# these forms, otherwise we want only forms without a
 					# wordtype, these are assigned to the Nountype group in tags.txt.
-					if wordtype is not None:
+					# Comment out everything about wordtype right now as it is not relevant.
+					"""if wordtype is not None:
 						wordtype = wordtype.upper()
 						g_wordtype = g.classes.get('Subclass', False)
 						if g_wordtype:
@@ -448,17 +455,18 @@ class Paradigm:
 								continue
 						else:
 							continue
-					else:
-						g_wordtype = g.classes.get('Subclass', False)
+					else:  
+						# g_wordtype = g.classes.get('Subclass', False) # commented out Subclass now
 						# subclass is also part of another tag group,
 						# thus not only a subclass, so none.
 						# Kind of hacky, for Der/PassL which
-						if g_wordtype in g.classes.values():
-							g_wordtype = False
-						if g_wordtype:
-							continue
-						else:
-							self.paradigm.append(g)
+						#if g_wordtype in g.classes.values():
+						#	g_wordtype = False
+						#if g_wordtype:
+						#	continue
+						#else:"""
+					self.paradigm.append(g)
+					#print >> STDOUT, 'An entry appended to paradigm.'
 
 					if extraforms.has_key(g.tags):
 						g.form = extraforms[g.tags]

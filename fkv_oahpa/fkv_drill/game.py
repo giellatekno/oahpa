@@ -332,6 +332,23 @@ class BareGame(Game):
 		'N-ADE': ('Ade', ['Sg','Pl']),
 		'N-ABL': ('Abl', ['Sg','Pl']),
 		'N-ALL': ('All', ['Sg','Pl']),
+		'N-TRA': ('Tra', ['Sg','Pl']),
+		'N-ESS': ('Ess', ['Sg','Pl']),
+		'': '',
+	}
+	
+	casetable_adj = {
+		'A-NOM-PL': ('Nom', ['Pl']),
+		'A-GEN': ('Gen', ['Sg','Pl']),
+		'A-PAR': ('Par', ['Sg','Pl']),
+		'A-ILL': ('Ill', ['Sg','Pl']),
+		'A-INE': ('Ine', ['Sg','Pl']),
+		'A-ELA': ('Ela', ['Sg','Pl']),
+		'A-ADE': ('Ade', ['Sg','Pl']),
+		'A-ABL': ('Abl', ['Sg','Pl']),
+		'A-ALL': ('All', ['Sg','Pl']),
+		'A-TRA': ('Tra', ['Sg','Pl']),
+		'A-ESS': ('Ess', ['Sg','Pl']),
 		'': '',
 	}
 
@@ -514,17 +531,18 @@ class BareGame(Game):
 
 		if pos in ['N', 'Num', 'Pron']:
 			case, number = self.casetable[pos_tables[pos]]
-		else:
-			case = self.casetable[pos_tables[pos]]
+		elif pos == "A":
+			case, number = self.casetable_adj[pos_tables[pos]]
+
 		grade = self.casetable.get('grade', '')
 		num_type = self.casetable.get('num_type', '') # added by Heli, changed by Pavel to skip an exception, change this back I suppose
 
 		pos_mood_tense = {
-			"PRS":	("Ind", "Act", "Prs", ""),
-			"PRT":	("Ind", "Act", "Prt", ""),
-			"PRF":	("", "", "", "PrfPrc"),
-			"COND":   ("Act", "Cond", ""),
-			"IMPRT":  ("Act", "Imprt", "")
+			"PRS":	("Ind", "Prs", ""),
+			"PRT":	("Ind", "Prt", ""),
+			"PRF":	("", "", "PrfPrc"),
+			"COND":   ("Cond", "", ""),
+			"IMPRT":  ("Imprt", "", "")
 		}
 
 		if pos == "V" and self.settings.has_key('vtype'):
@@ -681,12 +699,12 @@ class BareGame(Game):
 				 TAG_QUERY = TAG_QUERY & Q(subclass=subclass) & Q(case=case) & Q(attributive='') & Q(grade='')
 			else:
 				 TAG_QUERY = TAG_QUERY & \
-						 Q(subclass='') & \
 						Q(attributive=attributive) & \
+						Q(subclass='') & \
 						Q(grade=grade) & \
 						Q(case=case) & \
 						Q(number__in=number)
-
+						
 		# filter can include several queries, exclude must have only one
 		# to work successfully
 		if pos != 'Der':

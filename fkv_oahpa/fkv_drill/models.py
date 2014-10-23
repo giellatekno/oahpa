@@ -7,7 +7,12 @@ from django.db import connection
 from django.db import transaction
 
 from django.utils.encoding import smart_unicode
-from forms import CHAPTER_CHOICES
+
+CHAPTER_CHOICES = {
+    'Alku1' : ['MJ1','GK1','MJ2', 'MJ3', 'MJ4'],
+    'Alku2' : ['MJ5', 'MJ6', 'MJ7', 'MJ8', 'MJ9'],
+    'Alku3' : ['MJ10', 'MJ11', 'MJ12', 'MJ13', 'MJ14'],
+}
 
 class BulkManager(models.Manager):
 	""" This Manager adds additional methods to Feedback.objects. That allows
@@ -363,11 +368,11 @@ def Translations2(target_lang):
 
 class MorphPhonTag(models.Model): # redone for Russian
 	stem		 = models.CharField(max_length=20)
-	gender           = models.CharField(max_length=20)
-	animate          = models.CharField(max_length=20)
-	inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
+	#gender           = models.CharField(max_length=20)
+	#animate          = models.CharField(max_length=20)
+	#inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
 	# stress_class     = models.CharField(max_length=20) # Zaliznyak's stress class
-	declension       = models.CharField(max_length=20) # Doing it this way until an fst is up
+	#declension       = models.CharField(max_length=20) # Doing it this way until an fst is up
 	reflexive        = models.NullBooleanField(blank=True)
 
 # PI: Zaliznyak's codes aren't sufficient to get the correct conjugation
@@ -377,10 +382,10 @@ class MorphPhonTag(models.Model): # redone for Russian
 
 	def __unicode__(self):
 		attrs = [self.stem,
-			 self.gender,
-			 self.animate,
-			 self.declension,
-			 self.inflection_class,
+			 #self.gender,
+			 #self.animate,
+			 #self.declension,
+			 #self.inflection_class,
 #			 self.stress_class,
 			 self.reflexive]
 
@@ -389,10 +394,10 @@ class MorphPhonTag(models.Model): # redone for Russian
 
 	class Meta:
 		unique_together = ("stem",
-				   "gender",
-				   "animate",
-				   "declension",
-				   "inflection_class",
+				 #  "gender",
+				  # "animate",
+				   #"declension",
+				   #"inflection_class",
 #				   "stress_class",
 				   "reflexive",)
 
@@ -455,21 +460,21 @@ class Word(models.Model):
 	wordid = models.CharField(max_length=200, db_index=True)
 	language = models.CharField(max_length=5, default='fkv', db_index=True)
 	lemma = models.CharField(max_length=200, db_index=True)
-	lemma_stressed = models.CharField(max_length=200, db_index=True)  # added by HU
+	#lemma_stressed = models.CharField(max_length=200, db_index=True)  # added by HU
 	presentationform = models.CharField(max_length=5) # PI: what's this?
 	pos = models.CharField(max_length=12) # Accomodate larger PoS
 	stem = models.CharField(max_length=20)
-	animate = models.CharField(max_length=20) # PI: could be boolean?
-	gender = models.CharField(max_length=20)
-	declension = models.CharField(max_length=20)
-	loc2 = models.BooleanField(default=False) # indicates if the word has Locative2 or not
-	gen2 = models.BooleanField(default=False) # indicates if the word has Genitive2 or not
+	#animate = models.CharField(max_length=20) # PI: could be boolean?
+	#gender = models.CharField(max_length=20)
+	#declension = models.CharField(max_length=20)
+	#loc2 = models.BooleanField(default=False) # indicates if the word has Locative2 or not
+	#gen2 = models.BooleanField(default=False) # indicates if the word has Genitive2 or not
 	reflexive = models.NullBooleanField(blank=True)
-	inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
-	zaliznjak = models.CharField(max_length=20)
+	#inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
+	#zaliznjak = models.CharField(max_length=20)
 
-	wordclass = models.CharField(max_length=8)
-	# valency = models.CharField(max_length=10)
+	wordclass = models.CharField(max_length=12)
+	valency = models.CharField(max_length=10)
 	hid = models.IntegerField(max_length=3, null=True, default=None) # PI: what's this?
 	semtype = models.ManyToManyField(Semtype)
 	source = models.ManyToManyField(Source) # The textbook(s) where the word is introduced
@@ -488,8 +493,8 @@ class Word(models.Model):
 	# nob = Nob()
 	morphophon = models.ForeignKey(MorphPhonTag, null=True)
 	dialects = models.ManyToManyField(Dialect, null=True)
-	aspect = models.CharField(max_length=20) # aspect partner (verbs only)
-	motion = models.CharField(max_length=20) # motion partner (verbs only)
+	#aspect = models.CharField(max_length=20) # aspect partner (verbs only)
+	#motion = models.CharField(max_length=20) # motion partner (verbs only)
 
 
 	def morphTag(self, nosave=True):
@@ -499,11 +504,11 @@ class Word(models.Model):
 			mphon = False
 		if not mphon:
 			kwargs = {
-				'gender':	self.gender,
-				'animate':	self.animate,
-				'declension':	self.declension,
+				#'gender':	self.gender,
+				#'animate':	self.animate,
+				#'declension':	self.declension,
 				'reflexive':	self.reflexive,
-				'inflection_class': self.inflection_class
+				#'inflection_class': self.inflection_class
 			}
 
 			morphtag, create = MorphPhonTag.objects.get_or_create(**kwargs)
@@ -698,11 +703,11 @@ class Tag(models.Model):
 	mood = models.CharField(max_length=5)
 	number = models.CharField(max_length=5)
 	personnumber = models.CharField(max_length=8)
-	gender = models.CharField(max_length=5)
+	#gender = models.CharField(max_length=5)
 	# polarity = models.CharField(max_length=5)
 	pos = models.CharField(max_length=12)
 	# possessive = models.CharField(max_length=5)
-	# subclass = models.CharField(max_length=10)
+	subclass = models.CharField(max_length=10)
 	tense = models.CharField(max_length=5)
 
 	class Admin:
@@ -729,7 +734,7 @@ class Tag(models.Model):
 #			'possessive': 'Possessive',
 #			'subclass': 'Subclass',
 			'tense': 'Tense',
-			'gender': 'Gender',
+			#'gender': 'Gender',
 		}
 
 		tagname_to_set = {}
