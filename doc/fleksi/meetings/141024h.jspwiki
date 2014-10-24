@@ -1,0 +1,95 @@
+!!! Møte 24.10.14
+
+Til stades: Heli, Lene
+
+!!!Saker: 
+# Arbeidet videre, 2015
+# Kvensk Oahpa
+# Konteaksta inn i kursinnlogging
+# Optimalisering av spørring
+# Dokumentasjon av Konteksta
+# Dokumentasjon av Oahpa
+# Firefox-plugin for Konteaksta
+# Neste møte
+
+!!Arbeidet videre, 2015
+Vi må finne ut hvordan arbeidet fortsetter i 2015
+
+! Tiltak:
+* __Lene__ finner ut av økonomien for 2015.
+
+!!Kvensk Oahpa
+Kvensk oahpa er nå implementert på gtoahpa-server. 
+Vi ønsker også flertall, dvs checkbox med Sg only som i dag, men at man også kan fjerne krysset og få Sg+Pl blanda.
+
+! Tiltak:
+* __Heli__ genererer locale djangofiler så vi kan begynne med lokaliseringa. 
+* __Heli__ fikser Plural.
+
+!!Konteaksta inn i kursinnlogging
+Heli har sendt ut mail om dette. Vi venter på kommentarer. 
+Hun har også hatt kontakt med Ryan.
+
+!Tiltak:
+* __Lene__ tar kontakt med Robert og Detmar.
+* __Heli, Ryan__ begynner med implementeringa.
+
+
+!!Optimalisering av spørring: sak fra forrige møte
+
+Saka var: Generering av distraktors tar mest tid, for multiple choice. 
+
+# Sende ordene som skal genereres samla til FST
+# De anbefalte sidene burde være mulige å lagre ferdige
+
+
+Eduard Schaf og Robert har funnet en løsning for russisk som Heli kan bruke.
+
+! Tiltak:
+* __Heli__ prioriterer å arbeide med optimaliseringa av spørringa
+
+
+!!Pipeline: sak fra forrige møte
+
+Vi ønsker vår egen språkavhengige preprosessering for å ha mulighet til å rette skrivefeil i anbefalte tekster.
+
+Det er no problem med preprosessering. Det vi har no er
+__openNLP tokenizer__
+
+Bruken av openNLP kom ferdig sett opp med WERTi. Vi kan erstatte 
+det med vår eigen.
+
+! Tiltak:
+* __Heli__ endrer preprossering
+
+!!Dokumentasjon av Konteksta: sak fra forrige møte
+
+Her skal den tekniske dokumentasjonen om Konteaksta samles:
+[Her|http://giellatekno.uit.no/ped/common/KonteakstaTechnicalDocumentation.html].
+
+! Tiltak:
+*__Heli__ forbedrer dokumentasjonen for Konteaksta: 
+* {{$GTHOME/apps/teaksta/sme/EXTENDING}} - hur man lägger till en ny topic i Konteaksta skal få
+jspwiki-format og lenkes til dokumentasjonssida.
+
+!!Dokumentasjon for Oahpa: sak fra forrige møte
+Trond har sett på dokumentasjonen. Dokumentasjonen vart skrive då vi hadde ein og to Oahpa. Det kommer ikke fram at vi har flere Oahpaer, og at de er på to forskjellige servere.
+
+
+! Tiltak:
+* __Heli__ legger inn mangler i dokumentasjonen for Oahpa: [Oahpadokumentasjon|http://giellatekno.uit.no/ped/common/OahpaTechnicalDocumentation.html]
+** Lokalisering (messages og translations): [Lokalisering|http://giellatekno.uit.no/ped/common/Localisation.html]
+
+!!Firefox-plugin for Konteaksta: sak fra forrige møte
+
+! Tiltak:
+* __Heli__ arbeider videre med denne
+
+
+
+!!Neste møte
+Fredag 31. oktober kl 9.00
+
+
+
+
