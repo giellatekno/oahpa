@@ -1135,7 +1135,7 @@ class NumGame(Game):
 		num_list = []
 		for num in num_tmp:
 			line = num.strip()
-			line = line.replace(' ','')
+			# line = line.replace(' ','') Removing blanks is right for some languages but wrong for some others.
 			if line:
 				nums = line.split('\t')
 				num_list.append(nums[a].decode('utf-8'))
@@ -1303,7 +1303,7 @@ class Dato(Klokka):
 	# QuestionForm = DatoQuestion
 	
 
-        generate_fst = 'transcriptor-date2text-desc.xfst'
+        generate_fst = 'transcriptor-date-digit2text.filtered.lookup.xfst'
         answers_fst = 'transcriptor-text2date-desc.xfst'
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
