@@ -14,7 +14,7 @@ DPW="$DATA/engyrk"
 DPE="$DATA/estyrk"
 DPL="$DATA/latyrk"
 DPR="$DATA/rusyrk"
-DPD="$DATA/smeyrk"
+DPG="$DATA/deuyrk"
 #WORDS=$GTHOME/words/dicts/smenob/src
 
 echo "==================================================="
@@ -99,58 +99,14 @@ echo " "
 echo "done"
 echo "==================================================="
 
-# ##
-# ## nobyrk
-# ##
+echo "==================================================="
+echo "feeding db with $DPS/Num_yrk2X.xml"
+$P install.py --file $DPS/Num_yrk2X.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-#echo "==================================================="
-#echo "feeding db with $DPN/N_nobyrk.xml"
-#$P install.py --file $DPN/N_nobyrk.xml 2>>error.log
-#echo " "
-#echo "done"
-#echo "==================================================="
 
-#echo "==================================================="
-#echo "feeding db with $DPN/num_nobyrk.xml"
-#$P install.py --file $DPN/num_nobyrk.xml 2>>error.log
-#echo " "
-#echo "done"
-#echo "==================================================="
-
- #echo "==================================================="
- #echo "feeding db with $DPN/V_nobyrk.xml"
- #$P install.py --file $DPN/V_nobyrk.xml 2>>error.log
- #echo " "
- #echo "done"
- #echo "==================================================="
- 
- #echo "==================================================="
- #echo "feeding db with $DPN/A_nobyrk.xml"
- #$P install.py --file $DPN/A_nobyrk.xml 2>>error.log
- #echo " "
- #echo "done"
- #echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPN/adv_nobyrk.xml"
-# $P install.py --file $DPN/adv_nobyrk.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPN/mwe_nobyrk.xml"
-# $P install.py --file $DPN/mwe_nobyrk.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPN/prop_nobyrk.xml"
-# $P install.py --file $DPN/prop_nobyrk.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
 
 # ##
 # ## finyrk
@@ -164,12 +120,12 @@ echo " "
 echo "done"
 echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPF/num_finyrk.xml"
-# $P install.py --file $DPF/num_finyrk.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPF/Num_finyrk.xml"
+$P install.py --file $DPF/Num_finyrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPF/V_finyrk.xml"
@@ -186,19 +142,19 @@ echo "done"
 echo "==================================================="
 
 
-# echo "==================================================="
-# echo "feeding db with $DPF/adv_finyrk.xml"
-# $P install.py --file $DPF/adv_finyrk.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPF/Adv_finyrk.xml"
+$P install.py --file $DPF/Adv_finyrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPF/mwe_finyrk.xml"
-# $P install.py --file $DPF/mwe_finyrk.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPF/MWE_finyrk.xml"
+$P install.py --file $DPF/MWE_finyrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $DPF/prop_finyrk.xml"
@@ -212,28 +168,141 @@ echo "==================================================="
 ##
 
 
-#echo "==================================================="
-#echo "feeding db with $DPW/N_engyrk.xml"
-#$P install.py --file $DPW/N_engyrk.xml
-#echo " "
-#echo "done"
-#echo "==================================================="
-
-#echo "==================================================="
-#echo "feeding db with $DPW/V_engyrk.xml"
-#$P install.py --file $DPW/V_engyrk.xml
-#echo " "
-#echo "done"
-#echo "==================================================="
-
 echo "==================================================="
-echo "feeding db with $DPW/all_engyrk.xml"
-$P install.py --file $DPW/all_engyrk.xml
+echo "feeding db with $DPW/N_engyrk.xml"
+$P install.py --file $DPW/N_engyrk.xml
 echo " "
 echo "done"
 echo "==================================================="
 
+echo "==================================================="
+echo "feeding db with $DPW/V_engyrk.xml"
+$P install.py --file $DPW/V_engyrk.xml
+echo " "
+echo "done"
+echo "==================================================="
 
+echo "==================================================="
+echo "feeding db with $DPW/A_engyrk.xml"
+$P install.py --file $DPW/A_engyrk.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPW/Adv_engyrk.xml"
+$P install.py --file $DPW/Adv_engyrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPW/MWE_engyrk.xml"
+$P install.py --file $DPW/MWE_engyrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPW/Num_engyrk.xml"
+$P install.py --file $DPW/Num_engyrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+##
+## rusyrk
+##
+
+
+echo "==================================================="
+echo "feeding db with $DPR/N_rusyrk.xml"
+$P install.py --file $DPR/N_rusyrk.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPR/V_rusyrk.xml"
+$P install.py --file $DPR/V_rusyrk.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPR/A_rusyrk.xml"
+$P install.py --file $DPR/A_rusyrk.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPR/Adv_rusyrk.xml"
+$P install.py --file $DPR/Adv_rusyrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPR/MWE_rusyrk.xml"
+$P install.py --file $DPR/MWE_rusyrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPR/Num_rusyrk.xml"
+$P install.py --file $DPR/Num_rusyrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+##
+## deuyrk
+##
+
+
+echo "==================================================="
+echo "feeding db with $DPG/N_deuyrk.xml"
+$P install.py --file $DPG/N_deuyrk.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPG/V_deuyrk.xml"
+$P install.py --file $DPG/V_deuyrk.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPG/A_deuyrk.xml"
+$P install.py --file $DPG/A_deuyrk.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPG/Adv_deuyrk.xml"
+$P install.py --file $DPG/Adv_deuyrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPG/MWE_deuyrk.xml"
+$P install.py --file $DPG/MWE_deuyrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPG/Num_deuyrk.xml"
+$P install.py --file $DPG/Num_deuyrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $DPS/grammaticalwords_yrknob.xml"

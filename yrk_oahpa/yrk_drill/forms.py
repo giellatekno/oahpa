@@ -322,6 +322,12 @@ VASTAS_NR_OF_TASKWORDS = (
 TRANS_CHOICES = (
 	('yrkeng', _('Nenets to English')),
 	('engyrk', _('English to Nenets')),
+	('yrkfin', _('Nenets to Finnish')),
+	('finyrk', _('Finnish to Nenets')),
+	('yrkrus', _('Nenets to Russian')),
+	('rusyrk', _('Russian to Nenets')),
+	('yrkdeu', _('Nenets to German')),
+	('deuyrk', _('German to Nenets')),
 )
     
 NUMLANGUAGE_CHOICES = (
