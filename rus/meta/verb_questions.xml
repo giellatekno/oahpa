@@ -6,7 +6,7 @@
       <text>Что делают SUBJ</text>
       <element id="SUBJ">
         <grammar tag="N+Pl+Nom"/>
-        <sem class="PROFESSION"/>
+        <sem class="OCCUPATIONS"/>
       </element>
     </question>
     <answer>
@@ -24,13 +24,13 @@
       <text>Что SUBJ делал вчера</text>
       <element id="SUBJ">
         <grammar tag="N+Sg+Nom"/>
-        <sem class="PROFESSION"/>
+        <sem class="OCCUPATIONS"/>
       </element>
     </question>
     <answer>
       <text>SUBJ MAINV</text>
       <element game='morpha' task='yes' id="MAINV">
-        <grammar tag="V+Impf+IV+Pst+Sg3"/>
+        <grammar tag="V+Impf+IV+Pst+Msc+Sg"/>
         <sem class="mACTIVITY"/>
       </element>
     </answer>
