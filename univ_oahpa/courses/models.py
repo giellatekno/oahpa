@@ -440,6 +440,10 @@ class Goal(models.Model):
     created_by = models.ForeignKey(User)
     short_name = models.CharField(max_length=128)
 
+    # TODO: if remote_task is True, url_base will be the referral
+    # address required
+    remote_task = models.BooleanField(default=False)
+
     url_base = models.CharField(max_length=24)
 
     main_type = models.CharField(max_length=24)

@@ -360,3 +360,57 @@ class NotificationsView(viewsets.ModelViewSet):
                     verb=u'tested notifications',)
 
         return Response({'success': True})
+
+class SubmissionView(viewsets.ModelViewSet):
+    # TODO: UserActivityLog and UserGoalInstance
+    model = UserGoalInstance
+    queryset = UserGoalInstance.objects.all()
+
+    def get_queryset(self):
+        return self.queryset.filter(recipient=self.request.user).unread()
+
+    def create(self, request):
+        # print request.META['referrer']
+        refer = request.META['referrer']
+        task_id = request.data['task_id']
+        task = Goal.objects.get(id=task_id)
+
+        # TODO: mimic drill logs / user_logs_generated
+
+        # TODO: create user activity log from JSON
+
+        # TODO: track increments
+
+        # ual = create_activity_log_from_drill_logs(
+        #     request,
+        #     request.user,
+        #     request.user_logs_generated,
+        #     current_user_goal=current_user_goal)
+
+        # TODO: find or create a UserGoalInstance
+
+        if task.remote_task == True and task.url_base in refer:
+            # TODO: any URL objects that can be used to perform a better
+            # comparison? 
+
+            # TODO: UserGoalInstance to track activity logs
+            # TODO: generate activity log and attach to instance? 
+            # TODO: convert from courses.models.create_activity_log_from_drill_logs
+
+
+
+        return Response({'success': True})
+
+    # TODO: increment tracking on session
+
+    # def reset_increments(self, request):
+    #     # If 'set_completed' is in the session variable, 
+    #     # then need to clear variables for the next go around.
+    #     new_set = request.session.get('new_game')
+    #     prev_new_set = request.session['prev_new_game']
+    #     new_sets = new_set and prev_new_set
+
+    #     if request.session.get('set_completed', False) or new_sets:
+    #         request.session['question_try_count'] = {}
+    #         request.session['question_set_count'] += 1
+    #         request.session['answered'] = {}
