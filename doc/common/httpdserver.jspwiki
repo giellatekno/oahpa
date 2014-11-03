@@ -1,83 +1,87 @@
-!!!Restarting the httpd server
+
+
+!!!In case of emergencies...
+
+
+This document deals with restarting httpd services on ''gtoahpa.uit.no'',
+i.e. the oahpa versions and NDS dictionaries on gtoahpa.
+
+For the other virtual machines, see [Restarting gtweb|httpdserversgtweb.html]
+and [Restarting gtlab|GtlabRestart.html]
 
 On {{gtoahpa}}, {{gtweb}} and {{gtlab}}, we use nginx for serving HTML
-and other applications. 
+and other applications. See [how to restart nginx itself|RestartingNginx.html] 
+if needed (after an ordinary update it is not needed).
 
-!! In case of emergencies... 
+Some Oahpa versions are on gtoahpa, others are on gtlab. To find which
+version is where, and to get a comprehensive list of the oahpa versions
+on the relevant virtual machine, 
+write {{ls -l /home/|grep oahpa}} on the respective machines.
 
-!gtlab (the testing oahpas)
-If an Oahpa on __gtlab__ (e.g. testing.oahpa.no/vep_oahpa) gives "__404 Not found__" error then it means that nginx is running but the Oahpa (fastcgi) process has been stopped. For checking if the particular Oahpa process is running give the command:
+So, 
+
+
+!!Restarting oahpa versions on gtoahpa
+
+Once an Oahpa version on gtoahpa is down, it must be restarted.
+Write (anywhere on the system)
 
 {{{
-    ps -ef | grep 'vep_oahpa'
+ sudo service OAHPANAME restart
 }}}
 
-If this command does not output 5-6 lines of fastcgi processes then you need to start the Oahpa process again. For doing that, go to the respective Oahpa's home directory, e.g. {{{/home/vep_oahpa/vep_oahpa}}} and give the command (as sudo, if needed):
+where OAHPANAME is the relevant Oahpa version (univ_oahpa, etc).
 
-{{{
-    sudo ./vep_oahpa.sh --run
-}}}
-
-If all the Oahpa instances on gtlab are down (for example after server reboot) then you can start all the Oahpas at once, using the script {{{start_all_oahpas.sh}}} located in the directory {{{/home/oahpa_scripts}}} (requires sudo rights).
-
-!gtoahpa (the stable oahpas)
-
-On __gtoahpa__, if for some reason the processes do not restart via chkconfig, 
-inspect via {{ps aux}} or {{top}} to find out what is or isn't running.
-
-Once missing processes have been identified, the proper order that all services
-should be started in (given dependencies between them) is:
+If only Oahpa is down, this is enough. If the server has been totally down,
+you may need to start more. Here is the full list of services that 
+should be started, __in this order__ (there are dependencies between them):
 
 # mysqld
 # nginx
 # php-fpm
 # lookupserv
-# univ_oahpa / smaoahpa / ...
 
-For this use the command (where NAME is the name of the service / oahpa version):
-
-{{{ sudo service NAME start }}}, 
-
-or alternatively
-{{restart}} instead of {{start}}. Please note that the newer Oahpas on gtoahpa (myv, yrk, ...) cannot be started via {{sudo service start}}. See the section about fastcgi processes below for instructions.
-
-Also, there is not ''start_all_oahpas.sh'' on gtoahpa.
-
-!!Nginx (gtoahpa, gtweb, gtlab)
-
-Updates to code do not require restarting nginx, unless updating configuration
-files specifically for nginx. However, should the system reboot and nginx not 
-survive this reboot, here is what you need to do: 
+For each of the processes listed, issue (anywhere on the system)
+the command
 
 {{{
-    sudo service nginx restart
+    sudo service NAME restart
 }}}
 
-Pay attention to the output, and trouble any errors that come up.
+Thus, ''sudo service mysqld restart'', etc. For the 
 
-There have been problems with rebooting gtlab. If you after (re)starting nginx do not see the nginx test page when opening [testing.oahpa.no|http://testing.oahpa.no] then try restarting iptables as well:
+Afterward, run all the Oahpa commands again:  
 
 {{{
-    sudo service iptables restart
+sudo service univ_oahpa restart
 }}}
 
-If for some reason the system is running slowly, inspect processes running,
-using {{{top}}} or {{{htop}}}, the latter of which is a more updated and easier
-to interpret tool.
+The commands  {{ps aux}} or {{top}} may show you what is or isn't running.
+(write {{top}} anywhere in the terminal).
 
-!!Fastcgi processes (gtoahpa)
 
-Stacks using nginx also use separate processes for python, and php
-applications. For __python and Django applications__, these are managed
-via the package flup, and each Oahpa instance has a script checked in in its
-root directory, {{{run_fastcgi.sh}}}, which stores a PID to a file to halt
-old processes and start new ones.
 
-To start oahpa fastcgi instances, one simply needs to:
 
-{{{
-	sudo ./run_fastcgi.sh
-}}}
+!!Restarting oahpas the hard way, without the service script
+
+There is an init.d script for restarting each oahpa instance, 
+with a reference to the respective oahpa home catalogue, 
+so they may thus be restarted via the service command, 
+with the usual subcommands: restart, stop, start.
+
+In case the ''sudo service'' etc. does not work, here is another option
+(we recommend you try the ''sudo service etc.'' first):
+
+Go to the catalogue {{/home/fkv_oahpa/fkv_oahpa}}
+(and correspondingly for the other oahpa versions). Each Oahpa instance has a script in its root directory, {{{run_fastcgi.sh}}}, which stores a PID to a file to halt
+old fastcgi processes related to this Oahpa and start new ones. Write:
+
+{{{ sudo ./run_fastcgi.sh}}}
+
+The system may return an error message, along the lines of 
+''run_fastcgi.sh: line 1: ﻿#!/bin/bash: Ingen slik fil eller filkatalog'',
+but that is not relevant. As long as you are in the right catalogue and
+ the system finds the file run_fstcgi.sh, you are fine.
 
 __ If running of the script results in error: __
 {{{
@@ -85,11 +89,12 @@ __ If running of the script results in error: __
 }}}
 
 then the process id saved in the file fastcgi.pid is wrong. In such a case you need to change the file. The command
+
 {{{
-    ps -ef | grep 'fcgi'
+    ps -ef | grep 'fkv_oahpa'
 }}}
 
-gives you a list of all fastcgi processes. There should be 6 processes for smaoahpa and 6 processes for univ_oahpa. Check the time when the first process for univ_oahpa (alt. smaoahpa) started (the process that generates the remaining 5 processes). Write the PID of the process into the file fastcgi.pid and run the script run_fastcgi.sh again. 
+gives you a list of all fastcgi processes related to fkv_oahpa. There should be 6 processes for each oahpa. Check the time when the first process was started (the process that generates the remaining 5 processes). Write the PID of the process into the file fastcgi.pid and run the script run_fastcgi.sh again. 
 
 
 __PHP applications__, Wordpress in our case, are managed by a global server process,
@@ -99,59 +104,7 @@ php-fpm. To restart this process:
 	sudo service php-fpm restart
 }}}
 
-On gtoahpa, univ_oahpa and smaoahpa have their own
-init.d scripts, so they may also be restarted via the service command, with the
-usual subcommands: restart, stop, start.
-
-{{{
-    sudo service smaoahpa restart
-}}}
-
-!!Tomcat webserver (gtlab)
-
-This is where the instances of Konteaksta are running. After upgrade of the server, as well as adding new components to Konteaksta, it is always recommended to restart Tomcat. It is also the first thing to try if Konteaksta gives "server error". To restart Tomcat:
-
-{{{
-    sudo $CATALINA_HOME/bin/shutdown.sh
-    sudo $CATALINA_HOME/bin/startup.sh
-}}}
-
-For compiling and redeploying Konteaksta (if needed):
-
-{{{
-    cd /home/teaksta
-    svn up
-    ./make_teaksta.sh
-}}}
-
-!!Apache/httpd (victorio)
-
-Updates to the code require restart of the httpd-server. Sometimes
-updates to the localisation require that too. The restart is otherwise
-harmless, but may distrub someone who is playing the came (although
-that is not very probable).
-
-Restarting the server (requires sudo rights):
-{{{
-sudo /etc/init.d/httpd restart
-}}}
 
 
-Earlier, there was a memory leak problem, which should not be among us
-anymore. However if victorio is very slow, check the memory by writing:
-{{{ps aux | grep http}}}
 
-If the result indicates memory use too close to 100, this is a clear
-problem indication. The answer is to restart the apache web server,
-and thereafter, if need, to [restart mysqld|Mysql.html].
-
-If the webserver takes too much memory, ou may also want to stop 
-apache first, and then myql, and then starting them again:
-
-{{{
-sudo /etc/init.d/httpd stop
-sudo /etc/init.d/mysqld stop
-sudo /etc/init.d/httpd start
-sudo /etc/init.d/mysqld start
-}}}
 
