@@ -1614,7 +1614,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 	"""
 
 	select_words = select_words
-	qtype_verbs = set(['V-PRS', 'V-PRT', 'V-COND','V-IMPRT', 'TEST'])
+	qtype_verbs = set(['V-PRS', 'V-PST', 'V-COND','V-IMPRT', 'TEST'])
 
 	def generate_fields(self,answer_size, maxlength):
 		self.fields['answer'] = forms.CharField(max_length = maxlength, \
@@ -1630,8 +1630,8 @@ class ContextMorfaQuestion(OahpaQuestion):
 		self.dialect = dialect
 
 		qtype=question.qtype
-		if qtype in self.qtype_verbs:
-			qtype = 'PRS'
+		#if qtype in self.qtype_verbs:
+		#	qtype = 'PRS'
 
 		question_widget = forms.HiddenInput(attrs={'value' : question.id})
 		answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})
