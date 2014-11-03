@@ -1,0 +1,66 @@
+This document deals with restarting services on ''gtlab.uit.no''.
+For the other servers, see [Restarting Gtweb|httpdserversgtweb.html]
+and [Restarting gtoahpa|httpdserver.html]
+
+
+On {{gtoahpa}}, {{gtweb}} and {{gtlab}}, we use nginx for serving HTML
+and other applications. See [how to restart nginx itself|RestartingNginx.html] 
+if needed (after an ordinary update is often is not).
+
+Some Oahpa versions are on gtoahpa, others are on gtlab. To find them, write
+{{ls -l /home/|grep oahpa}} on the respective machines.
+
+!! In case of emergencies... 
+
+!The test versions of Oahpa (on testing.oahpa.no)
+
+If an Oahpa on __gtlab__ (e.g. testing.oahpa.no/crk_oahpa) gives "__404 Not found__" error then it means that nginx is running but the Oahpa (fastcgi) process has been stopped. For checking if the particular Oahpa process is running give the command:
+
+{{{
+    ps -ef | grep 'crk_oahpa'
+}}}
+
+If this command does not output 5-6 lines of fastcgi processes then you need to start the Oahpa process again. For doing that, go to the respective Oahpa's home directory, e.g. {{{/home/crk_oahpa/crk_oahpa}}} and give the command (as sudo, if needed):
+
+{{{
+    sudo ./crk_oahpa.sh --run
+}}}
+
+If all the Oahpa instances on gtlab are down (for example after server reboot) then you can start all the Oahpas at once, using the script {{{start_all_oahpas.sh}}} located in the directory {{{/home/oahpa_scripts}}} (requires sudo rights).
+ 
+ 
+!!Restarting Nginx
+
+Updates to the Oahpa code do not require restarting nginx, unless updating configuration
+files specifically for nginx. However, should the system reboot and nginx not 
+survive this reboot, see [how to restart nginx itself|RestartingNginx.html]. 
+
+There have been problems with rebooting gtlab. If you after (re)starting nginx do not see the nginx test page when opening [testing.oahpa.no|http://testing.oahpa.no] then try restarting iptables as well:
+
+{{{
+    sudo service iptables restart
+}}}
+
+If for some reason the system is running slowly, inspect processes running,
+using {{{top}}} or {{{htop}}}, the latter of which is a more updated and easier
+to interpret tool.
+
+!!Restarting Tomcat web server
+
+This is where the instances of Konteaksta are running. After upgrade of the server, as well as adding new components to Konteaksta, it is always recommended to restart Tomcat. It is also the first thing to try if Konteaksta gives "server error". To restart Tomcat:
+
+{{{
+    sudo $CATALINA_HOME/bin/shutdown.sh
+    sudo $CATALINA_HOME/bin/startup.sh
+}}}
+
+For compiling and redeploying Konteaksta (if needed):
+
+{{{
+    cd /home/teaksta
+    svn up
+    ./make_teaksta.sh
+}}}
+
+
+
