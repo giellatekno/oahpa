@@ -31,7 +31,7 @@ class QAGame(Game):
 		"""
 		self.num_fields = 6
 		self.syntax =('MAINV','SUBJ','HAB')
-		self.qtype_verbs = set(['V-COND','V-IMPRT','V-POT', 'PRS','PRT', 'V-PRS', 'V-PRT', 'V-GER', 'V-PRF'])
+		self.qtype_verbs = set(['V-COND','V-IMPRT','V-POT', 'PRS','PRT', 'V-PRS', 'V-PST', 'V-GER', 'V-PRF'])
 
 		# Default tense and mood for testing
 		self.tense = "Prs"

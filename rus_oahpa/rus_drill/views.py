@@ -549,7 +549,7 @@ class Morfaview(Gameview):
 		 'IMPRT':  _('Practice imperative'),
 		 'POT':  _('Practice potential'),
 		 'V-PRS':  _('Practice present'),
-		 'V-PRT':  _('Practice past'),
+		 'V-PST':  _('Practice past'),
 		 'V-PRF':  _('Practice perfect'),
 		 'V-GER':  _('Practice gerund'),
 		 'V-COND':  _('Practice conditional'),

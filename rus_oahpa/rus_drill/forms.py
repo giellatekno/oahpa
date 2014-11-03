@@ -275,14 +275,14 @@ VERB_FILTER_DEFINITION = ['stem', 'source']
 
 VTYPE_CONTEXT_CHOICES = (
 	('V-PRS', _('present')),
-	('V-PRT', _('past')),
-	('V-PRF', _('perfect')),
-	('V-GER', _('gerund')),
-	('V-COND', _('conditional')),
-	('V-IMPRT', _('imperative')),
-	('V-POT', _('potential')),
-	('V-MIX', _('mix')),
-	('TEST', _('test questions')),
+	('V-PST', _('past')),
+#	('V-PRF', _('perfect')),
+#	('V-GER', _('gerund')),
+#	('V-COND', _('conditional')),
+#	('V-IMPRT', _('imperative')),
+#	('V-POT', _('potential')),
+#	('V-MIX', _('mix')),
+#	('TEST', _('test questions')),
  )
 
 LEVEL_CHOICES = (
