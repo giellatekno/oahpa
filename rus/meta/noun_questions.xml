@@ -268,6 +268,29 @@
       </element>
     </answer>
   </q>
+  
+    <q id="acc_dirobj_anim">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Кого SUBJ видел LOCATION</text>
+      <element id="SUBJ">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="N-ACC">
+        <grammar tag="N+Msc+Anim+Sg+Acc"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </question>
+    <answer>
+      <text>SUBJ видел N-ACC </text>
+      <element game='morfa' task='yes' id="N-ACC">
+        <grammar tag="N+Msc+Anim+Sg+Acc"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </answer>
+  </q>
+
 </questions>
 
 
