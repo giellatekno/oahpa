@@ -136,7 +136,7 @@ CASE_CONTEXT_CHOICES = (
 #	('N-GEN', _('genitive')),
 #	('N-ILL', _('illative')),
 	('N-LOC', _('locative')),
-#	('N-COM', _('comitative')),
+	('N-DAT', _('dative')),
 #	('N-ESS', _('essive')),
 #	('N-MIX', _('mix')),
 )
@@ -1635,7 +1635,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 
 		question_widget = forms.HiddenInput(attrs={'value' : question.id})
 		answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})
-		atext = qanswer.string
+		atext = force_unicode(qanswer.string)
 		task = qanswer.task
 		if not task:
 			error_msg = u"not task: %s %s (%s)" % (atext, question.qid, question.qatype)
