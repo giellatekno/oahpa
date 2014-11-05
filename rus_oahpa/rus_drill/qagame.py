@@ -98,7 +98,10 @@ class QAGame(Game):
 				word = word.order_by('?')[0]
 		else:
 			# Do not filter dialect here
-			possible_words = Word.objects.filter(wordqelement__qelement=qelement,
+			if qelement.gender: # If gender is specified for the question element, e.g. in verb past tense exercises there is gender agreement between SUBJ and MAINV. 
+				possible_words = Word.objects.filter(wordqelement__qelement=qelement, form__tag=tag_el.id, gender=qelement.gender)
+			else:
+				possible_words = Word.objects.filter(wordqelement__qelement=qelement,
 												form__tag=tag_el.id)
 			if possible_words.count() > 0:
 				word = possible_words.order_by('?')[0]
@@ -126,7 +129,7 @@ class QAGame(Game):
 		Select word from possible options in the element.
 		"""
 		words = []
-
+		
 		# If there are no information available for these elements, try to use other info.
 		word = None
 		form = None
@@ -137,25 +140,25 @@ class QAGame(Game):
 			if qelement:
 				if qelement.semtype:
 					form_set = form_set.filter(word__semtype=qelement.semtype)
+				if qelement.gender:
+				    form_set = form_set.filter(word__gender=qelement.gender)  # if gender is specified for the element
 			form = form_set[0]
 		else:
 			if word_id and tag_el:
-				###		word_set = Word.objects.filter(id=word_id)
-				###		if qelement:
-				###			if qelement.semtype:
-				###				word_set.filter(semtype=qelement.semtype)
-				###		word = word_set[0]
+				word_set = Word.objects.filter(id=word_id)
+				if qelement:
+					if qelement.semtype:
+						word_set = word_set.filter(semtype=qelement.semtype)
+				        if qelement.gender:
+				            word_set = word_set.filter(gender=qelement.gender)  # if gender is specified for the element
 
-				word = Word.objects.get(id=word_id)
-				# if qelement:
-					# if qelement.semtype:
-						# word_set.filter(semtype=qelement.semtype)
 
-				# word = word_set[0]
+				if word_set:
+				    word = word_set[0]
 
-				form_set = self.filter_forms_by_dialect(word.form_set.filter(tag=tag_el))
+				    form_set = self.filter_forms_by_dialect(word.form_set.filter(tag=tag_el))
 
-				form = form_set[0]
+				    form = form_set[0]
 
 
 		
@@ -531,6 +534,7 @@ class QAGame(Game):
 		a_number=""
 		subj_el = None
 		subjword = None
+		#print "qwords: ", qwords
 
 		copy_syntax = ""
 		# If there is subject in the question, there is generally agreement.
@@ -629,9 +633,9 @@ class QAGame(Game):
 			# mainverb number depends on the number of the subject.
 			asubj = awords['SUBJ'][0]
 			a_number=asubj['number']
-			# print 'asubj number: ', a_number
+			#print 'asubj number: ', a_number
 			va_number=self.SVPN[a_number]
-			# print 'va_number: ', va_number
+			#print 'va_number: ', va_number
 		else:
 			# No SUBJ defined, MAINV is a copy of the question MAINV
 			# and needs to have Question-Answer subject change
@@ -704,7 +708,7 @@ class QAGame(Game):
 					if mainv_el.tags.count()>0:
 						if va_number:
 							# print va_number
-							mainv_tags = mainv_el.tags.filter(Q(personnumber=va_number))
+							mainv_tags = mainv_el.tags.filter(Q(personnumber=va_number)|Q(number=a_number)) # In Russian, past tense does not have person-number but gender + number. Agreement in number and gender between SUBJ and MAINV.
 						else:
 							mainv_tags = mainv_el.tags.all()
 						for t in mainv_tags:
@@ -1015,7 +1019,7 @@ class QAGame(Game):
 	def create_form(self, db_info, n, data=None):
 
 		question = Question.objects.get(Q(id=db_info['question_id']))
-		# print question.string
+		print question.string
 		answer = None
 		if self.settings.has_key('dialect'):
 			dialect = self.settings['dialect']
@@ -1027,10 +1031,10 @@ class QAGame(Game):
 			language = self.settings['language']
 		if not self.gametype == "qa":
 			answer = Question.objects.get(Q(id=db_info['answer_id']))
-			# print answer.string
+			print answer.string
+			print db_info['awords']
 			form = (ContextMorfaQuestion(question, answer, \
-										 db_info['qwords'], db_info['awords'], dialect, language,\
-										 db_info['userans'], db_info['correct'], data, prefix=n))
+										 db_info['qwords'], db_info['awords'], dialect, language, db_info['userans'], db_info['correct'], data, prefix=n))
 		else:
 			form = (VastaQuestion(question, \
 								  db_info['qwords'], language, \

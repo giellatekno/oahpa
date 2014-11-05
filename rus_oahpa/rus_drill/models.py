@@ -1000,6 +1000,7 @@ class QElement(models.Model):
 
 	semtype = models.ForeignKey(Semtype, null=True) # ManyToMany instead?
 	tags = models.ManyToManyField(Tag)
+	gender = models.CharField(max_length=5)
 	game = models.CharField(max_length=20)
 	copy = models.ForeignKey('self',
 							 blank=True,
