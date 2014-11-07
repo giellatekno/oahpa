@@ -789,15 +789,15 @@ class BareGame(Game):
 				    
 			# Process the selection from the noun_type menu (incorporates gender, animacy and inflection type):
 			if noun_type == "N-NEUT":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='nt')
+				WORD_FILTER = WORD_FILTER & Q(word__gender='Neu')
 			elif noun_type == "N-MASC-INANIM":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='m',word__animate='nn')
+				WORD_FILTER = WORD_FILTER & Q(word__gender='Msc',word__animate='nn')
 			elif noun_type == "N-MASC-ANIM":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='m',word__animate='aa')
+				WORD_FILTER = WORD_FILTER & Q(word__gender='Msc',word__animate='aa')
 			elif noun_type == "N-FEM-8":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='f', word__inflection_class__contains='8')
+				WORD_FILTER = WORD_FILTER & Q(word__gender='Fem', word__inflection_class__contains='8')
 			elif noun_type == "N-FEM-other":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='f') & (Q(word__lemma__endswith='а') | Q(word__lemma__endswith='я'))
+				WORD_FILTER = WORD_FILTER & Q(word__gender='Fem') & (Q(word__lemma__endswith='а') | Q(word__lemma__endswith='я'))
 				
 			SOURCE_FILTER = Q() 
 			if source.lower() != 'all':
