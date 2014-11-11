@@ -350,20 +350,20 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-        ('mrjest', u'Hill Mari to Estonian'),
-        ('estmrj', u'Estonian to Hill Mari'),
-	    #('mrjeng', _('Hill Mari to English')),
-	    #('engmrj', _('English to Hill Mari')),
+        #('mrjest', u'Hill Mari to Estonian'),
+        #('estmrj', u'Estonian to Hill Mari'),
+	    ('mrjeng', _('Hill Mari to English')),
+	    ('engmrj', _('English to Hill Mari')),
         ('mrjfin', u'Hill Mari to Finnish'),
-        ('finmrj', u'Finnish to Hill Mari'),           
-        #('mrjlat', _('Hill Mari to Latvian')),
-        #('latmrj', _('Latvian to Hill Mari')),
+        ('finmrj', u'Finnish to Hill Mari'), 
+        ('mrjrus', _('Hill Mari to Russian')),
+        ('rusmrj', _('Russian to Hill Mari')),          
+        ('mrjdeu', _('Hill Mari to German')),
+        ('deumrj', _('German to Hill Mari')),
         #('mrjsme', _('Hill Mari to North Saami')),
         #('smemrj', _('North Saami to Hill Mari')),
         #('mrjnob', _('Hill Mari to Norwegian')),
         #('nobmrj', _('Norwegian to Hill Mari')), 
-        #('mrjrus', _('Hill Mari to Russian')),
-        #('rusmrj', _('Russian to Hill Mari')),
 )
 
 NUMLANGUAGE_CHOICES = (
@@ -372,7 +372,7 @@ NUMLANGUAGE_CHOICES = (
 
 SEMTYPE_CHOICES = (
     ('HUMAN', _('human')),
-    ('FOOD/DRINK', _('food/drink')),
+    ('FOOD-DRINK', _('food/drink')),
     ('all', _('all')),
 )
 
@@ -1054,10 +1054,10 @@ class LeksaQuestion(OahpaQuestion):
         # If we want stress marks in Leksa then we have to use lemma_stressed instead of lemma.
 		
 		if type(word) == Word: 
-                    if self.sourcelang == 'rus':
-                        self.lemma = word.lemma_stressed  # for Rusian the words will be presented with stress marks
-                    else:
-                        self.lemma = word.lemma # for other languages 'lemma_stressed' does not exist
+                    #if self.sourcelang == 'rus':
+                     #   self.lemma = word.lemma_stressed  # for Rusian the words will be presented with stress marks
+                    #else:
+                    self.lemma = word.lemma # for other languages 'lemma_stressed' does not exist
 		else:
 			self.lemma = word.definition
 

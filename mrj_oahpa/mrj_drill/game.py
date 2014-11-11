@@ -1364,7 +1364,7 @@ class Dato(Klokka):
 
 	# QuestionForm = DatoQuestion
 
-        generate_fst = 'transcriptor-date2text-desc.xfst'
+        generate_fst = 'transcriptor-date-digit2text.filtered.lookup.xfst'
         answers_fst = 'transcriptor-text2date-desc.xfst'
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
