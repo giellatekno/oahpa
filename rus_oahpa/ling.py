@@ -429,7 +429,10 @@ class Paradigm:
 		self.master_paradigm[dialect] = lookup_dictionary
 		
 	def get_stem_info(self, lemma):
-		return stem_info[lemma]	# was: self.stem_info[lemma]
+		if stem_info.has_key(lemma):
+			return stem_info[lemma]	# was: self.stem_info[lemma]
+		else:
+			return []
 	
 	def get_paradigm(self, lemma, pos, forms, dialect=False, wordtype=None):
 		if not dialect:

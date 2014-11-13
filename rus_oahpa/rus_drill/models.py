@@ -695,6 +695,7 @@ class Tag(models.Model):
 	number = models.CharField(max_length=5)
 	personnumber = models.CharField(max_length=8)
 	gender = models.CharField(max_length=5)
+	animate = models.CharField(max_length=5)
 	# polarity = models.CharField(max_length=5)
 	pos = models.CharField(max_length=12)
 	# possessive = models.CharField(max_length=5)
@@ -726,6 +727,7 @@ class Tag(models.Model):
 			'subclass': 'Subclass',
 			'tense': 'Tense',
 			'gender': 'Gender',
+			'animate': 'Animate',
 		}
 
 		tagname_to_set = {}
@@ -1001,6 +1003,7 @@ class QElement(models.Model):
 	semtype = models.ForeignKey(Semtype, null=True) # ManyToMany instead?
 	tags = models.ManyToManyField(Tag)
 	gender = models.CharField(max_length=5)
+	animate = models.CharField(max_length=5)
 	game = models.CharField(max_length=20)
 	copy = models.ForeignKey('self',
 							 blank=True,

@@ -329,8 +329,8 @@ class BareGame(Game):
 		'N-ACC': ('Acc', ['Sg','Pl']),
 		'N-INS': ('Ins', ['Sg','Pl']),
 		'N-LOC': ('Loc', ['Sg','Pl']),
-		'N-GEN2': ('Par', ['Sg']),
-		'N-LOC2': ('Prp', ['Sg']),
+		'N-GEN2': ('Gen2', ['Sg']),
+		'N-LOC2': ('Loc2', ['Sg']),
 		'': '',
 	}
 
@@ -634,17 +634,39 @@ class BareGame(Game):
 			sylls = False
 			source = False
 
-		# Gen2 / Loc2 does not exist for all nouns. The user must decide if a word has Loc2 or only one form for Loc - therefore all the words can occur in this exercise. We need to make a more complicated query because the case tags are different: Loc2 = Loc, Loc = Prp. The same for Gen2 (tags 'Par' and 'Gen'). The words having Loc2 resp. Gen2 are marked in the database: there are fields loc2 and gen2 in the Word table.
-		if pos == 'N' and case == 'Loc':
-			CASE_QUERY = Q(case=case) | Q(case='Prp')
+		if pos == 'N':
+			if singular_only:   # if the user has checked the box "singular only"
+				TAG_QUERY = TAG_QUERY & Q(number='Sg')
+			else:
+				TAG_QUERY = TAG_QUERY & Q(number__in=number)
+				
+            # Process the selection from the noun_type menu (incorporates gender, animacy and inflection type). The selection by gender and animacy has been moved from WORD_FILTER to TAG_QUERY, as gender and animacy are now also included in the tag string and are written in the respective columns in the rus_drill_tag table.
+			if noun_type == "N-NEUT":
+				TAG_QUERY = TAG_QUERY & Q(gender='Neu')
+			elif noun_type == "N-MASC-INANIM":
+				TAG_QUERY = TAG_QUERY & Q(gender='Msc',animate='Inan')
+			elif noun_type == "N-MASC-ANIM":
+				TAG_QUERY = TAG_QUERY & Q(gender='Msc',animate='Anim')
+			elif noun_type in ["N-FEM-8", "N-FEM-other"]:
+				TAG_QUERY = TAG_QUERY & Q(gender='Fem')
+
+            # Gen2 / Loc2 does not exist for all nouns. The user must decide if a word has Loc2 or only one form for Loc - therefore all the words can occur in this exercise. We need to make a more complicated query because the case tags are different: Loc and Loc2. The same for Gen2 (tags 'Gen' and 'Gen2'). The words having Loc2 resp. Gen2 are marked in the database: there are fields loc2 and gen2 in the Word table.
+		if case == 'Loc2':
+			if noun_type == "N-MASC-INANIM":
+				CASE_QUERY = Q(case=case) # Only Msc Inanim nouns have Loc2.
+			else:
+				CASE_QUERY = Q(case='Loc')
 			TAG_QUERY = TAG_QUERY & CASE_QUERY
 			#TAG_EXCLUDES = Q(case='Prp', form__word__loc2=1)
 				    
 		# We do not filter out the forms that Apertium is not able to generate:
                 #random_word = random_word.exclude(fullform__contains='#').exclude(fullform__contains='*')
 				    
-		elif pos == 'N' and case == 'Par':
-			CASE_QUERY = Q(case=case) | Q(case='Gen')
+		elif case == 'Gen2': # was Par in apertium fst
+			if noun_type == "N-MASC-INANIM":
+				CASE_QUERY = Q(case=case)
+			else:
+				CASE_QUERY = Q(case='Gen')
 			TAG_QUERY = TAG_QUERY & CASE_QUERY
 
 		
@@ -653,14 +675,7 @@ class BareGame(Game):
 						Q(case=case)
 						# regardless of whether it's Actor, Coll, etc.
 
-		if pos == 'N':
-			if singular_only:   # if the user has checked the box "singular only"
-				TAG_QUERY = TAG_QUERY & Q(number='Sg')
-			else:
-				TAG_QUERY = TAG_QUERY & Q(number__in=number)
-
-
-
+		
 		# 'Pers' subclass for pronouns, otherwise none.
 		# TODO: combine all subclasses so forms can be fetched
 		if pos == 'Pron':
@@ -776,28 +791,21 @@ class BareGame(Game):
 			print "tag:", tag
 			
 			# Loc2 and Gen2 need a special treatment.
-			if case == 'Loc': # exercise on Locative2
-				if tag.case == 'Loc':
+			"""if case == 'Loc': # exercise on Locative2
+				if tag.case == 'Loc2':
 				    WORD_FILTER = WORD_FILTER & Q(word__loc2=True)
 				else:  # tag.case = 'Prp'
 				    WORD_FILTER = WORD_FILTER & Q(word__loc2=False)
-			if case == 'Par': # exercise on Genitive2
-				if tag.case == 'Par':
+			if case == 'Gen2': # exercise on Genitive2
+				if tag.case == 'Gen2':
 					WORD_FILTER = WORD_FILTER & Q(word__gen2=True)
 				else:  # tag.case = 'Gen'
-				    WORD_FILTER = WORD_FILTER & Q(word__gen2=False)
-				    
-			# Process the selection from the noun_type menu (incorporates gender, animacy and inflection type):
-			if noun_type == "N-NEUT":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='Neu')
-			elif noun_type == "N-MASC-INANIM":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='Msc',word__animate='nn')
-			elif noun_type == "N-MASC-ANIM":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='Msc',word__animate='aa')
-			elif noun_type == "N-FEM-8":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='Fem', word__inflection_class__contains='8')
+				    WORD_FILTER = WORD_FILTER & Q(word__gen2=False)"""
+				    				
+			if noun_type == "N-FEM-8":
+				WORD_FILTER = WORD_FILTER & Q(word__inflection_class__contains='8')
 			elif noun_type == "N-FEM-other":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='Fem') & (Q(word__lemma__endswith='а') | Q(word__lemma__endswith='я'))
+				WORD_FILTER = WORD_FILTER & (Q(word__lemma__endswith='а') | Q(word__lemma__endswith='я'))
 				
 			SOURCE_FILTER = Q() 
 			if source.lower() != 'all':
@@ -836,6 +844,13 @@ class BareGame(Game):
 				if tag.pos in ["A", "V"]:
 				    WORD_FILTER = Q()
 				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)
+				if random_word == []: # Program tried to pick a Loc2 or Gen2 form for the word that does not have it.
+				    if tag.case == "Loc2":
+				        tag = tags.filter(case='Loc')
+				    if tag.case == "Gen2":
+				        tag = tags.filter(case='Gen')
+				    tag = tags.order_by('?')[0]
+				    random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)
 				print "random word:", random_word
 				
 
@@ -965,7 +980,7 @@ class BareGame(Game):
 		# about turning nominative singular into nominative plural,
 		# thus all baseforms should be singular.
 
-		if tag.case in ['Nom', 'Par', 'Loc'] or tag.attributive:
+		if tag.case in ['Nom', 'Loc2', 'Gen2'] or tag.attributive:
 			match_number = False
 		else:
 			match_number = True

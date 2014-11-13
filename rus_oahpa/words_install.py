@@ -112,6 +112,7 @@ class Analysis(object):
 			'pos': self.classes.get('Wordclass', ""),
 			'number': self.classes.get('Number',""),
 			'gender': self.classes.get('Gender', ""),  # PI: added for Russian
+			'animate': self.classes.get('Animate',""),
 			'case': self.classes.get('Case',""),
 			'inflection_class': self.classes.get('Inflectionclass',""),  # added by Heli: this is the Zaliznjak code 
 #			'possessive': self.classes.get('Possessive',""),
@@ -772,9 +773,10 @@ class Words(object):
 		animate = ""
 		print >> sys.stdout, 'lemma: %s' % lemma
 		if pos == 'N' and mainlang == 'rus':  # Stem info should be obtained for Russian words only, not the translations. 'mainlang' is the value of the xml:lang attribute in the xml file.
-		  stem_info = linginfo.get_stem_info(force_unicode(lemma).encode('utf-8')) # added by Heli, not sure if it works like this
-		  gender = None or stem_info[0]
-		  animate = None or stem_info[1]
+		  stem_info = linginfo.get_stem_info(force_unicode(lemma).encode('utf-8')) # added by Heli
+		  if stem_info: # There is no stem info for the words that are unknown for the FST.
+		      gender = stem_info[0]
+		      animate = stem_info[1]
 		declension = None or entry.declension
 		inflection_class = None or entry.inflection_class
 		lemma_stressed = None or entry.lemma_stressed
@@ -983,6 +985,7 @@ class Words(object):
 						'case': 			g.get('Case',""),
 #						'possessive': 		g.get('Possessive',""),
 						'gender':           g.get('Gender', ""),
+						'animate':          g.get('Animate', ""),   
 #						'inflection_class':   g.get('Inflectionclass', ""),
 #						'grade': 			g.get('Grade',""),
 #						'infinite': 		g.get('Infinite',""),
