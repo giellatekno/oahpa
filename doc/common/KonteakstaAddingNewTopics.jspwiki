@@ -1,0 +1,40 @@
+!!!
+Instructions for extending Konteaksta with new exercise topics
+!!!
+
+Every time you have to create a new topic (such as SubstantiveSingular, VerbConjugation, Object etc.) you have to do the following:
+
+# Edit the source code
+
+a) Create a new directory ''YourTopic'' under src/main/webapp/activities/ by making a copy of an existing sub-directory. Edit the file __activity.xml__. Change the tag sequences that identify the words you are looking for and the name of the post processing descriptor file (desc/operators/vislcg3PostProc_YourTopic.xml). 
+
+b) Add a new file ''yourtopic.js'' under src/main/resources/firefox-extension/werti/chrome/content/ and adapt this file by doing replacements PreviousTopic -> YourTopic. Do the same in src/main/webapp/js-lib/.
+
+c) Create new UIMA descriptor files in desc/enhancers/ (vislcg3YourTopic.xml) and in desc/operators/ (vislcg3PostProc_YourTopic.xml). The easiest way: make copies of the corresponding files of any working topic and make the necessary replacements - replace PreviousTopic by YourTopic.
+
+d) Create the corresponding Java file under src/main/java/werti/uima/enhancer/ (VislCG3YourTopicEnhancer.java)
+In addition to overall replacement of the topic, edit the function getDistractors() or writeMorphologicalForms() that is used for generating the disctractor forms for the multiple choice exercises. You have to replace the tag sequences in the array distract_forms, maybe also something more in the function body. It is important that the function is able to generate correct strings of lemma + morphological tags that would pass the generator-fst and result in word forms that could be used as confusing alternatives to the correct answer in the drop-down list. In case of inflection exercises the natural distractor forms are other inflected forms of the same word, in case of conjunctions and prepositions the array can be composed of e.g. all common conjunctions / prepositions or those that occur in the given text. The duplicate forms are automatically excluded from the list in yourtopic.js, so you do not need to worry about the possible homonyms.
+
+e) Define a new css-style for the ''colorize'' exercise ( .colorizeStyleYourTopic ) in src/main/resources/firefox-extension/werti/chrome/content/wertiview.css
+
+f) Add link to the src/main/webapp/index.html
+
+g) Add mapping to "dict" in src/main/java/werti/util/HTMLEnhancer.java
+
+# Rebuild and redeploy the package. Restart the web server.
+
+You have to do the following in order to see the effect of your changes: 
+
+a) Sometimes, particularly if you have deleted some files from the src/ directory, it is useful to clean up the target first:
+
+mvn clean
+
+b) Building the package can be done by launching the script 
+
+./make_teaksta.sh 
+
+in the package root directory.
+
+c) After adding a new topic, restarting Tomcat is always recommended:
+$CATALINA_HOME/bin/shutdown.sh
+$CATALINA_HOME/bin/startup.sh
