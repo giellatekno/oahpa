@@ -1,0 +1,81 @@
+!!! Møte 18.11.14
+
+Til stades: Heli, Lene, Robert
+
+!!!Saker: 
+# Arbeidet videre, 2015
+# Kvensk Oahpa
+# Dokumentasjon av Oahpa
+# Preprosessering
+# Felles system for russisk og nordsamisk
+# Konteaksta på gtoahpa og kursinnlogging
+# Optimalisering av spørring
+# Firefox-plugin for Konteaksta
+# Neste møte
+
+!!Arbeidet videre, 2015
+Vi har ikke Oahpa-finansering i 2015, men vi har noen 'løse' penger, hvor noe kan bli brukt på Oahpa. 
+Vi har ca 70 000 igjen i Fleksiprosjektet for 2014, men vi vil be evt overskytende penger bli flyttet til 2015.
+
+
+!!Kvensk Oahpa
+Vi venter på klarsignal fra Leena om å generere nye filer til Oahpa.
+Locale djangofiler er generert.
+
+! Tiltak:
+* __Lene__ tar kontakt med Leena med spørsmål om genereringa kan starte
+
+!!Dokumentasjon for Oahpa: sak fra forrige møte
+
+!Tiltak:
+* __Heli__ legger inn mangler i dokumentasjonen for Oahpa: [Oahpadokumentasjon|http://giellatekno.uit.no/ped/common/OahpaTechnicalDocumentation.html]
+** Lokalisering (messages og translations): [Lokalisering|http://giellatekno.uit.no/ped/common/Localisation.html]
+
+
+!!Preprosessering
+Heli har endra preprossesering fra OpenNLP til giellatekno preprosessering. Årsaken til problemene som Lene meldte om på siida-siden var i selve html-koden, og den kan vi ikke gjøre noe med. Dette er et problem for Konteaksta. 
+
+Eduard lager en log for prepreprossering, for å kunne sjekke sidene, dvs sammenlikne antall token på siden med antall token i den lingvistiske analysen.
+
+!Tiltak:
+* __Lene__ tester Helis endring.
+
+!!Felles system for russisk og nordsamisk
+Det ville være en fordel å kunne ha rusKonteaksta og smeKonteaksta i et felles system, 
+ikke minst når man skal kople dette til innlogging. RusKonteaksta er idag på server i Tübingen, men skal flyttes til gtoahpa-serveren.
+
+Bare javakoden vil være felles, kildekoden ellers vil være separat, og dermed vil man ikke behøve å samarbeide om activities osv.
+
+!Tiltak:
+* __Heli, Robert__ vil se på dette sammen med Eduard
+
+!!Konteaksta på gtoahpa og kursinnlogging
+Heli har sendt ut mail om hvilke data som kan samles fra Konteaksta til kursinnlogging. Dette ser veldig bra ut. 
+
+Ryan har laget en struktur for å legge inn data fra Konteaksta. Han foreslår å bruke en cookie istedenfor å sende data til csv-filer, sende data til en cookie. 
+
+!Tiltak:
+* __Heli__ vil flytte Konteaksta til gtoahpa, men diskuterer dette med Ryan. Kanskje vil det være en ide å teste først på gtlab.
+* __Heli, Ryan__ begynner med implementeringa.
+
+
+!!Optimalisering av spørring
+Det er en bedre løsning å samle alle ordene i en fil og sende dem til generering sammen. Heli har dette nesten klart for sme, men har en bug. Dette fungerer bra for russisk, det tar mindre enn to sekunder, mot tidligere et par minutter.
+
+! Tiltak:
+* __Heli__ prioriterer å arbeide med optimaliseringa av spørringa
+
+
+!!Firefox-plugin for Konteaksta
+Eduard har arbeidet med dette, og det er en plugin som fungerer for russisk. Robert har dokumentasjon for å legge inn aktiviteter.
+
+Man må se på hvordan kople plugin til kursinnlogging.
+
+! Tiltak:
+* __Heli__ arbeider videre med dette sammen med Eduard 
+
+!!Neste møte
+Torsdag kl 20, hvis det passer for Ryan.
+
+
+
