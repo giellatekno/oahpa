@@ -15,14 +15,8 @@ class GradingMiddleware(object):
             setattr(request, 'graded_view', True)
 
     def increment_session_answer_counts(self, request):
-        # If all_correct or all_complete
 
         # NB: Incrementing the session variable for set tried happens in
-        # reset_increments
-        # if 'question_set_count' in request.session:
-        #     request.session['question_set_count'] += 1
-        # else:
-        #     request.session['question_set_count'] = 1
 
         # Increment individual question/answer tries
 
@@ -45,7 +39,7 @@ class GradingMiddleware(object):
     def reset_increments(self, request):
         # If 'set_completed' is in the session variable, 
         # then need to clear variables for the next go around.
-        # TODO: also increment on 'new set'
+
         new_set = request.session.get('new_game')
         prev_new_set = request.session['prev_new_game']
         new_sets = new_set and prev_new_set
@@ -76,7 +70,6 @@ class GradingMiddleware(object):
         del request.session['current_user_goal']
         del request.session['current_exercise_params']
         del request.session['previous_exercise_params']
-
 
     def process_response(self, request, response):
         """ Here the goal is to process the grading that pertains to the

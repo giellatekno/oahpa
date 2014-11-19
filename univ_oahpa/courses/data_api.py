@@ -12,6 +12,7 @@ from .models import ( UserGoalInstance
                     , GoalParameter
                     , UserFeedbackLog
                     , CourseGoalGoal
+                    , create_activity_log_from_drill_logs
                     )
 
 from .data_permissions import *
@@ -369,48 +370,147 @@ class SubmissionView(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.queryset.filter(recipient=self.request.user).unread()
 
-    def create(self, request):
-        # print request.META['referrer']
+    def create_logs_for_request(self):
+        import datetime
+        
+        request = self.request
+
+        if request.session.has_key('country'):
+            self.settings['user_country'] = request.session['country']
+        else:
+            self.settings['user_country'] = False
+
+        today = datetime.date.today()
+
+        log_kwargs = {
+            'userinput': self.answer,
+            'correct': ','.join(self.correct_anslist),
+            'iscorrect': self.iscorrect,
+            # 'example': self.example,
+            'game': "Task: %d" % self.task.id,
+            'date': today
+        }
+
+        if self.user:
+            log_kwargs['username'] = self.user.username
+
+        if self.user_country:
+            log_kwargs['user_country'] = self.user_country
+
+        log = Log.objects.create(**log_kwargs)
+
+        return [log]
+
+    def validate_goal_request(self):
         refer = request.META['referrer']
         task_id = request.data['task_id']
-        task = Goal.objects.get(id=task_id)
 
-        # TODO: mimic drill logs / user_logs_generated
-
-        # TODO: create user activity log from JSON
-
-        # TODO: track increments
-
-        # ual = create_activity_log_from_drill_logs(
-        #     request,
-        #     request.user,
-        #     request.user_logs_generated,
-        #     current_user_goal=current_user_goal)
-
-        # TODO: find or create a UserGoalInstance
+        self.task = Goal.objects.get(id=task_id)
 
         if task.remote_task == True and task.url_base in refer:
             # TODO: any URL objects that can be used to perform a better
             # comparison? 
+        else:
+            self.errors = [
+                'Referer does not match task whitelist.',
+            ]
+            return Response({'success': False, 'errors': errors})
 
-            # TODO: UserGoalInstance to track activity logs
-            # TODO: generate activity log and attach to instance? 
-            # TODO: convert from courses.models.create_activity_log_from_drill_logs
+        return 
 
+    def evaluate_user_response(self):
 
+        self.request.user_logs_generated = self.create_logs_for_request()
 
-        return Response({'success': True})
+        ual = create_activity_log_from_drill_logs(
+            request,
+            request.user,
+            request.user_logs_generated,
+            current_user_goal=self.task)
 
-    # TODO: increment tracking on session
+        self.goal_instance = self.get_or_create_goal_instance()
 
-    # def reset_increments(self, request):
-    #     # If 'set_completed' is in the session variable, 
-    #     # then need to clear variables for the next go around.
-    #     new_set = request.session.get('new_game')
-    #     prev_new_set = request.session['prev_new_game']
-    #     new_sets = new_set and prev_new_set
+        result = goal_instance.evaluate_instance()
 
-    #     if request.session.get('set_completed', False) or new_sets:
-    #         request.session['question_try_count'] = {}
-    #         request.session['question_set_count'] += 1
-    #         request.session['answered'] = {}
+        if result is not None:
+            try: result.pop('progress_pretty')
+            except: pass
+
+            try: result.pop('correct_minus_first')
+            except: pass
+
+            try: result.pop('correct_later_tries')
+            except: pass
+
+        # This also marks the user goal instance as complete.
+        complete = self.task.is_complete(goal_instance)
+
+        response_data = {
+            'success': True,
+            'evaluation': result,
+            'complete': complete,
+        }
+
+        return response_data
+
+    def get_or_create_goal_instance(self):
+
+        if request.METHOD == 'POST':
+            prev = UserGoalInstance.objects.filter(id=self.current_user_goal, 
+                                                   opened=True)
+            prev.update(opened=False).save()
+
+            ugi = UserGoalInstance.objects.create(user=self.request.user,
+                                                  goal=self.task)
+
+            # request.session['current_user_goal'] = int(ugi.id)
+            # request.session['max_rounds'] = self.task.minimum_sets_attempted
+            # request.session['correct_threshold'] = self.task.threshold
+
+        elif request.METHOD == 'PUT':
+            ugi = UserGoalInstance.objects.get(id=self.current_user_goal, 
+                                               opened=True)
+            ugi.attempt_count += 1
+            ugi.save()
+
+        # TODO: create or increment counters
+
+        return ugi
+
+    # TODO: put for adding more data to a task
+    def put(self, request):
+        """ This updates an existing goal instance for work in progress.
+
+        PUT: json including the following data
+
+            * `user_input` - this is the user's response
+            * `correct` - a comma separated list of correct answers to
+              the question prompt
+            * `iscorrect` - did the external app find the response to be
+              correct?
+
+        """
+        self.validate_goal_request()
+
+        response_data = self.evaluate_user_response()
+        return Response(response_data)
+
+    def create(self, request):
+        """ For new tasks.
+
+        POST: json including the following data
+
+            * `user_input` - this is the user's response
+            * `correct` - a comma separated list of correct answers to
+              the question prompt
+            * `iscorrect` - did the external app find the response to be
+              correct?
+
+        """
+
+        self.validate_goal_request()
+
+        # TODO: where is the json data?
+
+        response_data = self.evaluate_user_response()
+        return Response(response_data)
