@@ -362,6 +362,15 @@ class NotificationsView(viewsets.ModelViewSet):
 
         return Response({'success': True})
 
+# TODO: require a.query == b.query as option?
+def equal_url_base(a, b):
+    return all([
+        a.scheme == b.scheme,
+        a.netloc == b.netloc,
+        a.path == b.path,
+    ])
+
+
 class SubmissionView(viewsets.ModelViewSet):
     # TODO: UserActivityLog and UserGoalInstance
     model = UserGoalInstance
@@ -402,21 +411,27 @@ class SubmissionView(viewsets.ModelViewSet):
         return [log]
 
     def validate_goal_request(self):
-        refer = request.META['referrer']
-        task_id = request.data['task_id']
+        import urlparse
+
+        refer = urlparse.urlparse(request.META['referrer'])
+
+        task_id = request.DATA['task_id']
 
         self.task = Goal.objects.get(id=task_id)
 
-        if task.remote_task == True and task.url_base in refer:
-            # TODO: any URL objects that can be used to perform a better
-            # comparison? 
+        json = request.DATA
+
+        task_url = urlparse.urlparse(task.urlbase)
+
+        if task.remote_task == True and equal_url_base(task.url_base, refer):
+            # TODO: check json
+            return True, None
         else:
             self.errors = [
                 'Referer does not match task whitelist.',
             ]
-            return Response({'success': False, 'errors': errors})
+            return False, Response({'success': False, 'errors': errors})
 
-        return 
 
     def evaluate_user_response(self):
 
@@ -483,6 +498,11 @@ class SubmissionView(viewsets.ModelViewSet):
 
         PUT: json including the following data
 
+            * `task_id` - this is the task that will be submitted to
+
+              NB: task ID can either be found through API, or found
+              within the courses admin interface
+
             * `user_input` - this is the user's response
             * `correct` - a comma separated list of correct answers to
               the question prompt
@@ -490,10 +510,37 @@ class SubmissionView(viewsets.ModelViewSet):
               correct?
 
         """
-        self.validate_goal_request()
+
+        valid, resp = self.validate_goal_request()
+        if not valid:
+            return resp
 
         response_data = self.evaluate_user_response()
         return Response(response_data)
+
+    def list(self, request):
+        import urlparse
+
+        refer = urlparse.urlparse(request.META['referrer'])
+
+        tasks = Goal.objects.filter(remote_task=True).values_list('id', 'url_base', flat=True)
+        matching_tasks = []
+
+        referer = 
+        for _id, _base in tasks:
+            base = urlparse.urlparse(_base)
+            if equal_url_base(refer, base):
+                matching_tasks.append(_id)
+            
+
+        matching_objs = Goal.objects.filter(id__in=matching_tasks)
+
+        serialized = GoalSerializer.serialize(matching_objs)
+
+        return Response({
+            'success': True,
+            'goals_available': serialized
+        })
 
     def create(self, request):
         """ For new tasks.
@@ -508,7 +555,9 @@ class SubmissionView(viewsets.ModelViewSet):
 
         """
 
-        self.validate_goal_request()
+        valid, resp = self.validate_goal_request()
+        if not valid:
+            return resp
 
         # TODO: where is the json data?
 
