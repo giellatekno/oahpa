@@ -43,10 +43,10 @@ class UserStatsViewSet(viewsets.ModelViewSet):
         for the currently authenticated user.
         """
         user = self.request.user
-        goal_id = self.request.session.get('current_user_goal', False)
-        if goal_id:
+        goal_instance_id = self.request.session.get('current_user_goal', False)
+        if goal_instance_id:
             user_goal_instance = UserGoalInstance.objects.filter( user=user
-                                                                , id=goal_id
+                                                                , id=goal_instance_id
                                                                 , opened=True
                                                                 )\
                                                          .order_by('-last_attempt')
@@ -372,12 +372,39 @@ def equal_url_base(a, b):
 
 
 class SubmissionView(viewsets.ModelViewSet):
-    # TODO: UserActivityLog and UserGoalInstance
+    """ This view is for logging user progress on external activities.
+    The activities must be registered first in the database with a Task,
+    marked as external, and the URL that the task will be completed on
+    must be registered as well. The referrer will be used in order to
+    construct the list of Tasks available from any given page.
+
+    In constructing the reporting system on the client side, using
+    JavaScript, a typical workflow would be the following: 
+
+        1.) a GET request to the submission endpoint to determine what
+        activities are available for the page.
+
+        2.) Storing the Task ID for the desired Task to associate with
+        the user's activity.
+
+        3.) A POST request with the first set of user data.
+
+        4.) PUT requests for any subsequent activity on for the same
+        instance of the work.
+
+    This means thus, that if the user resets their progress or restarts,
+    a _new_ POST request must be made to mark the new beginning.
+
+    NB: end users are always free to intercept requests and submit
+    whatever they want.
+
+    """
+
     model = UserGoalInstance
     queryset = UserGoalInstance.objects.all()
 
     def get_queryset(self):
-        return self.queryset.filter(recipient=self.request.user).unread()
+        return self.queryset.filter(user=self.request.user)
 
     def create_logs_for_request(self):
         import datetime
@@ -411,20 +438,37 @@ class SubmissionView(viewsets.ModelViewSet):
         return [log]
 
     def validate_goal_request(self):
+        """ This checks URL parameters, and validates the JSON passed in
+        the requests. If the JSON is invalid, or the referer does not
+        match the goal's referer URL, a response will be returned with
+        the errors.
+
+        """
         import urlparse
 
+        from schematics.models import Model as SchematicsModel
+        from schematics.types import StringType, IntegerType, BooleanType
+        from schematics.exceptions import ModelValidationError
+
+        class Submission(SchematicsModel):
+            task_id = IntegerType(required=True)
+            user_input = StringType(required=True)
+            correct = StringType(required=True)
+            iscorrect = BooleanType(required=True)
+
         refer = urlparse.urlparse(request.META['referrer'])
-
         task_id = request.DATA['task_id']
-
-        self.task = Goal.objects.get(id=task_id)
-
         json = request.DATA
 
+        self.task = Goal.objects.get(id=task_id)
         task_url = urlparse.urlparse(task.urlbase)
 
         if task.remote_task == True and equal_url_base(task.url_base, refer):
-            # TODO: check json
+            sub = Submission(request.DATA)
+            try:
+                sub.validate()
+            except ModelValidationError, e:
+                return False, Response({'success': False, 'errors': e.messages})
             return True, None
         else:
             self.errors = [
@@ -443,7 +487,7 @@ class SubmissionView(viewsets.ModelViewSet):
             request.user_logs_generated,
             current_user_goal=self.task)
 
-        self.goal_instance = self.get_or_create_goal_instance()
+        goal_instance = self.get_or_create_goal_instance()
 
         result = goal_instance.evaluate_instance()
 
@@ -471,14 +515,16 @@ class SubmissionView(viewsets.ModelViewSet):
     def get_or_create_goal_instance(self):
 
         if request.METHOD == 'POST':
-            prev = UserGoalInstance.objects.filter(id=self.current_user_goal, 
+            prev = UserGoalInstance.objects.filter(goal=self.task, 
                                                    opened=True)
             prev.update(opened=False).save()
 
             ugi = UserGoalInstance.objects.create(user=self.request.user,
                                                   goal=self.task)
 
-            # request.session['current_user_goal'] = int(ugi.id)
+            request.session['current_user_goal'] = int(ugi.id)
+
+            # TODO: ?
             # request.session['max_rounds'] = self.task.minimum_sets_attempted
             # request.session['correct_threshold'] = self.task.threshold
 
@@ -488,11 +534,8 @@ class SubmissionView(viewsets.ModelViewSet):
             ugi.attempt_count += 1
             ugi.save()
 
-        # TODO: create or increment counters
-
         return ugi
 
-    # TODO: put for adding more data to a task
     def put(self, request):
         """ This updates an existing goal instance for work in progress.
 
@@ -558,8 +601,6 @@ class SubmissionView(viewsets.ModelViewSet):
         valid, resp = self.validate_goal_request()
         if not valid:
             return resp
-
-        # TODO: where is the json data?
 
         response_data = self.evaluate_user_response()
         return Response(response_data)
