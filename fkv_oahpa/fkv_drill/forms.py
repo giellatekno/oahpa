@@ -80,7 +80,7 @@ NOUN_QUESTION_ANSWER = {
 	'N-ALL': [('N+NumberN+Nom', 'N+NumberN+All')],
 }
 
-NOUN_FILTER_DEFINITION = ['animacy', 'declension', 'gender', 'source']
+NOUN_FILTER_DEFINITION = ['declension', 'source']
 
 # Pers - akk, gen, ill, lok, kom
 # Dem - akk, gen, ill, lok, kom
@@ -95,14 +95,6 @@ CASE_CHOICES_PRONOUN = (
     ('N-ABL', _('Ablative')),
     ('N-ALL', _('Allative')),
 )
-
-# 	('N-ACC', _('accusative')),
-# 	('N-ILL', _('illative')),
-# 	('N-LOC', _('locative')),
-# 	('N-COM', _('comitative')),
-# 	('N-GEN', _('genitive')),
-# 	# ('N-ESS', _('essive')),
-# )
 
 PRONOUN_QUESTION_ANSWER = {
 	# gametype			question		answer
@@ -144,11 +136,6 @@ CASE_CONTEXT_CHOICES = (
 )
 
 NOUN_TYPE_CHOICES =(
-	('N-FEM-other', _(u'feminine in -a/-я')),
-	('N-FEM-8', _(u'feminine in -ь')),
-	('N-MASC-INANIM', _('masculine inanimate')),
-	('N-MASC-ANIM', _('masculine animate')),
-	('N-NEUT', _('neuter')),
 	('all', _('All')),
 )
 
@@ -320,9 +307,9 @@ DERIVATION_CHOICES_CONTEXT = (
 
 BOOK_CHOICES = (
     ('all', _(u'all')),
-    ('Alku1', _('Alku 1')), # MJ1 GK1 MJ2 MJ3 MJ4
-    ('Alku2', _('Alku 2')), # MJ5 MJ6 MJ7 MJ8 MJ9
-    ('Alku3', _('Alku 3')), # MJ10 MJ11 MJ12 MJ13 MJ14
+    ('Alku1', _('Alku 1')), 
+    ('Alku2', _('Alku 2')), 
+    ('Alku3', _('Alku 3')), 
 )
 
 CHAPTER_CHOICES = {
@@ -866,7 +853,7 @@ class OahpaSettings(forms.Form):
 					'adj_context' : 'ATTRPOS',
 					'book' : 'all',
 					'noun_type': 'N-MASC-INANIM',
-					'singular_only' : True}
+					'singular_only' : False}
 
 
 
@@ -940,7 +927,6 @@ class OahpaQuestion(forms.Form):
 				# need to subtract legal answers and make an only relaxed list.
 				relaxings = [item for item in forms if force_unicode(item) not in accepted_answers]
 		if (hasattr(self, 'gametype') and self.gametype == 'leksa'): # this applies only to Leksa, was: elif
-			# PI: commented out at this stage
 			# # add infinitives as possible answers
 			if self.word.pos == 'V':
 				if self.translang in infinitives_sub and infinitives_add:
@@ -955,11 +941,6 @@ class OahpaQuestion(forms.Form):
 		self.correct_anslist = [force_unicode(item) for item in accepted_answers] + [force_unicode(f) for f in forms]
 		print "correct_anslist:",self.correct_anslist
 		self.relaxings = relaxings
-
-		#def generate_fields(self,answer_size, maxlength):
-		#	self.fields['answer'] = forms.CharField(max_length = maxlength, \
-         #                                       widget=forms.TextInput(\
-          #  attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event,document.gameform);',}))  # copied from old-oahpa
 
 # #
 #
@@ -981,7 +962,7 @@ class LeksaSettings(OahpaSettings):
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
 	
-	default_data = {'gametype' : 'leksa', 'language' : 'fkv', 'dialogue' : 'GG',
+	default_data = {'gametype' : 'leksa', 'language' : 'fkv', 'dialect' : 'main',
 			#'syll' : [],
 			#'bisyllabic': False,
 			#'trisyllabic': False,
@@ -1129,9 +1110,9 @@ class MorfaSettings(OahpaSettings):
 	grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
 
 	# PI added
-	noun_type = forms.ChoiceField(initial='N-MASC-INANIM', choices=NOUN_TYPE_CHOICES, widget=forms.Select)
+	noun_type = forms.ChoiceField(initial='all', choices=NOUN_TYPE_CHOICES, widget=forms.Select)
 	# HU added
-	singular_only = forms.BooleanField(required=False, initial=True)
+	singular_only = forms.BooleanField(required=False, initial=False)
 
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1146,11 +1127,6 @@ class MorfaSettings(OahpaSettings):
 			post_data = False
 
 		if post_data:
-			# Gen2 and Loc2 mostly exist for masculine nouns:
-			#if 'case' in post_data:
-			#	if post_data['case'] in ['Par', 'Loc']:
-			#	    self.settings['noun_type'] = "N-MASC-INANIM"
-			#	    self.fields['noun_type'] = 'N-MASC-INANIM'
 			# Use a restricted choice set for pronoun case for Refl and Recipr
 			if 'pron_type' in post_data:
 				if post_data['pron_type'].lower() in ['refl', 'recipr']:
@@ -1325,7 +1301,7 @@ class NumSettings(OahpaSettings):
 	numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
 	#numlanguage = forms.ChoiceField(initial='sjd', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
 	# TODO: remove mandatory need to set default data, should be done through 'initial' field setting.
-	default_data = {'language' : 'fkv', 'numlanguage' : 'fkv', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
+	default_data = {'language' : 'fkv', 'numlanguage' : 'fkv', 'dialect' : 'main', 'maxnum' : '10', 'numgame': 'numeral'}
 
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1433,7 +1409,7 @@ class NumQuestion(OahpaQuestion):
 class KlokkaSettings(NumSettings):
 	numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES_PL, widget=forms.RadioSelect)
 	gametype = forms.ChoiceField(initial='kl1', choices=KLOKKA_CHOICES, widget=forms.RadioSelect)
-	default_data = {'language' : 'fkv', 'numlanguage' : 'fkv', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'string'}
+	default_data = {'language' : 'fkv', 'numlanguage' : 'fkv', 'dialect' : 'main', 'gametype' : 'kl1', 'numgame': 'string'}
 
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1836,13 +1812,11 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 
     noanalysis=False
 
-    fstdir = "/opt/smi/sme/bin"
-    #fstdir = settings.FST_DIRECTORY
+    fstdir = settings.FST_DIRECTORY
     fst = fstdir + "/ped-sme.fst"
     lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup" # on victorio
     #lo="/Users/mslm/bin/lookup" # on Heli's machine
     lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
-    #lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine
     lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
@@ -1991,7 +1965,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
                 spelling = True
             msgstrings[wordform][msgstring] = 1
 
-        #Store the baseform if tehre is dia-whatever
+        #Store the baseform if there is dia-whatever
         matchObj=targetObj.search(line)
         if matchObj:
             msgstring = matchObj.expand(r'\g<targetString>')
@@ -2015,10 +1989,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     #Interface language
     if not language: language = "nob"
     language = switch_language_code(language)
-    #if language == "no" : language = "nob"
-    #if language == "fi" : language = "fin"
-    #if language == "en" : language = "eng"
-    if not language in ["nob","sme","fin","eng","swe"]: language="nob"
+
+    if not language in ["nob","sme","fin","eng","fkv"]: language="nob"
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():

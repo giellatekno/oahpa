@@ -438,12 +438,6 @@ def leksa_filter(Model,
 	if source and source not in ['all', 'All']:
 		#QUERY['source__name__in'] = [source]
             QUERY['chapter__in'] = CHAPTER_CHOICES[source]
-				#if source == "l1":
-				    #QUERY['chapter__in']=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5']
-#				elif source == "l2":
-				    #QUERY['chapter__in']=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5','L6','L7','L8','L9','L10','L11','L12']
-#				elif source == "l3":
-				    #QUERY['chapter__in']=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5','L6','L7','L8','L9','L10','L11','L12','L13','L14','L15','L16','L17']
 
 	query_set = Model.objects.exclude(**EXCL).filter(**QUERY).order_by('?')[:10]
 	query_ids = query_set.values_list('id', 'lemma')
@@ -460,18 +454,13 @@ class Word(models.Model):
 	wordid = models.CharField(max_length=200, db_index=True)
 	language = models.CharField(max_length=5, default='fkv', db_index=True)
 	lemma = models.CharField(max_length=200, db_index=True)
-	#lemma_stressed = models.CharField(max_length=200, db_index=True)  # added by HU
 	presentationform = models.CharField(max_length=5) # PI: what's this?
 	pos = models.CharField(max_length=12) # Accomodate larger PoS
 	stem = models.CharField(max_length=20)
 	#animate = models.CharField(max_length=20) # PI: could be boolean?
-	#gender = models.CharField(max_length=20)
 	#declension = models.CharField(max_length=20)
-	#loc2 = models.BooleanField(default=False) # indicates if the word has Locative2 or not
-	#gen2 = models.BooleanField(default=False) # indicates if the word has Genitive2 or not
 	reflexive = models.NullBooleanField(blank=True)
-	#inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
-	#zaliznjak = models.CharField(max_length=20)
+	#inflection_class = models.CharField(max_length=20) 
 
 	wordclass = models.CharField(max_length=12)
 	valency = models.CharField(max_length=10)
@@ -480,11 +469,6 @@ class Word(models.Model):
 	source = models.ManyToManyField(Source) # The textbook(s) where the word is introduced
 	chapter = models.CharField(max_length=10) 
 	compare = models.CharField(max_length=5) # PI: what's this?
-	# translations2nob = models.ManyToManyField('Wordnob')
-	# translations2swe = models.ManyToManyField('Wordswe')
-	# translations2sme = models.ManyToManyField('Wordsme')
-	# translations2eng = models.ManyToManyField('Wordeng')
-	# translations2deu = models.ManyToManyField('Worddeu')
 	frequency = models.CharField(max_length=10)
 	geography = models.CharField(max_length=10)
 	objects = models.Manager() # The default manager.
@@ -493,8 +477,6 @@ class Word(models.Model):
 	# nob = Nob()
 	morphophon = models.ForeignKey(MorphPhonTag, null=True)
 	dialects = models.ManyToManyField(Dialect, null=True)
-	#aspect = models.CharField(max_length=20) # aspect partner (verbs only)
-	#motion = models.CharField(max_length=20) # motion partner (verbs only)
 
 
 	def morphTag(self, nosave=True):
@@ -504,8 +486,6 @@ class Word(models.Model):
 			mphon = False
 		if not mphon:
 			kwargs = {
-				#'gender':	self.gender,
-				#'animate':	self.animate,
 				#'declension':	self.declension,
 				'reflexive':	self.reflexive,
 				#'inflection_class': self.inflection_class
@@ -734,7 +714,6 @@ class Tag(models.Model):
 #			'possessive': 'Possessive',
 #			'subclass': 'Subclass',
 			'tense': 'Tense',
-			#'gender': 'Gender',
 		}
 
 		tagname_to_set = {}

@@ -45,11 +45,6 @@ except:
 	DEFAULT_DIALECT = None
 
 
-# FST_DIRECTORY = '/opt/smi/sme/bin' #Just testing. Hardcoded here because it looks like looking it up in settings.py failed
-# LOOKUP_TOOL = '/usr/local/bin/lookup'
-# Probably delete this: seems to work OK here...
-
-
 def parse_tag(tag):
 	""" Iterate through a tag string by chunks, and check for tag sets
 	and tag names. Return the reassembled tag on success. """
@@ -487,7 +482,7 @@ class BareGame(Game):
 		pron_type = True and self.settings.get('pron_type') or   ""
 		proncase = True and self.settings.get('proncase') or   ""
 		derivation_type = True and self.settings.get('derivation_type') or   ""
-#		grade = True and self.settings.get('grade')  or  ""
+		grade = True and self.settings.get('grade')  or  ""
 		num_type = True and self.settings.get('num_type') or ""  # added to get num_type from settings
 		source = self.settings['book']
 
@@ -779,37 +774,14 @@ class BareGame(Game):
 			WORD_FILTER = Q()
 			tag = tags.order_by('?')[0]
 				    
-			# Process the selection from the noun_type menu (incorporates gender, animacy and inflection type):
+			# Process the selection from the noun_type menu (can incorporate e.g. inflection type):
 			"""if noun_type == "N-NEUT":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='nt')
-			elif noun_type == "N-MASC-INANIM":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='m',word__animate='nn')
-			elif noun_type == "N-MASC-ANIM":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='m',word__animate='aa')
-			elif noun_type == "N-FEM-8":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='f', word__inflection_class__contains='8')
-			elif noun_type == "N-FEM-other":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='f') & (Q(word__lemma__endswith='а') | Q(word__lemma__endswith='я'))"""
+				WORD_FILTER = WORD_FILTER & Q(word__gender='nt') """
 				
 			SOURCE_FILTER = Q() 
 			if source.lower() != 'all':
 				SOURCE_FILTER = Q(word__chapter__in=CHAPTER_CHOICES[source]) 
-				                           
-			""" commented out for testing without noun_class
-			normalized_noun_class = [item.lower().capitalize() for item in noun_class.split('-')]
-			for item in normalized_noun_class:
-				tagname = Tagname.objects.get(tagname=item)
-				tagset = tagname.tagset
-				# Oh Lisp macros, where are ye?
-				if tagset.tagset == 'Animate':
-					WORD_FILTER = WORD_FILTER & Q(word__animate=tagname.tagname.lower())
-				elif tagset.tagset == 'Declension':
-					WORD_FILTER = WORD_FILTER & Q(word__declension=tagname.tagname.lower())
-				elif tagset.tagset == 'Gender':
-					WORD_FILTER = WORD_FILTER & Q(word__gender=tagname.tagname.lower())
-            """
-
-			
+				                           			
 			no_form = True
 			count = 0
 			while no_form and count < 10:
