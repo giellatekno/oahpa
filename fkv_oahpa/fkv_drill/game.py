@@ -792,16 +792,9 @@ class BareGame(Game):
 					tag = tags.order_by('?')[0]
 
 				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)
-				
 
-				# PI: commented out, b/c at this stage
-				# where the Morfa-S semtype has not
-				# been set up we just end up whacking
-				# the random_word set
-
-				# if not tag.pos in ['Pron', 'Num'] and \
-				# 	tag.string.find('Der') < 0:
-				# 	random_word = random_word.filter(word__semtype__semtype="MORFAS")
+				if not tag.pos in ['Pron', 'Num'] and tag.string.find('Der') < 0:
+				 	random_word = random_word.filter(word__semtype__semtype="MORFA")
 
 				# if tag.pos == 'Pron':
 				# 	random_word = random_word\
