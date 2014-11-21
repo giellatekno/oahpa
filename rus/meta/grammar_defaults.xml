@@ -4,11 +4,15 @@
       <grammar pos="Pron" tag="Pron+Pers+Person-Number+Nom"/>
     </element> -->
     <element id="SUBJ">
-      <grammar pos="N" tag="N+Number+Nom"/>
+      <grammar pos="N" tag="N+Gender+Animate+Number+Nom"/>
     </element>  
     <element id="MAINV">
       <grammar pos="V" tag="V+Aspect+Transitivity+Tense+Person-Number"/>
-      <grammar pos="V" tag="V+Aspect+Transitivity+Tense+GenderV+Number"/>
-    </element> 
+      <grammar pos="V" tag="V+Aspect+Transitivity+Tense+Gender+Person-Number"/>
+    </element>
+    <element id="N-GEN">
+     <grammar pos="N" tag="N+Gender+Animate+Number+Gen"/>
+     <grammar pos="N" tag="N+Nountype+Semtag+Gender+Animate+Number+Gen"/>
+    </element>
 </tags>
 </definitions>
