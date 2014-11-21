@@ -43,6 +43,7 @@ from .data_api import ( UserStatsViewSet
                       , FeedbackLogView
                       , CourseGoalView
                       , NotificationsView
+                      , SubmissionView
                       )
 
 router = routers.DefaultRouter()
@@ -51,6 +52,7 @@ router.register(r'goals', GoalParametersView, base_name='params')
 router.register(r'coursegoals', CourseGoalView, base_name='coursegoals')
 router.register(r'notifications', NotificationsView, base_name='notifications')
 router.register(r'feedback', FeedbackLogView)
+router.register(r'submission', SubmissionView)
 
 urlpatterns += patterns('univ_oahpa.courses.views',
     url(r'^goal/history/(?P<goal_id>\d+)/(?P<user_id>\d+)/$', goal_history,
