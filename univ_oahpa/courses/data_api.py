@@ -3,6 +3,7 @@ from rest_framework import mixins
 
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.renderers import JSONRenderer
 
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
@@ -456,14 +457,18 @@ class SubmissionView(viewsets.ModelViewSet):
             correct = StringType(required=True)
             iscorrect = BooleanType(required=True)
 
-        refer = urlparse.urlparse(request.META['referrer'])
+        if 'HTTP_REFERER' not in request.META:
+            msg = ['Missing referer address']
+            return False, Response({'success': False, 'errors': msg})
+
+        refer = urlparse.urlparse(request.META['HTTP_REFERER'])
         task_id = request.DATA['task_id']
         json = request.DATA
 
         self.task = Goal.objects.get(id=task_id)
         task_url = urlparse.urlparse(task.urlbase)
 
-        if task.remote_task == True and equal_url_base(task.url_base, refer):
+        if task.remote_task == True and equal_url_base(task.remote_page, refer):
             sub = Submission(request.DATA)
             try:
                 sub.validate()
@@ -564,21 +569,28 @@ class SubmissionView(viewsets.ModelViewSet):
     def list(self, request):
         import urlparse
 
-        refer = urlparse.urlparse(request.META['referrer'])
+        if 'HTTP_REFERER' not in request.META and 'address' not in request.QUERY_PARAMS:
+            msg = ['Missing referer address']
+            return Response({'success': False, 'errors': msg})
 
-        tasks = Goal.objects.filter(remote_task=True).values_list('id', 'url_base', flat=True)
+        if 'HTTP_REFERER' in request.META:
+            refer = urlparse.urlparse(request.META['HTTP_REFERER'])
+        elif 'address' in request.QUERY_PARAMS:
+            refer = urlparse.urlparse(request.QUERY_PARAMS['address'])
+
+        tasks = Goal.objects.filter(remote_task=True).values_list('id', 'remote_page')
         matching_tasks = []
 
-        referer = 
         for _id, _base in tasks:
             base = urlparse.urlparse(_base)
             if equal_url_base(refer, base):
                 matching_tasks.append(_id)
-            
 
-        matching_objs = Goal.objects.filter(id__in=matching_tasks)
-
-        serialized = GoalSerializer.serialize(matching_objs)
+        if len(matching_tasks) > 0:
+            matching_objs = Goal.objects.filter(id__in=matching_tasks)
+            serialized = [GoalSerializer(data=a).data for a in matching_objs]
+        else:
+            serialized = []
 
         return Response({
             'success': True,

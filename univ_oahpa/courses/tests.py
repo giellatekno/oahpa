@@ -7,17 +7,25 @@ Replace these with more appropriate tests for your application.
 
 from django.test import TestCase
 
+from rest_framework.test import APIRequestFactory
+
+
+
 class SimpleTest(TestCase):
-    def test_basic_addition(self):
+
+    def test_submission(self):
         """
         Tests that 1 + 1 always equals 2.
         """
         self.failUnlessEqual(1 + 1, 2)
+        factory = APIRequestFactory()
 
-__test__ = {"doctest": """
-Another way to test that 1 + 1 is equal to 2.
+        test_data = {
+            'task_id': self.test_task.id
+            'is_correct': True,
+            'user_input': "asdf bbq",
+        }
 
->>> 1 + 1 == 2
-True
-"""}
+        # TODO: test referer?
+        factory.post('/courses/submission/', test_data, format='json')
 

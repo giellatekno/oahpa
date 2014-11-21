@@ -443,6 +443,7 @@ class Goal(models.Model):
     # TODO: if remote_task is True, url_base will be the referral
     # address required
     remote_task = models.BooleanField(default=False)
+    remote_page = models.TextField()
 
     url_base = models.CharField(max_length=24)
 
