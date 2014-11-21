@@ -133,7 +133,7 @@ PRONOUN_SUBCLASSES = (
 CASE_CONTEXT_CHOICES = (
 #	('N-NOM-PL', _('plural')),
 	('N-ACC', _('accusative')),
-#	('N-GEN', _('genitive')),
+	('N-GEN', _('genitive')),
 #	('N-ILL', _('illative')),
 	('N-LOC', _('locative')),
 	('N-DAT', _('dative')),
