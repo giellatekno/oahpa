@@ -459,6 +459,47 @@ class Goal(models.Model):
     minimum_sets_attempted = models.IntegerField(default=5, help_text="Amount of sets user must try to be finished.")
     correct_first_try = models.BooleanField(default=False, help_text="Only count answers correct on the first try")
 
+    def _clean_remote_page(self):
+
+        def g(a, x, _or):
+            " Apparently __getattribute__ won't let you do this. "
+            _attr_val = a.__getattribute__(x)
+            if _attr_val:
+                return _attr_val
+            else:
+                return _or
+
+
+        from urlparse import urlparse, ParseResult
+
+        # sanitize the URL
+        if self.remote_page:
+            u = urlparse(self.remote_page)
+            url_args = {
+                'scheme': g(u, 'scheme', 'http'),
+                'netloc': g(u, 'netloc', None),
+                'path':   g(u, 'path', None),
+                'params':   g(u, 'params', None),
+                'fragment':   g(u, 'fragment', None),
+                'query':  g(u, 'query', None),
+            }
+            if not url_args['netloc'] and url_args['path']:
+                url_args['netloc'] = url_args['path']
+                url_args['path'] = ''
+
+            sanitized = ParseResult(**url_args)
+
+            self.remote_page = sanitized.geturl()
+
+
+    def save(self, *args, **kwargs):
+        self._clean_remote_page()
+        super(Goal, self).save(*args, **kwargs)
+
+    def create(self, *args, **kwargs):
+        self._clean_remote_page()
+        super(Goal, self).create(*args, **kwargs)
+
     @property
     def assigned(self):
         """ Return boolean for whether this course is assigned.

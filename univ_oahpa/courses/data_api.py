@@ -483,6 +483,7 @@ class SubmissionView(viewsets.ModelViewSet):
 
 
     def evaluate_user_response(self):
+        # TODO: iscorrect validation
 
         self.request.user_logs_generated = self.create_logs_for_request()
 
@@ -588,7 +589,7 @@ class SubmissionView(viewsets.ModelViewSet):
 
         if len(matching_tasks) > 0:
             matching_objs = Goal.objects.filter(id__in=matching_tasks)
-            serialized = [GoalSerializer(data=a).data for a in matching_objs]
+            serialized = GoalSerializer(matching_objs).data
         else:
             serialized = []
 
@@ -596,6 +597,9 @@ class SubmissionView(viewsets.ModelViewSet):
             'success': True,
             'goals_available': serialized
         })
+
+    def get(self, request):
+        pass
 
     def create(self, request):
         """ For new tasks.
@@ -616,3 +620,21 @@ class SubmissionView(viewsets.ModelViewSet):
 
         response_data = self.evaluate_user_response()
         return Response(response_data)
+
+
+# log in 
+
+    # http --session=courses_test GET http://localhost:8000/davvi/courses/standard_login/ | grep csrfmiddlewaretoken | head -n 1 | grep -o "value='\(.*\)'" | sed 's/value=//' | tr -d "'" > token.tmp
+    # http -f --session=courses_test POST http://localhost:8000/davvi/courses/standard_login/ username=asdf password=asdf csrfmiddlewaretoken=`cat token.tmp`
+
+
+# list goals for referer
+
+    # http --session=courses_test GET http://localhost:8000/davvi/courses/api/submission/ Referer:"localhost"
+
+# Log the first action
+
+    # http --session=courses_test --json POST http://localhost:8000/davvi/courses/api/submission/ user_input=blahblah correct=asdf,bbq iscorrect=True task_id=91
+
+
+    # http --verbose --session=courses_test --json POST http://localhost:8000/davvi/courses/api/submission/ Referer:localhost X-CSRFToken:`cat token.tmp` user_input=blahblah correct=asdf,bbq iscorrect=True task_id=91
