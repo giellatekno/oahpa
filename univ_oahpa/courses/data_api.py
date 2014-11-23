@@ -20,6 +20,7 @@ from .data_permissions import *
 from .data_serializers import *
 from .data_utils import *
 
+
 class UserStatsViewSet(viewsets.ModelViewSet):
     """ This view powers the display of goal progress when the user is
     submitting answers for a course goal.
@@ -372,6 +373,13 @@ def equal_url_base(a, b):
     ])
 
 
+from data_authentication import CookieAuthentication
+from rest_framework.authentication import SessionAuthentication
+
+from schematics.models import Model as SchematicsModel
+from schematics.types import StringType, DecimalType, BooleanType
+from schematics.exceptions import ModelValidationError
+
 class SubmissionView(viewsets.ModelViewSet):
     """ This view is for logging user progress on external activities.
     The activities must be registered first in the database with a Task,
@@ -399,10 +407,15 @@ class SubmissionView(viewsets.ModelViewSet):
     NB: end users are always free to intercept requests and submit
     whatever they want.
 
+    NB: since this is a "public" (=used by other apps) API for use
+    within the Oahpa subdomain, note the authentication_classes.
+
     """
 
     model = UserGoalInstance
     queryset = UserGoalInstance.objects.all()
+
+    # authentication_classes = [CookieAuthentication]
 
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
@@ -447,12 +460,8 @@ class SubmissionView(viewsets.ModelViewSet):
         """
         import urlparse
 
-        from schematics.models import Model as SchematicsModel
-        from schematics.types import StringType, IntegerType, BooleanType
-        from schematics.exceptions import ModelValidationError
-
         class Submission(SchematicsModel):
-            task_id = IntegerType(required=True)
+            task_id = DecimalType(required=True)
             user_input = StringType(required=True)
             correct = StringType(required=True)
             iscorrect = BooleanType(required=True)
@@ -624,7 +633,7 @@ class SubmissionView(viewsets.ModelViewSet):
 
 # log in 
 
-    # http --session=courses_test GET http://localhost:8000/davvi/courses/standard_login/ | grep csrfmiddlewaretoken | head -n 1 | grep -o "value='\(.*\)'" | sed 's/value=//' | tr -d "'" > token.tmp
+    # http --session=courses_test get http://localhost:8000/davvi/courses/standard_login/ | grep csrfmiddlewaretoken | head -n 1 | grep -o "value='\(.*\)'" | sed 's/value=//' | tr -d "'" > token.tmp
     # http -f --session=courses_test POST http://localhost:8000/davvi/courses/standard_login/ username=asdf password=asdf csrfmiddlewaretoken=`cat token.tmp`
 
 
