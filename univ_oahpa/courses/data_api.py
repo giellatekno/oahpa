@@ -366,10 +366,15 @@ class NotificationsView(viewsets.ModelViewSet):
 
 # TODO: require a.query == b.query as option?
 def equal_url_base(a, b):
+    import urlparse
+
+    _a = urlparse.urlparse(a)
+    _b = urlparse.urlparse(b)
+
     return all([
-        a.scheme == b.scheme,
-        a.netloc == b.netloc,
-        a.path == b.path,
+        _a.scheme == _b.scheme,
+        _a.netloc == _b.netloc,
+        _a.path   == _b.path,
     ])
 
 
@@ -379,6 +384,8 @@ from rest_framework.authentication import SessionAuthentication
 from schematics.models import Model as SchematicsModel
 from schematics.types import StringType, DecimalType, BooleanType
 from schematics.exceptions import ModelValidationError
+
+from univ_drill.models import Log
 
 class SubmissionView(viewsets.ModelViewSet):
     """ This view is for logging user progress on external activities.
@@ -410,6 +417,9 @@ class SubmissionView(viewsets.ModelViewSet):
     NB: since this is a "public" (=used by other apps) API for use
     within the Oahpa subdomain, note the authentication_classes.
 
+    TODO: submitting sub-tasks. e.g., if external goal contains 3
+    questions, how to track these
+
     """
 
     model = UserGoalInstance
@@ -420,34 +430,38 @@ class SubmissionView(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
 
-    def create_logs_for_request(self):
+    def create_logs_for_request(self, submission):
         import datetime
         
         request = self.request
 
-        if request.session.has_key('country'):
-            self.settings['user_country'] = request.session['country']
-        else:
-            self.settings['user_country'] = False
-
         today = datetime.date.today()
 
         log_kwargs = {
-            'userinput': self.answer,
-            'correct': ','.join(self.correct_anslist),
-            'iscorrect': self.iscorrect,
+            'userinput': submission.user_input,
+            'correct': ','.join(submission.correct),
+            'iscorrect': submission.iscorrect,
             # 'example': self.example,
-            'game': "Task: %d" % self.task.id,
+            'game': "Task: %d" % submission.task_id,
             'date': today
         }
 
-        if self.user:
-            log_kwargs['username'] = self.user.username
+        if request.session.has_key('country'):
+            log_kwargs['user_country'] = request.session['country']
+        else:
+            log_kwargs['user_country'] = False
 
-        if self.user_country:
-            log_kwargs['user_country'] = self.user_country
+        if self.request.user:
+            log_kwargs['username'] = self.request.user.username
 
         log = Log.objects.create(**log_kwargs)
+
+        if log.correct not in request.session['question_try_count']:
+            request.session['question_try_count'][log.correct] = 1
+
+        request.session['question_try_count'][log.correct] += 1
+        request.session['answered'][log.correct] = True
+        request.session['question_try_count'][log.correct] = 1
 
         return [log]
 
@@ -460,30 +474,32 @@ class SubmissionView(viewsets.ModelViewSet):
         """
         import urlparse
 
+        from schematics.types.compound import ListType, ModelType
+
         class Submission(SchematicsModel):
             task_id = DecimalType(required=True)
             user_input = StringType(required=True)
-            correct = StringType(required=True)
+            correct = ListType(StringType, required=True)
             iscorrect = BooleanType(required=True)
 
-        if 'HTTP_REFERER' not in request.META:
+        if 'HTTP_REFERER' not in self.request.META:
             msg = ['Missing referer address']
             return False, Response({'success': False, 'errors': msg})
 
-        refer = urlparse.urlparse(request.META['HTTP_REFERER'])
-        task_id = request.DATA['task_id']
-        json = request.DATA
+        refer = self.request.META['HTTP_REFERER']
+        task_id = self.request.DATA['task_id']
+        json = self.request.DATA
 
         self.task = Goal.objects.get(id=task_id)
-        task_url = urlparse.urlparse(task.urlbase)
+        task_url = self.task.remote_page
 
-        if task.remote_task == True and equal_url_base(task.remote_page, refer):
-            sub = Submission(request.DATA)
+        if self.task.remote_task == True and equal_url_base(self.task.remote_page, refer):
+            sub = Submission(self.request.DATA)
             try:
                 sub.validate()
             except ModelValidationError, e:
                 return False, Response({'success': False, 'errors': e.messages})
-            return True, None
+            return sub, None
         else:
             self.errors = [
                 'Referer does not match task whitelist.',
@@ -491,15 +507,15 @@ class SubmissionView(viewsets.ModelViewSet):
             return False, Response({'success': False, 'errors': errors})
 
 
-    def evaluate_user_response(self):
+    def evaluate_user_response(self, submission):
         # TODO: iscorrect validation
 
-        self.request.user_logs_generated = self.create_logs_for_request()
+        self.request.user_logs_generated = self.create_logs_for_request(submission)
 
         ual = create_activity_log_from_drill_logs(
-            request,
-            request.user,
-            request.user_logs_generated,
+            self.request,
+            self.request.user,
+            self.request.user_logs_generated,
             current_user_goal=self.task)
 
         goal_instance = self.get_or_create_goal_instance()
@@ -569,30 +585,28 @@ class SubmissionView(viewsets.ModelViewSet):
 
         """
 
-        valid, resp = self.validate_goal_request()
-        if not valid:
+        submission, resp = self.validate_goal_request()
+        if not submission:
             return resp
 
-        response_data = self.evaluate_user_response()
+        response_data = self.evaluate_user_response(submission)
         return Response(response_data)
 
     def list(self, request):
-        import urlparse
-
         if 'HTTP_REFERER' not in request.META and 'address' not in request.QUERY_PARAMS:
             msg = ['Missing referer address']
             return Response({'success': False, 'errors': msg})
 
         if 'HTTP_REFERER' in request.META:
-            refer = urlparse.urlparse(request.META['HTTP_REFERER'])
+            refer = request.META['HTTP_REFERER']
         elif 'address' in request.QUERY_PARAMS:
-            refer = urlparse.urlparse(request.QUERY_PARAMS['address'])
+            refer = request.QUERY_PARAMS['address']
 
         tasks = Goal.objects.filter(remote_task=True).values_list('id', 'remote_page')
         matching_tasks = []
 
         for _id, _base in tasks:
-            base = urlparse.urlparse(_base)
+            base = _base
             if equal_url_base(refer, base):
                 matching_tasks.append(_id)
 
@@ -623,11 +637,16 @@ class SubmissionView(viewsets.ModelViewSet):
 
         """
 
-        valid, resp = self.validate_goal_request()
-        if not valid:
+        request.session['question_try_count'] = {}
+        request.session['question_set_count'] = 1
+        request.session['answered'] = {}
+
+        submission, resp = self.validate_goal_request()
+        if not submission:
             return resp
 
-        response_data = self.evaluate_user_response()
+        response_data = self.evaluate_user_response(submission)
+
         return Response(response_data)
 
 
