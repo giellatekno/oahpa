@@ -1,0 +1,104 @@
+!!! Møte 24.11.14
+
+Til stades: Heli, Lene, Ryan, Trond, Robert
+
+!!!Saker: 
+# Felles system for russisk og nordsamisk
+# gtoahpa-serveren
+# Konteaksta inn i kursinnlogging
+# Optimalisering av spørring
+# Firefox-plugin for Konteaksta
+# Kvensk Oahpa
+# Neste møte
+
+!!Felles system for russisk og nordsamisk
+Vi vil ha rusKonteaksta og smeKonteaksta i et felles system. RusKonteaksta er idag på server i Tübingen, men skal flyttes til gtoahpa-serveren. Bare javakoden vil være felles, kildekoden ellers vil være separat, og dermed vil man ikke behøve å samarbeide om activities osv. Eduard er hovedutvikleren av russisk Konteaksta i Tübingen. 
+
+!Tiltak:
+* __Heli, Robert__ vil se på dette sammen med Eduard
+
+
+!!gtoahpa-serveren
+det er 32 brukere på gtoahpa-serveren (32 + 14 oahpa). Vi kan ha hver vår konto, men bare ett felles svn-tre som vi alle arbeider i.
+
+Vi fjerner alle kontoer til brukere som ikke bruker serveren og vil stå igjen med disse: \\
+boerre, ciprian, fran, heli, jaska, lene, ryan, sjur, steinar, trond, robert, LANG_oahpa, neahtta
+
+Vi lager en felles bruker: icall, og har svn-tre kun for denne. Vi regner med at det er nok kapasitet på serveren.
+
+{{{
+
+    less /proc/cpuinfo
+    htop
+    top
+    df -h
+    
+model name      : Intel(R) Xeon(R) CPU E7- 4850  @ 2.00GHz
+
+  CPU[||                        5.9%]     Tasks: 174, 102 thr; 2 running
+  Mem[|||||||||||||||||||3106/7872MB]     Load average: 0.60 0.21 0.06 
+  Swp[|                     3/9987MB]     Uptime: 24 days, 08:41:04
+  
+
+7,8 Gb minne
+2,0 Ghz prosessor
+
+mhz  
+ram  
+disk 
+
+$ df -h
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/mapper/vg_gtoahpa-lv_root
+                      9,5G  6,8G  2,3G  76% /
+tmpfs                 3,9G   68K  3,9G   1% /dev/shm
+/dev/sda1             477M  124M  328M  28% /boot
+/dev/sdb1              59G   29G   28G  52% /export
+}}}
+
+!Tiltak denne uka:
+# __Trond__ fjerner inaktive brukere (gjort)
+# __Ryan__ lager icall-bruker 
+# __Heli__ kopierer Konteaksta til gtoahpa 28/11
+# __Ryan__ kopierer/implementerer kursinnlogging til gtoahpa
+
+  
+!!Konteaksta inn i kursinnlogging
+Heli har sendt ut mail om hvilke data som kan samles fra Konteaksta til kursinnlogging. Dette ser veldig bra ut. 
+
+Ryan har laget en struktur for å legge inn data fra Konteaksta. Han foreslår å bruke en cookie for innlogging, og å javascript api for å å sende data med kursmål, progressjon osv. 
+Från Konteaksta till cookie skickas data (som JSON objekt) med hjälp av en AJAX funktion.
+
+For nordsamisk: Bare en innlogging, fra http://kursa.oahpa.no (WordPress) \\
+For russisk: integrere med Fronter-login? Dette må undersøkes.
+
+!Tiltak:
+* __Ryan__ dokumenterar submission API denne uka
+* __Heli, Ryan__ tester gtlab først, og begynner med implementeringa.
+* __Ryan__ undersøker med Jelena Larsen ([http://result.uit.no/utvikling/]) om det er mulig å integrere fronterinnlogging med cookie for kursinnlogging 
+
+
+!!Optimalisering av spørring
+Det er en bedre løsning å samle alle ordene i en fil og sende dem til generering sammen. Heli har gjort dette for en topic i sme, og når tar det 2-10 sekunder, mot tidligere et par minutter.
+
+
+!!Firefox-plugin for Konteaksta
+Eduard har arbeidet med dette, og det er en plugin som fungerer for russisk. Robert har dokumentasjon for å legge inn aktiviteter.
+
+Man må se på hvordan kople plugin til kursinnlogging.
+
+! Tiltak:
+* __Heli__ arbeider videre med dette sammen med Eduard 
+
+
+!!Kvensk Oahpa
+er flyttet til gtoahpa og er nygenerert: oahpa.no/kveeni. Den fungerer bra. Locale djangofiler er generert.
+
+! Tiltak:
+* __Trond__ får igang lokaliseringsarbeidet
+
+
+!!Neste møte
+Onsdag 3. desember kl. 21.
+
+
