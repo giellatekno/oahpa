@@ -48,7 +48,7 @@
       <text>Mitä SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="FAMILY"/>
+        <sem class="mFAMILY"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
@@ -69,7 +69,7 @@
       <text>Mitä SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="FAMILY"/>
+        <sem class="mFAMILY"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
@@ -84,13 +84,13 @@
       </element>
     </answer>
   </q>
-<q id="npar5">
-    <qtype>N-PAR</qtype>
+<q id="nill1">
+    <qtype>N-ILL</qtype>
     <question>
       <text>Mihin SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="FAMILY"/>
+        <sem class="mFAMILY"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
@@ -98,20 +98,41 @@
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-PAR</text>
-      <element game='morfa' id="N-PAR" task="yes">
+      <text>SUBJ MAINV N-ILL</text>
+      <element game='morfa' id="N-ILL" task="yes">
         <grammar tag="N+Sg+Ill"/>
-        <sem class="NATURE_PLACE"/>
+        <sem class="NATURE_PLACE_IN"/>
       </element>
     </answer>
   </q>
-<q id="npar6">
+<q id="nall1">
+    <qtype>N-ALL</qtype>
+    <question>
+      <text>Mihin SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="mFAMILY"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>mennä</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ALL</text>
+      <element game='morfa' id="N-ALL" task="yes">
+        <grammar tag="N+Sg+All"/>
+        <sem class="NATURE_PLACE_AD"/>
+      </element>
+    </answer>
+  </q>
+<q id="nine1">
     <qtype>N-PAR</qtype>
     <question>
       <text>Missä SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="FAMILY"/>
+        <sem class="mFAMILY"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
@@ -119,20 +140,83 @@
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-PAR</text>
-      <element game='morfa' id="N-PAR" task="yes">
+      <text>SUBJ MAINV N-INE</text>
+      <element game='morfa' id="N-INE" task="yes">
         <grammar tag="N+Sg+Ine"/>
-        <sem class="NATURE_PLACE"/>
+        <sem class="NATURE_PLACE_IN"/>
       </element>
     </answer>
   </q>
-<q id="npar7">
+<q id="nade1">
+    <qtype>N-PAR</qtype>
+    <question>
+      <text>Missä SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="mFAMILY"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>olla</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ADE</text>
+      <element game='morfa' id="N-ADE" task="yes">
+        <grammar tag="N+Sg+Ade"/>
+        <sem class="NATURE_PLACE_AD"/>
+      </element>
+    </answer>
+  </q>
+<q id="nade2">
+    <qtype>N-PAR</qtype>
+    <question>
+      <text>Missä SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="mFAMILY"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>käyđä</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ADE</text>
+      <element game='morfa' id="N-ADE" task="yes">
+        <grammar tag="N+Sg+Ade"/>
+        <sem class="NATURE_PLACE_AD"/>
+      </element>
+    </answer>
+  </q>
+<q id="nine2">
+    <qtype>N-PAR</qtype>
+    <question>
+      <text>Missä SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="mFAMILY"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>käyđä</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-INE</text>
+      <element game='morfa' id="N-INE" task="yes">
+        <grammar tag="N+Sg+Ine"/>
+        <sem class="NATURE_PLACE_IN"/>
+      </element>
+    </answer>
+  </q>
+<q id="npar5">
     <qtype>N-PAR</qtype>
     <question>
       <text>Mitä SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="FAMILY"/>
+        <sem class="mFAMILY"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
@@ -147,13 +231,13 @@
       </element>
     </answer>
   </q>
-<q id="npar8">
+<q id="npar6">
     <qtype>N-PAR</qtype>
     <question>
       <text>Kenele SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="FAMILY"/>
+        <sem class="mFAMILY"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
@@ -164,17 +248,17 @@
       <text>SUBJ MAINV N-PAR</text>
       <element game='morfa' id="N-PAR" task="yes">
         <grammar tag="N+Sg+All"/>
-        <sem class="FAMILY"/>
+        <sem class="mFAMILY"/>
       </element>
     </answer>
   </q>
-<q id="npar9">
+<q id="npar7">
     <qtype>N-PAR</qtype>
     <question>
       <text>Kenen SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="FAMILY"/>
+        <sem class="mFAMILY"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
@@ -185,7 +269,7 @@
       <text>SUBJ MAINV N-PAR</text>
       <element game='morfa' id="N-PAR" task="yes">
         <grammar tag="N+Sg+Gen"/>
-        <sem class="FAMILY"/>
+        <sem class="mFAMILY"/>
       </element>
     </answer>
   </q>
@@ -195,7 +279,7 @@
       <text>Mitä SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="FAMILY"/>
+        <sem class="mFAMILY"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
@@ -204,7 +288,7 @@
     </question>
     <answer> 
       <text>SUBJ MAINV N-GEN</text>
-      <element game='morfa' id="N-PAR" task="yes">
+      <element game='morfa' id="N-GEN" task="yes">
         <grammar tag="N+Sg+Gen"/>
         <sem class="VEHICLE"/>
       </element>
