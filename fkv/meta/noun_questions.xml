@@ -136,7 +136,7 @@
       </element>
       <element id="MAINV">
         <grammar tag="V+Act+Ind+Prs+Sg3"/>
-        <id>kuulla</id>
+        <id>kuula</id>
       </element>
     </question>
     <answer> 
@@ -144,13 +144,6 @@
       <element game='morfa' id="N-PAR" task="yes">
         <grammar tag="N+Sg+Par"/>
         <sem class="SOUND"/>
-      </element>
-    </answer>
-    <answer> 
-      <text>SUBJ MAINV N-PAR</text>
-      <element game='morfa' id="N-PAR" task="yes">
-        <grammar tag="N+Sg+Par"/>
-        <sem class="VEHICLE"/>
       </element>
     </answer>
   </q>
@@ -193,6 +186,27 @@
       <element game='morfa' id="N-PAR" task="yes">
         <grammar tag="N+Sg+Gen"/>
         <sem class="FAMILY"/>
+      </element>
+    </answer>
+  </q>
+<q id="ngen1">
+    <qtype>N-GEN</qtype>
+    <question>
+      <text>Mitä SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="FAMILY"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>kuula</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-GEN</text>
+      <element game='morfa' id="N-PAR" task="yes">
+        <grammar tag="N+Sg+Gen"/>
+        <sem class="VEHICLE"/>
       </element>
     </answer>
   </q>
