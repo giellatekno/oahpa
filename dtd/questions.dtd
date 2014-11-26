@@ -16,7 +16,7 @@
 
 <!ELEMENT text (#PCDATA)>
 
-<!ELEMENT element (grammar?, id?, sem?, )>
+<!ELEMENT element (grammar?, id?, sem? )>
 <!ATTLIST element
     type ( CONNEG
          | INTERR
@@ -44,17 +44,20 @@
 
 <!ELEMENT grammar EMPTY >
 <!ATTLIST grammar
-    pos ( A+Number+Nom
+	pos ( A
         | N
         | Pron
         ) #IMPLIED
 >    
+
 <!ATTLIST grammar
-	tag ( A+Attr
-        | A+Comp+Number+Nom
-        | A+Superl+Number+Nom
-        | HUMAN
+	tag ( HUMAN
         | N
+        | A+Attr
+        | V+Act+Ind+Prs+Sg3
+        | A+Comp+Number+Nom
+        | A+Number+Nom
+        | A+Superl+Number+Nom
         | N+Acc+Number
         | N+Ess
         | N+Num+Sg+Acc
