@@ -124,14 +124,14 @@ PRONOUN_SUBCLASSES = (
 )
 
 CASE_CONTEXT_CHOICES = (
-   # ('N-GEN', _('Genitive')),
+    ('N-GEN', _('Genitive')),
     ('N-PAR', _('Partitive')),
-    #('N-ILL', _('Illative')),
+    ('N-ILL', _('Illative')),
     #('N-INE', _('Inessive')),
     #('N-ELA', _('Elative')),
     #('N-ADE', _('Adessive')),
     #('N-ABL', _('Ablative')),
-    #('N-ALL', _('Allative')),
+    ('N-ALL', _('Allative')),
 #	('N-MIX', _('mix')),
 )
 
