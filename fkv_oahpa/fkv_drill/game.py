@@ -793,8 +793,8 @@ class BareGame(Game):
 
 				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)
 
-				if not tag.pos in ['Pron', 'Num'] and tag.string.find('Der') < 0:
-				 	random_word = random_word.filter(word__semtype__semtype="MORFA")
+				#if not tag.pos in ['Pron', 'Num'] and tag.string.find('Der') < 0:
+				# 	random_word = random_word.filter(word__semtype__semtype="MORFA") # gen_only="none" is used instead of missing "semantic class" MORFA if we want to exclude some words from Morfa.
 
 				# if tag.pos == 'Pron':
 				# 	random_word = random_word\
@@ -1399,7 +1399,7 @@ class QuizzGame(Game):
 		QueryModel = Word
 
 		# Excludes
-		excl = ['exclude_' + self.settings['transtype']]
+		excl = ['exclude_' + self.settings['transtype'][0:3] + 'X'] # <e exclude="fkvX">
 
 		error = "QuizzGame.get_db_info: Database may be improperly loaded. \
 		Query for %s-%s, semantic type %s and book %s returned zero results." % ((source_language, target_language, semtypes, source))
