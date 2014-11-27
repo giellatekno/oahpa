@@ -252,10 +252,10 @@
       </element>
     </answer>
   </q>
-<q id="npar6">
-    <qtype>N-PAR</qtype>
+<q id="ngen1">
+    <qtype>N-GEN</qtype>
     <question>
-      <text>Ketä SUBJ MAINV</text>
+      <text>Kenen SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
         <sem class="mFAMILY"/>
@@ -266,14 +266,14 @@
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-PAR</text>
-      <element game='morfa' id="N-PAR" task="yes">
-        <grammar tag="N+Sg+Par"/>
+      <text>SUBJ MAINV N-GEN</text>
+      <element game='morfa' id="N-GEN" task="yes">
+        <grammar tag="N+Sg+Gen"/>
         <sem class="mFAMILY"/>
       </element>
     </answer>
   </q>
-<q id="ngen1">
+<q id="ngen2">
     <qtype>N-GEN</qtype>
     <question>
       <text>Mitä SUBJ MAINV</text>
