@@ -93,7 +93,6 @@ _fst_file = ERROR_FST_SETTINGS.get('fst_path')
 if not os.path.isfile(_fst_file):
     print >> sys.stderr, "FST file at <%s> does not exist."
     print >> sys.stderr, "Check the path in settings.py and try again."
-    sys.exit()
 
 error_files = ERROR_FST_SETTINGS.get('error_message_files', {}).values()
 feedback_messages = FeedbackMessageStore(*error_files)
