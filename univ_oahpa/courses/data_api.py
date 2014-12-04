@@ -512,13 +512,13 @@ class SubmissionView(viewsets.ModelViewSet):
 
         self.request.user_logs_generated = self.create_logs_for_request(submission)
 
+        goal_instance = self.get_or_create_goal_instance()
+
         ual = create_activity_log_from_drill_logs(
             self.request,
             self.request.user,
             self.request.user_logs_generated,
-            current_user_goal=self.task)
-
-        goal_instance = self.get_or_create_goal_instance()
+            current_user_goal=goal_instance.id)
 
         result = goal_instance.evaluate_instance()
 
@@ -545,21 +545,22 @@ class SubmissionView(viewsets.ModelViewSet):
 
     def get_or_create_goal_instance(self):
 
-        if request.METHOD == 'POST':
+        if self.request.method == 'POST':
             prev = UserGoalInstance.objects.filter(goal=self.task, 
                                                    opened=True)
-            prev.update(opened=False).save()
+            prev.update(opened=False)
 
             ugi = UserGoalInstance.objects.create(user=self.request.user,
                                                   goal=self.task)
 
-            request.session['current_user_goal'] = int(ugi.id)
+            self.request.session['current_user_goal'] = int(ugi.id)
 
             # TODO: ?
             # request.session['max_rounds'] = self.task.minimum_sets_attempted
             # request.session['correct_threshold'] = self.task.threshold
 
-        elif request.METHOD == 'PUT':
+        elif self.request.method == 'PUT':
+            self.current_user_goal = self.request.session['current_user_goal']
             ugi = UserGoalInstance.objects.get(id=self.current_user_goal, 
                                                opened=True)
             ugi.attempt_count += 1
