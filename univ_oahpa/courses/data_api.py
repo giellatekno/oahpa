@@ -480,6 +480,8 @@ class SubmissionView(viewsets.ModelViewSet):
         request.session['answered'][log.correct] = True
         request.session['question_try_count'][log.correct] = 1
 
+        print request.session
+
         return [log]
 
     def validate_goal_request(self):
@@ -571,18 +573,21 @@ class SubmissionView(viewsets.ModelViewSet):
                                                   goal=self.task)
 
             self.request.session['current_user_goal'] = int(ugi.id)
-
-            # TODO: ?
-            # request.session['max_rounds'] = self.task.minimum_sets_attempted
-            # request.session['correct_threshold'] = self.task.threshold
+            self.request.session['max_rounds'] = self.task.minimum_sets_attempted
+            self.request.session['rounds'] = 1
 
         elif self.request.method == 'PUT':
             self.current_user_goal = self.request.session['current_user_goal']
             ugi = UserGoalInstance.objects.get(id=self.current_user_goal, 
                                                opened=True)
+            self.request.session['rounds'] += 1
             ugi.attempt_count += 1
             ugi.save()
 
+        # TODO: rounds isn't showing up in the output, bu that's an
+        # evaluation problem, not a problem with this variable
+        print self.request.session['rounds']
+        print self.request.session['max_rounds']
         return ugi
 
     def put(self, request):
