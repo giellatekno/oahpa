@@ -411,6 +411,23 @@ class SubmissionView(viewsets.ModelViewSet):
     This means thus, that if the user resets their progress or restarts,
     a _new_ POST request must be made to mark the new beginning.
 
+    **Authentication**
+
+    Use of this API relies on a valid cookie: the user must have logged
+    into Oahpa! Courses before navigating away to perform the intended
+    exercise.
+
+    In order to submit however, you will still need proof of
+    authentication and the CSRF token. This can be included by adding
+    the `X-CSRFToken` header to POST and PUT requests. This token will
+    be set on the cookie when the user logs in, and the cookie will be
+    accessible via JavaScript. An example from Angular.js with ng-cookies:
+
+        $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+        $http.defaults.headers.put['X-CSRFToken'] = $cookies.csrftoken;
+
+    **Notes**
+
     NB: end users are always free to intercept requests and submit
     whatever they want.
 
