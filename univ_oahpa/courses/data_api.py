@@ -24,12 +24,18 @@ from .data_utils import *
 class UserStatsViewSet(viewsets.ModelViewSet):
     """ This view powers the display of goal progress when the user is
     submitting answers for a course goal.
+
+    This is mainly intended as an internal API for learning exercises
+    within Oahpa.
     """
     permission_classes = (IsAuthenticated, GetOnly)
     model = UserGoalInstance
     serializer_class = StatusSerializer
 
     def list(self, request):
+        """ GET request.
+        """
+
         rq = super(UserStatsViewSet, self).list(request)
 
         # Insert some things for easier display
@@ -59,6 +65,9 @@ class UserStatsViewSet(viewsets.ModelViewSet):
 class FeedbackLogView(viewsets.ModelViewSet):
     """ These views are for adding feedback logs when the user clicks on
     a feedback link.
+
+    This is mainly intended as an internal API for learning exercises
+    within Oahpa.
     """
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (CanCreateAndUpdateFeedbackLog, )
@@ -94,6 +103,11 @@ class FeedbackLogView(viewsets.ModelViewSet):
         return self.model.objects.filter(user=user)
 
 class CourseGoalView(viewsets.ModelViewSet):
+    """ This is intended as an internal view for Oahpa only.
+
+    This view set allows a client to manage Course Goals.
+    """
+
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (CanCreateAndUpdateCourseGoal, )
     queryset = CourseGoal.objects.all()
@@ -194,6 +208,8 @@ class GoalParametersView(viewsets.ModelViewSet):
     OPTIONS provides a set of possible parameters, and POST and PUT are
     available for creating and editing. DELETE is also possible, and
     permissions are checked.
+
+    This is intended as an internal API for Oahpa only.
     """
 
     authentication_classes = (SessionAuthentication, BasicAuthentication)
@@ -345,6 +361,11 @@ from notifications.models import Notification
 # TODO: test permissions
 # -  allows to delete also ?
 class NotificationsView(viewsets.ModelViewSet):
+    """ This is intended as an internal API for Oahpa only.
+
+    This is for listing and creating notifications, to be displayed to
+    users on their course overview page.
+    """
 
     model = Notification()
     queryset = Notification.objects.all()
@@ -364,8 +385,17 @@ class NotificationsView(viewsets.ModelViewSet):
 
         return Response({'success': True})
 
-# TODO: require a.query == b.query as option?
 def equal_url_base(a, b):
+    """ A helper function for equating URL strings via the urlparse
+    library. For a URL to match, the scheme, location, and path must all
+    be the same, i.e., the following will be equivalent:
+
+        http://oahpa.no/path/to/page/
+        http://oahpa.no/path/to/page/?param=foo
+
+    TODO: do we require a.query == b.query as option?
+    """
+
     import urlparse
 
     _a = urlparse.urlparse(a)
@@ -387,69 +417,17 @@ from schematics.exceptions import ModelValidationError
 
 from univ_drill.models import Log
 
-class SubmissionView(viewsets.ModelViewSet):
-    """ This view is for logging user progress on external activities.
-    The activities must be registered first in the database with a Task,
-    marked as external, and the URL that the task will be completed on
-    must be registered as well. The referrer will be used in order to
-    construct the list of Tasks available from any given page.
+class SubmissionMixin(object):
+    """ This contains some helper functions not immediately related to
+    REST operations. Functions here fall outside of important functions
+    for developers working with the Submission API.
 
-    In constructing the reporting system on the client side, using
-    JavaScript, a typical workflow would be the following: 
-
-        1.) a GET request to the submission endpoint to determine what
-        activities are available for the page.
-
-        2.) Storing the Task ID for the desired Task to associate with
-        the user's activity.
-
-        3.) A POST request with the first set of user data.
-
-        4.) PUT requests for any subsequent activity on for the same
-        instance of the work.
-
-    This means thus, that if the user resets their progress or restarts,
-    a _new_ POST request must be made to mark the new beginning.
-
-    **Authentication**
-
-    Use of this API relies on a valid cookie: the user must have logged
-    into Oahpa! Courses before navigating away to perform the intended
-    exercise.
-
-    In order to submit however, you will still need proof of
-    authentication and the CSRF token. This can be included by adding
-    the `X-CSRFToken` header to POST and PUT requests. This token will
-    be set on the cookie when the user logs in, and the cookie will be
-    accessible via JavaScript. An example from Angular.js with ng-cookies:
-
-        $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
-        $http.defaults.headers.put['X-CSRFToken'] = $cookies.csrftoken;
-
-    **Notes**
-
-    NB: end users are always free to intercept requests and submit
-    whatever they want.
-
-    NB: since this is a "public" (=used by other apps) API for use
-    within the Oahpa subdomain, note the authentication_classes.
-
-    TODO: submitting sub-tasks. e.g., if external goal contains 3
-    questions, how to track these
-
-    """
-
-    model = UserGoalInstance
-    queryset = UserGoalInstance.objects.all()
-
-    # authentication_classes = [CookieAuthentication]
-
-    def get_queryset(self):
-        return self.queryset.filter(user=self.request.user)
+    For documentation pertaining to the Submission API, inspect the
+    `SubmissionView` class. """
 
     def create_logs_for_request(self, submission):
         import datetime
-        
+
         request = self.request
 
         today = datetime.date.today()
@@ -586,9 +564,67 @@ class SubmissionView(viewsets.ModelViewSet):
 
         # TODO: rounds isn't showing up in the output, bu that's an
         # evaluation problem, not a problem with this variable
-        print self.request.session['rounds']
-        print self.request.session['max_rounds']
+        # print self.request.session['rounds']
+        # print self.request.session['max_rounds']
         return ugi
+
+class SubmissionView(SubmissionMixin, viewsets.ModelViewSet):
+    """ This view is for logging user progress on external activities.
+    The activities must be registered first in the database with a Task,
+    marked as external, and the URL that the task will be completed on
+    must be registered as well. The referrer will be used in order to
+    construct the list of Tasks available from any given page.
+
+    In constructing the reporting system on the client side, using
+    JavaScript, a typical workflow would be the following: 
+
+        1.) a GET request to the submission endpoint to determine what
+        activities are available for the page.
+
+        2.) Storing the Task ID for the desired Task to associate with
+        the user's activity.
+
+        3.) A POST request with the first set of user data.
+
+        4.) PUT requests for any subsequent activity on for the same
+        instance of the work.
+
+    This means thus, that if the user resets their progress or restarts,
+    a _new_ POST request must be made to mark the new beginning.
+
+    **Authentication**
+
+    Use of this API relies on a valid cookie: the user must have logged
+    into Oahpa! Courses before navigating away to perform the intended
+    exercise.
+
+    In order to submit however, you will still need proof of
+    authentication and the CSRF token. This can be included by adding
+    the `X-CSRFToken` header to POST and PUT requests. This token will
+    be set on the cookie when the user logs in, and the cookie will be
+    accessible via JavaScript. An example from Angular.js with ng-cookies:
+
+        $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+        $http.defaults.headers.put['X-CSRFToken'] = $cookies.csrftoken;
+
+    **Notes**
+
+    NB: end users are always free to intercept requests and submit
+    whatever they want.
+
+    NB: since this is a "public" (=used by other apps) API for use
+    within the Oahpa subdomain, note the authentication_classes.
+
+    TODO: submitting sub-tasks. e.g., if external goal contains 3
+    questions, how to track these
+
+    """
+
+    model = UserGoalInstance
+    queryset = UserGoalInstance.objects.all()
+
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
 
     def put(self, request):
         """ This updates an existing goal instance for work in progress.
@@ -616,6 +652,11 @@ class SubmissionView(viewsets.ModelViewSet):
         return Response(response_data)
 
     def list(self, request):
+        """ Sending a GET request to this path will return a list of
+        activities available for the current referrer address. If the
+        referrer address is not available, it is also possible to
+        include an `address` parameter in the URL path. """
+
         if 'HTTP_REFERER' not in request.META and 'address' not in request.QUERY_PARAMS:
             msg = ['Missing referer address']
             return Response({'success': False, 'errors': msg})
@@ -645,6 +686,8 @@ class SubmissionView(viewsets.ModelViewSet):
         })
 
     def get(self, request):
+        """ There is no need to retrieve individual objects by ID.
+        """
         pass
 
     def create(self, request):
@@ -671,21 +714,3 @@ class SubmissionView(viewsets.ModelViewSet):
         response_data = self.evaluate_user_response(submission)
 
         return Response(response_data)
-
-
-# log in 
-
-    # http --session=courses_test get http://localhost:8000/davvi/courses/standard_login/ | grep csrfmiddlewaretoken | head -n 1 | grep -o "value='\(.*\)'" | sed 's/value=//' | tr -d "'" > token.tmp
-    # http -f --session=courses_test POST http://localhost:8000/davvi/courses/standard_login/ username=asdf password=asdf csrfmiddlewaretoken=`cat token.tmp`
-
-
-# list goals for referer
-
-    # http --session=courses_test GET http://localhost:8000/davvi/courses/api/submission/ Referer:"localhost"
-
-# Log the first action
-
-    # http --session=courses_test --json POST http://localhost:8000/davvi/courses/api/submission/ user_input=blahblah correct=asdf,bbq iscorrect=True task_id=91
-
-
-    # http --verbose --session=courses_test --json POST http://localhost:8000/davvi/courses/api/submission/ Referer:localhost X-CSRFToken:`cat token.tmp` user_input=blahblah correct=asdf,bbq iscorrect=True task_id=91
