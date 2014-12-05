@@ -1,0 +1,157 @@
+!!! Møte 24.11.14
+
+Til stades: Heli, Ryan, Trond
+
+!!!Saker: 
+# Felles system for russisk og nordsamisk
+# gtoahpa-serveren
+# Konteaksta inn i kursinnlogging
+# Kvensk Oahpa
+# Neste møte
+
+
+
+!! Felles system for russisk og nordsamisk
+
+Heli har vore i mailkontakt med Eduard Schaf. Han gjer
+framlegg om at i staden for å gjere systemet på basis av
+det Heli har laga tidlegare kan vi inkludere nordsamisk i 
+hans system, som er basert på ein nyare versjon av view.
+
+Etter heli si meining er dette bra:
+Systemet er fleirspråkleg, god t er raskare. Eduard 
+har allereie lagt til russisk. Han er ein dyktig programmerar.
+
+
+Derimot har vi ikkje diskutert kor systemet skal ligge. Vi vil at
+det skal ligge på Gt-servaren, eller i det minste i ein kopi.
+
+Viss vi bruker det basert på Eduard sin versjon vil det vere lettare
+å få hjelp. I Tübingen bruker dei git.
+
+Heli ser no på Tübingen-systemet. Opne spörsmål:
+
+* Korleis skil det seg frå vårt,
+* Kor lett er det å integrere alt vi har gjort til no, osb.
+* Vil det bli vanskelegare med kursinnlogging med det nye systemet?
+
+I dag bruker kursinnlogging cookie på same domene/subdomene.
+Det kunne også ha vore mogleg å implementere eit OAuth-system
+som kan fungere over ulike system.
+
+{{{
+1 cookie auth: cookie fungerar på *.oahpa.no
+  view.oahpa.no
+  konteaksta.oahpa.no (som berre er portal/adresse lokalt)
+  -- omdiriger --> konteaksta.tubingen.de  
+
+2
+  view.oahpa.no
+  konteaksta.oahpa.no (og ingen kjeldekode i Tübingen)
+
+3 
+  view.oahpa.no
+  -- OAuth (eller liknande) --> konteaksta.tubingen.de  
+
+4 
+  Firefox-plugin på brukaren si eige maskin
+  -- OAuth (eller liknande) --> konteaksta.oahpa.no (i Tromsø) 
+}}} 
+
+Ryan: 1 er best, 3 og 4 (= OAuth) tar ein del tid.
+
+Viss brukaren har Firefox-plugin i eigen maskin er 2 einaste alternativ.
+
+Tre ulike spm:
+# OAuth eller ikkje
+# Ny eller gammal kjeldekode
+# Kjeldekode i Tromsö eller Tübingen
+
+!OAuth eller ikkje
+Ryan: Viss vi skal integrere fleire læringsprogram er cookies for
+avgrensa teknologi, Ryan går inn for OAuth.
+
+Heli: Viss studentane ikkje får alternativet med Firefox-plugin
+kan studentane klare seg godt med cookies-varianten. Då blir det
+som dagens Konteaksta, berre med anna grensesnitt og kjappare.
+
+Detmar har fortald at dei lagrar brukardata med hjelp av OpenID.
+Sett at det er slik.
+
+__Ryan og Heli__ ser nærare på denne e-posten, og vurderer til neste møte.
+
+!Ny eller gammal versjon av koden
+Heli går rett og slett inn for ny.
+
+!Kjeldekode i Tromsø eller ikkje
+Dette er mindre opplagt. __Heli__ ser på det.
+
+
+!! gtoahpa-serveren
+
+Trond har fjerna inaktive brukarar og Ryan har laga icall-brukar.
+Heli har kopiert Konteaksta til gtoahpa, og det fungerer, rett nok
+med ei rar adresse.
+
+[oahpa.no:8200/teaksta|http://oahpa.no:8200/teaksta]
+
+Portnummeret skal bort frå adressa via ei omdirigering.
+
+Ryan har kopiert og implementert kursinnlogging til gtoahpa, har litt
+att av databasemigrering, og gjer det i dag.
+
+Så står det berre att og følgje med om gtoahpa oppfører seg i framtida.
+
+Heli: Konteaksta er langsamare på gtoahpa enn på gtlab. Hennar analyse
+er at NDS og oahpa.no er i så aktiv bruk at det dermed går saktare
+med Konteaksta her enn på gtlab.
+
+Konklusjon: Vi ventar med å gjere noko til vi har Konteaksta med ny 
+kjeldekode, og vurderer då.
+
+Ryan kan finne ein plugin for LDAP til WordPress, men veit ikkje
+om det går like bra med Feide.
+
+!! Konteaksta inn i kursinnlogging
+
+!submission API 
+Dokumentert, og sjekka inn, men ikkje lenka pent til heimesidene.
+
+Trond tilrår [denne sida|http://giellatekno.uit.no/doc/admin/ProjectDocumentationOverview.html]
+
+t.d. referanse til kode-i-kjelden t.d. inn her:
+
+[http://giellatekno.uit.no/ped/nudoc/konteaksta.html]
+
+!Testing og implementeringa av konteaksta i kursinnlogging gtlab
+
+Dette er ikkje gjort enno, det er for tidleg.
+
+!integrere fronterinnlogging med cookie for kursinnlogging
+
+
+Jelene Larsen (Result):
+> ... som de fleste IT systemer ved UIT bruker Fronter FEIDE og LDAP for autentisering av brukere.
+
+Så Fronter er irrelevant. Spørsmålet er kor mange som dett ut med FEIDE,
+om LDAP er bra nok som alternativ 2, eller om vi skal lage noko eige.
+
+Tiltak:
+* __Ryan__ les seg opp.
+
+
+!! Kvensk Oahpa
+
+Trond arbeider (vidare) med lokalisering.
+
+
+!! Neste møte
+
+
+Slutten av neste veke (v. 50) eller starten av veke 51.
+(Trond bortreist 10. og 12. og 11. etter 16.00, Heli kan ikkje 10.).
+
+Klokkeslett: Optimalt tidspunkt er etter 1900.
+
+Vi høyrer med dei andre og tar e-post-runde i neste veke.
+
