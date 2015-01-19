@@ -332,20 +332,20 @@ class BareGame(Game):
 		#'N-DAT': ('Dat', ['Sg','Pl']),
 		#'N-INS': ('Ins', ['Sg','Pl']),
 		#'': '',
-		'N-NOM-PL': ('nom', ['Pl']),
-		'N-GEN': ('gen', ['Sg','Pl']),
-		'N-PAR': ('part', ['Sg','Pl']),
-		'N-ILL': ('ill', ['Sg','Pl']),
-		'N-INE': ('in', ['Sg','Pl']),
-		'N-ELA': ('el', ['Sg','Pl']),
-		'N-ALL': ('all', ['Sg','Pl']),
-		'N-ADE': ('ad', ['Sg','Pl']),
-		'N-ABL': ('abl', ['Sg','Pl']),
-		'N-TRL': ('tr', ['Sg','Pl']),
-		'N-TER': ('term', ['Sg','Pl']),
-		'N-ESS': ('es', ['Sg','Pl']),
-		'N-ABESS': ('abes', ['Sg','Pl']),
-		'N-COM': ('kom', ['Sg','Pl']),
+		'N-NOM-PL': ('Nom', ['Pl']),
+		'N-GEN': ('Gen', ['Sg','Pl']),
+		'N-PAR': ('Par', ['Sg','Pl']),
+		'N-ILL': ('Ill', ['Sg','Pl']),
+		'N-INE': ('Ine', ['Sg','Pl']),
+		'N-ELA': ('Ela', ['Sg','Pl']),
+		'N-ALL': ('All', ['Sg','Pl']),
+		'N-ADE': ('Ade', ['Sg','Pl']),
+		'N-ABL': ('Abl', ['Sg','Pl']),
+		'N-TRL': ('Tra', ['Sg','Pl']),
+		'N-TER': ('Trm', ['Sg','Pl']),
+		'N-ESS': ('Ess', ['Sg','Pl']),
+		'N-ABESS': ('Abe', ['Sg','Pl']),
+		'N-COM': ('Com', ['Sg','Pl']),
 	}
 
 
@@ -1376,7 +1376,7 @@ class Dato(Klokka):
 
 	# QuestionForm = DatoQuestion
 
-        generate_fst = 'transcriptor-date2text-desc.xfst'
+        generate_fst = 'transcriptor-date-digit2text.filtered.lookup.xfst'
         answers_fst = 'transcriptor-text2date-desc.xfst'
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \

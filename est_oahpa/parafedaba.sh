@@ -1,7 +1,8 @@
 #!/bin/sh
 
 P="python2.7"
-EST_HOME="/home/est_oahpa"
+#EST_HOME="/home/est_oahpa"
+EST_HOME="/Users/mslm/main/ped"
 LANGDIR="est"
 DATA=$EST_HOME/$LANGDIR
 DPS="$DATA/src"
@@ -14,12 +15,12 @@ DPW="$DATA/engest"
 DPR="$DATA/rusest"
 #WORDS=$GTHOME/words/dicts/smenob/src
 
-#echo "==================================================="
-#echo "installing tags and paradigms for Morfa"
-#$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>error.log
-#echo " "
-#echo "done"
-#echo "==================================================="
+echo "==================================================="
+echo "installing tags and paradigms for Morfa"
+$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 ##
 ## Trying to set up Estonian Oahpa
@@ -29,20 +30,20 @@ DPR="$DATA/rusest"
 ##  est->X
 ##
 
-echo "==================================================="
- echo "feeding db with $DPS/E_nagu_Eesti.xml"
- $P install.py --file $DPS/E_nagu_Eesti.xml 
+#echo "==================================================="
+ #echo "feeding db with $DPS/E_nagu_Eesti.xml"
+ #$P install.py --file $DPS/E_nagu_Eesti.xml 
  #--tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>error.log
+ #echo " "
+ #echo "done"
+ #echo "==================================================="
+ 
+ echo "==================================================="
+ echo "feeding db with $DPS/N_est.xml"
+ $P install.py --file $DPS/N_est.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>error.log
  echo " "
  echo "done"
  echo "==================================================="
- 
-# echo "==================================================="
-# echo "feeding db with $DPS/N_est.xml"
-# $P install.py --file $DPS/N_est.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $META/names.xml"
