@@ -19,20 +19,20 @@ from random import choice
 
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
-PRONOUNS_LIST = {'Sg1':u'ma', 'Sg2':u'sa', 'Sg3':u'ta',
-		  'Pl1':u'mēg', 'Pl2':u'tēg', 'Pl3':u'ne'}
+PRONOUNS_LIST = {'Sg1':u'ma', 'Sg2':u'sa', 'Sg3':u'tä',
+		  'Pl1':u'me', 'Pl2':u'te', 'Pl3':u'nä'}
 
 # DEMONSTRATIVE_PRESENTATION plus Sg3/Pl3
 PASSIVE_PRONOUNS_LIST = {'Sg1':u'ma', 'Sg2':u'sa', 'Sg3':u'ta',
-                         'Pl1':u'mēg', 'Pl2':u'tēg', 'Pl3':u'ne'}
+                         'Pl1':u'me', 'Pl2':u'te', 'Pl3':u'ne'} # possibly wrong
 
 
 NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
 		  'Pl1':'eat', 'Pl2':'ehpet', 'Pl3':'eai'}
 
 TENSE_PRESENTATION = {
-	'Prt': u'eggiļ',
-	'Prs': u'tämpõ',
+	'Prt': u'eiläq',  # possibly wrong
+	'Prs': u'täämbä',
 }
 
 RECIPROCATIVE_PRESENTATION = {
