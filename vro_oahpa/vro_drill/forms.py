@@ -352,18 +352,18 @@ VASTAS_NR_OF_TASKWORDS = (
 TRANS_CHOICES = (
         ('vroest', u'Võro to Estonian'),
         ('estvro', u'Estonian to Võro'),
-	    #('vroeng', _('Võro to English')),
-	    #('engvro', _('English to Võro')),
-        ('vrofin', u'Võro to Finnish'),
-        ('finvro', u'Finnish to Võro'),           
-        #('vrolat', _('Võro to Latvian')),
-        #('latvro', _('Latvian to Võro')),
-        #('vrosme', _('Võro to North Saami')),
-        #('smevro', _('North Saami to Võro')),
-        #('vronob', _('Võro to Norwegian')),
-        #('nobvro', _('Norwegian to Võro')), 
-        #('vrorus', _('Võro to Russian')),
-        #('rusvro', _('Russian to Võro')),
+	    ('vrofin', u'Võro to Finnish'),
+        ('finvro', u'Finnish to Võro'),
+        ('vroeng', u'Võro to English'),
+	    ('engvro', u'English to Võro'),           
+        ('vrodeu', u'Võro to German'),
+        ('deuvro', u'German to Võro'),
+        ('vrosme', u'Võro to North Saami'),
+        ('smevro', u'North Saami to Võro'),
+        ('vroswe', u'Võro to Swedish'),
+        ('swevro', u'Swedish to Võro'),
+        ('vronob', u'Võro to Norwegian'),
+        ('nobvro', u'Norwegian to Võro'), 
 )
 
 NUMLANGUAGE_CHOICES = (
@@ -566,10 +566,17 @@ def relax(strict):
 	   u't' : u'tʼ',
 	   u'v́' : u'vʼ',
 	   u'v' : u'vʼ',
-	   # different apostrophe-like characters are accepted:
-	   u'\'' : u'ʼ', # the regular apostrophe
-	   u'´' : u'ʼ',
-	   u'`' : u'ʼ',
+	   # different apostrophy-like characters are accepted:
+	   u'\'' : u'ʼ', # the regular apostrophy
+	   u'´' : u'ʼ', # acute
+	   u'`' : u'ʼ', # gravis
+	   u'’' : u'ʼ', # right single apostrophy
+	   # spell-relax for glottal stop denoted by q
+	   u'ʼ' : u'q', # modifier letter apostrophy
+	   u'\'' : u'q', # the regular apostrophy
+	   u'´' : u'q', # acute
+	   u'`' : u'q', # gravis
+	   u'’' : u'q', # right single apostrophy
 	}
 
 	# Create an iterator. We want to generate as many possibilities as
