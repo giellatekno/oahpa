@@ -40,6 +40,7 @@ http://oahpa.no/sme/useoahpa/morfa.nob.html
         {% ifequal settings.pos "Num" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.num %}" class="interface">{% trans_to 'Numerals' "sme" %}<span class="invisible">{% trans 'Numerals' %}</span></a></li>
         {% ifequal settings.pos "Der" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.der %}" class="interface">{% trans_to 'Derivations' "sme" %}<span class="invisible">{% trans 'Derivations' %}</span></a></li>
 <!--		{% ifequal settings.pos "Px" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.px %}" class="interface">{% trans_to 'Possessives' "sme" %}<span class="invisible">{% trans 'Possessives' %}</span></a></li>  -->
+{% ifequal settings.pos "Px" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.px %}" class="interface">{% trans_to 'Testing' "sme" %}<span class="invisible">{% trans 'Testing' %}</span></a></li>  
 	</ul>        
 {% else %}
 	<ul class="sidelist"> 
