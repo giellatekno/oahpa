@@ -323,19 +323,18 @@ class Game(object):
 class BareGame(Game):
 
 	casetable = {
-		'N-NOM-PL': ('Nom', ['Pl']),
-		'N-GEN': ('Gen', ['Sg','Pl']),
-		'N-PAR': ('Par', ['Sg','Pl']),
-		'N-ILL': ('Ill', ['Sg','Pl']),
-		'N-INE': ('Ine', ['Sg','Pl']),
-		'N-ELA': ('Ela', ['Sg','Pl']),
-		'N-ALL': ('All', ['Sg','Pl']),
-		'N-ADE': ('Ade', ['Sg','Pl']),
-		'N-ABL': ('Abl', ['Sg','Pl']),
-        'N-TRA': ('Tra', ['Sg','Pl']),
-        'N-TER': ('Ter', ['Sg','Pl']),
-        'N-ABESS': ('Abe', ['Sg','Pl']),
-        'N-COM': ('Com', ['Sg','Pl']),
+		'N-NOM-PL': ('Nom', ['Pl'], ''),
+		'N-GEN': ('Gen', ['Sg','Pl'], ''),
+		#'N-ILL': ('Ill', ['Sg','Pl']),
+		#'N-INE': ('Ine', ['Sg','Pl']),
+		#'N-ELA': ('Ela', ['Sg','Pl']),
+		#'N-ALL': ('All', ['Sg','Pl']),
+		#'N-ADE': ('Ade', ['Sg','Pl']),
+		#'N-ABL': ('Abl', ['Sg','Pl']),
+        #'N-TRA': ('Tra', ['Sg','Pl']),
+        #'N-TER': ('Ter', ['Sg','Pl']),
+        #'N-ABESS': ('Abe', ['Sg','Pl']),
+        #'N-COM': ('Com', ['Sg','Pl']),
 		'': '',
 	}
 
@@ -517,7 +516,7 @@ class BareGame(Game):
 		# 	syll = ['']
 
 		if pos in ['N', 'Num', 'Pron']:
-			case, number = self.casetable[pos_tables[pos]]
+			case, number, possessive = self.casetable[pos_tables[pos]]
 		else:
 			case = self.casetable[pos_tables[pos]]
 		grade = self.casetable.get('grade', '')
@@ -643,14 +642,14 @@ class BareGame(Game):
 		
 		if pos in ['Pron', 'N', 'Num']:
 			TAG_QUERY = TAG_QUERY & \
-						Q(case=case)
+						Q(case=case) 
 						# regardless of whether it's Actor, Coll, etc.
 
 		if pos == 'N':
 			if singular_only:   # if the user has checked the box "singular only"
-				TAG_QUERY = TAG_QUERY & Q(number='Sg')
+				TAG_QUERY = TAG_QUERY & Q(number='Sg') & Q(possessive=possessive)
 			else:
-				TAG_QUERY = TAG_QUERY & Q(number__in=number)
+				TAG_QUERY = TAG_QUERY & Q(number__in=number) & Q(possessive=possessive)
 
 
 

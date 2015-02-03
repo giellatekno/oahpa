@@ -33,8 +33,7 @@ echo "==================================================="
 
  echo "==================================================="
  echo "feeding db with $DPS/N_mrj2X.xml"
- $P install.py --file $DPS/N_mrj2X.xml 
- # --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>error.log
+ $P install.py --file $DPS/N_mrj2X.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>error.log
  echo " "
  echo "done"
  echo "==================================================="
@@ -365,8 +364,8 @@ echo "==================================================="
 #echo "done"
 #echo "==================================================="
 
-# $P manage.py mergetags
-# $P manage.py fixtagattributes
+$P manage.py mergetags
+$P manage.py fixtagattributes
 
 echo "==================================================="
 #echo "installing Morfa-C questions for nouns"
