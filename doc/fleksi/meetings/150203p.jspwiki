@@ -1,0 +1,87 @@
+!!! Møte 03.02.15
+
+Til stades: Heli, Ryan, Lene
+
+!!!Saker: 
+# Univ-Oahpa på gtlab
+# Konteaksta inn i kursinnlogging
+# Felles system for russisk og nordsamisk
+# gtoahpa-serveren
+# Px Oahpa
+# NDS
+# Oulu-konferanse
+# Neste møte
+
+!! Univ-Oahpa på gtlab
+Heli gjorde svn up på gtlab, men kunne ikke starta systemet, det kom feilmeldinger. Univ-oahpa bør installeres på nytt? Databasen er på plass, men ikke dependencies er ikke ok.
+
+! Tiltak:
+* __Ryan__ restarter univ-oahpa på gtlab, og skriv litt om kva problemet var her: [Oahpa dokumentasjon|http://giellatekno.uit.no/ped/common/OahpaTechnicalDocumentation.html]
+
+
+!! Konteaksta inn i kursinnlogging
+Heli har arbeidet med dette, og har funnet ut at innloggingscookien synes også i Konteaksta-logen. Arbeidet videre.
+
+Heli og Lene har problemer med å logge seg inn via kursa. Vi må tømme cache før vi tester. Lene har tre innlogginger: lan000 = administrator, leneant = lærer, rsswebredaktor = student
+
+Dokumentasjon: http://oahpa.no/davvi/courses/api/submission/ (man må være innlogga)
+
+! Tiltak:
+* __Lene__ tester innlogging og sender melding til Ryan.
+* __Lene__ definerer course goals for Konteaksta på [fleksidoksida|http://giellatekno.uit.no/ped/fleksi/FleksibelUtdanning.html] , på linja for kursmål
+* __Ryan__ skriv dokumentasjon for måldefinering i Courses modulen
+* __Heli__ sørger for at data fra Konteksta går til riktig sted
+
+
+!! Felles system for russisk og nordsamisk
+Kildekoden skal være i Tromsø
+
+Heli lykkes med nordsamisk view på sin maskin. Hun vil etter at kursinnlogginga er ferdig, vurdere om vår kode skal erstattes med view-koden.
+
+cookie er beste løsning for autentisering
+
+Fronter: hvis uninett for Feide
+
+Feide dokumentasjon: 
+ * https://rnd.feide.no/
+ 
+!Tiltak:
+* __Ryan__ tar kontakt med Fronter og diskuterer dette 
+
+
+
+
+!! gtoahpa-serveren
+Logge inn som meg sjøl, deretter som fellesbruker.
+
+* __Ryan__ tester at icall brukar kan kopiera til /opt/ og gjøre svn up osv i /home/univ_oahpa (oahpa-gruppe)
+* __Heli__ ordner bedre url for Konteksta på gtoahpa-serveren (oahpa.no/konteaksta)
+
+!! Px Oahpa
+Px-Morfa er flyttet over til gtoahpa. Det blir noen forandringer i oppgavene, Heli er ikke helt ferdig med implementeringa. Det må også genereres nye Px-former. stryke N+..+...+Px...
+* fil med lemmaer å genonly: n_px.xml
+* n_px_paradigms.txt
+
+!Tiltak:
+* __Lene__ oppdaterer oahpaleksikonet for sme, slik at det er klart for ny generering. Gir beskjed til Heli når det er gjort.
+* __Lene__ lager feedback-filer for px
+
+!! NDS
+Sørsamisk vil ha det samme som er gjort for sme:
+* paradigmer for sma, parallelt med sme, men andre kasus for subst: Ela og Ine istedenfor Loc
+* Autocomplete for nob, men ikke for sma
+
+Andre ting:
+* se på bugzilladiskusjonene, om det er noe som ikke er gjort
+* crk-generatoren er treg, hvorfor det? (vanligvis er xfst raskere hfst)
+
+
+!! Oulu-konferanse
+Det er sendt inn og akseptert ett abstrakt om inarisamisk: Aanaar Saami e-lexicography
+
+I tillegg har Ryan fått akseptert et abstrakt til?!? Mail til Trond og Jaska om dette.
+
+
+!! Neste møte
+Mandag 16. februar kl. 20.00
+
