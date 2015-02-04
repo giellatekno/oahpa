@@ -135,15 +135,17 @@ PRONOUN_SUBCLASSES = (
 )
 
 CASE_CONTEXT_CHOICES = (
-   # ('N-GEN', _('Genitive')),
-    ('N-PAR', _('Partitive')),
-    #('N-ILL', _('Illative')),
-    #('N-INE', _('Inessive')),
+    ('N-PAR', _('Keda? Mida?')),
+    ('N-GEN-NOM', _('Kelle? Mille?')),
+    ('N-ILL-ALL', _('Kuhu?')),
+    ('N-INE-ADE', _('Kus?')),
+    ('N-TRA', _('Kelleks? Milleks?')),
+    ('N-COM', _('Kellega? Millega?')),
     #('N-ELA', _('Elative')),
     #('N-ADE', _('Adessive')),
     #('N-ABL', _('Ablative')),
     #('N-ALL', _('Allative')),
-#	('N-MIX', _('mix')),
+	#('N-MIX', _('mix')),
 )
 
 NOUN_TYPE_CHOICES =(
