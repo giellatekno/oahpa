@@ -39,7 +39,7 @@ http://oahpa.no/sme/useoahpa/morfa.nob.html
 		{% ifequal settings.pos "Pron" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.pron %}" class="interface">{% trans 'Pronouns' %}<span class="invisible">{% trans 'Pronouns' %}</span></a></li>
         {% ifequal settings.pos "Num" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.num %}" class="interface">{% trans_to 'Numerals' "sme" %}<span class="invisible">{% trans 'Numerals' %}</span></a></li>
         {% ifequal settings.pos "Der" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.der %}" class="interface">{% trans_to 'Derivations' "sme" %}<span class="invisible">{% trans 'Derivations' %}</span></a></li>
-<!--		{% ifequal settings.pos "Px" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.px %}" class="interface">{% trans_to 'Possessives' "sme" %}<span class="invisible">{% trans 'Possessives' %}</span></a></li>  -->
+	<!--	{% ifequal settings.pos "Px" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.px %}" class="interface">{% trans_to 'Possessives' "sme" %}<span class="invisible">{% trans 'Possessives' %}</span></a></li> --> 
 {% ifequal settings.pos "Px" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.px %}" class="interface">{% trans_to 'Testing' "sme" %}<span class="invisible">{% trans 'Testing' %}</span></a></li>  
 	</ul>        
 {% else %}
@@ -50,7 +50,7 @@ http://oahpa.no/sme/useoahpa/morfa.nob.html
 		{% ifequal settings.pos "Pron" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_c.pron %}" class="interface">{% trans_to 'Pronouns' "sme" %}<span class="invisible">{% trans 'Pronouns' %}</span></a></li>
         {% ifequal settings.pos "Num" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_c.num %}" class="interface">{% trans_to 'Numerals' "sme" %}<span class="invisible">{% trans 'Numerals' %}</span></a></li>
         {% ifequal settings.pos "Der" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_c.der %}" class="interface">{% trans_to 'Derivations' "sme" %}<span class="invisible">{% trans 'Derivations' %}</span></a></li>
-<!--        {% ifequal settings.pos "Px" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_c.px %}" class="interface">{% trans_to 'Possessives' "sme" %}<span class="invisible">{% trans 'Possessives' %}</span></a></li>  -->
+        {% ifequal settings.pos "Px" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_c.px %}" class="interface">{% trans_to 'Testing' "sme" %}<span class="invisible">{% trans 'Testing' %}</span></a></li> 
 
 	</ul>              
 {% endifequal %}
