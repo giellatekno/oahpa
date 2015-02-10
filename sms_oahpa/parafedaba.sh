@@ -1,15 +1,15 @@
 #!/bin/sh
 
 P="python2.7"
-GTHOME="/home/ryan/gtsvn"
-LANGDIR="ped/sme"
+GTHOME="/Users/mslm/main/ped"
+LANGDIR="sms"
 DATA=$GTHOME/$LANGDIR
 DPS="$DATA/src"
 META="$DATA/meta"
-DPN="$DATA/nobsme"
-DPF="$DATA/finsme"
-#DPW="$DATA/swesme"
-#WORDS=$GTHOME/words/dicts/smenob/src
+DPN="$DATA/nobsms"
+DPF="$DATA/finsms"
+#DPW="$DATA/swesms"
+#WORDS=$GTHOME/words/dicts/smsnob/src
 
 echo "==================================================="
 echo "installing tags and paradigms for Morfa-C"
@@ -19,12 +19,12 @@ echo "done"
 echo "==================================================="
 
 ##
-##  sme->X
+##  sms->X
 ##
 
 echo "==================================================="
-echo "feeding db with $DPS/n_smenob.xml"
-$P install.py --file $DPS/n_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>error.log
+echo "feeding db with $DPS/n_sms2X.xml"
+$P install.py --file $DPS/n_sms2X.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -37,30 +37,30 @@ echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/prop_smenob.xml"
-$P install.py --file $DPS/prop_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
+echo "feeding db with $DPS/prop_smsnob.xml"
+$P install.py --file $DPS/prop_smsnob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 
 echo "==================================================="
-echo "feeding db with $DPS/num_smenob.xml"
-$P install.py --file $DPS/num_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/num_paradigms.txt 2>>error.log
+echo "feeding db with $DPS/num_smsnob.xml"
+$P install.py --file $DPS/num_smsnob.xml --tagfile $META/tags.txt --paradigmfile $META/num_paradigms.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/a_smenob.xml"
-$P install.py --file $DPS/a_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/a_paradigms.txt 2>>error.log
+echo "feeding db with $DPS/a_smsnob.xml"
+$P install.py --file $DPS/a_smsnob.xml --tagfile $META/tags.txt --paradigmfile $META/a_paradigms.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/v_smenob.xml"
-$P install.py --file $DPS/v_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt 2>>error.log
+echo "feeding db with $DPS/v_smsnob.xml"
+$P install.py --file $DPS/v_smsnob.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -75,188 +75,188 @@ echo "==================================================="
 
 
 echo "==================================================="
-echo "feeding db with $DPS/adv_smenob.xml"
-$P install.py --file $DPS/adv_smenob.xml 2>>error.log
+echo "feeding db with $DPS/adv_smsnob.xml"
+$P install.py --file $DPS/adv_smsnob.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/multiword_smenob.xml"
-$P install.py --file $DPS/multiword_smenob.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
-
-##
-## nobsme
-##
-
-echo "==================================================="
-echo "feeding db with $DPN/a_nobsme.xml"
-$P install.py --file $DPN/a_nobsme.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with $DPN/n_nobsme.xml"
-$P install.py --file $DPN/n_nobsme.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with $DPN/num_nobsme.xml"
-$P install.py --file $DPN/num_nobsme.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with $DPN/v_nobsme.xml"
-$P install.py --file $DPN/v_nobsme.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with $DPN/adv_nobsme.xml"
-$P install.py --file $DPN/adv_nobsme.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with $DPN/mwe_nobsme.xml"
-$P install.py --file $DPN/mwe_nobsme.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with $DPN/prop_nobsme.xml"
-$P install.py --file $DPN/prop_nobsme.xml 2>>error.log
+echo "feeding db with $DPS/multiword_smsnob.xml"
+$P install.py --file $DPS/multiword_smsnob.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 ##
-## finsme
+## nobsms
 ##
 
 echo "==================================================="
-echo "feeding db with $DPF/a_finsme.xml"
-$P install.py --file $DPF/a_finsme.xml 2>>error.log
+echo "feeding db with $DPN/a_nobsms.xml"
+$P install.py --file $DPN/a_nobsms.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPF/n_finsme.xml"
-$P install.py --file $DPF/n_finsme.xml 2>>error.log
+echo "feeding db with $DPN/n_nobsms.xml"
+$P install.py --file $DPN/n_nobsms.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPF/num_finsme.xml"
-$P install.py --file $DPF/num_finsme.xml 2>>error.log
+echo "feeding db with $DPN/num_nobsms.xml"
+$P install.py --file $DPN/num_nobsms.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPF/v_finsme.xml"
-$P install.py --file $DPF/v_finsme.xml 2>>error.log
+echo "feeding db with $DPN/v_nobsms.xml"
+$P install.py --file $DPN/v_nobsms.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPF/adv_finsme.xml"
-$P install.py --file $DPF/adv_finsme.xml 2>>error.log
+echo "feeding db with $DPN/adv_nobsms.xml"
+$P install.py --file $DPN/adv_nobsms.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPF/mwe_finsme.xml"
-$P install.py --file $DPF/mwe_finsme.xml 2>>error.log
+echo "feeding db with $DPN/mwe_nobsms.xml"
+$P install.py --file $DPN/mwe_nobsms.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPF/prop_finsme.xml"
-$P install.py --file $DPF/prop_finsme.xml 2>>error.log
+echo "feeding db with $DPN/prop_nobsms.xml"
+$P install.py --file $DPN/prop_nobsms.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 ##
-## swesme - has not been created for the new format yet
+## finsms
+##
+
+echo "==================================================="
+echo "feeding db with $DPF/a_finsms.xml"
+$P install.py --file $DPF/a_finsms.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPF/n_finsms.xml"
+$P install.py --file $DPF/n_finsms.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPF/num_finsms.xml"
+$P install.py --file $DPF/num_finsms.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPF/v_finsms.xml"
+$P install.py --file $DPF/v_finsms.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPF/adv_finsms.xml"
+$P install.py --file $DPF/adv_finsms.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPF/mwe_finsms.xml"
+$P install.py --file $DPF/mwe_finsms.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPF/prop_finsms.xml"
+$P install.py --file $DPF/prop_finsms.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+##
+## swesms - has not been created for the new format yet
 ##
 
 # echo "==================================================="
-# echo "feeding db with $DPW/a_swesme.xml"
-# $P install.py --file $DPW/a_swesme.xml
+# echo "feeding db with $DPW/a_swesms.xml"
+# $P install.py --file $DPW/a_swesms.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPW/n_swesme.xml"
-# $P install.py --file $DPW/n_swesme.xml
+# echo "feeding db with $DPW/n_swesms.xml"
+# $P install.py --file $DPW/n_swesms.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPW/v_swesme.xml"
-# $P install.py --file $DPW/v_swesme.xml
+# echo "feeding db with $DPW/v_swesms.xml"
+# $P install.py --file $DPW/v_swesms.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPW/adv_swesme.xml"
-# $P install.py --file $DPW/adv_swesme.xml
+# echo "feeding db with $DPW/adv_swesms.xml"
+# $P install.py --file $DPW/adv_swesms.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPW/multiword_swesme.xml"
-# $P install.py --file $DPW/multiword_swesme.xml
+# echo "feeding db with $DPW/multiword_swesms.xml"
+# $P install.py --file $DPW/multiword_swesms.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPW/prop_swesme.xml"
-# $P install.py --file $DPW/prop_swesme.xml
+# echo "feeding db with $DPW/prop_swesms.xml"
+# $P install.py --file $DPW/prop_swesms.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/grammaticalwords_smenob.xml"
-$P install.py --file $DPS/grammaticalwords_smenob.xml 2>>error.log
+echo "feeding db with $DPS/grammaticalwords_smsnob.xml"
+$P install.py --file $DPS/grammaticalwords_smsnob.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/pron_sme.xml"
-$P install.py --file $DPS/pron_sme.xml --tagfile $META/tags.txt  2>>error.log
+echo "feeding db with $DPS/pron_sms.xml"
+$P install.py --file $DPS/pron_sms.xml --tagfile $META/tags.txt  2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/derverb_sme.xml"
-$P install.py --file $DPS/derverb_sme.xml --tagfile $META/tags.txt --append  2>>error.log # TODO: test append with this
+echo "feeding db with $DPS/derverb_sms.xml"
+$P install.py --file $DPS/derverb_sms.xml --tagfile $META/tags.txt --append  2>>error.log # TODO: test append with this
 echo " "
 echo "done"
 echo "==================================================="
@@ -278,7 +278,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with messages to feedback"
-$P install.py --messagefile $META/messages.sme.xml 2>>error.log
+$P install.py --messagefile $META/messages.sms.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -312,7 +312,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C word fillings"
-$P install.py -f $META/fillings_smenob.xml --paradigmfile $META/paradigms.txt --tagfile $META/tags.txt 2>>error.log
+$P install.py -f $META/fillings_smsnob.xml --paradigmfile $META/paradigms.txt --tagfile $META/tags.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -410,7 +410,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "Installing feedback messages for vasta - in North Sámi"
-$P install.py --messagefile $META/messages_vasta.sme.xml 2>>error.log
+$P install.py --messagefile $META/messages_vasta.sms.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -484,28 +484,28 @@ $P manage.py fixattributes
 
 echo "==================================================="
 echo "adding feedback to nouns"
-$P install.py -f $DPS/n_smenob.xml --feedbackfile $META/feedback_nouns.xml
+$P install.py -f $DPS/n_smsnob.xml --feedbackfile $META/feedback_nouns.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "adding feedback to verbs"
-$P install.py -f $DPS/v_smenob.xml --feedbackfile $META/feedback_verbs.xml
+$P install.py -f $DPS/v_smsnob.xml --feedbackfile $META/feedback_verbs.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "adding feedback to adjectives"
-$P install.py -f $DPS/a_smenob.xml --feedbackfile $META/feedback_adjectives.xml 
+$P install.py -f $DPS/a_smsnob.xml --feedbackfile $META/feedback_adjectives.xml 
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "adding feedback to numerals"
-$P install.py -f $DPS/num_smenob.xml --feedbackfile $META/feedback_numerals.xml 
+$P install.py -f $DPS/num_smsnob.xml --feedbackfile $META/feedback_numerals.xml 
 echo " "
 echo "done"
 echo "==================================================="

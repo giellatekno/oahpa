@@ -64,13 +64,22 @@ POS_CHOICES = (
 )
 
 CASE_CHOICES = (
-	('NOMPL', _('plural')),
-	('N-ACC', _('accusative')),
-	('N-ILL', _('illative')),
-	('N-LOC', _('locative')),
-	('N-COM', _('comitative')),
-	('N-GEN', _('genitive')),
+    ('N-NOM', _('singular nominative')),
+	('N-GEN', _('singular genitive')),
+	('N-ACC', _('singular accusative')),
+	('N-ILL', _('singular illative')),
+	('N-LOC', _('singular locative')),
+	('N-COM', _('singular comitative')),
 	('N-ESS', _('essive')),
+	('N-PAR', _('partitive')),
+	('N-ABESS', _('singular abessive')),
+	('NOMPL', _('plural nominative')),
+	('N-GEN-PL', _('plural genitive')),
+	('N-ACC-PL', _('plural accusative')),
+	('N-ILL-PL', _('plural illative')),
+	('N-LOC-PL', _('plural locative')),
+	('N-COM-PL', _('plural comitative')),
+	('N-ABESS-PL', _('plural abessive')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -822,7 +831,7 @@ class OahpaSettings(forms.Form):
 	
 	def set_default_data(self):
 		self.default_data = {
-					'language' : 'rus',  # sme in univ_oahpa
+					'language' : 'sms',  # sme in univ_oahpa
 					'syll' : ['2syll'],
 					'bisyllabic': 'on',
 					'trisyllabic': False,
@@ -1972,7 +1981,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["nob","sme","fin","eng","swe"]: language="nob"
+    if not language in ["nob","sms","fin","eng","rus"]: language="nob"
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():

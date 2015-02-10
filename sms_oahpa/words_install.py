@@ -7,7 +7,7 @@ import sys
 
 from sms_drill.models import *
 import conf.ordereddict
-#from collections import OrderedDict
+from collections import OrderedDict
 
 
 # For easier debugging.

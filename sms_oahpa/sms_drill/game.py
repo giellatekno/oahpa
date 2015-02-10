@@ -146,6 +146,7 @@ class Game(object):
 			
 			try:
 				form, word_id = self.create_form(db_info, i, 0)
+				print "word id:",word_id
 			except Http404, e:
 				raise e
 			except ObjectDoesNotExist:
@@ -315,16 +316,24 @@ class Game(object):
 class BareGame(Game):
 	
 	casetable = {
-		'NOMPL': 'Nom', 
 		'ATTR': 'Attr',
 		'PRED': 'Pred', 
-		#'N-NOM': 'Nom',
-		'N-ILL': 'Ill', 
-		'N-ESS': 'Ess', 
-		'N-GEN': 'Gen',
-		'N-LOC': 'Loc',
-		'N-ACC': 'Acc', 
-		'N-COM': 'Com',
+		'N-NOM': ('Nom', ['Sg']),
+		'N-GEN': ('Gen', ['Sg']),
+		'N-ACC': ('Acc', ['Sg']), 
+		'N-ILL': ('Ill', ['Sg']), 
+		'N-LOC': ('Loc', ['Sg']),
+		'N-COM': ('Com', ['Sg']),
+		'N-ESS': ('Ess', ['']), 
+		'N-PAR': ('Par', ['']), 
+		'N-ABESS': ('Abe', ['Sg']),		
+		'NOMPL': ('Nom', ['Pl']), 
+		'N-GEN-PL': ('Gen', ['Pl']),
+		'N-ACC-PL': ('Acc', ['Pl']), 
+		'N-ILL-PL': ('Ill', ['Pl']), 
+		'N-LOC-PL': ('Loc', ['Pl']),
+		'N-COM-PL': ('Com', ['Pl']),
+		'N-ABESS-PL': ('Abe', ['Pl']),	
 		'A-ATTR': 'Attr',
 		'COMP': 'Comp', # was: A-COMP
 		'SUPERL': 'Superl', # was: A-SUPERL
@@ -523,7 +532,11 @@ class BareGame(Game):
 		if pos == 'Pron':
 			syll = ['']
 		
-		case = self.casetable[pos_tables[pos]]
+		if pos == 'N':  # Maybe need to add also Num and Pron here
+			case, number = self.casetable[pos_tables[pos]]
+		else:
+			case = self.casetable[pos_tables[pos]]
+            
 		grade = self.casetable[grade]
 		num_type = self.casetable[num_type] # added by Heli
 		
@@ -554,14 +567,15 @@ class BareGame(Game):
 				pos2 = 'Num'
 				subclass='Coll'
 		
-		number = ["Sg","Pl",""]
+		 # Commented out the following because we do not have mixed singular and plural exercises now
+		#number = ["Sg","Pl",""]
 		
-		if case == "Ess":
-			number = [""] 
-		elif case == "Nom" and pos != "Pron":
-			number = ["Pl"]
-		else:
-			number = ["Sg","Pl"]
+		#if case == "Ess":
+		#	number = [""] 
+		#elif case == "Nom" and pos != "Pron":
+	#		number = ["Pl"]
+	#	else:
+	#		number = ["Sg","Pl"]
 		
 		# A+Sg+Nom
 		
@@ -647,9 +661,10 @@ class BareGame(Game):
 
 			if pos == 'N':
 				TAG_QUERY = TAG_QUERY & \
-							Q(possessive="") & \
 							Q(number__in=number)
+							#Q(possessive="") & \
 
+			print "tag query:",TAG_QUERY
 			# 'Pers' subclass for pronouns, otherwise none.
 			# TODO: combine all subclasses so forms can be fetched
 			if pos == 'Pron':
