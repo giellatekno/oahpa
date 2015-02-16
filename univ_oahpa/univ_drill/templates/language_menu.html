@@ -4,7 +4,7 @@
 
 {% get_current_language as LANGUAGE_CODE %}
 <form action="/{{ URL_PREFIX }}/i18n/setlang/" method="post" name="newlang">
-    <input name="next" type="hidden" value="{{ redirect_to }}" />
+   <input name="next" type="hidden" value="{{ redirect_to }}" /> <!-- On some reason selecting the interface language causes redirect to the page http://oahpa.no. ??? When I commented out this redirect command, the same thing still happened. -->
 	{% csrf_token %}
     <dl>
         <dt><label for="language_select" class="interface">{% trans_to "Interface language" "sme" %}<span class="invisible">{% trans "Interface language" %}</span></label></dt>

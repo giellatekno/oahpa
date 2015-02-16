@@ -15,8 +15,11 @@
 		{{ settingsform.possessive_case }}</li>
 	<li><label for="id_{{ settingsform.possessive_type.name }}" class="interface">{% trans_to "Set" "sme" %}<span class="invisible">{% trans "Set" %}</span></label>
 		{{ settingsform.possessive_type }}</li>
-	<li><label for="id_{{ settingsform.possessive_number.name }}" class="interface">{% trans_to "Possessive number" "sme" %}<span class="invisible">{% trans "Possessive type" %}</span></label>
-		{{ settingsform.possessive_number }}</li>
+	<!--<li><label for="id_{{ settingsform.possessive_number.name }}" class="interface">{% trans_to "Possessive number" "sme" %}<span class="invisible">{% trans "Possessive type" %}</span></label>
+		{{ settingsform.possessive_number }}</li> -->
+	<li><label for="id_{{ settingsform.possessive_person.name }}" class="interface">{% trans_to "Person" "sme" %}<span class="invisible">{% tra
+ns "Person" %}</span></label>
+                {{ settingsform.possessive_person }}</li>
 {% else %}
 	<li><label for="id_{{ settingsform.possessive_case_context.name }}" class="interface">{% trans_to "Case" "sme" %}<span class="invisible">{% trans "Case" %}</span></label>
 		{{ settingsform.possessive_case_context }}</li>
