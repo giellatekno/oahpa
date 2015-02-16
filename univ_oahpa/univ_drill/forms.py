@@ -299,6 +299,12 @@ POSSESSIVE_NUMBER_CHOICES = (
 	('N-PL', _('Plural')),
 )
 
+POSSESSIVE_PERSON_CHOICES = (
+        ('pers1', _('1. person')),
+        ('pers2', _('2. person')),
+        ('pers3', _('3. person')),
+)
+
 POSSESSIVE_CHOICE_SEMTYPES = dict((
 	('N-PX-GROUP1', ['FAMILY']),
 	('N-PX-GROUP2', ['BODYPART', 'ANIMAL', 'PXPROPERTY',]),
@@ -984,6 +990,7 @@ class OahpaSettings(forms.Form):
 
 					'possessive_type': 'N-PX-GROUP1',
 					'possessive_number': 'N-SG',
+					'possessive_person': 'pers1',
 
 					'possessive_case': "N-ACC",
 					'possessive_case_context': 'PX-ACC',  # MorfaC px
@@ -1251,6 +1258,7 @@ class MorfaSettings(OahpaSettings):
 	possessive_case = forms.ChoiceField(initial='N-ACC', choices=POSSESSIVE_GROUP1_CASE, widget=forms.Select, required=False)
 	possessive_type = forms.ChoiceField(initial='N-PX-GROUP1', choices=POSSESSIVE_CHOICES, widget=forms.Select)
 	possessive_number = forms.ChoiceField(initial='N-SG', choices=POSSESSIVE_NUMBER_CHOICES, widget=forms.Select)
+	possessive_person = forms.ChoiceField(initial='pers1', choices=POSSESSIVE_PERSON_CHOICES, widget=forms.Select)
 	possessive_case_context = forms.ChoiceField(initial='PX-ACC',choices=POSSESSIVE_CONTEXT_CHOICES, widget=forms.Select, required=False)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
 	case_context = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)

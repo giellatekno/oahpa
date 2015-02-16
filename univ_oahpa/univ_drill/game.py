@@ -360,6 +360,9 @@ class BareGame(Game):
 		'N-PX-GROUP1': 'Nom', # TODO: populate case in similar way to pronouns 
 		'N-PX-GROUP2': 'Acc', # was: Nom TODO: populate case in similar way to pronouns 
 		'N-PX-GROUP3': 'Nom', # TODO: populate case in similar way to pronouns 
+		'pers1': '1',
+		'pers2': '2',
+		'pers3': '3',
 		'A-DER-V': 'A+Der/AV+V',
 		'V-DER-PASS': '',
 		'': '',
@@ -503,6 +506,7 @@ class BareGame(Game):
 		possessive_case = True and self.settings.get('possessive_case') or   ""
 		possessive_type = True and self.settings.get('possessive_type') or   ""
 		possessive_number = True and self.settings.get('possessive_number') or   ""
+		possessive_person = True and self.settings.get('possessive_person') or   ""
 
 		grade = True and self.settings.get('grade')  or  ""
 		num_type = True and self.settings.get('num_type') or ""  # added to get num_type from settings
@@ -570,6 +574,7 @@ class BareGame(Game):
 			elif possessive_case == 'N-NOM' and possessive_type == 'N-PX-GROUP2':   # to avoid the crash with case=NOM, type=OTHER 
 				possessive_case = 'N-ACC'
 			case = self.casetable[possessive_case]
+			possessive_person = self.casetable[possessive_person]
 		else:
 			case = self.casetable[pos_tables[pos]]
 
@@ -685,7 +690,8 @@ class BareGame(Game):
 		        else:
 				p_type = [a for a in p_type if 'PxPl' in a]
 			
-			TAG_QUERY = Q(string__in=p_type)
+			#TAG_QUERY = Q(string__in=p_type)
+			TAG_QUERY = Q(possessive__endswith=possessive_person)
 			
 			TAG_EXCLUDES = False
 			sylls = False
