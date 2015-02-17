@@ -484,7 +484,8 @@ class Paradigm:
 		# fstdir = "/opt/smi/sme/bin"
 		# lookup = "/usr/local/bin/lookup"
 
-		gen_norm_fst = fstdir + "/i%s-norm.fst" % language
+		# gen_norm_fst = fstdir + "/i%s-norm.fst" % language # old infra
+                gen_norm_fst = fstdir + "generator-oahpa-gt-norm.xfst"
 		
 		# None of these dialects in sma. Obs! Dialects! sme-specific!!!
 		# gen_gg_restr_fst = fstdir + "/isme-KJ.restr.fst"			
