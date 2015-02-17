@@ -678,7 +678,8 @@ class BareGame(Game):
 			)
 			semtypes = POSSESSIVE_CHOICE_SEMTYPES[possessive_type]
 			p_type = possessive_types[possessive_type]
-			if 'PXPROPERTY' not in semtypes:
+                        # Commented the following section out as we are not using possessive_number but possessive_person now.
+			"""if 'PXPROPERTY' not in semtypes:
 				possessive_number = 'N-SG'
 			if possessive_number == 'N-SG':
 				if case == 'Nom':
@@ -689,9 +690,13 @@ class BareGame(Game):
 				p_type = [a for a in p_type if 'PxDu' in a]
 		        else:
 				p_type = [a for a in p_type if 'PxPl' in a]
-			
+			"""
+                        if possessive_type == 'N-PX-GROUP1':
+                                p_number = ['Sg']
+                        else:
+                                p_number = ['Sg', 'Pl', 'Du']
 			#TAG_QUERY = Q(string__in=p_type)
-			TAG_QUERY = Q(possessive__endswith=possessive_person)
+			TAG_QUERY = Q(possessive__endswith=possessive_person, number__in=p_number)
 			
 			TAG_EXCLUDES = False
 			sylls = False
@@ -1051,7 +1056,10 @@ class BareGame(Game):
 								.filter(tc__gt=0)[0]
 			ws = trans_word.translations2(target_key).all()  # was ts
 		elif pos == 'Px':
-			ws = baseform.word.translations2(target_key).all()
+                        if isinstance(baseform, Word):
+                                ws = baseform.translations2(target_key).all()
+                        elif isinstance(baseform, Form):  # normally, the type of the baseform should be Form
+                                ws = baseform.word.translations2(target_key).all()
 		else:
 			ws = word.translations2(target_key).all()
 
