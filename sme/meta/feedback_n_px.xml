@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feedback pos="N">
+
+<!-- Messageorder nouns: LEMMA A B C D E
+A: 
+bisyllabic_stem
+trisyllabic_stem
+contracted_stem
+                 
+B: 
+inv_gradation
+no_gradation
+weak_grade
+strong_grade
+finalstrong_grade
+finalweak_grade
+
+C:
+diphthong_simplification
+diphthong_simplification_and_a_i
+
+D: 
+u_o
+is_á
+oš_o
+š_ž
+i_j
+a_i
+e_i
+i_á
+o_u
+oš_u
+t_h
+t_d
+t_b
++g
++n
++m
+
+E:  
+a-suffix
+no_suffix
+id-suffix
+i-suffix
+ide-suffix
+s-suffix
+in-suffix
+iguin-suffix
+n-suffix
+ii-suffix
+iidda-suffix
+is-suffix
+iin-suffix
+iid-suffix
+as-suffix
+
+"viessu" har likestavelsesstamme 
+og skal ha sterkt stadium. 
+vokalveksling u > o. 
+Diftongforening
+Kasusmerke: xxx. 
+Personending: -n 
+
+áhkkon
+-->
+
+  <stems>
+    <l stem="2syll">
+      <msg>bisyllabic_stem</msg>
+    </l>
+    <l stem="3syll">
+      <msg>trisyllabic_stem</msg>
+    </l>
+    <l stem="Csyll">
+      <msg>contracted_stem</msg>
+    </l>
+    <l gradation="inv">
+      <msg>inv_gradation</msg>
+    </l>
+    <l gradation="no">
+      <msg>no_gradation</msg>
+    </l>
+        
+    <l stem="3syll" soggi="u">
+      <msg>u_o</msg>
+      <note>gumppus, u>o</note>
+    </l>
+
+    <l stem="Csyll" soggi="u">
+      <msg>u_o</msg>
+      <note>boazu, sg:u>o pl:o>u</note>
+    </l>
+
+    <l stem="2syll" soggi="i">
+      <msg case="Nom" number="Sg" px="PxSg1">i_á</msg>
+      <msg case="Acc" number="Sg" px="PxSg1">i_á</msg>
+      <msg case="Gen" number="Sg" px="PxSg1">i_á</msg>
+      <msg case="Nom" number="Sg" px="PxSg2">i_á</msg>
+      <msg case="Acc" number="Sg" px="PxSg2">i_á</msg>
+      <msg case="Gen" number="Sg" px="PxSg2">i_á</msg>
+      <msg case="Nom" number="Sg" px="PxDu1">i_á</msg>
+      <msg case="Acc" number="Sg" px="PxDu1">i_á</msg>
+      <msg case="Gen" number="Sg" px="PxDu1">i_á</msg>
+      <msg case="Nom" number="Sg" px="PxDu2">i_á</msg>
+      <msg case="Acc" number="Sg" px="PxDu2">i_á</msg>
+      <msg case="Gen" number="Sg" px="PxDu2">i_á</msg>
+      <msg case="Nom" number="Sg" px="PxPl1">i_á</msg>
+      <msg case="Acc" number="Sg" px="PxPl1">i_á</msg>
+      <msg case="Gen" number="Sg" px="PxPl1">i_á</msg>
+      <msg case="Nom" number="Sg" px="PxPl2">i_á</msg>
+      <msg case="Acc" number="Sg" px="PxPl2">i_á</msg>
+      <msg case="Gen" number="Sg" px="PxPl2">i_á</msg>
+      <msg case="Ill" number="Sg">i_á</msg>
+      <note>eadni, i>á </note>
+    </l>
+
+    <l stem="2syll" soggi="u">
+      <msg case="Nom" number="Sg" px="PxSg1">u_o</msg>
+      <msg case="Acc" number="Sg" px="PxSg1">u_o</msg>
+      <msg case="Gen" number="Sg" px="PxSg1">u_o</msg>
+      <msg case="Nom" number="Sg" px="PxSg2">u_o</msg>
+      <msg case="Acc" number="Sg" px="PxSg2">u_o</msg>
+      <msg case="Gen" number="Sg" px="PxSg2">u_o</msg>
+      <msg case="Nom" number="Sg" px="PxDu1">u_o</msg>
+      <msg case="Acc" number="Sg" px="PxDu1">u_o</msg>
+      <msg case="Gen" number="Sg" px="PxDu1">u_o</msg>
+      <msg case="Nom" number="Sg" px="PxDu2">u_o</msg>
+      <msg case="Acc" number="Sg" px="PxDu2">u_o</msg>
+      <msg case="Gen" number="Sg" px="PxDu2">u_o</msg>
+      <msg case="Nom" number="Sg" px="PxPl1">u_o</msg>
+      <msg case="Acc" number="Sg" px="PxPl1">u_o</msg>
+      <msg case="Gen" number="Sg" px="PxPl1">u_o</msg>
+      <msg case="Nom" number="Sg" px="PxPl2">u_o</msg>
+      <msg case="Acc" number="Sg" px="PxPl2">u_o</msg>
+      <msg case="Gen" number="Sg" px="PxPl2">u_o</msg>
+      <msg case="Ill" number="Sg">u_o</msg>
+      <note>áhkku, u>o </note>
+    </l>
+
+
+
+    <l stem="2syll" diphthong="yes" soggi="u">
+      <msg case="Nom" number="Sg" px="PxSg1">diphthong_simplification</msg>
+      <msg case="Acc" number="Sg" px="PxSg1">diphthong_simplification</msg>
+      <msg case="Gen" number="Sg" px="PxSg1">diphthong_simplification</msg>
+      <msg case="Ill" number="Sg" px="PxSg1">diphthong_simplification</msg>
+      <msg case="Nom" number="Sg" px="PxSg2">diphthong_simplification</msg>
+      <msg case="Acc" number="Sg" px="PxSg2">diphthong_simplification</msg>
+      <msg case="Gen" number="Sg" px="PxSg2">diphthong_simplification</msg>
+      <msg case="Ill" number="Sg" px="PxSg2">diphthong_simplification</msg>
+      <msg case="Nom" number="Sg" px="PxDu1">diphthong_simplification</msg>
+      <msg case="Acc" number="Sg" px="PxDu1">diphthong_simplification</msg>
+      <msg case="Gen" number="Sg" px="PxDu1">diphthong_simplification</msg>
+      <msg case="Ill" number="Sg" px="PxDu1">diphthong_simplification</msg>
+      <msg case="Nom" number="Sg" px="PxDu2">diphthong_simplification</msg>
+      <msg case="Acc" number="Sg" px="PxDu2">diphthong_simplification</msg>
+      <msg case="Gen" number="Sg" px="PxDu2">diphthong_simplification</msg>
+      <msg case="Ill" number="Sg" px="PxDu2">diphthong_simplification</msg>
+      <msg case="Nom" number="Sg" px="PxPl1">diphthong_simplification</msg>
+      <msg case="Acc" number="Sg" px="PxPl1">diphthong_simplification</msg>
+      <msg case="Gen" number="Sg" px="PxPl1">diphthong_simplification</msg>
+      <msg case="Ill" number="Sg" px="PxPl1">diphthong_simplification</msg>
+      <msg case="Nom" number="Sg" px="PxPl2">diphthong_simplification</msg>
+      <msg case="Acc" number="Sg" px="PxPl2">diphthong_simplification</msg>
+      <msg case="Gen" number="Sg" px="PxPl2">diphthong_simplification</msg>
+      <msg case="Ill" number="Sg" px="PxPl2">diphthong_simplification</msg>
+      <note>viessu, diftforenkling</note>
+    </l>
+
+    <l stem="Csyll" diphthong="yes" soggi="u">
+      <msg>diphthong_simplification</msg>
+      <note>boazu, diftforenkling</note>
+    </l>
+
+
+
+    <l stem="2syll" soggi="i">
+      <msg case="Nom" number="Sg" px="PxSg1">i_á</msg>
+      <msg case="Acc" number="Sg" px="PxSg1">i_á</msg>
+      <msg case="Gen" number="Sg" px="PxSg1">i_á</msg>
+      <msg case="Nom" number="Sg" px="PxSg2">i_á</msg>
+      <msg case="Acc" number="Sg" px="PxSg2">i_á</msg>
+      <msg case="Gen" number="Sg" px="PxSg2">i_á</msg>
+      <msg case="Nom" number="Sg" px="PxDu1">i_á</msg>
+      <msg case="Acc" number="Sg" px="PxDu1">i_á</msg>
+      <msg case="Gen" number="Sg" px="PxDu1">i_á</msg>
+      <msg case="Nom" number="Sg" px="PxDu2">i_á</msg>
+      <msg case="Acc" number="Sg" px="PxDu2">i_á</msg>
+      <msg case="Gen" number="Sg" px="PxDu2">i_á</msg>
+      <msg case="Nom" number="Sg" px="PxPl1">i_á</msg>
+      <msg case="Acc" number="Sg" px="PxPl1">i_á</msg>
+      <msg case="Gen" number="Sg" px="PxPl1">i_á</msg>
+      <msg case="Nom" number="Sg" px="PxPl2">i_á</msg>
+      <msg case="Acc" number="Sg" px="PxPl2">i_á</msg>
+      <msg case="Gen" number="Sg" px="PxPl2">i_á</msg>
+      <msg case="Ill" number="Sg">i_á</msg>
+      <note>eadni, i>á </note>
+    </l>
+
+
+
+
+    <l stem="2syll" gradation="yes">
+      <msg case="Nom" number="Sg">strong_grade</msg>
+      <msg case="Acc" number="Sg" px="PxSg1">strong_grade</msg>
+      <msg case="Acc" number="Sg" px="PxDu1">strong_grade</msg>
+      <msg case="Acc" number="Sg" px="PxPl1">strong_grade</msg>
+      <msg case="Acc" number="Sg" px="PxSg2">weak_grade</msg>
+      <msg case="Acc" number="Sg" px="PxDu2">weak_grade</msg>
+      <msg case="Acc" number="Sg" px="PxPl2">weak_grade</msg>
+      <msg case="Acc" number="Sg" px="PxSg3">weak_grade</msg>
+      <msg case="Acc" number="Sg" px="PxDu3">weak_grade</msg>
+      <msg case="Acc" number="Sg" px="PxPl3">weak_grade</msg>
+      <msg case="Gen" number="Sg" px="PxSg1">strong_grade</msg>
+      <msg case="Gen" number="Sg" px="PxDu1">strong_grade</msg>
+      <msg case="Gen" number="Sg" px="PxPl1">strong_grade</msg>
+      <msg case="Gen" number="Sg" px="PxSg2">weak_grade</msg>
+      <msg case="Gen" number="Sg" px="PxDu2">weak_grade</msg>
+      <msg case="Gen" number="Sg" px="PxPl2">weak_grade</msg>
+      <msg case="Gen" number="Sg" px="PxSg3">weak_grade</msg>
+      <msg case="Gen" number="Sg" px="PxDu3">weak_grade</msg>
+      <msg case="Gen" number="Sg" px="PxPl3">weak_grade</msg>
+      <msg case="Nom" number="Pl">weak_grade</msg>
+      <msg case="Gen" number="Pl">weak_grade</msg>
+      <msg case="Acc" number="Pl">weak_grade</msg>
+      <msg case="Ill" number="Sg">strong_grade</msg>
+      <msg case="Ill" number="Pl">weak_grade</msg>
+      <msg case="Loc">weak_grade</msg>
+      <msg case="Com">weak_grade</msg>
+      <note>giehta, gradation</note>
+    </l>
+
+
+    <l stem="3syll" gradation="yes">
+      <msg>strong_grade</msg>
+      <note>beana, gradation</note>
+    </l>
+    
+    <l stem="Csyll" gradation="yes">
+      <msg>strong_grade</msg>
+      <note>vielppis, gradation</note>
+    </l>
+    
+    <l rime="is">
+      <msg>is_á</msg>
+      <note>bálggis rime</note>
+    </l>
+    
+
+    <l stem="2syll">
+      <msg case="Ill" number="Sg">2syllsgill</msg>
+      <msg case="Loc" number="Sg">2syllsgloc</msg>
+      <msg case="Com" number="Sg">2syllsgcom</msg>
+      <msg case="Ill" number="Pl">2syllplill</msg>
+      <msg case="Loc" number="Pl">2syllplloc</msg>
+      <msg case="Com" number="Pl">2syllplcom</msg>
+     <note>viessu, </note>
+    </l>
+
+    <l stem="3syll">
+      <msg case="Ill" number="Sg">3syllsgill</msg>
+      <msg case="Loc" number="Sg" px="PxSg3">3syllsgloc-i</msg>
+      <msg case="Loc" number="Sg" px="PxDu3">3syllsgloc-i</msg>
+      <msg case="Loc" number="Sg" px="PxPl3">3syllsgloc-i</msg>
+      <msg case="Loc" number="Sg" px="PxSg1">3syllsgloc-a</msg>
+      <msg case="Loc" number="Sg" px="PxSg2">3syllsgloc-a</msg>
+      <msg case="Loc" number="Sg" px="PxDu1">3syllsgloc-a</msg>
+      <msg case="Loc" number="Sg" px="PxDu2">3syllsgloc-a</msg>
+      <msg case="Loc" number="Sg" px="PxPl1">3syllsgloc-a</msg>
+      <msg case="Loc" number="Sg" px="PxPl2">3syllsgloc-a</msg>
+      <msg case="Com" number="Sg" px="PxSg3">3syllsgcom-i</msg>
+      <msg case="Com" number="Sg" px="PxDu3">3syllsgcom-i</msg>
+      <msg case="Com" number="Sg" px="PxPl3">3syllsgcom-i</msg>
+      <msg case="Com" number="Sg" px="PxSg1">3syllsgcom-a</msg>
+      <msg case="Com" number="Sg" px="PxSg2">3syllsgcom-a</msg>
+      <msg case="Com" number="Sg" px="PxDu1">3syllsgcom-a</msg>
+      <msg case="Com" number="Sg" px="PxDu2">3syllsgcom-a</msg>
+      <msg case="Com" number="Sg" px="PxPl1">3syllsgcom-a</msg>
+      <msg case="Com" number="Sg" px="PxPl2">3syllsgcom-a</msg>
+      <msg case="Loc" number="Pl" px="PxSg3">3syllplloc-i</msg>
+      <msg case="Loc" number="Pl" px="PxDu3">3syllplloc-i</msg>
+      <msg case="Loc" number="Pl" px="PxPl3">3syllplloc-i</msg>
+      <msg case="Loc" number="Pl" px="PxSg1">3syllplloc-a</msg>
+      <msg case="Loc" number="Pl" px="PxSg2">3syllplloc-a</msg>
+      <msg case="Loc" number="Pl" px="PxDu1">3syllplloc-a</msg>
+      <msg case="Loc" number="Pl" px="PxDu2">3syllplloc-a</msg>
+      <msg case="Loc" number="Pl" px="PxPl1">3syllplloc-a</msg>
+      <msg case="Loc" number="Pl" px="PxPl2">3syllplloc-a</msg>
+      <msg case="Ill" number="Pl">3syllplill</msg>
+      <msg case="Com" number="Pl">3syllplcom</msg>
+     <note>beana, </note>
+    </l>
+
+    <l stem="Csyll">
+      <msg case="Ill" number="Sg">2syllsgill</msg>
+      <msg case="Loc" number="Sg">2syllsgloc</msg>
+      <msg case="Com" number="Sg">2syllsgcom</msg>
+      <msg case="Ill" number="Pl">2syllplill</msg>
+      <msg case="Loc" number="Pl">2syllplloc</msg>
+      <msg case="Com" number="Pl">2syllplcom</msg>
+     <note>boazu, </note>
+    </l>
+
+    <l stem="2syll">
+      <msg px="PxSg1">pers-an-suffix</msg>
+      <msg px="PxSg2">pers-at-suffix</msg>
+      <msg px="PxSg3">pers-is-suffix</msg>
+      <msg px="PxDu1">pers-me-suffix</msg>
+      <msg px="PxDu2">pers-de-suffix</msg>
+      <msg px="PxDu3">pers-ska-suffix</msg>
+      <msg px="PxPl1">pers-met-suffix</msg>
+      <msg px="PxPl2">pers-det-suffix</msg>
+      <msg px="PxPl3">pers-set-suffix</msg>
+      <note>suffixes</note>
+    </l>
+
+    <l stem="3syll">
+      <msg px="PxSg1">pers-an-suffix</msg>
+      <msg px="PxSg2">pers-at-suffix</msg>
+      <msg px="PxSg3">pers-is-suffix</msg>
+      <msg px="PxDu1">pers-eame-suffix</msg>
+      <msg px="PxDu2">pers-eatte-suffix</msg>
+      <msg px="PxDu3">pers-easkka-suffix</msg>
+      <msg px="PxPl1">pers-eamet-suffix</msg>
+      <msg px="PxPl2">pers-eattet-suffix</msg>
+      <msg px="PxPl3">pers-easet-suffix</msg>
+      <note>suffixes</note>
+    </l>
+
+    <l stem="Csyll">
+      <msg px="PxSg1">pers-an-suffix</msg>
+      <msg px="PxSg2">pers-at-suffix</msg>
+      <msg px="PxSg3">pers-is-suffix</msg>
+      <msg px="PxDu1">pers-me-suffix</msg>
+      <msg px="PxDu2">pers-de-suffix</msg>
+      <msg px="PxDu3">pers-ska-suffix</msg>
+      <msg px="PxPl1">pers-met-suffix</msg>
+      <msg px="PxPl2">pers-det-suffix</msg>
+      <msg px="PxPl3">pers-set-suffix</msg>
+      <note>suffixes</note>
+    </l>
+
+
+  </stems>
+
+
+</feedback>
