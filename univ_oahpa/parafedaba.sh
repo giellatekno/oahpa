@@ -549,6 +549,13 @@ echo " "
 echo "done"
 echo "==================================================="
 
+echo "==================================================="
+echo "adding feedback to possessives"
+$P install.py -f $META/n_px.xml --feedbackfile $META/feedback_n_px.xml
+echo " "
+echo "done"
+echo "==================================================="
+
 #echo "==================================================="
 #echo "Optimizing tables"
 #cat optimize_analyze_tables.sql | $P manage.py dbshell
@@ -558,4 +565,5 @@ echo "==================================================="
 
 echo "stopped at: "
 date '+%T'
+
 
