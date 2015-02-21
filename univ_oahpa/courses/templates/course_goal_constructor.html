@@ -4,7 +4,7 @@
 
 {% if dialog %}
     <div class="inner_container">
-        <p class="lead">When you are done creating a task, close the window and continue editing your goal.</p>
+        <p class="lead">When you are done creating a task, close the window and continue editing your task.</p>
 {% endif %}
 
 <form>
@@ -22,7 +22,7 @@
                 ng-show="!form_success"
                 ng-options="g.id as g.short_name for g in existing_goals"
                 ng-model="edit_goal_id">
-            <option value="">{% blocktrans %}Edit an existing goal{% endblocktrans %}</option>
+            <option value="">{% blocktrans %}Edit an existing task{% endblocktrans %}</option>
         </select>
 
         <br />
@@ -38,7 +38,7 @@
                 <div class="col-md-11 col-md-offset-1">
                     <p class="lead goal_intro">
                         {% blocktrans %}
-                        Create a goal to track your progress on a feature of grammar.
+                        Create a task to track your progress on a feature of grammar.
                         {% endblocktrans %}
                     </p>
                 </div>
@@ -76,7 +76,7 @@
 
                     <div class="form-group">
                         <div class="">
-                            <label for="goal_name" class="control-label">{% blocktrans %}Goal name{% endblocktrans %}</label>
+                            <label for="goal_name" class="control-label">{% blocktrans %}Task name{% endblocktrans %}</label>
 
                         </div>
 
@@ -94,7 +94,7 @@
                     {% comment %}
                     <div class="form-group">
                         <div class="">
-                            <label for="goal_description" class="control-label">Goal description</label>
+                            <label for="goal_description" class="control-label">Task description</label>
                         </div>
 
                         {# Loop the main set of options #}
@@ -346,7 +346,7 @@
                     <button type="button" ng-click="submitForm()" class="btn btn-info">{% blocktrans %}Submit{% endblocktrans %}</button>
                     <button type="button" class="btn btn-warning">{% blocktrans %}Reset{% endblocktrans %}</button>
                     <button type="button" ng-click="deleteGoal()" ng-show="editing_existing" class="btn
-                        btn-danger">{% blocktrans %}Delete this goal{% endblocktrans %}</button>
+                        btn-danger">{% blocktrans %}Delete this task{% endblocktrans %}</button>
                 </div>
             </div>
 
@@ -354,9 +354,9 @@
             <div class="row">
                 <div class="col-md-11 col-md-offset-1">
                     <div id="success_msg" ng-show="form_success">
-                        <p ng-show="goal_deleted" class="lead">{% blocktrans %}You successfully deleted the goal.{% endblocktrans %}</p>
-                        <p ng-show="goal_created" class="lead">{% blocktrans %}You successfully created the goal{% endblocktrans %} "<% goal.short_name %>".</p>
-                        <p ng-show="goal_edited" class="lead">{% blocktrans %}You successfully edited the goal{% endblocktrans %} "<% goal.short_name %>".</p>
+                        <p ng-show="goal_deleted" class="lead">{% blocktrans %}You successfully deleted the task.{% endblocktrans %}</p>
+                        <p ng-show="goal_created" class="lead">{% blocktrans %}You successfully created the task{% endblocktrans %} "<% goal.short_name %>".</p>
+                        <p ng-show="goal_edited" class="lead">{% blocktrans %}You successfully edited the task{% endblocktrans %} "<% goal.short_name %>".</p>
                         <button ng-click="beginGoal()" type="button" class="btn btn-success">{% blocktrans %}Begin{% endblocktrans %}</button>
                         <button type="button" class="btn btn-info">{% blocktrans %}Course overview{% endblocktrans %}</button>
                     </div>

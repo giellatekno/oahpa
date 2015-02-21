@@ -9,7 +9,7 @@
 			<li><a class="course_link" href="{{ course.site_link }}" target="BLANK">{% trans "Course pages" %}</a></li>
 			{% if profile.is_instructor %}
 			    <li><a id="" class="" href="{% url courses.views.courses_coursegoal_construction %}">Create a course goal</a></li>
-                <li><a id="" class="" href="{% url courses.views.courses_goal_construction %}">Create a goal</a></li>
+                <li><a id="" class="" href="{% url courses.views.courses_goal_construction %}">Create a task</a></li>
 			{% endif %}
 		{% endif %}
         </ul>
