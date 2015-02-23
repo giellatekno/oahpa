@@ -86,19 +86,19 @@ Personending: -n
       <msg>contracted_stem</msg>
     </l>
     <l gradation="inv">
-      <msg>inv_gradation</msg>
+      <msg number="Sg">inv_gradation</msg>
     </l>
     <l gradation="no">
-      <msg>no_gradation</msg>
+      <msg number="Sg">no_gradation</msg>
     </l>
         
     <l stem="3syll" soggi="u">
-      <msg>u_o</msg>
+      <msg number="Sg">u_o</msg>
       <note>gumppus, u>o</note>
     </l>
 
     <l stem="Csyll" soggi="u">
-      <msg>u_o</msg>
+      <msg number="Sg">u_o</msg>
       <note>boazu, sg:u>o pl:o>u</note>
     </l>
 
@@ -179,7 +179,7 @@ Personending: -n
     </l>
 
     <l stem="Csyll" diphthong="yes" soggi="u">
-      <msg>diphthong_simplification</msg>
+      <msg number="Sg">diphthong_simplification</msg>
       <note>boazu, diftforenkling</note>
     </l>
 
@@ -231,29 +231,25 @@ Personending: -n
       <msg case="Gen" number="Sg" possessive="PxSg3">weak_grade</msg>
       <msg case="Gen" number="Sg" possessive="PxDu3">weak_grade</msg>
       <msg case="Gen" number="Sg" possessive="PxPl3">weak_grade</msg>
-      <msg case="Nom" number="Pl">weak_grade</msg>
-      <msg case="Gen" number="Pl">weak_grade</msg>
-      <msg case="Acc" number="Pl">weak_grade</msg>
       <msg case="Ill" number="Sg">strong_grade</msg>
-      <msg case="Ill" number="Pl">weak_grade</msg>
-      <msg case="Loc">weak_grade</msg>
-      <msg case="Com">weak_grade</msg>
+      <msg case="Loc" number="Sg">weak_grade</msg>
+      <msg case="Com" number="Sg">weak_grade</msg>
       <note>giehta, gradation</note>
     </l>
 
 
     <l stem="3syll" gradation="yes">
-      <msg>strong_grade</msg>
+      <msg number="Sg">strong_grade</msg>
       <note>beana, gradation</note>
     </l>
     
     <l stem="Csyll" gradation="yes">
-      <msg>strong_grade</msg>
+      <msg number="Sg">strong_grade</msg>
       <note>vielppis, gradation</note>
     </l>
     
     <l rime="is">
-      <msg>is_á</msg>
+      <msg number="Sg">is_á</msg>
       <note>bálggis rime</note>
     </l>
     
@@ -322,41 +318,80 @@ Personending: -n
     </l>
 
     <l stem="2syll">
-      <msg possessive="PxSg1">pers-n-suffix</msg>
-      <msg possessive="PxSg2">pers-t-suffix</msg>
-      <msg possessive="PxSg3">pers-s-suffix</msg>
-      <msg possessive="PxDu1">pers-me-suffix</msg>
-      <msg possessive="PxDu2">pers-de-suffix</msg>
-      <msg possessive="PxDu3">pers-ska-suffix</msg>
-      <msg possessive="PxPl1">pers-met-suffix</msg>
-      <msg possessive="PxPl2">pers-det-suffix</msg>
-      <msg possessive="PxPl3">pers-set-suffix</msg>
+      <msg number="Sg" possessive="PxSg1">pers-n-suffix</msg>
+      <msg number="Sg" possessive="PxSg2">pers-t-suffix</msg>
+      <msg number="Sg" possessive="PxSg3">pers-s-suffix</msg>
+      <msg number="Sg" possessive="PxDu1">pers-me-suffix</msg>
+      <msg number="Sg" possessive="PxDu2">pers-de-suffix</msg>
+      <msg number="Sg" possessive="PxDu3">pers-ska-suffix</msg>
+      <msg number="Sg" possessive="PxPl1">pers-met-suffix</msg>
+      <msg number="Sg" possessive="PxPl2">pers-det-suffix</msg>
+      <msg number="Sg" possessive="PxPl3">pers-set-suffix</msg>
       <note>suffixes</note>
     </l>
 
     <l stem="3syll">
-      <msg possessive="PxSg1">pers-an-suffix</msg>
-      <msg possessive="PxSg2">pers-at-suffix</msg>
-      <msg possessive="PxSg3">pers-is-suffix</msg>
-      <msg possessive="PxDu1">pers-eame-suffix</msg>
-      <msg possessive="PxDu2">pers-eatte-suffix</msg>
-      <msg possessive="PxDu3">pers-easkka-suffix</msg>
-      <msg possessive="PxPl1">pers-eamet-suffix</msg>
-      <msg possessive="PxPl2">pers-eattet-suffix</msg>
-      <msg possessive="PxPl3">pers-easet-suffix</msg>
+      <msg number="Sg" possessive="PxSg1">pers-an-suffix</msg>
+      <msg number="Sg" possessive="PxSg2">pers-at-suffix</msg>
+      <msg number="Sg" possessive="PxSg3">pers-is-suffix</msg>
+      <msg number="Sg" possessive="PxDu1">pers-eame-suffix</msg>
+      <msg number="Sg" possessive="PxDu2">pers-eatte-suffix</msg>
+      <msg number="Sg" possessive="PxDu3">pers-easkka-suffix</msg>
+      <msg number="Sg" possessive="PxPl1">pers-eamet-suffix</msg>
+      <msg number="Sg" possessive="PxPl2">pers-eattet-suffix</msg>
+      <msg number="Sg" possessive="PxPl3">pers-easet-suffix</msg>
       <note>suffixes</note>
     </l>
 
     <l stem="Csyll">
-      <msg possessive="PxSg1">pers-n-suffix</msg>
-      <msg possessive="PxSg2">pers-t-suffix</msg>
-      <msg possessive="PxSg3">pers-s-suffix</msg>
-      <msg possessive="PxDu1">pers-me-suffix</msg>
-      <msg possessive="PxDu2">pers-de-suffix</msg>
-      <msg possessive="PxDu3">pers-ska-suffix</msg>
-      <msg possessive="PxPl1">pers-met-suffix</msg>
-      <msg possessive="PxPl2">pers-det-suffix</msg>
-      <msg possessive="PxPl3">pers-set-suffix</msg>
+      <msg number="Sg" possessive="PxSg1">pers-n-suffix</msg>
+      <msg number="Sg" possessive="PxSg2">pers-t-suffix</msg>
+      <msg number="Sg" possessive="PxSg3">pers-s-suffix</msg>
+      <msg number="Sg" possessive="PxDu1">pers-me-suffix</msg>
+      <msg number="Sg" possessive="PxDu2">pers-de-suffix</msg>
+      <msg number="Sg" possessive="PxDu3">pers-ska-suffix</msg>
+      <msg number="Sg" possessive="PxPl1">pers-met-suffix</msg>
+      <msg number="Sg" possessive="PxPl2">pers-det-suffix</msg>
+      <msg number="Sg" possessive="PxPl3">pers-set-suffix</msg>
+      <note>suffixes</note>
+    </l>
+
+    <l stem="2syll">
+      <msg number="Pl" possessive="PxSg1">pers-an-suffix</msg>
+      <msg number="Pl" possessive="PxSg2">pers-at-suffix</msg>
+      <msg number="Pl" possessive="PxSg3">pers-is-suffix</msg>
+      <msg number="Pl" possessive="PxDu1">pers-eame-suffix</msg>
+      <msg number="Pl" possessive="PxDu2">pers-eatte-suffix</msg>
+      <msg number="Pl" possessive="PxDu3">pers-easkka-suffix</msg>
+      <msg number="Pl" possessive="PxPl1">pers-eamet-suffix</msg>
+      <msg number="Pl" possessive="PxPl2">pers-eattet-suffix</msg>
+      <msg number="Pl" possessive="PxPl3">pers-easet-suffix</msg>
+      <note>suffixes</note>
+    </l>
+
+    <l stem="3syll">
+      <msg number="Pl" possessive="PxSg1">pers-aan-suffix</msg>
+      <msg number="Pl" possessive="PxSg2">pers-aat-suffix</msg>
+      <msg number="Pl" possessive="PxSg3">pers-is-suffix</msg>
+      <msg number="Pl" possessive="PxDu1">pers-aame-suffix</msg>
+      <msg number="Pl" possessive="PxDu2">pers-aade-suffix</msg>
+      <msg number="Pl" possessive="PxDu3">pers-iska-suffix</msg>
+      <msg number="Pl" possessive="PxPl1">pers-aamet-suffix</msg>
+      <msg number="Pl" possessive="PxPl2">pers-aadet-suffix</msg>
+      <msg number="Pl" possessive="PxPl3">pers-iset-suffix</msg>
+      <note>suffixes</note>
+    </l>
+
+    <l stem="Csyll">
+      <msg number="Pl" possessive="PxSg1">pers-an-suffix</msg>
+      <msg number="Pl" possessive="PxSg2">pers-at-suffix</msg>
+      <msg number="Pl" possessive="PxSg3">pers-is-suffix</msg>
+      <msg number="Pl" possessive="PxDu1">pers-eame-suffix</msg>
+      <msg number="Pl" possessive="PxDu2">pers-eatte-suffix</msg>
+      <msg number="Pl" possessive="PxDu3">pers-easkka-suffix</msg>
+      <msg number="Pl" possessive="PxPl1">pers-eamet-suffix</msg>
+      <msg number="Pl" possessive="PxPl2">pers-eattet-suffix</msg>
+      <msg number="Pl" possessive="PxPl3">pers-easet-suffix</msg>
       <note>suffixes</note>
     </l>
 
