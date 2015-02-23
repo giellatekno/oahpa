@@ -1,0 +1,122 @@
+!!! Møte 23.02.15
+
+Til stades: Heli, Ryan, Lene
+
+!!!Saker: 
+
+# Univ-Oahpa på gtlab
+# Oppdatering av smeOahpa på gtoahpa-serveren
+# Px Oahpa
+# Konteaksta
+# Konteaksta inn i kursinnlogging
+# Kursinnlogging
+# Feideinnlogging
+# NDS
+# Neste møte
+
+
+!! Univ-Oahpa på gtlab
+Ryan har restartet og ting fungerer. Det var to ulike versjoner, og det lagde problemer.
+
+
+!! Oppdatering av smeOahpa på gtoahpa-serveren
+Heli har oppdatert hele oahpa. Det meste fungerer, men ikke alt. Lene har laget noen bugmeldinger.
+Heli legger errorloggen i svn: ped/univ_oahpa/generationlogs/ og lene ser på den.
+
+* 1991	Grammatikkmenyens pop-up-vinduer fungerer ikke
+* 1992  Feedback for N+..Px... dukker opp i oppgaver med N
+* 1993  MorfaC pronomenoppgaver gir ofte gul side
+* 1994  MorfaS og MorfaC derivasjoner fungerer ikke
+* 1997	Vasta - problemer med noen oppgaver
+
+Forbedring av feedback for flertall:
+* viessu – Feedback: viessu er et likestavelses substantiv
+* viesut – Feedbakk: viesut er et likestavelses substantiv
+
+!Tiltak:
+* __Heli__ fikser det som ikke fungerer i Oahpa.
+* __Heli__ legger errorlog i svn so Lene sjekker
+
+!! Px Oahpa
+Lene har rettet paradigmegenereringfila n_px_paradigms.txt og forbedra morfologisk feedback.
+Denne må genereres på nytt.
+
+!Tiltak:
+* __Heli__ genererer px på nytt.
+
+!! Konteaksta
+Konteaksta skal ha ny url: http://oahpa.no/konteaksta. Det er problemer med omdirigeringa fra url med portnummer til url uten portnummer.
+
+Bug 1990 Colorize og click velger ikke alle substantiver osv 
+
+!Tiltak:
+* __Heli__ diskuterer omdirigeringa med Ryan
+* __Heli__ ser på bug 1990
+
+
+!! Konteaksta inn i kursinnlogging
+Vi er usikker på hvilken måte Konteaksta skal inngå i kursinnlogginga, og hvordan kursmålene skal formuleres. Lene diskuterer dette med Robert.
+
+!Tiltak:
+* __Lene__ diskuterer Konteaksta-registrering med Robert.
+
+!! Kursinnlogging
+
+Melding ved innlogging via Google:
+* OpenID 2.0 for Google-kontoer blir utfaset. 
+* Utviklere bør overføre til OpenID Connect innen 20. april 2015. Finn ut mer.
+
+Lene har problem med å logge inn som lærer, og er også usikker på hvordan man kan gi autorisasjon.
+"Oahpaheaddjit" er den generelle lærerrolla i kursa.
+
+Vasta og Sahka:
+* I kursinlogginga: Det kommer ikke opp prosenttall i venstre marg etter at man har fullført oppgaver
+* I selve Oahpa: Det mangler tilbakevalg nede i høyre hjørne etter at man har fullført oppgaver
+
+
+!Tiltak:
+* __Ryan__ må avinstallere den gamle OpenID og installere en ny.
+* __Ryan__ finner ut av lærerinnlogginga og gir Lene beskjed.
+* __Ryan__ forbedrer Sahka og Vasta registreringa
+* __Ryan__ endrer fra 5 til 2 ganger for Morfa, Leksa, Numra i kursmål.
+
+
+!! Feideinnlogging
+Ryan har hatt kontakt med Mark Stenersen og funnet ut at det kan være bedre å bruke ActiveDirectory-plugin og system for innlogging.
+Ryan tar kontakt med Wordpress-gruppa.
+
+ 
+!Tiltak:
+* __Ryan__ tar kontakt med Wordpress-gruppa.
+
+
+!! NDS
+En lærer ønsker personnavn inn i NDS for at studentene skal finne paradigmer.
+Lene har lagt inn 19 navn i N_Prop_Pers_smenob.xml. Det ville være mulig å generere navn fra sme-propernouns.lexc inn i denne.
+
+sme-propernouns.lexc: 
+* Migáš+OLang/UND:Migáž ANAR-mal ;
+* Mirjá+OLang/UND:Mir'já MARJA-fem ;
+
+Máret (subst.) -> Máret (subst. prop.)
+
+Bugger:
+* 1950 NDS fungerer ikke for NRK Sápmi ... eller Facebook
+* 1968 Klikk-i-tekst fungerer ustabilt
+* 1980 type="expl" skal linkes på en annen måte
+* 1984 Pronomener i NDS
+* 1995 Baakoeh - linken for fullt paradigme går til sme istedenfor sma
+* 1996 Baakoeh: sem/plc skal ikke være synlig i grensesnittet
+* 1985	No feedback available-vindu dukker opp (univOahpa)
+
+!Tiltak:
+* __Ryan__ gjør prop synlig i grensesnittet
+* __Ryan__ Autocomplete for nob, men ikke for sma i baakoeh
+* __Ryan__ går gjennom bugger
+* __Lene__ jobber videre med personnavn
+
+
+
+!! Neste møte
+Fredag 6. mars kl. 18.00
+
