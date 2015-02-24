@@ -321,9 +321,9 @@ DERIVATION_CHOICES_CONTEXT = (
 )
 
 BOOK_CHOICES = (
+    ('tyypsonad', _(u'Tüüpsõnad')),
     ('all', _(u'all')),
-    ('K1', _('Book 1')),
-    ('K2', _('Book 2')),
+    #('K2', _('Book 2')),
 )
 
 FREQUENCY_CHOICES = (

@@ -1,20 +1,20 @@
 #!/bin/sh
 
 P="python2.7"
-GTHOME="/home/heli/main/ped"
-LANGDIR="liv"
-DATA=$GTHOME/$LANGDIR
+PEDHOME="/Users/mslm/main/ped"
+#PEDHOME="/home/heli/main/ped"
+LANGDIR="vro"
+DATA=$PEDHOME/$LANGDIR
 DPS="$DATA/src"
 INC="$DATA/inc"
 META="$DATA/meta"
-DPN="$DATA/nobliv"
-DPF="$DATA/finliv"
-DPW="$DATA/engliv"
-DPE="$DATA/estliv"
-DPL="$DATA/latliv"
-DPR="$DATA/rusliv"
-DPD="$DATA/smeliv"
-#WORDS=$GTHOME/words/dicts/smenob/src
+DPN="$DATA/nobvro"
+DPF="$DATA/finvro"
+DPW="$DATA/engvro"
+DPE="$DATA/estvro"
+DPL="$DATA/swevro"
+DPR="$DATA/deuvro"
+DPD="$DATA/smevro"
 
 echo "==================================================="
 echo "installing tags and paradigms for Morfa"
@@ -24,16 +24,23 @@ echo "done"
 echo "==================================================="
 
 ##
-## Trying to set up Livonian
-
-
-##
-##  liv->X
+## Installing the source files into Võro Oahpa database.
 ##
 
+##
+##  vro->X
+##
+
+echo "==================================================="
+ echo "feeding db with $INC/n_tyypsonad.xml"
+ $P install.py --file $INC/n_tyypsonad.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>error.log
+ echo " "
+ echo "done"
  echo "==================================================="
- echo "feeding db with $DPS/N_liv2X.xml"
- $P install.py --file $DPS/N_liv2X.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>error.log
+ 
+ echo "==================================================="
+ echo "feeding db with $DPS/oahpa_lexicon.xml"
+ $P install.py --file $DPS/oahpa_lexicon.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt --append 2>error.log
  echo " "
  echo "done"
  echo "==================================================="
@@ -46,30 +53,30 @@ echo "==================================================="
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPS/prop_livnob.xml"
-# $P install.py --file $DPS/prop_livnob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
+# echo "feeding db with $DPS/prop_vronob.xml"
+# $P install.py --file $DPS/prop_vronob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 
 # echo "==================================================="
-# echo "feeding db with $DPS/num_livnob.xml"
-# $P install.py --file $DPS/num_livnob.xml --tagfile $META/tags.txt --paradigmfile $META/num_paradigms.txt 2>>error.log
+# echo "feeding db with $DPS/num_vronob.xml"
+# $P install.py --file $DPS/num_vronob.xml --tagfile $META/tags.txt --paradigmfile $META/num_paradigms.txt 2>>error.log
+# echo " "
+# echo "done"
+# echo "==================================================="
+
+# echo "==================================================="
+# echo "feeding db with $DPS/A_vro2X.xml"
+# $P install.py --file $DPS/A_vro2X.xml --tagfile $META/tags.txt --paradigmfile $META/A_paradigms.txt 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
  echo "==================================================="
- echo "feeding db with $DPS/A_liv2X.xml"
- $P install.py --file $DPS/A_liv2X.xml --tagfile $META/tags.txt --paradigmfile $META/A_paradigms.txt 2>>error.log
- echo " "
- echo "done"
- echo "==================================================="
-
- echo "==================================================="
- echo "feeding db with $DPS/V_liv2X.xml"
- $P install.py --file $DPS/V_liv2X.xml --tagfile $META/tags.txt --paradigmfile $META/V_paradigms.txt 2>>error.log
+ echo "feeding db with $DPS/oahpa_lexicon.xml"
+ $P install.py --file $DPS/oahpa_lexicon.xml --tagfile $META/tags.txt --paradigmfile $META/V_paradigms.txt --append 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
@@ -84,292 +91,383 @@ echo "==================================================="
 
 
 # echo "==================================================="
-# echo "feeding db with $DPS/adv_livnob.xml"
-# $P install.py --file $DPS/adv_livnob.xml 2>>error.log
+# echo "feeding db with $DPS/adv_vronob.xml"
+# $P install.py --file $DPS/adv_vronob.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPS/multiword_livnob.xml"
-# $P install.py --file $DPS/multiword_livnob.xml 2>>error.log
+# echo "feeding db with $DPS/multiword_vronob.xml"
+# $P install.py --file $DPS/multiword_vronob.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # ##
-# ## nobliv
+# ## nobvro
 # ##
 
 echo "==================================================="
-echo "feeding db with $DPN/N_nobliv.xml"
-$P install.py --file $DPN/N_nobliv.xml 2>>error.log
+echo "feeding db with $DPN/N_nobvro.xml"
+$P install.py --file $DPN/N_nobvro.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
-#echo "==================================================="
-#echo "feeding db with $DPN/num_nobliv.xml"
-#$P install.py --file $DPN/num_nobliv.xml 2>>error.log
-#echo " "
-#echo "done"
-#echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPN/Num_nobvro.xml"
+$P install.py --file $DPN/Num_nobvro.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
  echo "==================================================="
- echo "feeding db with $DPN/V_nobliv.xml"
- $P install.py --file $DPN/V_nobliv.xml 2>>error.log
+ echo "feeding db with $DPN/V_nobvro.xml"
+ $P install.py --file $DPN/V_nobvro.xml 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
  
  echo "==================================================="
- echo "feeding db with $DPN/A_nobliv.xml"
- $P install.py --file $DPN/A_nobliv.xml 2>>error.log
+ echo "feeding db with $DPN/A_nobvro.xml"
+ $P install.py --file $DPN/A_nobvro.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPN/Adv_nobvro.xml"
+ $P install.py --file $DPN/Adv_nobvro.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPN/Mwe_nobvro.xml"
+ $P install.py --file $DPN/Mwe_nobvro.xml 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPN/adv_nobliv.xml"
-# $P install.py --file $DPN/adv_nobliv.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPN/mwe_nobliv.xml"
-# $P install.py --file $DPN/mwe_nobliv.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPN/prop_nobliv.xml"
-# $P install.py --file $DPN/prop_nobliv.xml 2>>error.log
+# echo "feeding db with $DPN/prop_nobvro.xml"
+# $P install.py --file $DPN/prop_nobvro.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # ##
-# ## finliv
+# ## finvro
 # ##
 
 
 echo "==================================================="
-echo "feeding db with $DPF/N_finliv.xml"
-$P install.py --file $DPF/N_finliv.xml 2>>error.log
+echo "feeding db with $DPF/N_finvro.xml"
+$P install.py --file $DPF/N_finvro.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPF/num_finliv.xml"
-# $P install.py --file $DPF/num_finliv.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+ echo "==================================================="
+ echo "feeding db with $DPF/Num_finvro.xml"
+ $P install.py --file $DPF/Num_finvro.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPF/V_finliv.xml"
-$P install.py --file $DPF/V_finliv.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with $DPF/A_finliv.xml"
-$P install.py --file $DPF/A_finliv.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
-
-
-# echo "==================================================="
-# echo "feeding db with $DPF/adv_finliv.xml"
-# $P install.py --file $DPF/adv_finliv.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPF/mwe_finliv.xml"
-# $P install.py --file $DPF/mwe_finliv.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPF/prop_finliv.xml"
-# $P install.py --file $DPF/prop_finliv.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-##
-## engliv
-##
-
-
-echo "==================================================="
-echo "feeding db with $DPW/N_engliv.xml"
-$P install.py --file $DPW/N_engliv.xml
+echo "feeding db with $DPF/V_finvro.xml"
+$P install.py --file $DPF/V_finvro.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPW/V_engliv.xml"
-$P install.py --file $DPW/V_engliv.xml
+echo "feeding db with $DPF/A_finvro.xml"
+$P install.py --file $DPF/A_finvro.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
-echo "==================================================="
-echo "feeding db with $DPW/A_engliv.xml"
-$P install.py --file $DPW/A_engliv.xml
-echo " "
-echo "done"
-echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPF/Adv_finvro.xml"
+ $P install.py --file $DPF/Adv_finvro.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPF/Mwe_finvro.xml"
+ $P install.py --file $DPF/Mwe_finvro.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPW/adv_sweliv.xml"
-# $P install.py --file $DPW/adv_sweliv.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPW/multiword_sweliv.xml"
-# $P install.py --file $DPW/multiword_sweliv.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPW/prop_sweliv.xml"
-# $P install.py --file $DPW/prop_sweliv.xml
+# echo "feeding db with $DPF/prop_finvro.xml"
+# $P install.py --file $DPF/prop_finvro.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 ##
-## estliv
+## engvro
+##
+
+
+echo "==================================================="
+echo "feeding db with $DPW/N_engvro.xml"
+$P install.py --file $DPW/N_engvro.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPW/V_engvro.xml"
+$P install.py --file $DPW/V_engvro.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPW/A_engvro.xml"
+$P install.py --file $DPW/A_engvro.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPW/Adv_engvro.xml"
+ $P install.py --file $DPW/Adv_engvro.xml
+ echo " "
+ echo "done"
+ echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPW/Mwe_engvro.xml"
+ $P install.py --file $DPW/Mwe_engvro.xml
+ echo " "
+ echo "done"
+ echo "==================================================="
+
+echo "==================================================="
+ echo "feeding db with $DPW/Num_engvro.xml"
+ $P install.py --file $DPW/Num_engvro.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
+ 
+# echo "==================================================="
+# echo "feeding db with $DPW/prop_swevro.xml"
+# $P install.py --file $DPW/prop_swevro.xml
+# echo " "
+# echo "done"
+# echo "==================================================="
+
+##
+## estvro
 ##
 
 echo "==================================================="
-echo "feeding db with $DPE/N_estliv.xml"
-$P install.py --file $DPE/N_estliv.xml
+echo "feeding db with $DPE/N_estvro.xml"
+$P install.py --file $DPE/N_estvro.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPE/V_estliv.xml"
-$P install.py --file $DPE/V_estliv.xml
+echo "feeding db with $DPE/V_estvro.xml"
+$P install.py --file $DPE/V_estvro.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPE/A_estliv.xml"
-$P install.py --file $DPE/A_estliv.xml
+echo "feeding db with $DPE/A_estvro.xml"
+$P install.py --file $DPE/A_estvro.xml
 echo " "
 echo "done"
 echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPE/Adv_estvro.xml"
+ $P install.py --file $DPE/Adv_estvro.xml
+ echo " "
+ echo "done"
+ echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPE/Mwe_estvro.xml"
+ $P install.py --file $DPE/Mwe_estvro.xml
+ echo " "
+ echo "done"
+ echo "==================================================="
+
+echo "==================================================="
+ echo "feeding db with $DPE/Num_estvro.xml"
+ $P install.py --file $DPE/Num_estvro.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
 ##       
-## latliv                                                                         
+## swevro                                                                         
 ##                                                                                     
 
 echo "==================================================="
-echo "feeding db with $DPL/N_latliv.xml"
-$P install.py --file $DPL/N_latliv.xml
+echo "feeding db with $DPL/N_swevro.xml"
+$P install.py --file $DPL/N_swevro.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPL/V_latliv.xml"
-$P install.py --file $DPL/V_latliv.xml
+echo "feeding db with $DPL/V_swevro.xml"
+$P install.py --file $DPL/V_swevro.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPL/A_latliv.xml"
-$P install.py --file $DPL/A_latliv.xml
+echo "feeding db with $DPL/A_swevro.xml"
+$P install.py --file $DPL/A_swevro.xml
 echo " "
 echo "done"
 echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPL/Adv_estvro.xml"
+ $P install.py --file $DPL/Adv_estvro.xml
+ echo " "
+ echo "done"
+ echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPL/Mwe_estvro.xml"
+ $P install.py --file $DPL/Mwe_estvro.xml
+ echo " "
+ echo "done"
+ echo "==================================================="
+
+echo "==================================================="
+ echo "feeding db with $DPL/Num_estvro.xml"
+ $P install.py --file $DPL/Num_estvro.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
 ##                                                                                
-## rusliv                                                                        
+## deuvro                                                                        
 ##                                                                                                                                                           
 
 echo "==================================================="
-echo "feeding db with $DPR/N_rusliv.xml"
-$P install.py --file $DPR/N_rusliv.xml
+echo "feeding db with $DPR/N_deuvro.xml"
+$P install.py --file $DPR/N_deuvro.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPR/V_rusliv.xml"
-$P install.py --file $DPR/V_rusliv.xml
+echo "feeding db with $DPR/V_deuvro.xml"
+$P install.py --file $DPR/V_deuvro.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPR/A_rusliv.xml"
-$P install.py --file $DPR/A_rusliv.xml
+echo "feeding db with $DPR/A_deuvro.xml"
+$P install.py --file $DPR/A_deuvro.xml
 echo " "
 echo "done"
 echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPR/Adv_deuvro.xml"
+ $P install.py --file $DPR/Adv_deuvro.xml
+ echo " "
+ echo "done"
+ echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPR/Mwe_deuvro.xml"
+ $P install.py --file $DPR/Mwe_deuvro.xml
+ echo " "
+ echo "done"
+ echo "==================================================="
+
+echo "==================================================="
+ echo "feeding db with $DPR/Num_deuvro.xml"
+ $P install.py --file $DPR/Num_deuvro.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
 ##                                                                                
-## smeliv                                                                         
+## smevro                                                                         
 ##                                                                                
                                                                                    
 
 echo "==================================================="
-echo "feeding db with $DPD/N_smeliv.xml"
-$P install.py --file $DPD/N_smeliv.xml
+echo "feeding db with $DPD/N_smevro.xml"
+$P install.py --file $DPD/N_smevro.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPD/V_smeliv.xml"
-$P install.py --file $DPD/V_smeliv.xml
+echo "feeding db with $DPD/V_smevro.xml"
+$P install.py --file $DPD/V_smevro.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPD/A_smeliv.xml"
-$P install.py --file $DPD/A_smeliv.xml
+echo "feeding db with $DPD/A_smevro.xml"
+$P install.py --file $DPD/A_smevro.xml
 echo " "
 echo "done"
 echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPD/Adv_smevro.xml"
+ $P install.py --file $DPD/Adv_smevro.xml
+ echo " "
+ echo "done"
+ echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPD/Mwe_smevro.xml"
+ $P install.py --file $DPD/Mwe_smevro.xml
+ echo " "
+ echo "done"
+ echo "==================================================="
+
+echo "==================================================="
+ echo "feeding db with $DPD/Num_smevro.xml"
+ $P install.py --file $DPD/Num_smevro.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPS/grammaticalwords_livnob.xml"
-# $P install.py --file $DPS/grammaticalwords_livnob.xml 2>>error.log
+# echo "feeding db with $DPS/grammaticalwords_vronob.xml"
+# $P install.py --file $DPS/grammaticalwords_vronob.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPS/pron_liv.xml"
-# $P install.py --file $DPS/pron_liv.xml --tagfile $META/tags.txt  2>>error.log
+# echo "feeding db with $DPS/pron_vro.xml"
+# $P install.py --file $DPS/pron_vro.xml --tagfile $META/tags.txt  2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPS/derverb_liv.xml"
-# $P install.py --file $DPS/derverb_liv.xml --tagfile $META/tags.txt --append  2>>error.log # TODO: test append with this
+# echo "feeding db with $DPS/derverb_vro.xml"
+# $P install.py --file $DPS/derverb_vro.xml --tagfile $META/tags.txt --append  2>>error.log # TODO: test append with this
 # echo " "
 # echo "done"
 # echo "==================================================="
@@ -391,7 +489,7 @@ echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with messages to feedback"
-# $P install.py --messagefile $META/messages.liv.xml 2>>error.log
+# $P install.py --messagefile $META/messages.vro.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
@@ -523,7 +621,7 @@ echo "==================================================="
 
 # echo "==================================================="
 # echo "Installing feedback messages for vasta - in North Sámi"
-# $P install.py --messagefile $META/messages_vasta.liv.xml 2>>error.log
+# $P install.py --messagefile $META/messages_vasta.vro.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
@@ -587,31 +685,27 @@ echo "==================================================="
 # echo "done"
 # echo "==================================================="
 
-# # TODO:
-# # fixtagattributes
-# # mergetags
-
-# $P manage.py fixattributes
-# $P manage.py mergetags
-# $P manage.py fixattributes
+ $P manage.py fixtagattributes
+ $P manage.py mergetags
+ $P manage.py fixtagattributes
 
 # echo "==================================================="
 # echo "adding feedback to verbs"
-# $P install.py -f $DPS/v_livnob.xml --feedbackfile $META/feedback_verbs.xml
+# $P install.py -f $DPS/v_vronob.xml --feedbackfile $META/feedback_verbs.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
 # echo "adding feedback to adjectives"
-# $P install.py -f $DPS/a_livnob.xml --feedbackfile $META/feedback_adjectives.xml
+# $P install.py -f $DPS/a_vronob.xml --feedbackfile $META/feedback_adjectives.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
 # echo "adding feedback to numerals"
-# $P install.py -f $DPS/num_livnob.xml --feedbackfile $META/feedback_numerals.xml
+# $P install.py -f $DPS/num_vronob.xml --feedbackfile $META/feedback_numerals.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
