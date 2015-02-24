@@ -20,11 +20,11 @@ from random import choice
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
 PRONOUNS_LIST = {'Sg1':u'ma', 'Sg2':u'sa', 'Sg3':u'tä',
-		  'Pl1':u'me', 'Pl2':u'te', 'Pl3':u'nä'}
+		  'Pl1':u'mi', 'Pl2':u'ti', 'Pl3':u'nä'}
 
 # DEMONSTRATIVE_PRESENTATION plus Sg3/Pl3
-PASSIVE_PRONOUNS_LIST = {'Sg1':u'ma', 'Sg2':u'sa', 'Sg3':u'ta',
-                         'Pl1':u'me', 'Pl2':u'te', 'Pl3':u'ne'} # possibly wrong
+PASSIVE_PRONOUNS_LIST = {'Sg1':u'ma', 'Sg2':u'sa', 'Sg3':u'tä',
+                         'Pl1':u'mi', 'Pl2':u'ti', 'Pl3':u'nä'} # possibly wrong
 
 
 NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
@@ -371,9 +371,27 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
-    ('HUMAN', _('human')),
-    ('FOOD/DRINK', _('food/drink')),
-    ('all', _('all')),
+    ('FAMILY', _('family')), 
+	('HUMAN', _('human')),
+	('HUMAN-LIKE', _('human-like')),
+	('ANIMAL', _('animal')),
+	('FOOD/DRINK', _('food/drink')),
+	('TIME', _('time')),
+	('CONCRETES', _('concretes')),
+	('BODY', _('body')),
+	('CLOTHES', _('clothes')),
+	('BUILDINGS/ROOMS', _('buildings/rooms')),
+	('CITY', _('city')), 
+	('NATUREWORDS', _('nature')),
+	('LEISURETIME/AT_HOME', _('leisuretime/at_home')),
+	('CHRISTMAS', _('christmas')),
+	('PLACES', _('places')),
+	('LITERATURE', _('literature')),
+	('SCHOOL/EDUCATION', _('school/education')),
+	('ABSTRACTS', _('abstracts')),
+	('WORK/ECONOMY/TOOLS', _('work/economy/tools')),
+	('MULTIWORD', _('Multiword')),
+	('all', _('all')),
 )
 
 
