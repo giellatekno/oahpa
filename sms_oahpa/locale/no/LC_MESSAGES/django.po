@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-10 22:00+0100\n"
+"POT-Creation-Date: 2015-02-26 19:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
 #: extern/django_openid_provider/openid_provider/models.py:12
 #: openid_provider/models.py:12
@@ -36,442 +36,513 @@ msgstr "Stoler du på denne sida?"
 msgid "Error"
 msgstr "Feil"
 
-#: sms_drill/forms.py:54
+#: sms_drill/forms.py:59
 msgid "noun"
 msgstr "substantiv"
 
-#: sms_drill/forms.py:55
+#: sms_drill/forms.py:60
 msgid "verb"
 msgstr "verb"
 
-#: sms_drill/forms.py:56
+#: sms_drill/forms.py:61
 msgid "adjective"
 msgstr "adjektiv"
 
-#: sms_drill/forms.py:57
+#: sms_drill/forms.py:62
 msgid "numeral"
 msgstr "tallord"
 
-#: sms_drill/forms.py:58
+#: sms_drill/forms.py:63
 msgid "pronoun"
 msgstr "pronomen"
 
-#: sms_drill/forms.py:62 sms_drill/forms.py:126 sms_drill/forms.py:154
-#: sms_drill/forms.py:202 sms_drill/forms.py:212
-msgid "plural"
-msgstr "nominativ flertall"
+#: sms_drill/forms.py:67
+#, fuzzy
+msgid "singular nominative"
+msgstr "Øv på nominativ."
 
-#: sms_drill/forms.py:63 sms_drill/forms.py:90 sms_drill/forms.py:127
-#: sms_drill/forms.py:156 sms_drill/forms.py:203 sms_drill/forms.py:213
-msgid "accusative"
-msgstr "akkusativ"
-
-#: sms_drill/forms.py:64 sms_drill/forms.py:91 sms_drill/forms.py:112
-#: sms_drill/forms.py:129 sms_drill/forms.py:157 sms_drill/forms.py:204
-#: sms_drill/forms.py:214
-msgid "illative"
-msgstr "illativ"
-
-#: sms_drill/forms.py:65 sms_drill/forms.py:92 sms_drill/forms.py:113
-#: sms_drill/forms.py:130 sms_drill/forms.py:158 sms_drill/forms.py:205
-#: sms_drill/forms.py:215
-msgid "locative"
-msgstr "lokativ"
-
-#: sms_drill/forms.py:66 sms_drill/forms.py:93 sms_drill/forms.py:114
-#: sms_drill/forms.py:131 sms_drill/forms.py:159 sms_drill/forms.py:206
-#: sms_drill/forms.py:216
-msgid "comitative"
-msgstr "komitativ"
-
-#: sms_drill/forms.py:67 sms_drill/forms.py:94 sms_drill/forms.py:128
-#: sms_drill/forms.py:160
-msgid "genitive"
+#: sms_drill/forms.py:68
+#, fuzzy
+msgid "singular genitive"
 msgstr "genitiv"
 
-#: sms_drill/forms.py:68 sms_drill/forms.py:132 sms_drill/forms.py:161
+#: sms_drill/forms.py:69
+#, fuzzy
+msgid "singular accusative"
+msgstr "akkusativ"
+
+#: sms_drill/forms.py:70
+#, fuzzy
+msgid "singular illative"
+msgstr "superlativ"
+
+#: sms_drill/forms.py:71
+#, fuzzy
+msgid "singular locative"
+msgstr "superlativ"
+
+#: sms_drill/forms.py:72
+#, fuzzy
+msgid "singular comitative"
+msgstr "komitativ"
+
+#: sms_drill/forms.py:73 sms_drill/forms.py:146 sms_drill/forms.py:175
 msgid "essive"
 msgstr "essiv"
 
-#: sms_drill/forms.py:118 sms_drill/forms.py:141
+#: sms_drill/forms.py:74
+#, fuzzy
+msgid "partitive"
+msgstr "positiv"
+
+#: sms_drill/forms.py:75
+#, fuzzy
+msgid "singular abessive"
+msgstr "inessiv"
+
+#: sms_drill/forms.py:76
+#, fuzzy
+msgid "plural nominative"
+msgstr "Øv på nominativ."
+
+#: sms_drill/forms.py:77
+#, fuzzy
+msgid "plural genitive"
+msgstr "genitiv"
+
+#: sms_drill/forms.py:78
+#, fuzzy
+msgid "plural accusative"
+msgstr "akkusativ"
+
+#: sms_drill/forms.py:79
+#, fuzzy
+msgid "plural illative"
+msgstr "illativ"
+
+#: sms_drill/forms.py:80
+#, fuzzy
+msgid "plural locative"
+msgstr "lokativ"
+
+#: sms_drill/forms.py:81
+#, fuzzy
+msgid "plural comitative"
+msgstr "komitativ"
+
+#: sms_drill/forms.py:82
+#, fuzzy
+msgid "plural abessive"
+msgstr "Øv på essiv."
+
+#: sms_drill/forms.py:104 sms_drill/forms.py:141 sms_drill/forms.py:170
+#: sms_drill/forms.py:217 sms_drill/forms.py:227
+msgid "accusative"
+msgstr "akkusativ"
+
+#: sms_drill/forms.py:105 sms_drill/forms.py:126 sms_drill/forms.py:143
+#: sms_drill/forms.py:171 sms_drill/forms.py:218 sms_drill/forms.py:228
+msgid "illative"
+msgstr "illativ"
+
+#: sms_drill/forms.py:106 sms_drill/forms.py:127 sms_drill/forms.py:144
+#: sms_drill/forms.py:172 sms_drill/forms.py:219 sms_drill/forms.py:229
+msgid "locative"
+msgstr "lokativ"
+
+#: sms_drill/forms.py:107 sms_drill/forms.py:128 sms_drill/forms.py:145
+#: sms_drill/forms.py:173 sms_drill/forms.py:220 sms_drill/forms.py:230
+msgid "comitative"
+msgstr "komitativ"
+
+#: sms_drill/forms.py:108 sms_drill/forms.py:142 sms_drill/forms.py:174
+msgid "genitive"
+msgstr "genitiv"
+
+#: sms_drill/forms.py:132 sms_drill/forms.py:155
 msgid "personal"
 msgstr "personlig"
 
-#: sms_drill/forms.py:119 sms_drill/forms.py:142
+#: sms_drill/forms.py:133 sms_drill/forms.py:156
 msgid "demonstrative"
 msgstr "demonstrativ"
 
-#: sms_drill/forms.py:120 sms_drill/forms.py:143
+#: sms_drill/forms.py:134 sms_drill/forms.py:157
 msgid "reciprocative"
 msgstr "resiprok"
 
-#: sms_drill/forms.py:121 sms_drill/forms.py:144
+#: sms_drill/forms.py:135 sms_drill/forms.py:158
 msgid "reflexive"
 msgstr "refleksiv"
 
-#: sms_drill/forms.py:122 sms_drill/forms.py:145
+#: sms_drill/forms.py:136 sms_drill/forms.py:159
 msgid "relative"
 msgstr "relativ"
 
-#: sms_drill/forms.py:133 sms_drill/forms.py:269
+#: sms_drill/forms.py:140 sms_drill/forms.py:168 sms_drill/forms.py:216
+#: sms_drill/forms.py:226
+msgid "plural"
+msgstr "nominativ flertall"
+
+#: sms_drill/forms.py:147 sms_drill/forms.py:283
 msgid "mix"
 msgstr "blanda oppgaver"
 
-#: sms_drill/forms.py:149
+#: sms_drill/forms.py:163
 msgid "goabbat/guhtet"
 msgstr "goabbat/guhtet"
 
-#: sms_drill/forms.py:150
+#: sms_drill/forms.py:164
 msgid "nubbi/nuppit"
 msgstr "nubbi/nuppit"
 
-#: sms_drill/forms.py:155 sms_drill/forms.py:179 sms_drill/forms.py:201
+#: sms_drill/forms.py:169 sms_drill/forms.py:193 sms_drill/forms.py:215
 msgid "attributive"
 msgstr "attributt"
 
-#: sms_drill/forms.py:180 sms_drill/forms.py:196
+#: sms_drill/forms.py:194 sms_drill/forms.py:210
 msgid "comparative"
 msgstr "komparativ"
 
-#: sms_drill/forms.py:181 sms_drill/forms.py:197
+#: sms_drill/forms.py:195 sms_drill/forms.py:211
 msgid "superlative"
 msgstr "superlativ"
 
-#: sms_drill/forms.py:186
+#: sms_drill/forms.py:200
 msgid "attributive positive"
 msgstr "positivt attributt"
 
-#: sms_drill/forms.py:187
+#: sms_drill/forms.py:201
 msgid "attributive comparative"
 msgstr "komparativt attributt"
 
-#: sms_drill/forms.py:188
+#: sms_drill/forms.py:202
 msgid "attributive superlative"
 msgstr "superlativt attributt"
 
-#: sms_drill/forms.py:189
+#: sms_drill/forms.py:203
 msgid "predicative positive"
 msgstr "positiv predikativ"
 
-#: sms_drill/forms.py:190
+#: sms_drill/forms.py:204
 msgid "predicative comparative"
 msgstr "komparativ predikativ"
 
-#: sms_drill/forms.py:191
+#: sms_drill/forms.py:205
 msgid "predicative superlative"
 msgstr "superlativ predikativ"
 
-#: sms_drill/forms.py:195
+#: sms_drill/forms.py:209
 msgid "positive"
 msgstr "positiv"
 
-#: sms_drill/forms.py:207 sms_drill/forms.py:236
+#: sms_drill/forms.py:221 sms_drill/forms.py:250
 msgid "collective"
 msgstr "samlingstall"
 
-#: sms_drill/forms.py:208
+#: sms_drill/forms.py:222
 msgid "ordinals"
 msgstr "ordenstall"
 
-#: sms_drill/forms.py:229 sms_drill/forms.py:318
+#: sms_drill/forms.py:243 sms_drill/forms.py:332
 msgid "First level"
 msgstr "Nivå 1"
 
-#: sms_drill/forms.py:230 sms_drill/forms.py:319
+#: sms_drill/forms.py:244 sms_drill/forms.py:333
 msgid "Second level"
 msgstr "Nivå 1-2"
 
-#: sms_drill/forms.py:234
+#: sms_drill/forms.py:248
 msgid "cardinal"
 msgstr "Grunntall"
 
-#: sms_drill/forms.py:235
+#: sms_drill/forms.py:249
 msgid "ordinal"
 msgstr "Ordenstall"
 
-#: sms_drill/forms.py:240 sms_drill/forms.py:262
+#: sms_drill/forms.py:254 sms_drill/forms.py:276
 msgid "present"
 msgstr "presens"
 
-#: sms_drill/forms.py:241 sms_drill/forms.py:263
+#: sms_drill/forms.py:255 sms_drill/forms.py:277
 msgid "past"
 msgstr "preteritum"
 
-#: sms_drill/forms.py:242 sms_drill/forms.py:264
+#: sms_drill/forms.py:256 sms_drill/forms.py:278
 msgid "perfect"
 msgstr "perfektum"
 
-#: sms_drill/forms.py:243 sms_drill/forms.py:265
+#: sms_drill/forms.py:257 sms_drill/forms.py:279
 msgid "gerund"
 msgstr "gerundium"
 
-#: sms_drill/forms.py:244 sms_drill/forms.py:266
+#: sms_drill/forms.py:258 sms_drill/forms.py:280
 msgid "conditional"
 msgstr "kondisjonalis"
 
-#: sms_drill/forms.py:245 sms_drill/forms.py:267
+#: sms_drill/forms.py:259 sms_drill/forms.py:281
 msgid "imperative"
 msgstr "imperativ"
 
-#: sms_drill/forms.py:246 sms_drill/forms.py:268
+#: sms_drill/forms.py:260 sms_drill/forms.py:282
 msgid "potential"
 msgstr "potensialis"
 
-#: sms_drill/forms.py:270
+#: sms_drill/forms.py:284
 msgid "test questions"
 msgstr "testspørsmål"
 
-#: sms_drill/forms.py:274
+#: sms_drill/forms.py:288
 msgid "Level 1"
 msgstr "Nivå 1"
 
-#: sms_drill/forms.py:275
+#: sms_drill/forms.py:289
 msgid "Level 1-2"
 msgstr "Nivå 1-2"
 
-#: sms_drill/forms.py:276
+#: sms_drill/forms.py:290
 msgid "Level 1-3"
 msgstr "Nivå 1-3"
 
-#: sms_drill/forms.py:277 sms_drill/forms.py:303 sms_drill/forms.py:364
+#: sms_drill/forms.py:291 sms_drill/forms.py:317 sms_drill/forms.py:378
 msgid "All"
 msgstr "Alle"
 
-#: sms_drill/forms.py:282 sms_drill/forms.py:295
+#: sms_drill/forms.py:296 sms_drill/forms.py:309
 msgid "passive derivation"
 msgstr "Passivavledning"
 
-#: sms_drill/forms.py:283 sms_drill/forms.py:294
+#: sms_drill/forms.py:297 sms_drill/forms.py:308
 msgid "adjective->verb derivation"
 msgstr "Avledning adjektiv->verb"
 
-#: sms_drill/forms.py:307
+#: sms_drill/forms.py:321
 msgid "rare"
 msgstr "sjeldne"
 
-#: sms_drill/forms.py:308
+#: sms_drill/forms.py:322
 msgid "common"
 msgstr "vanlige"
 
-#: sms_drill/forms.py:312
+#: sms_drill/forms.py:326
 msgid "world"
 msgstr "verden"
 
-#: sms_drill/forms.py:313
+#: sms_drill/forms.py:327
 msgid "sapmi"
 msgstr "Sameland"
 
-#: sms_drill/forms.py:314
+#: sms_drill/forms.py:328
 msgid "suopma"
 msgstr "Finland"
 
-#: sms_drill/forms.py:320
+#: sms_drill/forms.py:334
 msgid "Third level"
 msgstr "Nivå 1-3"
 
-#: sms_drill/forms.py:324
+#: sms_drill/forms.py:338
 msgid "2"
 msgstr "2"
 
-#: sms_drill/forms.py:325
+#: sms_drill/forms.py:339
 msgid "3"
 msgstr "3"
 
-#: sms_drill/forms.py:326
+#: sms_drill/forms.py:340
 msgid "4"
 msgstr "4"
 
-#: sms_drill/forms.py:330
+#: sms_drill/forms.py:344
 msgid "Skolt Sami to Norwegian"
 msgstr "Skoltesamisk til norsk"
 
-#: sms_drill/forms.py:331
+#: sms_drill/forms.py:345
 msgid "Norwegian to Skolt Sami"
 msgstr "Norsk til skoltesamisk"
 
-#: sms_drill/forms.py:332
+#: sms_drill/forms.py:346
 msgid "Skolt Sami to Russian"
 msgstr "Skoltesamisk til russisk"
 
-#: sms_drill/forms.py:333
+#: sms_drill/forms.py:347
 msgid "Russian to Skolt Sami"
 msgstr "Russisk til skoltesamisk"
 
-#: sms_drill/forms.py:334
+#: sms_drill/forms.py:348
 msgid "Skolt Sami to Finnish"
 msgstr "Skoltesamisk til finsk"
 
-#: sms_drill/forms.py:335
+#: sms_drill/forms.py:349
 msgid "Finnish to Skolt Sami"
 msgstr "Finsk til skoltesamisk"
 
-#: sms_drill/forms.py:336
+#: sms_drill/forms.py:350
 msgid "Skolt Sami to English"
 msgstr "Skoltesamisk til engelsk"
 
-#: sms_drill/forms.py:337
+#: sms_drill/forms.py:351
 msgid "English to Skolt Sami"
 msgstr "Engelsk til skoltesamisk"
 
-#: sms_drill/forms.py:347
+#: sms_drill/forms.py:361
 msgid "Skolt Sami"
 msgstr "Skoltesamisk"
 
-#: sms_drill/forms.py:353
+#: sms_drill/forms.py:367
 msgid "Humans"
 msgstr "Menneske"
 
-#: sms_drill/forms.py:354
+#: sms_drill/forms.py:368
 msgid "Space"
 msgstr "Rom"
 
-#: sms_drill/forms.py:355
+#: sms_drill/forms.py:369
 msgid "Body"
 msgstr "Kropp"
 
-#: sms_drill/forms.py:356
+#: sms_drill/forms.py:370
 msgid "Sense"
 msgstr "Egenskap, mengd, sinne"
 
-#: sms_drill/forms.py:357
+#: sms_drill/forms.py:371
 msgid "House"
 msgstr "Hus"
 
-#: sms_drill/forms.py:358
+#: sms_drill/forms.py:372
 msgid "Work/Leisure"
 msgstr "Arbeid og fritid"
 
-#: sms_drill/forms.py:359
+#: sms_drill/forms.py:373
 msgid "Time"
 msgstr "Tid"
 
-#: sms_drill/forms.py:360
+#: sms_drill/forms.py:374
 msgid "Animals"
 msgstr "Dyr"
 
-#: sms_drill/forms.py:361
+#: sms_drill/forms.py:375
 msgid "Plants"
 msgstr "Planter"
 
-#: sms_drill/forms.py:362
+#: sms_drill/forms.py:376
 msgid "Food/Drink"
 msgstr "Mat og drikke"
 
-#: sms_drill/forms.py:363
+#: sms_drill/forms.py:377
 msgid "Nature"
 msgstr "Miljø"
 
-#: sms_drill/forms.py:368
+#: sms_drill/forms.py:382
 msgid "0-10"
 msgstr "0-10"
 
-#: sms_drill/forms.py:369
+#: sms_drill/forms.py:383
 msgid "0-20"
 msgstr "0-20"
 
-#: sms_drill/forms.py:370
+#: sms_drill/forms.py:384
 msgid "0-100"
 msgstr "0-100"
 
-#: sms_drill/forms.py:371
+#: sms_drill/forms.py:385
 msgid "0-1000"
 msgstr "0-1000"
 
-#: sms_drill/forms.py:376
+#: sms_drill/forms.py:390
 msgid "String to numeral"
 msgstr "Skriv tallordet som tall"
 
-#: sms_drill/forms.py:377
+#: sms_drill/forms.py:391
 msgid "Numeral to string"
 msgstr "Skriv tallet som tallord"
 
-#: sms_drill/forms.py:381
+#: sms_drill/forms.py:395
 msgid "Strings to numerals"
 msgstr "Skriv tallordene som tall"
 
-#: sms_drill/forms.py:382
+#: sms_drill/forms.py:396
 msgid "Numerals to strings"
 msgstr "Skriv tallene som tallord"
 
-#: sms_drill/forms.py:390
+#: sms_drill/forms.py:404
 msgid "I"
 msgstr "I"
 
-#: sms_drill/forms.py:391
+#: sms_drill/forms.py:405
 msgid "II"
 msgstr "II"
 
-#: sms_drill/forms.py:392
+#: sms_drill/forms.py:406
 msgid "III"
 msgstr "III"
 
-#: sms_drill/forms.py:393
+#: sms_drill/forms.py:407
 msgid "IV"
 msgstr "IV"
 
-#: sms_drill/forms.py:394
+#: sms_drill/forms.py:408
 msgid "V"
 msgstr "V"
 
-#: sms_drill/forms.py:395
+#: sms_drill/forms.py:409
 msgid "VI"
 msgstr "VI"
 
-#: sms_drill/forms.py:396
+#: sms_drill/forms.py:410
 msgid "Odd"
 msgstr "Ulikest."
 
-#: sms_drill/forms.py:400
+#: sms_drill/forms.py:414
 msgid "easy"
 msgstr "lett"
 
-#: sms_drill/forms.py:401
+#: sms_drill/forms.py:415
 msgid "medium"
 msgstr "middels"
 
-#: sms_drill/forms.py:402
+#: sms_drill/forms.py:416
 msgid "hard"
 msgstr "vanskelig"
 
-#: sms_drill/forms.py:406
+#: sms_drill/forms.py:420
 msgid "Firstmeeting"
 msgstr "Firstmeeting"
 
-#: sms_drill/forms.py:407
+#: sms_drill/forms.py:421
 msgid "Firstmeeting boy"
 msgstr "Firstmeeting boy"
 
-#: sms_drill/forms.py:408
+#: sms_drill/forms.py:422
 msgid "Firstmeeting girl"
 msgstr "Firstmeeting girl"
 
-#: sms_drill/forms.py:409
+#: sms_drill/forms.py:423
 msgid "Firstmeeting man"
 msgstr "Firstmeeting man"
 
-#: sms_drill/forms.py:410 sms_drill/templates/sahka.html:199
+#: sms_drill/forms.py:424 sms_drill/templates/sahka.html:198
 msgid "Visit"
 msgstr "Guossis"
 
-#: sms_drill/forms.py:411 sms_drill/templates/sahka.html:204
+#: sms_drill/forms.py:425 sms_drill/templates/sahka.html:203
 msgid "Grocery"
 msgstr "Borramušgávppis"
 
-#: sms_drill/forms.py:412
+#: sms_drill/forms.py:426
 msgid "Shopadj"
 msgstr "Veardideapmi rámbuvrris"
 
-#: sms_drill/forms.py:425 sms_drill/templates/mgame_a.html:20
+#: sms_drill/forms.py:439 sms_drill/templates/mgame_a.html:20
 #: sms_drill/templates/mgame_n.html:19 sms_drill/templates/mgame_v.html:20
 msgid "bisyllabic"
 msgstr "likestavelsesstammer"
 
-#: sms_drill/forms.py:426 sms_drill/templates/mgame_a.html:21
+#: sms_drill/forms.py:440 sms_drill/templates/mgame_a.html:21
 #: sms_drill/templates/mgame_n.html:20 sms_drill/templates/mgame_v.html:21
 msgid "trisyllabic"
 msgstr "ulikestavelsesstammer"
 
-#: sms_drill/forms.py:427 sms_drill/templates/mgame_a.html:22
+#: sms_drill/forms.py:441 sms_drill/templates/mgame_a.html:22
 #: sms_drill/templates/mgame_n.html:21 sms_drill/templates/mgame_v.html:22
 msgid "contracted"
 msgstr "kontrakte stammer"
@@ -560,9 +631,10 @@ msgstr "Øv på predikativformer i superlativ."
 msgid "Practise numeral attributes"
 msgstr "Øv på attributtformer for tallord."
 
-#: sms_drill/views.py:507 sms_drill/views.py:515
-msgid "Practise plural"
-msgstr "Øv på nominativ flertall."
+#: sms_drill/views.py:507 sms_drill/views.py:518
+#, fuzzy
+msgid "Practise nominative in plural"
+msgstr "Øv på adjektivformer i flertall."
 
 #: sms_drill/views.py:508 sms_drill/views.py:509
 msgid "Practise nominative"
@@ -577,163 +649,203 @@ msgid "Practise accusative"
 msgstr "Øv på akkusativ."
 
 #: sms_drill/views.py:512
+msgid "Practise locative"
+msgstr "Øv på lokativ."
+
+#: sms_drill/views.py:513
 msgid "Practise comitative"
 msgstr "Øv på komitativ."
 
-#: sms_drill/views.py:513
+#: sms_drill/views.py:514
 msgid "Practise essive"
 msgstr "Øv på essiv."
 
-#: sms_drill/views.py:514
+#: sms_drill/views.py:515
 msgid "Practise genitive"
 msgstr "Øv på genitiv."
 
 #: sms_drill/views.py:516
-msgid "Practise locative"
-msgstr "Øv på lokativ."
+#, fuzzy
+msgid "Practise partitive"
+msgstr "Øv på komparativ."
 
-#: sms_drill/views.py:517 sms_drill/views.py:518 sms_drill/views.py:519
+#: sms_drill/views.py:517
+#, fuzzy
+msgid "Practise abessive"
+msgstr "Øv på essiv."
+
+#: sms_drill/views.py:519
+#, fuzzy
+msgid "Practise genitive in plural"
+msgstr "Øv på adjektivformer i flertall."
+
 #: sms_drill/views.py:520
+#, fuzzy
+msgid "Practise accusative in plural"
+msgstr "Øv på adjektivformer i flertall."
+
+#: sms_drill/views.py:521
+#, fuzzy
+msgid "Practise illative in plural"
+msgstr "Øv på adjektivformer i flertall."
+
+#: sms_drill/views.py:522
+#, fuzzy
+msgid "Practise locative in plural"
+msgstr "Øv på adjektivformer i flertall."
+
+#: sms_drill/views.py:523
+#, fuzzy
+msgid "Practise comitative in plural"
+msgstr "Øv på adjektivformer i flertall."
+
+#: sms_drill/views.py:524
+#, fuzzy
+msgid "Practise abessive in plural"
+msgstr "Øv på adjektivformer i flertall."
+
+#: sms_drill/views.py:525 sms_drill/views.py:526 sms_drill/views.py:527
+#: sms_drill/views.py:528
 msgid "Practise a mix"
 msgstr "Øv på blanda oppgaver."
 
-#: sms_drill/views.py:521
+#: sms_drill/views.py:529
 msgid "Practise numerals in illative"
 msgstr "Øv på tallord i illativ."
 
-#: sms_drill/views.py:522
+#: sms_drill/views.py:530
 msgid "Practise numerals in accusative"
 msgstr "Øv på tallord i akkusativ."
 
-#: sms_drill/views.py:523
+#: sms_drill/views.py:531
 msgid "Practise numerals in comitative"
 msgstr "Øv på tallord i komitativ."
 
-#: sms_drill/views.py:524
+#: sms_drill/views.py:532
 msgid "Practise numerals in essive"
 msgstr "Øv på tallord i essiv."
 
-#: sms_drill/views.py:525
+#: sms_drill/views.py:533
 msgid "Practise numerals in genitive"
 msgstr "Øv på tallord i genitiv."
 
-#: sms_drill/views.py:526
+#: sms_drill/views.py:534
 msgid "Practise numerals in plural"
 msgstr "Øv på tallord i flertall."
 
-#: sms_drill/views.py:527
+#: sms_drill/views.py:535
 msgid "Practise numerals in locative"
 msgstr "Øv på tallord i lokativ."
 
-#: sms_drill/views.py:528
+#: sms_drill/views.py:536
 msgid "Practise collective numerals"
 msgstr "Øv på samlingstall."
 
-#: sms_drill/views.py:529
+#: sms_drill/views.py:537
 msgid "Practise ordinal numbers"
 msgstr "Øv på ordenstall."
 
-#: sms_drill/views.py:530
+#: sms_drill/views.py:538
 msgid "Practise ordinal numerals in illative"
 msgstr "Øv på ordenstall i illativ."
 
-#: sms_drill/views.py:531
+#: sms_drill/views.py:539
 msgid "Practise ordinal numerals in accusative"
 msgstr "Øv på ordenstall i akkusativ."
 
-#: sms_drill/views.py:532
+#: sms_drill/views.py:540
 msgid "Practise ordinal numerals in comitative"
 msgstr "Øv på ordenstall i komitativ."
 
-#: sms_drill/views.py:533
+#: sms_drill/views.py:541
 msgid "Practise ordinal numerals in essive"
 msgstr "Øv på ordenstall i essiv."
 
-#: sms_drill/views.py:534
+#: sms_drill/views.py:542
 msgid "Practise ordinal numerals in genitive"
 msgstr "Øv på ordenstall i genitiv."
 
-#: sms_drill/views.py:535
+#: sms_drill/views.py:543
 msgid "Practise ordinal numerals in plural"
 msgstr "Øv på ordenstall i flertall."
 
-#: sms_drill/views.py:536
+#: sms_drill/views.py:544
 msgid "Practise ordinal numerals in locative"
 msgstr "Øv på ordenstall i lokativ."
 
-#: sms_drill/views.py:537
+#: sms_drill/views.py:545
 msgid "Practise collective numerals in illative"
 msgstr "Øv på samlingstall i illativ."
 
-#: sms_drill/views.py:538
+#: sms_drill/views.py:546
 msgid "Practise collective numerals in accusative"
 msgstr "Øv på samlingstall i akkusativ."
 
-#: sms_drill/views.py:539
+#: sms_drill/views.py:547
 msgid "Practise collective numerals in comitative"
 msgstr "Øv på samlingstall i komitativ."
 
-#: sms_drill/views.py:540
+#: sms_drill/views.py:548
 msgid "Practise collective numerals in essive"
 msgstr "Øv på samlingstall i essiv."
 
-#: sms_drill/views.py:541
+#: sms_drill/views.py:549
 msgid "Practise collective numerals in genitive"
 msgstr "Øv på samlingstall i genitiv."
 
-#: sms_drill/views.py:542
+#: sms_drill/views.py:550
 msgid "Practise collective numerals in plural"
 msgstr "Øv på samlingstall i flertall."
 
-#: sms_drill/views.py:543
+#: sms_drill/views.py:551
 msgid "Practise collective numerals in locative"
 msgstr "Øv på tallord i lokativ."
 
-#: sms_drill/views.py:544 sms_drill/views.py:551
+#: sms_drill/views.py:552 sms_drill/views.py:559
 msgid "Practise present"
 msgstr "Øv på presens."
 
-#: sms_drill/views.py:545 sms_drill/views.py:552
+#: sms_drill/views.py:553 sms_drill/views.py:560
 msgid "Practise past"
 msgstr "Øv på preteritum."
 
-#: sms_drill/views.py:546 sms_drill/views.py:553
+#: sms_drill/views.py:554 sms_drill/views.py:561
 msgid "Practise perfect"
 msgstr "Øv på perfektum."
 
-#: sms_drill/views.py:547 sms_drill/views.py:554
+#: sms_drill/views.py:555 sms_drill/views.py:562
 msgid "Practise gerund"
 msgstr "Øv på gerundium."
 
-#: sms_drill/views.py:548 sms_drill/views.py:555
+#: sms_drill/views.py:556 sms_drill/views.py:563
 msgid "Practise conditional"
 msgstr "Øv på kondisjonalis."
 
-#: sms_drill/views.py:549 sms_drill/views.py:556
+#: sms_drill/views.py:557 sms_drill/views.py:564
 msgid "Practise imperative"
 msgstr "Øv på imperativ."
 
-#: sms_drill/views.py:550 sms_drill/views.py:557
+#: sms_drill/views.py:558 sms_drill/views.py:565
 msgid "Practise potential"
 msgstr "Øv på potensialis."
 
-#: sms_drill/views.py:558
+#: sms_drill/views.py:566
 msgid "Practise "
 msgstr "Øv på "
 
-#: sms_drill/views.py:559
+#: sms_drill/views.py:567
 msgid "Practise reciprocative pronouns"
 msgstr "Øv på predikativformer i positiv."
 
-#: sms_drill/views.py:560
+#: sms_drill/views.py:568
 msgid "Practise reflexive pronouns"
 msgstr "Øv på refleksive pronomen."
 
-#: sms_drill/views.py:561
+#: sms_drill/views.py:569
 msgid "Practise relative pronouns"
 msgstr "Øv på relative pronomen."
 
-#: sms_drill/views.py:562
+#: sms_drill/views.py:570
 msgid "Practise demonstrative pronouns"
 msgstr "Øv på demonstrative pronomen."
 
@@ -749,7 +861,7 @@ msgstr "Skriv det skoltesamiske klokkeslettet med bokstaver"
 msgid "Select how many points of time to include."
 msgstr "Velg hvor mange klokkeslett som skal være med"
 
-#: sms_drill/templates/clock.html:22 sms_drill/templates/num.html:65
+#: sms_drill/templates/clock.html:22 sms_drill/templates/num.html:62
 msgid "Select the direction"
 msgstr "Velg retning"
 
@@ -773,12 +885,12 @@ msgstr "hjelp"
 msgid "This is almost correct!"
 msgstr "Dette er nesten rett!"
 
-#: sms_drill/templates/game.html:186 sms_drill/templates/leksa.html:74
-#: sms_drill/templates/vasta.html:103
+#: sms_drill/templates/game.html:186 sms_drill/templates/leksa.html:75
+#: sms_drill/templates/vasta.html:104
 msgid "Test answers"
 msgstr "Test svarene"
 
-#: sms_drill/templates/game.html:189 sms_drill/templates/leksa.html:77
+#: sms_drill/templates/game.html:189 sms_drill/templates/leksa.html:78
 msgid "Show the correct answers"
 msgstr "Vis korrekt svar"
 
@@ -795,37 +907,37 @@ msgstr "Poengsummen din:"
 msgid "Grammar explanations"
 msgstr "Grammatikkforklaringer"
 
-#: sms_drill/templates/leksa.html:17 sms_drill/templates/leksa_place.html:6
+#: sms_drill/templates/leksa.html:18 sms_drill/templates/leksa_place.html:6
 msgid "Words"
 msgstr "Ord"
 
-#: sms_drill/templates/leksa.html:18 sms_drill/templates/leksa_place.html:7
+#: sms_drill/templates/leksa.html:19 sms_drill/templates/leksa_place.html:7
 msgid "Names"
 msgstr "Stedsnavn"
 
-#: sms_drill/templates/leksa.html:41
+#: sms_drill/templates/leksa.html:42
 msgid "Give translations for words. You can choose set or level, not both."
 msgstr "Oversett ordene. Du kan velge sett eller bok, ikke begge."
 
-#: sms_drill/templates/leksa.html:44
+#: sms_drill/templates/leksa.html:45
 msgid "Quizz"
 msgstr "Kviss"
 
-#: sms_drill/templates/leksa.html:53
+#: sms_drill/templates/leksa.html:54
 msgid "Set"
 msgstr "Sett"
 
-#: sms_drill/templates/leksa.html:55 sms_drill/templates/leksa_place.html:27
+#: sms_drill/templates/leksa.html:56 sms_drill/templates/leksa_place.html:27
 msgid "Select the language pair"
 msgstr "Velg språkpar"
 
-#: sms_drill/templates/leksa.html:57 sms_drill/templates/mgame.html:63
+#: sms_drill/templates/leksa.html:58 sms_drill/templates/mgame.html:63
 msgid "Book"
 msgstr "Bok"
 
-#: sms_drill/templates/leksa.html:62 sms_drill/templates/leksa.html.py:65
+#: sms_drill/templates/leksa.html:63 sms_drill/templates/leksa.html.py:66
 #: sms_drill/templates/leksa_place.html:42 sms_drill/templates/mgame.html:71
-#: sms_drill/templates/num.html:70 sms_drill/templates/vasta.html:70
+#: sms_drill/templates/num.html:67 sms_drill/templates/vasta.html:71
 msgid "New set"
 msgstr "Nytt sett"
 
@@ -859,7 +971,7 @@ msgid "Pronouns"
 msgstr "Pronomener"
 
 #: sms_drill/templates/mgame.html:34 sms_drill/templates/mgame.html.py:43
-#: sms_drill/templates/num.html:42
+#: sms_drill/templates/num.html:39
 msgid "Numerals"
 msgstr "Tallord"
 
@@ -911,7 +1023,7 @@ msgstr "Avledningstype"
 msgid "Add numerals in correct forms."
 msgstr "Skriv kildinsamisk tallord i riktig bøyingsform"
 
-#: sms_drill/templates/mgame_l.html:25 sms_drill/templates/vasta.html:62
+#: sms_drill/templates/mgame_l.html:25 sms_drill/templates/vasta.html:63
 msgid "Level"
 msgstr "Nivå"
 
@@ -947,15 +1059,15 @@ msgstr ""
 msgid "Add verbs in correct forms."
 msgstr "Skriv kildinsamisk verb i riktig bøyingsform"
 
-#: sms_drill/templates/num.html:49
+#: sms_drill/templates/num.html:46
 msgid "Enter the numeral. (Ex. 8)"
 msgstr "Skriv tallet (f.eks. 8)"
 
-#: sms_drill/templates/num.html:51
+#: sms_drill/templates/num.html:48
 msgid "Enter the Skolt Sámi number. (Ex. kääuˊc)."
 msgstr "Skriv det skoltesamiske tallordet (f.eks. kääuˊc)"
 
-#: sms_drill/templates/num.html:63
+#: sms_drill/templates/num.html:60
 msgid "Select the range of numerals."
 msgstr "Velg hvor store tall"
 
@@ -987,14 +1099,14 @@ msgstr "Dato"
 msgid "Select a dialogue"
 msgstr "Velg en dialog"
 
-#: sms_drill/templates/sahka.html:156
+#: sms_drill/templates/sahka.html:155
 msgid ""
 "Answer to the questions with full sentences. Remember big initial letter in "
 "placenames."
 msgstr ""
 "Svar på spørsmålene med fulle setninger. Husk stor forbokstav i stedsnavn."
 
-#: sms_drill/templates/sahka.html:167
+#: sms_drill/templates/sahka.html:166
 msgid ""
 "NB! NB! The Sahka game is not working properly, due to technical problems! "
 "NB! NB!"
@@ -1002,7 +1114,7 @@ msgstr ""
 "NB! NB! Sahka-programmet fungerer ikke skikkelig, vi har tekniske problemer! "
 "NB! NB!"
 
-#: sms_drill/templates/sahka.html:168
+#: sms_drill/templates/sahka.html:167
 msgid ""
 "NB! NB! The Sahka game is temporarily out of order, due to technical "
 "maintenance! NB! NB!"
@@ -1010,27 +1122,27 @@ msgstr ""
 "NB! NB! Sahka-programmet er ute av funksjon på grunn av teknisk vedlikehold! "
 "NB! NB!"
 
-#: sms_drill/templates/sahka.html:179
+#: sms_drill/templates/sahka.html:178
 msgid "Meeting with Kare"
 msgstr "Oahpásmuva Kárii"
 
-#: sms_drill/templates/sahka.html:184
+#: sms_drill/templates/sahka.html:183
 msgid "Meeting with Hansa"
 msgstr "Oahpásmuva Hánsii"
 
-#: sms_drill/templates/sahka.html:188
+#: sms_drill/templates/sahka.html:187
 msgid "Meeting with Lisa"
 msgstr "Oahpásmuva Lisái"
 
-#: sms_drill/templates/sahka.html:192
+#: sms_drill/templates/sahka.html:191
 msgid "Meeting with Lemet"
 msgstr "Oahpásmuva Lemehii"
 
-#: sms_drill/templates/sahka.html:209
+#: sms_drill/templates/sahka.html:208
 msgid "Shop"
 msgstr "Veardideapmi rámbuvrris"
 
-#: sms_drill/templates/sahka.html:239
+#: sms_drill/templates/sahka.html:238
 msgid "Answer"
 msgstr "Svar"
 
@@ -1042,15 +1154,15 @@ msgstr "Vasta-S"
 msgid "Vasta-F"
 msgstr "Vasta-F"
 
-#: sms_drill/templates/vasta.html:39
+#: sms_drill/templates/vasta.html:40
 msgid "Vasta"
 msgstr "Vasta"
 
-#: sms_drill/templates/vasta.html:43
+#: sms_drill/templates/vasta.html:44
 msgid "Answer the questions with full sentences."
 msgstr "Svar på spørsmålene med fulle setninger."
 
-#: sms_drill/templates/vasta.html:44
+#: sms_drill/templates/vasta.html:45
 msgid ""
 "The blue words are given in the primary form. Your task is to write them in "
 "the correct grammatical form."
@@ -1058,7 +1170,7 @@ msgstr ""
 "Ordene i blått er oppgitt i grunnform og skal være med i svaret i riktig "
 "bøyd form."
 
-#: sms_drill/templates/vasta.html:46
+#: sms_drill/templates/vasta.html:47
 msgid ""
 "Answer to the questions with full sentences. Be aware of that if there is "
 "moai/mii in the question, you have to answer with doai/dii. "
@@ -1066,20 +1178,20 @@ msgstr ""
 "Svar på spørsmåla med fulle setninger. Vær oppmerksom på at hvis det er moai/"
 "mii i spørsmålet, skal svaret ha doai/dii."
 
-#: sms_drill/templates/vasta.html:57
+#: sms_drill/templates/vasta.html:58
 msgid ""
 "NB! NB! The Vasta game is not working properly, due to technical problems! "
 "NB! NB!"
 msgstr "NB! Vasta fungerer ikke helt, vi har tekniske problemer! NB!"
 
-#: sms_drill/templates/vasta.html:58
+#: sms_drill/templates/vasta.html:59
 msgid ""
 "NB! NB! The Vasta game is temporarily out of order, due to technical "
 "maintenance! NB! NB!"
 msgstr ""
 "NB! Vasta er ute av funksjon for øyeblikket, på grunn av vedlikehold. NB!"
 
-#: sms_drill/templates/vasta.html:63
+#: sms_drill/templates/vasta.html:64
 msgid "Number of task words"
 msgstr "Antall ord i oppgava"
 
@@ -1157,17 +1269,9 @@ msgstr "Hovedside"
 msgid "About OAHPA!"
 msgstr "Om OAHPA!"
 
-#: sms_drill/templates/visl_main.html:452 templates/sms_oahpa.html:115
+#: sms_drill/templates/visl_main.html:452
 msgid "Feedback"
 msgstr "Tilbakemelding"
-
-#: sms_drill/templates/visl_main.html:471
-msgid "Copyright 2009 The University of Tromso."
-msgstr "Copyright 2012 Universitetet i Tromsø"
-
-#: sms_drill/templates/visl_main.html:472 templates/sms_oahpa_main.html:230
-msgid "Contact"
-msgstr "Kontakt"
 
 #: sms_feedback/templates/feedback.html:9
 msgid "Message:"
@@ -1225,16 +1329,16 @@ msgstr "Dette programmet er under utvikling."
 msgid "Reference materials"
 msgstr "Ressurser"
 
-#: templates/sms_oahpa.html:74 templates/sms_oahpa_main.html:169
-#: templates/sms_oahpa_main.html.py:172 templates/sms_oahpa_main.html:175
-#: templates/sms_oahpa_main.html.py:178
+#: templates/sms_oahpa.html:74 templates/sms_oahpa_main.html:172
+#: templates/sms_oahpa_main.html.py:175 templates/sms_oahpa_main.html:178
+#: templates/sms_oahpa_main.html.py:181
 msgid "Veiledning"
 msgstr "Veiledning"
 
 #: templates/sms_oahpa.html:76 templates/sms_oahpa.html.py:79
 #: templates/sms_oahpa.html:82 templates/sms_oahpa.html.py:85
-#: templates/sms_oahpa_main.html:181 templates/sms_oahpa_main.html.py:184
-#: templates/sms_oahpa_main.html:187 templates/sms_oahpa_main.html.py:190
+#: templates/sms_oahpa_main.html:184 templates/sms_oahpa_main.html.py:187
+#: templates/sms_oahpa_main.html:190 templates/sms_oahpa_main.html.py:193
 msgid "Dictionary"
 msgstr "Nettordbok"
 
@@ -1262,53 +1366,49 @@ msgstr "Logg ut"
 msgid "Log in"
 msgstr "Logg inn"
 
-#: templates/sms_oahpa_main.html:40
+#: templates/sms_oahpa_main.html:41
 msgid "Interface language"
 msgstr "Hjelpespråk"
 
-#: templates/sms_oahpa_main.html:78
+#: templates/sms_oahpa_main.html:79
 msgid "Skolt Sami dialect"
 msgstr "Språkvariant"
 
-#: templates/sms_oahpa_main.html:84 templates/sms_oahpa_main.html.py:87
-#: templates/sms_oahpa_main.html:91
+#: templates/sms_oahpa_main.html:85 templates/sms_oahpa_main.html.py:88
+#: templates/sms_oahpa_main.html:92
 msgid "GG"
 msgstr "Kautokeino"
 
-#: templates/sms_oahpa_main.html:85 templates/sms_oahpa_main.html.py:88
-#: templates/sms_oahpa_main.html:92
+#: templates/sms_oahpa_main.html:86 templates/sms_oahpa_main.html.py:89
+#: templates/sms_oahpa_main.html:93
 msgid "KJ"
 msgstr "Karasjok"
 
-#: templates/sms_oahpa_main.html:117
+#: templates/sms_oahpa_main.html:118
 msgid "Practise morphology"
 msgstr "Øv på bøying"
 
-#: templates/sms_oahpa_main.html:125
+#: templates/sms_oahpa_main.html:126
 msgid "Answer to questions"
 msgstr "Svar på spørsmåla"
 
-#: templates/sms_oahpa_main.html:132
+#: templates/sms_oahpa_main.html:133
 msgid "Words and translations"
 msgstr "Ord og oversettelser"
 
-#: templates/sms_oahpa_main.html:142
+#: templates/sms_oahpa_main.html:143
 msgid "Practise morphology in context"
 msgstr "Bøy ord i setninger"
 
-#: templates/sms_oahpa_main.html:149
+#: templates/sms_oahpa_main.html:150
 msgid "Dialogue game"
 msgstr "Dialoger"
 
-#: templates/sms_oahpa_main.html:156
+#: templates/sms_oahpa_main.html:157
 msgid "Practise numerals"
 msgstr "Øv på tallord"
 
-#: templates/sms_oahpa_main.html:161
-msgid "Online reference materials"
-msgstr "Ressurser"
-
-#: templates/sms_oahpa_main.html:163
+#: templates/sms_oahpa_main.html:165
 msgid ""
 "Oahpa is an internet program for youth and grownups learning Skolt Sámi. The "
 "program can be adjusted to different themes and levels of difficulty, and it "
@@ -1318,31 +1418,32 @@ msgstr ""
 "skoltesamisk. Programmet kan justeres til ulike temaer og "
 "vanskelighetsgrader, og det lager nye oppgavesett automatisk."
 
-#: templates/sms_oahpa_main.html:165
-msgid "Oahpa is connected with online reference materials."
-msgstr "Ressurser"
-
-#: templates/sms_oahpa_main.html:194 templates/sms_oahpa_main.html.py:197
-#: templates/sms_oahpa_main.html:200 templates/sms_oahpa_main.html.py:203
-#: templates/sms_oahpa_main.html:206 templates/sms_oahpa_main.html.py:209
+#: templates/sms_oahpa_main.html:197 templates/sms_oahpa_main.html.py:200
+#: templates/sms_oahpa_main.html:203 templates/sms_oahpa_main.html.py:206
+#: templates/sms_oahpa_main.html:209 templates/sms_oahpa_main.html.py:212
 msgid "Skolt Sámi grammar"
 msgstr "Skoltesamisk grammatikk"
 
-#: templates/sms_oahpa_main.html:214
+#: templates/sms_oahpa_main.html:217
 msgid "Are you visiting this site as part of a course?"
 msgstr "Besøker du denne sida som del av et kurs?"
 
-#: templates/sms_oahpa_main.html:214
+#: templates/sms_oahpa_main.html:217
 msgid "Log in here"
 msgstr "Logg inn her"
 
-#: templates/sms_oahpa_main.html:223
+#: templates/sms_oahpa_main.html:226
 msgid "Link to this exercise"
 msgstr "Lenke til denne øvinga"
 
-#: templates/sms_oahpa_main.html:229
-msgid "Copyright 2011 Universitetet i Troms&oslash; "
+#: templates/sms_oahpa_main.html:232
+#, fuzzy
+msgid "Copyright 2013-2020 Universitetet i Troms&oslash; "
 msgstr "Copyright 2012 Universitetet i Tromsø"
+
+#: templates/sms_oahpa_main.html:233
+msgid "Contact"
+msgstr "Kontakt"
 
 #: templates/admin/404.html:4 templates/admin/404.html.py:8
 msgid "Page not found"
@@ -1737,40 +1838,32 @@ msgstr ""
 "tilgjengelig i Oahpa. Kurslæreren kan se resultatene dine, og kan også følge "
 "resultatene dine fra hvert program. Lykke til!"
 
-#: templates/courses/courses_main.html:38
-msgid "Site.uit.no login information"
-msgstr "Site.uit.no login-informasjon"
-
-#: templates/courses/courses_main.html:41
-msgid "Copy and paste this link into the OpenID field to log in."
-msgstr "Kopier og lim denne lenka inn i OpenID-feltet for å logge inn"
-
-#: templates/courses/courses_main.html:48
+#: templates/courses/courses_main.html:49
 msgid "Course progress"
 msgstr "Se framgang"
 
-#: templates/courses/courses_main.html:54
+#: templates/courses/courses_main.html:55
 msgid "Average"
 msgstr "Gjennomsnitt"
 
-#: templates/courses/courses_main.html:55
+#: templates/courses/courses_main.html:56
 msgid "Highest score"
 msgstr "Høyeste poengsum:"
 
-#: templates/courses/courses_main.html:56
+#: templates/courses/courses_main.html:57
 msgid "Lowest score"
 msgstr "Laveste poengsum:"
 
-#: templates/courses/courses_main.html:57
+#: templates/courses/courses_main.html:58
 msgid "Number of tries"
 msgstr "Antall forsøk"
 
-#: templates/courses/courses_main.html:65
+#: templates/courses/courses_main.html:66
 #: templates/courses/courses_main_instructor.html:23
 msgid "You are a course instructor."
 msgstr "Du er kursinstruktør."
 
-#: templates/courses/courses_main.html:66
+#: templates/courses/courses_main.html:67
 msgid "View students' grades"
 msgstr "Se studentresultater"
 
@@ -1973,6 +2066,24 @@ msgstr "E-post-adresse"
 msgid "Reset my password"
 msgstr "Endre passordet mitt"
 
+#~ msgid "Practise plural"
+#~ msgstr "Øv på nominativ flertall."
+
+#~ msgid "Copyright 2009 The University of Tromso."
+#~ msgstr "Copyright 2012 Universitetet i Tromsø"
+
+#~ msgid "Online reference materials"
+#~ msgstr "Ressurser"
+
+#~ msgid "Oahpa is connected with online reference materials."
+#~ msgstr "Ressurser"
+
+#~ msgid "Site.uit.no login information"
+#~ msgstr "Site.uit.no login-informasjon"
+
+#~ msgid "Copy and paste this link into the OpenID field to log in."
+#~ msgstr "Kopier og lim denne lenka inn i OpenID-feltet for å logge inn"
+
 #~ msgid "family"
 #~ msgstr "Slekt"
 
@@ -2167,9 +2278,6 @@ msgstr "Endre passordet mitt"
 
 #~ msgid "average score"
 #~ msgstr "Gjennomsnittlig poengsum:"
-
-#~ msgid "inessive"
-#~ msgstr "inessiv"
 
 #~ msgid "Object"
 #~ msgstr "Ting"

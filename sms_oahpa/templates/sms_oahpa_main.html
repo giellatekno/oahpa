@@ -42,7 +42,12 @@
 						<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
 						<select id="language_select" name="language" onChange="javascript:this.form.submit();">
 
-						  
+						
+						{% ifequal LANGUAGE_CODE "sms" %}
+							<option value="sms" selected="selected">Nuõrttsääʹmǩiõll</option>
+						{% else %}
+							<option value="sms">Nuõrttsääʹmǩiõll</option>
+						{% endifequal %}  
 						{% ifequal LANGUAGE_CODE "no" %}
 							<option value="no" selected="selected">Norsk</option>
 						{% else %}
