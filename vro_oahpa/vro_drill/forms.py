@@ -350,20 +350,20 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-        ('vroest', u'Võro to Estonian'),
-        ('estvro', u'Estonian to Võro'),
-	    ('vrofin', u'Võro to Finnish'),
-        ('finvro', u'Finnish to Võro'),
-        ('vroeng', u'Võro to English'),
-	    ('engvro', u'English to Võro'),           
-        ('vrodeu', u'Võro to German'),
-        ('deuvro', u'German to Võro'),
-        ('vrosme', u'Võro to North Saami'),
-        ('smevro', u'North Saami to Võro'),
-        ('vroswe', u'Võro to Swedish'),
-        ('swevro', u'Swedish to Võro'),
-        ('vronob', u'Võro to Norwegian'),
-        ('nobvro', u'Norwegian to Võro'), 
+        ('vroest', _(u'Võro to Estonian')),
+        ('estvro', _(u'Estonian to Võro')),
+	    ('vrofin', _(u'Võro to Finnish')),
+        ('finvro', _(u'Finnish to Võro')),
+        ('vroeng', _(u'Võro to English')),
+	    ('engvro', _(u'English to Võro')),           
+        ('vrodeu', _(u'Võro to German')),
+        ('deuvro', _(u'German to Võro')),
+        ('vrosme', _(u'Võro to North Saami')),
+        ('smevro', _(u'North Saami to Võro')),
+        ('vroswe', _(u'Võro to Swedish')),
+        ('swevro', _(u'Swedish to Võro')),
+        ('vronob', _(u'Võro to Norwegian')),
+        ('nobvro', _(u'Norwegian to Võro')), 
 )
 
 NUMLANGUAGE_CHOICES = (

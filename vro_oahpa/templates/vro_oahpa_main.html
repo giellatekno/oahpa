@@ -59,11 +59,11 @@
 							<option value="et">Eesti</option>
 						{% endifequal %}
 						
-						{% ifequal LANGUAGE_CODE "lv" %}
+			<!--			{% ifequal LANGUAGE_CODE "lv" %}
 							<option value="lv" selected="selected">Latviešu</option>
 						{% else %}
 							<option value="lv">Latviešu</option>
-						{% endifequal %}
+						{% endifequal %}  -->
 
 						{% ifequal LANGUAGE_CODE "en" %}
 							<option value="en" selected="selected">English</option>
@@ -206,7 +206,7 @@
 				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.nob.html">{% trans "Russian grammar" %}</a></li>
             {% endifequal %}
  {% endcomment %}
-            <a href="http://oahpa.no/davvi" style="font-size:13px">North Saami Oahpa</a>
+            <a href="http://oahpa.no/davvi" style="font-size:13px">{% trans "North Saami Oahpa" %}</a>
 			</ul>
 
 <!---			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p> -->
@@ -224,7 +224,7 @@
 			{% endblock %}
 
 			  <p>
-				  {% trans "Copyright 2011-2014 Universitetet i Troms&oslash; " %}<br />
+				  {% trans "Copyright 2011-2015 UiT Norges arktiske universitet"   %}<br />
 			{% trans "Contact" %} oahpa@uit.no</p>
 			</div>
 		</div>
