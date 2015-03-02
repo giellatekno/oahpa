@@ -12,6 +12,10 @@ var Courses = angular.module('Courses', ['ngCookies', 'angular-loading-bar']).
 
 Courses.controller('ErrorRequester', function($scope, $http, $element, $cookies) {
 
+    if (window.location.host == "oahpa.no") {
+        return false;
+    }
+
     function handle_api_response (data) {
 
         $scope.response = data;
