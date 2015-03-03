@@ -77,28 +77,28 @@ Personending: -n
 
   <stems>
     <l stem="2syll">
-      <msg>bisyllabic_stem</msg>
+      <msg possessive="Px_all">bisyllabic_stem</msg>
     </l>
     <l stem="3syll">
-      <msg>trisyllabic_stem</msg>
+      <msg possessive="Px_all">trisyllabic_stem</msg>
     </l>
     <l stem="Csyll">
-      <msg>contracted_stem</msg>
+      <msg possessive="Px_all">contracted_stem</msg>
     </l>
     <l gradation="inv">
-      <msg number="Sg">inv_gradation</msg>
+      <msg number="Sg" possessive="Px_all">inv_gradation</msg>
     </l>
     <l gradation="no">
-      <msg number="Sg">no_gradation</msg>
+      <msg number="Sg" possessive="Px_all">no_gradation</msg>
     </l>
         
-    <l stem="3syll" soggi="u">
-      <msg number="Sg">u_o</msg>
+    <l stem="3syll" soggi="u" possessive="Px_all">
+      <msg number="Sg" possessive="Px_all">u_o</msg>
       <note>gumppus, u>o</note>
     </l>
 
-    <l stem="Csyll" soggi="u">
-      <msg number="Sg">u_o</msg>
+    <l stem="Csyll" soggi="u" possessive="Px_all">
+      <msg number="Sg" possessive="Px_all">u_o</msg>
       <note>boazu, sg:u>o pl:o>u</note>
     </l>
 
@@ -121,7 +121,7 @@ Personending: -n
       <msg case="Nom" number="Sg" possessive="PxPl2">i_á</msg>
       <msg case="Acc" number="Sg" possessive="PxPl2">i_á</msg>
       <msg case="Gen" number="Sg" possessive="PxPl2">i_á</msg>
-      <msg case="Ill" number="Sg">i_á</msg>
+      <msg case="Ill" number="Sg" possessive="Px_all">i_á</msg>
       <note>eadni, i>á </note>
     </l>
 
@@ -144,7 +144,7 @@ Personending: -n
       <msg case="Nom" number="Sg" possessive="PxPl2">u_o</msg>
       <msg case="Acc" number="Sg" possessive="PxPl2">u_o</msg>
       <msg case="Gen" number="Sg" possessive="PxPl2">u_o</msg>
-      <msg case="Ill" number="Sg">u_o</msg>
+      <msg case="Ill" number="Sg" possessive="Px_all">u_o</msg>
       <note>áhkku, u>o </note>
     </l>
 
@@ -179,7 +179,7 @@ Personending: -n
     </l>
 
     <l stem="Csyll" diphthong="yes" soggi="u">
-      <msg number="Sg">diphthong_simplification</msg>
+      <msg number="Sg" possessive="Px_all">diphthong_simplification</msg>
       <note>boazu, diftforenkling</note>
     </l>
 
@@ -204,7 +204,7 @@ Personending: -n
       <msg case="Nom" number="Sg" possessive="PxPl2">i_á</msg>
       <msg case="Acc" number="Sg" possessive="PxPl2">i_á</msg>
       <msg case="Gen" number="Sg" possessive="PxPl2">i_á</msg>
-      <msg case="Ill" number="Sg">i_á</msg>
+      <msg case="Ill" number="Sg" possessive="Px_all">i_á</msg>
       <note>eadni, i>á </note>
     </l>
 
@@ -212,7 +212,7 @@ Personending: -n
 
 
     <l stem="2syll" gradation="yes">
-      <msg case="Nom" number="Sg">strong_grade</msg>
+      <msg case="Nom" number="Sg" possessive="Px_all">strong_grade</msg>
       <msg case="Acc" number="Sg" possessive="PxSg1">strong_grade</msg>
       <msg case="Acc" number="Sg" possessive="PxDu1">strong_grade</msg>
       <msg case="Acc" number="Sg" possessive="PxPl1">strong_grade</msg>
@@ -231,44 +231,44 @@ Personending: -n
       <msg case="Gen" number="Sg" possessive="PxSg3">weak_grade</msg>
       <msg case="Gen" number="Sg" possessive="PxDu3">weak_grade</msg>
       <msg case="Gen" number="Sg" possessive="PxPl3">weak_grade</msg>
-      <msg case="Ill" number="Sg">strong_grade</msg>
-      <msg case="Loc" number="Sg">weak_grade</msg>
-      <msg case="Com" number="Sg">weak_grade</msg>
+      <msg case="Ill" number="Sg" possessive="Px_all">strong_grade</msg>
+      <msg case="Loc" number="Sg" possessive="Px_all">weak_grade</msg>
+      <msg case="Com" number="Sg" possessive="Px_all">weak_grade</msg>
       <note>giehta, gradation</note>
     </l>
 
 
     <l stem="3syll" gradation="yes">
-      <msg number="Sg">strong_grade</msg>
+      <msg number="Sg" possessive="Px_all">strong_grade</msg>
       <note>beana, gradation</note>
     </l>
     
     <l stem="Csyll" gradation="yes">
-      <msg number="Sg">strong_grade</msg>
+      <msg number="Sg" possessive="Px_all">strong_grade</msg>
       <note>vielppis, gradation</note>
     </l>
     
     <l rime="is">
-      <msg number="Sg">is_á</msg>
+      <msg number="Sg" possessive="Px_all">is_á</msg>
       <note>bálggis rime</note>
     </l>
     
 
     <l stem="2syll">
-      <msg case="Ill" number="Sg">2syllsgill</msg>
-      <msg case="Loc" number="Sg">2syllsgloc</msg>
-      <msg case="Com" number="Sg">2syllsgcom</msg>
-      <msg case="Acc" number="Pl">2syllplacc</msg>
-      <msg case="Gen" number="Pl">2syllplgen</msg>
-      <msg case="Nom" number="Pl">2syllplgen</msg>
-      <msg case="Ill" number="Pl">2syllplill</msg>
-      <msg case="Loc" number="Pl">2syllsgcom</msg>
-      <msg case="Com" number="Pl">2syllplcom</msg>
+      <msg case="Ill" number="Sg" possessive="Px_all">2syllsgill</msg>
+      <msg case="Loc" number="Sg" possessive="Px_all">2syllsgloc</msg>
+      <msg case="Com" number="Sg" possessive="Px_all">2syllsgcom</msg>
+      <msg case="Acc" number="Pl" possessive="Px_all">2syllplacc</msg>
+      <msg case="Gen" number="Pl" possessive="Px_all">2syllplgen</msg>
+      <msg case="Nom" number="Pl" possessive="Px_all">2syllplgen</msg>
+      <msg case="Ill" number="Pl" possessive="Px_all">2syllplill</msg>
+      <msg case="Loc" number="Pl" possessive="Px_all">2syllsgcom</msg>
+      <msg case="Com" number="Pl" possessive="Px_all">2syllplcom</msg>
      <note>viessu, </note>
     </l>
 
     <l stem="3syll">
-      <msg case="Ill" number="Sg">3syllsgill</msg>
+      <msg case="Ill" number="Sg" possessive="Px_all">3syllsgill</msg>
       <msg case="Loc" number="Sg" possessive="PxSg3">3syllsgloc-i</msg>
       <msg case="Loc" number="Sg" possessive="PxDu3">3syllsgloc-i</msg>
       <msg case="Loc" number="Sg" possessive="PxPl3">3syllsgloc-i</msg>
@@ -287,9 +287,9 @@ Personending: -n
       <msg case="Com" number="Sg" possessive="PxDu2">3syllsgcom-a</msg>
       <msg case="Com" number="Sg" possessive="PxPl1">3syllsgcom-a</msg>
       <msg case="Com" number="Sg" possessive="PxPl2">3syllsgcom-a</msg>
-      <msg case="Acc" number="Pl">3syllplacc</msg>
-      <msg case="Gen" number="Pl">3syllplgen</msg>
-      <msg case="Nom" number="Pl">3syllplgen</msg>
+      <msg case="Acc" number="Pl" possessive="Px_all">3syllplacc</msg>
+      <msg case="Gen" number="Pl" possessive="Px_all">3syllplgen</msg>
+      <msg case="Nom" number="Pl" possessive="Px_all">3syllplgen</msg>
       <msg case="Loc" number="Pl" possessive="PxSg3">3syllsgcom-i</msg>
       <msg case="Loc" number="Pl" possessive="PxDu3">3syllsgcom-i</msg>
       <msg case="Loc" number="Pl" possessive="PxPl3">3syllsgcom-i</msg>
@@ -299,21 +299,21 @@ Personending: -n
       <msg case="Loc" number="Pl" possessive="PxDu2">3syllsgcom-a</msg>
       <msg case="Loc" number="Pl" possessive="PxPl1">3syllsgcom-a</msg>
       <msg case="Loc" number="Pl" possessive="PxPl2">3syllsgcom-a</msg>
-      <msg case="Ill" number="Pl">3syllplill</msg>
-      <msg case="Com" number="Pl">3syllplcom</msg>
+      <msg case="Ill" number="Pl" possessive="Px_all">3syllplill</msg>
+      <msg case="Com" number="Pl" possessive="Px_all">3syllplcom</msg>
      <note>beana, </note>
     </l>
 
     <l stem="Csyll">
-      <msg case="Ill" number="Sg">2syllsgill</msg>
-      <msg case="Loc" number="Sg">2syllsgloc</msg>
-      <msg case="Com" number="Sg">2syllsgcom</msg>
-      <msg case="Acc" number="Pl">2syllplgen</msg>
-      <msg case="Gen" number="Pl">2syllplgen</msg>
-      <msg case="Nom" number="Pl">2syllplgen</msg>
-      <msg case="Ill" number="Pl">2syllplill</msg>
-      <msg case="Loc" number="Pl">2syllsgcom</msg>
-      <msg case="Com" number="Pl">2syllplcom</msg>
+      <msg case="Ill" number="Sg" possessive="Px_all">2syllsgill</msg>
+      <msg case="Loc" number="Sg" possessive="Px_all">2syllsgloc</msg>
+      <msg case="Com" number="Sg" possessive="Px_all">2syllsgcom</msg>
+      <msg case="Acc" number="Pl" possessive="Px_all">2syllplgen</msg>
+      <msg case="Gen" number="Pl" possessive="Px_all">2syllplgen</msg>
+      <msg case="Nom" number="Pl" possessive="Px_all">2syllplgen</msg>
+      <msg case="Ill" number="Pl" possessive="Px_all">2syllplill</msg>
+      <msg case="Loc" number="Pl" possessive="Px_all">2syllsgcom</msg>
+      <msg case="Com" number="Pl" possessive="Px_all">2syllplcom</msg>
      <note>boazu, </note>
     </l>
 
