@@ -220,7 +220,7 @@ class Course(models.Model):
             URL_PREFIX,
             self.token,
         )
-        return "http://testing.oahpa.no/%s/courses/enroll/?key=%s" % parts
+        return "http://oahpa.no/%s/courses/enroll/?key=%s" % parts
 
     def generate_new_key(self):
         from itsdangerous import URLSafeTimedSerializer
