@@ -186,8 +186,8 @@ class Course(models.Model):
         from django.contrib.auth.models import Group
         from notifications import notify
 
-        student_group = Group.objects.get(name='students')
-        instructor_group = Group.objects.get(name='instructors')
+        student_group = Group.objects.get(name='Students')
+        instructor_group = Group.objects.get(name='Instructors')
 
         success = True
         error_msg = False
