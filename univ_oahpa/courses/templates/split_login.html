@@ -28,7 +28,7 @@
     <div class="jumbotron">
       <h3>{% trans "Login to continue" %}</h3>
       <a href="{% url courses.auth_views.cookie_login %}?next={{ next_page }}" class="btn btn-success login_button">{% trans "Log in with Kursa" %}</a>
-      <a href="/{{ URL_PREFIX }}/courses/standard_login/?next={{ next_page }}" class="btn btn-info login_button">{% trans "Instructor login" %}</a>
+      <a href="/{{ URL_PREFIX }}/courses/standard_login/?next={{ next_page }}" class="btn btn-info login_button">{% trans "Log in with a password" %}</a>
     </div>
 {% endif %}
 
