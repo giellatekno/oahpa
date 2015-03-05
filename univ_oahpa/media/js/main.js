@@ -59,7 +59,7 @@ $(document).ready(function(){
 	});
 	
 	$('select#grammarlink').change(function (e) {
-			link = $('select#grammarlink#').val();
+			link = $('select#grammarlink').val();
 			window.open(link);
 			return false;
 	});
