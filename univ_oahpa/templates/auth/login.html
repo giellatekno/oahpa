@@ -38,7 +38,7 @@
 
             <div class="row">
                 <div class="col-md-12 col-lg-12 col-sm-12">
-                    <form method="post" action="{% url univ_oahpa.courses.urls.login %}" role="form" class="form-horizontal">
+                    <form method="post" action="{% url django.contrib.auth.views.login %}" role="form" class="form-horizontal">
                       {% csrf_token %}
                       {{ form|as_bootstrap }}
 
