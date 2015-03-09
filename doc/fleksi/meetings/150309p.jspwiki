@@ -1,0 +1,95 @@
+!!! Møte 09.03.15
+
+Til stades: Heli, Ryan, Lene
+
+!!!Saker: 
+
+# Oppdatering av smeOahpa på gtoahpa-serveren
+# Oahpa feedback
+# Konteaksta
+# Konteaksta inn i kursinnlogging
+# Kursinnlogging
+# Kursinnlogging
+# NDS
+# Neste møte
+
+
+
+!! Oppdatering av smeOahpa på gtoahpa-serveren
+sme-Oahpa er oppdatert og i den forbindelse oppdaget vi at noen filer var forsvunnet. 
+Nå fungerer alt bortsett fra problemer med Vasta-oppgaver. Det var veldig nyttig med log-rapporten.
+
+
+!! Oahpa feedback
+Denne er generert på nytt og også feedback fungerer. 
+
+!Tiltak:
+* __Lene__ må finpusse feedbacken mer.
+* __Lene__ skriver bz på problemet med at flertallsformen ikke siteres når oppgaveordet er oppgitt i flertall.
+
+
+!! Konteaksta
+Konteaksta skal ha ny url: http://oahpa.no/konteaksta. Det er problemer med omdirigeringa fra url med portnummer til url uten portnummer.
+Dette er ikke klart enda og derfor fungerer hverken ny eller gammel adresse.
+Bug 1990 Colorize og click velger ikke alle substantiver osv 
+
+!Tiltak:
+* __Heli__ diskuterer omdirigeringa med Ryan
+* __Heli__ ser på bug 1990
+
+
+!! Konteaksta inn i kursinnlogging
+Vi er usikker på hvilken måte Konteaksta skal inngå i kursinnlogginga, og hvordan kursmålene skal formuleres. Lene diskuterer dette med Robert.
+Lene har ikke fått fulgt opp dette enda.
+
+!Tiltak:
+* __Lene__ diskuterer Konteaksta-registrering med Robert.
+
+!! Kursinnlogging
+
+Active directory innlogging dukker ikke opp innloggingsknapp, men Ryan arbeider med saken.
+Det vil fungere slik at studenter vil kunne bruke samme innlogging som for fronter, men må gjøre det en ekstra gang.
+
+Ryan har oppdatert plugin for Google innlogging, slik at ein får logge seg inn med Google. 
+Lene kommer seg inn som lærer no.
+
+
+
+Vasta og Sahka:
+* I kursinlogginga: Det kommer ikke opp prosenttall i venstre marg etter at man har fullført oppgaver
+* I selve Oahpa: Det mangler tilbakevalg nede i høyre hjørne etter at man har fullført oppgaver
+
+!Tiltak:
+* __Ryan__ forbedrer Sahka og Vasta registreringa
+* __Ryan__ lager en innloggingsside i kursa med forklaringer om fronter og andre alternativer, og større knapp
+
+
+
+!! NDS
+
+* 1950 NDS fungerer ikke for NRK Sápmi ... eller Facebook og 1968 Klikk-i-tekst fungerer ustabilt \\
+Ryan arbeider med denne, konflikt med bibliotek
+* 1981 antall forslagsord i nobsme (-> også i nobsma)
+* 1998 Problemer med oppstillinga av paradigmet for noen proper nouns \\ løsning: vi fjerner Sg+Gen+Allegro fra paradigmet
+* 1980 type="expl" skal linkes på en annen måte \\ () skal ikke være synlig og vi skal legge inn url, slik:
+
+
+{{{
+		<tg xml:lang="sme">
+            <re>bort fra</re>
+            <t type="grammar" href="http://...">lokativ</t> 
+        </tg>
+}}}
+
+Máret (subst.) -> Máret (subst. prop.)
+
+!Tiltak:
+* __Ryan__ gjør prop synlig i grensesnittet
+* __Ryan__ går gjennom bugger
+* __Lene__ skriver inn url-er i xml (bug 1980)
+
+
+
+!! Neste møte
+Mandag 23. mars kl. 20.00
+
