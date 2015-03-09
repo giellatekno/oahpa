@@ -693,12 +693,13 @@ class BareGame(Game):
 			"""
                         if possessive_type == 'N-PX-GROUP1':
                                 p_number = ['Sg']
+				TAG_EXCLUDES = Q(subclass='G3') # There are no FAMILY-words in the lexicon with subclass=G3 that resulted in an empty queryset.
                         else:
                                 p_number = ['Sg', 'Pl', 'Du']
+				TAG_EXCLUDES = False
 			#TAG_QUERY = Q(string__in=p_type)
 			TAG_QUERY = Q(possessive__endswith=possessive_person, number__in=p_number)
 			
-			TAG_EXCLUDES = False
 			sylls = False
 			source = False
 
@@ -864,7 +865,7 @@ class BareGame(Game):
 					count += 1
 					continue
 
-			#logfile.write(random_word.lemma) # for debugging - why we get 'QuerySet' object has no attribute 'id' ?
+			morfas_log.info("tag:",tag.string,"random word:",random_word) # for debugging - why we get 'QuerySet' object has no attribute 'id' ?
 			db_info['word_id'] = random_word.id
 			db_info['tag_id'] = tag.id
 			if tag.string.lower().find('conneg') > -1:

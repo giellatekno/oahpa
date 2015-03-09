@@ -1,7 +1,8 @@
 #!/bin/sh
 
 P="python2.7"
-DATA="$GTHOME/ped/sme/"
+#DATA="$GTHOME/ped/sme/"
+DATA="/home/univ_oahpa/sme"
 DPS="$DATA/src"
 META="$DATA/meta"
 DPN="$DATA/nobsme"
@@ -530,7 +531,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "adding feedback to passive verbs"
-$P install.py -f $DPS/v_smenob.xml --feedbackfile $META/feedback_passiveverbs.xml -a
+$P install.py -f $DPS/v_smenob.xml --feedbackfile $META/feedback_passiveverbs.xml --append
 echo " "
 echo "done"
 echo "==================================================="
@@ -551,7 +552,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "adding feedback to possessives"
-$P install.py -f $META/n_px.xml --feedbackfile $META/feedback_n_px.xml
+$P install.py -f $META/n_px.xml --feedbackfile $META/feedback_n_px.xml --append
 echo " "
 echo "done"
 echo "==================================================="

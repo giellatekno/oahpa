@@ -36,6 +36,6 @@ django.conf.locale.LANG_INFO = LANG_INFO
 # Languages using BiDi (right-to-left) layout
 LANGUAGES_BIDI = global_settings.LANGUAGES_BIDI + RIGHT_TO_LEFT_LANGUAGES
 
-from django.conf import settings
-if settings.DEBUG:
-	print "Added custom locales."
+#from django.conf import settings
+#if settings.DEBUG:
+	#print "Added custom locales."

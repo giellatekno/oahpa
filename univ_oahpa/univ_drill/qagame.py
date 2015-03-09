@@ -453,7 +453,10 @@ class QAGame(Game):
 		""" Follows user selection of reciprocative type and returns the relevant
 		wordform.
 		"""
-		wordform_type = self.settings['wordform_type']
+		try:
+			wordform_type = self.settings['wordform_type']
+		except KeyError:
+			wordform_type = 'goabbat'
 		if not wordform_type:
 			wordform_type = 'goabbat'
 
