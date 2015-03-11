@@ -333,7 +333,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C word fillings"
-$P install.py -f $META/fillings_smenob.xml --paradigmfile $META/paradigms.txt --tagfile $META/tags.txt 2>>error.log
+$P install.py -f $META/fillings_smenob.xml --paradigmfile $META/paradigms_all.txt --tagfile $META/tags.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
