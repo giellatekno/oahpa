@@ -822,7 +822,7 @@ def get_feedback(self, wordform, language):
 		feedback_ids.append(feedback.msgid)
 
 	try:
-		baseform = wordform.getBaseform()
+		baseform = wordform.getBaseform(match_num=True)
 	except:
 		baseform = wordform
 	
@@ -830,7 +830,7 @@ def get_feedback(self, wordform, language):
 	if feedback_messages:
 		for text in feedback_messages:
 			fenc = lambda x: force_unicode(x)
-			text = text.replace('WORDFORM', '"%s"' % fenc(baseform.word.lemma))
+			text = text.replace('WORDFORM', '"%s"' % fenc(baseform.fullform)) # was fenc(baseform.word.lemma) but in this case the baseform can never be Pl+Nom.
 			message_list.append(text)
 	
 	self.feedback = ' \n '.join(list(message_list))
