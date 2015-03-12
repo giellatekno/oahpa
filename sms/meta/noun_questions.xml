@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<!DOCTYPE lexicon  PUBLIC '-//XMLmind//DTD lexicon//FI'  '../../dtd/questions.dtd'>
+-->
+
+<!-- xml-structure for questions in morphdrill -->
+<!-- Questions for verbs. Not yet potential -->
+<questions>
+
+<!-- This will be challenging; the SUBJ values in the question and the answer -->
+<!-- are different. It the question there is PxSg2, and in the answer PxSg1. -->
+<!--  -->
+<!--  -->
+  <q id="nplacc1">
+    <qtype>N-PL-ACC</qtype>
+    <question>
+      <text>Mâid SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prt+Sg3"/>
+        <id>vueiʹnned</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-PL-ACC</text>
+      <element game='morfa' id="N-PL-ACC" task="yes">
+        <grammar tag="N+Pl+Acc"/>
+        <sem class="M_COUNT"/>
+      </element>
+    </answer>
+  </q>
+  <q id="nplacc2">
+    <qtype>N-PL-ACC</qtype>
+    <question>
+      <text>Mâid SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>kuullâd</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ABL</text>
+      <element game='morfa' id="N-PL-ACC" task="yes">
+        <grammar tag="N+Pl+Acc"/>
+        <sem class="M_VISUAL_CNT"/>
+      </element>
+    </answer>
+  </q>
+  <q id="nplacc3">
+    <qtype>N-PL-ACC</qtype>
+    <question>
+      <text>Mâid SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Sg3"/>
+        <id>pirsted</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-PL-ACC</text>
+      <element game='morfa' id="N-PL-ACC" task="yes">
+        <grammar tag="N+Pl+Acc"/>
+        <sem class="M_VISUAL_CNT"/>
+      </element>
+    </answer>
+  </q>
+  <q id="nsgacc1">
+    <qtype>N-SG-ACC</qtype>
+    <question>
+      <text>Mâid SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <id>poorrâd</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-SG-ACC</text>
+      <element game='morfa' id="N-SG-ACC" task="yes">
+        <grammar tag="N+Sg+Acc"/>
+        <sem class="M_FOOD_DISH"/>
+      </element>
+    </answer>
+  </q>
+  <q id="nsgacc2">
+    <qtype>N-SG-ACC</qtype>
+    <question>
+      <text>Mâid SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <id>juukkâd</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-SG-ACC</text>
+      <element game='morfa' id="N-SG-ACC" task="yes">
+        <grammar tag="N+Sg+Acc"/>
+        <sem class="M_DRINK"/>
+      </element>
+    </answer>
+  </q>
+
+</questions>
+
+
+
+
