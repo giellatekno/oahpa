@@ -522,6 +522,8 @@ class Morfaview(Gameview):
 	    'N-LOC-PL': _('Practise locative in plural'),
 	    'N-COM-PL': _('Practise comitative in plural'),
 	    'N-ABESS-PL': _('Practise abessive in plural'),
+	    'N-SG-ACC':  _('Practise accusative in singular'),
+	    'N-PL-ACC':  _('Practise accusative in plural'),
 		'N-MIX':  _('Practise a mix'),
 		'V-MIX':  _('Practise a mix'),
 		'A-MIX':  _('Practise a mix'),

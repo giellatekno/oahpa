@@ -137,14 +137,15 @@ PRONOUN_SUBCLASSES = (
 )
 
 CASE_CONTEXT_CHOICES = (
-	('N-NOM-PL', _('plural')),
-	('N-ACC', _('accusative')),
-	('N-GEN', _('genitive')),
-	('N-ILL', _('illative')),
-	('N-LOC', _('locative')),
-	('N-COM', _('comitative')),
-	('N-ESS', _('essive')),
-	('N-MIX', _('mix')),
+	#('N-NOM-PL', _('plural')),
+	('N-SG-ACC', _('singular accusative')),
+	('N-PL-ACC', _('plural accusative')),
+	#('N-GEN', _('genitive')),
+	#('N-ILL', _('illative')),
+	#('N-LOC', _('locative')),
+	#('N-COM', _('comitative')),
+	#('N-ESS', _('essive')),
+	#('N-MIX', _('mix')),
 )
 
 # 
@@ -846,7 +847,7 @@ class OahpaSettings(forms.Form):
 					'pron_type': 'Pers',
 					'proncase' : 'N-ILL',
 					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
-					'case_context' : 'N-ILL',
+					'case_context' : 'N-SG-ACC',
 					'vtype_context' : 'V-PRS',
 					'pron_context' : 'P-PERS',
 					'num_context' : 'NUM-ATTR',
@@ -1096,7 +1097,7 @@ class MorfaSettings(OahpaSettings):
 	derivation_type = forms.ChoiceField(initial='V-DER-PASS', choices=DERIVATION_CHOICES, widget=forms.Select)
 	derivation_type_context = forms.ChoiceField(initial='DER-PASSV', choices=DERIVATION_CHOICES_CONTEXT, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
-	case_context = forms.ChoiceField(initial='N-ILL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
+	case_context = forms.ChoiceField(initial='N-SG-ACC', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
 	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
 	pron_context = forms.ChoiceField(initial='P-PERS', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)
