@@ -14,7 +14,7 @@ DPE="$DATA/engsms"
 
 echo "==================================================="
 echo "installing tags and paradigms for Morfa-C"
-$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>>error.log
+$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -28,15 +28,15 @@ U    src/pro_sms2X.xml
 U    src/pcle_sms2X.xml
 
 echo "==================================================="
-echo "feeding db with $DPS/n_sms2X.xml"
-$P install.py --file $DPS/n_sms2X.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>error.log
+echo "feeding db with $DPS/N_sms2X.xml"
+$P install.py --file $DPS/N_sms2X.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $META/names.xml"
-$P install.py --file $DPS/prop_sms2X.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
+echo "feeding db with $META/N_Prop_sms2X.xml"
+$P install.py --file $DPS/N_Prop_sms2X.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -44,21 +44,21 @@ echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPS/num_sms2X.xml"
-$P install.py --file $DPS/num_sms2X.xml --tagfile $META/tags.txt --paradigmfile $META/num_paradigms.txt 2>>error.log
+$P install.py --file $DPS/Num_sms2X.xml --tagfile $META/tags.txt --paradigmfile $META/Num_paradigms.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPS/a_sms2X.xml"
-$P install.py --file $DPS/a_sms2X.xml --tagfile $META/tags.txt --paradigmfile $META/a_paradigms.txt 2>>error.log
+$P install.py --file $DPS/A_sms2X.xml --tagfile $META/tags.txt --paradigmfile $META/A_paradigms.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPS/v_sms2X.xml"
-$P install.py --file $DPS/v_sms2X.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt 2>>error.log
+$P install.py --file $DPS/V_sms2X.xml --tagfile $META/tags.txt --paradigmfile $META/V_paradigms.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -67,50 +67,57 @@ echo "==================================================="
 
 
 echo "==================================================="
-echo "feeding db with $DPS/adv_sms2X.xml"
-$P install.py --file $DPS/adv_sms2X.xml 2>>error.log
+echo "feeding db with $DPS/Adv_sms2X.xml"
+$P install.py --file $DPS/Adv_sms2X.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/adp_sms2X.xml"
-$P install.py --file $DPS/adp_sms2X.xml 2>>error.log
+echo "feeding db with $DPS/Adp_sms2X.xml"
+$P install.py --file $DPS/Adp_sms2X.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/cs_sms2X.xml"
-$P install.py --file $DPS/cs_sms2X.xml 2>>error.log
+echo "feeding db with $DPS/CC_sms2X.xml"
+$P install.py --file $DPS/CC_sms2X.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/i_sms2X.xml"
-$P install.py --file $DPS/i_sms2X.xml 2>>error.log
+echo "feeding db with $DPS/CS_sms2X.xml"
+$P install.py --file $DPS/CS_sms2X.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/det_sms2X.xml"
-$P install.py --file $DPS/det_sms2X.xml 2>>error.log
+echo "feeding db with $DPS/Interj_sms2X.xml"
+$P install.py --file $DPS/Interj_sms2X.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/pro_sms2X.xml"
-$P install.py --file $DPS/pro_sms2X.xml 2>>error.log
+echo "feeding db with $DPS/Det_sms2X.xml"
+$P install.py --file $DPS/Det_sms2X.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/pcle_sms2X.xml"
-$P install.py --file $DPS/pcle_sms2X.xml 2>>error.log
+echo "feeding db with $DPS/Pron_sms2X.xml"
+$P install.py --file $DPS/Pron_sms2X.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPS/Pcle_sms2X.xml"
+$P install.py --file $DPS/Pcle_sms2X.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -536,7 +543,7 @@ $P manage.py fixtagattributes
 
 echo "==================================================="
 echo "installing Morfa-C questions for nouns"
-#$P install.py -g $META/grammar_defaults.xml -q $META/noun_questions.xml 2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/noun_questions.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
