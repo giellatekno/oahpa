@@ -14,8 +14,10 @@
 	{% ifequal settings.gametype "bare" %}
 	<li><label for="id_{{ settingsform.case.name }}">{% trans "Case" %}</label>
 		{{ settingsform.case }}</li>
-    <li><label>{{ settingsform.singular_only }}{% trans " singular only" %}</label></li>
-	<!-- <li><label for="id_{{ settingsform.noun_type.name }}">{% trans "Type" %}</label>
+	<li><label for="id_{{ settingsform.number.name }}">{% trans "Number" %}</label>
+		{{ settingsform.number }}</li>	
+   <!-- <li><label>{{ settingsform.singular_only }}{% trans " singular only" %}</label></li>
+	 <li><label for="id_{{ settingsform.noun_type.name }}">{% trans "Type" %}</label>
 	        {{ settingsform.noun_type }}</li>
 	</li> --> 
 	{% else %}

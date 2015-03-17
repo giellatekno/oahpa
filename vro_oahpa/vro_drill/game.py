@@ -323,19 +323,19 @@ class Game(object):
 class BareGame(Game):
 
 	casetable = {
-		'N-NOM-PL': ('Nom', ['Pl']),
-		'N-GEN': ('Gen', ['Sg','Pl']),
-		'N-PAR': ('Par', ['Sg','Pl']),
-		'N-ILL': ('Ill', ['Sg','Pl']),
-		'N-INE': ('Ine', ['Sg','Pl']),
-		'N-ELA': ('Ela', ['Sg','Pl']),
-		'N-ALL': ('All', ['Sg','Pl']),
-		'N-ADE': ('Ade', ['Sg','Pl']),
-		'N-ABL': ('Abl', ['Sg','Pl']),
-        'N-TRA': ('Tra', ['Sg','Pl']),
-        'N-TER': ('Ter', ['Sg','Pl']),
-        'N-ABESS': ('Abe', ['Sg','Pl']),
-        'N-COM': ('Com', ['Sg','Pl']),
+		#'N-NOM-PL': ('Nom', ['Pl']),
+		'N-GEN': ('Gen'),
+		'N-PAR': ('Par'),
+		'N-ILL': ('Ill'),
+		'N-INE': ('Ine'),
+		'N-ELA': ('Ela'),
+		'N-ALL': ('All'),
+		'N-ADE': ('Ade'),
+		'N-ABL': ('Abl'),
+        'N-TRA': ('Tra'),
+        'N-TER': ('Ter'),
+        'N-ABESS': ('Abe'),
+        'N-COM': ('Com'),
 		'': '',
 	}
 
@@ -468,7 +468,7 @@ class BareGame(Game):
 		case = True and	self.settings.get('case')	or   ""
 		number = self.settings.get('number', '')
 		noun_type = self.settings.get('noun_type', '')  # was: noun_class
-		singular_only = self.settings.get('singular_only', False)  # make it possible to only generate singular exercises if the user wishes so
+		#singular_only = self.settings.get('singular_only', False)  # make it possible to only generate singular exercises if the user wishes so
 #		levels = True and self.settings.get('level')   or   []
 		adjcase = True and self.settings.get('adjcase') or   ""
 		pron_type = True and self.settings.get('pron_type') or   ""
@@ -517,7 +517,7 @@ class BareGame(Game):
 		# 	syll = ['']
 
 		if pos in ['N', 'Num', 'Pron']:
-			case, number = self.casetable[pos_tables[pos]]
+			case = self.casetable[pos_tables[pos]]
 		else:
 			case = self.casetable[pos_tables[pos]]
 		grade = self.casetable.get('grade', '')
@@ -643,14 +643,14 @@ class BareGame(Game):
 		
 		if pos in ['Pron', 'N', 'Num']:
 			TAG_QUERY = TAG_QUERY & \
-						Q(case=case)
+						Q(case=case, number=number)
 						# regardless of whether it's Actor, Coll, etc.
 
-		if pos == 'N':
-			if singular_only:   # if the user has checked the box "singular only"
-				TAG_QUERY = TAG_QUERY & Q(number='Sg')
-			else:
-				TAG_QUERY = TAG_QUERY & Q(number__in=number)
+		#if pos == 'N':
+		#	if singular_only:   # if the user has checked the box "singular only"
+		#		TAG_QUERY = TAG_QUERY & Q(number='Sg')
+		#	else:
+		#		TAG_QUERY = TAG_QUERY & Q(number__in=number)
 
 
 
@@ -691,7 +691,7 @@ class BareGame(Game):
 						Q(attributive=attributive) & \
 						Q(grade=grade) & \
 						Q(case=case) & \
-						Q(number__in=number)
+						Q(number=number) # was: number__in=number, but we do not want to mix singular and plural exercises for Võro
 
 		# filter can include several queries, exclude must have only one
 		# to work successfully

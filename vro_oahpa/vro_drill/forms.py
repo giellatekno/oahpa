@@ -52,6 +52,12 @@ POS_CHOICES = (
 	('V', _('verb')),
 )
 
+NUMBER_CHOICES = (
+	('Sg', _('singular')),
+	('Pl', _('plural')),
+)
+
+
 CASE_CHOICES = (
     #('N-NOM-PL', _('Nominative Plural')),
     ('N-GEN', _('Genitive')),
@@ -908,7 +914,7 @@ class OahpaSettings(forms.Form):
 					'adj_context' : 'ATTRPOS',
 					'book' : 'all',
 					'noun_type': 'N-MASC-INANIM',
-					'singular_only' : True}
+					'singular_only' : False}
 
 
 
@@ -1150,6 +1156,7 @@ class MorfaSettings(OahpaSettings):
 		exception there was a relatively unhelpful 404 error.
 	"""
 	case = forms.ChoiceField(initial='N-PAR', choices=CASE_CHOICES, widget=forms.Select)
+	number = forms.ChoiceField(initial='Sg', choices=NUMBER_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
