@@ -896,7 +896,7 @@ class OahpaSettings(forms.Form):
 					'pos' : 'N',
 					'vtype' : 'PRS',
 					'adjcase' : 'NOM',
-					'number' : '',
+					'number' : 'Sg',
 					'pron_type': 'Pers',
 					'proncase' : 'N-NOM', # Need a new default case here
 					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
