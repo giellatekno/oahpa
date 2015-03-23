@@ -1,0 +1,106 @@
+!!! Møte 23.03.15
+
+Til stades: Heli, Ryan, Lene
+
+!!!Saker: 
+
+# Oahpa feedback
+# Konteaksta
+# Konteaksta inn i kursinnlogging
+# Kursinnlogging
+# NDS
+# Neste møte
+
+
+!! Oahpa feedback
+Lene har forbedra feedback for Px-oppgavene. Men vi har et problem med dobbel feedback no, vi får feedback for både
+N+Sg+Ill+PxSg3 og N+Sg+Ill, når vi bare ønsker den første. (Bz 2023)
+
+Vi hadde liknende problem med V+ vs V+Der/PassL , men den var nok enklere å løse fordi Der/PassL er midt i strengen:
+
+borrat+V+TV+Der/PassL+V+IV+Ind+Prs+Pl1 vs borrat+V+TV+Ind+Prs+Pl1
+
+!Tiltak:
+* __Heli__ ser på problemet med dobbel feedback (Bz 2023)
+
+
+!! Konteaksta
+Nå fungerer omdireringa til url: http://oahpa.no/konteaksta. 
+Men det er noen tekster som ikke fungerer.
+
+Bug 1990 Colorize og click velger ikke alle substantiver osv 
+
+!Tiltak:
+* __Heli__ arbeider videre med dette og ser på bug 1990
+
+
+!! Konteaksta inn i kursinnlogging
+Vi er usikker på hvilken måte Konteaksta skal inngå i kursinnlogginga, og hvordan kursmålene skal formuleres. Lene har diskutert dette med Robert.
+Diskusjon på epost.
+
+
+!! Kursinnlogging
+
+Ny innloggingsside er her, klar for oversetting:
+
+* WordPress/Kursa -> Pages -> Logge Sisa 
+ 
+Ryan har oppdatert plugin for Google innlogging, slik at ein får logge seg inn med Google. 
+Lene likte ikke informasjonen på denne innlogginga, så den må vi endre.
+
+Vasta fungerer som den skal no. Sahka fungerer enda ikke helt:
+* I kursinlogginga: Det kommer ikke opp prosenttall i venstre marg etter at man har fullført oppgaver
+* I selve Oahpa: Det mangler tilbakevalg nede i høyre hjørne etter at man har fullført oppgaver
+
+!Lokalisering i innlogginga
+Finnes mulighet for eksport med .po filer
+Den som oppretter kursmålet, kan oversette til andre språk, ingen andre har tilgang.
+
+Alternativt bruker vi bare norsk.
+
+!Tiltak:
+* __Lene__ får noen med uit-innlogging til å teste
+* __Lene__ oversetter den nye innloggingssida
+* __Ryan__ redigerer infoen i Google-innlogginga
+* __Ryan__ arbeider videre med Sahka og tar kontakt med Lene for diskusjoner
+* __Ryan__ ser på muligheter for .po filer, hvis det er blir for mye styr, så dropper vi det
+
+
+!! NDS
+Gjennomgang av noen bugger: 
+* Bz. 1950 NDS fungerer ikke for NRK Sápmi ... eller Facebook og 1968 Klikk-i-tekst fungerer ustabilt \\
+Ryan har arbeidet med denne, og vi kan teste med gtweb, f.eks. kvensk 'ja' på NRK Sápmi. Hvis det fungerer, så implementeres dette på gtoahpa.
+* Bz. 1981 antall forslagsord i nobsme (-> også i nobsma) - skal øker til 15 i baakoeh
+* Bz. 2021 Sanit: Link fra norske ord går til sme-korpus istedenfor bi-korpus
+
+!Om presentasjon av grammatikklinker:
+{{{
+av (preposisjon)
+
+bruk lokativ (bort fra; av et materiale)
+Han datt av hesten.
+Son gahčai heasttas.
+
+bruk genitiv (om opphav)
+et maleri av Iver Jåks
+Iver Jåksa maleriija
+
+snu til aktiv (verb i passiv + av)
+Skuteren ble kjørt av Marit.
+Skuteriin vujii Máret.
+
+}}}
+
+se på oversetting av suffikser, eks. borakeahttá
+
+
+!Tiltak:
+* __Ryan__ endrer style frå smallcaps til bold italic for grammatikklinkene, det samme for expl
+* __Ryan__ fikser parantes rundt <re> også for entryer med grammatikklink
+* __Ryan__ arbeider videre med buggene
+* __Lene__ ser på eventuel oversetting av enkelte suffikser
+
+
+
+!! Neste møte
+Vi avtaler møte når det er avklart om Konteaksta i kursinnlogging
