@@ -691,9 +691,15 @@ class Feedback_install(object):
                                                     self.default_attributes)
 
                 # Px_all denotes all possible Px tags. This is to avoid writing the same thing 9 times in the feedback file.
+                # Px_Sg - possessive singular 1-3
+                # Px_DuPl - possessive dual 1-3 and plural 1-3
                 if 'possessive' in tagkwargs:
                     if tagkwargs['possessive'][0] == 'Px_all':
                         tagkwargs['possessive'] = [u'PxSg1', u'PxSg2', u'PxSg3', u'PxDu1', u'PxDu2', u'PxDu3', u'PxPl1', u'PxPl2', u'PxPl3']
+                    if tagkwargs['possessive'][0] == 'Px_Sg':
+                        tagkwargs['possessive'] = [u'PxSg1', u'PxSg2', u'PxSg3']
+                    if tagkwargs['possessive'][0] == 'Px_DuPl':
+                        tagkwargs['possessive'] = [u'PxDu1', u'PxDu2', u'PxDu3', u'PxPl1', u'PxPl2', u'PxPl3']
             
                 # TODO: global dialects
                 dial = msg.getAttribute("dialect")
