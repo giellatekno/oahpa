@@ -3,11 +3,11 @@ Antti, Megan, Lene
  
 !! nêhiyawêtân: what needs to be done
 * move to gtoahpa-server (Heli - after updating the lexicons)
-* update lexicon: nouns should be ok, in the verb-files there are question marks about translation and orthography (Lene has checked, the csv-files for verbs and particles are newer than the xml files)
-* localization: eng, fra?, crk? (tooltip localization?)
-* lexicon crk-fra?
-* grammar explanations?
-* make more audiofiles? - words from the first units
+* update lexicon: nouns should be ok, in the verb-files there are question marks about translation and orthography \\ The csv-files for verbs and particles are newer than the xml files
+* which localization: eng, fra?, crk? (tooltip localization?)
+* do we want lexicon crk-fra?
+* do we want grammar explanations?
+* make more audiofiles? - esp. words from the first units
 * make more MorfaS and MorfaC tasks (pick topics from the curriculum)
 * make files for morphological feedback
 * make a nêhiyawêtân logo, and crk names for MorfaS and MorfaC ?
@@ -21,8 +21,7 @@ gilgamesh:~ arppe$ less giellatekno/ped/crk/src/N_crk.xml | grep '<e>' | wc -l
  	258
 gilgamesh:~ arppe$ less giellatekno/ped/crk/src/V_crk.xml | grep '<e>' | wc -l
   	22
-Lene will check the status of these files and write an email about it.
-(Lene has checked, the csv-files for verbs and particles are newer than the xml files)
+There are csv-file for verbs and particles which contain much more )
 }}}
 
 * /ped/crk/engcrk/ -- lexiconfiles for eng crk
@@ -30,7 +29,7 @@ Lene will check the status of these files and write an email about it.
 * /ped/crk/meta/ -- source files for MorfaC, morphological tips, paradigm generation...
 * /ped/crk/media/ -- audiofiles
 
-!! Using Toolbox and generate to the crk/src/ lexicon
+!! Using Toolbox and generate to the crk/src/ and crk/engcrk/ lexicons
 * That means that all changes has to be done in the original files, and all work has to be done in Edmonton
 * Files in the other directories will not be generated from Toolbox
 * AA to comment
@@ -47,13 +46,16 @@ Lene will check the status of these files and write an email about it.
 *analyse the logs
 
 !! The curriculum - the first course
+The units of the course book, and comments on what we have tasks for already in the demo version:
 # greetings, food, dinnerware (nouns)
 # animals (nouns),  -- Morfa: AI verbs
 ## AI verbs: independent mode and conjunct mode: paradigm, + imperative
 ## pronouns: all persons
 # Parts of the body (nouns)  - Morfa: locative and diminutive, plural, AI verbs
-## Possession in all persons, Diminutives. Some preverbs/prefixes? for nouns, 
-## Locatives	Tense markers for verbs for AI, Yes/no questions  -- MorfaC
+## Possession in all persons, 
+## Diminutives. Morfa
+## Some preverbs/prefixes? for nouns, 
+## Locatives, Tense markers for verbs for AI, Yes/no questions  -- MorfaC
 # Kinship terms -- Morfa: possessives to Sg
 ## more possession
 ## TI verbs with short -a ending paradigm (The other TI verbs follow the AI paradigm) ??make for Morfa??
@@ -84,92 +86,94 @@ Lene will check the status of these files and write an email about it.
 
 !! itwewina
 change the direction from crkeng to engcrk-algoritm. The algoritm could be:
-use the keywords but skip the most frequent ones, like ‘in’, ‘into’, ‘self’
-make a list for all the keywords (with frequencies) to find out which keywords to skip
-transform the keywords into <l> elements in engcrk
-transform the English translation into <re> element in engcrk
-merge the entries in the engcrk, each entry with the same keyword as an <mg> element under the keyword (we have scripts for this)
+# use the keywords but skip the most frequent ones, like ‘in’, ‘into’, ‘self’
+# make a list for all the keywords (with frequencies) to find out which keywords to skip
+# transform the keywords into <l> elements in engcrk
+# transform the English translation into <re> element in engcrk
+# merge the entries in the engcrk, each entry with the same keyword as an <mg> element under the keyword (we have scripts for this)
 {{{
-akohcimêw	 ᐊᑯᐦᒋᒣᐤ	 VTA-1	 s/he puts s.o. into water, s/he soaks s.o. in water, s/he immerses s.o. in water	 put ;; immerse ;; soak ;; into ;; in ;; water	 /akoht-/ ;; /-im/	 Cree: pC			 Independent, 3s-3’		 Action		 /akoht-/ + /-im/	 akohcim-
+akohcimêw	 ᐊᑯᐦᒋᒣᐤ	 VTA-1	 s/he puts s.o. into water, s/he soaks s.o. in water, 
+s/he immerses s.o. in water	 put ;; immerse ;; soak ;; into ;; in ;; 
+water	 /akoht-/ ;; /-im/	 Cree: pC  Independent, 3s-3’		
+ Action		 /akoht-/ + /-im/	 akohcim-
 						 
 174 ‘into’
 388 ‘in’
 316 ‘self’
 
 
-kitiskinêw	 ᑭᑎᐢᑭᓀᐤ	 VTA-1	 s/he drops s.o. accidentally; s/he fumble s.o. (e.g. ball)	 drop ;; accidentally ;; fumble ;; ball	 /kitisk-/ ;; /-n/	 Cree: pC			 Independent, 3s-3’				 /kitisk-/ + /-n/	 kitiskin-	 kiciskinêw					
-keywords 
+kitiskinêw	 ᑭᑎᐢᑭᓀᐤ	 VTA-1	 s/he drops s.o. accidentally; 
+s/he fumble s.o. (e.g. ball)	 
+drop ;; accidentally ;; fumble ;; ball	 /kitisk-/ ;; /-n/	 
+Cree: pC  Independent, 3s-3’ /kitisk-/ + /-n/	 
+kitiskin-	 kiciskinêw		
 
+}}}			
+
+
+{{{
 <e>
-<lg>
-<l pos="N">ball</l>
-</lg>
-<mg>
-<tg xml:lang="crk">
-<t pos="N">pâkahatowân</t>
-</tg>
-</mg>
-<mg>
-<tg xml:lang="crk">
-<re>ball for kicking, football</re>
-<t pos="N">kwâskwênatowâ</t>
-</tg>
-</mg>
-<mg>
-<tg xml:lang="crk">
-<re>s/he drops accidentally e.g. a ball</re>
-<t pos="V">kitiskinêw</t>
-</tg>
-</mg>
+  <lg>
+    <l pos="N">ball</l>
+  </lg>
+  <mg>
+    <tg xml:lang="crk">
+      <t pos="N">pâkahatowân</t>
+    </tg>
+ </mg>
+ <mg>
+  <tg xml:lang="crk">
+    <re>ball for kicking, football</re>
+    <t pos="N">kwâskwênatowâ</t>
+  </tg>
+  </mg>
+  <mg>
+  <tg xml:lang="crk">
+    <re>s/he drops accidentally e.g. a ball</re>
+    <t pos="V">kitiskinêw</t>
+  </tg>
+ </mg>
 </e>
 
-
-
-
 <e>
-        <lg>
-       	<l pos="V">drop</l>
-        </lg>
-        <mg>
-       	<tg xml:lang="crk">
-<re>s/he drops something accidentally</re>
-              <t pos="V">kitiskinêw </t>
-       	</tg>
-        </mg>
- 	</e>
-
-   <e>
-<lg>
-<l pos="V">fumble</l>
-</lg>
-<mg>
-<tg xml:lang="crk">
-<re>s/he fumbles so he drops something accidentally</re>
-<t pos="V">kitiskinêw </t>
-</tg>
-</mg>
+ <lg>
+    <l pos="V">drop</l>
+ </lg>
+ <mg>
+  <tg xml:lang="crk">
+     <re>s/he drops something accidentally</re>
+     <t pos="V">kitiskinêw </t>
+  </tg>
+ </mg>
 </e>
 
-
-
+<e>
+ <lg>
+    <l pos="V">fumble</l>
+ </lg>
+ <mg>
+   <tg xml:lang="crk">
+    <re>s/he fumbles so he drops something accidentally</re>
+    <t pos="V">kitiskinêw </t>
+  </tg>
+ </mg>
+</e>
 
 <e>
-        <lg>
-       	<l pos="Adv">accidentally</l>
-        </lg>
-<mg>
-<tg xml:lang="crk">
-<t pos="Ipc">xxxxxx</t>
-</tg>
-
-        <mg>
-       	<tg xml:lang="crk">
-<re>s/he drops something accidentally</re>
-              <t pos="V">kitiskinêw </t>
-       	</tg>
-        </mg>
- 	</e>
-
+ <lg>
+    <l pos="Adv">accidentally</l>
+ </lg>
+ <mg>
+  <tg xml:lang="crk">
+    <t pos="Ipc">xxxxxx</t>
+  </tg>
+ <mg>
+  <tg xml:lang="crk">
+    <re>s/he drops something accidentally</re>
+    <t pos="V">kitiskinêw </t>
+  </tg>
+ </mg>
+</e>
 
 }}}
 
