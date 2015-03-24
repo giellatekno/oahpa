@@ -1,0 +1,52 @@
+!!!Details about the xml-files
+
+!!xml-files
+* Lexicon files in crk/src/
+** N_crk.xml, V_crk.xml (Pcle_crk.xml to come)
+** N_engcrk.xml, V_engcrk.xml (Pcle_engcrk.xml to come)
+** N_fracrk.xml, V_fracrk.xml (Pcle_fracrk.xml to come)
+* Put the semantic sets into semantic fields: meta/semantic_sets.xml 
+* MorfaC questions files:
+** meta/verb_questions.xml
+** meta/noun_questions.xml
+* Other files for MorfaC:
+** fillings.xml, grammar_defaults.xml
+
+
+!!Lexicon files
+Elements are
+* <r> root (the whole file)
+* <e> entry, one for each crk lemma
+* <lg> lemma group, contains one lemma and one sources
+* <l> lemma, with attributes: pos (part of speech), animacy for nouns (IN, AN) or trans_anim for verbs (AI, II, TI, TA), audio (if there is an audiofile for the lemma in crk_oahpa/media/audio/), gen_only for restricting the generation. gen_only="none" gives no generation at all, the lemma will only be used for Leksa.
+* <sources> 
+* <book> with attributes: name (book chapter or ). The book chapters are put together in levels ane added to the menu in these files: crk_oahpa/crk_drill/game.py and crk_oahpa/crk_drill/forms.py
+* <mg> meaning group
+* <semantics>
+* <sem> with attributes: class (several). Semantic classes starting with an m in the name (mACTIVITY) is used only in Morfa. One can use any name for the semantic classes, but they have to be added to this file: meta/semantic_sets.xml, to be a part of the semantic choices in the menu of Leksa. E.g. ANIMAL can be a part of the semantic field NATURE.
+* <tg> translation group with attributes xml:lang= for language
+* <t> translation with attributes: pos (part of speech), stat="pref" for the preferred translation to be shown as key answer
+
+!!Question files for Morfa C
+[Explanations about how this works and how to make the tasks|http://oahpa.no/addlang/developermorfa.html]
+* <questions> (the whole file)
+* <q> with attributes: id (a uniq id for each task, e.g. npl1: noun plural 1
+* <qtype> type of task: for the menu
+* <question> - one in each <q> element
+* <text> - the question with variables=elements
+* <element>: definition of one element, with attribute id=
+* <grammar> with attribute tag, to be matched with the string in the data base (output from FST). One can use variables, which have to be defined here: grammar_defaults.xml
+* <sem> with attribute class, for restricting the choice of lemma
+* <answer>. There can be more than one possible answer to the question
+* <text> - the answer with variables=elements
+* <element>: definition of one element, with attribute id= and task="yes" for the slot, game="morfa"
+* <grammar> with attribute tag, to be matched with the string in the data base (output from FST). One can use variables, which have to be defined here: grammar_defaults.xml
+* <sem> with attribute class, for restricting the choice of lemma
+
+
+!!Generating forms
+Files for generation forms are in meta: n_paradigms.txt, v_paradigms.txt, tags.txt. There has to be a match between the lemma in the lexicon files, the tag string in the paradigm files and the lemma+tags in the FST.
+
+
+!!FST
+All FSTs are placee at gtlab.uit.no in  /opt/smi/crk till we move to gtoahpa.uit.no
