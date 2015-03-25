@@ -1,0 +1,114 @@
+!!!Meeting 25. March 2015
+
+Antti, Megan, Lene
+
+!! The Cree course
+Megan has talked to Atticus about the course vs nêhiyawêtân
+
+He liked (what we currently have):
+* context-based practice of inflected forms instead paradigm lists
+
+!Ideas for new features 
+* vowel length: 
+** audio
+** hint about the wrong vowel length
+* pictures in addition/in stead of word in Leksa
+** work to make all the pictures (perhaps for Gïelese?)
+** [South Saami Gïelese|http://gielese.no] 
+** [Ideas for Cree Gïelese|http://giellatekno.uit.no/ped/crkdoc/gielese/crk-gielese.html]
+* Cree texts - and translating/reading
+* questions as audio file, write the answer (Sahka, Vasta)
+
+!! Megan's work
+Megan needs for her work
+* xml editor 
+** [xml copy editor|http://xml-copy-editor.sourceforge.net]
+** needs a dtd (Lene provides it)
+* svn on a windows machine:   
+** [svn tool|http://giellatekno.uit.no/doc/tools/docu-svn-user-tortoisesvn.html]	
+* Add Megan's email to the svn-server
+** Antti does that: [howto|http://giellatekno.uit.no/doc/infra/system/addsvn-users.html]
+
+
+Files to work with: verb.csv and part.csv: 
+* If discrenpacies:
+** correct the lemma in the csv file or
+** add the lemma to the FST or
+** exclude the lemme from Morfa
+* Lene will have a look at the lemmas and will write an email
+
+{{{
+pêtawêw __ V __ TA __ s/he brings it to for AN __ HUMAN_V __ I1 __ exclM
+wîkiw __ V __ AI __ s/he lives at, he lives at, she lives at __ HUMAN_V __ I4
+atoskêw __ V __ AI __ s/he works, she works, he works, works __ HUMAN_V __ I4
+itohtêw __ V __ AI __ s/he goes, she goes, he goes __ HUMAN_V __ I4
+isiyihkâsow __ V __ AI __ s/he is named, she is named, he is named, s/he is called, she is called, he is called __ x __ I4
+isiyihkâcikâtêw (isîyihkâtew?) __ V __ II __ it is named __ x __ I4
+isîyihkâta? __ V __ TI __ s/he names IN, he names IN, she names IN __ x __ I4
+isîyihkâs? __ V __ TA __ s/he names AN, he names AN, she names AN __ x __ I4
+}}}
+
+
+!! Verb paradigms
+Maskwawîs vs Okimasis
+
+Jordan's report from CILLDI morphology lectures in Maskwacîs last weekend:
+
+Conor and I have been down in Maskwacîs over the past two days, working on paradigms with students in the CILLDI class.  So far all of the inflectional morphology in the Maskwacîs dialect seems to match with what is in Jean's grammar book... with one exception:
+
+VAI Future Conditional (see page 36 in Jean's book)
+
+Jean gives these suffix forms:
+
+* 1p: -yâhki
+* 21: -yahko
+
+But for the Maskwacîs speakers, the forms they use are:
+
+* 1p: -yâhki
+* 21: -yahki
+
+
+!! Implementering på gtoahpa serveren
+Lene's todos:
+* update lemmas and so on for generating
+* ask Heli to install at the gtoahpa-serveren
+* start creating feedback files
+
+!! Work in lexc
+Atticus to be instructed that changes to FST should be accompanied by corresponding changes to the yaml-files (has requested more work hours, so could spend some time on this).
+
+yaml-tests:
+* all noun tests pass
+* not all verb tests pass. Problems with some lemmas:
+** pimâmon - not in FST?
+** kâtâw (FST) or katâw (yaml) ?
+** NS vs. FSTmowaw vs. môwaw? (<-- Atticus)
+* hyphens
+
+
+Antti talks with Arok about hyphen-policy:
+1. Accept with hyphens in any morpheme boundary, but generate only forms without any hyphens, or with hyphens at every preverb-juncture
+
+
+{{{
+niki-nohte-maci-nipan
+nikinohtemacinipan
+
+nikinohtemacinipan      PV/nohte+PV/maci+nipâw+V+AI+Ind+Prt+1Sg
+PV/nohte+PV/maci+nipâw+V+AI+Ind+Prt+1Sg        nikînôhtêmacinipân
+PV/nohte+PV/maci+nipâw+V+AI+Ind+Prt+1Sg        nikî-nôhtê-mâci-nipân
+
+ê-wînipâyâh
+êwî-nipâyâhk   <==
+ê-wî-nipâyahk
+
+ê-wî-nipâyahk
+êwînipâyahk
+Missing results: ê-wînipâyahk, êwî-nipâyahk  <=== fjernes fra yaml-testene  (legge til +Err/Sub disse stiene)
+}}}
+
+!!itwewina
+scripting from crkeng to engcrk
+
+[useful discussions|http://giellatekno.uit.no/doc/dicts/PrinsippForOrdbokssnuing.html]
