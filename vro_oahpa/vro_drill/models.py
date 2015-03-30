@@ -878,7 +878,7 @@ class Form(models.Model):
 			if self.word.lemma in [u'lea', u'ii']:
 				kwarg = {'tag__personnumber': 'Sg3'}
 			else:
-				kwarg = {'tag__infinite': 'Inf'}
+				kwarg = {'tag__infinite': 'Inf/mA'} # ma-infinitive
 
 			# Non-derived verbs need to exclude Der
 			baseform = self.word.form_set.exclude(tag__string__contains='Der')\

@@ -31,7 +31,7 @@ NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
 		  'Pl1':'eat', 'Pl2':'ehpet', 'Pl3':'eai'}
 
 TENSE_PRESENTATION = {
-	'Prt': u'eiläq',  # possibly wrong
+	'Prt': u'eeläq',
 	'Prs': u'täämbä',
 }
 
