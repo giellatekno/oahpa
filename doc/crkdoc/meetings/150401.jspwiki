@@ -1,0 +1,122 @@
+!!!Meeting April 1 2015
+
+Antti, Megan, Lene
+
+# Megan's work
+# Implementation on the gtoahpa server
+# More Morfa tasks
+# Audio files
+# Next meeting
+
+
+!!Megan's work
+Still a few things to fix with the giellatekno account, Antti will fix it 
+
+* xml editor is installed, and the dtd is done:
+** ped/crk/scripts/crk_oahpa.dtd
+* svn on a windows machine, is installed  
+* Megan's email is added to the svn-server
+** Antti runs newaliases for Megan
+
+
+!Files to work with: verb.csv and part.csv:
+
+In: ped/crk/inc/
+
+{{{
+pêtawêw __ V __ TA __ s/he brings it to for s.o. __ pêtawêw_FRA __ HUMAN_V __ I1
+wîkiw __ V __ AI __ s/he lives at, he lives at, she lives at __ French __ HUMAN_V, HOME_V __ I4
+nawacîw __ V __ TI __ s/he bakes s.t., he bakes s.t., she bakes s.t. __ French __ HOME_V __ I7
+nawacîw __ V __ TA __ s/he bakes s.o., he bakes s.o., she bakes s.o. __ French __ HOME_V __ I7
+wordfromdictNotincoursebook __ V __ TA __ translation __ French __ HOME_V __ x
+âstamitik __ Ipc __ x __ all of you come here __ French __ semset __ I7
+awas __ Ipc __ x __ go away __ French __ MOVEMENT __ I7
+awasitik __ Ipc __ x __ all of you go away __ French __ semset __ I7
+cîki __ Ipc __ x __ near __ French __ PLACE __ I7
+}}}
+
+# Improve English translation
+# Add semantic sets 
+# Sum semantic sets up in ped/crk/meta/semantic_sets.xml
+# Last add French translations, if time
+# __Lene__ will generate xml files from the csv-files
+
+Difference between semantic setc with and without initial m:
+* widow ... KIN 
+* nephew ... KIN,  mKIN
+
+That means
+* mKIN: only MorfaC
+* KIN: Leksa and possibly also MorfaC
+* Read more: http://oahpa.no/addlang/developermorfa.html
+
+Lene will add information about MorfaC sets in the [crk documentation|http://giellatekno.uit.no/ped/crkdoc/oahpa/crk-oahpa.html]
+
+Morfa C (provide inflected words that are correct in the given sentential context)
+
+MORFA_S and etc. task name tags necessary only in the demo
+
+ped/crk/meta/semantic_sets.xml:
+{{{
+<lexicon>
+        <subclasses class="HUMAN"> <==== 
+      <sem class="PEOPLE"/>   
+      <sem class="KIN"/>
+      <sem class="SCHOOL_V"/>
+    </subclasses>
+        <subclasses class="ANATOMY"> <==== 
+      <sem class="BODY"/>
+      <sem class="SICKNESS"/>
+    </subclasses>
+        <subclasses class="AT_HOME"> <==== 
+        <sem class="FURNITURE"/>
+      <sem class="ROOMS"/>
+      <sem class="HOME"/>
+       <sem class="WEEKDAYS"/>
+   </subclasses>
+        <subclasses class="TRAVELING"> <==== 
+        <sem class="WEEKDAYS"/>
+      <sem class="VEHICLE"/>
+      <sem class="PLACES"/>
+   </subclasses>
+}}}
+Itwêwina
+nawacîw (verb)
+
+Arok: > s/he roasts s.t., s/he cooks s.t., 
+>    s/he roasts something, s/he cooks something
+NOT     s/he roast IN
+  (i.e. in a wood stove or on a fire) 
+
+{{{
+Furniture words from the Maskwacis dictionary
+akohp   ᐊᑯᐦᑊ    n       A blanket/      bed; furniture; household_equipment     5.1.1.3; 5.1.1; 5.1
+anaskason       ᐊᓇᐢᑲᓱᐣ  n       A mattress pad. bed; furniture; household_equipment     5.1.1.3; 5.1.1; 5.1
+anaskasow       ᐊᓇᐢᑲᓱᐤ  v phrase        He lies on the bedding. bed; furniture; household_equipment; posture    5.1.1.3; 5.1.1; 5.1; 7.1
+anaskasowin     ᐊᓇᐢᑲᓱᐃᐧᐣ        n       Bedding.        bed; furniture; household_equipment
+     5.1.1.3; 5.1.1; 5.1
+aspa    ᐊᐢᐸ     v command       Place a pad or padding for him to sit on.       chair; furniture; household_equipment   5.1.1.2; 5.1.1; 5.1
+aspaham ᐊᐢᐸᐦᐊᒼ  v phrase        He places a padding for it.     furniture; household_equipment  5.1.1; 5.1
+aspahamaw       ᐊᐢᐸᐦᐊᒪᐤ v command       Place a padding for him.        furniture; household_equipment  5.1.1; 5.1
+aspahamawew     ᐊᐢᐸᐦᐊᒪᐁᐧᐤ       v phrase        Someone places a padding for him or them.
+       furniture; household_equipment  5.1.1; 5.1
+}}}
+
+!! Implementation on the gtoahpa server
+* Heli will implement the demo in the end of this week
+* When the csv-files are ready, she will update the demo with the new xml files
+
+!!More Morfa tasks
+Lene will look at these
+* II verbs (for Leksa?)
+* TI verbs in MorfaS and MorfaC
+
+!! Audio files
+We need more audio files. Antti will look at these:
+* recording more audio files with the words from the course book => Leksa
+* use words from the course book with different vowel length
+
+!! Next meeting
+* April 8 meeting without Lene. 
+* April 15 meeting with Lene.
+
