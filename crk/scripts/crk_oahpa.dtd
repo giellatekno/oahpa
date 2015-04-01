@@ -1,0 +1,33 @@
+<!ELEMENT book EMPTY >
+<!ATTLIST book name ( Audio | GG | I | I1 | I10 | I11 | I12 | I2 | I3 | I4 | I5 | I6 | I7 | I8 | I9 | xxx ) #REQUIRED >
+
+<!ELEMENT e ( lg, mg ) >
+
+<!ELEMENT l ( #PCDATA ) >
+<!ATTLIST l animacy ( AN | IN | NA ) #IMPLIED >
+<!ATTLIST l audio ID #IMPLIED >
+<!ATTLIST l gen_only CDATA #IMPLIED >
+<!ATTLIST l pos ( N | V ) #REQUIRED >
+<!ATTLIST l trans_anim ( AI | II ) #IMPLIED >
+
+<!ELEMENT lg ( l, sources ) >
+
+<!ELEMENT mg ( semantics, tg+ ) >
+
+<!ELEMENT r ( e+ ) >
+<!ATTLIST r xml:lang NMTOKEN #REQUIRED >
+
+<!ELEMENT sem EMPTY >
+<!ATTLIST sem class NMTOKEN #REQUIRED >
+
+<!ELEMENT semantics ( sem* ) >
+
+<!ELEMENT sources ( #PCDATA | book )* >
+
+<!ELEMENT t ( #PCDATA ) >
+<!ATTLIST t pos ( N | V ) #REQUIRED >
+<!ATTLIST t stat ( pref ) #IMPLIED >
+
+<!ELEMENT tg ( t+ ) >
+<!ATTLIST tg xml:lang ( eng | fra ) #REQUIRED >
+
