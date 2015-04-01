@@ -7,6 +7,11 @@
 * [Documentation page for Plains Cree Gïelese|../gielese/crk-gielese.html]
 * [Documentation page for work with Plains Cree FST|http://giellatekno.uit.no/doc/lang/crk/PlainsCreeDocumentation.html]
 
+!!Meetings
+nêhiyawêtân meeting notes
+* 2015: [March 6-11|../meetings/150306.html], [March 25|../meetings/150325.html], [April 1|../meetings/150401.html] 
+
+
 !!Technical documentation
 * [Details about the xml-files|xmlfiles.html]
 * [Details about the files for the programmer|implementation.html]
@@ -68,10 +73,30 @@ We will use some very frequent sentences - here is a start:
 ** {{kikîpimohtân cî ôtenâhk isi}} (or another movement verb from semclass mMOVEMENT) \\ {{ehâ, nikîpimohtân ôtenâhk}}\\ (Did you walk to the X? Yes, I/we walked to X. \\ X is a noun from semclass PEOPLE )
  \\ Likewise for 2Pl vs. 1Pl.
 
+Example of a question-answer frame in crk/meta/verb_questions.xml
+{{{
+  <q id="vprt1">
+    <qtype>V-PRT</qtype>
+    <question>
+      <text>MAINV cî N-LOC isi</text>
+      <element id="MAINV">
+            <grammar tag="V+AI+Ind+Prt+2Sg"/>
+        <sem class="mMOVEMENT"/>
+      </element>
+      <element id="N-LOC">
+            <grammar tag="N+IN+Loc"/>
+        <sem class="PLACE"/>
+      </element>
+    </question>
+    <answer> 
+      <text>ehâ, MAINV N-LOC isi</text>
+      <element game='morfa' id="MAINV" content="MAINV" task="yes">
+        <grammar tag="V+AI+Ind+Prt+1Sg"/>
+      </element>
+    </answer>
+  </q>
+}}}
 
-!!Meetings
-nêhiyawêtân meeting notes
-* 2015: [March 6-11|../meetings/150306.html], [March 25|../meetings/150325.html], [April 1|../meetings/150401.html] 
 
 
 
