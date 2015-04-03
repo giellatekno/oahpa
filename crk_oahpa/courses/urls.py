@@ -22,7 +22,7 @@ urlpatterns = patterns('django.contrib.auth.views',
 
 from views import courses_main, instructor_student_detail
 
-urlpatterns += patterns('liv_oahpa.courses.views',
+urlpatterns += patterns('crk_oahpa.courses.views',
 	(r'^(?P<uid>\d+)/$', instructor_student_detail),
 	(r'^$', courses_main),
 )

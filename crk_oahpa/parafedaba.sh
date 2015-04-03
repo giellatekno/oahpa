@@ -9,7 +9,7 @@ DPS="$DATA/src"
 INC="$DATA/inc"
 META="$DATA/meta"
 DPN="$DATA/nobcrk"
-DPF="$DATA/fincrk"
+DPF="$DATA/fracrk"
 DPW="$DATA/engcrk"
 DPE="$DATA/estcrk"
 DPL="$DATA/latcrk"
@@ -152,56 +152,56 @@ echo "==================================================="
 # echo "==================================================="
 
 # ##
-# ## fincrk
+# ## fracrk
 # ##
 
 
-#echo "==================================================="
-#echo "feeding db with $DPF/N_fincrk.xml"
-#$P install.py --file $DPF/N_fincrk.xml 2>>error.log
-#echo " "
-#echo "done"
-#echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPF/N_fracrk.xml"
+$P install.py --file $DPF/N_fracrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPF/num_fincrk.xml"
-# $P install.py --file $DPF/num_fincrk.xml 2>>error.log
+# echo "feeding db with $DPF/num_fracrk.xml"
+# $P install.py --file $DPF/num_fracrk.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
+echo "==================================================="
+echo "feeding db with $DPF/V_fracrk.xml"
+$P install.py --file $DPF/V_fracrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
 #echo "==================================================="
-#echo "feeding db with $DPF/V_fincrk.xml"
-#$P install.py --file $DPF/V_fincrk.xml 2>>error.log
+#echo "feeding db with $DPF/A_fracrk.xml"
+#$P install.py --file $DPF/A_fracrk.xml 2>>error.log
 #echo " "
 #echo "done"
 #echo "==================================================="
 
-#echo "==================================================="
-#echo "feeding db with $DPF/A_fincrk.xml"
-#$P install.py --file $DPF/A_fincrk.xml 2>>error.log
-#echo " "
-#echo "done"
-#echo "==================================================="
-
 
 # echo "==================================================="
-# echo "feeding db with $DPF/adv_fincrk.xml"
-# $P install.py --file $DPF/adv_fincrk.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "feeding db with $DPF/mwe_fincrk.xml"
-# $P install.py --file $DPF/mwe_fincrk.xml 2>>error.log
+# echo "feeding db with $DPF/adv_fracrk.xml"
+# $P install.py --file $DPF/adv_fracrk.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPF/prop_fincrk.xml"
-# $P install.py --file $DPF/prop_fincrk.xml 2>>error.log
+# echo "feeding db with $DPF/mwe_fracrk.xml"
+# $P install.py --file $DPF/mwe_fracrk.xml 2>>error.log
+# echo " "
+# echo "done"
+# echo "==================================================="
+
+# echo "==================================================="
+# echo "feeding db with $DPF/prop_fracrk.xml"
+# $P install.py --file $DPF/prop_fracrk.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
@@ -313,7 +313,7 @@ echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with messages to feedback"
-# $P install.py --messagefile $META/messages.fin.xml 2>>error.log
+# $P install.py --messagefile $META/messages.fra.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="

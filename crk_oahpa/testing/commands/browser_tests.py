@@ -6,7 +6,7 @@ from optparse import make_option
 
 import sys
 
-from liv_drill.models import Tag
+from crk_drill.models import Tag
 
 import requests
 
@@ -15,7 +15,7 @@ HOST = 'http://oahpa.uit.no'
 def test_morfas():
 	""" Tests here make sure that we at least get a question set for all
 	possible options in Leksa, Morfa-S, Morfa-C and Numra. """
-	from liv_drill.forms import (CASE_CHOICES, 
+	from crk_drill.forms import (CASE_CHOICES, 
 									VTYPE_CHOICES, 
 									ADJCASE_CHOICES, 
 									ADJEX_CHOICES)
@@ -27,7 +27,7 @@ def test_morfas():
 	fail_count = 0
 
 	test_keys = {
-		'/liv_oahpa/morfas/': { 	
+		'/crk_oahpa/morfas/': { 	
 				# form value, values to iterate
 				'case': map(itemgetter(0), CASE_CHOICES),
 				'bisyllabic': [True],
@@ -35,14 +35,14 @@ def test_morfas():
 				'contracted': [False],
 				'book': ['all'],
 		},
-		'/liv_oahpa/morfas/v/': {
+		'/crk_oahpa/morfas/v/': {
 				'vtype': map(itemgetter(0), VTYPE_CHOICES),
 				'bisyllabic': [True],
 				'trisyllabic': [False],
 				'contracted': [False],
 				'book': ['all'],
 		},
-		'/liv_oahpa/morfas/a/': {
+		'/crk_oahpa/morfas/a/': {
 				'adjcase': map(itemgetter(0), ADJCASE_CHOICES),
 				'grade': map(itemgetter(0), ADJEX_CHOICES),
 				'bisyllabic': [True],
@@ -50,7 +50,7 @@ def test_morfas():
 				'contracted': [False],
 				'book': ['all'],
 		},
-		# '/liv_oahpa/morfas/p/': {
+		# '/crk_oahpa/morfas/p/': {
 				# 'pron_type': '',
 				# 'pron_case': '',
 				# 'bisyllabic': [True],
@@ -58,7 +58,7 @@ def test_morfas():
 				# 'contracted': [False],
 				# 'book': ['all'],
 		# },
-		# '/liv_oahpa/morfas/l/': {
+		# '/crk_oahpa/morfas/l/': {
 				# 'num_bare': '',
 				# 'num_level': '',
 				# 'num_type': '',
