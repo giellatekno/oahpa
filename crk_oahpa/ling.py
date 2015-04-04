@@ -32,8 +32,9 @@ except:
 	language = "crk"
 
 #numfst = fstdir + "/" + language + "-num.fst"
-numfst = fstdir + "/" + "transcriptor-numbers2text-desc.xfst"
-gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst" 
+numfst = fstdir + "/" + "transcriptor-numbers-digit2text.filtered.lookup.xfst"
+#gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst" # this is xfst 
+gen_norm_fst = fstdir + "/" + "generator-gt-norm.hfstol" # this is hfst
 
 
 STDERR = sys.stderr
@@ -96,14 +97,18 @@ def Popen(cmd, data=False, ret_err=False, ret_proc=False):
 def FSTLookup(data, fst_file):
 	gen_fst = fst_file 
 	# cmd = 'hfst-optimized-lookup /opt/local/share/omorfi/mor-omorfi.apertium.hfst.ol'
-	cmd = lookup + " -flags mbTT -utf8 -d " + gen_fst
+	#cmd = lookup + " -flags mbTT -utf8 -d " + gen_fst
 	
 	if type(data) == list:
 		data = [a.strip() for a in list(set(data)) if a.strip()]
 		data = u'\n'.join(data).encode('utf-8')
+        cmd = lookup + " " + gen_fst   
 	print >> STDOUT, "Generating forms in %s" % gen_fst
 	try:
-		lookups = Popen(cmd, data)
+                lookups = Popen(cmd, data)
+                #new_cmd = lookups_with_weights + " | cut -f1,2"
+                #lookups = Popen(new_cmd)   
+                #print >> STDOUT, "The next row of hfst output: %s" % lookups
 	except OSError:
 		print >> STDERR, "Problem in command: %s" % cmd
 		sys.exit(2)
@@ -170,7 +175,7 @@ class Paradigm:
 		""" The function is called from install.py and its aim is to install the contents of the paradigm file (e.g. paradigms.txt) into the database.
 		"""
 		if not self.tagset:
-			self.handle_tags(tagfile, True) # True added because the function expects that argument as well. True = add the tags to the DB
+			self.handle_tags(tagfile, True)
 
 		fileObj = codecs.open(paradigmfile, "r", "utf-8" )
 		posObj = re.compile(r'^(?:\+)?(?P<posString>[\w]+)\+.*$', re.U)
@@ -343,15 +348,22 @@ class Paradigm:
 		lookup_dictionary = {}
 			
 		for line in lookups.split('\n\n'):
-			# print >> STDOUT, 'line in lookups: %s' % line
+			#print >> STDOUT, 'line in lookups: %s' % line
 			items = line.split('\n')
 			for item in items:
 				result = item.split('\t')
 				lemma = result[0].partition('+')[0]
+                                if lemma:
+                                        generated_form = result[1]
+                                else:
+                                        generated_form = ""
+                                #print >> STDOUT, 'lemma: %s' % lemma
+                                #print >> STDOUT, 'generated form: %s' % result[1]
 				try:
-				    lookup_dictionary[lemma] += item + '\n'
+				    lookup_dictionary[lemma] += result[0] + '\t' + generated_form + '\n'
 				except KeyError:
-				    lookup_dictionary[lemma] = item + '\n'
+				    lookup_dictionary[lemma] = result[0] + '\t' +\
+ generated_form + '\n'
 		
 		self.master_paradigm[dialect] = lookup_dictionary
 		
@@ -562,8 +574,6 @@ class Paradigm:
 		# #fstdir = "/opt/smi/" + language + "/bin"
 		# #lookup = /usr/local/bin/lookup
 		# 
-		# fstdir = "/Users/saara/gt/" + language + "/bin"		
-		# lookup = "/Users/saara/bin/lookup"
 		# 
 		# numfst = fstdir + "/" + language + "-num.fst"
 
@@ -589,8 +599,7 @@ class Paradigm:
 			for form in self.paradigm:
 				form.form = form.form.replace("#","")
 				g=form.classes
-				
-			t,created=Tag.objects.get_or_create(string=form.tags,pos=g.get('Wordclass', ""),\
+				t,created=Tag.objects.get_or_create(string=form.tags,pos=g.get('Wordclass', ""),\
 													number=g.get('Number',""),case=g.get('Case',""),\
 													possessive=g.get('Possessive',""),grade=g.get('Grade',""),\
 													infinite=g.get('Infinite',""), \
@@ -598,12 +607,10 @@ class Paradigm:
 													polarity=g.get('Polarity',""),\
 													tense=g.get('Tense',""),mood=g.get('Mood',""), \
 													subclass=g.get('Subclass',""), \
-													attributive=g.get('Attributive',""), animacy=g.get('Animacy',""))
+													attributive=g.get('Attributive',""))
 				
-				
-			t.save()
-			print >> STDERR, "form: %s tag: %s" % (form.form, form.tags)
-			form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w)
-			form.save()
+				t.save()
+				form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w)
+				form.save()
 
 
