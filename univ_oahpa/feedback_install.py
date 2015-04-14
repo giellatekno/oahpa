@@ -386,7 +386,7 @@ class Feedback_install(object):
     
     @property
     def non_possessive_form_filter(self):  # filter for nouns without possessive suffix
-        if not self._global_form_filter:
+        if not self._non_possessive_form_filter:
             root = self.feedbacktree.getElementsByTagName("feedback")[0]
             poss_filter = root.getAttribute("tag__possessive") 
             if poss_filter:
@@ -601,9 +601,9 @@ class Feedback_install(object):
         print >> sys.stdout, "Fetching wordform attributes."
         
         forms = self.form_objects.only(*values) # Get only the things we need.
-        if self.non_possessive_form_filter:
+        if self._non_possessive_form_filter:
             forms = forms.filter(tag__possessive=self.non_possessive_form_filter)
-        if self.global_form_filter:
+        if self._global_form_filter:
             forms = forms.filter(tag__string__contains=self.global_form_filter)
             
         total = forms.count()
