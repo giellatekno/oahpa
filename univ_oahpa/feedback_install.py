@@ -212,6 +212,11 @@ def get_attrs_with_defaults(element, attr_list, defaults):
         if x['subclass'] == ['Active']:
             x['subclass'] == ['']
     
+    possessive = x.get('possessive', False)
+    if possessive:
+        if x['possessive'] == ['Non-Px']:
+            x['possessive'] = ['']
+    
     return x
 
 
@@ -611,6 +616,9 @@ class Feedback_install(object):
 
         if self.file_pos == 'V':
             self.default_attributes['subclass'].add('Active')
+            
+        if self.file_pos == 'N':
+            self.default_attributes['possessive'].add('Non-Px')
 
         # TODO: test this.
         # if self.file_pos == 'N':
@@ -631,6 +639,10 @@ class Feedback_install(object):
             if self.file_pos == 'V':
                 if not w_key_vals['subclass'] in ['Der/PassL', 'Der/PassS', 'Der/AV']:
                     w_key_vals['subclass'] = 'Active'
+                    
+            if self.file_pos == 'N':  # the attribute 'possessive' is empty for non-possessive forms 
+                if w_key_vals['possessive'] == ['']:
+                    w_key_vals['possessive'] = 'Non-Px'
                     
             w_keys = tuple(w_key_vals.values())
 
