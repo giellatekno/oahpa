@@ -288,6 +288,7 @@ class Feedback_install(object):
         self._feedback_msg_elements = False
         self._form_objects = False
         self._global_form_filter = False
+        self._possessive_form_filter = False
 
         self._lexicon_dialects = False # TODO: this
         self._feedback_global_dialect = False # TODO: this
@@ -368,18 +369,26 @@ class Feedback_install(object):
         return self._file_pos
     
     @property
-    def global_form_filter(self):
+    def global_form_filter(self): # filter for nouns with possessive suffix and derivational verb forms
         if not self._global_form_filter:
             root = self.feedbacktree.getElementsByTagName("feedback")[0]
-            if root.hasAttribute("tag__possessive"):  # filter for nouns without possessive suffix
-                global_filter = root.getAttribute("tag__possessive").strip()
-            else:
-                global_filter = root.getAttribute("tag__string__contains").strip() # filter for nouns with possessive suffix and derivational verb forms
+            global_filter = root.getAttribute("tag__string__contains").strip()     
             if global_filter:
                 self._global_form_filter = global_filter
             else:
                 self._global_form_filter = False
         return self._global_form_filter
+    
+    @property
+    def non_possessive_form_filter(self):  # filter for nouns without possessive suffix
+        if not self._global_form_filter:
+            root = self.feedbacktree.getElementsByTagName("feedback")[0]
+            poss_filter = root.getAttribute("tag__possessive") 
+            if poss_filter:
+                self._non_possessive_form_filter = poss_filter
+            else:
+                self._non_possessive_form_filter = False
+        return self._non_possessive_form_filter  
     
     @property
     def feedback_global_dialect(self):
@@ -587,8 +596,11 @@ class Feedback_install(object):
         print >> sys.stdout, "Fetching wordform attributes."
         
         forms = self.form_objects.only(*values) # Get only the things we need.
+        if self.non_possessive_form_filter:
+            forms = forms.filter(tag__possessive=self.non_possessive_form_filter)
         if self.global_form_filter:
             forms = forms.filter(tag__string__contains=self.global_form_filter)
+            
         total = forms.count()
         form_keys = {}
 
