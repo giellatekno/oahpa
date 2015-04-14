@@ -371,7 +371,10 @@ class Feedback_install(object):
     def global_form_filter(self):
         if not self._global_form_filter:
             root = self.feedbacktree.getElementsByTagName("feedback")[0]
-            global_filter = root.getAttribute("tag__string__contains").strip()
+            if root.hasAttribute("tag__possessive"):  # filter for nouns without possessive suffix
+                global_filter = root.getAttribute("tag__possessive").strip()
+            else:
+                global_filter = root.getAttribute("tag__string__contains").strip() # filter for nouns with possessive suffix and derivational verb forms
             if global_filter:
                 self._global_form_filter = global_filter
             else:
@@ -616,7 +619,7 @@ class Feedback_install(object):
             if self.file_pos == 'V':
                 if not w_key_vals['subclass'] in ['Der/PassL', 'Der/PassS', 'Der/AV']:
                     w_key_vals['subclass'] = 'Active'
-
+                    
             w_keys = tuple(w_key_vals.values())
 
             dialects = [''] + [d.dialect for d in f.dialects.all() 
