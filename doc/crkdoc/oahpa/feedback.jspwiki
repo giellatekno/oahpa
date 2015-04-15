@@ -1,0 +1,91 @@
+!!!Feedback/hints to the student about the morphology
+
+The feedback consists of three parts:
+# the combination of properties of the stem and the task itself gives triggers like "k-gives-w" (look at. ped/meta/feedback_nouns.xml)
+# the trigger gives a sentence or part of a sentence in the chosen language (look at. messages.eng.xml, k-gives-w gives "Add -w- because the stem is ending with -k.")
+# the properties of the stem is given in the <l>-element in e.g. ped/src/N_crk.xml (but not to the ones marked with genonly="none")
+
+You are free to give names to the triggers, and the properties as you want.
+
+Have a look at the files in ped/crk/meta:
+
+There is an attribute rime in the <l>-element in the N-file (you are free to rename it) and it is used like this:
+{{{
+    <l animacy="AN">    
+      <msg number="Pl">plural-ak</msg> 
+      <note> </note>
+    </l>
+This message is given to all AN-nouns for Pl tasks (one could limit it with adding rime="0")
+
+    <l animacy="AN" rime="k">
+      <msg number="Pl">k-gives-w</msg>  
+      <note> </note>
+    </l>
+Stems with rime="k" get also this message. One could consider to give only one message: the plural is -wak.
+
+}}}
+
+Locative - here we need more information about properties
+{{{
+     <l>
+      <msg case="Loc">locative-ihk</msg>  
+      <note>kohkôsihk</note>
+    </l>
+This is given both to AN and IN.
+
+    <l animacy="IN">
+      <msg case="Loc">locative-ahk</msg>  
+      <note> </note>
+    </l>
+This is given only to IN, but needs properties.
+    
+    <l animacy="AN">
+      <msg case="Loc">locative-inaahk</msg> 
+      <note> </note>
+    </l>
+This is given only to AN, but needs properties.
+}}}
+
+One can choose to give a hint about -hk to all, and then give more information, as is done for plural. Or one can give the whole Locative information of each type, as one message.
+
+
+Possessive hints are made of two parts for circumfixes:
+{{{
+    <l>
+      <msg possessive="1Sg">prefix-n</msg>
+      <msg possessive="2Sg">prefix-k</msg>
+      <msg possessive="3Sg">prefix-o</msg>
+      <msg possessive="4Sg">prefix-o</msg>
+      <msg possessive="1Pl">prefix-n</msg>
+      <msg possessive="12Pl">prefix-k</msg>
+      <msg possessive="2Pl">prefix-k</msg>
+      <msg possessive="3Pl">prefix-o</msg>
+      <msg possessive="4Pl">prefix-o</msg>
+      <note> </note>
+    </l>
+
+    <l>
+      <msg possessive="3Sg">obviative</msg>
+      <msg possessive="4Sg">iyiw-Obv</msg>
+      <msg possessive="1Pl">inaan</msg>
+      <msg possessive="12Pl">inaw</msg>
+      <msg possessive="2Pl">iwaaw</msg>
+      <msg possessive="3Pl">iwaaw</msg>
+      <msg possessive="4Pl">iyiw-Obv</msg>
+      <note> </note>
+    </l>
+}}}
+
+The message for Plural can be:
+
+# WORDFORM is an animate noun 
+# and the plural suffix is -ak. 
+# Add -w- because the stem is ending with -k.
+
+The message for possessive can be:
+
+# WORDFORM is an animate noun for possessive 4Sg:
+# The possessive prefix is o- or w-. 
+# The possessive suffix -iyiw- and remember obviative -a.
+
+
