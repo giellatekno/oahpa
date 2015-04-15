@@ -4,10 +4,14 @@
     <sem class="DRINK"/>
     <sem class="DRINK_ALCO"/>
     <sem class="FOOD"/>
+    <sem class="FOOD_PL"/>
     <sem class="FOOD_A"/>
     <sem class="FOOD_DISH"/>
     <sem class="FOODDRINK_V"/>
     <sem class="FOOD_GROCERY"/>
+    <sem class="FRUIT"/>
+    <sem class="VEGETABLE"/>
+    <sem class="BERRY"/>
   </subclasses>
   <subclasses class="HUMAN">  
     <sem class="FAMILY"/>
@@ -30,19 +34,25 @@
       <sem class="ANIMAL_WILD"/>
       <sem class="ANIMAL_PET"/>
       <sem class="ANIMAL_OTHER"/>
-      <sem class="BIRD"/> <!-- can fly, also insects -->
+      <sem class="BIRD"/> 
       <sem class="BIRD_DOM"/>
       <sem class="FISH"/> <!-- living in water, so it contains also some animals --> 
       <sem class="ANIMAL_V"/> <!-- what animals do and we do to animals -->
       <sem class="ANIMAL_A"/>
+      <sem class="INSECT"/>
+      <sem class="ANIMAL_BODY"/>
     </subclasses>
     <subclasses class="BODY">  
       <sem class="BODYPART"/> 
       <sem class="BODYPART_PL"/>
-      <sem class="ILLNESS"/> 
        <sem class="BODY_V"/> 
        <sem class="BODY_A"/>
        <sem class="BODY_OTHER"/> 
+    </subclasses>
+    <subclasses class="HEALTHCARE"> 
+      <sem class="ILLNESS"/>
+      <sem class="HEALTH"/>
+      <sem class="MEDICINE"/>   
     </subclasses>
     <subclasses class="CLOTHES"> 
       <sem class="CLOTHING"/>
@@ -51,5 +61,31 @@
       <sem class="CLOTHING_V"/> 
       <sem class="CLOTHING_A"/>
       <sem class="COLOR"/>
+    </subclasses>
+    <subclasses class="SCHOOL/EDU"> 
+      <sem class="SCHOOL"/>
+      <sem class="STATIONERY"/>
+    </subclasses>
+    <subclasses class="HOME"> 
+      <sem class="HOUSE"/>
+      <sem class="KITCHEN"/>
+      <sem class="FURNITURE"/>
+    </subclasses>
+    <subclasses class="NATURE"> 
+      <sem class="PLACE_NATURE"/>
+      <sem class="PLACE_NATURE_ON"/>
+      <sem class="ANIMAL_WILD"/>
+      <sem class="BIRD"/>
+      <sem class="FISH"/>
+      <sem class="INSECT"/> 
+      <sem class="TREE"/>
+      <sem class="BUSH"/>
+    </subclasses>
+    <subclasses class="TIME"> 
+      <sem class="TIME_SEASON"/>
+    </subclasses>
+    <subclasses class="WORK"> 
+      <sem class="JOB"/>
+      <sem class="PROFESSION"/>
     </subclasses>
 </lexicon>
