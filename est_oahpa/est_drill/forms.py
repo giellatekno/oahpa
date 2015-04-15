@@ -53,19 +53,19 @@ POS_CHOICES = (
 )
 
 CASE_CHOICES = (
-    ('N-GEN', _('Genitive')),
-    ('N-PAR', _('Partitive')),
-    ('N-ILL', _('Illative')),
-    ('N-INE', _('Inessive')),
-    ('N-ELA', _('Elative')),
-    ('N-ALL', _('Allative')),
-    ('N-ADE', _('Adessive')),
-    ('N-ABL', _('Ablative')),
-    ('N-TRL', _('Translative')),
-    ('N-TER', _('Terminative')),
-    ('N-ESS', _('Essive')),
-    ('N-ABESS', _('Abessive')),
-    ('N-COM', _('Comitative')),
+    ('N-GEN', _(u'Omastav (kelle? mille?)')),
+    ('N-PAR', _(u'Osastav (keda? mida?)')),
+    ('N-ILL', _(u'Sisseütlev (kellesse? millesse? kuhu?)')),
+    ('N-INE', _(u'Seesütlev (kelles? milles? kus?)')),
+    ('N-ELA', _(u'Seestütlev (kellest? millest? kust?)')),
+    ('N-ALL', _(u'Alaleütlev (kellele? millele? kuhu?)')),
+    ('N-ADE', _(u'Alalütlev (kellel? millel? kus?)')),
+    ('N-ABL', _(u'Alaltütlev (kellelt? millelt? kust?)')),
+    ('N-TRL', _(u'Saav (kelleks? milleks?)')),
+    ('N-TER', _(u'Rajav (kelleni? milleni?)')),
+    ('N-ESS', _(u'Olev (kellena? millena?')),
+    ('N-ABESS', _(u'Ilmaütlev (kelleta? milleta?')),
+    ('N-COM', _(u'Kaasaütlev (kellega? millega?)')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -1039,7 +1039,7 @@ class LeksaQuestion(OahpaQuestion):
 		
 		if type(word) == Word: 
                     #if self.sourcelang == 'rus':
-                     #   self.lemma = word.lemma_stressed  # for Rusian the words will be presented with stress marks
+                     #   self.lemma = word.lemma_stressed  # for Russian the words will be presented with stress marks
                     #else:
                     self.lemma = word.lemma # for other languages 'lemma_stressed' does not exist
 		else:

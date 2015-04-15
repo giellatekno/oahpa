@@ -1,8 +1,8 @@
 #!/bin/sh
 
 P="python2.7"
-#EST_HOME="/home/est_oahpa"
-EST_HOME="/Users/mslm/main/ped"
+EST_HOME="/home/est_oahpa"
+#EST_HOME="/Users/mslm/main/ped"
 LANGDIR="est"
 DATA=$EST_HOME/$LANGDIR
 DPS="$DATA/src"
@@ -74,12 +74,12 @@ echo "==================================================="
 # echo "done"
 # echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPS/V_est.xml"
-# $P install.py --file $DPS/V_est.xml --tagfile $META/tags.txt --paradigmfile $META/V_paradigms.txt 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+ echo "==================================================="
+ echo "feeding db with $DPS/V_est.xml"
+ $P install.py --file $DPS/V_est.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
 # # NOTE: --append here, so that the install only adds the forms, but doesn't delete existing ones.
 # echo "==================================================="
@@ -90,12 +90,12 @@ echo "==================================================="
 # echo "==================================================="
 
 
-# echo "==================================================="
-# echo "feeding db with $DPS/adv_estnob.xml"
-# $P install.py --file $DPS/adv_estnob.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+ echo "==================================================="
+ echo "feeding db with $DPS/Adv_est.xml"
+ $P install.py --file $DPS/Adv_est.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $DPS/multiword_estnob.xml"
