@@ -1,0 +1,122 @@
+!!!Meeting April 16 2015
+
+Antti, Megan, Lene
+
+# Implementation on the gtoahpa server
+# Morphological feedback/hints
+# Work with csv-files
+# More Morfa tasks
+# Audio files
+# Next meeting
+
+
+!! Implementation on the gtoahpa server
+Heli has not so much time for Cree, Antti will look at the possibility of using Ryan.
+
+!Todo:
+* Lene will write an email to Ryan about finishing implementation of nêhiyawêtân
+
+!! Morphological feedback/hints
+Lene has made a start of the nouns
+http://giellatekno.uit.no/ped/crkdoc/oahpa/feedback.html
+
+!Todo:
+* Antti will talk to Atticus about this.
+* Lene will make a start for the verbs also
+
+
+
+!!Work with csv-files
+Megan has done some work with the csv for verbs and particles
+(added semantic class using rapid words).
+
+!Todo
+* Remove HUMAN_V
+* Improve English translations (especially IN vs AN)
+* Remove the question marks (talk to Atticus)
+* Sum semantic sets up in ped/crk/meta/semantic_sets.xml
+* __Lene__ will generate xml files from the csv-files (Megan will tell when the files are ready)
+
+{{{
+something is black, it is black, IN is black
+s.o. is green
+someone is green, s/he is green, he is green, she is green
+oskâtâsk (carrot AN) is green
+so. verbs smth.
+AN sees IN
+AN sleeps
+someone/thing (animate) verbs someone/thing (animate)
+}}}
+
+Altogether 1267 semantic classes according to RW in the Maskwacis Dictionary (though these are subcategories)
+
+{{{
+ 871 move_something
+ 755 move
+ 667 quality
+ 436 communication
+ 413 food
+ 382 time
+ 315 sense_perceive
+ 302 body
+ 298 arrange
+ 270 quantity
+ 261 healthy
+ 256 animal
+ 248 behavior
+ 240 emotion
+ 223 big
+ 210 relationships
+ 206 divide_into_pieces
+ 200 social_activity
+ 190 think
+ 184 work
+ 169 want
+ 165 finance
+ 165 clothing
+ 164 occupation
+ 158 location
+ 152 sky
+ 149 conflict
+ 143 water
+ 138 life
+ 134 posture
+ 131 say
+ 131 physical_impact
+ 111 prosperity_trouble
+ 108 move_something_in_a_direction
+ 108 have_be_with
+ 107 world
+ 106 hunt_and_fish
+ 105 cleaning
+  93 working_with_buildings
+  93 semantic_constituents_related_to_verbs
+  88 tool
+}}}
+
+
+!!More Morfa tasks
+Lene will look at these (hasn't done it yet)
+* II verbs (for Leksa?)
+* TI verbs in MorfaS and MorfaC
+
+!! Audio files
+We need more audio files. Antti will look at these:
+* look for overlap with the words in the recordings done already 
+* extract words from the CD's for the intr. course book?
+* recording more audio files with the words from the course book => Leksa
+* use words from the course book with different vowel length => vowel length task
+
+{{{
+crk$ ls media/
+atim.wav     kokos.wav    mostos.wav   napew.wav    ohow.wav     pisim.wav
+iskwesis.wav misit.wav    moswa.wav    nisit.wav    osi.wav      sisip.wav
+
+<l pos="N" animacy="AN" rime="0" gen_only="Pl,Sg" audio="kohkos">kohkôs</l>
+}}}
+
+!! Next meeting
+Next week Antti is in Ottawa. Megan can invite Lene for meeting on Wednesday, if desirebly.
+
+
+
