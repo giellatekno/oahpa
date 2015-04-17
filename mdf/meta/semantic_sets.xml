@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Specify subsets for sematic supersets here -->
+<lexicon>
+	<subclasses class="HUMAN">  <!--Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to "Who do you see?"  -->
+      <sem class="PROFESSION"/>   
+      <sem class="ACTOR"/>
+      <sem class="OTHERS"/>
+    </subclasses>
+	<subclasses class="HUMAN-LIKE">  
+      <sem class="MYTH_HUM"/>  
+      <sem class="HUM_V"/>  
+      <sem class="HUM_A"/>   <!-- HUMAN_A is meant only for Morfa, and contains words from other sets also -->
+      <sem class="VERBAL_V"/>   
+      <sem class="EXPERIENCE_V"/>       
+      <sem class="AUX_V"/> <!-- More widely defined than in sme-dis.rle,  verbs which typically are followed by an Inf -->
+    </subclasses>
+    <subclasses class="MYTH">  <!-- Morfa-set, for Essive -->
+      <sem class="MYTH_HUM"/>  
+      <sem class="MYTH_OTHER"/>  
+    </subclasses>
+    <subclasses class="ANIMAL">  
+      <sem class="ANIMAL_DOM"/>  <!-- domestic --> 
+      <sem class="ANIMAL_WILD"/>
+      <sem class="ANIMAL_PET"/>
+      <sem class="ANIMAL_OTHER"/>
+      <sem class="BIRD"/> <!-- can fly, also insects -->
+      <sem class="FISH"/> <!-- living in water, so it contains also some animals --> 
+      <sem class="ANIMAL_V"/> <!-- what animals do and we do to animals -->
+      <sem class="ANIMAL_A"/>
+    </subclasses>
+    <subclasses class="FOOD/DRINK">  
+      <sem class="FOOD_GROCERY"/>  <!-- one can buy in the shop -->
+      <sem class="FOOD_GROCERY_PL"/>  <!-- one can buy in the shop -->
+      <sem class="FOOD_DISH"/> <!-- one can buy in a cafe -->
+      <sem class="FOOD_TRADITIONAL"/>
+      <sem class="FOOD_OTHER"/>
+      <sem class="DRINK"/>  
+      <sem class="FOOD_DRINK_V"/> 
+      <sem class="SOUP_A"/> <!-- adjectives about food -->
+    </subclasses>
+    <subclasses class="TIME">
+      <sem class="TIME_EXPRESSION"/>   
+      <sem class="TIME_DUR"/>  <!-- it lasted 2 -->
+      <sem class="TIME_POINT_LOC"/> <!-- it happened then loc, e.g. geassemánnu -->
+      <sem class="TIME_POINT_LOC_PL"/> <!-- it happened then loc-pl, bassi -->
+      <sem class="TIME_POINT_GEN"/> <!-- it happened then gen, e.g. mánnodat -->
+      <sem class="TIME_SEASON"/>  <!--  e.g. čakča -->
+      <sem class="TIME_POINT_GEN_PL"/> <!-- it happened then gen-pl, e.g. juovllat  -->
+      <sem class="TIME_OTHER"/>
+      <sem class="TIME_ADV"/>
+      <sem class="MONTH"/>
+      <sem class="WEEKDAY"/>
+    </subclasses>
+    <subclasses class="PLACE">  <!-- Fit as answer to "Where is the girl?"  -->
+      <sem class="PLACE_STAYING"/>
+      <sem class="ROOM"/>
+      <sem class="BUILDING"/>
+    </subclasses>
+    <subclasses class="OBJECT"> <!-- Fit as answer to "What do you see?"  -->  
+      <sem class="THING"/> 
+      <sem class="TOOL"/> 
+      <sem class="TOY"/>
+      <sem class="SLIDETOOL"/>
+      <sem class="FURNITURE"/>
+      <sem class="KITCHEN"/>
+      <sem class="CONTAINER"/> <!-- objects which can be in local case if the question is where is ... og where do you put ...-->
+    </subclasses>
+    <subclasses class="CONCRETES"> 
+      <sem class="THING"/> 
+      <sem class="KITCHEN"/> 
+      <sem class="CONTAINER"/>
+      <sem class="INSTRUMENT"/>
+      <sem class="EXPOSURE_V"/> 
+      <sem class="OBJECT_A"/>
+    </subclasses>
+    <subclasses class="BODY">  
+      <sem class="BODYPART"/> 
+      <sem class="BODYPART_PL"/>
+      <sem class="ILLNESS"/> 
+       <sem class="BODY_V"/> 
+       <sem class="BODY_A"/>
+       <sem class="BODY_OTHER"/> 
+    </subclasses>
+    <subclasses class="HEALTHCARE"> 
+      <sem class="ILLNESS"/>
+      <sem class="HEALTH"/>
+      <sem class="MEDICINE"/>   
+    </subclasses>
+    <subclasses class="CLOTHES"> 
+      <sem class="CLOTHING"/>
+      <sem class="CLOTHING_PL"/>
+      <sem class="CLOTHING_OTHER"/>
+      <sem class="CLOTHING_V"/> 
+      <sem class="CLOTHING_A"/>
+      <sem class="COLOUR"/>
+    </subclasses>
+    <subclasses class="BUILDINGS/ROOMS">   
+      <sem class="BUILDING"/>
+      <sem class="ROOM"/>
+      <sem class="SHOP"/>
+      <sem class="CONSTRUCTION"/> 
+      <sem class="FURNITURE"/>
+      <sem class="ROOMPART"/>
+      <sem class="ROOM_OTHER"/>
+    </subclasses>
+    <subclasses class="HOME"> 
+      <sem class="HOUSE"/>
+      <sem class="FURNITURE"/>
+      <sem class="KITCHEN"/>
+      <sem class="CUTLERY"/>
+      <sem class="LIVING_PLACE_HOME"/>
+      <sem class="LIVING_PLACE"/>
+    </subclasses>
+    <subclasses class="NATUREWORDS">   
+      <sem class="NATURE"/>
+      <sem class="NATURE_WATER"/>
+      <sem class="NATURE_PLACE"/> <!-- one can be there -->
+      <sem class="PLANT"/> 
+      <sem class="PLANT_OTHER"/> 
+      <sem class="WEATHER"/>
+      <sem class="WEATHER_PL"/>
+      <sem class="WEATHER_V"/>
+      <sem class="NATURE_V"/>
+      <sem class="WEATHER_A"/>
+      <sem class="NATURE_A"/> 
+    </subclasses>
+    <subclasses class="LEISURETIME/AT_HOME">   
+      <sem class="ARRANGEMENT"/>
+      <sem class="ARRANGEMENT_PL"/>  
+      <sem class="SPORT"/>
+      <sem class="SLIDETOOL"/>
+      <sem class="TOY"/>
+      <sem class="LEISURETIME_HOME_V"/>
+      <sem class="SHOW"/>  
+    </subclasses>
+    <subclasses class="PLACES">  
+      <sem class="PLACE_STAYING"/>
+      <sem class="PLACE_OTHER"/>
+      <sem class="PLACE_LOCAL"/>
+      <sem class="TRAVEL"/> 
+      <sem class="VEHICLE"/> 
+      <sem class="VEHICLE_PL"/>C
+      <sem class="ROAD"/> 
+      <sem class="TRAVEL_V"/>
+      <sem class="PLACE_ADV"/>
+    </subclasses>
+    <subclasses class="LITERATURE">   
+      <sem class="LANGUAGE"/>  
+      <sem class="LANGUAGEPART"/> 
+      <sem class="TEXT"/>  
+      <sem class="ISSUE_A"/>
+    </subclasses>
+    <subclasses class="SCHOOL/EDUCATION">   
+      <sem class="SCHOOL"/>  
+      <sem class="EDUCATION"/>
+      <sem class="SCHOOL_EDUCATION"/>
+      <sem class="SCHOOL_V"/>  
+      <sem class="SCHOOL_ADV"/>  
+    </subclasses>
+        <subclasses class="ABSTRACTS">   
+      <sem class="FEELING"/> 
+      <sem class="THOUGHT"/> 
+      <sem class="ACTION"/>  
+      <sem class="ABSTRACT"/>
+      <sem class="SOUND"/> 
+      <sem class="AMOUNT"/>
+      <sem class="ACTION_V"/>
+      <sem class="DIV_ADV"/> 
+    </subclasses>
+        <subclasses class="WORK/ECONOMY/TOOLS">   
+      <sem class="JOB"/>  
+      <sem class="ORGANIZATION"/>
+      <sem class="FINANCE"/>  
+      <sem class="HANDICRAFTS_PL"/> 
+      <sem class="TOOL"/> 
+      <sem class="HANDICRAFTS"/>
+      <sem class="WORK_ECONOMY_V"/>
+      <sem class="WORK_ECONOMY_ADV"/>
+    </subclasses>
+        <subclasses class="MULTIWORD">
+      <sem class="EXPRESSIONS"/> <!-- flerordsuttrykk på samisk -->
+    </subclasses>
+
+
+</lexicon>
