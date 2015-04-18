@@ -430,10 +430,10 @@ def leksa_game(request, place=False):
 
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
-		if sess_lang in ['mdf', 'eng']: # maybe need to remove 'eng' from this list later on 
-			sess_lang = 'est' # was: nob
+		if sess_lang in ['mdf']: 
+			sess_lang = 'eng' # was: nob
 	else:
-		sess_lang = 'est' # was: nob
+		sess_lang = 'eng' # was: nob
 
 	default_langpair = 'mdf%s' % sess_lang
 

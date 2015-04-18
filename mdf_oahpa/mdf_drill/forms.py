@@ -350,20 +350,18 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-        ('mdfest', u'Moksha to Estonian'),
-        ('estmdf', u'Estonian to Moksha'),
-	    #('mdfeng', _('Moksha to English')),
-	    #('engmdf', _('English to Moksha')),
+        ('mdfeng', _('Moksha to English')),
+        ('engmdf', _('English to Moksha')),
         ('mdffin', u'Moksha to Finnish'),
         ('finmdf', u'Finnish to Moksha'),           
-        #('mdflat', _('Moksha to Latvian')),
-        #('latmdf', _('Latvian to Moksha')),
+        #('mdfest', _('Moksha to Estonian')),
+        #('estmdf', _('Estonian to Moksha')),
         #('mdfsme', _('Moksha to North Saami')),
         #('smemdf', _('North Saami to Moksha')),
-        #('mdfnob', _('Moksha to Norwegian')),
-        #('nobmdf', _('Norwegian to Moksha')), 
-        #('mdfrus', _('Moksha to Russian')),
-        #('rusmdf', _('Russian to Moksha')),
+        ('mdfdeu', _('Moksha to German')),
+        ('deumdf', _('German to Moksha')), 
+        ('mdfrus', _('Moksha to Russian')),
+        ('rusmdf', _('Russian to Moksha')),
 )
 
 NUMLANGUAGE_CHOICES = (
@@ -371,8 +369,17 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
-    ('HUMAN', _('human')),
+    #('HUMAN', _('human')),
     ('FOOD/DRINK', _('food/drink')),
+    ('BODY', _('body')),
+    ('TIME', _('time')),
+    ('NATUREWORDS', _('nature')),
+    ('ANIMAL', _('animals')),
+    ('SCHOOL/EDUCATION', _('school and education')),
+    ('HOME', _('home')),
+    #('CLOTHES', _('clothes and colors')),
+    #('HEALTHCARE', _('health care')),
+    #('CULTURE', _('culture')),
     ('all', _('all')),
 )
 
@@ -998,7 +1005,7 @@ class LeksaSettings(OahpaSettings):
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
 	
-	default_data = {'gametype' : 'leksa', 'language' : 'mdf', 'dialogue' : 'GG',
+	default_data = {'gametype' : 'leksa', 'language' : 'mdf', 'dialect' : 'main',
 			#'syll' : [],
 			#'bisyllabic': False,
 			#'trisyllabic': False,
@@ -2031,12 +2038,12 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     constant=""
     found=False
     #Interface language
-    if not language: language = "est" # was: nob
+    if not language: language = "eng" # was: nob
     language = switch_language_code(language)
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["est","lat","fin","eng","rus","mdf"]: language="est" # was: nob
+    if not language in ["deu","fin","eng","rus","mdf"]: language="eng" # was: nob
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():
@@ -2589,12 +2596,12 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     constant=""
     found=False
     #Interface language
-    if not language: language = "est"
+    if not language: language = "eng"
     language = switch_language_code(language)
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["rus","est","fin","eng","lat","mdf"]: language="est"
+    if not language in ["rus","fin","eng","deu","mdf"]: language="eng"
 
     for w in msgstrings.keys():
         if found: break
