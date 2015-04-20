@@ -395,7 +395,7 @@
             <t stat="pref">puu</t>
          </tg>
          <tg xml:lang="deu">
-            <t stat="pref">Wald</t>
+            <t stat="pref">Baum</t>
          </tg>
       </mg>
    </e>
@@ -577,12 +577,14 @@
          </tg>
          <tg xml:lang="eng">
             <t stat="pref">hand</t>
+            <t>arm</t>
          </tg>
          <tg xml:lang="fin">
             <t stat="pref">käsi</t>
          </tg>
          <tg xml:lang="deu">
             <t stat="pref">Hand</t>
+            <t>Arm</t>
          </tg>
       </mg>
    </e>
@@ -625,14 +627,14 @@
             <sem class="TRAVEL"/>
          </semantics>
          <tg xml:lang="rus">
-            <t stat="pref">гора без растительности</t>
+            <t stat="pref">гора</t>
             <t>гора в тундре</t>
             <t>гора крутая</t>
-            <t>гора</t>
+            <t>гора без растительности</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">mountain in the tundra</t>
-            <t>mountain</t>
+            <t stat="pref">mountain</t>
+            <t>mountain in the tundra</t>
          </tg>
          <tg xml:lang="fin">
             <t stat="pref">vuori</t>
@@ -690,7 +692,7 @@
             <t stat="pref">nokka</t>
          </tg>
          <tg xml:lang="deu">
-            <t stat="pref">nose_GER</t>
+            <t stat="pref">Nase</t>
          </tg>
       </mg>
    </e>
@@ -768,7 +770,7 @@
             <t stat="pref">siemen</t>
          </tg>
          <tg xml:lang="deu">
-            <t stat="pref">seed_GER</t>
+            <t stat="pref">Same</t>
          </tg>
       </mg>
    </e>
@@ -1154,7 +1156,7 @@
             <t stat="pref">kananpoika</t>
          </tg>
          <tg xml:lang="deu">
-            <t stat="pref">chicken_GER</t>
+            <t stat="pref">Huhn</t>
          </tg>
       </mg>
    </e>
@@ -1358,7 +1360,7 @@
             <t stat="pref">lapa</t>
          </tg>
          <tg xml:lang="deu">
-            <t stat="pref">shoulder_GER</t>
+            <t stat="pref">Schulter</t>
          </tg>
       </mg>
    </e>
@@ -1385,7 +1387,7 @@
             <t stat="pref">keho</t>
          </tg>
          <tg xml:lang="deu">
-            <t stat="pref">trunk_GER</t>
+            <t stat="pref">Gestalt</t>
          </tg>
       </mg>
    </e>
@@ -1431,13 +1433,13 @@
             <t stat="pref">ребро</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">edge</t>
+            <t stat="pref">rib</t>
          </tg>
          <tg xml:lang="fin">
-            <t stat="pref">reuna</t>
+            <t stat="pref">kylki</t>
          </tg>
          <tg xml:lang="deu">
-            <t stat="pref">edge_GER</t>
+            <t stat="pref">Rippe</t>
          </tg>
       </mg>
    </e>
@@ -1465,7 +1467,7 @@
             <t stat="pref">luuranko</t>
          </tg>
          <tg xml:lang="deu">
-            <t stat="pref">skeleton_GER</t>
+            <t stat="pref">Skelett</t>
          </tg>
       </mg>
    </e>
@@ -1491,7 +1493,7 @@
             <t stat="pref">aivot</t>
          </tg>
          <tg xml:lang="deu">
-            <t stat="pref">brain_GER</t>
+            <t stat="pref">Gehirn</t>
          </tg>
       </mg>
    </e>
@@ -1693,7 +1695,7 @@
             <t stat="pref">riisi</t>
          </tg>
          <tg xml:lang="deu">
-            <t stat="pref">rice_GER</t>
+            <t stat="pref">Reis</t>
          </tg>
       </mg>
    </e>
@@ -1710,16 +1712,18 @@
             <sem class="ANIMAL_OTHER"/>
          </semantics>
          <tg xml:lang="rus">
-            <t stat="pref">кожа животного</t>
-            <t>кожа</t>
+            <t stat="pref">кожа</t>
+            <t>кожа животного</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">skin of an animal</t>
-            <t>skin</t>
+            <t stat="pref">skin</t>
+            <t>skin of an animal</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+	   <t stat="pref">nahka</t>
+	 </tg>
          <tg xml:lang="deu">
-            <t stat="pref">skin of an animal_GER</t>
+            <t stat="pref">Haut</t>
          </tg>
       </mg>
    </e>
@@ -1740,7 +1744,9 @@
          <tg xml:lang="eng">
             <t stat="pref">illness</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">sairaus</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Krankheit</t>
          </tg>
@@ -1763,11 +1769,15 @@
          </tg>
          <tg xml:lang="eng">
             <t stat="pref">temperature</t>
-            <t>heat</t>
+            <t>fever</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+	   <t stat="pref">kuume</t>
+         </tg>
+
          <tg xml:lang="deu">
-            <t stat="pref">temperature_GER</t>
+            <t stat="pref">Temperatur</t>
+            <t>Fieber</t>
          </tg>
       </mg>
    </e>
@@ -1788,7 +1798,9 @@
          <tg xml:lang="eng">
             <t stat="pref">deaf person</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">mykkä</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">tauber Mensch</t>
          </tg>
@@ -1812,7 +1824,9 @@
          <tg xml:lang="eng">
             <t stat="pref">blind</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">sokea</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">blind</t>
          </tg>
@@ -1835,7 +1849,9 @@
          <tg xml:lang="eng">
             <t stat="pref">wedding</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">häät</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Hochzeit</t>
          </tg>
@@ -1858,7 +1874,9 @@
          <tg xml:lang="eng">
             <t stat="pref">door</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">ovi</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Tür</t>
          </tg>
@@ -1881,7 +1899,9 @@
          <tg xml:lang="eng">
             <t stat="pref">floor</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">lattia</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Fussboden</t>
          </tg>
@@ -1905,7 +1925,9 @@
          <tg xml:lang="eng">
             <t stat="pref">table</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">pöytä</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Tisch</t>
          </tg>
@@ -1929,7 +1951,9 @@
          <tg xml:lang="eng">
             <t stat="pref">table</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">pöytä</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Tisch</t>
          </tg>
@@ -1953,7 +1977,9 @@
          <tg xml:lang="eng">
             <t stat="pref">window</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">ikkuna</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Fenster</t>
          </tg>
@@ -1977,7 +2003,9 @@
          <tg xml:lang="eng">
             <t stat="pref">lock</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">lukko</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">lock_GER</t>
          </tg>
@@ -2000,9 +2028,11 @@
          <tg xml:lang="eng">
             <t stat="pref">ceiling</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+           <t stat="pref">katto</t>
+         </tg>
          <tg xml:lang="deu">
-            <t stat="pref">ceiling_GER</t>
+            <t stat="pref">Zimmerdecke</t>
          </tg>
       </mg>
    </e>
@@ -2023,7 +2053,9 @@
          <tg xml:lang="eng">
             <t stat="pref">key</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">avain</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Schlüssel</t>
          </tg>
@@ -2046,9 +2078,12 @@
          <tg xml:lang="eng">
             <t stat="pref">roof</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">katto</t>
+         </tg>
+
          <tg xml:lang="deu">
-            <t stat="pref">roof_GER</t>
+            <t stat="pref">Decke</t>
          </tg>
       </mg>
    </e>
@@ -2069,7 +2104,9 @@
          <tg xml:lang="eng">
             <t stat="pref">garden</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">puutarha</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Garten</t>
          </tg>
@@ -2092,7 +2129,9 @@
          <tg xml:lang="eng">
             <t stat="pref">chair</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">tuoli</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Stuhl</t>
          </tg>
@@ -2110,14 +2149,15 @@
             <sem class="LIVING_PLACE_HOME"/>
          </semantics>
          <tg xml:lang="rus">
-            <t stat="pref">дверь</t>
-            <t>ручка двери</t>
+            <t stat="pref">ручка двери</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">door</t>
+            <t stat="pref">door knob</t>
             <t>door handle</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">ovenripa</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">door_GER</t>
          </tg>
@@ -2140,7 +2180,9 @@
          <tg xml:lang="eng">
             <t stat="pref">kitchen</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">keittiö</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Küche</t>
          </tg>
@@ -2163,7 +2205,9 @@
          <tg xml:lang="eng">
             <t stat="pref">bed</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">sänky</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Bett</t>
          </tg>
@@ -2188,7 +2232,9 @@
          <tg xml:lang="eng">
             <t stat="pref">cup</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">kuppi</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Tasse</t>
          </tg>
@@ -2212,7 +2258,9 @@
          <tg xml:lang="eng">
             <t stat="pref">supper</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">illallinen</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Abendessen</t>
          </tg>
@@ -2236,7 +2284,10 @@
          <tg xml:lang="eng">
             <t stat="pref">dinner</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">lounas</t>
+	    <t>päivällinen</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Mittagessen</t>
          </tg>
@@ -2260,7 +2311,9 @@
          <tg xml:lang="eng">
             <t stat="pref">breakfast</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">aamiainen</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Frühstück</t>
          </tg>
@@ -2283,7 +2336,9 @@
          <tg xml:lang="eng">
             <t stat="pref">november</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">marraskuu</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">November</t>
          </tg>
@@ -2304,9 +2359,11 @@
             <t stat="pref">май</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">may</t>
+            <t stat="pref">May</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">toukokuu</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Mai</t>
          </tg>
@@ -2327,9 +2384,11 @@
             <t stat="pref">июль</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">july</t>
+            <t stat="pref">July</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">heinäkuu</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Juli</t>
          </tg>
@@ -2350,9 +2409,11 @@
             <t stat="pref">март</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">march</t>
+            <t stat="pref">March</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">maaliskuu</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">März</t>
          </tg>
@@ -2373,9 +2434,11 @@
             <t stat="pref">июнь</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">june</t>
+            <t stat="pref">June</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">kesäkuu</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Juni</t>
          </tg>
@@ -2396,9 +2459,11 @@
             <t stat="pref">февраль</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">february</t>
+            <t stat="pref">February</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">helmikuu</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Februar</t>
          </tg>
@@ -2419,9 +2484,11 @@
             <t stat="pref">сентябрь</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">september</t>
+            <t stat="pref">September</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">syyskuu</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">September</t>
          </tg>
@@ -2442,9 +2509,11 @@
             <t stat="pref">январь</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">january</t>
+            <t stat="pref">January</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">tammikuu</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Januar</t>
          </tg>
@@ -2465,9 +2534,11 @@
             <t stat="pref">август</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">august</t>
+            <t stat="pref">August</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">elokuu</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">August</t>
          </tg>
@@ -2488,9 +2559,11 @@
             <t stat="pref">октябрь</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">october</t>
+            <t stat="pref">October</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">lokakuu</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Oktober</t>
          </tg>
@@ -2511,9 +2584,11 @@
             <t stat="pref">декабрь</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">december</t>
+            <t stat="pref">December</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">joulukuu</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Dezember</t>
          </tg>
@@ -2534,9 +2609,11 @@
             <t stat="pref">апрель</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">april</t>
+            <t stat="pref">April</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">huhtikuu</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">April</t>
          </tg>
@@ -2559,9 +2636,11 @@
          <tg xml:lang="eng">
             <t stat="pref">wave</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">aalto</t>
+         </tg>
          <tg xml:lang="deu">
-            <t stat="pref">wave_GER</t>
+            <t stat="pref">Welle</t>
          </tg>
       </mg>
    </e>
@@ -2587,9 +2666,12 @@
             <t>lip</t>
             <t>gulf</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">lahti</t>
+         </tg>
+
          <tg xml:lang="deu">
-            <t stat="pref">bay_GER</t>
+            <t stat="pref">Bucht</t>
          </tg>
       </mg>
    </e>
@@ -2614,7 +2696,9 @@
          <tg xml:lang="eng">
             <t stat="pref">river</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">joki</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Fluss</t>
          </tg>
@@ -2638,7 +2722,9 @@
          <tg xml:lang="eng">
             <t stat="pref">lake</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">järvi</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">See</t>
          </tg>
@@ -2661,7 +2747,9 @@
          <tg xml:lang="eng">
             <t stat="pref">stone</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">kivi</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Stein</t>
          </tg>
@@ -2685,7 +2773,9 @@
          <tg xml:lang="eng">
             <t stat="pref">account</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">tili</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">account_GER</t>
          </tg>
@@ -2714,7 +2804,9 @@
             <t>book</t>
             <t>note</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">kirje</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Brief</t>
          </tg>
@@ -2741,7 +2833,9 @@
             <t>dream</t>
             <t>sense</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">ajatus</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Gedanke</t>
          </tg>
@@ -2767,7 +2861,9 @@
             <t stat="pref">hours</t>
             <t>time</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">tunnit</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">hours_GER</t>
          </tg>
@@ -2793,7 +2889,9 @@
             <t stat="pref">hours</t>
             <t>time</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">tunnit</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">hours_GER</t>
          </tg>
@@ -2816,7 +2914,9 @@
          <tg xml:lang="eng">
             <t stat="pref">year</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">vuosi</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Jahr</t>
          </tg>
@@ -2839,7 +2939,9 @@
          <tg xml:lang="eng">
             <t stat="pref">hour</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">tunti</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Stunde</t>
          </tg>
@@ -2862,7 +2964,9 @@
          <tg xml:lang="eng">
             <t stat="pref">hour</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">tunti</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Stunde</t>
          </tg>
@@ -2885,9 +2989,11 @@
          <tg xml:lang="eng">
             <t stat="pref">minute</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">minuutti</t>
+         </tg>
          <tg xml:lang="deu">
-            <t stat="pref">minute_GER</t>
+            <t stat="pref">Minute</t>
          </tg>
       </mg>
    </e>
@@ -2908,7 +3014,9 @@
          <tg xml:lang="eng">
             <t stat="pref">morning</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">aamu</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Morgen</t>
          </tg>
@@ -2931,7 +3039,9 @@
          <tg xml:lang="eng">
             <t stat="pref">evening</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">ilta</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Abend</t>
          </tg>
@@ -2955,7 +3065,9 @@
          <tg xml:lang="eng">
             <t stat="pref">summer</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">kesä</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Sommer</t>
          </tg>
@@ -2979,7 +3091,9 @@
          <tg xml:lang="eng">
             <t stat="pref">autumn</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">syksy</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Herbst</t>
          </tg>
@@ -3003,7 +3117,9 @@
          <tg xml:lang="eng">
             <t stat="pref">winter</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">talvi</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Winter</t>
          </tg>
@@ -3029,7 +3145,9 @@
             <t stat="pref">moon</t>
             <t>month</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">kuu</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Mond</t>
          </tg>
@@ -3053,7 +3171,9 @@
          <tg xml:lang="eng">
             <t stat="pref">spring</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">kevät</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Frühling</t>
          </tg>
@@ -3074,9 +3194,11 @@
             <t stat="pref">суббота</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">saturday</t>
+            <t stat="pref">Saturday</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">lauantai</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Samstag</t>
          </tg>
@@ -3097,9 +3219,11 @@
             <t stat="pref">пятница</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">friday</t>
+            <t stat="pref">Friday</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">perjantai</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Freitag</t>
          </tg>
@@ -3120,9 +3244,11 @@
             <t stat="pref">вторник</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">tuesday</t>
+            <t stat="pref">Tuesday</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">tiistai</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Dienstag</t>
          </tg>
@@ -3143,9 +3269,11 @@
             <t stat="pref">пятница</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">friday</t>
+            <t stat="pref">Friday</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">perjantai</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Freitag</t>
          </tg>
@@ -3166,11 +3294,13 @@
             <t stat="pref">среда</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">wednesday</t>
+            <t stat="pref">Wednesday</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">keskiviikko</t>
+         </tg>
          <tg xml:lang="deu">
-            <t stat="pref">Umwelt</t>
+            <t stat="pref">Mittwoch</t>
          </tg>
       </mg>
    </e>
@@ -3183,7 +3313,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="WEEKDAY"/>
+            <sem class="NATURE"/>
          </semantics>
          <tg xml:lang="rus">
             <t stat="pref">среда</t>
@@ -3191,7 +3321,9 @@
          <tg xml:lang="eng">
             <t stat="pref">environment</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">ympäristö</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Umwelt</t>
          </tg>
@@ -3212,9 +3344,11 @@
             <t stat="pref">четверг</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">thursday</t>
+            <t stat="pref">Thursday</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">torstai</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Donnerstag</t>
          </tg>
@@ -3238,9 +3372,12 @@
          <tg xml:lang="eng">
             <t stat="pref">bag</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">kassi</t>
+	    <t>säkki</t>
+         </tg>
          <tg xml:lang="deu">
-            <t stat="pref">bag_GER</t>
+            <t stat="pref">Tasche</t>
          </tg>
       </mg>
    </e>
@@ -3264,7 +3401,9 @@
             <t stat="pref">war</t>
             <t>fight</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">sota</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Krieg</t>
          </tg>
@@ -3289,9 +3428,11 @@
             <t stat="pref">fight</t>
             <t>war</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">tappelu</t>
+         </tg>
          <tg xml:lang="deu">
-            <t stat="pref">fight_GER</t>
+            <t stat="pref">Kampf</t>
          </tg>
       </mg>
    </e>
@@ -3313,9 +3454,11 @@
          <tg xml:lang="eng">
             <t stat="pref">corner</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">nurkka</t>
+         </tg>
          <tg xml:lang="deu">
-            <t stat="pref">corner_GER</t>
+            <t stat="pref">Ecke</t>
          </tg>
       </mg>
    </e>
@@ -3336,7 +3479,9 @@
          <tg xml:lang="eng">
             <t stat="pref">death</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">kuolema</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Tod</t>
          </tg>
@@ -3363,9 +3508,11 @@
             <t stat="pref">sound</t>
             <t>sign</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">ääni</t>
+         </tg>
          <tg xml:lang="deu">
-            <t stat="pref">sound_GER</t>
+            <t stat="pref">Laut</t>
          </tg>
       </mg>
    </e>
@@ -3386,7 +3533,9 @@
          <tg xml:lang="eng">
             <t stat="pref">hell</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">helvetti</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Hölle</t>
          </tg>
@@ -3412,7 +3561,9 @@
          <tg xml:lang="eng">
             <t stat="pref">sky</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">taivas</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Himmel</t>
          </tg>
@@ -3433,34 +3584,13 @@
             <t stat="pref">бог</t>
          </tg>
          <tg xml:lang="eng">
-            <t stat="pref">god</t>
+            <t stat="pref">God</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">Jumala</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Gott</t>
-         </tg>
-      </mg>
-   </e>
-   <e>
-      <lg>
-         <l pos="n">температура</l>
-      </lg>
-      <sources>
-         <book name="Saamkilsyjjt"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ILLNESS"/>
-         </semantics>
-         <tg xml:lang="rus">
-            <t stat="pref">температура</t>
-         </tg>
-         <tg xml:lang="eng">
-            <t stat="pref">temperature</t>
-         </tg>
-         <tg xml:lang="fin"/>
-         <tg xml:lang="deu">
-            <t stat="pref">temperature_GER</t>
          </tg>
       </mg>
    </e>
@@ -3483,7 +3613,9 @@
          <tg xml:lang="eng">
             <t stat="pref">world</t>
          </tg>
-         <tg xml:lang="fin"/>
+         <tg xml:lang="fin">
+            <t stat="pref">maailma</t>
+         </tg>
          <tg xml:lang="deu">
             <t stat="pref">Welt</t>
          </tg>
@@ -3507,7 +3639,7 @@
             <t pos="n" stat="pref">religion</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">religion_FIN</t>
+            <t pos="n" stat="pref">uskonto</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">religion_DEU</t>
@@ -3582,7 +3714,7 @@
             <t pos="n" stat="pref">money</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">money_FIN</t>
+            <t pos="n" stat="pref">raha</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">money_DEU</t>
@@ -3607,7 +3739,7 @@
             <t pos="n" stat="pref">dollar</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">dollar_FIN</t>
+            <t pos="n" stat="pref">dollari</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">dollar_DEU</t>
@@ -3632,7 +3764,7 @@
             <t pos="n" stat="pref">bill</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">bill_FIN</t>
+            <t pos="n" stat="pref">lasku</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">bill_DEU</t>
@@ -3657,7 +3789,7 @@
             <t pos="n" stat="pref">marriage</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">marriage_FIN</t>
+            <t pos="n" stat="pref">avioliitto</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">marriage_DEU</t>
@@ -3682,7 +3814,7 @@
             <t pos="n" stat="pref">team</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">team_FIN</t>
+            <t pos="n" stat="pref">joukkue</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">team_DEU</t>
@@ -3707,7 +3839,7 @@
             <t pos="n" stat="pref">relationship</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">relationship_FIN</t>
+            <t pos="n" stat="pref">suhde</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">relationship_DEU</t>
@@ -3732,7 +3864,7 @@
             <t pos="n" stat="pref">gender</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">gender_FIN</t>
+            <t pos="n" stat="pref">sukupuoli</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">gender_DEU</t>
@@ -3757,7 +3889,7 @@
             <t pos="n" stat="pref">gender</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">gender_FIN</t>
+            <t pos="n" stat="pref">sukupuoli</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">gender_DEU</t>
@@ -3782,7 +3914,7 @@
             <t pos="n" stat="pref">murder</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">murder_FIN</t>
+            <t pos="n" stat="pref">murha</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">murder_DEU</t>
@@ -3857,7 +3989,7 @@
             <t pos="n" stat="pref">technology</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">technology_FIN</t>
+            <t pos="n" stat="pref">teknologia</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">technology_DEU</t>
@@ -3882,7 +4014,7 @@
             <t pos="n" stat="pref">energy</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">energy_FIN</t>
+            <t pos="n" stat="pref">voima</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">energy_DEU</t>
@@ -3907,7 +4039,7 @@
             <t pos="n" stat="pref">election</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">election_FIN</t>
+            <t pos="n" stat="pref">vaalit</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">election_DEU</t>
@@ -3932,7 +4064,7 @@
             <t pos="n" stat="pref">magazine</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">magazine_FIN</t>
+            <t pos="n" stat="pref">aikakauslehti</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">magazine_DEU</t>
@@ -3957,7 +4089,7 @@
             <t pos="n" stat="pref">newspaper</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">newspaper_FIN</t>
+            <t pos="n" stat="pref">sanomalehti</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">newspaper_DEU</t>
@@ -3982,7 +4114,7 @@
             <t pos="n" stat="pref">poison</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">poison_FIN</t>
+            <t pos="n" stat="pref">myrkky</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">poison_DEU</t>
@@ -4007,7 +4139,7 @@
             <t pos="n" stat="pref">poison</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">poison_FIN</t>
+            <t pos="n" stat="pref">myrkky</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">poison_DEU</t>
@@ -4032,7 +4164,7 @@
             <t pos="n" stat="pref">gun</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">gun_FIN</t>
+            <t pos="n" stat="pref">pyssy</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">gun_DEU</t>
@@ -4057,7 +4189,7 @@
             <t pos="n" stat="pref">sport</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">sport_FIN</t>
+            <t pos="n" stat="pref">urheilu</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">sport_DEU</t>
@@ -4082,7 +4214,7 @@
             <t pos="n" stat="pref">sport race</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">sport race_FIN</t>
+            <t pos="n" stat="pref">kilpailu</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">sport race_DEU</t>
@@ -4107,7 +4239,7 @@
             <t pos="n" stat="pref">exercise</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">exercise_FIN</t>
+            <t pos="n" stat="pref">harjoitus</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">exercise_DEU</t>
@@ -4132,7 +4264,7 @@
             <t pos="n" stat="pref">game</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">game_FIN</t>
+            <t pos="n" stat="pref">peli</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">game_DEU</t>
@@ -4157,7 +4289,7 @@
             <t pos="n" stat="pref">sign</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">sign_FIN</t>
+            <t pos="n" stat="pref">merkki</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">sign_DEU</t>
@@ -4182,7 +4314,7 @@
             <t pos="n" stat="pref">science</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">science_FIN</t>
+            <t pos="n" stat="pref">tiede</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">science_DEU</t>
@@ -4207,7 +4339,7 @@
             <t pos="n" stat="pref">song</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">song_FIN</t>
+            <t pos="n" stat="pref">laulu</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">song_DEU</t>
@@ -4232,7 +4364,7 @@
             <t pos="n" stat="pref">musical instrument</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">musical instrument_FIN</t>
+            <t pos="n" stat="pref">soitin</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">musical instrument_DEU</t>
@@ -4257,7 +4389,7 @@
             <t pos="n" stat="pref">music</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">music_FIN</t>
+            <t pos="n" stat="pref">musiikki</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">music_DEU</t>
@@ -4282,7 +4414,7 @@
             <t pos="n" stat="pref">art</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">art_FIN</t>
+            <t pos="n" stat="pref">taide</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">art_DEU</t>
@@ -4307,7 +4439,7 @@
             <t pos="n" stat="pref">juice</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">juice_FIN</t>
+            <t pos="n" stat="pref">mehu</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">juice_DEU</t>
@@ -4332,7 +4464,7 @@
             <t pos="n" stat="pref">pork</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">pork_FIN</t>
+            <t pos="n" stat="pref">kinkku</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">pork_DEU</t>
@@ -4357,7 +4489,7 @@
             <t pos="n" stat="pref">pork</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">pork_FIN</t>
+            <t pos="n" stat="pref">kinkku</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">pork_DEU</t>
@@ -4382,7 +4514,7 @@
             <t pos="n" stat="pref">beef</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">beef_FIN</t>
+            <t pos="n" stat="pref">naudanliha</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">beef_DEU</t>
@@ -4407,7 +4539,7 @@
             <t pos="n" stat="pref">beef</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">beef_FIN</t>
+            <t pos="n" stat="pref">naudanliha</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">beef_DEU</t>
@@ -4432,7 +4564,7 @@
             <t pos="n" stat="pref">apple</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">apple_FIN</t>
+            <t pos="n" stat="pref">omena</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">apple_DEU</t>
@@ -4457,7 +4589,7 @@
             <t pos="n" stat="pref">banana</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">banana_FIN</t>
+            <t pos="n" stat="pref">banaani</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">banana_DEU</t>
@@ -4482,7 +4614,7 @@
             <t pos="n" stat="pref">orange</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">orange_FIN</t>
+            <t pos="n" stat="pref">appelsiini</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">orange_DEU</t>
@@ -4507,10 +4639,10 @@
             <t pos="n" stat="pref">plate</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">plate_FIN</t>
+            <t pos="n" stat="pref">lautanen</t>
          </tg>
          <tg xml:lang="deu">
-            <t pos="n" stat="pref">plate_DEU</t>
+            <t pos="n" stat="pref">Teller</t>
          </tg>
       </mg>
    </e>
@@ -4532,7 +4664,7 @@
             <t pos="n" stat="pref">bottle</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">bottle_FIN</t>
+            <t pos="n" stat="pref">pullo</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">bottle_DEU</t>
@@ -4607,7 +4739,7 @@
             <t pos="n" stat="pref">bathroom</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">bathroom_FIN</t>
+            <t pos="n" stat="pref">pesuhuone</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">bathroom_DEU</t>
@@ -4632,7 +4764,7 @@
             <t pos="n" stat="pref">pencil</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">pencil_FIN</t>
+            <t pos="n" stat="pref">kynä</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">pencil_DEU</t>
@@ -4657,7 +4789,8 @@
             <t pos="n" stat="pref">pen</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">pen_FIN</t>
+            <t pos="n" stat="pref">kuulakärkikynä</t>
+<t>kynä</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">pen_DEU</t>
@@ -4682,7 +4815,7 @@
             <t pos="n" stat="pref">photograph</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">photograph_FIN</t>
+            <t pos="n" stat="pref">valokuva</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">photograph_DEU</t>
@@ -4707,7 +4840,7 @@
             <t pos="n" stat="pref">soap</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">soap_FIN</t>
+            <t pos="n" stat="pref">saippua</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">soap_DEU</t>
@@ -4732,7 +4865,7 @@
             <t pos="n" stat="pref">book</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">book_FIN</t>
+            <t pos="n" stat="pref">kirja</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">book_DEU</t>
@@ -4757,7 +4890,7 @@
             <t pos="n" stat="pref">book</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">book_FIN</t>
+            <t pos="n" stat="pref">kirja</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">book_DEU</t>
@@ -4782,10 +4915,10 @@
             <t pos="n" stat="pref">page</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">page_FIN</t>
+            <t pos="n" stat="pref">sivu</t>
          </tg>
          <tg xml:lang="deu">
-            <t pos="n" stat="pref">page_DEU</t>
+            <t pos="n" stat="pref">Seite</t>
          </tg>
       </mg>
    </e>
@@ -4807,10 +4940,10 @@
             <t pos="n" stat="pref">wall</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">wall_FIN</t>
+            <t pos="n" stat="pref">seinä</t>
          </tg>
          <tg xml:lang="deu">
-            <t pos="n" stat="pref">wall_DEU</t>
+            <t pos="n" stat="pref">Wand</t>
          </tg>
       </mg>
    </e>
@@ -4832,10 +4965,10 @@
             <t pos="n" stat="pref">paper</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">paper_FIN</t>
+            <t pos="n" stat="pref">paperi</t>
          </tg>
          <tg xml:lang="deu">
-            <t pos="n" stat="pref">paper_DEU</t>
+            <t pos="n" stat="pref">Papier</t>
          </tg>
       </mg>
    </e>
@@ -4857,10 +4990,10 @@
             <t pos="n" stat="pref">paper</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">paper_FIN</t>
+            <t pos="n" stat="pref">paperi</t>
          </tg>
          <tg xml:lang="deu">
-            <t pos="n" stat="pref">paper_DEU</t>
+            <t pos="n" stat="pref">Papier</t>
          </tg>
       </mg>
    </e>
@@ -4882,7 +5015,7 @@
             <t pos="n" stat="pref">pool</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">pool_FIN</t>
+            <t pos="n" stat="pref">uima-allas</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">pool_DEU</t>
@@ -4907,7 +5040,7 @@
             <t pos="n" stat="pref">telephone</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">telephone_FIN</t>
+            <t pos="n" stat="pref">puhelin</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">telephone_DEU</t>
@@ -4932,7 +5065,7 @@
             <t pos="n" stat="pref">yard</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">yard_FIN</t>
+            <t pos="n" stat="pref">piha</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">yard_DEU</t>
@@ -4957,7 +5090,7 @@
             <t pos="n" stat="pref">needle</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">needle_FIN</t>
+            <t pos="n" stat="pref">neula</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">needle_DEU</t>
@@ -4982,7 +5115,7 @@
             <t pos="n" stat="pref">box</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">box_FIN</t>
+            <t pos="n" stat="pref">laatikko</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">box_DEU</t>
@@ -5007,7 +5140,7 @@
             <t pos="n" stat="pref">gift</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">gift_FIN</t>
+            <t pos="n" stat="pref">lahja</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">gift_DEU</t>
@@ -5032,7 +5165,7 @@
             <t pos="n" stat="pref">card</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">card_FIN</t>
+            <t pos="n" stat="pref">kortti</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">card_DEU</t>
@@ -5057,7 +5190,7 @@
             <t pos="n" stat="pref">ring</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">ring_FIN</t>
+            <t pos="n" stat="pref">sormus</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">ring_DEU</t>
@@ -5082,7 +5215,7 @@
             <t pos="n" stat="pref">tool</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">tool_FIN</t>
+            <t pos="n" stat="pref">työkalu</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">tool_DEU</t>
@@ -5107,7 +5240,7 @@
             <t pos="n" stat="pref">lamp</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">lamp_FIN</t>
+            <t pos="n" stat="pref">öljylamppu</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">lamp_DEU</t>
@@ -5132,7 +5265,7 @@
             <t pos="n" stat="pref">lamp</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">lamp_FIN</t>
+            <t pos="n" stat="pref">lamppu</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">lamp_DEU</t>
@@ -5157,7 +5290,7 @@
             <t pos="n" stat="pref">fan</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">fan_FIN</t>
+            <t pos="n" stat="pref">viuhka</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">fan_DEU</t>
@@ -5182,7 +5315,7 @@
             <t pos="n" stat="pref">network</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">network_FIN</t>
+            <t pos="n" stat="pref">verkosto</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">network_DEU</t>
@@ -5207,7 +5340,7 @@
             <t pos="n" stat="pref">computer</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">computer_FIN</t>
+            <t pos="n" stat="pref">tietokone</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">computer_DEU</t>
@@ -5232,7 +5365,7 @@
             <t pos="n" stat="pref">computer</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">computer_FIN</t>
+            <t pos="n" stat="pref">tietokone</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">computer_DEU</t>
@@ -5257,7 +5390,7 @@
             <t pos="n" stat="pref">screen</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">screen_FIN</t>
+            <t pos="n" stat="pref">näyttö</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">screen_DEU</t>
@@ -5282,7 +5415,7 @@
             <t pos="n" stat="pref">video camera</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">video camera_FIN</t>
+            <t pos="n" stat="pref">videokamera</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">video camera_DEU</t>
@@ -5307,7 +5440,7 @@
             <t pos="n" stat="pref">video camera</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">video camera_FIN</t>
+            <t pos="n" stat="pref">videokamera</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">video camera_DEU</t>
@@ -5332,10 +5465,10 @@
             <t pos="n" stat="pref">television</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">television_FIN</t>
+            <t pos="n" stat="pref">televisio</t>
          </tg>
          <tg xml:lang="deu">
-            <t pos="n" stat="pref">television_DEU</t>
+            <t pos="n" stat="pref">Fernsehen</t>
          </tg>
       </mg>
    </e>
@@ -5357,10 +5490,10 @@
             <t pos="n" stat="pref">television</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">television_FIN</t>
+            <t pos="n" stat="pref">televisio</t>
          </tg>
          <tg xml:lang="deu">
-            <t pos="n" stat="pref">television_DEU</t>
+            <t pos="n" stat="pref">Fernsehen</t>
          </tg>
       </mg>
    </e>
@@ -5382,10 +5515,10 @@
             <t pos="n" stat="pref">radio</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">radio_FIN</t>
+            <t pos="n" stat="pref">radio</t>
          </tg>
          <tg xml:lang="deu">
-            <t pos="n" stat="pref">radio_DEU</t>
+            <t pos="n" stat="pref">Rundfunk</t>
          </tg>
       </mg>
    </e>
@@ -5407,10 +5540,10 @@
             <t pos="n" stat="pref">beard</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">beard_FIN</t>
+            <t pos="n" stat="pref">parta</t>
          </tg>
          <tg xml:lang="deu">
-            <t pos="n" stat="pref">beard_DEU</t>
+            <t pos="n" stat="pref">Bart</t>
          </tg>
       </mg>
    </e>
@@ -5432,7 +5565,7 @@
             <t pos="n" stat="pref">tear</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">tear_FIN</t>
+            <t pos="n" stat="pref">kyynel</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">tear_DEU</t>
@@ -5457,35 +5590,10 @@
             <t pos="n" stat="pref">back</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">back_FIN</t>
+            <t pos="n" stat="pref">selkä</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">back_DEU</t>
-         </tg>
-      </mg>
-   </e>
-   <e>
-      <lg>
-         <l pos="n">сур</l>
-         <sources>
-            <book name="xxx"/>
-         </sources>
-      </lg>
-      <mg>
-         <semantics>
-            <sem class="BODY"/>
-         </semantics>
-         <tg xml:lang="rus">
-            <t pos="n" stat="pref">палец</t>
-         </tg>
-         <tg xml:lang="eng">
-            <t pos="n" stat="pref">finger</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="n" stat="pref">finger_FIN</t>
-         </tg>
-         <tg xml:lang="deu">
-            <t pos="n" stat="pref">finger_DEU</t>
          </tg>
       </mg>
    </e>
@@ -5530,37 +5638,14 @@
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref">foot</t>
+<t>leg</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">foot_FIN</t>
+            <t pos="n" stat="pref">jalka</t>
          </tg>
          <tg xml:lang="deu">
-            <t pos="n" stat="pref">foot_DEU</t>
-         </tg>
-      </mg>
-   </e>
-   <e>
-      <lg>
-         <l pos="n">пильге</l>
-         <sources>
-            <book name="xxx"/>
-         </sources>
-      </lg>
-      <mg>
-         <semantics>
-            <sem class="BODY"/>
-         </semantics>
-         <tg xml:lang="rus">
-            <t pos="n" stat="pref">нога</t>
-         </tg>
-         <tg xml:lang="eng">
-            <t pos="n" stat="pref">leg</t>
-         </tg>
-         <tg xml:lang="fin">
-            <t pos="n" stat="pref">leg_FIN</t>
-         </tg>
-         <tg xml:lang="deu">
-            <t pos="n" stat="pref">leg_DEU</t>
+            <t pos="n" stat="pref">Fuß</t>
+<t>Bein</t>
          </tg>
       </mg>
    </e>
@@ -5582,7 +5667,7 @@
             <t pos="n" stat="pref">sweat</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">sweat_FIN</t>
+            <t pos="n" stat="pref">hiki</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">sweat_DEU</t>
@@ -5607,7 +5692,7 @@
             <t pos="n" stat="pref">voice</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">voice_FIN</t>
+            <t pos="n" stat="pref">ääni</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">voice_DEU</t>
@@ -5632,7 +5717,7 @@
             <t pos="n" stat="pref">ocean</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">ocean_FIN</t>
+            <t pos="n" stat="pref">valtameri</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">ocean_DEU</t>
@@ -5657,7 +5742,7 @@
             <t pos="n" stat="pref">ocean</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">ocean_FIN</t>
+            <t pos="n" stat="pref">valtameri</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">ocean_DEU</t>
@@ -5682,7 +5767,7 @@
             <t pos="n" stat="pref">mountain</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">mountain_FIN</t>
+            <t pos="n" stat="pref">vuori</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">mountain_DEU</t>
@@ -5707,7 +5792,7 @@
             <t pos="n" stat="pref">flower</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">flower_FIN</t>
+            <t pos="n" stat="pref">kukka</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">flower_DEU</t>
@@ -5732,7 +5817,7 @@
             <t pos="n" stat="pref">valley</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">valley_FIN</t>
+            <t pos="n" stat="pref">laakso</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">valley_DEU</t>
@@ -5755,9 +5840,11 @@
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref">grass</t>
+<t>hay</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">grass_FIN</t>
+            <t pos="n" stat="pref">ruoho</t>
+<t>heinä</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">grass_DEU</t>
@@ -5782,7 +5869,7 @@
             <t pos="n" stat="pref">air</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">air_FIN</t>
+            <t pos="n" stat="pref">ilma</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">air_DEU</t>
@@ -5807,7 +5894,7 @@
             <t pos="n" stat="pref">beach</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">beach_FIN</t>
+            <t pos="n" stat="pref">ranta</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">beach_DEU</t>
@@ -5832,7 +5919,7 @@
             <t pos="n" stat="pref">ice</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">ice_FIN</t>
+            <t pos="n" stat="pref">jää</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">ice_DEU</t>
@@ -5857,7 +5944,7 @@
             <t pos="n" stat="pref">heat</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">heat_FIN</t>
+            <t pos="n" stat="pref">kuumuus</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">heat_DEU</t>
@@ -5882,7 +5969,7 @@
             <t pos="n" stat="pref">glass</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">glass_FIN</t>
+            <t pos="n" stat="pref">lasi</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">glass_DEU</t>
@@ -5907,7 +5994,7 @@
             <t pos="n" stat="pref">metal</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">metal_FIN</t>
+            <t pos="n" stat="pref">metalli</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">metal_DEU</t>
@@ -5932,7 +6019,7 @@
             <t pos="n" stat="pref">plastic</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">plastic_FIN</t>
+            <t pos="n" stat="pref">muovi</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">plastic_DEU</t>
@@ -5957,7 +6044,7 @@
             <t pos="n" stat="pref">diamond</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">diamond_FIN</t>
+            <t pos="n" stat="pref">timantti</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">diamond_DEU</t>
@@ -5982,7 +6069,7 @@
             <t pos="n" stat="pref">clay</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">clay_FIN</t>
+            <t pos="n" stat="pref">savi</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">clay_DEU</t>
@@ -6007,7 +6094,7 @@
             <t pos="n" stat="pref">dust</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">dust_FIN</t>
+            <t pos="n" stat="pref">pöly</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">dust_DEU</t>
@@ -6032,7 +6119,7 @@
             <t pos="n" stat="pref">gold</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">gold_FIN</t>
+            <t pos="n" stat="pref">kulta</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">gold_DEU</t>
@@ -6057,7 +6144,7 @@
             <t pos="n" stat="pref">gold</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">gold_FIN</t>
+            <t pos="n" stat="pref">kulta</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">gold_DEU</t>
@@ -6082,7 +6169,7 @@
             <t pos="n" stat="pref">copper</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">copper_FIN</t>
+            <t pos="n" stat="pref">kupari</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">copper_DEU</t>
@@ -6107,7 +6194,7 @@
             <t pos="n" stat="pref">silver</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">silver_FIN</t>
+            <t pos="n" stat="pref">hopea</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">silver_DEU</t>
@@ -6132,7 +6219,7 @@
             <t pos="n" stat="pref">meter</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">meter_FIN</t>
+            <t pos="n" stat="pref">metri</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">meter_DEU</t>
@@ -6157,7 +6244,7 @@
             <t pos="n" stat="pref">centimeter</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">centimeter_FIN</t>
+            <t pos="n" stat="pref">senttimetri</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">centimeter_DEU</t>
@@ -6182,7 +6269,7 @@
             <t pos="n" stat="pref">kilogram</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">kilogram_FIN</t>
+            <t pos="n" stat="pref">kilo</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">kilogram_DEU</t>
@@ -6207,7 +6294,7 @@
             <t pos="n" stat="pref">kilogram</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">kilogram_FIN</t>
+            <t pos="n" stat="pref">kilo</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">kilogram_DEU</t>
@@ -6232,7 +6319,7 @@
             <t pos="n" stat="pref">inch</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">inch_FIN</t>
+            <t pos="n" stat="pref">tuuma</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">inch_DEU</t>
@@ -6257,7 +6344,7 @@
             <t pos="n" stat="pref">pound</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">pound_FIN</t>
+            <t pos="n" stat="pref">naula</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">pound_DEU</t>
@@ -6282,7 +6369,7 @@
             <t pos="n" stat="pref">half</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">half_FIN</t>
+            <t pos="n" stat="pref">puolikas</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">half_DEU</t>
@@ -6307,7 +6394,7 @@
             <t pos="n" stat="pref">circle</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">circle_FIN</t>
+            <t pos="n" stat="pref">ympyrä</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">circle_DEU</t>
@@ -6332,7 +6419,7 @@
             <t pos="n" stat="pref">circle</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">circle_FIN</t>
+            <t pos="n" stat="pref">ympyrä</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">circle_DEU</t>
@@ -6357,7 +6444,7 @@
             <t pos="n" stat="pref">square</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">square_FIN</t>
+            <t pos="n" stat="pref">neliö</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">square_DEU</t>
@@ -6382,7 +6469,7 @@
             <t pos="n" stat="pref">square</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">square_FIN</t>
+            <t pos="n" stat="pref">neliö</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">square_DEU</t>
@@ -6407,7 +6494,7 @@
             <t pos="n" stat="pref">date</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">date_FIN</t>
+            <t pos="n" stat="pref">päivämäärä</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">date_DEU</t>
@@ -6432,7 +6519,7 @@
             <t pos="n" stat="pref">date</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">date_FIN</t>
+            <t pos="n" stat="pref">päivä</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">date_DEU</t>
@@ -6457,7 +6544,7 @@
             <t pos="n" stat="pref">weight</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">weight_FIN</t>
+            <t pos="n" stat="pref">paino</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">weight_DEU</t>
@@ -6482,7 +6569,7 @@
             <t pos="n" stat="pref">weight</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">weight_FIN</t>
+            <t pos="n" stat="pref">paino</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">weight_DEU</t>
@@ -6507,7 +6594,7 @@
             <t pos="n" stat="pref">map</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">map_FIN</t>
+            <t pos="n" stat="pref">kartta</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">map_DEU</t>
@@ -6529,10 +6616,11 @@
             <t pos="n" stat="pref">точка</t>
          </tg>
          <tg xml:lang="eng">
-            <t pos="n" stat="pref">dot</t>
+            <t pos="n" stat="pref">fullstop</t>
+<t>period</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">dot_FIN</t>
+            <t pos="n" stat="pref">piste</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">dot_DEU</t>
@@ -6557,7 +6645,7 @@
             <t pos="n" stat="pref">consonant</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">consonant_FIN</t>
+            <t pos="n" stat="pref">konsonantti</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">consonant_DEU</t>
@@ -6582,7 +6670,7 @@
             <t pos="n" stat="pref">vowel</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">vowel_FIN</t>
+            <t pos="n" stat="pref">vokaali</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">vowel_DEU</t>
@@ -6607,7 +6695,7 @@
             <t pos="n" stat="pref">light</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">light_FIN</t>
+            <t pos="n" stat="pref">valo</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">light_DEU</t>
@@ -6632,7 +6720,7 @@
             <t pos="n" stat="pref">pain</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">pain_FIN</t>
+            <t pos="n" stat="pref">kipu</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">pain_DEU</t>
@@ -6657,7 +6745,7 @@
             <t pos="n" stat="pref">pain</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">pain_FIN</t>
+            <t pos="n" stat="pref">kipu</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">pain_DEU</t>
@@ -6682,7 +6770,7 @@
             <t pos="n" stat="pref">adjective</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">adjective_FIN</t>
+            <t pos="n" stat="pref">adjektiivi</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">adjective_DEU</t>
@@ -6707,7 +6795,7 @@
             <t pos="n" stat="pref">north</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">north_FIN</t>
+            <t pos="n" stat="pref">pohjoinen</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">north_DEU</t>
@@ -6732,7 +6820,7 @@
             <t pos="n" stat="pref">north</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">north_FIN</t>
+            <t pos="n" stat="pref">pohjoinen</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">north_DEU</t>
@@ -6757,7 +6845,7 @@
             <t pos="n" stat="pref">south</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">south_FIN</t>
+            <t pos="n" stat="pref">etelä</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">south_DEU</t>
@@ -6782,7 +6870,7 @@
             <t pos="n" stat="pref">east</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">east_FIN</t>
+            <t pos="n" stat="pref">itä</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">east_DEU</t>
@@ -6807,7 +6895,7 @@
             <t pos="n" stat="pref">west</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">west_FIN</t>
+            <t pos="n" stat="pref">länsi</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="n" stat="pref">west_DEU</t>
@@ -6832,10 +6920,10 @@
             <t pos="n" stat="pref">Sunday</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">Sunday_FIN</t>
+            <t pos="n" stat="pref">sunnuntai</t>
          </tg>
          <tg xml:lang="deu">
-            <t pos="n" stat="pref">Sunday_DEU</t>
+            <t pos="n" stat="pref">Sonntag</t>
          </tg>
       </mg>
    </e>
@@ -6857,10 +6945,10 @@
             <t pos="n" stat="pref">day</t>
          </tg>
          <tg xml:lang="fin">
-            <t pos="n" stat="pref">day_FIN</t>
+            <t pos="n" stat="pref">päivä</t>
          </tg>
          <tg xml:lang="deu">
-            <t pos="n" stat="pref">day_DEU</t>
+            <t pos="n" stat="pref">Tag</t>
          </tg>
       </mg>
    </e>
