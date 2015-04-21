@@ -188,7 +188,7 @@ class SahkaGame(Game):
 
         utterance = Utterance.objects.get(Q(id=db_info['utterance_id']))
         targets = []
-        language="nob"
+        language="eng"
         if self.settings.has_key('language'):
             language = self.settings['language']
 

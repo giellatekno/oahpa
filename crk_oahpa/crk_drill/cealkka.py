@@ -866,7 +866,7 @@ class CealkkaGame(Game):
 		else:
 			dialect = DEFAULT_DIALECT
 		# TODO: language setting
-		language = "nob"
+		language = "eng"
 		if self.settings.has_key('language'):
 			language = self.settings['language']
 
