@@ -42,11 +42,13 @@
 						<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
 						<select id="language_select" name="language" onChange="javascript:this.form.submit();">
 
-						{% ifequal LANGUAGE_CODE "crk" %}
-							<option value="crk" selected="selected">Plains Cree</option>
-						{% else %}
-							<option value="crk">Plains Cree</option>
-						{% endifequal %}
+						{% comment %}
+						    {% ifequal LANGUAGE_CODE "crk" %}
+							    <option value="crk" selected="selected">Plains Cree</option>
+						    {% else %}
+							    <option value="crk">Plains Cree</option>
+						    {% endifequal %}
+						{% endcomment %}
 					<!--	{% ifequal LANGUAGE_CODE "fi" %}
 							<option value="fi" selected="selected">Suomi</option>
 						{% else %}
