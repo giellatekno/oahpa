@@ -1,8 +1,8 @@
 #!/bin/sh
 
 P="python2.7"
-#GTHOME="/home/heli/main/ped"
-GTHOME="/Users/mslm/main/ped"
+GTHOME="/home/heli/main/ped"
+#GTHOME="/Users/pyry/gtsvn/ped"
 LANGDIR="crk"
 DATA=$GTHOME/$LANGDIR
 DPS="$DATA/src"
@@ -283,12 +283,12 @@ echo " "
 echo "done"
 echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with messages to feedback"
-# $P install.py --messagefile $META/messages.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with messages to feedback"
+$P install.py --messagefile $META/messages.eng.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with messages to feedback"
@@ -491,6 +491,14 @@ echo "==================================================="
 
 $P manage.py fixtagattributes
 $P manage.py mergetags
+
+echo "==================================================="
+echo "adding feedback to nouns"
+$P install.py -f $DPS/N_crk.xml --feedbackfile $META/feedback_nouns.xml
+echo " "
+echo "done"
+echo "==================================================="
+
 
 # echo "==================================================="
 # echo "adding feedback to verbs"
