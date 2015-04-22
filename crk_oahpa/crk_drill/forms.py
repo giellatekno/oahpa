@@ -355,12 +355,21 @@ DERIVATION_CHOICES_CONTEXT = (
 
 BOOK_CHOICES = (
     ('all', _(u'all')),
-    ('GG1', _('Book1')),
+    ('Intr1', _('Introductory 1')), 
+    ('Intr2', _('Introductory 2')), 
+    ('Intr3', _('Introductory 3')), 
+    ('Intr4', _('Introductory 4')), 
+    ('advan', _('Advanced')), 
     ('Audio', _('Audiofiles')),
-#    ('GG2', _('Book2')),
-    ('advan', _('Advanced')),
+
 )
 
+CHAPTER_CHOICES = {
+    'Intr1' : ['I1','I2','I3'],
+    'Intr2' : ['I4', 'I5'],
+    'Intr3' : ['I6', 'I7'],
+    'Intr4' : ['I8', 'I9', 'I10', 'I11', 'I12'],
+}
 
 FREQUENCY_CHOICES = (
 	('rare', _('rare')),
@@ -399,10 +408,15 @@ NUMLANGUAGE_CHOICES = (
 
 SEMTYPE_CHOICES = (
     ('HUMAN', _('human')),
-    ('FOOD-DRINK', _('food/drink')),
+    ('MIND-BODY', _('body and mind')),
+    ('FOOD-DRINK', _('food and drink')),
+    ('NATURE-ANIMALS', _('nature and animals')),
     ('THINGS', _('things')),
-    ('PLACE', _('places')),
-    ('NATURE-ANIMALS', _('nature/animals')),
+    ('DAILY-LIFE', _('daily life')),
+    ('OCCUPATION', _('occupation')),
+    ('EVERYDAY', _('everyday')),
+    ('DESCRIPTIONS', _('descriptions')),
+    ('SPEECH', _('speech')),
     ('all', _('all')),
 )
 
