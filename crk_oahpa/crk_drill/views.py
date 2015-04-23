@@ -427,6 +427,7 @@ def leksa_game(request, place=False):
 		template = 'leksa.html'
 
 	sess_lang = request.session.get('django_language')
+	print sess_lang
 
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
@@ -435,7 +436,9 @@ def leksa_game(request, place=False):
 	else:
 		sess_lang = 'eng' # was: nob
 
+	print sess_lang
 	default_langpair = 'crk%s' % sess_lang
+	print default_langpair
 
 	c = leksagame.create_game(request, initial_transtype=default_langpair)
 

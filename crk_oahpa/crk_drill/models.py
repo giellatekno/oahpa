@@ -7,6 +7,9 @@ from django.db import connection
 from django.db import transaction
 
 from django.utils.encoding import smart_unicode
+
+from .forms import CHAPTER_CHOICES
+
 class BulkManager(models.Manager):
 	""" This Manager adds additional methods to Feedback.objects. That allows
 	for bulk inserting via custom SQL query (calling INSERT INTO on a list of
@@ -429,7 +432,8 @@ def leksa_filter(Model,
 		QUERY['frequency__in'] = frequency
 
 	if source and source not in ['all', 'All']:
-		QUERY['source__name__in'] = [source]
+		# QUERY['source__name__in'] = [source]
+		QUERY['chapter__in'] = CHAPTER_CHOICES[source]
 
 	query_set = Model.objects.exclude(**EXCL).filter(**QUERY).order_by('?')[:10]
 	query_ids = query_set.values_list('id', 'lemma')

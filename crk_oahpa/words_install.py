@@ -251,7 +251,7 @@ class Entry(object):
 	def processSources(self):
 		""" Handles nodes such as...
 			<sources>
-			   <book name=""/>
+			   <book name="" chapter="L6"/>
 			   <frequency class="common"/>
 			   <geography class="mid"/>
 			</sources>
@@ -271,8 +271,11 @@ class Entry(object):
 		books = _elements(sources, "book")
 		
 		book_names = [_attribute(b, "name") for b in books]
+
+		book_chapters = [_attribute(b, "chapter") for b in books]
 		
 		self.sources = book_names
+		self.chapters = book_chapters
 
 		frequency = _elements(sources, "frequency")
 		geography = _elements(sources, "geography")
@@ -664,6 +667,14 @@ class Words(object):
 			w.source.add(book_entry)
 			w.save()
 
+	def add_chapters(self,entry,w):
+		for chapter in entry.chapters:
+			if VERBOSE:
+				print >> _STDOUT, "Added chapter ", chapter.encode('utf-8')
+			w.chapter = chapter
+			w.save()
+
+
 	def add_dialects(self,entry,w):
 		for dialect, dial_data in DIALECTS.items():  # fill the dialect field of the Word object - added by Heli
 			dial, created = Dialect.objects.get_or_create(dialect=dialect)
@@ -1039,6 +1050,8 @@ class Words(object):
 		if changes_to_xml:
 			if entry.sources:
 				self.add_sources(entry, w)
+			if entry.chapters:
+				self.add_chapters(entry, w)
         
 		if changes_to_xml:
 			if excl_dialect:
