@@ -112,7 +112,11 @@ def main(opts):
 		sys.exit()
 
 	if options.feedbackfile and options.infile:
-	    feedback.read_feedback(options.feedbackfile,options.infile)
+	    if options.append:
+	        append_only = True
+	    else:
+	        append_only = False
+	    feedback.read_feedback(options.feedbackfile,options.infile, append=append_only)
 	    sys.exit()
 
 	if options.linkfile:
