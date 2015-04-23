@@ -254,24 +254,24 @@ class Entry(object):
 class Feedback_install(object):
 
     # All dialects (except for NG and main)
-    dialects = ['KJ', 'GG']
+    dialects = []
 
     # Each part of speech followed by relevant word/lemma attributes
     # TODO: need to fill out these values depending on which
     # attributes they have 
     word_attribute_names = OrderedDict([
         ("N", ['stem',  'animacy', ]),
-        ("A", ['stem',  'rime', 'attrsuffix', 'compsuffix',]),
-        ("Num", ['stem',  'rime', ]),
-        ("V", ['stem',  'rime', ]),
+        # TODO: ("A", ['stem',  'rime', 'attrsuffix', 'compsuffix',]),
+        # TODO: ("Num", ['stem',  'rime', ]),
+        # TODO: ("V", ['stem',  'rime', ]),
     ])
 
     # Each part of speech followed by relevant tag/wordform attributes
     tag_attribute_names = OrderedDict([
         ("N", ('case', 'number', 'possessive')),
-        ("A", ('case', 'number', 'grade', 'attributive', )),
-        ("Num", ('case', 'number',)),
-        ("V", ('subclass', 'infinite', 'mood', 'tense', 'personnumber', )),
+        # TODO: ("A", ('case', 'number', 'grade', 'attributive', )),
+        # TODO: ("Num", ('case', 'number',)),
+        # TODO: ("V", ('subclass', 'infinite', 'mood', 'tense', 'personnumber', )),
     ])
 
     # NOTE: processing of dialects and lemma exclusions is not something that
