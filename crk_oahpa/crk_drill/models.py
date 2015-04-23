@@ -8,7 +8,12 @@ from django.db import transaction
 
 from django.utils.encoding import smart_unicode
 
-from .forms import CHAPTER_CHOICES
+CHAPTER_CHOICES = {
+    'Intr1' : ['I1','I2','I3'],
+    'Intr2' : ['I4', 'I5'],
+    'Intr3' : ['I6', 'I7'],
+    'Intr4' : ['I8', 'I9', 'I10', 'I11', 'I12'],
+}
 
 class BulkManager(models.Manager):
 	""" This Manager adds additional methods to Feedback.objects. That allows
