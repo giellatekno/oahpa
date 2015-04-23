@@ -257,12 +257,13 @@ class Feedback_install(object):
     dialects = ['KJ', 'GG']
 
     # Each part of speech followed by relevant word/lemma attributes
+    # TODO: need to fill out these values depending on which
+    # attributes they have 
     word_attribute_names = OrderedDict([
-        ("N", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
-        ("A", ['stem', 'gradation', 'diphthong', 'rime', 'soggi', 
-                                        'attrsuffix', 'compsuffix',]),
-        ("Num", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
-        ("V", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
+        ("N", ['stem',  'animacy', ]),
+        ("A", ['stem',  'rime', 'attrsuffix', 'compsuffix',]),
+        ("Num", ['stem',  'rime', ]),
+        ("V", ['stem',  'rime', ]),
     ])
 
     # Each part of speech followed by relevant tag/wordform attributes
@@ -581,7 +582,9 @@ class Feedback_install(object):
 
         if not append:
             print >> sys.stdout, " * Deleting existing feedbacks"
-            Form.objects.bulk_remove_form_messages(self.form_objects)
+            print self.form_objects
+            if len(self.form_objects) > 0:
+                Form.objects.bulk_remove_form_messages(self.form_objects)
 
         # Get intersection of elements and tags
         self.attributes_intersection = self.find_intersection()

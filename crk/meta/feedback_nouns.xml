@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feedback pos="N" tag__possessive="">
 
+  <defaultvalues>
+  	  <!-- define the values that are possible
+  	       and that will be used to search for words
+  	       if the attribute is not included in
+  	       the stem definition
+  	  -->
+
+  	  <!-- word/l attributes vs tag attributes -->
+	  <attribute name="animacy" value="AN" />
+	  <attribute name="animacy" value="IN" />
+
+	  <attribute name="rime" value="" />
+	  <attribute name="rime" value="0" />
+	  <attribute name="rime" value="-k" />
+
+	  <attribute name="number" value=""/>
+	  <attribute name="number" value="Pl" />
+	  <attribute name="number" value="Sg" />
+  </defaultvalues>
+
 <!-- Messageorder nouns: LEMMA A B C D E
 A: 
 animacy
@@ -12,6 +32,7 @@ C:
 possessive suffix
                  
 -->
+  <stems>
     <l animacy="AN">
       <msg>animate</msg>
     </l>
@@ -85,6 +106,7 @@ possessive suffix
       <msg possessive="4Pl">iyiw-Obv</msg>
       <note> </note>
     </l>
+  </stems>
     
 
 </feedback>
