@@ -72,11 +72,7 @@ function playSound(soundfile) {
     audio.play();
 }
 </script>
-<span 
-{% if form.animacy == "AN" %}
-		  style="color:#6BB70D" 
-{% endif %}        
->
+<span data-form-animacy="{{ form.animacy }}">
 {{ form.lemma }}
 </span>
     <audio id="pronounce{{ form.audio }}"></audio> 
