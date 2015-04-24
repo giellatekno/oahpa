@@ -1476,7 +1476,7 @@ class QuizzGame(Game):
 		QueryModel = Word
 
 		# Excludes
-		excl = ['exclude_' + self.settings['transtype']]
+		excl = ['NOTLEKSA', 'exclude_' + self.settings['transtype']]
 
 		error = "QuizzGame.get_db_info: Database may be improperly loaded. \
 		Query for %s-%s, semantic type %s and book %s returned zero results." % ((source_language, target_language, semtypes, source))
