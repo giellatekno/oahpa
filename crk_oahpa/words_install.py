@@ -262,6 +262,7 @@ class Entry(object):
 		self.frequency = False
 		self.geography = False
 		self.sources = False
+		self.chapters = False
 
 		try:
 			sources = _elements(n, "sources")[0]
