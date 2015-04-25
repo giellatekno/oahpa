@@ -478,11 +478,11 @@ DIALOGUE_CHOICES = (
 # Syllables are manually coded in the templates, but it's useful to get the
 # translation strings here, also for the courses module logging.
 
-SYLLABLE_VALUES = (
-	('2syll', _('bisyllabic')),
-	('3syll', _('trisyllabic')),
-	('Csyll', _('contracted')),
-)
+# SYLLABLE_VALUES = (
+# 	('2syll', _('bisyllabic')),
+# 	('3syll', _('trisyllabic')),
+# 	('Csyll', _('contracted')),
+# )
 
 ALL_CHOICES = [
 	ADJCASE_CHOICES,
@@ -511,7 +511,7 @@ ALL_CHOICES = [
 	PRON_CONTEXT_CHOICES,
 	RECIP_REFL_CHOICES,
 	SEMTYPE_CHOICES,
-	SYLLABLE_VALUES,
+	# SYLLABLE_VALUES,
 	TRANS_CHOICES,
 	VASTA_LEVELS,
 	VASTAS_NR_OF_TASKWORDS,
@@ -884,10 +884,10 @@ class OahpaSettings(forms.Form):
 	def set_default_data(self):
 		self.default_data = {
 					'language' : 'crk',  # sme in univ_oahpa
-					'syll' : ['2syll'], # syllabicity not relevant, change this
-					'bisyllabic': 'on',
-					'trisyllabic': False,
-					'contracted': False,
+					# 'syll' : ['2syll'], # syllabicity not relevant, change this
+					# 'bisyllabic': 'on',
+					# 'trisyllabic': False,
+					# 'contracted': False,
 					'level' : 'all',
 					'lemmacount' : '2',
 					'case': 'N-PL',
@@ -1071,6 +1071,7 @@ class LeksaQuestion(OahpaQuestion):
 		self.word = word
 		self.gametype = 'leksa'
 		self.animacy = word.animacy # Added for Cree, in order to color the animate nouns. Thanks to this assigment operation the template has access to the animacy information.
+		self.trans_anim = word.trans_anim
 		self.audio = word.audio # pronounciation
 		kwargs['correct_val'] = correct_val
 		super(LeksaQuestion, self).__init__(*args, **kwargs)

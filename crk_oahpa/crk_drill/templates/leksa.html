@@ -72,7 +72,7 @@ function playSound(soundfile) {
     audio.play();
 }
 </script>
-<span data-form-animacy="{{ form.animacy }}">
+<span data-form-animacy="{{ form.animacy }}" data-form-trans-anim="{{ form.trans_anim }}">
 {{ form.lemma }}
 </span>
     <audio id="pronounce{{ form.audio }}"></audio> 
