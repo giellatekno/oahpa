@@ -772,13 +772,6 @@ class BareGame(Game):
 			WORD_FILTER = Q()
 			if pos == 'Px':
 				    WORD_FILTER = Q(word__semtype__semtype='MORFAPOSS')
-			elif pos == 'N':
-			     if case == 'Loc':
-				    WORD_FILTER = Q(word__semtype__semtype='MORFALOC')
-			     elif number == ['Pl']:
-				    WORD_FILTER = Q(word__semtype__semtype='MORFA-PL')
-			     else:
-				    WORD_FILTER = Q(word__semtype__semtype='MORFAS')
 				
 			tag = tags.order_by('?')[0]
 			
@@ -1491,6 +1484,7 @@ class QuizzGame(Game):
 							'tx_lang': target_language}
 
 			excl.append('mPERSNAME')
+			excl.append('NOTLEKSA')
 
 			if semtypes and semtypes not in ['all', 'All']:
 				leksa_kwargs['semtype_incl'] = semtypes
