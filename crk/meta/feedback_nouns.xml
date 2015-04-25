@@ -17,6 +17,12 @@
 	  <attribute name="rime" value="0" />
 	  <attribute name="rime" value="i" />
 	  <attribute name="rime" value="k" />
+	  <attribute name="rime" value="iy" />
+	  <attribute name="rime" value="oy" />
+	  <attribute name="rime" value="aw" />
+	  <attribute name="rime" value="ay" />
+	  <attribute name="rime" value="eew" />
+	  <attribute name="rime" value="oow" />
 
 	  <attribute name="number" value=""/>
 	  <attribute name="number" value="Pl" />
@@ -42,10 +48,10 @@ A:
 animacy
 
 B:
-locative, plural, possessive prefix
+plural suffix, locative possessive prefix
  
 C:
-possessive suffix
+possessive suffix, plural conditions
                  
 -->
   <stems>
@@ -82,20 +88,48 @@ possessive suffix
       <note> </note>
     </l>
 
-    <l>
+    <l rime="0">
       <msg case="Loc">locative-ihk</msg>
       <note>kohkôsihk</note>
     </l>
 
-    <l animacy="IN">
-      <msg case="Loc">locative-ahk</msg>
+    <l rime="iy">
+      <msg case="Loc">locative-ihk</msg>
+      <note>kohkôsihk</note>
+    </l>
+
+
+    <l rime="k">
+      <msg case="Loc">locative-ohk</msg>
+      <note>kohkôsihk</note>
+    </l>
+
+    <l rime="oy">
+      <msg case="Loc">locative-oohk</msg>
+      <note>kohkôsihk</note>
+    </l>
+
+    <l rime="aw">
+      <msg case="Loc">locative-aahk</msg>
       <note> </note>
     </l>
+
+    <l rime="ay">
+      <msg case="Loc">locative-aahk</msg>
+      <note> </note>
+    </l>
+
     
-    <l animacy="AN">
-      <msg case="Loc">locative-inaahk</msg>
+    <l rime="eew">
+      <msg case="Loc">locative-naahk</msg>
       <note> </note>
     </l>
+
+    <l rime="oow">
+      <msg case="Loc">locative-naahk</msg>
+      <note> </note>
+    </l>
+
 
     <l>
       <msg possessive="1Sg">prefix-n</msg>
@@ -111,8 +145,16 @@ possessive suffix
     </l>
 
 
+    <l animacy="IN">
+      <msg possessive="1Pl">inaan</msg>
+      <msg possessive="12Pl">inaw</msg>
+      <msg possessive="2Pl">iwaaw</msg>
+      <msg possessive="3Pl">iwaaw</msg>
+      <note> </note>
+    </l>
 
-    <l>
+
+    <l animacy="AN">
       <msg possessive="3Sg">obviative</msg>
       <msg possessive="4Sg">iyiw-Obv</msg>
       <msg possessive="1Pl">inaan</msg>
