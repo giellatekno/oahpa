@@ -1,0 +1,85 @@
+!!!More documentation of Plains Cree nêhiyawêtân
+
+
+!!Numra
+* numbers.lexc: 0-999
+** inputformat {{32}}, and the other way round, with variants: {{nistomitanaw nîsosâp, nistomitanaw nîso-sâp, nistomitanaw ayiwâk nîso}}
+* clock.lexc
+** inputformat {{2:30}}, and the other way round, with variants: {{nîso mînâpihtaw, nîso mînâpihtaw tipahikan}}
+** inputformat {{12, 12:00}}, and the other way round, with variants: {{nîsosâp tipahikan, âpihtâkîsikâw, âpihtâtipiskâw}}
+* date.lexc
+** inputformat {{3rd of May}}, and the other way round: {{3 ehakimiht opiniyâwewowipîsimohk}}. The other way round, it also accepts formats like {{3. May, 3.May, 3 May}}
+* money.lexc: $0.10 - $99
+** inputformat {{$3.50}}, and the other way round, with variants: {{nisto newopehikanak mînâpihtaw, nisto newopehikanak nîso sônîyâs, nisto newopehikanak nîyânanomitanaw pîwâpiskos}}
+
+!!Morfa S (inflect single words according to instructions- without any sentential context provided)
+!Nouns
+* Plural
+* Diminutive (most of the nouns): provide the diminutive and ask for the base form
+* Locative is generated for the following (gen_only="Loc"):
+** {{asikan, asiniy, atâwêwikamik, iskocês, iskotêw, iskwâhtêm, iskwêw, ispatinaw, maniway, masinahikan, maskihkîwâpoy, maskisin, micihciy, mihtawakay, mikot, minihkwâcikanis, mistikowat, mitôn, mêskanaw, mêtawêwikamik, mîcimâpoy, mîcisowikamik, mîkiwâhp, nipiy, nâpêw, ocenâsis, pahkwêsikan, sakâw, sâkahikan, sîsîp-wâwi, sîwâpoy, sôniyâwikamik, tohtôsâpoy, tohtôsâpôwipimiy, têhtapiwin, wiyâkan, wiyâkanis, wâskahikan, wâwi, wîkiwin, âhkosîwikamik, ôcênâs, ôsi, ôtênaw}}
+** In Morfa Locative tasks we don't have any nouns which get -inâhk suffix (collective locative, for humans and animals), because it is not mentioned in the course book.
+* Possessive for the following:
+** {{minôs, okimâw, asikan, wîkimâkan, atim, mitâs, otânisimâw, okosisimâw, onîkihikomâw, omosômimâw, ôhkomimâw, nîtisân, otôtemimâw, okâwîmâw, okâwîmâw, nôsisim, onâpêmimâw, wîkiwân, misit, mistikwân , mîscakâs (only Pl), mîskât, mitôn, miskîsik, mikot, mîhtawakay, mîyaw,  niskotâkay, mîpit, mahkwan, mispiton, micihciy}}
+** In the case of the body parts, there will be only singular possessors, and some of the body parts nouns will only as singular forms, such as head and mouth.
+
+!Verbs 
+We begin with AI-verbs
+* All persons, as well as present and past tense: \\
+{{(kîyânaw) anohc ... }} \\
+{{(kîyânaw) otâkosîhk ...}}
+* We'll leave the obviative until later.
+
+!!Morfa C (provide inflected words that are correct in the given sentential context)
+[Documentation of how to make MarfaC|http://oahpa.no/addlang/developermorfa.html]
+
+We will use some very frequent sentences - here is a start:
+
+!Nouns
+* Plural 
+** {{awîniki êhayâcik ôtenâhk}} \\ {{iskwêwa ôtenâhk êhayâcik}} \\  (Who are in Y-Loc? X are in Y-Loc) \\ (X are nouns denoting persons: the student gets the singular form from semclass PEOPLE as a basis for providing the plural form. \\ Y is a noun from semclass PLACE.)
+* Locative 
+** {{tân'tê okimâw}} (or some other noun from semclass PEOPLE).\\
+ {{okimâw mîcisowkamikohk ehayat}} \\ (Where is X? X is in Y-Loc) \\ (X are nouns denoting persons.Y is a noun from semclass PLACE.\\ The student has to inflect the noun in the locative)   
+** {{tân'tê kikîpimohtân}}\\ {{nikîpimohtân mîcisowikamikohk isi}}\\ (Where did you walk? I walked to X) \\(X is a noun from semclass PLACE. \\ The student has to inflect the noun in the locative) 
+* Possessive 
+** {{kimis cî ana}}\\ {{ehâ, nimis awa}}\\ (Is that your X? Yes, it is my X.) \\ (X a noun from  semclass KIN. \\ The student gets nouns with a 2Sg possessor in the question, and is expected to change the possessor to 1Sg).
+
+
+!Verbs
+* Present tense
+** {{kinikamon cî anohc}}\\ {{ehâ, ninikamon anohc}} or {{namoya, namoya ninikamon anohc}} \\ (Do you X today? Yes, I/we X. / No, I/we don't X.)  \\(X is a verb from semclass mACTIVITY,\\ the student has to inflect it for 1Sg).\\ The same way for 2Pl vs. 1Pl.
+\\ 
+* Past tense 
+** {{kikînikamon cî otâkosîhk}}\\ {{ehâ, nikînikamon otâkosîhk}} or \\ {{namoya, namoya nikînikamon otâkosîhk}}\\ (Did you X yesterday? Yes, I/we X. / No, I/we didn't X.)  \\ (X is a verb from semclass mACTIVITY, \\ the student has to inflect the verb in 1Sg). \\ The same goes for 2Pl vs. 1Pl.
+** {{kikîpimohtân cî ôtenâhk isi}} (or another movement verb from semclass mMOVEMENT) \\ {{ehâ, nikîpimohtân ôtenâhk}}\\ (Did you walk to the X? Yes, I/we walked to X. \\ X is a noun from semclass PEOPLE )
+ \\ Likewise for 2Pl vs. 1Pl.
+
+Example of a question-answer frame in crk/meta/verb_questions.xml
+{{{
+  <q id="vprt1">
+    <qtype>V-PRT</qtype>
+    <question>
+      <text>MAINV cî N-LOC isi</text>
+      <element id="MAINV">
+            <grammar tag="V+AI+Ind+Prt+2Sg"/>
+        <sem class="mMOVEMENT"/>
+      </element>
+      <element id="N-LOC">
+            <grammar tag="N+IN+Loc"/>
+        <sem class="PLACE"/>
+      </element>
+    </question>
+    <answer> 
+      <text>ehâ, MAINV N-LOC isi</text>
+      <element game='morfa' id="MAINV" content="MAINV" task="yes">
+        <grammar tag="V+AI+Ind+Prt+1Sg"/>
+      </element>
+    </answer>
+  </q>
+}}}
+
+
+
+
+
