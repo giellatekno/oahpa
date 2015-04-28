@@ -169,6 +169,13 @@ echo " "
 echo "done"
 echo "==================================================="
 
+echo "==================================================="
+echo "feeding db with $DPF/Ipc_fracrk.xml"
+$P install.py --file $DPF/Ipc_fracrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
 # echo "==================================================="
 # echo "feeding db with $DPF/num_fracrk.xml"
 # $P install.py --file $DPF/num_fracrk.xml 2>>error.log
