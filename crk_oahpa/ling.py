@@ -263,7 +263,6 @@ class Paradigm:
 
 		# Using gen_only now
 		# commented out everything about gen_only, hid, wordtype:
-		"""
 		
 		if not gen_only.strip():
 			gen_only = False
@@ -275,9 +274,8 @@ class Paradigm:
 				# print >> STDERR, "*** Context (%s) not found" % context.encode('utf-8')
 				# context = False
 
-		if pos.upper() == 'PROP':
-			pos = 'N'
-		"""
+		# if pos.upper() == 'PROP':
+		# 	pos = 'N'
 
 		if not self.tagset:
 			self.handle_tags()
@@ -311,13 +309,13 @@ class Paradigm:
 				#else:
 				#	tag = a
 				
-				#if gen_only:
-				#	for c in gen_only:
-				#		if c in tag:
-				#			lookups = lookups + lemma + hid + "+" + tag
-				#else:
-				if not lemma:
-				    raise TypeError
+				if gen_only:
+					for c in gen_only:
+						if c in tag:
+							lookups = lookups + lemma + hid + "+" + tag
+				else:
+					if not lemma:
+					    raise TypeError
 				lookups = lookups + lemma + hid + "+" + a  # was: tag instead of a
 
 				lookups += '\n\n\n'
