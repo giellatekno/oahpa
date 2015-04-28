@@ -102,13 +102,13 @@ def FSTLookup(data, fst_file):
 	if type(data) == list:
 		data = [a.strip() for a in list(set(data)) if a.strip()]
 		data = u'\n'.join(data).encode('utf-8')
-        cmd = lookup + " " + gen_fst   
+		cmd = lookup + " " + gen_fst   
 	print >> STDOUT, "Generating forms in %s" % gen_fst
 	try:
-                lookups = Popen(cmd, data)
-                #new_cmd = lookups_with_weights + " | cut -f1,2"
-                #lookups = Popen(new_cmd)   
-                #print >> STDOUT, "The next row of hfst output: %s" % lookups
+				lookups = Popen(cmd, data)
+				#new_cmd = lookups_with_weights + " | cut -f1,2"
+				#lookups = Popen(new_cmd)   
+				#print >> STDOUT, "The next row of hfst output: %s" % lookups
 	except OSError:
 		print >> STDERR, "Problem in command: %s" % cmd
 		sys.exit(2)
@@ -281,45 +281,34 @@ class Paradigm:
 			self.handle_tags()
 
 		lookups = ""
-		"""
 		if not hid.strip():
 			hid = ""
 		else:
 			hid = '+' + hid
-		"""
 		
 		# If wordtype is defined, then the wordtype is inserted after
 		# the first tag element, which should be the part of speech.
 		# If hid is defined simultaneously, this should not mess with that.
 
-		"""
 		if not wordtype.strip():
 			wordtype = ""
 		else:
 			w, rest = wordtype[0], wordtype[1::]
 			wordtype = '+' + w.capitalize() + rest
-		"""
 
 		if self.paradigms.has_key(pos):
-			for a in self.paradigms[pos]:
-				tag = a
-				#if wordtype.strip():
-				#	if not wordtype in a:
-				#		_pos, _, _rest = a.partition('+')
-				#		tag = "%s%s+%s" % (_pos, wordtype, _rest)
-				#else:
-				#	tag = a
-				
+			for tag in self.paradigms[pos]:
 				if gen_only:
 					for c in gen_only:
 						if c in tag:
 							lookups = lookups + lemma + hid + "+" + tag
 				else:
 					if not lemma:
-					    raise TypeError
+						raise TypeError
 				lookups = lookups + lemma + hid + "+" + a  # was: tag instead of a
 
 				lookups += '\n\n\n'
+
 		self.generate_data.append(lookups)
 
 	
@@ -352,17 +341,16 @@ class Paradigm:
 			for item in items:
 				result = item.split('\t')
 				lemma = result[0].partition('+')[0]
-                                if lemma:
-                                        generated_form = result[1]
-                                else:
-                                        generated_form = ""
-                                #print >> STDOUT, 'lemma: %s' % lemma
-                                #print >> STDOUT, 'generated form: %s' % result[1]
+				if lemma:
+						generated_form = result[1]
+				else:
+						generated_form = ""
+				#print >> STDOUT, 'lemma: %s' % lemma
+				#print >> STDOUT, 'generated form: %s' % result[1]
 				try:
-				    lookup_dictionary[lemma] += result[0] + '\t' + generated_form + '\n'
+					lookup_dictionary[lemma] += result[0] + '\t' + generated_form + '\n'
 				except KeyError:
-				    lookup_dictionary[lemma] = result[0] + '\t' +\
- generated_form + '\n'
+					lookup_dictionary[lemma] = result[0] + '\t' + generated_form + '\n'
 		
 		self.master_paradigm[dialect] = lookup_dictionary
 		
@@ -613,3 +601,4 @@ class Paradigm:
 				form.save()
 
 
+# vim: set ts=4 sw=4 tw=72 syntax=python :
