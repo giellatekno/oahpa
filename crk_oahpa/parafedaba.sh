@@ -1,10 +1,9 @@
 #!/bin/sh
 
 P="python2.7"
-GTHOME="/home/heli/main/ped"
-#GTHOME="/Users/pyry/gtsvn/ped"
+
 LANGDIR="crk"
-DATA=$GTHOME/$LANGDIR
+DATA=$GTHOME/ped/$LANGDIR
 DPS="$DATA/src"
 INC="$DATA/inc"
 META="$DATA/meta"
@@ -15,7 +14,7 @@ DPE="$DATA/estcrk"
 DPL="$DATA/latcrk"
 DPR="$DATA/ruscrk"
 DPD="$DATA/smecrk"
-#WORDS=$GTHOME/words/dicts/smenob/src
+#WORDS=$PED_PATH/words/dicts/smenob/src
 
 echo "==================================================="
 echo "installing tags and paradigms for Morfa"
@@ -33,8 +32,15 @@ echo "==================================================="
 ##
 
  echo "==================================================="
- echo "feeding db with $DPS/N_crk2X.xml"
+ echo "feeding db with $DPS/N_crk.xml"
  $P install.py --file $DPS/N_crk.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPS/Ipc_crk.xml"
+ $P install.py --file $DPS/Ipc_crk.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>error.log
  echo " "
  echo "done"
  echo "==================================================="
