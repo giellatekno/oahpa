@@ -302,6 +302,7 @@ class Paradigm:
 
 		if self.paradigms.has_key(pos):
 			for a in self.paradigms[pos]:
+				tag = a
 				#if wordtype.strip():
 				#	if not wordtype in a:
 				#		_pos, _, _rest = a.partition('+')
