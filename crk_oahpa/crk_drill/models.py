@@ -491,6 +491,7 @@ class Word(models.Model):
 	dialects = models.ManyToManyField(Dialect, null=True)
 	aspect = models.CharField(max_length=20) # aspect partner (verbs only)
 	motion = models.CharField(max_length=20) # motion partner (verbs only)
+	rime = models.CharField(max_length=8)
 
 
 	def morphTag(self, nosave=True):
