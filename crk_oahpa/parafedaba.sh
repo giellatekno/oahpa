@@ -232,6 +232,14 @@ echo "done"
 echo "==================================================="
 
 echo "==================================================="
+echo "feeding db with $DPW/Ipc_engcrk.xml"
+$P install.py --file $DPW/Ipc_engcrk.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+
+echo "==================================================="
 echo "feeding db with $DPW/V_engcrk.xml"
 $P install.py --file $DPW/V_engcrk.xml
 echo " "
