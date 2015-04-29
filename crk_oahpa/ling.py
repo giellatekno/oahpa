@@ -305,7 +305,7 @@ class Paradigm:
 				else:
 					if not lemma:
 						raise TypeError
-				lookups = lookups + lemma + hid + "+" + a  # was: tag instead of a
+				lookups = lookups + lemma + hid + "+" + tag
 
 				lookups += '\n\n\n'
 
