@@ -1,0 +1,159 @@
+!!!Meeting April 30 2015
+
+Megan, Lene, Antti
+
+# Meeting with the teacher
+# itwêwina
+# Implementation on the gtoahpa server
+# Improvements
+# FST-issues
+# Next meeting
+
+!! Meeting with the teacher
+Megan has talked with Dorothy and here are some key words from the discussions:
+* dealing with TA/TI forms (inverse forms), how to do that
+* more instructions are needed
+* MorfaC: some weird centences, e.g. plural mothers and fathers
+* Numra: "mina" was missing in Money
+* Leksa: more semantic fields in the menu
+* NA and NI instead of AN and IN
+* ''s/he'' as stat="pref"
+* itwêwina is good
+
+The solution of these questions comes later in this document.
+
+!!itwêwina 
+
+itwêwina accepts and generates with hyphens and without hyphens
+* niki-nohte-kakwe-nipan
+* nikinohtekakwenipan
+{{{
+PV/nohte+PV/kakwe+nipâw+V+AI+Ind+Prt+1Sg	nikînôhtêkakwênipân
+PV/nohte+PV/kakwe+nipâw+V+AI+Ind+Prt+1Sg	nikî-nôhtê-kakwê-nipân
+
+conjugation: transitive inaminate 1s	ninitonên	ê-nitonamân
+                                                    ênitonamân
+}}}
+
+!Todo:
+* __Antti__: check with Ryan treatment of preverbs in translation search
+
+!! Implementation on the gtoahpa server
+Possibly creating demo directly on the proper server? Many things needed to be redone.
+
+Open issues - much TODO:
+* audiofiles now missing from the section selection (__Lene__ will talk to Ryan)
+* New French files will be generated from original src files (no hurry)
+* hints are now working, but will need scrutiny and further development based on user experience.
+** __Lene__ will do some improvements based on discussions in the meeting
+* instructions can be improved in the files in
+** crk_oahpa/crk_drill/templates/ (You can discuss with __Ryan__ if you need help)
+* NA/NI and s/he (__Megan__)
+* __Lene__ will improve Numra, but Megan sends an email with details
+* semantic fields (__Megan__)
+** meta/semantic_sets.xml 
+** crk_oahpa/crk_drill/forms.py
+
+{{{
+SEMTYPE_CHOICES = (
+    ('HUMAN', _('human')),
+    ('KIN', _('kinship')), <=== from src/N_crk.xml
+    ('MIND-BODY', _('body and mind')),
+    ('FOOD-DRINK', _('food and drink')),
+    ('NATURE-ANIMALS', _('nature and animals')),
+    ('THINGS', _('things')),
+    ('DAILY-LIFE', _('at home')),
+    ('OCCUPATION', _('occupation')),
+    ('EVERYDAY', _('everyday')),
+    ('DESCRIPTIONS', _('descriptions')),
+    ('SPEECH', _('speech')),
+    ('all', _('all')),
+)
+}}}
+
+__Megan__ will restrict the selection of nouns to MorfaC tasks by adding more
+semantic classes:
+* PEOPLE, PLACE  -- leksa
+* mPEOPLE, mPLACE -- morfa - include for MorfaC
+
+details: mîscakâs (only Pl)
+
+Morfa-C: Px is restricted to only singular
+
+{{{
+ <q id="npx1">
+    <qtype>N-PX</qtype>
+    <question>
+      <text>SUBJ cî ana</text>
+      <element id="SUBJ">
+            <grammar tag="N+AN+Sg+Px2Sg"/>
+        <sem class="KIN"/>
+      </element>
+    </question>
+    <answer> 
+      <text>ehâ, N-PX awa</text>
+      <element game='morfa' id="N-PX" content="SUBJ" task="yes">
+        <grammar tag="N+AN+Sg+Px1Sg"/>
+      </element>
+    </answer>
+  </q>
+}}}
+MORFA-C: Maybe only singulars?
+ 
+{{{ 
+   <q id="npl1">
+    <qtype>N-PL</qtype>
+    <question>
+      <text>awîniki êhayâcik N-LOC</text>
+      <element id="N-LOC">
+        <grammar tag="N+IN+Loc"/>
+        <sem class="PLACE"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ N-LOC êhayâcik</text>
+      <element game='morfa' id="SUBJ" task="yes">
+            <grammar tag="N+AN+Pl"/>
+        <sem class="mPEOPLE-PL"/>
+      </element>
+    </answer>
+  </q>
+}}}
+
+{{{
+gen_only="Sg"
+<l pos="N" animacy="AN" rime="0" gen_only="Pl,Sg" audio="kohkos">kohkôs</l>
+    <l pos="N" animacy="IN" rime="0" gen_only="Sg">kohkôsiwiyin</l>
+    <l pos="N" animacy="AN" rime="0" gen_only="Pl,Sg,Loc">pahkwêsikan</l>
+
+"rime"-codes are trigger codes!
+}}}
+
+!!Improvements for verbs
+Verbs in Morfa S: \\
+Menu: choose AI and TI (later also TA)
+* Ex: to eat
+** AI mîcisow (eat)
+** TI mîciw (eat)   kohkôsiwiyin (bacon)  mîcimâpoy (soup)
+** TA mowêw  (eat)    oskâtâsk (carrot) kinosêw (fish) picikwâs (apple)
+* Ex: to see
+** TI: wâpahtam (see) Sg3 mîcimâpoy
+** TA: wâpamêw (see) Sg3 kinosêw
+
+!Todo:
+* __Antti__will add context to the verbs:
+{{{
+<l pos="V" context="mîcimâpoy" trans_anim="TI">mîciw</l>
+}}}
+
+!! FST-issues
+[documentation|http://giellatekno.uit.no/doc/lang/crk/PlainsCreeDocumentation.html]
+* -i- disappears in some diminutives (__Lene__)
+* continue the work with FST - discussion
+* conflicts can make the result of hfst and xfst different
+* Add discussions and documentation of open questions to the documentation
+
+!! Next meeting
+* 4-8 recordings in Maskwacis
+* 10-13 recordings in Maskwacis
+* 14th Whit-Thursday
