@@ -23,6 +23,7 @@
 	  <attribute name="rime" value="ay" />
 	  <attribute name="rime" value="eew" />
 	  <attribute name="rime" value="oow" />
+	  <attribute name="rime" value="inv-w" />
 
 	  <attribute name="number" value=""/>
 	  <attribute name="number" value="Pl" />
@@ -71,10 +72,10 @@ iyiw-Obv
 -->
   <stems>
     <l animacy="AN">
-      <msg>animate</msg>
+      <msg number="Pl">animate</msg>
     </l>
     <l animacy="IN">
-      <msg>inanimate</msg>
+      <msg number="Pl">inanimate</msg>
     </l>
 
 
@@ -111,6 +112,11 @@ iyiw-Obv
     <l rime="iy">
       <msg case="Loc">locative-ihk</msg>
       <note>kohkôsihk</note>
+    </l>
+
+    <l animacy="AN" rime="und-w">
+      <msg number="Pl">und-w</msg>
+      <note>Add the underlying -w-.</note>
     </l>
 
 
