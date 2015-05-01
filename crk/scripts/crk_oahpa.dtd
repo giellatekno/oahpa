@@ -4,11 +4,15 @@
 <!ELEMENT e ( lg, mg ) >
 
 <!ELEMENT l ( #PCDATA ) >
-<!ATTLIST l animacy ( AN | IN | NA ) #IMPLIED >
+<!ATTLIST l animacy ( AN | IN ) #IMPLIED >
 <!ATTLIST l audio ID #IMPLIED >
 <!ATTLIST l gen_only CDATA #IMPLIED >
-<!ATTLIST l pos ( N | V ) #REQUIRED >
-<!ATTLIST l trans_anim ( AI | II ) #IMPLIED >
+<!ATTLIST l rime CDATA #IMPLIED >
+<!ATTLIST l context CDATA #IMPLIED >
+<!ATTLIST l object CDATA #IMPLIED >
+<!ATTLIST l type CDATA #IMPLIED >
+<!ATTLIST l pos ( N | V | Ipc | MWE | Num ) #REQUIRED >
+<!ATTLIST l trans_anim ( AI | II | TA | TI ) #IMPLIED >
 
 <!ELEMENT lg ( l, sources ) >
 
@@ -25,7 +29,7 @@
 <!ELEMENT sources ( #PCDATA | book )* >
 
 <!ELEMENT t ( #PCDATA ) >
-<!ATTLIST t pos ( N | V ) #REQUIRED >
+<!ATTLIST t pos ( N | V | Adv | MWE | A | CC | CS | Num ) #REQUIRED >
 <!ATTLIST t stat ( pref ) #IMPLIED >
 
 <!ELEMENT tg ( t+ ) >
