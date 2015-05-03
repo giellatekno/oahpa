@@ -998,6 +998,7 @@ class Words(object):
 						'mood':			g.get('Mood',""), 
 						#'subclass':		g.get('Subclass',""),
 						'attributive':		g.get('Attributive',""),
+						'trans_anim':       g.get('Transitivity-Animacy', ""),
 						#'animacy':        g.get('Animacy',""),
 					}
 
