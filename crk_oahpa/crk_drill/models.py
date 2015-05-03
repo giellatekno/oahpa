@@ -695,6 +695,7 @@ class Tag(models.Model):
 	attributive = models.CharField(max_length=5)
 	case = models.CharField(max_length=5)
 	animacy = models.CharField(max_length=5)
+	trans_anim = models.CharField(max_length=5)
 	# conneg = models.CharField(max_length=5)
 	grade = models.CharField(max_length=10)
 	infinite = models.CharField(max_length=10)
