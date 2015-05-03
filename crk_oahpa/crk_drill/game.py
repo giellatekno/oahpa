@@ -575,9 +575,12 @@ class BareGame(Game):
 		maxnum, i = 20, 0
 
 		if pos == 'Px':
-		  TAG_QUERY = Q(pos='N')
+			TAG_QUERY = Q(pos='N')
+		elif pos == 'V':
+			TAG_QUERY = Q(pos='V', trans_anim='AI')
+			# TODO: or add to the word query? 
 		else:
-		  TAG_QUERY = Q(pos=pos)
+			TAG_QUERY = Q(pos=pos)
 
 		if pos == 'V':
 		      TAG_EXCLUDES = Q(personnumber__contains='4') # persons 4Sg and 4Pl are excluded
