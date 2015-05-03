@@ -576,9 +576,6 @@ class BareGame(Game):
 
 		if pos == 'Px':
 			TAG_QUERY = Q(pos='N')
-		elif pos == 'V':
-			TAG_QUERY = Q(pos='V', trans_anim='AI')
-			# TODO: or add to the word query? 
 		else:
 			TAG_QUERY = Q(pos=pos)
 
@@ -685,7 +682,8 @@ class BareGame(Game):
 			TAG_QUERY =  TAG_QUERY & \
 							Q(tense=tense) & \
 							Q(mood=mood) & \
-							Q(infinite=infinite)
+							Q(infinite=infinite) & \
+							Q(trans_anim='AI')
 
 			#if tense != 'Prs':
 			#	TAG_EXCLUDES = TAG_EXCLUDES | Q(string__contains='ConNeg')
