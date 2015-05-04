@@ -437,8 +437,11 @@ def leksa_filter(Model,
 		QUERY['frequency__in'] = frequency
 
 	if source and source not in ['all', 'All']:
-		# QUERY['source__name__in'] = [source]
-		QUERY['chapter__in'] = CHAPTER_CHOICES[source]
+		if source in CHAPTER_CHOICES:
+			QUERY['chapter__in'] = CHAPTER_CHOICES[source]
+		else:
+			QUERY['source__name__in'] = [source]
+
 
 	query_set = Model.objects.exclude(**EXCL).filter(**QUERY).order_by('?')[:10]
 	query_ids = query_set.values_list('id', 'lemma')

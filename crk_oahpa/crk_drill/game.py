@@ -778,7 +778,10 @@ class BareGame(Game):
 			
 			if source and source not in ['all', 'All']: 
 				# SOURCE_FILTER = Q(word__source__name=source)
-				SOURCE_FILTER = Q(word__chapter__in=CHAPTER_CHOICES[source]) 
+				if source in CHAPTER_CHOICES:
+					SOURCE_FILTER = Q(word__chapter__in=CHAPTER_CHOICES[source]) 
+				else:
+					SOURCE_FILTER = Q(word__source__name=source)
 			else:
 				SOURCE_FILTER = Q()
 			no_form = True
