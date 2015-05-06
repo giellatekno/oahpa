@@ -474,7 +474,7 @@ class BareGame(Game):
 		num_type = True and self.settings.get('num_type') or ""  # added to get num_type from settings
 		source = self.settings['book']
 
-		mood, tense, infinite, attributive = "", "", "", ""
+		mood, tense, trans_anim, infinite, attributive = "", "", "", "", ""
 
 		num_bare = ""
 		
@@ -533,6 +533,10 @@ class BareGame(Game):
 
 		if pos == "V" and self.settings.has_key('vtype'):
 			mood, tense, infinite = pos_mood_tense[self.settings['vtype']]
+			if 'trans_anim' in self.settings:
+				trans_anim = self.settings['trans_anim']
+			else:
+				trans_anim = 'AI'
 
 		pos2 = ''
 		subclass = ''
@@ -682,8 +686,10 @@ class BareGame(Game):
 			TAG_QUERY =  TAG_QUERY & \
 							Q(tense=tense) & \
 							Q(mood=mood) & \
-							Q(infinite=infinite) & \
-							Q(trans_anim='AI')
+							Q(infinite=infinite)
+			if trans_anim and trans_anim != 'all':
+				if trans_anim == 'AI-TI':
+					TAG_QUERY = TAG_QUERY & Q(trans_anim__in=['AI', 'TI'])
 
 			#if tense != 'Prs':
 			#	TAG_EXCLUDES = TAG_EXCLUDES | Q(string__contains='ConNeg')

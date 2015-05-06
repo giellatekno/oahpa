@@ -246,6 +246,11 @@ VTYPE_CHOICES = (
 #	('POT', _('potential')),
 )
 
+TRANS_ANIM_CHOICES = (
+	('AI-TI', _('AI-TI')),
+	('all', _('All')),
+)
+
 VERB_QUESTION_ANSWER = {
 	'V-PRS': [('V+IA', 'V+IA+Ind+Prs+Person-Number')],
 	'V-PRT': [('V+IA', 'V+IA+Ind+Prt+Person-Number')],
@@ -975,6 +980,7 @@ class OahpaQuestion(forms.Form):
 		self.problems = "error"
 		self.pron = ""
 		self.pron_imp = ""
+		self.object = False
 		self.PronPNBase = PRONOUNS_LIST
 		self.is_relaxed = ""
 		self.is_tcomm = ""
@@ -1000,7 +1006,7 @@ class OahpaQuestion(forms.Form):
 				        infins = [lemma.sub(infin_a, force_unicode(ax)) for ax in accepted_answers]
 				        accepted_answers = infins + accepted_answers
 
-                #forms = accepted_answers  # This is wrong: the relaxed pairs are overwritten!
+				#forms = accepted_answers  # This is wrong: the relaxed pairs are overwritten!
 
 		self.correct_anslist = [force_unicode(item) for item in accepted_answers] + [force_unicode(f) for f in forms]
 		print "correct_anslist:",self.correct_anslist
@@ -1164,6 +1170,7 @@ class MorfaSettings(OahpaSettings):
 	proncase = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
 	vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
+	trans_anim = forms.ChoiceField(initial='AI-TI', choices=TRANS_ANIM_CHOICES, widget=forms.Select)
 	num_bare = forms.ChoiceField(initial='N-GEN', choices=NUM_BARE_CHOICES, widget=forms.Select)
 	num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)
 	num_type = forms.ChoiceField(initial='CARD',choices=NUM_TYPE_CHOICES, widget=forms.Select)
@@ -1280,6 +1287,7 @@ class MorfaQuestion(OahpaQuestion):
 		self.animacy = tag.animacy # added for crk, in order to display animate / inanimate nouns in different colors
 
 		if tag.pos == "V":
+			# TODO: figure out word object here.
 			if not self.pron:
 				if tag.string.find("ConNeg") > -1:
 					# TODO: New choice for every refresh, fix!
@@ -1325,6 +1333,9 @@ class MorfaQuestion(OahpaQuestion):
 			# All pres?
 			if tag.string.find("Der/AV") > -1:
 				self.pron = TENSE_PRESENTATION.get(tag.tense, False) + " " + self.pron
+
+			if word.object:
+				self.object = word.object
 
 		if tag.pos == "Pron":
 			# Various display alternations for pronouns.
