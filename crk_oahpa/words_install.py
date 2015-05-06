@@ -207,6 +207,7 @@ class Entry(object):
 			("pos", None),
 			("animacy", None),
 			("trans_anim", None), # for verbs: transitivity-animacy
+			("object", None), # TODO: maybe need to relabel this v_object if python doesn't like object attribute
 			("audio", None),
 			("gradation", None),
 			("diphthong", None),
@@ -696,7 +697,7 @@ class Words(object):
 		changes_to_xml = True
 		changes_to_paradigm = True
 		# Initialize null variables
-		stem, forms, gradation, rime, animacy, trans_anim, audio  =	[""]*7
+		stem, forms, gradation, rime, animacy, trans_anim, v_object, audio  =	[""]*8
 		wordclass, attrsuffix, compsuffix, soggi, valency	=	[""]*5
 		compare, frequency, geography, presentationform, excl_dialect	=	[""]*5
 
@@ -785,6 +786,9 @@ class Words(object):
 		if entry.trans_anim:
 			trans_anim = entry.trans_anim
 			
+		if entry.object:
+			v_object = entry.object
+
 		if entry.audio:
 			audio = entry.audio
 
@@ -855,6 +859,7 @@ class Words(object):
 			w.audio = audio
 			w.animacy = animacy
 			w.trans_anim = trans_anim 
+			w.object = v_object
 			w.save()
 
 		dialect_objects = []
