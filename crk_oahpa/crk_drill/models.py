@@ -327,6 +327,7 @@ class Source(models.Model):
 
 
 	def __unicode__(self):
+		S = ""
 		if self.type and self.name:
 			S = "%s: %s" % (self.type, self.name)
 		elif self.name:
@@ -464,6 +465,7 @@ class Word(models.Model):
 	stem = models.CharField(max_length=20)
 	animacy = models.CharField(max_length=20)
 	trans_anim = models.CharField(max_length=20) # for verbs: transitivity-animacy 
+	object = models.CharField(max_length=40)
 	gender = models.CharField(max_length=20)
 	declension = models.CharField(max_length=20)
 	loc2 = models.BooleanField(default=False) # indicates if the word has Locative2 or not
