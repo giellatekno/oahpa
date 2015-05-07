@@ -9,7 +9,7 @@
     {% trans "Add verbs in correct forms." %}
   {% endifequal %}  -->
 {% endblock %}
-
+{% block book %}{% endblock %}
 
 {% block subsetting %}
 	{% ifequal settings.gametype "bare" %}
@@ -17,13 +17,6 @@
 			{{ settingsform.vtype }}</li>
 		<li><label for="id_{{ settingsform.trans_anim.name }}">{% trans "Animacy" %}</label>
 			{{ settingsform.trans_anim }}</li>
-<!--	<li><label>{% trans "Stem" %}</label>
-		<ul>
-			<li>{{ settingsform.bisyllabic }} <label for="id_{{ settingsform.bisyllabic.name }}">{% trans "bisyllabic" %}</label></li>
-			<li>{{ settingsform.trisyllabic }} <label for="id_{{ settingsform.trisyllabic.name }}">{% trans "trisyllabic" %}</label></li>
-			<li>{{ settingsform.contracted }} <label for="id_{{ settingsform.contracted.name }}">{% trans "contracted" %}</label></li>
-		</ul>
-	</li> -->
 	{% else %}
 		<li><label for="id_{{ settingsform.vtype_context.name }}">{% trans "Tense" %}</label>
 			{{ settingsform.vtype_context }}</li>
