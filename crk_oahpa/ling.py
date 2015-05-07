@@ -305,13 +305,12 @@ class Paradigm:
 				else:
 					if not lemma:
 						raise TypeError
-				lookups = lookups + lemma + hid + "+" + tag
+					lookups = lookups + lemma + hid + "+" + tag
 
-				lookups += '\n\n\n'
+					lookups += '\n\n\n'
 
 		self.generate_data.append(lookups)
 
-	
 	def generate_all(self, dialects):		
 		
 		if not self.tagset:
