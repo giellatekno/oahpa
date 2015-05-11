@@ -248,7 +248,7 @@ VTYPE_CHOICES = (
 
 TRANS_ANIM_CHOICES = (
 	('AI-TI', _('AI-TI')),
-	('all', _('All')),
+	# ('all', _('All')),
 )
 
 VERB_QUESTION_ANSWER = {
