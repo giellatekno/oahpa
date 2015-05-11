@@ -595,7 +595,7 @@ span.click-to-stress {
 	display: tablerow;
 	padding-top: .25em;
 	margin-bottom: .75em;
-	padding-bottom: 1.5em;
+	padding-bottom: 1.75em;
 	position: inherit;
 }
 
@@ -606,12 +606,16 @@ span.click-to-stress {
 
 .morfa span.pronoun + input[type='text'] {
 	display: inline;
-	position: absolute;
+	position: inline;
 	margin-left: 5px;
 	top: 0px;
 	width: 80%;
 }
 
+.morfa span.pronoun.has_object + input[type='text'] {
+    position: inline !important; 
+    width: 18em !important;
+}
 
 #question_set input[type='text'] {
 	border-width: 1px;

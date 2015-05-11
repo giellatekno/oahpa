@@ -70,7 +70,7 @@
 
 		{% if form.answertext1 %}{{ form.answertext1 }}{% endif %}
 
-		{% if form.pron %}<span class="pronoun">{{ form.pron }}</span>{% endif %}
+		{% if form.pron %}<span class="pronoun {% if form.object %}has_object{% endif %}">{{ form.pron }}</span>{% endif %}
 		{% ifequal form.error "correct" %}
 			<span class="correct">{{ form.userans }}</span>
 		{% else %}
@@ -82,7 +82,11 @@
 		{% endifequal %}
 
 		{% if form.pron_imp %}
-			<span class="pronoun">{{ form.pron_imp }}</span>
+			<span class="pronoun {% if form.object %}has_object{% endif %}">{{ form.pron_imp }}</span>
+		{% endif %}
+
+		{% if form.object %}
+			<span class="object">{{ form.object }}</span>
 		{% endif %}
 
 		{% if form.answertext2 %}<span class="answertext">{{ form.answertext2 }}</span>{% endif %}
@@ -94,7 +98,7 @@
 
 		{% ifnotequal form.userans "" %}
 
-			{% if form.pron %}<span class="pronoun">{{ form.pron }}</span>{% endif %}
+			{% if form.pron %}<span class="pronoun {% if form.object %}has_object{% endif %}">{{ form.pron }}</span>{% endif %}
 
 			{% ifequal form.error "correct" %}
 				<span class="correct">{{ form.userans }}</span>
@@ -104,18 +108,28 @@
 			{% endifequal %}
 
 			{% if form.pron_imp %}
-                <span class="pronoun">{{ form.pron_imp }}</span>
+                <span class="pronoun {% if form.object %}has_object{% endif %}">{{ form.pron_imp }}</span>
             {% endif %}
+
+		    {% if form.object %}
+			    <span class="object">{{ form.object }}</span>
+		    {% endif %}
+
 
 		{% else %}
 			<!-- Answer field -->
-			{% if form.pron %}<span class="pronoun">{{ form.pron }}</span>{% endif %}
+			{% if form.pron %}<span class="pronoun {% if form.object %}has_object{% endif %}">{{ form.pron }}</span>{% endif %}
 			{% if gametype != "sahka" or forloop.last %}
                 {{ form.answer }}
 			{% endif %}
 			{% if form.pron_imp %}
-                <span class="pronoun">{{ form.pron_imp }}</span>
+                <span class="pronoun {% if form.object %}has_object{% endif %}">{{ form.pron_imp }}</span>
             {% endif %}
+
+		    {% if form.object %}
+			    <span class="object">{{ form.object }}</span>
+		    {% endif %}
+
 
 		{% endifnotequal %}
 
