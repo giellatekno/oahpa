@@ -417,7 +417,7 @@ SEMTYPE_CHOICES = (
     ('FOOD-DRINK', _('food and drink')),
     ('NATURE-ANIMALS', _('nature and animals')),
     ('THINGS', _('things')),
-    ('DAILY-LIFE', _('daily life')),
+    ('HOME', _('home')),
     ('OCCUPATION', _('occupation')),
     ('EVERYDAY', _('everyday')),
     ('DESCRIPTIONS', _('descriptions')),
