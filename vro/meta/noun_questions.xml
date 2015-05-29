@@ -6,7 +6,7 @@
       <text>Midä SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="mPEOPLE"/>
+        <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Ind+Prs+ScSg3"/>
@@ -27,7 +27,7 @@
       <text>Midä SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Pl+Nom"/>
-        <sem class="mPEOPLE"/>
+        <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Ind+Prs+ScPl3"/>
@@ -211,7 +211,7 @@
       <text>Kon SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="mPEOPLE"/>
+        <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Ind+Prs+ScSg3"/>
@@ -259,7 +259,15 @@
         <grammar tag="N+Sg+Ade"/>
         <sem class="PLACE_ON"/>
       </element>
-    </answer> -->
+    </answer> 
+    <answer> 
+      <text>SUBJ MAINV N-GEN pääl</text>
+      <element game='morfa' id="N-GEN" task="yes">
+        <grammar tag="N+Sg+Gen"/>
+        <sem class="PLACE_ADP"/>
+      </element>
+    </answer> 
+    -->
   </q>
 <q id="npar4">
     <qtype>N-PAR</qtype>
@@ -278,7 +286,7 @@
       <text>SUBJ MAINV N-PAR</text>
       <element game='morfa' id="N-PAR" task="yes">
         <grammar tag="N+Sg+Par"/>
-        <sem class="mPEOPLE"/>
+        <sem class="PEOPLE"/>
       </element>
     </answer>
     <answer> 
@@ -323,7 +331,7 @@
       <text>Minka SUBJ siiäq MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Pl+Nom"/>
-        <sem class="mPEOPLE"/>
+        <sem class="PEOPLE"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Ind+Prt+ScPl3"/>
