@@ -3,11 +3,18 @@
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
-  {% ifequal settings.gametype "bare" %}
+
+  {% if settings.gametype == "bare" %}
     {% trans "Put each noun in its correct form. Click on a word for its translation." %}
-  {% else %}
-    {% trans "Add nouns in correct forms." %}
-  {% endifequal %}
+  {% elif settings.gametype == "context" %}
+      {% if settings.case_context == 'N-PL' %}
+        {% trans "Fill in nouns according to the context." %}
+      {% elif settings.case_context == 'N-LOC' %}
+        {% trans "Fill in nouns according to the context." %}
+      {% else %}
+        {% trans "Fill in nouns according to the context." %}
+      {% endif %}
+  {% endif %}
 {% endblock %}
 
 {% block subsetting %}

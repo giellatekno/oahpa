@@ -3,11 +3,19 @@
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
- <!-- {% ifequal settings.gametype "bare" %}  -->
-    {% trans "Enter the above verb in the form that corresponds to the pronoun in brackets. Click on a word for its translation." %}
-<!--  {% else %}
-    {% trans "Add verbs in correct forms." %}
-  {% endifequal %}  -->
+    {% if settings.gametype == "bare" %} 
+        {% trans "Enter the above verb in the form that corresponds to the pronoun in brackets. Click on a word for its translation." %}
+    {% elif settings.gametype == "context" %}
+
+      {% if settings.vtype_context == 'V-PRS' %}
+        {% trans "Add verbs in correct forms." %}
+      {% elif settings.vtype_context == 'V-PRT' %}
+        {% trans "Add verbs in correct forms." %}
+      {% else %}
+        {% trans "Add verbs in correct forms." %}
+      {% endif %}
+
+    {% endif %}
 {% endblock %}
 {% block book %}{% endblock %}
 
