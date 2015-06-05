@@ -3,11 +3,11 @@
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
-  <!-- {% ifequal settings.gametype "bare" %}  -->
+  {% ifequal settings.gametype "bare" %}
     {% trans "Put each noun in its correct form. Click on a word for its translation." %}
- <!-- {% else %}
+  {% else %}
     {% trans "Add nouns in correct forms." %}
-  {% endifequal %} -->
+  {% endifequal %}
 {% endblock %}
 
 {% block subsetting %}
