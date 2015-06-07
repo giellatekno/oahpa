@@ -3,7 +3,9 @@
 !!xml-files
 * Lexicon files in crk/src/
 ** N_crk.xml, V_crk.xml, Ipc_crk.xml, MWE_crk.xml
+* Lexicon files in crk/engcrk/
 ** N_engcrk.xml, V_engcrk.xml, Ipc_crk.xml, MWE_crk.xml
+* Lexicon files in crk/fracrk/
 ** N_fracrk.xml, V_fracrk.xml, Ipc_crk.xml, MWE_crk.xml
 * Put the semantic sets into semantic fields: meta/semantic_sets.xml 
 * MorfaC questions files (in meta):
@@ -49,6 +51,7 @@ Elements are
 
 !!Generating forms
 Files for generation forms are in meta: n_paradigms.txt, v_paradigms.txt, tags.txt. There has to be a match between the lemma in the lexicon files, the tag string in the paradigm files and the lemma+tags in the FST.
+There is a script: scripts/testnouns.sh for testing the generation.
 
 
 !!FST
