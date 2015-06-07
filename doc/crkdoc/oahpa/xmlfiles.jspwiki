@@ -21,7 +21,7 @@ Elements are
 * <r> root (the whole file)
 * <e> entry, one for each crk lemma
 * <lg> lemma group, contains one lemma and one sources
-* <l> lemma, with attributes: pos (part of speech), animacy for nouns (IN, AN) or trans_anim for verbs (AI, II, TI, TA), audio (if there is an audiofile for the lemma in crk_oahpa/media/audio/), gen_only for restricting the generation. gen_only="none" gives no generation at all, the lemma will only be used for Leksa.
+* <l> lemma, with attributes: pos (part of speech), animacy for nouns (IN, AN) or trans_anim for verbs (AI, II, TI, TA), audio (if there is an audiofile for the lemma in crk_oahpa/media/audio/), gen_only for restricting the generation. gen_only="none" gives no generation at all, the lemma will only be used for Leksa. The attribute object for giving context to the verbs, showing that they are transitive, and if they take animate or inanimate noun.
 * <sources> 
 * <book> with attributes: name (book chapter or ). The book chapters are put together in levels ane added to the menu in these files: crk_oahpa/crk_drill/game.py and crk_oahpa/crk_drill/forms.py
 * <mg> meaning group
