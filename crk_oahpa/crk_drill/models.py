@@ -13,6 +13,9 @@ CHAPTER_CHOICES = {
     'Intr2' : ['I4', 'I5'],
     'Intr3' : ['I6', 'I7'],
     'Intr4' : ['I8', 'I9', 'I10', 'I11', 'I12'],
+    'Intr1_2' : ['I1','I2','I3', 'I4', 'I5'],
+    'Intr1_3' : ['I1','I2','I3', 'I4', 'I5', 'I6', 'I7'],
+    'Intr1_4' : ['I1','I2','I3', 'I4', 'I5', 'I6', 'I7', 'I8', 'I9', 'I10', 'I11', 'I12'],
 }
 
 class BulkManager(models.Manager):

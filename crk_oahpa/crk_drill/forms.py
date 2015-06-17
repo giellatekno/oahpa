@@ -364,6 +364,9 @@ BOOK_CHOICES = (
     ('Intr2', _('Introductory 2')), 
     ('Intr3', _('Introductory 3')), 
     ('Intr4', _('Introductory 4')), 
+    ('Intr1_2', _('Introductory 1-2')), 
+    ('Intr1_3', _('Introductory 1-3')), 
+    ('Intr1_4', _('Introductory 1-4')), 
     ('advan', _('Advanced')), 
     ('Audio', _('Audiofiles')),
 
@@ -374,6 +377,9 @@ CHAPTER_CHOICES = {
     'Intr2' : ['I4', 'I5'],
     'Intr3' : ['I6', 'I7'],
     'Intr4' : ['I8', 'I9', 'I10', 'I11', 'I12'],
+    'Intr1_2' : ['I1','I2','I3', 'I4', 'I5'],
+    'Intr1_3' : ['I1','I2','I3', 'I4', 'I5', 'I6', 'I7'],
+    'Intr1_4' : ['I1','I2','I3', 'I4', 'I5', 'I6', 'I7', 'I8', 'I9', 'I10', 'I11', 'I12'],
 }
 
 FREQUENCY_CHOICES = (
