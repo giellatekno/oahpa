@@ -905,7 +905,7 @@ class OahpaSettings(forms.Form):
 					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
 					'case_context' : 'N-PL',
 					'vtype_context' : 'V-PRS',
-					'pron_context' : 'P-PERS',
+					'pron_context' : 'P-DEM',
 					'num_context' : 'NUM-ATTR',
 					'num_level' : '1',
 					'num_type' : 'CARD',  # added by Heli
@@ -1183,7 +1183,7 @@ class MorfaSettings(OahpaSettings):
 	case_context = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
 	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
-	pron_context = forms.ChoiceField(initial='P-PERS', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)
+	pron_context = forms.ChoiceField(initial='P-DEM', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)
 	wordform_type = forms.ChoiceField(initial='', choices=WORDFORM_TYPE_CHOICES, widget=forms.Select)
 	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
 	bisyllabic = forms.BooleanField(required=False, initial=True)
