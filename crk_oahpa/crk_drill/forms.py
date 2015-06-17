@@ -135,11 +135,11 @@ NOUN_TYPE_CHOICES =(
 #
 PRON_CONTEXT_CHOICES = (
 	#('P-NOM', _('nominative')), Morfa C pronomen nominativ skal fjernes fra menyen dersom oppgavene har ingen hensikt.
-    ('P-PERS', _('personal')),
+#    ('P-PERS', _('personal')),
     ('P-DEM', _('demonstrative')),
-    ('P-RECIPR', _('reciprocative')),
-    ('P-REFL', _('reflexive')),
-    ('P-REL', _('relative')),
+#    ('P-RECIPR', _('reciprocative')),
+#    ('P-REFL', _('reflexive')),
+#    ('P-REL', _('relative')),
 )
 
 WORDFORM_TYPE_CHOICES = (
