@@ -345,12 +345,12 @@ echo "==================================================="
 # # Morfa-C
 
 
-#echo "==================================================="
-#echo "installing Morfa-C word fillings"
-#$P install.py -f $META/fillings.xml --paradigmfile $META/paradigms.txt --tagfile $META/tags.txt 2>>error.log
-#echo " "
-#echo "done"
-#echo "==================================================="
+echo "==================================================="
+echo "installing Morfa-C word fillings"
+$P install.py -f $META/fillings.xml --paradigmfile $META/paradigms.txt --tagfile $META/tags.txt 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 # $P manage.py mergetags
 # $P manage.py fixtagattributes
@@ -368,6 +368,14 @@ $P install.py -g $META/grammar_defaults.xml -q $META/verb_questions.xml 2>>error
 echo " "
 echo "done"
 echo "==================================================="
+
+echo "==================================================="
+echo "installing Morfa-C questions for translation"
+$P install.py -g $META/grammar_defaults.xml -q $META/transl_questions.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
 
 # echo "==================================================="
 # echo "installing Morfa-C questions for pronoun"
