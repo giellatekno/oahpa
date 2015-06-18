@@ -3,14 +3,14 @@
   <q id="npl1">
     <qtype>N-PL</qtype>
     <question>
-      <text>awîniki êhayâcik N-LOC</text>
+      <text>awîniki ê-ayâcik N-LOC</text>
       <element id="N-LOC">
         <grammar tag="N+IN+Loc"/>
         <sem class="PLACE"/>
       </element>
     </question>
     <answer> 
-      <text>N-LOC êhayâcik SUBJ</text>
+      <text>N-LOC ê-ayâcik SUBJ</text>
       <element game='morfa' id="SUBJ" task="yes">
             <grammar tag="N+AN+Pl"/>
         <sem class="PEOPLE"/>
@@ -20,10 +20,14 @@
   <q id="nloc1">
     <qtype>N-LOC</qtype>
     <question>
-      <text>tân'tê SUBJ</text>
+      <text>tânitê MAIN SUBJ</text>
       <element id="SUBJ">
             <grammar tag="N+AN+Number"/>
         <sem class="PEOPLE"/>
+      </element>
+      <element id="MAIN">
+        <grammar tag="V+AI+Cnj+Person-Number"/>
+        <id>ayâw</id>
       </element>
     </question>
     <answer> 
@@ -31,10 +35,6 @@
       <element game='morfa' id="N-LOC" task="yes">
         <grammar tag="N+IN+Loc"/>
         <sem class="PLACE"/>
-      </element>
-      <element id="MAIN">
-        <grammar tag="V+AI+Cnj+Person-Number"/>
-        <id>ayâw</id>
       </element>
     </answer>
   </q>
