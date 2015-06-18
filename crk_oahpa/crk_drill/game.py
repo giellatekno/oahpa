@@ -777,8 +777,8 @@ class BareGame(Game):
 		try: 
 			
 			WORD_FILTER = Q()
-			# if pos == 'Px':
-			# 	    WORD_FILTER = Q(word__semtype__semtype='MORFAPOSS')
+			if pos == 'Px':
+					WORD_FILTER = Q(word__semtype__semtype='MORFAPOSS')
 				
 			tag = tags.order_by('?')[0]
 			
@@ -833,6 +833,8 @@ class BareGame(Game):
 					count += 1
 					continue
 
+			if no_form:
+				raise IndexError
 			db_info['word_id'] = random_word.id
 			db_info['tag_id'] = tag.id
 			#print db_info
@@ -850,8 +852,8 @@ class BareGame(Game):
 			if 0 in [tc, wc, fc, wfc, tfc]:
 				# print error
 				error += "Word count (%d), Tag count (%d), Form count (%d), Words matching query (%d), Tags matching query (%d)." % (wc, tc, fc, wfc, tfc)
-				error += "\n  Query: %s" % repr(QUERY)
-				error += "\n  Tag Query: %s" % repr(TAG_QUERY)
+				error += "\n  Query: %s" % QUERY
+				error += "\n  Tag Query: %s" % TAG_QUERY
 				raise Http404(error)
 		return
 
@@ -1526,6 +1528,8 @@ class QuizzGame(Game):
 						kw_frequency.extend(rare)
 
 				leksa_kwargs['frequency'] = list(set(kw_frequency))
+
+			error += '   ' + repr(leksa_kwargs)
 
 			word_set = leksa_filter(QueryModel, **leksa_kwargs)
 
