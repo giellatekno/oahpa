@@ -10,7 +10,7 @@
       </element>
     </question>
     <answer> 
-      <text>SUBJ N-LOC êhayâcik</text>
+      <text>N-LOC êhayâcik SUBJ</text>
       <element game='morfa' id="SUBJ" task="yes">
             <grammar tag="N+AN+Pl"/>
         <sem class="PEOPLE"/>
@@ -27,10 +27,14 @@
       </element>
     </question>
     <answer> 
-      <text>SUBJ N-LOC ehayat</text>
+      <text>N-LOC MAIN SUBJ</text>
       <element game='morfa' id="N-LOC" task="yes">
         <grammar tag="N+IN+Loc"/>
         <sem class="PLACE"/>
+      </element>
+      <element id="MAIN">
+        <grammar tag="V+AI+Cnj+Person-Number"/>
+        <id>ayâw</id>
       </element>
     </answer>
   </q>
