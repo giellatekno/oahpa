@@ -777,8 +777,8 @@ class BareGame(Game):
 		try: 
 			
 			WORD_FILTER = Q()
-			if pos == 'Px':
-				    WORD_FILTER = Q(word__semtype__semtype='MORFAPOSS')
+			# if pos == 'Px':
+			# 	    WORD_FILTER = Q(word__semtype__semtype='MORFAPOSS')
 				
 			tag = tags.order_by('?')[0]
 			
