@@ -1,0 +1,77 @@
+
+
+Multichar_Symbols
+
+
+LEXICON Root
+nouns ;
+pronouns ;
+copula ;
+
+LEXICON nouns
+shoe CAT ;
+cat CAT ;
+egg CAT ;
+dog CAT ;
+cattle CATTLE ;
+sugar CATTLE ;
+bread CAT ;
+spoon CAT ;
+carrot CAT ;
+knife:kni KNIFE ;
+man:m MAN ;
+woman:wom MAN ;
+fish FISH ;
+meat CATTLE ;
+bacon CATTLE ;
+milk CATTLE ;
+store CAT ;
+chair CAT ;
+potato FISH ;
+
+LEXICON CAT
++N+Sg: # ;
++N+Pl:s # ;
+
+LEXICON FISH
++N+Sg: # ;
++N+Pl:es # ;
+
+LEXICON CATTLE
++N+Sg: # ;
+
+LEXICON KNIFE
++N+Sg:fe # ;
++N+Pl:ves # ;
+
+LEXICON MAN
++N+Sg:an # ;
++N+Pl:en # ;
+
+LEXICON pronouns
+this SGPROX ;
+these PLPROX ;
+that SGMED ;
+those PLMED ;
+
+LEXICON SGPROX
++Pron+Dem+Prox+Sg: # ;
+
+LEXICON PLPROX
++Pron+Dem+Prox+Pl: # ;
+
+LEXICON SGMED
++Pron+Dem+Med+Sg: # ;
+
+LEXICON PLMED
++Pron+Dem+Med+Pl: # ;
+
+LEXICON copula
+be+V+Ind+Prs+3Sg:is # ;
+be+V+Ind+Prs+3Pl:are # ;
+be+V+Ind+Prt+3Sg:was # ;
+be+V+Ind+Prt+3Pl:were # ;
+
+
+
+
