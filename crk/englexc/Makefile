@@ -6,42 +6,42 @@ XFST = xfst #-utf8
 LEXC = lexc #-utf8
 TWOLC = twolc #-utf8
 
-i7.fst: 7.fst
+ieng.fst: eng.fst
 	@echo
-	@echo "*** Building the inverse 7.fst ***" ;
+	@echo "*** Building the inverse eng.fst ***" ;
 	@echo
-	printf "load 7.fst \n\
+	printf "load eng.fst \n\
 	invert net \n\
-	save stack i7.fst \n\
+	save stack ieng.fst \n\
 	quit \n" > if-fst-script
 	$(XFST) < if-fst-script
 	rm -f if-fst-script
 
 
-7.fst: 7.lexc 7.bin
+eng.fst: eng.lexc eng.bin
 	@echo
-	@echo "*** Building 7.fst ***" ;
+	@echo "*** Building eng.fst ***" ;
 	@echo
-	printf "compile-source 7.lexc \n\
-	read-rules 7.bin \n\
+	printf "compile-source eng.lexc \n\
+	read-rules eng.bin \n\
 	compose-result \n\
-	save-result 7.fst \n\
+	save-result eng.fst \n\
 	quit \n" > f-fst-script
 	$(LEXC) < f-fst-script
 	rm -f f-fst-script
 
-7.bin: 7.twolc
+eng.bin: eng.twolc
 	@echo
-	@echo "*** Building 7.bin ***" ;
+	@echo "*** Building eng.bin ***" ;
 	@echo
-	@printf "read-grammar 7.twolc \n\
+	@printf "read-grammar eng.twolc \n\
 	compile \n\
-	save-binary 7.bin \n\
+	save-binary eng.bin \n\
 	quit \n" > f-bin-script
 	$(TWOLC) < f-bin-script
 	@rm -f f-bin-script
 
 clean:
-	@rm -f 7.bin 7.fst i7.fst
+	@rm -f eng.bin eng.fst ieng.fst
 
 
