@@ -1,0 +1,185 @@
+
+
+#   ============================ #
+#!! !!!Plains Cree nehiyametan syntactic parser 
+#   ============================ #
+
+
+# ========== #
+# Delimiters #
+# ========== #
+
+
+DELIMITERS = "<.>" "<!>" "<?>" "<¶>";
+
+
+
+# ============= #
+# Tags and sets #
+# ============= #
+
+
+# ========
+   SETS
+# ========
+
+LIST BOS = (>>>) (<s>); 
+LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
+
+LIST N = N ;
+LIST V = V ;
+
+LIST Ipc = Ipc ;
+LIST Interj = Interj ;
+
+LIST Adv = Adv ;
+LIST CC = CC ;
+LIST CS = CS ;
+
+LIST AN = AN ;
+LIST IN = IN ;
+
+LIST IA = IA ;
+LIST II = II ;
+LIST TA = TA ;
+LIST TI = TI ;
+
+
+LIST Cnj = Cnj ;
+LIST ConNeg = ConNeg ;
+LIST Cond = Cond ;
+LIST Def = Def ;
+LIST Del = Del ;
+LIST Dem = Dem ;
+LIST Dim = Dim ;
+LIST Dim/Der = Dim/Der ;
+LIST Dist = Dist ;
+LIST Fut = Fut ;
+LIST Imm = Imm ;
+LIST Imp = Imp ;
+LIST Incl = Incl ;
+LIST Ind = Ind ;
+LIST Inf = Inf ;
+LIST Int = Int ;
+LIST Interr = Interr ;
+LIST Loc = Loc ;
+LIST Med = Med ;
+LIST Neg = Neg ;
+LIST Num = Num ;
+LIST Obv =  Obv ;
+LIST Pos = Pos ;
+LIST Prf = Prf ;
+LIST Pron = Pron ;
+LIST Prox = Prox ;
+LIST Prs = Prs ;
+LIST Prt = Prt ;
+LIST Qst = Qst ;
+LIST Sbj = Sbj ;
+
+LIST SgO = SgO ;
+LIST P2lO = P2lO ;
+LIST Pl = Pl ;
+LIST PlO = PlO ;
+LIST 12Pl = 12Pl ;
+LIST 1Pl = 1Pl ;
+LIST 1PlO = 1PlO ;
+LIST Sg = Sg ;
+LIST 1Sg = 1Sg ;
+LIST 1SgO = 1SgO ;
+LIST 2Pl = 2Pl ;
+LIST 2Sg = 2Sg ;
+LIST 2SgO = 2SgO ;
+LIST 3Pl = 3Pl ;
+LIST 3PlO = 3PlO ;
+LIST 3Sg = 3Sg ;
+LIST 3SgO = 3SgO ;
+LIST 4Pl = 4Pl ;
+LIST 4PlO = 4PlO ;
+LIST 4Sg = 4Sg ;
+LIST 4SgO = 4SgO ;
+LIST 5Sg = 5Sg ;
+
+LIST Px12Pl = Px12Pl ;
+LIST Px1Pl = Px1Pl ;
+LIST Px1Sg = Px1Sg ;
+LIST Px2Pl = Px2Pl ;
+LIST Px2Sg = Px2Sg ;
+LIST Px3Pl = Px3Pl ;
+LIST Px3Sg = Px3Sg ;
+LIST Px4Pl = Px4Pl ;
+LIST Px4Sg = Px4Sg ;
+LIST Der/Dim = Der/Dim ;
+
+
+# Sets
+# ====
+
+LIST QDL = QDL ;
+LIST QMRK = ? Guess ;
+
+LIST WORD = N V Ipc Interj ;
+
+LIST VFIN = (V 1Sg) (V 2Sg) (V 3Sg) (V 4Sg) (V 5Sg) (V 1Pl) (V 2Pl) (V 3Pl) (V 4Pl) (V 5Pl) ;
+
+SET NOT-VERB = WORD - V ;
+
+LIST NUMBER = Sg Pl ;
+LIST GENDER = AN IN ;
+SET NUMBERGENDER = (AN Sg) OR (AN Pl) OR (IN Sg) OR (IN PL) ;
+
+# Noun sets
+
+LIST HUMAN = "awâsis" "okimâw" "iyiniw" "iskwêw" ;
+
+# Boundary sets
+
+# Complementary set
+
+# Case sets
+
+# Some case, but not...
+
+LIST COMMA = (",") ;
+SET MARK =  COMMA | ("\\") | ("\;") ; #"
+
+LIST PUNCT-LEFT = (PUNCT LEFT) ;
+LIST PUNCT-RIGHT = (PUNCT RIGHT) ;
+SET PRE-APP   = COMMA OR PUNCT-LEFT ;
+LIST @trans = @trans ;
+
+# Tranlation sets
+LIST SHOE = "maskisin" ;
+LIST KNIFE = "môhkomân" ;
+LIST SPOON = "êmihkwân" ;
+LIST BREAD = "pahkwêsikan" ;
+LIST SUGAR = "sîwinikan" ;
+LIST CARROT = "oskâtâsk" ;
+LIST DOG = "atim" ;
+LIST MAN = "nâpêw" ;
+LIST WOMAN = "iskwêw" ;
+LIST CAT = "minôs" ;
+LIST FISH = "kinosêw" ;
+LIST MEAT = "wiyâs" ;
+LIST BACON = "kohkôsiwiyin" ;
+LIST MILK = "tohtôsâpoy" ;
+LIST STORE = "atâwêwikamik" ;
+LIST EGG = "wâwi" ;
+LIST CHAIR = "têhtapiwinak" ;
+LIST POTATO = "askipwâwi" ;
+
+
+# Here come the rules #
+
+BEFORE-SECTIONS 
+
+SECTION
+
+MAP (@err-trans) TARGET QDL IF (*-1 ("shoe"))(NOT *1 SHOE) ; 
+MAP (@err-demAttr) TARGET QDL IF (*-1 ("shoe"))(NOT *1 SHOE) ; 
+MAP (@err-demPred) TARGET QDL IF (-1 N LINK *-1 ("those"))(NOT *1 N LINK *1 (Dem Med)) ; 
+
+
+
+AFTER-SECTIONS 
+
+END
