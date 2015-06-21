@@ -148,7 +148,7 @@ SET MARK =  COMMA | ("\\") | ("\;") ; #"
 LIST PUNCT-LEFT = (PUNCT LEFT) ;
 LIST PUNCT-RIGHT = (PUNCT RIGHT) ;
 SET PRE-APP   = COMMA OR PUNCT-LEFT ;
-LIST @trans = @trans ;
+LIST &trans = &trans ;
 
 # Translation sets, add synonyms
 LIST SHOE = "maskisin" ;
@@ -178,58 +178,58 @@ BEFORE-SECTIONS
 SECTION
 
 # looking for typos
-MAP (@err-typo) TARGET QMRK (*-1 QDL) ;
+MAP (&err-typo) TARGET QMRK (*-1 QDL) ;
 
 # looking for incorrect translation, error tag mapped to the English word
-MAP (@err-transN) TARGET N IF (0 ("shoe"))(*1 QDL LINK NOT *1 SHOE) ; 
-MAP (@err-transN) TARGET N IF (0 ("knife"))(*1 QDL LINK NOT *1 KNIFE) ; 
-MAP (@err-transN) TARGET N IF (0 ("spoon"))(*1 QDL LINK NOT *1 SPOON) ; 
-MAP (@err-transN) TARGET N IF (0 ("bread"))(*1 QDL LINK NOT *1 BREAD) ; 
-MAP (@err-transN) TARGET N IF (0 ("sugar"))(*1 QDL LINK NOT *1 SUGAR) ; 
-MAP (@err-transN) TARGET N IF (0 ("carrot"))(*1 QDL LINK NOT *1 CARROT) ; 
-MAP (@err-transN) TARGET N IF (0 ("dog"))(*1 QDL LINK NOT *1 DOG) ; 
-MAP (@err-transN) TARGET N IF (0 ("man"))(*1 QDL LINK NOT *1 MAN) ; 
-MAP (@err-transN) TARGET N IF (0 ("woman"))(*1 QDL LINK NOT *1 WOMAN) ; 
-MAP (@err-transN) TARGET N IF (0 ("cat"))(*1 QDL LINK NOT *1 CAT) ; 
-MAP (@err-transN) TARGET N IF (0 ("fish"))(*1 QDL LINK NOT *1 FISH) ; 
-MAP (@err-transN) TARGET N IF (0 ("meat"))(*1 QDL LINK NOT *1 MEAT) ; 
-MAP (@err-transN) TARGET N IF (0 ("bacon"))(*1 QDL LINK NOT *1 BACON) ; 
-MAP (@err-transN) TARGET N IF (0 ("milk"))(*1 QDL LINK NOT *1 MILK) ; 
-MAP (@err-transN) TARGET N IF (0 ("store"))(*1 QDL LINK NOT *1 STORE) ; 
-MAP (@err-transN) TARGET N IF (0 ("egg"))(*1 QDL LINK NOT *1 EGG) ; 
-MAP (@err-transN) TARGET N IF (0 ("chair"))(*1 QDL LINK NOT *1 CHAIR) ; 
-MAP (@err-transN) TARGET N IF (0 ("potato"))(*1 QDL LINK NOT *1 POTATO) ; 
+MAP (&err-transN) TARGET N IF (0 ("shoe"))(*1 QDL LINK NOT *1 SHOE) ; 
+MAP (&err-transN) TARGET N IF (0 ("knife"))(*1 QDL LINK NOT *1 KNIFE) ; 
+MAP (&err-transN) TARGET N IF (0 ("spoon"))(*1 QDL LINK NOT *1 SPOON) ; 
+MAP (&err-transN) TARGET N IF (0 ("bread"))(*1 QDL LINK NOT *1 BREAD) ; 
+MAP (&err-transN) TARGET N IF (0 ("sugar"))(*1 QDL LINK NOT *1 SUGAR) ; 
+MAP (&err-transN) TARGET N IF (0 ("carrot"))(*1 QDL LINK NOT *1 CARROT) ; 
+MAP (&err-transN) TARGET N IF (0 ("dog"))(*1 QDL LINK NOT *1 DOG) ; 
+MAP (&err-transN) TARGET N IF (0 ("man"))(*1 QDL LINK NOT *1 MAN) ; 
+MAP (&err-transN) TARGET N IF (0 ("woman"))(*1 QDL LINK NOT *1 WOMAN) ; 
+MAP (&err-transN) TARGET N IF (0 ("cat"))(*1 QDL LINK NOT *1 CAT) ; 
+MAP (&err-transN) TARGET N IF (0 ("fish"))(*1 QDL LINK NOT *1 FISH) ; 
+MAP (&err-transN) TARGET N IF (0 ("meat"))(*1 QDL LINK NOT *1 MEAT) ; 
+MAP (&err-transN) TARGET N IF (0 ("bacon"))(*1 QDL LINK NOT *1 BACON) ; 
+MAP (&err-transN) TARGET N IF (0 ("milk"))(*1 QDL LINK NOT *1 MILK) ; 
+MAP (&err-transN) TARGET N IF (0 ("store"))(*1 QDL LINK NOT *1 STORE) ; 
+MAP (&err-transN) TARGET N IF (0 ("egg"))(*1 QDL LINK NOT *1 EGG) ; 
+MAP (&err-transN) TARGET N IF (0 ("chair"))(*1 QDL LINK NOT *1 CHAIR) ; 
+MAP (&err-transN) TARGET N IF (0 ("potato"))(*1 QDL LINK NOT *1 POTATO) ; 
 
 
 
 # looking for incorrect word order, error tag mapped to QDL
-MAP (@err-demAttr) TARGET QDL IF (*-1 N LINK *-1 COPULA BARRIER NOT-NPMOD LINK -1 Dem)(1 N LINK 1 Dem) ; 
-MAP (@err-demPred) TARGET QDL IF (*-1 N LINK *-1 COPULA BARRIER NOT-NPMOD LINK -1 Dem)(1 Dem LINK 1 N) ; 
+MAP (&err-demAttr) TARGET QDL IF (*-1 N LINK *-1 COPULA BARRIER NOT-NPMOD LINK -1 Dem)(1 N LINK 1 Dem) ; 
+MAP (&err-demPred) TARGET QDL IF (*-1 N LINK *-1 COPULA BARRIER NOT-NPMOD LINK -1 Dem)(1 Dem LINK 1 N) ; 
 
 # looking for incorrect number or distance, error tag mapped to the English Det
 LIST DemDistance = Med Prox ;
 LIST DemNumber = Sg Pl ;
 
-MAP (@err-number) TARGET Det IF (0 $$DemNumber)(*1 QDL LINK NOT *1 $$DemNumber) ; 
-MAP (@err-distance) TARGET Det IF (0 $$DemDistance)(*1 QDL LINK NOT *1 $$DemDistance) ; 
+MAP (&err-number) TARGET Det IF (0 $$DemNumber)(*1 QDL LINK NOT *1 $$DemNumber) ; 
+MAP (&err-distance) TARGET Det IF (0 $$DemDistance)(*1 QDL LINK NOT *1 $$DemDistance) ; 
 
 # looking for incorrect morphosyntax, , error tag mapped to the Cree Det
-MAP (@err-animacyIN) TARGET Dem IF (0 (Dem AN))(-1 (N IN) OR 1 (N IN)) ; 
-MAP (@err-animacyAN) TARGET Dem IF (0 (Dem IN))(-1 (N AN) OR 1 (N AN)) ; 
+MAP (&err-animacyIN) TARGET Dem IF (0 (Dem AN))(-1 (N IN) OR 1 (N IN)) ; 
+MAP (&err-animacyAN) TARGET Dem IF (0 (Dem IN))(-1 (N AN) OR 1 (N AN)) ; 
 
 
 
 AFTER-SECTIONS 
 
 # messages:
-# @err-typo: Is there an incorrect spelled word in your translation? 
-# @err-transN: Is the noun translated correctly?
-# @err-demAttr: The demonstrative pronoun should come before the noun.
-# @err-demPred The demonstrative pronoun should come after the noun.
-# @err-number: The demonstrative pronoun must agree in number with the noun.
-# @err-distance: Have you written the correct type of demonstrative pronoun?
-# @err-animacyIN: An inanimate noun needs an inanimate demonstrative pronoun.
-# @err-animacyAN: An animate noun needs an animate demonstrative pronoun.
+# &err-typo: Is there an incorrect spelled word in your translation? 
+# &err-transN: Is the noun translated correctly?
+# &err-demAttr: The demonstrative pronoun should come before the noun.
+# &err-demPred The demonstrative pronoun should come after the noun.
+# &err-number: The demonstrative pronoun must agree in number with the noun.
+# &err-distance: Have you written the correct type of demonstrative pronoun?
+# &err-animacyIN: An inanimate noun needs an inanimate demonstrative pronoun.
+# &err-animacyAN: An animate noun needs an animate demonstrative pronoun.
 
 
 END
