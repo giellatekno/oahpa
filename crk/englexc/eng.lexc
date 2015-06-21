@@ -1,13 +1,15 @@
 
 
 Multichar_Symbols
-+QDL +N +Sg +Pl +Pron +Dem +Prox  +Med
++QDL +N +Sg +Pl +Pron +Dem +Prox  +Med +A +Pos +Det +Indef +Def +Prt +Prs +Ind
 
 LEXICON Root
 nouns ;
 pronouns ;
 copula ;
 punctation ;
+articles ;
+adjectives ;
 
 LEXICON nouns
 shoe CAT ;
@@ -49,15 +51,18 @@ LEXICON MAN
 +N+Sg:an ENDLEX ;
 +N+Pl:en ENDLEX ;
 
+LEXICON adjectives
+little ADJ ;
+
+LEXICON ADJ
++A+Pos:  ENDLEX ;
+
+
 LEXICON pronouns
 this SGPROX ;
 this:these PLPROX ;
 that SGMED ;
 that:those PLMED ;
-this:This SGPROX ;
-this:These PLPROX ;
-that:That SGMED ;
-that:Those PLMED ;
 
 LEXICON SGPROX
 +Pron+Dem+Prox+Sg: ENDLEX ;
@@ -76,6 +81,11 @@ be+V+Ind+Prs+3Sg:is ENDLEX ;
 be+V+Ind+Prs+3Pl:are ENDLEX ;
 be+V+Ind+Prt+3Sg:was ENDLEX ;
 be+V+Ind+Prt+3Pl:were ENDLEX ;
+
+LEXICON articles
+a+Det+Indef:a ENDLEX ;
+a+Det+Indef:an ENDLEX ;
+the+Det+Def:the ENDLEX ;
 
 LEXICON ENDLEX
 +eng: # ;
