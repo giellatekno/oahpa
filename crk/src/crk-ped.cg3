@@ -35,6 +35,7 @@ LIST Interj = Interj ;
 LIST Adv = Adv ;
 LIST CC = CC ;
 LIST CS = CS ;
+LIST Det = Det ;
 
 LIST AN = AN ;
 LIST IN = IN ;
@@ -214,8 +215,8 @@ MAP (&err-number) TARGET Det IF (0 $$DemNumber)(*1 QDL LINK NOT *1 $$DemNumber) 
 MAP (&err-distance) TARGET Det IF (0 $$DemDistance)(*1 QDL LINK NOT *1 $$DemDistance) ; 
 
 # looking for incorrect morphosyntax, , error tag mapped to the Cree Det
-MAP (&err-animacyIN) TARGET Dem IF (0 (Dem AN))(-1 (N IN) OR 1 (N IN)) ; 
-MAP (&err-animacyAN) TARGET Dem IF (0 (Dem IN))(-1 (N AN) OR 1 (N AN)) ; 
+MAP (&err-animacyIN) TARGET Dem IF (0 (Dem AN))((-1 (N IN)) OR (1 (N IN))) ; 
+MAP (&err-animacyAN) TARGET Dem IF (0 (Dem IN))((-1 (N AN)) OR (1 (N AN))) ; 
 
 
 
