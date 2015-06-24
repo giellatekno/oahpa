@@ -117,6 +117,509 @@
     </answer>
   </q>
 
+  <!-- general todos
+
+        TODO: koontâršurr - lexicon and FST?
+
+    SUBJ:
+    - babakk                  
+    - caarr                   
+    - eʹčč                    
+    - jeäʹnn                  
+    - kaav                    
+    - koonǥõs                 
+    - mieʹcsteei              
+    - mueʹđđ                  
+    - nijdd                   
+    - ouddooumaž              
+    - papp                    
+    - peigg                   
+    - piizar                  
+    - presidentt              
+    - prinss                  
+    - pävvar                  
+    - ristteʹčč               
+    - risttâʹlǧǧ              
+    - stoolarååum             
+    - suʹvddi                 
+    - sääldat                 
+    - tiõrvâsvuõđhoiʹddjeei   
+    - triâŋgg                 
+    - uʹtčteeʹl               
+    - veäʹncceʹčč             
+    - veäʹnccjeäʹnn           
+    - viʹllj                  
+    - vuäbbaž                 
+    - äkk                     
+    - čieʹcc                  
+    - škooulneǩ               
+
+   N-SG-COM
+    - dåhttar
+    - eʹčč
+    - jaakân
+    - jeäʹnn
+    - jieʹǩǩ
+    - kaavsõs
+    - koontâršurr
+    - koonǥõs
+    - kääʹlles
+    - minister
+    - naʹzvan
+    - neezzan
+    - ommǥaž	
+    - papp
+    - piizar
+    - piizar
+    - praatt
+    - prinss
+    - puäʒʒooumaž	
+    - päʹrnn
+    - ristteʹčč
+    - risttpäʹrnn
+    - snekkar
+    - sääldat
+    - taaurõš
+    - triâŋgg
+    - uʹtčteeʹl
+    - veʹrǧǧooumaž
+    - vuäʹbb
+    - vuõddâm
+    - äkk
+    - äʹjj	
+    - škooulneǩ
+
+  MAINV
+    - IV: maainast
+    - IV: puätt 
+    - IV: reâugg
+    - IV: saǥstââll
+
+    - TV: vuâlgg reissu
+
+   -->
+
+  <q id="nsgcom1">
+    <qtype>N-SG-COM</qtype>
+    <question>
+      <text>Ǩeäin piizar saǥstââll</text>
+      <!--
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <id>juukkâd</id>
+      </element>
+      -->
+    </question>
+    <answer> 
+      <text>Piizar saǥstââll N-SG-COM</text>
+      <element game='morfa' id="N-SG-COM" task="yes">
+        <grammar tag="N+Sg+Com"/>
+        <id>presidentt</id>
+      </element>
+    </answer>
+  </q>
+
+  <!-- 
+
+YKS. KOMITATIIVI + verbi y.3.p.
+
+{{{
+Ǩeäin piizar saǥstââll? (koontâršurr) 	[kenen kanssa sihteeri neuvottelee (konttoripäällikkö)]
+Piizar saǥstââll koontâršuurin.
+
+Ǩeäin suʹvddi saǥstââll? (piizar)
+Suʹvddi saǥstââll piizzrin.
+
+Ǩeäin tiõrvâsvuõđhoiʹddjeei saǥstââll? (dåhttar)
+Tiõrvâsvuõđhoiʹddjeei saǥstââll dåhttrin.
+
+Ǩeäin kaav saǥstââll? (kääʹlles)
+Kaav saǥstââll källsin.
+
+Ǩeäin presidentt saǥstââll? (minister)
+Presidentt saǥstââll ministeerin
+
+Ǩeäin prinss saǥstââll? (koonǥõs)
+Prinss saǥstââll koonǥõõzzin.
+
+Ǩeäin caarr saǥstââll? (sääldat)
+Caarr saǥstââll sääldtin.
+
+Ǩeäin mueʹđđ maainast? (jieʹǩǩ) 	[kenen kanssa täti juttelee? (setä)]
+Mueʹđđ maainast jieʹjjin.
+
+Ǩeäin sääldat maainast? (papp)
+Sääldat  maainast paappin.
+
+Ǩeäin viʹllj maainast? (eʹčč)
+Viʹllj maainast eeʹjjin.
+
+Ǩeäin pävvar maainast? (jeäʹnn)
+Pävvar maainast jieʹnnin.
+
+Ǩeäin nijdd maainast? (naʹzvan)
+Nijdd  maainast naʹzvaanin.
+
+Ǩeäin veäʹncceʹčč maainast? (vuõddâm)
+Veäʹncceʹčč maainast vuõddmin.
+
+Ǩeäin veäʹnccjeäʹnn maainast? (kaavsõs)
+Veäʹnccjeäʹnn maainast kaavsõõzzin.
+
+Ǩeäin triâŋgg reâugg? (puäʒʒooumaž)	[kenen kanssa renki työskentelee? [poromies])
+Triâŋgg reâugg puäʒʒoummin.
+
+Ǩeäin škooulneǩ reâugg? (uʹtčteeʹl)
+Škooulneǩ reâugg uʹtčteeʹlin.
+
+Ǩeäin peigg reâugg? (triâŋgg)
+Peigg reâugg triâŋgain.
+
+Ǩeäin babakk reâugg? (neezzan)
+Babakk reâugg neezznin.
+
+Ǩeäin uʹtčteeʹl reâugg? (škooulneǩ)
+Uʹtčteeʹl reâugg škooulneeʹǩǩin.
+
+Ǩeäin jeäʹnn reâugg? (äkk)
+Jeäʹnn reâugg ääkkain.
+
+Ǩeäin äkk vuâlgg reissu? (äʹjj)	[kenen kanssa mummo lähtee reissuun? (ukki)]
+Äkk vuâlgg reissu ääiʹjain.
+
+Ǩeäin vuäbbaž vuâlgg reissu? (vuäʹbb)
+Vuäbbaž vuâlgg reissu vueʹbbin.
+
+Ǩeäin piizar vuâlgg reissu? (veʹrǧǧooumaž)
+Piizar vuâlgg reissu veʹrǧǧoummin.
+
+Ǩeäin papp vuâlgg reissu? (jaakân)
+Papp vuâlgg reissu jaaknin.
+
+Ǩeäin koonǥõs vuâlgg reissu? (prinss)
+Koonǥõs vuâlgg reissu priinsin.
+
+Ǩeäin eʹčč vuâlgg reissu? (päʹrnn)
+Eʹčč vuâlgg reissu pääʹrnain.
+
+Ǩeäin ouddooumaž vuâlgg reissu? (piizar)
+Ouddooumaž vuâlgg reissu piizzrin.
+
+Ǩeäin babakk puätt? (ommǥaž)	[kenen kanssa kätilö tulee? (vauva)]
+Babakk puätt ommǥain.
+
+Ǩeäin čieʹcc puätt? (praatt)
+Čieʹcc puätt praaʹđin.
+
+Ǩeäin ristteʹčč puätt? (risttpäʹrnn)
+Ristteʹčč puätt risttpäärnain.
+
+Ǩeäin risttâʹlǧǧ puätt? (ristteʹčč)
+Risttâʹlǧǧ puätt ristteeʹjjin.
+
+Ǩeäin stoolatååum puätt? (snekkar)
+Stoolarååum puätt snekkrin.
+
+Ǩeäin mieʹcsteei puätt? (taaurõš)
+Mieʹcsteei puätt taaurõõžžin.
+
+}}}
+
+MON. KOMITATIIVI + verbi yks.3.p
+{{{
+Ǩeäivuiʹm piizar saǥstââll? (koontâršurr)   [keiden kanssa sihteeri neuvottelee (konttoripäällikkö)]
+Piizar saǥstââll koontâršuurivuiʹm.
+
+Ǩeäivuiʹm suʹvddi saǥstââll? (piizar)
+Suʹvddi saǥstââll piizzrivuiʹm.
+
+Ǩeäivuiʹm tiõrvâsvuõđhoiʹddjeei saǥstââll? (dåhttar)
+Tiõrvâsvuõđhoiʹddjeei saǥstââll dåhttrivuiʹm.
+
+Ǩeäivuiʹm kaav saǥstââll? (kääʹlles)
+Kaav saǥstââll källsivuiʹm.
+
+Ǩeäivuiʹm presidentt saǥstââll? (minister)
+Presidentt saǥstââll ministeerivuiʹm.
+
+Ǩeäivuiʹm prinss saǥstââll? (koonǥõs)
+Prinss saǥstââll koonǥõõzzivuiʹm.
+
+Ǩeäivuiʹm caarr saǥstââll? (sääldat)
+Caarr saǥstââll sääldtivuiʹm.
+
+Ǩeäivuiʹm mueʹđđ maainast? (jieʹǩǩ) 	[keiden kanssa täti juttelee? (setä)]
+Mueʹđđ maainast jieʹjjivuiʹm.
+
+Ǩeäivuiʹm sääldat maainast? (papp)
+Sääldat maainast paappivuiʹm.
+
+Ǩeäivuiʹm viʹllj maainast? (eʹčč)
+Viʹllj maainast eeʹjjivuiʹm.
+
+Ǩeäivuiʹm pävvar maainast? (jeäʹnn)
+Pävvar maainast jieʹnnivuiʹm.
+
+Ǩeäivuiʹm nijdd maainast? (naʹzvan)
+Nijdd maainast naʹzvaanivuiʹm.
+
+Ǩeäivuiʹm veäʹncceʹčč maainast? (vuõddâm)
+Veäʹncceʹčč maainast vuõddmivuiʹm.
+
+Ǩeäivuiʹm veäʹnccjeäʹnn maainast? (kaavsõs)
+Veäʹnccjeäʹnn maainast kaavsõõzzivuiʹm.
+
+Ǩeäivuiʹm triâŋgg reâugg? (puäʒʒooumaž)     [keiden kanssa renki työskentelee? [poromies])
+Triâŋgg reâugg puäʒʒoummivuiʹm.
+
+Ǩeäivuiʹm škooulneǩ reâugg? (uʹtčteeʹl)
+Škooulneǩ reâugg uʹtčteeʹlivuiʹm.
+
+Ǩeäivuiʹm peigg reâugg? (triâŋgg)
+Peigg reâugg triâŋgaivuiʹm.
+
+Ǩeäivuiʹm babakk reâugg? (neezzan)
+Babakk reâugg neezznivuiʹm.
+
+Ǩeäivuiʹm uʹtčteeʹl reâugg? (škooulneǩ)
+Uʹtčteeʹl reâugg škooulneeʹǩǩivuiʹm.
+
+Ǩeäivuiʹm jeäʹnn reâugg? (äkk)
+Jeäʹnn reâugg ääkkaivuiʹm.
+
+Ǩeäivuiʹm äkk vuâlgg reissu? (äʹjj)	[keiden kanssa mummo lähtee reissuun? (ukki)]
+Äkk vuâlgg reissu ääiʹjaivuiʹm.
+
+Ǩeäivuiʹm vuäbbaž vuâlgg reissu? (vuäʹbb)
+Vuäbbaž vuâlgg reissu vueʹbbivuiʹm.
+
+Ǩeäivuiʹm piizar vuâlgg reissu? (veʹrǧǧooumaž)
+Piizar vuâlgg reissu veʹrǧǧoummivuiʹm.
+
+Ǩeäivuiʹm papp vuâlgg reissu? (jaakân)
+Papp vuâlgg reissu jaaknivuiʹm.
+
+Ǩeäivuiʹm koonǥõs vuâlgg reissu? (prinss)
+Koonǥõs vuâlgg reissu priinsivuiʹm.
+
+Ǩeäivuiʹm eʹčč vuâlgg reissu? (päʹrnn)
+Eʹčč vuâlgg reissu pääʹrnaivuiʹm.
+
+Ǩeäivuiʹm ouddooumaž vuâlgg reissu? (piizar)
+Ouddooumaž vuâlgg reissu piizzrivuiʹm.
+
+Ǩeäivuiʹm babakk puätt? (ommǥaž)	[keiden kanssa kätilö tulee? (vauva)]
+Babakk puätt ommǥaivuiʹm.
+
+Ǩeäivuiʹm ristteʹčč puätt? (risttpäärnaž)
+Ristteʹčč puätt risttpäärnaivuiʹm.
+
+Ǩeäivuiʹm risttâʹlǧǧ puätt? (ristteʹčč)
+Risttâʹlǧǧ puätt ristteeʹjjivuim.
+
+Ǩeäivuiʹm stoolatååum puätt? (snekkar)
+Stoolarååum puätt snekkrivuiʹm.
+
+Ǩeäivuiʹm mieʹcsteei puätt? (taaurõš)
+Mieʹcsteei puätt taaurõõžživuiʹm.
+}}}
+
+
+ESSIIVI + verbi y.3.p
+{{{
+Mââʹđen peigg õõni suu? (naʹzvan [ystävä])	[minä piika piti häntä? (ystävä)]
+Peigg õõni suu naʹzvaanen.		[piika piti häntä ystävänä]
+
+Mââʹđen professor õõni suu? (škooulneǩ [koululainen])
+Professor õõni suu škooulneǩǩen.
+
+Mââʹđen kääʹlles õõni suu? (kaav [vaimo])
+Kääʹlles õõni suu kaavân.
+
+Mââʹđen nijdd õõni suu? (prinss [prinssi])
+Nijdd õõni suu prinssen.
+
+Mââʹđen tuâjjooumaž õõni suu? (rauʹddi [seppä])
+Tuâjjooumaž õõni suu rauʹddjen.
+
+Mââʹđen veʹrǧǧooumaž õõni suu? (sääldat [sotilas])
+Veʹrǧǧooumaž õõni suu sääldten.
+
+Mââʹđen jeäʹnn õõni suu? (niõđâž [pikkutyttönä])
+Jeäʹnn õõni suu niõđžen.
+}}}
+
+{{{
+Ǩeäʹđen vuäʹbb õõni suu? (vuõddâm [sulhanen])	[kenenä sisko piti häntä? (sulhanen)]
+Vuäʹbb õõni suu vuõddmen.		[sisko piti häntä sulhasena]
+
+Ǩeäʹđen kaʹrštar õõni suu? (koonǥõs [kuningas])
+Kaʹrštar õõni suu koonǥõssân.
+
+Ǩeäʹđen tollšur õõni suu? (triâŋgg [renki])
+Tollšurr õõni suu triâŋggân.
+
+Ǩeäʹđen jaakân õõni suu? (papp [pappi])
+Jaakân õõni suu pappân.
+
+Ǩeäʹđen päʹrnn õõni suu? (siõrrneǩ [leikkikaveri])
+Päʹrnn õõni suu siõrrneǩǩen.
+
+Ǩeäʹđen baŋkkšeǩ õõni suu? (čiisti [siivooja])
+Baŋkkšeǩ õõni suu čiistjen.
+
+Ǩeäʹđen källsaž õõʹni suu? (nijdd [tyttö])
+Källsaž õõni suu nijddân.
+}}}
+
+{{{
+Kuäʹss nijdd âânn šaamšiǩ? (kaav [vaimo])	[milloin tyttö käyttää vaimonlakkia? (vaimo)]
+Nijdd âân šaamšiǩ kaavân.		[tyttö käyttää vaimonlakkia vaimona]
+
+Kuäss päʹrnn âânn jõnn-neeiʹb? (ooumaž [mies])
+Päʹrnn âânn jõnn-neeiʹb ooumžen.
+
+Kuäʹss äkk âânn pooʹvdneeʹǩ? (liâskk [leski])
+Äkk âânn pooʹvdneeʹǩ liâskkân.
+
+Kuäʹss niõđâž âânn peeʹrveeʹsǩ? (nijdd [tyttö])
+Niõđâž âânn peeʹrveeʹsǩ nijddân.
+
+Kuäʹss päärnaž âânn ääuš? (jõnn [iso])
+Päärnaž âânn ääuš jõnnân.
+
+Kuäʹss ooumâž âânn sueʹbb? (puäʹres [vanha])
+Ooumaž âânn sueʹbb puärrsen.
+}}}
+
+
+
+KOLTAN ESSIIVI VASTAA SUOMEN TRANSLATIIVIA
+Ǩeäʹđen eʹčč juuʹrdi suu? (jeäʹnn [äiti])		[keneksi isä luuli häntä? (äiti])
+Eʹčč juuʹrdi suu jeäʹnnen.			[isä luuli häntä äidiksi]
+
+Ǩeäʹđen äkk juuʹrdi suu? (kueʹss [vieras])
+Äkk juuʹrdi suu kueʹssen.
+
+Ǩeäʹđen päʹrnn juuʹrdi suu? (uʹtčteeʹl [opettaja])
+Päʹrnn juuʹrdi suu uʹtčteeʹlen.
+
+Ǩeäʹđen sieʹss juuʹrdi suu? (kaavsõs [morsian])
+Sieʹss juuʹrdi suu kaavsõssân.
+
+Ǩeäʹđen čieʹcc juuʹrdi suu? (viilljâž [pikkuveli])
+Čieʹcc juuʹrdi suu viilljžen.
+
+Ǩeäʹđen äʹjj juuʹrdi suu? (suʹvddi [tuomari])
+ Äʹjj juuʹrdi suu suʹvddjen.
+
+Ǩeäʹđen ooumaž juuʹrdi suu? (pååʹles [poliisi])
+Ooumaž juuʹrdi suu pååʹlsen.
+
+Ǩeäʹđen triâŋgg juuʹrdi suu? (jaakân [kanttori])
+Triâŋgg juuʹrdi suu jaaknen.
+
+Mââʹđen ääkkaž vaaʹldi suu? (peigg [piika]) 	[miksi akka otti hänet? [piika])
+Ääkkaž vaaʹldi suu peiggân. 		[akka otti hänet piiaksi]
+
+Mââʹđen eʹčč vaaʹldi suu? (triâŋgg [renki])
+Eʹčč vaaʹldi suu triâŋggân.
+
+Mââʹđen päärnaž vaaʹldi suu? (jeäʹnn [äiti])
+Päärnaž vaaʹldi suu jeäʹnnen.
+
+
+
+
+PARTITIIVI 
+Kâʹll jooŋŋ lie puäʹrt seʹst? (nellj 4)		[montako puolukkaa on tuokkosessa? (4)]
+Puäʹrt seʹst lie nellj jooŋŋ.
+
+Kâʹll mueʹrj lie puäʹrt seʹst? (kääuʹc 8)
+Puäʹrt seʹst lie kääuʹc mueʹrjjed.
+
+Kâʹll niõđ seäʹrre šeelljast? (lååi 10)
+Lååi nijddâd seäʹrre šeelljast.
+
+Kâʹll niõđ pâʹnne snaʹlddjin? (kueʹhtt 2)
+Kueʹhtt niõđ pâʹnne snaʹlddjin.
+
+Kâʹll pävvar lie restraantest? (koummlokutt 36)
+Restraantest lie koummlokutt pävvred.
+
+Kâʹll ǩeeʹrj škooulneǩ lååkk? (čiččâm 7)
+Škooulneǩ lååkk čiččâm ǩeʹrjjed.
+
+Koon vuâstta päʹrnn nuäjjââtt? (põrtt [talo])	[mitä vasten poika nojautuu? (talo)]
+Päʹrnn nuäjjââtt põrttâd vuâstta.
+
+Koon vuâstta olžvueiʹvv šâdd? (ǩeäʹdǧǧ [kivi])
+Olžvueiʹvv šâdd ǩeäʹdǧǧed vuâstta.
+
+Koon vuâstta ǩeâlkk lij kaggum? (äiʹtt [aitta])	[mitä vasten kelkka on nostettu? (aitta)]
+Ǩeâlkk lij kaggum äiʹtted vuâstta.
+
+Koon vuâstta saan lij kaggum? (muõrr [puu]
+Saan lij kaggum muõrrâd vuâstta.
+
+Koon vuâstta sââʹviǩ lie piijjum? (seiʹnn [seinä] 	[mitä vasten sukset on pantu? (seinä)]
+Sââviǩ lie piijjum seiʹnned vuâstta.
+
+Koon vuâstta reʹssvästt lij piijjum? (uhss [ovi])
+Reʹssvästt lij piijjum uhssâd vuâstta.
+
+
+
+PARTITIIVIN KÄYTTÖ VERTAILUSSA
+Lij-a äkk puärrsab ko äʹjj? (äkk [mummo])         [onko mummo vanhempi kuin ukki? (mummo)]
+Äʹjj lij puärrsab äkkad.		           [ukki on mummoa vanhempi]
+
+Lij-a viʹllpieʹll puärrsab ko viʹllj? (viʹllj [veli])
+Viʹlljpieʹll lij puärrsab viʹlljed.
+
+Lij-a kaavsõs nuõrab ko vuõddâm? (kaavsõs [morsian])
+Kaavsõs lij nuõrab vuõddmed.
+
+Lij-a šapšš šuurab ko nuʹǩǩeš? (šapšš [siika])	[onko hauki suurempi kuin siika? (siika)]
+Nuʹǩǩeš lij šuurab šapššâd.
+
+Lij-a ǩeäʹdǧǧ temmsab ko seeuʹter? (ǩeäʹdǧǧ [kivi]) 	[onko kivi pehmeämpi kuin sammal (kivi)]
+Seeuʹter lij temmsab ǩeäʹdǧǧed.
+
+Lij-a Ruõššjânnam uuʹccab ko Taarr? (Ruõššjânnam [Venäjä])
+Taarr lij uuʹccab Ruõššjânnmed.
+
+Lij-a muõrr õlljab ko miõstt? (muõrr [puu])
+Muõrr lij õlljab miõsttâd.
+
+Lij-a ǩiõudd kõssjab ko čâustõk? (čâustõk [suopunki])
+Ǩiõudd lij kõssjab čâustõkkâd.
+
+Lij-a lâuʹŋŋkueʹtt šuurab ko põrtt? (lâuʹŋŋkueʹtt [turvekota]
+Põrtt lij šuurab lâuʹŋŋkueʹtted.
+
+Kuäbbaž lij uuʹccab riʹmjj avi säʹppli? (riʹmjj [kettu])   [kumpi on pienempi kettu vai hiiri]
+Säʹppli lij uuʹccab riʹmjjed.
+
+Kuäbbaž lij kõrrsab suõʹbddi avi seeuʹter? (seeuʹter [sammal])
+Suõʹbddi lij kõrrsab seeuʹtred.
+
+Kuäbbaž lij nuõrab neezzan avi nijdd? (neezzan [nainen])
+Nijdd lij nuõrab neezzned.
+
+Kuäbbaž lij njäʹlggsab säähhar avi pååttaǩ? (pååttaǩ [peruna])
+Säähhar lij njäʹlggsab pååttǩed.
+
+-->
+
+
+
+
+
 </questions>
 
 
