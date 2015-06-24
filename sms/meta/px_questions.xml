@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<!DOCTYPE lexicon  PUBLIC '-//XMLmind//DTD lexicon//FI'  '../../dtd/questions.dtd'>
+-->
+
+<!-- xml-structure for questions in morphdrill -->
+<!-- Questions for pxnouns -->
+
+<!--
+    1. Copy question / answer pair to below
+    2. Begin structuring XML
+    3. Be specific first, and then add semsets.
+-->
+<!--
+
+yksikön 1.p.+2.p.+3.p. OMISTUSLIITE nominatiivi
+
+Ǩii tät nijdd lij? [siskoni]		[kuka tämä tyttö on]
+Tät nijdd lij muu vuäʹbb.		    [tämä tyttö on minun sisareni]
+Vuäbbam mâânn domoi.	            [sisareni menee kotiin]
+
+Ǩii tät päʹrnn lij? [veljeni]
+Tät päʹrnn lij muu viʹllj.
+Villjam mâânn põʹrtte.		[veljeni menee taloon]
+
+Ǩii tät ooumaž lij? [isäni] 
+Tät ooumaž lij muu eʹčč.
+Eččam mâânn tuõjju.		[isäni menee työhön]
+
+Ǩii tät källsaž lij? [ukkini]
+Tät källsaž lij muu äʹjj.
+Äjjam mâânn gåårda.		[ukkini menee kaupunkiin]
+
+Ǩii tät neezzan lij? [äitini]
+Tät neezzan lij muu jeäʹnn.
+Jeännam ǩeâtt vueʹǯǯveär.	[äitini keittää lihakeittoa]
+
+Ǩii tät ääkkaž lij? [mummoni]
+Tät ääkkaž lij muu äkk.
+Äkkam päʹštt kuuʹrniǩ.		[mummoni paistaa kuurnikkaa]
+
+Ǩii tät nijdd lij? [sisaresi]		[kuka tämä tyttö on]
+Tät nijdd lij tuu vuäʹbb.		[tämä tyttö on sinun sisaresi]
+Vuäbbad mâânn domoi.		[sisaresi menee kotiin]
+
+Ǩii tät päʹrnn lij? [veljesi] 
+Tät päʹrnn lij tuu villj.
+Vʹilljad mâânn põʹrtte.
+
+Ǩii tät ooumaž lij? [isäsi]
+Tät ooumaž lij tuu eʹčč.
+Eččad mâânn tuõjju.
+
+Ǩii tät källsaž lij? [ukkisi]
+Tät källsaž lij tuu äʹjj.
+Äjjad mâânn gåårda.
+
+Ǩii tät neezzan lij? [äitisi]
+Tät neezzan lij tuu jeäʹnn.
+Jeännad ǩeâtt vueʹǯǯveär.
+
+Ǩii tät ääkkaž lij? [mummosi]
+Tät ääkkaž lij tuu äkk.
+Äkkad päʹštt kuuʹrniǩ.
+
+Ǩii tät nijdd lij? [hänen sisarensa]	[kuka tämä tyttö on]
+Tät nijdd lij suu vuäʹbb.		[tämä tyttö on hänen sisarensa]
+Vuäʹbbes mâânn domoi.
+
+Ǩii tät päʹrnn lij? [hänen veljensä]
+Tät päʹrnn lij suu viʹllj.
+Viʹlljes mâânn põʹrtte.
+
+Ǩii tät ooumaž lij? [hänen isänsä]
+Tät ooumaž lij suu eʹčč.
+Eʹččes mâânn tuõjju.
+
+Ǩii tät källsaž lij? [hänen ukkinsa]
+Tät källsaž lij suu äʹjj. 
+Äʹjjes mâânn gåårda.
+
+Ǩii tät neezzan lij? [hänen äitinsä]
+Tät neezzan lij suu jeäʹnn.
+ Jeäʹnnes ǩeâtt vueʹǯǯveär.
+
+Ǩii tät ääkkaž lij? [hänen mummonsa]
+Tät ääkkaž lij suu äkk. 
+Äkkas päʹštt kuuʹrniǩ.
+
+
+yks. genetiivi / akkusatiivi
+Koʹst ton jälstak? (jeäʹnn [äiti])		[missä sinä asut]
+Mon jälstam jeännan åʹrnn.		[asun äitini luona]
+
+Koʹst ton jälstak? (äkk [mummo])
+Mon jälstam äkkan / ääkkan åʹrnn.
+
+Koʹst ton jälstak? (naʹzvan [ystävä])
+Mon jälstam nazvanan åʹrnn.
+
+Koʹst ton jälstak? (taaurõš [kaveri])
+Mon jälstam taaurõšan åʹrnn.
+
+Koʹst ton jälstak? (piizar [sihteeri])
+Mon jälstam piizran åʹrnn.
+
+Koʹst ton jälstak? (kaav [vaimo])
+Mon jälstam kaavan åʹrnn.
+
+Koʹst ton jälstak? (sieʹss [täti])
+Mon jälstam siessan åʹrnn. 
+
+
+Koʹst nijdd jäälast? (jeäʹnn [äiti])		[missä tyttö asuu]
+Nijdd jäälast jieʹnnes åʹrnn. 		[tyttö asuu äitinsä luona]
+
+Koʹst päʹrnn jäälast? (äkk [mummo])
+Päʹrnn jäälast ääkkas åʹrnn.
+
+Koʹst peigg jäälast? (naʹzvan [ystävä])
+Peigg jäälast naʹzvaanes åʹrnn.
+
+Koʹst kaavsõs jäälast? (taaurõš [kaveri])
+Kaavsõs jäälast taaurõõžžes åʹrnn.
+
+Koʹst suʹvddi jäälast? (piizar [sihteeri])
+Suʹvddi jäälast piizzres åʹrnn.
+
+Koʹst kääʹlles jäälast? (kaav [vaimo])
+Kääʹlles jäälast kaappjes åʹrnn.
+
+Koʹst niõđâž jäälast? (mueʹđđ [täti])
+Niõđâž jäälast mueʹđes åʹrnn. 
+
+Koʹst päärnaž jäälast? (äʹjj [ukki])
+Päärnaž jäälast ääʹjjas åʹrnn.
+
+
+
+yks. lokatiivi 
+Ǩeäʹst mon vuäǯǯam vuäʹppõõzz? (äkk [mummo])  [keneltä saan opastusta]
+Mon vuäǯǯam vuäʹppõõzz äkstan / ääkkstam.	[saan opastusta mummoltani]
+
+Ǩeäʹst ton vuäǯǯak vuäʹppõõzz? (äkk [mummo])
+Ton vuäǯǯak vuäʹppõõzz äkastad / ääkkstad.
+
+Ǩeäʹst son vuäǯǯ vuäʹppõõzz? (äkk)
+Son vuäǯǯ vuäʹppõõzz äkstes / ääkstes.
+
+Ǩeäʹst mon vuäǯǯam vuäʹppõõzz? (jeäʹnn)
+Mon vuäǯǯam vuäʹppõõzz jieʹnstam / jieʹnnstam.
+
+Ǩeäʹst ton vuäǯǯak vuäʹppõõzz? (jeäʹnn)
+Ton vuäǯǯak vuäʹppõõzz jieʹnstad / jieʹnnstad.
+
+Ǩeäʹst son vuäǯǯ vuäʹppõõzz? (äʹjj)
+Son vuäǯǯ vuäʹppõõzz äʹjstes / ääʹjjstes.
+
+
+
+yks. illatiivi
+Ǩeäzz ton ooudak ǩeeʹrj? (vuäʹbb)		[kenelle annat kirjan]
+Mon ooudam ǩeeʹrj vuäbbsan.		[annan kirjan sisarelleni]
+
+Ǩeäzz ton ooudak sǩiâŋk? (jeäʹnn)
+Mon ooudam sǩiâŋk jeännsan.
+
+Ǩeäzz ton ooudak lååʹv? (viʹllj)
+Ooudam lååʹv villjsan.
+
+Ǩeäzz ton ooudak laauk? (naʹzvan)
+Mon ooudam laauk nazvansan.
+
+Ǩeäzz ton ooudak siõrrâmkääuʹn? (niõđaž)
+Mon ooudam siõrrâmkääuʹn niõđžasan.
+
+Ǩeäzz ton ooudak tääuʹt? (piânnai)
+Mon ooudam tääuʹt piânnsan.
+
+
+Ǩeäzz ton ooudak ǩeeʹrj? (vuäʹbb)		[kenelle annat kirjan]
+Ton ooudak ǩeeʹrj vuäbbsad.		[annat kirjan sisarellesi]
+
+Ǩeäzz ton ooudak sǩiâŋk? (jeäʹnn)
+Ton ooudak sǩiâŋk jeännsad.
+
+Ǩeäzz ton ooudak lååʹv? (viʹllj)
+Ton ooudak lååʹv villjsad.
+
+Ǩeäzz ton ooudak laauk? (naʹzvan)
+Ton ooudak laauk nazvansad.
+
+Ǩeäzz ton ooudak siõrrâmkääuʹn? (niõđaž)
+Ton ooudak siõrrâmkääuʹn niõđžasad.
+
+Ǩeäzz ton ooudak tääuʹt? (piânnai)
+Ton ooudak tääuʹt piânnsad.
+
+
+Ǩeäzz son oudd ǩeeʹrj? (vuäʹbb)		[kenelle hän antaa kirjan]
+Son oudd ǩeeʹrj vuäbbses.		[hän antaa kirjan sisarellensa]
+
+Ǩeäzz son oudd sǩiâŋk? (jeäʹnn)
+Son oudd sǩiâŋk jeännses.
+
+Ǩeäzz son oudd lååʹv? (viʹllj)
+Son oudd lååʹv villjses.
+
+Ǩeäzz son oudd laauk? (naʹzvan)
+Son oudd laauk nazvanses.
+
+Ǩeäzz son oudd siõrrâmkääuʹn? (niõđaž)
+Son oudd siõrrâmkääuʹn niõđžasas.
+
+Ǩeäzz son oudd tääuʹt? (piânnai)
+Son oudd tääuʹt piânnses.
+
+
+Ǩeäzz peigg oudd tõn? (jeäʹmed)		[kenelle piika antaa sen]
+Peigg oudd tõn jeämdses.		[piika antaa sen emännälleen]
+
+Ǩeäzz niõđâž oudd tõn? (äkk)
+Niõđâž oudd tõn äkkses.
+
+Ǩeäzz triâŋgg veekk tõn? (eeʹžžed)		[kenelle renki vie sen]
+Triâŋgg veekk tõn eežždses.		[renki vie sen isännälleen]
+
+Ǩeäzz päʹrnn veekk tõn? (eʹčč)		
+Päʹrnn veekk tõn eččses.
+Ǩeäzz kaavsõs veǯǯ tõn? (vuõddâm) 	[kenelle morsian noutaa sen]
+Kaavsõs veǯǯ tõn vuõddmses.		[morsian noutaa sen sulhaselleen]
+
+Ǩeäzz jeäʹnn veǯǯ tõn? (nijdd) 
+Jeäʹnn veǯǯ tõn nijddses. 
+-->
+
+
+
+
+
+
+
+
+
+<questions>
+
+    <!--
+    Ǩii tät nijdd lij? [siskoni]		[kuka tämä tyttö on]
+    Tät nijdd lij muu vuäʹbb.		    [tämä tyttö on minun sisareni]
+    Vuäbbam mâânn domoi.	            [sisareni menee kotiin]
+    -->
+
+    <q id="pxnom1">
+        <qtype>PX-NOM</qtype>
+        <question>
+            <text>Ǩii tät nijdd lij? Tät nijdd lij muu vuäˊbb. </text>
+        </question>
+        <answer> 
+            <text>N-NOM mâânn domoi.</text>
+            <element game='morfa' id="N-NOM" task="yes">
+	            <grammar tag="N+Sg+Nom+PxSg1"/>
+	            <id>vuäˊbb</id>
+            </element>
+        </answer>
+    </q>
+
+    <!--
+    Ǩii tät päʹrnn lij? [veljeni]
+    Tät päʹrnn lij muu viʹllj.
+    Villjam mâânn põʹrtte.		[veljeni menee taloon]
+    -->
+
+    <q id="pxnom2">
+        <qtype>PX-NOM</qtype>
+        <question>
+            <text>Ǩii tät päˊrnn lij? Tät päˊrnn lij muu viˊllj.</text>
+        </question>
+        <answer> 
+            <text>N-NOM mâânn põˊrtte.</text>
+            <element game='morfa' id="N-NOM" task="yes">
+	            <grammar tag="N+Sg+Nom+PxSg1"/>
+	            <id>viˊllj</id>
+            </element>
+        </answer>
+    </q>
+
+    <!--
+    Ǩii tät ooumaž lij? [isäni] 
+    Tät ooumaž lij muu eʹčč.
+    Eččam mâânn tuõjju.		[isäni menee työhön]
+    -->
+
+    <!--
+    Ǩii tät källsaž lij? [ukkini]
+    Tät källsaž lij muu äʹjj.
+    Äjjam mâânn gåårda.		[ukkini menee kaupunkiin]
+    -->
+
+
+  
+</questions>
