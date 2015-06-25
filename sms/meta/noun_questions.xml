@@ -117,119 +117,8 @@
     </answer>
   </q>
 
-  <!-- general todos
+<!-- YKS. KOMITATIIVI + verbi y.3.p.
 
-    test these elements against fst and db
-    can probably do this in two question elements, but NB the transitive verb
-    with the object.
-
-    SUBJ:
-    - babakk                  
-    - caarr                   
-    - eʹčč                    
-    - jeäʹnn                  
-    - kaav                    
-    - koonǥõs                 
-    - mieʹcsteei              
-    - mueʹđđ                  
-    - nijdd                   
-    - ouddooumaž              
-    - papp                    
-    - peigg                   
-    - piizar                  
-    - presidentt              
-    - prinss                  
-    - pävvar                  
-    - ristteʹčč               
-    - risttâʹlǧǧ              
-    - stoolarååum             
-    - suʹvddi                 
-    - sääldat                 
-    - tiõrvâsvuõđhoiʹddjeei   
-    - triâŋgg                 
-    - uʹtčteeʹl               
-    - veäʹncceʹčč             
-    - veäʹnccjeäʹnn           
-    - viʹllj                  
-    - vuäbbaž                 
-    - äkk                     
-    - čieʹcc                  
-    - škooulneǩ               
-
-   N-SG-COM
-    - dåhttar
-    - eʹčč
-    - jaakân
-    - jeäʹnn
-    - jieʹǩǩ
-    - kaavsõs
-    - koontâršurr
-    - koonǥõs
-    - kääʹlles
-    - minister
-    - naʹzvan
-    - neezzan
-    - ommǥaž	
-    - papp
-    - piizar
-    - piizar
-    - praatt
-    - prinss
-    - puäʒʒooumaž	
-    - päʹrnn
-    - ristteʹčč
-    - risttpäʹrnn
-    - snekkar
-    - sääldat
-    - taaurõš
-    - triâŋgg
-    - uʹtčteeʹl
-    - veʹrǧǧooumaž
-    - vuäʹbb
-    - vuõddâm
-    - äkk
-    - äʹjj	
-    - škooulneǩ
-
-  MAINV
-    - IV: maainast
-    - IV: puätt 
-    - IV: reâugg
-    - IV: saǥstââll
-
-    - TV: vuâlgg reissu
-
-   -->
-
-  <q id="nsgcom1">
-    <qtype>N-SG-COM</qtype>
-    <question>
-      <text>Ǩeäin piizar saǥstââll</text>
-      <!--
-      <element id="SUBJ">
-            <grammar tag="N+Sg+Nom"/>
-        <sem class="M_PEOPLE"/>
-      </element>
-      <element id="MAINV">
-        <grammar tag="V+Ind+Prs+Sg3"/>
-        <id>juukkâd</id>
-      </element>
-      -->
-    </question>
-    <answer> 
-      <text>Piizar saǥstââll N-SG-COM</text>
-      <element game='morfa' id="N-SG-COM" task="yes">
-        <grammar tag="N+Sg+Com"/>
-        <id>presidentt</id>
-      </element>
-    </answer>
-  </q>
-
-  <!-- 
-
-YKS. KOMITATIIVI + verbi y.3.p.
-
-{{{
 Ǩeäin piizar saǥstââll? (koontâršurr) 	[kenen kanssa sihteeri neuvottelee (konttoripäällikkö)]
 Piizar saǥstââll koontâršuurin.
 
@@ -329,10 +218,143 @@ Stoolarååum puätt snekkrin.
 Ǩeäin mieʹcsteei puätt? (taaurõš)
 Mieʹcsteei puätt taaurõõžžin.
 
-}}}
+-->
 
-MON. KOMITATIIVI + verbi yks.3.p
-{{{
+<!-- TODO: nsgcom1 & nsgcom2 & nplcom1 & nplcom2
+
+    TODO: add semtype M_PEOPLE for SUBJ words, and N-SG-COM words
+    TODO: add semtype M_V_COMM for IV MAINV, then replace plaintext with this
+      elem
+
+    SUBJ:
+    - babakk                  
+    - caarr                   
+    - eʹčč                    
+    - jeäʹnn                  
+    - kaav                    
+    - koonǥõs                 
+    - mieʹcsteei              
+    - mueʹđđ                  
+    - nijdd                   
+    - ouddooumaž              
+    - papp                    
+    - peigg                   
+    - piizar                  
+    - presidentt              
+    - prinss                  
+    - pävvar                  
+    - ristteʹčč               
+    - risttâʹlǧǧ              
+    - stoolarååum             
+    - suʹvddi                 
+    - sääldat                 
+    - tiõrvâsvuõđhoiʹddjeei   
+    - triâŋgg                 
+    - uʹtčteeʹl               
+    - veäʹncceʹčč             
+    - veäʹnccjeäʹnn           
+    - viʹllj                  
+    - vuäbbaž                 
+    - äkk                     
+    - čieʹcc                  
+    - škooulneǩ               
+
+   N-SG-COM
+    - dåhttar
+    - eʹčč
+    - jaakân
+    - jeäʹnn
+    - jieʹǩǩ
+    - kaavsõs
+    - koontâršurr
+    - koonǥõs
+    - kääʹlles
+    - minister
+    - naʹzvan
+    - neezzan
+    - ommǥaž	
+    - papp
+    - piizar
+    - piizar
+    - praatt
+    - prinss
+    - puäʒʒooumaž	
+    - päʹrnn
+    - ristteʹčč
+    - risttpäʹrnn
+    - snekkar
+    - sääldat
+    - taaurõš
+    - triâŋgg
+    - uʹtčteeʹl
+    - veʹrǧǧooumaž
+    - vuäʹbb
+    - vuõddâm
+    - äkk
+    - äʹjj	
+    - škooulneǩ
+
+  MAINV
+    - IV: maainast
+    - IV: puätt 
+    - IV: reâugg
+    - IV: saǥstââll
+
+    - TV: vuâlgg reissu
+
+   -->
+
+
+  <q id="nsgcom1">
+      <qtype>N-SG-COM</qtype>
+      <question>
+          <text>Ǩeäin SUBJ saǥstââll</text>
+          <element id="SUBJ">
+              <grammar tag="N+Sg+Nom"/>
+              <sem class="M_PEOPLE"/>
+          </element>
+          <!--
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <sem class="M_V_COMM"/>
+      </element>
+      -->
+    </question>
+    <answer> 
+        <text>SUBJ saǥstââll N-SG-COM</text>
+        <element game='morfa' id="N-SG-COM" task="yes">
+            <grammar tag="N+Sg+Com"/>
+            <sem class="M_PEOPLE"/>
+        </element>
+    </answer>
+    </q>
+
+  <q id="nsgcom2">
+      <qtype>N-SG-COM</qtype>
+      <question>
+          <text>Ǩeäin SUBJ vuâlgg reissu</text>
+          <element id="SUBJ">
+              <grammar tag="N+Sg+Nom"/>
+              <sem class="M_PEOPLE"/>
+          </element>
+          <!--
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <sem class="M_V_COMM"/>
+      </element>
+      -->
+    </question>
+    <answer> 
+        <text>SUBJ vuâlgg reissu N-SG-COM</text>
+        <element game='morfa' id="N-SG-COM" task="yes">
+            <grammar tag="N+Sg+Com"/>
+            <sem class="M_PEOPLE"/>
+        </element>
+    </answer>
+    </q>
+
+<!--  MON. KOMITATIIVI + verbi yks.3.p
+
 Ǩeäivuiʹm piizar saǥstââll? (koontâršurr)   [keiden kanssa sihteeri neuvottelee (konttoripäällikkö)]
 Piizar saǥstââll koontâršuurivuiʹm.
 
@@ -428,7 +450,57 @@ Stoolarååum puätt snekkrivuiʹm.
 
 Ǩeäivuiʹm mieʹcsteei puätt? (taaurõš)
 Mieʹcsteei puätt taaurõõžživuiʹm.
-}}}
+
+-->
+  <q id="nplcom1">
+      <qtype>N-PL-COM</qtype>
+      <question>
+          <text>Ǩeäivuiʹm SUBJ saǥstââll</text>
+          <element id="SUBJ">
+              <grammar tag="N+Sg+Nom"/>
+              <sem class="M_PEOPLE"/>
+          </element>
+          <!--
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <sem class="M_V_COMM"/>
+      </element>
+      -->
+    </question>
+    <answer> 
+        <text>SUBJ saǥstââll N-PL-COM</text>
+        <element game='morfa' id="N-PL-COM" task="yes">
+            <grammar tag="N+Pl+Com"/>
+            <sem class="M_PEOPLE"/>
+        </element>
+    </answer>
+    </q>
+
+  <q id="nplcom2">
+      <qtype>N-PL-COM</qtype>
+      <question>
+          <text>Ǩeäivuiʹm SUBJ vuâlgg reissu</text>
+          <element id="SUBJ">
+              <grammar tag="N+Sg+Nom"/>
+              <sem class="M_PEOPLE"/>
+          </element>
+          <!--
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <sem class="M_V_COMM"/>
+      </element>
+      -->
+    </question>
+    <answer> 
+        <text>SUBJ vuâlgg reissu N-PL-COM</text>
+        <element game='morfa' id="N-PL-COM" task="yes">
+            <grammar tag="N+Pl+Com"/>
+            <sem class="M_PEOPLE"/>
+        </element>
+    </answer>
+    </q>
+
+  <!-- 
 
 
 ESSIIVI + verbi y.3.p
