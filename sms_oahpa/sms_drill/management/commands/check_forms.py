@@ -98,6 +98,21 @@ class Command(BaseCommand):
             else:
                 return u'NO FORM'
 
+        def semsets(s):
+            ws = Word.objects.filter(lemma=s)
+            fs = Word.objects.filter(form__fullform=s)
+            if len(ws) > 0:
+                sem = set()
+                for w in ws:
+                    for s in w.semtype.all():
+                        sem.add(s.semtype)
+                for f in fs:
+                    for s in f.semtype.all():
+                        sem.add(s.semtype)
+                return u', '.join(sem)
+            else:
+                return 'NO SEMANTICS'
+
         def check_line(line):
             t = False
             ls = line.strip().decode('utf-8').split(' ')
@@ -113,6 +128,7 @@ class Command(BaseCommand):
                 d,
                 word_match(l),
                 form_match(l),
+                semsets(l),
             ]
             if t:
                 args.append(form_tag_match(l, t))
@@ -123,7 +139,7 @@ class Command(BaseCommand):
         interactive = options['interactive']
 
         if interactive:
-            print "(input)   (word)     (forms)     (generated)"
+            print "(input)   (word)     (forms)     (generated)    (semsets)"
 
             while True:
                 line = raw_input(" > ")
