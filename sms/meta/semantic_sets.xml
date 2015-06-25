@@ -3,22 +3,92 @@
 
 <!-- the new classes (no subclasses for now), see also 00_readme-->
 <lexicon>
-    <subclasses class="HUMAN"/>
+    <subclasses class="HUMAN">
+        <sem class="FAMILY" />
+        <sem class="MYTHOLOGY" />
+        <sem class="PEOPLE" />
+        <sem class="PERSON" />
+        <sem class="RELIGION" />
+        <sem class="SOCIAL" />
+    </subclasses>
+    <!-- NB: will this cause a problem? -->
     <subclasses class="PEOPLE">
         <sem class="HUMAN"/>
     </subclasses>
     <subclasses class="SPACE"/>
-    <subclasses class="BODY"/>
-    <subclasses class="SENSE"/>
-    <subclasses class="HOUSE"/>
-    <subclasses class="WORK"/>
-    <subclasses class="TIME"/>
-    <subclasses class="ZOO"/>
-    <subclasses class="BOT"/>
-    <subclasses class="FOOD"/>
-    <subclasses class="ENVIR"/>
-    <subclasses class="LANG"/>
-    <subclasses class="CLOTH"/>
+    <subclasses class="BODY">
+        <sem class="HEALTH"/>
+        <sem class="PART"/>
+    </subclasses>
+    <subclasses class="SENSE">
+        <sem class="COGNITION" />
+        <sem class="EMOTION" />
+        <sem class="PERCEPTION" />
+        <sem class="QUANTITY" />
+        <sem class="MOTION" />
+    </subclasses>
+    <subclasses class="HOUSE">
+        <sem class="DWELLING" />
+        <sem class="FURNITURE" />
+    </subclasses>
+    <subclasses class="WORK">
+        <sem class="ECONOMY" />
+        <sem class="LEISURE" />
+        <sem class="MUSIC" />
+        <sem class="REINDEER" />
+        <sem class="TOOL" />
+        <sem class="TRAVEL" />
+    </subclasses>
+    <subclasses class="TIME">
+        <sem class="CYCLE" />
+        <sem class="UNIT" />
+    </subclasses>
+    <subclasses class="ZOO">
+        <sem class="ANIMAL" />
+        <sem class="BIRD" />
+        <sem class="DOMESTIC" />
+        <sem class="FISH" />
+        <sem class="INSECT" />
+        <sem class="MAMMAL" />
+        <sem class="REINDEER" />
+    </subclasses>
+    <subclasses class="BOT">
+        <sem class="BERRY" />
+        <sem class="GRASS" />
+        <sem class="TREE" />
+    </subclasses>
+    <subclasses class="FOOD">
+        <sem class="DISH" />
+        <sem class="GROCERY" />
+        <sem class="NATURE" />
+    </subclasses>
+    <subclasses class="ENVIR">
+        <sem class="ELEMENT" />
+        <sem class="SETTLEMENT" />
+        <sem class="TOPONOMY" />
+        <sem class="WEATHER" />
+    </subclasses>
+    <subclasses class="LANG">
+        <sem class="SPEECH" />
+        <sem class="TEXT" />
+    </subclasses>
+    <subclasses class="CLOTH">
+        <sem class="PART" />
+        <sem class="PIECE" />
+        <sem class="WHOLE" />
+    </subclasses>
+
+    <!-- TODO: -->
+    <!-- The lexicon contains entries like this, but the text of the
+         element is not actually used for anything. So, we need to convert these all to semantic classes and subclasses -->
+         <!--
+
+
+
+
+
+
+-->
 </lexicon>
 
 <!--
