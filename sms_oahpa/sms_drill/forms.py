@@ -24,23 +24,22 @@ except:
 
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
-PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'son',
-		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'sii',
-		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
+PRONOUNS_LIST = {'Sg1':'mon', 'Sg2':'ton', 'Sg3':'son',
+		  'Pl1':'mij', 'Pl2':'tij', 'Pl3':'sij',
+		  'Du1':'muäʹna', 'Du2':'tuäʹna', 'Du3':'suäʹna'}
 
 # DEMONSTRATIVE_PRESENTATION plus Sg3/Pl3
-PASSIVE_PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'dat',
+PASSIVE_PRONOUNS_LIST = {'Sg1':'mon', 'Sg2':'ton', 'Sg3':'dat',
 		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'dat',
 		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
 
 
-NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
-		  'Pl1':'eat', 'Pl2':'ehpet', 'Pl3':'eai',
-		  'Du1':'ean', 'Du2':'eahppi', 'Du3':'eaba'}
+NEGATIVE_VERB_PRES = {'Sg1':'jiõm', 'Sg2':'jiõk', 'Sg3':'ij',
+		  'Pl1':'jeäʹp', 'Pl2':'jeäʹped', 'Pl3':'jiâ'}
 
 TENSE_PRESENTATION = {
-	'Prt': u'ikte',
-	'Prs': u'odne',
+	'Prt': u'jåhtta',
+	'Prs': u'täʹbbe',
 }
 
 RECIPROCATIVE_PRESENTATION = {
