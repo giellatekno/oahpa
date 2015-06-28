@@ -32,6 +32,7 @@ try:
 except:
 	LOOKUP_TOOL = 'lookup'
 
+HFST_LOOKUP_TOOL = 'hfst-lookup'
 
 try:
 	FST_DIRECTORY = sms_oahpa.settings.FST_DIRECTORY
@@ -146,7 +147,7 @@ class Game(object):
 			
 			try:
 				form, word_id = self.create_form(db_info, i, 0)
-				print "word id:",word_id
+				#print "word id:",word_id
 			except Http404, e:
 				raise e
 			except ObjectDoesNotExist:
@@ -516,21 +517,21 @@ class BareGame(Game):
 			"Der": derivation_type, 
 		}
 		
-		sylls = []
-		bisyl = ['2syll', 'bisyllabic']
-		trisyl = ['3syll', 'trisyllabic']
-		Csyl = ['Csyll', 'contracted'] # added for sme
+		#sylls = []
+		#bisyl = ['2syll', 'bisyllabic']
+		#trisyl = ['3syll', 'trisyllabic']
+		#Csyl = ['Csyll', 'contracted'] # added for sme
 
-		for item in syll:
-			if item in bisyl:
-				sylls.append('2syll')
-			if item in trisyl:
-				sylls.append('3syll')
-			if item in Csyl:
-				sylls.append('Csyll')
+		#for item in syll:
+		#	if item in bisyl:
+	#			sylls.append('2syll')
+	#		if item in trisyl:
+	#			sylls.append('3syll')
+	#		if item in Csyl:
+	#			sylls.append('Csyll')
 		
-		if pos == 'Pron':
-			syll = ['']
+	#	if pos == 'Pron':
+	#		syll = ['']
 		
 		if pos == 'N':  # Maybe need to add also Num and Pron here
 			case, number = self.casetable[pos_tables[pos]]
@@ -596,7 +597,7 @@ class BareGame(Game):
 		TAG_QUERY = Q(pos=pos)
 		
 		# Exclude derivations by default
-		TAG_EXCLUDES = Q(subclass__contains='Der')
+		TAG_EXCLUDES = None #Q(subclass__contains='Der') # We do not have derivations now
 		
 		FORM_FILTER = False
 
@@ -673,8 +674,8 @@ class BareGame(Game):
 			elif pos2 == 'Num':
 				sylls = False
 				TAG_QUERY = TAG_QUERY & Q(subclass=subclass)
-			else:
-				TAG_QUERY = TAG_QUERY & Q(subclass='')  
+			#else:
+			#	TAG_QUERY = TAG_QUERY & Q(subclass='')  
 			
 		if pos == 'Num' or pos2 == 'Num':
 			if num_level == '1':  # Numerals in Sg on level 1
@@ -708,12 +709,12 @@ class BareGame(Game):
 		if pos != 'Der':
 			tags = Tag.objects.exclude(string__contains='Der')\
 								.filter(TAG_QUERY)\
-								.exclude(subclass='Prop')\
-								.exclude(polarity='Neg')
+								#.exclude(subclass='Prop')\
+								#.exclude(polarity='Neg')
 		else:
 			tags = Tag.objects.filter(TAG_QUERY)\
-								.exclude(subclass='Prop')\
-								.exclude(polarity='Neg')
+								#.exclude(subclass='Prop')\
+								#.exclude(polarity='Neg')
 
 		if TAG_EXCLUDES:
 			tags = tags.exclude(TAG_EXCLUDES)
@@ -739,26 +740,26 @@ class BareGame(Game):
 		#	else:
 		#		QUERY = Q(pos__iexact=pos)
 		if pos == 'Num' or pos2 == 'Num':
-			  QUERY = Q(pos__iexact=pos) & Q(form__tag__subclass=subclass)
+			  QUERY = Q(pos__iexact=pos) #& Q(form__tag__subclass=subclass)
 		else:
 			# levels is not what we're looking for
 			  QUERY = Q(pos__iexact=pos) & Q(stem__in=syll)
-			  if source and source not in ['all', 'All']:
-				 QUERY = QUERY & Q(source__name=source)
+			  #if source and source not in ['all', 'All']:
+				# QUERY = QUERY & Q(source__name=source)
 			  
 		
-		smallnum = ["okta", "guokte", "golbma", "njeallje", "vihtta", "guhtta",
-					"čieža", "gávcci","ovcci","logi"]
-		smallnum_ord = ["vuosttaš", "nubbi", "goalmmát", "njealját", "viđát",
-						"guđát", "čihččet", "gávccát", "ovccát", "logát"]
-		smallnum_coll = ["guovttis", "guovttes", "golmmas", "njealjis",
-						"viđás", "guđás", "čiežas", "gávccis","ovccis","logis"]
+		#smallnum = ["okta", "guokte", "golbma", "njeallje", "vihtta", "guhtta",
+			#		"čieža", "gávcci","ovcci","logi"]
+		#smallnum_ord = ["vuosttaš", "nubbi", "goalmmát", "njealját", "viđát",
+			#			"guđát", "čihččet", "gávccát", "ovccát", "logát"]
+		#smallnum_coll = ["guovttis", "guovttes", "golmmas", "njealjis",
+			#			"viđás", "guđás", "čiežas", "gávccis","ovccis","logis"]
 		
-		if pos == 'Num' and subclass == '':
-			QUERY = QUERY & Q(lemma__in=smallnum)
+		#if pos == 'Num' and subclass == '':
+		#	QUERY = QUERY & Q(lemma__in=smallnum)
 			  
-		if pos2 == 'Num' and subclass == 'Ord':
-			QUERY = QUERY & Q(lemma__in=smallnum_ord)
+		#if pos2 == 'Num' and subclass == 'Ord':
+		#	QUERY = QUERY & Q(lemma__in=smallnum_ord)
 					  				
 		error = "Morfa.get_db_info: Database is improperly loaded.\
 				 There are no Words, Tags or Forms, or the query\
@@ -766,10 +767,11 @@ class BareGame(Game):
 		NoWordsFound = Http404(error)
 		
 		# settings dialect?
-		if self.settings.has_key('dialect'):
-			UI_Dialect = self.settings['dialect']
-		else:
-			UI_Dialect = DEFAULT_DIALECT
+		UI_Dialect = self.settings.get('dialect', DEFAULT_DIALECT)
+		#if self.settings.has_key('dialect'):
+		#	UI_Dialect = self.settings['dialect']
+		#else:
+		#	UI_Dialect = DEFAULT_DIALECT
 
 		try:
 			tag = tags.order_by('?')[0]
@@ -783,15 +785,15 @@ class BareGame(Game):
 
 				random_word = tag.form_set.filter(word__language=L1)
 
-				if not tag.pos in ['Pron', 'Num'] and \
-					tag.string.find('Der') < 0:
-					random_word = random_word.filter(word__semtype__semtype="MORFAS")
+				#if not tag.pos in ['Pron', 'Num'] and \
+				#	tag.string.find('Der') < 0:
+				#	random_word = random_word.filter(word__semtype__semtype="MORFAS") # This is not used in sms (yet?)
 
 				if tag.pos == 'Pron':
 					random_word = random_word\
 									.exclude(word__stem='nubbi')
-				if sylls:
-					random_word = random_word.filter(word__stem__in=sylls)
+				#if sylls:
+				#	random_word = random_word.filter(word__stem__in=sylls)
 				if source:
 					random_word = random_word.filter(word__source__in=source)
 				
@@ -840,14 +842,14 @@ class BareGame(Game):
 		if not db_info.has_key('word_id'):
 			return None, None
 
-		if self.settings.has_key('dialect'):
-			UI_Dialect = self.settings['dialect']
-		else:
-			UI_Dialect = DEFAULT_DIALECT
+		#if self.settings.has_key('dialect'):
+		#	UI_Dialect = self.settings['dialect']
+		#else:
+		#	UI_Dialect = DEFAULT_DIALECT
 
 		language = self.settings['language']
 		pos = self.settings['pos']
-		Q_DIALECT = Dialect.objects.get(dialect=UI_Dialect)
+		Q_DIALECT = Dialect.objects.get(dialect="main")
 
 		word = Word.objects.get(id=db_info['word_id'])
 		tag = Tag.objects.get(id=db_info['tag_id'])
@@ -897,10 +899,11 @@ class BareGame(Game):
 		# about turning nominative singular into nominative plural, 
 		# thus all baseforms should be singular.
 
-		if tag.case in ['Ess', 'Nom'] or tag.attributive:
-			match_number = False
-		else:
-			match_number = True
+		#if tag.case in ['Ess', 'Nom'] or tag.attributive:
+		#	match_number = False
+		#else:
+		#	match_number = True
+		match_number = False # no number matching. the presented form will always be Sg+Nom
 		
 		def baseformFilter(form):
 			#   Get baseforms, and filter based on dialects.
@@ -957,14 +960,14 @@ class BareGame(Game):
 		accepted_answers = form_list.values_list('fullform', flat=True)
 		
 		# Just the ones we want to present for just one dialect
-		presentation = form_list.filter(dialects=Q_DIALECT)
+		#presentation = form_list.filter(dialects=Q_DIALECT)
 
 		if pos == 'Der':
 			presentation = presentation.filter(tag__string__contains='PassL')
 		
 		# Unless there aren't any ... 
-		if presentation.count() == 0:
-			presentation = form_list
+		#if presentation.count() == 0:
+		presentation = form_list
 		
 		# Exclude those that shouldn't be displayed, but should be accepted
 		presentation_ng = presentation.exclude(dialects__dialect='NG')
@@ -994,7 +997,7 @@ class BareGame(Game):
 					answer_presentation=presentation_ng,
 					translations=translations,
 					question="",
-					dialect=Q_DIALECT,
+					dialect="main",
 					language=language,
 					userans_val=db_info['userans'],  # TODO: userans not in use?
 					correct_val=db_info['correct'],
@@ -1008,8 +1011,8 @@ class BareGame(Game):
 
 
 class NumGame(Game):
-	generate_fst = 'sms-num.fst'
-	answers_fst = 'sms-inum.fst'
+	generate_fst = 'transcriptor-numbers-digit2text.filtered.lookup.hfst'
+	answers_fst = 'transcriptor-numbers-text2digit.filtered.lookup.hfst'
 	
 	def get_db_info(self, db_info):
 		""" Options supplied by views
@@ -1034,14 +1037,15 @@ class NumGame(Game):
 		import subprocess
 		from threading import Timer
 		
-		lookup = LOOKUP_TOOL
+		lookup = HFST_LOOKUP_TOOL
 		gen_norm_fst = FST_DIRECTORY + "/" + fstfile
 		try:
 			open(gen_norm_fst)
 		except IOError:
 			raise Http404("File %s does not exist." % gen_norm_fst)
 		
-		gen_norm_command = [lookup, "-flags", "mbTT", "-utf8", "-d", gen_norm_fst]
+		#gen_norm_command = [lookup, "-flags", "mbTT", "-utf8", "-d", gen_norm_fst]  # xfst
+		gen_norm_command = [lookup, "-p", gen_norm_fst] # hfst
 		
 		try:
 			forms.encode('utf-8')
@@ -1075,7 +1079,8 @@ class NumGame(Game):
 			# line = line.replace(' ','')
 			if line:
 				nums = line.split('\t')
-				if len(nums) == 3:
+				#if len(nums) == 3: # xfst
+				if nums[2] == 'inf': # hfst
 					nums = (nums[0], '?')
 				else:
 					nums = tuple(nums)
@@ -1181,8 +1186,8 @@ class Klokka(NumGame):
 
 	QuestionForm = KlokkaQuestion
 	
-	generate_fst = 'iclock-sms.fst'
-	answers_fst = 'clock-sms.fst'
+	generate_fst = 'transcriptor-clock-digit2text.filtered.lookup.hfst'
+	answers_fst = 'transcriptor-clock-text2digit.filtered.lookup.hfst' 
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1317,8 +1322,8 @@ class Dato(Klokka):
 
 	# QuestionForm = DatoQuestion
 	
-	generate_fst = 'idate-sms.fst'
-	answers_fst = 'date-sms.fst'
+	generate_fst = 'transcriptor-date-digit2text.filtered.lookup.hfst'
+	answers_fst = 'transcriptor-date-text2digit.filtered.lookup.hfst'
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
 					 or Dato is unable to look up forms."

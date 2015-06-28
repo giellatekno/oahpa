@@ -929,17 +929,17 @@ class OahpaQuestion(forms.Form):
 				forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
 				# need to subtract legal answers and make an only relaxed list.
 				relaxings = [item for item in forms if force_unicode(item) not in accepted_answers]
-			else:
-
+			#else:
+		if (hasattr(self, 'gametype') and self.gametype == 'leksa'): # this applies only to Leksa
 				# add infinitives as possible answers
-				if self.word.pos == 'V':
-					if self.translang in infinitives_sub and infinitives_add:
-						infin_s = infinitives_sub[self.translang]
-						infin_a = infinitives_add[self.translang]
+			if self.word.pos == 'V':
+				if self.translang in infinitives_sub and infinitives_add:
+					infin_s = infinitives_sub[self.translang]
+					infin_a = infinitives_add[self.translang]
 
-						lemma = re.compile(infin_s)
-						infins = [lemma.sub(infin_a, force_unicode(ax)) for ax in accepted_answers]
-						accepted_answers = infins + accepted_answers
+					lemma = re.compile(infin_s)
+					infins = [lemma.sub(infin_a, force_unicode(ax)) for ax in accepted_answers]
+					accepted_answers = infins + accepted_answers
 
 				forms = accepted_answers
 		
@@ -947,10 +947,6 @@ class OahpaQuestion(forms.Form):
 							   [force_unicode(f) for f in forms]
 		self.relaxings = relaxings
 
-		#def generate_fields(self,answer_size, maxlength):
-		#	self.fields['answer'] = forms.CharField(max_length = maxlength, \
-         #                                       widget=forms.TextInput(\
-          #  attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event,document.gameform);',}))  # copied from old-oahpa
 
 # #
 #
@@ -972,7 +968,7 @@ class LeksaSettings(OahpaSettings):
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
 	
-	default_data = {'gametype' : 'bare', 'language' : 'sms', 'dialogue' : 'GG', 
+	default_data = {'gametype' : 'bare', 'language' : 'sms', 'dialect' : 'main', 
 			'syll' : [], 
 			'bisyllabic': False,
 			'trisyllabic': False,
@@ -1292,7 +1288,7 @@ class NumSettings(OahpaSettings):
 	numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
 	#numlanguage = forms.ChoiceField(initial='sms', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
 	# TODO: remove mandatory need to set default data, should be done through 'initial' field setting.
-	default_data = {'language' : 'rus', 'numlanguage' : 'sms', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
+	default_data = {'language' : 'rus', 'numlanguage' : 'sms', 'dialect' : 'main', 'maxnum' : '10', 'numgame': 'numeral'}
 					
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1398,7 +1394,7 @@ class NumQuestion(OahpaQuestion):
 class KlokkaSettings(NumSettings):
 	numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES_PL, widget=forms.RadioSelect)
 	gametype = forms.ChoiceField(initial='kl1', choices=KLOKKA_CHOICES, widget=forms.RadioSelect)
-	default_data = {'language' : 'rus', 'numlanguage' : 'sms', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'string'}
+	default_data = {'language' : 'rus', 'numlanguage' : 'sms', 'dialect' : 'main', 'gametype' : 'kl1', 'numgame': 'string'}
 					
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
