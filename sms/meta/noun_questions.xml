@@ -445,7 +445,7 @@ Mieʹcsteei puätt taaurõõžživuiʹm.
     </answer>
     </q>
 
-  <!--  TODO: begin here.
+  <!--
 
 
 ESSIIVI + verbi y.3.p
@@ -472,28 +472,6 @@ Mââʹđen jeäʹnn õõni suu? (niõđâž [pikkutyttönä])
 Jeäʹnn õõni suu niõđžen.
 }}}
 
-SUBJ peigg
-N naʹzvan 
-N-ESS naʹzvaanen
-SUBJ professor
-N škooulneǩ 
-N-ESS škooulneǩǩen
-SUBJ kääʹlles
-N kaav 
-N-ESS kaavân
-SUBJ nijdd
-N prinss 
-N-ESS prinssen
-SUBJ tuâjjooumaž
-N rauʹddi 
-N-ESS rauʹddjen
-SUBJ veʹrǧǧooumaž
-N sääldat 
-N-ESS sääldten
-SUBJ jeäʹnn
-N niõđâž 
-N-ESS niõđžen
-
 TODO: M_PEOPLE for these SUBJ arguments
 
 peigg
@@ -503,6 +481,7 @@ nijdd
 tuâjjooumaž
 veʹrǧǧooumaž
 jeäʹnn
+baŋkkšeǩ
 
 TODO: M_PEOPLE and M_PEOPLE_ESS for the following words (which are the N-ESS task):
 
@@ -513,6 +492,8 @@ prinss
 rauʹddi 
 sääldat 
 niõđâž 
+siõrrneǩ
+čiisti
 
 TODO: can morfa-c allow the task word to not be in the question at all? 
 
@@ -526,12 +507,6 @@ TODO: can morfa-c allow the task word to not be in the question at all?
               <grammar tag="N+Sg+Nom"/>
               <sem class="M_PEOPLE"/>
           </element>
-          <!--
-      <element id="MAINV">
-        <grammar tag="V+Ind+Prs+Sg3"/>
-        <sem class="M_V_COMM"/>
-      </element>
-      -->
     </question>
     <answer> 
         <text>SUBJ õõni suu N-ESS</text>
@@ -543,6 +518,8 @@ TODO: can morfa-c allow the task word to not be in the question at all?
     </q>
 
     <!--
+
+TODO: make sure all nouns are included
 {{{
 Ǩeäʹđen vuäʹbb õõni suu? (vuõddâm [sulhanen])	[kenenä sisko piti häntä? (sulhanen)]
 Vuäʹbb õõni suu vuõddmen.		[sisko piti häntä sulhasena]
@@ -566,6 +543,28 @@ Baŋkkšeǩ õõni suu čiistjen.
 Källsaž õõni suu nijddân.
 }}}
 
+-->
+
+  <q id="ness2">
+      <qtype>N-ESS</qtype>
+      <question>
+          <text>Ǩeäʹđen SUBJ õõni suu</text>
+          <element id="SUBJ">
+              <grammar tag="N+Sg+Nom"/>
+              <sem class="M_PEOPLE"/>
+          </element>
+    </question>
+    <answer> 
+        <text>SUBJ õõni suu N-ESS</text>
+        <element game='morfa' id="N-ESS" task="yes">
+            <grammar tag="N+Ess"/>
+            <sem class="M_PEOPLE_ESS"/>
+        </element>
+    </answer>
+    </q>
+
+<!--
+
 {{{
 Kuäʹss nijdd âânn šaamšiǩ? (kaav [vaimo])	[milloin tyttö käyttää vaimonlakkia? (vaimo)]
 Nijdd âân šaamšiǩ kaavân.		[tyttö käyttää vaimonlakkia vaimona]
@@ -579,12 +578,80 @@ Kuäʹss äkk âânn pooʹvdneeʹǩ? (liâskk [leski])
 Kuäʹss niõđâž âânn peeʹrveeʹsǩ? (nijdd [tyttö])
 Niõđâž âânn peeʹrveeʹsǩ nijddân.
 
+(these will be found in adj_questions.xml
+
 Kuäʹss päärnaž âânn ääuš? (jõnn [iso])
 Päärnaž âânn ääuš jõnnân.
 
 Kuäʹss ooumâž âânn sueʹbb? (puäʹres [vanha])
 Ooumaž âânn sueʹbb puärrsen.
 }}}
+
+these seem to be a bit specific in what subjects can be paired, so going to
+make separate questions for now.
+
+Alternative: split the people words into gender groups, and combine
+
+-->
+
+<q id="ness3">
+    <qtype>N-ESS</qtype>
+        <question>
+            <text>Kuäʹss nijdd âânn šaamšiǩ</text>
+        </question>
+    <answer> 
+        <text>Nijdd âân šaamšiǩ N-ESS</text>
+        <element game='morfa' id="N-ESS" task="yes">
+            <grammar tag="N+Ess"/>
+            <id>kaav</id>
+        </element>
+    </answer>
+</q>
+
+<q id="ness4">
+    <qtype>N-ESS</qtype>
+        <question>
+            <text>Kuäss päʹrnn âânn jõnn-neeiʹb</text>
+        </question>
+    <answer> 
+        <text>Päʹrnn âânn jõnn-neeiʹb N-ESS</text>
+        <element game='morfa' id="N-ESS" task="yes">
+            <grammar tag="N+Ess"/>
+            <id>ooumaž</id>
+        </element>
+    </answer>
+</q>
+
+<q id="ness3">
+    <qtype>N-ESS</qtype>
+        <question>
+            <text>Kuäʹss äkk âânn pooʹvdneeʹǩ</text>
+        </question>
+    <answer> 
+        <text>Äkk âânn pooʹvdneeʹǩ N-ESS</text>
+        <element game='morfa' id="N-ESS" task="yes">
+            <grammar tag="N+Ess"/>
+            <id>liâskk</id>
+        </element>
+    </answer>
+</q>
+
+<q id="ness4">
+    <qtype>N-ESS</qtype>
+        <question>
+            <text>Kuäʹss niõđâž âânn peeʹrveeʹsǩ</text>
+        </question>
+    <answer> 
+        <text>Niõđâž âânn peeʹrveeʹsǩ N-ESS</text>
+        <element game='morfa' id="N-ESS" task="yes">
+            <grammar tag="N+Ess"/>
+            <id>nijdd</id>
+        </element>
+    </answer>
+</q>
+
+
+<!--
 
 
 
@@ -615,6 +682,58 @@ Ooumaž juuʹrdi suu pååʹlsen.
 Triâŋgg juuʹrdi suu jaaknen.
 }}}
 
+
+TODO: M_PEOPLE and M_PEOPLE_ESS for the following words (which are the N-ESS task):
+
+jeäʹnn
+kueʹss
+uʹtčteeʹl
+kaavsõs
+viilljâž
+suʹvddi
+pååʹles
+jaakân
+
+-->
+
+  <q id="ness5">
+      <qtype>N-ESS</qtype>
+      <question>
+          <text>Mââʹđen SUBJ juuʹrdi suu</text>
+          <element id="SUBJ">
+              <grammar tag="N+Sg+Nom"/>
+              <sem class="M_PEOPLE"/>
+          </element>
+    </question>
+    <answer> 
+        <text>SUBJ juuʹrdi suu N-ESS</text>
+        <element game='morfa' id="N-ESS" task="yes">
+            <grammar tag="N+Ess"/>
+            <sem class="M_PEOPLE_ESS"/>
+        </element>
+    </answer>
+    </q>
+
+  <q id="ness6">
+      <qtype>N-ESS</qtype>
+      <question>
+          <text>Ǩeäʹđen SUBJ juuʹrdi suu</text>
+          <element id="SUBJ">
+              <grammar tag="N+Sg+Nom"/>
+              <sem class="M_PEOPLE"/>
+          </element>
+    </question>
+    <answer> 
+        <text>SUBJ juuʹrdi suu N-ESS</text>
+        <element game='morfa' id="N-ESS" task="yes">
+            <grammar tag="N+Ess"/>
+            <sem class="M_PEOPLE_ESS"/>
+        </element>
+    </answer>
+    </q>
+
+<!--
+
 {{{
 Mââʹđen ääkkaž vaaʹldi suu? (peigg [piika]) 	[miksi akka otti hänet? [piika])
 Ääkkaž vaaʹldi suu peiggân. 		[akka otti hänet piiaksi]
@@ -625,6 +744,28 @@ Eʹčč vaaʹldi suu triâŋggân.
 Mââʹđen päärnaž vaaʹldi suu? (jeäʹnn [äiti])
 Päärnaž vaaʹldi suu jeäʹnnen.
 }}}
+
+-->
+
+  <q id="ness7">
+      <qtype>N-ESS</qtype>
+      <question>
+          <text>Mââʹđen ääkkaž vaaʹldi suu</text>
+          <element id="SUBJ">
+              <grammar tag="N+Sg+Nom"/>
+              <sem class="M_PEOPLE"/>
+          </element>
+    </question>
+    <answer> 
+        <text>SUBJ vaaʹldi suu N-ESS</text>
+        <element game='morfa' id="N-ESS" task="yes">
+            <grammar tag="N+Ess"/>
+            <sem class="M_PEOPLE_ESS"/>
+        </element>
+    </answer>
+    </q>
+
+<!--
 
 
 PARTITIIVI 
