@@ -1,0 +1,164 @@
+{% load i18n %}
+{% load staticfiles %}
+{% get_current_language as LANGUAGE_CODE %}
+<html>
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/builder.css" %}"/>
+
+	<script src="{% static "js/jquery-1.11.0.min.js" %}" type="text/javascript"></script> 
+	<script src="{% static "js/builder.js" %}" type="text/javascript"></script> 
+
+</head>
+
+<body>
+
+	<div id="builder" class="bootstrap-styles">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+	                <h3>1.) Enter a question / answer pair. This can be plain language, no formalism yet.</h3>
+	                <form>
+                        <textarea name="question_text" rows="3">Ǩeäivuiʹm autt jåårǥli</textarea>
+                        <textarea name="answer_text" rows="3">Piizar jåårǥli koontâršuurin</textarea>
+                        <button name="search">Submit</button>
+	                </form>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span8">
+                    <h2>Question formulation</h2>
+	                <h3>2.) Now generalize these into question elements. Check a box to specify that the given word is to be dynamic.</h3>
+	                <!-- TODO: each word should be run through the database for
+	                 analysis as either lemmas, or forms. Forms get a list of
+	                 tags.
+	                -->
+	                <div class="container-fluid" id="question_row_checks">
+	                    <div class="row">
+	                    </div>
+	                </div>
+	                <div class="container-fluid" id="question_row">
+	                    <div class="row">
+	                    </div>
+	                </div>
+	                <!-- chop this up
+
+	                --> 
+	                <div class="container-fluid" style="display: none;">
+	                    <div class="row">
+	                        <div class="col-lg-3 col-md-3">
+                                <p class="lead q-word">Ǩeäivuiʹm</p>
+	                        </div>
+	                        <div class="col-lg-3 col-md-3">
+                                <p class="lead q-word">piizar</p>
+
+                                <!-- 
+                                <p>first ... </p>
+                                <form class="word-step-1" data-word=2>
+                                    <select name="analysis_choice" class="form-control">
+                                        <option data-lemma="piizar" data-tag="N+Sg+Nom">piizar [N+Sg+Nom]</option>
+                                        <option data-lemma="piizar" data-tag="N+Sg+Acc">piizar [N+Sg+Acc]</option>
+                                        <option data-lemma="piizar" data-tag="N+Sg+Gen">piizar [N+Sg+Gen]</option>
+                                    </select>
+                                </form>
+
+                                <p>then ... </p>
+                                -->
+                                <!--
+                                <form class="form-horizontal word-step-2" id="word-2" style="display: none;">
+                                  <div class="form-group">
+                                    <label for="pos3" class="col-sm-5 control-label">Element name</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control"></input>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="pos3" class="col-sm-12 control-label">
+                                        <input type="checkbox">
+                                          Task?
+                                        </input>
+                                      </label>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="pos3" class="col-sm-2 control-label">POS</label>
+                                    <div class="col-sm-10">
+                                      <select class="form-control" name="pos3">
+                                          <option selected>V</option>
+                                          <option>N</option>
+                                          <option>Pron</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="semtypes3" class="col-sm-2 control-label">Semtypes</label>
+                                    <div class="col-sm-10">
+                                      <select multiple class="form-control" name="semtypes3">
+                                          <option selected>M_PEOPLE</option>
+                                          <option>NATURE</option>
+                                          <option>FAMILY</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">Tag</label>
+                                    <div class="col-sm-10">
+                                      <select class="form-control" name="pos3">
+                                          <option selected>N+Sg+Nom</option>
+                                          <option>N+Pl+Nom</option>
+                                          <option>N+Sg+Ill</option>
+                                          <option>N+Pl+Ill</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </form>
+
+                                -->
+
+                                <div style="display:none;">
+                                    <p>More matching words</p>
+                                    <ul class="more-matching-words" data-word=3>
+                                        <li><a href="#">vuäbbaž</a></li>
+                                        <li><a href="#">papp</a></li>
+                                    </ul>
+                                </div>
+
+	                        </div>
+	                        <div class="col-lg-3 col-md-3">
+                                <p class="lead q-word">saǥstââll</p>
+	                        </div>
+	                    </div>
+	                </div>
+
+	            </div>
+	            <div class="span4">
+                      <!--
+                      <q id="nplcom1">
+                          <qtype>N-PL-COM</qtype>
+                          <question>
+                              <text>Ǩeäivuiʹm SUBJ saǥstââll</text>
+                              <element id="SUBJ">
+                                  <grammar tag="N+Sg+Nom"/>
+                                  <sem class="M_PEOPLE"/>
+                              </element>
+                        </question>
+                        <answer> 
+                            <text>SUBJ saǥstââll N-PL-COM</text>
+                            <element game='morfa' id="N-PL-COM" task="yes">
+                                <grammar tag="N+Pl+Com"/>
+                                <sem class="M_PEOPLE"/>
+                            </element>
+                        </answer>
+                        </q>
+                        -->
+	            </div>
+	        </div>
+        </div>
+	</div>
+
+</body>
+</html>
+
+{# vim: set ts=4 sw=4 tw=0 syntax=htmldjango : #}
