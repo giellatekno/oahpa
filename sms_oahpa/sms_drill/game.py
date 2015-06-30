@@ -545,10 +545,10 @@ class BareGame(Game):
 			"PRS":	("Ind", "Prs", ""),
 			"PRT":	("Ind", "Prt", ""),
 			"PRF":	("", "", "PrfPrc"),
-			"GER":	("", "", "Ger"),
-			"COND":   ("Cond", "Prs", ""),
+			"GER":	("", "", "GerTemp"), # There is actually one more option: GerInstr
+			"COND":   ("Cond", "", ""),
 			"IMPRT":  ("Imprt", "", ""),
-			"POT":	("Pot", "Prs", "")
+			"POT":	("Pot", "", "")
 		}
 		
 		if pos == "V" and self.settings.has_key('vtype'):
@@ -691,6 +691,7 @@ class BareGame(Game):
 
 			if tense != 'Prs':
 				TAG_EXCLUDES = Q(string__contains='ConNeg')
+			print "tag query:",TAG_QUERY
 			
 		if pos == 'A':
 			if pos2 == 'Num':
