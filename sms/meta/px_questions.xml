@@ -9,8 +9,23 @@
 <!--
     1. Copy question / answer pair to below
     2. Begin structuring XML
-    3. Be specific first, and then add semsets.
+    3. Be specific first, and then add semsets and generalize.
+
+
+NB: although somewhat grammatically inaccurate, you can test that the database
+will work against the questions. This should help fix any glaring errors
+
+    python manage.py testquestions (see help for more)
+
+
+General TODOs:
+
+ - need to wait on Px inflections from FST to do this
+ - an illative goal semset (to work, home, etc) - does domoi break this?
+ - family + gender semset so we can match nijdd with vuä´bb, pä´rnn with vi´llj
+
 -->
+
 <!--
 
 yksikön 1.p.+2.p.+3.p. OMISTUSLIITE nominatiivi
@@ -23,7 +38,7 @@ Vuäbbam mâânn domoi.	            [sisareni menee kotiin]
 Tät päʹrnn lij muu viʹllj.
 Villjam mâânn põʹrtte.		[veljeni menee taloon]
 
-Ǩii tät ooumaž lij? [isäni] 
+Ǩii tät ooumaž lij? [isäni]
 Tät ooumaž lij muu eʹčč.
 Eččam mâânn tuõjju.		[isäni menee työhön]
 
@@ -43,7 +58,7 @@ Tät ääkkaž lij muu äkk.
 Tät nijdd lij tuu vuäʹbb.		[tämä tyttö on sinun sisaresi]
 Vuäbbad mâânn domoi.		[sisaresi menee kotiin]
 
-Ǩii tät päʹrnn lij? [veljesi] 
+Ǩii tät päʹrnn lij? [veljesi]
 Tät päʹrnn lij tuu villj.
 Vʹilljad mâânn põʹrtte.
 
@@ -76,7 +91,7 @@ Tät ooumaž lij suu eʹčč.
 Eʹččes mâânn tuõjju.
 
 Ǩii tät källsaž lij? [hänen ukkinsa]
-Tät källsaž lij suu äʹjj. 
+Tät källsaž lij suu äʹjj.
 Äʹjjes mâânn gåårda.
 
 Ǩii tät neezzan lij? [hänen äitinsä]
@@ -84,7 +99,7 @@ Tät neezzan lij suu jeäʹnn.
  Jeäʹnnes ǩeâtt vueʹǯǯveär.
 
 Ǩii tät ääkkaž lij? [hänen mummonsa]
-Tät ääkkaž lij suu äkk. 
+Tät ääkkaž lij suu äkk.
 Äkkas päʹštt kuuʹrniǩ.
 
 
@@ -108,7 +123,7 @@ Koʹst ton jälstak? (kaav [vaimo])
 Mon jälstam kaavan åʹrnn.
 
 Koʹst ton jälstak? (sieʹss [täti])
-Mon jälstam siessan åʹrnn. 
+Mon jälstam siessan åʹrnn.
 
 
 Koʹst nijdd jäälast? (jeäʹnn [äiti])		[missä tyttö asuu]
@@ -130,14 +145,14 @@ Koʹst kääʹlles jäälast? (kaav [vaimo])
 Kääʹlles jäälast kaappjes åʹrnn.
 
 Koʹst niõđâž jäälast? (mueʹđđ [täti])
-Niõđâž jäälast mueʹđes åʹrnn. 
+Niõđâž jäälast mueʹđes åʹrnn.
 
 Koʹst päärnaž jäälast? (äʹjj [ukki])
 Päärnaž jäälast ääʹjjas åʹrnn.
 
 
 
-yks. lokatiivi 
+yks. lokatiivi
 Ǩeäʹst mon vuäǯǯam vuäʹppõõzz? (äkk [mummo])  [keneltä saan opastusta]
 Mon vuäǯǯam vuäʹppõõzz äkstan / ääkkstam.	[saan opastusta mummoltani]
 
@@ -225,13 +240,13 @@ Niõđâž oudd tõn äkkses.
 Ǩeäzz triâŋgg veekk tõn? (eeʹžžed)		[kenelle renki vie sen]
 Triâŋgg veekk tõn eežždses.		[renki vie sen isännälleen]
 
-Ǩeäzz päʹrnn veekk tõn? (eʹčč)		
+Ǩeäzz päʹrnn veekk tõn? (eʹčč)
 Päʹrnn veekk tõn eččses.
 Ǩeäzz kaavsõs veǯǯ tõn? (vuõddâm) 	[kenelle morsian noutaa sen]
 Kaavsõs veǯǯ tõn vuõddmses.		[morsian noutaa sen sulhaselleen]
 
-Ǩeäzz jeäʹnn veǯǯ tõn? (nijdd) 
-Jeäʹnn veǯǯ tõn nijddses. 
+Ǩeäzz jeäʹnn veǯǯ tõn? (nijdd)
+Jeäʹnn veǯǯ tõn nijddses.
 -->
 
 
@@ -253,13 +268,13 @@ Jeäʹnn veǯǯ tõn nijddses.
     <q id="pxnom1">
         <qtype>PX-NOM</qtype>
         <question>
-            <text>Ǩii tät nijdd lij? Tät nijdd lij muu vuäˊbb. </text>
+            <text>Ǩii tät nijdd lij? Tät nijdd lij muu vuäʹbb</text>
         </question>
-        <answer> 
-            <text>N-NOM mâânn domoi.</text>
+        <answer>
+            <text>N-NOM mâânn domoi</text>
             <element game='morfa' id="N-NOM" task="yes">
 	            <grammar tag="N+Sg+Nom+PxSg1"/>
-	            <id>vuäˊbb</id>
+	            <id>vuäʹbb</id>
             </element>
         </answer>
     </q>
@@ -273,22 +288,36 @@ Jeäʹnn veǯǯ tõn nijddses.
     <q id="pxnom2">
         <qtype>PX-NOM</qtype>
         <question>
-            <text>Ǩii tät päˊrnn lij? Tät päˊrnn lij muu viˊllj.</text>
+            <text>Ǩii tät päʹrnn lij? Tät päʹrnn lij muu viʹllj</text>
         </question>
-        <answer> 
-            <text>N-NOM mâânn põˊrtte.</text>
+        <answer>
+            <text>N-NOM mâânn põʹrtte</text>
             <element game='morfa' id="N-NOM" task="yes">
+	            <id>viʹllj</id>
 	            <grammar tag="N+Sg+Nom+PxSg1"/>
-	            <id>viˊllj</id>
             </element>
         </answer>
     </q>
 
     <!--
-    Ǩii tät ooumaž lij? [isäni] 
+    Ǩii tät ooumaž lij? [isäni]
     Tät ooumaž lij muu eʹčč.
     Eččam mâânn tuõjju.		[isäni menee työhön]
     -->
+
+    <q id="pxnom3">
+        <qtype>PX-NOM</qtype>
+        <question>
+            <text>Ǩii tät ooumaž lij? Tät ooumaž lij muu eʹčč</text>
+        </question>
+        <answer>
+            <text>N-NOM mâânn tuõjju</text>
+            <element game='morfa' id="N-NOM" task="yes">
+	            <id>eʹčč</id>
+	            <grammar tag="N+Sg+Nom+PxSg1"/>
+            </element>
+        </answer>
+    </q>
 
     <!--
     Ǩii tät källsaž lij? [ukkini]
@@ -297,5 +326,5 @@ Jeäʹnn veǯǯ tõn nijddses.
     -->
 
 
-  
+
 </questions>

@@ -258,12 +258,6 @@ Mieʹcsteei puätt taaurõõžžin.
               <grammar tag="N+Sg+Nom"/>
               <sem class="M_PEOPLE"/>
           </element>
-          <!--
-      <element id="MAINV">
-        <grammar tag="V+Ind+Prs+Sg3"/>
-        <sem class="M_V_COMM"/>
-      </element>
-      -->
     </question>
     <answer> 
         <text>SUBJ saǥstââll N-SG-COM</text>
@@ -282,12 +276,6 @@ Mieʹcsteei puätt taaurõõžžin.
               <grammar tag="N+Sg+Nom"/>
               <sem class="M_PEOPLE"/>
           </element>
-          <!--
-      <element id="MAINV">
-        <grammar tag="V+Ind+Prs+Sg3"/>
-        <sem class="M_V_COMM"/>
-      </element>
-      -->
     </question>
     <answer> 
         <text>SUBJ vuâlgg reissu N-SG-COM</text>
@@ -405,12 +393,6 @@ Mieʹcsteei puätt taaurõõžživuiʹm.
               <grammar tag="N+Sg+Nom"/>
               <sem class="M_PEOPLE"/>
           </element>
-          <!--
-      <element id="MAINV">
-        <grammar tag="V+Ind+Prs+Sg3"/>
-        <sem class="M_V_COMM"/>
-      </element>
-      -->
     </question>
     <answer> 
         <text>SUBJ saǥstââll N-PL-COM</text>
@@ -429,12 +411,6 @@ Mieʹcsteei puätt taaurõõžživuiʹm.
               <grammar tag="N+Sg+Nom"/>
               <sem class="M_PEOPLE"/>
           </element>
-          <!--
-      <element id="MAINV">
-        <grammar tag="V+Ind+Prs+Sg3"/>
-        <sem class="M_V_COMM"/>
-      </element>
-      -->
     </question>
     <answer> 
         <text>SUBJ vuâlgg reissu N-PL-COM</text>
@@ -622,7 +598,7 @@ Alternative: split the people words into gender groups, and combine
     </answer>
 </q>
 
-<q id="ness3">
+<q id="ness5">
     <qtype>N-ESS</qtype>
         <question>
             <text>Kuäʹss äkk âânn pooʹvdneeʹǩ</text>
@@ -636,7 +612,10 @@ Alternative: split the people words into gender groups, and combine
     </answer>
 </q>
 
-<q id="ness4">
+<!-- TODO: nijdd is not generating forms -->
+
+<!--
+<q id="ness6">
     <qtype>N-ESS</qtype>
         <question>
             <text>Kuäʹss niõđâž âânn peeʹrveeʹsǩ</text>
@@ -649,6 +628,7 @@ Alternative: split the people words into gender groups, and combine
         </element>
     </answer>
 </q>
+-->
 
 
 <!--
@@ -696,7 +676,7 @@ jaakân
 
 -->
 
-  <q id="ness5">
+  <q id="ness7">
       <qtype>N-ESS</qtype>
       <question>
           <text>Mââʹđen SUBJ juuʹrdi suu</text>
@@ -714,7 +694,7 @@ jaakân
     </answer>
     </q>
 
-  <q id="ness6">
+  <q id="ness8">
       <qtype>N-ESS</qtype>
       <question>
           <text>Ǩeäʹđen SUBJ juuʹrdi suu</text>
@@ -747,10 +727,10 @@ Päärnaž vaaʹldi suu jeäʹnnen.
 
 -->
 
-  <q id="ness7">
+  <q id="ness9">
       <qtype>N-ESS</qtype>
       <question>
-          <text>Mââʹđen ääkkaž vaaʹldi suu</text>
+          <text>Mââʹđen SUBJ vaaʹldi suu</text>
           <element id="SUBJ">
               <grammar tag="N+Sg+Nom"/>
               <sem class="M_PEOPLE"/>
@@ -766,6 +746,16 @@ Päärnaž vaaʹldi suu jeäʹnnen.
     </q>
 
 <!--
+TODO: need numerals first 
+
+objects:
+ - ǩeʹrjj
+ - jooŋŋ
+ - mueʹrj
+ - niõđ
+ - pävvar
+
+numerals:
 
 
 PARTITIIVI 
@@ -786,6 +776,10 @@ Restraantest lie koummlokutt pävvred.
 
 Kâʹll ǩeeʹrj škooulneǩ lååkk? (čiččâm 7)
 Škooulneǩ lååkk čiččâm ǩeʹrjjed.
+-->
+
+
+<!--
 
 Koon vuâstta päʹrnn nuäjjââtt? (põrtt [talo])	[mitä vasten poika nojautuu? (talo)]
 Päʹrnn nuäjjââtt põrttâd vuâstta.
@@ -852,9 +846,4 @@ Säähhar lij njäʹlggsab pååttǩed.
 
 
 
-
 </questions>
-
-
-
-
