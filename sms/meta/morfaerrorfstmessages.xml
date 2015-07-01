@@ -3,6 +3,13 @@
   <messages xml:lang="nob"> 
 
     <!--
+     The error api here combines output from a specialized FST,
+     containing error tags, and the XML file here. If the user is
+     working on e.g., V+Ind+Prs+Sg3, we will need to recognize potential
+     errors on the user's way to that wordform: this will mean accepting
+     Consonant Gradation errors as potential input, or vowel ablaut
+     errors which will not be generated at all, or potentially wrong
+     suffixes. 
 
      About the message structure. <message /> tag must have task, and tag. `task`
      is used by the system to recognize what the user is working on, and `tag`
