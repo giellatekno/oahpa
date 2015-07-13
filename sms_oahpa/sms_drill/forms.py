@@ -24,7 +24,7 @@ except:
 
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
-PRONOUNS_LIST = {'Sg1':'mon', 'Sg2':'ton', 'Sg3':'son',
+PRONOUNS_LIST = {'Sg1':'mon', 'Sg2':'ton', 'Sg3':'son', 'Sg4':'(4)',
 		  'Pl1':'mij', 'Pl2':'tij', 'Pl3':'sij',
 		  'Du1':'muäʹna', 'Du2':'tuäʹna', 'Du3':'suäʹna'}
 
@@ -1207,7 +1207,10 @@ class MorfaQuestion(OahpaQuestion):
 			# Odne 'today', ikte 'yesterday'
 			if (tag.tense in ['Prs','Prt']) and (tag.mood == 'Ind'):
 				time = TENSE_PRESENTATION.get(tag.tense, False)
-				self.pron = ' '.join([time, pronoun])
+				if (tag.personnumber == 'Sg4'):
+				    self.pron = ' '.join([pronoun, time])  # Sg4: (4) Today ...
+				else:
+				    self.pron = ' '.join([time, pronoun])  # Sg1..Sg3, Pl1..Pl3: Today Pron ...
 
 			if ("+Der/Pass" in tag.string) and ("+V" in tag.string):
 				# Odne mun ___
