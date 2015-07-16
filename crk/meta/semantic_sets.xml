@@ -1,80 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Specify subsets for sematic supersets here -->
 <lexicon>
-	<subclasses class="HUMAN">  
-      <sem class="PEOPLE"/>   
-      <sem class="BODY"/>
+	<subclasses class="KINSHIP-AND-PEOPLE">
+      <sem class="PEOPLE"/>
       <sem class="KIN"/>
-      <sem class="HUMAN_V"/>
       <sem class="RELATIONSHIPS"/>
-      <sem class="MOVE"/>
-      <sem class="COMMUNICATION"/>
-      <sem class="LANGUAGE"/>
-      <sem class="IMPACT"/>
 	</subclasses>
-	<subclasses class="MIND-BODY"> 
+	<subclasses class="BODYPARTS AND CONDITIONS">
+	  <sem class="BODY"/>
+	  <sem class="BODY_PART"/>
+	  <sem class="BODY_CONDITION"/>
+    </subclasses>
+	<subclasses class="FOOD,-DRINKS,-DINNERWARE,-AND-COOKING">
+      <sem class="DRINK"/>
+      <sem class="FOOD"/>
+      <sem class="UTENSIL"/>
+      <sem class="COOKWARE"/>
+      <sem class="PREPARE_FOOD"/>
+      <sem class="TASTE"/>
+    </subclasses>
+	<subclasses class="ANIMALS">
+      <sem class="ANIMAL"/>
+      <sem class="ANIMAL_PART"/>
+      </subclasses>
+  <subclasses class="NATURE-AND-WEATHER">
+      <sem class="NATURE"/>
+      <sem class="PLANT"/>
+      <sem class="WEATHER"/>
+    </subclasses>
+	<subclasses class="MISCELLANEOUS OBJECTS">
+      <sem class="THING"/>
+      <sem class="CONTAINER"/>
+      <sem class="TOY"/>
+      <sem class="HANDICRAFT"/>
+      <sem class="SCHOOL"/>
+      <sem class="TOOL"/>
+    </subclasses>
+	<subclasses class="HOME,-CLOTHING-AND-WORK">
+	  <sem class="HOME"/>
+	  <sem class="SLEEP"/>
+	  <sem class="FURNITURE"/>
+	  <sem class="WORK"/>
+	  <sem class="CLOTHING"/>
+	</subclasses>
+	<subclasses class="TIME,-COUNTING,-MONEY,-AND-DATES">
+	  <sem class="TIME"/>
+	  <sem class="DAYS_OF_THE_WEEK"/>
+	  <sem class="MONEY"/>
+	  <sem class="DATES"/>
+	  <sem class="QUANTITY"/>
+  </subclasses>
+	<subclasses class="DESCRIPTIONS">
+	  <sem class="COLOUR"/>
+	  <sem class="QUALITY"/>
+	  <sem class="APPEARANCE"/>
+	  <sem class="STATE"/>
+	</subclasses>
+	<subclasses class="EXPRESSIONS-AND-QUESTIONS">
+	  <sem class="EMPHASIS"/>
+	  <sem class="QUESTION"/>
+	  <sem class="IMPERATIVE"/>
+	</subclasses>
+	<subclasses class="BASIC-CONVERSATION">
+	  <sem class="LANGUAGE"/>
+	  <sem class="MOVE_SOMETHING"/>
+	  <sem class="MOVE"/>
+	  <sem class="IDENTITY"/>
+	  <sem class="NAME"/>
 	  <sem class="SENSE"/>
 	  <sem class="WANT"/>
 	  <sem class="EMOTION"/>
 	  <sem class="THINK"/>
-	  <sem class="BODY_CONDITION"/>
-    </subclasses>
-	<subclasses class="FOOD-DRINK">  
-      <sem class="DRINK"/>
-      <sem class="FOOD_DISH"/>
-      <sem class="FOOD_GROCERY"/>
-      <sem class="FOOD"/>
-      <sem class="KITCHEN"/>
-    </subclasses>
-	<subclasses class="NATURE-ANIMALS">  
-      <sem class="ANIMAL"/>
-      <sem class="ANIMALPART"/>
-      <sem class="NATURE"/>
-      <sem class="PLANT"/>
-    </subclasses>
-	<subclasses class="THINGS">  
-      <sem class="THING"/>
-      <sem class="KITCHEN"/>
-      <sem class="CLOTHING"/>
-      <sem class="FURNITURE"/>
-      <sem class="VEHICLE"/>
-      <sem class="CONTAINER"/>
-      <sem class="TOY"/>
-      <sem class="INSTRUMENT"/>
-      <sem class="HANDICRAFT"/>
-      <sem class="SPORT"/>
-    </subclasses>
-	<subclasses class="HOME-AND-DAILY-LIFE">
-	  <sem class="HOME"/>
-	  <sem class="RELIGION"/>
-	  <sem class="SLEEP"/>
-	  <sem class="FOOD"/>
-	  <sem class="FURNITURE"/>
-	  <sem class="SCHOOL"/>
-    <sem class="FINANCE"/>
-	  <sem class="IMPACT"/>
-	  <sem class="WORK"/>
-	  <sem class="CONFLICT"/>
-	</subclasses>
-	<subclasses class="EVERYDAY">
-	  <sem class="TIME"/>
-	  <sem class="DAYS_OF_THE_WEEK"/>
-	  <sem class="WEATHER"/>
-	</subclasses>
-	<subclasses class="DESCRIPTIONS">
-	  <sem class="NAME"/>
-	  <sem class="COLOUR"/>
-	  <sem class="QUALITY"/>
-	  <sem class="QUANTITY"/>
-	  <sem class="APPEARANCE"/>
-	  <sem class="STATE"/>
-	  <sem class="PLACE"/>
-	</subclasses>
-	<subclasses class="SPEECH">
-	  <sem class="EMPHASIS"/>
-	  <sem class="QUESTION"/>
-	  <sem class="IMPERATIVE"/>
-	  <sem class="ADVERBIAL_CLAUSE"/>
+	  <sem class="COMMUNICATION"/>
+	  <sem class="CONDITION"/>
+	  <sem class="POSSESS"/>
+    <sem class="AGE"/>
+    <sem class="ADVERBIAL_CLAUSE"/>
 	  <sem class="COORDINATE_RELATIONS"/>
-	</subclasses>
+  </subclasses>
+  <subclasses class="TRANSPORTATION-AND-PLACES">
+    <sem class="PLACE"/>
+    <sem class="TRANSPORTATION"/>
+  </subclasses>
+  <subclasses class="ACTIVITIES">
+    <sem class="IMPACT"/>
+    <sem class="SPORT"/>
+    <sem class="MUSIC"/>
+    <sem class="ACTIVITY"/>
+  </subclasses>
 </lexicon>
