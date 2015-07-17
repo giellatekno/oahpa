@@ -1,0 +1,31 @@
+##
+#  This is the main config file for the lookupserv.
+#
+
+# This defines how clients connect.
+#
+Services:
+  - port: 4000
+    type: 'telnet'
+    name: 'North Saami'
+    utilities:
+      - 'analyzer-desc-sme'
+      - 'cg-sme'
+
+# This defines the utilities that clients can access, and under what
+# name.
+#
+Utilities:
+
+  - name: "ana"
+    listen: "tcp://*:15112"
+    pipeline: 
+      - "cat | /usr/local/bin/lookup -flags mbTT /opt/smi/sme/bin/analyser-dict-gt-desc.xfst"
+
+  # - name: "cg-sme"
+  #   listen: "tcp://*:15113"
+  #   pipeline: 
+  #     - "lookup -q /opt/smi/sme/bin/analyser-dict-gt-desc.xfst"
+  #     - "preprocess" 
+  #     - "vislcg3 -g disambiguation.cg3"
+
