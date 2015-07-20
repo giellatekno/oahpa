@@ -1,3 +1,15 @@
+"""
+
+Usage:
+    lookupserv.py <yaml_config_file> [-hdv]
+
+Options:
+    -h --help       Print this message.
+    -v --verbose    Verbose
+    -d --debug      Do not launch clients, but provide local session. 
+
+"""
+
 # TODO:
 #   accept some sort of connection (TELNET, or SSH)
 #   open pipelines in own thread
@@ -8,7 +20,7 @@ import sys, os
 import zmq
 context = zmq.Context()
 
-def prepare_utilities(config):
+def prepare_utilities(config, cmd_args):
     """ This launches all the threads necessary, and prepares a means to
     communicate with them from the master server process.  """
     from pipelines import Pipeline, PipelineQueue
@@ -29,42 +41,79 @@ def prepare_utilities(config):
 
     return utility_defs
 
-def accept_clients(utilities):
+def run_local_session(utilities, cmd_args):
+    """ Here we only listen on the local commandline.  """
+
+    # TODO: turn this into telnet, but keep this around for testing
+    # w/out
+
+    while True:
+        print "choose service?"
+        process = raw_input()
+        u = utilities.get(process, False)
+        if not u:
+            print "Invalid service, choose one of:"
+            print utilities.keys()
+            continue
+        print "listening for"
+        print u
+        while True:
+            input_line = raw_input()
+
+            if len(input_line.strip()) == 0:
+                sys.exit()
+
+            q = u.get('queue')
+            sock = q.socket
+            sock.send(input_line)
+            message = sock.recv()
+            print >> sys.stdout, message
+
+def accept_clients(service_defs, utilities, cmd_args):
     """ Here we do whatever we need to to listen for requests, and send
     them off to the processes they need to go to.  """
+    from servers import TelnetListener
+    import time
 
-    print utilities
-    print 'listening'
+    # TODO: turn this into telnet, but keep this around for testing
+    # w/out
 
-    # TODO: will do this over tlnet next
+    servers = {}
+
+    for service in service_defs:
+        print service
+        name = service.get('name')
+        listener = TelnetListener(service, utilities)
+        servers[name] = listener
+        listener.start()
+
+    print servers
+
     while True:
-        process = raw_input()
-        u = utilities.get(process)
-        print u
-        input_line = raw_input()
-        q = u.get('queue')
-        sock = q.socket
-        print 'sending: ' + input_line
-        sock.send(input_line)
-        print 'sent'
-        message = sock.recv()
-        print 'msg: ' + message
+        time.sleep(0.1)
+
+
 
 
 def main():
     """ Kick off everything, and start listening.
     """
-
+    from docopt import docopt
     import yaml
 
-    services_yaml_file = sys.argv[1]
+    cmd_arguments = docopt(__doc__, version='Lookupserv 0.1.0')
+
+    services_yaml_file = cmd_arguments.get('<yaml_config_file>')
 
     with open(services_yaml_file, 'r') as F:
          services_yaml = yaml.load(F)
 
-    utility_defs = prepare_utilities(services_yaml)
+    utility_defs = prepare_utilities(services_yaml, cmd_arguments)
 
-    accept_clients(utility_defs)
+    if cmd_arguments.get('--debug', False):
+        run_local_session(utility_defs, cmd_arguments)
+    else:
+        accept_clients(services_yaml.get('Services'), utility_defs, cmd_arguments)
 
 
 if __name__ == "__main__":

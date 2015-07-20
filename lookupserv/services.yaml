@@ -5,27 +5,50 @@
 # This defines how clients connect.
 #
 Services:
+
   - port: 4000
+    # telnet or ssh
     type: 'telnet'
     name: 'North Saami'
+    # define utilities to be accessible from this service
     utilities:
-      - 'analyzer-desc-sme'
-      - 'cg-sme'
+      - 'sme-analyze'
+      - 'sme-generate'
+      - 'sme-cg'
+
+  # - port: 4001
+  #   # telnet or ssh
+  #   type: 'telnet'
+  #   name: 'North Saami'
+  #   # define utilities to be accessible from this service
+  #   utilities:
+  #     - 'sms-analyze'
+  #     - 'sms-generate'
+  #     - 'sms-cg'
+
 
 # This defines the utilities that clients can access, and under what
 # name.
 #
 Utilities:
 
-  - name: "ana"
-    listen: "tcp://*:15112"
-    pipeline: 
-      - "cat | /usr/local/bin/lookup -flags mbTT /opt/smi/sme/bin/analyser-dict-gt-desc.xfst"
+  # name must have no spaces, make it like a filename
+  - name: "sme-analyze"
+    pipeline: "/usr/local/bin/lookup -flags mbTT /opt/smi/sme/bin/analyser-dict-gt-desc.xfst"
 
-  # - name: "cg-sme"
-  #   listen: "tcp://*:15113"
-  #   pipeline: 
-  #     - "lookup -q /opt/smi/sme/bin/analyser-dict-gt-desc.xfst"
-  #     - "preprocess" 
-  #     - "vislcg3 -g disambiguation.cg3"
+  - name: "sme-generate"
+    pipeline: "/usr/local/bin/lookup -flags mbTT /opt/smi/crk/bin/generator-dict-gt-norm.xfst"
+
+  - name: "sme-cg"
+    pipeline: "preprocess | /usr/local/bin/lookup -flags mbTT /opt/smi/sme/bin/analyser-dict-gt-desc.xfst | lookup2cg | vislcg3 -g /Users/pyry/gtsvn/langs/sme/src/syntax/disambiguation.bin"
+
+  # SMS processes
+  - name: "sms-analyze"
+    pipeline: "/usr/local/bin/lookup -flags mbTT /opt/smi/sms/bin/analyser-dict-gt-desc.xfst"
+
+  - name: "sms-generate"
+    pipeline: "/usr/local/bin/lookup -flags mbTT /opt/smi/crk/bin/generator-dict-gt-norm.xfst"
+
+  - name: "sms-cg"
+    pipeline: "preprocess | /usr/local/bin/lookup -flags mbTT /opt/smi/sms/bin/analyser-dict-gt-desc.xfst | lookup2cg | vislcg3 -g /Users/pyry/gtsvn/langs/sms/src/syntax/disambiguation.bin"
 
