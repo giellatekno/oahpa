@@ -1,4 +1,4 @@
-{% extends "game.html" %}
+﻿{% extends "game.html" %}
 {% load i18n %}
 
 {% block helpaddress %}
@@ -49,7 +49,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.nno.html
   {% ifequal gametype "string" %}
     {% trans "Enter the numeral. (ex. 23)" %}
   {% else %}
-    {% trans "Enter the number as word(s). (ex. nîstanaw nistosâp)." %}
+    {% trans "Enter the number as word(s). (ex. nÃ®stanaw nistosÃ¢p)." %}
   {% endifequal %}
 {% endblock %}
 
@@ -63,7 +63,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.nno.html
         {% block setting_items %}
     	<li><label for="id_{{ settingsform.maxnum.name }}">{% trans "Select the range of numerals." %}</label>
     		{{ settingsform.maxnum }}</li>
-    	<li><label for="id_{{ settingsform.numgame.name }}">{% trans "Select the direction" %}</label>{{ settingsform.numgame }}</li>
+    	<li><label for="id_{{ settingsform.numgame.name }}">{% trans "Select the direction." %}</label>{{ settingsform.numgame }}</li>
         {% endblock %}
     </ul>
     
