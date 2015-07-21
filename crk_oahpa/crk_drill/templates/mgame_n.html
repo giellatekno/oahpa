@@ -1,4 +1,4 @@
-{% extends "mgame.html" %}
+﻿{% extends "mgame.html" %}
 {% load i18n %}
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
@@ -8,11 +8,11 @@
     {% trans "Put each noun in its correct form. Click on a word for its translation." %}
   {% elif settings.gametype == "context" %}
       {% if settings.case_context == 'N-PL' %}
-        {% trans "Fill in nouns according to the context." %}
+        {% trans "Complete the response to the question by entering the plural form of the noun given in brackets." %}
       {% elif settings.case_context == 'N-LOC' %}
-        {% trans "Fill in nouns according to the context." %}
+        {% trans "Complete the response to the question by entering the locative form of the noun given in brackets." %}
       {% else %}
-        {% trans "Fill in nouns according to the context." %}
+        {% trans "Complete the response to the question by entering the correct possessive form of the noun." %}
       {% endif %}
   {% endif %}
 {% endblock %}
