@@ -86,14 +86,25 @@ CASE_CHOICES = (
 
 NOUN_QUESTION_ANSWER = {
 	# gametype			question		answer
-	'NOMPL': [('N+Sg+Nom', 'N+Pl+Nom')],
-	'N-ACC': [('N+NumberN+Nom', 'N+NumberN+Acc')],
-	'N-ILL': [('N+NumberN+Nom', 'N+NumberN+Ill')],
-	'N-LOC': [('N+NumberN+Nom', 'N+NumberN+Loc')],
-	'N-COM': [('N+NumberN+Nom', 'N+NumberN+Com')],
-	'N-GEN': [('N+NumberN+Nom', 'N+NumberN+Gen')],
-	'N-ESS': [('N+NumberN+Nom', 'N+Ess')],
+	'NOMPL': [('N+Sg+Nom+Indef', 'N+Pl+Nom+Indef')],
+	'N-ACC': [('N+NumberN+Nom+Indef', 'N+NumberN+Acc+Indef')],
+	'N-ILL': [('N+NumberN+Nom+Indef', 'N+NumberN+Ill+Indef')],
+	'N-LOC': [('N+NumberN+Nom+Indef', 'N+NumberN+Loc+Indef')],
+	'N-COM': [('N+NumberN+Nom+Indef', 'N+NumberN+Com+Indef')],
+	'N-GEN': [('N+NumberN+Nom+Indef', 'N+NumberN+Gen+Indef')],
+	'N-ESS': [('N+NumberN+Nom+Indef', 'N+Ess+Indef')],
 }
+
+#NOUN_QUESTION_ANSWER = {
+#        # gametype                      question                answer        #  
+#        'NOMPL': [('N+Sg+Nom', 'N+Pl+Nom')],
+#        'N-ACC': [('N+NumberN+Nom', 'N+NumberN+Acc')],
+#        'N-ILL': [('N+NumberN+Nom', 'N+NumberN+Ill')],
+#        'N-LOC': [('N+NumberN+Nom', 'N+NumberN+Loc')],
+#        'N-COM': [('N+NumberN+Nom', 'N+NumberN+Com')],
+#	'N-GEN': [('N+NumberN+Nom', 'N+NumberN+Gen')],
+#        'N-ESS': [('N+NumberN+Nom', 'N+Ess')],
+#}
 
 NOUN_FILTER_DEFINITION = ['stem', 'source']
 
