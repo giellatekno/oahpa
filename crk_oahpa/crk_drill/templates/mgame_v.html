@@ -1,4 +1,4 @@
-{% extends "mgame.html" %}
+﻿{% extends "mgame.html" %}
 {% load i18n %}
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
@@ -8,9 +8,9 @@
     {% elif settings.gametype == "context" %}
 
       {% if settings.vtype_context == 'V-PRS' %}
-        {% trans "Add verbs in correct forms." %}
+        {% trans "Talk about what people did or did not do today. Complete the response to the question by entering the verb in the correct form." %}
       {% elif settings.vtype_context == 'V-PRT' %}
-        {% trans "Add verbs in correct forms." %}
+        {% trans "Talk about what people did yesterday. Complete the response to the question by entering the verb in the correct form." %}
       {% else %}
         {% trans "Add verbs in correct forms." %}
       {% endif %}
