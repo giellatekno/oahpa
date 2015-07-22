@@ -11,11 +11,6 @@ Options:
 
 """
 
-# TODO:
-#   accept some sort of connection (TELNET, or SSH)
-#   open pipelines in own thread
-#   communicate between main thread and child threads with zmq? 
-
 import sys, os
 
 import zmq
@@ -45,9 +40,6 @@ def prepare_utilities(config, cmd_args):
 def run_local_session(utilities, cmd_args):
     """ Here we only listen on the local commandline.  """
 
-    # TODO: turn this into telnet, but keep this around for testing
-    # w/out
-
     while True:
         print "choose service?"
         process = raw_input()
@@ -76,22 +68,16 @@ def accept_clients(service_defs, utilities, cmd_args):
     from servers import TelnetListener
     import time
 
-    # TODO: turn this into telnet, but keep this around for testing
-    # w/out
-
     servers = {}
 
     for service in service_defs:
-        print service
         name = service.get('name')
         listener = TelnetListener(service, utilities)
         servers[name] = listener
         listener.start()
 
-    print servers
-
     while True:
-        time.sleep(0.1)
+        time.sleep(0.02)
 
 
 def erase_logs():

@@ -71,11 +71,6 @@ class Pipeline(threading.Thread):
         return out
 
     def do_work(self, data):
-        # TODO: 
-        # run the data through the pipeline
-        # self.p_input
-        # self.p_output
-        # return the result to wherever
         self.subprocess.stdin.write(data)
         out = self.read().decode('utf-8')
         return out
