@@ -55,7 +55,7 @@ class Telnet(Component):
             }
         }
 
-        self.fire(write(sock, b"choose a util: "))
+        self.fire(write(sock, b""))
 
     def disconnect(self, sock):
         """Disconnect Event -- Triggered for disconnecting clients"""
@@ -70,8 +70,11 @@ class Telnet(Component):
     def read(self, sock, data):
         """Read Event -- Triggered for when client connections have data"""
 
-        data = data.strip().decode("utf-8")
-
+        try:
+            data = data.strip().decode("utf-8")
+        except UnicodeDecodeError:
+            data = ""
+            return
 
         if not self.clients[sock]["state"]["registered"]:
             data = data.replace('\n','')
@@ -135,5 +138,5 @@ class TelnetListener(threading.Thread):
 
         # listen for work, and perform work
         while True:
-            time.sleep(0.1)
+            time.sleep(0.02)
 

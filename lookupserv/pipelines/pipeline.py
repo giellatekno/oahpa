@@ -59,6 +59,12 @@ class Pipeline(threading.Thread):
         self.subprocess
         self.listen_for_work()
 
+    def log_work(self, result_str):
+        log_file_path = os.path.join('logs/', "%s.result.log" % self.options.get('name'))
+
+        with open(log_file_path, 'a') as F:
+            F.write(result_str)
+
     def read(self, src=False):
         out, _ = self.subprocess.communicate()
         self._subprocess = None
@@ -89,6 +95,7 @@ class Pipeline(threading.Thread):
             req = socket.recv()
             res = self.do_work(req)
             socket.send(res.encode('utf-8'))
+            self.log_work(res.encode('utf-8'))
             time.sleep(0.002)
 
 

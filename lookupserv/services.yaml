@@ -6,8 +6,7 @@
 #
 Services:
 
-  - port: 4000
-    # telnet or ssh
+  - port: 9001
     type: 'telnet'
     name: 'North Saami'
     # define utilities to be accessible from this service
@@ -16,10 +15,9 @@ Services:
       - 'sme-generate'
       - 'sme-cg'
 
-  # - port: 4001
-  #   # telnet or ssh
+  # - port: 9002
   #   type: 'telnet'
-  #   name: 'North Saami'
+  #   name: 'Skolt Saami'
   #   # define utilities to be accessible from this service
   #   utilities:
   #     - 'sms-analyze'
