@@ -1,12 +1,13 @@
 """
 
 Usage:
-    lookupserv.py <yaml_config_file> [-hdv]
+    lookupserv.py <yaml_config_file> [-hdv] [--clear-logs]
 
 Options:
     -h --help       Print this message.
     -v --verbose    Verbose
-    -d --debug      Do not launch clients, but provide local session. 
+    -d --debug      Do not launch clients, but provide local session.
+    --clear-logs    Clear logs on launch
 
 """
 
@@ -93,17 +94,36 @@ def accept_clients(service_defs, utilities, cmd_args):
         time.sleep(0.1)
 
 
+def erase_logs():
+    print >> sys.stderr, "Deleting logs:"
+    for f in os.listdir('logs/'):
+        f_path = os.path.join('logs/', f)
+        print >> sys.stderr, f_path
+        os.remove(f_path)
 
+def check_paths():
+    # socket_tmp/ logs/
+    try: os.mkdir('logs')
+    except OSError: pass
+
+    try: os.mkdir('socket_tmp')
+    except OSError: pass
 
 def main():
     """ Kick off everything, and start listening.
     """
     from docopt import docopt
     import yaml
+    check_paths()
 
     cmd_arguments = docopt(__doc__, version='Lookupserv 0.1.0')
 
     services_yaml_file = cmd_arguments.get('<yaml_config_file>')
+
+    clear_logs = cmd_arguments.get('--clear-logs')
+
+    if clear_logs:
+        erase_logs()
 
     with open(services_yaml_file, 'r') as F:
          services_yaml = yaml.load(F)
