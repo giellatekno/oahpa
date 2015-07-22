@@ -72,11 +72,14 @@ class Telnet(Component):
 
         data = data.strip().decode("utf-8")
 
+
         if not self.clients[sock]["state"]["registered"]:
+            data = data.replace('\n','')
             utility = data
 
             self.clients[sock]["state"]["registered"] = True
             self.clients[sock]["state"]["utility"] = utility
+            return ""
 
         else:
             utility = self.clients[sock]["state"]["utility"]
@@ -90,8 +93,22 @@ class Telnet(Component):
 
         # Otherwise send data off for lookup
         # 
-        print repr(self.clients[sock]["state"]["utility"])
-        print repr(data)
+        util_name = self.clients[sock]["state"]["utility"]
+        if not util_name:
+            return ""
+
+        u = self.utilities.get(util_name, False)
+        if not u:
+            return "No utility %s" % repr(u)
+
+        utility_queue = u.get('queue')
+        utility_socket = utility_queue.socket
+
+        utility_socket.send(data.encode('utf-8'))
+        message = utility_socket.recv()
+
+        return message
+
 
 class TelnetListener(threading.Thread):
 
