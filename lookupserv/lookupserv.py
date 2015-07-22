@@ -9,7 +9,11 @@ Options:
     -d --debug      Do not launch clients, but provide local session.
     --clear-logs    Clear logs on launch
 
+
+
 """
+
+# TODO: add additional PATH stuff in config
 
 import sys, os
 
