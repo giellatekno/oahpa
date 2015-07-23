@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 """
-A lookupserv client for command line testing.
-Entering a blank line will exit the client.
+A lookupserv client for testing. This is the simplest possible example,
+and uses python's default telnetlib
 """
 
 def lookup(tool_name, input_string, host='127.0.0.1', port=9001, timeout=2, until='\n\n'):
