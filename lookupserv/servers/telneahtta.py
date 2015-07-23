@@ -7,7 +7,7 @@ from circuits.net.events import write
 
 import threading
 
-# https://bitbucket.org/circuits/circuits/src/4e32ca556c376f981371aeffed2f087538e4138c/examples/chatserver.py?at=default
+# TODO: error log file
 
 class Telnet(Component):
 
@@ -70,39 +70,54 @@ class Telnet(Component):
     def read(self, sock, data):
         """Read Event -- Triggered for when client connections have data"""
 
+        print repr(data)
         try:
             data = data.strip().decode("utf-8")
         except UnicodeDecodeError:
             data = ""
             return
 
+        data_included = False
+
         if not self.clients[sock]["state"]["registered"]:
-            data = data.replace('\n','')
-            utility = data
+            d = data.replace('\n','')
+            utility = d
+
+            # maybe user included data already
+            if utility not in self.utilities:
+                utility, _, data = data.partition('\n')
+                if utility in self.utilities:
+                    data_included = True
+
+            if utility not in self.utilities:
+                return "ERROR: nonexistent utility"
 
             self.clients[sock]["state"]["registered"] = True
             self.clients[sock]["state"]["utility"] = utility
-            return ""
+
+            if not data_included:
+                return ""
 
         else:
             utility = self.clients[sock]["state"]["utility"]
 
         # Client sends null data, so we close the socket and disconnect
         # them.
-        if not data.strip():
-            self.disconnect(sock)
-            sock.close()
-            return
+        if not data_included:
+            if not data.strip():
+                self.disconnect(sock)
+                sock.close()
+                return
 
         # Otherwise send data off for lookup
         # 
-        util_name = self.clients[sock]["state"]["utility"]
-        if not util_name:
+        utility = self.clients[sock]["state"]["utility"]
+        if not utility:
             return ""
 
-        u = self.utilities.get(util_name, False)
+        u = self.utilities.get(utility, False)
         if not u:
-            return "No utility %s" % repr(u)
+            return "ERROR: nonexistent utility"
 
         utility_queue = u.get('queue')
         utility_socket = utility_queue.socket

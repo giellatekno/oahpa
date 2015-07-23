@@ -14,6 +14,7 @@ Options:
 """
 
 # TODO: add additional PATH stuff in config
+# TODO: telnet connection error log
 
 import sys, os
 

@@ -41,11 +41,14 @@ Utilities:
     pipeline: "preprocess | /usr/local/bin/lookup -flags mbTT /opt/smi/sme/bin/analyser-dict-gt-desc.xfst | lookup2cg | vislcg3 -g /Users/pyry/gtsvn/langs/sme/src/syntax/disambiguation.bin"
 
   # SMS processes
-  - name: "sms-analyze"
+  - name: "sms-analyze-desc"
     pipeline: "/usr/local/bin/lookup -flags mbTT /opt/smi/sms/bin/analyser-dict-gt-desc.xfst"
 
-  - name: "sms-generate"
-    pipeline: "/usr/local/bin/lookup -flags mbTT /opt/smi/crk/bin/generator-dict-gt-norm.xfst"
+  - name: "sms-analyze-norm"
+    pipeline: "/usr/local/bin/lookup -flags mbTT /opt/smi/sms/bin/analyser-gt-norm.xfst"
+
+  - name: "sms-generate-norm"
+    pipeline: "/usr/local/bin/lookup -flags mbTT /opt/smi/crk/bin/generator-gt-norm.xfst"
 
   - name: "sms-cg"
     pipeline: "preprocess | /usr/local/bin/lookup -flags mbTT /opt/smi/sms/bin/analyser-dict-gt-desc.xfst | lookup2cg | vislcg3 -g /Users/pyry/gtsvn/langs/sms/src/syntax/disambiguation.bin"
