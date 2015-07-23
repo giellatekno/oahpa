@@ -1,0 +1,25 @@
+##
+#  This is the main config file for the lookupserv.
+#
+
+# This defines how clients connect.
+#
+Services:
+
+  - port: 9009
+    type: 'telnet'
+    name: 'Test utils'
+    # define utilities to be accessible from this service
+
+# This defines the utilities that clients can access, and under what
+# name.
+#
+Utilities:
+
+  # name must have no spaces, make it like a filename
+  - name: "cat"
+    pipeline: "cat"
+
+  - name: "cats"
+    pipeline: "cat | cat"
+
