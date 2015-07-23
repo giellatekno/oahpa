@@ -56,25 +56,26 @@ class QAGame(Game):
 		self.QAPN={	'Sg':'Sg',			#  
 					'Pl':'Pl',			#  
 					
-					'Sg1':'Sg2',		# Mun? Don.
-					'Sg2':'Sg1',		# Don? Mun.
-					'Sg3':'Sg3',		# Son? Son.
+					'Sg1':'Sg2',		# Mina? Sina.
+					'Sg2':'Sg1',		# Sina? Mina.
+					'ScSg3':'ScSg3',		# Tema? Tema.
+					'OcSg3':'OcSg3',		# Tema? Tema.
 					
-					'Pl1':'Pl2',		# Mii? Dii.
-					'Pl2':'Pl1',		# Dii? Mii.
-					'Pl3':'Pl3'}		# Sii? Sii.
+					'Pl1':'Pl2',		# Meie? Teie.
+					'Pl2':'Pl1',		# Teie? Meie.
+					'ScPl3':'ScPl3'}		# Nemad? Nemad.
 					
 					
 
 		# Values for subject-verb agreement:
 		# e.g. Subject with N+Sg+Nom requires verb with Sg3.
-		self.SVPN={'Sg1':'Sg1','Sg2':'Sg2','Sg3':'Sg3','Sg':'Sg3',\
-				   'Pl1':'Pl1','Pl2':'Pl2','Pl3':'Pl3','Pl':'Pl3'}
+		self.SVPN={'Sg1':'Sg1','Sg2':'Sg2','Sg3':'ScSg3','Sg':'ScSg3',\
+				   'Pl1':'Pl1','Pl2':'Pl2','Pl3':'ScPl3','Pl':'ScPl3'}
 
 		# Available values for Number
 		self.PronPN=['Sg1','Sg2','Sg3','Pl1','Pl2','Pl3']
-		self.PronPNBase={'Sg1':'я','Sg2':'ты','Sg3':u'он',\
-						 'Pl1':'мы','Pl2':'вы','Pl3':'они'}
+		self.PronPNBase={'Sg1':'ma','Sg2':'sa','Sg3':u'tä',\
+						 'Pl1':'mi','Pl2':'ti','Pl3':'nä'}
 		self.NounPN=['Sg','Pl']
 		self.NountoPronPN={'Sg':'Sg3','Pl':'Pl3'}
 
@@ -103,6 +104,8 @@ class QAGame(Game):
 			if possible_words.count() > 0:
 				word = possible_words.order_by('?')[0]
 
+		print "Selected a word out of possible words: ", word
+		print "Looking for the forms with tag ",tag_el
 		form_set_filter = self.filter_forms_by_dialect(
 							word.form_set.filter(tag=tag_el.id))
 		
@@ -1015,7 +1018,7 @@ class QAGame(Game):
 	def create_form(self, db_info, n, data=None):
 
 		question = Question.objects.get(Q(id=db_info['question_id']))
-		# print question.string
+		print question.string
 		answer = None
 		if self.settings.has_key('dialect'):
 			dialect = self.settings['dialect']
