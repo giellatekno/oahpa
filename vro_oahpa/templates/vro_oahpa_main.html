@@ -166,26 +166,15 @@
 			<p class="intro" align="centre">{% trans "Oahpa is an internet program for learners of Võro. The program can be adjusted to different topics and levels of difficulty, and it generates new task sets automatically." %}</p>
 		<!--	<h3>{% trans "Online reference materials" %}</h3> -->
 		
-			<ul class="linklist">
-{% comment %}            {% ifequal LANGUAGE_CODE "en" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "no" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "ru" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "sv" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-{% endcomment %}
-
-                <li><a target="_blank" href="http://sonad.oahpa.no/vro/est">{% trans "Võro" %}-{% trans "Estonian" %} {% trans "web dictionary" %}</a></li>
+               </br>
+               <p class="intro"> Võro&nbsp;-&nbsp;{% trans "Estonian" %} {% trans "web dictionary" %}:</p>
+                <ul style="padding-left:40px">
+                <li><a target="_blank" href="http://synaq.org"  style="font-size:14px">synaq.org
+                </a></li>
+                <li><a target="_blank" href="http://sonad.oahpa.no/vro/est"  style="font-size:14px"> sonad.oahpa.no</a></li>
+                </ul>
+                
 {% comment %}
-             {% else %}
-				<li><a href="http://victorio.uit.no/webdict/index_sjd-rus.html">{% trans "Norwegian" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
-            {% endifequal %}
             
             {% ifequal LANGUAGE_CODE "sme" %}
 				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.html">{% trans "Russian grammar" %}</a></li>
@@ -206,8 +195,8 @@
 				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.nob.html">{% trans "Russian grammar" %}</a></li>
             {% endifequal %}
  {% endcomment %}
-            <a href="http://oahpa.no/davvi" style="font-size:13px">{% trans "North Saami Oahpa" %}</a>
-			</ul>
+            </br>
+            <p class="intro"><a href="http://oahpa.no/davvi" style="font-size:13px">{% trans "North Saami Oahpa" %}</a></p>
 
 <!---			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p> -->
 			{% endblock %}

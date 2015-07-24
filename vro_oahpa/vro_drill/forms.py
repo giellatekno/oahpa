@@ -601,6 +601,21 @@ def relax(strict):
 	   u'´' : u'q', # acute
 	   u'`' : u'q', # gravis
 	   u'’' : u'q', # right single apostrophy
+	   # It is allowed to skip the palatalisation mark when writing the answers in Leksa:
+	   u'b' : u'b\'',
+	   u'd' : u'd\'',
+	   u'f' : u'f\'',
+	   u'g' : u'g\'',
+	   u'h' : u'h\'',
+	   u'k' : u'k\'',
+	   u'l' : u'l\'',
+	   u'm' : u'm\'',
+	   u'n' : u'n\'',
+	   u'p' : u'p\'',
+	   u'r' : u'r\'',
+	   u's' : u's\'',
+	   u't' : u't\'',
+	   u'v' : u'v\'',
 	}
 
 	# Create an iterator. We want to generate as many possibilities as
