@@ -4,4 +4,4 @@ python manage.py sqlclear crk_drill | grep -v '_log' | python manage.py dbshell
 echo "Creating the database tables according to crk_drill/models.py..."
 python manage.py syncdb
 echo "Filling the database with new data..."
-sudo ./parafedaba.sh
+./parafedaba.sh
