@@ -41,6 +41,7 @@ def log(*args):
         s = a_str.encode('utf-8')
     except:
         s = a_str
+
     client_log.info(s)
 
 
