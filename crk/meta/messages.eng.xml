@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+     This file defines the specific messages displayed for a message ID for a
+     given language. 
 
+     Each <message /> must contain the following:
+      
+       * an `id` attribute referencing the ID, which is supplied in
+         feedback_nouns.xml, in the <msg /> node.
+
+       * Message content within the <message /> node: the word WORDFORM will be
+         automatically replaced by the wordform the user is working on when they
+         click help.
+
+       * Optionally: an `order` attribute, which will be used to sort the
+         display of the messages. The value is a letter, from A-Z.
+       
+     -->
 
   <messages xml:lang="eng"> 
     <message order="A" id="animate">WORDFORM is an animate noun </message>    
