@@ -1,47 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- The general premise for the feedback files is that attributes on `<l />`
+     nodes here match up with the same attributes in the lexicon, and
+     attributes in the morphology. Thus, when working on these files, you'll
+     need to be aware of `src/N_crk.xml`, and what tagsets parts of the tags
+     fall into. Consult `tags.txt` as well.
+
+          (Note: with tags.txt, unfortunately, there is a case mismatch, so
+          each set will be named with a capital letter, but referenced here
+          with a lowercase letter).
+
+     The purpose of this file then, is to determine how to link up messages to
+     individual wordforms, but here we only reference the messages with a short
+     code. Messages are defined in `messages.eng.xml`, and documentation
+     concerning these is there. More documentation follows here.
+
+     This file has two main parts, which are explained below:
+
+       1. <defaultvalues /> - defines all the default values that can exist for
+            an attribute
+
+       2. <stems /> - defines which word types to search for by attributes, you
+            can be as genrral or specific as you'd like: i.e., match up with all
+           forms belonging to AN verbs, or AN verbs in a certain tense and person.
+
+
+     -->
+
+ <!--
+     Mark @pos attribute
+     -->
+
 <feedback pos="N" tag__possessive="">
 
   <defaultvalues>
-  	  <!-- define the values that are possible
-  	       and that will be used to search for words
-  	       if the attribute is not included in
-  	       the stem definition
-  	  -->
+      <!-- Define all the possible values that each attribute can have. These
+           are necessary, because the install process will need to be able to
+           apply a message to all of these. 
+      -->
 
-  	  <!-- word/l attributes vs tag attributes -->
-	  <attribute name="animacy" value="" />
-	  <attribute name="animacy" value="AN" />
-	  <attribute name="animacy" value="IN" />
+      <!-- word/l attributes vs tag attributes -->
+      <attribute name="animacy" value="" />
+      <attribute name="animacy" value="AN" />
+      <attribute name="animacy" value="IN" />
 
-	  <attribute name="rime" value="" />
-	  <attribute name="rime" value="0" />
-	  <attribute name="rime" value="i" />
-	  <attribute name="rime" value="k" />
-	  <attribute name="rime" value="iy" />
-	  <attribute name="rime" value="oy" />
-	  <attribute name="rime" value="aw" />
-	  <attribute name="rime" value="ay" />
-	  <attribute name="rime" value="eew" />
-	  <attribute name="rime" value="oow" />
-	  <attribute name="rime" value="und-w" />
+      <attribute name="rime" value="" />
+      <attribute name="rime" value="0" />
+      <attribute name="rime" value="i" />
+      <attribute name="rime" value="k" />
+      <attribute name="rime" value="iy" />
+      <attribute name="rime" value="oy" />
+      <attribute name="rime" value="aw" />
+      <attribute name="rime" value="ay" />
+      <attribute name="rime" value="eew" />
+      <attribute name="rime" value="oow" />
+      <attribute name="rime" value="und-w" />
 
-	  <attribute name="number" value=""/>
-	  <attribute name="number" value="Pl" />
-	  <attribute name="number" value="Sg" />
+      <attribute name="number" value=""/>
+      <attribute name="number" value="Pl" />
+      <attribute name="number" value="Sg" />
 
-	  <attribute name="case" value=""/>
-	  <attribute name="case" value="Loc" />
-	  <attribute name="case" value="Obv" />
+      <attribute name="case" value=""/>
+      <attribute name="case" value="Loc" />
+      <attribute name="case" value="Obv" />
 
-	  <attribute name="possessive" value="12Pl" />
-	  <attribute name="possessive" value="1Pl" />
-	  <attribute name="possessive" value="2Pl" />
-	  <attribute name="possessive" value="3Pl" />
-	  <attribute name="possessive" value="4Pl" />
-	  <attribute name="possessive" value="1Sg" />
-	  <attribute name="possessive" value="2Sg" />
-	  <attribute name="possessive" value="3Sg" />
-	  <attribute name="possessive" value="4Sg" />
+      <attribute name="possessive" value="12Pl" />
+      <attribute name="possessive" value="1Pl" />
+      <attribute name="possessive" value="2Pl" />
+      <attribute name="possessive" value="3Pl" />
+      <attribute name="possessive" value="4Pl" />
+      <attribute name="possessive" value="1Sg" />
+      <attribute name="possessive" value="2Sg" />
+      <attribute name="possessive" value="3Sg" />
+      <attribute name="possessive" value="4Sg" />
   </defaultvalues>
 
 <!-- Messageorder nouns: LEMMA A B C D E
@@ -71,9 +101,29 @@ iyiw-Obv
                  
 -->
   <stems>
+    <!-- Connecting amessage to a form requires two things:
+
+         1.) an <l /> node, with attributes matching the attributes in the
+             lexicon file, as general or as specific as you'd like. (POS is
+             already defined for this whole file, so it can be left out.
+
+         2.) Within <l />: at least one <msg /> node, with attributes matching
+             the morphology. The value inside <msg /> refers to the message, which
+             is defined in `messages.eng.xml`
+
+         Then optionally, within <l />: a <note /> node this is mostly just for
+         internal use.
+
+     -->
+
+    <!-- Example: this message would apply to any inanimate wordform that
+         belongs to an AN noun, but only for +Pl forms
+      -->
+
     <l animacy="AN">
       <msg number="Pl">animate</msg>
     </l>
+
     <l animacy="IN">
       <msg number="Pl">inanimate</msg>
     </l>
