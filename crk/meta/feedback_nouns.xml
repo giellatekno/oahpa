@@ -25,11 +25,9 @@
 
 
      -->
-
- <!--
+<!--
      Mark @pos attribute
      -->
-
 <feedback pos="N" tag__possessive="">
 
   <defaultvalues>
@@ -39,39 +37,39 @@
       -->
 
       <!-- word/l attributes vs tag attributes -->
-      <attribute name="animacy" value="" />
-      <attribute name="animacy" value="AN" />
-      <attribute name="animacy" value="IN" />
+      <attribute name="animacy" value=""/>
+      <attribute name="animacy" value="AN"/>
+      <attribute name="animacy" value="IN"/>
 
-      <attribute name="rime" value="" />
-      <attribute name="rime" value="0" />
-      <attribute name="rime" value="i" />
-      <attribute name="rime" value="k" />
-      <attribute name="rime" value="iy" />
-      <attribute name="rime" value="oy" />
-      <attribute name="rime" value="aw" />
-      <attribute name="rime" value="ay" />
-      <attribute name="rime" value="eew" />
-      <attribute name="rime" value="oow" />
-      <attribute name="rime" value="und-w" />
+      <attribute name="rime" value=""/>
+      <attribute name="rime" value="0"/>
+      <attribute name="rime" value="i"/>
+      <attribute name="rime" value="k"/>
+      <attribute name="rime" value="iy"/>
+      <attribute name="rime" value="oy"/>
+      <attribute name="rime" value="aw"/>
+      <attribute name="rime" value="ay"/>
+      <attribute name="rime" value="eew"/>
+      <attribute name="rime" value="oow"/>
+      <attribute name="rime" value="und-w"/>
 
       <attribute name="number" value=""/>
-      <attribute name="number" value="Pl" />
-      <attribute name="number" value="Sg" />
+      <attribute name="number" value="Pl"/>
+      <attribute name="number" value="Sg"/>
 
       <attribute name="case" value=""/>
-      <attribute name="case" value="Loc" />
-      <attribute name="case" value="Obv" />
+      <attribute name="case" value="Loc"/>
+      <attribute name="case" value="Obv"/>
 
-      <attribute name="possessive" value="12Pl" />
-      <attribute name="possessive" value="1Pl" />
-      <attribute name="possessive" value="2Pl" />
-      <attribute name="possessive" value="3Pl" />
-      <attribute name="possessive" value="4Pl" />
-      <attribute name="possessive" value="1Sg" />
-      <attribute name="possessive" value="2Sg" />
-      <attribute name="possessive" value="3Sg" />
-      <attribute name="possessive" value="4Sg" />
+      <attribute name="possessive" value="12Pl"/>
+      <attribute name="possessive" value="1Pl"/>
+      <attribute name="possessive" value="2Pl"/>
+      <attribute name="possessive" value="3Pl"/>
+      <attribute name="possessive" value="4Pl"/>
+      <attribute name="possessive" value="1Sg"/>
+      <attribute name="possessive" value="2Sg"/>
+      <attribute name="possessive" value="3Sg"/>
+      <attribute name="possessive" value="4Sg"/>
   </defaultvalues>
 
 <!-- Messageorder nouns: LEMMA A B C D E
@@ -159,9 +157,19 @@ iyiw-Obv
       <note>kohkôsihk</note>
     </l>
 
-    <l rime="iy">
-      <msg case="Loc">locative-ihk</msg>
+    <l rime="0">
+      <msg case="Loc">not-k-w-y</msg>
       <note>kohkôsihk</note>
+    </l>
+
+    <l rime="iy">
+      <msg case="Loc">locative-iihk</msg>
+      <note>asinîhk</note>
+    </l>
+
+    <l rime="iy">
+      <msg case="Loc">ay-aw-iy-oy</msg>
+      <note>asinîhk</note>
     </l>
 
     <l animacy="AN" rime="und-w">
@@ -169,14 +177,23 @@ iyiw-Obv
       <note>Add the underlying -w-.</note>
     </l>
 
-
     <l rime="k">
       <msg case="Loc">locative-ohk</msg>
       <note>sôniyâwikamik - sôniyâwikamikohk</note>
     </l>
 
+    <l rime="k">
+      <msg case="Loc">k-gives-ohk</msg>
+      <note>sôniyâwikamik - sôniyâwikamikohk</note>
+    </l>
+
     <l rime="oy">
       <msg case="Loc">locative-oohk</msg>
+      <note>mîcimâpoy - mîcimâpôhk</note>
+    </l>
+
+    <l rime="oy">
+      <msg case="Loc">ay-aw-iy-oy</msg>
       <note>mîcimâpoy - mîcimâpôhk</note>
     </l>
 
@@ -187,23 +204,41 @@ iyiw-Obv
 
     <l rime="ay">
       <msg case="Loc">locative-aahk</msg>
-      <note>mihtawakay - mihtawakâhk </note>
+      <note>mihtawakay - mihtawakâhk</note>
     </l>
 
+    <l rime="ay">
+      <msg case="Loc">ay-aw-iy-oy</msg>
+      <note>mihtawakay - mihtawakâhk</note>
+    </l>
 
     <l rime="eew" animacy="IN">
-      <msg case="Loc">locative-ihk</msg>
+      <msg case="Loc">locative-irreg</msg>
+      <note>iskotêw - iskotêwihk</note>
+    </l>
+
+    <l rime="eew" animacy="IN">
+      <msg case="Loc">irreg</msg>
       <note>iskotêw - iskotêwihk</note>
     </l>
 
     <l rime="oow" animacy="IN">
-      <msg case="Loc">locative-ihk</msg>
+      <msg case="Loc">locative-irreg</msg>
       <note>  </note> 
     </l>
 
-    
+    <l rime="oow" animacy="IN">
+      <msg case="Loc">irreg</msg>
+      <note>  </note>
+    </l>
+  
     <l rime="eew" animacy="AN">
       <msg case="Loc">locative-naahk</msg>
+      <note>iskwêw - iskwênâhk</note>
+    </l>
+
+    <l rime="eew" animacy="AN">
+      <msg case="Loc">distributive</msg>
       <note>iskwêw - iskwênâhk</note>
     </l>
 
@@ -212,8 +247,18 @@ iyiw-Obv
       <note>âmôw - âmônâhk, NB: this is âmow in FST</note> 
     </l>
 
+    <l rime="oow" animacy="AN">
+      <msg case="Loc">distributive</msg>
+      <note>âmôw - âmônâhk, NB: this is âmow in FST</note>
+    </l>
+
     <l lemma="mostos">
       <msg case="Loc">locative-naahk</msg>
+      <note>mostos - mostosonâhk - not in FST </note>
+    </l>
+
+    <l lemma="mostos">
+      <msg case="Loc">distributive</msg>
       <note>mostos - mostosonâhk - not in FST </note>
     </l>
 

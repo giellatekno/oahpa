@@ -16,8 +16,7 @@
          display of the messages. The value is a letter, from A-Z.
        
      -->
-
-  <messages xml:lang="eng"> 
+<messages xml:lang="eng"> 
     <message order="A" id="animate">WORDFORM is an animate noun </message>    
     <message order="A" id="inanimate">WORDFORM is an inanimate noun </message>    
     <message order="B" id="plural-ak">and the plural suffix is -ak. </message>    
@@ -28,11 +27,19 @@
     <message order="C" id="plural-wa">Add -w- because of -k.</message>    
     <message order="C" id="plural-i-a">Instead of -i.</message>    
 
-    <message order="B" id="locative-ihk">The suffix is -ihk.</message>    
-    <message order="B" id="locative-aahk">The suffix is -âhk.</message>    
-    <message order="B" id="locative-ohk">Remember that the suffix vowel will change.</message>    
-    <message order="B" id="locative-oohk">The suffix is -ôhk.</message>    
-    <message order="B" id="locative-naahk">This is a distributive locative: -nâhk.</message>    
+    <message order="A" id="not-k-w-y">WORDFORM does not end in a "k" or a semi-vowel.</message>    
+    <message order="A" id="ay-aw-iy-oy">WORDFORM ends in a semi-vowel. Remember to drop the semi-vowel and lengthen the vowel before it. Then add "-hk."</message>    
+    <message order="A" id="k-gives-ohk">WORDFORM ends in a "k."</message>    
+    <message order="A" id="distributive">WORDFORM takes a distributive locative.</message>    
+    <message order="A" id="irreg">WORDFORM is irregular.</message>    
+   
+    <message order="B" id="locative-ihk">All other regular nouns use the suffix "-ihk."</message>    
+    <message order="B" id="locative-iihk">The suffix should look like "-îhk."</message>
+    <message order="B" id="locative-aahk">The suffix should look like "-âhk."</message>    
+    <message order="B" id="locative-ohk">Nouns ending in "k" take the "-ohk" suffix.</message>    
+    <message order="B" id="locative-oohk">The suffix should look like " -ôhk."</message>    
+    <message order="B" id="locative-naahk">The distributive locative suffix is "-nâhk."</message>    
+    <message order="B" id="locative-irreg">It takes the suffix "-ihk."</message>    
 
     <message order="B" id="prefix-n">The possessive prefix is n(i)-. </message>    
     <message order="B" id="prefix-k">The possessive prefix is k(i)-. </message>    
