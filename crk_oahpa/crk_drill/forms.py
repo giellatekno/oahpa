@@ -288,7 +288,7 @@ LEVEL_CHOICES = (
 
 
 POSSESSIVE_CHOICES = (
-	('N-PX-GROUP1', _('Family')),
+	('N-PX-GROUP1', _('Kin')),
 	('N-PX-GROUP2', _('Body')),
 	('N-PX-GROUP3', _('All')),
 )
@@ -418,16 +418,19 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
-    ('HUMAN', _('human')),
-    ('MIND-BODY', _('body and mind')),
-    ('FOOD-DRINK', _('food and drink')),
-    ('NATURE-ANIMALS', _('nature and animals')),
-    ('THINGS', _('things')),
-    ('HOME', _('home')),
-    ('OCCUPATION', _('occupation')),
-    ('EVERYDAY', _('everyday')),
+    ('KINSHIP-AND-PEOPLE', _('People & Kinship')),
+    ('BODYPARTS-AND-CONDITIONS', _('The Human Body')),
+    ('FOOD,-DRINKS,-DINNERWARE,-AND-COOKING', _('In the Kitchen')),
+    ('ANIMALS', _('Animals')),
+    ('MISCELLANEOUS', _('Miscellaneous')),
+    ('HOME,-CLOTHING-AND-WORK', _('Home, Clothing & Work')),
+    ('NATURE-AND-WEATHER', _('Nature & Weather')),
+    ('TIME,-COUNTING,-MONEY,-AND-DATES', _('Time, Counting, Money & Dates')),
     ('DESCRIPTIONS', _('descriptions')),
-    ('SPEECH', _('speech')),
+    ('EXPRESSIONS-AND-QUESTIONS', _('Expressions & Questions')),
+	('BASIC-CONVERSATION',_('Basic Conversation')),
+	('TRANSPORTATION-AND-PLACES',_('Transportation & Places')),
+	('ACTIVITIES',_('Activities')),
     ('all', _('all')),
 )
 
@@ -1030,7 +1033,7 @@ class OahpaQuestion(forms.Form):
 # #
 
 class LeksaSettings(OahpaSettings):
-	semtype = forms.ChoiceField(initial='all', choices=SEMTYPE_CHOICES) # was: HUMAN
+	semtype = forms.ChoiceField(initial='all', choices=SEMTYPE_CHOICES) # was: KINSHIP-AND-PEOPLE
 	transtype = forms.ChoiceField(choices=TRANS_CHOICES, widget=forms.Select)
 	# For placename quizz
 	#geography = forms.ChoiceField(initial='world', choices=GEOGRAPHY_CHOICES)
@@ -1050,7 +1053,7 @@ class LeksaSettings(OahpaSettings):
 			#'bisyllabic': False,
 			#'contracted': False,
 			'source': 'all',
-			'semtype' : 'all', # was: 'HUMAN',
+			'semtype' : 'all', # was: 'KINSHIP-AND-PEOPLE',
 			#'geography' : 'world',
 			#'frequency' : ['common'] # added
 			}
