@@ -166,7 +166,7 @@ ul#games_menu {
 	position: absolute;
 	margin: 0 0 0 0;
 	right: 0;
-	top: -6em;
+	top: -7em;
 }
 
 ul#games_menu li {
@@ -180,8 +180,7 @@ ul#games_menu li {
 
 
 #games_menu.small li {
-	width: 70px;
-	padding-left: 20px;
+	width: 100px;
 }
 
 #games_menu img {
@@ -195,8 +194,12 @@ ul#games_menu li {
 
 #games_menu.small img {
 	width: 60px;
-	height: 60px;
-	
+	height: 60px;	
+}
+
+span.game_explanation {
+    font-size: 80%;
+    color: #144ea6;
 }
 
 #games_menu.small a {
@@ -249,7 +252,7 @@ li.game {
 	border: none;
 	padding: .25em;
 	max-width: 800px;
-	margin-top: 90px;
+	margin-top: 120px; /* was 90px */
 	margin-left: 0;
 }
 
@@ -288,7 +291,7 @@ li.game {
 }
 
 #page.game #rightcontent {
-	margin: 15px 15px;
+	margin: 2px 15px;
 }
 
 #game_header {
@@ -296,6 +299,7 @@ li.game {
 	top: 0px;
 	right: 0px;
 }
+    
 
 /* settings form */
 div#settings {
