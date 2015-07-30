@@ -1858,15 +1858,29 @@ class ContextMorfaQuestion(OahpaQuestion):
 			if qtype in ["P-REFL", "P-RECIPR", "P-REL"]:
 				self.lemma = False
 
-		# Retrieve feedback information
-		try:
-			answer_word_form = Form.objects.exclude(dialects__dialect='NG')\
-										.filter(word__pk=answer_word,
-												tag=answer_tag_el,
-												dialects__dialect=self.dialect)
-			answer_word_form = answer_word_form[0]
-		except:
-			answer_word_form = False
+		# Retrieve feedback information. Filter by dialect if more
+		# dialects are defined
+		if set(settings.DIALECTS.keys()) != set(['main', 'NG']):
+			dialect_filter = True
+		else:
+			dialect_filter = False
+
+		if dialect_filter:
+			try:
+				answer_word_form = Form.objects.exclude(dialects__dialect='NG')\
+					.filter(word__pk=answer_word, tag=answer_tag_el,
+							dialects__dialect=self.dialect)
+				answer_word_form = answer_word_form[0]
+			except Exception, e:
+				answer_word_form = False
+		else:
+			try:
+				answer_word_form = Form.objects.filter(word__pk=answer_word, tag=answer_tag_el,)
+				# .exclude(dialects__dialect='NG')\
+				# dialects__dialect=self.dialect)
+				answer_word_form = answer_word_form[0]
+			except Exception, e:
+				answer_word_form = False
 
 		if answer_word_form:
 			self.get_feedback(answer_word_form, language)
