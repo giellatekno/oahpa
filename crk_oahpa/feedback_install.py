@@ -268,7 +268,7 @@ class Feedback_install(object):
 
     # Each part of speech followed by relevant tag/wordform attributes
     tag_attribute_names = OrderedDict([
-        ("N", ('case', 'number', 'possessive')),
+        ("N", ('case', 'number', 'possessive', 'derivation')),
         # TODO: ("A", ('case', 'number', 'grade', 'attributive', )),
         # TODO: ("Num", ('case', 'number',)),
         # TODO: ("V", ('subclass', 'infinite', 'mood', 'tense', 'personnumber', )),
