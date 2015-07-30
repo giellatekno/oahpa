@@ -69,6 +69,12 @@ NOUN_QUESTION_ANSWER = {
 	'N-DIM': [('N+Animacy+Der/Dim+N+Animacy+Sg', 'N+Animacy+Sg')],
 }
 
+FEEDBACK_TYPE = {
+	'N-PL': 'answer',
+	'N-LOC': 'answer',
+	'N-DIM': 'question',
+}
+
 NOUN_FILTER_DEFINITION = ['animacy', 'declension', 'gender', 'source']
 
 # Pers - akk, gen, ill, lok, kom
@@ -738,6 +744,7 @@ def set_settings(self):
 
 
 def get_feedback(self, wordform, language):
+	FEEDBACK_TYPE
 
 	language = switch_language_code(language)
 
@@ -1279,8 +1286,15 @@ class MorfaQuestion(OahpaQuestion):
 		#print self.lemma, correct
 		#print baseform.tag, correct.tag
 
-		# Retrieve feedback information
-		self.get_feedback(correct, language)
+		# hack for Diminutive which has questions presented in the form,
+		# and answers in nom
+		if correct.tag.string in ['N+AN+Sg', 'N+IN+Sg']:
+			q_form = word.form_set.filter(tag=tag)
+			if len(q_form) > 0:
+				self.get_feedback(q_form[0], language)
+		else:
+			# Retrieve feedback information
+			self.get_feedback(correct, language)
 
 		# Take only the first translation for the tooltip
 		if len(translations) > 0:
