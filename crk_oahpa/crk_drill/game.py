@@ -744,7 +744,7 @@ class BareGame(Game):
 			  QUERY = Q(pos__iexact=pos) # & Q(form__tag__subclass=subclass) # PI
 		else:
 			# levels is not what we're looking for
-			  QUERY = Q(pos__iexact=pos) & Q(stem__in=syll)
+			  QUERY = Q(pos__iexact=pos) # & Q(stem__in=syll)
 			  #if source and source not in ['all', 'All']:
 				# QUERY = QUERY & Q(source__name=source)
 
