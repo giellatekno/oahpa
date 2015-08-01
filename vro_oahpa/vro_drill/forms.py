@@ -1691,16 +1691,18 @@ class ContextMorfaQuestion(OahpaQuestion):
 		self.lemma = ""
 		self.dialect = dialect
 		self.translang = 'vro'
-		self.gametype = 'morfac' # not sure if this is ok
+		self.gametype = 'morfa' # not sure if this is ok
 
 		qtype=question.qtype
-		if qtype in self.qtype_verbs:
-			qtype = 'PRS'
+		#if qtype in self.qtype_verbs:
+		#	qtype = 'MAINV'  # was: PRS
 
 		question_widget = forms.HiddenInput(attrs={'value' : question.id})
 		answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})
 		atext = qanswer.string
+		#print "atext:", atext 
 		task = qanswer.task
+		#print "task:", task
 		if not task:
 			error_msg = u"not task: %s %s (%s)" % (atext, question.qid, question.qatype)
 

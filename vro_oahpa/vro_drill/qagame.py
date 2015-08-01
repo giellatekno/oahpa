@@ -63,14 +63,15 @@ class QAGame(Game):
 					
 					'Pl1':'Pl2',		# Meie? Teie.
 					'Pl2':'Pl1',		# Teie? Meie.
-					'ScPl3':'ScPl3'}		# Nemad? Nemad.
+					'ScPl3':'ScPl3',
+					'Pl3':'Pl3'}		# Nemad? Nemad.
 					
 					
 
 		# Values for subject-verb agreement:
 		# e.g. Subject with N+Sg+Nom requires verb with Sg3.
 		self.SVPN={'Sg1':'Sg1','Sg2':'Sg2','Sg3':'ScSg3','Sg':'ScSg3',\
-				   'Pl1':'Pl1','Pl2':'Pl2','Pl3':'ScPl3','Pl':'ScPl3'}
+				   'Pl1':'Pl1','Pl2':'Pl2','Pl3':'ScPl3','Pl':'Pl3'} # was: Pl : ScPl3. Person-number are different for different verbs. 
 
 		# Available values for Number
 		self.PronPN=['Sg1','Sg2','Sg3','Pl1','Pl2','Pl3']
@@ -611,7 +612,7 @@ class QAGame(Game):
 		mainv_elements = self.get_elements(answer, element)
 		# print '--'
 		# print question.qid
-		# print mainv_elements
+		print mainv_elements
 		mainv_word=None
 		mainv_words = []
 		mainv_tag = None
@@ -632,9 +633,9 @@ class QAGame(Game):
 			# mainverb number depends on the number of the subject.
 			asubj = awords['SUBJ'][0]
 			a_number=asubj['number']
-			# print 'asubj number: ', a_number
+			print 'asubj number: ', a_number
 			va_number=self.SVPN[a_number]
-			# print 'va_number: ', va_number
+			print 'va_number: ', va_number
 		else:
 			# No SUBJ defined, MAINV is a copy of the question MAINV
 			# and needs to have Question-Answer subject change

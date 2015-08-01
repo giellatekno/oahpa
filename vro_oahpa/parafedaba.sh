@@ -33,14 +33,14 @@ echo "==================================================="
 
 echo "==================================================="
  echo "feeding db with $INC/n_tyypsonad.xml"
- $P install.py --file $INC/n_tyypsonad.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>error.log
+ $P install.py --file $INC/n_tyypsonad.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>error.log
  echo " "
  echo "done"
  echo "==================================================="
  
  echo "==================================================="
  echo "feeding db with $DPS/oahpa_lexicon.xml"
- $P install.py --file $DPS/oahpa_lexicon.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt --append 2>error.log
+ $P install.py --file $DPS/oahpa_lexicon.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt --append 2>error.log
  echo " "
  echo "done"
  echo "==================================================="
@@ -76,7 +76,7 @@ echo "==================================================="
 
  echo "==================================================="
  echo "feeding db with $DPS/oahpa_lexicon.xml"
- $P install.py --file $DPS/oahpa_lexicon.xml --tagfile $META/tags.txt --paradigmfile $META/V_paradigms.txt --append 2>>error.log
+ $P install.py --file $DPS/oahpa_lexicon.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt --append 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
