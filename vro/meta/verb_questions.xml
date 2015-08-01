@@ -3,36 +3,35 @@
   <q id="prs_occupations">
     <qtype>V-PRS</qtype>
     <question>
-      <text>Midä tegeväq SUBJ</text>
+      <text>Midä SUBJ tegeväq</text>
       <element id="SUBJ">
         <grammar tag="N+Pl+Nom"/>
-        <sem class="OCCUPATIONS"/>
+        <sem class="PROFESSION"/>
       </element>
     </question>
     <answer>
       <text>SUBJ MAINV</text>
-      <element game='morpha' task='yes' id="MAINV">
-        <grammar tag="V+Impf+IV+Prs+Pl3"/>
-        <sem class="mACTIVITY"/>
+      <element game='morfa' task='yes' id="MAINV">
+        <grammar tag="V+Act+Ind+Prs+Pl3"/>
+        <sem class="ACTION_V"/>
       </element>
     </answer>
   </q>
 
   <q id="pst_yesterday">
-    <qtype>V-PST</qtype>
+    <qtype>V-PRT</qtype>
     <question>
       <text>Midä SUBJ tekk' eeläq</text>
       <element id="SUBJ">
         <grammar tag="N+Sg+Nom"/>
-        <gender>Msc</gender>
-        <sem class="OCCUPATIONS"/>
+        <sem class="PROFESSION"/>
       </element>
     </question>
     <answer>
       <text>SUBJ MAINV</text>
-      <element game='morpha' task='yes' id="MAINV">
-        <grammar tag="V+Impf+IV+Pst+Msc+Sg"/>
-        <sem class="mACTIVITY"/>
+      <element game='morfa' task='yes' id="MAINV">
+        <grammar tag="V+Act+Ind+Prt+Sg3"/>
+        <sem class="ACTION_V"/>
       </element>
     </answer>
   </q>
