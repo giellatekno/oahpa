@@ -4,7 +4,7 @@
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
     {% if settings.gametype == "bare" %} 
-        {% trans "Enter the above verb in the form that corresponds to the pronoun in brackets. Click on a word for its translation." %}
+        {% trans "Enter the above verb in the form that corresponds to the pronoun in brackets. Click on a word for its translation. Note: All verbs are given in the 3S form." %}
     {% elif settings.gametype == "context" %}
 
       {% if settings.vtype_context == 'V-PRS' %}
