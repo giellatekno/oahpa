@@ -33,7 +33,8 @@ except:
 
 #numfst = fstdir + "/" + language + "-num.fst"
 numfst = fstdir + "/" + "transcriptor-numbers2text-desc.xfst"
-gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst" 
+gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm-dial_main.xfst"
+gen_all_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst" 
 
 
 STDERR = sys.stderr
@@ -339,7 +340,8 @@ class Paradigm:
 		self.master_paradigm = gen_dialects.copy()
 		#for dialect, gen_file in gen_dialects.items():
 		dialect = 'main'  # HU: There are no dialects defined for vro. I have defined this just to make the program work.
-		lookups = FSTLookup(data, fst_file=gen_norm_fst)
+		lookups = FSTLookup(data, fst_file=gen_norm_fst) # +Use/NG forms excluded
+		lookups_all = FSTLookup(data, fst_file=gen_all_fst) # +Use/NG forms included
 		lookup_dictionary = {}
 			
 		for line in lookups.split('\n\n'):
@@ -353,6 +355,20 @@ class Paradigm:
 				except KeyError:
 				    lookup_dictionary[lemma] = item + '\n'
 		
+		for line in lookups_all.split('\n\n'):
+			print >> STDOUT, 'line in lookups_all: %s' % line
+			if line:
+				items = line.split('\n')
+				for item in items:
+				    result = item.split('\t')
+				    lemma = result[0].partition('+')[0]
+				    fullform = result[1]
+				    if fullform not in lookup_dictionary[lemma]:
+				        try:
+				            lookup_dictionary[lemma] += item + 'UseNG\n'
+				        except KeyError:
+				            lookup_dictionary[lemma] = item + 'UseNG\n'
+
 		self.master_paradigm[dialect] = lookup_dictionary
 		
 		
