@@ -26,7 +26,7 @@ from .forms import PRONOUNS_LIST
 try:
 	L1 = vro_oahpa.settings.L1
 except:
-	L1 = 'vro'  # was: sme
+	L1 = 'vro' 
 
 try:
 	LOOKUP_TOOL = vro_oahpa.settings.LOOKUP_TOOL
@@ -45,7 +45,7 @@ except:
 	DEFAULT_DIALECT = None
 
 
-# FST_DIRECTORY = '/opt/smi/sme/bin' #Just testing. Hardcoded here because it looks like looking it up in settings.py failed
+# FST_DIRECTORY = '/opt/smi/sme/bin'
 # LOOKUP_TOOL = '/usr/local/bin/lookup'
 # Probably delete this: seems to work OK here...
 
@@ -768,16 +768,6 @@ class BareGame(Game):
 			tag = tags.order_by('?')[0]
 				    
 			# Process the selection from the noun_type menu (incorporates gender, animacy and inflection type):
-			"""if noun_type == "N-NEUT":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='nt')
-			elif noun_type == "N-MASC-INANIM":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='m',word__animate='nn')
-			elif noun_type == "N-MASC-ANIM":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='m',word__animate='aa')
-			elif noun_type == "N-FEM-8":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='f', word__inflection_class__contains='8')
-			elif noun_type == "N-FEM-other":
-				WORD_FILTER = WORD_FILTER & Q(word__gender='f') & (Q(word__lemma__endswith='а') | Q(word__lemma__endswith='я'))"""
 				
 			SOURCE_FILTER = Q() 
 			"""if source.lower() != 'all':
