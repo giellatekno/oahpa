@@ -1014,13 +1014,17 @@ class BareGame(Game):
 
 		# Exclude those that shouldn't be displayed, but should be accepted
 		presentation_ng = presentation.exclude(dialects__dialect='NG')
-
+		
 		# Unless this results in no forms somehow, in which case we display
 		# them anyway...
 		if presentation_ng.count() == 0:
 			presentation_ng = presentation
 
+		# Exclude the +Use/NG forms (added for vro_oahpa):
+		presentation_ng = presentation_ng.exclude(no_show='True')
+		
 		presentation_ng = presentation_ng.values_list('fullform',flat=True)
+
 
 		# Check if the form is connegative, if not, set to false.
 
