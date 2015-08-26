@@ -23,9 +23,9 @@ echo "==================================================="
 ##  sms->X
 ##
 
-U    src/det_sms2X.xml
-U    src/pro_sms2X.xml
-U    src/pcle_sms2X.xml
+#U    src/det_sms2X.xml
+#U    src/pro_sms2X.xml
+#U    src/pcle_sms2X.xml
 
 echo "==================================================="
 echo "feeding db with $DPS/N_sms2X.xml"

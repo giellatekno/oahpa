@@ -31,7 +31,10 @@ try:
 except:
 	language = "sms"
 
-numfst = fstdir + "/" + language + "-num.fst"
+#numfst = fstdir + "/" + language + "-num.fst"
+numfst = fstdir + "/" + "transcriptor-numbers2text-desc.xfst"
+gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm-dial_main.xfst"
+gen_all_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst" 
 
 
 STDERR = sys.stderr
@@ -92,7 +95,7 @@ def Popen(cmd, data=False, ret_err=False, ret_proc=False):
 
 
 def FSTLookup(data, fst_file):
-	gen_fst = fstdir + "/%s" % fst_file 
+	gen_fst = fst_file 
 	# cmd = 'hfst-optimized-lookup /opt/local/share/omorfi/mor-omorfi.apertium.hfst.ol'
 	cmd = lookup + " -flags mbTT -utf8 -d " + gen_fst
 	
@@ -307,21 +310,38 @@ class Paradigm:
 				gen_dialects[dialect] = d_data
 
 		self.master_paradigm = gen_dialects.copy()
-		for dialect, gen_file in gen_dialects.items():
-			lookups = FSTLookup(data, fst_file=gen_file[0])
-			lookup_dictionary = {}
-			
-			for line in lookups.split('\n\n'):
+		#for dialect, gen_file in gen_dialects.items():
+		dialect = "main"
+		#lookups = FSTLookup(data, fst_file=gen_file[0])
+		lookups = FSTLookup(data, fst_file=gen_norm_fst) # +Use/NG forms excluded
+		lookups_all = FSTLookup(data, fst_file=gen_all_fst) # +Use/NG forms included
+		lookup_dictionary = {}
+		
+		for line in lookups.split('\n\n'):
+			items = line.split('\n')
+			for item in items:
+				result = item.split('\t')
+				lemma = result[0].partition('+')[0]
+				try:
+				    lookup_dictionary[lemma] += item + '\n'
+				except KeyError:
+				    lookup_dictionary[lemma] = item + '\n'
+		
+		for line in lookups_all.split('\n\n'):
+			print >> STDOUT, 'line in lookups_all: %s' % line
+			if line:
 				items = line.split('\n')
 				for item in items:
-					result = item.split('\t')
-					lemma = result[0].partition('+')[0]
-					try:
-						lookup_dictionary[lemma] += item + '\n'
-					except KeyError:
-						lookup_dictionary[lemma] = item + '\n'
-		
-			self.master_paradigm[dialect] = lookup_dictionary
+				    result = item.split('\t')
+				    lemma = result[0].partition('+')[0]
+				    fullform = result[1]
+				    if fullform not in lookup_dictionary[lemma]:
+				        try:
+				            lookup_dictionary[lemma] += item + 'UseNG\n'
+				        except KeyError:
+				            lookup_dictionary[lemma] = item + 'UseNG\n'
+
+		self.master_paradigm[dialect] = lookup_dictionary
 		
 		
 	def get_paradigm(self, lemma, pos, forms, dialect=False, wordtype=None):
@@ -462,7 +482,9 @@ class Paradigm:
 		# fstdir = "/opt/smi/sme/bin"
 		# lookup = "/usr/local/bin/lookup"
 
-		gen_norm_fst = fstdir + "/i%s-norm.fst" % language
+		#gen_norm_fst = fstdir + "/i%s-norm.fst" % language
+		#gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm-dial_main.xfst"
+		#gen_all_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst"
 		
 		# None of these dialects in sma. Obs! Dialects! sme-specific!!!
 		# gen_gg_restr_fst = fstdir + "/isme-KJ.restr.fst"			

@@ -712,6 +712,7 @@ class Form(models.Model):
 	word = models.ForeignKey(Word)
 	tag = models.ForeignKey(Tag)
 	fullform = models.CharField(max_length=200)
+	no_show = models.BooleanField(default=False)
 	dialects = models.ManyToManyField(Dialect, null=True)
 	feedback = models.ManyToManyField('Feedbackmsg', null=True)
  	objects = BulkManager()

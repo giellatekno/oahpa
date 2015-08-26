@@ -838,7 +838,11 @@ class Words(object):
 				g = Analysis(linginfo, analysis)
 				tag = g.getTag()					
 				
-				form, _ = Form.objects.get_or_create(fullform=g.form, tag=tag, word=w)
+				no_show = False
+				if 'UseNG' in f.form:
+				    no_show = True
+				    f.form = f.form[0:-6] # cut off 'UseNG' from the end of the string
+				form, _ = Form.objects.get_or_create(fullform=f.form, no_show=no_show, tag=tag, word=w)
 				form.save()
 
 				if dialect:
@@ -943,7 +947,12 @@ class Words(object):
 
 					# form = Form(fullform=f.form,tag=t,word=w)	
 
-					form, _ = Form.objects.get_or_create(fullform=f.form, tag=t, word=w)
+					no_show = False
+					if 'UseNG' in f.form:
+					   no_show = True
+					   f.form = f.form[0:-6] # cut off 'UseNG' from the end of the string
+
+					form, _ = Form.objects.get_or_create(fullform=f.form, no_show=no_show, tag=t, word=w)
 					form.save()
 
 					names = set()

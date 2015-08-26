@@ -978,6 +978,9 @@ class BareGame(Game):
 		if presentation_ng.count() == 0:
 			presentation_ng = presentation
 		
+		# Exclude the +Use/NG forms (added for vro_oahpa):
+		presentation_ng = presentation_ng.exclude(no_show='True')
+		
 		presentation_ng = presentation_ng.values_list('fullform',flat=True)
 		
 		# Check if the form is connegative, if not, set to false.
