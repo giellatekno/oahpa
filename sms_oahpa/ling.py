@@ -328,7 +328,7 @@ class Paradigm:
 				    lookup_dictionary[lemma] = item + '\n'
 		
 		for line in lookups_all.split('\n\n'):
-			print >> STDOUT, 'line in lookups_all: %s' % line
+			#print >> STDOUT, 'line in lookups_all: %s' % line
 			if line:
 				items = line.split('\n')
 				for item in items:
