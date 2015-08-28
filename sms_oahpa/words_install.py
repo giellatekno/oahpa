@@ -841,7 +841,7 @@ class Words(object):
 				no_show = False
 				if 'UseNG' in f.form:
 				    no_show = True
-				    f.form = f.form[0:-6] # cut off 'UseNG' from the end of the string
+				    f.form = f.form[0:-5] # cut off 'UseNG' from the end of the string
 				form, _ = Form.objects.get_or_create(fullform=f.form, no_show=no_show, tag=tag, word=w)
 				form.save()
 
@@ -950,7 +950,7 @@ class Words(object):
 					no_show = False
 					if 'UseNG' in f.form:
 					   no_show = True
-					   f.form = f.form[0:-6] # cut off 'UseNG' from the end of the string
+					   f.form = f.form[0:-5] # cut off 'UseNG' from the end of the string
 
 					form, _ = Form.objects.get_or_create(fullform=f.form, no_show=no_show, tag=t, word=w)
 					form.save()
