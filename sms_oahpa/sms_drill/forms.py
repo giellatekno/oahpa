@@ -26,7 +26,7 @@ except:
 
 PRONOUNS_LIST = {'Sg1':'mon', 'Sg2':'ton', 'Sg3':'son', 'Sg4':'(4)',
 		  'Pl1':'mij', 'Pl2':'tij', 'Pl3':'sij',
-		  'Du1':'muäʹna', 'Du2':'tuäʹna', 'Du3':'suäʹna'}
+		  'Du1':u'muäʹna', 'Du2':u'tuäʹna', 'Du3':u'suäʹna'}
 
 # DEMONSTRATIVE_PRESENTATION plus Sg3/Pl3
 PASSIVE_PRONOUNS_LIST = {'Sg1':'mon', 'Sg2':'ton', 'Sg3':'dat',
@@ -34,8 +34,9 @@ PASSIVE_PRONOUNS_LIST = {'Sg1':'mon', 'Sg2':'ton', 'Sg3':'dat',
 		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
 
 
-NEGATIVE_VERB_PRES = {'Sg1':'jiõm', 'Sg2':'jiõk', 'Sg3':'ij',
-		  'Pl1':'jeäʹp', 'Pl2':'jeäʹped', 'Pl3':'jiâ'}
+NEGATIVE_VERB_PRES = {'Sg1':u'jiõm', 'Sg2':u'jiõk', 'Sg3':u'ij', 'Sg4':u'ij',
+		  'Pl1':u'jeäʹp', 'Pl2':u'jeäʹped', 'Pl3':u'jiâ',
+		  'Du1':u'jeäʹp', 'Du2':u'jeäʹped', 'Du3':u'jiâ'}
 
 TENSE_PRESENTATION = {
 	'Prt': u'jåhtta',
