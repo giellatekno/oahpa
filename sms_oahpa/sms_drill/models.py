@@ -829,7 +829,7 @@ class Form(models.Model):
 			kwarg = {'tag__infinite': 'Inf'}
 			
 			# Non-derived verbs need to exclude Der
-			baseform = self.word.form_set.exclude(tag__string__contains='Der')\
+			baseform = self.word.form_set.exclude(tag__string__contains='Der').exclude(no_show='True')\
 											.filter(**kwarg)
 			if baseform.count() == 0:
 				baseform = self.word.form_set.filter(tag__personnumber='Sg3', tag__mood='Ind', tag__tense='Prs')
