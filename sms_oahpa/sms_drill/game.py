@@ -214,7 +214,7 @@ class Game(object):
 				# u'word_id': u'628'}
 			
 			for fieldname, value in data.items():
-				# print >> DEBUG, d, value
+				#print fieldname, value
 				if fieldname.count(str(n) + '-') > 0:
 					fieldname = fieldname.lstrip(str(n) + '-')
 					qwords = self.search_info(question_tagObj, fieldname, value, qwords, 'tag')
@@ -989,9 +989,12 @@ class BareGame(Game):
 		# the same for all pronouns, that one pronoun is displayed throughout
 		# all of the steps of the user entering answers and checking that they
 		# are correct.
+		
+		#print "data sent to create_form():", data
+		#print "db_info:", db_info
 		if not db_info.get('conneg', False):
 			db_info['conneg'] = False
-
+		
 		morph = (MorfaQuestion(
 					word=word,
 					tag=tag,

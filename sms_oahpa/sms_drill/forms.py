@@ -1121,7 +1121,7 @@ class MorfaSettings(OahpaSettings):
 			if 'pron_type' in post_data:
 				if post_data['pron_type'].lower() in ['refl', 'recipr']:
 					self.fields['proncase'].choices = RECIP_REFL_CHOICES
-
+                
 
 
 
@@ -1136,7 +1136,16 @@ class MorfaQuestion(OahpaQuestion):
 		
 		lemma_widget = forms.HiddenInput(attrs={'value': word.id})
 		tag_widget = forms.HiddenInput(attrs={'value': tag.id})
-		self.translang = 'sme'
+		if tag.string.lower().find('conneg') > -1:
+			if conneg:
+				conneg_agr = conneg
+			else:
+				conneg_agr = choice(self.PronPNBase.keys())
+		else:
+				conneg_agr = False
+
+		conneg_widget = forms.HiddenInput(attrs={'value': conneg_agr})
+		self.translang = 'sms'
 		kwargs['correct_val'] = correct_val
 		super(MorfaQuestion, self).__init__(*args, **kwargs)
 		
@@ -1144,16 +1153,6 @@ class MorfaQuestion(OahpaQuestion):
 		self.init_variables(possible=[], 
 							userans_val=userans_val, 
 							accepted_answers=accepted_answers)
-
-		if tag.string.lower().find('conneg') > -1:
-			if conneg:
-				conneg_agr = conneg
-			else:
-				conneg_agr = choice(self.PronPNBase.keys())
-		else:
-			conneg_agr = False
-
-		conneg_widget = forms.HiddenInput(attrs={'value': conneg_agr})
 
 		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
 		self.fields['tag_id'] = forms.CharField(widget=tag_widget, required=False)
@@ -1170,6 +1169,7 @@ class MorfaQuestion(OahpaQuestion):
 		
 		#print self.lemma, correct
 		#print baseform.tag, correct.tag
+		#print "conneg_agr: ", conneg_agr
 		
 		# Retrieve feedback information
 		self.get_feedback(correct, language)
@@ -1209,9 +1209,9 @@ class MorfaQuestion(OahpaQuestion):
 			if (tag.tense in ['Prs','Prt']) and (tag.mood == 'Ind'):
 				time = TENSE_PRESENTATION.get(tag.tense, False)
 				if (tag.personnumber == 'Sg4'):
-				    self.pron = ' '.join([pronoun, time])  # Sg4: (4) Today ...
+				    self.pron = ' '.join([self.pron, time])  # Sg4: (4) Today ...
 				else:
-				    self.pron = ' '.join([time, pronoun])  # Sg1..Sg3, Pl1..Pl3: Today Pron ...
+				    self.pron = ' '.join([time, self.pron])  # Sg1..Sg3, Pl1..Pl3: Today Pron ...
 
 			if ("+Der/Pass" in tag.string) and ("+V" in tag.string):
 				# Odne mun ___
