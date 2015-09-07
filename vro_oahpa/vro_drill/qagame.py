@@ -58,6 +58,7 @@ class QAGame(Game):
 					
 					'Sg1':'Sg2',		# Mina? Sina.
 					'Sg2':'Sg1',		# Sina? Mina.
+					'Sg3':'Sg3',		# Tema? Tema.
 					'ScSg3':'ScSg3',		# Tema? Tema.
 					'OcSg3':'OcSg3',		# Tema? Tema.
 					
@@ -70,8 +71,8 @@ class QAGame(Game):
 
 		# Values for subject-verb agreement:
 		# e.g. Subject with N+Sg+Nom requires verb with Sg3.
-		self.SVPN={'Sg1':'Sg1','Sg2':'Sg2','Sg3':'ScSg3','Sg':'ScSg3',\
-				   'Pl1':'Pl1','Pl2':'Pl2','Pl3':'ScPl3','Pl':'Pl3'} # was: Pl : ScPl3. Person-number are different for different verbs. 
+		self.SVPN={'Sg1':'Sg1','Sg2':'Sg2','Sg3':'Sg3','Sg':'Sg3',\
+				   'Pl1':'Pl1','Pl2':'Pl2','Pl3':'Pl3','Pl':'Pl3'} # was: Pl : ScPl3. Person-number are different for different verbs. 
 
 		# Available values for Number
 		self.PronPN=['Sg1','Sg2','Sg3','Pl1','Pl2','Pl3']
