@@ -142,7 +142,12 @@ PRONOUN_SUBCLASSES = (
 
 CASE_CONTEXT_CHOICES = (
    # ('N-GEN', _('Genitive')),
-    ('N-PAR', _('Partitive')),
+    ('N-PAR', _(u'Partitive (Midä?)')),
+    ('N-GEN-NOM', _('Genitive/Nominative (Minka?)')),
+    ('N-ILL-ALL', _('Illative/Allative (Kohe?)')),
+    ('N-INE-ADE', _('Inessive/Adessive (Kon?)')),
+    ('N-TRA', _('Translative (Kinkas?)')),
+    ('N-COM', _('Comitative (Minka?)')),
     #('N-ILL', _('Illative')),
     #('N-INE', _('Inessive')),
     #('N-ELA', _('Elative')),
