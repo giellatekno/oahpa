@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<questions game="cealkka">
+  <q level="2" lemmacount="3" id="2_PrtSg1_Num_Acc">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Mida sa ostsid</text>
+    </question>
+    <answer> 
+      <text>Ma VERB NUMBER NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>ostma</id>
+      </element>
+      <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_VERYSMALL"/>
+      </element>
+       <element id="NOUN" task="yes">
+        <grammar tag="N+Nountype+Sg+Nom"/>
+        <sem class="CLOTHING"/>
+      </element>
+    </answer>
+    </q> 
+  <q level="2" lemmacount="3" id="1_PrsPl1_Gen_Nom">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Kes te olete</text>
+    </question>
+    <answer> 
+      <text>Me VERB sinu PERS NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Ind+Prs+Pl1"/>
+        <id>olema</id>
+      </element>
+      <element id="PERS" task="yes">
+        <grammar tag="N+Nountype+Sg+Nom"/>
+        <sem class="mFAMILYsg"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Pl+Nom"/>
+        <id>sõber</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="2" id="1_PrtSg3_Neg_Aux_Inf">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Kuidas eile läks</text>
+    </question>
+    <answer> 
+      <text>PERSON ei AUX VERB</text>
+      <element id="PERSON">
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="mPERSNAME"/>
+      </element>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>tahtma</id> 
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>aitama</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="3" id="1_PrtSg1_Verb_Gen_Tra">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Mida sa puhkuse ajal tegid</text>
+    </question>
+    <answer> 
+      <text>Ma VERB NOUN ADJ</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>värvima</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="PRIV_BUILDING"/>
+      </element>
+      <element id="ADJ" task="yes">
+        <grammar tag="A+Sg+Nom"/>
+        <sem class="COLOUR"/>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="2" id="1_PrtSg1_Verb_Ade">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Mida sa eelmisel nädalal tegid</text>
+    </question>
+    <answer> 
+      <text>NOUN ma VERB</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <sem class="mACTIVITY"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="WEEKDAY"/>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="2" id="1_PrtPl1_Verb_Ade">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Mida te eelmisel nädalal tegite</text>
+    </question>
+    <answer> 
+      <text>Noun me VERB</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <sem class="mACTIVITY"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="WEEKDAY"/>
+      </element>
+    </answer>
+  </q> 
+
+</questions>
+
+
+
+
