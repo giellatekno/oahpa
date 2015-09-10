@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <questions game="cealkka">
-  <q level="2" lemmacount="3" id="2_PrtSg1_Num_Acc">
+<!--  <q level="2" lemmacount="3" id="2_PrtSg1_Num_Acc">
     <qtype>PRT</qtype>
    <question>
       <text>Mida sa ostsid</text>
@@ -21,8 +21,8 @@
         <sem class="CLOTHING"/>
       </element>
     </answer>
-    </q> 
-  <q level="2" lemmacount="3" id="1_PrsPl1_Gen_Nom">
+    </q> --> 
+  <q level="1" lemmacount="3" id="1_PrsPl1_Gen_Nom">
     <qtype>PRS</qtype>
    <question>
       <text>Kes te olete</text>
@@ -30,41 +30,41 @@
     <answer> 
       <text>Me VERB sinu PERS NOUN</text>
       <element id="VERB" task="yes">
-        <grammar tag="V+Ind+Prs+Pl1"/>
+        <grammar tag="V+Pers+Sup+Ill"/>
         <id>olema</id>
       </element>
       <element id="PERS" task="yes">
-        <grammar tag="N+Nountype+Sg+Nom"/>
-        <sem class="mFAMILYsg"/>
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="FAMILY"/>
       </element>
       <element id="NOUN" task="yes">
-        <grammar tag="N+Pl+Nom"/>
+        <grammar tag="N+Sg+Nom"/>
         <id>sõber</id>
       </element>
     </answer>
   </q> 
-  <q level="2" lemmacount="2" id="1_PrtSg3_Neg_Aux_Inf">
+  <q level="2" lemmacount="3" id="1_PrtSg3_Neg_Aux_Inf">
     <qtype>PRT</qtype>
    <question>
       <text>Kuidas eile läks</text>
     </question>
     <answer> 
       <text>PERSON ei AUX VERB</text>
-      <element id="PERSON">
-        <grammar tag="N+Prop+Sg+Nom"/>
-        <sem class="mPERSNAME"/>
+      <element id="PERSON" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="PROFESSION"/>
       </element>
       <element id="AUX" task="yes">
-        <grammar tag="V+Inf"/>
+        <grammar tag="V+Pers+Sup+Ill"/>
         <id>tahtma</id> 
       </element>
       <element id="VERB" task="yes">
-        <grammar tag="V+Inf"/>
+        <grammar tag="V+Pers+Sup+Ill"/>
         <id>aitama</id>
       </element>
     </answer>
   </q> 
-  <q level="2" lemmacount="3" id="1_PrtSg1_Verb_Gen_Tra">
+<!--  <q level="2" lemmacount="3" id="1_PrtSg1_Verb_Gen_Tra">
     <qtype>PRT</qtype>
    <question>
       <text>Mida sa puhkuse ajal tegid</text>
@@ -77,24 +77,24 @@
       </element>
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
-        <sem class="PRIV_BUILDING"/>
+        <sem class="HOUSE"/>
       </element>
       <element id="ADJ" task="yes">
         <grammar tag="A+Sg+Nom"/>
-        <sem class="COLOUR"/>
+        <sem class="COLOR"/>
       </element>
     </answer>
-  </q> 
-  <q level="2" lemmacount="2" id="1_PrtSg1_Verb_Ade">
+  </q> --> 
+  <q level="1" lemmacount="2" id="1_PrtSg1_Verb_Ade">
     <qtype>PRT</qtype>
    <question>
-      <text>Mida sa eelmisel nädalal tegid</text>
+      <text>Mis sporti sa eelmisel nädalal tegid</text>
     </question>
     <answer> 
       <text>NOUN ma VERB</text>
       <element id="VERB" task="yes">
-        <grammar tag="V+Inf"/>
-        <sem class="mACTIVITY"/>
+        <grammar tag="V+Pers+Sup+Ill"/>
+        <sem class="SPORT"/>
       </element>
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
@@ -102,16 +102,16 @@
       </element>
     </answer>
   </q> 
-  <q level="2" lemmacount="2" id="1_PrtPl1_Verb_Ade">
+  <q level="1" lemmacount="2" id="1_PrtPl1_Verb_Ade">
     <qtype>PRT</qtype>
    <question>
-      <text>Mida te eelmisel nädalal tegite</text>
+      <text>Mis sporti te eelmisel nädalal tegite</text>
     </question>
     <answer> 
-      <text>Noun me VERB</text>
+      <text>NOUN me VERB</text>
       <element id="VERB" task="yes">
-        <grammar tag="V+Inf"/>
-        <sem class="mACTIVITY"/>
+        <grammar tag="V+Pers+Sup+Ill"/>
+        <sem class="SPORT"/>
       </element>
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>

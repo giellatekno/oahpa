@@ -119,14 +119,6 @@
 		<div id="content">
 			{% block main_content %}
 			<ul id="games_menu">
-
-        <!--        <li class="game">
-					<a href="{% url vasta_s %}">
-						<span>VASTA</span><br />
-						<img src="{{ MEDIA_URL }}/images/vasta.png" alt="VASTA" /><br />
-						<span>{% trans "Answer to questions" %}<font color="#FF0000" size="3pt"> (under construction) </font></span>
-					</a>
-				</li>  --->
 				<li class="game">
 					<a href="{% url leksa %}">
 						<span>LEKSA</span><br />
@@ -150,14 +142,24 @@
 						<span>{% trans "Practice morphology in context" %}</span>
 					</a>
 				</li>
-				
+				</ul>
+			
+			    <ul id="games_menu">
 <!--            <li class="game">
                         <a href="{% url sahka %}">
 						<span>SAHKA</span><br />
-						<img src="{{ MEDIA_URL }}/images/sahka.png" alt="SAHKA" /><br />
+						<img src="{{ MEDIA_URL }}/images/sahka.png" alt="SAHKA" />
 						<span>{% trans "Dialogue game" %} <font color="#FF0000" size="3pt"> (under construction) </font></span>
 					</a>
 				</li>   ---->
+				
+				<li class="game">
+					<a href="{% url vasta_s %}">
+						<span>VASTA</span><br />
+						<img src="{{ MEDIA_URL }}/images/vasta.png" alt="VASTA" /><br />
+						<span>{% trans "Answer to questions" %}<font color="#FF0000" size="3pt"> (under construction) </font></span>
+					</a>
+                </li>
                 <li class="game">
                     <a href="{% url numra %}">
 						<span>NUMRA</span><br />
@@ -166,7 +168,6 @@
 					</a>
                 </li>
 			</ul>
-			</br>
 			{% comment %}
 			<h3>{% trans "Online reference materials" %}</h3>
 			{% endcomment %}
@@ -236,7 +237,7 @@
 			{% endblock %}
 
 			  <p>
-				  {% trans "Copyright 2011-2014 Universitetet i Troms&oslash; " %}<br />
+				  {% trans "Copyright 2011-2015 Universitetet i Troms&oslash; " %}<br />
 			{% trans "Contact" %} oahpa@uit.no</p>
 			</div>
 		</div>
