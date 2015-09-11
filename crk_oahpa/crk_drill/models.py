@@ -711,11 +711,11 @@ class Tag(models.Model):
 	number = models.CharField(max_length=5)
 	personnumber = models.CharField(max_length=8)
 	gender = models.CharField(max_length=5)
-	# polarity = models.CharField(max_length=5)
+	polarity = models.CharField(max_length=5)
 	pos = models.CharField(max_length=12)
 	possessive = models.CharField(max_length=10)
 	derivation = models.CharField(max_length=7)
-	# subclass = models.CharField(max_length=10)
+	subclass = models.CharField(max_length=10)
 	tense = models.CharField(max_length=5)
 
 	class Admin:
@@ -738,11 +738,11 @@ class Tag(models.Model):
 			'mood': 'Mood',
 			'number': 'Number',
 			'personnumber': 'Person-Number',
-#			'polarity': 'Polarity',
+			'polarity': 'Polarity',
 			'pos': 'Wordclass',
 			'possessive': 'Possessive',
 			'derivation': 'Derivation',
-#			'subclass': 'Subclass',
+			'subclass': 'Subclass',
 			'tense': 'Tense',
 			'gender': 'Gender',
 		}
