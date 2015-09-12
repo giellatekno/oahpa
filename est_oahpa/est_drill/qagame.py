@@ -73,8 +73,8 @@ class QAGame(Game):
 
 		# Available values for Number
 		self.PronPN=['Sg1','Sg2','Sg3','Pl1','Pl2','Pl3']
-		self.PronPNBase={'Sg1':'я','Sg2':'ты','Sg3':u'он',\
-						 'Pl1':'мы','Pl2':'вы','Pl3':'они'}
+		self.PronPNBase={'Sg1':'ma','Sg2':'sa','Sg3':u'ta',\
+						 'Pl1':'me','Pl2':'te','Pl3':'nad'}
 		self.NounPN=['Sg','Pl']
 		self.NountoPronPN={'Sg':'Sg3','Pl':'Pl3'}
 

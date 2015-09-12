@@ -27,12 +27,12 @@ PASSIVE_PRONOUNS_LIST = {'Sg1':u'ma', 'Sg2':u'sa', 'Sg3':u'ta',
                          'Pl1':u'me', 'Pl2':u'te', 'Pl3':u'nad'}
 
 
-NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
-		  'Pl1':'eat', 'Pl2':'ehpet', 'Pl3':'eai'}
+NEGATIVE_VERB_PRES = {'Sg1':'ei', 'Sg2':'ei', 'Sg3':'ei',
+		  'Pl1':'ei', 'Pl2':'ei', 'Pl3':'ei'}
 
 TENSE_PRESENTATION = {
-	'Prt': u'eggiļ',
-	'Prs': u'tämpõ',
+	'Prt': u'eile',
+	'Prs': u'täna',
 }
 
 RECIPROCATIVE_PRESENTATION = {
@@ -1851,21 +1851,21 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 
     noanalysis=False
 
-    fstdir = "/opt/smi/sme/bin"
-    #fstdir = settings.FST_DIRECTORY
-    fst = fstdir + "/ped-sme.fst"
-    lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup" # on victorio
-    #lo="/Users/mslm/bin/lookup" # on Heli's machine
-    lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
-    #lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine
-    lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
+    fstdir = settings.FST_DIRECTORY
+    toolsdir = settings.TOOLS_DIRECTORY + "/preprocess"
+    fst = fstdir + "/analyser-forcg-desc.hfst"
+    lo = settings.LOOKUP_TOOL
+    #lo="/Users/mslm/bin/lookup" # xfst on Heli's machine
+    lookup = " | " + lo + " -q -p " + fst # hfset
+    #lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # xfst
+    lookup2cg = " | cut -f1-2 | " + settings.SCRIPT_DIRECTORY + "/lookup2cg " # hfst
     cg3 = "/usr/local/bin/vislcg3"
-    preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
+    preprocess = " | " + settings.SCRIPT_DIRECTORY + "/preprocess "
     #preprocess = " | /Users/mslm/main/gt/script/preprocess "
-    dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-    #dis_bin = "../sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
+    disamb = fstdir + "/disambiguation.cg3"
+    synt_funcs = fstdir + "/functions.cg3" 
 
-    vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
+    vislcg3 = " | " + toolsdir + "/tagger " + toolsdir + "/addlex.lx stdin stdout | perl " + toolsdir + "/pron.pl | " + cg3 + " --grammar " + disamb + " | " + cg3 + " --grammar " + synt_funcs
 
     self.userans = self.cleaned_data['answer']
     answer = self.userans.rstrip()
@@ -1877,9 +1877,14 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    #logfile = open('/home/est_oahpa/est_oahpa/est_drill/vastaF_log.txt','w')
+    logfile = open('/home/est_oahpa/est_oahpa/est_drill/vastaF_log.txt','w')
+    logfile.write(lookup+"\n");
+    logfile.write(lookup2cg+"\n");
+    logfile.write(vislcg3+"\n");
+    logfile.write(question+"\n");
+    logfile.write(answer+"\n");
 
-    host = 'localhost'
+    """host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024
 
@@ -1919,12 +1924,12 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
         s.send("q")  # on vic
         s.close()
 
-    except socket.error:    # port 9000 not available => morph. analysis will be done by ped-sme.fst
-        # analyse words in the question
-        analysis = ""
-        question_lookup = "echo \"" + qtext + "\"" + preprocess
-        words = os.popen(question_lookup).readlines()
-        for qword in words: # or qwords ?
+    except socket.error:    # port 9000 not available => morph. analysis will be done by ped-sme.fst """
+    # analyse words in the question
+    analysis = ""
+    """question_lookup = "echo \"" + qtext + "\"" + preprocess # testing without FST+CG analysis of question and answer
+    words = os.popen(question_lookup).readlines()
+    for qword in words: # or qwords ?
             cohort=""
             w = qword.lstrip().rstrip()
             word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
@@ -1936,21 +1941,18 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
                 cohort = w + "\n"
             if cohort=="error":
                 raise Http500
-            analysis = analysis + cohort
-
-        if self.gametype=="sahka":
+            analysis = analysis + cohort""" #testing
+    if self.gametype=="sahka":
             analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
-        else:
+    else:
             analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
+    logfile.write(analysis+"\n") 
 
-	    #logfile.write(analysis+"\n")
-
-		# analyse words in the answer
-
-        data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
-        words = os.popen(data_lookup).readlines()
-        analyzed=""
-        for w in words:
+    # analyse words in the answer
+    """data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
+    words = os.popen(data_lookup).readlines()
+    analyzed=""
+    for w in words:
             w=w.strip()
             word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
             morfanal = os.popen(word_lookup).readlines()
@@ -1962,14 +1964,15 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
    # except socket.timeout:
     #    raise Http404("Technical error, please try again later.")
 
-    #logfile.write(analyzed+"\n")
-    analysis = analysis + analyzed
+    logfile.write(analyzed+"\n")
+    analysis = analysis + analyzed"""
     analysis = analysis + "\"<.>\"\n\t\".\" CLB"
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
 
     ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
     checked = os.popen(ped_cg3).readlines()
+    logfile.close()
 
     wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
     messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
@@ -2028,12 +2031,12 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     constant=""
     found=False
     #Interface language
-    if not language: language = "nob"
+    if not language: language = "eng"
     language = switch_language_code(language)
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["nob","sme","fin","eng","swe","est"]: language="nob"
+    if not language in ["nob","sme","fin","eng","swe","est"]: language="eng"
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():
@@ -2070,8 +2073,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 
     feedbackmsg=' '.join(msg)
     today=datetime.date.today()
-    log = Log.objects.create(userinput=self.userans,feedback=feedbackmsg,iscorrect=iscorrect,\
-                                       example=question,game=self.gametype,date=today)
+    log = Log.objects.create(userinput=self.userans,feedback=feedbackmsg,iscorrect=iscorrect,example=question,game=self.gametype,date=today)
     log.save()
 
     variables = []
@@ -2322,21 +2324,21 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
         return None, None, None
 
     noanalysis=False
-
-    fstdir = "/opt/smi/sme/bin"
-    #fstdir = settings.FST_DIRECTORY
-    fst = fstdir + "/ped-sme.fst"
-    lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"# on victorio
-    #lo="/Users/mslm/bin/lookup" # on Heli's machine
-    lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
-    lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
+    fstdir = settings.FST_DIRECTORY
+    toolsdir = settings.TOOLS_DIRECTORY + "/preprocess"
+    fst = fstdir + "/analyser-forcg-desc.hfst"
+    lo = settings.LOOKUP_TOOL
+    #lo="/Users/mslm/bin/lookup" # xfst on Heli's machine                  
+    lookup = " | " + lo + " -q -p " + fst # hfst                          
+    #lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # xfst           
+    lookup2cg = " | cut -f1-2 | " + settings.SCRIPT_DIRECTORY + "/lookup2cg " # hfst                                                                  
     cg3 = "/usr/local/bin/vislcg3"
-    preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
-    #preprocess = " | /Users/mslm/main/gt/script/preprocess " # on Heli's machine
-    dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-    #dis_bin = "/Users/mslm/main/ped/sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
+    preprocess = " | " + settings.SCRIPT_DIRECTORY + "/preprocess "
+    #preprocess = " | /Users/mslm/main/gt/script/preprocess "              
+    disamb = fstdir + "/disambiguation.cg3"
+    synt_funcs = fstdir + "/functions.cg3"
 
-    vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
+    vislcg3 = " | " + toolsdir + "/tagger " + toolsdir + "/addlex.lx stdin stdout | perl " + toolsdir + "/pron.pl | " + cg3 + " --grammar " + disamb + " | " + cg3 + " --grammar " + synt_funcs
 
     self.userans = self.cleaned_data['answer']
     answer = self.userans.rstrip()
@@ -2349,8 +2351,8 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    #logfile = open('/home/est_oahpa/est_oahpa/est_drill/vastas_log.txt', 'w')
-    host = 'localhost'
+    logfile = open('/home/est_oahpa/est_oahpa/est_drill/vastas_log.txt', 'w')
+    """host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024
 
@@ -2441,14 +2443,14 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
         s.close()  # on vic
 
 
-    except socket.error:
-        analysis = ""
-        data_lookup = "echo \"" + qtext + "\"" + preprocess
-        words = os.popen(data_lookup).readlines()
-        print question_id
-        #print words
-        #print qwords
-        for word in words:
+    except socket.error:"""
+    analysis = ""
+    data_lookup = "echo \"" + qtext + "\"" + preprocess
+    words = os.popen(data_lookup).readlines()
+    print question_id
+    #print words
+    #print qwords
+    for word in words:
             w=""
             cohort=""
             print word
@@ -2461,8 +2463,8 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
                 cohort = cohort + row
 	       #print cohort
             analysis = analysis + cohort
-        tasklemmas = ""
-        for aword in awords:
+    tasklemmas = ""
+    for aword in awords:
             print aword
 	       #logfile.write(aword)
             if aword.has_key('taskword') and aword['taskword']:
@@ -2475,10 +2477,11 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
                 tasktagstring = tasktag[0].string
                 taskpos = tasktag[0].pos
                 ttag = tasktagstring.replace("+"," ")
+                ttag = force_unicode(ttag).encode('utf-8')
                 print ttag
 		        #logfile.write(ttag+"\n")
                 ans_cohort = ""
-                word_lookup = "echo \"" + tlemma + "\"" + lookup + lookup2cg  # on Heli's machine
+                word_lookup = "echo \"" + force_unicode(tlemma).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
                 rows = os.popen(word_lookup).readlines()
                 morfanal = ""
                 for row in rows:
@@ -2486,7 +2489,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		            #logfile.write(row + "\n")
                     malemmas = row.split("\"")
                     if row:
-			             malemma = malemmas[1]
+                            malemma = malemmas[1]
                     malemma_without_hash = malemma.replace('#','')
                     taglist = ttag.split()
                     tag_match = 1
@@ -2498,23 +2501,23 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 			             #logfile.write(malemma+"\n")
                         print malemma
                         print malemma_without_hash
-                        tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
+                        tasklemmas = force_unicode(tasklemmas).encode('utf-8') + "\n\t\"" + force_unicode(malemma).encode('utf-8') + "\" "+force_unicode(taskpos).encode('utf-8')
                     morfanal = morfanal + ans_cohort  # END
 
-        analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + tasklemmas + "\n"
-        # analyse the user's answer
-        data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
-        word = os.popen(data_lookup).readlines()
-        #print word
-        analyzed=""
-        for c in word:
-            c=c.strip()
-            word_lookup = "echo \"" + force_unicode(c).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-            morfanal = os.popen(word_lookup).readlines()
-            ans_cohort=""
-            for row in morfanal:
+    analysis = force_unicode(analysis).encode('utf-8') + "\"<^vastas>\"\n\t\"^vastas\" QDL " + force_unicode(question_id).encode('utf-8') + " " + tasklemmas + "\n"
+    # analyse the user's answer
+    data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
+    word = os.popen(data_lookup).readlines()
+    #print word
+    analyzed=""
+    for c in word:
+        c=c.strip()
+        word_lookup = "echo \"" + force_unicode(c).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+        morfanal = os.popen(word_lookup).readlines()
+        ans_cohort=""
+        for row in morfanal:
                 ans_cohort = ans_cohort + row
-            analyzed = analyzed + ans_cohort
+        analyzed = analyzed + ans_cohort
 
     #except socket.timeout:
         #raise Http404("Technical error, please try again later.")
@@ -2586,12 +2589,12 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     constant=""
     found=False
     #Interface language
-    if not language: language = "nob"
+    if not language: language = "eng"
     language = switch_language_code(language)
     #if language == "no" : language = "nob"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["nob","sme","fin","eng","swe"]: language="nob"
+    if not language in ["nob","sme","fin","eng","swe","est"]: language="eng"
 
     for w in msgstrings.keys():
         if found: break

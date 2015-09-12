@@ -80,8 +80,8 @@ class CealkkaGame(Game):
 
 		# Available values for Number
 		self.PronPN=['Sg1','Sg2','Sg3','Pl1','Pl2','Pl3','Du1','Du2','Du3']
-		self.PronPNBase={'Sg1':'mun','Sg2':'don','Sg3':u'son',\
-						 'Pl1':'mii','Pl2':'dii','Pl3':'sii',\
+		self.PronPNBase={'Sg1':'ma','Sg2':'sa','Sg3':u'ta',\
+						 'Pl1':'me','Pl2':'te','Pl3':'nad',\
 						 'Du1':'moai','Du2':'doai','Du3':'soai'}
 		self.NounPN=['Sg','Pl']
 		self.NountoPronPN={'Sg':'Sg3','Pl':'Pl3'}
