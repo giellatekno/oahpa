@@ -661,6 +661,8 @@ class BareGame(Game):
 			TAG_QUERY = TAG_QUERY & Q(number__in=number, possessive=possessive, derivation=derivation)
 			#else:
 				#TAG_QUERY = TAG_QUERY & Q(number__in=number, possessive__contains='Px', derivation=derivation)
+			if pos == 'Px':
+				pos = 'N'
 
 
 
@@ -747,7 +749,6 @@ class BareGame(Game):
 			  QUERY = Q(pos__iexact=pos) # & Q(stem__in=syll)
 			  #if source and source not in ['all', 'All']:
 				# QUERY = QUERY & Q(source__name=source)
-
 
 		# smallnum = ["okta", "guokte", "golbma", "njeallje", "vihtta", "guhtta",
 		# 			"čieža", "gávcci","ovcci","logi"]
