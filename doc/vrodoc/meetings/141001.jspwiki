@@ -1,0 +1,12 @@
+Võro koosolek 1. okt. 2014
+kohal: Sulev, Jack, Heli
+
+palatalisatsioon
+* jätame palatalisatsioonimärgi transduktori (ja seega ka Oahpas väljastatava märgi) samaks - ʼ (letter modifier apostrophy)
+* Oahpa aktsepteerib lisaks ka ’ (right single quote apostrophy), mis näeb visuaalselt väga sarnane välja. Lisatud funktsiooni spellrelax() failis vro_drill/forms.py.
+* larüngaalklusiil (glottal stop) - Oahpa väljastab q, aga aktsepteerime q asemel ka igasugust ülakoma, aga mitte seda, et larüngaalklusiil üldse ära jäetakse. Lisatud funktsiooni spellrelax() failis vro_drill/forms.py.
+
+Numra
+kuupäevad, kellaajad online
+praegu genereerib rahvusvahelisi ja võrukeelseid kuupäevi läbisegi. Sjur parandas filtri ehitamise skripti. 
+todo: kompileerida automaadid uuesti, testida

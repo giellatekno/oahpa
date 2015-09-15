@@ -1,0 +1,113 @@
+!!!Võro Oahpa koosolek 15.09.2015
+Osalejad: Jack, Sulev, Heli
+
+!!!Päevakord
+# Võro FST
+# Võro Oahpa
+# Trello
+# Järgmise koosoleku aeg
+
+
+!! Võro FST
+
+Genereerib liiga palju vorme, kõik ei ole sobivad õigete vastustena näitamiseks.
+ 
+-de, -dõ illatiiv ei ole normatiivne. Kasutame märngendit +Err/Orth+Use/NG
+
++Use/NG märgendit kasutame kõigi vormide jaoks, mida me ei taha näidata õige vastusena.
+
+Vigaseid vorme on näiteks järgmistes tüüpides:
+* -us-, -üs-lõpulised sõnad 
+* kuu, üü
+* päiv
+* pettäi
+
+Kõikide verbivormide genereerimine:
+
+{{{ 
+vro/devtools/generate-verb-wordforms.sh 
+
+morf_codes="+V+Inf \
+            +V+Ind+Prs+Sg3 \
+            +V+Ind+Prt+Pl1 \
+            +V+Ind+ConNegII \
+            +V+PrfPrc"
+}}}
+            
+Saame ette anda, millised vormid genereerida.            
+            
+Noomeni yaml-testidega on ring peal.
+Verbi yaml-testidega töö jätkub (praegu enamasti lühikujul).
+
+! Vaja teha: 
+* __Jack__ jälgib, et ainult üks vorm oleks ilma +Use/NG-ta, kõik ülejäänud paralleelvormid +Use/NG-ga.
+* __Sulev ja tudengid__ kirjutavad üles valesid vorme, mida Oahpa on genereerinud. Sulev kirjutab valed vormid Trellosse.
+* __Sulev__ märgib tabelites  http://www.ling.helsinki.fi/~rueter/AKU/vro/word_form_nouns_generator-gt-norm_table_2015-09-15.html ja
+    http://www.ling.helsinki.fi/~rueter/AKU/vro/word_form_verbs_generator-gt-norm_table_2015-09-15.html valed vormid $-ga ja õiged €-ga.
+
+
+!! Võro Oahpa
+
+! Kasutajaliides
+* lokaliseerimine - OK
+* muu
+
+__Heli__ paneb kasutajaliidese keele vahetamise menüü ka mängude (Leksa, Morfa-S jt.) sisse.
+
+! Numra
+Kell ei tööta.
+
+__Jack__ tegeleb sellega.
+
+! Leksa
+Üldiselt töötab hästi, on üksikuid vigu.
+
+! Vaja teha:
+__Sulev__ saadab vead Helile.
+
+! Morfa-S
+* nouns
+Õigeid vastuseid peab alati olema üks!
+Vead: sõnad ainsuses, millel polegi ainsust (püksiq jt).
+
+__Sulev__ kirjutab vigased vormid välja ja paneb Trellosse.
+
+* verbs
+
+__Heli__ määrab etteantavaks vormiks ma-tegevusnime. Praegu antakse ette suvalisi vorme.
+
+! Morfa-C
+
+* nouns
+** partitiiv
+'sööse' -> 'süü'
+* __Heli__ saadab Sulevile semantiliste klasside FOOD ja DRINK loendid.
+* __Sulev__ täiendab loendeid uute söödavate ja joodavate asjadega.
+
+** genitiiv
+'püksiq' - ainsuse vorme ei tohiks olla
+
+__Heli__ laiendab ostetavate asjade hulka uute semantiliste kategooriatega, nt kirjatarbed.
+
+** illatiiv, inessiiv
+Praegu on ainuke koht, kuhu minna või kus olla, 'põhi'!?
+ 
+__Heli__ lisab juurde sõnu semantilisse klassi PLACE_LOCAL või asendab selle küsimus-vastus mallis teise sem. kategooriaga.
+
+** translatiiv 
+__Heli__ laiendab semantilist klassi CHILD uute sõnadega.
+
+** komitatiiv 
+__Heli__ laiendab semantilist klassi VEHICLE. 
+
+* verbs
+Nii olevikus kui minevikus
+tegija: PROFESSION
+verb: ACTION_V
+
+* __Heli__ saadab Sulevile ACTION_V verbide loendi.
+* __Sulev__ valib loendist välja Morfa-C harjutusse sobivad ja lisab ka uusi.
+* __Heli__ lisab programmidesse Morfa-S ja Morfa-C kontrolli, mis keelab ära korduvad harjutused sama hulga sees.
+
+
+!!Järgmine koosolek: T, 6. oktoobril kell 10.
