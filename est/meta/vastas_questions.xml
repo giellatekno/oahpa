@@ -42,6 +42,21 @@
         <id>sõber</id>
       </element>
     </answer>
+    <facit> 
+      <text>Me VERB sinu PERS NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Pers+Prs+Ind+Pl1+Aff"/>
+        <id>olema</id>
+      </element>
+      <element id="PERS" task="yes">
+        <grammar tag="N+Sg+Gen"/>
+        <sem class="FAMILY"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Pl+Nom"/>
+        <id>sõber</id>
+      </element>
+    </facit>
   </q> 
   <q level="2" lemmacount="3" id="1_PrtSg3_Neg_Aux_Inf">
     <qtype>PRT</qtype>
@@ -50,7 +65,7 @@
     </question>
     <answer> 
       <text>PERSON ei AUX VERB</text>
-      <element id="PERSON" task="yes">
+      <element id="PERSON" task="no">
         <grammar tag="N+Sg+Nom"/>
         <sem class="PROFESSION"/>
       </element>
@@ -63,6 +78,21 @@
         <id>aitama</id>
       </element>
     </answer>
+    <facit> 
+      <text>PERSON ei AUX VERB</text>
+      <element id="PERSON" task="no">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="PROFESSION"/>
+      </element>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Pers+Prt+Ind+Neg"/>
+        <id>tahtma</id> 
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>aitama</id>
+      </element>
+    </facit>
   </q> 
 <!--  <q level="2" lemmacount="3" id="1_PrtSg1_Verb_Gen_Tra">
     <qtype>PRT</qtype>
@@ -72,7 +102,7 @@
     <answer> 
       <text>Ma VERB NOUN ADJ</text>
       <element id="VERB" task="yes">
-        <grammar tag="V+Inf"/>
+        <grammar tag="V+Pers+Sup+Ill"/>
         <id>värvima</id>
       </element>
       <element id="NOUN" task="yes">
@@ -81,6 +111,21 @@
       </element>
       <element id="ADJ" task="yes">
         <grammar tag="A+Sg+Nom"/>
+        <sem class="COLOR"/>
+      </element>
+    </answer>
+    <facit> 
+      <text>Ma VERB NOUN ADJ</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Pers+Prt+Ind+Sg1+Aff"/>
+        <id>värvima</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Gen"/>
+        <sem class="HOUSE"/>
+      </element>
+      <element id="ADJ" task="yes">
+        <grammar tag="A+Sg+Tra"/>
         <sem class="COLOR"/>
       </element>
     </answer>
@@ -101,6 +146,17 @@
         <sem class="WEEKDAY"/>
       </element>
     </answer>
+    <facit>
+    <text>Eelmisel NOUN ma VERB</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Pers+Prt+Ind+Sg1+Aff"/>
+        <sem class="SPORT"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Ade"/>
+        <sem class="WEEKDAY"/>
+      </element>
+    </facit>
   </q> 
   <q level="1" lemmacount="2" id="1_PrtPl1_Verb_Ade">
     <qtype>PRT</qtype>
@@ -118,6 +174,17 @@
         <sem class="WEEKDAY"/>
       </element>
     </answer>
+    <facit> 
+      <text>Eelmisel NOUN me VERB</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Pers+Prt+Ind+Pl1+Aff"/>
+        <sem class="SPORT"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Ade"/>
+        <sem class="WEEKDAY"/>
+      </element>
+    </facit>
   </q> 
 
 </questions>
