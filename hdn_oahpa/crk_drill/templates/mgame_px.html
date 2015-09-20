@@ -1,0 +1,23 @@
+﻿{% extends "mgame.html" %}
+{% load i18n %}
+
+{% block gamename %}{% trans settings.gamename %}{% endblock %}
+{% block instructions %}
+    {% trans 'The noun is given in the 1S possessive form. Select which type (2S or 3S) you want to practice in the drop down menu above and then enter the correct possessive form of each noun.' %}
+{% endblock %}
+
+
+{% block subsetting %}
+
+{% ifequal settings.gametype "bare" %}
+<!--	<li><label for="id_{{ settingsform.possessive_type.name }}"> {% trans "Set" %}</label>
+		{{ settingsform.possessive_type }}</li> -->
+    <li><label for="id_{{ settingsform.possessive_case.name }}">{% trans "Type" %}</label>
+		{{ settingsform.possessive_case }}</li>
+{% endifequal %}
+
+{% block book %}
+{% endblock %}
+
+{% endblock %}
+

@@ -1,0 +1,24 @@
+{% extends "dato.html" %}
+{% load i18n %}
+
+{% block navbar %}
+	{% with "money" as gamename_nav %}
+        {% include 'numra_submenu.html' %}
+	{% endwith %}
+{% endblock %}
+
+{% block instructions %}
+  {# TODO: strings for instructions. #}
+  {% ifequal gametype "string" %}
+    {% trans "Write the sum of money with numbers, preceded by $ (ex. $2.50)." %}
+  {% else %}
+    {% trans "Write the sum of money in words (ex. nîso newopehikanak)." %}
+  {% endifequal %}
+{% endblock %}
+
+{% block setting_items %}
+	<li><label for="id_{{ settingsform.numgame.name }}">{% trans "Expression of money numeric to words or vice versa." %}</label>
+	    {{ settingsform.numgame }}</li>
+</ul>
+{% endblock %}
+

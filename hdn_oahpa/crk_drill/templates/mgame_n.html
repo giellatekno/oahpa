@@ -1,0 +1,32 @@
+﻿{% extends "mgame.html" %}
+{% load i18n %}
+
+{% block gamename %}{{ settings.gamename }}{% endblock %}
+{% block instructions %}
+
+  {% if settings.gametype == "bare" %}
+    {% trans "Put each noun in its correct form. Click on a word for its translation." %}
+  {% elif settings.gametype == "context" %}
+      {% if settings.case_context == 'N-PL' %}
+        {% trans "Complete the response to the question by entering the plural form of the noun given in brackets." %}
+      {% elif settings.case_context == 'N-LOC' %}
+        {% trans "Complete the response to the question by entering the locative form of the noun given in brackets." %}
+      {% else %}
+        {% trans "Complete the response to the question by entering the correct possessive form of the noun." %}
+      {% endif %}
+  {% endif %}
+{% endblock %}
+
+{% block subsetting %}
+	{% ifequal settings.gametype "bare" %}
+	<li><label for="id_{{ settingsform.case.name }}">{% trans "Type" %}</label>
+		{{ settingsform.case }}</li>
+  <!--  <li><label>{{ settingsform.singular_only }}{% trans " singular only" %}</label></li> -->
+	<!-- <li><label for="id_{{ settingsform.noun_type.name }}">{% trans "Type" %}</label>
+	        {{ settingsform.noun_type }}</li>
+	</li> --> 
+	{% else %}
+	<li><label for="id_{{ settingsform.case_context.name }}">{% trans "Type" %}</label>
+		{{ settingsform.case_context }}</li>
+	{% endifequal %}
+{% endblock %}
