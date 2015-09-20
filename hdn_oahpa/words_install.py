@@ -5,9 +5,9 @@ from xml.dom import minidom as _dom
 from django.utils.encoding import force_unicode
 import sys
 
-from crk_drill.models import * 
+from hdn_drill.models import * 
 #from collections import OrderedDict
-from crk_oahpa.conf.ordereddict import *
+from hdn_oahpa.conf.ordereddict import *
 from django.db.utils import IntegrityError
 
 # For easier debugging.
@@ -16,7 +16,7 @@ _D = open('/dev/null', 'w')
 
 COUNT_ONLY = False
 
-supported_langs = ['crk', 'nob', 'fra', 'eng']
+supported_langs = ['hdn', 'nob', 'fra', 'eng']
 
 # # # 
 # 

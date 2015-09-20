@@ -6,11 +6,11 @@ print " * Correcting paths"
 cur_path = os.getcwd()
 parent_path = '/' + '/'.join([a for a in cur_path.split('/') if a][0:-1]) + '/'
 sys.path.insert(0, parent_path)
-environ['DJANGO_SETTINGS_MODULE'] = 'crk_oahpa.settings'
+environ['DJANGO_SETTINGS_MODULE'] = 'hdn_oahpa.settings'
 
 settings.DEBUG = False
 
-from crk_drill.models import *
+from hdn_drill.models import *
 from optparse import OptionParser, make_option
 import sys
 from ling import Paradigm
@@ -20,7 +20,7 @@ from feedback_install import Feedback_install
 from questions_install import Questions
 from sahka_install import Sahka  # added by Heli
 
-# TODO: option for oa="yes" only, for crk_
+# TODO: option for oa="yes" only, for hdn_
 # ota lemma jos on name="oahpa"
 # jos on lemma, niin ota käännös jos on oa="yes"
 

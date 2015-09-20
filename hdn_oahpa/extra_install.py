@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from settings import *
-from crk_drill.models import *
+from hdn_drill.models import *
 from django.db.models import Q
 from xml.dom import minidom as _dom
 from django.utils.encoding import force_unicode
@@ -12,7 +12,7 @@ import codecs
 # TODO: get these from settings
 
 languages = [
-    'crk',
+    'hdn',
     'nob',
 	'eng',
 	'dan', 

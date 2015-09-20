@@ -16,15 +16,15 @@ admin_url = r'^%s/admin/' % prefix
 
 urlpatterns = patterns('',
 	# Example:
-	# (r'^crk_oahpa/', include('crk_oahpa.foo.urls')),
-	url(r'^%s/$' % prefix, 'crk_oahpa.crk_drill.views.index'),
+	# (r'^hdn_oahpa/', include('hdn_oahpa.foo.urls')),
+	url(r'^%s/$' % prefix, 'hdn_oahpa.hdn_drill.views.index'),
 	url(r'^%s/i18n/' % prefix, include('django.conf.urls.i18n')),
 	url(r'^%s/media/(?P<path>.*)$' % prefix, 'django.views.static.serve',
 			  	{'document_root': settings.MEDIA_ROOT}),
-	url(r'^%s/courses/' % prefix, include('crk_oahpa.courses.urls')),
-	url(r'^%s/' % prefix, include('crk_oahpa.crk_drill.urls')),
-	url(r'^%s/dialect/$' % prefix, 'crk_oahpa.conf.views.dialect'),
+	url(r'^%s/courses/' % prefix, include('hdn_oahpa.courses.urls')),
+	url(r'^%s/' % prefix, include('hdn_oahpa.hdn_drill.urls')),
+	url(r'^%s/dialect/$' % prefix, 'hdn_oahpa.conf.views.dialect'),
 	url(admin_url, include(admin.site.urls)),
 	# (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-	#url(r'^%s/openid/' % prefix, include('crk_oahpa.openid_provider.urls')),
+	#url(r'^%s/openid/' % prefix, include('hdn_oahpa.openid_provider.urls')),
 )

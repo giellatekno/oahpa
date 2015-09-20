@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import settings
-from crk_drill.models import *
+from hdn_drill.models import *
 # from xml.dom import minidom as _dom
 # from django.db.models import Q
 import sys
@@ -19,7 +19,7 @@ _D = open('/dev/null', 'w')
 try:
 	fstdir = settings.FST_DIRECTORY
 except:
-	fstdir = "/opt/smi/crk/bin"
+	fstdir = "/opt/smi/hdn/bin"
 
 try:
 	lookup = settings.LOOKUP_TOOL
@@ -29,7 +29,7 @@ except:
 try:
 	language = settings.MAIN_LANGUAGE[0]
 except:
-	language = "crk"
+	language = "hdn"
 
 #numfst = fstdir + "/" + language + "-num.fst"
 numfst = fstdir + "/" + "transcriptor-numbers-digit2text.filtered.lookup.xfst"
@@ -330,7 +330,7 @@ class Paradigm:
 
 		self.master_paradigm = gen_dialects.copy()
 		#for dialect, gen_file in gen_dialects.items():
-		dialect = 'main'  # HU: There are no dialects defined for crk. I have defined this just to make the program work.
+		dialect = 'main'  # HU: There are no dialects defined for hdn. I have defined this just to make the program work.
 		lookups = FSTLookup(data, fst_file=gen_norm_fst)
 		lookup_dictionary = {}
 			
@@ -495,7 +495,7 @@ class Paradigm:
 		
 		# generator call
 		# Moving paths up
-		# fstdir = "/opt/smi/crk/bin"
+		# fstdir = "/opt/smi/hdn/bin"
 		# lookup = "/usr/local/bin/lookup"
 		
 		# None of these dialects in sma. Obs! Dialects! sme-specific!!!
@@ -556,7 +556,7 @@ class Paradigm:
 		print >> _D, 'generate_numerals called'
 		
 		# Moving paths up
-		# language = "crk"
+		# language = "hdn"
 		# #fstdir = "/opt/smi/" + language + "/bin"
 		# #lookup = /usr/local/bin/lookup
 		# 

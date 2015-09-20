@@ -2,7 +2,7 @@
 
 from settings import *
 import sys
-from crk_drill.models import *
+from hdn_drill.models import *
 from xml.dom import minidom as _dom
 from django.db.models import Q
 from django.utils.encoding import force_unicode
@@ -15,8 +15,8 @@ import codecs
 class Sahka:
 
     def add_wordlist(self,word,t):
-        cgfile="/opt/smi/crk/bin/crk-ped.cg3"  # on victorio
-        #cgfile="../crk/src/crk-ped.cg3" # relative path, for local use
+        cgfile="/opt/smi/hdn/bin/hdn-ped.cg3"  # on victorio
+        #cgfile="../hdn/src/hdn-ped.cg3" # relative path, for local use
 
         wordclass = word.getAttribute("class")
         print wordclass

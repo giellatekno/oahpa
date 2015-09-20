@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from settings import *
-from crk_drill.models import *
+from hdn_drill.models import *
 from xml.dom import minidom as _dom
 from optparse import OptionParser
 from django import db

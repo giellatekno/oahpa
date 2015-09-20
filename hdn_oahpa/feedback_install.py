@@ -126,7 +126,7 @@ various permutations of morphosyntactic features.
 """
 
 from settings import *
-from crk_drill.models import Feedbackmsg,Feedbacktext,Dialect,Comment,Tag
+from hdn_drill.models import Feedbackmsg,Feedbacktext,Dialect,Comment,Tag
 from xml.dom import minidom as _dom
 from django.db.models import Q
 import sys
@@ -135,7 +135,7 @@ import string
 import codecs
 import operator
 
-from crk_drill.models import Form
+from hdn_drill.models import Form
 
 from django.db import transaction
 from itertools import product

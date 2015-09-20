@@ -5,7 +5,7 @@ from xml.dom import minidom as _dom
 from django.utils.encoding import force_unicode
 import sys
 
-from rus_drill.models import *
+from hdn_drill.models import *
 from collections import OrderedDict
 
 
