@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- default grammatical information for elements in question files -->
+
+<definitions>
+  <tags>
+    <element id="SUBJ">
+     <!-- <grammar pos="Pron" tag="Pron+Pers+Person-Number+Nom"/> -->
+      <grammar pos="N" tag="N+Animacy+NumberN"/>
+      <grammar pos="N" tag="N+Animacy+NumberN+Possessive"/>
+    </element>
+    <!-- <element id="HAB">
+      <grammar pos="Pron" tag="Pron+Pers+Person-Number+Loc"/>
+      <grammar pos="Interr" tag="Pron+Interr+NumberN+Loc"/> 
+      <grammar pos="N" tag="N+NumberN+Loc"/>
+      <grammar pos="N" tag="N+Prop+NumberN+Loc"/> 
+    </element> -->
+
+	<!--
+		see pron_sme.xml:
+		guhtet	guhtet+Pron+Indef+Pl+Nom
+		nuppit	nubbi+Pron+Indef+Pl+Nom
+	-->
+    <!--<element id="RECPL">
+      <grammar pos="Pron" tag="Pron+Recipr+Pl+Nom" />
+    </element> -->
+
+	<!--
+		see pron_sme.xml:
+		goabbat	goabbat+Pron+Indef+Du+Nom
+		nubbi	nubbi+Pron+Indef+Du+Nom
+	-->
+    <!--<element id="RECDU">
+      <grammar pos="Pron" tag="Pron+Recipr+Du+Nom" />
+    </element> -->
+    <element id="MAINV">
+      <grammar pos="V" tag="V+Transitivity-Animacy+Mood+Tense+Person-Number"/>
+    </element>  
+    <element id="MAINVOBJ">
+      <grammar pos="V" tag="V+Transitivity-Animacy+Mood+Tense+Person-Number+Object"/>
+    </element>  
+    <element id="N-LOC">
+      <grammar pos="N" tag="N+Animacy+Loc"/>
+    </element>
+    <element id="N-PX">
+      <grammar pos="N" tag="N+Animacy+Number+Possessive"/>
+    </element>
+    <element id="OBJ">
+      <grammar pos="N" tag="N+Animacy+NumberN"/>
+    </element>
+    <!-- <element id="N-ILL">
+      <grammar pos="N" tag="N+NumberN+Ill"/>
+    </element> 
+    <element id="N-COM">
+      <grammar pos="N" tag="N+NumberN+Com"/>
+    </element> 
+    <element id="N-GEN">
+      <grammar pos="N" tag="N+NumberN+Gen"/>
+    </element>
+    <element id="NEG">
+      <id>ii</id>
+    </element> -->
+  </tags>
+  <!-- These tags replace information from question files -->
+  <!-- <partitions>
+    <part name="ANSWERSUBJECT">
+      <select>
+	<element id="SUBJ">
+	  <grammar pos="N" tag="N+NumberN+Nom"/>
+	  <grammar pos="Pron" tag="Pron+Pers+Sg3+Nom"/>
+	  <grammar pos="Pron" tag="Pron+Pers+Pl3+Nom"/>
+	  <grammar pos="Pron" tag="Pron+Pers+Du3+Nom"/>
+	</element>
+      </select>
+      <select>
+	<element id="SUBJ" optional="1">
+          <grammar pos="Pron" tag="Pron+Pers+Sg1+Nom"/>
+          <grammar pos="Pron" tag="Pron+Pers+Sg2+Nom"/>
+          <grammar pos="Pron" tag="Pron+Pers+Pl1+Nom"/>
+          <grammar pos="Pron" tag="Pron+Pers+Pl2+Nom"/>
+          <grammar pos="Pron" tag="Pron+Pers+Du1+Nom"/>
+          <grammar pos="Pron" tag="Pron+Pers+Du2+Nom"/>
+	</element>
+      </select>
+    </part>
+  </partitions> -->
+</definitions>
