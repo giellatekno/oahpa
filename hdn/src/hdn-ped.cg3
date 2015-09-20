@@ -86,51 +86,6 @@ REMOVE CL-VERB IF (0 NOT-CL-VERB) ;
 
 
 
-# Syntactic disambiguation
-# ========================
-
-
-# Syntax tags
-
-LIST @<SUBJ = @<SUBJ ;
-LIST @SUBJ> = @SUBJ> ;
-LIST @<tSUBJ = @<tSUBJ ;
-LIST @tSUBJ> = @tSUBJ> ;
-LIST @-FSUBJ> = @-FSUBJ> ;
-LIST @<OBJ = @<OBJ ;
-LIST @<IOBJ = @<IOBJ ;
-LIST @OBJ> = @OBJ> ;
-LIST @IOBJ> = @IOBJ> ;
-LIST @>N = @>N ;
-LIST @N< = @N< ;
-LIST @>A = @>A ;
-LIST @A< = @A< ;
-LIST @IM = @IM ;
-LIST @<SPRED = @<SPRED ;
-LIST @SPRED> = @SPRED> ;
-LIST @<OPRED = @<OPRED ;
-LIST @OPRED> = @OPRED> ;
-LIST @+FAUXV = @+FAUXV ;
-LIST @-FAUXV = @-FAUXV ;
-LIST @+FMAINV = @+FMAINV ;
-LIST @-FMAINV = @-FMAINV ;
-LIST @-F<ADVL = @-F<ADVL ;
-LIST @<ADVL = @<ADVL ;
-LIST @ADVL> = @ADVL> ;
-LIST @ADVL = @ADVL ;
-LIST @P< = @P< ;
-LIST @CNP = @CNP ;
-LIST @CVP = @CVP ;
-LIST @>CS = @>CS ;
-LIST @APP = @APP ;
-LIST @HNOUN = @HNOUN ;
-LIST @Pron< = @Pron< ;
-LIST @X = @X ;
-
-LIST SYNTAG = (@CNP) (@CVP) (@<SUBJ) (@SUBJ>) (@-FSUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (@>A) (@A<) (@>N)  (@N<)  (@<SPRED) (@SPRED>) (@<OPRED) (@OPRED>) (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@ADVL) (@-F<ADVL) (@<ADVL) (@ADVL>) (@P<) (@APP) (@HNOUN) ;
-
-SET SUBJ =  (@<SUBJ) OR (@SUBJ>) OR (@-FSUBJ>) ;
-
 
 ########################                  #########################
 ########################                  #########################
