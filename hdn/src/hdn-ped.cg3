@@ -1,0 +1,197 @@
+
+
+# ===================== #
+# Northern Haida disambiguator #
+# ===================== #
+
+
+# ========== #
+# Delimiters #
+# ========== #
+
+
+DELIMITERS = "<.>" "<!>" "<?>" "<¶>";
+
+
+
+# ============= #
+# Tags and sets #
+# ============= #
+
+
+# ========
+   SETS
+# ========
+
+LIST BOS = (>>>) (<s>); 
+LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
+
+LIST V = V ;	 
+LIST N = N ;	     
+LIST NEGATIVE =	NEGATIVE ; 
+LIST 3rd_PERSON_PLURAL = 3rd_PERSON_PLURAL ;	 
+LIST INTERROGATIVE = INTERROGATIVE ;	 
+LIST FUTURE = FUTURE ;	 
+LIST PAST = PAST ;	 
+LIST PRESENT = PRESENT ;	 
+LIST HABITUAL = HABITUAL ;	 
+LIST BIASED	= BIASED ;
+LIST CERTAIN = CERTAIN ;	 
+LIST SIMPLE	= SIMPLE ; 
+LIST RELATIVE = RELATIVE ;	 
+LIST NON_FACTIVE = NON_FACTIVE ;	 
+LIST IMMEDIATE = IMMEDIATE ;	 
+LIST VERYNEAR = VERYNEAR ;	 
+LIST REFLEXIVE = REFLEXIVE ;	 
+LIST NEAR = NEAR ; 
+LIST INDIRECT = INDIRECT ;	 
+LIST DIRECT	= DIRECT ; 
+LIST SHOULD_KEEP_ON_VERBING_FOR_A_WHILE = SHOULD_KEEP_ON_VERBING_FOR_A_WHILE ;	 
+LIST SHORT = SHORT ; 
+LIST RESIGNED_OBLIGATION = RESIGNED_OBLIGATION ;	 
+LIST LONG = LONG ;	 
+LIST INTENSIVE = INTENSIVE ; 
+LIST IMPERATIVE = IMPERATIVE ;	 
+LIST EVIDENTIAL	= EVIDENTIAL ; 
+LIST COUNTERFACTUAL = COUNTERFACTUAL ;	 
+LIST SINGULAR = SINGULAR ;	 
+LIST PLURAL = PLURAL ; 
+LIST Def = Def ;	 
+LIST Indef = Indef ; 
+LIST Rfx = Rfx ;
+
+LIST CHA = ("cha«.*"r) ; # cha«dáal
+LIST DLA = ("dla«.*"r) ; # dla«dáal
+LIST CL/cha = CL/cha ;
+LIST CL/dla = CL/dla ;
+LIST CLtypes = CL/Shape CL/Manner CL/Human CL/Human_Male CL/Human_Female CL/Descriptive CL/Sound CL/Color ; # 
+
+SET CL-VERB = V + CLtypes ;
+SET NOT-CL-VERB = V - CL-VERB ;
+
+########################                  #########################
+########################                  #########################
+                        # disambiguation #
+########################                  #########################
+########################                  #########################
+
+BEFORE-SECTIONS
+
+SECTION
+
+REMOVE CL-VERB IF (0 NOT-CL-VERB) ;
+
+
+
+
+
+
+# Syntactic disambiguation
+# ========================
+
+
+# Syntax tags
+
+LIST @<SUBJ = @<SUBJ ;
+LIST @SUBJ> = @SUBJ> ;
+LIST @<tSUBJ = @<tSUBJ ;
+LIST @tSUBJ> = @tSUBJ> ;
+LIST @-FSUBJ> = @-FSUBJ> ;
+LIST @<OBJ = @<OBJ ;
+LIST @<IOBJ = @<IOBJ ;
+LIST @OBJ> = @OBJ> ;
+LIST @IOBJ> = @IOBJ> ;
+LIST @>N = @>N ;
+LIST @N< = @N< ;
+LIST @>A = @>A ;
+LIST @A< = @A< ;
+LIST @IM = @IM ;
+LIST @<SPRED = @<SPRED ;
+LIST @SPRED> = @SPRED> ;
+LIST @<OPRED = @<OPRED ;
+LIST @OPRED> = @OPRED> ;
+LIST @+FAUXV = @+FAUXV ;
+LIST @-FAUXV = @-FAUXV ;
+LIST @+FMAINV = @+FMAINV ;
+LIST @-FMAINV = @-FMAINV ;
+LIST @-F<ADVL = @-F<ADVL ;
+LIST @<ADVL = @<ADVL ;
+LIST @ADVL> = @ADVL> ;
+LIST @ADVL = @ADVL ;
+LIST @P< = @P< ;
+LIST @CNP = @CNP ;
+LIST @CVP = @CVP ;
+LIST @>CS = @>CS ;
+LIST @APP = @APP ;
+LIST @HNOUN = @HNOUN ;
+LIST @Pron< = @Pron< ;
+LIST @X = @X ;
+
+LIST SYNTAG = (@CNP) (@CVP) (@<SUBJ) (@SUBJ>) (@-FSUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (@>A) (@A<) (@>N)  (@N<)  (@<SPRED) (@SPRED>) (@<OPRED) (@OPRED>) (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@ADVL) (@-F<ADVL) (@<ADVL) (@ADVL>) (@P<) (@APP) (@HNOUN) ;
+
+SET SUBJ =  (@<SUBJ) OR (@SUBJ>) OR (@-FSUBJ>) ;
+
+
+########################                  #########################
+########################                  #########################
+                        # vasta tasks #
+########################                  #########################
+########################                  #########################
+
+SECTION
+
+MAP (@inc_CL) TARGET CL-VERB IF (NOT 0 CHA LINK *0 N + CL/cha) ;
+MAP (@inc_CL) TARGET CL-VERB IF (NOT 0 DLA LINK *0 N + CL/dla) ;
+
+# for testing:
+# chíin chagáng
+# gwáahl dlagáng
+
+
+
+AFTER-SECTIONS
+
+       #=====#
+      END #
+        #=====#
+
+
+#hdn$ echo 'chíin chagáng' | preprocess |uhdn |lookup2cg | vislcg3 -g src/hdn-ped.cg3 
+#should give:
+#"<chíin>"
+#"chíin" CL/Human CL/dla N Indef
+#"<chagáng>"
+#"cha«gáng" V CL/Shape INTERROGATIVE SIMPLE PRESENT @inc_CL
+#"cha«gáng" V CL/Shape SINGULAR IMPERATIVE @inc_CL
+
+#hdn$ echo 'gwáahl dlagáng' | preprocess |uhdn |lookup2cg | src/hdn-ped.cg3 
+#should give:
+#"<gwáahl>"
+#"gwáahl" CL/Shape CL/cha N Indef
+#"<dlagáng>"
+#"dlagáng" V SINGULAR IMPERATIVE
+#"dlagáng" V INTERROGATIVE SIMPLE PRESENT                     
+#"dla«gáng" V CL/Shape INTERROGATIVE SIMPLE PRESENT @inc_CL
+#"dla«gáng" V CL/Shape SINGULAR IMPERATIVE @inc_CL
+
+#hdn$ echo 'gwáahl chagáng' | preprocess |uhdn |lookup2cg | src/hdn-ped.cg3 
+
+#should give:
+#"<gwáahl>"
+#"gwáahl" CL/Shape CL/cha N Indef
+#"<chagáng>"
+#"cha«gáng" V CL/Shape INTERROGATIVE SIMPLE PRESENT
+#"cha«gáng" V CL/Shape SINGULAR IMPERATIVE
+
+
+
+
+
+
+
+
+
+
+
+
+
