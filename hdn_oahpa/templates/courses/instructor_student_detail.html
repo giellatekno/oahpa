@@ -1,4 +1,4 @@
-{% extends 'crk_oahpa.html' %}
+{% extends 'hdn_oahpa.html' %}
 {% load i18n %}
 {% load cache %}
 {% get_current_language as LANGUAGE_CODE %}
@@ -16,7 +16,7 @@ TODO: internationalization strings
 	{# Add blocktrans and trans tags #}
 	<div id="courses">
 		<ul id="subnav">
-			<li><a href="{% url crk_oahpa.courses.urls.logout %}">Log out</a></li>
+			<li><a href="{% url hdn_oahpa.courses.urls.logout %}">Log out</a></li>
 		</ul>
 		<h2>{{ student }}</h2>
 

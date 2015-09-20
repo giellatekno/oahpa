@@ -2,18 +2,18 @@
 
 P="python2.7"
 
-LANGDIR="crk"
+LANGDIR="hdn"
 DATA=$GTHOME/ped/$LANGDIR
 DPS="$DATA/src"
 INC="$DATA/inc"
 META="$DATA/meta"
-DPN="$DATA/nobcrk"
-DPF="$DATA/fracrk"
-DPW="$DATA/engcrk"
-DPE="$DATA/estcrk"
-DPL="$DATA/latcrk"
-DPR="$DATA/ruscrk"
-DPD="$DATA/smecrk"
+DPN="$DATA/nobhdn"
+DPF="$DATA/frahdn"
+DPW="$DATA/enghdn"
+DPE="$DATA/esthdn"
+DPL="$DATA/lathdn"
+DPR="$DATA/rushdn"
+DPD="$DATA/smehdn"
 #WORDS=$PED_PATH/words/dicts/smenob/src
 
 echo "==================================================="
@@ -28,26 +28,26 @@ echo "==================================================="
 
 
 ##
-##  crk->X
+##  hdn->X
 ##
 
  echo "==================================================="
- echo "feeding db with $DPS/N_crk.xml"
- $P install.py --file $DPS/N_crk.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
+ echo "feeding db with $DPS/N_hdn.xml"
+ $P install.py --file $DPS/N_hdn.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
 
  echo "==================================================="
- echo "feeding db with $DPS/Ipc_crk.xml"
- $P install.py --file $DPS/Ipc_crk.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
+ echo "feeding db with $DPS/Ipc_hdn.xml"
+ $P install.py --file $DPS/Ipc_hdn.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
 
  echo "==================================================="
- echo "feeding db with $DPS/Pron_crk.xml"
- $P install.py --file $DPS/Pron_crk.xml --tagfile $META/tags.txt --paradigmfile $META/pron_paradigms.txt 2>>error.log
+ echo "feeding db with $DPS/Pron_hdn.xml"
+ $P install.py --file $DPS/Pron_hdn.xml --tagfile $META/tags.txt --paradigmfile $META/pron_paradigms.txt 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
@@ -60,30 +60,30 @@ echo "==================================================="
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPS/prop_crknob.xml"
-# $P install.py --file $DPS/prop_crknob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
+# echo "feeding db with $DPS/prop_hdnnob.xml"
+# $P install.py --file $DPS/prop_hdnnob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 
 # echo "==================================================="
-# echo "feeding db with $DPS/num_crknob.xml"
-# $P install.py --file $DPS/num_crknob.xml --tagfile $META/tags.txt --paradigmfile $META/num_paradigms.txt 2>>error.log
+# echo "feeding db with $DPS/num_hdnnob.xml"
+# $P install.py --file $DPS/num_hdnnob.xml --tagfile $META/tags.txt --paradigmfile $META/num_paradigms.txt 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
  #echo "==================================================="
- #echo "feeding db with $DPS/A_crk2X.xml"
- #$P install.py --file $DPS/A_crk2X.xml --tagfile $META/tags.txt --paradigmfile $META/A_paradigms.txt 2>>error.log
+ #echo "feeding db with $DPS/A_hdn2X.xml"
+ #$P install.py --file $DPS/A_hdn2X.xml --tagfile $META/tags.txt --paradigmfile $META/A_paradigms.txt 2>>error.log
  #echo " "
  #echo "done"
  #echo "==================================================="
 
  echo "==================================================="
- echo "feeding db with $DPS/V_crk.xml"
- $P install.py --file $DPS/V_crk.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt 2>>error.log
+ echo "feeding db with $DPS/V_hdn.xml"
+ $P install.py --file $DPS/V_hdn.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
@@ -98,207 +98,207 @@ echo "==================================================="
 
 
 # echo "==================================================="
-# echo "feeding db with $DPS/adv_crknob.xml"
-# $P install.py --file $DPS/adv_crknob.xml 2>>error.log
+# echo "feeding db with $DPS/adv_hdnnob.xml"
+# $P install.py --file $DPS/adv_hdnnob.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPS/multiword_crknob.xml"
-# $P install.py --file $DPS/multiword_crknob.xml 2>>error.log
+# echo "feeding db with $DPS/multiword_hdnnob.xml"
+# $P install.py --file $DPS/multiword_hdnnob.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # ##
-# ## nobcrk
+# ## nobhdn
 # ##
 
 #echo "==================================================="
-#echo "feeding db with $DPN/N_nobcrk.xml"
-#$P install.py --file $DPN/N_nobcrk.xml 2>>error.log
+#echo "feeding db with $DPN/N_nobhdn.xml"
+#$P install.py --file $DPN/N_nobhdn.xml 2>>error.log
 #echo " "
 #echo "done"
 #echo "==================================================="
 
 #echo "==================================================="
-#echo "feeding db with $DPN/num_nobcrk.xml"
-#$P install.py --file $DPN/num_nobcrk.xml 2>>error.log
+#echo "feeding db with $DPN/num_nobhdn.xml"
+#$P install.py --file $DPN/num_nobhdn.xml 2>>error.log
 #echo " "
 #echo "done"
 #echo "==================================================="
 
  #echo "==================================================="
- #echo "feeding db with $DPN/V_nobcrk.xml"
- #$P install.py --file $DPN/V_nobcrk.xml 2>>error.log
+ #echo "feeding db with $DPN/V_nobhdn.xml"
+ #$P install.py --file $DPN/V_nobhdn.xml 2>>error.log
  #echo " "
  #echo "done"
  #echo "==================================================="
  
  #echo "==================================================="
- #echo "feeding db with $DPN/A_nobcrk.xml"
- #$P install.py --file $DPN/A_nobcrk.xml 2>>error.log
+ #echo "feeding db with $DPN/A_nobhdn.xml"
+ #$P install.py --file $DPN/A_nobhdn.xml 2>>error.log
  #echo " "
  #echo "done"
  #echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPN/adv_nobcrk.xml"
-# $P install.py --file $DPN/adv_nobcrk.xml 2>>error.log
+# echo "feeding db with $DPN/adv_nobhdn.xml"
+# $P install.py --file $DPN/adv_nobhdn.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPN/mwe_nobcrk.xml"
-# $P install.py --file $DPN/mwe_nobcrk.xml 2>>error.log
+# echo "feeding db with $DPN/mwe_nobhdn.xml"
+# $P install.py --file $DPN/mwe_nobhdn.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPN/prop_nobcrk.xml"
-# $P install.py --file $DPN/prop_nobcrk.xml 2>>error.log
+# echo "feeding db with $DPN/prop_nobhdn.xml"
+# $P install.py --file $DPN/prop_nobhdn.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # ##
-# ## fracrk
+# ## frahdn
 # ##
 
 
 echo "==================================================="
-echo "feeding db with $DPF/N_fracrk.xml"
-$P install.py --file $DPF/N_fracrk.xml 2>>error.log
+echo "feeding db with $DPF/N_frahdn.xml"
+$P install.py --file $DPF/N_frahdn.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPF/Ipc_fracrk.xml"
-$P install.py --file $DPF/Ipc_fracrk.xml 2>>error.log
+echo "feeding db with $DPF/Ipc_frahdn.xml"
+$P install.py --file $DPF/Ipc_frahdn.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPF/num_fracrk.xml"
-# $P install.py --file $DPF/num_fracrk.xml 2>>error.log
+# echo "feeding db with $DPF/num_frahdn.xml"
+# $P install.py --file $DPF/num_frahdn.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPF/V_fracrk.xml"
-$P install.py --file $DPF/V_fracrk.xml 2>>error.log
+echo "feeding db with $DPF/V_frahdn.xml"
+$P install.py --file $DPF/V_frahdn.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 #echo "==================================================="
-#echo "feeding db with $DPF/A_fracrk.xml"
-#$P install.py --file $DPF/A_fracrk.xml 2>>error.log
+#echo "feeding db with $DPF/A_frahdn.xml"
+#$P install.py --file $DPF/A_frahdn.xml 2>>error.log
 #echo " "
 #echo "done"
 #echo "==================================================="
 
 
 # echo "==================================================="
-# echo "feeding db with $DPF/adv_fracrk.xml"
-# $P install.py --file $DPF/adv_fracrk.xml 2>>error.log
+# echo "feeding db with $DPF/adv_frahdn.xml"
+# $P install.py --file $DPF/adv_frahdn.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPF/mwe_fracrk.xml"
-# $P install.py --file $DPF/mwe_fracrk.xml 2>>error.log
+# echo "feeding db with $DPF/mwe_frahdn.xml"
+# $P install.py --file $DPF/mwe_frahdn.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPF/prop_fracrk.xml"
-# $P install.py --file $DPF/prop_fracrk.xml 2>>error.log
+# echo "feeding db with $DPF/prop_frahdn.xml"
+# $P install.py --file $DPF/prop_frahdn.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 ##
-## engcrk
+## enghdn
 ##
 
 
 echo "==================================================="
-echo "feeding db with $DPW/N_engcrk.xml"
-$P install.py --file $DPW/N_engcrk.xml
+echo "feeding db with $DPW/N_enghdn.xml"
+$P install.py --file $DPW/N_enghdn.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPW/Ipc_engcrk.xml"
-$P install.py --file $DPW/Ipc_engcrk.xml
+echo "feeding db with $DPW/Ipc_enghdn.xml"
+$P install.py --file $DPW/Ipc_enghdn.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 
 echo "==================================================="
-echo "feeding db with $DPW/V_engcrk.xml"
-$P install.py --file $DPW/V_engcrk.xml
+echo "feeding db with $DPW/V_enghdn.xml"
+$P install.py --file $DPW/V_enghdn.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 #echo "==================================================="
-#echo "feeding db with $DPW/A_engcrk.xml"
-#$P install.py --file $DPW/A_engcrk.xml
+#echo "feeding db with $DPW/A_enghdn.xml"
+#$P install.py --file $DPW/A_enghdn.xml
 #echo " "
 #echo "done"
 #echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPW/adv_swecrk.xml"
-# $P install.py --file $DPW/adv_swecrk.xml
+# echo "feeding db with $DPW/adv_swehdn.xml"
+# $P install.py --file $DPW/adv_swehdn.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPW/multiword_swecrk.xml"
-# $P install.py --file $DPW/multiword_swecrk.xml
+# echo "feeding db with $DPW/multiword_swehdn.xml"
+# $P install.py --file $DPW/multiword_swehdn.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPW/prop_swecrk.xml"
-# $P install.py --file $DPW/prop_swecrk.xml
+# echo "feeding db with $DPW/prop_swehdn.xml"
+# $P install.py --file $DPW/prop_swehdn.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 
 # echo "==================================================="
-# echo "feeding db with $DPS/grammaticalwords_crknob.xml"
-# $P install.py --file $DPS/grammaticalwords_crknob.xml 2>>error.log
+# echo "feeding db with $DPS/grammaticalwords_hdnnob.xml"
+# $P install.py --file $DPS/grammaticalwords_hdnnob.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPS/pron_crk.xml"
-# $P install.py --file $DPS/pron_crk.xml --tagfile $META/tags.txt  2>>error.log
+# echo "feeding db with $DPS/pron_hdn.xml"
+# $P install.py --file $DPS/pron_hdn.xml --tagfile $META/tags.txt  2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPS/derverb_crk.xml"
-# $P install.py --file $DPS/derverb_crk.xml --tagfile $META/tags.txt --append  2>>error.log # TODO: test append with this
+# echo "feeding db with $DPS/derverb_hdn.xml"
+# $P install.py --file $DPS/derverb_hdn.xml --tagfile $META/tags.txt --append  2>>error.log # TODO: test append with this
 # echo " "
 # echo "done"
 # echo "==================================================="
@@ -320,7 +320,7 @@ echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with messages to feedback"
-# $P install.py --messagefile $META/messages.crk.xml 2>>error.log
+# $P install.py --messagefile $META/messages.hdn.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
@@ -460,7 +460,7 @@ echo "==================================================="
 
 # echo "==================================================="
 # echo "Installing feedback messages for vasta - in North Sámi"
-# $P install.py --messagefile $META/messages_vasta.crk.xml 2>>error.log
+# $P install.py --messagefile $META/messages_vasta.hdn.xml 2>>error.log
 # echo " "
 # echo "done"
 # echo "==================================================="
@@ -530,7 +530,7 @@ $P manage.py mergetags
 
 echo "==================================================="
 echo "adding feedback to nouns"
-$P install.py -f $DPS/N_crk.xml --feedbackfile $META/feedback_nouns.xml
+$P install.py -f $DPS/N_hdn.xml --feedbackfile $META/feedback_nouns.xml
 echo " "
 echo "done"
 echo "==================================================="
@@ -538,21 +538,21 @@ echo "==================================================="
 
 # echo "==================================================="
 # echo "adding feedback to verbs"
-# $P install.py -f $DPS/v_crknob.xml --feedbackfile $META/feedback_verbs.xml
+# $P install.py -f $DPS/v_hdnnob.xml --feedbackfile $META/feedback_verbs.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
 # echo "adding feedback to adjectives"
-# $P install.py -f $DPS/a_crknob.xml --feedbackfile $META/feedback_adjectives.xml
+# $P install.py -f $DPS/a_hdnnob.xml --feedbackfile $META/feedback_adjectives.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
 
 # echo "==================================================="
 # echo "adding feedback to numerals"
-# $P install.py -f $DPS/num_crknob.xml --feedbackfile $META/feedback_numerals.xml
+# $P install.py -f $DPS/num_hdnnob.xml --feedbackfile $META/feedback_numerals.xml
 # echo " "
 # echo "done"
 # echo "==================================================="

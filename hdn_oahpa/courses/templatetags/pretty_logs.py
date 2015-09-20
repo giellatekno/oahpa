@@ -8,7 +8,7 @@ FILTER_EXCEPTIONS = dict([
 	(u'Contextual Morfa', u'Morfa C'),
 ])
 
-from crk_drill.forms import ALL_CHOICES
+from hdn_drill.forms import ALL_CHOICES
 
 key_to_string = {}
 

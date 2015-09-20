@@ -1,4 +1,4 @@
-from crk_oahpa.settings import OLD_NEW_ISO_CODES as ISO, LANGUAGE_CODE as SCODE
+from hdn_oahpa.settings import OLD_NEW_ISO_CODES as ISO, LANGUAGE_CODE as SCODE
 
 def switch_language_code(CODE):
 	"""
