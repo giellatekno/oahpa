@@ -4,13 +4,13 @@ from django.db.models import Q
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
-import crk_oahpa.settings as settings
+import hdn_oahpa.settings as settings
 
-from crk_oahpa.conf.tools import switch_language_code
+from hdn_oahpa.conf.tools import switch_language_code
 
 from models import *
 #from game import *
-#from crk_oahpa.crk_drill.game import relax
+#from hdn_oahpa.hdn_drill.game import relax
 import datetime
 import socket
 import sys, os
@@ -413,14 +413,14 @@ VASTAS_NR_OF_TASKWORDS = (
 
 
 TRANS_CHOICES = (
-	('crkeng', _('Cree to English')),
-	('engcrk', _('English to Cree')),
-	('crkfra', _('Cree to French')),
-	('fracrk', _('French to Cree')),
+	('hdneng', _('Cree to English')),
+	('enghdn', _('English to Cree')),
+	('hdnfra', _('Cree to French')),
+	('frahdn', _('French to Cree')),
 )
 
 NUMLANGUAGE_CHOICES = (
-	('crk', _('Cree')),
+	('hdn', _('Cree')),
 )
 
 SEMTYPE_CHOICES = (
@@ -567,8 +567,8 @@ GAME_FILTER_DEFINITIONS = {
 
 import re
 
-from crk_oahpa.settings import INFINITIVE_SUBTRACT as infinitives_sub
-from crk_oahpa.settings import INFINITIVE_ADD as infinitives_add
+from hdn_oahpa.settings import INFINITIVE_SUBTRACT as infinitives_sub
+from hdn_oahpa.settings import INFINITIVE_ADD as infinitives_add
 
 def relax(strict):
 	"""Returns a list of relaxed possibilities, making changes by relax_pairs.
@@ -904,7 +904,7 @@ class OahpaSettings(forms.Form):
 
 	def set_default_data(self):
 		self.default_data = {
-					'language' : 'crk',  # sme in univ_oahpa
+					'language' : 'hdn',  # sme in univ_oahpa
 					# 'syll' : ['2syll'], # syllabicity not relevant, change this
 					# 'bisyllabic': 'on',
 					# 'trisyllabic': False,
@@ -1003,7 +1003,7 @@ class OahpaQuestion(forms.Form):
 		forms = []
 		relaxings = []
 		if hasattr(self, 'translang'): # commented out these two lines, because otherwise relax was not working in Morfa
-			if self.translang == 'crk': # caused a problem in Numra, as NumQuestion does not have the attribute translang 
+			if self.translang == 'hdn': # caused a problem in Numra, as NumQuestion does not have the attribute translang 
 				# Relax spellings.
 			
 				accepted_answers = [force_unicode(item) for item in accepted_answers]
@@ -1053,7 +1053,7 @@ class LeksaSettings(OahpaSettings):
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
 	
-	default_data = {'gametype' : 'leksa', 'language' : 'crk', 'dialogue' : 'GG',
+	default_data = {'gametype' : 'leksa', 'language' : 'hdn', 'dialogue' : 'GG',
 			#'syll' : [],
 			#'bisyllabic': False,
 			#'trisyllabic': False,
@@ -1249,7 +1249,7 @@ class MorfaQuestion(OahpaQuestion):
 
 		lemma_widget = forms.HiddenInput(attrs={'value': word.id})
 		tag_widget = forms.HiddenInput(attrs={'value': tag.id})
-		self.translang = 'crk'
+		self.translang = 'hdn'
 		self.gametype = 'morfa'
 		kwargs['correct_val'] = correct_val
 		super(MorfaQuestion, self).__init__(*args, **kwargs)
@@ -1307,7 +1307,7 @@ class MorfaQuestion(OahpaQuestion):
 			self.case = tag.case
 
 		self.tag = tag.string
-		self.animacy = tag.animacy # added for crk, in order to display animate / inanimate nouns in different colors
+		self.animacy = tag.animacy # added for hdn, in order to display animate / inanimate nouns in different colors
 
 		if tag.pos == "V":
 			# TODO: figure out word object here.
@@ -1416,7 +1416,7 @@ class NumSettings(OahpaSettings):
 	numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
 	#numlanguage = forms.ChoiceField(initial='sjd', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
 	# TODO: remove mandatory need to set default data, should be done through 'initial' field setting.
-	default_data = {'language' : 'crk', 'numlanguage' : 'crk', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
+	default_data = {'language' : 'hdn', 'numlanguage' : 'hdn', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
 
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1475,7 +1475,7 @@ class NumQuestion(OahpaQuestion):
 		wforms = []
 		self.relaxings = []
                 self.gametype = gametype
-                self.translang = 'crk'
+                self.translang = 'hdn'
 
 		# Initialize variables
 		if gametype == "string":
@@ -1524,7 +1524,7 @@ class NumQuestion(OahpaQuestion):
 class KlokkaSettings(NumSettings):
 	numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES_PL, widget=forms.RadioSelect)
 	gametype = forms.ChoiceField(initial='kl1', choices=KLOKKA_CHOICES, widget=forms.RadioSelect)
-	default_data = {'language' : 'crk', 'numlanguage' : 'crk', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'string'}
+	default_data = {'language' : 'hdn', 'numlanguage' : 'hdn', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'string'}
 
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1673,7 +1673,7 @@ class KlokkaQuestion(NumQuestion):
 class DatoSettings(KlokkaSettings):
 	gametype = None # Disable gametype (easy, medium, hard)
 
-	default_data = {'language' : 'crk', 'numlanguage' : 'crk', 'numgame': 'string'}
+	default_data = {'language' : 'hdn', 'numlanguage' : 'hdn', 'numgame': 'string'}
 
 
 class DatoQuestion(KlokkaQuestion):
@@ -1695,7 +1695,7 @@ class DatoQuestion(KlokkaQuestion):
 class MoneySettings(KlokkaSettings):
 	gametype = None # Disable gametype (easy, medium, hard)
 
-	default_data = {'language' : 'crk', 'numlanguage' : 'crk', 'numgame': 'string'}
+	default_data = {'language' : 'hdn', 'numlanguage' : 'hdn', 'numgame': 'string'}
 
 
 class MoneyQuestion(KlokkaQuestion):
@@ -1724,7 +1724,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 	"""
 
 	select_words = select_words
-	qtype_verbs = set(['MAINV', 'V-PRS', 'V-PRT', 'V-COND','V-IMPRT', 'TEST']) # added MAINV for crk
+	qtype_verbs = set(['MAINV', 'V-PRS', 'V-PRT', 'V-COND','V-IMPRT', 'TEST']) # added MAINV for hdn
 
 	def generate_fields(self,answer_size, maxlength):
 		self.fields['answer'] = forms.CharField(max_length = maxlength, \
@@ -1738,7 +1738,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 		self.init_variables("", userans_val, [])
 		self.lemma = ""
 		self.dialect = dialect
-		self.translang = 'crk'
+		self.translang = 'hdn'
 		self.gametype = 'morfac' # not sure if this is ok
 
 		qtype=question.qtype
@@ -1981,7 +1981,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    #logfile = open('/home/crk_oahpa/crk_oahpa/crk_drill/vastaF_log.txt','w')
+    #logfile = open('/home/hdn_oahpa/hdn_oahpa/hdn_drill/vastaF_log.txt','w')
 
     host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
@@ -2137,7 +2137,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     #if language == "no" : language = "eng"
     #if language == "fi" : language = "fin"
     #if language == "en" : language = "eng"
-    if not language in ["nob","sme","fin","eng","swe","crk","fra"]: language="eng"
+    if not language in ["nob","sme","fin","eng","swe","hdn","fra"]: language="eng"
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():
@@ -2453,7 +2453,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    #logfile = open('/home/crk_oahpa/crk_oahpa/crk_drill/vastas_log.txt', 'w')
+    #logfile = open('/home/hdn_oahpa/hdn_oahpa/hdn_drill/vastas_log.txt', 'w')
     host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024

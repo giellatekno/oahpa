@@ -70,7 +70,7 @@ class BulkManager(models.Manager):
 			postgres = False
 			ignore = 'IGNORE'
 
-		sql = "INSERT %s INTO %s (%s) VALUES %s" % (ignore, "crk_drill_form_feedback", flds, arg_string,)
+		sql = "INSERT %s INTO %s (%s) VALUES %s" % (ignore, "hdn_drill_form_feedback", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
 		transaction.commit()
@@ -84,7 +84,7 @@ class BulkManager(models.Manager):
 		qn = connection.ops.quote_name
 		cursor = connection.cursor()
 
-		table = "crk_drill_form_feedback"
+		table = "hdn_drill_form_feedback"
 		fld = qn('form_id')
 		args = ', '.join([str(f) for f in form_ids])
 
@@ -108,7 +108,7 @@ class BulkManager(models.Manager):
 		values_list = [ r[f] for r in vals for f in fields]
 
 		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(vals))
-		sql = "INSERT INTO %s (%s) VALUES %s" % ("crk_drill_feedback_messages", flds, arg_string,)
+		sql = "INSERT INTO %s (%s) VALUES %s" % ("hdn_drill_feedback_messages", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
 		transaction.commit()
@@ -127,7 +127,7 @@ class BulkManager(models.Manager):
 		values_list = [ r[f] for r in vals for f in fields]
 
 		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(vals))
-		sql = "INSERT INTO %s (%s) VALUES %s" % ("crk_drill_feedback_dialects", flds, arg_string,)
+		sql = "INSERT INTO %s (%s) VALUES %s" % ("hdn_drill_feedback_dialects", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
 		transaction.commit()
@@ -356,9 +356,9 @@ class Dialect(models.Model):
 		return smart_unicode(S)
 
 def Translations2(target_lang):
-	if target_lang in ["nob", "crk", "eng", "dan", "no"]:
+	if target_lang in ["nob", "hdn", "eng", "dan", "no"]:
 		if target_lang == "nob" or "no":	related = 'translations2nob'
-		if target_lang == "crk":	related = 'translations2crk'
+		if target_lang == "hdn":	related = 'translations2hdn'
 		if target_lang == "eng":	related = 'translations2eng'
 		if target_lang == "fin":	related = 'translations2fin'
 		return related
@@ -460,7 +460,7 @@ class Word(models.Model):
 		>>> a.wordnob_set.create(lemma='bbq')
 	"""
 	wordid = models.CharField(max_length=200, db_index=True)
-	language = models.CharField(max_length=5, default='crk', db_index=True)
+	language = models.CharField(max_length=5, default='hdn', db_index=True)
 	lemma = models.CharField(max_length=200, db_index=True)
 	lemma_stressed = models.CharField(max_length=200, db_index=True)  # added by HU
 	presentationform = models.CharField(max_length=5) # PI: what's this?
@@ -535,7 +535,7 @@ class Word(models.Model):
 
 		self.translations2nob = partial(self.translations2, target_lang='nob')()
 		self.translations2eng = partial(self.translations2, target_lang='eng')()
-		self.translations2crk = partial(self.translations2, target_lang='crk')()
+		self.translations2hdn = partial(self.translations2, target_lang='hdn')()
 		self.translations2fin = partial(self.translations2, target_lang='fin')()
 
 	def create(self, *args, **kwargs):
@@ -584,8 +584,8 @@ class Word(models.Model):
 		"""
 
 		pos_base = {
-			'V': 'Ind+Prs+3Sg', # Usually: Inf but crk: Ind+Prs+3Sg 
-			'N': 'Sg', # Usually: Nom. But the baseform in crk is N+AN+Sg or N+IN+Sg
+			'V': 'Ind+Prs+3Sg', # Usually: Inf but hdn: Ind+Prs+3Sg 
+			'N': 'Sg', # Usually: Nom. But the baseform in hdn is N+AN+Sg or N+IN+Sg
 			'A': 'Attr',
 			'Pron': 'Nom',
 		}
@@ -892,7 +892,7 @@ class Form(models.Model):
 				baseform = baseform_num
 
 		elif self.tag.pos in ['V', 'v']:
-			kwarg = {'tag__personnumber':'3Sg', 'tag__tense':'Prs', 'tag__mood':'Ind'} # For crk the baseform is not V+IA or V+Inf but Ind+Prs+3Sg 
+			kwarg = {'tag__personnumber':'3Sg', 'tag__tense':'Prs', 'tag__mood':'Ind'} # For hdn the baseform is not V+IA or V+Inf but Ind+Prs+3Sg 
 
 			# Non-derived verbs need to exclude Der
 			baseform = self.word.form_set.exclude(tag__string__contains='Der')\

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from crk_oahpa.crk_drill.models import *
-from crk_oahpa.crk_drill.forms import *
+from hdn_oahpa.hdn_drill.models import *
+from hdn_oahpa.hdn_drill.forms import *
 
-from crk_oahpa.conf.tools import switch_language_code
+from hdn_oahpa.conf.tools import switch_language_code
 
 from django.db.models import Q, Count
 from django.http import HttpResponse, Http404
@@ -16,7 +16,7 @@ import os
 import re
 import itertools
 
-import crk_oahpa.settings
+import hdn_oahpa.settings
 
 # DEBUG = open('/dev/ttys001', 'w')
 
@@ -24,23 +24,23 @@ from random import choice
 from .forms import PRONOUNS_LIST
 
 try:
-	L1 = crk_oahpa.settings.L1
+	L1 = hdn_oahpa.settings.L1
 except:
-	L1 = 'crk'  # was: sme
+	L1 = 'hdn'  # was: sme
 
 try:
-	LOOKUP_TOOL = crk_oahpa.settings.LOOKUP_TOOL
+	LOOKUP_TOOL = hdn_oahpa.settings.LOOKUP_TOOL
 except:
 	LOOKUP_TOOL = 'lookup'
 
 
 try:
-	FST_DIRECTORY = crk_oahpa.settings.FST_DIRECTORY
+	FST_DIRECTORY = hdn_oahpa.settings.FST_DIRECTORY
 except:
 	FST_DIRECTORY = False
 
 try:
-	DEFAULT_DIALECT = crk_oahpa.settings.DEFAULT_DIALECT
+	DEFAULT_DIALECT = hdn_oahpa.settings.DEFAULT_DIALECT
 except:
 	DEFAULT_DIALECT = None
 
@@ -929,7 +929,7 @@ class BareGame(Game):
 		#	match_number = False
 		#else:
 		#	match_number = True
-		match_number = False # it is different for crk
+		match_number = False # it is different for hdn
 		
 
 		def baseformFilter(form):

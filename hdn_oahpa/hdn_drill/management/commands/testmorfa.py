@@ -42,7 +42,7 @@ def _firstelement(e, x):
         return None
 
 
-from crk_drill.models import Tagname, Tagset, Form, Word
+from hdn_drill.models import Tagname, Tagset, Form, Word
 
 def parse_tag(tag):
     """ Iterate through a tag string by chunks, and check for tag sets
@@ -1156,7 +1156,7 @@ class Command(BaseCommand):
     )
 
     def print_strings(self, word, tag):
-        from crk_drill.forms import NEGATIVE_VERB_PRES, TENSE_PRESENTATION, PRONOUNS_LIST
+        from hdn_drill.forms import NEGATIVE_VERB_PRES, TENSE_PRESENTATION, PRONOUNS_LIST
 
         form = FakeForm()
         form.pron = False
@@ -1247,7 +1247,7 @@ class Command(BaseCommand):
         # Nouns:  type, book
         # Verbs: tense, tens_anim
 
-        from crk_drill.models import Word, Form, Tag
+        from hdn_drill.models import Word, Form, Tag
         import sys, os
         word_query = Q(pos='V') & Q(trans_anim__in=['TI', 'AI']) & Q(object__isnull=False)
         ws = Word.objects.filter(word_query)

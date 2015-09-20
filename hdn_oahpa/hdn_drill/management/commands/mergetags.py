@@ -6,7 +6,7 @@ from optparse import make_option
 
 import sys
 
-from crk_drill.models import Tag
+from hdn_drill.models import Tag
 
 def merge(queryset):
     main = queryset[0]
