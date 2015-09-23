@@ -104,6 +104,16 @@ php-fpm. To restart this process:
 	sudo service php-fpm restart
 }}}
 
+!!Restarting Konteaksta
+
+Konteaksta is running on the Tomcat web server. After upgrade of gtoahpa, as well as adding new components to Konteaksta, it is always recommended to restart Konteaksta (the script compiles the Konteaksta source code, redeploys it on Tomcat and restarts Tomcat). Restarting Konteaksta is also the first thing to try if the url [oahpa.no/konteaksta|http://oahpa.no/konteaksta] gives "server error", e.g. "The page you are looking for is temporarily unavailable. Please try again later.". 
+
+To restart Konteaksta:
+
+{{{
+    sudo service konteaksta restart 
+}}}
+
 
 
 
