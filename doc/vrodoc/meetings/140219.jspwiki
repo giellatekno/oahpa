@@ -1,15 +1,19 @@
-Võro Oahpa koosolek 19.02.2014
-osalejad: Sulev, Jack, Heli
+!!! Võro Oahpa koosolek 19.02.2014
+Osalejad: Sulev, Jack, Heli
+
 Päevakord:
-* semantilised klassid (nagu mains/ped/sme/src)
+* Semantilised klassid (nagu mains/ped/sme/src)
 * Oahpa sõnastiku struktuur
 * Võro Oahpa URL
 * Võro FST
+
 -------------------
-* semantilised klassid ja sõnastiku struktuur
-Esialgu lähtume langolandi klassidest. (?) Pärast võib lisada juurde, kui vaja.
 
+!! Semantilised klassid ja sõnastiku struktuur
 
+Sulev: Esialgu võiksime lähtuda langolandi klassidest. (?) Pärast võib lisada juurde, kui vaja.
+
+{{{
  greetings - family
  house - city
  transport - Post
@@ -21,8 +25,11 @@ Esialgu lähtume langolandi klassidest. (?) Pärast võib lisada juurde, kui vaj
  numbers - geometry
  time - days - months
  pronouns - questions
+}}}
 
-sme-Oahpa sem. klassid:
+! sme-Oahpa sem. klassid:
+
+{{{
 SEMTYPE_CHOICES = (
     ('FAMILY', _('family')), 
     ('HUMAN', _('human')),
@@ -46,9 +53,11 @@ SEMTYPE_CHOICES = (
     ('MULTIWORD', _('Multiword')),
     ('all', _('all')),
 )
+}}}
 
-main/gtcore/schemas/fiu-dict-schema.xsd 
+{{main/gtcore/schemas/fiu-dict-schema.xsd}} 
 
+{{{
   <xs:attribute name="class">
       <xs:simpleType>
          <xs:restriction base="xs:string">
@@ -144,6 +153,7 @@ main/gtcore/schemas/fiu-dict-schema.xsd
 <!-- Super set: CLOTHES -->
             <xs:enumeration value="COLOUR"/>
 ...
+}}}
 
 !!! Vaja teha:
 * sõnaliikide märgendid (Heli)
@@ -152,34 +162,36 @@ main/gtcore/schemas/fiu-dict-schema.xsd
 //e/lg/st/@Contlex = muuttüüp
 * soomekeelsed tõlked (Jack -> üliõpilased)
 
-* Võro Oahpa URL ?
+!! Võro Oahpa URL ?
+Teised keeled: 
+{{{
 davvi
 aarjel
 rusoahpa
 sjdoahpa
+}}}
 
-vro_oahpa
-voro_oahpa
-voro
+vro_oahpa, voro_oahpa, voro ??
 
-testing.oahpa.no/voro
+Otsustame, et URL-iks saab [testing.oahpa.no/voro|http://testing.oahpa.no/voro]
 
-* Võro FST
+!! Võro FST-de kompileerimine
+{{{
 main/langs/vro/src
 --
 cd main/langs/vro
 make
 --
+}}}
 
-oahpa.no
 
-* Projekt "Flexibel utdanning" Tromsö ülikoolis - paneme püsti suurema hulga Oahpasid, sealhulgas
+* Lähemal ajal paneme püsti suurema hulga Oahpasid, sealhulgas
 mrj, myv, olo, liv, yrk.
 Järjekord: Numra, MorfaS, Leksa, MorfaC
 
 * Võro numbriautomaat Numra jaoks
-Jack saab arvsõnad ja numbrid võro sõnaraamatust
-Sulev saadab Jackile kuupäevad, nädlalpäevad, kellaajad
+__Jack__ saab arvsõnad ja numbrid võro sõnaraamatust
+__Sulev__ saadab Jackile kuupäevad, nädalapäevad, kellaajad
 
 
 
