@@ -1052,8 +1052,8 @@ class BareGame(Game):
 
 
 class NumGame(Game):
-	generate_fst = 'transcriptor-numbers-digit2text.filtered.lookup.xfst'
-	answers_fst = 'transcriptor-numbers-text2digit.filtered.lookup.xfst'
+	generate_fst = 'transcriptor-numbers2text-desc.xfst'
+	answers_fst = 'transcriptor-text2numbers-desc.xfst'
 
 	def get_db_info(self, db_info):
 		""" Options supplied by views
