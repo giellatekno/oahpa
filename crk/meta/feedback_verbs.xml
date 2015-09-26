@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<feedback pos="V">
+
+  <defaultvalues>
+      <attribute name="trans_anim" value=""/>
+      <attribute name="trans_anim" value="AI"/>
+      <attribute name="trans_anim" value="TI"/>
+      <attribute name="trans_anim" value="TA"/>
+
+      <attribute name="person-number" value="12Pl"/>
+      <attribute name="person-number" value="1Pl"/>
+      <attribute name="person-number" value="2Pl"/>
+      <attribute name="person-number" value="3Pl"/>
+      <attribute name="person-number" value="1Sg"/>
+      <attribute name="person-number" value="2Sg"/>
+      <attribute name="person-number" value="3Sg"/>
+
+      <attribute name="rime" value="ea"/>
+      <attribute name="rime" value="ae"/>
+      <attribute name="rime" value="tj"/>
+      <attribute name="rime" value="eatj"/>
+      <attribute name="rime" value="aetj"/>
+
+      <attribute name="tense" value="Prs"/>
+      <attribute name="tense" value="Prt"/>
+</defaultvalues>
+
+<stems>
+    <l trans_anim="AI">
+      <msg>anintrans</msg>
+      <note>   </note>
+    </l>
+
+    <l trans_anim="TI">
+      <msg>transin</msg>
+      <note>   </note>
+    </l>
+  
+    <l person-number="1Sg">
+      <msg>niya</msg>
+    </l>
+  
+    <l person-number="2Sg">
+      <msg>kiya</msg>
+    </l>
+  
+    <l person-number="3Sg">
+      <msg>wiya</msg>
+    </l>
+  
+    <l person-number="1Pl">
+      <msg>niyanan</msg>
+    </l>
+  
+    <l person-number="12Pl">
+      <msg>kiyanaw</msg>
+    </l>
+
+    <l person-number="2Pl">
+      <msg>kiyawaw</msg>
+    </l>
+
+    <l person-number="3Pl">
+      <msg>wiyawaw</msg>
+    </l>
+
+    <l trans_anim="AI">
+      <msg person-number="1Sg">ai-1s</msg>
+      <msg person-number="2Sg">ai-2s</msg>
+      <msg person-number="3Sg">ai-3s</msg>
+      <msg person-number="1Pl">ai-1p</msg>
+      <msg person-number="12Pl">ai-2i</msg>
+      <msg person-number="2Pl">ai-2p</msg>
+      <msg person-number="3Pl">ai-3p</msg>
+    </l>
+
+    <l trans_anim="TI">
+      <msg person-number="1Sg">ti-1s</msg>
+      <msg person-number="2Sg">ti-2s</msg>
+      <msg person-number="3Sg">ti-3s</msg>
+      <msg person-number="1Pl">ti-1p</msg>
+      <msg person-number="12Pl">ti-2i</msg>
+      <msg person-number="2Pl">ti-2p</msg>
+      <msg person-number="3Pl">ti-3p</msg>
+    </l>
+
+    <l trans_anim="TI">
+      <msg tense="Prt">past</msg>
+    </l>
+  
+    <l trans_anim="AI" rime="ea">
+      <msg tense="Prs">e-to-a</msg>
+    </l>
+  
+    <l trans_anim="TI" rime="ae">
+      <msg tense="Prs">a-to-e</msg>
+    </l>
+  
+    <l trans_anim="TI" rime="tj">
+      <msg tense="Prs">t-joiner</msg>
+    </l>
+  
+    <l trans_anim="AI" rime="eatj">
+      <msg tense="Prs">t-a</msg>
+    </l>
+  
+    <l trans_anim="TI" rime="aetj">
+      <msg tense="Prs">t-e</msg>
+    </l>
+  
+</stems>
+      
+</feedback>
