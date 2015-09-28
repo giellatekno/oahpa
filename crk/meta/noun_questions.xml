@@ -17,16 +17,37 @@
       </element>
     </answer>
   </q>
+  <q id="nloc0">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>tânitê MAIN SUBJ</text>
+      <element id="SUBJ">
+            <grammar tag="N+AN+Sg"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="MAIN">
+        <grammar tag="V+II+Cnj+Prs+3Sg"/>
+        <id>ayâw</id>
+      </element>
+    </question>
+    <answer> 
+      <text>N-LOC MAIN SUBJ</text>
+      <element game='morfa' id="N-LOC" task="yes">
+        <grammar tag="N+IN+Loc"/>
+        <sem class="PLACE"/>
+      </element>
+    </answer>
+  </q>
   <q id="nloc1">
     <qtype>N-LOC</qtype>
     <question>
       <text>tânitê MAIN SUBJ</text>
       <element id="SUBJ">
-            <grammar tag="N+AN+Number"/>
+            <grammar tag="N+AN+Pl"/>
         <sem class="PEOPLE"/>
       </element>
       <element id="MAIN">
-        <grammar tag="V+II+Cnj+Prs+Person-Number"/>
+        <grammar tag="V+II+Cnj+Prs+3Pl"/>
         <id>ayâw</id>
       </element>
     </question>
