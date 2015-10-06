@@ -876,16 +876,13 @@ class Form(models.Model):
 				baseform = baseform_num
 
 		elif self.tag.pos in ['V', 'v']:
-			if self.word.lemma in [u'lea', u'ii']:
-				kwarg = {'tag__personnumber': 'Sg3'}
-			else:
-				kwarg = {'tag__infinite': 'Inf/mA'} # ma-infinitive
+			kwarg = {'tag__infinite': 'Inf/mA'} # ma-infinitive
 
 			# Non-derived verbs need to exclude Der
 			baseform = self.word.form_set.exclude(tag__string__contains='Der')\
 											.filter(**kwarg)
 			if baseform.count() == 0:
-				baseform = self.word.form_set.filter(tag__personnumber='Sg3')
+				baseform = self.word.form_set.filter(tag__personnumber='Sg3', tag__mood='Ind', tag__tense='Prs')
 			if baseform.count() == 0:
 				raise Form.DoesNotExist
 
