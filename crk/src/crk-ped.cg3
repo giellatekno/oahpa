@@ -183,6 +183,8 @@ MAP (&err-typo) TARGET QMRK (*-1 QDL) ;
 
 # looking for incorrect translation, error tag mapped to the English word
 MAP (&err-transN) TARGET N IF (0 ("shoe"))(*1 QDL LINK NOT *1 SHOE) ; 
+SELECT N IF (0 SHOE LINK *-1 ("^qdl") LINK *-1 ("shoes")) ; 
+
 MAP (&err-transN) TARGET N IF (0 ("knife"))(*1 QDL LINK NOT *1 KNIFE) ; 
 MAP (&err-transN) TARGET N IF (0 ("spoon"))(*1 QDL LINK NOT *1 SPOON) ; 
 MAP (&err-transN) TARGET N IF (0 ("bread"))(*1 QDL LINK NOT *1 BREAD) ; 
