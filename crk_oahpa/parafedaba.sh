@@ -3,7 +3,7 @@
 P="python2.7"
 
 LANGDIR="crk"
-DATA=$GTHOME/ped/$LANGDIR
+DATA=/home/crk_oahpa/$LANGDIR
 DPS="$DATA/src"
 INC="$DATA/inc"
 META="$DATA/meta"
@@ -37,6 +37,14 @@ echo "==================================================="
  echo " "
  echo "done"
  echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPS/Pron_crk.xml"
+ $P install.py --file $DPS/Pron_crk.xml --tagfile $META/tags.txt --paradigmfile $META/pron_paradigms.txt 2>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
+
 
  echo "==================================================="
  echo "feeding db with $DPS/Ipc_crk.xml"
@@ -536,12 +544,12 @@ echo "done"
 echo "==================================================="
 
 
-# echo "==================================================="
-# echo "adding feedback to verbs"
-# $P install.py -f $DPS/v_crknob.xml --feedbackfile $META/feedback_verbs.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "adding feedback to verbs"
+$P install.py -f $DPS/V_crk.xml --feedbackfile $META/feedback_verbs.xml
+echo " "
+echo "done"
+echo "==================================================="
 
 # echo "==================================================="
 # echo "adding feedback to adjectives"
