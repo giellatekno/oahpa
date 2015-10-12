@@ -28,7 +28,7 @@
 <!--
      Mark @pos attribute
      -->
-<feedback pos="N" tag__possessive="">
+<feedback pos="N" tag__possessive="Px">
 
   <defaultvalues>
       <!-- Define all the possible values that each attribute can have. These
@@ -70,15 +70,15 @@
       <attribute name="derivation" value=""/>
       <attribute name="derivation" value="Der/Dim"/>
 
-      <attribute name="possessive" value="12Pl"/>
-      <attribute name="possessive" value="1Pl"/>
-      <attribute name="possessive" value="2Pl"/>
-      <attribute name="possessive" value="3Pl"/>
-      <attribute name="possessive" value="4Pl"/>
-      <attribute name="possessive" value="1Sg"/>
-      <attribute name="possessive" value="2Sg"/>
-      <attribute name="possessive" value="3Sg"/>
-      <attribute name="possessive" value="4Sg"/>
+      <attribute name="possessive" value="Px12Pl"/>
+      <attribute name="possessive" value="Px1Pl"/>
+      <attribute name="possessive" value="Px2Pl"/>
+      <attribute name="possessive" value="Px3Pl"/>
+      <attribute name="possessive" value="Px4Pl"/>
+      <attribute name="possessive" value="Px1Sg"/>
+      <attribute name="possessive" value="Px2Sg"/>
+      <attribute name="possessive" value="Px3Sg"/>
+      <attribute name="possessive" value="Px4Sg"/>
   </defaultvalues>
 
 <!-- Messageorder nouns: LEMMA A B C D E
@@ -476,36 +476,36 @@ iyiw-Obv
     </l>
 
     <l>
-      <msg possessive="1Sg">prefix-n</msg>
-      <msg possessive="2Sg">prefix-k</msg>
-      <msg possessive="3Sg">prefix-o</msg>
-      <msg possessive="4Sg">prefix-o</msg>
-      <msg possessive="1Pl">prefix-n</msg>
-      <msg possessive="12Pl">prefix-k</msg>
-      <msg possessive="2Pl">prefix-k</msg>
-      <msg possessive="3Pl">prefix-o</msg>
-      <msg possessive="4Pl">prefix-o</msg>
+      <msg possessive="Px1Sg">prefix-n</msg>
+      <msg possessive="Px2Sg">prefix-k</msg>
+      <msg possessive="Px3Sg">prefix-o</msg>
+      <msg possessive="Px4Sg">prefix-o</msg>
+      <msg possessive="Px1Pl">prefix-n</msg>
+      <msg possessive="Px12Pl">prefix-k</msg>
+      <msg possessive="Px2Pl">prefix-k</msg>
+      <msg possessive="Px3Pl">prefix-o</msg>
+      <msg possessive="Px4Pl">prefix-o</msg>
       <note> </note>
     </l>
 
 
     <l animacy="IN">
-      <msg possessive="1Pl">inaan</msg>
-      <msg possessive="12Pl">inaw</msg>
-      <msg possessive="2Pl">iwaaw</msg>
-      <msg possessive="3Pl">iwaaw</msg>
+      <msg possessive="Px1Pl">inaan</msg>
+      <msg possessive="Px12Pl">inaw</msg>
+      <msg possessive="Px2Pl">iwaaw</msg>
+      <msg possessive="Px3Pl">iwaaw</msg>
       <note> </note>
     </l>
 
 
     <l animacy="AN">
-      <msg possessive="3Sg">obviative</msg>
-      <msg possessive="4Sg">iyiw-Obv</msg>
-      <msg possessive="1Pl">inaan</msg>
-      <msg possessive="12Pl">inaw</msg>
-      <msg possessive="2Pl">iwaaw</msg>
-      <msg possessive="3Pl">iwaaw</msg>
-      <msg possessive="4Pl">iyiw-Obv</msg>
+      <msg possessive="Px3Sg">obviative</msg>
+      <msg possessive="Px4Sg">iyiw-Obv</msg>
+      <msg possessive="Px1Pl">inaan</msg>
+      <msg possessive="Px12Pl">inaw</msg>
+      <msg possessive="Px2Pl">iwaaw</msg>
+      <msg possessive="Px3Pl">iwaaw</msg>
+      <msg possessive="Px4Pl">iyiw-Obv</msg>
       <note> </note>
     </l>
   </stems>
