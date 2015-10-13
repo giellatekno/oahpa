@@ -7,10 +7,15 @@ for serving all projects, however {{{apache/httpd}}} is used to run certain CGI
 and MT scripts which Nginx does not have support for. This is done via reverse
 proxy.
 
+TODO: Explain.
+
 !! In case of emergencies... 
 
-On gtoahpa, if for some reason the processes do not restart via chkconfig, 
+On gtweb, if for some reason the processes do not restart via chkconfig, 
 inspect via {{{ps aux}}} or {{{top}}} to find out what is or isn't running.
+
+
+TODO: Add relevant commands.
 
 Once missing processes have been identified, the proper order that all services
 should be started in (given dependencies between them) is:
@@ -27,7 +32,31 @@ restart, if necessary.
 
 For further documentation on this, see the various sections in [common httpdserver|httpdserver.html].
 
+!!Restarting dictionaries on gtweb
 
+Log in as neahtta. Go the neahttas home catalogue {{cd && cd neahtta}}
+
+If the dictionaries are down, issue these commands (one for each dictionary -- the list of dictionaries is found in the file {{fabfile.py}}:
+
+{{{
+fab dikaneisdi restart_service
+fab erey restart_service
+fab guusaaw restart_service
+fab itwewina restart_service
+fab kyv restart_service
+fab muter restart_service
+fab saan restart_service
+fab saanih restart_service
+fab sanat restart_service
+fab sonad restart_service
+fab vada restart_service
+fab valks restart_service
+}}}
+
+!!Restarting the mt processes on gtweb
+
+Restart is still not documented, but have a look at 
+[the page for installing mt on gtweb|http://giellatekno.uit.no/doc/mt/infra/UpdatingApertiumOnGtweb.html]
 
 !!Apache/httpd (victorio)
 
