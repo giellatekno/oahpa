@@ -20,6 +20,16 @@ write {{ls -l /home/|grep oahpa}} on the respective machines.
 
 So, 
 
+!!Restarting the dictionaries on gtoahpa
+
+Log into gtoahpa, log in as neahtta, go to /home/neahtta/neahtta and issue:
+
+{{{
+fab sanit restart_service
+fab baakoeh restart_service
+}}}
+
+
 
 !!Restarting oahpa versions on gtoahpa
 
