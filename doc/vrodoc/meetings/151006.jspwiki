@@ -3,29 +3,26 @@ Osalejad: Sulev, Heli
 
 Kommentaarid allpool (kommentaaride alguses kuupäev 6.10.).
 
-
-----
-
 Eelmise koosoleku protokoll:
 
 !! Võro FST
 
 Genereerib liiga palju vorme, kõik ei ole sobivad õigete vastustena näitamiseks.
- 
+
 -de, -dõ illatiiv ei ole normatiivne. Kasutame märngendit +Err/Orth+Use/NG
 
 +Use/NG märgendit kasutame kõigi vormide jaoks, mida me ei taha näidata õige vastusena.
 
 Vigaseid vorme on näiteks järgmistes tüüpides:
-* -us-, -üs-lõpulised sõnad 
+* -us-, -üs-lõpulised sõnad
 * kuu, üü
 * päiv
 * pettäi
 
 Kõikide verbivormide genereerimine:
 
-{{{ 
-vro/devtools/generate-verb-wordforms.sh 
+{{{
+vro/devtools/generate-verb-wordforms.sh
 
 morf_codes="+V+Inf \
             +V+Ind+Prs+Sg3 \
@@ -33,13 +30,13 @@ morf_codes="+V+Inf \
             +V+Ind+ConNegII \
             +V+PrfPrc"
 }}}
-            
-Saame ette anda, millised vormid genereerida.            
-            
+
+Saame ette anda, millised vormid genereerida.
+
 Noomeni yaml-testidega on ring peal.
 Verbi yaml-testidega töö jätkub (praegu enamasti lühikujul).
 
-! Vaja teha: 
+! Vaja teha:
 * __Jack__ jälgib, et ainult üks vorm oleks ilma +Use/NG-ta, kõik ülejäänud paralleelvormid +Use/NG-ga.
 * __Sulev ja tudengid__ kirjutavad üles valesid vorme, mida Oahpa on genereerinud. Sulev kirjutab valed vormid Trellosse.
 * __Sulev__ märgib tabelites  [http://www.ling.helsinki.fi/~rueter/AKU/vro/word_form_nouns_generator-gt-norm_table_2015-09-15.html] ja
@@ -98,14 +95,14 @@ Kell ei tööta.
 
 ** illatiiv, inessiiv
 Praegu on ainuke koht, kuhu minna või kus olla, ''põhi'' ?!
- 
+
 * __Heli__ lisab juurde sõnu semantilisse klassi PLACE_LOCAL või asendab selle küsimus-vastus mallis teise sem. kategooriaga.
 
-** translatiiv 
+** translatiiv
  __Heli__ laiendab semantilist klassi CHILD uute sõnadega.
 
-** komitatiiv 
-__Heli__ laiendab semantilist klassi VEHICLE. 
+** komitatiiv
+__Heli__ laiendab semantilist klassi VEHICLE.
 
 ! Verbs
 Nii olevikus kui minevikus
@@ -120,5 +117,5 @@ verb: ACTION_V
 ! Üldist
 6.10. Võru Instituudile on tulnud kiri Tallinnast - tuntakse huvi võru keele õppimise võimaluse vastu kaugõppe teel. Just see on koht, kus Oahpat kõige rohkem vaja on. Püüame Morfa-S ja Morfa-C korralikult tööle saada, siis või Võru Oahpat hakata laiemalt reklaamima. Nõudlus on olemas.
 
-!!Järgmine koosolek  
+!!Järgmine koosolek
 Lepime kokku meili teel.
