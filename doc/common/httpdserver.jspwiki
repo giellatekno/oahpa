@@ -13,16 +13,11 @@ On {{gtoahpa}}, {{gtweb}} and {{gtlab}}, we use nginx for serving HTML
 and other applications. See [how to restart nginx itself|RestartingNginx.html] 
 if needed (after an ordinary update it is not needed).
 
-Some Oahpa versions are on gtoahpa, others are on gtlab. To find which
-version is where, and to get a comprehensive list of the oahpa versions
-on the relevant virtual machine, 
-write {{ls -l /home/|grep oahpa}} on the respective machines.
-
 So, 
 
 !!Restarting the dictionaries on gtoahpa
 
-Log into gtoahpa, log in as neahtta, go to /home/neahtta/neahtta and issue:
+Log in to gtoahpa, log in as neahtta, go to /home/neahtta/neahtta and issue:
 
 {{{
 fab sanit restart_service
@@ -30,20 +25,43 @@ fab baakoeh restart_service
 }}}
 
 
+!!Restarting Oahpa versions on gtoahpa
 
-!!Restarting oahpa versions on gtoahpa
+Log in to gtoahpa.
 
-Once an Oahpa version on gtoahpa is down, it must be restarted.
+Some Oahpa versions are on gtoahpa, others are on gtlab. To find which
+versions are on gtoahpa, write {{ls /home/|grep oahpa}}.
+
+The list of Oahpas on gtoahpa as of 13.10.2015:
+{{{
+Oahpa name  | Language          | URL
+---------------------------------------------------------
+crk_oahpa   | Plains Cree       | [oahpa.no/nehiyawetan|http://oahpa.no/nehiyawetan]
+fkv_oahpa   | Kven              | [oahpa.no/kveeni|http://oahpa.no/kveeni]
+hdn_oahpa   | Northern Haida    | [oahpa.no/hdn_oahpa|http://oahpa.no/hdn_oahpa]
+kpv_oahpa   | Komi Zyrian       | [oahpa.no/kpvoahpa|http://oahpa.no/kpvoahpa]
+myv_oahpa   | Erzya             | [oahpa.no/erzya|http://oahpa.no/erzya]
+rup_oahpa   | Aromanian         | [oahpa.no/armaneshte|http://oahpa.no/armaneshte]
+sjd_oahpa   | Kildin Saami      | [oahpa.no/kiilt|http://oahpa.no/kiilt]
+smaoahpa    | South Saami       | [oahpa.no/aarjel|http://oahpa.no/aarjel]    
+smn_oahpa   | Inari Saami       | [oahpa.no/aanaar|http://oahpa.no/aanaar]
+sms_oahpa   | Skolt Saami       | [oahpa.no/nuorti|http://oahpa.no/nuorti]
+udm_oahpa   | Udmurt            | [oahpa.no/udm_oahpa|http://oahpa.no/udm_oahpa]
+univ_oahpa  | North Saami       | [oahpa.no/davvi|http://oahpa.no/davvi]
+yrk_oahpa   | Tundra Nenets     | [oahpa.no/yrkoahpa|http://oahpa.no/yrkoahpa]
+}}}
+
+Once an Oahpa version is down, it must be restarted.
 Write (anywhere on the system)
 
 {{{
  sudo service OAHPANAME restart
 }}}
 
-where OAHPANAME is the relevant Oahpa version (univ_oahpa, etc).
+where OAHPANAME is the relevant Oahpa version (crk_oahpa, fkv_oahpa etc).
 
-If only Oahpa is down, this is enough. If the server has been totally down,
-you may need to start more. Here is the full list of services that 
+ 
+If only an Oahpa version has been down, this is enough. If __the server has been totally down__, you may need to start more. Here is the full list of services that 
 should be started, __in this order__ (there are dependencies between them):
 
 # mysqld
@@ -58,17 +76,28 @@ the command
     sudo service NAME restart
 }}}
 
-Thus, ''sudo service mysqld restart'', etc. For the 
+Thus, ''sudo service mysqld restart'', etc. 
 
-Afterward, run all the Oahpa commands again:  
+Afterwards, run all the Oahpa restarting commands:  
 
 {{{
-sudo service univ_oahpa restart
+sudo service crk_oahpa restart
 }}}
 
-The commands  {{ps aux}} or {{top}} may show you what is or isn't running.
-(write {{top}} anywhere in the terminal).
+etc.
 
+
+!!Restarting Konteaksta
+
+Konteaksta is running on the Tomcat web server. After upgrade of gtoahpa, as well as adding new components to Konteaksta, it is always recommended to restart Konteaksta (the script compiles the Konteaksta source code, redeploys it on Tomcat and restarts Tomcat). Restarting Konteaksta is also the first thing to try if the url [oahpa.no/konteaksta|http://oahpa.no/konteaksta] gives "server error", e.g. "The page you are looking for is temporarily unavailable. Please try again later.". 
+
+To restart Konteaksta:
+
+Log in to gtoahpa and issue the command:
+
+{{{
+    sudo service konteaksta restart 
+}}}
 
 
 
@@ -114,15 +143,6 @@ php-fpm. To restart this process:
 	sudo service php-fpm restart
 }}}
 
-!!Restarting Konteaksta
-
-Konteaksta is running on the Tomcat web server. After upgrade of gtoahpa, as well as adding new components to Konteaksta, it is always recommended to restart Konteaksta (the script compiles the Konteaksta source code, redeploys it on Tomcat and restarts Tomcat). Restarting Konteaksta is also the first thing to try if the url [oahpa.no/konteaksta|http://oahpa.no/konteaksta] gives "server error", e.g. "The page you are looking for is temporarily unavailable. Please try again later.". 
-
-To restart Konteaksta:
-
-{{{
-    sudo service konteaksta restart 
-}}}
 
 
 
