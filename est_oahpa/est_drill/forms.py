@@ -1195,7 +1195,7 @@ class MorfaQuestion(OahpaQuestion):
 							userans_val=userans_val,
 							accepted_answers=accepted_answers)
 
-		if tag.string.lower().find('conneg') > -1:
+		if tag.string.lower().find('neg') > -1:  # was 'conneg'
 			if conneg:
 				conneg_agr = conneg
 			else:
@@ -1203,6 +1203,7 @@ class MorfaQuestion(OahpaQuestion):
 		else:
 			conneg_agr = False
 
+		print "conneg: ", conneg_agr
 		conneg_widget = forms.HiddenInput(attrs={'value': conneg_agr})
 
 		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
@@ -1239,13 +1240,13 @@ class MorfaQuestion(OahpaQuestion):
 
 		if tag.pos == "V":
 			if not self.pron:
-				if tag.string.find("ConNeg") > -1:
-					# TODO: New choice for every refresh, fix!
+				if tag.string.find("Neg") > -1:  # was ConNeg
 					pers = conneg_agr
 					pronoun = self.PronPNBase[pers]
 					neg_verb = NEGATIVE_VERB_PRES[pers]
 
 					self.pron = '%s %s' % (pronoun, neg_verb)
+									    
 				elif tag.personnumber:
 					pronbase = self.PronPNBase[tag.personnumber]
 					pronoun = pronbase
@@ -1259,7 +1260,7 @@ class MorfaQuestion(OahpaQuestion):
 			# Odne 'today', ikte 'yesterday'
 			if (tag.tense in ['Prs','Prt']) and (tag.mood == 'Ind'):
 				time = TENSE_PRESENTATION.get(tag.tense, False)
-				self.pron = ' '.join([time, pronoun])
+				self.pron = ' '.join([time, self.pron])
 
 			if ("+Der/Pass" in tag.string) and ("+V" in tag.string):
 				# Odne mun ___
@@ -1869,7 +1870,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 
     self.userans = self.cleaned_data['answer']
     answer = self.userans.rstrip()
-    answer = answer.lstrip()
+    answer = answer.celstrip()
     answer = answer.rstrip('.!?,')
 
     self.error = "error"
@@ -1877,7 +1878,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    logfile = open('/home/est_oahpa/est_oahpa/est_drill/vastaF_log.txt','w')
+    logfile = open('est_drill/vastaF_log.txt','w')
     logfile.write(lookup+"\n");
     logfile.write(lookup2cg+"\n");
     logfile.write(vislcg3+"\n");
@@ -2326,17 +2327,18 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     noanalysis=False
     fstdir = settings.FST_DIRECTORY
     toolsdir = settings.TOOLS_DIRECTORY + "/preprocess"
-    fst = fstdir + "/analyser-forcg-desc.hfst"
+    #fst = fstdir + "/analyser-forcg-desc.hfst" # hfst
+    fst = fstdir + "/analyser-gt-desc.xfst" # xfst
     lo = settings.LOOKUP_TOOL
     #lo="/Users/mslm/bin/lookup" # xfst on Heli's machine                  
-    lookup = " | " + lo + " -q -p " + fst # hfst                          
-    #lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # xfst           
+    #lookup = " | " + lo + " -q -p " + fst # hfst                          
+    lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # xfst           
     lookup2cg = " | cut -f1-2 | " + settings.SCRIPT_DIRECTORY + "/lookup2cg " # hfst                                                                  
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | " + settings.SCRIPT_DIRECTORY + "/preprocess "
     #preprocess = " | /Users/mslm/main/gt/script/preprocess "              
-    disamb = fstdir + "/disambiguation.cg3"
-    synt_funcs = fstdir + "/functions.cg3"
+    disamb = settings.SYNTAX_DIRECTORY + "/disambiguation.cg3"
+    synt_funcs = settings.SYNTAX_DIRECTORY + "/functions.cg3"
 
     vislcg3 = " | " + toolsdir + "/tagger " + toolsdir + "/addlex.lx stdin stdout | perl " + toolsdir + "/pron.pl | " + cg3 + " --grammar " + disamb + " | " + cg3 + " --grammar " + synt_funcs
 
@@ -2351,7 +2353,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    logfile = open('/home/est_oahpa/est_oahpa/est_drill/vastas_log.txt', 'w')
+    #logfile = open('/home/est_oahpa/est_oahpa/est_drill/vastas_log.txt', 'w')
     """host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024
@@ -2662,17 +2664,21 @@ class CealkkaQuestion(OahpaQuestion):
     select_words = select_words
     cealkka_is_correct = cealkka_is_correct
 
-    def __init__(self, question, qanswer, qwords, awords, dialect, language, userans_val, correct_val, *args, **kwargs):
+    def __init__(self, question, qanswer, qfacit, qwords, awords, fwords, dialect, language, userans_val, correct_val, *args, **kwargs):
 
         self.init_variables("", userans_val, [])
         self.dialect = dialect
         self.gametype = "cealkka"
         qtype=question.qtype
         atext = qanswer.string
-        # print atext
+        print "answertext:", atext
+        # qfacit = Question.objects.filter(question=question.id,qatype="facit")[0] # This is done in cealkka.py.
+        ftext = qfacit.string
+        print "facittext", ftext
 
         question_widget = forms.HiddenInput(attrs={'value' : question.id})
         answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})  #was: qanswer.id
+        facit_widget = forms.HiddenInput(attrs={'value' : qfacit.id})
 
         super(CealkkaQuestion, self).__init__(*args, **kwargs)
 
@@ -2681,6 +2687,9 @@ class CealkkaQuestion(OahpaQuestion):
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
         self.fields['answer_id'] = forms.CharField(widget=answer_widget, required=False)
+        
+        self.fields['facit_id'] = forms.CharField(widget=facit_widget, required=False)
+
 
         self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                 widget=forms.TextInput(\
@@ -2690,6 +2699,8 @@ class CealkkaQuestion(OahpaQuestion):
         astring = ""
         print "awords that come in CealkkaQuestion as parameter: "
         print awords
+        print "facit:"
+        print fwords
         selected_awords = self.select_words(qwords, awords)
 
         awords = []

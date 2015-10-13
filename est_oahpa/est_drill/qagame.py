@@ -56,13 +56,13 @@ class QAGame(Game):
 		self.QAPN={	'Sg':'Sg',			#  
 					'Pl':'Pl',			#  
 					
-					'Sg1':'Sg2',		# Mun? Don.
-					'Sg2':'Sg1',		# Don? Mun.
-					'Sg3':'Sg3',		# Son? Son.
+					'Sg1':'Sg2',		# Kas ma tegin? Sa tegid.
+					'Sg2':'Sg1',		# Kas sa tegid? Ma tegin.
+					'Sg3':'Sg3',		# Kas ta tegi? Ta tegi.
 					
-					'Pl1':'Pl2',		# Mii? Dii.
-					'Pl2':'Pl1',		# Dii? Mii.
-					'Pl3':'Pl3'}		# Sii? Sii.
+					'Pl1':'Pl2',		# Kas me tegime? Te tegite.
+					'Pl2':'Pl1',		# Kas te tegite? Me tegime.
+					'Pl3':'Pl3'}		# Kas nad tegid? Nad tegid.
 					
 					
 
@@ -73,7 +73,7 @@ class QAGame(Game):
 
 		# Available values for Number
 		self.PronPN=['Sg1','Sg2','Sg3','Pl1','Pl2','Pl3']
-		self.PronPNBase={'Sg1':'ma','Sg2':'sa','Sg3':u'ta',\
+		self.PronPNBase={'Sg1':'ma','Sg2':'sa','Sg3':'ta',\
 						 'Pl1':'me','Pl2':'te','Pl3':'nad'}
 		self.NounPN=['Sg','Pl']
 		self.NountoPronPN={'Sg':'Sg3','Pl':'Pl3'}

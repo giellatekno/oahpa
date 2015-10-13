@@ -107,6 +107,45 @@ class Questions:
 					question_qelements = QElement.objects.filter(question__id=qaelement.id,
 																 identifier=content_id)
 		
+		# Some of the facit elements have to copy their lexical content from the  corresponding answer elements. It is indicated by the attribute word, e.g. word="VERB" in the XML-file.
+		word_id = ""
+		answer_qelements = None
+		if el:
+			word_id = el.getAttribute("word")
+		print word_id
+		#if not word_id: word_id=el_id
+		if word_id:
+			# Search for the same element in the answer.
+			print qaelement.id
+			aelems = QElement.objects.filter(question__id=qaelement.id-1,identifier=word_id)
+			print aelems
+			qe = QElement.objects.create(question=qaelement, syntax=word_id, identifier=word_id, gametype=qaelement.gametype)
+			aelems[0].word_set.add(qe)
+			aelems[0].save()
+			return
+        
+		if (not el or el.getAttribute("word")) and \
+			QElement.objects.filter(question__id=qaelement.question_id,
+									identifier=word_id).count() > 0:
+			answer_qelements = QElement.objects.filter(question__id=qaelement.question_id, identifier=word_id)
+		else:
+			if el and el.getAttribute("word"):
+				if QElement.objects.filter(question__id=qaelement.id, identifier=word_id).count() > 0:
+					answer_qelements = QElement.objects.filter(question__id=qaelement.id, identifier=word_id)
+
+
+		# Here we are trying to create the copies of the answer elements in the facit that have the attribute word=""
+		
+		if not el and answer_qelements:
+			for q in answer_qelements:
+				qe = QElement.objects.create(question=qaelement,
+											 identifier=word_id,
+											 gametype=qaelement.gametype)  # added by Heli
+				q.word_set.add(qe)
+				qe.save()
+				q.save()
+				return
+		
 		# Hmm, maybe not detecting copy correctly
 		if not el and question_qelements:
 			for q in question_qelements:
@@ -595,6 +634,15 @@ class Questions:
 
 				answer_element.save()
 				self.read_elements(ans, answer_element, qtype)
+				
+			# Facits are the possible correct answers. This is new for Estonian Oahpa that facit is also saved in the database and sent to the linguistic analysis together with the question and the user's answer.
+			facits=q.getElementsByTagName("facit")
+			for fac in facits:				
+				text=fac.getElementsByTagName("text")[0].firstChild.data
+				facit_element = Question.objects.create(string=text,qatype="facit",question=question_element,level=1,lemmacount=0)
+
+				facit_element.save()
+				self.read_elements(fac, facit_element, qtype)
 			db.reset_queries() 
 
 

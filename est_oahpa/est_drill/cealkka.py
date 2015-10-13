@@ -683,7 +683,8 @@ class CealkkaGame(Game):
 		
 		tag_elements = []
 		swords = []
-		elements = self.get_elements(answer,s)
+		elements = self.get_elements(answer,s)  # answer / facit elements
+		print elements
 
 		if not elements:
 			info = { 'fullform' : [ s ] }
@@ -692,17 +693,33 @@ class CealkkaGame(Game):
 			return awords
 
 		element = elements[0]
-		if element.copy_id:
+		if element.copy_id:  # Both word and tag are copied from question to answer.
 			copy_id = element.copy_id
 			copy_element = QElement.objects.get(id=copy_id)
 			copy_syntax = copy_element.identifier
 			if qwords.has_key(copy_syntax):
 				qword = qwords[copy_syntax]
+				if type(qword) is list:
+				    qword = qword[0]
 				if qword.has_key('word'):
 					word_id=qword['word']
 				if qword.has_key('tag'):
 					tag = Tag.objects.get(id=qword['tag'])
 					tag_elements.append(tag)
+					
+		if element.word_id:  # Only word but not its tag is copied from answer to facit.
+			copy_id = element.word_id
+			copy_element = QElement.objects.get(id=copy_id)
+			copy_syntax = copy_element.identifier
+			if qwords.has_key(copy_syntax):
+				qword = qwords[copy_syntax]
+				if type(qword) is list:
+				    qword = qword[0]
+				if qword.has_key('word'):
+					word_id=qword['word']
+				#print "element.id: ", element.id
+				tag = Tag.objects.get(qelement__id=element.id)
+				tag_elements.append(tag)
 
 		if element.agreement:
 			agr_id = element.agreement_id
@@ -727,6 +744,7 @@ class CealkkaGame(Game):
 			if tag_count > 0:
 				tag_elements = element.tags.all()
 		
+		print "tag elements: ", tag_elements
 		# Take word forms for all tags
 		info=None
 		for tag_el in tag_elements:
@@ -782,10 +800,12 @@ class CealkkaGame(Game):
 		if db_info.has_key('answer_id'):
 			answer=Question.objects.get(id=db_info['answer_id'])
 		else:
-			answer=question.answer_set.all().order_by('?')[0]
+			answer=question.answer_set.filter(qatype="answer").order_by('?')[0] # Now when facit is also saved in the database it is important to filter by qatype="answer", otherwise it is possible that facit will be presented to the user instead.
 
 		# Generate the set of possible answers if they are not coming from the interface
 		# Or if the gametype is qa.
+		facit=question.answer_set.filter(qatype="facit").order_by('?')[0]
+
 		if db_info.has_key('answer_id') and self.settings['gametype'] == 'cealkka':
 			awords=db_info['awords']
 			print awords
@@ -827,6 +847,48 @@ class CealkkaGame(Game):
 
 		db_info['answer_id'] = answer.id
 		db_info['awords'] = awords
+		
+		print answer.string
+		print facit.string
+		print db_info['qwords']
+		print db_info['awords']
+
+		ftext=facit.string
+		facit_strings = set(ftext.split())
+		fwords = {}
+		for w in ftext.split():
+			#if w== "": continue
+			info = {}
+			fwords[w] = info
+		# Subject and main verb are special cases:
+		# There is subject-verb agreement and correspondence with question elements.
+		print fwords
+		if 'SUBJ' in facit_strings:
+			fwords = self.generate_answers_subject(facit, answer, fwords, db_info['awords'])
+				
+		if 'HAB' in facit_strings:
+			fwords = self.generate_answers_subject(facit, answer, fwords, db_info['awords'], element="HAB")
+
+		if 'MAINV' in facit_strings:
+			try:
+				fwords = self.generate_answers_mainv(facit, answer, fwords, db_info['awords'])
+			except AttributeError:
+				if self.test: raise Http404("problem")
+				return "error"
+
+		for s in facit_strings:
+			fwords = self.generate_syntax(facit, answer, fwords, db_info['awords'], s)
+			if not fwords:
+				if self.test: raise Http404("problem" + s)
+				return "error"
+			if not fwords.has_key(s):
+				if self.test: raise Http404("problem2" + s)
+				return "error"
+
+		
+		db_info['facit_id'] = facit.id
+		db_info['fwords'] = fwords
+		print "facit id: ", db_info['facit_id']
 		# print db_info
 #		 raise Exception(db_info)
 		# print db_info['awords']
@@ -852,6 +914,7 @@ class CealkkaGame(Game):
 			else:
 				db_info,question = self.get_question_cealkka(db_info,qtype)
 				
+		print "question: ", question.string
 		db_info = self.get_answer_morfa(db_info,question)
 
 		return db_info
@@ -859,7 +922,7 @@ class CealkkaGame(Game):
 	def create_form(self, db_info, n, data=None):
 
 		question = Question.objects.get(Q(id=db_info['question_id']))
-		# print question.string
+		print question.string
 		answer = None
 		if self.settings.has_key('dialect'):
 			dialect = self.settings['dialect']
@@ -871,9 +934,11 @@ class CealkkaGame(Game):
 			language = self.settings['language']
 
 		answer = Question.objects.get(Q(id=db_info['answer_id']))
-		#print answer.string
+		print "answer: ", answer.string
+		facit = Question.objects.get(Q(id=db_info['facit_id']))
+		print "facit: ", facit.string
 
-		form = (CealkkaQuestion(question, answer, db_info['qwords'], db_info['awords'], dialect, language, db_info['userans'], db_info['correct'], data, prefix=n))  # added the answer part
+		form = (CealkkaQuestion(question, answer, facit, db_info['qwords'], db_info['awords'], db_info['fwords'], dialect, language, db_info['userans'], db_info['correct'], data, prefix=n))  # added the answer part
 			
 		print "awords:", db_info['awords']
 		#print "awords ...................."

@@ -28,8 +28,8 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
 {% ifequal settings.gametype "bare" %}
 	<ul class="sidelist"> 
 		{% ifequal settings.pos "N" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.noun %}">{% trans 'Nouns' %}</a></li>
-<!--		{% ifequal settings.pos "V" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.verb %}">{% trans 'Verbs' %}</a></li>
-		{% ifequal settings.pos "A" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.adj %}">{% trans 'Adjectives' %}</a></li>
+		{% ifequal settings.pos "V" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.verb %}">{% trans 'Verbs' %}</a></li>
+<!--		{% ifequal settings.pos "A" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.adj %}">{% trans 'Adjectives' %}</a></li>
 		{% ifequal settings.pos "Pron" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.pron %}">{% trans 'Pronouns' %}</a></li>
         {% ifequal settings.pos "Num" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.num %}">{% trans 'Numerals' %}</a></li>
         {% ifequal settings.pos "Der" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.der %}">{% trans 'Derivations' %}</a></li> -->

@@ -771,7 +771,7 @@ class Form(models.Model):
 
 	def getBaseform(self, match_num=False, return_all=False):
 		""" Gets the base form (e.g., citation/dictionary form) for
-			the wordform. Nouns -> Nom+Sg, Verbs -> Inf
+			the wordform. Nouns -> Nom+Sg, Verbs -> Pers+Sup+Ill (not Inf as usual)
 
 			@param match_num:
 				True - If the form supplied is a noun and plural
@@ -871,13 +871,13 @@ class Form(models.Model):
 			if self.word.lemma in [u'lea', u'ii']:
 				kwarg = {'tag__personnumber': 'Sg3'}
 			else:
-				kwarg = {'tag__infinite': 'Inf'}
+				kwarg = {'tag__case': 'Ill'}
 
 			# Non-derived verbs need to exclude Der
 			baseform = self.word.form_set.exclude(tag__string__contains='Der')\
 											.filter(**kwarg)
 			if baseform.count() == 0:
-				baseform = self.word.form_set.filter(tag__personnumber='Sg3')
+				baseform = self.word.form_set.filter(tag__personnumber='Sg3', tag__mood='Ind', tag__tense='Prs')
 			if baseform.count() == 0:
 				raise Form.DoesNotExist
 
@@ -1002,6 +1002,10 @@ class QElement(models.Model):
 	semtype = models.ForeignKey(Semtype, null=True) # ManyToMany instead?
 	tags = models.ManyToManyField(Tag)
 	game = models.CharField(max_length=20)
+	word = models.ForeignKey('self',
+	                           blank=True,
+	                           null=True,
+	                           related_name='word_set')  # For binding together the elements in answer and facit - the same word (lemma) should be used for creating the corresponding QElements in the answer and in the facit.
 	copy = models.ForeignKey('self',
 							 blank=True,
 							 null=True,

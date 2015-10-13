@@ -153,12 +153,14 @@ class Game(object):
 
 			try:
 				form, word_id = self.create_form(db_info, i, 0)
+				print "form: ", form
+				print "word_id: ", word_id
 			except Http404, e:
 				raise e
 			except ObjectDoesNotExist:
 				continue
 
-			# Do not generate same question twice
+			# Do not generate same question twice			
 			if word_id:
 				num = num + 1
 				if word_id in set(word_ids): #and not (self.settings['gametype'] == "bare" and self.settings['pron_type'] in ['Rel','Dem']): # If there are less than 5 different lemmas to choose from then this causes a "No questions were able to be generated."
@@ -198,6 +200,10 @@ class Game(object):
 		answer_fullformObj = re.compile(r'^answer_fullform_(?P<syntaxString>[\w\-]*)$', re.U)
 
 		answer_taskwordObj = re.compile(r'^answer_taskword_(?P<syntaxString>[\w\-]*)$', re.U)  # added by Heli
+		
+		facit_tagObj = re.compile(r'^facit_tag_(?P<syntaxString>[\w\-]*)$', re.U)
+		facit_wordObj = re.compile(r'^facit_word_(?P<syntaxString>[\w\-]*)$', re.U)
+		facit_fullformObj = re.compile(r'^facit_fullform_(?P<syntaxString>[\w\-]*)$', re.U)
 
 		targetObj = re.compile(r'^target_(?P<syntaxString>[\w\-]*)$', re.U)
 
@@ -210,7 +216,9 @@ class Game(object):
 			db_info = {}
 			qwords = {}
 			awords = {}
+			fwords = {}
 			tmpawords = {}
+			tmpfwords = {}
 
 			# This compiles a dictionary from all of the form fields
 				# {u'answer': u'',
@@ -231,6 +239,9 @@ class Game(object):
 					tmpawords = self.search_info(answer_wordObj, fieldname, value, tmpawords, 'word')
 					tmpawords = self.search_info(answer_fullformObj, fieldname, value, tmpawords, 'fullform')
 					tmpawords = self.search_info(answer_taskwordObj, fieldname, value, tmpawords, 'taskword')  # added by Heli
+					tmpfwords = self.search_info(facit_tagObj, fieldname, value, tmpfwords, 'tag')
+					tmpfwords = self.search_info(facit_wordObj, fieldname, value, tmpfwords, 'word')
+					tmpfwords = self.search_info(facit_fullformObj, fieldname, value, tmpfwords, 'fullform')
 
 					self.global_targets = self.search_info(targetObj, fieldname, value, self.global_targets, 'target')
 
@@ -262,8 +273,21 @@ class Game(object):
 					info['taskword'] = tmpawords[syntax]['taskword']  # added by Heli
 				awords[syntax].append(info)
 
+			for syntax in tmpfwords.keys():
+				fwords[syntax] = []
+				info = {}
+				if tmpfwords[syntax].has_key('word'):
+					info['word'] = tmpfwords[syntax]['word']
+					if tmpfwords[syntax].has_key('tag'):
+						info['tag'] = tmpfwords[syntax]['tag']
+					if tmpfwords[syntax].has_key('fullform'):
+						info['fullform'] = [ tmpfwords[syntax]['fullform']]
+				
+				fwords[syntax].append(info)
+				
 			db_info['awords'] = awords
 			db_info['qwords'] = qwords
+			db_info['fwords'] = fwords
 			db_info['global_targets'] = self.global_targets
 			#print "db_info['awords'] in check_game "
 			#print db_info['awords']
@@ -324,14 +348,6 @@ class BareGame(Game):
 
 	casetable = {
 		#'N-NOM-PL': ('Nom', ['Pl']),  # comment in after the tags have been standardised
-		#'N-GEN': ('Gen', ['Sg','Pl']),
-		#'N-PAR': ('Par', ['Sg','Pl']),
-		#'N-ILL': ('Ill', ['Sg','Pl']),
-		#'N-INE': ('Ine', ['Sg','Pl']),
-		#'N-ELA': ('Ela', ['Sg','Pl']),
-		#'N-DAT': ('Dat', ['Sg','Pl']),
-		#'N-INS': ('Ins', ['Sg','Pl']),
-		#'': '',
 		'N-NOM-PL': ('Nom', ['Pl']),
 		'N-GEN': ('Gen', ['Sg','Pl']),
 		'N-PAR': ('Par', ['Sg','Pl']),
@@ -346,6 +362,7 @@ class BareGame(Game):
 		'N-ESS': ('Ess', ['Sg','Pl']),
 		'N-ABESS': ('Abe', ['Sg','Pl']),
 		'N-COM': ('Com', ['Sg','Pl']),
+		'': '',
 	}
 
 
@@ -685,10 +702,10 @@ class BareGame(Game):
 			TAG_QUERY =  TAG_QUERY & \
 							Q(tense=tense) & \
 							Q(mood=mood) & \
-							Q(infinite=infinite)
-
+							Q(infinite=infinite) & \
+							Q(string__contains='Pers')  # Only personal verb forms now.
 			if tense != 'Prs':
-				TAG_EXCLUDES = Q(string__contains='ConNeg')
+				TAG_EXCLUDES = Q(string__contains='Neg') # was ConNeg
 
 		if pos == 'A':
 			if pos2 == 'Num':
