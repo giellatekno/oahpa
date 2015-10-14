@@ -1,13 +1,11 @@
 !!!Restarting the httpd server on gtweb
 
-
-
 On {{{gtweb}}}, two httpd services are used. {{{nginx}}} is the primary system
 for serving all projects, however {{{apache/httpd}}} is used to run certain CGI
-and MT scripts which Nginx does not have support for. This is done via reverse
-proxy.
-
-TODO: Explain.
+and MT scripts which Nginx does not have support for. This is done via
+reverse proxy. {{{apache/httpd}}} thus doesn't run on port 80, rather
+{{{nginx}}} does, and certain requests are passed off to {{{apache}}}
+internally.
 
 !! In case of emergencies... 
 
