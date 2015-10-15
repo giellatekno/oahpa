@@ -1240,15 +1240,23 @@ class MorfaQuestion(OahpaQuestion):
 
 		if tag.pos == "V":
 			if not self.pron:
+				is_actionverb = Word.objects.filter(id=word.id, semtype__semtype='ACTION_V')
 				if tag.string.find("Neg") > -1:  # was ConNeg
 					pers = conneg_agr
-					pronoun = self.PronPNBase[pers]
+					if is_actionverb:
+						pronoun = self.PronPNBase[pers]
+					else:
+						pronoun = "see"  # Verbs that cannot be used together with personal pronouns, e.g. "sadama", "kestma", "toimuma" will have the pronoun "see" (it) as subject.
+				        
 					neg_verb = NEGATIVE_VERB_PRES[pers]
 
 					self.pron = '%s %s' % (pronoun, neg_verb)
 									    
 				elif tag.personnumber:
-					pronbase = self.PronPNBase[tag.personnumber]
+					if is_actionverb:
+						pronbase = self.PronPNBase[tag.personnumber]
+					else:
+						pronbase = "see"  # Verbs that cannot be used together with personal pronouns, e.g. "sadama", "kestma", "toimuma" will have the pronoun "see" (it) as subject.
 					pronoun = pronbase
 					self.pron = pronoun
 

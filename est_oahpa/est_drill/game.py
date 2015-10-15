@@ -791,8 +791,12 @@ class BareGame(Game):
 		try: 
 			
 			WORD_FILTER = Q()
+			
 			tag = tags.order_by('?')[0]
-				    
+
+			if tag.personnumber != 'Sg3':
+				    WORD_FILTER = WORD_FILTER & Q(word__semtype__semtype= "ACTION_V")  # Verbs that cannot be used together with personal pronouns, e.g. "sadama", "kestma", "toimuma" will have the pronoun "see" (it) as subject, thus only Sg3 form is suitable. The semantic set ACTION_V is defined so the verbs can take personal pronouns as subject.
+	    
 			# Process the selection from the noun_type menu (incorporates gender, animacy and inflection type):
 			"""if noun_type == "N-NEUT":
 				WORD_FILTER = WORD_FILTER & Q(word__gender='nt')
@@ -839,11 +843,9 @@ class BareGame(Game):
 				if tag.pos == 'Pron':
 					tag = tags.order_by('?')[0]
 
-				# random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)
-				random_word = tag.form_set # no filter atm
+				random_word = tag.form_set.filter(WORD_FILTER)
 				print random_word
 				
-
 				# PI: commented out, b/c at this stage
 				# where the Morfa-S semtype has not
 				# been set up we just end up whacking
