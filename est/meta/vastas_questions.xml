@@ -44,15 +44,15 @@
     </answer>
     <facit> 
       <text>Me VERB sinu PERS NOUN</text>
-      <element id="VERB" task="yes">
+      <element id="VERB">
         <grammar tag="V+Pers+Prs+Ind+Pl1+Aff"/>
         <id>olema</id>
       </element>
-      <element id="PERS" task="yes">
+      <element id="PERS" word="PERS">
         <grammar tag="N+Sg+Gen"/>
         <sem class="FAMILY"/>
       </element>
-      <element id="NOUN" task="yes">
+      <element id="NOUN">
         <grammar tag="N+Pl+Nom"/>
         <id>sõber</id>
       </element>
@@ -65,7 +65,7 @@
     </question>
     <answer> 
       <text>PERSON ei AUX VERB</text>
-      <element id="PERSON" task="no">
+      <element id="PERSON" task="yes">
         <grammar tag="N+Sg+Nom"/>
         <sem class="PROFESSION"/>
       </element>
@@ -80,15 +80,15 @@
     </answer>
     <facit> 
       <text>PERSON ei AUX VERB</text>
-      <element id="PERSON" task="no">
+      <element id="PERSON" word="PERSON">
         <grammar tag="N+Sg+Nom"/>
         <sem class="PROFESSION"/>
       </element>
-      <element id="AUX" task="yes">
+      <element id="AUX">
         <grammar tag="V+Pers+Prt+Ind+Neg"/>
         <id>tahtma</id> 
       </element>
-      <element id="VERB" task="yes">
+      <element id="VERB">
         <grammar tag="V+Inf"/>
         <id>aitama</id>
       </element>
@@ -148,11 +148,11 @@
     </answer>
     <facit>
     <text>Eelmisel NOUN ma VERB</text>
-      <element id="VERB" task="yes">
+      <element id="VERB" word="VERB">
         <grammar tag="V+Pers+Prt+Ind+Sg1+Aff"/>
         <sem class="SPORT"/>
       </element>
-      <element id="NOUN" task="yes">
+      <element id="NOUN" word="NOUN">
         <grammar tag="N+Sg+Ade"/>
         <sem class="WEEKDAY"/>
       </element>
@@ -176,11 +176,11 @@
     </answer>
     <facit> 
       <text>Eelmisel NOUN me VERB</text>
-      <element id="VERB" task="yes">
+      <element id="VERB" word="VERB">
         <grammar tag="V+Pers+Prt+Ind+Pl1+Aff"/>
         <sem class="SPORT"/>
       </element>
-      <element id="NOUN" task="yes">
+      <element id="NOUN" word="NOUN">
         <grammar tag="N+Sg+Ade"/>
         <sem class="WEEKDAY"/>
       </element>
