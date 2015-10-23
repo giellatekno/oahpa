@@ -933,6 +933,7 @@ class OahpaQuestion(forms.Form):
 		self.case = ""
 		self.userans = userans_val
 		self.correct_anslist = []
+		self.fstring = ""  # facit string
 		self.error = "empty"
 		self.problems = "error"
 		self.pron = ""
@@ -968,7 +969,7 @@ class OahpaQuestion(forms.Form):
                 #forms = accepted_answers  # This is wrong: the relaxed pairs are overwritten!
 
 		self.correct_anslist = [force_unicode(item) for item in accepted_answers] + [force_unicode(f) for f in forms]
-		print "correct_anslist:",self.correct_anslist
+		#print "correct_anslist:",self.correct_anslist
 		self.relaxings = relaxings
 
 		#def generate_fields(self,answer_size, maxlength):
@@ -1203,7 +1204,7 @@ class MorfaQuestion(OahpaQuestion):
 		else:
 			conneg_agr = False
 
-		print "conneg: ", conneg_agr
+		#print "conneg: ", conneg_agr
 		conneg_widget = forms.HiddenInput(attrs={'value': conneg_agr})
 
 		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
@@ -2351,6 +2352,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     vislcg3 = " | " + toolsdir + "/tagger " + toolsdir + "/addlex.lx stdin stdout | perl " + toolsdir + "/pron.pl | " + cg3 + " --grammar " + disamb + " | " + cg3 + " --grammar " + synt_funcs
 
     self.userans = self.cleaned_data['answer']
+    facit = self.cleaned_data['fstring']
     answer = self.userans.rstrip()
     answer = answer.lstrip()
     answer = answer.rstrip('.!?,')
@@ -2380,7 +2382,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
         for word in words:
             w=""
             cohort=""
-            print word
+            #print word
             # All the words will go through morph.analyser, even if they have a tag-attribute already. We do it to avoid problems with compound words.
             w = force_unicode(word).encode('utf-8')
             w=w.lstrip().rstrip()
@@ -2388,25 +2390,25 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
             cohort = s.recv(size)
             analysis = analysis + cohort
             #logfile.write(analysis+"\n")
-            print analysis
+            #print analysis
         ### Lemmas and POS tags of task words are gathered into the variables
         ### tasklemmas and taskpos respectively. Tasklemmas and taskpos will be
         ### sent to CG together with the morph. analysed question and answer.
         tasklemmas = ""
         for aword in awords:
-            print aword
+            #print aword
 	        #logfile.write(aword)
             if aword.has_key('taskword') and aword['taskword']:
                 tlemma = aword['fullform']
                 tlemma = force_unicode(tlemma).encode('utf-8')
                 tlemma = tlemma.strip()
-                print tlemma
+                #print tlemma
 		        #logfile.write(tlemma+" ")
                 tasktag = Tag.objects.filter(id=aword['tag'])
                 tasktagstring = tasktag[0].string
                 taskpos = tasktag[0].pos
                 ttag = tasktagstring.replace("+"," ")
-                print ttag
+                #print ttag
 		        #logfile.write(ttag+"\n")
                 s.send(tlemma)  # on vic
                 word_lookup = s.recv(size)  # on vic
@@ -2430,7 +2432,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
                     if tag_match and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
                         print malemmas
 			             #logfile.write(malemma+"\n")
-                        print malemma
+                        #print malemma
                         print malemma_without_hash
                         tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
                     morfanal = morfanal + ans_cohort  # END
@@ -2475,20 +2477,20 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
             analysis = analysis + cohort
     tasklemmas = ""
     for aword in awords:
-            print aword
+            #print aword
 	       #logfile.write(aword)
             if aword.has_key('taskword') and aword['taskword']:
                 tlemma = aword['fullform']
                 tlemma = force_unicode(tlemma).encode('utf-8')
                 tlemma = tlemma.strip()
-                print tlemma
+                #print tlemma
 		        #logfile.write(tlemma+" ")
                 tasktag = Tag.objects.filter(id=aword['tag'])
                 tasktagstring = tasktag[0].string
                 taskpos = tasktag[0].pos
                 ttag = tasktagstring.replace("+"," ")
                 ttag = force_unicode(ttag).encode('utf-8')
-                print ttag
+                #print ttag
 		        #logfile.write(ttag+"\n")
                 ans_cohort = ""
                 word_lookup = "echo \"" + force_unicode(tlemma).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
@@ -2507,19 +2509,35 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
                         if entag not in row:
                             tag_match = 0
                     if tag_match and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
-                        print malemmas
+                        #print malemmas
 			             #logfile.write(malemma+"\n")
-                        print malemma
-                        print malemma_without_hash
+                        #print malemma
+                        #print malemma_without_hash
                         tasklemmas = force_unicode(tasklemmas).encode('utf-8') + "\n\t\"" + force_unicode(malemma).encode('utf-8') + "\" "+force_unicode(taskpos).encode('utf-8')
                     morfanal = morfanal + ans_cohort  # END
 
-    analysis = force_unicode(analysis).encode('utf-8') + "\"<^vastas>\"\n\t\"^vastas\" QDL " + force_unicode(question_id).encode('utf-8') + " " + tasklemmas + "\n"
+    # analysis = force_unicode(analysis).encode('utf-8') + "\"<^vastas>\"\n\t\"^vastas\" QDL " + force_unicode(question_id).encode('utf-8') + " " + tasklemmas + "\n"
+    analysis = force_unicode(analysis).encode('utf-8') + "\"<^vastas>\" \n\t\"^vastas\"  QDL \n"
+    
+    # analyse the facit
+    data_lookup = "echo \"" + force_unicode(facit).encode('utf-8') + "\"" + preprocess
+    word = os.popen(data_lookup).readlines()
+    #print word
+    analyzed_facit=""
+    for c in word:
+        c=c.strip()
+        word_lookup = "echo \"" + force_unicode(c).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+        morfanal = os.popen(word_lookup).readlines()
+        facit_cohort=""
+        for row in morfanal:
+                facit_cohort = facit_cohort + row
+        analyzed_facit = analyzed_facit + facit_cohort
+        
     # analyse the user's answer
     data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
     word = os.popen(data_lookup).readlines()
     #print word
-    analyzed=""
+    analyzed_answer=""
     for c in word:
         c=c.strip()
         word_lookup = "echo \"" + force_unicode(c).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
@@ -2527,13 +2545,13 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
         ans_cohort=""
         for row in morfanal:
                 ans_cohort = ans_cohort + row
-        analyzed = analyzed + ans_cohort
+        analyzed_answer = analyzed_answer + ans_cohort
 
     #except socket.timeout:
         #raise Http404("Technical error, please try again later.")
 
 
-    analysis = analysis + analyzed
+    analysis = analysis + "\"<?>\"\n\t\"?\" CLB \n" + analyzed_facit + "\"<.>\"\n\t\".\" CLB" + "\n\"<^vastas>\" \n\t\"^vastas\" QDL \n" + analyzed_answer
     analysis = analysis + "\"<.>\"\n\t\".\" CLB"
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
@@ -2687,7 +2705,7 @@ class CealkkaQuestion(OahpaQuestion):
         question_widget = forms.HiddenInput(attrs={'value' : question.id})
         answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})  #was: qanswer.id
         facit_widget = forms.HiddenInput(attrs={'value' : qfacit.id})
-
+        
         super(CealkkaQuestion, self).__init__(*args, **kwargs)
 
         maxlength=50
@@ -2698,15 +2716,14 @@ class CealkkaQuestion(OahpaQuestion):
         
         self.fields['facit_id'] = forms.CharField(widget=facit_widget, required=False)
 
-
         self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                 widget=forms.TextInput(\
         attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
 
         # Select words for the answer
         astring = ""
-        print "awords that come in CealkkaQuestion as parameter: "
-        print awords
+        #print "awords that come in CealkkaQuestion as parameter: "
+        #print awords
         print "facit:"
         print fwords
         selected_awords = self.select_words(qwords, awords)
@@ -2728,7 +2745,35 @@ class CealkkaQuestion(OahpaQuestion):
         #print astring
 
         self.awords=awords
+        
+        # Select words for the facit
+        if fwords:
+            fstring = ""
+            selected_fwords = self.select_words(awords, fwords)
+            #print "selected facitwords: ", selected_fwords
 
+            fwords = []
+            for token in ftext.split():	   # det här har jag (Heli) hittat på
+                if token.isupper():  # added because of keyerror
+                    word = selected_fwords[token]
+                    if word.has_key('fullform') and word['fullform']:
+                        word['fullform'] = force_unicode(word['fullform'][0])
+                else:
+                    word = {}
+                    word['fullform'] = token
+                    word['taskword'] = ""
+                fwords.append(word)
+                fstring=fstring+" "+force_unicode(word['fullform'])
+
+            fstring = fstring.lstrip()
+            print "facit string: ", fstring
+            self.fstring = fstring
+            self.fwords=fwords
+
+
+        fstring_widget = forms.HiddenInput(attrs={'value': self.fstring})  # provar mig fram
+        self.fields['fstring'] = forms.CharField(widget=fstring_widget, required=False)
+        
         relaxed = []
         form_list=[]
 
@@ -2751,8 +2796,8 @@ class CealkkaQuestion(OahpaQuestion):
                 self.aattrs['answer_fullform_' + syntax] = selected_awords[syntax]['fullform'][0]
             if selected_awords[syntax].has_key('taskword'):
                 self.aattrs['answer_taskword_' + syntax] = selected_awords[syntax]['taskword']  # to track the taskword attribute
-		print question.qid
-        print self.awords
+		#print question.qid
+        #print self.awords
         # Forms question string and answer string out of grammatical elements and other strings.
         qstring = ""
 

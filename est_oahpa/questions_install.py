@@ -95,6 +95,8 @@ class Questions:
 		qelems = QElement.objects.filter(question__id=qaelement.question_id,
 								identifier=content_id)
 
+		print "qelems: ", qelems
+		
 		if (not el or el.getAttribute("content")) and \
 			QElement.objects.filter(question__id=qaelement.question_id,
 									identifier=content_id).count() > 0:
@@ -110,8 +112,12 @@ class Questions:
 		# Some of the facit elements have to copy their lexical content from the  corresponding answer elements. It is indicated by the attribute word, e.g. word="VERB" in the XML-file.
 		word_id = ""
 		answer_qelements = None
+		tagelements = None
+		grammars = list()
+		
 		if el:
 			word_id = el.getAttribute("word")
+			grammars = el.getElementsByTagName("grammar")
 		print word_id
 		#if not word_id: word_id=el_id
 		if word_id:
@@ -120,6 +126,23 @@ class Questions:
 			aelems = QElement.objects.filter(question__id=qaelement.id-1,identifier=word_id)
 			print aelems
 			qe = QElement.objects.create(question=qaelement, syntax=word_id, identifier=word_id, gametype=qaelement.gametype)
+			
+			
+			# The tags will also be added to the facit element. For other question / answer elements it is done below but because there is "return" in the end of this section the tags to the copy-words must be added here.
+			print "facit element before adding tags: ", qe.tags.all()
+			tags = []
+			for gr in grammars:
+				tags.append(gr.getAttribute("tag"))
+			tagstrings = []
+			if tags:
+				tagstrings = self.get_tagvalues(tags)
+				tagelements = Tag.objects.filter(string__in=tagstrings)
+				if tagelements:
+				    for t in tagelements:
+					   print '\t\ttag: ', t.string
+					   qe.tags.add(t)  # was: aelems[0].tags.add(t)
+					   
+			print "tags added to the facit element: ",  qe.tags.all()
 			aelems[0].word_set.add(qe)
 			aelems[0].save()
 			return
