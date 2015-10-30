@@ -13,7 +13,7 @@ from models import *
 #from est_oahpa.est_drill.game import relax
 import datetime
 import socket
-import sys, os
+import sys, os, subprocess
 import itertools
 from random import choice
 
@@ -2336,20 +2336,22 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     noanalysis=False
     fstdir = settings.FST_DIRECTORY
     toolsdir = settings.TOOLS_DIRECTORY + "/preprocess"
-    #fst = fstdir + "/analyser-forcg-desc.hfst" # hfst
-    fst = fstdir + "/analyser-gt-desc.xfst" # xfst
+    fst = fstdir + "/analyser-forcg-desc.hfst" # hfst
+    #fst = fstdir + "/analyser-gt-desc.xfst" # xfst
     lo = settings.LOOKUP_TOOL
     #lo="/Users/mslm/bin/lookup" # xfst on Heli's machine                  
-    #lookup = " | " + lo + " -q -p " + fst # hfst                          
-    lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # xfst           
+    lookup = " | " + lo + " -q -p " + fst # hfst                          
+    #lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # xfst           
     lookup2cg = " | cut -f1-2 | " + settings.SCRIPT_DIRECTORY + "/lookup2cg " # hfst                                                                  
     cg3 = "/usr/local/bin/vislcg3"
-    preprocess = " | " + settings.SCRIPT_DIRECTORY + "/preprocess "
+    preprocess = settings.SCRIPT_DIRECTORY + "/preprocess "
     #preprocess = " | /Users/mslm/main/gt/script/preprocess "              
     disamb = settings.SYNTAX_DIRECTORY + "/disambiguation.cg3"
     synt_funcs = settings.SYNTAX_DIRECTORY + "/functions.cg3"
+    oahpa_funcs = settings.SYNTAX_DIRECTORY + "/oahpa.cg3"
+    corr = settings.DEV_DIRECTORY + "/corr.py"
 
-    vislcg3 = " | " + toolsdir + "/tagger " + toolsdir + "/addlex.lx stdin stdout | perl " + toolsdir + "/pron.pl | " + cg3 + " --grammar " + disamb + " | " + cg3 + " --grammar " + synt_funcs
+    vislcg3 = " | " + toolsdir + "/tagger " + toolsdir + "/addlex.lx stdin stdout | perl " + toolsdir + "/pron.pl | " + cg3 + " --grammar " + disamb + " | " + cg3 + " --grammar " + synt_funcs + " | python3 " + corr + " | " + cg3 + " --prefix '&' --num-windows 1 --single-run --grammar " + oahpa_funcs
 
     self.userans = self.cleaned_data['answer']
     facit = self.cleaned_data['fstring']
@@ -2363,7 +2365,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    #logfile = open('/home/est_oahpa/est_oahpa/est_drill/vastas_log.txt', 'w')
+    logfile = open('/home/est_oahpa/est_oahpa/est_drill/vastas_log.txt', 'w')
     """host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024
@@ -2457,65 +2459,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 
     except socket.error:"""
     analysis = ""
-    data_lookup = "echo \"" + qtext + "\"" + preprocess
-    words = os.popen(data_lookup).readlines()
-    print question_id
-    #print words
-    #print qwords
-    for word in words:
-            w=""
-            cohort=""
-            print word
-            # All the words will go through morph.analyser, even if they have a tag-attribute already. We do it to avoid problems with compound words.
-            w = force_unicode(word).encode('utf-8')
-            w=w.lstrip().rstrip()
-            word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-            morfanal = os.popen(word_lookup).readlines()
-            for row in morfanal:
-                cohort = cohort + row
-	       #print cohort
-            analysis = analysis + cohort
-    tasklemmas = ""
-    for aword in awords:
-            #print aword
-	       #logfile.write(aword)
-            if aword.has_key('taskword') and aword['taskword']:
-                tlemma = aword['fullform']
-                tlemma = force_unicode(tlemma).encode('utf-8')
-                tlemma = tlemma.strip()
-                #print tlemma
-		        #logfile.write(tlemma+" ")
-                tasktag = Tag.objects.filter(id=aword['tag'])
-                tasktagstring = tasktag[0].string
-                taskpos = tasktag[0].pos
-                ttag = tasktagstring.replace("+"," ")
-                ttag = force_unicode(ttag).encode('utf-8')
-                #print ttag
-		        #logfile.write(ttag+"\n")
-                ans_cohort = ""
-                word_lookup = "echo \"" + force_unicode(tlemma).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-                rows = os.popen(word_lookup).readlines()
-                morfanal = ""
-                for row in rows:
-                    ans_cohort = ans_cohort + row
-		            #logfile.write(row + "\n")
-                    malemmas = row.split("\"")
-                    if row:
-                            malemma = malemmas[1]
-                    malemma_without_hash = malemma.replace('#','')
-                    taglist = ttag.split()
-                    tag_match = 1
-                    for entag in taglist:
-                        if entag not in row:
-                            tag_match = 0
-                    if tag_match and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
-                        #print malemmas
-			             #logfile.write(malemma+"\n")
-                        #print malemma
-                        #print malemma_without_hash
-                        tasklemmas = force_unicode(tasklemmas).encode('utf-8') + "\n\t\"" + force_unicode(malemma).encode('utf-8') + "\" "+force_unicode(taskpos).encode('utf-8')
-                    morfanal = morfanal + ans_cohort  # END
-
+    """
     # analysis = force_unicode(analysis).encode('utf-8') + "\"<^vastas>\"\n\t\"^vastas\" QDL " + force_unicode(question_id).encode('utf-8') + " " + tasklemmas + "\n"
     analysis = force_unicode(analysis).encode('utf-8') + "\"<^vastas>\" \n\t\"^vastas\"  QDL \n"
     
@@ -2555,17 +2499,23 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     analysis = analysis + "\"<.>\"\n\t\".\" CLB"
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
-    print analysis
-    #logfile.write(analysis)
-    ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
-    checked = os.popen(ped_cg3).readlines()
+    print analysis """
+    input_for_pipeline = force_unicode(qtext).encode('utf-8') + "?" + " ^vastas " + force_unicode(facit).encode('utf-8') + "." + " ^vastas " + force_unicode(answer).encode('utf-8') + "." 
+    #logfile.write(input_for_pipeline)
+    ped_cg3 = "echo \"" + input_for_pipeline + "\" | " + preprocess + lookup + lookup2cg + vislcg3
+    logfile.write(ped_cg3)
+    process = subprocess.Popen(ped_cg3, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True) 
+    logfile.write("\n Parsed text: \n");
+    checked, errors = process.communicate()
+    logfile.write(checked)
+    logfile.write(errors)
     #print checked
 
     wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
     messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
-    targetObj=re.compile(r'^.*\"(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\".*dia-.*$', re.U)
+    targetObj=re.compile(r'^.*\"(?P<targetString>[\wšŠžŽäÄöÖüÜõÕ-]*)\".*dia-.*$', re.U)
     # Extract the lemma
-    constantObj=re.compile(r'^.*\"\<(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\>\".*$', re.U)
+    constantObj=re.compile(r'^.*\"\<(?P<targetString>[\wšŠžŽäÄöÖüÜõÕ-]*)\>\".*$', re.U)
     diaObj=re.compile(r'^.*(?P<targetString>&dia-[\w]*)\s*$', re.U)
 
     # Each wordform may have a set of tags.
@@ -2573,24 +2523,30 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     msgstrings = {}
     diastring = "jee"
     lemma=""
-    for line in checked:
+    for line in checked.split('\n'):  # was: for line in checked:
         line = line.strip()
+        #logfile.write("XXXXXXXXXXX "+ line+"\n")
 
         #Find the lemma first
         matchObj=constantObj.search(line)
         if matchObj:
             lemma = matchObj.expand(r'\g<targetString>')
 
+
+        #logfile.write("lemma: " + lemma)
         #The wordform
         matchObj=wordformObj.search(line)
         if matchObj:
             wordform = matchObj.expand(r'\g<msgString>')
             msgstrings[wordform] = {}
 
+
+        #logfile.write("wordform: " + wordform)
         #grammatical/semantic/other error
         matchObj=messageObj.search(line)
         if matchObj:
             msgstring = matchObj.expand(r'\g<msgString>')
+            #logfile.write("msgstring: " + msgstring)
             if msgstring.count("spellingerror") > 0:
                 spelling = True
             msgstrings[wordform][msgstring] = 1
@@ -2608,7 +2564,6 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
             msgstring = matchObj.expand(r'\g<targetString>')
             msgstrings[wordform][msgstring] = 1
             diastring=msgstring
-
 
     msg=[]
     dia_msg = []
@@ -2629,10 +2584,11 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
         for m in msgstrings[w].keys():
             if spelling and m.count("spelling") == 0: continue
             m = m.replace("&","")
+            logfile.write("message id: " + m)
             if Feedbackmsg.objects.filter(msgid=m).count() > 0:
                 msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
                 message = Feedbacktext.objects.filter(feedbackmsg=msg_el,language=language)[0].message
-                message = message.replace("WORDFORM","\"" + w + "\"")
+                message = message.replace("WORDFORM","\"" + w.encode('utf-8') + "\"")
                 msg.append(message)
                 if not spelling:
                     found=True
@@ -2663,6 +2619,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     log = Log.objects.create(userinput=self.userans,feedback=feedbackmsg,iscorrect=iscorrect,\
                                        example=question,game=self.gametype,date=today)
     log.save()
+    logfile.close()
 
     variables = []
     variables.append(variable)
@@ -2697,10 +2654,10 @@ class CealkkaQuestion(OahpaQuestion):
         self.gametype = "cealkka"
         qtype=question.qtype
         atext = qanswer.string
-        print "answertext:", atext
+        #print "answertext:", atext
         # qfacit = Question.objects.filter(question=question.id,qatype="facit")[0] # This is done in cealkka.py.
         ftext = qfacit.string
-        print "facittext", ftext
+        #print "facittext", ftext
 
         question_widget = forms.HiddenInput(attrs={'value' : question.id})
         answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})  #was: qanswer.id
@@ -2724,8 +2681,8 @@ class CealkkaQuestion(OahpaQuestion):
         astring = ""
         #print "awords that come in CealkkaQuestion as parameter: "
         #print awords
-        print "facit:"
-        print fwords
+        #print "facit:"
+        #print fwords
         selected_awords = self.select_words(qwords, awords)
 
         awords = []
@@ -2766,7 +2723,7 @@ class CealkkaQuestion(OahpaQuestion):
                 fstring=fstring+" "+force_unicode(word['fullform'])
 
             fstring = fstring.lstrip()
-            print "facit string: ", fstring
+            # print "facit string: ", fstring
             self.fstring = fstring
             self.fwords=fwords
 
