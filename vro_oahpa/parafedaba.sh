@@ -1,10 +1,10 @@
 #!/bin/sh
 
 P="python2.7"
-PEDHOME="/Users/mslm/main/ped"
-#PEDHOME="/home/heli/main/ped"
+#PEDHOME="/Users/mslm/main/ped"
+OAHPAHOME="/home/vro_oahpa"
 LANGDIR="vro"
-DATA=$PEDHOME/$LANGDIR
+DATA=$OAHPAHOME/$LANGDIR
 DPS="$DATA/src"
 INC="$DATA/inc"
 META="$DATA/meta"
@@ -80,6 +80,14 @@ echo "==================================================="
  echo " "
  echo "done"
  echo "==================================================="
+
+ echo "==================================================="
+ echo "feeding db with $DPS/morfac_verbs.xml"
+ $P install.py --file $DPS/morfac_verbs.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt --append 2>>\
+    error.log
+ echo " "
+ echo "done"
+  echo "==================================================="
 
 # # NOTE: --append here, so that the install only adds the forms, but doesn't delete existing ones.
 # echo "==================================================="
