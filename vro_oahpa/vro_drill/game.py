@@ -830,21 +830,25 @@ class BareGame(Game):
 				# 		random_word = random_word.filter(word__lemma__in=smallnum_coll) # constrains the set of collective numerals
 
 				if random_word.count() > 0:
-					random_form = random_word.order_by('?')[0]
+					if random_word.count() >= 5:  # It is possible to create an exercise set where all the exercise lemmas are different.
+						random_word_sorted = random_word.order_by('?')
+						i = 0
+						while random_word_sorted[i].word.lemma in self.lemmas_selected:  # Skip the words that have already been selected for the exercise set.
+							i += 1
+						random_form = random_word_sorted[i]
+					elif random_word.count() > 1: # 2 - 4 different exercise lemmas
+						random_form = random_word.order_by('?')[0]
+					elif random_word.count() == 1:  # Just one candidate for exercise lemmas.
+						random_form = random_word[0]
 					random_word = random_form.word
-					#random_loc2 = random_word.loc2
-					#print random_word
 					no_form = False
-					break
-				elif random_word.count() == 1:
-					random_form = random_word[0]
-					random_word = random_form.word
 					break
 				else:
 					count += 1
 					continue
 
 			db_info['word_id'] = random_word.id
+			self.lemmas_selected.append(random_word.lemma)
 			db_info['tag_id'] = tag.id
 			#print db_info
 			if tag.string.lower().find('conneg') > -1:
@@ -1317,6 +1321,7 @@ class Klokka(NumGame):
 
 		# lookup = "%s\n" % db_info['numeral_id']
 		output, err = self.generate_forms(lookup, fstfile)
+		print "fst output: ", output
 
 		# norm, allnum = output.split('\n\n')[0:2]
 

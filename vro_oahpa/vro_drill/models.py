@@ -779,7 +779,7 @@ class Form(models.Model):
 
 	def getBaseform(self, match_num=False, return_all=False):
 		""" Gets the base form (e.g., citation/dictionary form) for
-			the wordform. Nouns -> Nom+Sg, Verbs -> Inf
+			the wordform. Nouns -> Nom+Sg, Verbs -> Inf/mA
 
 			@param match_num:
 				True - If the form supplied is a noun and plural

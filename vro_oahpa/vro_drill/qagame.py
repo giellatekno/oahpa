@@ -103,8 +103,20 @@ class QAGame(Game):
 			# Do not filter dialect here
 			possible_words = Word.objects.filter(wordqelement__qelement=qelement,
 												form__tag=tag_el.id)
+			print "possible words: ", possible_words
+			#print "tag_el.id: ", tag_el.id
+			#print "qelement: ", qelement
 			if possible_words.count() > 0:
-				word = possible_words.order_by('?')[0]
+				if possible_words.count() > 1:  # Try to avoid repeating the same lemmas within the set of 5 exercises.
+					possible_words_sorted = possible_words.order_by('?')
+					i = 0
+					random_word = possible_words_sorted[0]
+					while random_word.lemma in self.lemmas_selected and i < possible_words.count() - 1:
+						i += 1
+						random_word = possible_words_sorted[i]
+					word = random_word
+				else:
+					word = possible_words.order_by('?')[0]
 
 		print "Selected a word out of possible words: ", word
 		print "Looking for the forms with tag ",tag_el
@@ -121,6 +133,7 @@ class QAGame(Game):
 		# Test by raising Form.DoesNotExist? 
 		word_id = word.id
 		fullform = form.fullform
+		self.lemmas_selected.append(word.lemma)
 			
 		info = { 'word' : word_id, 'tag' : tag_el.id, 'fullform' : [ fullform ], 'qelement' : qelement }
 		return info
