@@ -406,13 +406,22 @@ SEMTYPE_CHOICES = (
 )
 
 
-NUM_CHOICES = (
+NUM_CHOICES_CARD = (
 	('10', _('0-10')),
 	('20', _('0-20')),
 	('100', _('0-100')),
 	('1000', _('0-1000')),
 #	('ALL', _('all')),
 )
+
+NUM_CHOICES_ORD = (
+	('10', _('1-10')),
+	('20', _('1-20')),
+	('100', _('1-100')),
+	('1000', _('1-1000')),
+#	('ALL', _('all')),
+)
+
 
 NUMGAME_CHOICES = (
 	('string', _('String to numeral')),
@@ -487,7 +496,8 @@ ALL_CHOICES = [
 	NUMGAME_CHOICES_PL,
 	NUMLANGUAGE_CHOICES,
 	NUM_BARE_CHOICES,
-	NUM_CHOICES,
+	NUM_CHOICES_CARD,
+	NUM_CHOICES_ORD,
 	NUM_CONTEXT_CHOICES,
 	NUM_LEVEL_CHOICES,
 	NUM_TYPE_CHOICES,
@@ -1391,7 +1401,7 @@ class MorfaQuestion(OahpaQuestion):
 
 
 class NumSettings(OahpaSettings):
-	maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
+	maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES_CARD, widget=forms.RadioSelect)
 	numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
 	#numlanguage = forms.ChoiceField(initial='sjd', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
 	# TODO: remove mandatory need to set default data, should be done through 'initial' field setting.
@@ -1401,6 +1411,14 @@ class NumSettings(OahpaSettings):
 		self.set_settings()
 		super(NumSettings, self).__init__(*args, **kwargs)
 
+class NumOrdSettings(OahpaSettings):
+	maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES_ORD, widget=forms.RadioSelect)
+	numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
+	default_data = {'language' : 'vro', 'numlanguage' : 'vro', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
+
+	def __init__(self, *args, **kwargs):
+		self.set_settings()
+		super(NumOrdSettings, self).__init__(*args, **kwargs)
 
 class NumQuestion(OahpaQuestion):
 	"""

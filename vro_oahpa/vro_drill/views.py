@@ -488,7 +488,7 @@ def num_clock(request):
 @trackGrade("Numra ordinal")
 def num_ord(request):
 
-	numgame = Numview(NumSettings, NumGame)
+	numgame = Numview(NumOrdSettings, NumGame)
 	numgame.settings['gametype'] = "ord"
 
 	c = numgame.create_game(request)

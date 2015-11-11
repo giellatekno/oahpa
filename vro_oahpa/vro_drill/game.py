@@ -1065,7 +1065,10 @@ class NumGame(Game):
 		numeral=""
 		num_list = []
 
-		random_num = randint(1, int(self.settings['maxnum']))
+		if self.settings['gametype'] == 'ord':
+			random_num = randint(1, int(self.settings['maxnum'])) # Ordinal numbers are picked from the range 1..maxnum.
+		else:
+			random_num = randint(0, int(self.settings['maxnum'])) # Cardinal numbers are picked from the range 0..maxnum,
 
 		db_info['numeral_id'] = smart_str(random_num)
 
