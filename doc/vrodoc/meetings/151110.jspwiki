@@ -1,0 +1,119 @@
+!!!Võru Oahpa koosolek 10. nov. 2015
+Osalejad: Heli, Jack, Sulev
+
+!!! Võru-eesti masintõlge ja sammud selle suunas
+Jacki poole pöördus üliõpilane Mari-Ann Loosaar, kes tahab teha uurimistööd võru keele keeletehnoloogiast, näiteks masintõlkest. Meie arvame, et esimene samm võiks olla morfoloogiline ühestamine. Parim juhendaja oleks Tiina Puolakainen.
+
+!!! Võro FST
+
+Sulev märgib tabelites   http://www.ling.helsinki.fi/~rueter/AKU/vro/word_form_nouns_generator-gt-norm_table_2015-09-15.html ja http://www.ling.helsinki.fi/~rueter/AKU/vro/word_form_verbs_generator-gt-norm_table_2015-09-15.html valed vormid $-ga ja õiged €-ga. 
+
+{{{
+N_10ESÄK/N_10HÕRAK => N_10AABITS, N_10HEERITS, N_10HERESKʼ
+?? sinepʼ -bi -pit, petsätʼ -di -tit, minekʼ -gi -kit, ajakʼ -gi -kit, hahkatsʼ -dsi -tsit, horlʼopʼ -bi -pit, roguskʼ -i -it, aadrõs' aadrõs(s)i aadrõssit
+}}}
+
+
+__Vaja teha__: Nimisõnade ja omadussõnade üksteisest lahutamine (Tromsös alustatud). (__Sulev__)
+
+!!! Võro Oahpa
+!!Kasutajaliides
+
+Lokaliseerimine ok, välja arvatud soome keel.
+__Heli__ vaatab, miks kasutajaliides on ainult osaliselt soomekeelne.
+ 
+__Heli__ paneb kasutajaliidese keele vahetamise menüü ka mängude (Leksa, Morfa-S jt.) sisse.
+
+!!Numra
+Kell veel päriselt ei tööta. 
+
+__Jack__ tegeleb kella-automaadiga.  Väike näpuviga sees: peab olema kolmas (a-ga!), aga on kolmõs (õ-ga) Küll aga on kolmõskümnes, kolmõssaas jne - see ongi õige, õ-ga
+
+Mitte-täistunnid töötavad:
+{{{
+05:45
+05:45    viietõistkümne minodi peräst kuuś
+05:45    kolmveeränd kuuś
+05:45    nelikümmend viiś minotit viiś läbi
+
+Täistunnid:
+03:00
+03:00    
+03:00    kolm 
+
+12:00
+12:00    katśtõist 
+12:00    
+
+09:00
+09:00    
+09:00    ütesä 
+
+13:00
+13:00    ütś 
+13:00    
+}}}
+
+Numra - ordinals - vahemikud 1 - n, mitte 0 - n (n = 10, 100, 1000)
+cardinals - arv null' ka sees.
+
+__Heli__ parandab selle ära.
+
+!!Leksa
+Üldiselt töötab hästi, on üksikuid vigu. 
+
+Sünonüüme lisada mõnes kohas (__Sulev__ saadab Helile, kui leiab midagi).
+Helifailid (põhimõtteliselt olemas, aga vaja nimetada lemmade järgi. Saab tegelema hakata, kui eesti-võru sõnaraamatule saavad ära lisatud, tõenäoliselt jaan-veebr).
+
+!!Morfa-S
+
+*Uus valik menüüsse: Adjectives.
+Alustame Cmp+Sg+Nom ja Sup+Sg+Nom-ga. (lühikest ülivõrret pole võru keeles olemas)
+**__Heli__ paneb need omadussõnad Morfa-S-i, mis on oahpa_lexicon.xml-is olemas. 
+        
+*Võrdlusastmed 
+**__Sulev__ saadab Jackile näiteid võrdlusastmete käänamise kohta.
+        {{{
+        nuur : noorõmb : kõgõ noorõmb
+        vana : vanõmb : kõgõ vanõmb
+        väiku : väikumb : kõgõ väikumb
+        (võrokõnõ : võrokõsõmb - naljaga pooleks, nii saab olla iga sõna, ka kass' : kassimb jne)
+        verrev : verevämb : kõgõ verevämb
+        punanõ : punatsõmb : kõgõ punatsõmb
+        suur : suurõmb : kõgõ suurõmb
+        (suur : suurõp : kõgõ suurõp)
+        ((suurõp : suurõba : ... ))
+        }}}
++A+Comp+Sg+Nom  =>> yaml-faili panna kõigile adjektiivitestidele üks rida juurde! (__Sulev__)
+A-alomanw19_gt-norm.yaml jne.
+        
+
+!!Morfa-C
+
+!Nouns
+
+__Vaja teha__:
+
+*__Sulev__ täiendab semantiliste klasside FOOD ja DRINK loendeid uute söödavate ja joodavate asjadega. 
+
+*__Heli__ laiendab ostetavate asjade hulka uute semantiliste kategooriatega, nt kirjatarbed.  --- tehtud
+
+*__Heli__ lisab juurde sõnu semantilisse klassi PLACE_LOCAL või asendab selle küsimus-vastus mallis teise sem. kategooriaga. --- asendatud teistega (BUILDING, ROOM), illatiivi ja inessiivi harjutuses.
+
+*__Sulev__ liigitab kohana kasutatavaid nimisõnu - PLACE_ON ja PLACE_IN (Oahpa leksikonist vaadata! Ja juurde lisada igapäevaseid, nt kino, teater, kool, koosolek, konverents, kontsert, näitus, eksam, ekskursioon, tapalava, elektritool, Võrolõ, Obinitsa, Oravalõ, Tartohe, Talliina v Tal'nahe, Misso, Mikidämäele jne 
+
+   Edaspidi realiseerime ka Leksa-place (kohanimede menüü Leksas). Siis võiks Oahpa sõnastikus olla tähtsamad kohanimed - väike valik Võru- ja Setomaa ja Eesti suuremaid kohanimesid, mõned ka lähi- jm välismaalt. Või siis puhastada, ümber töödelda ee-võro kohanimede fail (u 2000 kohanime).
+
+!Verbs
+
+Vaja teha:
+
+*__Sulev__ valib ACTION_V verbide loendist välja Morfa-C harjutusse sobivad ja lisab ka uusi. 
+
+*__Heli__ lisab programmidesse Morfa-S ja Morfa-C kontrolli, mis keelab ära korduvad harjutused sama hulga sees.  ---- tehtud
+
+
+!!!Järgmine koosolek
+__T, 24. novembril kell 10.__
+ 
+
