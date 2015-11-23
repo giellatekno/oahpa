@@ -723,7 +723,7 @@ class Tag(models.Model):
 			'attributive': 'Attributive',
 			'case': 'Case',
 #			'conneg': 'ConNeg',
-#			'grade': 'Grade',
+			'grade': 'Grade',
 #			'infinite': 'Infinite',
 			'mood': 'Mood',
 			'number': 'Number',
@@ -893,17 +893,18 @@ class Form(models.Model):
 			else:
 				number = 'Sg'
 
-			if self.tag.subclass:
-				subclass = self.tag.subclass
-			else:
-				subclass = ''
+			#if self.tag.subclass:  # No subclasses defined for Võro adjectives.
+			#	subclass = self.tag.subclass
+			#else:
+			#	subclass = ''
 
-			print subclass
+			#print subclass
 			baseform = self.word.form_set.filter(tag__case='Nom',
 													tag__number=number,
 													tag__grade='',
-													tag__subclass=subclass,
 													tag__attributive='')
+													#tag__subclass=subclass,
+													
 			# print baseform
 			if baseform.count() == 0:
 				baseform = self.word.form_set.all()

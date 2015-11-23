@@ -334,8 +334,21 @@ class BareGame(Game):
 		'N-ABL': ('Abl'),
         'N-TRA': ('Tra'),
         'N-TER': ('Ter'),
+        'N-ESS': ('Ess'),
         'N-ABESS': ('Abe'),
         'N-COM': ('Com'),
+        'A-NOM': ('Nom'),
+        'A-GEN': ('Gen'),
+		'A-PAR': ('Par'),
+		'A-ILL': ('Ill'),
+		'A-INE': ('Ine'),
+		'A-ELA': ('Ela'),
+		'A-ALL': ('All'),
+		'A-ADE': ('Ade'),
+		'A-ABL': ('Abl'),
+        'A-TRA': ('Tra'),
+        'A-COMP': ('Comp'),
+        'A-POS': (''),
 		'': '',
 	}
 
@@ -474,7 +487,7 @@ class BareGame(Game):
 		pron_type = True and self.settings.get('pron_type') or   ""
 		proncase = True and self.settings.get('proncase') or   ""
 		derivation_type = True and self.settings.get('derivation_type') or   ""
-#		grade = True and self.settings.get('grade')  or  ""
+		grade = True and self.settings.get('grade')  or  ""
 		num_type = True and self.settings.get('num_type') or ""  # added to get num_type from settings
 		source = self.settings['book']
 
@@ -520,7 +533,9 @@ class BareGame(Game):
 			case = self.casetable[pos_tables[pos]]
 		else:
 			case = self.casetable[pos_tables[pos]]
-		grade = self.casetable.get('grade', '')
+		if pos == 'A':
+			grade = self.casetable[grade]
+
 		num_type = self.casetable.get('num_type', '') # added by Heli, changed by Pavel to skip an exception, change this back I suppose
 
 		pos_mood_tense = {
@@ -684,15 +699,16 @@ class BareGame(Game):
 		if pos == 'A':
 			if pos2 == 'Num':
 				 sylls = False
-				 TAG_QUERY = TAG_QUERY & Q(subclass=subclass) & Q(case=case) & Q(attributive='') & Q(grade='')
+				 TAG_QUERY = TAG_QUERY & Q(case=case) & Q(attributive='') & Q(grade='')  # left out Q(subclass=subclass)
 			else:
 				 TAG_QUERY = TAG_QUERY & \
-						 Q(subclass='') & \
 						Q(attributive=attributive) & \
 						Q(grade=grade) & \
 						Q(case=case) & \
 						Q(number=number) # was: number__in=number, but we do not want to mix singular and plural exercises for Võro
+						# Q(subclass='') & \
 
+		print "TAG QUERY: ", TAG_QUERY
 		# filter can include several queries, exclude must have only one
 		# to work successfully
 		if pos != 'Der':

@@ -1,10 +1,11 @@
 #!/bin/sh
 
 P="python2.7"
-#PEDHOME="/Users/mslm/main/ped"
+PEDHOME="/Users/mslm/main/ped"
 OAHPAHOME="/home/vro_oahpa"
 LANGDIR="vro"
-DATA=$OAHPAHOME/$LANGDIR
+#DATA=$OAHPAHOME/$LANGDIR  # on gtlab
+DATA=$PEDHOME/$LANGDIR  # locally
 DPS="$DATA/src"
 INC="$DATA/inc"
 META="$DATA/meta"
@@ -67,12 +68,12 @@ echo "==================================================="
 # echo "done"
 # echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPS/A_vro2X.xml"
-# $P install.py --file $DPS/A_vro2X.xml --tagfile $META/tags.txt --paradigmfile $META/A_paradigms.txt 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+ echo "==================================================="
+ echo "feeding db with $DPS/oahpa_lexicon.xml"
+ $P install.py --file $DPS/oahpa_lexicon.xml --tagfile $META/tags.txt --paradigmfile $META/a_paradigms.txt --append 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
  echo "==================================================="
  echo "feeding db with $DPS/oahpa_lexicon.xml"
@@ -83,8 +84,7 @@ echo "==================================================="
 
  echo "==================================================="
  echo "feeding db with $DPS/morfac_verbs.xml"
- $P install.py --file $DPS/morfac_verbs.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt --append 2>>\
-    error.log
+ $P install.py --file $DPS/morfac_verbs.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt --append 2>>error.log
  echo " "
  echo "done"
   echo "==================================================="
