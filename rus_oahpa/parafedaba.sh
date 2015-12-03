@@ -1,52 +1,43 @@
 #!/bin/sh
 
 P="python2.7"
-GTHOME="/home/rusoahpa"
+GTHOME="/home/rus_oahpa"
 LANGDIR="rus"
 DATA=$GTHOME/$LANGDIR
 DPS="$DATA/src"
 INC="$DATA/inc"
-META="$DATA/meta-data"
+META="$DATA/meta"
 DPN="$DATA/nobrus"
+DPD="$DATA/danrus"
+DPE="$DATA/engrus"
 #DPF="$DATA/finsme"
 #DPW="$DATA/swesme"
 #WORDS=$GTHOME/words/dicts/smenob/src
 
 echo "==================================================="
 echo "installing tags and paradigms for Morfa"
-#$P install.py -r $META/paradigms.txt -t $META/tags.txt -b #2>>../logs/error.log
+$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>>../logs/error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 ##
-## Trying to set up Russian
-
-echo "==================================================="
-echo "installing MiPListAlpha.xml"
-$P install.py --file $INC/MiPListAlpha_corrected.xml --tagfile $META/tags.txt --paradigmfile $META/paradigms.txt #2>../logs/error.log
-echo " "
-echo "done"
-echo "==================================================="
+## Install the word forms into the database
 
 #echo "==================================================="
-#echo "feeding db with $DPS/n_ru.xml"
-#$P install.py --file $DPS/n_rus.xml --tagfile $META/tags.txt --paradigmfile $META/paradigms.txt 2>../logs/error.log
+#echo "installing MiPListAlpha.xml"
+#$P install.py --file $INC/MiPListAlpha_corrected.xml --tagfile $META/tags.txt --paradigmfile $META/paradigms.txt #2>../logs/error.log
 #echo " "
 #echo "done"
 #echo "==================================================="
 
+echo "==================================================="
+echo "feeding db with $DPS/N_rusnob.xml"
+$P install.py --file $DPS/N_rusnob.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>../logs/error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-##
-##  sme->X
-##
-
-# echo "==================================================="
-# echo "feeding db with $DPS/n_smenob.xml"
-# $P install.py --file $DPS/n_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $META/names.xml"
@@ -55,34 +46,34 @@ echo "==================================================="
 # echo "done"
 # echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPS/prop_smenob.xml"
-# $P install.py --file $DPS/prop_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+ echo "==================================================="
+ echo "feeding db with $DPS/prop_rusnob.xml"
+ $P install.py --file $DPS/prop_rusnob.xml --tagfile $META/tags.txt --paradigmfile $META/Prop_paradigms.txt 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
 
-# echo "==================================================="
-# echo "feeding db with $DPS/num_smenob.xml"
-# $P install.py --file $DPS/num_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/num_paradigms.txt 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+ echo "==================================================="
+ echo "feeding db with $DPS/num_rusnob.xml"
+ $P install.py --file $DPS/num_rusnob.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPS/a_smenob.xml"
-# $P install.py --file $DPS/a_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/a_paradigms.txt 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+ echo "==================================================="
+ echo "feeding db with $DPS/a_rusnob.xml"
+ $P install.py --file $DPS/a_rusnob.xml --tagfile $META/tags.txt --paradigmfile $META/A_paradigms.txt 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPS/v_smenob.xml"
-# $P install.py --file $DPS/v_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+ echo "==================================================="
+ echo "feeding db with $DPS/v_rusnob.xml"
+ $P install.py --file $DPS/v_rusnob.xml --tagfile $META/tags.txt --paradigmfile $META/V_paradigms.txt 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
 # # NOTE: --append here, so that the install only adds the forms, but doesn't delete existing ones.
 # echo "==================================================="
@@ -93,12 +84,12 @@ echo "==================================================="
 # echo "==================================================="
 
 
-# echo "==================================================="
-# echo "feeding db with $DPS/adv_smenob.xml"
-# $P install.py --file $DPS/adv_smenob.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+ echo "==================================================="
+ echo "feeding db with $DPS/adv_rusnob.xml"
+ $P install.py --file $DPS/adv_rusnob.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $DPS/multiword_smenob.xml"
@@ -108,8 +99,39 @@ echo "==================================================="
 # echo "==================================================="
 
 # ##
-# ## nobsme
+# ## nobrus
 # ##
+
+echo "==================================================="                    
+echo "feeding db with $DPN/MiPListAlpha_nobrus.xml"                         
+$P install.py --file $DPN/MiPListAlpha_nobrus.xml 2>>error.log               
+echo " "                                                                      
+echo "done"                                                                   
+echo "==================================================="
+
+# ##
+# ## danrus
+# ##
+
+echo "==================================================="
+echo "feeding db with $DPD/MiPListAlpha_danrus.xml"
+$P install.py --file $DPD/MiPListAlpha_danrus.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+
+# ##                                                                      
+# ## engrus                                                                   
+# ##                                                                            
+
+echo "==================================================="
+echo "feeding db with $DPE/MiPListAlpha_engrus.xml"
+$P install.py --file $DPD/MiPListAlpha_engrus.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
 
 # echo "==================================================="
 # echo "feeding db with $DPN/a_nobsme.xml"
@@ -329,29 +351,29 @@ echo "==================================================="
 # # Morfa-C
 
 
-# echo "==================================================="
-# echo "installing Morfa-C word fillings"
-# $P install.py -f $META/fillings_smenob.xml --paradigmfile $META/paradigms.txt --tagfile $META/tags.txt 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "installing Morfa-C word fillings"
+$P install.py -f $META/fillings.xml --paradigmfile $META/paradigms.txt --tagfile $META/tags.txt 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-# $P manage.py mergetags
-# $P manage.py fixtagattributes
+$P manage.py mergetags
+$P manage.py fixtagattributes
 
-# echo "==================================================="
-# echo "installing Morfa-C questions for nouns"
-# $P install.py -g $META/grammar_defaults.xml -q $META/noun_questions.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "installing Morfa-C questions for nouns"
+$P install.py -g $META/grammar_defaults.xml -q $META/noun_questions.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-# echo "==================================================="
-# echo "installing Morfa-C questions for verbs"
-# $P install.py -g $META/grammar_defaults.xml -q $META/verb_questions.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "installing Morfa-C questions for verbs"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 # echo "==================================================="
 # echo "installing Morfa-C questions for pronoun"
