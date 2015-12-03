@@ -286,7 +286,7 @@
     </answer>
   </q>
 -->
-  <q id="dat_nravitsja">
+  <q id="dat_nravitsja_1">
     <qtype>N-DAT</qtype>
     <question>
       <text>Кому нравится SUBJ</text>
@@ -303,6 +303,24 @@
       </element>
     </answer>
   </q>
+
+<q id="dat_nravitsja_2">
+    <qtype>N-DAT</qtype>
+    <question>
+      <text>Кому нравится SUBJ</text>
+      <element id="SUBJ">
+        <grammar tag="N+Gender+Inan+Sg+Nom"/>
+        <sem class="FOOD_DISH"/> <!-- was: OBJECT -->
+      </element>
+    </question>
+    <answer>
+      <text>N-DAT нравится SUBJ</text>
+      <element game='morfa' task='yes' id="N-DAT">
+        <grammar tag="N+Gender+Anim+Sg+Dat"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </answer>
+</q>
   
     <q id="acc_dirobj_anim">
     <qtype>N-ACC</qtype>
