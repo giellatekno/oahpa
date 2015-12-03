@@ -15,8 +15,8 @@ try:
 	instructor_group = Group.objects.get(name='Instructors')
 except Group.DoesNotExist:
 	instructor_group = Group.objects.create(name='Instructors')
-	root = User.objects.get(pk=1)
-	instructor_group.user_set.add(root)
+#	root = User.objects.get(pk=1) Heli: temporarily commented out these two lines.
+#	instructor_group.user_set.add(root)
 	instructor_group.save()
 except DatabaseError:
 	pass

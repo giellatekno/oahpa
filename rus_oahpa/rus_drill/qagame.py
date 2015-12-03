@@ -1019,7 +1019,7 @@ class QAGame(Game):
 	def create_form(self, db_info, n, data=None):
 
 		question = Question.objects.get(Q(id=db_info['question_id']))
-		print question.string
+		#print question.string
 		answer = None
 		if self.settings.has_key('dialect'):
 			dialect = self.settings['dialect']
@@ -1031,7 +1031,7 @@ class QAGame(Game):
 			language = self.settings['language']
 		if not self.gametype == "qa":
 			answer = Question.objects.get(Q(id=db_info['answer_id']))
-			print answer.string
+			#print answer.string
 			print db_info['awords']
 			form = (ContextMorfaQuestion(question, answer, \
 										 db_info['qwords'], db_info['awords'], dialect, language, db_info['userans'], db_info['correct'], data, prefix=n))
