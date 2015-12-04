@@ -128,31 +128,31 @@ def FSTLookup(data, fst_file):
 					sys.exit(2)
 	
 				if morfanal_lemma:
-				    print >> STDOUT, "morf analysis of lemma: %s" % morfanal_lemma[0]
-				    readings = morfanal_lemma[0].split("\t")  # needed to handle morphpologically ambiguous lemmas
-				    lemmaplus = lemma + "+"
-				    for reading in readings:
-				        if reading.find(lemmaplus) == 0: # the morphological reading that starts with the given lemma immediately followed by '+'
-				            correct_reading = reading
-				    #print >> STDOUT, "the first reading: %s" % readings[1]
-				    print >> STDOUT, "the correct reading: %s" % correct_reading
-				    # Split the reading to individual tags:
-				    tags = correct_reading.split("+")
-				    print >> STDOUT, "lemma: %s" % (tags[0])
-				    if morfanal_lemma[0].strip()[-2::] != '+?' and tags[1] == 'N':
-				        if tags[2] == 'Prop': # Proper nouns have more tags in the sequence, e.g. Европа+N+Prop+Sem/Alt+Fem+Inan+Sg+Nom
-				            gender = tags[4]
-				            animacy = tags[5]
-				            tags = tags[1] + '+' + tags[2] + '+' + tags[3] + '+' + gender + '+' + animacy + '+' + number + '+' + case
-				        else:
-				            gender = tags[2]
-				            animacy = tags[3]
-				            tags = tags[1] + '+' + gender + '+' + animacy + '+' + number + '+' + case
-				        print >> STDOUT, "gender: %s" % gender
-				        print >> STDOUT, "animacy: %s" % animacy				    
-				        stem_info[lemma] = [gender, animacy]
-				        row = lemma + '+' + tags + "\n"
-				    previous_lemma = lemma
+					correct_reading = ""
+					print >> STDOUT, "morf analysis of lemma: %s" % morfanal_lemma[0]
+					readings = morfanal_lemma[0].split("\t")  # needed to handle morphpologically ambiguous lemmas
+					lemmaplus = lemma + "+"
+					for reading in readings:
+						if reading.find(lemmaplus) == 0: # the morphological reading that starts with the given lemma immediately followed by '+'
+							correct_reading = reading
+					print >> STDOUT, "the correct reading: %s" % correct_reading
+                                        # Split the reading to individual tags:
+					tags = correct_reading.split("+")
+					print >> STDOUT, "lemma: %s" % (tags[0])
+					if morfanal_lemma[0].strip()[-2::] != '+?' and tags[1] == 'N':
+						if tags[2] == 'Prop': # Proper nouns have more tags in the sequence, e.g. Европа+N+Prop+Sem/Alt+Fem+Inan+Sg+Nom
+							gender = tags[4]
+							animacy = tags[5]
+							tags = tags[1] + '+' + tags[2] + '+' + tags[3] + '+' + gender + '+' + animacy + '+' + number + '+' + case
+						else:
+							gender = tags[2]
+							animacy = tags[3]
+							tags = tags[1] + '+' + gender + '+' + animacy + '+' + number + '+' + case
+						print >> STDOUT, "gender: %s" % gender
+						print >> STDOUT, "animacy: %s" % animacy				    
+						stem_info[lemma] = [gender, animacy]
+						row = lemma + '+' + tags + "\n"
+					previous_lemma = lemma
 			new_data += row + "\n"
 			
 	print >> STDOUT, "Input of the generator: %s" % new_data

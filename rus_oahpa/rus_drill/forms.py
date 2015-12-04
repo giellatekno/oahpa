@@ -19,8 +19,8 @@ from random import choice
 
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
-PRONOUNS_LIST = {'Sg1':'я', 'Sg2':'ты', 'Sg3':'он',
-		  'Pl1':'мы', 'Pl2':'вы', 'Pl3':'они'}
+PRONOUNS_LIST = {'Sg1':u'я', 'Sg2':u'ты', 'Sg3':u'он',
+		  'Pl1':u'мы', 'Pl2':u'вы', 'Pl3':u'они'}
 
 # DEMONSTRATIVE_PRESENTATION plus Sg3/Pl3
 PASSIVE_PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'dat',
@@ -33,8 +33,8 @@ NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
 		  'Du1':'ean', 'Du2':'eahppi', 'Du3':'eaba'}
 
 TENSE_PRESENTATION = {
-	'Prt': u'ikte',
-	'Prs': u'odne',
+	'Prs': u'сегодня',
+	'Prt': u'вчера',
 }
 
 RECIPROCATIVE_PRESENTATION = {
@@ -169,11 +169,11 @@ WORDFORM_TYPE_CHOICES = (
 
 ADJCASE_CHOICES = (
 	('N-NOM-PL', _('plural')),
-	('N-ACC', _('Accusative')),
+	#('N-ACC', _('Accusative')),
     ('N-GEN', _('Genitive')),
-    ('N-DAT', _('Dative')),
-    ('N-INS', _('Instrumental')),
-    ('N-LOC', _('Locative')),
+    #('N-DAT', _('Dative')),
+    #('N-INS', _('Instrumental')),
+    #('N-LOC', _('Locative')),
 )
 
 ADJECTIVE_QUESTION_ANSWER = {
@@ -252,12 +252,12 @@ NUM_TYPE_CHOICES = (
 )
 
 VTYPE_CHOICES = (
-	#('PRS', _('present')),
+	('PRS', _('present')),
 	#('PRT', _('past')),
 	#('PRF', _('perfect')),
 	#('GER', _('gerund')),
 	#('COND', _('conditional')),
-	('IMPRT', _('imperative')),
+	#('IMPRT', _('imperative')),
 	#('POT', _('potential')),
 )
 
@@ -852,8 +852,8 @@ class OahpaSettings(forms.Form):
 					'lemmacount' : '2',
 					'case': 'N-ACC',
 					'pos' : 'N',
-					'vtype' : 'IMPRT',
-					'adjcase' : 'N-ACC',
+					'vtype' : 'PRS', # was IMPRT
+					'adjcase' : 'N-GEN',
 					'number' : '',
 					'pron_type': 'Pers',
 					'proncase' : 'N-NOM', # Need a new default case here
@@ -1114,8 +1114,8 @@ class MorfaSettings(OahpaSettings):
 	case = forms.ChoiceField(initial='N-ACC', choices=CASE_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
-	adjcase = forms.ChoiceField(initial='N-ACC', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
-	vtype = forms.ChoiceField(initial='IMPRT', choices=VTYPE_CHOICES, widget=forms.Select)
+	adjcase = forms.ChoiceField(initial='N-GEN', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
+	vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
 	num_bare = forms.ChoiceField(initial='N-GEN', choices=NUM_BARE_CHOICES, widget=forms.Select)
 	num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)
 	num_type = forms.ChoiceField(initial='CARD',choices=NUM_TYPE_CHOICES, widget=forms.Select)
