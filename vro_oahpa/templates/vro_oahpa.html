@@ -11,6 +11,12 @@
 
 {% block header_content %} {% endblock %}
 
+{% block language_select %}
+<div id="language_options">
+    {% include 'language_menu.html' %} 
+</div>
+{% endblock %}
+
 
 {% block main_content %}
 <ul id="games_menu" class="small">
