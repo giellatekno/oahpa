@@ -1,13 +1,13 @@
 {% extends "mgame.html" %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
-  <!-- {% ifequal settings.gametype "bare" %}  -->
-    {% trans "Put the nouns in the correct forms. You get a translation if you click on a word." %}
- <!-- {% else %}
-    {% trans "Add nouns in correct forms." %}
-  {% endifequal %} -->
+    {% trans "Add substantives in correct forms." %}
+    {% ifnotequal LANGUAGE_CODE "et" %} 
+        {% trans "You get translation if you click the word." %}
+    {% endifnotequal %}
 {% endblock %}
 
 {% block subsetting %}

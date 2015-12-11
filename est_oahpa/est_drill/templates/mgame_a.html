@@ -1,10 +1,13 @@
 {% extends "mgame.html" %}
 {% load i18n %}
-
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
-    {% trans "Add adjectives in correct forms. You get translation if you click the word." %}
+    {% trans "Add adjectives in correct forms." %}
+    {% ifnotequal LANGUAGE_CODE "et" %} 
+        {% trans "You get translation if you click the word." %}
+    {% endifnotequal %}
 {% endblock %}
 
 
