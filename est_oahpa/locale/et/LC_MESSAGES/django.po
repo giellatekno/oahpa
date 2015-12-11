@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-15 13:42+0200\n"
+"POT-Creation-Date: 2015-12-11 21:28+0100\n"
 "PO-Revision-Date: 2015-02-25 HO:MI+ZONE\n"
 "Last-Translator: Heli Uibo <heli1401@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -549,17 +549,17 @@ msgstr "Borramušgávppis"
 msgid "Shopadj"
 msgstr "Veardideapmi rámbuvrris"
 
-#: est_drill/forms.py:454 est_drill/templates/mgame_a.html:20
+#: est_drill/forms.py:454 est_drill/templates/mgame_a.html:23
 #: est_drill/templates/mgame_v.html:20
 msgid "bisyllabic"
 msgstr "paritavulliset"
 
-#: est_drill/forms.py:455 est_drill/templates/mgame_a.html:21
+#: est_drill/forms.py:455 est_drill/templates/mgame_a.html:24
 #: est_drill/templates/mgame_v.html:21
 msgid "trisyllabic"
 msgstr "paritontavulliset"
 
-#: est_drill/forms.py:456 est_drill/templates/mgame_a.html:22
+#: est_drill/forms.py:456 est_drill/templates/mgame_a.html:25
 #: est_drill/templates/mgame_v.html:22
 msgid "contracted"
 msgstr "supistumavartalot"
@@ -925,20 +925,20 @@ msgstr "abi"
 msgid "This is almost correct!"
 msgstr "See on peaaegu õige!"
 
-#: est_drill/templates/game.html:190 est_drill/templates/leksa.html:74
+#: est_drill/templates/game.html:193 est_drill/templates/leksa.html:74
 #: est_drill/templates/vasta.html:103
 msgid "Test answers"
 msgstr "Kontrolli vastuseid"
 
-#: est_drill/templates/game.html:193 est_drill/templates/leksa.html:77
+#: est_drill/templates/game.html:196 est_drill/templates/leksa.html:77
 msgid "Show the correct answers"
 msgstr "Näita õigeid vastuseid"
 
-#: est_drill/templates/game.html:201
+#: est_drill/templates/game.html:204
 msgid "Congratulations!"
 msgstr "Suurepärane!"
 
-#: est_drill/templates/game.html:204
+#: est_drill/templates/game.html:207
 msgid "Your score:"
 msgstr "Sinu tulemus:"
 
@@ -1031,27 +1031,30 @@ msgid "Morphology"
 msgstr "Morfoloogia"
 
 #: est_drill/templates/mgame_a.html:7
-msgid ""
-"Add adjectives in correct forms. You get translation if you click the word."
-msgstr ""
-"Kirjuta õige omadussõna vorm. Sõnal klikkides näed selle eestikeelset tõlget."
+msgid "Add adjectives in correct forms."
+msgstr "Kirjoita pohjoissaamen adjektiivi oikeassa muodossa."
 
-#: est_drill/templates/mgame_a.html:14 est_drill/templates/mgame_der.html:20
+#: est_drill/templates/mgame_a.html:9 est_drill/templates/mgame_n.html:9
+#: est_drill/templates/mgame_v.html:9
+msgid "You get translation if you click the word."
+msgstr "Sõnal klikkides näed selle tõlget."
+
+#: est_drill/templates/mgame_a.html:17 est_drill/templates/mgame_der.html:20
 #: est_drill/templates/mgame_l.html:17 est_drill/templates/mgame_l.html:20
 #: est_drill/templates/mgame_n.html:15 est_drill/templates/mgame_n.html:22
 #: est_drill/templates/mgame_p.html:15
 msgid "Case"
 msgstr "Kääne"
 
-#: est_drill/templates/mgame_a.html:16
+#: est_drill/templates/mgame_a.html:19
 msgid "Grade"
 msgstr "Võrdlusaste"
 
-#: est_drill/templates/mgame_a.html:18 est_drill/templates/mgame_v.html:18
+#: est_drill/templates/mgame_a.html:21 est_drill/templates/mgame_v.html:18
 msgid "Stem"
 msgstr "Tüvi"
 
-#: est_drill/templates/mgame_a.html:27 est_drill/templates/mgame_l.html:30
+#: est_drill/templates/mgame_a.html:30 est_drill/templates/mgame_l.html:30
 #: est_drill/templates/mgame_n.html:18 est_drill/templates/mgame_v.html:16
 #: est_drill/templates/mgame_v.html:26
 msgid "Type"
@@ -1074,15 +1077,7 @@ msgid "Level"
 msgstr "Tase"
 
 #: est_drill/templates/mgame_n.html:7
-msgid ""
-"Put the nouns in the correct forms. You get a translation if you click on a "
-"word."
-msgstr ""
-"Kirjuta nimisõnad õiges vormis. Sõnal klikkides näed selle eestikeelset "
-"tõlget."
-
-#: est_drill/templates/mgame_n.html:9
-msgid "Add nouns in correct forms."
+msgid "Add substantives in correct forms."
 msgstr "Kirjuta nimisõnad õiges vormis."
 
 #: est_drill/templates/mgame_n.html:17
@@ -1102,12 +1097,6 @@ msgid "Reciprocative type"
 msgstr "Vastastikused asesõnad"
 
 #: est_drill/templates/mgame_v.html:7
-msgid "Add verbs in correct forms. You get translation if you click the word."
-msgstr ""
-"Kirjuta tegusõnad õiges vormis. Sõnal klikkides näed selle eestikeelset "
-"tõlget."
-
-#: est_drill/templates/mgame_v.html:9
 msgid "Add verbs in correct forms."
 msgstr "Kirjuta tegusõnad õiges vormis."
 
@@ -1221,8 +1210,9 @@ msgid ""
 "The blue words are given in the primary form. Your task is to write them in "
 "the correct grammatical form."
 msgstr ""
-"Vasta küsimusele täislausega. Pea meeles, et pärisnimed kirjutatakse suure algustähega. "
-"Sinised sõnad on antud algvormis. Sinu ülesandeks on need kirjutada õiges muutevormis. "
+"Vasta küsimusele täislausega. Pea meeles, et pärisnimed kirjutatakse suure "
+"algustähega. Sinised sõnad on antud algvormis. Sinu ülesandeks on need "
+"kirjutada õiges muutevormis. "
 
 #: est_drill/templates/vasta.html:46
 msgid ""
@@ -1390,10 +1380,10 @@ msgstr "Programm on alles arendusjärgus. Vabandame!"
 msgid "Reference materials"
 msgstr "Abimaterjalid"
 
-#: templates/est_oahpa.html:74 templates/est_oahpa_main.html:180
-#: templates/est_oahpa_main.html.py:183 templates/est_oahpa_main.html:186
-#: templates/est_oahpa_main.html.py:189 templates/est_oahpa_main.html:192
-#: templates/est_oahpa_main.html.py:195
+#: templates/est_oahpa.html:74 templates/est_oahpa_main.html:181
+#: templates/est_oahpa_main.html.py:184 templates/est_oahpa_main.html:187
+#: templates/est_oahpa_main.html.py:190 templates/est_oahpa_main.html:193
+#: templates/est_oahpa_main.html.py:196
 msgid "Instructions"
 msgstr "Juhised"
 
@@ -1444,31 +1434,31 @@ msgstr "Koutokeino"
 msgid "KJ"
 msgstr "Kaarasjoki"
 
-#: templates/est_oahpa_main.html:128
-msgid "Answer to questions"
-msgstr "Vasta küsimustele"
-
-#: templates/est_oahpa_main.html:135
+#: templates/est_oahpa_main.html:127
 msgid "Words and translations"
 msgstr "Sõnad ja tõlked"
 
-#: templates/est_oahpa_main.html:143
+#: templates/est_oahpa_main.html:135
 msgid "Practice morphology"
 msgstr "Harjuta sõnade käänamist ja pööramist"
 
-#: templates/est_oahpa_main.html:151
+#: templates/est_oahpa_main.html:143
 msgid "Practice morphology in context"
 msgstr "Harjuta sõnade käänamist ja pööramist lause kontekstis"
 
-#: templates/est_oahpa_main.html:159
+#: templates/est_oahpa_main.html:153
 msgid "Dialogue game"
 msgstr "Dialoogid"
 
-#: templates/est_oahpa_main.html:166
+#: templates/est_oahpa_main.html:161
+msgid "Answer to questions"
+msgstr "Vasta küsimustele"
+
+#: templates/est_oahpa_main.html:168
 msgid "Practice numerals"
 msgstr "Harjuta arve ja ajaväljendeid"
 
-#: templates/est_oahpa_main.html:175
+#: templates/est_oahpa_main.html:176
 msgid ""
 "Oahpa is an internet program for learners of Estonian. The program can be "
 "adjusted to different topics and levels of difficulty, and it generates new "
@@ -1478,53 +1468,53 @@ msgstr ""
 "Programmi saab kohandada erinevatele teemadele ja raskusastmetele ja see "
 "võib genereerida lugematul hulgal sama tüüpi, kuid veidi erinevaid harjutusi."
 
-#: templates/est_oahpa_main.html:177
+#: templates/est_oahpa_main.html:178
 msgid "Oahpa is connected with online reference materials."
 msgstr "Ressursit"
 
-#: templates/est_oahpa_main.html:199
+#: templates/est_oahpa_main.html:200
 msgid "Livonian"
 msgstr "Liivi"
 
-#: templates/est_oahpa_main.html:199
+#: templates/est_oahpa_main.html:200
 msgid "Finnish"
 msgstr "Soome"
 
-#: templates/est_oahpa_main.html:199 templates/est_oahpa_main.html.py:201
+#: templates/est_oahpa_main.html:200 templates/est_oahpa_main.html.py:202
 msgid "web dictionary"
 msgstr "veebisõnastik"
 
-#: templates/est_oahpa_main.html:201
+#: templates/est_oahpa_main.html:202
 msgid "Norwegian"
 msgstr "norra"
 
-#: templates/est_oahpa_main.html:201
+#: templates/est_oahpa_main.html:202
 msgid "Russian"
 msgstr "Vene"
 
-#: templates/est_oahpa_main.html:205 templates/est_oahpa_main.html.py:208
-#: templates/est_oahpa_main.html:211 templates/est_oahpa_main.html.py:214
-#: templates/est_oahpa_main.html:217 templates/est_oahpa_main.html.py:220
+#: templates/est_oahpa_main.html:206 templates/est_oahpa_main.html.py:209
+#: templates/est_oahpa_main.html:212 templates/est_oahpa_main.html.py:215
+#: templates/est_oahpa_main.html:218 templates/est_oahpa_main.html.py:221
 msgid "Russian grammar"
 msgstr "Grammatika"
 
-#: templates/est_oahpa_main.html:226
+#: templates/est_oahpa_main.html:227
 msgid "Are you visiting this site as part of a course?"
 msgstr "Kas osaled kursusel ning Sul on kasutajatunnus ja parool?"
 
-#: templates/est_oahpa_main.html:226
+#: templates/est_oahpa_main.html:227
 msgid "Log in here"
 msgstr "Logi sisse"
 
-#: templates/est_oahpa_main.html:235
+#: templates/est_oahpa_main.html:236
 msgid "Link to this exercise"
 msgstr "Otselink sellele harjutusele"
 
-#: templates/est_oahpa_main.html:241
-msgid "Copyright 2011-2014 Universitetet i Troms&oslash; "
+#: templates/est_oahpa_main.html:242
+msgid "Copyright 2011-2015 Universitetet i Troms&oslash; "
 msgstr "Copyright 2014 UiT Norra Arktika Ülikool"
 
-#: templates/est_oahpa_main.html:242
+#: templates/est_oahpa_main.html:243
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -2146,6 +2136,23 @@ msgstr "E-post-adresse"
 msgid "Reset my password"
 msgstr "Endre passordet mitt"
 
+#~ msgid ""
+#~ "Add adjectives in correct forms. You get translation if you click the "
+#~ "word."
+#~ msgstr ""
+#~ "Kirjuta õige omadussõna vorm. Sõnal klikkides näed selle eestikeelset "
+#~ "tõlget."
+
+#~ msgid ""
+#~ "Put the nouns in the correct forms. You get a translation if you click on "
+#~ "a word."
+#~ msgstr ""
+#~ "Kirjuta nimisõnad õiges vormis. Sõnal klikkides näed selle eestikeelset "
+#~ "tõlget."
+
+#~ msgid "Add nouns in correct forms."
+#~ msgstr "Kirjuta nimisõnad õiges vormis."
+
 #~ msgid "Online reference materials"
 #~ msgstr "Abimaterjalid veebis"
 
@@ -2722,9 +2729,6 @@ msgstr "Endre passordet mitt"
 #~ msgstr ""
 #~ "Kirjoita pohjoissaamen adjektiivi oikeassa muodossa. Jos klikkaat sanaa, "
 #~ "kone kääntää sen suomeksi."
-
-#~ msgid "Add adjectives in correct forms."
-#~ msgstr "Kirjoita pohjoissaamen adjektiivi oikeassa muodossa."
 
 #~ msgid "Verbgruppe"
 #~ msgstr "Verbiryhmä"
