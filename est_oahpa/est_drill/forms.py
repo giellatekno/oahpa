@@ -323,9 +323,33 @@ DERIVATION_CHOICES_CONTEXT = (
 )
 
 BOOK_CHOICES = (
-    ('all', _(u'all')),
-    ('E_nagu_Eesti', _('E nagu Eesti')),
-    #('K2', _('Book 2')),
+    ('all', _(u'E nagu Eesti - all chapters')),
+    #('E_nagu_Eesti', _('E nagu Eesti - all chapters')),
+    ('1', _('E nagu Eesti - chapter 1')),
+    ('2', _('E nagu Eesti - chapter 2')),
+    ('3', _('E nagu Eesti - chapter 3')),
+    ('4', _('E nagu Eesti - chapter 4')),
+    ('5', _('E nagu Eesti - chapter 5')),
+    ('6', _('E nagu Eesti - chapter 6')),
+    ('7', _('E nagu Eesti - chapter 7')),
+    ('8', _('E nagu Eesti - chapter 8')),
+    ('9', _('E nagu Eesti - chapter 9')),
+    ('10', _('E nagu Eesti - chapter 10')),
+    ('11', _('E nagu Eesti - chapter 11')),
+    ('12', _('E nagu Eesti - chapter 12')),
+    ('13', _('E nagu Eesti - chapter 13')),
+    ('14', _('E nagu Eesti - chapter 14')),
+    ('15', _('E nagu Eesti - chapter 15')),
+    ('16', _('E nagu Eesti - chapter 16')),
+    ('17', _('E nagu Eesti - chapter 17')),
+    ('18', _('E nagu Eesti - chapter 18')),
+    ('19', _('E nagu Eesti - chapter 19')),
+    ('20', _('E nagu Eesti - chapter 20')),
+    ('21', _('E nagu Eesti - chapter 21')),
+    ('22', _('E nagu Eesti - chapter 22')),
+    ('23', _('E nagu Eesti - chapter 23')),
+    ('24', _('E nagu Eesti - chapter 24')),
+    ('25', _('E nagu Eesti - chapter 25')),
 )
 
 FREQUENCY_CHOICES = (
