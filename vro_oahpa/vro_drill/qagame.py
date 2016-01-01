@@ -101,25 +101,10 @@ class QAGame(Game):
 				word = word.order_by('?')[0]
 		else:
 			# Do not filter dialect here
-			possible_words = Word.objects.filter(wordqelement__qelement=qelement,
-												form__tag=tag_el.id)
-			print "possible words: ", possible_words
-			#print "tag_el.id: ", tag_el.id
-			#print "qelement: ", qelement
-			if possible_words.count() > 0:
-				if possible_words.count() > 1:  # Try to avoid repeating the same lemmas within the set of 5 exercises.
-					possible_words_sorted = possible_words.order_by('?')
-					i = 0
-					random_word = possible_words_sorted[0]
-					while random_word.lemma in self.lemmas_selected and i < possible_words.count() - 1:
-						i += 1
-						random_word = possible_words_sorted[i]
-					word = random_word
-				else:
-					word = possible_words.order_by('?')[0]
+			random_word = Word.objects.filter(wordqelement__qelement=qelement,form__tag=tag_el.id)
+			
+			word = random_word.order_by('?')[0]
 
-		print "Selected a word out of possible words: ", word
-		print "Looking for the forms with tag ",tag_el
 		form_set_filter = self.filter_forms_by_dialect(
 							word.form_set.filter(tag=tag_el.id))
 		
@@ -686,6 +671,7 @@ class QAGame(Game):
 
 			qmainv = qwords[copy_syntax]
 			mainv_word = qwords[copy_syntax]['word']
+			print "MAINV word: ", mainv_word
 
 			qmainvtag_id = qmainv['tag']
 			qmainvtag = Tag.objects.get(id=qmainvtag_id)
@@ -713,6 +699,7 @@ class QAGame(Game):
 				raise Http404(error)
 
 			mainv_fullform = mainv_form.fullform
+			print "MAINV fullform: ", mainv_fullform
 
 		# If the main verb is under question, then generate full list.
 		if answer.task in ["MAINV", "NEG"]:
@@ -826,7 +813,7 @@ class QAGame(Game):
 			else:
 				form_list = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_id))
 				if form_list:
-					info = { 'qelement' : element.id, 'word' : word_id, 'tag' : tag_el.id  }
+					info = { 'qelement' : element.id, 'word' : word_id, 'tag' : tag_el.id }
 			if not info:
 				if self.test: raise Http404("not info " + question.id)
 				return None
@@ -893,7 +880,7 @@ class QAGame(Game):
 		while not qwords and i < max_:
 			i += 1
 			question = Question.objects.filter(question_query)
-
+			
 			if question.count() > 0:
 				question = question.order_by('?')[0]
 			else:
@@ -994,9 +981,9 @@ class QAGame(Game):
 					if self.test: raise Http404("problem2" + s)
 					return "error"
 
+		print "db_info in the function get_answer_morfa: ", db_info
 		db_info['answer_id'] = answer.id
 		db_info['awords'] = awords
-		# print db_info
 #		 raise Exception(db_info)
 		# print db_info['awords']
 		# print question.string
@@ -1045,20 +1032,38 @@ class QAGame(Game):
 			language = self.settings['language']
 		if not self.gametype == "qa":
 			answer = Question.objects.get(Q(id=db_info['answer_id']))
-			# print answer.string
+			print "answer: ", answer.string
 			form = (ContextMorfaQuestion(question, answer, \
-										 db_info['qwords'], db_info['awords'], dialect, language,\
-										 db_info['userans'], db_info['correct'], data, prefix=n))
+										 db_info['qwords'], db_info['awords'], dialect, language, db_info['userans'], db_info['correct'], data, prefix=n))
+			#print "db_info['awords']: ", db_info['awords']
+
+			# The following section gets the id of the task word and returns it together with the question-answer form. Returning the word id makes it possible to avoid repetitions within the same task set in Morfa-C. The other games (Morfa-S, Leksa) also return the word id. 
+			if self.settings['pos'].upper() == 'N':
+				task = self.settings['case_context']
+			elif self.settings['pos'].upper() == 'V':
+				task = 'MAINV'
+			elif self.settings['pos'].upper() == 'A':
+				task = self.settings['adj_context']
+			elif self.settings['pos'].upper() == 'Pron':
+				task = self.settings['pron_context']
+			elif self.settings['pos'].upper() == 'Num':
+				task = self.settings['num_context']
+			else:
+				task = 'SUBJ'
+			if db_info['awords'].has_key(task):  
+				taskword = db_info['awords'][task]
+				if self.settings['pos'].upper() == 'V':
+				        corr_form = Form.objects.filter(fullform=form.correct_ans,tag=taskword[0]['tag'])[0]
+				        #print "correct form: ", corr_form
+				        return form, corr_form.word
+				else:
+				        return form, taskword[0]['word'] 
+			else:
+				return form, None							 
 		else:
 			form = (VastaQuestion(question, \
 								  db_info['qwords'], language, \
 								  db_info['userans'], db_info['correct'], data, prefix=n))
-			
-		#print "awords:", db_info['awords']
-		#print "awords ...................."
-		#print "qwords:", db_info['qwords']
-		#print "qwords ...................."
-
-		return form, None
+			return form, None
 
 
