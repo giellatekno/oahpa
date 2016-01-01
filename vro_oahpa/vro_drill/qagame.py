@@ -611,7 +611,7 @@ class QAGame(Game):
 		mainv_elements = self.get_elements(answer, element)
 		# print '--'
 		# print question.qid
-		print mainv_elements
+		# print mainv_elements
 		mainv_word=None
 		mainv_words = []
 		mainv_tag = None
@@ -671,7 +671,7 @@ class QAGame(Game):
 
 			qmainv = qwords[copy_syntax]
 			mainv_word = qwords[copy_syntax]['word']
-			print "MAINV word: ", mainv_word
+			# print "MAINV word: ", mainv_word
 
 			qmainvtag_id = qmainv['tag']
 			qmainvtag = Tag.objects.get(id=qmainvtag_id)
@@ -699,7 +699,7 @@ class QAGame(Game):
 				raise Http404(error)
 
 			mainv_fullform = mainv_form.fullform
-			print "MAINV fullform: ", mainv_fullform
+			# print "MAINV fullform: ", mainv_fullform
 
 		# If the main verb is under question, then generate full list.
 		if answer.task in ["MAINV", "NEG"]:
@@ -981,7 +981,7 @@ class QAGame(Game):
 					if self.test: raise Http404("problem2" + s)
 					return "error"
 
-		print "db_info in the function get_answer_morfa: ", db_info
+		# print "db_info in the function get_answer_morfa: ", db_info
 		db_info['answer_id'] = answer.id
 		db_info['awords'] = awords
 #		 raise Exception(db_info)
@@ -1020,7 +1020,7 @@ class QAGame(Game):
 	def create_form(self, db_info, n, data=None):
 
 		question = Question.objects.get(Q(id=db_info['question_id']))
-		print question.string
+		#print question.string
 		answer = None
 		if self.settings.has_key('dialect'):
 			dialect = self.settings['dialect']

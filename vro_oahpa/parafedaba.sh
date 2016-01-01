@@ -4,8 +4,8 @@ P="python2.7"
 PEDHOME="/Users/mslm/main/ped"
 OAHPAHOME="/home/vro_oahpa"
 LANGDIR="vro"
-#DATA=$OAHPAHOME/$LANGDIR  # on gtlab
-DATA=$PEDHOME/$LANGDIR  # locally
+DATA=$OAHPAHOME/$LANGDIR  # on gtlab
+#DATA=$PEDHOME/$LANGDIR  # locally
 DPS="$DATA/src"
 INC="$DATA/inc"
 META="$DATA/meta"
@@ -33,14 +33,14 @@ echo "==================================================="
 ##
 
 echo "==================================================="
- echo "feeding db with $INC/n_tyypsonad.xml"
+ echo "installing substantives from $INC/n_tyypsonad.xml"
  $P install.py --file $INC/n_tyypsonad.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>error.log
  echo " "
  echo "done"
  echo "==================================================="
  
  echo "==================================================="
- echo "feeding db with $DPS/oahpa_lexicon.xml"
+ echo "installing substantives from $DPS/oahpa_lexicon_new.xml"
  $P install.py --file $DPS/oahpa_lexicon_new.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt --append 2>error.log
  echo " "
  echo "done"
@@ -69,21 +69,21 @@ echo "==================================================="
 # echo "==================================================="
 
  echo "==================================================="
- echo "feeding db with $DPS/oahpa_lexicon.xml"
+ echo "installing adjectives from $DPS/oahpa_lexicon_new.xml"
  $P install.py --file $DPS/oahpa_lexicon_new.xml --tagfile $META/tags.txt --paradigmfile $META/a_paradigms.txt --append 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
 
  echo "==================================================="
- echo "feeding db with $DPS/oahpa_lexicon.xml"
+ echo "installing verbs from $DPS/oahpa_lexicon_new.xml"
  $P install.py --file $DPS/oahpa_lexicon_new.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt --append 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
 
  echo "==================================================="
- echo "feeding db with $DPS/morfac_verbs.xml"
+ echo "installing verbs from $DPS/morfac_verbs.xml"
  $P install.py --file $DPS/morfac_verbs.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt --append 2>>error.log
  echo " "
  echo "done"
