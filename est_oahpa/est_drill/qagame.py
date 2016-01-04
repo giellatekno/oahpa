@@ -98,19 +98,9 @@ class QAGame(Game):
 				word = word.order_by('?')[0]
 		else:
 			# Do not filter dialect here
-			possible_words = Word.objects.filter(wordqelement__qelement=qelement,
-												form__tag=tag_el.id)
-			if possible_words.count() > 0:
-				if possible_words.count() > 1:  # Try to avoid repeating the same lemmas within the set of 5 exercises.
-					possible_words_sorted = possible_words.order_by('?')
-					i = 0
-					random_word = possible_words_sorted[0]
-					while random_word.lemma in self.lemmas_selected and i < possible_words.count() - 1:
-						i += 1
-						random_word = possible_words_sorted[i]
-					word = random_word
-				else:
-					word = possible_words.order_by('?')[0]
+			random_word = Word.objects.filter(wordqelement__qelement=qelement,form__tag=tag_el.id)
+			
+			word = random_word.order_by('?')[0]
 
 		form_set_filter = self.filter_forms_by_dialect(
 							word.form_set.filter(tag=tag_el.id))
@@ -1039,8 +1029,29 @@ class QAGame(Game):
 			answer = Question.objects.get(Q(id=db_info['answer_id']))
 			# print answer.string
 			form = (ContextMorfaQuestion(question, answer, \
-										 db_info['qwords'], db_info['awords'], dialect, language,\
-										 db_info['userans'], db_info['correct'], data, prefix=n))
+										 db_info['qwords'], db_info['awords'], dialect, language, db_info['userans'], db_info['correct'], data, prefix=n))
+            # The following section gets the id of the task word and returns it together with the question-answer form. Returning the word id makes it possible to avoid repetitions within the same task set in Morfa-C. The other games (Morfa-S, Leksa) also return the word id. 
+			if self.settings['pos'].upper() == 'N':
+				task = self.settings['case_context']
+			elif self.settings['pos'].upper() == 'V':
+				task = 'MAINV'
+			elif self.settings['pos'].upper() == 'A':
+				task = self.settings['adj_context']
+			elif self.settings['pos'].upper() == 'Pron':
+				task = self.settings['pron_context']
+			elif self.settings['pos'].upper() == 'Num':
+				task = self.settings['num_context']
+			else:
+				task = 'SUBJ'
+			if db_info['awords'].has_key(task):  
+				taskword = db_info['awords'][task]
+				if self.settings['pos'].upper() == 'V':
+				        corr_form = Form.objects.filter(fullform=form.correct_ans,tag=taskword[0]['tag'])[0]
+				        #print "correct form: ", corr_form
+				        return form, corr_form.word
+				else:
+				        return form, taskword[0]['word'] 					
+										 
 		else:
 			form = (VastaQuestion(question, \
 								  db_info['qwords'], language, \
