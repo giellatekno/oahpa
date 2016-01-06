@@ -1,8 +1,8 @@
 #!/bin/sh
 
 P="python2.7"
-EST_HOME="/home/est_oahpa"
-#EST_HOME="/Users/mslm/main/ped"
+#EST_HOME="/home/est_oahpa"
+EST_HOME="/Users/mslm/main/ped"
 LANGDIR="est"
 DATA=$EST_HOME/$LANGDIR
 DPS="$DATA/src"

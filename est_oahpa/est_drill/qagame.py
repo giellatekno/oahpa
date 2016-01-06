@@ -1031,26 +1031,14 @@ class QAGame(Game):
 			form = (ContextMorfaQuestion(question, answer, \
 										 db_info['qwords'], db_info['awords'], dialect, language, db_info['userans'], db_info['correct'], data, prefix=n))
             # The following section gets the id of the task word and returns it together with the question-answer form. Returning the word id makes it possible to avoid repetitions within the same task set in Morfa-C. The other games (Morfa-S, Leksa) also return the word id. 
-			if self.settings['pos'].upper() == 'N':
-				task = self.settings['case_context']
-			elif self.settings['pos'].upper() == 'V':
-				task = 'MAINV'
-			elif self.settings['pos'].upper() == 'A':
-				task = self.settings['adj_context']
-			elif self.settings['pos'].upper() == 'Pron':
-				task = self.settings['pron_context']
-			elif self.settings['pos'].upper() == 'Num':
-				task = self.settings['num_context']
-			else:
-				task = 'SUBJ'
-			if db_info['awords'].has_key(task):  
-				taskword = db_info['awords'][task]
-				if self.settings['pos'].upper() == 'V':
-				        corr_form = Form.objects.filter(fullform=form.correct_ans,tag=taskword[0]['tag'])[0]
-				        #print "correct form: ", corr_form
-				        return form, corr_form.word
-				else:
-				        return form, taskword[0]['word'] 					
+			for key, value in form.aattrs.items():
+			     if value == form.correct_ans.encode('utf8'):
+			         key_parts = key.split("_")
+			         task_elem_id = key_parts[2]
+			         #print "task elem id: ", task_elem_id
+			         new_key = "answer_word_" + task_elem_id
+			         task_word_id = form.aattrs[new_key] 				
+			         return form, task_word_id						
 										 
 		else:
 			form = (VastaQuestion(question, \
