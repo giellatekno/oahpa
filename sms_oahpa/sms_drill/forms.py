@@ -166,14 +166,23 @@ WORDFORM_TYPE_CHOICES = (
 )
 
 ADJCASE_CHOICES = (
-	('NOMPL', _('plural')),
 	('ATTR', _('attributive')),
-	('N-ACC', _('accusative')),
-	('N-ILL', _('illative')),
-	('N-LOC', _('locative')),
-	('N-COM', _('comitative')),
-	('N-GEN', _('genitive')),
-	('N-ESS', _('essive')),
+    ('A-NOM', _('singular nominative')),
+	('A-GEN', _('singular genitive')),
+	('A-ACC', _('singular accusative')),
+	('A-ILL', _('singular illative')),
+	('A-LOC', _('singular locative')),
+	('A-COM', _('singular comitative')),
+	('A-ABESS', _('singular abessive')),
+	('A-ESS', _('essive')),
+	('A-PAR', _('partitive')),
+    ('A-NOMPL', _('plural nominative')),
+	('A-GEN-PL', _('plural genitive')),
+	('A-ACC-PL', _('plural accusative')),
+	('A-ILL-PL', _('plural illative')),
+	('A-LOC-PL', _('plural locative')),
+	('A-COM-PL', _('plural comitative')),
+	('A-ABESS-PL', _('plural abessive')),
 )
 
 ADJECTIVE_QUESTION_ANSWER = {
@@ -851,11 +860,11 @@ class OahpaSettings(forms.Form):
 					'case': 'N-ILL',
 					'pos' : 'N',
 					'vtype' : 'PRS',
-					'adjcase' : 'ATTR',
+					'adjcase' : 'A-NOM',
 					'number' : '',
 					'pron_type': 'Pers',
 					'proncase' : 'N-ILL',
-					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
+					'grade' : 'COMP',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
 					'case_context' : 'N-SG-ACC',
 					'vtype_context' : 'V-PRS',
 					'pron_context' : 'P-PERS',
@@ -1094,7 +1103,7 @@ class MorfaSettings(OahpaSettings):
 	case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
-	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
+	adjcase = forms.ChoiceField(initial='A-NOM', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
 	vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
 	num_bare = forms.ChoiceField(initial='N-ILL', choices=NUM_BARE_CHOICES, widget=forms.Select)
 	num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)
@@ -1111,7 +1120,7 @@ class MorfaSettings(OahpaSettings):
 	bisyllabic = forms.BooleanField(required=False, initial=True)
 	trisyllabic = forms.BooleanField(required=False, initial=False)
 	contracted = forms.BooleanField(required=False, initial=False)
-	grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select) 
+	grade = forms.ChoiceField(initial='COMP', choices=GRADE_CHOICES, widget=forms.Select) 
 	
 	def __init__(self, *args, **kwargs):
 		self.set_settings()

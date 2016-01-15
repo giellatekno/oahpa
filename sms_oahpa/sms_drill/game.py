@@ -336,6 +336,22 @@ class BareGame(Game):
 		'N-COM-PL': ('Com', ['Pl']),
 		'N-ABESS-PL': ('Abe', ['Pl']),	
 		'A-ATTR': 'Attr',
+		'A-NOM': ('Nom', ['Sg']),
+		'A-GEN': ('Gen', ['Sg']),
+		'A-ACC': ('Acc', ['Sg']), 
+		'A-ILL': ('Ill', ['Sg']), 
+		'A-LOC': ('Loc', ['Sg']),
+		'A-COM': ('Com', ['Sg']),
+		'A-ESS': ('Ess', ['']), 
+		'A-PAR': ('Par', ['']), 
+		'A-ABESS': ('Abe', ['Sg']),		
+		'A-NOMPL': ('Nom', ['Pl']), 
+		'A-GEN-PL': ('Gen', ['Pl']),
+		'A-ACC-PL': ('Acc', ['Pl']), 
+		'A-ILL-PL': ('Ill', ['Pl']), 
+		'A-LOC-PL': ('Loc', ['Pl']),
+		'A-COM-PL': ('Com', ['Pl']),
+		'A-ABESS-PL': ('Abe', ['Pl']),	
 		'COMP': 'Comp', # was: A-COMP
 		'SUPERL': 'Superl', # was: A-SUPERL
 		'POS':'',
@@ -533,7 +549,7 @@ class BareGame(Game):
 	#	if pos == 'Pron':
 	#		syll = ['']
 		
-		if pos == 'N':  # Maybe need to add also Num and Pron here
+		if pos in ['N', 'A']:  # Maybe need to add also Num and Pron here
 			case, number = self.casetable[pos_tables[pos]]
 		else:
 			case = self.casetable[pos_tables[pos]]
@@ -704,7 +720,8 @@ class BareGame(Game):
 						Q(grade=grade) & \
 						Q(case=case) & \
 						Q(number__in=number)
-		
+			print "Tag query: ", TAG_QUERY
+
 		# filter can include several queries, exclude must have only one
 		# to work successfully
 		if pos != 'Der':
