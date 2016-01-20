@@ -33,7 +33,8 @@ except:
 
 #numfst = fstdir + "/" + language + "-num.fst"
 numfst = fstdir + "/" + "transcriptor-numbers2text-desc.xfst"
-gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst" 
+#gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst" # this is xfst 
+gen_norm_fst = fstdir + "/" + "generator-gt-norm.hfstol" # this is hfst
 
 
 STDERR = sys.stderr
@@ -96,14 +97,18 @@ def Popen(cmd, data=False, ret_err=False, ret_proc=False):
 def FSTLookup(data, fst_file):
 	gen_fst = fst_file 
 	# cmd = 'hfst-optimized-lookup /opt/local/share/omorfi/mor-omorfi.apertium.hfst.ol'
-	cmd = lookup + " -flags mbTT -utf8 -d " + gen_fst
+	#cmd = lookup + " -flags mbTT -utf8 -d " + gen_fst
 	
 	if type(data) == list:
 		data = [a.strip() for a in list(set(data)) if a.strip()]
 		data = u'\n'.join(data).encode('utf-8')
+        cmd = lookup + " " + gen_fst   
 	print >> STDOUT, "Generating forms in %s" % gen_fst
 	try:
-		lookups = Popen(cmd, data)
+                lookups = Popen(cmd, data)
+                #new_cmd = lookups_with_weights + " | cut -f1,2"
+                #lookups = Popen(new_cmd)   
+                #print >> STDOUT, "The next row of hfst output: %s" % lookups
 	except OSError:
 		print >> STDERR, "Problem in command: %s" % cmd
 		sys.exit(2)
@@ -348,10 +353,17 @@ class Paradigm:
 			for item in items:
 				result = item.split('\t')
 				lemma = result[0].partition('+')[0]
+                                if lemma:
+                                        generated_form = result[1]
+                                else:
+                                        generated_form = ""
+                                #print >> STDOUT, 'lemma: %s' % lemma
+                                #print >> STDOUT, 'generated form: %s' % result[1]
 				try:
-				    lookup_dictionary[lemma] += item + '\n'
+				    lookup_dictionary[lemma] += result[0] + '\t' + generated_form + '\n'
 				except KeyError:
-				    lookup_dictionary[lemma] = item + '\n'
+				    lookup_dictionary[lemma] = result[0] + '\t' +\
+ generated_form + '\n'
 		
 		self.master_paradigm[dialect] = lookup_dictionary
 		

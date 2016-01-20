@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-11 21:28+0100\n"
+"POT-Creation-Date: 2015-04-15 13:42+0200\n"
 "PO-Revision-Date: 2015-04-15 HO:MI+ZONE\n"
 "Last-Translator: Heli Uibo <heli1401@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -339,19 +339,19 @@ msgstr "4"
 
 #: est_drill/forms.py:354
 msgid "Estonian to Russian"
-msgstr ""
+msgstr "Från estniska till ryska"
 
 #: est_drill/forms.py:355
 msgid "Russian to Estonian"
-msgstr ""
+msgstr "Från ryska till estniska"
 
 #: est_drill/forms.py:356
-msgid "Estonian  to English"
-msgstr ""
+msgid "Estonian to English"
+msgstr "Från estniska till engelska"
 
 #: est_drill/forms.py:357
 msgid "English to Estonian"
-msgstr ""
+msgstr "Från engelska till estniska"
 
 #: est_drill/forms.py:358
 msgid "Estonian to Finnish"
@@ -549,17 +549,17 @@ msgstr "Grönsaksaffär"
 msgid "Shopadj"
 msgstr "Affär"
 
-#: est_drill/forms.py:454 est_drill/templates/mgame_a.html:23
+#: est_drill/forms.py:454 est_drill/templates/mgame_a.html:20
 #: est_drill/templates/mgame_v.html:20
 msgid "bisyllabic"
 msgstr "likstaviga"
 
-#: est_drill/forms.py:455 est_drill/templates/mgame_a.html:24
+#: est_drill/forms.py:455 est_drill/templates/mgame_a.html:21
 #: est_drill/templates/mgame_v.html:21
 msgid "trisyllabic"
 msgstr "olikstaviga"
 
-#: est_drill/forms.py:456 est_drill/templates/mgame_a.html:25
+#: est_drill/forms.py:456 est_drill/templates/mgame_a.html:22
 #: est_drill/templates/mgame_v.html:22
 msgid "contracted"
 msgstr "kontrakta"
@@ -733,7 +733,7 @@ msgid "Practise abessive"
 msgstr "Öva på abessiv."
 
 #: est_drill/views.py:575
-msgid "Choose between illative and allative"
+msgid "Choose between illative and allative."
 msgstr "Välj mellan illativ (i) och allativ (på)."
 
 #: est_drill/views.py:576
@@ -925,20 +925,20 @@ msgstr "Hjälp"
 msgid "This is almost correct!"
 msgstr "Det här är nästan rätt!"
 
-#: est_drill/templates/game.html:193 est_drill/templates/leksa.html:74
+#: est_drill/templates/game.html:190 est_drill/templates/leksa.html:74
 #: est_drill/templates/vasta.html:103
 msgid "Test answers"
 msgstr "Testa svaren"
 
-#: est_drill/templates/game.html:196 est_drill/templates/leksa.html:77
+#: est_drill/templates/game.html:193 est_drill/templates/leksa.html:77
 msgid "Show the correct answers"
 msgstr "Visa korrekta svar"
 
-#: est_drill/templates/game.html:204
+#: est_drill/templates/game.html:201
 msgid "Congratulations!"
 msgstr "Gratulerar!"
 
-#: est_drill/templates/game.html:207
+#: est_drill/templates/game.html:204
 msgid "Your score:"
 msgstr "Din poängsumma:"
 
@@ -959,8 +959,7 @@ msgstr ""
 msgid ""
 "Give translations for words. You can choose a semantic set or part of the "
 "textbook but not both."
-msgstr ""
-"Översätt orden. Du kan välja tema (semantisk sett) eller bok, inte båda."
+msgstr "Översätt orden. Du kan välja tema (semantiskt sett) eller lärobok (eller kapitlar från en lärobok)."
 
 #: est_drill/templates/leksa.html:44
 msgid "Quizz"
@@ -1027,30 +1026,28 @@ msgid "Morphology"
 msgstr "Morfologi"
 
 #: est_drill/templates/mgame_a.html:7
-msgid "Add adjectives in correct forms."
-msgstr "Skriv in den riktiga formen av adjektivet"
+msgid ""
+"Add adjectives in correct forms. You get translation if you click the word."
+msgstr ""
+"Skriv in den riktiga formen av adjektivet. Om du klickar på ordet, blir det "
+"översatt."
 
-#: est_drill/templates/mgame_a.html:9 est_drill/templates/mgame_n.html:9
-#: est_drill/templates/mgame_v.html:9
-msgid "You get translation if you click the word."
-msgstr "Om du klickar på ordet, blir det översatt."
-
-#: est_drill/templates/mgame_a.html:17 est_drill/templates/mgame_der.html:20
+#: est_drill/templates/mgame_a.html:14 est_drill/templates/mgame_der.html:20
 #: est_drill/templates/mgame_l.html:17 est_drill/templates/mgame_l.html:20
 #: est_drill/templates/mgame_n.html:15 est_drill/templates/mgame_n.html:22
 #: est_drill/templates/mgame_p.html:15
 msgid "Case"
 msgstr "Kasus"
 
-#: est_drill/templates/mgame_a.html:19
+#: est_drill/templates/mgame_a.html:16
 msgid "Grade"
 msgstr "Grad"
 
-#: est_drill/templates/mgame_a.html:21 est_drill/templates/mgame_v.html:18
+#: est_drill/templates/mgame_a.html:18 est_drill/templates/mgame_v.html:18
 msgid "Stem"
 msgstr "Stam"
 
-#: est_drill/templates/mgame_a.html:30 est_drill/templates/mgame_l.html:30
+#: est_drill/templates/mgame_a.html:27 est_drill/templates/mgame_l.html:30
 #: est_drill/templates/mgame_n.html:18 est_drill/templates/mgame_v.html:16
 #: est_drill/templates/mgame_v.html:26
 msgid "Type"
@@ -1073,7 +1070,15 @@ msgid "Level"
 msgstr "Nivå"
 
 #: est_drill/templates/mgame_n.html:7
-msgid "Add substantives in correct forms."
+msgid ""
+"Put the nouns in the correct forms. You get a translation if you click on a "
+"word."
+msgstr ""
+"Skriv in den riktiga formen av substantivet. Om du klickar på ordet, blir "
+"det översatt."
+
+#: est_drill/templates/mgame_n.html:9
+msgid "Add nouns in correct forms."
 msgstr "Skriv in den riktiga formen av substantivet"
 
 #: est_drill/templates/mgame_n.html:17
@@ -1093,6 +1098,12 @@ msgid "Reciprocative type"
 msgstr "reciprok"
 
 #: est_drill/templates/mgame_v.html:7
+msgid "Add verbs in correct forms. You get translation if you click the word."
+msgstr ""
+"Skriv in den riktiga formen av verbet. Om du klickar på ordet, blir det "
+"översatt."
+
+#: est_drill/templates/mgame_v.html:9
 msgid "Add verbs in correct forms."
 msgstr "Skriv in den riktiga formen av verbet"
 
@@ -1378,10 +1389,10 @@ msgstr "Programmet är under utveckling."
 msgid "Reference materials"
 msgstr "Resurser"
 
-#: templates/est_oahpa.html:74 templates/est_oahpa_main.html:181
-#: templates/est_oahpa_main.html.py:184 templates/est_oahpa_main.html:187
-#: templates/est_oahpa_main.html.py:190 templates/est_oahpa_main.html:193
-#: templates/est_oahpa_main.html.py:196
+#: templates/est_oahpa.html:74 templates/est_oahpa_main.html:180
+#: templates/est_oahpa_main.html.py:183 templates/est_oahpa_main.html:186
+#: templates/est_oahpa_main.html.py:189 templates/est_oahpa_main.html:192
+#: templates/est_oahpa_main.html.py:195
 msgid "Instructions"
 msgstr "(instruktioner)"
 
@@ -1432,87 +1443,88 @@ msgstr "Kautokeino"
 msgid "KJ"
 msgstr "Karasjok"
 
-#: templates/est_oahpa_main.html:127
-msgid "Words and translations"
-msgstr "Öva på ord och ortnamn"
-
-#: templates/est_oahpa_main.html:135
-msgid "Practice morphology"
-msgstr "Öva på ordböjning"
-
-#: templates/est_oahpa_main.html:143
-msgid "Practice morphology in context"
-msgstr "Böj ord i meningar"
-
-#: templates/est_oahpa_main.html:153
-msgid "Dialogue game"
-msgstr "Dialoger"
-
-#: templates/est_oahpa_main.html:161
+#: templates/est_oahpa_main.html:128
 msgid "Answer to questions"
 msgstr "Svara på frågor"
 
-#: templates/est_oahpa_main.html:168
+#: templates/est_oahpa_main.html:135
+msgid "Words and translations"
+msgstr "Öva på ord och ortnamn"
+
+#: templates/est_oahpa_main.html:143
+msgid "Practice morphology"
+msgstr "Öva på ordböjning"
+
+#: templates/est_oahpa_main.html:151
+msgid "Practice morphology in context"
+msgstr "Böj ord i meningar"
+
+#: templates/est_oahpa_main.html:159
+msgid "Dialogue game"
+msgstr "Dialoger"
+
+#: templates/est_oahpa_main.html:166
 msgid "Practice numerals"
 msgstr "Öva på räkneord"
 
-#: templates/est_oahpa_main.html:176
+#: templates/est_oahpa_main.html:175
 msgid ""
 "Oahpa is an internet program for learners of Estonian. The program can be "
 "adjusted to different topics and levels of difficulty, and it generates new "
 "task sets automatically."
 msgstr ""
 "OAHPA är ett onlineprogram för ungdomar och vuxna som håller på att lära sig "
-"estniska. Programmet kan justeras till olika teman och svårighetsgrader, och "
-"det genererar nya övningsuppgifter automatiskt."
+"estniska. Programmet kan justeras till olika teman och svårighetsgrader, "
+"och det genererar nya övningsuppgifter automatiskt."
 
-#: templates/est_oahpa_main.html:178
+#: templates/est_oahpa_main.html:177
 msgid "Oahpa is connected with online reference materials."
 msgstr "Referensmaterial"
 
-#: templates/est_oahpa_main.html:200
+#: templates/est_oahpa_main.html:199
 msgid "Livonian"
 msgstr ""
 
-#: templates/est_oahpa_main.html:200
+#: templates/est_oahpa_main.html:199
 msgid "Finnish"
 msgstr "finsk"
 
-#: templates/est_oahpa_main.html:200 templates/est_oahpa_main.html.py:202
+#: templates/est_oahpa_main.html:199 templates/est_oahpa_main.html.py:201
+#, fuzzy
 msgid "web dictionary"
-msgstr "nätordbok"
+msgstr "digital ordbok"
 
-#: templates/est_oahpa_main.html:202
+#: templates/est_oahpa_main.html:201
 msgid "Norwegian"
 msgstr "norsk"
 
-#: templates/est_oahpa_main.html:202
+#: templates/est_oahpa_main.html:201
 msgid "Russian"
 msgstr "rysk"
 
-#: templates/est_oahpa_main.html:206 templates/est_oahpa_main.html.py:209
-#: templates/est_oahpa_main.html:212 templates/est_oahpa_main.html.py:215
-#: templates/est_oahpa_main.html:218 templates/est_oahpa_main.html.py:221
+#: templates/est_oahpa_main.html:205 templates/est_oahpa_main.html.py:208
+#: templates/est_oahpa_main.html:211 templates/est_oahpa_main.html.py:214
+#: templates/est_oahpa_main.html:217 templates/est_oahpa_main.html.py:220
 msgid "Russian grammar"
 msgstr "Grammatik"
 
-#: templates/est_oahpa_main.html:227
+#: templates/est_oahpa_main.html:226
 msgid "Are you visiting this site as part of a course?"
 msgstr "Besöker du denna sajten som del av en kurs?"
 
-#: templates/est_oahpa_main.html:227
+#: templates/est_oahpa_main.html:226
 msgid "Log in here"
 msgstr "Logga in här"
 
-#: templates/est_oahpa_main.html:236
+#: templates/est_oahpa_main.html:235
 msgid "Link to this exercise"
 msgstr "Länk till den här övningen"
 
-#: templates/est_oahpa_main.html:242
-msgid "Copyright 2011-2015 Universitetet i Troms&oslash; "
+#: templates/est_oahpa_main.html:241
+msgid "Copyright 2011-2014 Universitetet i Troms&oslash; "
 msgstr "Copyright 2011-2014 UiT Norges Arktiske Universitet"
 
-#: templates/est_oahpa_main.html:243
+#: templates/est_oahpa_main.html:242
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -2135,23 +2147,6 @@ msgstr "Epost-address:"
 msgid "Reset my password"
 msgstr "Återställ mitt lösenord"
 
-#~ msgid ""
-#~ "Add adjectives in correct forms. You get translation if you click the "
-#~ "word."
-#~ msgstr ""
-#~ "Skriv in den riktiga formen av adjektivet. Om du klickar på ordet, blir "
-#~ "det översatt."
-
-#~ msgid ""
-#~ "Put the nouns in the correct forms. You get a translation if you click on "
-#~ "a word."
-#~ msgstr ""
-#~ "Skriv in den riktiga formen av substantivet. Om du klickar på ordet, blir "
-#~ "det översatt."
-
-#~ msgid "Add nouns in correct forms."
-#~ msgstr "Skriv in den riktiga formen av substantivet"
-
 #, fuzzy
 #~ msgid "Description"
 #~ msgstr "Derivationstyp"
@@ -2717,6 +2712,9 @@ msgstr "Återställ mitt lösenord"
 #~ msgstr ""
 #~ "Skriv in den riktiga formen av adjektivet. Om du klickar på ordet, blir "
 #~ "det översatt."
+
+#~ msgid "Add adjectives in correct forms."
+#~ msgstr "Skriv in den riktiga formen av adjektivet"
 
 #~ msgid "Verbgruppe"
 #~ msgstr "Verbgrupp"
