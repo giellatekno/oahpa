@@ -18,11 +18,11 @@
 	      indent="yes"/>
 
   <!-- input dir -->
-  <xsl:param name="inDir" select="'xml-out'"/>
+  <xsl:param name="inDir" select="'est'"/>
   <!-- source language -->
-  <xsl:param name="slang" select="'crk'"/>
+  <xsl:param name="slang" select="'est'"/>
   <!-- target language: nob is default! -->
-  <xsl:param name="tlang" select="'eng'"/>
+  <xsl:param name="tlang" select="'swe'"/>
   <!-- Output dir, files -->
   <xsl:param name="outDir" select="concat('_reverted2', $tlang)"/>
   <xsl:variable name="of" select="'xml'"/>
@@ -75,8 +75,8 @@
 		    <xsl:copy-of select="./@*[not(local-name() = 'pos')][not(local-name() = 'stat')]"/>
 		    <xsl:value-of select="normalize-space(.)"/>
 		  </l>
-		  <xsl:copy-of select="../../../lg/sources" copy-namespaces="no"/> <!-- adjust path according to the input files -->
 		</lg>
+		<xsl:copy-of select="../../../sources" copy-namespaces="no"/> <!-- adjust path according to the input files -->
 		<mg>
 		  <xsl:copy-of select="../../semantics" copy-namespaces="no"/>
 		  <tg xml:lang="{$slang}">
@@ -98,7 +98,7 @@
 	</r>
       </xsl:variable>
       <!-- adapt the code depending on the input file names: myveng vs myv2X --> 
-      <xsl:result-document href="{$outDir}/{concat(substring-before($current_file, concat('_',$slang,$tlang)), '_', $tlang, $slang)}.{$e}" format="{$of}">
+      <xsl:result-document href="{$outDir}/{concat(substring-before($current_file, concat('_',$slang)), '_', $tlang, $slang)}.{$e}" format="{$of}">
 	<xsl:copy-of select="$out_tmp"/>
       </xsl:result-document>
       

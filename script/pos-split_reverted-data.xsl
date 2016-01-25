@@ -17,8 +17,8 @@
 
   <xsl:param name="inDir" select="concat('_reverted2', $slang)"/>
   <xsl:param name="outDir" select="concat('pos_redistr_', $slang)"/>
-  <xsl:param name="slang" select="'eng'"/>
-  <xsl:param name="tlang" select="'crk'"/>
+  <xsl:param name="slang" select="'deu'"/>
+  <xsl:param name="tlang" select="'est'"/>
   <xsl:variable name="of" select="'xml'"/>
   <xsl:variable name="e" select="$of"/>
   <xsl:variable name="debug" select="true()"/>

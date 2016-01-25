@@ -40,30 +40,29 @@ NB: the parameter inDir should be adapted to whatever the input directory is
 ==> result files are generated outDir (CAVEAT: slang is not the original tlang!)
   <xsl:param name="outDir" select="concat('pos_redistr_', $slang)"/>
 
-5. merge the possible doublings in each file separately
+5. merge the possible doublings for each language and each file separately
 
- java -Xmx2024m net.sf.saxon.Transform -it:main merge_pos-split-data.xsl inFile=pos_redistr_SLANG/POS_SLANGTLANG.xml
+ java -Xmx2024m net.sf.saxon.Transform -it:main merge_pos-split-data.xsl slang=SLANG
 
- java -Xmx2024m net.sf.saxon.Transform -it:main merge_pos-split-data.xsl inFile=pos_redistr_nob/A_nobfkv.xml
- java -Xmx2024m net.sf.saxon.Transform -it:main merge_pos-split-data.xsl inFile=pos_redistr_nob/N_nobfkv.xml
- java -Xmx2024m net.sf.saxon.Transform -it:main merge_pos-split-data.xsl inFile=pos_redistr_nob/V_nobfkv.xml
+The script processes all the files in the directory pos_redistr_SLANG, e.g.
+ java -Xmx2024m net.sf.saxon.Transform -it:main merge_pos-split-data.xsl slang=nob
+processes all the files in the directory pos_redistr_nob.
 
-==> result files are generated outDir (here: to_filter_nob)
+==> result files are written into outDir (here: to_filter_nob)
   <xsl:variable name="outDir" select="concat('to_filter_', $slang)"/>
-
-TODO: make a for-each loop for this step!
 
 
 6. filter away the entries without stat="pref"
 
- java -Xmx2024m net.sf.saxon.Transform -it:main stat-filter_merged-data.xsl inFile=to_filter_SLANG/POS_SLANGTLANG.xml
+ java -Xmx2024m net.sf.saxon.Transform -it:main stat-filter_merged-data.xsl slang=SLANG 
 
- java -Xmx2024m net.sf.saxon.Transform -it:main stat-filter_merged-data.xsl inFile=to_filter_nob/A_nobfkv.xml
- java -Xmx2024m net.sf.saxon.Transform -it:main stat-filter_merged-data.xsl inFile=to_filter_nob/N_nobfkv.xml
- java -Xmx2024m net.sf.saxon.Transform -it:main stat-filter_merged-data.xsl inFile=to_filter_nob/V_nobfkv.xml
+The script processes all the files in the directory to_filter_SLANG, e.g.
 
-==> result files are generated outDir (nobfkv, engcrk, etc., generally: SLANGTLANG)
+ java -Xmx2024m net.sf.saxon.Transform -it:main stat-filter_merged-data.xsl slang=nob processes all the files in the directory to_filter_nob.
+
+==> result files are written into outDir (nobfkv, engcrk, etc., generally: SLANGTLANG)
   <xsl:param name="outDir" select="concat($slang, $tlang)"/>
 
-TODO: make a for-each loop for this step!
+These directories that contain the bilingual reverted Oahpa lexicons should be copied under the directory ped/TLANG (parent directory of language material for TLANG-oahpa, e.g. ped/fkv for fkv-oahpa). 
+
 

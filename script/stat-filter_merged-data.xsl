@@ -40,23 +40,33 @@
   </xsl:function>
   
   <!-- parameters -->
-  <xsl:param name="inFile" select="'default.xml'"/>
-  <xsl:param name="slang" select="'eng'"/>
-  <xsl:param name="tlang" select="'crk'"/>
+  <!-- input dir -->
+  <xsl:param name="inDir" select="concat('to_filter_',$slang)"/>
+  <!-- <xsl:param name="inFile" select="'default.xml'"/> -->
+  <xsl:param name="slang" select="'deu'"/>
+  <xsl:param name="tlang" select="'est'"/>
   <xsl:param name="outDir" select="concat($slang,$tlang)"/>
   
   <!-- Patterns for the feature values -->
   <xsl:variable name="output_format" select="'xml'"/>
   <xsl:variable name="e" select="$output_format"/>
-  <xsl:variable name="file_name" select="substring-before((tokenize($inFile, '/'))[last()], '.xml')"/>
-  
+    
   <xsl:template match="/" name="main">
+    <xsl:for-each select="for $f in collection(concat($inDir,'?recurse=no;select=*.xml;on-error=warning')) return $f">
+      
+      <xsl:variable name="current_file" select="(tokenize(document-uri(.), '/'))[last()]"/>
+      <xsl:variable name="current_dir" select="substring-before(document-uri(.), $current_file)"/>
+      <xsl:variable name="current_location" select="concat($inDir, substring-after($current_dir, $inDir))"/>
+      <xsl:variable name="file_with_path" select="concat($current_location, $current_file)"/>
+      <xsl:variable name="file_name" select="substring-before((tokenize($current_file, '/'))[last()], '.xml')"/> <!-- was: $inFile -->
+
+    <xsl:value-of select="concat(' processing file ', $current_file)"/>
     <xsl:choose>
-      <xsl:when test="doc-available($inFile)">
+      <xsl:when test="doc-available($file_with_path)">
 	<xsl:variable name="out_tmp">
 	  <r>
-	    <xsl:copy-of select="doc($inFile)/r/@*"/>
-	    <xsl:copy-of select="doc($inFile)/r/e[./@stat = 'pref']"/>
+	    <xsl:copy-of select="doc($file_with_path)/r/@*"/>
+	    <xsl:copy-of select="doc($file_with_path)/r/e[./@stat = 'pref']"/>
 	  </r>
 	</xsl:variable>
 	
@@ -67,9 +77,10 @@
 
       </xsl:when>
       <xsl:otherwise>
-	<xsl:text>Cannot locate: </xsl:text><xsl:value-of select="$inFile"/><xsl:text>&#xa;</xsl:text>
+	<xsl:text>Cannot locate: </xsl:text><xsl:value-of select="$file_with_path"/><xsl:text>&#xa;</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
+   </xsl:for-each>
   </xsl:template>
   
 </xsl:stylesheet>
