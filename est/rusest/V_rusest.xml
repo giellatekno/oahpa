@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <r xml:lang="rus">
-   <e id="любить_v" stat="pref">
+   <e id="тонкий_V" stat="pref">
       <lg>
-         <l pos="v">любить</l>
+         <l pos="V">тонкий</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="18"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">õhuke</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="любить_V" stat="pref">
+      <lg>
+         <l pos="V">любить</l>
       </lg>
       <sources>
          <book name="E_nagu_Eesti" chapter="1"/>
@@ -12,13 +28,13 @@
             <sem class="YYY"/>
          </semantics>
          <tg xml:lang="est">
-            <t pos="v" stat="pref">armastama</t>
+            <t pos="V" stat="pref">armastama</t>
          </tg>
       </mg>
    </e>
-   <e id="находиться_v" stat="pref">
+   <e id="находиться_V" stat="pref">
       <lg>
-         <l pos="v">находиться</l>
+         <l pos="V">находиться</l>
       </lg>
       <sources>
          <book name="E_nagu_Eesti" chapter="1"/>
@@ -28,13 +44,14 @@
             <sem class="YYY"/>
          </semantics>
          <tg xml:lang="est">
-            <t pos="v" stat="pref">asuma</t>
+            <t pos="V" stat="pref">asuma</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 1" rus-stat="yes">olema</t>
          </tg>
       </mg>
    </e>
-   <e id="жить_v" stat="pref">
+   <e id="жить_V" stat="pref">
       <lg>
-         <l pos="v">жить</l>
+         <l pos="V">жить</l>
       </lg>
       <sources>
          <book name="E_nagu_Eesti" chapter="1"/>
@@ -44,39 +61,3511 @@
             <sem class="YYY"/>
          </semantics>
          <tg xml:lang="est">
-            <t pos="v" stat="pref">elama</t>
+            <t pos="V" stat="pref">elama</t>
          </tg>
       </mg>
    </e>
-   <e id="пить_v" stat="pref">
+   <e id="быть_V" stat="pref">
       <lg>
-         <l pos="v">пить</l>
+         <l pos="V">быть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">olema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="писать_V" stat="pref">
+      <lg>
+         <l pos="V">писать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SCHOOL_V"/>
+            <sem class="ACTION_V"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kirjutama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="читать_V" stat="pref">
+      <lg>
+         <l pos="V">читать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SCHOOL_V"/>
+            <sem class="ACTION_V"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">lugema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="уметь_V" stat="pref">
+      <lg>
+         <l pos="V">уметь</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">oskama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="говорить_V" stat="pref">
+      <lg>
+         <l pos="V">говорить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ACTION_V"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">rääkima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="родиться_V" stat="pref">
+      <lg>
+         <l pos="V">родиться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">sündima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="преподавать_V" stat="pref">
+      <lg>
+         <l pos="V">преподавать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SCHOOL_V"/>
+            <sem class="ACTION_V"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">õpetama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="учиться_V" stat="pref">
+      <lg>
+         <l pos="V">учиться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SCHOOL_V"/>
+            <sem class="ACTION_V"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">õppima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="звонить_V" stat="pref">
+      <lg>
+         <l pos="V">звонить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">helistama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_спрашивать_V" stat="pref">
+      <lg>
+         <l pos="V">спрашивать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">küsima</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 7" rus-stat="yes">pärima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_спрашивать_V" stat="pref">
+      <lg>
+         <l pos="V">спрашивать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="7"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">pärima</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 3" rus-stat="yes">küsima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="посылать_V" stat="pref">
+      <lg>
+         <l pos="V">посылать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">saatma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_знать_V" stat="pref">
+      <lg>
+         <l pos="V">знать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">teadma</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 19" rus-stat="yes">tundma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_знать_V" stat="pref">
+      <lg>
+         <l pos="V">знать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="19"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tundma</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 3" rus-stat="yes">teadma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="работать_V" stat="pref">
+      <lg>
+         <l pos="V">работать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WORK_V"/>
+            <sem class="ACTION_V"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">töötama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="извиняться_V" stat="pref">
+      <lg>
+         <l pos="V">извиняться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">vabandama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="отвечать_V" stat="pref">
+      <lg>
+         <l pos="V">отвечать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">vastama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="сказать_V" stat="pref">
+      <lg>
+         <l pos="V">сказать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">ütlema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_думать_V" stat="pref">
+      <lg>
+         <l pos="V">думать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">arvama</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 11" rus-stat="yes">mõtlema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_думать_V" stat="pref">
+      <lg>
+         <l pos="V">думать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="11"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">mõtlema</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 4" rus-stat="yes">arvama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="сидеть_V" stat="pref">
+      <lg>
+         <l pos="V">сидеть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">istuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="ходить_V" stat="pref">
+      <lg>
+         <l pos="V">ходить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ACTION_V"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kõndima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="шагать_V" stat="pref">
+      <lg>
+         <l pos="V">шагать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="24"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">astuma</t>
+            <t pos="V" sem-cl="ACTION_V" src="E_nagu_Eesti 4" rus-stat="yes">kõndima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_нравиться_V" stat="pref">
+      <lg>
+         <l pos="V">нравиться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">meeldima</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 15" rus-stat="yes">maitsema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_нравиться_V" stat="pref">
+      <lg>
+         <l pos="V">нравиться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="15"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">maitsema</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 4" rus-stat="yes">meeldima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="волноваться_V" stat="pref">
+      <lg>
+         <l pos="V">волноваться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">muretsema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="стоять_V" stat="pref">
+      <lg>
+         <l pos="V">стоять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">seisma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="смотреть_V" stat="pref">
+      <lg>
+         <l pos="V">смотреть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">vaatama</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 8" rus-stat="yes">nägema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="начинаться_V" stat="pref">
+      <lg>
+         <l pos="V">начинаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">algama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="заменять_V" stat="pref">
+      <lg>
+         <l pos="V">заменять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">asendama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="кончаться_V" stat="pref">
+      <lg>
+         <l pos="V">кончаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">lõppema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="стоить_V" stat="pref">
+      <lg>
+         <l pos="V">стоить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">maksma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="платить_V" stat="pref">
+      <lg>
+         <l pos="V">платить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="16"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tasuma</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 5" rus-stat="yes">maksma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_идти_V" stat="pref">
+      <lg>
+         <l pos="V">идти</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">minema</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 5" rus-stat="yes">tulema</t>
+            <t pos="V" sem-cl="WEATHER_V" src="E_nagu_Eesti 6" rus-stat="yes">sadama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_идти_V" stat="pref">
+      <lg>
+         <l pos="V">идти</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tulema</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 5" rus-stat="yes">minema</t>
+            <t pos="V" sem-cl="WEATHER_V" src="E_nagu_Eesti 6" rus-stat="yes">sadama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="ездить_V" stat="pref">
+      <lg>
+         <l pos="V">ездить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">sõitma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="делать_V" stat="pref">
+      <lg>
+         <l pos="V">делать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tegema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="благодарить_V" stat="pref">
+      <lg>
+         <l pos="V">благодарить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tänama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="нести_V" stat="pref">
+      <lg>
+         <l pos="V">нести</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">viima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="гулять_V" stat="pref">
+      <lg>
+         <l pos="V">гулять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">jalutama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="бегать_V" stat="pref">
+      <lg>
+         <l pos="V">бегать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">jooksma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="xодить_V" stat="pref">
+      <lg>
+         <l pos="V">xодить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">käima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="петь_V" stat="pref">
+      <lg>
+         <l pos="V">петь</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">laulma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="летать_V" stat="pref">
+      <lg>
+         <l pos="V">летать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">lendama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="светить_V" stat="pref">
+      <lg>
+         <l pos="V">светить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">paistma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="отдыхать_V" stat="pref">
+      <lg>
+         <l pos="V">отдыхать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">puhkama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_путешествовать_V" stat="pref">
+      <lg>
+         <l pos="V">путешествовать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">reisima</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 23" rus-stat="yes">matkama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_путешествовать_V" stat="pref">
+      <lg>
+         <l pos="V">путешествовать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="23"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">matkama</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 6" rus-stat="yes">reisima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="идти (о дожде)_V" stat="pref">
+      <lg>
+         <l pos="V">идти (о дожде)</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WEATHER_V"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">sadama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="желать_V" stat="pref">
+      <lg>
+         <l pos="V">желать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">soovima</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 6" rus-stat="yes">tahtma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="таять_V" stat="pref">
+      <lg>
+         <l pos="V">таять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WEATHER_V"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">sulama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="хотеть_V" stat="pref">
+      <lg>
+         <l pos="V">хотеть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tahtma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="плавать_V" stat="pref">
+      <lg>
+         <l pos="V">плавать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">ujuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="жениться_V" stat="pref">
+      <lg>
+         <l pos="V">жениться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="7"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">abielluma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_начинать_V" stat="pref">
+      <lg>
+         <l pos="V">начинать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="7"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">hakkama</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 10" rus-stat="yes">alustama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_начинать_V" stat="pref">
+      <lg>
+         <l pos="V">начинать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="10"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">alustama</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 7" rus-stat="yes">hakkama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="расти_V" stat="pref">
+      <lg>
+         <l pos="V">расти</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="7"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kasvama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="подарить_V" stat="pref">
+      <lg>
+         <l pos="V">подарить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="7"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kinkima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="спать_V" stat="pref">
+      <lg>
+         <l pos="V">спать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="7"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">magama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="грызть_V" stat="pref">
+      <lg>
+         <l pos="V">грызть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="7"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">närima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="должен_V" stat="pref">
+      <lg>
+         <l pos="V">должен</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="7"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">pidama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="получать_V" stat="pref">
+      <lg>
+         <l pos="V">получать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="7"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">saama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="умереть_V" stat="pref">
+      <lg>
+         <l pos="V">умереть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="7"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">surema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="означать_V" stat="pref">
+      <lg>
+         <l pos="V">означать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="7"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tähendama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="помогать_V" stat="pref">
+      <lg>
+         <l pos="V">помогать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="8"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">aitama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="встречаться_V" stat="pref">
+      <lg>
+         <l pos="V">встречаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="8"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kohtuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="убирать_V" stat="pref">
+      <lg>
+         <l pos="V">убирать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="8"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">koristama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="слушать_V" stat="pref">
+      <lg>
+         <l pos="V">слушать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="8"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kuulama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="слышать_V" stat="pref">
+      <lg>
+         <l pos="V">слышать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="8"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kuulma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="играть_V" stat="pref">
+      <lg>
+         <l pos="V">играть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="8"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">mängima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="видеть_V" stat="pref">
+      <lg>
+         <l pos="V">видеть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="8"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">nägema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="подождать_V" stat="pref">
+      <lg>
+         <l pos="V">подождать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="8"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">ootama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="кататься на лыжах_V" stat="pref">
+      <lg>
+         <l pos="V">кататься на лыжах</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="8"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPORT"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">suusatama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="кататься на коньках_V" stat="pref">
+      <lg>
+         <l pos="V">кататься на коньках</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="8"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SPORT"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">uisutama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="давать_V" stat="pref">
+      <lg>
+         <l pos="V">давать</l>
       </lg>
       <sources>
          <book name="E_nagu_Eesti" chapter="9"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="FOOD_GROCERY_DRINK_V"/>
+            <sem class="YYY"/>
          </semantics>
          <tg xml:lang="est">
-            <t pos="v" stat="pref">jooma</t>
+            <t pos="V" stat="pref">andma</t>
          </tg>
       </mg>
    </e>
-   <e id="есть_v" stat="pref">
+   <e id="звенеть_V" stat="pref">
       <lg>
-         <l pos="v">есть</l>
+         <l pos="V">звенеть</l>
       </lg>
       <sources>
          <book name="E_nagu_Eesti" chapter="9"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="FOOD_GROCERYDRINK_V"/>
+            <sem class="YYY"/>
          </semantics>
          <tg xml:lang="est">
-            <t pos="v" stat="pref">sööma</t>
+            <t pos="V" stat="pref">helisema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="пить_V" stat="pref">
+      <lg>
+         <l pos="V">пить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="9"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD_DRINK_V"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">jooma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="класть_V" stat="pref">
+      <lg>
+         <l pos="V">класть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="9"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">panema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="подходить_V" stat="pref">
+      <lg>
+         <l pos="V">подходить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="9"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">sobima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="есть_V" stat="pref">
+      <lg>
+         <l pos="V">есть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="9"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="FOOD_DRINK_V"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">sööma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="мочь_V" stat="pref">
+      <lg>
+         <l pos="V">мочь</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="9"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">võima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="брать_V" stat="pref">
+      <lg>
+         <l pos="V">брать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="9"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">võtma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="строить_V" stat="pref">
+      <lg>
+         <l pos="V">строить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="10"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">ehitama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="повторять_V" stat="pref">
+      <lg>
+         <l pos="V">повторять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="10"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kordama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="найти_V" stat="pref">
+      <lg>
+         <l pos="V">найти</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="10"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">leidma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="заканчивать_V" stat="pref">
+      <lg>
+         <l pos="V">заканчивать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="10"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">lõpetama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="продавать_V" stat="pref">
+      <lg>
+         <l pos="V">продавать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="10"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">müüma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="купить_V" stat="pref">
+      <lg>
+         <l pos="V">купить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="10"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">ostma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="искать_V" stat="pref">
+      <lg>
+         <l pos="V">искать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="10"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">otsima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="предлагать_V" stat="pref">
+      <lg>
+         <l pos="V">предлагать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="10"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">pakkuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="бомбить_V" stat="pref">
+      <lg>
+         <l pos="V">бомбить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="10"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">pommitama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="нуждаться_V" stat="pref">
+      <lg>
+         <l pos="V">нуждаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="10"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">vajama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="взвешивать_V" stat="pref">
+      <lg>
+         <l pos="V">взвешивать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="11"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kaaluma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="разрешать_V" stat="pref">
+      <lg>
+         <l pos="V">разрешать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="11"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">lubama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="вмещаться_V" stat="pref">
+      <lg>
+         <l pos="V">вмещаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="11"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">mahtuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="пробовать_V" stat="pref">
+      <lg>
+         <l pos="V">пробовать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="11"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">proovima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="спасать_V" stat="pref">
+      <lg>
+         <l pos="V">спасать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="11"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">päästma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="экономить_V" stat="pref">
+      <lg>
+         <l pos="V">экономить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="11"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">säästma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="сравнивать_V" stat="pref">
+      <lg>
+         <l pos="V">сравнивать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="11"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">võrdlema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="открывать_V" stat="pref">
+      <lg>
+         <l pos="V">открывать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="12"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">avama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="использовать_V" stat="pref">
+      <lg>
+         <l pos="V">использовать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="12"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kasutama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="кипеть_V" stat="pref">
+      <lg>
+         <l pos="V">кипеть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="12"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">keema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="приглашать_V" stat="pref">
+      <lg>
+         <l pos="V">приглашать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="12"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kutsuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="показывать_V" stat="pref">
+      <lg>
+         <l pos="V">показывать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="12"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">näitama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="закрывать_V" stat="pref">
+      <lg>
+         <l pos="V">закрывать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="12"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">sulgema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="заказывать_V" stat="pref">
+      <lg>
+         <l pos="V">заказывать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="12"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tellima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="праздновать_V" stat="pref">
+      <lg>
+         <l pos="V">праздновать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="12"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tähistama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="наливать_V" stat="pref">
+      <lg>
+         <l pos="V">наливать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="12"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">valama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="выбирать_V" stat="pref">
+      <lg>
+         <l pos="V">выбирать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="12"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">valima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="интересовать_V" stat="pref">
+      <lg>
+         <l pos="V">интересовать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="13"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">huvitama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="варить_V" stat="pref">
+      <lg>
+         <l pos="V">варить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="13"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">keetma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="хвалить_V" stat="pref">
+      <lg>
+         <l pos="V">хвалить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="13"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kiitma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="переезжать_V" stat="pref">
+      <lg>
+         <l pos="V">переезжать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="13"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kolima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="топить_V" stat="pref">
+      <lg>
+         <l pos="V">топить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="13"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kütma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="ремонтировать_V" stat="pref">
+      <lg>
+         <l pos="V">ремонтировать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="13"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">parandama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="курить_V" stat="pref">
+      <lg>
+         <l pos="V">курить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="13"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">suitsetama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="сообщать_V" stat="pref">
+      <lg>
+         <l pos="V">сообщать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="13"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">teatama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="приносить_V" stat="pref">
+      <lg>
+         <l pos="V">приносить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="13"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tooma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="красить_V" stat="pref">
+      <lg>
+         <l pos="V">красить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="13"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">värvima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="снимать в аренду_V" stat="pref">
+      <lg>
+         <l pos="V">снимать в аренду</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="13"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">üürima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="хранить_V" stat="pref">
+      <lg>
+         <l pos="V">хранить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="14"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">hoidma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="звать_V" stat="pref">
+      <lg>
+         <l pos="V">звать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="14"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">hüüdma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="рисовать_V" stat="pref">
+      <lg>
+         <l pos="V">рисовать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="14"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">joonistama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="случаться_V" stat="pref">
+      <lg>
+         <l pos="V">случаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="14"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">juhtuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="рассказывать_V" stat="pref">
+      <lg>
+         <l pos="V">рассказывать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="14"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">jutustama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="добраться_V" stat="pref">
+      <lg>
+         <l pos="V">добраться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="14"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">jõudma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="теряться_V" stat="pref">
+      <lg>
+         <l pos="V">теряться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="14"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kaduma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="помнить_V" stat="pref">
+      <lg>
+         <l pos="V">помнить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="14"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">mäletama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="сортировать_V" stat="pref">
+      <lg>
+         <l pos="V">сортировать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="14"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">sorteerima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="забывать_V" stat="pref">
+      <lg>
+         <l pos="V">забывать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="14"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">unustama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="воспитывать_V" stat="pref">
+      <lg>
+         <l pos="V">воспитывать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="15"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kasvatama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="навещать_V" stat="pref">
+      <lg>
+         <l pos="V">навещать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="15"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">külastama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="печь_V" stat="pref">
+      <lg>
+         <l pos="V">печь</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="15"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">küpsetama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="добавлять_V" stat="pref">
+      <lg>
+         <l pos="V">добавлять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="15"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">lisama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="надеяться_V" stat="pref">
+      <lg>
+         <l pos="V">надеяться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="15"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">lootma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="резать_V" stat="pref">
+      <lg>
+         <l pos="V">резать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="15"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">lõikama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="мешать_V" stat="pref">
+      <lg>
+         <l pos="V">мешать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="15"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">segama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_менять_V" stat="pref">
+      <lg>
+         <l pos="V">менять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="15"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">vahetama</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 17" rus-stat="yes">muutma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_менять_V" stat="pref">
+      <lg>
+         <l pos="V">менять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="17"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">muutma</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 15" rus-stat="yes">vahetama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="запрещать_V" stat="pref">
+      <lg>
+         <l pos="V">запрещать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="16"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">keelama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_поворачивать_V" stat="pref">
+      <lg>
+         <l pos="V">поворачивать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="16"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">keerama</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 16" rus-stat="yes">pöörama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_поворачивать_V" stat="pref">
+      <lg>
+         <l pos="V">поворачивать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="16"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">pöörama</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 16" rus-stat="yes">keerama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="парковаться_V" stat="pref">
+      <lg>
+         <l pos="V">парковаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="16"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">parkima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="останавливаться_V" stat="pref">
+      <lg>
+         <l pos="V">останавливаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="16"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">peatuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="разрешаться_V" stat="pref">
+      <lg>
+         <l pos="V">разрешаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="16"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tohtima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="выходить_V" stat="pref">
+      <lg>
+         <l pos="V">выходить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="16"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">väljuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="быть действительным_V" stat="pref">
+      <lg>
+         <l pos="V">быть действительным</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="17"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kehtima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="вытирать_V" stat="pref">
+      <lg>
+         <l pos="V">вытирать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="17"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kuivatama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_зависеть_V" stat="pref">
+      <lg>
+         <l pos="V">зависеть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="17"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">olenema</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 17" rus-stat="yes">sõltuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_зависеть_V" stat="pref">
+      <lg>
+         <l pos="V">зависеть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="17"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">sõltuma</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 17" rus-stat="yes">olenema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="вводить_V" stat="pref">
+      <lg>
+         <l pos="V">вводить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="17"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">sisestama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="обслуживать_V" stat="pref">
+      <lg>
+         <l pos="V">обслуживать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="17"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">teenindama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="заполнять_V" stat="pref">
+      <lg>
+         <l pos="V">заполнять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="17"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">täitma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="предпочитать_V" stat="pref">
+      <lg>
+         <l pos="V">предпочитать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="18"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">eelistama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="ошибаться_V" stat="pref">
+      <lg>
+         <l pos="V">ошибаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="18"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">eksima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="носить_V" stat="pref">
+      <lg>
+         <l pos="V">носить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="18"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kandma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="длиться_V" stat="pref">
+      <lg>
+         <l pos="V">длиться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="18"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kestma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="прикреплять_V" stat="pref">
+      <lg>
+         <l pos="V">прикреплять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="18"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kinnitama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="включать_V" stat="pref">
+      <lg>
+         <l pos="V">включать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="18"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">lülitama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="чистить_V" stat="pref">
+      <lg>
+         <l pos="V">чистить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="18"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">puhastama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="давить_V" stat="pref">
+      <lg>
+         <l pos="V">давить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="18"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">vajutama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="дышать_V" stat="pref">
+      <lg>
+         <l pos="V">дышать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="19"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">hingama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="прыгать_V" stat="pref">
+      <lg>
+         <l pos="V">прыгать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="19"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">hüppama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="жаловаться_V" stat="pref">
+      <lg>
+         <l pos="V">жаловаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="19"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kaebama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="бояться_V" stat="pref">
+      <lg>
+         <l pos="V">бояться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="19"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kartma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="измерять температуру_V" stat="pref">
+      <lg>
+         <l pos="V">измерять температуру</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="19"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kraadima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="измерять_V" stat="pref">
+      <lg>
+         <l pos="V">измерять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="19"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">mõõtma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="попадать_V" stat="pref">
+      <lg>
+         <l pos="V">попадать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="19"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">pääsema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="лечить_V" stat="pref">
+      <lg>
+         <l pos="V">лечить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="19"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">ravima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="рекомендовать_V" stat="pref">
+      <lg>
+         <l pos="V">рекомендовать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="19"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">soovitama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="тянуть_V" stat="pref">
+      <lg>
+         <l pos="V">тянуть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="19"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tõmbama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="болеть_V" stat="pref">
+      <lg>
+         <l pos="V">болеть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="19"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">valutama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="предъявлять_V" stat="pref">
+      <lg>
+         <l pos="V">предъявлять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="20"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">esitama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="предупреждать_V" stat="pref">
+      <lg>
+         <l pos="V">предупреждать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="20"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">hoiatama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="потерять_V" stat="pref">
+      <lg>
+         <l pos="V">потерять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="20"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kaotama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="спешить_V" stat="pref">
+      <lg>
+         <l pos="V">спешить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="20"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kiirustama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="падать_V" stat="pref">
+      <lg>
+         <l pos="V">падать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="20"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kukkuma</t>
+            <t pos="V" sem-cl="YYY" src="E_nagu_Eesti 23" rus-stat="yes">langema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="улыбаться_V" stat="pref">
+      <lg>
+         <l pos="V">улыбаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="20"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">naeratama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="объяснять_V" stat="pref">
+      <lg>
+         <l pos="V">объяснять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="20"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">selgitama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="воровать_V" stat="pref">
+      <lg>
+         <l pos="V">воровать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="20"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">varastama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="повреждать_V" stat="pref">
+      <lg>
+         <l pos="V">повреждать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="20"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">vigastama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="бросать_V" stat="pref">
+      <lg>
+         <l pos="V">бросать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="20"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">viskama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="побеждать_V" stat="pref">
+      <lg>
+         <l pos="V">побеждать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="20"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">võitma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="обсуждать_V" stat="pref">
+      <lg>
+         <l pos="V">обсуждать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="21"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">arutama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="привыкать_V" stat="pref">
+      <lg>
+         <l pos="V">привыкать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="21"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">harjuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="организовывать_V" stat="pref">
+      <lg>
+         <l pos="V">организовывать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="21"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">korraldama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="принимать решение_V" stat="pref">
+      <lg>
+         <l pos="V">принимать решение</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="21"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">otsustama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="общаться_V" stat="pref">
+      <lg>
+         <l pos="V">общаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="21"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">suhtlema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="зарабатывать_V" stat="pref">
+      <lg>
+         <l pos="V">зарабатывать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="21"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">teenima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="заниматься_V" stat="pref">
+      <lg>
+         <l pos="V">заниматься</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="21"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tegelema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="происходить_V" stat="pref">
+      <lg>
+         <l pos="V">происходить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="21"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">toimuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="стараться_V" stat="pref">
+      <lg>
+         <l pos="V">стараться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="21"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">üritama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="влюбиться_V" stat="pref">
+      <lg>
+         <l pos="V">влюбиться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="22"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">armuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="наслаждаться_V" stat="pref">
+      <lg>
+         <l pos="V">наслаждаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="22"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">nautima</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="участвовать_V" stat="pref">
+      <lg>
+         <l pos="V">участвовать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="22"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">osalema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="обосновывать_V" stat="pref">
+      <lg>
+         <l pos="V">обосновывать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="22"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">põhjendama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="прибывать_V" stat="pref">
+      <lg>
+         <l pos="V">прибывать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="22"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">saabuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="знакомить_V" stat="pref">
+      <lg>
+         <l pos="V">знакомить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="22"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tutvustama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="соединять_V" stat="pref">
+      <lg>
+         <l pos="V">соединять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="22"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">ühendama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="обнаруживать_V" stat="pref">
+      <lg>
+         <l pos="V">обнаруживать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="23"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">avastama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="спускаться_V" stat="pref">
+      <lg>
+         <l pos="V">спускаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="23"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">langema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="отказаться_V" stat="pref">
+      <lg>
+         <l pos="V">отказаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="23"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">loobuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="выясняться_V" stat="pref">
+      <lg>
+         <l pos="V">выясняться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="23"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">selguma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="поднимать_V" stat="pref">
+      <lg>
+         <l pos="V">поднимать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="23"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tõstma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="оставлять_V" stat="pref">
+      <lg>
+         <l pos="V">оставлять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="24"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">jätma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="сушить_V" stat="pref">
+      <lg>
+         <l pos="V">сушить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="24"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kuivama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="тушить_V" stat="pref">
+      <lg>
+         <l pos="V">тушить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="24"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kustutama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="уходить_V" stat="pref">
+      <lg>
+         <l pos="V">уходить</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="24"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">lahkuma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="гореть_V" stat="pref">
+      <lg>
+         <l pos="V">гореть</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="24"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">põlema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="казаться_V" stat="pref">
+      <lg>
+         <l pos="V">казаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="24"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">tunduma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="нажимать_V" stat="pref">
+      <lg>
+         <l pos="V">нажимать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="24"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">vajutama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="предсказывать_V" stat="pref">
+      <lg>
+         <l pos="V">предсказывать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="25"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">ennustama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="отличаться_V" stat="pref">
+      <lg>
+         <l pos="V">отличаться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="25"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">erinema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="намереваться_V" stat="pref">
+      <lg>
+         <l pos="V">намереваться</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="25"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kavatsema</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="составлять_V" stat="pref">
+      <lg>
+         <l pos="V">составлять</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="25"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">koostama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="принадлежать_V" stat="pref">
+      <lg>
+         <l pos="V">принадлежать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="25"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">kuuluma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="ночевать_V" stat="pref">
+      <lg>
+         <l pos="V">ночевать</l>
+      </lg>
+      <sources>
+         <book name="E_nagu_Eesti" chapter="25"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="est">
+            <t pos="V" stat="pref">ööbima</t>
          </tg>
       </mg>
    </e>
