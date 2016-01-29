@@ -449,6 +449,7 @@ class Word(models.Model):
 	lemma_stressed = models.CharField(max_length=200, db_index=True)  # added by HU
 	presentationform = models.CharField(max_length=5) # PI: what's this?
 	pos = models.CharField(max_length=12) # Accomodate larger PoS
+	hom = models.CharField(max_length=4) # The tag indicating which of the homonyms it is (Hom1, Hom2 etc.)
 	stem = models.CharField(max_length=20)
 	animate = models.CharField(max_length=20) # PI: could be boolean?
 	gender = models.CharField(max_length=20)

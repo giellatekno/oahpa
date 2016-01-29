@@ -232,13 +232,14 @@ class Paradigm:
 						g.classes[tagclass] = t
 			self.paradigm.append(g)
 			
-	def collect_gen_data(self, lemma, pos, hid, wordtype, gen_only, forms):
+	def collect_gen_data(self, lemma, pos, hid, hom, wordtype, gen_only, forms):
 		"""
 			Collects tags and paradigms to be passed off to the FST for generation.
 			Tags and items to be generated are filtered based on following parameters
 				* gen_only
 				* wordtype
 				* hid
+				* hom
 			so that there is minimal overgeneration. FSTs trim some nongeneratable forms
 			as well.
 		"""
@@ -316,9 +317,13 @@ class Paradigm:
 				#		if c in tag:
 				#			lookups = lookups + lemma + hid + "+" + tag
 				#else:
+				if hom:  # If the <l> element had a 'hom' attribute, e.g. hom="Hom2"
+					hom_tag = "+" + hom
+				else:
+					hom_tag = ""
 				if not lemma:
 				    raise TypeError
-				lookups = lookups + lemma + hid + "+" + a  # was: tag instead of a
+				lookups = lookups + lemma + hid + hom_tag + "+" + a  # was: tag instead of a
 
 				lookups += '\n\n\n'
 		self.generate_data.append(lookups)

@@ -10,8 +10,8 @@ INC="$DATA/inc"
 META="$DATA/meta"
 DPN="$DATA/deuest"
 DPF="$DATA/finest"
-DPW="$DATA/engest"
-#DPL="$DATA/latest"
+DPE="$DATA/engest"
+DPW="$DATA/sweest"
 DPR="$DATA/rusest"
 #WORDS=$GTHOME/words/dicts/smenob/src
 
@@ -52,12 +52,12 @@ echo "==================================================="
 # echo "done"
 # echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPS/prop_estnob.xml"
-# $P install.py --file $DPS/prop_estnob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPS/Prop_est.xml"
+$P install.py --file $DPS/Prop_est.xml --tagfile $META/tags.txt --paradigmfile $META/prop_paradigms.txt 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 
 # echo "==================================================="
@@ -218,29 +218,29 @@ echo "==================================================="
 
 
 echo "==================================================="
-echo "feeding db with $DPW/N_engest.xml"
-$P install.py --file $DPW/N_engest.xml
+echo "feeding db with $DPE/N_engest.xml"
+$P install.py --file $DPE/N_engest.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPW/V_engest.xml"
-$P install.py --file $DPW/V_engest.xml
+echo "feeding db with $DPE/V_engest.xml"
+$P install.py --file $DPE/V_engest.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPW/A_engest.xml"
-$P install.py --file $DPW/A_engest.xml
+echo "feeding db with $DPE/A_engest.xml"
+$P install.py --file $DPE/A_engest.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 # echo "==================================================="
-# echo "feeding db with $DPW/adv_sweest.xml"
-# $P install.py --file $DPW/adv_sweest.xml
+# echo "feeding db with $DPE/adv_sweest.xml"
+# $P install.py --file $DPE/adv_sweest.xml
 # echo " "
 # echo "done"
 # echo "==================================================="
@@ -310,30 +310,51 @@ echo "done"
 echo "==================================================="
 
 ##                                                                                
-## smeest                                                                         
+## sweest                                                                         
 ##                                                                                
                                                                                    
 
-#echo "==================================================="
-#echo "feeding db with $DPD/N_smeest.xml"
-#$P install.py --file $DPD/N_smeest.xml
-#echo " "
-#echo "done"
-#echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPW/N_sweest.xml"
+$P install.py --file $DPW/N_sweest.xml
+echo " "
+echo "done"
+echo "==================================================="
 
-#echo "==================================================="
-#echo "feeding db with $DPD/V_smeest.xml"
-#$P install.py --file $DPD/V_smeest.xml
-#echo " "
-#echo "done"
-#echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPW/V_sweest.xml"
+$P install.py --file $DPW/V_sweest.xml
+echo " "
+echo "done"
+echo "==================================================="
 
-#echo "==================================================="
-#echo "feeding db with $DPD/A_smeest.xml"
-#$P install.py --file $DPD/A_smeest.xml
-#echo " "
-#echo "done"
-#echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPW/A_sweest.xml"
+$P install.py --file $DPW/A_sweest.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPW/Adv_sweest.xml"
+$P install.py --file $DPW/Adv_sweest.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPW/Adp_sweest.xml"
+$P install.py --file $DPW/Adp_sweest.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPW/Pron_sweest.xml"
+$P install.py --file $DPW/Pron_sweest.xml
+echo " "
+echo "done"
+echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $DPS/grammaticalwords_estnob.xml"

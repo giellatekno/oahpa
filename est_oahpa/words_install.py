@@ -174,16 +174,16 @@ class Entry(object):
 		""" Handles nodes such as...
 			
 			<lg>
-	 		   <l pos="n" soggi="oe" stem="2syll">aajroe</l>
+	 		   <l pos="n" hom="Hom1">piim</l>
 	 		</lg>
 
-	 		Including those containing lemma_ref and miniparadigms:
+	 		(Saami-specific: Including those containing lemma_ref and miniparadigms:
 
 			<lg>
 				<l pos="pron" type="pers">mijjen</l>
 				<lemma_ref lemmaID="mijjieh_pron_pers">mijjieh</lemma_ref>
 				<analysis>Pron_Pers_Pl1_Gen</analysis>
-			</lg>
+			</lg>)
 
 		"""
 		
@@ -215,6 +215,7 @@ class Entry(object):
 			("umlaut", None),
 			("vow", None),
 			("xml:lang", None),
+			("hom", None),
 
 		]
 		
@@ -500,6 +501,7 @@ class Words(object):
 						entry.lemma,
 						entry.pos,
 						entry.hid,
+						entry.hom,
 						entry.wordtype,		# TV, IV, TODO: Neg
 						entry.gen_only,
 						[],
@@ -690,8 +692,8 @@ class Words(object):
 		changes_to_xml = True
 		changes_to_paradigm = True
 		# Intialize null variables
-		stem, forms, gradation, rime						=	[""]*4
-		wordclass, attrsuffix, compsuffix, soggi, valency	=	[""]*5
+		stem, forms, gradation, rime, hom		     =	[""]*5
+		wordclass, attrsuffix, compsuffix, soggi, valency    =	[""]*5
 		compare, frequency, geography, presentationform, excl_dialect	=	[""]*5
 
 		diphthong = "no"
@@ -770,6 +772,9 @@ class Words(object):
 
 		if entry.rime:
 			rime = entry.rime
+			
+		if entry.hom:
+			hom = entry.hom
 
 
 		trisyllabic = ['3syll', '3', 'trisyllabic']
@@ -823,6 +828,7 @@ class Words(object):
 			# w.presentationform = presentationform
 			w.stem = stem
 			w.rime = rime
+			w.hom = hom
 			w.compare = compare
 			w.attrsuffix = attrsuffix
 			w.compsuffix = compsuffix
