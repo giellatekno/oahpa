@@ -495,48 +495,48 @@ echo "==================================================="
 # echo "done"
 # echo "==================================================="
 
-# echo "==================================================="
-# echo "installing Vasta-S questions"
-# $P install.py -g $META/grammar_defaults.xml -q $META/vastas_questions.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "installing Vasta-S questions"
+$P install.py -g $META/grammar_defaults.xml -q $META/vastas_questions.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 
-# echo "==================================================="
-# echo "Installing feedback messages for vasta"
-# $P install.py --messagefile $META/messages_vasta.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "Installing feedback messages for vasta"
+$P install.py --messagefile $META/messages_vasta.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-# echo "==================================================="
-# echo "Installing feedback messages for vasta - in English"
-# $P install.py --messagefile $META/messages_vasta.eng.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "Installing feedback messages for vasta - in English"
+$P install.py --messagefile $META/messages_vasta.eng.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-# echo "==================================================="
-# echo "Installing feedback messages for vasta - in Finnish"
-# $P install.py --messagefile $META/messages_vasta.fin.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "Installing feedback messages for vasta - in Finnish"
+$P install.py --messagefile $META/messages_vasta.fin.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-# echo "==================================================="
-# echo "Installing feedback messages for vasta - in North Sámi"
-# $P install.py --messagefile $META/messages_vasta.est.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "Installing feedback messages for vasta - in North Sámi"
+$P install.py --messagefile $META/messages_vasta.est.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-# echo "==================================================="
-# echo "Installing feedback messages for vasta - in Swedish"
-# $P install.py --messagefile $META/messages_vasta.swe.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "Installing feedback messages for vasta - in Swedish"
+$P install.py --messagefile $META/messages_vasta.swe.xml
+echo " "
+echo "done"
+echo "==================================================="
 
 # #####
 # # Sahka
