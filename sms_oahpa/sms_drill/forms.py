@@ -63,23 +63,27 @@ POS_CHOICES = (
 	('Pron', _('pronoun')),
 )
 
+NUMBER_CHOICES = (
+	('Sg', _('singular')),
+	('Pl', _('plural')),
+)
+
+DIMINUTIVE_CHOICES = (
+	('1', _('yes')),
+	('0', _('no')),
+)
+
+
 CASE_CHOICES = (
-    ('N-NOM', _('singular nominative')),
-	('N-GEN', _('singular genitive')),
-	('N-ACC', _('singular accusative')),
-	('N-ILL', _('singular illative')),
-	('N-LOC', _('singular locative')),
-	('N-COM', _('singular comitative')),
+    ('N-NOM', _('nominative')),
+	('N-GEN', _('genitive')),
+	('N-ACC', _('accusative')),
+	('N-ILL', _('illative')),
+	('N-LOC', _('locative')),
+	('N-COM', _('comitative')),
 	('N-ESS', _('essive')),
 	('N-PAR', _('partitive')),
-	('N-ABESS', _('singular abessive')),
-	('NOMPL', _('plural nominative')),
-	('N-GEN-PL', _('plural genitive')),
-	('N-ACC-PL', _('plural accusative')),
-	('N-ILL-PL', _('plural illative')),
-	('N-LOC-PL', _('plural locative')),
-	('N-COM-PL', _('plural comitative')),
-	('N-ABESS-PL', _('plural abessive')),
+	('N-ABESS', _('abessive')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -861,7 +865,8 @@ class OahpaSettings(forms.Form):
 					'pos' : 'N',
 					'vtype' : 'PRS',
 					'adjcase' : 'A-NOM',
-					'number' : '',
+					'number' : 'Sg',
+					'diminutive' : '0',
 					'pron_type': 'Pers',
 					'proncase' : 'N-ILL',
 					'grade' : 'COMP',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
@@ -1101,6 +1106,8 @@ class MorfaSettings(OahpaSettings):
 		answers.
 	"""
 	case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
+	number = forms.ChoiceField(initial='Sg', choices=NUMBER_CHOICES, widget=forms.Select)
+	diminutive = forms.ChoiceField(initial='0', choices=DIMINUTIVE_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='A-NOM', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
@@ -1186,7 +1193,7 @@ class MorfaQuestion(OahpaQuestion):
 			self.pron = False
 		
 		#print self.lemma, correct
-		#print baseform.tag, correct.tag
+		print baseform.tag, correct.tag
 		#print "conneg_agr: ", conneg_agr
 		
 		# Retrieve feedback information

@@ -656,6 +656,7 @@ class Tag(models.Model):
 	polarity = models.CharField(max_length=5)
 	pos = models.CharField(max_length=12)
 	possessive = models.CharField(max_length=5)
+	diminutive = models.CharField(max_length=10)
 	subclass = models.CharField(max_length=10)
 	tense = models.CharField(max_length=5)
 		
@@ -681,6 +682,7 @@ class Tag(models.Model):
 			'polarity': 'Polarity',
 			'pos': 'Wordclass',
 			'possessive': 'Possessive',
+			'diminutive': 'Diminutive',
 			'subclass': 'Subclass',
 			'tense': 'Tense',
 		}
@@ -776,7 +778,7 @@ class Form(models.Model):
 				number = self.tag.number
 			else:
 				number = 'Sg'
-			baseform_num = self.word.form_set.filter(tag__case='Nom', tag__possessive='')
+			baseform_num = self.word.form_set.filter(tag__case='Nom', tag__possessive='', tag__diminutive='') # The given form is always N+Sg+Nom, no possessive or diminutive forms.
 			
 			baseform = baseform_num.filter(tag__number=number)
 			if baseform.count() == 0 and number == 'Sg' and baseform_num.count() > 0:

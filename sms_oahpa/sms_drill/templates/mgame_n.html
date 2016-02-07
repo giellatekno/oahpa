@@ -14,6 +14,11 @@
 	{% ifequal settings.gametype "bare" %}
 	<li><label for="id_{{ settingsform.case.name }}">{% trans "Case" %}</label>
 		{{ settingsform.case }}</li>
+    <li><label for="id_{{ settingsform.number.name }}">{% trans "Number" %}</label>
+		{{ settingsform.number }}</li>	
+    <li><label for="id_{{ settingsform.diminutive.name }}">{% trans "Diminutive" %}</label>
+		{{ settingsform.diminutive }}</li>	
+
 <!--	<li><label>{% trans "Stem" %}</label>
 		<ul>
 			<li>{{ settingsform.bisyllabic }} <label for="id_{{ settingsform.bisyllabic.name }}">{% trans "bisyllabic" %}</label></li>
@@ -25,5 +30,6 @@
 	<li><label for="id_{{ settingsform.case_context.name }}">{% trans "Case" %}</label>
 		{{ settingsform.case_context }}</li>
 	{% endifequal %}
+	
 {% endblock %}
 

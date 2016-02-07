@@ -319,22 +319,15 @@ class BareGame(Game):
 	casetable = {
 		'ATTR': 'Attr',
 		'PRED': 'Pred', 
-		'N-NOM': ('Nom', ['Sg']),
-		'N-GEN': ('Gen', ['Sg']),
-		'N-ACC': ('Acc', ['Sg']), 
-		'N-ILL': ('Ill', ['Sg']), 
-		'N-LOC': ('Loc', ['Sg']),
-		'N-COM': ('Com', ['Sg']),
-		'N-ESS': ('Ess', ['']), 
-		'N-PAR': ('Par', ['']), 
-		'N-ABESS': ('Abe', ['Sg']),		
-		'NOMPL': ('Nom', ['Pl']), 
-		'N-GEN-PL': ('Gen', ['Pl']),
-		'N-ACC-PL': ('Acc', ['Pl']), 
-		'N-ILL-PL': ('Ill', ['Pl']), 
-		'N-LOC-PL': ('Loc', ['Pl']),
-		'N-COM-PL': ('Com', ['Pl']),
-		'N-ABESS-PL': ('Abe', ['Pl']),	
+		'N-NOM': 'Nom',
+		'N-GEN': 'Gen',
+		'N-ACC': 'Acc', 
+		'N-ILL': 'Ill', 
+		'N-LOC': 'Loc',
+		'N-COM': 'Com',
+		'N-ESS': 'Ess', 
+		'N-PAR': 'Par', 
+		'N-ABESS': 'Abe',		
 		'A-ATTR': 'Attr',
 		'A-NOM': ('Nom', ['Sg']),
 		'A-GEN': ('Gen', ['Sg']),
@@ -485,6 +478,8 @@ class BareGame(Game):
 		
 		syll = True and	self.settings.get('syll')	or ['']
 		case = True and	self.settings.get('case')	or   ""
+		number = True and self.settings.get('number') or ""
+		diminutive = True and self.settings.get('diminutive') or ""
 		levels = True and self.settings.get('level')   or   []
 		adjcase = True and self.settings.get('adjcase') or   ""
 		pron_type = True and self.settings.get('pron_type') or   ""
@@ -497,6 +492,7 @@ class BareGame(Game):
 		mood, tense, infinite, attributive = "", "", "", ""
 
 		num_bare = ""
+		
 		# if self.settings.has_key('syll'):
 		# 	syll = self.settings['syll']
 		# if self.settings.has_key('case'):
@@ -550,8 +546,6 @@ class BareGame(Game):
 	#		syll = ['']
 		
 		if pos in ['N', 'A']:  # Maybe need to add also Num and Pron here
-			case, number = self.casetable[pos_tables[pos]]
-		else:
 			case = self.casetable[pos_tables[pos]]
             
 		grade = self.casetable[grade]
@@ -587,8 +581,8 @@ class BareGame(Game):
 		 # Commented out the following because we do not have mixed singular and plural exercises now
 		#number = ["Sg","Pl",""]
 		
-		#if case == "Ess":
-		#	number = [""] 
+		if case in ["Ess", "Par"]:  # Essive and partitive case do not have separate singular / plural forms.
+			number = "" 
 		#elif case == "Nom" and pos != "Pron":
 	#		number = ["Pl"]
 	#	else:
@@ -671,14 +665,18 @@ class BareGame(Game):
 			sylls = False
 			source = False
 
-		if pos in ['Pron', 'N', 'Num']:
+		if pos in ['Pron', 'N', 'Num']:		
+			if diminutive == '1':
+				diminutive = 'Der/Dimin'
+			else:
+				diminutive = ''
 			TAG_QUERY = TAG_QUERY & \
-						Q(case=case)
+						Q(case=case, number=number, diminutive=diminutive, possessive='')  # We assume that possessive forms have pos="Px", not "N".
 						# regardless of whether it's Actor, Coll, etc.
 
-			if pos == 'N':
-				TAG_QUERY = TAG_QUERY & \
-							Q(number__in=number)
+			#if pos == 'N':
+			#	TAG_QUERY = TAG_QUERY & \
+			#				Q(number__in=number)
 							#Q(possessive="") & \
 
 			print "tag query:",TAG_QUERY
@@ -724,7 +722,7 @@ class BareGame(Game):
 
 		# filter can include several queries, exclude must have only one
 		# to work successfully
-		if pos != 'Der':
+		if pos != 'Der' and not diminutive:
 			tags = Tag.objects.exclude(string__contains='Der')\
 								.filter(TAG_QUERY)\
 								#.exclude(subclass='Prop')\

@@ -575,7 +575,7 @@ class Paradigm:
 				g=form.classes
 				t,created=Tag.objects.get_or_create(string=form.tags,pos=g.get('Wordclass', ""),\
 													number=g.get('Number',""),case=g.get('Case',""),\
-													possessive=g.get('Possessive',""),grade=g.get('Grade',""),\
+													possessive=g.get('Possessive',""), diminutive=g.get("Diminutive",""), grade=g.get('Grade',""),\
 													infinite=g.get('Infinite',""), \
 													personnumber=g.get('Person-Number',""),\
 													polarity=g.get('Polarity',""),\
