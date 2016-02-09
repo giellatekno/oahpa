@@ -545,8 +545,10 @@ class BareGame(Game):
 	#	if pos == 'Pron':
 	#		syll = ['']
 		
-		if pos in ['N', 'A']:  # Maybe need to add also Num and Pron here
+		if pos == 'N':  # Maybe need to add also Num and Pron here
 			case = self.casetable[pos_tables[pos]]
+		elif pos == 'A':
+			case, number = self.casetable[pos_tables[pos]] 
             
 		grade = self.casetable[grade]
 		num_type = self.casetable[num_type] # added by Heli
