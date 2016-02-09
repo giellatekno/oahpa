@@ -8,9 +8,9 @@
     {% elif settings.gametype == "context" %}
 
       {% if settings.vtype_context == 'V-PRS' %}
-        {% trans "Talk about what people did or did not do today. Complete the response to the question by entering the verb in the correct form." %}
+        {% trans "Talk about what people do or do not do. Complete the response to the question by entering the verb in the correct present tense form." %}
       {% elif settings.vtype_context == 'V-PRT' %}
-        {% trans "Talk about what people did yesterday. Complete the response to the question by entering the verb in the correct form." %}
+        {% trans "Talk about what people did yesterday. Complete the response to the question by entering the verb in the correct past tense form." %}
       {% else %}
         {% trans "Add verbs in correct forms." %}
       {% endif %}
