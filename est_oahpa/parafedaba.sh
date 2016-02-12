@@ -59,6 +59,12 @@ echo " "
 echo "done"
 echo "==================================================="
 
+echo "==================================================="
+echo "feeding db with $DPS/Pron_est.xml"
+$P install.py --file $DPS/Pron_est.xml --tagfile $META/tags.txt --paradigmfile $META/pron_paradigms.txt 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $DPS/num_estnob.xml"
@@ -67,12 +73,12 @@ echo "==================================================="
 # echo "done"
 # echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPS/A_est.xml"
-# $P install.py --file $DPS/A_est.xml --tagfile $META/tags.txt --paradigmfile $META/A_paradigms.txt 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPS/A_est.xml"
+$P install.py --file $DPS/A_est.xml --tagfile $META/tags.txt --paradigmfile $META/a_paradigms.txt 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
  echo "==================================================="
  echo "feeding db with $DPS/V_est.xml"
@@ -93,6 +99,13 @@ echo "==================================================="
  echo "==================================================="
  echo "feeding db with $DPS/Adv_est.xml"
  $P install.py --file $DPS/Adv_est.xml 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
+ 
+  echo "==================================================="
+ echo "feeding db with $DPS/X_est.xml"
+ $P install.py --file $DPS/X_est.xml 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
@@ -136,26 +149,54 @@ echo "==================================================="
  echo "done"
  echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPN/adv_deuest.xml"
-# $P install.py --file $DPN/adv_deuest.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPN/Adv_deuest.xml"
+$P install.py --file $DPN/Adv_deuest.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPN/mwe_deuest.xml"
-# $P install.py --file $DPN/mwe_deuest.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPN/MWE_deuest.xml"
+$P install.py --file $DPN/MWE_deuest.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPN/prop_deuest.xml"
-# $P install.py --file $DPN/prop_deuest.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPN/Prop_deuest.xml"
+$P install.py --file $DPN/Prop_deuest.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPN/Pron_deuest.xml"
+$P install.py --file $DPN/Pron_deuest.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPN/X_deuest.xml"
+$P install.py --file $DPN/X_deuest.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPN/Interj_deuest.xml"
+$P install.py --file $DPN/Interj_deuest.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPN/Adp_deuest.xml"
+$P install.py --file $DPN/Adp_deuest.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 # ##
 # ## finest
@@ -191,26 +232,47 @@ echo "done"
 echo "==================================================="
 
 
-# echo "==================================================="
-# echo "feeding db with $DPF/adv_finest.xml"
-# $P install.py --file $DPF/adv_finest.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPF/Adv_finest.xml"
+$P install.py --file $DPF/Adv_finest.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPF/mwe_finest.xml"
-# $P install.py --file $DPF/mwe_finest.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPF/MWE_finest.xml"
+$P install.py --file $DPF/MWE_finest.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPF/prop_finest.xml"
-# $P install.py --file $DPF/prop_finest.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPF/Pron_finest.xml"
+$P install.py --file $DPF/Pron_finest.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPF/X_finest.xml"
+$P install.py --file $DPF/X_finest.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPF/Interj_finest.xml"
+$P install.py --file $DPF/Interj_finest.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPF/Adp_finest.xml"
+$P install.py --file $DPF/Adp_finest.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 ##
 ## engest
@@ -238,26 +300,47 @@ echo " "
 echo "done"
 echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPE/adv_sweest.xml"
-# $P install.py --file $DPE/adv_sweest.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPE/Adv_engest.xml"
+$P install.py --file $DPE/Adv_engest.xml
+echo " "
+echo "done"
+echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPW/multiword_sweest.xml"
-# $P install.py --file $DPW/multiword_sweest.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPE/MWE_engest.xml"
+$P install.py --file $DPE/MWE_engest.xml
+echo " "
+echo "done"
+echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $DPW/prop_sweest.xml"
-# $P install.py --file $DPW/prop_sweest.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPE/Pron_engest.xml"
+$P install.py --file $DPE/pron_engest.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPE/X_engest.xml"
+$P install.py --file $DPE/X_engest.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPE/Interj_engest.xml"
+$P install.py --file $DPE/Interj_engest.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPE/Adp_engest.xml"
+$P install.py --file $DPE/Adp_engest.xml
+echo " "
+echo "done"
+echo "==================================================="
 
 ##       
 ## latest                                                                         
@@ -305,6 +388,41 @@ echo "==================================================="
 echo "==================================================="
 echo "feeding db with $DPR/A_rusest.xml"
 $P install.py --file $DPR/A_rusest.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPR/Adv_rusest.xml"
+$P install.py --file $DPR/Adv_rusest.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPR/MWE_rusest.xml"
+$P install.py --file $DPR/MWE_rusest.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPR/Pron_rusest.xml"
+$P install.py --file $DPR/Pron_rusest.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPR/X_rusest.xml"
+$P install.py --file $DPR/X_rusest.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPR/Interj_rusest.xml"
+$P install.py --file $DPR/Interj_rusest.xml
 echo " "
 echo "done"
 echo "==================================================="
