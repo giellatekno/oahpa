@@ -357,7 +357,7 @@ class BareGame(Game):
 		'N-ALL': ('All', ['Sg','Pl']),
 		'N-ADE': ('Ade', ['Sg','Pl']),
 		'N-ABL': ('Abl', ['Sg','Pl']),
-		'N-TRL': ('Tra', ['Sg','Pl']),
+		'N-TRA': ('Tra', ['Sg','Pl']),
 		'N-TER': ('Trm', ['Sg','Pl']),
 		'N-ESS': ('Ess', ['Sg','Pl']),
 		'N-ABESS': ('Abe', ['Sg','Pl']),
@@ -677,6 +677,9 @@ class BareGame(Game):
 				TAG_QUERY = TAG_QUERY & Q(number='Sg')
 			else:
 				TAG_QUERY = TAG_QUERY & Q(number__in=number)
+				
+			if source.lower() != 'all':
+				TAG_EXCLUDES = Q(string__contains='Prop')
 
 
 
@@ -793,9 +796,10 @@ class BareGame(Game):
 			WORD_FILTER = Q()
 			
 			tag = tags.order_by('?')[0]
+			print "tag: ", tag
 
-			if tag.personnumber != 'Sg3':
-				    WORD_FILTER = WORD_FILTER & Q(word__semtype__semtype= "ACTION_V")  # Verbs that cannot be used together with personal pronouns, e.g. "sadama", "kestma", "toimuma" will have the pronoun "see" (it) as subject, thus only Sg3 form is suitable. The semantic set ACTION_V is defined so the verbs can take personal pronouns as subject.
+			if tag.pos == 'V' and tag.personnumber != 'Sg3':
+				    WORD_FILTER = WORD_FILTER & Q(word__semtype__semtype__contains="ACTION")  # Verbs that cannot be used together with personal pronouns, e.g. "sadama", "kestma", "toimuma" will have the pronoun "see" (it) as subject, thus only Sg3 form is suitable. The semantic set ACTION_V is defined so the verbs can take personal pronouns as subject.
 	    
 			# Process the selection from the noun_type menu (incorporates gender, animacy and inflection type):
 			"""if noun_type == "N-NEUT":
@@ -841,7 +845,11 @@ class BareGame(Game):
 				if tag.pos == 'Pron':
 					tag = tags.order_by('?')[0]
 
-				random_word = tag.form_set.filter(WORD_FILTER)
+				print "tag: ", tag
+				print "Book chapter: ", source
+				print "Source filter: ", SOURCE_FILTER
+				print "Word filter: ", WORD_FILTER
+				random_word = tag.form_set.filter(SOURCE_FILTER).filter(WORD_FILTER)
 				print random_word
 				
 				# PI: commented out, b/c at this stage
@@ -858,8 +866,9 @@ class BareGame(Game):
 				# 					.exclude(word__stem='nubbi')
 				# # if sylls:
 				# # 	random_word = random_word.filter(word__stem__in=sylls)
-				if source:
-				 	random_word = random_word.filter(word__source__in=source)
+				
+				#if source != 'all':
+				# 	random_word = random_word.filter(word__source__in=source)
 
 				# if pos2 == 'Num':
 				# 	if subclass == 'Ord':

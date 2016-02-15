@@ -694,7 +694,7 @@ class Tag(models.Model):
 	# polarity = models.CharField(max_length=5)
 	pos = models.CharField(max_length=12)
 	# possessive = models.CharField(max_length=5)
-	# subclass = models.CharField(max_length=10)
+	subclass = models.CharField(max_length=10)
 	tense = models.CharField(max_length=5)
 
 	class Admin:
@@ -719,7 +719,7 @@ class Tag(models.Model):
 #			'polarity': 'Polarity',
 			'pos': 'Wordclass',
 #			'possessive': 'Possessive',
-#			'subclass': 'Subclass',
+			'subclass': 'Subclass',
 			'tense': 'Tense',
 			'gender': 'Gender',
 		}

@@ -427,7 +427,8 @@ class Paradigm:
 				# If first element of tag is an integer, then
 				# it is hid, otherwise it's just part of the tag.
 				try:
-					hid = int(hid_test[0])
+					hid = int(hid_test[0][-1])
+					hom = hid_test[0] # We use the tags Hom1, Hom2, ... for homonyms, thus not just integers.
 					tag = hid_test[2]
 				except ValueError:
 					hid = ''

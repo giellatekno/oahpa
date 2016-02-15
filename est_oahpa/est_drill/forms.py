@@ -61,7 +61,7 @@ CASE_CHOICES = (
     ('N-ALL', _(u'Alaleütlev (kellele? millele? kuhu?)')),
     ('N-ADE', _(u'Alalütlev (kellel? millel? kus?)')),
     ('N-ABL', _(u'Alaltütlev (kellelt? millelt? kust?)')),
-    ('N-TRL', _(u'Saav (kelleks? milleks?)')),
+    ('N-TRA', _(u'Saav (kelleks? milleks?)')),
     ('N-TER', _(u'Rajav (kelleni? milleni?)')),
     ('N-ESS', _(u'Olev (kellena? millena?')),
     ('N-ABESS', _(u'Ilmaütlev (kelleta? milleta?')),
@@ -1265,7 +1265,7 @@ class MorfaQuestion(OahpaQuestion):
 
 		if tag.pos == "V":
 			if not self.pron:
-				is_actionverb = Word.objects.filter(id=word.id, semtype__semtype='ACTION_V')
+				is_actionverb = Word.objects.filter(id=word.id, semtype__semtype__contains='ACTION_V')
 				if tag.string.find("Neg") > -1:  # was ConNeg
 					pers = conneg_agr
 					if is_actionverb:
