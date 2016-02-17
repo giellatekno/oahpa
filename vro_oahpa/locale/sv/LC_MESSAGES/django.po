@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-17 21:05+0100\n"
+"POT-Creation-Date: 2016-02-17 12:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,45 +37,45 @@ msgstr "Programmet är under utveckling."
 msgid "Grammar explanations"
 msgstr "Grammatikförklaringar"
 
-#: templates/vro_oahpa.html:72
+#: templates/vro_oahpa.html:83
 msgid "Reference materials"
 msgstr "Resurser"
 
-#: templates/vro_oahpa.html:74
+#: templates/vro_oahpa.html:85
 #, fuzzy
 msgid "Instructions"
 msgstr "(instruktioner)"
 
-#: templates/vro_oahpa.html:76 templates/vro_oahpa.html.py:78
+#: templates/vro_oahpa.html:86
 msgid "Dictionary"
 msgstr "Digital ordbok"
 
-#: templates/vro_oahpa.html:82 templates/vro_oahpa.html.py:85
-#: templates/vro_oahpa.html:88 templates/vro_oahpa.html.py:91
-#: templates/vro_oahpa.html:94
+#: templates/vro_oahpa.html:93 templates/vro_oahpa.html.py:96
+#: templates/vro_oahpa.html:99 templates/vro_oahpa.html.py:102
+#: templates/vro_oahpa.html:105
 msgid "Grammar"
 msgstr "Grammatik"
 
-#: templates/vro_oahpa.html:98
+#: templates/vro_oahpa.html:109
 msgid "Online courses"
 msgstr "Online-kurs"
 
-#: templates/vro_oahpa.html:101
+#: templates/vro_oahpa.html:112
 msgid "View progress"
 msgstr "Se framgång"
 
-#: templates/vro_oahpa.html:102 templates/admin/base.html:48
+#: templates/vro_oahpa.html:113 templates/admin/base.html:48
 #: templates/registration/password_change_done.html:3
 #: templates/registration/password_change_form.html:4
 msgid "Log out"
 msgstr "Logga ut"
 
-#: templates/vro_oahpa.html:104 templates/admin/login.html:26
+#: templates/vro_oahpa.html:115 templates/admin/login.html:26
 #: templates/registration/password_reset_complete.html:14
 msgid "Log in"
 msgstr "Logga in"
 
-#: templates/vro_oahpa_main.html:41
+#: templates/vro_oahpa_main.html:41 vro_drill/templates/language_menu.html:6
 msgid "Interface language"
 msgstr "Gränssnittsspråk"
 
@@ -135,41 +135,43 @@ msgstr ""
 msgid "Online reference materials"
 msgstr "Referensmaterial"
 
-#: templates/vro_oahpa_main.html:185 vro_drill/forms.py:376
+#: templates/vro_oahpa_main.html:171 templates/vro_oahpa_main.html.py:174
+#: templates/vro_oahpa_main.html:175 vro_drill/forms.py:382
 msgid "Võro"
 msgstr ""
 
-#: templates/vro_oahpa_main.html:185
+#: templates/vro_oahpa_main.html:171 templates/vro_oahpa_main.html.py:174
+#: templates/vro_oahpa_main.html:175
 msgid "Estonian"
 msgstr ""
 
-#: templates/vro_oahpa_main.html:185
+#: templates/vro_oahpa_main.html:171
 #, fuzzy
-msgid "web dictionary"
+msgid "web dictionaries"
 msgstr "digital ordbok"
 
-#: templates/vro_oahpa_main.html:211
+#: templates/vro_oahpa_main.html:201
 #, fuzzy
 msgid "North Saami Oahpa"
 msgstr "Nordsamiska"
 
-#: templates/vro_oahpa_main.html:214
+#: templates/vro_oahpa_main.html:203
 msgid "Are you visiting this site as part of a course?"
 msgstr "Besöker du denna sajten som del av en kurs?"
 
-#: templates/vro_oahpa_main.html:214
+#: templates/vro_oahpa_main.html:203
 msgid "Log in here"
 msgstr "Logga in här"
 
-#: templates/vro_oahpa_main.html:223
+#: templates/vro_oahpa_main.html:212
 msgid "Link to this exercise"
 msgstr "Länk till den här övningen"
 
-#: templates/vro_oahpa_main.html:229
+#: templates/vro_oahpa_main.html:218
 msgid "Copyright 2011-2015 UiT Norges arktiske universitet"
 msgstr ""
 
-#: templates/vro_oahpa_main.html:230
+#: templates/vro_oahpa_main.html:219
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -808,48 +810,47 @@ msgstr "verb"
 msgid "singular"
 msgstr "Ental"
 
-#: vro_drill/forms.py:57 vro_drill/forms.py:97 vro_drill/forms.py:182
-#: vro_drill/forms.py:231 vro_drill/forms.py:241
+#: vro_drill/forms.py:57 vro_drill/forms.py:97 vro_drill/forms.py:237
+#: vro_drill/forms.py:247
 msgid "plural"
 msgstr "nominativ flertal"
 
-#: vro_drill/forms.py:63 vro_drill/forms.py:98 vro_drill/forms.py:184
+#: vro_drill/forms.py:63 vro_drill/forms.py:98 vro_drill/forms.py:190
 #, fuzzy
 msgid "Genitive"
 msgstr "genitiv"
 
-#: vro_drill/forms.py:64 vro_drill/forms.py:99 vro_drill/forms.py:145
-#: vro_drill/forms.py:185
+#: vro_drill/forms.py:64 vro_drill/forms.py:99 vro_drill/forms.py:191
 #, fuzzy
 msgid "Partitive"
 msgstr "attribut"
 
-#: vro_drill/forms.py:65 vro_drill/forms.py:100 vro_drill/forms.py:186
+#: vro_drill/forms.py:65 vro_drill/forms.py:100 vro_drill/forms.py:192
 #, fuzzy
 msgid "Illative"
 msgstr "illativ"
 
-#: vro_drill/forms.py:66 vro_drill/forms.py:101 vro_drill/forms.py:187
+#: vro_drill/forms.py:66 vro_drill/forms.py:101 vro_drill/forms.py:193
 #, fuzzy
 msgid "Inessive"
 msgstr "inessiv"
 
-#: vro_drill/forms.py:67 vro_drill/forms.py:102 vro_drill/forms.py:188
+#: vro_drill/forms.py:67 vro_drill/forms.py:102 vro_drill/forms.py:194
 #, fuzzy
 msgid "Elative"
 msgstr "illativ"
 
-#: vro_drill/forms.py:68 vro_drill/forms.py:191
+#: vro_drill/forms.py:68 vro_drill/forms.py:197
 #, fuzzy
 msgid "Allative"
 msgstr "illativ"
 
-#: vro_drill/forms.py:69 vro_drill/forms.py:189
+#: vro_drill/forms.py:69 vro_drill/forms.py:195
 #, fuzzy
 msgid "Adessive"
 msgstr "essiv"
 
-#: vro_drill/forms.py:70 vro_drill/forms.py:190
+#: vro_drill/forms.py:70 vro_drill/forms.py:196
 #, fuzzy
 msgid "Ablative"
 msgstr "illativ"
@@ -878,7 +879,7 @@ msgstr "komitativ"
 msgid "illative"
 msgstr "illativ"
 
-#: vro_drill/forms.py:131 vro_drill/forms.py:234 vro_drill/forms.py:244
+#: vro_drill/forms.py:131 vro_drill/forms.py:240 vro_drill/forms.py:250
 msgid "locative"
 msgstr "lokativ"
 
@@ -886,454 +887,504 @@ msgstr "lokativ"
 msgid "comitative"
 msgstr "komitativ"
 
-#: vro_drill/forms.py:136 vro_drill/forms.py:169
+#: vro_drill/forms.py:136 vro_drill/forms.py:174
 msgid "personal"
 msgstr "personligt"
 
-#: vro_drill/forms.py:137 vro_drill/forms.py:170
+#: vro_drill/forms.py:137 vro_drill/forms.py:175
 msgid "demonstrative"
 msgstr "demonstrativ"
 
-#: vro_drill/forms.py:138 vro_drill/forms.py:171
+#: vro_drill/forms.py:138 vro_drill/forms.py:176
 msgid "reciprocative"
 msgstr "reciprok"
 
-#: vro_drill/forms.py:139 vro_drill/forms.py:172
+#: vro_drill/forms.py:139 vro_drill/forms.py:177
 msgid "reflexive"
 msgstr "refleksiv"
 
-#: vro_drill/forms.py:140 vro_drill/forms.py:173
+#: vro_drill/forms.py:140 vro_drill/forms.py:178
 msgid "relative"
 msgstr "relativ"
 
-#: vro_drill/forms.py:156
+#: vro_drill/forms.py:145
+#, fuzzy
+msgid "Partitive (Midä?)"
+msgstr "attribut"
+
+#: vro_drill/forms.py:146
+msgid "Genitive/Nominative (Minka?)"
+msgstr ""
+
+#: vro_drill/forms.py:147
+msgid "Illative/Allative (Kohe?)"
+msgstr ""
+
+#: vro_drill/forms.py:148
+msgid "Inessive/Adessive (Kon?)"
+msgstr ""
+
+#: vro_drill/forms.py:149
+#, fuzzy
+msgid "Translative (Kinkas?)"
+msgstr "relativ"
+
+#: vro_drill/forms.py:150
+#, fuzzy
+msgid "Comitative (Minka?)"
+msgstr "komitativ"
+
+#: vro_drill/forms.py:161
 msgid "feminine in -a/-я"
 msgstr ""
 
-#: vro_drill/forms.py:157
+#: vro_drill/forms.py:162
 msgid "feminine in -ь"
 msgstr ""
 
-#: vro_drill/forms.py:158
+#: vro_drill/forms.py:163
 msgid "masculine inanimate"
 msgstr ""
 
-#: vro_drill/forms.py:159
+#: vro_drill/forms.py:164
 msgid "masculine animate"
 msgstr ""
 
-#: vro_drill/forms.py:160
+#: vro_drill/forms.py:165
 msgid "neuter"
 msgstr ""
 
-#: vro_drill/forms.py:161 vro_drill/forms.py:308
+#: vro_drill/forms.py:166 vro_drill/forms.py:314
 msgid "All"
 msgstr "Alla"
 
-#: vro_drill/forms.py:177
+#: vro_drill/forms.py:182
 msgid "goabbat/guhtet"
 msgstr "goabbat/guhtet"
 
-#: vro_drill/forms.py:178
+#: vro_drill/forms.py:183
 msgid "nubbi/nuppit"
 msgstr "nubbi/nuppit"
 
-#: vro_drill/forms.py:183 vro_drill/forms.py:208 vro_drill/forms.py:230
+#: vro_drill/forms.py:189
+#, fuzzy
+msgid "Nominative"
+msgstr "komitativ"
+
+#: vro_drill/forms.py:214 vro_drill/forms.py:236
 msgid "attributive"
 msgstr "attribut"
 
-#: vro_drill/forms.py:209 vro_drill/forms.py:225
+#: vro_drill/forms.py:215 vro_drill/forms.py:231
 msgid "comparative"
 msgstr "komparativ"
 
-#: vro_drill/forms.py:210 vro_drill/forms.py:226
+#: vro_drill/forms.py:216
 msgid "superlative"
 msgstr "superlativ"
 
-#: vro_drill/forms.py:215
+#: vro_drill/forms.py:221
 msgid "attributive positive"
 msgstr "positivt attribut"
 
-#: vro_drill/forms.py:216
+#: vro_drill/forms.py:222
 msgid "attributive comparative"
 msgstr "komparativt attribut"
 
-#: vro_drill/forms.py:217
+#: vro_drill/forms.py:223
 msgid "attributive superlative"
 msgstr "superlativt attribut"
 
-#: vro_drill/forms.py:218
+#: vro_drill/forms.py:224
 msgid "predicative positive"
 msgstr "positiv predikativ"
 
-#: vro_drill/forms.py:219
+#: vro_drill/forms.py:225
 msgid "predicative comparative"
 msgstr "komparativ predikativ"
 
-#: vro_drill/forms.py:220
+#: vro_drill/forms.py:226
 msgid "predicative superlative"
 msgstr "superlativ predikativ"
 
-#: vro_drill/forms.py:224
+#: vro_drill/forms.py:230
 msgid "positive"
 msgstr "positiv"
 
-#: vro_drill/forms.py:232 vro_drill/forms.py:242
+#: vro_drill/forms.py:238 vro_drill/forms.py:248
 msgid "accusative"
 msgstr "ackusativ"
 
-#: vro_drill/forms.py:236 vro_drill/forms.py:265
+#: vro_drill/forms.py:242 vro_drill/forms.py:271
 msgid "collective"
 msgstr "samlingstal"
 
-#: vro_drill/forms.py:237
+#: vro_drill/forms.py:243
 msgid "ordinals"
 msgstr "Ordningstal"
 
-#: vro_drill/forms.py:258 vro_drill/forms.py:347
+#: vro_drill/forms.py:264 vro_drill/forms.py:353
 msgid "First level"
 msgstr "Nivå 1"
 
-#: vro_drill/forms.py:259 vro_drill/forms.py:348
+#: vro_drill/forms.py:265 vro_drill/forms.py:354
 msgid "Second level"
 msgstr "Nivå 1-2"
 
-#: vro_drill/forms.py:263
+#: vro_drill/forms.py:269
 msgid "cardinal"
 msgstr "Grundtal"
 
-#: vro_drill/forms.py:264
+#: vro_drill/forms.py:270
 msgid "ordinal"
 msgstr "Ordningstal"
 
-#: vro_drill/forms.py:269 vro_drill/forms.py:293
+#: vro_drill/forms.py:275 vro_drill/forms.py:299
 msgid "present"
 msgstr "presens"
 
-#: vro_drill/forms.py:270 vro_drill/forms.py:294
+#: vro_drill/forms.py:276 vro_drill/forms.py:300
 msgid "past"
 msgstr "preteritum"
 
-#: vro_drill/forms.py:305
+#: vro_drill/forms.py:311
 msgid "Level 1"
 msgstr "Nivå 1"
 
-#: vro_drill/forms.py:306
+#: vro_drill/forms.py:312
 msgid "Level 1-2"
 msgstr "Nivå 1-2"
 
-#: vro_drill/forms.py:307
+#: vro_drill/forms.py:313
 msgid "Level 1-3"
 msgstr "Nivå 1-3"
 
-#: vro_drill/forms.py:313 vro_drill/forms.py:326
+#: vro_drill/forms.py:319 vro_drill/forms.py:332
 msgid "passive derivation"
 msgstr "Passivderivation"
 
-#: vro_drill/forms.py:314 vro_drill/forms.py:325
+#: vro_drill/forms.py:320 vro_drill/forms.py:331
 msgid "adjective->verb derivation"
 msgstr "Derivation adjektiv->verb"
 
-#: vro_drill/forms.py:330
-msgid "Tüüpsõnad"
+#: vro_drill/forms.py:336
+msgid "Tüüpsõnaq"
 msgstr ""
 
-#: vro_drill/forms.py:331 vro_drill/forms.py:400
+#: vro_drill/forms.py:337 vro_drill/forms.py:406
 msgid "all"
 msgstr "Alla"
 
-#: vro_drill/forms.py:336
+#: vro_drill/forms.py:342
 msgid "rare"
 msgstr "sällan"
 
-#: vro_drill/forms.py:337
+#: vro_drill/forms.py:343
 msgid "common"
 msgstr "vanliga"
 
-#: vro_drill/forms.py:341
+#: vro_drill/forms.py:347
 msgid "world"
 msgstr "världen"
 
-#: vro_drill/forms.py:342
+#: vro_drill/forms.py:348
 msgid "sapmi"
 msgstr "Sameland"
 
-#: vro_drill/forms.py:343
+#: vro_drill/forms.py:349
 msgid "suopma"
 msgstr "Finland"
 
-#: vro_drill/forms.py:349
+#: vro_drill/forms.py:355
 msgid "Third level"
 msgstr "Nivå 1-3"
 
-#: vro_drill/forms.py:353
+#: vro_drill/forms.py:359
 msgid "2"
 msgstr "2"
 
-#: vro_drill/forms.py:354
+#: vro_drill/forms.py:360
 msgid "3"
 msgstr "3"
 
-#: vro_drill/forms.py:355
+#: vro_drill/forms.py:361
 msgid "4"
 msgstr "4"
 
-#: vro_drill/forms.py:359
+#: vro_drill/forms.py:365
 msgid "Võro to Estonian"
 msgstr ""
 
-#: vro_drill/forms.py:360
-msgid "Estonian to Võro"
-msgstr ""
-
-#: vro_drill/forms.py:361
-#, fuzzy
-msgid "Võro to Finnish"
-msgstr "Nordsamiska till finska"
-
-#: vro_drill/forms.py:362
-#, fuzzy
-msgid "Finnish to Võro"
-msgstr "Finska till nordsamiska"
-
-#: vro_drill/forms.py:363
-msgid "Võro to English"
-msgstr ""
-
-#: vro_drill/forms.py:364
-msgid "English to Võro"
-msgstr ""
-
-#: vro_drill/forms.py:365
-msgid "Võro to German"
-msgstr ""
-
 #: vro_drill/forms.py:366
-msgid "German to Võro"
+msgid "Estonian to Võro"
 msgstr ""
 
 #: vro_drill/forms.py:367
 #, fuzzy
+msgid "Võro to Finnish"
+msgstr "Nordsamiska till finska"
+
+#: vro_drill/forms.py:368
+#, fuzzy
+msgid "Finnish to Võro"
+msgstr "Finska till nordsamiska"
+
+#: vro_drill/forms.py:369
+msgid "Võro to English"
+msgstr ""
+
+#: vro_drill/forms.py:370
+msgid "English to Võro"
+msgstr ""
+
+#: vro_drill/forms.py:371
+msgid "Võro to German"
+msgstr ""
+
+#: vro_drill/forms.py:372
+msgid "German to Võro"
+msgstr ""
+
+#: vro_drill/forms.py:373
+#, fuzzy
 msgid "Võro to North Saami"
 msgstr "Norska till nordsamiska"
 
-#: vro_drill/forms.py:368
+#: vro_drill/forms.py:374
 #, fuzzy
 msgid "North Saami to Võro"
 msgstr "Nordsamiska till norska"
 
-#: vro_drill/forms.py:369
+#: vro_drill/forms.py:375
 #, fuzzy
 msgid "Võro to Swedish"
 msgstr "Sydsamiska till svenska"
 
-#: vro_drill/forms.py:370
+#: vro_drill/forms.py:376
 #, fuzzy
 msgid "Swedish to Võro"
 msgstr "Svenska till sydsamiska"
 
-#: vro_drill/forms.py:371
+#: vro_drill/forms.py:377
 #, fuzzy
 msgid "Võro to Norwegian"
 msgstr "Nordsamiska till norska"
 
-#: vro_drill/forms.py:372
+#: vro_drill/forms.py:378
 #, fuzzy
 msgid "Norwegian to Võro"
 msgstr "Norska till nordsamiska"
 
-#: vro_drill/forms.py:380
+#: vro_drill/forms.py:386
 msgid "family"
 msgstr "familj"
 
-#: vro_drill/forms.py:381
+#: vro_drill/forms.py:387
 msgid "human"
 msgstr "Människor"
 
-#: vro_drill/forms.py:382
+#: vro_drill/forms.py:388
 msgid "human-like"
 msgstr "Människolik"
 
-#: vro_drill/forms.py:383
+#: vro_drill/forms.py:389
 msgid "animal"
 msgstr "Djur"
 
-#: vro_drill/forms.py:384
+#: vro_drill/forms.py:390
 msgid "food/drink"
 msgstr "Mat/dryck"
 
-#: vro_drill/forms.py:385
+#: vro_drill/forms.py:391
 msgid "time"
 msgstr "Dato/tid"
 
-#: vro_drill/forms.py:386
+#: vro_drill/forms.py:392
 msgid "concretes"
 msgstr "Konkret"
 
-#: vro_drill/forms.py:387
+#: vro_drill/forms.py:393
 msgid "body"
 msgstr "Kropp"
 
-#: vro_drill/forms.py:388
+#: vro_drill/forms.py:394
 msgid "clothes"
 msgstr "Kläder"
 
-#: vro_drill/forms.py:389
+#: vro_drill/forms.py:395
 msgid "buildings/rooms"
 msgstr "Byggnader/rum"
 
-#: vro_drill/forms.py:390
+#: vro_drill/forms.py:396
 msgid "city"
 msgstr "På stan"
 
-#: vro_drill/forms.py:391
+#: vro_drill/forms.py:397
 #, fuzzy
 msgid "nature"
 msgstr "Natur"
 
-#: vro_drill/forms.py:392
+#: vro_drill/forms.py:398
 msgid "leisuretime/at_home"
 msgstr "Fritid/hemma"
 
-#: vro_drill/forms.py:393
+#: vro_drill/forms.py:399
 msgid "christmas"
 msgstr "Jul"
 
-#: vro_drill/forms.py:394
+#: vro_drill/forms.py:400
 msgid "places"
 msgstr "Orter/resa"
 
-#: vro_drill/forms.py:395
+#: vro_drill/forms.py:401
 msgid "literature"
 msgstr "Litteratur/text"
 
-#: vro_drill/forms.py:396
+#: vro_drill/forms.py:402
 msgid "school/education"
 msgstr "Skola/utbildning"
 
-#: vro_drill/forms.py:397
+#: vro_drill/forms.py:403
 msgid "abstracts"
 msgstr "Abstrakta ord"
 
-#: vro_drill/forms.py:398
+#: vro_drill/forms.py:404
 msgid "work/economy/tools"
 msgstr "Arbete/ekonomi/verktyg"
 
-#: vro_drill/forms.py:399
+#: vro_drill/forms.py:405
 msgid "Multiword"
 msgstr "Flerordsuttryck"
 
-#: vro_drill/forms.py:405
+#: vro_drill/forms.py:411
 msgid "0-10"
 msgstr "0-10"
 
-#: vro_drill/forms.py:406
+#: vro_drill/forms.py:412
 msgid "0-20"
 msgstr "0-20"
 
-#: vro_drill/forms.py:407
+#: vro_drill/forms.py:413
 msgid "0-100"
 msgstr "0-100"
 
-#: vro_drill/forms.py:408
+#: vro_drill/forms.py:414
 msgid "0-1000"
 msgstr "0-1000"
 
-#: vro_drill/forms.py:413
+#: vro_drill/forms.py:419
+msgid "1-10"
+msgstr ""
+
+#: vro_drill/forms.py:420
+msgid "1-20"
+msgstr ""
+
+#: vro_drill/forms.py:421
+#, fuzzy
+msgid "1-100"
+msgstr "0-100"
+
+#: vro_drill/forms.py:422
+#, fuzzy
+msgid "1-1000"
+msgstr "0-1000"
+
+#: vro_drill/forms.py:428
 msgid "String to numeral"
 msgstr "Skriv tal"
 
-#: vro_drill/forms.py:414
+#: vro_drill/forms.py:429
 msgid "Numeral to string"
 msgstr "Skriv räkneord"
 
-#: vro_drill/forms.py:418
+#: vro_drill/forms.py:433
 msgid "Strings to numerals"
 msgstr "Skriv tal"
 
-#: vro_drill/forms.py:419
+#: vro_drill/forms.py:434
 msgid "Numerals to strings"
 msgstr "Skriv räkneord"
 
-#: vro_drill/forms.py:427
+#: vro_drill/forms.py:442
 msgid "I"
 msgstr "I"
 
-#: vro_drill/forms.py:428
+#: vro_drill/forms.py:443
 msgid "II"
 msgstr "II"
 
-#: vro_drill/forms.py:429
+#: vro_drill/forms.py:444
 msgid "III"
 msgstr "III"
 
-#: vro_drill/forms.py:430
+#: vro_drill/forms.py:445
 msgid "IV"
 msgstr "IV"
 
-#: vro_drill/forms.py:431
+#: vro_drill/forms.py:446
 msgid "V"
 msgstr "V"
 
-#: vro_drill/forms.py:432
+#: vro_drill/forms.py:447
 msgid "VI"
 msgstr "VI"
 
-#: vro_drill/forms.py:433
+#: vro_drill/forms.py:448
 msgid "Odd"
 msgstr "Olikast."
 
-#: vro_drill/forms.py:437
+#: vro_drill/forms.py:452
 msgid "easy"
 msgstr "lätt"
 
-#: vro_drill/forms.py:438
+#: vro_drill/forms.py:453
 msgid "medium"
 msgstr "medels"
 
-#: vro_drill/forms.py:439
+#: vro_drill/forms.py:454
 msgid "hard"
 msgstr "svår"
 
-#: vro_drill/forms.py:443
+#: vro_drill/forms.py:458
 msgid "Firstmeeting"
 msgstr "Första mötet"
 
-#: vro_drill/forms.py:444
+#: vro_drill/forms.py:459
 msgid "Firstmeeting boy"
 msgstr "Första mötet med pojke"
 
-#: vro_drill/forms.py:445
+#: vro_drill/forms.py:460
 msgid "Firstmeeting girl"
 msgstr "Första mötet med flicka"
 
-#: vro_drill/forms.py:446
+#: vro_drill/forms.py:461
 msgid "Firstmeeting man"
 msgstr "Första mötet med man"
 
-#: vro_drill/forms.py:447 vro_drill/templates/sahka.html:199
+#: vro_drill/forms.py:462 vro_drill/templates/sahka.html:199
 msgid "Visit"
 msgstr "Besök"
 
-#: vro_drill/forms.py:448 vro_drill/templates/sahka.html:204
+#: vro_drill/forms.py:463 vro_drill/templates/sahka.html:204
 msgid "Grocery"
 msgstr "Grönsaksaffär"
 
-#: vro_drill/forms.py:449
+#: vro_drill/forms.py:464
 msgid "Shopadj"
 msgstr "Affär"
 
-#: vro_drill/forms.py:462 vro_drill/templates/mgame_a.html:20
+#: vro_drill/forms.py:477 vro_drill/templates/mgame_a.html:20
 #: vro_drill/templates/mgame_v.html:20
 msgid "bisyllabic"
 msgstr "likstaviga"
 
-#: vro_drill/forms.py:463 vro_drill/templates/mgame_a.html:21
+#: vro_drill/forms.py:478 vro_drill/templates/mgame_a.html:21
 #: vro_drill/templates/mgame_v.html:21
 msgid "trisyllabic"
 msgstr "olikstaviga"
 
-#: vro_drill/forms.py:464 vro_drill/templates/mgame_a.html:22
+#: vro_drill/forms.py:479 vro_drill/templates/mgame_a.html:22
 #: vro_drill/templates/mgame_v.html:22
 msgid "contracted"
 msgstr "kontrakta"
@@ -1450,47 +1501,47 @@ msgstr "Öva på attributformer for räkneord"
 msgid "Practise plural"
 msgstr "Öva på nominativ flertal"
 
-#: vro_drill/views.py:559
+#: vro_drill/views.py:559 vro_drill/views.py:574
 msgid "Practise nominative"
 msgstr "Öva på nominativ."
 
-#: vro_drill/views.py:560
+#: vro_drill/views.py:560 vro_drill/views.py:575
 msgid "Practise genitive"
 msgstr "Öva på genitiv."
 
-#: vro_drill/views.py:561
+#: vro_drill/views.py:561 vro_drill/views.py:576
 #, fuzzy
 msgid "Practise partitive"
 msgstr "Öva på komparativ."
 
-#: vro_drill/views.py:562
+#: vro_drill/views.py:562 vro_drill/views.py:577
 msgid "Practise illative"
 msgstr "Öva på illativ."
 
-#: vro_drill/views.py:563
+#: vro_drill/views.py:563 vro_drill/views.py:578
 msgid "Practise inessive"
 msgstr "Öva på inessiv"
 
-#: vro_drill/views.py:564
+#: vro_drill/views.py:564 vro_drill/views.py:579
 msgid "Practise elative"
 msgstr "Öva på elativ"
 
-#: vro_drill/views.py:565
+#: vro_drill/views.py:565 vro_drill/views.py:580
 #, fuzzy
 msgid "Practise allative"
 msgstr "Öva på illativ."
 
-#: vro_drill/views.py:566
+#: vro_drill/views.py:566 vro_drill/views.py:581
 #, fuzzy
 msgid "Practise adessive"
 msgstr "Öva på essiv."
 
-#: vro_drill/views.py:567
+#: vro_drill/views.py:567 vro_drill/views.py:582
 #, fuzzy
 msgid "Practise ablative"
 msgstr "Öva på elativ"
 
-#: vro_drill/views.py:568
+#: vro_drill/views.py:568 vro_drill/views.py:583
 #, fuzzy
 msgid "Practise translative"
 msgstr "Öva på elativ"
@@ -1513,148 +1564,161 @@ msgstr "Öva på essiv."
 msgid "Practise comitative"
 msgstr "Öva på komitativ."
 
-#: vro_drill/views.py:574 vro_drill/views.py:575 vro_drill/views.py:576
-#: vro_drill/views.py:577
+#: vro_drill/views.py:584
+msgid "Choose between illative and allative"
+msgstr ""
+
+#: vro_drill/views.py:585
+msgid "Choose between inessive and adessive"
+msgstr ""
+
+#: vro_drill/views.py:586
+#, fuzzy
+msgid "Practice object. Choose between genitive and nominative"
+msgstr "Öva på adjektivformer i nominativ."
+
+#: vro_drill/views.py:587 vro_drill/views.py:588 vro_drill/views.py:589
+#: vro_drill/views.py:590
 msgid "Practise a mix"
 msgstr "Öva på blandade frågor"
 
-#: vro_drill/views.py:578
+#: vro_drill/views.py:591
 msgid "Practise numerals in illative"
 msgstr "Öva på räkneord i illativ."
 
-#: vro_drill/views.py:579
+#: vro_drill/views.py:592
 msgid "Practise numerals in accusative"
 msgstr "Öva på räkneord i ackusativ."
 
-#: vro_drill/views.py:580
+#: vro_drill/views.py:593
 msgid "Practise numerals in comitative"
 msgstr "Öva på räkneord i komitativ."
 
-#: vro_drill/views.py:581
+#: vro_drill/views.py:594
 msgid "Practise numerals in essive"
 msgstr "Öva på räkneord i essiv."
 
-#: vro_drill/views.py:582
+#: vro_drill/views.py:595
 msgid "Practise numerals in genitive"
 msgstr "Öva på räkneord i genitiv."
 
-#: vro_drill/views.py:583
+#: vro_drill/views.py:596
 msgid "Practise numerals in plural"
 msgstr "Öva på räkneord i flertal"
 
-#: vro_drill/views.py:584
+#: vro_drill/views.py:597
 msgid "Practise numerals in locative"
 msgstr "Öva på räkneord i lokativ."
 
-#: vro_drill/views.py:585
+#: vro_drill/views.py:598
 msgid "Practise collective numerals"
 msgstr "Öva på samlingstal"
 
-#: vro_drill/views.py:586
+#: vro_drill/views.py:599
 msgid "Practise ordinal numbers"
 msgstr "Öva på ordningstal"
 
-#: vro_drill/views.py:587
+#: vro_drill/views.py:600
 msgid "Practise ordinal numerals in illative"
 msgstr "Öva på ordningstal i illativ."
 
-#: vro_drill/views.py:588
+#: vro_drill/views.py:601
 msgid "Practise ordinal numerals in accusative"
 msgstr "Öva på ordningstal i ackusativ."
 
-#: vro_drill/views.py:589
+#: vro_drill/views.py:602
 msgid "Practise ordinal numerals in comitative"
 msgstr "Öva på ordningstal i komitativ."
 
-#: vro_drill/views.py:590
+#: vro_drill/views.py:603
 msgid "Practise ordinal numerals in essive"
 msgstr "Öva på räkneord i essiv."
 
-#: vro_drill/views.py:591
+#: vro_drill/views.py:604
 msgid "Practise ordinal numerals in genitive"
 msgstr "Öva på ordningstal i genitiv."
 
-#: vro_drill/views.py:592
+#: vro_drill/views.py:605
 msgid "Practise ordinal numerals in plural"
 msgstr "Öva på ordningstal i flertal."
 
-#: vro_drill/views.py:593
+#: vro_drill/views.py:606
 msgid "Practise ordinal numerals in locative"
 msgstr "Öva på ordningstal i lokativ."
 
-#: vro_drill/views.py:594
+#: vro_drill/views.py:607
 msgid "Practise collective numerals in illative"
 msgstr "Öva på samlingstal i illativ."
 
-#: vro_drill/views.py:595
+#: vro_drill/views.py:608
 msgid "Practise collective numerals in accusative"
 msgstr "Öva på samlingstal i ackusativ."
 
-#: vro_drill/views.py:596
+#: vro_drill/views.py:609
 msgid "Practise collective numerals in comitative"
 msgstr "Öva på samlingstal i komitativ."
 
-#: vro_drill/views.py:597
+#: vro_drill/views.py:610
 msgid "Practise collective numerals in essive"
 msgstr "Öva på samlingstal i essiv."
 
-#: vro_drill/views.py:598
+#: vro_drill/views.py:611
 msgid "Practise collective numerals in genitive"
 msgstr "Öva på samlingstal i genitiv."
 
-#: vro_drill/views.py:599
+#: vro_drill/views.py:612
 msgid "Practise collective numerals in plural"
 msgstr "Öva på samlingstal i flertal."
 
-#: vro_drill/views.py:600
+#: vro_drill/views.py:613
 msgid "Practise collective numerals in locative"
 msgstr "Öva på räkneord i lokativ."
 
-#: vro_drill/views.py:601 vro_drill/views.py:608
+#: vro_drill/views.py:614 vro_drill/views.py:621
 msgid "Practise present"
 msgstr "Öva på presens."
 
-#: vro_drill/views.py:602 vro_drill/views.py:609
+#: vro_drill/views.py:615 vro_drill/views.py:622
 msgid "Practise past"
 msgstr "Öva på preteritum."
 
-#: vro_drill/views.py:603 vro_drill/views.py:610
+#: vro_drill/views.py:616 vro_drill/views.py:623
 msgid "Practise perfect"
 msgstr "Öva på perfektum."
 
-#: vro_drill/views.py:604 vro_drill/views.py:611
+#: vro_drill/views.py:617 vro_drill/views.py:624
 msgid "Practise gerund"
 msgstr "Öva på gerundium."
 
-#: vro_drill/views.py:605 vro_drill/views.py:612
+#: vro_drill/views.py:618 vro_drill/views.py:625
 msgid "Practise conditional"
 msgstr "Öva på konditionalis."
 
-#: vro_drill/views.py:606 vro_drill/views.py:613
+#: vro_drill/views.py:619 vro_drill/views.py:626
 msgid "Practise imperative"
 msgstr "Öva på imperativ."
 
-#: vro_drill/views.py:607 vro_drill/views.py:614
+#: vro_drill/views.py:620 vro_drill/views.py:627
 msgid "Practise potential"
 msgstr "Öva på potentialis."
 
-#: vro_drill/views.py:615
+#: vro_drill/views.py:628
 msgid "Practise personal pronouns"
 msgstr "Öva på personliga pronomen."
 
-#: vro_drill/views.py:616
+#: vro_drill/views.py:629
 msgid "Practise reciprocative pronouns"
 msgstr "Öva på reciproka pronomen."
 
-#: vro_drill/views.py:617
+#: vro_drill/views.py:630
 msgid "Practise reflexive pronouns"
 msgstr "Öva på reflexiva pronomen."
 
-#: vro_drill/views.py:618
+#: vro_drill/views.py:631
 msgid "Practise relative pronouns"
 msgstr "Öva på relativa pronomen."
 
-#: vro_drill/views.py:619
+#: vro_drill/views.py:632
 msgid "Practise demonstrative pronouns"
 msgstr "Öva på demonstrativa pronomen."
 
@@ -1739,12 +1803,12 @@ msgstr "Uppsättning"
 msgid "Select the language pair"
 msgstr "Välj språkpar"
 
-#: vro_drill/templates/leksa.html:57 vro_drill/templates/mgame.html:63
+#: vro_drill/templates/leksa.html:57 vro_drill/templates/mgame.html:64
 msgid "Book"
 msgstr "Bok"
 
 #: vro_drill/templates/leksa.html:62 vro_drill/templates/leksa.html.py:65
-#: vro_drill/templates/leksa_place.html:42 vro_drill/templates/mgame.html:71
+#: vro_drill/templates/leksa_place.html:42 vro_drill/templates/mgame.html:72
 #: vro_drill/templates/num.html:71 vro_drill/templates/vasta.html:70
 msgid "New set"
 msgstr "Ny uppsättning"

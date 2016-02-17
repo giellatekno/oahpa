@@ -1032,7 +1032,7 @@ class QAGame(Game):
 			language = self.settings['language']
 		if not self.gametype == "qa":
 			answer = Question.objects.get(Q(id=db_info['answer_id']))
-			print "answer: ", answer.string
+			# print "answer: ", answer.string
 			form = (ContextMorfaQuestion(question, answer, \
 										 db_info['qwords'], db_info['awords'], dialect, language, db_info['userans'], db_info['correct'], data, prefix=n))
 										 
