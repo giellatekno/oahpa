@@ -1038,12 +1038,12 @@ class QAGame(Game):
 										 
 			# The following section gets the id of the task word and returns it together with the question-answer form. Returning the word id makes it possible to avoid repetitions within the same task set in Morfa-C. The other games (Morfa-S, Leksa) also return the word id. 
 
-			print "answer attributes: ", form.aattrs
+			#print "answer attributes: ", form.aattrs
 			for key, value in form.aattrs.items():
 			     if value == form.correct_ans.encode('utf8'):
 			         key_parts = key.split("_")
 			         task_elem_id = key_parts[2]
-			         print "task elem id: ", task_elem_id
+			         #print "task elem id: ", task_elem_id
 			         new_key = "answer_word_" + task_elem_id
 			         task_word_id = form.aattrs[new_key] 				
 			         return form, task_word_id						 
