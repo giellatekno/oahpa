@@ -256,7 +256,7 @@ class Paradigm:
 			self.handle_tags()
 
 		lookups = ""
-		if not hid.strip():
+		if not hid.strip():  # If the <l> element had a 'hid' attribute, e.g. hid="Hom2"
 			hid = ""
 		else:
 			hid = '+' + hid
@@ -279,6 +279,11 @@ class Paradigm:
 				else:
 					tag = a
 				
+				#if hid: # If the <l> element had a 'hid' attribute, e.g. hid="Hom2"
+				 #   hom_tag = "+" + hom
+				#else:
+				#	hom_tag = ""
+
 				if gen_only:
 					for c in gen_only:
 						if c in tag:
@@ -383,8 +388,8 @@ class Paradigm:
 				# lea+V+Ind+Prt+Pl3\tlij
 
 				lem, _, rest = line.partition('+')
-				# ('govledh', '+', '2+V+Ind+Prt+Pl3\tgovlin')
-				# ('lea', '+', '2+V+Ind+Prt+Pl3\tlij')
+				# sma: ('govledh', '+', '2+V+Ind+Prt+Pl3\tgovlin') - homonymy tags are integer numbers
+				# sms: ('jokk', '+', 'Hom1+N+Sg+Gen\tjooǥǥ') - homonymy tags are Hom1, Hom2, ...
 
 				fullform = line.split('\t')[-1]
 				# 'govlin'
@@ -398,7 +403,8 @@ class Paradigm:
 				# If first element of tag is an integer, then
 				# it is hid, otherwise it's just part of the tag.
 				try:
-					hid = int(hid_test[0])
+					hid = int(hid_test[0][-1])
+					hom = hid_test[0]
 					tag = hid_test[2]
 				except ValueError:
 					hid = ''

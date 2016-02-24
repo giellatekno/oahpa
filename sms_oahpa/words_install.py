@@ -173,7 +173,7 @@ class Entry(object):
 		""" Handles nodes such as...
 			
 			<lg>
-      		   <l pos="n" soggi="oe" stem="2syll">aajroe</l>
+      		   <l pos="n" hid="Hom1">jokk</l>
       		</lg>
 
       		Including those containing lemma_ref and miniparadigms:
@@ -652,7 +652,7 @@ class Words(object):
 		changes_to_xml = True
 		changes_to_paradigm = True
 		# Intialize null variables
-		stem, forms, gradation, rime						=	[""]*4
+		stem, forms, gradation, rime, hom						=	[""]*5
 		wordclass, attrsuffix, compsuffix, soggi, valency	= 	[""]*5
 		compare, frequency, geography, presentationform 	= 	[""]*4
 
@@ -694,8 +694,8 @@ class Words(object):
 		hid = entry.hid
 		
 		if entry.hid:
-			hid = int(entry.hid)
-			exist_kwargs['hid'] = hid
+			# hid = int(entry.hid) In sms we use tags like Hom1, Hom2, etc for homonyms, not integer numbers.
+			exist_kwargs['hom'] = hid  # was: exist_kwargs['hid'] = hid
 		else:
 			hid = None
 
@@ -729,7 +729,10 @@ class Words(object):
 
 		if entry.rime:
 			rime = entry.rime
-
+			
+		if entry.hid:
+			hom = entry.hid
+			hid = int(entry.hid[-1])
 
 		trisyllabic = ['3syll', '3', 'trisyllabic']
 		bisyllabic = ['2syll', '2', 'bisyllabic']
@@ -779,6 +782,7 @@ class Words(object):
 		# w.presentationform = presentationform
 		w.stem = stem
 		w.rime = rime
+		w.hom = hom
 		w.compare = compare
 		w.attrsuffix = attrsuffix
 		w.compsuffix = compsuffix
