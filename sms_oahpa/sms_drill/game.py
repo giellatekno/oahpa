@@ -147,7 +147,7 @@ class Game(object):
 			
 			try:
 				form, word_id = self.create_form(db_info, i, 0)
-				#print "word id:",word_id
+				print "word id returned from create_form():",word_id
 			except Http404, e:
 				raise e
 			except ObjectDoesNotExist:
@@ -163,11 +163,13 @@ class Game(object):
 			self.form_list.append(form)
 			i = i+1
 		
-		# print len(self.form_list)
+		print "number of exercises: ", len(self.form_list)
 		if tries == maxtries:
+			print "Error 404: tries = maxtries"
 			raise Http404('No questions were able to be generated.')
 		if not self.form_list:
 			# No questions found, so the quiz_id must have been bad.
+			print "Error 404: no form list generated"
 			raise Http404('Invalid quiz id.')
 		
 	def search_info(self, reObj, string, value, words, t_type):
@@ -848,7 +850,7 @@ class BareGame(Game):
 			wfc = Word.objects.filter(QUERY).count()
 			tfc = Tag.objects.filter(TAG_QUERY).count()
 			if 0 in [tc, wc, fc, wfc, tfc]:
-				# print error
+				#print error
 				error += "Word count (%d), Tag count (%d), Form count (%d), Words matching query (%d), Tags matching query (%d)." % (wc, tc, fc, wfc, tfc)
 				error += "\n  Query: %s" % repr(QUERY)
 				error += "\n  Tag Query: %s" % repr(TAG_QUERY)
@@ -1008,7 +1010,7 @@ class BareGame(Game):
 		# are correct.
 		
 		#print "data sent to create_form():", data
-		#print "db_info:", db_info
+		print "db_info:", db_info
 		if not db_info.get('conneg', False):
 			db_info['conneg'] = False
 		

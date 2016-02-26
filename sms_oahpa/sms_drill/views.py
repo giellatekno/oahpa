@@ -723,6 +723,13 @@ class Morfaview(Gameview):
 			else:
 				gamename_key = self.settings['derivation_type_context']
 
+		# Px
+		if self.settings['pos'] == "Px":
+			if self.settings['gametype'] == "bare":
+				gamename_key = self.settings['possessive_type']
+			else:
+				gamename_key = self.settings['possessive_case_context']
+				
 		self.settings['gamename'] = self.gamenames[gamename_key]
 		names = [self.settings['pos'], gamename_key]
 
@@ -762,10 +769,14 @@ def morfa_game(request, pos):
 		template = 'mgame_l.html'
 	elif pos == 'Der':
 		template = 'mgame_der.html'
+	elif pos == 'Px':
+		template = 'mgame_px.html'
 	else:
 		template = 'mgame_%s.html' % pos.lower()[0]
 
 	c = mgame.create_game(request)
+	
+	#print "game created and ready for rendering..."
 
 	return render_to_response(template, c,
 				context_instance=RequestContext(request))

@@ -1192,7 +1192,7 @@ class MorfaQuestion(OahpaQuestion):
 		if not self.pron:
 			self.pron = False
 		
-		#print self.lemma, correct
+		print self.lemma, correct
 		print baseform.tag, correct.tag
 		#print "conneg_agr: ", conneg_agr
 		
@@ -1287,6 +1287,7 @@ class MorfaQuestion(OahpaQuestion):
 					self.lemma += ' (%s)' % force_unicode(noun_pres).encode('utf-8')
 		
 		log_name = "morfa_%s" % tag.pos
+		print "log_name: ", log_name
 		try:
 			self.is_correct(log_name, self.lemma + "+" + self.tag)
 		except TypeError:
@@ -1304,6 +1305,7 @@ class MorfaQuestion(OahpaQuestion):
 				self.is_relaxed = ""
 		
 		self.correct_ans = answer_presentation
+		print "correct answer: ", self.correct_ans
 # #
 #
 # Numra Forms
