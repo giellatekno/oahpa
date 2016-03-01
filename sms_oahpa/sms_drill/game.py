@@ -147,7 +147,7 @@ class Game(object):
 			
 			try:
 				form, word_id = self.create_form(db_info, i, 0)
-				print "word id returned from create_form():",word_id
+				#print "word id returned from create_form():",word_id
 			except Http404, e:
 				raise e
 			except ObjectDoesNotExist:
@@ -163,13 +163,13 @@ class Game(object):
 			self.form_list.append(form)
 			i = i+1
 		
-		print "number of exercises: ", len(self.form_list)
+		#print "number of exercises: ", len(self.form_list)
 		if tries == maxtries:
-			print "Error 404: tries = maxtries"
+			#print "Error 404: tries = maxtries"
 			raise Http404('No questions were able to be generated.')
 		if not self.form_list:
 			# No questions found, so the quiz_id must have been bad.
-			print "Error 404: no form list generated"
+			#print "Error 404: no form list generated"
 			raise Http404('Invalid quiz id.')
 		
 	def search_info(self, reObj, string, value, words, t_type):
@@ -496,7 +496,7 @@ class BareGame(Game):
 
 		num_bare = ""
 		
-		print "Settings: case: ", case, "number: ", number, "possessive_type: ", possessive_type
+		#print "Settings: case: ", case, "number: ", number, "possessive_type: ", possessive_type
 		
 		# if self.settings.has_key('syll'):
 		# 	syll = self.settings['syll']
@@ -557,8 +557,7 @@ class BareGame(Game):
 			case, number = self.casetable[pos_tables[pos]]
 		elif pos == 'Px':
 			case = self.casetable[pos_tables[pos]]
-			#possessive = possessive_type  # trying out the mix of possessive exercises
-			#print "case: ", case, "possessive type: ", possessive 
+			#possessive = possessive_type  # trying out the mix of possessive exercises 
             
 		grade = self.casetable[grade]
 		num_type = self.casetable[num_type] # added by Heli
@@ -628,7 +627,7 @@ class BareGame(Game):
 		SUB_QUERY = False
 		
 		if pos == 'Px':
-			TAG_QUERY = Q(number=number,possessive__contains='Px', diminutive='')  # Change this after the diminutive menu has been set up !!!
+			TAG_QUERY = Q(possessive__contains='Px')
  
 		# NOTE: copied this from questions_install, to make it easier to define
 		# what kind of exercise it is. It would be nice to extend this to everything
@@ -680,12 +679,16 @@ class BareGame(Game):
 			sylls = False
 			source = False
 
-		if pos in ['Pron', 'N', 'Num']:		
+		if pos in ['Pron', 'N', 'Num', 'Px']:		
 			if diminutive == '1':
 				diminutive = 'Der/Dimin'
 			else:
 				diminutive = ''
-			TAG_QUERY = TAG_QUERY & \
+			if pos == 'Px':
+				TAG_QUERY = TAG_QUERY & \
+						Q(case=case, number=number, diminutive=diminutive)
+			else:
+				TAG_QUERY = TAG_QUERY & \
 						Q(case=case, number=number, diminutive=diminutive, possessive='')  # We assume that possessive forms have pos="Px", not "N".
 						# regardless of whether it's Actor, Coll, etc.
 
