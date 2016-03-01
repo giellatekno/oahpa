@@ -487,6 +487,7 @@ class BareGame(Game):
 		pron_type = True and self.settings.get('pron_type') or   ""
 		proncase = True and self.settings.get('proncase') or   ""
 		derivation_type = True and self.settings.get('derivation_type') or   ""
+		possessive_type = True and self.settings.get('possessive_type') or   ""
 		grade = True and self.settings.get('grade')  or  ""
 		num_type = True and self.settings.get('num_type') or ""  # added to get num_type from settings
 		source = ""
@@ -494,6 +495,8 @@ class BareGame(Game):
 		mood, tense, infinite, attributive = "", "", "", ""
 
 		num_bare = ""
+		
+		print "Settings: case: ", case, "number: ", number, "possessive_type: ", possessive_type
 		
 		# if self.settings.has_key('syll'):
 		# 	syll = self.settings['syll']
@@ -529,6 +532,7 @@ class BareGame(Game):
 			"V":	"",
 			"Pron": proncase,
 			"Der": derivation_type, 
+			"Px":  case,
 		}
 		
 		#sylls = []
@@ -550,7 +554,11 @@ class BareGame(Game):
 		if pos == 'N':  # Maybe need to add also Num and Pron here
 			case = self.casetable[pos_tables[pos]]
 		elif pos == 'A':
-			case, number = self.casetable[pos_tables[pos]] 
+			case, number = self.casetable[pos_tables[pos]]
+		elif pos == 'Px':
+			case = self.casetable[pos_tables[pos]]
+			possessive = possessive_type
+			print "case: ", case, "possessive type: ", possessive 
             
 		grade = self.casetable[grade]
 		num_type = self.casetable[num_type] # added by Heli
@@ -618,6 +626,9 @@ class BareGame(Game):
 		# Query filtering on words
 		# SUB_QUERY = Q(word__stem__in=sylls)
 		SUB_QUERY = False
+		
+		if pos == 'Px':
+			TAG_QUERY = Q(possessive=possessive, number=number)
 
 		# NOTE: copied this from questions_install, to make it easier to define
 		# what kind of exercise it is. It would be nice to extend this to everything
@@ -724,6 +735,10 @@ class BareGame(Game):
 						Q(number__in=number)
 			print "Tag query: ", TAG_QUERY
 
+		if pos == 'Px':
+			TAG_QUERY = TAG_QUERY & Q(case=case)
+			print "Tag query: ", TAG_QUERY
+			
 		# filter can include several queries, exclude must have only one
 		# to work successfully
 		if pos != 'Der' and not diminutive:

@@ -28,6 +28,10 @@ PRONOUNS_LIST = {'Sg1':'mon', 'Sg2':'ton', 'Sg3':'son', 'Sg4':'(4)',
 		  'Pl1':'mij', 'Pl2':'tij', 'Pl3':'sij',
 		  'Du1':u'muäʹna', 'Du2':u'tuäʹna', 'Du3':u'suäʹna'}
 
+POSSESSIVE_PRONOUNS_LIST = {'Sg1':'mu', 'Sg2':'du', 'Sg3':'su',
+		  'Pl1':'min', 'Pl2':'din', 'Pl3':'sin',
+		  'Du1':'munno', 'Du2':'dudno', 'Du3':'sudno'}
+		  
 # DEMONSTRATIVE_PRESENTATION plus Sg3/Pl3
 PASSIVE_PRONOUNS_LIST = {'Sg1':'mon', 'Sg2':'ton', 'Sg3':'dat',
 		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'dat',
@@ -297,6 +301,15 @@ VTYPE_CONTEXT_CHOICES = (
 	('V-MIX', _('mix')),
 	('TEST', _('test questions')),
  )
+ 
+POSSESSIVE_CHOICES = (
+	('PxSg1', _('Sg1')),
+	('PxSg2', _('Sg2')),
+	('PxSg3', _('Sg3')),
+	('PxPl1', _('Pl1')),
+	('PxPl2', _('Pl2')),
+	('PxPl3', _('Pl3')),
+)
 
 LEVEL_CHOICES = (
 	('l1', _('Level 1')),
@@ -874,6 +887,7 @@ class OahpaSettings(forms.Form):
 					'vtype_context' : 'V-PRS',
 					'pron_context' : 'P-PERS',
 					'num_context' : 'NUM-ATTR',
+					'possessive_type': 'PxSg1',
 					'num_level' : '1',
 					'num_type' : 'CARD',  # added by Heli
 					'derivation_type' : 'V-DER-PASS',
@@ -1111,6 +1125,7 @@ class MorfaSettings(OahpaSettings):
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='A-NOM', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
+	possessive_type = forms.ChoiceField(initial='PxSg1', choices=POSSESSIVE_CHOICES, widget=forms.Select)
 	vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
 	num_bare = forms.ChoiceField(initial='N-ILL', choices=NUM_BARE_CHOICES, widget=forms.Select)
 	num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)
@@ -1205,6 +1220,17 @@ class MorfaQuestion(OahpaQuestion):
 			
 		if tag.pos == "N":
 			self.case = tag.case
+			if tag.possessive:
+				pers = tag.possessive.replace('Px', '')
+				pronoun = POSSESSIVE_PRONOUNS_LIST[pers]
+				num = DEMONSTRATIVE_PRESENTATION.get(tag.number, False)
+				if num:
+					num = ' ' + num
+				else:
+					num = ''
+				self.pron = '(%s%s)' % (pronoun, num)
+				print "pronoun as a hint for possessive: ", self.pron
+
 
 		if tag.pos == 'Pron':
 			self.case = tag.case
