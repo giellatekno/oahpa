@@ -28,9 +28,8 @@ PRONOUNS_LIST = {'Sg1':'mon', 'Sg2':'ton', 'Sg3':'son', 'Sg4':'(4)',
 		  'Pl1':'mij', 'Pl2':'tij', 'Pl3':'sij',
 		  'Du1':u'muäʹna', 'Du2':u'tuäʹna', 'Du3':u'suäʹna'}
 
-POSSESSIVE_PRONOUNS_LIST = {'Sg1':'mu', 'Sg2':'du', 'Sg3':'su',
-		  'Pl1':'min', 'Pl2':'din', 'Pl3':'sin',
-		  'Du1':'munno', 'Du2':'dudno', 'Du3':'sudno'}
+POSSESSIVE_PRONOUNS_LIST = {'Sg1':'muu', 'Sg2':'tuu', 'Sg3':'suu',
+		  'Pl1':'jieʹččen', 'Pl2':'tij', 'Pl3':'sij'}
 		  
 # DEMONSTRATIVE_PRESENTATION plus Sg3/Pl3
 PASSIVE_PRONOUNS_LIST = {'Sg1':'mon', 'Sg2':'ton', 'Sg3':'dat',
@@ -53,10 +52,10 @@ RECIPROCATIVE_PRESENTATION = {
 }
 
 DEMONSTRATIVE_PRESENTATION = {
-	'Sg': u'okta',
-	'Sg3': u'okta',
-	'Pl': u'máŋga',
-	'Pl3': u'máŋga',
+	'Sg': u'õhtt',
+	'Sg3': u'õhtt',
+	'Pl': u'mäŋgg',
+	'Pl3': u'mäŋgg',
 }
 
 POS_CHOICES = (
