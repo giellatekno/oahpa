@@ -557,8 +557,8 @@ class BareGame(Game):
 			case, number = self.casetable[pos_tables[pos]]
 		elif pos == 'Px':
 			case = self.casetable[pos_tables[pos]]
-			possessive = possessive_type
-			print "case: ", case, "possessive type: ", possessive 
+			#possessive = possessive_type  # trying out the mix of possessive exercises
+			#print "case: ", case, "possessive type: ", possessive 
             
 		grade = self.casetable[grade]
 		num_type = self.casetable[num_type] # added by Heli
@@ -628,8 +628,8 @@ class BareGame(Game):
 		SUB_QUERY = False
 		
 		if pos == 'Px':
-			TAG_QUERY = Q(possessive=possessive, number=number)
-
+			TAG_QUERY = Q(number=number,possessive__contains='Px', diminutive='')  # Change this after the diminutive menu has been set up !!!
+ 
 		# NOTE: copied this from questions_install, to make it easier to define
 		# what kind of exercise it is. It would be nice to extend this to everything
 		# because then we can just define a question/answer tag as something like:
