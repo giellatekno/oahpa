@@ -28,8 +28,8 @@ PRONOUNS_LIST = {'Sg1':'mon', 'Sg2':'ton', 'Sg3':'son', 'Sg4':'(4)',
 		  'Pl1':'mij', 'Pl2':'tij', 'Pl3':'sij',
 		  'Du1':u'muäʹna', 'Du2':u'tuäʹna', 'Du3':u'suäʹna'}
 
-POSSESSIVE_PRONOUNS_LIST = {'Sg1':'muu', 'Sg2':'tuu', 'Sg3':'suu',
-		  'Pl1':'jieʹččen', 'Pl2':'tij', 'Pl3':'sij'}
+POSSESSIVE_PRONOUNS_LIST = {'Sg1':u'muu', 'Sg2':u'tuu', 'Sg3':u'suu',
+		  'Pl1':u'jieʹččen', 'Pl2':u'tij', 'Pl3':u'sij'}
 		  
 # DEMONSTRATIVE_PRESENTATION plus Sg3/Pl3
 PASSIVE_PRONOUNS_LIST = {'Sg1':'mon', 'Sg2':'ton', 'Sg3':'dat',
