@@ -7,9 +7,9 @@ reverse proxy. {{{apache/httpd}}} thus doesn't run on port 80, rather
 {{{nginx}}} does, and certain requests are passed off to {{{apache}}}
 internally.
 
-!! In case of emergencies... 
+!! In case of emergencies...
 
-On gtweb, if for some reason the processes do not restart via chkconfig, 
+On gtweb, if for some reason the processes do not restart via chkconfig,
 inspect via {{{ps aux}}} or {{{top}}} to find out what is or isn't running.
 
 Once missing processes have been identified, the proper order that all services
@@ -56,7 +56,7 @@ If the dictionaries are down, issue these commands (one for each dictionary -- t
 
 !!Restarting the mt processes on gtweb
 
-Restart is still not documented, but have a look at 
+Restart is still not documented, but have a look at
 [the page for installing mt on gtweb|http://giellatekno.uit.no/doc/mt/infra/UpdatingApertiumOnGtweb.html]
 
 !!Apache/httpd (victorio)
@@ -85,7 +85,7 @@ If the result indicates memory use too close to 100, this is a clear
 problem indication. The answer is to restart the apache web server,
 and thereafter, if need, to [restart mysqld|Mysql.html].
 
-If the webserver takes too much memory, you may also want to stop 
+If the webserver takes too much memory, you may also want to stop
 apache first, and then myql, and then starting them again:
 
 {{{
@@ -95,3 +95,7 @@ sudo /etc/init.d/httpd start
 sudo /etc/init.d/mysqld start
 }}}
 
+!!eXist-db restart
+{{{
+  sudo service eXist-db start
+}}}
