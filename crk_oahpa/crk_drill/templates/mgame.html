@@ -83,7 +83,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
 		      </a>		      
 		  {% endif %}
 	{% else %} {# Morfa-C #}
-		{{ form.question }}?
+        {{ form.question }}{% block question_mark %}?{% endblock %}
 	      {% if settings.pos != "Pron" %}
 		    {% if form.lemma %} (<a href="#" class="link_tooltip" id="link_tooltip-{{ forloop.counter }}">{{ form.lemma }}</a>) {% endif %}
 	      {% else %}

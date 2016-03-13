@@ -30,7 +30,7 @@ class QAGame(Game):
 		This information should be moved to parameters
 		"""
 		self.num_fields = 6
-		self.syntax =('MAINV','SUBJ','HAB')
+		self.syntax =('MAINV','SUBJ','HAB','DUMMY', 'NULL')
 		self.qtype_verbs = set(['V-COND','V-IMPRT','V-POT', 'PRS','PRT', 'V-PRS', 'V-PRT'])
 
 		# Default tense and mood for testing
@@ -475,6 +475,17 @@ class QAGame(Game):
 			'tag': _recipr_tag.id, 
 			'word': _recipr_word.id, 
 			'fullform': _recipr_fullforms, 
+		}]
+
+		return awords
+
+	def generate_answers_null(self, answer, question, awords, qwords):
+		""" Follows user selection of reciprocative type and returns the relevant
+		wordform.
+		"""
+
+		awords['NULLSP'] = [{
+			'fullform': 'NULLSP',
 		}]
 
 		return awords
@@ -940,6 +951,14 @@ class QAGame(Game):
 					return "error"
 				self.generated_syntaxes.append('NEG')
 
+			if 'NULL' in words_strings:
+				try:
+					awords = self.generate_answers_null(answer, question, awords, db_info['qwords'])
+					self.generated_syntaxes.append('NULL')
+				except AttributeError:
+					if self.test: raise Http404("problem")
+					return "error"
+
 			if 'MAINV' in words_strings:
 				try:
 					awords = self.generate_answers_mainv(answer, question, awords, db_info['qwords'])
@@ -1044,4 +1063,4 @@ class QAGame(Game):
 
 		return form, None
 
-
+#  vim: set ts=4 sw=4 tw=72 syntax=python :

@@ -674,6 +674,10 @@ def is_correct(self, game, example=None):
 
 	# Log information about user answers.
 
+	if self.cleaned_data['fake_answer'].strip():
+		self.iscorrect = False
+		return
+
 	correctlist = u",".join([a for a in self.correct_anslist])
 	self.correctlist = correctlist
 	self.log_response()
@@ -791,6 +795,8 @@ def select_words(self, qwords, awords):
 	from random import choice
 	selected_awords = {}
 
+	# print "zomgbbq"
+	# print awords.keys()
 	for syntax in awords.keys():
 		word = None
 		tag = None
@@ -954,6 +960,7 @@ class OahpaQuestion(forms.Form):
 	KEYDOWN = 'javascript:return process(this, event, document.gameform);'
 	answer_attrs = {'size': 45} # , 'onkeydown': KEYDOWN}
 	answer = forms.CharField(max_length=45, widget=forms.TextInput(attrs=answer_attrs))
+	fake_answer = forms.CharField(max_length=45, widget=forms.TextInput(attrs=answer_attrs), required=False, initial="")
 
 	def log_response(self):
 		import datetime
@@ -1927,8 +1934,14 @@ class ContextMorfaQuestion(OahpaQuestion):
 			astrings = astring.split('Q')
 			if astrings[0]:
 				self.answertext1 = astrings[0]
+				if 'NULL' in astrings[0]:
+					self.answertext1_fake = True
+					self.answertext1 = astrings[0].replace('NULL', '')
 			if astrings[1]:
 				self.answertext2 = astrings[1]
+				if 'NULL' in astrings[1]:
+					self.answertext2_fake = True
+					self.answertext2 = astrings[1].replace('NULL', '')
 
 		# set correct and error values
 		if correct_val:

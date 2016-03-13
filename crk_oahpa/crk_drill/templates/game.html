@@ -89,12 +89,14 @@
 			<span class="object">{{ form.object }}</span>
 		{% endif %}
 
-		{% if form.answertext2 %}<span class="answertext">{{ form.answertext2 }}</span>{% endif %}
+		{% if form.answertext2 %}<span class="answertext">{{ form.answertext2|safe }}</span>{% endif %}
 
 	{% else %}
         {# If just test answers, mark correct answers as green #}
 
-		{% if form.answertext1 %}<span class="answertext">{{ form.answertext1 }}</span>{% endif %}
+		{% if form.answertext1 %}
+		{% if form.answertext1_fake %}{% ifequal form.error "correct" %}{% else %}<span class="incorrect">{{ form.fake_answer }}</span>{% endifequal %}{% endif %} <span class="answertext">{{ form.answertext1|safe }}</span>
+		{% endif %}
 
 		{% ifnotequal form.userans "" %}
 
@@ -133,7 +135,8 @@
 
 		{% endifnotequal %}
 
-		{% if form.answertext2 %}<span class="answertext">{{ form.answertext2 }}</span>{% endif %}
+		{# TODO: conditionally hide fake input if answer is correct #}
+		{% if form.answertext2 %}<span class="answertext">{{ form.answertext2 }}</span>{% if form.answertext2_fake %}{% ifequal form.error "correct" %}{% else %}<span class="incorrect">{{ form.fake_answer }}</span>{% endifequal %}{% endif %} {% endif %}
 
     {% endif %}
 
