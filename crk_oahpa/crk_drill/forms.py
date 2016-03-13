@@ -676,7 +676,6 @@ def is_correct(self, game, example=None):
 
 	if self.cleaned_data['fake_answer'].strip():
 		self.iscorrect = False
-		return
 
 	correctlist = u",".join([a for a in self.correct_anslist])
 	self.correctlist = correctlist
