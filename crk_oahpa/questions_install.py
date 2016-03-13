@@ -472,6 +472,18 @@ class Questions:
 			qe.save()
 
 
+	def read_null_element(self,qaelement,el,el_id,qtype):
+		el_id = "NULL"
+		q = qaelement.question
+
+		qe = QElement.objects.create(question=qaelement,
+									 identifier=el_id,
+									 syntax="NULL",
+									 gametype=qaelement.gametype)  # added by Heli
+
+		qe.save()
+		return
+
 	# Read elements attached to particular question or answer.
 	def read_elements(self, head, qaelement, qtype):
 
@@ -488,12 +500,21 @@ class Questions:
 
 			self.read_element(qaelement, element, "SUBJ", qtype)
 
+		if "NULL" in set(qastrings):
+			for e in els:
+				if e.getAttribute("id")=="NULL":
+					element = e
+					break
+			self.read_null_element(qaelement, element, "NULL", qtype)
+
 
 		# Process rest of the elements in the string.
 		subj=False
 		for s in qastrings:
 			if s=="SUBJ" and not subj:
 				subj=True
+				continue
+			if s=="NULL":
 				continue
 
 			syntax = s.lstrip("(")
@@ -789,3 +810,5 @@ class Questions:
 			if questions:
 				for q in questions:
 					q.delete()
+
+#  vim: set ts=4 sw=4 tw=72 syntax=python :
