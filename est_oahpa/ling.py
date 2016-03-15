@@ -323,7 +323,7 @@ class Paradigm:
 					hom_tag = ""
 				if not lemma:
 				    raise TypeError
-				lookups = lookups + lemma + hid + hom_tag + "+" + a  # was: tag instead of a
+				lookups = lookups + lemma + hom_tag + "+" + a  # was: tag instead of a
 
 				lookups += '\n\n\n'
 		self.generate_data.append(lookups)

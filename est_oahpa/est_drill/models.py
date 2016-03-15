@@ -449,6 +449,7 @@ class Word(models.Model):
 	lemma_stressed = models.CharField(max_length=200, db_index=True)  # added by HU
 	presentationform = models.CharField(max_length=5) # PI: what's this?
 	pos = models.CharField(max_length=12) # Accomodate larger PoS
+	hid = models.IntegerField(max_length=3, null=True, default=None) # The id of the homonym (1, 2, etc.)
 	hom = models.CharField(max_length=4) # The tag indicating which of the homonyms it is (Hom1, Hom2 etc.)
 	stem = models.CharField(max_length=20)
 	animate = models.CharField(max_length=20) # PI: could be boolean?
@@ -459,10 +460,9 @@ class Word(models.Model):
 	reflexive = models.NullBooleanField(blank=True)
 	inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
 	zaliznjak = models.CharField(max_length=20)
-
 	wordclass = models.CharField(max_length=8)
 	# valency = models.CharField(max_length=10)
-	hid = models.IntegerField(max_length=3, null=True, default=None) # PI: what's this?
+
 	semtype = models.ManyToManyField(Semtype)
 	source = models.ManyToManyField(Source) # The textbook(s) where the word is introduced
 	chapter = models.CharField(max_length=10) 

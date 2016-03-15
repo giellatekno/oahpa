@@ -53,11 +53,17 @@ echo "==================================================="
 # echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/Prop_est.xml"
+echo "feeding db with $DPS/Prop_est.xml (place names)"
 $P install.py --file $DPS/Prop_est.xml --tagfile $META/tags.txt --paradigmfile $META/prop_paradigms.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPS/Firstnames.xml (a number of common male and female first names that can be used in Morfa-C sentences)"
+$P install.py --file $DPS/Firstnames.xml --tagfile $META/tags.txt --paradigmfile $META/prop_paradigms.txt 2>>error.log
+echo " "
+echo "done"
 
 echo "==================================================="
 echo "feeding db with $DPS/Pron_est.xml"
