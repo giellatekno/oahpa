@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+  <q id="trdem1">
+    <qtype>P-DEM</qtype>
+    <question>
+      <text><![CDATA[Those are shoes.]]></text>
+    </question>
+    <answer> 
+      <text>NULL maskisina P-DEM</text>
+      <element game='morfa' id="P-DEM" task="yes">
+        <grammar tag="Pron+Dem+Med+IN+Pl"/>
+        <id>ôma</id>
+      </element>
+     </answer>
+  </q>
+
+  <q id="trdem2">
+    <qtype>P-DEM-CRK</qtype>
+    <question>
+      <text>maskisina P-DEM</text>
+      <element game='morfa' id="P-DEM" task="yes">
+        <grammar tag="Pron+Dem+Med+IN+Pl"/>
+        <id>ôma</id>
+      </element>
+    </question>
+    <answer> 
+      <text>Those are NOUN</text>
+      <element game='morfa' id="NOUN" task="yes">
+        <grammar tag="N+Pl"/>
+        <id>shoe</id>
+      </element>
+     </answer>
+  </q>
+
+  <q id="trdem3">
+    <qtype>P-DEM-CRK</qtype>
+    <question>
+      <text>maskisina anihi</text>
+    </question>
+    <answer> 
+      <text>DEM is/are shoes</text>
+      <element game='morfa' id="DEM" task="yes">
+        <grammar tag="Pron+Dem+Pl+Dist"/>
+        <id>this</id>
+      </element>
+     </answer>
+  </q>
+
+</questions>
