@@ -29,6 +29,10 @@
     <sem class="mMAL"/>
     <sem class="mPERSNAME"/>
   </subclasses>
+  <subclasses class="YOUNG"> 
+      <sem class="CHILD"/>
+      <sem class="mPERSNAME"/>
+    </subclasses>
   <subclasses class="ANIMAL">  
       <sem class="ANIMAL_DOM"/>  <!-- domestic --> 
       <sem class="ANIMAL_WILD"/>
@@ -88,5 +92,9 @@
     <subclasses class="WORK"> 
       <sem class="JOB"/>
       <sem class="PROFESSION"/>
+    </subclasses>
+    <subclasses class="mPERSNAME"> 
+      <sem class="PERSNAME_MALE"/>
+      <sem class="PERSNAME_FEMALE"/>
     </subclasses>
 </lexicon>

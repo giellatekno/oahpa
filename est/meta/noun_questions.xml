@@ -5,8 +5,9 @@
     <question>
       <text>Mida SUBJ MAINV</text>
       <element id="SUBJ">
-            <grammar tag="N+Sg+Nom"/>
-        <sem class="PEOPLE"/>
+        <grammar tag="N+Sg+Nom"/>
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="HUMAN"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Pers+Prs+Ind+Sg3+Aff"/>
@@ -27,7 +28,7 @@
       <text>Mida SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Pl+Nom"/>
-        <sem class="PEOPLE"/>
+        <sem class="HUMAN"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Pers+Prs+Ind+Pl3+Aff"/>
@@ -75,8 +76,9 @@
     <question>
       <text>Mille SUBJ MAINV</text>
       <element id="SUBJ">
-            <grammar tag="N+Sg+Nom"/>
-        <sem class="FAMILY"/>
+          <grammar tag="N+Sg+Nom"/>
+          <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="HUMAN"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Pers+Prt+Ind+Sg3+Aff"/>
@@ -103,8 +105,9 @@
     <question>
       <text>Mille SUBJ ära MAINV</text>
       <element id="SUBJ">
-            <grammar tag="N+Sg+Nom"/>
-        <sem class="CHILD"/>
+        <grammar tag="N+Sg+Nom"/>
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="YOUNG"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Pers+Prt+Ind+Sg3+Aff"/>
@@ -162,7 +165,7 @@
       <text>Kuhu SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="FAMILY"/>
+        <sem class="HUMAN"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Pers+Prs+Ind+Sg3+Aff"/>
@@ -211,7 +214,7 @@
       <text>Kus SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="PEOPLE"/>
+        <sem class="HUMAN"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Pers+Prs+Ind+Sg3+Aff"/>
@@ -222,6 +225,7 @@
       <text>SUBJ MAINV N-INE</text>
       <element game='morfa' id="N-INE" task="yes">
         <grammar tag="N+Sg+Ine"/>
+        <grammar tag="N+Prop+Sg+Ine"/>
         <sem class="PLACE"/>
       </element>
     </answer>
@@ -229,6 +233,7 @@
       <text>SUBJ MAINV N-ADE</text>
       <element game='morfa' id="N-ADE" task="yes">
         <grammar tag="N+Sg+Ade"/>
+        <grammar tag="N+Prop+Sg+Ade"/>
         <sem class="PLACE_ON"/>
       </element>
     </answer>
@@ -239,7 +244,7 @@
       <text>Kus SUBJ MAINV</text>
       <element id="SUBJ">
             <grammar tag="N+Sg+Nom"/>
-        <sem class="FAMILY"/>
+        <sem class="HUMAN"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Pers+Prs+Ind+Sg3+Aff"/>
@@ -250,6 +255,7 @@
       <text>SUBJ MAINV N-INE</text>
       <element game='morfa' id="N-INE" task="yes">
         <grammar tag="N+Sg+Ine"/>
+        <grammar tag="N+Prop+Sg+Ine"/>
         <sem class="PLACE"/>
       </element>
     </answer>
@@ -257,6 +263,7 @@
       <text>SUBJ MAINV N-ADE</text>
       <element game='morfa' id="N-ADE" task="yes">
         <grammar tag="N+Sg+Ade"/>
+        <grammar tag="N+Prop+Sg+Ade"/>
         <sem class="PLACE_ON"/>
       </element>
     </answer>
@@ -343,8 +350,9 @@
     <question>
       <text>Kelleks SUBJ MAINV saada</text>
       <element id="SUBJ">
-            <grammar tag="N+Sg+Nom"/>
-        <sem class="CHILD"/>
+        <grammar tag="N+Sg+Nom"/>
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="YOUNG"/>
       </element>
       <element id="MAINV">
         <grammar tag="V+Pers+Prs+Ind+Sg3+Aff"/>
