@@ -594,6 +594,7 @@ class Morfaview(Gameview):
 		'P-REFL':  _('Practise reflexive pronouns'),
 		'P-REL': _('Practise relative pronouns'),
 		'P-DEM':  _('Practise demonstrative pronouns'),
+		# 'P-DEM-CRK':  _('Practise translating demonstrative pronouns'),
 	}
 
 	def syll_settings(self,settings_form):
