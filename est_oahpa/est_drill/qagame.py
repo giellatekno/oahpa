@@ -1032,7 +1032,10 @@ class QAGame(Game):
 										 db_info['qwords'], db_info['awords'], dialect, language, db_info['userans'], db_info['correct'], data, prefix=n))
             # The following section gets the id of the task word and returns it together with the question-answer form. Returning the word id makes it possible to avoid repetitions within the same task set in Morfa-C. The other games (Morfa-S, Leksa) also return the word id. 
 			for key, value in form.aattrs.items():
-			     if value == form.correct_ans.encode('utf8'):
+			     # print "correct answer in the form: ", form.correct_ans
+			     # print "form aattr key: ", key
+			     # print "form aattr value: ", value
+			     if "taskword" in key:   # We need the id of the task word. 
 			         key_parts = key.split("_")
 			         task_elem_id = key_parts[2]
 			         #print "task elem id: ", task_elem_id

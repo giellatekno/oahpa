@@ -1741,6 +1741,8 @@ class ContextMorfaQuestion(OahpaQuestion):
 				self.aattrs['answer_word_' + syntax] = selected_awords[syntax]['word']
 			if selected_awords[syntax].has_key('tag'):
 				self.aattrs['answer_tag_' + syntax] = selected_awords[syntax]['tag']
+			if selected_awords[syntax].has_key('taskword'):
+				self.aattrs['answer_taskword_' + syntax] = selected_awords[syntax]['taskword']
 			if selected_awords[syntax].has_key('fullform') and len(selected_awords[syntax]['fullform']) == 1:
 				self.aattrs['answer_fullform_' + syntax] = selected_awords[syntax]['fullform'][0]
 
