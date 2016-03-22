@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+
+<!--
+
+2Sg+3SgO - 1Sg+3SgO
+1Sg+3SgO - 2Sg+3SgO
+3Sg+3SgO - 3Sg+3SgO
+1Pl+3SgO - 2Pl+3SgO
+2Pl+3SgO - 1Pl+3SgO
+12Pl+3SgO - 12Pl+3SgO
+3Pl+3SgO - 3Pl+3SgO
+
+    <element id="MAINVOBJ">
+      <grammar pos="V" tag="V+Transitivity-Animacy+Mood+Tense+Person-Number+Object"/>
+    </element>  
+
+    OBJECT needs to agree with MAINVOBJ, and this must be done in qagame.py, 
+    if an OBJECT is present, then MAINVOBJ should include some form of 3SgO or
+    3PlO.
+
+    Otherwise, installation can go as normal, as long as tags are set up.
+
+ -->
+
+ <q id="vtaprs1">
+    <qtype>V-TA-PRS</qtype>
+    <question>
+      <text>MAINVOBJ cî OBJECT otâkosîhk</text>
+      <element id="MAINVOBJ">
+        <sem class="mMOVE"/>
+        <sem class="mNAME"/>
+        <sem class="mTHINK"/>
+        <sem class="mCOMMUNICATION"/>
+        <sem class="mSENSE"/>
+        <sem class="mIMPACT"/>
+        <sem class="mRELATIONSHIPS"/>
+      </element>
+      <element id="OBJECT">
+        <grammar tag="N+AN+Sg"/>
+      </element>
+    </question>
+    <answer> 
+      <text>êha, MAINVOBJ cî OBJECT</text>
+      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
+      </element>
+    </answer>
+  </q>
+</questions>
