@@ -4,8 +4,8 @@ P="python2.7"
 PEDHOME="/Users/mslm/main/ped"
 OAHPAHOME="/home/vro_oahpa"
 LANGDIR="vro"
-DATA=$OAHPAHOME/$LANGDIR  # on gtlab
-#DATA=$PEDHOME/$LANGDIR  # locally
+#DATA=$OAHPAHOME/$LANGDIR  # on gtlab
+DATA=$PEDHOME/$LANGDIR  # locally
 DPS="$DATA/src"
 INC="$DATA/inc"
 META="$DATA/meta"
@@ -34,14 +34,14 @@ echo "==================================================="
 
 echo "==================================================="
  echo "installing substantives from $INC/n_tyypsonad.xml"
- $P install.py --file $INC/n_tyypsonad.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>error.log
+ $P install.py --file $INC/n_tyypsonad.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
  
  echo "==================================================="
  echo "installing substantives from $DPS/oahpa_lexicon_new.xml"
- $P install.py --file $DPS/oahpa_lexicon_new.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt --append 2>error.log
+ $P install.py --file $DPS/oahpa_lexicon_new.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt --append 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="

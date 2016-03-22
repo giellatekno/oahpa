@@ -1040,7 +1040,7 @@ class QAGame(Game):
 
 			#print "answer attributes: ", form.aattrs
 			for key, value in form.aattrs.items():
-			     if value == form.correct_ans.encode('utf8'):
+			     if "taskword" in key:   # We need the id of the task word.
 			         key_parts = key.split("_")
 			         task_elem_id = key_parts[2]
 			         #print "task elem id: ", task_elem_id
