@@ -534,15 +534,12 @@ class Paradigm:
 				g.form = matchObj.expand(r'\g<formString>')
 				if re.compile("\?").match(g.form): continue
 				g.tags = matchObj.expand(r'\g<tagString>')
-				print 'amagad: '
-				print repr(g.tags)
+
 				for t in g.tags.split('+'):
 					if self.tagset.has_key(t):
 						tagclasses = self.tagset[t]
 						for tagclass in tagclasses:
 							g.classes[tagclass] = t
-				print g.classes
-				raw_input()
 				self.paradigm.append(g)
 				#extraforms override generated ones
 				if extraforms.has_key(g.tags):
@@ -590,6 +587,7 @@ class Paradigm:
 													possessive=g.get('Possessive',""),grade=g.get('Grade',""),\
 													infinite=g.get('Infinite',""), \
 													personnumber=g.get('Person-Number',""),\
+													object=g.get('Object',""),\
 													polarity=g.get('Polarity',""),\
 													tense=g.get('Tense',""),mood=g.get('Mood',""), \
 													subclass=g.get('Subclass',""), \

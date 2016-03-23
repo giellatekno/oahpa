@@ -710,6 +710,7 @@ class Tag(models.Model):
 	mood = models.CharField(max_length=5)
 	number = models.CharField(max_length=5)
 	personnumber = models.CharField(max_length=8)
+	object = models.CharField(max_length=12)
 	gender = models.CharField(max_length=5)
 	polarity = models.CharField(max_length=5)
 	pos = models.CharField(max_length=12)
