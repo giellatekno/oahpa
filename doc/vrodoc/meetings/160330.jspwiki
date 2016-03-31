@@ -1,0 +1,72 @@
+!!! Võru Oahpa koosolek 30.03.2016
+!!! Osalejad
+Jack, Heli, Sulev
+
+!!!Päevakord
+* FST
+* Oahpa
+* Eeltöö (materjalide ettevalmistamine FST ja Oahpa jaoks)
+
+!! FST
+! Verbid
+Sulev tegi olemasolevad yaml-testid lõpuni (täiendas).
+Heli paneb püsti Morfa-C verbid. Sealt tuleb ideid, milliseid verbe vaja FST-sse lisada.
+Oahpa sõnastiku suurus on praegu 1300 sõna.
+
+
+
+
+! Morfa-C jaoks vajalikud nimisõnad
+Jack on pannud suurema osa lexc-sse sisse.
+Sellega seoses tuleb kirjutada uusi jätkusõnastikke. Eraldi muutetüübid (ja siis ka yaml-testid) erineva tüvevokaaliga muidu sama tüüpi sõnade jaoks.
+
+{{{
+hapnõqkurgiq
+hapukurk' gen hapnõkurgi
+vanaimä gen vanaimä part vannaimmä pl part vannoimmi
+linnukʼ
+pelmeenʼ
+keefiirʼ
+}}}
+
+! Korrektuuritabelid
+Jack saatis noomenite korrektuuritabeli, Sulev tegeleb selle parandamise ja kommenteerimisega.
+
+! Võru keele morf. analüsaator
+Võru-eesti masintõlke jaoks oleks võru keele morf. analüsaatorit juba lähemal ajal vaja.
+Kuidas FST sõnastiku katvust (võimalikult automaatselt) suurendada?
+Sulev saab synaq.org sõnastiku andmebaasi. Seal on küll teised tüübinumbrid.
+Soovitav oodata võru morf. analüsaatori integreerimisega masintõlkesse sügiseni.
+Hea treenimismaterjal - lasteraamatud, mis on olemas mitmes keeles.
+Paralleelkorpuses on "Suur must koer". Muidu on võru keelde tõlgitud ka "Punamütsike" ja "Sipsik".
+
+!! Oahpa
+! Morfa-C
+Kordusi ei esine nüüd enam korraga näidatava 5 lause hulgas.
+
+Järgmised ülesanded: 
+* Korduste vältimine järjestikustes lausete hulkades.
+* Markeerida negatiivse tähendusega verbid, et need ilmuksid harva.
+Sama tegelikult ka nimisõnade puhul - igas semantilises klassis on sõnu, mis on harva kasutatavad.
+* Morfa-C verbiülesanne püsti panna. Selleks on vaja lausemalle. Heli saadab Sulevile mingid mallid eestikeelsete lausetega, mis on tehtud sme eeskujul.
+
+! Kasutajaliidese keele vahetus
+Mõnedes veebilehitsejates endiselt ei tööta.
+
+!! Eeltöö
+! Adjektiivide eraldamine nimisõnadest
+Sulev jätkab, kui aega saab.
+! Võru eesnimed
+Sulev küsib nimespetsialistidelt.
+! Sõnade häälduste andmebaas
+Kaur lubas, et saab kevade jooksul. faili nimi = sõna, mitte number
+
+!! Muu
+Võru keele kõnesüntees 
+[http://www.eki.ee/~indrek/voru/index.php]
+Kasutada saab kaht häält: hellä ja sulev2 (sulev on vana versioon, seda ei maksa).
+Kui Oahpas kasutada, siis oleks hellä ilmselt kenam. Või siis varieerida, et üks hääl loeb üht ja teine teist lauset.
+Võimalik kasutuskoht: Morfa-C küsimuste ettelugemine.
+
+!! Järgmine koosolek
+K, 20. aprill kell 10.
