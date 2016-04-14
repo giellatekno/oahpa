@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Morfa-C questions for verbs. -->
+<questions>
+  <q id="vprs0">
+    <qtype>V-PRS</qtype>
+    <qtype>V-MIX</qtype>
+   <question>
+      <text>Mida SUBJ täna MAINV</text>
+      <element id="SUBJ">
+		<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<id>tegema</id> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Täna SUBJ MAINV</text>
+      <element game='morfa' id="MAINV" task="yes" >
+	<sem class="mACTIVITY"/>
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+    </answer>
+  </q>
+  <q id="vprs1sg">
+    <qtype>V-PRS</qtype>
+    <qtype>V-MIX</qtype>
+    <question>
+      <text>Mida SUBJ täna teeb</text>
+      <element id="SUBJ">
+	<sem class="mPEOPLE"/>
+	<grammar tag="N+Sg+Nom"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Ta MAINV</text>
+      <element game='morfa' id="MAINV" task="yes">
+	<grammar tag="V+Ind+Prs+Sg3"/>
+	<sem class="mACTIVITY"/>
+      </element>
+    </answer> 
+  </q>
+    <q id="vprs1pl">
+    <qtype>V-PRS</qtype>
+    <qtype>V-MIX</qtype>
+    <question>
+      <text>Mida SUBJ täna teevad</text>
+      <element id="SUBJ">
+	<sem class="mPEOPLE"/>
+	<grammar tag="N+Pl+Nom"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Nad MAINV</text>
+      <element game='morfa' id="MAINV" task="yes">
+	<grammar tag="V+Ind+Prs+Pl3"/>
+	<sem class="mACTIVITY"/>
+      </element>
+    </answer> 
+  </q>
+  <q id="vprt0">
+    <qtype>V-PRT</qtype>
+    <qtype>V-MIX</qtype>
+   <question>
+      <text>Mida SUBJ eile MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<id>tegema</id> 
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Eile SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element game='morfa' id="MAINV" task="yes">
+	<sem class="mACTIVITY"/>
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+      </element>
+    </answer>
+  </q> 
+     <q id="vprt1sg">
+    <qtype>V-PRT</qtype>
+    <question>
+      <text>Mida SUBJ eile tegi</text>
+      <element id="SUBJ">
+	<sem class="mPEOPLE"/>
+	<grammar tag="N+Sg+Nom"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Ta MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element game='morfa' id="MAINV" task="yes">
+	<grammar tag="V+Ind+Prt+Sg3"/>
+	<sem class="mACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+    <q id="vprt1pl">
+    <qtype>V-PRT</qtype>
+    <qtype>V-MIX</qtype>
+    <question>
+      <text>Mida SUBJ eile tegid</text>
+      <element id="SUBJ">
+	<sem class="mPEOPLE"/>
+	<grammar tag="N+Pl+Nom"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Nad MAINV</text>
+      <element game='morfa' id="MAINV" task="yes">
+	<grammar tag="V+Ind+Prt+Pl3"/>
+	<sem class="mACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+</questions>
+
+ 
