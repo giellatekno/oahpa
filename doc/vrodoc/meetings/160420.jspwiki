@@ -1,0 +1,114 @@
+!!!Võru Oahpa koosolek 20.04.2016
+Osalejad: Jack, Sulev, Heli
+
+!!!Päevakava
+* FST
+* Oahpa
+* Läänemeresoome sügiskonverents
+
+!!FST
+!Noomenid
+Sulev saatis just praegu noomenite korrektuuritabeli. Üks läbiv probleem olid kordused. Kommentaarid (iga tüübi kohta) on eraldi failis.
+
+Sulev: Üldiselt oli see automaatselt genereeritud vormide tabel palju parem kui eelmine!
+
+__Sulev__ jätkab tööd noomenite tabeliga.
+
+Probleem: Oahpas näidatakse marginaalseid vorme õigete vastustena.
+
+Esimene vorm on yaml testis see, mis on kõige õigem. Kõik ülejäänud tuleks FST-s märgendada kui ''+Use/NG''. Siis neid Oahpas ei näidata kui õigeid vastuseid.
+
+{{{
+test/src/dict-gt-yamls/   <1 ainus vorm>
+test/src/gt-norm-yamls/ <1-N õiged vormid>
+test/src/gt-desc-yamls/ <kõik vormid>
+}}}
+
+Uurime, kas ja miks on valesti. __Jack__ uurib FST-d ja __Heli__ Oahpat.
+
+!Pronoomenivormid
+
+Pronoomenivormid on nüüd olemas failis {ped/vro/src/pronounforms.csv}.
+Jack pani need ka FST-sse.
+
+Vaja teha:
+* Essiiv välja visata. (__Heli__)
+* XML-fail genereerida ja see Oahpa andmebaasi sisse panna (__Heli__)
+
+
+!Verbid
+
+Verbitestid on lõpuni tehtud.
+Verbide jaoks oleks vaja samasugust korrektuuritabelit nagu on olemas noomenitest. (__Jack__)
+
+!!Oahpa
+
+!Morfa-C verbiülesanne
+
+Olemasolevad küsimus-vastusmallid:
+
+{{{
+Q: Mida õpetaja tegi eile?
+A: Ta ...
+Q: Mida sina teed täna?
+A: Ma ...
+}}}
+
+Võiksime lisada eituseülesanded.
+
+Näiteks ''Mida sa kunagi ei tee?''
+Kasutada nii eeseitust kui tagaeitust.
+
+* eeseitus ol: ''Ma ei lääq kunagiq verevä tulõgaq üle tii.''
+* tagaeitus ol: ''Ma lää-äiq kunagiq verevä tulõgaq üle tii.''
+* eeseitus min: ''Ma es lääq kunagiq verevä tulõgaq üle tii.''
+* tagaeitus min: ''Ma lää-äs kunagiq verevä tulõgaq üle tii.''
+
+__Sulev__ mõtleb veel vähemalt 10 vastust sellele küsimusele.
++ veel mõni küsimus + vastused kõige harilikumate verbidega (vaatan ülikooli võru k kursuse harjutustest).
+
+{{{
+Q: Kas sa tiit täämbä kodotüüd?
+A: ma ei tiiq
+A: ma tii-iq
+
+Q: Kas sa teit eeläq kodotüüd?
+A: ma es tiiq
+A: ma tii-is
+}}}
+
+Vanasõnad jms:
+
+''Mida Juku ei opiq, tuud Juhan ei tiiäq.''
+
+''Mida Juku es opiq, tuud Juhan es tiiäq.''
+
+!Morfa-C pronoomen
+
+{{{
+Q: Kellel on koer? Kinkal om pini?
+A: minul, meil mul, meil
+
+Q: Kas sul pini / auto ... / raamat om?
+A: Mul om pini.
+A: Mul ei olõq pinni.
+A: Mul olõ-õi pinni.
+}}}
+
+__Sulev__ teeb u. 10 sellist lauset.
+
+!!Läänemeresoome sügiskonverents
+
+27.-29. okt. 2016 Võrus.
+
+Teesid (kuni 2000 tähemärki) __30. aprilliks__:
+
+# Võro Oahpa tutvustus (Sulev - pedagoogiline ja keeleline pool võru keeles, Heli - tehniline pool eesti keeles)
+__Heli__ kirjutab mustandi E, 25. aprilliks. 
+__Sulev__ täiendab, parandab ja teeb võrukeelse versiooni ka.
+# fst (Sulev - Jack) 
+__Jack__ kirjutab soome keeles ja __Sulev__ teeb võrukeelse versiooni ka.
+
+!!Järgmine koosolek
+__T, 3. mai kell 10__ Eesti/Soome aja järgi
+
