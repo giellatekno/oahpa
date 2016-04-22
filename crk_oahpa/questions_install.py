@@ -126,7 +126,7 @@ class Questions:
 		############### AGREEMENT
 		# Search for elementes that agree
 		agr_elements=None
-		if syntax=="MAINV":
+		if syntax=="MAINV" or syntax=="MAINVOBJ":
 			agr_id="SUBJ"
 			print "\tTRYING verb agreement " + agr_id + " " + qaelement.qatype
 			if QElement.objects.filter(question=qaelement, syntax=agr_id,
