@@ -30,7 +30,7 @@ class QAGame(Game):
 		This information should be moved to parameters
 		"""
 		self.num_fields = 6
-		self.syntax =('MAINV','SUBJ','HAB','DUMMY', 'NULL')
+		self.syntax =('MAINV','SUBJ','HAB','DUMMY', 'NULL', 'MAINVOBJ', )
 		self.qtype_verbs = set(['V-COND','V-IMPRT','V-POT', 'PRS','PRT', 'V-PRS', 'V-PRT'])
 
 		# Default tense and mood for testing
@@ -62,14 +62,46 @@ class QAGame(Game):
 					
 					'1Pl':'2Pl',		# Mii? Dii.
 					'2Pl':'1Pl',		# Dii? Mii.
-					'3Pl':'3Pl'}		# Sii? Sii.
+					'3Pl':'3Pl',		# Sii? Sii.
+					
+					'12Pl': '12Pl',
+					'4Sg': '4Sg',
+					'4Pl': '4Pl',
+			}
 					
 					
 
 		# Values for subject-verb agreement:
 		# e.g. Subject with N+Sg+Nom requires verb with Sg3.
-		self.SVPN={'Sg1':'Sg1','Sg2':'Sg2','Sg3':'Sg3','Sg':'Sg3',\
-				   'Pl1':'Pl1','Pl2':'Pl2','Pl3':'Pl3','Pl':'Pl3'}
+		self.SVPN={
+			'1Sg':'1Sg',
+			'2Sg':'2Sg',
+			'3Sg':'3Sg',
+			'4Sg':'4Sg',
+			'Sg':'3Sg',
+
+			'1Pl':'3Pl',
+			'12Pl':'12Pl',
+			'2Pl':'3Pl',
+			'3Pl':'3Pl',
+			'4Pl':'4Pl',
+		}
+
+		# Values for Question-Answer agreement
+		self.SUBJ_AGR = {
+			'2Sg': '1Sg',
+			'1Sg': '2Sg',
+			'3Sg': '3Sg',
+			'1Pl': '2Pl',
+			'2Pl': '1Pl',
+			'12Pl': '12Pl',
+			'3Pl': '3Pl',
+		}
+
+		self.OBJ_AGR = {
+			'Sg': '3SgO',
+			'Pl': '3PlO',
+		}
 
 		# Available values for Number
 		self.PronPN=['Sg1','Sg2','Sg3','Pl1','Pl2','Pl3']
@@ -209,7 +241,8 @@ class QAGame(Game):
 			qwords_list.append(w)
 
 		# Handle all grammatical elements one at the time
-		# 1. SUBJ-MAINV argreement
+		# TODO: OBJECT - MAINV agreement
+		# 1. SUBJ-MAINV agreement
 		#if self.test: raise Http404(question.id,qwords_list)
 		# print qwords_list
 		if 'SUBJ' in set(qwords_list):
@@ -264,6 +297,58 @@ class QAGame(Game):
 			qwords['SUBJ'] = subjword
 			# print qwords['SUBJ']
 
+		objnumber = False
+		if 'OBJECT' in set(qwords_list):
+			qwords['OBJECT'] = {}
+			
+			# Select randomly an element, if there are more than one available.
+			# This way there is only one subject and tag for each question.
+			obj_elements=self.get_elements(question, 'OBJECT')
+			
+			if not obj_elements:
+				return None
+			obj_el = choice(obj_elements)
+			tag_el_count = obj_el.tags.count()
+			
+			# If there was no tag elements, there is nothing to do.
+			# Object tag is needed for everything else. 
+			if tag_el_count == 0:
+				if self.test: raise Http404("0 tag count" + " " + qwords_list)
+				return None
+			
+			tag_el = choice(obj_el.tags.all())
+			# Get number information for object
+			objword = {}
+			# if tag_el.pos == "Pron":
+			# 	# NOTE: mii is interrogative and mii is personal
+			# 	# filtering by 'pronbase' isn't enough here.
+			# 	objnumber = tag_el.personnumber
+			# 	if not objnumber:
+			# 		raise Http404("Tag Element missing personnumber. Database may be improperly installed for tags.")
+			# 	pronbase = self.PronPNBase[objnumber]
+			# 	word_el = Word.objects.filter(lemma=pronbase, form__tag=tag_el)[0]
+			# 	words_ = self.get_words(None, tag_el, None, word_el.id)
+			# 	try:
+			# 		info = words_[0]
+			# 	except IndexError:
+			# 		info = False
+			# 	# print objnumber
+			# 	# print pronbase
+			# 	# print word_el
+			# 	# print info
+			# 	# print '--'
+			# else:
+			objnumber = tag_el.number
+			info = self.get_qword(obj_el, tag_el)
+
+			if not info:
+				if self.test: raise Http404("not info " + " ".join(qwords_list))
+				return None
+			
+			objword = info
+			objword['number'] = objnumber
+			qwords['OBJECT'] = objword
+
 		if 'HAB' in set(qwords_list):
 			
 			qwords['HAB'] = {}
@@ -314,14 +399,19 @@ class QAGame(Game):
 			# print qwords['SUBJ']
 
 		if 'MAINV' in set(qwords_list):
+			mainv_elem_name = 'MAINV'
+		elif 'MAINVOBJ' in set(qwords_list):
+			mainv_elem_name = 'MAINVOBJ'
 
-			qwords['MAINV'] = {}
+		if 'MAINV' in set(qwords_list) or 'MAINVOBJ' in set(qwords_list):
+			qwords[mainv_elem_name] = {}
 			mainv_word = None
 			
+			subjnumber = False
 			# Select one mainverb element for question.
-			mainv_elements = self.get_elements(question,'MAINV')
+			mainv_elements = self.get_elements(question,mainv_elem_name)
 			if mainv_elements:
-				mainv_el = mainv_elements[randint(0, len(mainv_elements)-1)]
+				mainv_el = choice(mainv_elements)
 				
 				# If there is only on tag element, then there are no choices for agreement.
 				tag_el_count = mainv_el.tags.count()
@@ -344,6 +434,17 @@ class QAGame(Game):
 					else:
 						mainv_tag_count = mainv_el.tags.count()
 						mainv_tags = mainv_el.tags.all()
+					# Object-verb agreement
+					if qwords.has_key('OBJECT') and qwords['OBJECT'].has_key('number'):
+						objnumber=qwords['OBJECT']['number']
+						obj_v_number = self.OBJ_AGR[objnumber]
+
+						if qtype in self.qtype_verbs or self.gametype=="qa":
+							mainv_tags = mainv_el.tags.filter(Q(object=obj_v_number))
+						else:
+							mainv_tags = mainv_el.tags.filter(Q(object=obj_v_number) & \
+															Q(tense=self.tense) & \
+															Q(mood=self.mood))
 					if not mainv_tags:
 						if self.test: raise Http404("not mainv_tags " + " ".join(qwords_list) + " " + question.qid)
 						return None
@@ -353,12 +454,15 @@ class QAGame(Game):
 				info = self.get_qword(mainv_el, tag_el)
 				mainv_word = info
 
+				if not subjnumber:
+					subjnumber = tag_el.personnumber
+					v_number = self.SVPN[subjnumber]
 				if not mainv_word:
 					if self.test: raise Http404("not mainv_word " + " ".join(qwords_list) + " " + question.qid)
 					return None
 				else:
-					mainv_word['number'] = tag_el.personnumber
-					qwords['MAINV'] = mainv_word
+					mainv_word['number'] = subjnumber
+					qwords[mainv_elem_name] = mainv_word
 
 			if not mainv_word:
 				if self.test: raise Http404("not mainv" + " " + " ".join(qwords_list))
@@ -489,6 +593,55 @@ class QAGame(Game):
 		}]
 
 		return awords
+
+	def generate_answers_mainv_object_agreement(self, answer, question,
+	                                         awords, qwords,
+	                                         element="MAINVOBJ"):
+		""" Agree with the object and the subject
+		"""
+		# At this point in execution, MAINVOBJ has had its subject and
+		# number agreement set up, what should be lacking is that while
+		# an OBJECT is chosen, the verb may not agree-- so we need to
+		# fix the tag.
+
+		# 2Sg+3SgO - 1Sg+3SgO
+		# 1Sg+3SgO - 2Sg+3SgO
+		# 3Sg+3SgO - 3Sg+3SgO
+		# 1Pl+3SgO - 2Pl+3SgO
+		# 2Pl+3SgO - 1Pl+3SgO
+		# 12Pl+3SgO - 12Pl+3SgO
+		# 3Pl+3SgO - 3Pl+3SgO
+
+		# TODO: do object agreement
+		# TODO: first have to create the syntax of the object in the
+		# question, and then do the answer
+
+		# # Get corresponding OBJECT tag
+		_mainv_qelement = answer.qelement_set.get(identifier='MAINVOBJ')
+		_qwords_object = qwords.get('OBJECT')
+		_qwords_mainv = qwords.get('MAINVOBJ')
+		_awords_mainv = awords.get('MAINVOBJ')
+		awords['OBJECT'] = [_qwords_object]
+		fixed_number = self.OBJ_AGR[Tag.objects.get(id=_qwords_object['tag']).number]
+
+		def fix_mainv_obj_agr(_el_info):
+			_t = Tag.objects.get(id=_el_info['tag'])
+			current_number = _t.object
+			_str = _t.string
+			_o_agr_str = _str.replace('+' + current_number, '+' + fixed_number)
+			_new_tag = Tag.objects.get(string=_o_agr_str)
+			_w_id = _el_info['word']
+			_el_info['tag'] = _new_tag.id
+			_el_info['fullform'] = Form.objects.filter(word__id=_w_id,
+			                                           tag__id=_new_tag.id).values_list('fullform', flat=True)
+			return _el_info
+			# TODO: get q.object and replace here
+
+
+		_awords_mainv =  map(fix_mainv_obj_agr, _awords_mainv)
+		awords['MAINVOBJ'] = _awords_mainv
+
+		return awords
 	
 	def generate_answers_reflexive(self, answer, question, awords, qwords):
 		""" Checks reflexive agreement on RPRON with a specified agreement
@@ -614,7 +767,9 @@ class QAGame(Game):
 		return awords
 
 	
-	def generate_answers_mainv(self, answer, question, awords, qwords, element="MAINV"):
+	def generate_answers_mainv(self, answer, question, awords, qwords, element='MAINV'):
+
+		mainv_element_name = element
 
 		mainv_elements = self.get_elements(answer, element)
 		# print '--'
@@ -625,6 +780,8 @@ class QAGame(Game):
 		mainv_tag = None
 		mainv_tags = []
 		va_number = None
+
+		# TODO: include object agreement somewhere here
 
 		copy_syntax = ""
 		# Find content elements.
@@ -663,7 +820,7 @@ class QAGame(Game):
 				# The element we're looking at is not present in qwords, 
 				# but it is present in awords; which means that it's probably NEG
 				if awords.has_key(element) and not qwords.has_key(element):
-					qmainv = qwords.get("MAINV", False)
+					qmainv = qwords.get(mainv_element_name, False)
 					if qmainv:
 						q_number = qmainv['number']
 						if q_number:
@@ -708,7 +865,7 @@ class QAGame(Game):
 			mainv_fullform = mainv_form.fullform
 
 		# If the main verb is under question, then generate full list.
-		if answer.task in ["MAINV", "NEG"]:
+		if answer.task in [mainv_element_name, "NEG"]:
 			mainv_words = []
 			if mainv_elements:
 				for mainv_el in mainv_elements:
@@ -963,6 +1120,16 @@ class QAGame(Game):
 				try:
 					awords = self.generate_answers_mainv(answer, question, awords, db_info['qwords'])
 					self.generated_syntaxes.append('MAINV')
+				except AttributeError:
+					if self.test: raise Http404("problem")
+					return "error"
+
+			if 'MAINVOBJ' in words_strings:
+				try:
+					awords = self.generate_answers_mainv(answer, question, awords, db_info['qwords'], element="MAINVOBJ")
+					self.generated_syntaxes.append('MAINVOBJ')
+					awords = self.generate_answers_mainv_object_agreement(answer, question, awords, db_info['qwords'])
+					self.generated_syntaxes.append('OBJECT')
 				except AttributeError:
 					if self.test: raise Http404("problem")
 					return "error"
