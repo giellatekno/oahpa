@@ -67,6 +67,7 @@ inituppercase.fst: inituppercase.regex
 
 
 clean:
-	@rm -f eng.bin eng.fst ieng.fst engraw.fst
+	@rm -f eng.bin eng.fst ieng.fst engraw.fst inituppercase.fst
+
 
 
