@@ -2,6 +2,9 @@
 Multichar_Symbols
 +QDL +N +Sg +Pl +Pron +Dem +Prox  
 +Med +A +Pos +Det +Indef +Def +Prt +Prs +Ind
++V +Inf +Prs +Prt +Prf
++1Sg +2Sg +3Sg +1Pl +2Pl +3Pl
++A +Pos +Comp +Sup
 +%<eng%> 
 @U.defness.def@ @U.defness.indef@ @U.defness.bare@ 
 n2 e2 %>
@@ -353,9 +356,9 @@ excl+CLB:%! # ;
 
 LEXICON verbs
 bake vinfl ; 
-blow: BLOW ; 
-break BREAK ; 
-bring BRING ; 
+blow:bl BLOW ; 
+break:br BREAK ; 
+bring:br BRING ; 
 call vinfl ; 
 carry:carr CARRY ; 
 cook vinfl ; 
@@ -363,24 +366,24 @@ cost vinfl ;
 count vinfl ; 
 cry:cr CARRY ; 
 dance vinfl ; 
-drink vinfl ; 
-drive: DRIVE ; 
+drink:dr DRINK ; 
+drive:dr DRIVE ; 
 earn vinfl ; 
-eat EAT ; 
+eat: EAT ; 
 enter vinfl ; 
-feel FEEL ; 
-get GET ; 
-give vinfl ; 
-goe vinfl ; 
-ha vinfl ; 
-hear vinfl ; 
+feel:f FEEL ; 
+get:g GET ; 
+give:g GIVE ; 
+go: GO ; 
+!ha vinfl ; 
+hear HEAR ; 
 hit vinfl ; 
-i vinfl ; 
+!i vinfl ; 
 jump vinfl ; 
-know vinfl ; 
+know:kn KNOW ; 
 laugh vinfl ; 
 learn vinfl ; 
-leave vinfl ; 
+leave:le LEAVE ; 
 like vinfl ; 
 listen vinfl ; 
 live vinfl ; 
@@ -390,61 +393,219 @@ name vinfl ;
 pick vinfl ; 
 play vinfl ; 
 pray vinfl ; 
-put vinfl ; 
-read vinfl ; 
-ride vinfl ; 
-run vinfl ; 
-say vinfl ; 
-see vinfl ; 
-sing vinfl ; 
-sit vinfl ; 
-sleep vinfl ; 
+put PUT ; 
+read PUT ; 
+ride:ro RIDE ; 
+run:r RUN ; 
+say:sa SAY ; 
+see:s SEE ; 
+sing:s SING ; 
+sit:s SIT ; 
+sleep:sl KEEP ; 
 smile vinfl ; 
 smoke vinfl ; 
 speak vinfl ; 
-stand vinfl ; 
-take vinfl ; 
+stand: STAND ; 
+take:t TAKE ; 
 talk vinfl ; 
-touche vinfl ; 
-trie vinfl ; 
-understand vinfl ; 
+touch vinfl ; 
+try:tr CARRY ; 
+understand:underst STAND ; 
 wait vinfl ; 
 walk vinfl ; 
 want vinfl ; 
-win vinfl ; 
+win:w WIN ; 
 work vinfl ; 
-write vinfl ; 
+write:wr WRITE ; 
+fish vinfl ;
 
 
 LEXICON vinfl
+inf ;
+pres ;
+regularpast ;
+
+LEXICON inf
 +V+Inf: ENDLEX ;
+
+LEXICON pres
 +V+Prs+1Sg: ENDLEX ;
 +V+Prs+2Sg: ENDLEX ;
-+V+Prs+3Sg:s ENDLEX ;
++V+Prs+3Sg:%>e2s ENDLEX ;
 +V+Prs+1Pl: ENDLEX ;
 +V+Prs+2Pl: ENDLEX ;
 +V+Prs+3Pl: ENDLEX ;
 
-+V+Prt+1Sg:%>e2d ENDLEX ;
-+V+Prt+2Sg:%>e2d ENDLEX ;
-+V+Prt+3Sg:%>e2d ENDLEX ;
-+V+Prt+1Pl:%>e2d ENDLEX ;
-+V+Prt+2Pl:%>e2d ENDLEX ;
-+V+Prt+3Pl:%>e2d ENDLEX ;
+LEXICON regularpast
++V+Prt+1Sg:%>ed ENDLEX ;
++V+Prt+2Sg:%>ed ENDLEX ;
++V+Prt+3Sg:%>ed ENDLEX ;
++V+Prt+1Pl:%>ed ENDLEX ;
++V+Prt+2Pl:%>ed ENDLEX ;
++V+Prt+3Pl:%>ed ENDLEX ;
++V+Ptc:%>ed ENDLEX ;
+
+LEXICON strongpast
++V+Prt+1Sg: ENDLEX ;
++V+Prt+2Sg: ENDLEX ;
++V+Prt+3Sg: ENDLEX ;
++V+Prt+1Pl: ENDLEX ;
++V+Prt+2Pl: ENDLEX ;
++V+Prt+3Pl: ENDLEX ;
+
+LEXICON strongptc
++V+Ptc: ENDLEX ;
 
 LEXICON BLOW 
-ENDLEX ;
+:ow inf ;
+:ow pres ;
+:ew strongpast ;
+:own strongptc ;
+
+LEXICON BREAK 
+:eak inf ;
+:eak pres ;
+:oke strongpast ;
+:oken strongptc ;
+
+LEXICON BRING 
+:ing inf ;
+:ings pres ;
+:ought strongpast ;
+:ought strongptc ;
+
+
 LEXICON CARRY 
 ENDLEX ;
-LEXICON BREAK 
-ENDLEX ;
+
+LEXICON DRINK
+:ink inf ;
+:ink pres ;
+:ank strongpast ;
+:unk strongptc ;
+
 LEXICON DRIVE
-ENDLEX ;
-LEXICON BRING 
-ENDLEX ;
-LEXICON EAT 
-ENDLEX ;
-LEXICON FEEL 
-ENDLEX ;
+:ive inf ;
+:ive pres ;
+:ove strongpast ;
+:iven strongptc ;
+
+LEXICON EAT
+:eat inf ;
+:eat pres ;
+:ate strongpast ;
+:eaten strongptc ;
+
+LEXICON FEEL
+:eel inf ;
+:eel pres ;
+:elt strongpast ;
+
 LEXICON GET
-ENDLEX ;
+:et inf ;
+:et pres ;
+:ot strongpast ;
+:otten strongptc ;
+
+LEXICON GIVE
+:ive inf ;
+:ive pres ;
+:ave strongpast ;
+:iven strongptc ;
+
+LEXICON GO
+:go inf ;
+:go pres ;
+:went strongpast ;
+:gone strongptc ;
+
+LEXICON HEAR
+ inf ;
+ pres ;
+:d strongpast ;
+:d strongptc ; 
+
+
+LEXICON KEEP
+:eep inf ;
+:eep pres ;
+:ept strongpast ;
+:ept strongptc ;
+
+LEXICON KNOW
+:ow inf ;
+:ow pres ;
+:ew strongpast ;
+:own strongptc ;
+
+LEXICON LEAVE
+:eave inf ;
+:eave pres ;
+:eft strongpast ;
+:eft strongptc ;
+
+
+LEXICON PUT 
+ inf ;
+ pres ;
+ strongpast ;
+ strongptc ;
+
+LEXICON RIDE  
+:ide inf ;
+:ide pres ;
+:ode strongpast ;
+:idden strongptc ;
+
+LEXICON RUN 
+:un inf ;
+:un pres ;
+:an strongpast ;
+:un strongptc ;
+
+LEXICON SAY 
+:ay inf ;
+:ay pres ;
+:ang strongpast ;
+
+LEXICON SEE  
+:ee inf ;
+:ee pres ;
+:aw strongpast ;
+:een strongptc ;
+
+LEXICON SING 
+:ing inf ;
+:ing pres ;
+:ang strongpast ;
+:ung strongptc ;
+
+LEXICON SIT
+:it inf ;
+:it pres ;
+:at strongpast ;
+:at strongptc ;
+
+LEXICON STAND 
+:and inf ;
+:and pres ;
+:ood strongpast ;
+:ood strongptc ;
+
+LEXICON TAKE
+:ake inf ;
+:ake pres ;
+:ook strongpast ;
+:aken strongptc ;
+
+LEXICON WIN 
+:in inf ;
+:in pres ;
+:on strongpast ;
+:on strongptc ;
+
+LEXICON WRITE 
+:ite inf ;
+:ite pres ;
+:ote strongpast ;
+:itten strongptc ;
