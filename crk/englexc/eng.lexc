@@ -2,7 +2,8 @@
 
 Multichar_Symbols
 +QDL +N +Sg +Pl +Pron +Dem +Prox  +Med +A +Pos +Det +Indef +Def +Prt +Prs +Ind
-+eng
++%<eng%>
+
 LEXICON Root
 nouns ;
 pronouns ;
@@ -88,7 +89,7 @@ a+Det+Indef:an ENDLEX ;
 the+Det+Def:the ENDLEX ;
 
 LEXICON ENDLEX
-+eng: # ;
++%<eng%>: # ;
 
 LEXICON punctation
 qdl+QDL:%^qdl # ;
