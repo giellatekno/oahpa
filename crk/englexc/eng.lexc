@@ -4,7 +4,8 @@ Multichar_Symbols
 +Med +A +Pos +Det +Indef +Def +Prt +Prs +Ind
 +V +Inf +Prs +Prt +Prf
 +1Sg +2Sg +3Sg +1Pl +12Pl +2Pl +3Pl
-+A +Pos +Comp +Sup
++A +Pos +Comp +Superl
++Num
 +%<eng%> 
 @U.defness.def@ @U.defness.indef@ @U.defness.bare@ 
 n2 e2 %>
@@ -12,6 +13,7 @@ n2 e2 %>
 LEXICON Root
 definiteness ;
 pronouns ;
+numerals ;
 copula ;
 punctation ;
 articles ;
@@ -287,14 +289,11 @@ LEXICON CHILD
 
 LEXICON DEFNESS
 @U.defness.def@ DEFSUF ;
-@U.defness.bare@ BARESUF ;
+@U.defness.bare@ ENDLEX ;
 @U.defness.indef@ INDEFSUF ;
 
 LEXICON DEFSUF 
 +Def: ENDLEX ;
-
-LEXICON BARESUF 
-+Bare: ENDLEX ;
 
 LEXICON INDEFSUF 
 +Indef: ENDLEX ;
@@ -316,7 +315,7 @@ old   ADJ ;
 LEXICON ADJ
 +A+Pos:  ENDLEX ;
 +A+Comp:%>er  ENDLEX ;
-+A+sup:%>est  ENDLEX ;
++A+Superl:%>est  ENDLEX ;
 
 LEXICON ADJPOS
 +A+Pos:  ENDLEX ;
@@ -363,6 +362,25 @@ excl+CLB:%! # ;
 %:+CLB:%: # ;
 
 
+! =====
+! Numerals
+! ===== 
+
+LEXICON numerals
+
+one num ;
+two num ;
+three num ;
+four num ;
+five num ;
+six num ;
+seven num ;
+eight num ;
+nine num ;
+ten num ;
+
+LEXICON num
++Num: ENDLEX ;
 
 ! =====
 ! Verbs
