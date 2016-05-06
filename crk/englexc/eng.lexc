@@ -1,25 +1,35 @@
 
-
 Multichar_Symbols
-+QDL +N +Sg +Pl +Pron +Dem +Prox  +Med +A +Pos +Det +Indef +Def +Prt +Prs +Ind
-+%<eng%>
++QDL +N +Sg +Pl +Pron +Dem +Prox  
++Med +A +Pos +Det +Indef +Def +Prt +Prs +Ind
++%<eng%> 
+@U.defness.def@ @U.defness.indef@ @U.defness.bare@ 
+n2
 
 LEXICON Root
-!definiteness ;
-nouns ;
+definiteness ;
 pronouns ;
 copula ;
 punctation ;
 articles ;
 adjectives ;
+verbs ;
 
-! LEXICON definiteness
-! a indef ;
-!   bare ;
-! the def ;
-! 
-! LE
-! < a:0 "@.asdf:" > nouns ;
+LEXICON definiteness
+a:n2 indef ;
+     bare ;
+the  def ;
+
+LEXICON indef 
+@U.defness.indef@ nouns ;
+
+LEXICON bare 
+@U.defness.bare@ nouns ;
+
+LEXICON def 
+@U.defness.def@ nouns ;
+
+
 
 LEXICON nouns
 shoe CAT ;
@@ -41,76 +51,6 @@ milk CATTLE ;
 store CAT ;
 chair CAT ;
 potato FISH ;
-
-LEXICON CAT
-+N+Sg: ENDLEX ;
-+N+Pl:s ENDLEX ;
-
-LEXICON FISH
-+N+Sg: ENDLEX ;
-+N+Pl:es ENDLEX ;
-
-LEXICON CATTLE
-+N+Sg: ENDLEX ;
-
-LEXICON KNIFE
-+N+Sg:fe ENDLEX ;
-+N+Pl:ves ENDLEX ;
-
-LEXICON MAN
-+N+Sg:an ENDLEX ;
-+N+Pl:en ENDLEX ;
-
-LEXICON adjectives
-little ADJ ;
-
-LEXICON ADJ
-+A+Pos:  ENDLEX ;
-
-
-LEXICON pronouns
-this SGPROX ;
-this:these PLPROX ;
-that SGMED ;
-that:those PLMED ;
-
-LEXICON SGPROX
-+Pron+Dem+Prox+Sg: ENDLEX ;
-
-LEXICON PLPROX
-+Pron+Dem+Prox+Pl: ENDLEX ;
-
-LEXICON SGMED
-+Pron+Dem+Med+Sg: ENDLEX ;
-
-LEXICON PLMED
-+Pron+Dem+Med+Pl: ENDLEX ;
-
-LEXICON copula
-be+V+Ind+Prs+3Sg:is ENDLEX ;
-be+V+Ind+Prs+3Pl:are ENDLEX ;
-be+V+Ind+Prt+3Sg:was ENDLEX ;
-be+V+Ind+Prt+3Pl:were ENDLEX ;
-
-LEXICON articles
-a+Det+Indef:a ENDLEX ;
-a+Det+Indef:an ENDLEX ;
-the+Det+Def:the ENDLEX ;
-
-LEXICON ENDLEX
-+%<eng%>: # ;
-
-LEXICON punctation
-qdl+QDL:%^qdl # ;
-%.+CLB:%. # ;
-%?+CLB:%? # ;
-excl+CLB:%! # ;
-%:+CLB:%: # ;
-
-! Incoming words
-
-
-LEXICON incoming_nouns
 
 tea CATTLE ;
 banana CAT ;
@@ -322,6 +262,190 @@ puppy CAT ;
 gooseberry CAT ;
 city CAT ;
 
+! Morphology
+
+LEXICON CAT
++N+Sg: DEFNESS ;
++N+Pl:s DEFNESS ;
+
+LEXICON FISH
++N+Sg: DEFNESS ;
++N+Pl:es DEFNESS ;
+
+LEXICON CATTLE
++N+Sg: DEFNESS ;
+
+LEXICON KNIFE
++N+Sg:fe DEFNESS ;
++N+Pl:ves DEFNESS ;
+
+LEXICON MAN
++N+Sg:an DEFNESS ;
++N+Pl:en DEFNESS ;
+
+LEXICON CHILD
++N+Sg: DEFNESS ;
++N+Pl:ren DEFNESS ;
+
+LEXICON DEFNESS
+@U.defness.def@ DEFSUF ;
+@U.defness.bare@ BARESUF ;
+@U.defness.indef@ INDEFSUF ;
+
+LEXICON DEFSUF 
++Def: ENDLEX ;
+
+LEXICON BARESUF 
++Bare: ENDLEX ;
+
+LEXICON INDEFSUF 
++Indef: ENDLEX ;
+
+
+LEXICON adjectives
+little ADJ ;
+
+LEXICON ADJ
++A+Pos:  ENDLEX ;
+
+
+LEXICON pronouns
+this SGPROX ;
+this:these PLPROX ;
+that SGMED ;
+that:those PLMED ;
+
+LEXICON SGPROX
++Pron+Dem+Prox+Sg: ENDLEX ;
+
+LEXICON PLPROX
++Pron+Dem+Prox+Pl: ENDLEX ;
+
+LEXICON SGMED
++Pron+Dem+Med+Sg: ENDLEX ;
+
+LEXICON PLMED
++Pron+Dem+Med+Pl: ENDLEX ;
+
+LEXICON copula
+be+V+Ind+Prs+3Sg:is ENDLEX ;
+be+V+Ind+Prs+3Pl:are ENDLEX ;
+be+V+Ind+Prt+3Sg:was ENDLEX ;
+be+V+Ind+Prt+3Pl:were ENDLEX ;
+
+LEXICON articles
+a+Det+Indef:a ENDLEX ;
+a+Det+Indef:an ENDLEX ;
+the+Det+Def:the ENDLEX ;
+
+LEXICON ENDLEX
++%<eng%>: # ;
+
+LEXICON punctation
+qdl+QDL:%^qdl # ;
+%.+CLB:%. # ;
+%?+CLB:%? # ;
+excl+CLB:%! # ;
+%:+CLB:%: # ;
+
+! Incoming words
 
 
 
+LEXICON verbs
+bake vinfl ; 
+blow: BLOW ; 
+break BREAK ; 
+bring BRING ; 
+call vinfl ; 
+carry:carr CARRY ; 
+cook vinfl ; 
+cost vinfl ; 
+count vinfl ; 
+cry:cr CARRY ; 
+dance vinfl ; 
+drink vinfl ; 
+drive: DRIVE ; 
+earn vinfl ; 
+eat EAT ; 
+enter vinfl ; 
+feel FEEL ; 
+get GET ; 
+give vinfl ; 
+goe vinfl ; 
+ha vinfl ; 
+hear vinfl ; 
+hit vinfl ; 
+i vinfl ; 
+jump vinfl ; 
+know vinfl ; 
+laugh vinfl ; 
+learn vinfl ; 
+leave vinfl ; 
+like vinfl ; 
+listen vinfl ; 
+live vinfl ; 
+look vinfl ; 
+move vinfl ; 
+name vinfl ; 
+pick vinfl ; 
+play vinfl ; 
+pray vinfl ; 
+put vinfl ; 
+read vinfl ; 
+ride vinfl ; 
+run vinfl ; 
+say vinfl ; 
+see vinfl ; 
+sing vinfl ; 
+sit vinfl ; 
+sleep vinfl ; 
+smile vinfl ; 
+smoke vinfl ; 
+speak vinfl ; 
+stand vinfl ; 
+take vinfl ; 
+talk vinfl ; 
+touche vinfl ; 
+trie vinfl ; 
+understand vinfl ; 
+wait vinfl ; 
+walk vinfl ; 
+want vinfl ; 
+win vinfl ; 
+work vinfl ; 
+write vinfl ; 
+
+
+LEXICON vinfl
++V+Inf: ENDLEX ;
++V+Prs+1Sg: ENDLEX ;
++V+Prs+2Sg: ENDLEX ;
++V+Prs+3Sg:s ENDLEX ;
++V+Prs+1Pl: ENDLEX ;
++V+Prs+2Pl: ENDLEX ;
++V+Prs+3Pl: ENDLEX ;
+
++V+Prt+1Sg:%>ed ENDLEX ;
++V+Prt+2Sg:%>ed ENDLEX ;
++V+Prt+3Sg:%>ed ENDLEX ;
++V+Prt+1Pl:%>ed ENDLEX ;
++V+Prt+2Pl:%>ed ENDLEX ;
++V+Prt+3Pl:%>ed ENDLEX ;
+
+LEXICON BLOW 
+ENDLEX ;
+LEXICON CARRY 
+ENDLEX ;
+LEXICON BREAK 
+ENDLEX ;
+LEXICON DRIVE
+ENDLEX ;
+LEXICON BRING 
+ENDLEX ;
+LEXICON EAT 
+ENDLEX ;
+LEXICON FEEL 
+ENDLEX ;
+LEXICON GET
+ENDLEX ;
