@@ -3,7 +3,7 @@ Multichar_Symbols
 +QDL +N +Sg +Pl +Pron +Dem +Prox  
 +Med +A +Pos +Det +Indef +Def +Prt +Prs +Ind
 +V +Inf +Prs +Prt +Prf
-+1Sg +2Sg +3Sg +1Pl +2Pl +3Pl
++1Sg +2Sg +3Sg +1Pl +12Pl +2Pl +3Pl
 +A +Pos +Comp +Sup
 +%<eng%> 
 @U.defness.def@ @U.defness.indef@ @U.defness.bare@ 
@@ -434,6 +434,7 @@ LEXICON pres
 +V+Prs+2Sg: ENDLEX ;
 +V+Prs+3Sg:%>e2s ENDLEX ;
 +V+Prs+1Pl: ENDLEX ;
++V+Prs+12Pl: ENDLEX ;
 +V+Prs+2Pl: ENDLEX ;
 +V+Prs+3Pl: ENDLEX ;
 
@@ -442,6 +443,7 @@ LEXICON regularpast
 +V+Prt+2Sg:%>ed ENDLEX ;
 +V+Prt+3Sg:%>ed ENDLEX ;
 +V+Prt+1Pl:%>ed ENDLEX ;
++V+Prt+12Pl:%>ed ENDLEX ;
 +V+Prt+2Pl:%>ed ENDLEX ;
 +V+Prt+3Pl:%>ed ENDLEX ;
 +V+Ptc:%>ed ENDLEX ;
@@ -451,6 +453,7 @@ LEXICON strongpast
 +V+Prt+2Sg: ENDLEX ;
 +V+Prt+3Sg: ENDLEX ;
 +V+Prt+1Pl: ENDLEX ;
++V+Prt+12Pl: ENDLEX ;
 +V+Prt+2Pl: ENDLEX ;
 +V+Prt+3Pl: ENDLEX ;
 
