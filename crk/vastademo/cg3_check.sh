@@ -1,2 +1,2 @@
-cat engtest crktest | vislcg3 -g ../src/crk-ped.cg3
+cat engtest delimiter.txt crktest | vislcg3 -g ../src/crk-ped.cg3
 

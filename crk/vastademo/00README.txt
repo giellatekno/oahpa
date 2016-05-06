@@ -3,7 +3,7 @@ The Vasta demo
 
 You can test different translations.
 
-echo 'This is a shoe ^qdl' | preprocess | $LOOKUP ../englexc/eng.fst | lookup2cg > engtest
+echo 'This is a shoe' | preprocess | $LOOKUP ../englexc/eng.fst | lookup2cg > engtest
 
 echo 'maskisin ôma' | preprocess | $LOOKUP $GTHOME/langs/crk/src/analyser-gt-desc.xfst | lookup2cg >  crktest
 
