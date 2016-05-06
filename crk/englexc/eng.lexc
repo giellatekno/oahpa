@@ -4,7 +4,7 @@ Multichar_Symbols
 +Med +A +Pos +Det +Indef +Def +Prt +Prs +Ind
 +%<eng%> 
 @U.defness.def@ @U.defness.indef@ @U.defness.bare@ 
-n2
+n2 e2 %>
 
 LEXICON Root
 definiteness ;
@@ -15,19 +15,24 @@ articles ;
 adjectives ;
 verbs ;
 
+!LEXICON definiteness
+!< "@U.defness.indef@" 0:a 0:"n2" 0:"% " > indef ;
+!< "@U.defness.bare@" > bare ;
+!< "@U.defness.def@" 0:t 0:h 0:e 0:"% " > def ;
+
 LEXICON definiteness
-a:n2 indef ;
-     bare ;
-the  def ;
+:an2%   indef ;
+        bare ;
+:the%   def ;        
 
-LEXICON indef 
-@U.defness.indef@ nouns ;
-
-LEXICON bare 
-@U.defness.bare@ nouns ;
-
-LEXICON def 
-@U.defness.def@ nouns ;
+ LEXICON indef 
+ @U.defness.indef@ nouns ;
+ 
+ LEXICON bare 
+ @U.defness.bare@ nouns ;
+ 
+ LEXICON def 
+ @U.defness.def@ nouns ;
 
 
 
@@ -87,7 +92,6 @@ thistle CAT ;
 home CAT ;
 bone CAT ;
 stone CAT ;
-shoe CAT ;
 snowshoe CAT ;
 canoe CAT ;
 pipe CAT ;
@@ -107,13 +111,11 @@ eye CAT ;
 hoof CAT ;
 scarf CAT ;
 leg CAT ;
-egg CAT ;
 pig CAT ;
 sibling CAT ;
 duckling CAT ;
 morning CAT ;
 ring CAT ;
-dog CAT ;
 frog CAT ;
 hitch CAT ;
 dish CAT ;
@@ -154,7 +156,6 @@ gum CAT ;
 drum CAT ;
 gym CAT ;
 toboggan CAT ;
-man CAT ;
 policeman CAT ;
 Frenchman CAT ;
 woman CAT ;
@@ -192,7 +193,6 @@ soup CAT ;
 ear CAT ;
 bear CAT ;
 cougar CAT ;
-sugar CAT ;
 dollar CAT ;
 star CAT ;
 number CAT ;
@@ -227,7 +227,6 @@ cross CAT ;
 pants CAT ;
 parents CAT ;
 shorts CAT ;
-cat CAT ;
 meat CAT ;
 hat CAT ;
 muskrat CAT ;
@@ -266,11 +265,11 @@ city CAT ;
 
 LEXICON CAT
 +N+Sg: DEFNESS ;
-+N+Pl:s DEFNESS ;
++N+Pl:%>e2s DEFNESS ;
 
 LEXICON FISH
 +N+Sg: DEFNESS ;
-+N+Pl:es DEFNESS ;
++N+Pl:e2s DEFNESS ;
 
 LEXICON CATTLE
 +N+Sg: DEFNESS ;
@@ -426,12 +425,12 @@ LEXICON vinfl
 +V+Prs+2Pl: ENDLEX ;
 +V+Prs+3Pl: ENDLEX ;
 
-+V+Prt+1Sg:%>ed ENDLEX ;
-+V+Prt+2Sg:%>ed ENDLEX ;
-+V+Prt+3Sg:%>ed ENDLEX ;
-+V+Prt+1Pl:%>ed ENDLEX ;
-+V+Prt+2Pl:%>ed ENDLEX ;
-+V+Prt+3Pl:%>ed ENDLEX ;
++V+Prt+1Sg:%>e2d ENDLEX ;
++V+Prt+2Sg:%>e2d ENDLEX ;
++V+Prt+3Sg:%>e2d ENDLEX ;
++V+Prt+1Pl:%>e2d ENDLEX ;
++V+Prt+2Pl:%>e2d ENDLEX ;
++V+Prt+3Pl:%>e2d ENDLEX ;
 
 LEXICON BLOW 
 ENDLEX ;
