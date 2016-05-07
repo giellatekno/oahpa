@@ -27,6 +27,7 @@ L1 = crk_oahpa.settings.L1
 LOOKUP_TOOL = crk_oahpa.settings.LOOKUP_TOOL
 FST_DIRECTORY = crk_oahpa.settings.FST_DIRECTORY
 DEFAULT_DIALECT = crk_oahpa.settings.DEFAULT_DIALECT
+LOOKUP_OPTS = crk_oahpa.settings.LOOKUP_OPTS
 GAME_FSTS = crk_oahpa.settings.GAME_FSTS
 
 
@@ -1063,14 +1064,12 @@ class NumGame(Game):
 		import subprocess
 		from threading import Timer
 
-		lookup = LOOKUP_TOOL
-
 		try:
 			open(fstfile)
 		except IOError:
 			raise Http404("File %s does not exist." % fstfile)
 
-		gen_norm_command = [lookup, fstfile]
+		gen_norm_command = [LOOKUP_TOOL, LOOKUP_OPTS, fstfile]
 
 		try:
 			forms.encode('utf-8')
