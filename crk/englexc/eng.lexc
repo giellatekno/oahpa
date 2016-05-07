@@ -3,6 +3,7 @@ Multichar_Symbols
 +QDL +N +Sg +Pl +Pron +Dem +Prox  
 +Med +A +Pos +Det +Indef +Def +Prt +Prs +Ind
 +V +Inf +Prs +Prt +Prf
++Px3Sg +PxPl
 +1Sg +2Sg +3Sg +1Pl +12Pl +2Pl +3Pl
 +A +Pos +Comp +Superl
 +Num
@@ -293,11 +294,17 @@ LEXICON DEFNESS
 @U.defness.indef@ INDEFSUF ;
 
 LEXICON DEFSUF 
-+Def: ENDLEX ;
++Def: POSS ;
+
+LEXICON BARESUF 
++Bare: POSS ;
 
 LEXICON INDEFSUF 
-+Indef: ENDLEX ;
++Indef: POSS ;
 
+LEXICON POSS
+ENDLEX ; ! the book
++Px3Sg:'s ENDLEX ; ! the book's 
 
 
 
