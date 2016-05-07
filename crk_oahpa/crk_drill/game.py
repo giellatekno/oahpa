@@ -23,26 +23,11 @@ import crk_oahpa.settings
 from random import choice
 from .forms import PRONOUNS_LIST
 
-try:
-	L1 = crk_oahpa.settings.L1
-except:
-	L1 = 'crk'  # was: sme
-
-try:
-	LOOKUP_TOOL = crk_oahpa.settings.LOOKUP_TOOL
-except:
-	LOOKUP_TOOL = 'lookup'
-
-
-try:
-	FST_DIRECTORY = crk_oahpa.settings.FST_DIRECTORY
-except:
-	FST_DIRECTORY = False
-
-try:
-	DEFAULT_DIALECT = crk_oahpa.settings.DEFAULT_DIALECT
-except:
-	DEFAULT_DIALECT = None
+L1 = crk_oahpa.settings.L1
+LOOKUP_TOOL = crk_oahpa.settings.LOOKUP_TOOL
+FST_DIRECTORY = crk_oahpa.settings.FST_DIRECTORY
+DEFAULT_DIALECT = crk_oahpa.settings.DEFAULT_DIALECT
+GAME_FSTS = crk_oahpa.settings.GAME_FSTS
 
 
 # FST_DIRECTORY = '/opt/smi/sme/bin' #Just testing. Hardcoded here because it looks like looking it up in settings.py failed
@@ -278,7 +263,6 @@ class Game(object):
 			form, word_id = self.create_form(new_db_info, n, data)
 			if form:
 				self.form_list.append(form)
-                        #print form
 
 	def get_score(self, data):
 
@@ -455,7 +439,6 @@ class BareGame(Game):
 		if self.settings.has_key('pos'):
 			pos = self.settings['pos']
 
-
 		# PI: isn't this what the second argument of .get() does?..
 
 		syll = True and	self.settings.get('syll')	or ['']
@@ -515,7 +498,7 @@ class BareGame(Game):
 
 		if pos in ['N', 'Num', 'Pron', 'Px']:
 			case, number, possessive, derivation = self.casetable[pos_tables[pos]]
-        
+
 		#else:
 		#	case = self.casetable[pos_tables[pos]]
 		grade = self.casetable.get('grade', '')
@@ -584,10 +567,10 @@ class BareGame(Game):
 			TAG_QUERY = Q(pos=pos)
 
 		if pos == 'V':
-		      TAG_EXCLUDES = Q(personnumber__contains='4') # persons 4Sg and 4Pl are excluded
+			TAG_EXCLUDES = Q(personnumber__contains='4') # persons 4Sg and 4Pl are excluded
 		else:
-		      # Exclude derivations by default
-		      TAG_EXCLUDES = None # Q(subclass__contains='Der') #PI removed
+			# Exclude derivations by default
+			TAG_EXCLUDES = None # Q(subclass__contains='Der') #PI removed
 
 		FORM_FILTER = False
 
@@ -698,11 +681,11 @@ class BareGame(Game):
 
 		if pos == 'A':
 			if pos2 == 'Num':
-				 sylls = False
-				 TAG_QUERY = TAG_QUERY & Q(subclass=subclass) & Q(case=case) & Q(attributive='') & Q(grade='')
+				sylls = False
+				TAG_QUERY = TAG_QUERY & Q(subclass=subclass) & Q(case=case) & Q(attributive='') & Q(grade='')
 			else:
-				 TAG_QUERY = TAG_QUERY & \
-						 Q(subclass='') & \
+				TAG_QUERY = TAG_QUERY & \
+						Q(subclass='') & \
 						Q(attributive=attributive) & \
 						Q(grade=grade) & \
 						Q(case=case) & \
@@ -715,9 +698,10 @@ class BareGame(Game):
 								#.exclude(polarity='Neg')    # PI: aha, might need subclass after all
 								#.exclude(subclass='Prop')\
 		#else:
-		tags = Tag.objects.filter(TAG_QUERY)# \
-							    # 	.exclude(subclass='Prop')\
-							    # 	.exclude(polarity='Neg')
+		tags = Tag.objects.filter(TAG_QUERY)
+		# 
+		# 	.exclude(subclass='Prop')\
+		# 	.exclude(polarity='Neg')
 
 		if TAG_EXCLUDES:
 			tags = tags.exclude(TAG_EXCLUDES)
@@ -743,12 +727,12 @@ class BareGame(Game):
 		#	else:
 		#		QUERY = Q(pos__iexact=pos)
 		if pos == 'Num' or pos2 == 'Num':
-			  QUERY = Q(pos__iexact=pos) # & Q(form__tag__subclass=subclass) # PI
+			QUERY = Q(pos__iexact=pos) # & Q(form__tag__subclass=subclass) # PI
 		else:
 			# levels is not what we're looking for
-			  QUERY = Q(pos__iexact=pos) # & Q(stem__in=syll)
-			  #if source and source not in ['all', 'All']:
-				# QUERY = QUERY & Q(source__name=source)
+			QUERY = Q(pos__iexact=pos) # & Q(stem__in=syll)
+			#if source and source not in ['all', 'All']:
+			# QUERY = QUERY & Q(source__name=source)
 
 		# smallnum = ["okta", "guokte", "golbma", "njeallje", "vihtta", "guhtta",
 		# 			"čieža", "gávcci","ovcci","logi"]
@@ -997,7 +981,7 @@ class BareGame(Game):
 
 		# Unless there aren't any ...
 		#if presentation.count() == 0:
-                presentation = form_list
+		presentation = form_list
 
 		# Exclude those that shouldn't be displayed, but should be accepted
 		presentation_ng = presentation.exclude(dialects__dialect='NG')
@@ -1052,8 +1036,9 @@ class BareGame(Game):
 
 
 class NumGame(Game):
-	generate_fst = 'transcriptor-numbers-digit2text.filtered.lookup.xfst'
-	answers_fst = 'transcriptor-numbers-text2digit.filtered.lookup.xfst'
+
+	generate_fst = GAME_FSTS.get('numbers').get('generate')
+	answers_fst = GAME_FSTS.get('numbers').get('answers')
 
 	def get_db_info(self, db_info):
 		""" Options supplied by views
@@ -1079,13 +1064,13 @@ class NumGame(Game):
 		from threading import Timer
 
 		lookup = LOOKUP_TOOL
-		gen_norm_fst = FST_DIRECTORY + "/" + fstfile
-		try:
-			open(gen_norm_fst)
-		except IOError:
-			raise Http404("File %s does not exist." % gen_norm_fst)
 
-		gen_norm_command = [lookup, "-flags", "mbTT", "-utf8", "-d", gen_norm_fst]
+		try:
+			open(fstfile)
+		except IOError:
+			raise Http404("File %s does not exist." % fstfile)
+
+		gen_norm_command = [lookup, fstfile]
 
 		try:
 			forms.encode('utf-8')
@@ -1093,9 +1078,9 @@ class NumGame(Game):
 			pass
 
 		num_proc = subprocess.Popen(gen_norm_command,
-					    stdin=subprocess.PIPE,
-					    stdout=subprocess.PIPE,
-					    stderr=subprocess.PIPE)
+						stdin=subprocess.PIPE,
+						stdout=subprocess.PIPE,
+						stderr=subprocess.PIPE)
 
 		def kill_proc(proc=num_proc):
 			try:
@@ -1226,8 +1211,8 @@ class Klokka(NumGame):
 
 	QuestionForm = KlokkaQuestion
 
-        generate_fst = 'transcriptor-clock-digit2text.filtered.lookup.xfst'
-        answers_fst = 'transcriptor-clock-text2digit.filtered.lookup.xfst'        
+	generate_fst = GAME_FSTS.get('clock').get('generate')
+	answers_fst = GAME_FSTS.get('clock').get('answers')
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1362,8 +1347,8 @@ class Dato(Klokka):
 
 	# QuestionForm = DatoQuestion
 
-        generate_fst = 'transcriptor-date-digit2text.filtered.lookup.xfst'
-        answers_fst = 'transcriptor-date-text2digit.filtered.lookup.xfst'
+	generate_fst = GAME_FSTS.get('dato').get('generate')
+	answers_fst = GAME_FSTS.get('dato').get('answers')
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
 					 or Dato is unable to look up forms."
@@ -1426,8 +1411,8 @@ class Money(Klokka):
 
 	# QuestionForm = MoneyQuestion
 
-        generate_fst = 'transcriptor-money-digit2text.filtered.lookup.xfst'
-        answers_fst = 'transcriptor-money-text2digit.filtered.lookup.xfst'
+	generate_fst = GAME_FSTS.get('money').get('generate')
+	answers_fst = GAME_FSTS.get('money').get('answers')
 
 	error_msg = "Money.create_form: Database is improperly loaded, \
 					 or Money is unable to look up forms."
@@ -1465,7 +1450,7 @@ class QuizzGame(Game):
 	def __init__(self, *args, **kwargs):
 		super(QuizzGame, self).__init__(*args, **kwargs)
 		self.init_tags()
-        
+
 	def init_tags(self):
 		self.settings['gametype'] = "leksa"
 
