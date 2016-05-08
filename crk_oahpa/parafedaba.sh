@@ -3,7 +3,13 @@
 P="python2.7"
 
 LANGDIR="crk"
-DATA=/home/crk_oahpa/$LANGDIR
+if [ -n $INSTALL_SRC ] 
+then
+  DATA=$INSTALL_SRC
+else
+  DATA=/home/crk_oahpa/$LANGDIR
+fi
+
 DPS="$DATA/src"
 INC="$DATA/inc"
 META="$DATA/meta"
@@ -38,27 +44,27 @@ echo "==================================================="
  echo "done"
  echo "==================================================="
 
- echo "==================================================="
- echo "feeding db with $DPS/Pron_crk.xml"
- $P install.py --file $DPS/Pron_crk.xml --tagfile $META/tags.txt --paradigmfile $META/pron_paradigms.txt 2>error.log
- echo " "
- echo "done"
- echo "==================================================="
-
-
- echo "==================================================="
- echo "feeding db with $DPS/Ipc_crk.xml"
- $P install.py --file $DPS/Ipc_crk.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
- echo " "
- echo "done"
- echo "==================================================="
-
- echo "==================================================="
- echo "feeding db with $DPS/Pron_crk.xml"
- $P install.py --file $DPS/Pron_crk.xml --tagfile $META/tags.txt --paradigmfile $META/pron_paradigms.txt 2>>error.log
- echo " "
- echo "done"
- echo "==================================================="
+#  echo "==================================================="
+#  echo "feeding db with $DPS/Pron_crk.xml"
+#  $P install.py --file $DPS/Pron_crk.xml --tagfile $META/tags.txt --paradigmfile $META/pron_paradigms.txt 2>error.log
+#  echo " "
+#  echo "done"
+#  echo "==================================================="
+# 
+# 
+#  echo "==================================================="
+#  echo "feeding db with $DPS/Ipc_crk.xml"
+#  $P install.py --file $DPS/Ipc_crk.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
+#  echo " "
+#  echo "done"
+#  echo "==================================================="
+# 
+#  echo "==================================================="
+#  echo "feeding db with $DPS/Pron_crk.xml"
+#  $P install.py --file $DPS/Pron_crk.xml --tagfile $META/tags.txt --paradigmfile $META/pron_paradigms.txt 2>>error.log
+#  echo " "
+#  echo "done"
+#  echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $META/names.xml"
@@ -391,8 +397,22 @@ echo " "
 echo "done"
 echo "==================================================="
 
+echo "==================================================="
+echo "installing Morfa-C questions for object agreement"
+$P install.py -g $META/grammar_defaults.xml -q $META/obj_agreement_questions.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-# echo "==================================================="
+echo "==================================================="
+echo "installing Morfa-C questions for V - TA - Prs, Prt, FutDef FutInt"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/TA-PRS_PRT_FUTDEF_FUTINT.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+
+		# echo "==================================================="
 # echo "installing Morfa-C questions for pronoun"
 # $P install.py -g $META/grammar_defaults.xml -q $META/pron_questions.xml 2>>error.log
 # echo " "

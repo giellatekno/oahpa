@@ -260,10 +260,10 @@ class Feedback_install(object):
     # TODO: need to fill out these values depending on which
     # attributes they have 
     word_attribute_names = OrderedDict([
-        ("N", ['stem',  'animacy', 'rime', ]),
+        ("N", ['stem',  'animacy', ]),
         # TODO: ("A", ['stem',  'rime', 'attrsuffix', 'compsuffix',]),
         # TODO: ("Num", ['stem',  'rime', ]),
-        ("V", ['stem',  'rime', 'trans_anim', ]),
+        ("V", ['stem',  'trans_anim', ]),
     ])
 
     # Each part of speech followed by relevant tag/wordform attributes
@@ -440,6 +440,8 @@ class Feedback_install(object):
         def get_tag_argument(attr_):
             " For a Tag object, get all of the morphological attributes "
             vals = list(set(Tag.objects.filter(pos=self.file_pos).values_list(attr_, flat=True)))
+            if vals == []:
+                return (attr_, [])
             if vals[0] != '':
                 vals = sorted([''] + vals) # empty value necessary
             else:
