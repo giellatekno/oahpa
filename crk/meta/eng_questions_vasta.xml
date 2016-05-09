@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <questions>
   <q id="vtrdem1">
     <qtype>V-P-DEM</qtype>
@@ -192,7 +192,7 @@
                 </element>
                 </question>
           </q>
-<q id="vadji">
+<q id="vadji1">
     <qtype>V-AI-II-PRS</qtype>
     <question>
         <text>SUBJ MAINV ADJ</text> <!--The shoes are black. -->
@@ -208,7 +208,7 @@
         </element>
     </question>
 </q>
-<q id="vadji">
+<q id="vadji2">
     <qtype>V-AI-II-PRS</qtype>
     <question>
         <text>POSS MAINV ADJ</text> <!--Mary's books are green. -->
@@ -220,6 +220,25 @@
         </element>
         <element id='MAINV'>
             <grammar tag="V+Ind+Prs+3Pl+&lt;eng&gt;"/>
+        </element>
+        <element id='ADJ'>
+            <grammar tag="A+Pos+&lt;eng&gt;"/>
+            <sem class="COLOUR"/>
+        </element>
+    </question>
+</q>
+<q id="vadji3">
+    <qtype>V-AI-II-PRS</qtype>
+    <question>
+        <text>POSS MAINV ADJ</text> <!--The duck's egg is white.-->
+        <element id='POSS'>
+            <grammar tag="N+Prop+Px3Sg+&lt;eng&gt;"/>
+        </element>
+        <element id='SUBJ'>
+            <grammar tag="N+Pl+&lt;eng&gt;"/>
+        </element>
+        <element id='MAINV'>
+            <grammar tag="V+Ind+Prs+3Sg+&lt;eng&gt;"/>
         </element>
         <element id='ADJ'>
             <grammar tag="A+Pos+&lt;eng&gt;"/>
