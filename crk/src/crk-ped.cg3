@@ -469,6 +469,8 @@ MAP (&err-DemShouldbeAfterNoun) TARGET QDL IF (*-1 N LINK *-1 COPULA BARRIER NOT
 LIST DemDistance = Med Prox ;
 LIST DemNumber = Sg Pl ;
 
+LIST QUALITY-TASKS = QDL ; #dummy set, here we want question id:s
+
 #MAP (&err-numberShouldAgree) TARGET Dem IF (0 $$DemNumber)(*1 QDL LINK NOT *1 $$DemNumber) ; 
 MAP (&err-NotCorrectTypeofDem) TARGET Dem IF (0 $$DemDistance)(*-1 QDL LINK NOT *-1 $$DemDistance) ; 
 
@@ -476,8 +478,8 @@ MAP (&err-NotCorrectTypeofDem) TARGET Dem IF (0 $$DemDistance)(*-1 QDL LINK NOT 
 MAP (&err-INneedsINDem) TARGET Dem IF (0 (Dem AN))((-1 (N IN)) OR (1 (N IN))) ; 
 MAP (&err-ANneedsANDem) TARGET Dem IF (0 (Dem IN))((-1 (N AN)) OR (1 (N AN))) ; 
 MAP (&err-numberShouldAgree) TARGET Dem IF (0 $$DemNumber)(NOT 1 $$DemNumber)(NOT -1 $$DemNumber)(NOT *1 QDL) ; 
-MAP (&err-AN-needs-AI) TARGET (V II) OR (V TI) IF ((-1 (N AN)) OR (1 (N AN))) ; 
-MAP (&err-IN-needs-II) TARGET (V AI) IF ((-1 (N IN)) OR (1 (N IN))) ; 
+MAP (&err-AN-needs-AI) TARGET (V II) IF ((-1 (N AN)) OR (1 (N AN))) (*-1 QUALITY-TASKS) ; 
+MAP (&err-IN-needs-II) TARGET (V AI) IF ((-1 (N IN)) OR (1 (N IN))) (*-1 QUALITY-TASKS) ; 
 
 
 
