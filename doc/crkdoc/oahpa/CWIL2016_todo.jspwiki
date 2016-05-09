@@ -44,37 +44,7 @@
 ** we make an eng FST, adjusted to the tasks
 ** we will generate the English tasks
 
-!! Haida
-!MorfaS, 
-tbw.
-!Leksa, 
-tbw.
-!Vasta
-tbw.
 
-!Numra
-
-Technical matters: The file {{hdn_oahpa/hdn_drill/game.py}} contains
-wrong filename references for {{class NumGame(Game):}}, cf. the same file
-for crk. The crk file has been updated since the transcriptors changed name, 
-the hdn one has not. The command
-
-{{grep -A1 'class NumGame' *_oahpa/*_drill/game.py }}
-
-reveals that file references for appr. half of the Numras have been updated.
-As a quick fix for hdn, the content of the correct filenames have been copied
-over to the old ones in {{/opt/smi/hdn/bin}} on ''gtoahpa'' (TT).
-
-__TODO__: 
-* update the references, in this context: for hdn, but in general, for half the Oahpas.
-* Shorten the hdn Numra menu to only including numerals up to 100
-* Implement the clock (when content is ready)
-
-
-!! Linguistic matters
-* Numra: 
-** Numbers 1-100 are ok (__NOTE__ we do not build 101-1000 tasks)
-** Clock is under construction
 
 !!Common resourse page
 * grammar course?

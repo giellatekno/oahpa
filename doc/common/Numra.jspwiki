@@ -74,9 +74,14 @@ Numra differs from Morfa in not using the MySQL database, but using transducers 
 
 The transducers behind numra are (where $LANG is the iso code for your language):
 
-* Cardinal and ordinal numbers: $LANG/src/transcriptions/numbers.lexc ([North Sámi example|https://victorio.uit.no/langtech/trunk/gt/sme/src/sme-num.txt])
-* Clock: $LANG/src/transcriptions/clock.lexc ([North Sámi example|https://victorio.uit.no/langtech/trunk/gt/sme/src/clock-sme.lexc])
-* Date: $LANG/src/transcriptions/date.lexc ([North Sámi example|https://victorio.uit.no/langtech/trunk/gt/sme/src/date-sme.lexc])
+* Cardinal and ordinal numbers: $LANG/src/transcriptions/transcriptor-numbers-digit2text.lexc
+* Clock: $LANG/src/transcriptions/transcriptor-clock-digit2text.lexc
+* Date: $LANG/src/transcriptions/transcriptor-date-digit2text.lexc
+
+For example files, look at related languges. Note that the order of
+writing the lexc file should be as indicated in the filenames, thus
+{{2:two}} (''digit2text'') rather than {{two:2}}, as it is (wrongly)
+written for some of the languages.
 
 The files governing the four programs are ''num.html, num_ord.html, clock.html, date.html''. These files are found here:
 
