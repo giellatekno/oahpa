@@ -2,7 +2,7 @@
 Multichar_Symbols
 +QDL +N +Sg +Pl +Pron +Dem +Prox  
 +Med +A +Pos +Det +Indef +Def +Prt +Prs +Ind
-+V +Inf +Prs +Prt +Prf
++V +Ind +Inf +Prs +Prt +Prf
 +Px3Sg +Px3Pl
 +1Sg +2Sg +3Sg +1Pl +12Pl +2Pl +3Pl
 +A +Pos +Comp +Superl
@@ -506,32 +506,32 @@ LEXICON inf
 +V+Inf: ENDLEX ;
 
 LEXICON pres
-+V+Prs+1Sg: ENDLEX ;
-+V+Prs+2Sg: ENDLEX ;
-+V+Prs+3Sg:%>e2s ENDLEX ;
-+V+Prs+1Pl: ENDLEX ;
-+V+Prs+12Pl: ENDLEX ;
-+V+Prs+2Pl: ENDLEX ;
-+V+Prs+3Pl: ENDLEX ;
++V+Ind+Prs+1Sg: ENDLEX ;
++V+Ind+Prs+2Sg: ENDLEX ;
++V+Ind+Prs+3Sg:%>e2s ENDLEX ;
++V+Ind+Prs+1Pl: ENDLEX ;
++V+Ind+Prs+12Pl: ENDLEX ;
++V+Ind+Prs+2Pl: ENDLEX ;
++V+Ind+Prs+3Pl: ENDLEX ;
 
 LEXICON regularpast
-+V+Prt+1Sg:%>ed ENDLEX ;
-+V+Prt+2Sg:%>ed ENDLEX ;
-+V+Prt+3Sg:%>ed ENDLEX ;
-+V+Prt+1Pl:%>ed ENDLEX ;
-+V+Prt+12Pl:%>ed ENDLEX ;
-+V+Prt+2Pl:%>ed ENDLEX ;
-+V+Prt+3Pl:%>ed ENDLEX ;
++V+Ind+Prt+1Sg:%>ed ENDLEX ;
++V+Ind+Prt+2Sg:%>ed ENDLEX ;
++V+Ind+Prt+3Sg:%>ed ENDLEX ;
++V+Ind+Prt+1Pl:%>ed ENDLEX ;
++V+Ind+Prt+12Pl:%>ed ENDLEX ;
++V+Ind+Prt+2Pl:%>ed ENDLEX ;
++V+Ind+Prt+3Pl:%>ed ENDLEX ;
 +V+Ptc:%>ed ENDLEX ;
 
 LEXICON strongpast
-+V+Prt+1Sg: ENDLEX ;
-+V+Prt+2Sg: ENDLEX ;
-+V+Prt+3Sg: ENDLEX ;
-+V+Prt+1Pl: ENDLEX ;
-+V+Prt+12Pl: ENDLEX ;
-+V+Prt+2Pl: ENDLEX ;
-+V+Prt+3Pl: ENDLEX ;
++V+Ind+Prt+1Sg: ENDLEX ;
++V+Ind+Prt+2Sg: ENDLEX ;
++V+Ind+Prt+3Sg: ENDLEX ;
++V+Ind+Prt+1Pl: ENDLEX ;
++V+Ind+Prt+12Pl: ENDLEX ;
++V+Ind+Prt+2Pl: ENDLEX ;
++V+Ind+Prt+3Pl: ENDLEX ;
 
 LEXICON strongptc
 +V+Ptc: ENDLEX ;
