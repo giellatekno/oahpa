@@ -1,7 +1,7 @@
 Alphabet
 
 a b c d e f g h i j k l m n o p q r s t u v w x y z 
-n2:n %>:0 e2:0 x2:0  ;
+n2:n %>:0 e2:0 x2:0 ;
 
 
 Sets
@@ -11,10 +11,13 @@ Cns = b c d f g h j k l m n p q r s t v w x y z ;
 Rules
 
 "an Rule"
-n2:0 <=> a _ ? Cns ;
+n2:0 <=> a _ ?  Cns ;
 
-"Affix vowel rule"
+"Noun affix vowel rule"
 e2:e <=> [x|s h] %>:0 _  ;
+        
+"Verb affix vowel rule"
+e:0 <=> e %>:0 _  ;
         
 ! bake>ed:bake00d
 ! face>es:face00s
