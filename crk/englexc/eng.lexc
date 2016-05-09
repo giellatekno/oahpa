@@ -3,7 +3,7 @@ Multichar_Symbols
 +QDL +N +Sg +Pl +Pron +Dem +Prox  
 +Med +A +Pos +Det +Indef +Def +Prt +Prs +Ind
 +V +Inf +Prs +Prt +Prf
-+Px3Sg +PxPl
++Px3Sg +Px3Pl
 +1Sg +2Sg +3Sg +1Pl +12Pl +2Pl +3Pl
 +A +Pos +Comp +Superl
 +Num
@@ -20,6 +20,7 @@ punctation ;
 articles ;
 adjectives ;
 verbs ;
+names ;
 
 ! Definiteness as prefixes
 
@@ -39,6 +40,16 @@ LEXICON definiteness
 
 
 ! The noun lexica
+
+LEXICON names
+Mary prop ;
+John prop ;
+Jean prop ;
+Sue prop ;
+
+LEXICON prop
++N+Prop: ENDLEX ;
++N+Prop+Px3sg:'s ENDLEX ;
 
 LEXICON nouns
 Frenchman CAT ;
@@ -290,7 +301,7 @@ LEXICON CHILD
 
 LEXICON DEFNESS
 @U.defness.def@ DEFSUF ;
-@U.defness.bare@ ENDLEX ;
+@U.defness.bare@ BARESUF ;
 @U.defness.indef@ INDEFSUF ;
 
 LEXICON DEFSUF 
@@ -305,7 +316,7 @@ LEXICON INDEFSUF
 LEXICON POSS
 ENDLEX ; ! the book
 +Px3Sg:'s ENDLEX ; ! the book's 
-
++Px3Pl:s' ENDLEX ; ! the book's 
 
 
 ! ==========
