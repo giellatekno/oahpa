@@ -500,6 +500,7 @@ class Word(models.Model):
 	aspect = models.CharField(max_length=20) # aspect partner (verbs only)
 	motion = models.CharField(max_length=20) # motion partner (verbs only)
 	rime = models.CharField(max_length=8)
+	init = models.CharField(max_length=8)
 
 
 	def morphTag(self, nosave=True):
@@ -718,6 +719,7 @@ class Tag(models.Model):
 	derivation = models.CharField(max_length=7)
 	subclass = models.CharField(max_length=10)
 	tense = models.CharField(max_length=5)
+	# language = models.CharField(max_length=8)
 
 	class Admin:
 		pass
