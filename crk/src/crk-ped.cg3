@@ -411,7 +411,7 @@ MAP (&err-typo) TARGET QMRK (*-1 QDL) ;
 
 # looking for incorrect translation, error tag mapped to the English word
 MAP (&err-translationNoun) TARGET N IF (0 ("shoe"))(*1 QDL LINK NOT *1 SHOE) ; 
-SELECT N IF (0 SHOE LINK *-1 ("^qdl") LINK *-1 ("shoes")) ; 
+SELECT N IF (0 SHOE LINK *-1 QDL LINK *-1 ("shoes")) ; 
 
 MAP (&err-translationNoun) TARGET N IF (0 ("knife"))(*1 QDL LINK NOT *1 KNIFE) ; 
 MAP (&err-translationNoun) TARGET N IF (0 ("spoon"))(*1 QDL LINK NOT *1 SPOON) ; 
@@ -458,7 +458,12 @@ MAP (err-translationNoun) TARGET N IF (0 ("ugly"))(*1 QDL LINK NOT *1 UGLY) ;
 MAP (err-translationNoun) TARGET N IF (0 ("broken"))(*1 QDL LINK NOT *1 BROKEN) ;
 MAP (err-translationNoun) TARGET N IF (0 ("clean"))(*1 QDL LINK NOT *1 CLEAN) ;
 MAP (err-translationNoun) TARGET N IF (0 ("purple"))(*1 QDL LINK NOT *1 PURPLE) ;
+MAP (&err-translationNrSg) TARGET (N Pl) IF (*-1 QDL LINK NEGATE *-1 (N Pl)) ;
+MAP (&err-translationNrPl) TARGET (N Sg) IF (*-1 QDL LINK NEGATE *-1 (N Sg)) ;
 
+
+SELECT ("têhtapiwin" IN) IF (*-1 QDL LINK *-1 ("chair")) ; # têhtapiwin has two meanings, one IN, one AN
+SELECT N IF (0 ("maskisin") LINK *-1 QDL LINK *-1 ("shoe")) ;  
 
 
 # looking for incorrect word order, error tag mapped to QDL
@@ -471,15 +476,18 @@ LIST DemNumber = Sg Pl ;
 
 LIST QUALITY-TASKS = QDL ; #dummy set, here we want question id:s
 
-#MAP (&err-numberShouldAgree) TARGET Dem IF (0 $$DemNumber)(*1 QDL LINK NOT *1 $$DemNumber) ; 
+#MAP (&err-DemNumberShouldAgree) TARGET Dem IF (0 $$DemNumber)(*1 QDL LINK NOT *1 $$DemNumber) ; 
 MAP (&err-NotCorrectTypeofDem) TARGET Dem IF (0 $$DemDistance)(*-1 QDL LINK NOT *-1 $$DemDistance) ; 
 
 # looking for incorrect morphosyntax, , error tag mapped to the Cree Det
 MAP (&err-INneedsINDem) TARGET Dem IF (0 (Dem AN))((-1 (N IN)) OR (1 (N IN))) ; 
 MAP (&err-ANneedsANDem) TARGET Dem IF (0 (Dem IN))((-1 (N AN)) OR (1 (N AN))) ; 
-MAP (&err-numberShouldAgree) TARGET Dem IF (0 $$DemNumber)(NOT 1 $$DemNumber)(NOT -1 $$DemNumber)(NOT *1 QDL) ; 
-MAP (&err-AN-needs-AI) TARGET (V II) IF ((-1 (N AN)) OR (1 (N AN))) (*-1 QUALITY-TASKS) ; 
+MAP (&err-DemNumberShouldAgree) TARGET Dem IF (0 $$DemNumber)(NOT 1 $$DemNumber)(NOT -1 $$DemNumber)(NOT *1 QDL) ; 
+MAP (&err-AN-needs-AI) TARGET (V II) IF (NEGATE 1 (N IN))(NEGATE -1 (N IN))  (*-1 QUALITY-TASKS) ; 
 MAP (&err-IN-needs-II) TARGET (V AI) IF ((-1 (N IN)) OR (1 (N IN))) (*-1 QUALITY-TASKS) ; 
+
+MAP (&err-VNumberShouldAgree) TARGET V  IF (*-1 QDL) (NEGATE 0 3Sg) ((*-1 (N Sg) BARRIER QDL) OR (*1 (N Sg))) ;
+MAP (&err-VNumberShouldAgree) TARGET V  IF (*-1 QDL) (NEGATE 0 3Pl) ((*-1 (N Pl) BARRIER QDL) OR (*1 (N Pl))) ;
 
 
 
@@ -487,9 +495,11 @@ AFTER-SECTIONS
 
 # messages:
 # &err-typo: Is there an incorrect spelled word in your translation? 
-# &err-translationNoun: Is the noun translated correctly?
+# &err-translationNoun: Is the noun translated correctly? Perhaps a typo?
+# &err-translationNrSg: Is the noun in singular form?
+# &err-translationNrPl: Is the noun in plural form?
 # &err-DemShouldBeforetheNoun: The demonstrative pronoun should come before the noun.
-# &err-DemShouldbeAfterNoun The demonstrative pronoun should come after the noun.
+# &err-DemNumberShouldAgree: The demonstrative pronoun should come after the noun.
 # &err-numberShouldAgree: The demonstrative pronoun must agree in number with the noun.
 # &err-NotCorrectTypeofDem: Did you write the correct type of demonstrative pronoun?
 # &err-INneedsINDem: An inanimate noun needs an inanimate demonstrative pronoun.
