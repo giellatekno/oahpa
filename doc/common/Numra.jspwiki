@@ -139,26 +139,39 @@ for the language in question. They are called in the LANG_drill/game.py file.
 
 __class NumGame(Game):__
 {{{
-generate_fst = 'transcriptor-numbers2text-desc.xfst'
-answers_fst = 'transcriptor-text2numbers-desc.xfst' 
+generate_fst = 'transcriptor-numbers-digit2text.filtered.lookup.xfst'
+answers_fst = 'transcriptor-numbers-text2digits.filtered.lookup.xfst' 
 }}}
 
 !Numra clock
 
 __class Klokka(NumGame):__
 {{{
-generate_fst = 'transcriptor-clock2text-desc.xfst'
-answers_fst = 'transcriptor-text2clock-desc.xfst'        
+generate_fst = 'transcriptor-clock-digit2text.filtered.lookup.xfst'
+answers_fst = 'transcriptor-clock-text2digit.filtered.lookup.xfst'        
 }}}
+
+
 
 !Numra date
 
 __class Dato(Klokka):__
 
 {{{
-generate_fst = 'transcriptor-date2text-desc.xfst'
-answers_fst = 'transcriptor-text2date-desc.xfst'
+generate_fst = 'transcriptor-date-digit2text.filtered.lookup.xfst'
+answers_fst = 'transcriptor-date-text2digit.filtered.lookup.xfst'
 }}}
+
+
+!Numra money
+
+__class Dato(Money) -- perhaps? -- check the class name:__
+
+{{{
+generate_fst = 'transcriptor-money-digit2text.filtered.lookup.xfst'
+answers_fst = 'transcriptor-money-text2digit.filtered.lookup.xfst'
+}}}
+
 
 !! The source files
 
@@ -169,10 +182,11 @@ The source files are in $LANG/src/transcriptions/*.lexc.
 * +Use/NG  = not-generate, for ped generation isme-ped.fst
 * +Use/NA  = not-analyse, for restricting analyses needed for MT generation not to pop up elsewhere
 
-Thus, we should restrict the +Use/NA flag to strings we do not want in Oahpa...
+Thus, ignore the +Use/NA tag for Oahpa/Numra purposes. Use +Use/NG for forms you want to 
+accept, but not present.
 
-But this is not how it is (was?) used (?)
+The +Use/NG (and +Use/NA) are handled in the file LANG/am-shared/src-transcriptions-dir-include.am, 
+called by the Makefile.am in the transcriptions folder. 
 
-Note especially the old $GTLANG/gt/Makefile; where it seems +Use/NA had no function (it removed all strings).
 
 
