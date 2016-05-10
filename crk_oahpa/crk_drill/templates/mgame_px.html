@@ -9,14 +9,16 @@
 	{% elif settings.gametype == "context" %}
 	  {% if settings.possessive_case == 'N-2SG' %}
 		    {% trans 'The noun is given in the 1S possessive form. Enter the 2SG possessive form.' %}
-		  {% if settings.possessive_case == 'N-3SG' %}
+		{% if settings.possessive_case == 'N-3SG' %}
 		    {% trans 'The noun is given in the 1S possessive form. Enter the 3SG possessive form.' %}
-		  {% else %}
-        {% trans "Add nouns in correct forms." %}
-      {% endif %}
+		{% else %}
+             {% trans "Add nouns in correct forms." %}
+        {% endif %}
+    {% endif %}
 	  
 	{% endif %}
 {% endblock %}
+
 {% block book %} {% endblock %}
 
 {% block subsetting %}
