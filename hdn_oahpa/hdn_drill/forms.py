@@ -415,8 +415,6 @@ VASTAS_NR_OF_TASKWORDS = (
 TRANS_CHOICES = (
 	('hdneng', _('Haida to English')),
 	('enghdn', _('English to Haida')),
-	('hdnfra', _('Haida to French')),
-	('frahdn', _('French to Haida')),
 )
 
 NUMLANGUAGE_CHOICES = (
