@@ -413,14 +413,14 @@ VASTAS_NR_OF_TASKWORDS = (
 
 
 TRANS_CHOICES = (
-	('hdneng', _('Cree to English')),
-	('enghdn', _('English to Cree')),
-	('hdnfra', _('Cree to French')),
-	('frahdn', _('French to Cree')),
+	('hdneng', _('Haida to English')),
+	('enghdn', _('English to Haida')),
+	('hdnfra', _('Haida to French')),
+	('frahdn', _('French to Haida')),
 )
 
 NUMLANGUAGE_CHOICES = (
-	('hdn', _('Cree')),
+	('hdn', _('Haida')),
 )
 
 SEMTYPE_CHOICES = (
@@ -1092,7 +1092,7 @@ class LeksaQuestion(OahpaQuestion):
 		self.sourcelang = transtype[0:3]
 		self.word = word
 		self.gametype = 'leksa'
-		self.animacy = word.animacy # Added for Cree, in order to color the animate nouns. Thanks to this assigment operation the template has access to the animacy information.
+		self.animacy = word.animacy # Added for Haida, in order to color the animate nouns. Thanks to this assigment operation the template has access to the animacy information.
 		self.trans_anim = word.trans_anim
 		self.audio = word.audio # pronounciation
 		kwargs['correct_val'] = correct_val
@@ -1118,7 +1118,7 @@ class LeksaQuestion(OahpaQuestion):
 		else:
 			self.lemma = word.definition
 
-		#if word.pos.upper() == 'V':  # There is no infinitive in Cree!
+		#if word.pos.upper() == 'V':  # There is no infinitive in Haida!
 		#	if word.language in infinitives_sub and infinitives_add:
 		#		infin_s = infinitives_sub[word.language]
 		#		infin_a = infinitives_add[word.language]
@@ -1147,7 +1147,7 @@ class LeksaQuestion(OahpaQuestion):
 		if stat_pref:
 			self.correct_ans = stat_pref
 
-		# Displayed answer also needs infinitive marking - but NO infinitive in Cree!
+		# Displayed answer also needs infinitive marking - but NO infinitive in Haida!
 		# Needs to happen last because of stat_pref
 		#if word.pos.upper() == 'V':
 		#	if self.translang in infinitives_sub and infinitives_add:
@@ -1912,10 +1912,10 @@ class ContextMorfaQuestion(OahpaQuestion):
 		# Remove leading whitespace and capitalize.
 		astring = astring.lstrip()
 		qstring = qstring.lstrip()
-		# astring = astring[0].capitalize() + astring[1:]  # No capital letters in the beginning of a sentence in Cree
+		# astring = astring[0].capitalize() + astring[1:]  # No capital letters in the beginning of a sentence in Haida
 		# qstring = qstring[0].capitalize() + qstring[1:]
 
-		# qstring = qstring + "?" # no question mark in Cree
+		# qstring = qstring + "?" # no question mark in Haida
 		# Add dot if the last word is not the open question.
 		if astring.count("!")==0 and not astring[-1]=="Q":
 			astring = astring + "."
