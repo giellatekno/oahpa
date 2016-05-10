@@ -438,12 +438,12 @@ SEMTYPE_CHOICES = (
     ('HOME,-CLOTHING-AND-WORK', _('Home, Clothing & Work')),
     ('NATURE-AND-WEATHER', _('Nature & Weather')),
     ('TIME,-COUNTING,-MONEY,-AND-DATES', _('Time, Counting, Money & Dates')),
-    ('DESCRIPTIONS', _('descriptions')),
+    ('DESCRIPTIONS', _('Descriptions')),
     ('EXPRESSIONS-AND-QUESTIONS', _('Expressions & Questions')),
 	('BASIC-CONVERSATION',_('Basic Conversation')),
 	('TRANSPORTATION-AND-PLACES',_('Transportation & Places')),
 	('ACTIVITIES',_('Activities')),
-    ('all', _('all')),
+    ('all', _('All')),
 )
 
 
