@@ -2,6 +2,20 @@
 
 // TODO: tooltip links does not show link cursor if you hover.
 
+// Create a localisation tooltip for the text on HTML elements with class 
+// "interface" when ALT key is hold down and mouse enteres the HTML element
+function translate(event) {  
+    if (event.altKey || event.altLeft) {
+        $(this).children('span').removeAttr('class');
+        $(this).children('span').setAttribute('class',"shortinfo_lang");      
+    }
+}
+
+function restore_attr(event) {
+    $(this).children('span').setAttribute('class',"invisible");
+    this.setAttribute('class',"interface");    
+}
+
 
 // Set up event handlers
 $(document).ready(function(){
@@ -28,6 +42,9 @@ $(document).ready(function(){
 	});
 
 	$('div#settings select').change(formsubmit);
+
+    $('.interface').mouseenter(translate);
+    $('.interface').mouseleave(restore_attr);
 	
 	disable_autocomplete();
 });
