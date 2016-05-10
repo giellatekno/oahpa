@@ -1223,10 +1223,6 @@ class Klokka(NumGame):
 
 		hour = str(randint(1, 12))
 
-		if len(hour) == 1:
-			hour = '0' + hour
-		else:
-			hour = str(hour)
 		if self.settings['gametype'] == "kl1":
 			min_options = ['00', '30']
 			minutes = choice(min_options)
