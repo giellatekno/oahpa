@@ -17,6 +17,7 @@ function restore_attr(event) {
 }
 
 
+
 // Set up event handlers
 $(document).ready(function(){
 	$('.feedback').hide();
