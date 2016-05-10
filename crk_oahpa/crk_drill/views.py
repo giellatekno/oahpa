@@ -484,6 +484,7 @@ def num_clock(request):
 	# numgame.settings['gametype'] = clocktype
 
 	c = numgame.create_game(request)
+	c['numra_gametype'] = "clock"
 
 	return render_to_response('clock.html', c,
 				context_instance=RequestContext(request))
@@ -506,6 +507,7 @@ def num(request):
 	numgame.settings['gametype'] = "card"
 
 	c = numgame.create_game(request)
+	c['numra_gametype'] = "numra_cardinal"
 
 	return render_to_response('num.html', c,
 				context_instance=RequestContext(request))
@@ -516,6 +518,7 @@ def dato(request):
 	datogame = Numview(DatoSettings, Dato)
 
 	c = datogame.create_game(request)
+	c['numra_gametype'] = "dato"
 
 	return render_to_response('dato.html', c,
 				context_instance=RequestContext(request))
@@ -526,6 +529,7 @@ def money(request):
 	moneygame = Numview(MoneySettings, Money)
 
 	c = moneygame.create_game(request)
+	c['numra_gametype'] = "money"
 
 	return render_to_response('money.html', c,
 				context_instance=RequestContext(request))
