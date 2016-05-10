@@ -430,20 +430,20 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
-    ('KINSHIP-AND-PEOPLE', _('People & Kinship')),
-    ('BODYPARTS-AND-CONDITIONS', _('The Human Body')),
-    ('FOOD,-DRINKS,-DINNERWARE,-AND-COOKING', _('In the Kitchen')),
-    ('ANIMALS', _('Animals')),
-    ('MISCELLANEOUS', _('Miscellaneous')),
-    ('HOME,-CLOTHING-AND-WORK', _('Home, Clothing & Work')),
-    ('NATURE-AND-WEATHER', _('Nature & Weather')),
-    ('TIME,-COUNTING,-MONEY,-AND-DATES', _('Time, Counting, Money & Dates')),
-    ('DESCRIPTIONS', _('Descriptions')),
-    ('EXPRESSIONS-AND-QUESTIONS', _('Expressions & Questions')),
+	('KINSHIP-AND-PEOPLE', _('People & Kinship')),
+	('BODYPARTS-AND-CONDITIONS', _('The Human Body')),
+	('FOOD,-DRINKS,-DINNERWARE,-AND-COOKING', _('In the Kitchen')),
+	('ANIMALS', _('Animals')),
+	('MISCELLANEOUS', _('Miscellaneous')),
+	('HOME,-CLOTHING-AND-WORK', _('Home, Clothing & Work')),
+	('NATURE-AND-WEATHER', _('Nature & Weather')),
+	('TIME,-COUNTING,-MONEY,-AND-DATES', _('Time, Counting, Money & Dates')),
+	('DESCRIPTIONS', _('Descriptions')),
+	('EXPRESSIONS-AND-QUESTIONS', _('Expressions & Questions')),
 	('BASIC-CONVERSATION',_('Basic Conversation')),
 	('TRANSPORTATION-AND-PLACES',_('Transportation & Places')),
 	('ACTIVITIES',_('Activities')),
-    ('all', _('All')),
+	('all', _('All')),
 )
 
 
