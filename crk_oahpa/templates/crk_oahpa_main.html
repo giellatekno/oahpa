@@ -231,8 +231,7 @@
 			</div>
 		</div>
 	</div>
-    {% ifnotequal settings.gametype 'leksa' %}
-    {% ifnotequal settings.gametype 'numra' %}
+    {% block disable_nds %}
     <script type="text/javascript" 
             src="{{ MEDIA_URL }}/js/neahttadigisanit.jquery.min.js"></script>
 
@@ -248,8 +247,7 @@
             });
         });
     </script>
-    {% endifnotequal %}
-    {% endifnotequal %}
+    {% endblock %}
 
 </body>
 </html>
