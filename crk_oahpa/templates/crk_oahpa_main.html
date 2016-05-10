@@ -5,6 +5,9 @@
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	    <title>{% block title %}{% endblock %}</title>
 
+        <link rel="stylesheet" 
+              href="{{ MEDIA_URL }}/css/neahttadigisanit.css"></link>
+
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main.css"/>
 		<!--[if gte IE 7]>
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/ie_fixes.css"/>
@@ -14,6 +17,8 @@
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/mobile.css"/>
 		{% endcomment %}
 
+
+        
 		{% block extracss %}
 		{% endblock %}
 
@@ -226,5 +231,23 @@
 			</div>
 		</div>
 	</div>
+    {% ifnotequal settings.gametype 'leksa' %}
+    <script type="text/javascript" 
+            src="{{ MEDIA_URL }}/js/neahttadigisanit.jquery.min.js"></script>
+
+    <script type="text/javascript">
+        // Wait for the document to load...
+        $(document).ready(function (){
+            window.NDS_API_HOST = 'http://itwewina.oahpa.no/';
+
+            // Initialize and configure NDS
+            $(document).selectToLookup({
+                // This specifies the dictionary set to 
+                api_host: 'http://itwewina.oahpa.no/',
+            });
+        });
+    </script>
+    {% endifnotequal %}
+
 </body>
 </html>
