@@ -105,7 +105,13 @@ function reveal_tooltip (event) {
 function reveal_feedback (event) {
 	reveal_id = event.target.id.match(/(feedback-\d)/)[0];
 	$('.tooltip').hide();
+	var offset = $(event.target).offset();
+	offset.left += 70;
+
 	$('#' + reveal_id).show();
+	$('#' + reveal_id).offset(offset);
+
+
 	return false; 
 }
 
