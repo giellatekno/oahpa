@@ -42,7 +42,14 @@ $(document).ready(function(){
 			window.open(link);
 	});
 
-	$('div#settings select').change(formsubmit);
+	function change_page(e) {
+	    link = $(e.target).val();
+	    window.location = link;
+	    return false;
+	}
+
+	$('#pos_menu select').change(change_page);
+	$('div#settings select').not('.exclude_form_update').change(formsubmit);
 
     $('.interface').mouseenter(translate);
     $('.interface').mouseleave(restore_attr);
