@@ -765,7 +765,9 @@ class BareGame(Game):
 			WORD_FILTER = Q()
 			if pos == 'Px':
 					WORD_FILTER = Q(word__semtype__semtype='MORFAPOSS')
-				
+			# if pos == 'V':
+			# 	WORD_FILTER = Q(word__trans_anim__in=['AI', 'TI'])
+
 			tag = tags.order_by('?')[0]
 			
 			if source and source not in ['all', 'All']: 
@@ -1063,13 +1065,14 @@ class NumGame(Game):
 	def generate_forms(self, forms, fstfile):
 		import subprocess
 		from threading import Timer
+		import shlex
 
 		try:
 			open(fstfile)
 		except IOError:
 			raise Http404("File %s does not exist." % fstfile)
 
-		gen_norm_command = [LOOKUP_TOOL, LOOKUP_OPTS, fstfile]
+		gen_norm_command = shlex.split(' '.join([LOOKUP_TOOL, LOOKUP_OPTS, fstfile]))
 
 		try:
 			forms.encode('utf-8')
