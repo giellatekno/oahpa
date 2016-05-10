@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+  <messages xml:lang="eng"> 
+
+    <!--
+
+     About the message structure. <message /> tag must have task, and tag. `task`
+     is used by the system to recognize what the user is working on, and `tag`
+     is the morphological tag to look for in the FST output.
+
+     Optional attributes:
+      
+      * `article` - specify the link to the grammar. The system will show this
+      with text such as "Click to read more".
+
+      * `tag2` - another tag that must match in the analyses for the message to be applied.
+
+     Within the <message /> tag, there are two children that may exist.
+     <description /> is required, and <title /> is optional. If you include
+     WORDFORM in the text of either of these, it will be replaced with the
+     user's input.
+
+	    <message task="TaskName" tag="ErrorTag" article="http://oahpa.no/sme/gramm/article.language.html#section">
+	        <title>WORDFORM: Something is missing here.</title>
+	        <description>
+	            You should add what is missing.
+	        </description>
+	    </message>
+
+     -->
+
+<!--	<message id="LowercaseErr">WORDFORM skal ha stor forbokstav?</message> -->
+
+	<message  tag="Err/a2aa">
+	    <title>WORDFORM: Remember long a.</title>
+	    <description>
+	        â instead of a
+	    </description>
+	</message>
+	<message tag="Err/a2aa">
+	    <title>WORDFORM: Remember long e.</title>
+	    <description>
+	        ê instead of e
+	    </description>
+	</message>
+	<message tag="Err/a2aa">
+	    <title>WORDFORM: Remember long i.</title>
+	    <description>
+	        î instead of i
+	    </description>
+	</message>
+	<message tag="Err/a2aa">
+	    <title>WORDFORM: Remember long o.</title>
+	    <description>
+	        ô instead of o
+	    </description>
+	</message>
+	<message tag="Err/a2aa">
+	    <title>WORDFORM: Remember short a.</title>
+	    <description>
+	        a instead of â
+	    </description>
+	</message>
+	<message tag="Err/a2aa">
+	    <title>WORDFORM: Remember short e.</title>
+	    <description>
+	        e instead of ê
+	    </description>
+	</message>
+	<message tag="Err/a2aa">
+	    <title>WORDFORM: Remember short i.</title>
+	    <description>
+	        i instead of î
+	    </description>
+	</message>
+	<message tag="Err/a2aa">
+	    <title>WORDFORM: Remember short o.</title>
+	    <description>
+	        o instead of ô
+	    </description>
+	</message>
+
+
+</messages> 
