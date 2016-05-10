@@ -263,7 +263,7 @@ class Feedback_install(object):
         ("N", ['stem',  'animacy', 'rime']),
         # TODO: ("A", ['stem',  'rime', 'attrsuffix', 'compsuffix',]),
         # TODO: ("Num", ['stem',  'rime', ]),
-        ("V", ['stem',  'trans_anim', 'init', 'rime']),
+        ("V", ['stem',  'trans_anim', 'init']),
     ])
 
     # Each part of speech followed by relevant tag/wordform attributes
