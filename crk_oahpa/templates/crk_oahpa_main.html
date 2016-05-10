@@ -232,6 +232,7 @@
 		</div>
 	</div>
     {% ifnotequal settings.gametype 'leksa' %}
+    {% ifnotequal settings.gametype 'numra' %}
     <script type="text/javascript" 
             src="{{ MEDIA_URL }}/js/neahttadigisanit.jquery.min.js"></script>
 
@@ -247,6 +248,7 @@
             });
         });
     </script>
+    {% endifnotequal %}
     {% endifnotequal %}
 
 </body>
