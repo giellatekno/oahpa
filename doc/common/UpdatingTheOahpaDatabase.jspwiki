@@ -22,6 +22,9 @@ You might see an error like the following:
     (1267, "Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '='")
 }}}
 
+Troubleshooting this might also be made more easy with a GUI utility such as:
+[Sequel Pro|http://www.sequelpro.com/], which is free.
+
 Which typically means that the database hasn't been configured for utf-8. Use a preferred means of exploring the database to set three things, one is the database settings so that new tables will be created properly:
 
 # 1. The database encoding must be "utf8" and the database collation must be "utf8_general_ci".
