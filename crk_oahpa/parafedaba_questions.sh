@@ -21,16 +21,30 @@ DPL="$DATA/latcrk"
 DPR="$DATA/ruscrk"
 DPD="$DATA/smecrk"
 
+# echo "==================================================="
+# echo "installing tags and paradigms for Morfa"
+# $P install.py -r $META/eng_paradigms.txt -t $META/tags.txt -b 
+# echo " "
+# echo "done"
+# echo "==================================================="
+
 echo "==================================================="
-echo "installing tags and paradigms for Morfa"
-$P install.py -r $META/eng_paradigms.txt -t $META/tags.txt -b 
+echo "installing Morfa-C questions for V - TA - Prs, Prt, FutDef FutInt"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/TA-PRS_PRT_FUTDEF_FUTINT.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "installing Morfa-C word fillings"
-$P install.py -f $META/eng_fillings.xml --paradigmfile $META/eng_paradigms.txt --tagfile $META/tags.txt 2>>error.log
+echo "installing Morfa-C questions for V - TI - Prs, Prt, FutDef FutInt"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/TI-PRS_PRT_FUTDEF_FUTINT.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "installing Morfa-C questions for V - TA CNJ - Prs, Prt, FutDef FutInt"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/TA-CNJ-PRS_PRT_FUTINT.xm
 echo " "
 echo "done"
 echo "==================================================="
