@@ -67,6 +67,9 @@ class QAGame(Game):
 					'12Pl': '12Pl',
 					'4Sg': '4Sg',
 					'4Pl': '4Pl',
+					'4Sg/Pl': '4Sg/Pl',
+					'5Sg/Pl': '5Sg/Pl',
+					'4Pl': '4Pl',
 			}
 					
 					
