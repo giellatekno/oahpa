@@ -619,6 +619,17 @@ class QAGame(Game):
 		# # Get corresponding OBJECT tag
 		_mainv_qelement = answer.qelement_set.get(identifier='MAINVOBJ')
 		_qwords_object = qwords.get('OBJECT')
+
+		if _qwords_object is None:
+			# error_vars = (
+			# 	question.qid,
+			# 	question.string
+			# )
+			# error = "Could not find OBJECT tag, but MAINVOBJ is defined. Question %s: %s " % error_vars
+			# raise Http404(error)
+			print 'no obj'
+			return awords
+
 		_qwords_mainv = qwords.get('MAINVOBJ')
 		_awords_mainv = awords.get('MAINVOBJ')
 		awords['OBJECT'] = [_qwords_object]
