@@ -589,13 +589,13 @@ class Morfaview(Gameview):
 		'V-PRS':  _('Practise present tense'),
 		'V-TA-PRS': _('Practice transitive animate present'),
 		'V-TA-PRT': _('Practice transitive animate preterite'),
-		'V-TA-FUTDEF': _('Practice transitive animate future definite (TA)'),
-		'V-TA-FUTANT': _('Practice transitive animate future intentional (TA)'),
+		'VTA-FUTDEF': _('Practice transitive animate future definite (TA)'),
+		'VTA-FUTINT': _('Practice transitive animate future intentional (TA)'),
 
 		'V-TI-PRS': _('Practice transitive inanimate present'),
 		'V-TI-PRT': _('Practice transitive inanimate preterite'),
-		'V-TI-FUTDEF': _('Practice transitive inanimate future definite (TI)'),
-		'V-TI-FUTINT': _('Practice transitive inanimate future intentional (TI)'),
+		'VTI-FUTDEF': _('Practice transitive inanimate future definite (TI)'),
+		'VTI-FUTINT': _('Practice transitive inanimate future intentional (TI)'),
 
 		'V-TA-CNJPRS': _('Practice conjunct present'),
 		'V-TA-CNJPRT': _('Practice conjunct preterite'),

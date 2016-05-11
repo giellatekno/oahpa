@@ -280,13 +280,13 @@ VTYPE_CONTEXT_CHOICES = (
 
 	('V-TA-PRS', _('present (TA)')),
 	('V-TA-PRT', _('preterite (TA)')),
-	('V-TA-FUTDEF', _('future definite (TA)')),
-	('V-TA-FUTANT', _('future intentional (TA)')),
+	('VTA-FUTDEF', _('future definite (TA)')),
+	('VTA-FUTINT', _('future intentional (TA)')),
 
 	('V-TI-PRS', _('present (TI)')),
 	('V-TI-PRT', _('preterite (TI)')),
-	('V-TI-FUTDEF', _('future definite (TI)')),
-	('V-TI-FUTINT', _('future intentional (TI)')),
+	('VTI-FUTDEF', _('future definite (TI)')),
+	('VTI-FUTINT', _('future intentional (TI)')),
 
 	('V-PRT', _('past')),
 	('V-FUTDEF', _('future definite')),
