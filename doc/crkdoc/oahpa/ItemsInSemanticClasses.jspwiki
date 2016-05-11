@@ -46,49 +46,85 @@ The list is in alphabetic order. The commands for making the list are in the bot
 *  11 mPLACE
 *   1 mSPORT
 
-!!verbs
-*   7 ACTIVITY
-*   1 AGE
-*   4 APPEARANCE
-*   1 BRING
-*  24 COLOUR
-*   8 COMMUNICATION
-*   3 CONDITION
-*   7 DAYS_OF_THE_WEEK
-*   4 EMOTION
-*   6 HOME
-*   6 IMPACT
-*   3 MONEY
-*  17 MOVE
-*  11 MOVE_SOMETHING
-*   1 MUSIC
-*   5 NAME
-*   1 POSESS
-*   6 POSSESS
-*   5 PREPARE_FOOD
-*   3 QUALITY
-*   3 QUANTITY
-*   9 SENSE
-*   3 SLEEP
-*   1 SPORT
-*  19 STATE
-*   8 TASTE
-*   5 THINK
-*  10 TIME
-*   8 TRANSPORTATION
-*   5 WANT
-*   2 WEATHER
-*   1 WORK
-*  27 mACTIVITY
-*   5 mBRING
-*   1 mCOMMUNICATION
-*   1 mIMPACT
-*   1 mMOVE
-*   5 mMOVEMENT
-*   2 mNAME
-*   3 mSENSE
-*   3 mTHINK
-*   2 mTIME
+!!TA-VERBS
+*    1 BRING
+*    1 COMMUNICATION
+*    3 IMPACT
+*    1 MOVE
+*    6 MOVE_SOMETHING
+*    2 NAME
+*    1 POSESS
+*    1 POSSESS
+*    2 PREPARE_FOOD
+*    1 QUANTITY
+*    4 SENSE
+*    2 TASTE
+*    3 THINK
+*    1 TRANSPORTATION
+*    2 WANT
+*    5 mBRING
+*    1 mCOMMUNICATION
+*    1 mIMPACT
+*    1 mMOVE
+*    1 mMOVEMENT
+*    2 mNAME
+*    3 mSENSE
+*    3 mTHINK
+
+!!TI-VERBS
+*    1 EMOTION
+*    3 IMPACT
+*    6 MOVE
+*    5 MOVE_SOMETHING
+*    1 NAME
+*    2 POSSESS
+*    2 PREPARE_FOOD
+*    1 QUANTITY
+*    4 SENSE
+*    2 TASTE
+*    1 THINK
+*    2 WANT
+
+!!AI-VERBS
+*    7 ACTIVITY
+*    1 AGE
+*    2 APPEARANCE
+*   11 COLOUR
+*    7 COMMUNICATION
+*    3 CONDITION
+*    3 EMOTION
+*    6 HOME
+*    1 MONEY
+*   10 MOVE
+*    1 MUSIC
+*    1 NAME
+*    1 PREPARE_FOOD
+*    3 QUALITY
+*    1 QUANTITY
+*    1 SENSE
+*    3 SLEEP
+*    1 SPORT
+*    9 STATE
+*    3 TASTE
+*    1 THINK
+*    7 TRANSPORTATION
+*    1 WANT
+*    1 WORK
+*   27 mACTIVITY
+*    4 mMOVEMENT
+
+!!II-VERBS
+*    2 APPEARANCE
+*   11 COLOUR
+*    7 DAYS_OF_THE_WEEK
+*    1 MONEY
+*    1 NAME
+*    1 POSSESS
+*   10 STATE
+*    1 TASTE
+*   10 TIME
+*    2 WEATHER
+*    2 mTIME
 
 !!particles
 *   1 ADVERBIAL_CLAUSE
@@ -110,6 +146,29 @@ echo '' >> overview
 echo '!! verbs' >> overview 
 cat V_crk.xml | grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' >> overview
 echo '' >> overview 
+
+src$ cat V_crk.xml | grep '<l ' | grep -v '"none"' | grep '"TA"' |tr '<' '>' | cut -d '>' -f3 |l
+src$ cat V_crk.xml | grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' |l
+src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' ' ' | tr '¢' '\n'|  grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' |l
+src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' ' ' | tr '¢' '\n'|  grep '<sem c' |l
+src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' ' ' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' |l
+src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' | tr '€' '\n' | l
+src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |l
+src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |l
+src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c |l
+src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' |l
+src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview 
+src$ see overview 
+src$ echo TI-VERBS >> overview 
+src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TI"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview 
+src$ echo AI-VERBS >> overview 
+src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"AI"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview 
+src$ echo II-VERBS >> overview 
+src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"II"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview 
+
+
+
+
 echo '!! particles' >> overview 
 cat Ipc_crk.xml | grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' >> overview 
 }}}
