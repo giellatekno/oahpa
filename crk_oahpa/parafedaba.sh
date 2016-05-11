@@ -397,12 +397,12 @@ echo " "
 echo "done"
 echo "==================================================="
 
-echo "==================================================="
-echo "installing Morfa-C questions for object agreement"
-$P install.py -g $META/grammar_defaults.xml -q $META/obj_agreement_questions.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
+# echo "==================================================="
+# echo "installing Morfa-C questions for object agreement"
+# $P install.py -g $META/grammar_defaults.xml -q $META/obj_agreement_questions.xml 2>>error.log
+# echo " "
+# echo "done"
+# echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C questions for V - TA - Prs, Prt, FutDef FutInt"
@@ -420,7 +420,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C questions for V - TA CNJ - Prs, Prt, FutDef FutInt"
-$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/TA-CNJ-PRS_PRT_FUTINT.xm 2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/TA-CNJ-PRS_PRT_FUTINT.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
