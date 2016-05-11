@@ -85,6 +85,9 @@ class QAGame(Game):
 			'2Pl':'3Pl',
 			'3Pl':'3Pl',
 			'4Pl':'4Pl',
+
+			'4Sg/Pl': '4Sg/Pl',
+			'5Sg/Pl': '5Sg/Pl'
 		}
 
 		# Values for Question-Answer agreement

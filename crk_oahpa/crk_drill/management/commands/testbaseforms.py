@@ -15,7 +15,7 @@ import sys
 # # #
 
 def testbaseforms(tfilter=False, tag_string=False):
-	from myv_drill.models import Form
+	from crk_drill.models import Form
 	from django.db.models import Count
 
 	if tag_string:
