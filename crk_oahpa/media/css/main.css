@@ -375,6 +375,7 @@ div.tooltip {
     font-size: 95%;
 
     background-color: #fff;
+    z-index: 9;
 }
 
 
@@ -817,10 +818,52 @@ span[data-form-trans-anim="TA"] {
     color: #6BB70D;
 }
 
+.helptext {
+        /*border-bottom: 1px dotted #000000;*/ 
+        color: #000000; 
+        outline: none;
+        cursor: help; 
+        text-decoration: none;
+        position: relative;
+}
+
+.helptext span {
+        margin-left: -999em;
+        position: absolute;
+}
+		
+.helptext:hover span {
+        border-radius: 5px 5px; 
+        -moz-border-radius: 5px; 
+        -webkit-border-radius: 5px; 
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); 
+        -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1); 
+        -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+        font-family: Calibri, Tahoma, Geneva, sans-serif;
+        position: absolute; 
+        left: 0em; top: 2em; 
+        z-index: 99;
+        margin-left: 0; 
+        width: 180px;
+}
+
+.helptext:hover img {
+        border: 0; 
+        margin: -10px 0 0 -55px;
+        float: left; 
+        position: absolute;
+}
+
+.helptext:hover em {
+        font-family: Candara, Tahoma, Geneva, sans-serif; 
+        font-size: 1.2em; 
+        font-weight: bold;
+        display: block; 
+        padding: 0.2em 0 0.6em 0;
+}
 
 /* feedback shortinfo */
 .shortinfo { 
-    display: none;
     padding: 0.8em 1em;
     background: #FFFFAA; 
     border: 1px solid #FFAD33;

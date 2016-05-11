@@ -108,9 +108,8 @@ function reveal_feedback (event) {
 	var offset = $(event.target).offset();
 	offset.left += 70;
 
-	$('#' + reveal_id).show();
-	$('#' + reveal_id).offset(offset);
-
+	var el = $('#' + reveal_id);
+	el.show().offset(offset);
 
 	return false; 
 }
