@@ -143,32 +143,18 @@ The list is in alphabetic order. The commands for making the list are in the bot
 echo '!! nouns' > overview 
 cat N_crk.xml | grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' >> overview
 echo '' >> overview 
-echo '!! verbs' >> overview 
-cat V_crk.xml | grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' >> overview
+echo '!! TA-verbs' >> overview 
+cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview 
 echo '' >> overview 
-
-src$ cat V_crk.xml | grep '<l ' | grep -v '"none"' | grep '"TA"' |tr '<' '>' | cut -d '>' -f3 |l
-src$ cat V_crk.xml | grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' |l
-src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' ' ' | tr '¢' '\n'|  grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' |l
-src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' ' ' | tr '¢' '\n'|  grep '<sem c' |l
-src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' ' ' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' |l
-src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' | tr '€' '\n' | l
-src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |l
-src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |l
-src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c |l
-src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' |l
-src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview 
-src$ see overview 
-src$ echo TI-VERBS >> overview 
-src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TI"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview 
-src$ echo AI-VERBS >> overview 
-src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"AI"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview 
-src$ echo II-VERBS >> overview 
-src$ cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"II"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview 
-
-
-
-
+echo '!! TI-VERBS' >> overview 
+cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TI"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview 
+echo '' >> overview 
+echo '!! AI-VERBS' >> overview 
+cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"AI"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview 
+echo '' >> overview 
+echo '!! II-VERBS' >> overview 
+cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"II"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview 
+echo '' >> overview 
 echo '!! particles' >> overview 
 cat Ipc_crk.xml | grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' >> overview 
 }}}
