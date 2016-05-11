@@ -1,4 +1,4 @@
-{% extends "liv_oahpa.html" %}
+{% extends "est_oahpa.html" %}
 {% load i18n %} 
 
 {# clear sidebar #}
@@ -12,12 +12,12 @@
 {% endif %}
 
 {% if user.is_authenticated %}
-<p>You are currently logged in. <a href="{% url liv_oahpa.courses.urls.logout %}">{% trans "Log out?" %}</a></p>
+<p>You are currently logged in. <a href="{% url est_oahpa.courses.urls.logout %}">{% trans "Log out?" %}</a></p>
 {% else %}
 <p>{% trans "Please log in to continue..." %}</p>
 {% endif %}
 
-<form method="post" action="{% url liv_oahpa.courses.urls.login %}">
+<form method="post" action="{% url est_oahpa.courses.urls.login %}">
 {% csrf_token %}
 <table>
 <tr>
@@ -35,7 +35,7 @@
 </form>
 
 <div id="loginnotice">
-	<p>{% blocktrans %}If you are participating in a course at <a href="http://site.uit.no/">http://site.uit.no/</a> and are seeing this page, you must log in at site.uit.no first.  If you have already done so click <a href="/liv_oahpa/login/">here</a> to try logging in again.  If it is still not working, make sure that you do not have cookies disabled.{% endblocktrans %}
+	<p>{% blocktrans %}If you are participating in a course at <a href="http://site.uit.no/">http://site.uit.no/</a> and are seeing this page, you must log in at site.uit.no first.  If you have already done so click <a href="/est_oahpa/login/">here</a> to try logging in again.  If it is still not working, make sure that you do not have cookies disabled.{% endblocktrans %}
 </p>
 	</div>
 

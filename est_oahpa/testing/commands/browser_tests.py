@@ -27,7 +27,7 @@ def test_morfas():
 	fail_count = 0
 
 	test_keys = {
-		'/liv_oahpa/morfas/': { 	
+		'/est_oahpa/morfas/': { 	
 				# form value, values to iterate
 				'case': map(itemgetter(0), CASE_CHOICES),
 				'bisyllabic': [True],
@@ -35,14 +35,14 @@ def test_morfas():
 				'contracted': [False],
 				'book': ['all'],
 		},
-		'/liv_oahpa/morfas/v/': {
+		'/est_oahpa/morfas/v/': {
 				'vtype': map(itemgetter(0), VTYPE_CHOICES),
 				'bisyllabic': [True],
 				'trisyllabic': [False],
 				'contracted': [False],
 				'book': ['all'],
 		},
-		'/liv_oahpa/morfas/a/': {
+		'/est_oahpa/morfas/a/': {
 				'adjcase': map(itemgetter(0), ADJCASE_CHOICES),
 				'grade': map(itemgetter(0), ADJEX_CHOICES),
 				'bisyllabic': [True],
@@ -50,7 +50,7 @@ def test_morfas():
 				'contracted': [False],
 				'book': ['all'],
 		},
-		# '/liv_oahpa/morfas/p/': {
+		# '/est_oahpa/morfas/p/': {
 				# 'pron_type': '',
 				# 'pron_case': '',
 				# 'bisyllabic': [True],
@@ -58,7 +58,7 @@ def test_morfas():
 				# 'contracted': [False],
 				# 'book': ['all'],
 		# },
-		# '/liv_oahpa/morfas/l/': {
+		# '/est_oahpa/morfas/l/': {
 				# 'num_bare': '',
 				# 'num_level': '',
 				# 'num_type': '',
