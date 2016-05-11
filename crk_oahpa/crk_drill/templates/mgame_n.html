@@ -3,18 +3,20 @@
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
-
+	  {% trans "Complete the response to the question." %} 
   {% if settings.gametype == "bare" %}
     {% trans "Put each noun in its correct form. Click on a word for its translation." %}
+  
   {% elif settings.gametype == "context" %}
       {% if settings.case_context == 'N-PL' %}
-        {% trans "Complete the response to the question. Enter the plural form of the noun given in brackets." %}
-      {% elif settings.case_context == 'N-LOC' %}
-        {% trans "Complete the response to the question. Enter the locative form of the noun given in brackets." %}
+		<a class="helptext" href="#">{% trans "Enter the plural form of the noun given in brackets." %}<span class="shortinfo">Ex. If you are given "(nêhiyaw)", answer "nêhiyawak".</span></a>
+      {% elif settings.case_context == 'N-LOC' %} 
+        <a class="helptext" href="#">{% trans "Enter the locative form of the noun given in brackets." %}<span class="shortinfo">Ex. If you are given "(mîcisowikamik)", answer "mîcisowikamikohk".</span></a>
       {% else %}
-        {% trans "Complete the response to the question. Enter the correct possessive form of the noun." %}
+        <a class="helptext" href="#">{% trans "Enter the correct possessive form of the noun." %}<span class="shortinfo">Ex. If you are given "()", answer "".</span></a>
       {% endif %}
   {% endif %}
+<a class="helptext" href="#">Translate<span class="shortinfo">{% trans "Hold the ALT key and click on any word for its translation." %}</span></a> this page.
 {% endblock %}
 
 {% block subsetting %}
