@@ -411,6 +411,19 @@ echo " "
 echo "done"
 echo "==================================================="
 
+echo "==================================================="
+echo "installing Morfa-C questions for V - TI - Prs, Prt, FutDef FutInt"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/TI-PRS_PRT_FUTDEF_FUTINT.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "installing Morfa-C questions for V - TA CNJ - Prs, Prt, FutDef FutInt"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/TA-CNJ-PRS_PRT_FUTINT.xm 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 		# echo "==================================================="
 # echo "installing Morfa-C questions for pronoun"
@@ -450,12 +463,13 @@ echo "==================================================="
 # ###################
 # # Vasta and VastaS
 # ###################
-# echo "==================================================="
-# echo "installing Vasta questions"
-# $P install.py -g $META/grammar_defaults.xml -q $META/questions_vasta.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+
+echo "==================================================="
+echo "installing Vasta questions"
+$P install.py -g $META/grammar_defaults.xml -q $META/eng_questions_vasta.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 # echo "==================================================="
 # echo "installing Vasta-S questions"
