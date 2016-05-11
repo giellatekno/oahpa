@@ -1,5 +1,5 @@
 !!List of items of semantic classes
-The list is in alphabetic order
+The list is in alphabetic order. The commands for making the list are in the bottom.
 
 !nouns
 *   1 ACTIVITY
@@ -101,4 +101,16 @@ The list is in alphabetic order
 *   7 QUANTITY
 *   6 QUESTION
 *  13 TIME
+
+!!commands
+{{{
+echo '!! nouns' > overview 
+cat N_crk.xml | grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' >> overview
+echo '' >> overview 
+echo '!! verbs' >> overview 
+cat V_crk.xml | grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' >> overview
+echo '' >> overview 
+echo '!! particles' >> overview 
+cat Ipc_crk.xml | grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' >> overview 
+}}}
 
