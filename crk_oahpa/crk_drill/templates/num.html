@@ -44,9 +44,9 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.nno.html
   {# TODO: strings for instructions. #}
   {% block gamename %}{% endblock %}
   {% ifequal gametype "string" %}
-    {% trans "Enter the numeral. (ex. 23)" %}
+	Enter the <a class="helptext" href="#">{% trans "numeral" %}<span class=shortinfo>Ex. "23"</span></a> equivalent to the given Cree number.
   {% else %}
-    {% trans "Enter the number as word(s). (ex. nîsitanaw nistosâp)." %}
+	Enter the Plains Cree <a class="helptext" href="#">{% trans "translation" %}<span class=shortinfo">Ex. "nîsitanaw nistosâp"</span></a> of the given number.
   {% endifequal %}
 {% endblock %}
 
