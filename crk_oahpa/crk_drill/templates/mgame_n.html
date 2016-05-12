@@ -6,14 +6,16 @@
 {% endblock %}
 {% block instructions %}
   {% if settings.gametype == "bare" %}
-	  {% trans "Complete the response to the question." %}
   
   {% elif settings.gametype == "context" %}
       {% if settings.case_context == 'N-PL' %}
+	  {% trans "Complete the response to the question." %}
 		Enter the <a class="helptext" href="#">{% trans "plural form" %}<span class="shortinfo">Ex. If you are given "(nêhiyaw)", answer "nêhiyawak".</span></a> of the noun given in brackets.
       {% elif settings.case_context == 'N-LOC' %} 
+	  {% trans "Complete the response to the question." %}
         Enter the <a class="helptext" href="#">{% trans "locative form" %}<span class="shortinfo">Ex. If you are given "(mîcisowikamik)", answer "mîcisowikamikohk".</span></a> of the noun given in brackets.
       {% else %}
+	  {% trans "Complete the response to the question." %}
         Enter the correct <a class="helptext" href="#">{% trans "possessive form" %}<span class="shortinfo">Ex. If you are given "()", answer "".</span></a> of the noun.
       {% endif %}
   {% endif %}
