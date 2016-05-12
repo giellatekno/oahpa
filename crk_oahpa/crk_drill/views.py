@@ -586,7 +586,7 @@ class Morfaview(Gameview):
 		'COND':  _('Practise conditional'),
 		'IMPRT':  _('Practise imperative'),
 		'POT':  _('Practise potential'),
-        'V-II-PRT': _('Practise inanimate past tense (II)'),
+        'V-II-PRS': _('Practise inanimate present tense (II)'),
 		'V-AI-PRS':  _('Practise intransitive animate tense (AI)'),
 		'V-TA-PRS': _('Practice transitive animate present (TA)'),
 		'V-TA-PRT': _('Practice transitive animate preterite (TA)'),
