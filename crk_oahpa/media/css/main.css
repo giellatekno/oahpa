@@ -191,6 +191,8 @@ ul#games_menu li {
 
 #games_menu.small .gamename {
 	color: #144ea6;
+	line-height: 1em;
+	font-size: 10pt;
 }
 
 #games_menu.small img {
@@ -374,6 +376,7 @@ div.tooltip {
 
     background-color: #fff;
     z-index: 9;
+    width: 250px;
 }
 
 
@@ -874,3 +877,16 @@ span[data-form-trans-anim="TA"] {
     border: 1px solid #FFAD33; 
 }
 
+.tooltip_question_id {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 1.5em;
+    font-size: 8pt;
+    font-style: italic;
+    color: #999;
+}
+
+dd:hover .tooltip_question_id {
+    display: block;
+}
