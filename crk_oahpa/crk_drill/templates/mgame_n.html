@@ -9,7 +9,7 @@
   
   {% elif settings.gametype == "context" %}
       {% if settings.case_context == 'N-PL' %}
-	  {% trans "Complete the response to the question." %}
+	  <b>{% trans "Complete the response to the question." %}</b>
 		Enter the <a class="helptext" href="#">{% trans "plural form" %}<span class="shortinfo">Ex. If you are given "(nêhiyaw)", answer "nêhiyawak".</span></a> of the noun given in brackets.
       {% elif settings.case_context == 'N-LOC' %} 
 	  {% trans "Complete the response to the question." %}
