@@ -8,11 +8,11 @@
   
   {% elif settings.gametype == "context" %}
       {% if settings.case_context == 'N-PL' %}
-		<a class="helptext" href="#">{% trans "Enter the plural form of the noun given in brackets." %}<span class="shortinfo">Ex. If you are given "(nêhiyaw)", answer "nêhiyawak".</span></a>
+		Enter the <a class="helptext" href="#">{% trans "plural form" %}<span class="shortinfo">Ex. If you are given "(nêhiyaw)", answer "nêhiyawak".</span></a> of the noun given in brackets.
       {% elif settings.case_context == 'N-LOC' %} 
-        <a class="helptext" href="#">{% trans "Enter the locative form of the noun given in brackets." %}<span class="shortinfo">Ex. If you are given "(mîcisowikamik)", answer "mîcisowikamikohk".</span></a>
+        Enter the <a class="helptext" href="#">{% trans "locative form" %}<span class="shortinfo">Ex. If you are given "(mîcisowikamik)", answer "mîcisowikamikohk".</span></a> of the noun given in brackets.
       {% else %}
-        <a class="helptext" href="#">{% trans "Enter the correct possessive form of the noun." %}<span class="shortinfo">Ex. If you are given "()", answer "".</span></a>
+        Enter the correct <a class="helptext" href="#">{% trans "possessive form" %}<span class="shortinfo">Ex. If you are given "()", answer "".</span></a> of the noun.
       {% endif %}
   {% endif %}
 <a class="helptext" href="#">Translate<span class="shortinfo">{% trans "Hold the ALT key and click on any word for its translation." %}</span></a> this page.
