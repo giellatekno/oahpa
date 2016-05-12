@@ -1,7 +1,9 @@
 ﻿{% extends "mgame.html" %}
 {% load i18n %}
 
-{% block gamename %}{{ settings.gamename }}{% endblock %}
+{% block gamename %}
+{% if settings.gametype == "bare" %}{{ settings.gamename }}{% endif %}
+{% endblock %}
 {% block instructions %}
   {% if settings.gametype == "bare" %}
 	  {% trans "Complete the response to the question." %}
