@@ -6,9 +6,9 @@
 {% block instructions %}
 	{% if settings.gametype == "bare" %}
 	  {% if settings.possessive_case == 'N-2SG' %}
-			{% trans 'The noun is given in the 1S possessive form. Enter the 2S possessive form.' %}
+			Enter the 2S possessive form of the <a class="helptext" href="#">{% trans "given noun" %}<span class="shortinfo">The noun is given in the 1S possessive form.</span></a>.
 		{% elif settings.possessive_case == 'N-3SG' %}
-			{% trans 'The noun is given in the 1S possessive form. Enter the 3S possessive form.' %}
+			Enter the 3S possessive form of the <a class="helptext" href="#">{% trans "given noun" %}<span class="shortinfo">The noun is given in the 1S possessive form.</span></a>.
 		{% else %}
 			 {% trans "Add nouns in correct forms." %}
 		{% endif %}
