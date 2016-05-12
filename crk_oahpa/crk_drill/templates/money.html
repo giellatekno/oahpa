@@ -7,14 +7,14 @@
 {% block instructions %}
   {# TODO: strings for instructions. #}
   {% ifequal gametype "string" %}
-    {% trans "Write the sum of money with numbers, preceded by $ (ex. $2.50)." %}
+    <a class="helptext" href="#">{% trans "Translate" %}<span class="shortinfo">Ex. "$2.50"</span></a> the given sum of money into numerals. Make sure your answer is preceded by "$"! 
   {% else %}
-    {% trans "Write the sum of money in words (ex. nîso newopehikanak)." %}
+   Enter the Plains Cree <a class="helptext" href="#">{% trans translation %}<span class="shortinfo">Ex. "nîso newopehikanak"</span></a> of the given sum of money.
   {% endifequal %}
 {% endblock %}
 
 {% block setting_items %}
-	<li><label for="id_{{ settingsform.numgame.name }}">{% trans "Expression of money numeric to words or vice versa." %}</label>
+	<li><label for="id_{{ settingsform.numgame.name }}">{% trans "Choose either numeric to words or vice versa." %}</label>
 	    {{ settingsform.numgame }}</li>
 </ul>
 {% endblock %}
