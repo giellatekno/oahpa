@@ -45,7 +45,6 @@
 	{% for form in forms %}
 
 	<dt>{% block question %}{% endblock %}</dt>
-	{# TODO: Switch rendering of tooltip to a different loop in a different block? #}
     {% if gametype == "sahka" and not form.utterance %}
         {{ form.utterance_id }}
         <input type="hidden" name="{{ forloop.counter }}-userans" value="{{ form.userans }}" />

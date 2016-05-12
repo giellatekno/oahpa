@@ -1,6 +1,7 @@
 ﻿{% extends "mgame.html" %}
 {% load i18n %}
 
+{% block question_mark %}{% endblock %}
 {% block gamename %}{% trans settings.gamename %}{% endblock %}
 {% block instructions %}
 	{% if settings.gametype == "bare" %}
