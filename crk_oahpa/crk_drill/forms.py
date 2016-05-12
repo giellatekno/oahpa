@@ -944,7 +944,7 @@ class OahpaSettings(forms.Form):
 					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
 					'case_context' : 'N-PL',
 					'trans_anim': 'AI',
-					'vtype_context' : 'V-PRS',
+					'vtype_context' : 'V-AI-PRS',
 					'pron_context' : 'P-DEM',
 					'num_context' : 'NUM-ATTR',
 					'num_level' : '1',
@@ -1223,7 +1223,7 @@ class MorfaSettings(OahpaSettings):
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
 	case_context = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
-	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
+	vtype_context = forms.ChoiceField(initial='V-AI-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
 	pron_context = forms.ChoiceField(initial='P-DEM', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)
 	wordform_type = forms.ChoiceField(initial='', choices=WORDFORM_TYPE_CHOICES, widget=forms.Select)
 	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
