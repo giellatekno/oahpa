@@ -256,7 +256,8 @@ VTYPE_CHOICES = (
 )
 
 TRANS_ANIM_CHOICES = (
-	('AI-TI', _('AI-TI')),
+	('AI', _('AI')),
+	('TI', _('TI')),
 	# ('all', _('All')),
 )
 
@@ -946,7 +947,7 @@ class OahpaSettings(forms.Form):
 					'proncase' : 'N-NOM', # Need a new default case here
 					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
 					'case_context' : 'N-PL',
-					'trans_anim': 'AI-TI',
+					'trans_anim': 'AI',
 					'vtype_context' : 'V-PRS',
 					'pron_context' : 'P-DEM',
 					'num_context' : 'NUM-ATTR',
@@ -1214,7 +1215,7 @@ class MorfaSettings(OahpaSettings):
 	proncase = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
 	vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
-	trans_anim = forms.ChoiceField(initial='AI-TI', choices=TRANS_ANIM_CHOICES, widget=forms.Select)
+	trans_anim = forms.ChoiceField(initial='AI', choices=TRANS_ANIM_CHOICES, widget=forms.Select)
 	num_bare = forms.ChoiceField(initial='N-GEN', choices=NUM_BARE_CHOICES, widget=forms.Select)
 	num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)
 	num_type = forms.ChoiceField(initial='CARD',choices=NUM_TYPE_CHOICES, widget=forms.Select)
@@ -1296,6 +1297,7 @@ class MorfaQuestion(OahpaQuestion):
 			conneg_agr = False
 
 		conneg_widget = forms.HiddenInput(attrs={'value': conneg_agr})
+		self.trans_anim = word.trans_anim
 
 		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
 		self.fields['tag_id'] = forms.CharField(widget=tag_widget, required=False)
