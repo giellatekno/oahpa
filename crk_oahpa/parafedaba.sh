@@ -59,12 +59,12 @@ echo " "
 echo "done"
 echo "==================================================="
 
-echo "==================================================="
-echo "feeding db with $DPS/MWE_crk.xml"
-$P install.py --file $DPS/MWE_crk.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
+# echo "==================================================="
+# echo "feeding db with $DPS/MWE_crk.xml"
+# $P install.py --file $DPS/MWE_crk.xml 2>>error.log
+# echo " "
+# echo "done"
+# echo "==================================================="
 
 #  echo "==================================================="
 #  echo "feeding db with $DPS/Pron_crk.xml"
@@ -204,12 +204,12 @@ echo " "
 echo "done"
 echo "==================================================="
 
-echo "==================================================="
-echo "feeding db with $DPF/MWE_fracrk.xml"
-$P install.py --file $DPF/MWE_fracrk.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
+# echo "==================================================="
+# echo "feeding db with $DPF/MWE_fracrk.xml"
+# $P install.py --file $DPF/MWE_fracrk.xml 2>>error.log
+# echo " "
+# echo "done"
+# echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $DPF/num_fracrk.xml"
@@ -273,12 +273,12 @@ echo " "
 echo "done"
 echo "==================================================="
 
-echo "==================================================="
-echo "feeding db with $DPW/Ipc_engcrk.xml"
-$P install.py --file $DPW/MWE_engcrk.xml
-echo " "
-echo "done"
-echo "==================================================="
+# echo "==================================================="
+# echo "feeding db with $DPW/MWE_engcrk.xml"
+# $P install.py --file $DPW/MWE_engcrk.xml
+# echo " "
+# echo "done"
+# echo "==================================================="
 
 
 echo "==================================================="
