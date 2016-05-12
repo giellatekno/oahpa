@@ -269,7 +269,7 @@ VERB_FILTER_DEFINITION = ['stem', 'source']
 
 VTYPE_CONTEXT_CHOICES = (
 	('V-AI-PRS', _('present (AI)')),
-    ('V-II-PRS', _('present (II)')),
+    ('V-II-PRT', _('past (II)')),
 	('V-TA-PRS', _('present (TA)')),
 	('V-TA-PRT', _('past (TA)')),
 	('V-TA-FUT-DEF', _('future definite (TA)')),
