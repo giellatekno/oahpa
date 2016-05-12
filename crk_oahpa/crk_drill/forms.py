@@ -258,9 +258,9 @@ TRANS_ANIM_CHOICES = (
 )
 
 VERB_QUESTION_ANSWER = {
-	'V-AI-PRS': [('V+IA', 'V+IA+Ind+Prs+Person-Number')],
-	'V-AI-PRT': [('V+IA', 'V+IA+Ind+Prt+Person-Number')],
-#	'V-AI-FUT': [('V+IA', 'V+IA+Ind+Fut+Person-Number')],
+	'V-AI-PRS': [('V+IA', 'V+AI+Ind+Prs+Person-Number')],
+	'V-AI-PRT': [('V+IA', 'V+AI+Ind+Prt+Person-Number')],
+#	'V-AI-FUT': [('V+IA', 'V+AI+Ind+Fut+Person-Number')],
 #	'PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
 #	'PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
 }
