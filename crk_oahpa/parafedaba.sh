@@ -446,6 +446,32 @@ echo " "
 echo "done"
 echo "==================================================="
 
+echo "==================================================="
+echo "installing Morfa-C questions for V - II - Prs"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/II-PRS.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "installing Morfa-C questions for AI - CNJ - Prt, Prs"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/TA-CNJ-PRS_PRT_FUTINT.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "installing Morfa-C questions for TI - CNJ - Prt, Prs"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/TI-CNJ-PRS_PRT_FUTINT.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+# $META/verb_questions/AI-CNJ-PRT_PRS_FUTINT.xml
+# $META/verb_questions/TI-CNJ-PRS_PRT_FUTINT.xml
+# $META/verb_questions/II-PRS.xml
+
+
 		# echo "==================================================="
 # echo "installing Morfa-C questions for pronoun"
 # $P install.py -g $META/grammar_defaults.xml -q $META/pron_questions.xml 2>>error.log
@@ -593,7 +619,7 @@ $P manage.py mergetags
 
 echo "==================================================="
 echo "adding feedback to nouns"
-$P install.py -f $DPS/N_crk.xml --feedbackfile $META/feedback_nouns.xml
+$P install.py -f $DPS/N_crk.xml --feedbackfile $META/feedback_nouns.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -601,7 +627,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "adding feedback to verbs"
-$P install.py -f $DPS/V_crk.xml --feedbackfile $META/feedback_verbs.xml
+$P install.py -f $DPS/V_crk.xml --feedbackfile $META/feedback_verbs.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
