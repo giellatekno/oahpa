@@ -4,18 +4,15 @@
 {% block gamename %}{% trans settings.gamename %}{% endblock %}
 {% block instructions %}
 	{% if settings.gametype == "bare" %}
-		{% trans 'The noun is given in the 1S possessive form. Select which type (2S or 3S) you want to practice in the drop down menu above and then enter the correct possessive form of each noun.' %}
-    
-	{% elif settings.gametype == "context" %}
 	  {% if settings.possessive_case == 'N-2SG' %}
-		    {% trans 'The noun is given in the 1S possessive form. Enter the 2SG possessive form.' %}
-		{% if settings.possessive_case == 'N-3SG' %}
-		    {% trans 'The noun is given in the 1S possessive form. Enter the 3SG possessive form.' %}
+			{% trans 'The noun is given in the 1S possessive form. Enter the 2S possessive form.' %}
+		{% elif settings.possessive_case == 'N-3SG' %}
+			{% trans 'The noun is given in the 1S possessive form. Enter the 3S possessive form.' %}
 		{% else %}
-             {% trans "Add nouns in correct forms." %}
-        {% endif %}
-    {% endif %}
-	  
+			 {% trans "Add nouns in correct forms." %}
+		{% endif %}
+	{% elif settings.gametype == "context" %}
+		{% trans 'The noun is given in the 1S possessive form. Select which type (2S or 3S) you want to practice in the drop down menu above and then enter the correct possessive form of each noun.' %}
 	{% endif %}
 {% endblock %}
 
@@ -26,7 +23,7 @@
 {% ifequal settings.gametype "bare" %}
 <!--	<li><label for="id_{{ settingsform.possessive_type.name }}"> {% trans "Set" %}</label>
 		{{ settingsform.possessive_type }}</li> -->
-    <li><label for="id_{{ settingsform.possessive_case.name }}">{% trans "Type" %}</label>
+	<li><label for="id_{{ settingsform.possessive_case.name }}">{% trans "Type" %}</label>
 		{{ settingsform.possessive_case }}</li>
 {% endifequal %}
 
