@@ -4,8 +4,8 @@
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
     {% if settings.gametype == "bare" %} 
-        Enter the given verb in the form that <a class="helptext" href="#">{% trans corresponds %}<span class="shortinfo">Ex. "nîpawiw (nîyanân)" =  "ninîpawinân"</span></a> to the pronoun in brackets. 
-		{% trans Note: All verbs are given in the 3S form. %}
+        Enter the given verb in the form that <a class="helptext" href="#">{% trans "corresponds" %}<span class="shortinfo">Ex. "nîpawiw (nîyanân)" =  "ninîpawinân"</span></a> to the pronoun in brackets. 
+		{% trans "Note: All verbs are given in the 3S form." %}
     {% elif settings.gametype == "context" %}
 
       {% if settings.vtype_context == 'V-PRS' %}
