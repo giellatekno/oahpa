@@ -4,7 +4,8 @@
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
     {% if settings.gametype == "bare" %} 
-        {% trans "Enter the verb in the form that corresponds to the pronoun in brackets (Ex. nîpawiw (nîyanân) =  ninîpawinân). Click on a word for its translation. Note: All verbs are given in the 3S form." %}
+        Enter the given verb in the form that <a class="helptext" href="#">{% trans corresponds %}<span class="shortinfo">Ex. "nîpawiw (nîyanân)" =  "ninîpawinân"</span></a> to the pronoun in brackets. 
+		{% trans Note: All verbs are given in the 3S form. %}
     {% elif settings.gametype == "context" %}
 
       {% if settings.vtype_context == 'V-PRS' %}
@@ -16,6 +17,7 @@
       {% endif %}
 
     {% endif %}
+<a class="helptext" href="#">Translate<span class="shortinfo">{% trans "Hold the ALT key and click on any word for its translation." %}</span></a> this page.
 {% endblock %}
 {% block book %}{% endblock %}
 
