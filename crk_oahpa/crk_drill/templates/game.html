@@ -12,12 +12,11 @@
 {% ifnotequal gametype "sahka" %}
 {% ifnotequal gametype "sahka_main" %}
 <hr/>
+<div id="instructions">
+    <p>{% block gamename %}{% endblock %} {% block instructions %}{% endblock %}</p>
+</div>
 <div id="game_right_float">
 
-        <div id="instructions">
-            <p>{% block gamename %}{% endblock %}</p>
-            <p>{% block instructions %}{% endblock %}</p>
-        </div>
 
 	{% block tooltips %}
 	<div id="tooltips">
