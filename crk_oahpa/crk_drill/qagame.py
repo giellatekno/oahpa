@@ -104,9 +104,18 @@ class QAGame(Game):
 			'3Pl': '3Pl',
 		}
 
+		# N+AN+Sg - +3Pl+4Sg/PlO
+		# N+AN+Pl - +3Pl+4Sg/PlO
+
+		# N+AN+Sg+Obv - +3Pl+4Sg/PlO
+		# N+AN+Pl+Obv - +3Pl+4Sg/PlO
+
+		# obviative subject, further obviative
+		# +4Sg/Pl+5Sg/PlO
+
 		self.OBJ_AGR = {
-			'Sg': '3SgO',
-			'Pl': '3PlO',
+			# 'Sg': '4Sg/PlO',
+			# 'Pl': '4Sg/PlO',
 		}
 
 		# Available values for Number
@@ -633,29 +642,36 @@ class QAGame(Game):
 			# )
 			# error = "Could not find OBJECT tag, but MAINVOBJ is defined. Question %s: %s " % error_vars
 			# raise Http404(error)
-			print 'no obj'
 			return awords
 
 		_qwords_mainv = qwords.get('MAINVOBJ')
 		_awords_mainv = awords.get('MAINVOBJ')
 		awords['OBJECT'] = [_qwords_object]
-		fixed_number = self.OBJ_AGR[Tag.objects.get(id=_qwords_object['tag']).number]
+		# orig_tag = Tag.objects.get(id=_qwords_object['tag'])
+		# orig_tag_number = orig_tag.number
+		# fixed_number = self.OBJ_AGR[orig_tag_number]
 
-		def fix_mainv_obj_agr(_el_info):
-			_t = Tag.objects.get(id=_el_info['tag'])
-			current_number = _t.object
-			_str = _t.string
-			_o_agr_str = _str.replace('+' + current_number, '+' + fixed_number)
-			_new_tag = Tag.objects.get(string=_o_agr_str)
-			_w_id = _el_info['word']
-			_el_info['tag'] = _new_tag.id
-			_el_info['fullform'] = Form.objects.filter(word__id=_w_id,
-			                                           tag__id=_new_tag.id).values_list('fullform', flat=True)
-			return _el_info
-			# TODO: get q.object and replace here
+		# TODO: new tags confuse things, so add another layer of testing
+		# for obviative etc, dict with tuple for if/then
+
+		# def fix_mainv_obj_agr(_el_info):
+		# 	_t = Tag.objects.get(id=_el_info['tag'])
+		# 	current_number = _t.object
+		# 	_str = _t.string
+		# 	_o_agr_str = _str.replace('+' + current_number, '+' + fixed_number)
+		# 	try:
+		# 		_new_tag = Tag.objects.get(string=_o_agr_str)
+		# 	except Tag.DoesNotExist:
+		# 		raise Http404(u"Could not create agreement <%s>, because agreed tag does not exist, Noun <%s> does not match <%s>. question: %s" % (_o_agr_str, orig_tag.string, fixed_number, question.qid))
+		# 	_w_id = _el_info['word']
+		# 	_el_info['tag'] = _new_tag.id
+		# 	_el_info['fullform'] = Form.objects.filter(word__id=_w_id,
+		# 	                                           tag__id=_new_tag.id).values_list('fullform', flat=True)
+		# 	return _el_info
+		# 	# TODO: get q.object and replace here
 
 
-		_awords_mainv =  map(fix_mainv_obj_agr, _awords_mainv)
+		# _awords_mainv =  map(fix_mainv_obj_agr, _awords_mainv)
 		awords['MAINVOBJ'] = _awords_mainv
 
 		return awords
@@ -1024,6 +1040,7 @@ class QAGame(Game):
 		db_info['qwords'] = qwords
 
 		db_info['question_id'] = question.id
+		db_info['qid'] = question.qid
 		return db_info
 
 	######## Morfa questions
@@ -1074,6 +1091,7 @@ class QAGame(Game):
 
 		db_info['qwords'] = qwords
 		db_info['question_id'] = question.id
+		db_info['qid'] = question.qid
 		
 		return db_info, question
 
