@@ -248,54 +248,45 @@ VTYPE_CHOICES = (
 	('PRS', _('present')),
 	('PRT', _('past')),
 #	('FUT', _('future')),
-#	('PRF', _('perfect')),
-#	('GER', _('gerund')),
-#	('COND', _('conditional')),
-#	('IMPRT', _('imperative')),
-#	('POT', _('potential')),
 )
 
 TRANS_ANIM_CHOICES = (
 	('AI', _('AI')),
 	('TI', _('TI')),
-	# ('all', _('All')),
+#	('II', _('II')), #present V+II+Ind+Prs+3Sg, studentinput: V+II+Ind+Prt+3Sg
+	# ('all', _('All')),  
 )
 
 VERB_QUESTION_ANSWER = {
-	'V-PRS': [('V+IA', 'V+IA+Ind+Prs+Person-Number')],
-	'V-PRT': [('V+IA', 'V+IA+Ind+Prt+Person-Number')],
-#	'V-FUT': [('V+IA', 'V+IA+Ind+Fut+Person-Number')],
+	'V-AI-PRS': [('V+IA', 'V+IA+Ind+Prs+Person-Number')],
+	'V-AI-PRT': [('V+IA', 'V+IA+Ind+Prt+Person-Number')],
+#	'V-AI-FUT': [('V+IA', 'V+IA+Ind+Fut+Person-Number')],
 #	'PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
 #	'PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
-#	'PRF': [('V+Inf', 'V+PrfPrc')],
-#	'GER': [('V+Inf', 'V+Ger')],
-#	'COND': [('V+Inf', 'V+Cond+Prs+Person-Number')],
-#	'IMPRT': [('V+Inf', 'V+Imprt+Person-Number')],
-#	'POT': [('V+Inf', 'V+Pot+Prs+Person-Number')],
 }
 
 VERB_FILTER_DEFINITION = ['stem', 'source']
 
 VTYPE_CONTEXT_CHOICES = (
-	('V-PRS', _('present')),
+	('V-AI-PRS', _('present (AI)')),
 
 	('V-TA-PRS', _('present (TA)')),
 	('V-TA-PRT', _('preterite (TA)')),
-	('VTA-FUTDEF', _('future definite (TA)')),
-	('VTA-FUTINT', _('future intentional (TA)')),
+	('V-TA-FUT-DEF', _('future definite (TA)')),
+	('V-TA-FUT-INT', _('future intentional (TA)')),
 
 	('V-TI-PRS', _('present (TI)')),
 	('V-TI-PRT', _('preterite (TI)')),
-	('VTI-FUTDEF', _('future definite (TI)')),
-	('VTI-FUTINT', _('future intentional (TI)')),
+	('V-TI-FUT-DEF', _('future definite (TI)')),
+	('V-TI-FUT-INT', _('future intentional (TI)')),
 
-	('V-PRT', _('past')),
-	('V-FUTDEF', _('future definite')),
-	('V-FUTINT', _('future intentional')),
+	('V-AI-PRT', _('past (AI)')),
+	('V-AI-FUT-DEF', _('future definite (AI)')),
+	('V-AI-FUT-INT', _('future intentional (AI)')),
 
-	('V-TA-CNJPRS', _('conjunct present')),
-	('V-TA-CNJPRT', _('conjunct preterite')),
-	('V-TA-CNJFUTINT', _('conjunct future intentional (TI)')),
+	('V-TA-CNJ-PRS', _('conjunct present (TA)')),
+	('V-TA-CNJ-PRT', _('conjunct preterite (TA)')),
+	('V-TA-CNJ-FUT-INT', _('conjunct future intentional (TA)')),
 
 #	('V-FUT', _('future')),
 #	('V-PRF', _('perfect')),
