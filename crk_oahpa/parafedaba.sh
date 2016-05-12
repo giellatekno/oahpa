@@ -50,15 +50,22 @@ echo "==================================================="
 #  echo " "
 #  echo "done"
 #  echo "==================================================="
-# 
-# 
-#  echo "==================================================="
-#  echo "feeding db with $DPS/Ipc_crk.xml"
-#  $P install.py --file $DPS/Ipc_crk.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
-#  echo " "
-#  echo "done"
-#  echo "==================================================="
-# 
+
+
+echo "==================================================="
+echo "feeding db with $DPS/Ipc_crk.xml"
+$P install.py --file $DPS/Ipc_crk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPS/MWE_crk.xml"
+$P install.py --file $DPS/MWE_crk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
 #  echo "==================================================="
 #  echo "feeding db with $DPS/Pron_crk.xml"
 #  $P install.py --file $DPS/Pron_crk.xml --tagfile $META/tags.txt --paradigmfile $META/pron_paradigms.txt 2>>error.log
@@ -197,6 +204,13 @@ echo " "
 echo "done"
 echo "==================================================="
 
+echo "==================================================="
+echo "feeding db with $DPF/MWE_fracrk.xml"
+$P install.py --file $DPF/MWE_fracrk.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
 # echo "==================================================="
 # echo "feeding db with $DPF/num_fracrk.xml"
 # $P install.py --file $DPF/num_fracrk.xml 2>>error.log
@@ -255,6 +269,13 @@ echo "==================================================="
 echo "==================================================="
 echo "feeding db with $DPW/Ipc_engcrk.xml"
 $P install.py --file $DPW/Ipc_engcrk.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPW/Ipc_engcrk.xml"
+$P install.py --file $DPW/MWE_engcrk.xml
 echo " "
 echo "done"
 echo "==================================================="
