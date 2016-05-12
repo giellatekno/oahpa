@@ -3,9 +3,8 @@
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
-	  {% trans "Complete the response to the question." %} 
   {% if settings.gametype == "bare" %}
-    {% trans "Put each noun in its correct form. Click on a word for its translation." %}
+	  {% trans "Complete the response to the question." %}
   
   {% elif settings.gametype == "context" %}
       {% if settings.case_context == 'N-PL' %}
