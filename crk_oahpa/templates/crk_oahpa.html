@@ -19,9 +19,34 @@
 <ul id="games_menu" class="small">
 
 	<li class="game">
-		<a href="{% url morfa_c.noun %}">
-			<img src="{{ MEDIA_URL }}/images/morfac_small.png" alt="kakwêcihkêmowina"/><br/>
-			<span class="gamename">kakwêcihkêmowina</span>
+		<a href="{% url numra %}">
+			<img src="{{ MEDIA_URL }}/images/numra_small.png" alt="akihtâsona"/><br/>
+			<span class="gamename">akihtâsona</span>
+		</a>
+	</li>
+
+
+    {% comment %}
+        <li class="game">
+		<a href="{% url vasta_f %}">
+			<img src="{{ MEDIA_URL }}/images/vasta_small.png" alt="VASTA"/><br/>
+			<span class="gamename">VASTA</span>
+		</a>
+	</li>
+    {% endcomment %}
+    
+    <!--
+    <li class="game">
+		<a href="{% url sahka %}">
+			<img src="{{ MEDIA_URL }}/images/sahka_small.png" alt="SAHKA"/><br/>
+			<span class="gamename">SAHKA</span>
+		</a>
+	</li>  -->
+    
+	<li class="game">
+		<a href="{% url leksa %}">
+			<img src="{{ MEDIA_URL }}/images/leksa_small.png" alt="itwêwina êkwa itwêstamâkêwina"/><br/>
+			<span class="gamename">itwêwina</span>
 		</a>
 	</li>
 
@@ -32,33 +57,14 @@
 		</a>
 	</li>
 
-<!--    <li class="game">
-		<a href="{% url vasta_s %}">
-			<img src="{{ MEDIA_URL }}/images/vasta_small.png" alt="VASTA"/><br/>
-			<span class="gamename">VASTA</span>
-		</a>
-	</li>
-    
-    <li class="game">
-		<a href="{% url sahka %}">
-			<img src="{{ MEDIA_URL }}/images/sahka_small.png" alt="SAHKA"/><br/>
-			<span class="gamename">SAHKA</span>
-		</a>
-	</li>  ---->
-    
 	<li class="game">
-		<a href="{% url leksa %}">
-			<img src="{{ MEDIA_URL }}/images/leksa_small.png" alt="itwêwina êkwa itwêstamâkêwina"/><br/>
-			<span class="gamename">itwêwina</span>
+		<a href="{% url morfa_c.noun %}">
+			<img src="{{ MEDIA_URL }}/images/morfac_small.png" alt="kakwêcihkêmowina"/><br/>
+			<span class="gamename">kakwêcihkêmowina</span>
 		</a>
 	</li>
 
-	<li class="game">
-		<a href="{% url numra %}">
-			<img src="{{ MEDIA_URL }}/images/numra_small.png" alt="akihtâsona"/><br/>
-			<span class="gamename">akihtâsona</span>
-		</a>
-	</li>
+
 	
 
 </ul>
