@@ -2281,7 +2281,7 @@ class VastaQuestion(OahpaQuestion):
         qstring = qstring.lstrip()
         qstring = qstring[0].capitalize() + qstring[1:]
 
-        qstring = qstring + "?"
+        qstring = qstring
         self.question=qstring
 
         # In qagame, all words are considered as answers.
@@ -2887,7 +2887,7 @@ class CealkkaQuestion(OahpaQuestion):
         qstring = qstring.lstrip()
         qstring = qstring[0].capitalize() + qstring[1:]
 
-        qstring = qstring + "?"
+        qstring = qstring
         self.question=qstring
 
         self.gametype="cealkka"
