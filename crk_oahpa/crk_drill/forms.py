@@ -269,14 +269,14 @@ VERB_FILTER_DEFINITION = ['stem', 'source']
 
 VTYPE_CONTEXT_CHOICES = (
 	('V-AI-PRS', _('present (AI)')),
-
+    ('V-II-PRS', _('present (II)')),
 	('V-TA-PRS', _('present (TA)')),
-	('V-TA-PRT', _('preterite (TA)')),
+	('V-TA-PRT', _('past (TA)')),
 	('V-TA-FUT-DEF', _('future definite (TA)')),
 	('V-TA-FUT-INT', _('future intentional (TA)')),
 
 	('V-TI-PRS', _('present (TI)')),
-	('V-TI-PRT', _('preterite (TI)')),
+	('V-TI-PRT', _('past (TI)')),
 	('V-TI-FUT-DEF', _('future definite (TI)')),
 	('V-TI-FUT-INT', _('future intentional (TI)')),
 
@@ -284,9 +284,14 @@ VTYPE_CONTEXT_CHOICES = (
 	('V-AI-FUT-DEF', _('future definite (AI)')),
 	('V-AI-FUT-INT', _('future intentional (AI)')),
 
+	('V-AI-CNJ-PRS', _('conjunct present (AI)')),
+	('V-AI-CNJ-PRT', _('conjunct past (AI)')),
+	('V-TI-CNJ-PRT', _('conjunct past (TI)')),
 	('V-TA-CNJ-PRS', _('conjunct present (TA)')),
 	('V-TA-CNJ-PRT', _('conjunct preterite (TA)')),
+	('V-TI-CNJ-FUT-INT', _('conjunct future intentional (TI)')),
 	('V-TA-CNJ-FUT-INT', _('conjunct future intentional (TA)')),
+	('V-AI-CNJ-FUT-INT', _('conjunct future intentional (AI)')),
 
 #	('V-FUT', _('future')),
 #	('V-PRF', _('perfect')),
