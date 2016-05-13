@@ -6,7 +6,13 @@
 {% endblock %}
 {% block instructions %}
   {% if settings.gametype == "bare" %}
-  
+	{% if settings.possessive_case == 'N-2SG' %}
+		Enter the 2S possessive form of the <a class="helptext" href="#">{% trans "given noun" %}<span class="shortinfo">The noun is given in the 1S possessive form.</span></a>.
+	{% elif settings.possessive_case == 'N-3SG' %}
+		Enter the 3S possessive form of the <a class="helptext" href="#">{% trans "given noun" %}<span class="shortinfo">The noun is given in the 1S possessive form.</span></a>.
+	{% else %}
+		 {% trans "Add nouns in correct forms." %}
+	{% endif %}
   {% elif settings.gametype == "context" %}
       {% if settings.case_context == 'N-PL' %}
 	  <b>{% trans "Complete the response to the question." %}</b>
@@ -14,6 +20,8 @@
       {% elif settings.case_context == 'N-LOC' %} 
 	  {% trans "Complete the response to the question." %}
         Enter the <a class="helptext" href="#">{% trans "locative form" %}<span class="shortinfo">Ex. If you are given "(mîcisowikamik)", answer "mîcisowikamikohk".</span></a> of the noun given in brackets.
+      {% elif settings.case_context == 'N-PX' %}
+		{% trans 'The noun is given in the 1S possessive form. Select which type (2S or 3S) you want to practice in the drop down menu above and then enter the correct possessive form of each noun.' %}
       {% else %}
 	  {% trans "Complete the response to the question." %}
         Enter the correct <a class="helptext" href="#">{% trans "possessive form" %}<span class="shortinfo">Answer with the 1S form of the noun in question.</span></a> of the noun.
@@ -24,14 +32,16 @@
 
 {% block subsetting %}
 	{% ifequal settings.gametype "bare" %}
-	<li><label for="id_{{ settingsform.case.name }}">{% trans "Type" %}</label>
-		{{ settingsform.case }}</li>
-  <!--  <li><label>{{ settingsform.singular_only }}{% trans " singular only" %}</label></li> -->
-	<!-- <li><label for="id_{{ settingsform.noun_type.name }}">{% trans "Type" %}</label>
-	        {{ settingsform.noun_type }}</li>
-	</li> --> 
+	        <li><label for="id_{{ settingsform.case.name }}">{% trans "Type" %}</label>
+		        {{ settingsform.case }}</li>
+	    {% if settings.case == 'N-PX' %}
+	        <li><label for="id_{{ settingsform.possessive_case.name }}">{% trans "Set" %}</label>
+		        {{ settingsform.possessive_case }}</li>
+	    {% endif %}
 	{% else %}
-	<li><label for="id_{{ settingsform.case_context.name }}">{% trans "Type" %}</label>
+	<li><label for="id_{{ settingsform.case_context.name }}">{% trans "Set" %}</label>
 		{{ settingsform.case_context }}</li>
+
 	{% endifequal %}
 {% endblock %}
+

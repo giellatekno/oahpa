@@ -3,7 +3,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block questionsetclass %}{% ifequal settings.gametype "bare" %}morfa{% else %}morfac{% endifequal %}{% endblock %}
-{% block gametitlename %}{% ifequal settings.gametype "bare" %}MORFA-S{% else %}MORFA-C{% endifequal %}{% endblock %}
+{% block gametitlename %}{% ifequal settings.gametype "bare" %}itwêwinihkewin{% else %}kakwêcihkêmowina{% endifequal %}{% endblock %}
 {% block imgprefix %}{% ifequal settings.gametype "bare" %}morfa{% else %}morfac{% endifequal %}{% endblock %}
 
 {% block veiledning %}
@@ -42,7 +42,6 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
 	        <select class="exclude_form_update"> 
                 {% ifequal settings.gametype "bare" %}
 		            <option {% ifequal settings.pos "N" %} selected{% else %}{% endifequal %} value="{% url morfa_s.noun %}">{% trans 'Nouns' %}</option>
-                    <option {% ifequal settings.pos "Px" %} selected{% else %}{% endifequal %}  value="{% url morfa_s.px %}">{% trans 'Possessives' %}</option> 
 		            <option {% ifequal settings.pos "V" %} selected{% else %}{% endifequal %}  value="{% url morfa_s.verb %}">{% trans 'Verbs' %}</option>
                 {% else %}
 		            <option {% ifequal settings.pos "N" %} selected{% else %}{% endifequal %} value="{% url morfa_c.noun %}">{% trans 'Nouns' %}</option>
