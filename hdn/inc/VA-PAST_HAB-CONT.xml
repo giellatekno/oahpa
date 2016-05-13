@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+  <q id="VA-PAST_HAB-CONT-01">
+    <qtype>VA-PAST_HAB-CONT</qtype>
+    <question>
+      <text>Gíisd uu SEASON VERB?</text>
+      <element id="VERB">
+            <grammar tag="V+Interr+Past+Hab"/>
+        <sem class="HUMAN"/>
+      </element>
+      <element id="SEASON">
+            <grammar tag="Adv"/>
+        <sem class="SEASON"/>
+      </element>
+    </question>
+    <answer> 
+      <text>NAME uu SEASON VERB.</text>
+      <element game='morfa' id="NAME" content="NAME" task="yes">
+        <grammar tag="N+Proper"/>
+      </element>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+Past+Hab"/>
+        <sem class="HUMAN"/>
+      </element>
+    </answer>
+  </q>
+</questions>
