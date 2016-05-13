@@ -27,8 +27,12 @@
 		<li><label for="id_{{ settingsform.trans_anim.name }}">{% trans "Animacy" %}</label>
 			{{ settingsform.trans_anim }}</li>
 	{% else %}
-		<li><label for="id_{{ settingsform.vtype_context.name }}">{% trans "Tense" %}</label>
-			{{ settingsform.vtype_context }}</li>
+		<li><label for="id_{{ settingsform.v_trans_anim_context.name }}">{% trans "Transitive/Animacy" %}</label>
+			{{ settingsform.v_trans_anim_context }}</li>
+		<li><label for="id_{{ settingsform.v_mode_context.name }}">{% trans "Mode" %}</label>
+			{{ settingsform.v_mode_context }}</li>
+		<li><label for="id_{{ settingsform.v_tense_context.name }}">{% trans "Tense" %}</label>
+			{{ settingsform.v_tense_context }}</li>
 	{% endifequal %}
 {% endblock %}
 

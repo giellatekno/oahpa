@@ -1050,13 +1050,23 @@ class QAGame(Game):
 		pos = self.settings.get('pos', False)
 		
 		qtype_wordform = False
+		# TODO: V_TYPE_FILTER_OPTIONS
+		#  ('V', trans_anim, mode, tense, definiteness
+
 
 		# Get qtype from settings.
 		if not qtype:
 			if pos == "N":
 				qtype = self.settings['case_context']
 			if pos == "V":
-				qtype = self.settings['vtype_context']
+				v_trans_anim_context = self.settings['v_trans_anim_context']
+				v_mode_context = self.settings['v_mode_context']
+				v_tense_context = self.settings['v_tense_context']
+				params = ('V', v_trans_anim_context, v_mode_context,
+							v_tense_context)
+				qtype = V_TYPE_FILTER_OPTIONS.get(params)
+				print 'params  ', params
+				print 'qtype   ', qtype
 			if pos == "Num":
 				qtype = self.settings['num_context']
 			if pos == "A":

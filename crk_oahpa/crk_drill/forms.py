@@ -267,6 +267,62 @@ VERB_QUESTION_ANSWER = {
 
 VERB_FILTER_DEFINITION = ['stem', 'source']
 
+V_TYPE_FILTER_OPTIONS = {
+    # pos, trans_anim, mood, tense, definiteness
+    ('V', 'AI', 'Ind', 'Prs'): 'V-AI-PRS',
+    ('V', 'AI', 'Ind', 'Prt'): 'V-AI-PRT',
+    ('V', 'II', 'Ind', 'Prs'): 'V-II-PRS',
+    ('V', 'II', 'Ind', 'Prt'): 'V-II-PRT',
+    ('V', 'TA', 'Ind', 'Prs'): 'V-TA-PRS',
+    ('V', 'TA', 'Ind', 'Prt'): 'V-TA-PRT',
+
+    ('V', 'TA', 'Ind', 'Fut+Def'): 'V-TA-FUT-DEF',
+    ('V', 'TA', 'Ind', 'Fut+Int'): 'V-TA-FUT-INT',
+    ('V', 'TI', 'Ind', 'Fut+Def'): 'V-TI-FUT-DEF',
+    ('V', 'TI', 'Ind', 'Fut+Int'): 'V-TI-FUT-INT',
+    ('V', 'AI', 'Ind', 'Fut+Def'): 'V-AI-FUT-DEF',
+    ('V', 'AI', 'Ind', 'Fut+Int'): 'V-AI-FUT-INT',
+
+    ('V', 'AI', 'Cnj', 'Prs'): 'V-AI-CNJ-PRS',
+    ('V', 'AI', 'Cnj', 'Prt'): 'V-AI-CNJ-PRT',
+    ('V', 'II', 'Cnj', 'Prs'): 'V-II-CNJ-PRS',
+    ('V', 'II', 'Cnj', 'Prt'): 'V-II-CNJ-PRT',
+    ('V', 'TA', 'Cnj', 'Prs'): 'V-TA-CNJ-PRS',
+    ('V', 'TA', 'Cnj', 'Prt'): 'V-TA-CNJ-PRT',
+
+    ('V', 'TA', 'Cnj', 'Fut+Def'): 'V-TA-CNJ-FUT-DEF',
+    ('V', 'TA', 'Cnj', 'Fut+Int'): 'V-TA-CNJ-FUT-INT',
+    ('V', 'TI', 'Cnj', 'Fut+Def'): 'V-TI-CNJ-FUT-DEF',
+    ('V', 'TI', 'Cnj', 'Fut+Int'): 'V-TI-CNJ-FUT-INT',
+    ('V', 'AI', 'Cnj', 'Fut+Def'): 'V-AI-CNJ-FUT-DEF',
+    ('V', 'AI', 'Cnj', 'Fut+Int'): 'V-AI-CNJ-FUT-INT',
+}
+
+TRANS_ANIM_CONTEXT_CHOICES = (
+	('AI', _('AI')),
+	('TI', _('TI')),
+	('TA', _('TA')),
+	('II', _('II')),
+)
+
+V_DEFINITENESS = (
+	('', _('')),
+	('Def', _('definite')),
+	('Int', _('intentional')),
+)
+
+V_MODE_CONTEXT_CHOICES = (
+	('Ind', _('indicative')),
+	('Cnj', _('conjunct')),
+)
+
+V_TENSE_CONTEXT_CHOICES = (
+	('Prs', _('present')),
+	('Prt', _('past')),
+	('Fut+Def', _('future definite')),
+	('Fut+Int', _('future intentional')),
+)
+
 VTYPE_CONTEXT_CHOICES = (
 	('V-AI-PRS', _('present (AI)')),
     ('V-II-PRS', _('present (II)')),
@@ -293,15 +349,7 @@ VTYPE_CONTEXT_CHOICES = (
 	('V-TA-CNJ-FUT-INT', _('conjunct future intentional (TA)')),
 	('V-AI-CNJ-FUT-INT', _('conjunct future intentional (AI)')),
 
-#	('V-FUT', _('future')),
-#	('V-PRF', _('perfect')),
-#	('V-GER', _('gerund')),
-#	('V-COND', _('conditional')),
-#	('V-IMPRT', _('imperative')),
-#	('V-POT', _('potential')),
-#	('V-MIX', _('mix')),
-#	('TEST', _('test questions')),
- )
+)
 
 LEVEL_CHOICES = (
 	('l1', _('Level 1')),
@@ -945,6 +993,11 @@ class OahpaSettings(forms.Form):
 					'case_context' : 'N-PL',
 					'trans_anim': 'AI',
 					'vtype_context' : 'V-AI-PRS',
+
+					'v_trans_anim_context': 'AI',
+					'v_mode_context': 'Ind',
+					'v_tense_context': 'Prs',
+
 					'pron_context' : 'P-DEM',
 					'num_context' : 'NUM-ATTR',
 					'num_level' : '1',
@@ -1224,6 +1277,11 @@ class MorfaSettings(OahpaSettings):
 	case_context = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
 	vtype_context = forms.ChoiceField(initial='V-AI-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
+
+	v_trans_anim_context = forms.ChoiceField(initial='AI', choices=TRANS_ANIM_CONTEXT_CHOICES, widget=forms.Select)
+	v_mode_context = forms.ChoiceField(initial='Ind', choices=V_MODE_CONTEXT_CHOICES, widget=forms.Select)
+	v_tense_context = forms.ChoiceField(initial='Prs', choices=V_TENSE_CONTEXT_CHOICES, widget=forms.Select)
+
 	pron_context = forms.ChoiceField(initial='P-DEM', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)
 	wordform_type = forms.ChoiceField(initial='', choices=WORDFORM_TYPE_CHOICES, widget=forms.Select)
 	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
@@ -1767,8 +1825,9 @@ class ContextMorfaQuestion(OahpaQuestion):
 		self.translang = 'crk'
 		self.gametype = 'morfac' # not sure if this is ok
 
-		qtype=question.qtype
-		if qtype in self.qtype_verbs:  # ???
+		# ???
+		qtype = question.qtype
+		if qtype in self.qtype_verbs:
 			qtype = 'PRS'
 
 		question_widget = forms.HiddenInput(attrs={'value' : question.id})
