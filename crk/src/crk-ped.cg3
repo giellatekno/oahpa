@@ -411,54 +411,54 @@ SECTION
 MAP (&err-typo) TARGET QMRK (*-1 QDL) ;
 
 # looking for incorrect translation, error tag mapped to the English word
-MAP (&err-translationNoun) TARGET N IF (0 ("shoe"))(*1 QDL LINK NOT *1 SHOE) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("shoe"))(*1 QDL LINK NOT *1 SHOE) ; 
 SELECT N IF (0 SHOE LINK *-1 QDL LINK *-1 ("shoes")) ; 
 
-MAP (&err-translationNoun) TARGET N IF (0 ("knife"))(*1 QDL LINK NOT *1 KNIFE) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("spoon"))(*1 QDL LINK NOT *1 SPOON) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("bread"))(*1 QDL LINK NOT *1 BREAD) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("sugar"))(*1 QDL LINK NOT *1 SUGAR) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("carrot"))(*1 QDL LINK NOT *1 CARROT) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("dog"))(*1 QDL LINK NOT *1 DOG) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("man"))(*1 QDL LINK NOT *1 MAN) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("woman"))(*1 QDL LINK NOT *1 WOMAN) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("cat"))(*1 QDL LINK NOT *1 CAT) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("fish"))(*1 QDL LINK NOT *1 FISH) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("meat"))(*1 QDL LINK NOT *1 MEAT) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("bacon"))(*1 QDL LINK NOT *1 BACON) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("milk"))(*1 QDL LINK NOT *1 MILK) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("store"))(*1 QDL LINK NOT *1 STORE) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("egg"))(*1 QDL LINK NOT *1 EGG) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("chair"))(*1 QDL LINK NOT *1 CHAIR) ; 
-MAP (&err-translationNoun) TARGET N IF (0 ("potato"))(*1 QDL LINK NOT *1 POTATO) ; 
-MAP (err-translationVerb) TARGET A IF (0 ("little"))(*1 QDL LINK NOT *1 LITTLE) ;
-MAP (err-translationVerb) TARGET A IF (0 ("small"))(*1 QDL LINK NOT *1 SMALL) ;
-#MAP (err-translationVerb) TARGET A IF (0 ("young"))(*1 QDL LINK NOT *1 YOUNG) ;
-#MAP (err-translationVerb) TARGET A IF (0 ("old"))(*1 QDL LINK NOT *1 OLD) ;
-MAP (err-translationVerb) TARGET A IF (0 ("red"))(*1 QDL LINK NOT *1 RED) ;
-MAP (err-translationVerb) TARGET A IF (0 ("white"))(*1 QDL LINK NOT *1 WHITE) ;
-MAP (err-translationVerb) TARGET A IF (0 ("black"))(*1 QDL LINK NOT *1 BLACK) ;
-MAP (err-translationVerb) TARGET A IF (0 ("green"))(*1 QDL LINK NOT *1 GREEN) ;
-MAP (err-translationVerb) TARGET A IF (0 ("blue"))(*1 QDL LINK NOT *1 BLUE) ;
-MAP (err-translationVerb) TARGET A IF (0 ("yellow"))(*1 QDL LINK NOT *1 YELLOW) ;
-MAP (err-translationVerb) TARGET A IF (0 ("good"))(*1 QDL LINK NOT *1 GOOD) ;
-MAP (err-translationVerb) TARGET A IF (0 ("beautiful"))(*1 QDL LINK NOT *1 BEAUTIFUL) ;
-MAP (err-translationVerb) TARGET A IF (0 ("big"))(*1 QDL LINK NOT *1 BIG) ;
-MAP (err-translationVerb) TARGET A IF (0 ("strong"))(*1 QDL LINK NOT *1 STRONG) ;
-MAP (err-translationVerb) TARGET A IF (0 ("delicious"))(*1 QDL LINK NOT *1 DELICIOUS) ;
-MAP (err-translationVerb) TARGET A IF (0 ("orange"))(*1 QDL LINK NOT *1 ORANGE-A) ;
-MAP (err-translationVerb) TARGET A IF (0 ("brown"))(*1 QDL LINK NOT *1 BROWN) ;
-MAP (err-translationVerb) TARGET A IF (0 ("pink"))(*1 QDL LINK NOT *1 PINK) ;
-MAP (err-translationVerb) TARGET A IF (0 ("wine red"))(*1 QDL LINK NOT *1 WINERED) ;
-MAP (err-translationVerb) TARGET A IF (0 ("grey"))(*1 QDL LINK NOT *1 GREY) ;
-MAP (err-translationVerb) TARGET A IF (0 ("high"))(*1 QDL LINK NOT *1 HIGH) ;
-MAP (err-translationVerb) TARGET A IF (0 ("tall"))(*1 QDL LINK NOT *1 TALL) ;
-MAP (err-translationVerb) TARGET A IF (0 ("short"))(*1 QDL LINK NOT *1 SHORT) ;
-MAP (err-translationVerb) TARGET A IF (0 ("dirty"))(*1 QDL LINK NOT *1 DIRTY) ;
-MAP (err-translationVerb) TARGET A IF (0 ("ugly"))(*1 QDL LINK NOT *1 UGLY) ;
-MAP (err-translationVerb) TARGET A IF (0 ("broken"))(*1 QDL LINK NOT *1 BROKEN) ;
-MAP (err-translationVerb) TARGET A IF (0 ("clean"))(*1 QDL LINK NOT *1 CLEAN) ;
-MAP (err-translationVerb) TARGET A IF (0 ("purple"))(*1 QDL LINK NOT *1 PURPLE) ;
+MAP (&err-wrongNoun) TARGET N IF (0 ("knife"))(*1 QDL LINK NOT *1 KNIFE) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("spoon"))(*1 QDL LINK NOT *1 SPOON) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("bread"))(*1 QDL LINK NOT *1 BREAD) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("sugar"))(*1 QDL LINK NOT *1 SUGAR) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("carrot"))(*1 QDL LINK NOT *1 CARROT) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("dog"))(*1 QDL LINK NOT *1 DOG) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("man"))(*1 QDL LINK NOT *1 MAN) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("woman"))(*1 QDL LINK NOT *1 WOMAN) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("cat"))(*1 QDL LINK NOT *1 CAT) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("fish"))(*1 QDL LINK NOT *1 FISH) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("meat"))(*1 QDL LINK NOT *1 MEAT) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("bacon"))(*1 QDL LINK NOT *1 BACON) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("milk"))(*1 QDL LINK NOT *1 MILK) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("store"))(*1 QDL LINK NOT *1 STORE) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("egg"))(*1 QDL LINK NOT *1 EGG) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("chair"))(*1 QDL LINK NOT *1 CHAIR) ; 
+MAP (&err-wrongNoun) TARGET N IF (0 ("potato"))(*1 QDL LINK NOT *1 POTATO) ; 
+MAP (err-wrongVerb) TARGET A IF (0 ("little"))(*1 QDL LINK NOT *1 LITTLE) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("small"))(*1 QDL LINK NOT *1 SMALL) ;
+#MAP (err-wrongVerb) TARGET A IF (0 ("young"))(*1 QDL LINK NOT *1 YOUNG) ;
+#MAP (err-wrongVerb) TARGET A IF (0 ("old"))(*1 QDL LINK NOT *1 OLD) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("red"))(*1 QDL LINK NOT *1 RED) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("white"))(*1 QDL LINK NOT *1 WHITE) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("black"))(*1 QDL LINK NOT *1 BLACK) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("green"))(*1 QDL LINK NOT *1 GREEN) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("blue"))(*1 QDL LINK NOT *1 BLUE) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("yellow"))(*1 QDL LINK NOT *1 YELLOW) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("good"))(*1 QDL LINK NOT *1 GOOD) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("beautiful"))(*1 QDL LINK NOT *1 BEAUTIFUL) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("big"))(*1 QDL LINK NOT *1 BIG) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("strong"))(*1 QDL LINK NOT *1 STRONG) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("delicious"))(*1 QDL LINK NOT *1 DELICIOUS) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("orange"))(*1 QDL LINK NOT *1 ORANGE-A) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("brown"))(*1 QDL LINK NOT *1 BROWN) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("pink"))(*1 QDL LINK NOT *1 PINK) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("wine red"))(*1 QDL LINK NOT *1 WINERED) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("grey"))(*1 QDL LINK NOT *1 GREY) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("high"))(*1 QDL LINK NOT *1 HIGH) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("tall"))(*1 QDL LINK NOT *1 TALL) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("short"))(*1 QDL LINK NOT *1 SHORT) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("dirty"))(*1 QDL LINK NOT *1 DIRTY) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("ugly"))(*1 QDL LINK NOT *1 UGLY) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("broken"))(*1 QDL LINK NOT *1 BROKEN) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("clean"))(*1 QDL LINK NOT *1 CLEAN) ;
+MAP (err-wrongVerb) TARGET A IF (0 ("purple"))(*1 QDL LINK NOT *1 PURPLE) ;
 MAP (&err-translationNrSg) TARGET (N Pl) IF (*-1 QDL LINK NEGATE *-1 (N Pl)) ;
 MAP (&err-translationNrPl) TARGET (N Sg) IF (*-1 QDL LINK NEGATE *-1 (N Sg)) ;
 
@@ -496,7 +496,7 @@ AFTER-SECTIONS
 
 # messages:
 # &err-typo: Is there an incorrect spelled word in your translation? 
-# &err-translationNoun: Is the noun translated correctly? Perhaps a typo?
+# &err-wrongNoun: Is the noun translated correctly? Perhaps a typo?
 # &err-translationNrSg: Is the noun in singular form?
 # &err-translationNrPl: Is the noun in plural form?
 # &err-DemShouldBeforetheNoun: The demonstrative pronoun should come before the noun.
