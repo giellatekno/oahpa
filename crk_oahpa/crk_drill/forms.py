@@ -253,8 +253,8 @@ VTYPE_CHOICES = (
 TRANS_ANIM_CHOICES = (
 	('AI', _('AI')),
 	('TI', _('TI')),
+	('AI-TI', _('AI, TI')),
 #	('II', _('II')), #present V+II+Ind+Prs+3Sg, studentinput: V+II+Ind+Prt+3Sg
-	# ('all', _('All')),  
 )
 
 VERB_QUESTION_ANSWER = {
