@@ -1,0 +1,34 @@
+{% extends "mgame.html" %}
+{% load i18n %}
+
+{% block gamename %}
+{% if settings.gametype == "bare" %}{{ settings.gamename }}{% endif %}
+{% endblock %}
+{% block instructions %}
+  {% if settings.gametype == "bare" %}
+  
+  {% elif settings.gametype == "context" %}
+      {% if settings.case_context == 'N-PL' %}
+		{% trans "Enter the plural form of the given noun." %}
+      {% elif settings.case_context == 'N-LOC' %} 
+		{% trans "Enter the locative form of the given noun." %}
+      {% else %}
+	  Enter the <a class="helptext" href="#">baseform<span class=shortinfo> Ex. "sikâk" is the baseform of "sikâkos"</span></a> of the given diminutive noun.
+      {% endif %}
+  {% endif %}
+<a class="helptext" href="#">Translate<span class="shortinfo">{% trans "Hold the ALT key and click on any word for its translation." %}</span></a> this page.
+{% endblock %}
+
+{% block subsetting %}
+	{% ifequal settings.gametype "bare" %}
+	<li><label for="id_{{ settingsform.case.name }}">{% trans "Type" %}</label>
+		{{ settingsform.case }}</li>
+  <!--  <li><label>{{ settingsform.singular_only }}{% trans " singular only" %}</label></li> -->
+	<!-- <li><label for="id_{{ settingsform.noun_type.name }}">{% trans "Type" %}</label>
+	        {{ settingsform.noun_type }}</li>
+	</li> --> 
+	{% else %}
+	<li><label for="id_{{ settingsform.case_context.name }}">{% trans "Type" %}</label>
+		{{ settingsform.case_context }}</li>
+	{% endifequal %}
+{% endblock %}
