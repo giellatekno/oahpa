@@ -1,5 +1,6 @@
 !!!The list
 !!Bugs
+# Randomization is not working properly: __Ryan__ 
 # Numra is not working 
 ## __fixed__ , 
 ## Cardinals text-to-digit, Dates digit-to-text: we get yellow page when testing and showing answers (when you actually write something in the box)
@@ -7,7 +8,7 @@
 ## Numra Elsewhere, digit-to-text: The system does not recognize correct answers
 ## __fixed__
 ## Numra needs a filter for not including missings
-## __hava a look__ 
+## __hava a look, Ryan__ 
 ## clock problem was that generation included 0 on single digit hours, 04:00, when it should have been 4:00
 # morph feedback not functioning for MorfaS Prs V
 ## __fixed__
@@ -17,7 +18,7 @@
 ## __fixed__
 # Numra: show only one alternative as answer
 ## Trond looks at this, Use/NG-tag?
-## __fixed?__ It shows only one alternative as answer.
+## __fixed__ It shows only one alternative as answer.
 # Leksa: audio files not working with Safari
 # all programs: should accidental spaces before/after answers be accepted also?
 ## Not prioritized
@@ -37,16 +38,16 @@
 ** give three tasks at a time, because of space? (I don't think this will be necessary if the excessively large blanks are made smaller.)
 * click on a word: should work for all words (NDS) (outside of Leksa): __Ryan__
 ** __done__
-* words with vowel length errors or typos should be marked with spesial tags (e.g. Err/a2aa), which will give it possible to give spesific feedback on them, and mark the answer in yellow with the opportunity for correction __tags: Lene/Sjur, implementing: Ryan__
-* prioritized help with tooltip __Megan__
+* words with vowel length errors or typos should be marked with spesial tags (e.g. Err/a2aa), which will give it possible to give spesific feedback on them, and mark the answer in yellow with the opportunity for correction. It's now added to the Numra FSTs, but we will consider it for the ped.FTS __ implementing in Numra: Ryan__
+* prioritized help with tooltip __fixed__
 * Change: 2015 > 2016: __Ryan__
 ** __done__
-** Add a typer!
+** Add a typer!: __Ryan__
 
 !!Task design
-* Move the possessives-tasks, under nouns: __Ryan__
 * MorfaS: 
-** make the pronoun clickable (1S)
+** Move the possessives-tasks, under nouns: __Ryan__
+** make the pronoun clickable (1S) __fixed with Itwewina__
 ** remove adverb (comment it out in form.py)
 ** __done__
 ** verblemma and task on the same line
