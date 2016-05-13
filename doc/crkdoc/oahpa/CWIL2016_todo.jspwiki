@@ -9,7 +9,7 @@
 ## __fixed__
 ## Numra needs a filter for not including missings
 ## __hava a look, Ryan__ 
-## clock problem was that generation included 0 on single digit hours, 04:00, when it should have been 4:00
+## clock problem was that generation included 0 on single digit hours, 04:00, when it should have been 4:00 __fixed__
 # morph feedback not functioning for MorfaS Prs V
 ## __fixed__
 # info about past tense is not included in the morph feedback
@@ -17,16 +17,11 @@
 # Morfa-S verbs: the blank is too long so the help is pushed to the next line
 ## __fixed__
 # Numra: show only one alternative as answer
-## Trond looks at this, Use/NG-tag?
 ## __fixed__ It shows only one alternative as answer.
 # Leksa: audio files not working with Safari
-# all programs: should accidental spaces before/after answers be accepted also?
 ## Not prioritized
-# Leksa: the set EXPRESSIONS-AND-QUESTIONS gives yellow page
-## Message is:  Query for crk-eng, semantic type [u'EXPRESSIONS-AND-QUESTIONS'] and book all returned zero results
-## The subests have 27 members, but 24 of them are from Ipc_crk.xml (the 3 others are from MWE_crk.xml). 
-   So, if these files are left out of the Leksa build, then the error is explained.
-#Declare "init" - can be "c" or "v" for consonant/vowel initial verbs
+# Leksa: the set EXPRESSIONS-AND-QUESTIONS gives yellow page __fixed__
+# Declare "init" - can be "c" or "v" for consonant/vowel initial verbs
 __fixed__
 #mgame_px.html file - edited so there should be different instructions for 2Sg and 3Sg exercises, can this be implemented?
 ## __fixed__
@@ -36,32 +31,28 @@ __fixed__
 
 !!Design - general
 * get Cree words into the left menu
-* move the PoS-menu up to the top menu: __Ryan__
-** __done__
+* move the PoS-menu up to the top menu: __fixed__
 * move the instructions immediately above the questions, under the line. Add option for tooltips.
 ** __Megan__ will add them to the instruction box
 * help should appear closer to the question it is referring to (to the right of it) __poss.fixed__
 ** give three tasks at a time, because of space? (I don't think this will be necessary if the excessively large blanks are made smaller.)
-* click on a word: should work for all words (NDS) (outside of Leksa): __Ryan__
-** __done__
+* click on a word: should work for all words (NDS) (outside of Leksa): __fixed__
 * prioritized help with tooltip __fixed__
-* Change: 2015 > 2016: __Ryan__
-** __done__
+* Change: 2015 > 2016: __fixed__
 ** Add a typer!: __Ryan__
-**Find where to change the names of the exercise on the side of each exercise page __Ryan__
+** Find where to change the names of the exercise on the side of each exercise page __Ryan__
 
 !!Task design
 * MorfaS: 
 ** Move the possessives-tasks, under nouns: __Ryan__
 ** make the pronoun clickable (1S) __fixed with Itwewina__
-** remove adverb (comment it out in form.py)
-** __done__
+** remove adverb (comment it out in form.py) __fixed__
 ** verblemma and task on the same line
 ** separate AI and TI verbs (pluss one option with both)
-** nouns: distr locative is removed by restriction in the lexicon (gen only)
-** __done__
+** nouns: distr locative is removed by restriction in the lexicon (gen only) __fixed__
 ** Add another menu for IND vs. CNJ (This way the verb template menu won't be so overwhelming.)
 ** Morfa-S verb exercises. Move the verb and pronoun onto the same line.
+* all programs: should accidental spaces before/after answers be accepted also?
 
 
 !! New things (for the content of tasks)
