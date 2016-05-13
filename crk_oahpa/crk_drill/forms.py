@@ -275,6 +275,8 @@ V_TYPE_FILTER_OPTIONS = {
     ('V', 'II', 'Ind', 'Prt'): 'V-II-PRT',
     ('V', 'TA', 'Ind', 'Prs'): 'V-TA-PRS',
     ('V', 'TA', 'Ind', 'Prt'): 'V-TA-PRT',
+    ('V', 'TI', 'Ind', 'Prs'): 'V-TA-PRS',
+    ('V', 'TI', 'Ind', 'Prt'): 'V-TA-PRT',
 
     ('V', 'TA', 'Ind', 'Fut+Def'): 'V-TA-FUT-DEF',
     ('V', 'TA', 'Ind', 'Fut+Int'): 'V-TA-FUT-INT',

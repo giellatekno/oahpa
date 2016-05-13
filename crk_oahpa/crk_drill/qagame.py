@@ -9,6 +9,7 @@ from forms import *
 from game import Game
 
 import crk_oahpa.settings
+from collections import Counter
 
 try:
 	DEFAULT_DIALECT = settings.DEFAULT_DIALECT
@@ -1065,8 +1066,6 @@ class QAGame(Game):
 				params = ('V', v_trans_anim_context, v_mode_context,
 							v_tense_context)
 				qtype = V_TYPE_FILTER_OPTIONS.get(params)
-				print 'params  ', params
-				print 'qtype   ', qtype
 			if pos == "Num":
 				qtype = self.settings['num_context']
 			if pos == "A":
@@ -1092,8 +1091,11 @@ class QAGame(Game):
 			if question.count() > 0:
 				question = question.order_by('?')[0]
 			else:
+				counts = Counter([a for a in Question.objects.values_list('qtype', flat=True) if a.strip()])
+				count_str = ', '.join(["%s (%s)" % (k, v) for k, v in counts.iteritems()])
 				errormsg = 'Database may not be properly loaded. No questions found for query.'
 				errormsg += '\n qtype was: %s' % repr(qtype)
+				errormsg += '\n available: %s' % count_str
 				raise Http404(errormsg)
 
 			qwords = None
@@ -1118,7 +1120,11 @@ class QAGame(Game):
 			try:
 				answer = question.answer_set.all().order_by('?')[0]
 			except IndexError:
-				raise Http404("No answer found for qid %s, check that questions are properly installed." % question.qid)
+				counts = Counter([a for a in Question.objects.values_list('qtype', flat=True) if a.strip()])
+				errormsg = "No answer found for qid %s, check that questions are properly installed." % question.qid
+				count_str = ', '.join(["%s (%s)" % (k, v) for k, v in counts.iteritems()])
+				errormsg += '\n available: %s' % count_str
+				raise Http404(errormsg)
 
 		# Generate the set of possible answers if they are not coming from the interface
 		# Or if the gametype is qa.
