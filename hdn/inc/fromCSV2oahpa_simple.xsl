@@ -50,8 +50,8 @@
 </xsl:function>
 
   <xsl:param name="inFile" select="'default.csv'"/>
-  <xsl:param name="src_lang" select="'fkv'"/>
-  <xsl:param name="tgt_lang" select="'nob'"/>
+  <xsl:param name="src_lang" select="'hdn'"/>
+  <xsl:param name="tgt_lang" select="'eng'"/>
 
   <xsl:variable name="e" select="'xml'"/>
   <xsl:variable name="outDir" select="'xml-out'"/>
@@ -121,7 +121,7 @@
 	
 	<!-- pos-based output -->
 	<xsl:for-each-group select="$output/r/e" group-by="./lg/l/@pos">
-	  <xsl:variable name="current_outfile" select="concat(current-grouping-key(),'_',$src_lang,$tgt_lang)"/>
+	  <xsl:variable name="current_outfile" select="concat(current-grouping-key(),'_',$src_lang)"/>
 	  <xsl:result-document href="{$outDir}/{$current_outfile}.{$e}">
 	    <!--xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../script/fitswe.css"</xsl:processing-instruction>
 	    <xsl:value-of select="'&#xA;'"/-->
