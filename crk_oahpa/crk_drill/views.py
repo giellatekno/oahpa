@@ -607,11 +607,11 @@ class Morfaview(Gameview):
 	    'V-TI-CNJ-FUT-INT':  _('Practice Transitive Inanimate (TI) Conjunct in future intentional (TI).'),
 	    'V-AI-CNJ-FUT-INT':  _('Practice Animate Intransitive (AI) Conjunct in future intentional (AI).'),
 
-		'V-AI-FUT-INT':  _('Practice verbs in the future intentional form (AI)'),
-		'V-AI-FUT-DEF':  _('Practice verbs in the future definite form (AI)..'),
-		'V-AI-PRT':  _('Practice verbs in past tense (AI).'),
+		'V-AI-FUT-INT':  _('Practice Animate Intransitive (AI) verbs in the future intentional form.'),
+		'V-AI-FUT-DEF':  _('Practice Animate Intransitive (AI) verbs in the future definite form.'),
+		'V-AI-PRT':  _('Practice Animate Intransitive (AI) verbs in past tense.'),
 		'V-AI-PRF':  _('practice perfect'),
-#		'V-II-PRT': _('Practice intransitive inanimate preterite (II)'),
+#		'V-II-PRT': _('Practice Intransitive Inanimate (II) verbs in past tense.'),
 
 		'V-GER':  _('Practice gerund'),
 		'V-COND':  _('practice conditional'),
