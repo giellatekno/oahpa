@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+  <q id="VA-PAST_HAB-YN-01">
+    <qtype>VA-PAST_HAB-YN</qtype>
+    <question>
+      <text>NAME gw SEASON VERB?</text>
+      <element id="VERB">
+            <grammar tag="V+Interr+Past+Hab"/>
+        <sem class="HUMAN"/>
+      </element>
+	  <element id="NAME">
+            <grammar tag="N+Proper"/>
+        <sem class="NAME"/>
+      </element>
+	  <element id="SEASON">
+            <grammar tag="Adv"/>
+        <sem class="SEASON"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Áang, SEASON NAME VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+Dir+Past+Hab"/>
+        <sem class="HUMAN"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>Gáaʼanuu, SEASON gám NAME VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+Neg+Dir+Past+Hab"/>
+        <sem class="HUMAN"/>
+      </element>
+    </answer>
+  </q>
+  <q id="VA-PAST_HAB-YN-02">
+    <qtype>VA-PAST_HAB-YN</qtype>
+    <question>
+      <text>Dáa gw SEASON VERB?</text>
+      <element id="VERB">
+            <grammar tag="V+Interr+Past+Hab"/>
+        <sem class="HUMAN"/>
+      </element>
+	  <element id="SEASON">
+            <grammar tag="Adv"/>
+        <sem class="SEASON"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Áang, SEASON Hl VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+Dir+Past+Hab"/>
+        <sem class="HUMAN"/>
+      </element>
+    </answer>
+    <answer>
+      <text>Gáaʼanuu, SEASON gám Hl VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+Neg+Dir+Past+Hab"/>
+        <sem class="mACTIVITY"/>
+      </element>
+    </answer>
+  <q id="VA-PAST_HAB-YN-03">
+    <qtype>VA-PAST_HAB-YN</qtype>
+    <question>
+      <text>Daláng gw SEASON VERB?</text>
+      <element id="VERB">
+            <grammar tag="V+Interr+Past+Hab"/>
+        <sem class="HUMAN"/>
+      </element>
+	  <element id="SEASON">
+            <grammar tag="Adv"/>
+        <sem class="SEASON"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Áang, SEASON tʼaláng VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+Dir+Past+Hab"/>
+        <sem class="HUMAN"/>
+      </element>
+    </answer>
+    <answer>
+      <text>Gáaʼanuu, SEASON gám tʼaláng VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+Neg+Dir+Past+Hab"/>
+        <sem class="mACTIVITY"/>
+      </element>
+    </answer>
+  <q id="VA-PAST_HAB-YN-04">
+    <qtype>VA-PAST_HAB-YN</qtype>
+    <question>
+      <text>NAME1 isgyáan NAME2 gw SEASON VERB?</text>
+      <element id="VERB">
+            <grammar tag="V+Interr+Past+Hab"/>
+        <sem class="HUMAN"/>
+      </element>
+	  <element id="NAME1">
+            <grammar tag="N+Proper"/>
+        <sem class="NAME"/>
+      </element>
+	  <element id="NAME2">
+            <grammar tag="N+Proper"/>
+        <sem class="NAME"/>
+      </element>
+      <element id="SEASON">
+            <grammar tag="Adv"/>
+        <sem class="SEASON"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Áang, SEASON ʼll VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+3pl+Dir+Past+Hab"/>
+        <sem class="HUMAN"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>Gáaʼanuu, SEASON gám ʼll VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+Neg+3pl+Dir+Past+Hab"/>
+        <sem class="HUMAN"/>
+      </element>
+    </answer>
+  </q>
+</questions>
