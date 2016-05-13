@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+  <q id="VA-FUT-YN-01">
+    <qtype>VA-FUT-YN</qtype>
+    <question>
+      <text>NAME gw VERB?</text>
+      <element id="VERB">
+            <grammar tag="V+Interr+Fut+Long"/>
+        <sem class="HUMAN"/>
+      </element>
+	  <element id="NAME">
+            <grammar tag="N+Proper"/>
+        <sem class="NAME"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Áang, NAME VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+Simp+Fut"/>
+        <sem class="HUMAN"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>Gáaʼanuu, gám NAME VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+Neg+Simp+Fut"/>
+        <sem class="HUMAN"/>
+      </element>
+    </answer>
+  </q>
+  <q id="VA-FUT-YN-02">
+    <qtype>VA-FUT-YN</qtype>
+    <question>
+      <text>Dáa gw VERB?</text>
+      <element id="VERB">
+            <grammar tag="V+Interr+Fut+Long"/>
+        <sem class="HUMAN"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Áang, Hl VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+Simp+Fut"/>
+        <sem class="HUMAN"/>
+      </element>
+    </answer>
+    <answer>
+      <text>Gáaʼanuu, gám Hl VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+Neg+Simp+Fut"/>
+        <sem class="mACTIVITY"/>
+      </element>
+    </answer>
+  <q id="VA-FUT-YN-03">
+    <qtype>VA-FUT-YN</qtype>
+    <question>
+      <text>Daláng gw VERB?</text>
+      <element id="VERB">
+            <grammar tag="V+Interr+Fut+Long"/>
+        <sem class="HUMAN"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Áang, tʼaláng VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+Simp+Fut"/>
+        <sem class="HUMAN"/>
+      </element>
+    </answer>
+    <answer>
+      <text>Gáaʼanuu, gám tʼaláng VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+Neg+Simp+Fut"/>
+        <sem class="mACTIVITY"/>
+      </element>
+    </answer>
+  <q id="VA-FUT-YN-04">
+    <qtype>VA-FUT-YN</qtype>
+    <question>
+      <text>NAME1 isgyáan NAME2 gw VERB?</text>
+      <element id="VERB">
+            <grammar tag="V+Interr+Fut+Long"/>
+        <sem class="HUMAN"/>
+      </element>
+	  <element id="NAME1">
+            <grammar tag="N+Proper"/>
+        <sem class="NAME"/>
+      </element>
+	  <element id="NAME2">
+            <grammar tag="N+Proper"/>
+        <sem class="NAME"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Áang, ʼll VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+3pl+Simp+Fut"/>
+        <sem class="HUMAN"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>Gáaʼanuu, gám ʼll VERB.</text>
+      <element game='morfa' id="VERB" content="VERB" task="yes">
+        <grammar tag="V+Neg+3pl+Simp+Fut"/>
+        <sem class="HUMAN"/>
+      </element>
+    </answer>
+  </q>
+</questions>
