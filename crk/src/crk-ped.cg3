@@ -459,8 +459,8 @@ MAP (err-wrongVerb) TARGET A IF (0 ("ugly"))(*1 QDL LINK NOT *1 UGLY) ;
 MAP (err-wrongVerb) TARGET A IF (0 ("broken"))(*1 QDL LINK NOT *1 BROKEN) ;
 MAP (err-wrongVerb) TARGET A IF (0 ("clean"))(*1 QDL LINK NOT *1 CLEAN) ;
 MAP (err-wrongVerb) TARGET A IF (0 ("purple"))(*1 QDL LINK NOT *1 PURPLE) ;
-MAP (&err-translationNrSg) TARGET (N Pl) IF (*-1 QDL LINK NEGATE *-1 (N Pl)) ;
-MAP (&err-translationNrPl) TARGET (N Sg) IF (*-1 QDL LINK NEGATE *-1 (N Sg)) ;
+MAP (&err-NrShouldbeSg) TARGET (N Pl) IF (*-1 QDL LINK NEGATE *-1 (N Pl)) ;
+MAP (&err-NrShouldbePl) TARGET (N Sg) IF (*-1 QDL LINK NEGATE *-1 (N Sg)) ;
 
 
 SELECT ("têhtapiwin" IN) IF (*-1 QDL LINK *-1 ("chair")) ; # têhtapiwin has two meanings, one IN, one AN
