@@ -58,7 +58,7 @@ CASE_CHOICES = (
     ('N-PL', _('Plural')),
     ('N-LOC', _('Locative')),
     ('N-DIM', _('Diminutive')),
-    #('N-PX', _('Possessive')),
+    ('N-PX', _('Possessive')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -123,7 +123,7 @@ PRONOUN_SUBCLASSES = (
 CASE_CONTEXT_CHOICES = (
     ('N-PL', _('Plural')),
     ('N-LOC', _('Locative')),
-    ('N-PX', _('Possessive')),
+    # ('N-PX', _('Possessive')),
     #('N-INE', _('Inessive')),
     #('N-ELA', _('Elative')),
     #('N-ADE', _('Adessive')),

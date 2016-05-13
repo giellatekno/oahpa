@@ -311,7 +311,7 @@ class BareGame(Game):
 		'N-PL': ("", ["Pl"], "", ""),
 		'N-LOC': ("Loc", [""] , "", ""),
 		'N-DIM': ("", ["Sg"], "", "Der/Dim"),
-		#'N-PX': ("", ["Sg", "Pl"], "Px", ""),
+		'N-PX': ("", ["Sg", "Pl"], "Px", ""),
 		'N-2SG': ("", ["Sg"], "Px2Sg", ""),
 		'N-3SG': ("", ["Sg"], "Px3Sg", ""),
 		#'N-4SG': ("", ["Sg"], "Px4Sg", ""),
@@ -500,6 +500,8 @@ class BareGame(Game):
 		# 	syll = ['']
 
 		if pos in ['N', 'Num', 'Pron', 'Px']:
+			if case == 'N-PX':
+				pos = 'Px'
 			case, number, possessive, derivation = self.casetable[pos_tables[pos]]
 
 		#else:
