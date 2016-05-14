@@ -38,6 +38,10 @@
 	  <attribute name="personnumber" value="3Pl+4Sg/PlO"/>
 	  <attribute name="personnumber" value="4Sg/PlO+5Sg/PlO"/>
 	  
+	  <attribute name="trans_anim_mode" value="AI+Cnj"/>
+	  <attribute name="trans_anim_mode" value="TI+Cnj"/>
+	  <attribute name="trans_anim_mode" value="TA+Cnj"/>
+	  <attribute name="trans_anim_mode" value="II+Cnj"/>
 	  
       <attribute name="tense" value="Prs"/>
       <attribute name="tense" value="Prt"/>
@@ -76,16 +80,27 @@
     </l>
 -->
     <l trans_anim="AI">
-      <msg personnumber="1Sg+3SgO">ai-1s</msg>
-      <msg personnumber="2Sg+3SgO">ai-2s</msg>
-      <msg personnumber="3Sg+4SgO">ai-3s</msg>
-      <msg personnumber="1Pl+3SgO">ai-1p</msg>
-      <msg personnumber="12Pl+3SgO">ai-12p</msg>
-      <msg personnumber="2Pl+3SgO">ai-2p</msg>
+      <msg personnumber="1Sg">ai-1s</msg>
+      <msg personnumber="2Sg">ai-2s</msg>
+      <msg personnumber="3Sg">ai-3s</msg>
+      <msg personnumber="1Pl">ai-1p</msg>
+      <msg personnumber="12Pl">ai-12p</msg>
+      <msg personnumber="2Pl">ai-2p</msg>
       <msg personnumber="3Pl">ai-3p</msg>
 	  <msg personnumber="4Sg/PlO">ai-4sgp</msg>
     </l>
 
+	<l trans_anim_mode="AI+Cnj">
+	  <msg personnumber="1Sg">ai-cnj-1s</msg>
+      <msg personnumber="2Sg">ai-cnj-2s</msg>
+      <msg personnumber="3Sg">ai-cnj-3s</msg>
+      <msg personnumber="1Pl">ai-cnj-1p</msg>
+      <msg personnumber="12Pl">ai-cnj-12p</msg>
+      <msg personnumber="2Pl">ai-cnj-2p</msg>
+      <msg personnumber="3Pl">ai-cnj-3p</msg>
+	  <msg personnumber="4Sg/PlO">ai-cnj-4sgp</msg>
+	</l>
+	
     <l trans_anim="TI">
       <msg personnumber="1Sg">ti-1s</msg>
       <msg personnumber="2Sg">ti-2s</msg>
@@ -97,6 +112,17 @@
 	  <msg personnumber="4Sg/PlO">ti-4sgp</msg>
     </l>
 
+	  <l trans_anim_mode="TI+Cnj">
+      <msg personnumber="1Sg">ti-cnj-1s</msg>
+      <msg personnumber="2Sg">ti-cnj-2s</msg>
+      <msg personnumber="3Sg">ti-cnj-3s</msg>
+      <msg personnumber="1Pl">ti-cnj-1p</msg>
+      <msg personnumber="12Pl">ti-cnj-12p</msg>
+      <msg personnumber="2Pl">ti-cnj-2p</msg>
+      <msg personnumber="3Pl">ti-cnj-3p</msg>
+	  <msg personnumber="4Sg/PlO">ti-cnj-4sgp</msg>
+    </l>
+	
     <l trans_anim="TA">
       <msg personnumber="1Sg+3SgO">ta-1s-3sgo</msg>
       <msg personnumber="2Sg+3SgO">ta-2s-3sgo</msg>
@@ -111,6 +137,22 @@
 	  <msg personnumber="1Pl+3PlO">ta-1p-3plo</msg>
       <msg personnumber="12Pl+3PlO">ta-12p-3plo</msg>
       <msg personnumber="2Pl+3PlO">ta-2p-3plo</msg>
+    </l>
+	
+	<l trans_anim_mode="TA+Cnj">
+      <msg personnumber="1Sg+3SgO">ta-cnj-1s-3sgo</msg>
+      <msg personnumber="2Sg+3SgO">ta-cnj-2s-3sgo</msg>
+      <msg personnumber="3Sg+4Sg/PlO">ta-cnj-3s-4sgo</msg>
+      <msg personnumber="1Pl+3Sgo">ta-cnj-1p-3sgo</msg>
+      <msg personnumber="12Pl+3SgO">ta-cnj-12p-3sgo</msg>
+      <msg personnumber="2Pl+3SgO">ta-cnj-2p-3sgo</msg>
+      <msg personnumber="3Pl+4Sg/PlO">ta-cnj-3p-4sgo</msg>
+	  <msg personnumber="4Sg/PlO+5Sg/PlO">ta-cnj-4s-5sgo</msg>
+	  <msg personnumber="1Sg+3PlO">ta-cnj-1s-3plo</msg>
+      <msg personnumber="2Sg+3PlO">ta-cnj-2s-3plo</msg>
+	  <msg personnumber="1Pl+3PlO">ta-cnj-1p-3plo</msg>
+      <msg personnumber="12Pl+3PlO">ta-cnj-12p-3plo</msg>
+      <msg personnumber="2Pl+3PlO">ta-cnj-2p-3plo</msg>
     </l>
 	
     <l trans_anim="AI">
