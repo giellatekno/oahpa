@@ -315,8 +315,8 @@ V_DEFINITENESS = (
 )
 
 V_MODE_CONTEXT_CHOICES = (
-	('Ind', _('indicative')),
-	('Cnj', _('conjunct')),
+	('Ind', _('Independent')),
+	('Cnj', _('Conjunct')),
 )
 
 V_TENSE_CONTEXT_CHOICES = (
