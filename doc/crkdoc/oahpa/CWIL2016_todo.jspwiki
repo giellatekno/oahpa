@@ -32,10 +32,8 @@ __fixed__
 !!Design - general
 * get Cree words into the left menu
 * move the PoS-menu up to the top menu: __fixed__
-* move the instructions immediately above the questions, under the line. Add option for tooltips.
-** __Megan__ will add them to the instruction box
+* move the instructions immediately above the questions, under the line. Add option for tooltips: __fixed__
 * help should appear closer to the question it is referring to (to the right of it) __poss.fixed__
-** give three tasks at a time, because of space? (I don't think this will be necessary if the excessively large blanks are made smaller.)
 * click on a word: should work for all words (NDS) (outside of Leksa): __fixed__
 * prioritized help with tooltip __fixed__
 * Change: 2015 > 2016: __fixed__
@@ -44,23 +42,21 @@ __fixed__
 
 !!Task design
 * all programs: should accidental spaces before/after answers be accepted also?
-! MorfaS: 
+! MorfaS:
 * Move the possessives-tasks, under nouns: __fixed__
 * make the pronoun clickable (1S) __fixed with Itwewina__
 * remove adverb (comment it out in form.py) __fixed__
-* verblemma and task on the same line
-* separate AI and TI verbs (pluss one option with both)
+* separate AI and TI verbs (pluss one option with both): __fixed__
 * nouns: distr locative is removed by restriction in the lexicon (gen only) __fixed__
-* Verb exercises. Move the verb and pronoun onto the same line.
+* Verb exercises. Move the verblemma, pronoun and blank onto the same line: __Ryan__
 * Morfa-S: switch diminutive-tasks from neutral form to diminutive
 ** Implement in code: __Ryan__
-** Add Use/NG tags to lexc __Lene__
+** Add Use/NG tags to lexc __Lene, done__
 ! MorfaC 
-* Menu: PoS, Animacy-Transivity: AI, TI, II, TA,  Mode: dependent, independent
+* Menu: PoS, Animacy-Transivity: AI, TI, II, TA,  Mode: dependent, independent: __fixed__
 
 
 !! New things (for the content of tasks)
-* switch diminutive-tasks from neutral form to diminutive
 * ensure orthographic conventions used are consistent with the textbook and any links provided (should wait until Arok is done editing the texts for this step)
 * s/he should be equivalent with (a list), and more....
 * help-function in Numra
@@ -71,16 +67,17 @@ __fixed__
 ** __TA__ (TA-PRS_PRT_FUTDEF_FUTINT) 
 ** __conjunct__ (AI-CNJ-PRT_PRS_FUTINT, TA-CNJ-PRS_PRT_FUTINT, TI-CNJ-PRS_PRT_FUTINT)
 * MorfaC verbs: translation tasks
-** pronouns (transl_questions)
+** pronouns (transl_questions): __fixed__
 ** II verbs with tranlastions from English (II-PRS) __not functioning yet__
 ** nouns: diminutive (MORFA-C-DIM-noun_questions)
 
 !! Numra
-* words with vowel length errors or typos should be marked with spesial tags (e.g. Err/a2aa), which will give it possible to give spesific feedback on them, and mark the answer in yellow with the opportunity for correction. It's now added to the Numra FSTs, but we will consider it for the ped.FTS __ implementing in Numra: Ryan__
+* words with vowel length errors or typos should be marked with __Err/ShLo__, which will give it possible to give spesific feedback, and mark the answer in yellow with the opportunity for correction. It's now added to the Numra FSTs, but we will consider it for the ped.FTS __ implementing in Numra: Ryan__, the message file is: meta/errorfstmessages.xml
 * Dates: Numeral to word should be __English to Cree__, make a special html-file for dates?
 
-!! Vasta
+!! Vasta F
 * translation tasks (eng_questions_vasta)
+** In the code called vasta-f?
 ** an eng FST, adjusted to the tasks
 ** we will generate the English tasks
 
@@ -91,8 +88,8 @@ __fixed__
 * Dialect choice: Regina and Mascochis
 
 !!Tasks 
-* Use your new keyboard
-* Write the audio file (as help function?)
+* Introduction tasks: Use your new keyboard
+* Write the audio file (also as help function?)
 
 !!Issues outside our workshop
 
