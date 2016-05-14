@@ -7,6 +7,7 @@ DPS="$DATA/src"
 META="$DATA/meta"
 DPN="$DATA/nobsme"
 DPF="$DATA/finsme"
+DPE="$DATA/engsme"
 #DPW="$DATA/swesme"
 #WORDS=$GTHOME/words/dicts/smenob/src
 
@@ -211,6 +212,60 @@ echo "==================================================="
 echo "==================================================="
 echo "feeding db with $DPF/prop_finsme.xml"
 $P install.py --file $DPF/prop_finsme.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+
+##
+## engsme
+##
+
+echo "==================================================="
+echo "feeding db with $DPE/a_engsme.xml"
+$P install.py --file $DPE/a_engsme.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPE/n_engsme.xml"
+$P install.py --file $DPE/n_engsme.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPE/num_engsme.xml"
+$P install.py --file $DPE/num_engsme.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPE/v_engsme.xml"
+$P install.py --file $DPE/v_engsme.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPE/adv_engsme.xml"
+$P install.py --file $DPE/adv_engsme.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPE/mwe_engsme.xml"
+$P install.py --file $DPE/mwe_engsme.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPE/prop_engsme.xml"
+$P install.py --file $DPE/prop_engsme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
