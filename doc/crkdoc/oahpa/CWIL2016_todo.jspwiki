@@ -1,59 +1,23 @@
 !!!The list
-!!Bugs
+
+!!Bugs - not fixed?
+
 # Randomization is not working properly, look at the format for semantic classes in the templates: __Ryan__ 
-# Numra is not working 
-## __fixed__ , 
-## Cardinals text-to-digit, Dates digit-to-text: we get yellow page when testing and showing answers (when you actually write something in the box)
-## __fixed__
-## Numra Elsewhere, digit-to-text: The system does not recognize correct answers
-## __fixed__
-## Numra needs a filter for not including missings
-## __hava a look, Ryan__ 
-## clock problem was that generation included 0 on single digit hours, 04:00, when it should have been 4:00 __fixed__
-# morph feedback not functioning for MorfaS Prs V
-## __fixed__
-# info about past tense is not included in the morph feedback
-## __fixed__
-# Morfa-S verbs: the blank is too long so the help is pushed to the next line
-## __fixed__
-# Numra: show only one alternative as answer
-## __fixed__ It shows only one alternative as answer.
+# Morfa-C verb type specific instructions are no longer showing up. (Probably due to adding new templates and changing old names) Does mgame_v.html have to be re-implemented differently? __Ryan__
+## Define "mode" attribute
 # Leksa: audio files not working with Safari
 ## Not prioritized
-# Leksa: the set EXPRESSIONS-AND-QUESTIONS gives yellow page __fixed__
-# Declare "init" - can be "c" or "v" for consonant/vowel initial verbs
-__fixed__
-#mgame_px.html file - edited so there should be different instructions for 2Sg and 3Sg exercises, can this be implemented?
-## __fixed__
-##Morfa-C verb type specific instructions are no longer showing up. (Probably due to adding new templates and changing old names) Does mgame_v.html have to be re-implemented differently? __Ryan__
-##Define "mode" attribute
 
+!!Design - general - not fixed
+* Add a typer!: __Ryan__
+* Find where to change the names of the exercise on the side of each exercise page __Ryan__
 
-!!Design - general
-* get Cree words into the left menu
-* move the PoS-menu up to the top menu: __fixed__
-* move the instructions immediately above the questions, under the line. Add option for tooltips: __fixed__
-* help should appear closer to the question it is referring to (to the right of it) __poss.fixed__
-* click on a word: should work for all words (NDS) (outside of Leksa): __fixed__
-* prioritized help with tooltip __fixed__
-* Change: 2015 > 2016: __fixed__
-** Add a typer!: __Ryan__
-** Find where to change the names of the exercise on the side of each exercise page __Ryan__
-
-!!Task design
+!!Task design - not fixed
 * all programs: should accidental spaces before/after answers be accepted also?
-! MorfaS:
-* Move the possessives-tasks, under nouns: __fixed__
-* make the pronoun clickable (1S) __fixed with Itwewina__
-* remove adverb (comment it out in form.py) __fixed__
-* separate AI and TI verbs (pluss one option with both): __fixed__
-* nouns: distr locative is removed by restriction in the lexicon (gen only) __fixed__
 * Verb exercises. Move the verblemma, pronoun and blank onto the same line: __Ryan__
 * Morfa-S: switch diminutive-tasks from neutral form to diminutive
 ** Implement in code: __Ryan__
 ** Add Use/NG tags to lexc __Lene, done__
-! MorfaC 
-* Menu: PoS, Animacy-Transivity: AI, TI, II, TA,  Mode: dependent, independent: __fixed__
 
 
 !! New things (for the content of tasks)
@@ -74,6 +38,7 @@ __fixed__
 !! Numra
 * words with vowel length errors or typos should be marked with __Err/ShLo__, which will give it possible to give spesific feedback, and mark the answer in yellow with the opportunity for correction. It's now added to the Numra FSTs, but we will consider it for the ped.FTS __ implementing in Numra: Ryan__, the message file is: meta/errorfstmessages.xml
 * Dates: Numeral to word should be __English to Cree__, make a special html-file for dates?
+* Numra needs a filter for not including missings, __hava a look, Ryan__ 
 
 !! Vasta F
 * translation tasks (eng_questions_vasta)
@@ -84,14 +49,15 @@ __fixed__
 !! New things (for the content of tasks)
 * ensure orthographic conventions used are consistent with the textbook and any links provided (should wait until Arok is done editing the texts for this step)
 * s/he should be equivalent with (a list), and more....
-* audio-files in Numra and Leksa
 * Dialect choice: Regina and Mascochis
+
+!!Further on:
 
 !!Tasks 
 * Introduction tasks: Use your new keyboard
 * Write the audio file (also as help function?)
+* audio-files in Numra and Leksa
 
-!!Issues outside our workshop
 
 !Common resourse page
 * grammar course?
@@ -102,10 +68,50 @@ __fixed__
 !Design - cultural matters
 * culturally relevant artwork and colour scheme
 
+!!!FIXED
 
 
+!!Bugs - fixed
+# Numra is not working 
+## __fixed__ , 
+## Cardinals text-to-digit, Dates digit-to-text: we get yellow page when testing and showing answers (when you actually write something in the box)
+## __fixed__
+## Numra Elsewhere, digit-to-text: The system does not recognize correct answers
+## __fixed__
+## clock problem was that generation included 0 on single digit hours, 04:00, when it should have been 4:00 __fixed__
+# morph feedback not functioning for MorfaS Prs V
+## __fixed__
+# info about past tense is not included in the morph feedback
+## __fixed__
+# Morfa-S verbs: the blank is too long so the help is pushed to the next line
+## __fixed__
+# Numra: show only one alternative as answer
+## __fixed__ It shows only one alternative as answer.
+# Leksa: the set EXPRESSIONS-AND-QUESTIONS gives yellow page __fixed__
+# Declare "init" - can be "c" or "v" for consonant/vowel initial verbs
+__fixed__
+#mgame_px.html file - edited so there should be different instructions for 2Sg and 3Sg exercises, can this be implemented?
+## __fixed__
 
 
+!!Design - general - fixed
+* get Cree words into the left menu: __fixed__
+* move the PoS-menu up to the top menu: __fixed__
+* move the instructions immediately above the questions, under the line. Add option for tooltips: __fixed__
+* help should appear closer to the question it is referring to (to the right of it) __fixed__
+* click on a word: should work for all words (NDS) (outside of Leksa): __fixed__
+* prioritized help with tooltip __fixed__
+* Change: 2015 > 2016: __fixed__
+
+!!Task design - fixed
+! MorfaS:
+* Move the possessives-tasks, under nouns: __fixed__
+* make the pronoun clickable (1S) __fixed with Itwewina__
+* remove adverb (comment it out in form.py) __fixed__
+* separate AI and TI verbs (pluss one option with both): __fixed__
+* nouns: distr locative is removed by restriction in the lexicon (gen only) __fixed__
+! MorfaC 
+* Menu: PoS, Animacy-Transivity: AI, TI, II, TA,  Mode: dependent, independent: __fixed__
 
 
 
