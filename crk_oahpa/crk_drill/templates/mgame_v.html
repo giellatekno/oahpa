@@ -7,23 +7,67 @@
         Enter the <a class="helptext" href="#">given verb<span class="shortinfo">Note: All verbs are given in the 3S form.</span></a> in the form that <a class="helptext" href="#">{% trans "corresponds" %}<span class="shortinfo">Ex. "nîpawiw (nîyanân)" =  "ninîpawinân"</span></a> to the pronoun in brackets. 
     {% elif settings.gametype == "context" %}
 
-      {% if settin gs.vtype_context == 'V-AI-PRS' %}
+      {% if settings.vtype_context == 'V-AI-PRS' %}
         {% trans "Talk about what people do or do not usually do. Complete the response to the question by entering the verb in the correct present tense form." %}
       {% elif settings.vtype_context == 'V-AI-PRT' %}
         {% trans "Talk about what people did yesterday. Complete the response to the question by entering the verb in the correct past tense form." %}
 	  {% elif settings.vtype_context == 'V-II-PRS' %}
-        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}
-      {% elif settings.vtype_context == 'V-II-PRT' %}
-        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}     
+        {% trans "Use II verbs to describe various objects. Complete the response to the question by entering the verb in the correct past tense form." %}
+ <!--     {% elif settings.vtype_context == 'V-II-PRT' %}
+        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}     -->
 	  {% elif settings.vtype_context == 'V-TA-PRS' %}
-        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}
+        {% trans "Talk about what people do or do not usually do. Complete the response to the question by entering the verb in the correct past tense form." %}
 	  {% elif settings.vtype_context == 'V-TA-PRT' %}
-        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}
+        {% trans "Talk about what people did or did not do yesterday. Complete the response to the question by entering the verb in the correct past tense form." %}
 	  {% elif settings.vtype_context == 'V-TI-PRS' %}
-        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}
+        {% trans "Talk about what people do or do not usually do. Complete the response to the question by entering the verb in the correct past tense form." %}
 	  {% elif settings.vtype_context == 'V-TI-PRT' %}
-        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}
+        {% trans "Talk about what people did or did not do yesterday. Complete the response to the question by entering the verb in the correct past tense form." %}
 		
+	  {% if settings.vtype_context == 'V-AI-FUT-DEF' %}
+        {% trans "Talk about what people will or will not do a little later. Complete the response to the question by entering the verb in the correct present tense form." %}
+      {% elif settings.vtype_context == 'V-AI-FUT-INT' %}
+        {% trans "Talk about what people are or are not going to do later. Complete the response to the question by entering the verb in the correct past tense form." %}
+<!--	  {% elif settings.vtype_context == 'V-II-FUT-DEF' %}
+        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}
+      {% elif settings.vtype_context == 'V-II-FUT-INT' %}
+        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}    --> 
+	  {% elif settings.vtype_context == 'V-TA-FUT-DEF' %}
+        {% trans "Talk about what people will or will not do a little later. Complete the response to the question by entering the verb in the correct past tense form." %}
+	  {% elif settings.vtype_context == 'V-TA-FUT-INT' %}
+        {% trans "Talk about what people are or are not going to do later. Complete the response to the question by entering the verb in the correct past tense form." %}
+	  {% elif settings.vtype_context == 'V-TI-FUT-DEF' %}
+        {% trans "Talk about what people will or will not do a little later. Complete the response to the question by entering the verb in the correct past tense form." %}
+	  {% elif settings.vtype_context == 'V-TI-FUT-INT' %}
+        {% trans "Talk about what people are or are not going to do later. Complete the response to the question by entering the verb in the correct past tense form." %}	
+		
+		
+	  {% if settings.vtype_context == 'V-AI-CNJ-PRS' %}
+        {% trans "Talk about what people are or are not doing now. Complete the response to the question by entering the verb in the correct present tense form." %}
+      {% elif settings.vtype_context == 'V-AI-CNJ-PRT' %}
+        {% trans "Talk about what people were or weren't doing yesterday. Complete the response to the question by entering the verb in the correct past tense form." %}
+<!--	  {% elif settings.vtype_context == 'V-II-CNJ-PRS' %}
+        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}
+      {% elif settings.vtype_context == 'V-II-CNJ-PRT' %} 
+        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %} --> 
+	  {% elif settings.vtype_context == 'V-TA-CNJ-PRS' %}
+        {% trans "Talk about what people are or are not doing now. Complete the response to the question by entering the verb in the correct past tense form." %}
+	  {% elif settings.vtype_context == 'V-TA-CNJ-PRT' %}
+        {% trans "Talk about what people were or weren't doing yesterday. Complete the response to the question by entering the verb in the correct past tense form." %}
+	  {% elif settings.vtype_context == 'V-TI-CNJ-PRS' %}
+        {% trans "Talk about what people are or are not doing now. Complete the response to the question by entering the verb in the correct past tense form." %}
+	  {% elif settings.vtype_context == 'V-TI-CNJ-PRT' %}
+        {% trans "Talk about what people were or weren't doing yesterday. Complete the response to the question by entering the verb in the correct past tense form." %}
+		
+
+      {% elif settings.vtype_context == 'V-AI-CNJ-FUT-INT' %}
+        {% trans "Talk about what people are or are not going to be doing later. Complete the response to the question by entering the verb in the correct past tense form." %}
+ <!--     {% elif settings.vtype_context == 'V-II-CNJ-FUT-INT' %}
+        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %} -->
+	  {% elif settings.vtype_context == 'V-TA-CNJ-FUT-INT' %}
+        {% trans "Talk about what people are or are not going to be doing later. Complete the response to the question by entering the verb in the correct past tense form." %}
+	  {% elif settings.vtype_context == 'V-TI-CNJ-FUT-INT' %}
+        {% trans "Talk about what people are or are not going to be doing later. Complete the response to the question by entering the verb in the correct past tense form." %}
 	 {% else %}
         {% trans "Add verbs in correct forms." %}
       {% endif %}
