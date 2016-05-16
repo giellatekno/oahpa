@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Morfa-C questions for verbs -->
+<!-- Present tense -->
 <questions>
   <q id="prs_occupations">
     <qtype>V-PRS</qtype>
@@ -17,7 +19,64 @@
       </element>
     </answer>
   </q>
-
+  <q id="vprs0">
+    <qtype>V-PRS</qtype>
+    <qtype>V-MIX</qtype>
+   <question>
+      <text>Midä SUBJ täämbä MAINV</text>
+      <element id="SUBJ">
+		<grammar pos="Pron" tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<id>tegemä</id>
+	<grammar tag="V+Act+Ind+Prs+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Täämbä SUBJ MAINV</text>
+      <element game='morfa' id="MAINV" task="yes" >
+	<sem class="ACTION_V"/>
+	<grammar tag="V+Act+Ind+Prs+Person-Number"/>
+      </element>
+    </answer>
+  </q>
+  <q id="vprs1sg">
+    <qtype>V-PRS</qtype>
+    <qtype>V-MIX</qtype>
+    <question>
+      <text>Midä SUBJ täämbä tege</text>
+      <element id="SUBJ">
+	<sem class="PEOPLE"/>
+	<grammar tag="N+Sg+Nom"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Tä MAINV</text>
+      <element game='morfa' id="MAINV" task="yes">
+	<grammar tag="V+Ind+Prs+Sg3"/>
+	<sem class="ACTION_V"/>
+      </element>
+    </answer> 
+  </q>
+    <q id="vprs1pl">
+    <qtype>V-PRS</qtype>
+    <qtype>V-MIX</qtype>
+    <question>
+      <text>Midä SUBJ täämbä tegeväq</text>
+      <element id="SUBJ">
+	<sem class="PEOPLE"/>
+	<grammar tag="N+Pl+Nom"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Nä MAINV</text>
+      <element game='morfa' id="MAINV" task="yes">
+	<grammar tag="V+Act+Ind+Prs+Pl3"/>
+	<sem class="ACTION_V"/>
+      </element>
+    </answer> 
+  </q>
+<!-- Past tense -->
   <q id="pst_yesterday">
     <qtype>V-PRT</qtype>
     <question>
@@ -32,6 +91,68 @@
       <element game='morfa' task='yes' id="MAINV">
         <grammar tag="V+Act+Ind+Prt+Sg3"/>
         <sem class="MORFAC_V"/>
+      </element>
+    </answer>
+  </q>
+   <q id="vprt0">
+    <qtype>V-PRT</qtype>
+    <qtype>V-MIX</qtype>
+   <question>
+      <text>Midä SUBJ eeläq MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<id>tegemä</id>
+	<grammar tag="V+Act+Ind+Prt+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Eeläq SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element game='morfa' id="MAINV" task="yes">
+	<sem class="ACTION_V"/>
+	<grammar tag="V+Act+Ind+Prt+Person-Number"/>
+      </element>
+    </answer>
+  </q> 
+     <q id="vprt1sg">
+    <qtype>V-PRT</qtype>
+    <question>
+      <text>Midä SUBJ eeläq tekkʼ</text>
+      <element id="SUBJ">
+	<sem class="PEOPLE"/>
+	<grammar tag="N+Sg+Nom"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Tä MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element game='morfa' id="MAINV" task="yes">
+	<grammar tag="V+Act+Ind+Prt+Sg3"/>
+	<sem class="ACTION_V"/>
+      </element>
+    </answer>
+  </q>
+    <q id="vprt1pl">
+    <qtype>V-PRT</qtype>
+    <qtype>V-MIX</qtype>
+    <question>
+      <text>Midä SUBJ eeläq teiq</text>
+      <element id="SUBJ">
+	<sem class="PEOPLE"/>
+	<grammar tag="N+Pl+Nom"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Nä MAINV</text>
+      <element game='morfa' id="MAINV" task="yes">
+	<grammar tag="V+Act+Ind+Prt+Pl3"/>
+	<sem class="ACTION_V"/>
       </element>
     </answer>
   </q>
