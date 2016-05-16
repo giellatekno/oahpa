@@ -7,11 +7,24 @@
         Enter the <a class="helptext" href="#">given verb<span class="shortinfo">Note: All verbs are given in the 3S form.</span></a> in the form that <a class="helptext" href="#">{% trans "corresponds" %}<span class="shortinfo">Ex. "nîpawiw (nîyanân)" =  "ninîpawinân"</span></a> to the pronoun in brackets. 
     {% elif settings.gametype == "context" %}
 
-      {% if settings.vtype_context == 'V-PRS' %}
+      {% if settin gs.vtype_context == 'V-AI-PRS' %}
         {% trans "Talk about what people do or do not usually do. Complete the response to the question by entering the verb in the correct present tense form." %}
-      {% elif settings.vtype_context == 'V-PRT' %}
+      {% elif settings.vtype_context == 'V-AI-PRT' %}
         {% trans "Talk about what people did yesterday. Complete the response to the question by entering the verb in the correct past tense form." %}
-      {% else %}
+	  {% elif settings.vtype_context == 'V-II-PRS' %}
+        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}
+      {% elif settings.vtype_context == 'V-II-PRT' %}
+        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}     
+	  {% elif settings.vtype_context == 'V-TA-PRS' %}
+        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}
+	  {% elif settings.vtype_context == 'V-TA-PRT' %}
+        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}
+	  {% elif settings.vtype_context == 'V-TI-PRS' %}
+        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}
+	  {% elif settings.vtype_context == 'V-TI-PRT' %}
+        {% trans "Complete the response to the question by entering the verb in the correct past tense form." %}
+		
+	 {% else %}
         {% trans "Add verbs in correct forms." %}
       {% endif %}
 
