@@ -163,7 +163,9 @@
                         class="feedback_link" 
                         id="link_feedback-{{ forloop.counter }}">
 					<img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
-					<t class="interface">{% trans_to "help" "sme"%}<span class="invisible">{% trans "help" %}</span></t>
+					{% ifnotequal gametype "leksa" %}
+    				    <t class="interface">{% trans_to "help" "sme"%}<span class="invisible">{% trans "help" %}</span></t>
+                    {% endifnotequal %}
                     </span>
                     </a>
                     <a>
@@ -179,7 +181,7 @@
 
                     <a data-error-fst href="#" data-lemma="{{ form.lemma }}" data-input-form="{{ form.userans }}" data-task="{{ form.user_task }}">
                         <img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
-					    {% trans_to "help" "sme"%}
+    					{% ifnotequal gametype "leksa" %} {% trans_to "help" "sme"%} {% endifnotequal %}
 				    </a>
 				    
                     {% if form.tcomm %}

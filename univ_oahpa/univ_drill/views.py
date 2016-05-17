@@ -317,6 +317,7 @@ class Gameview(object):
 class Leksaview(Gameview):
 
 	def additional_settings(self, settings_form):
+		self.settings['gametype'] = 'leksa'
 		self.settings['allsem'] = settings_form.allsem
 		# These must be set to None if they are not in use. Will fix
 		# this, but setting them results in the query failing
@@ -333,6 +334,7 @@ class Leksaview(Gameview):
 			semtype = ', '.join(semtype)
 
 		self.settings['gamename_key'] = "%s - %s" % (semtype, transtype)
+		self.settings['gametype'] = 'leksa'
 		
 	def context(self, request, game, settings_form):
 		self.register_logs(request, game, settings_form)
@@ -347,6 +349,7 @@ class Leksaview(Gameview):
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
 			'deeplink': self.create_deeplink(game, settings_form),
+			'gametype': self.settings['gametype'],
 			})
 
 
