@@ -68,7 +68,7 @@ class Questions:
 
 	def read_element(self,qaelement,el,el_id,qtype):
 		
-		semclass = False
+		semclasses = False
 		
 		print
 		#print "\tCreating element %s (%s)" % (el_id, qaelement.qatype)
@@ -127,12 +127,14 @@ class Questions:
 		# Search for elementes that agree
 		agr_elements=None
 		if syntax=="MAINV" or syntax=="MAINVOBJ":
-			agr_id="SUBJ"
-			print "\tTRYING verb agreement " + agr_id + " " + qaelement.qatype
-			if QElement.objects.filter(question=qaelement, syntax=agr_id,
+			agr_id=["SUBJ"]
+			if syntax == "MAINVOBJ":
+				agr_id.append("OBJECT")
+			print "\tTRYING verb agreement (" + ', '.join(agr_id) + ") " + qaelement.qatype
+			if QElement.objects.filter(question=qaelement, syntax__in=agr_id,
 									   question__qatype=qaelement.qatype).count() > 0:
 				agr_elements = QElement.objects.filter(question=qaelement,
-													   syntax=agr_id,
+													   syntax__in=agr_id,
 													   question__qatype=qaelement.qatype)
 		
 
@@ -190,20 +192,18 @@ class Questions:
 		if not word_elements:
 			semclasses = []
 			if el:
-				semclasses = el.getElementsByTagName("sem")
+				semclasses = [s.getAttribute('class') for s in el.getElementsByTagName("sem")]
 				if semclasses:
-					semclass = semclasses[0].getAttribute("class")
-					word_elements = Word.objects.filter(semtype__semtype=semclass)
+					word_elements = Word.objects.filter(semtype__semtype__in=semclasses)
 			elif qaelement.question:
 				# check question for copy, grab semclasses
 				has_copies = QElement.objects.filter(question=qaelement.question,
 								identifier=el_id)
 				if has_copies:
-					semclasses = has_copies.values_list('semtype__semtype', flat=True)
-					semclass = semclasses[0]
-					word_elements = Word.objects.filter(semtype__semtype=semclass)
+					semclasses = list(has_copies.values_list('semtype__semtype', flat=True))
+					word_elements = Word.objects.filter(semtype__semtype__in=semclasses)
 
-			if el: 
+			if el:
 				valclasses = el.getElementsByTagName("val")
 
 				if valclasses:
@@ -399,15 +399,16 @@ class Questions:
 			qe = QElement.objects.create(question=qaelement,\
 										 identifier=el_id,\
 										 syntax=syntax)  
-			if semclass:
-				semty, _ = Semtype.objects.get_or_create(semtype=semclass)
-				qe.semtype = semty
+			if semclasses:
+				for s in semclasses:
+					semty, _ = Semtype.objects.get_or_create(semtype=s)
+					qe.semtype.add(semty)
 				qe.save()
 			if task:
 				qe.task=task
 				qe.save()
 			
-			print '\t\tsemtype: ', semclass
+			print '\t\tsemtype: ', semclasses
 			# Add links to corresponding question elements.
 			if question_qelements:
 				for q in question_qelements:
@@ -429,7 +430,7 @@ class Questions:
 				
 				# Just filtering isn't enough; .filter() doesn't return a list of unique items with this kind of query. 
 				
-				if semclass:
+				if semclasses:
 					word_pks = Word.objects.filter(form__tag__in=qe.tags.all()).filter(semtype=qe.semtype).values_list('pk', flat=True)
 				else:
 					word_pks = Word.objects.filter(form__tag__in=qe.tags.all()).values_list('pk', flat=True)

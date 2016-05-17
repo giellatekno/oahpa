@@ -1023,7 +1023,7 @@ class QElement(models.Model):
 								  null=True,
 								  related_name='agreement_set')
 
-	semtype = models.ForeignKey(Semtype, null=True) # ManyToMany instead?
+	semtype = models.ManyToManyField(Semtype, null=True)
 	tags = models.ManyToManyField(Tag)
 	game = models.CharField(max_length=20)
 	copy = models.ForeignKey('self',

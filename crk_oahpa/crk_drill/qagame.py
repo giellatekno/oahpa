@@ -184,7 +184,7 @@ class QAGame(Game):
 
 			if qelement:
 				if qelement.semtype:
-					form_set = form_set.filter(word__semtype=qelement.semtype)
+					form_set = form_set.filter(word__semtype__in=qelement.semtype)
 			form = form_set[0]
 		else:
 			if word_id and tag_el:
