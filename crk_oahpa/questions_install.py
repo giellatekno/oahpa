@@ -393,7 +393,7 @@ class Questions:
 		############# CREATE ELEMENTS
 		print '\tCREATING ELEMENTS'
 		print '\tElements for the following keys...'
-		print '\t' + repr(posvalues.keys())
+		print '\t\tpos: ' + ', '.join(posvalues.keys())
 		# Add an element for each pos:
 		for p in posvalues.keys():
 			qe = QElement.objects.create(question=qaelement,\
@@ -408,7 +408,10 @@ class Questions:
 				qe.task=task
 				qe.save()
 			
-			print '\t\tsemtype: ', semclasses
+			if semclasses:
+				print '\t\tsemtype: ', ', '.join(semclasses)
+			else:
+				print '\t\tno semtype'
 			# Add links to corresponding question elements.
 			if question_qelements:
 				for q in question_qelements:
