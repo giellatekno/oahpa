@@ -271,7 +271,7 @@ class Feedback_install(object):
         ("N", ('case', 'number', 'possessive', 'derivation')),
         # TODO: ("A", ('case', 'number', 'grade', 'attributive', )),
         # TODO: ("Num", ('case', 'number',)),
-        ("V", ('subclass', 'infinite', 'mood', 'tense', 'personnumber', )),
+        ("V", ('subclass', 'infinite', 'mood', 'tense', 'personnumber', 'object', )),
     ])
 
     # NOTE: processing of dialects and lemma exclusions is not something that
