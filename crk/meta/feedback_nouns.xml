@@ -55,9 +55,15 @@
       <attribute name="rime" value="und-w"/>
       <attribute name="rime" value="atim"/>
       <attribute name="rime" value="ow"/>
+	  <attribute name="rime" value="v-is"/>
+	  <attribute name="rime" value="wa"/>
 
+	  <attribute name="t" value="no"/>
+      <attribute name="t" value="yes"/>
+	  
       <attribute name="lemma" value="ôhow"/>
       <attribute name="lemma" value="mostos"/>
+	  <attribute name="lemma" value="maskwa"/>
 
       <attribute name="number" value=""/>
       <attribute name="number" value="Pl"/>
@@ -310,11 +316,21 @@ iyiw-Obv
       <note>   </note>
     </l>
 
-    <l rime="k">
+ <!--   <l rime="k">
       <msg derivation="Der/Dim">diminutive-t-c</msg>
       <note>   </note>
-    </l>
+    </l> -->
 
+	<l rime="v-is">
+	  <msg derivation="Der/Dim">diminutive-is</msg>
+      <note>niska-niskis</note>
+    </l>
+	
+    <l rime="v-is">
+	  <msg derivation="Der/Dim">base-vowel</msg>
+      <note>niska-niskis</note>
+    </l>
+	
     <l rime="0">
       <msg derivation="Der/Dim">base-not-k-w-y</msg>
       <note>   </note>
@@ -325,10 +341,10 @@ iyiw-Obv
       <note>   </note>
     </l>
 
-    <l rime="0">
+ <!--   <l rime="0">
       <msg derivation="Der/Dim">diminutive-t-c</msg>
       <note>   </note>
-    </l>
+    </l> -->
 
     <l rime="und-w">
       <msg derivation="Der/Dim">base-not-k-w-y</msg>
@@ -340,10 +356,10 @@ iyiw-Obv
       <note> 	kohkôsiwiyinos-kohkôsiwiyin</note>
     </l>
 
-    <l rime="und-w">
+  <!--  <l rime="und-w">
       <msg derivation="Der/Dim">diminutive-t-c</msg>
       <note> 	kohkôsiwiyinos-kohkôsiwiyin</note>
-    </l>
+    </l> -->
 
     <l rime="atim">
       <msg derivation="Der/Dim">base-not-k-w-y</msg>
@@ -354,11 +370,20 @@ iyiw-Obv
       <msg derivation="Der/Dim">diminutive-osis</msg>
       <note> 	kohkôsiwiyinos-kohkôsiwiyin</note>
     </l>
-
-    <l rime="atim">
+	
+	<l rime="wa">
+	  <msg derivation="Der/Dim">diminutive-osis</msg>
+	  <note>maskwa-maskosis</note>
+	</l>
+	
+	<l rime="wa">
+      <msg derivation="Der/Dim">re-add-wa</msg>
+	  <note>maskwa-maskosis</note>
+	</l>
+ <!--   <l rime="atim">
       <msg derivation="Der/Dim">diminutive-t-c</msg>
       <note> 	kohkôsiwiyinos-kohkôsiwiyin</note>
-    </l>
+    </l> -->
 
     <l rime="iy">
       <msg derivation="Der/Dim">base-semi</msg>
@@ -370,10 +395,10 @@ iyiw-Obv
       <note>   </note>
     </l>
 
-    <l rime="iy">
+  <!--  <l rime="iy">
       <msg derivation="Der/Dim">diminutive-t-c</msg>
       <note>   </note>
-    </l>
+    </l> -->
 
     <l rime="oy">
       <msg derivation="Der/Dim">base-semi</msg>
@@ -385,10 +410,10 @@ iyiw-Obv
       <note>   </note>
     </l>
 
-    <l rime="oy">
+ <!--   <l rime="oy">
       <msg derivation="Der/Dim">diminutive-t-c</msg>
       <note>   </note>
-    </l>
+    </l> -->
 
     <l rime="ay">
       <msg derivation="Der/Dim">base-semi</msg>
@@ -400,10 +425,10 @@ iyiw-Obv
       <note>   </note>
     </l>
 
-    <l rime="ay">
+ <!--   <l rime="ay">
       <msg derivation="Der/Dim">diminutive-t-c</msg>
       <note>   </note>
-    </l>
+    </l> -->
 
     <l rime="iw">
       <msg derivation="Der/Dim">base-semi</msg>
@@ -415,10 +440,10 @@ iyiw-Obv
       <note>iyiniw - iyinîs</note>
     </l>
 
-    <l rime="iw">
+ <!--   <l rime="iw">
       <msg derivation="Der/Dim">diminutive-t-c</msg>
       <note>iyiniw - iyinîs</note>
-    </l>
+    </l> -->
 
     <l rime="ow">
       <msg derivation="Der/Dim">base-semi</msg>
@@ -430,10 +455,10 @@ iyiw-Obv
       <note>ôhôsis-ôhow</note>
     </l>
 
-    <l rime="ow">
+  <!--  <l rime="ow">
       <msg derivation="Der/Dim">diminutive-t-c</msg>
       <note>ôhôsis-ôhow</note>
-    </l>
+    </l> -->
 
     <l rime="aw">
       <msg derivation="Der/Dim">base-semi</msg>
@@ -445,10 +470,10 @@ iyiw-Obv
       <note>   </note>
     </l>
 
-    <l rime="aw">
+  <!--  <l rime="aw">
       <msg derivation="Der/Dim">diminutive-t-c</msg>
       <note>   </note>
-    </l>
+    </l> -->
 
     <l rime="eew">
       <msg derivation="Der/Dim">base-semi</msg>
@@ -460,9 +485,9 @@ iyiw-Obv
       <note>kinosês - kinosêw</note>
     </l>
 
-    <l rime="eew">
+    <l t="yes">
       <msg derivation="Der/Dim">diminutive-t-c</msg>
-      <note>kinosês - kinosêw</note>
+      <note></note>
     </l>
 
     <l rime="i">
