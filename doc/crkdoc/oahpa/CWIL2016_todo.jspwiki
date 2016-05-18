@@ -3,14 +3,19 @@
 !!Bugs - not fixed?
 
 # Randomization is not working properly, look at the format for semantic classes in the templates: __Ryan__ 
+## implemented in code, but need to test exercises on gtoahpa
+#
 # Morfa-C verb type specific instructions are no longer showing up. (Probably due to adding new templates and changing old names) Does mgame_v.html have to be re-implemented differently? __Ryan__
+# Possessive instructions are showing for all noun questions in Morfa-C
+## __fixed__
 # Define "mode" attribute
 # Morfa C menu:
 ## Possessives and diminutives should be added to the menu for nouns (they are added to forms.py, perhaps they will show up after restart?)
 # Verbs AI Ind (prt,futdef,futint), AI Cnj, TI Ind (futdef, futint), II Ind and Cnj pages not found. TI Cnj gave a value error.
 # TI-Ind-Prt,TA-Ind-Prt, and TA-Ind-fut-def,  still showing % in generated verbs.
+## TODO: ryan
 # For Cnj there should not be a fut-def option (i.e. why page is not found for TA-Cnj-Fut-Def)
-# Possessive instructions are showing for all noun questions in Morfa-C
+## TODO: ryan
 # Implement noun question instructions file for morfa-s mgame_s_n.html
 # Morfa-S AI verb exercise still generates some TI verbs.
 # Morfa-C TI, TA, and II verb help is not functioning.
@@ -19,6 +24,12 @@
 # Morfa-S past tense AI verbs: help is not showing past tense message (the message is defined the same as the TI verbs, which works.)
 # Leksa: audio files not working with Safari
 ## Not prioritized
+
+! Bug notes
+
+# question install process may now use multiple semtypes per element, and a word will be matched and used in the question if at least one semtype matches. if we need to have them all match we'll have to do something else
+
+# feedback install for Subj+Obj tag has to be switched to multiple attributes (see verb feedback file for example)
 
 !!Design - general - not fixed
 * Add a typer!: __Ryan__
@@ -42,12 +53,16 @@
 !! MorfaC: New tasks
 * MorfaC verbs: 
 ** __TI__ (TI-PRS_PRT_FUTDEF_FUTINT.xml) 
+*** __now installs__
 ** __TA__ (TA-PRS_PRT_FUTDEF_FUTINT.xml) 
+*** __now installs__
 ** __conjunct__ (AI-CNJ-PRT_PRS_FUTINT.xml, TA-CNJ-PRS_PRT_FUTINT.xml, TI-CNJ-PRS_PRT_FUTINT.xml)
+*** __now installs__
 * MorfaC verbs: translation tasks
 ** pronouns (transl_questions.xml): __fixed__
 ** II verbs with tranlastions from English (II-PRS.xml) __not functioning yet__
 ** nouns: diminutive (in noun_questions.xml)
+*** __now installs__
 
 !! Numra
 * words with vowel length errors or typos should be marked with __Err/ShLo__, which will give it possible to give spesific feedback, and mark the answer in yellow with the opportunity for correction. It's now added to the Numra FSTs, but we will consider it for the ped.FTS __ implementing in Numra: Ryan__, the message file is: meta/errorfstmessages.xml
