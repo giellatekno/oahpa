@@ -822,8 +822,6 @@ def morfa_game(request, pos):
 		template = 'mgame_l.html'
 	elif pos == 'Der':
 		template = 'mgame_der.html'
-	elif pos == 'Px':
-		template = 'mgame_px.html'
 	else:
 		template = 'mgame_%s.html' % pos.lower()[0]
 
