@@ -467,38 +467,13 @@ echo " "
 echo "done"
 echo "==================================================="
 
-# $META/verb_questions/AI-CNJ-PRT_PRS_FUTINT.xml
-# $META/verb_questions/TI-CNJ-PRS_PRT_FUTINT.xml
-# $META/verb_questions/II-PRS.xml
+echo "==================================================="
+echo "installing Morfa-C questions for AI - CNJ - Prt, Prs"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/AI-CNJ-PRT_PRS_FUTINT.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
-
-		# echo "==================================================="
-# echo "installing Morfa-C questions for pronoun"
-# $P install.py -g $META/grammar_defaults.xml -q $META/pron_questions.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "installing Morfa-C questions for adjectives"
-# $P install.py -g $META/grammar_defaults.xml -q $META/adjective_questions.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "installing Morfa-C questions for numerals"
-# $P install.py -g $META/grammar_defaults.xml -q $META/numeral_questions.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "installing Morfa-C questions for derivation"
-# $P install.py -g $META/grammar_defaults.xml -q $META/derivation_questions.xml 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
 
 # echo "==================================================="
 # echo "installing grammar links for norwegian"
