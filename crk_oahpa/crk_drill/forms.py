@@ -293,7 +293,9 @@ V_TYPE_FILTER_OPTIONS = {
     ('V', 'TA', 'Cnj', 'Prs'): 'V-TA-CNJ-PRS',
     ('V', 'TA', 'Cnj', 'Prt'): 'V-TA-CNJ-PRT',
 
-    ('V', 'TA', 'Cnj', 'Fut+Def'): 'V-TA-CNJ-FUT-DEF',
+    # TODO: exclude this one option
+    # ('V', 'TA', 'Cnj', 'Fut+Def'): 'V-TA-CNJ-FUT-DEF',
+
     ('V', 'TA', 'Cnj', 'Fut+Int'): 'V-TA-CNJ-FUT-INT',
     ('V', 'TI', 'Cnj', 'Fut+Def'): 'V-TI-CNJ-FUT-DEF',
     ('V', 'TI', 'Cnj', 'Fut+Int'): 'V-TI-CNJ-FUT-INT',
@@ -1320,6 +1322,10 @@ class MorfaSettings(OahpaSettings):
 			if 'pron_type' in post_data:
 				if post_data['pron_type'].lower() in ['refl', 'recipr']:
 					self.fields['proncase'].choices = RECIP_REFL_CHOICES
+			if 'v_mode_context' in post_data:
+				if post_data['v_mode_context'] == 'Cnj':
+					self.fields['v_tense_context'].choices = [(a, b) for a, b in V_TENSE_CONTEXT_CHOICES
+																if a != 'Fut+Def']
 
 
 
