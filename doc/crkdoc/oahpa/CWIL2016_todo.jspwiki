@@ -20,6 +20,7 @@
 # For Cnj there should not be a fut-def option (i.e. why page is not found for TA-Cnj-Fut-Def)
 ## TODO: ryan
 # Implement noun question instructions file for morfa-s mgame_s_n.html
+## instructions now seem to be implemented in mgame_n.html?
 # Morfa-S AI verb exercise still generates some TI verbs.
 # Morfa-C TI, TA, and II verb help is not functioning.
 # Added a "t" tag for nouns with values "yes" or "no". Need to be added to tag list.
@@ -37,6 +38,7 @@
 !!Design - general - not fixed
 * Add a typer!: __Ryan__
 * Find where to change the names of the exercise on the side of each exercise page __Ryan__
+** Look through the templates for the block named "gametitlename", i.e., line 6 in mgame.html. 
 
 !!Task design - not fixed
 * all programs: should allow accidental spaces before/after answers
@@ -61,6 +63,7 @@
 *** __now installs__
 ** __conjunct__ (AI-CNJ-PRT_PRS_FUTINT.xml, TA-CNJ-PRS_PRT_FUTINT.xml, TI-CNJ-PRS_PRT_FUTINT.xml)
 *** __now installs__
+*** __added missing AI-CNJ-PRT_PRS_FUTINT, but some questions need a look over__
 * MorfaC verbs: translation tasks
 ** pronouns (transl_questions.xml): __fixed__
 ** II verbs with tranlastions from English (II-PRS.xml) __not functioning yet__
