@@ -57,7 +57,7 @@ POS_CHOICES = (
 CASE_CHOICES = (
     ('N-PL', _('Plural')),
     ('N-LOC', _('Locative')),
-    ('N-DIM', _('Diminutive')),
+    ('N-REVDIM', _('Diminutive reverse')),
     ('N-PX', _('Possessive')),
 )
 
@@ -68,7 +68,7 @@ NOUN_QUESTION_ANSWER = {
 	# gametype			question		answer
 	'N-PL': [('N+Animacy+Sg', 'N+Animacy+Pl')],
 	'N-LOC': [('N+Animacy+Sg', 'N+Animacy+Loc')],
-	'N-DIM': [('N+Animacy+Der/Dim+N+Animacy+Sg', 'N+Animacy+Sg')],
+	'N-REVDIM': [('N+Animacy+Der/Dim+N+Animacy+Sg', 'N+Animacy+Sg')],
 }
 
 FEEDBACK_TYPE = {
