@@ -3,7 +3,7 @@
 !!Bugs - not fixed?
 
 # Randomization is not working properly, look at the format for semantic classes in the templates: __Ryan__ 
-## __install process fixed, can someone glance over sentences?__
+## __fixed__
 #
 # Morfa-C verb type specific instructions are no longer showing up. (Probably due to adding new templates and changing old names) Does mgame_v.html have to be re-implemented differently? __Ryan__
 ## __fixed__
@@ -14,9 +14,12 @@
 # Morfa C menu:
 ## Possessives and diminutives should be added to the menu for nouns (they are added to forms.py, perhaps they will show up after restart?)
 ## __fixed__
+# Morfa-C Diminutive is showing possessive, these should be on possessive page and replace current possessive instructions
 # Verbs AI Ind (prt,futdef,futint--(attribute errors)), AI Cnj __fixed__, TI Ind (futdef, futint), II Ind and Cnj pages not found. TI Cnj gave a value error.
 # TI-Ind-Prt,TA-Ind-Prt, and TA-Ind-fut-def,  still showing % in generated verbs.
 ## TODO: ryan
+## names?
+## V-AI-FUT-INT - doesn't work
 # For Cnj there should not be a fut-def option (i.e. why page is not found for TA-Cnj-Fut-Def)
 ## TODO: ryan
 #The possessive instructions still showing for Morfa-C diminutives should be showing for Morfa-C possessives.
@@ -28,13 +31,36 @@ The instructions currently showing for Morfa-C possessives should be removed com
 # Morfa-C TI, TA, and II verb help is not functioning.
 ##TI only has part of TA help. TA only has part of help (this hopefully fixed).
 # Added a "t" tag for nouns with values "yes" or "no". Need to be added to tag list.
+## alternate name if this is too short? t_phon
 # Morfa-S verbs: The preferred answers given contain "%".
 # Morfa-S past tense AI verbs: help is not showing past tense message (the message is defined the same as the TI verbs, which works.)
 # Conjunct and Independent help messages are showing up together in independent and conjunct exercises in Morfa-C and S.
 # Morfa-C verb exercises only showing present tense AI instructions
+# Gold page for Diminutive qagame.py:l.155, add qid
 
 # Leksa: audio files not working with Safari
 ## Not prioritized
+
+! morfa-c question types
+
+# V-AI-FUT-INT
+# V-AI-PRS
+# V-AI-PRT
+# V-II-PRS
+# V-TA-CNJ-FUT-INT
+# V-TA-CNJ-PRS
+# V-TA-CNJ-PRT
+# V-TA-FUT-DEF
+# V-TA-FUT-INT
+# V-TA-PRS
+# V-TA-PRT
+# V-TI-CNJ-FUT-INT
+# V-TI-CNJ-PRS
+# V-TI-CNJ-PRT
+# V-TI-FUT-DEF
+# V-TI-FUT-INT
+# V-TI-PRS
+# V-TI-PRT
 
 ! Bug notes
 
