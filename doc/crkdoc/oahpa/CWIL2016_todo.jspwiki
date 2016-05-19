@@ -14,7 +14,7 @@
 # Morfa C menu:
 ## Possessives and diminutives should be added to the menu for nouns (they are added to forms.py, perhaps they will show up after restart?)
 ## __fixed__
-# Verbs AI Ind (prt,futdef,futint), AI Cnj, TI Ind (futdef, futint), II Ind and Cnj pages not found. TI Cnj gave a value error.
+# Verbs AI Ind (prt,futdef,futint--(attribute errors)), AI Cnj __fixed__, TI Ind (futdef, futint), II Ind and Cnj pages not found. TI Cnj gave a value error.
 # TI-Ind-Prt,TA-Ind-Prt, and TA-Ind-fut-def,  still showing % in generated verbs.
 ## TODO: ryan
 # For Cnj there should not be a fut-def option (i.e. why page is not found for TA-Cnj-Fut-Def)
@@ -26,9 +26,13 @@ The instructions currently showing for Morfa-C possessives should be removed com
 ## instructions now seem to be implemented in mgame_n.html?
 # Morfa-S AI verb exercise still generates some TI verbs.
 # Morfa-C TI, TA, and II verb help is not functioning.
+##TI only has part of TA help. TA only has part of help (this hopefully fixed).
 # Added a "t" tag for nouns with values "yes" or "no". Need to be added to tag list.
 # Morfa-S verbs: The preferred answers given contain "%".
 # Morfa-S past tense AI verbs: help is not showing past tense message (the message is defined the same as the TI verbs, which works.)
+# Conjunct and Independent help messages are showing up together in independent and conjunct exercises in Morfa-C and S.
+# Morfa-C verb exercises only showing present tense AI instructions
+
 # Leksa: audio files not working with Safari
 ## Not prioritized
 
