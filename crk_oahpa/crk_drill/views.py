@@ -566,7 +566,7 @@ class Morfaview(Gameview):
 		'N-PL':  _('Practice plural nouns.'),
 		'N-LOC': _('Practice nouns in locative.'),
 		'NOM':  _('Practice nominative'),
-		'N-DIM':  _('Here are diminutive forms.'),
+		'N-REVDIM':  _('Here are diminutive forms.'),
 		'N-PX':  _('Practice possessive forms.'),
 		'N-MIX':  _('Practice a mix'),
 		'V-MIX':  _('Practice a mix'),
