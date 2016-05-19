@@ -525,6 +525,11 @@ NUMGAME_CHOICES = (
 	('numeral', _('Numeral to word')),
 )
 
+NUMGAME_CHOICES_ALT = (
+	('string', _('Cree to English')),
+	('numeral', _('English to Cree')),
+)
+
 NUMGAME_CHOICES_PL = (
 	('string', _('Words to numerals')),
 	('numeral', _('Numerals to words')),
@@ -1767,6 +1772,7 @@ class DatoSettings(KlokkaSettings):
 	gametype = None # Disable gametype (easy, medium, hard)
 
 	default_data = {'language' : 'crk', 'numlanguage' : 'crk', 'numgame': 'string'}
+	numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES_ALT, widget=forms.RadioSelect)
 
 
 class DatoQuestion(KlokkaQuestion):
