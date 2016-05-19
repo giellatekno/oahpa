@@ -2,35 +2,45 @@
 
 !!Bugs - not fixed?
 
+!Instructions
 # Possessive, diminutive Morfa-C instructions
 ## The possessive instructions still showing for Morfa-C diminutives should be showing for Morfa-C possessives.
 ## The instructions currently showing for Morfa-C possessives should be removed completely.
+# Morfa-S diminutive instruction is showing up in the new Morfa-C diminutive exercise. New help needs to be made for Morfa-C and the current help messages should be removed.
+# Morfa-C verb exercises only showing "present tense AI" instructions
+
+!Design
 # Define "mode" attribute
 ## __fixed in morfa-c, do we want this in morfa-s?__
+
+!Morfa C tasks
 # Verbs AI Ind (prt,futdef,futint--(attribute errors)), AI Cnj __fixed__, TI Ind (futdef, futint), II Ind and Cnj pages not found. TI Cnj gave a value error.
 # TI-Ind-Prt,TA-Ind-Prt, and TA-Ind-fut-def,  still showing % in generated verbs.
 ## TODO: ryan
 ## names?
 # V-AI-FUT-INT - doesn't work
 ## installs successfully, but errors in generation? __Ryan__
-#
-#Morfa-S diminutive "help" is showing up in the new Morfa-C diminutive exercise. New help needs to be made for Morfa-C and the current help messages should be removed.
-# Morfa-S AI verb exercise still generates some TI verbs.
 # Morfa-C TI, TA, and II verb help is not functioning.
 ##TI only has part of TA help. TA only has part of help (this hopefully fixed).
-# Added a "t2c" tag for nouns with values "yes" or "no". Need to be added to tag list.
-## alternate name if this is too short? t_phon
+
+
+!Morfa S tasks
+# Morfa-S AI verb exercise still generates some TI verbs.
 # Morfa-S verbs: The preferred answers given contain "%".
 ## __ryan__ reinstall with new analyzers after make clean
 # Morfa-S past tense AI verbs: help is not showing past tense message (the message is defined the same as the TI verbs, which works.)
-# Conjunct and Independent help messages are showing up together in independent and conjunct exercises in Morfa-C and S.
-# Morfa-C verb exercises only showing present tense AI instructions
+
+!Feedback
+# Added a "t2c" tag for nouns with values "yes" or "no". Need to be added to tag list.
+# Conjunct and Independent help messages are showing up together in independent and conjunct exercises in Morfa-C and S. __Lene probably fixed in source file__
+
 # Gold page for Diminutive qagame.py:l.155, add qid
 
+!Other
 # Leksa: audio files not working with Safari
 ## Not prioritized
 
-! morfa-c question types
+!! morfa-c question types
 
 # V-AI-FUT-INT
 # V-AI-PRS
@@ -51,7 +61,7 @@
 # V-TI-PRS
 # V-TI-PRT
 
-! Bug notes
+!! Bug notes
 
 # question install process may now use multiple semtypes per element, and a word will be matched and used in the question if at least one semtype matches. if we need to have them all match we'll have to do something else
 
