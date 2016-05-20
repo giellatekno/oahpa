@@ -44,12 +44,12 @@ echo "==================================================="
  echo "done"
  echo "==================================================="
 
-#  echo "==================================================="
-#  echo "feeding db with $DPS/Pron_crk.xml"
-#  $P install.py --file $DPS/Pron_crk.xml --tagfile $META/tags.txt --paradigmfile $META/pron_paradigms.txt 2>error.log
-#  echo " "
-#  echo "done"
-#  echo "==================================================="
+echo "==================================================="
+echo "feeding db with $DPS/Pron_crk.xml"
+$P install.py --file $DPS/Pron_crk.xml --tagfile $META/tags.txt --paradigmfile $META/pron_paradigms.txt 2>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 
 echo "==================================================="
@@ -65,13 +65,6 @@ echo "==================================================="
 # echo " "
 # echo "done"
 # echo "==================================================="
-
-#  echo "==================================================="
-#  echo "feeding db with $DPS/Pron_crk.xml"
-#  $P install.py --file $DPS/Pron_crk.xml --tagfile $META/tags.txt --paradigmfile $META/pron_paradigms.txt 2>>error.log
-#  echo " "
-#  echo "done"
-#  echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $META/names.xml"
@@ -609,7 +602,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "adding feedback to pronouns"
-$P install.py -f $DPS/V_crk.xml --feedbackfile $META/feedback_pronouns.xml 2>>error.log
+$P install.py -f $DPS/Pron_crk.xml --feedbackfile $META/feedback_pronouns.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
