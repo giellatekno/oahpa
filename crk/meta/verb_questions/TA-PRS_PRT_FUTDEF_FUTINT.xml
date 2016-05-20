@@ -6,9 +6,8 @@
       <text>MAINVOBJ cî mâna OBJECT</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prs+2Sg+3SgO"/>
-        <sem class="MOVE_SOMETHING"/>
-        <sem class="POSSESS"/>
-      </element>
+			<sem class="mACTIVITY"/>
+			</element>
       <element id="OBJECT">
             <grammar tag="N+AN+Sg"/>
 			<sem class="THING"/>
@@ -27,8 +26,7 @@
       <text>êha, MAINVOBJ mâna OBJECT</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
         <grammar tag="V+TA+Ind+Prs+1Sg+3SgO"/>
-		<sem class="MOVE_SOMETHING"/>
-        <sem class="POSSESS"/>
+		<sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Sg"/>
@@ -50,8 +48,7 @@
       <text>MAINVOBJ cî mâna OBJECT</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prs+2Sg+3PlO"/>
-        <sem class="MOVE_SOMETHING"/>
-        <sem class="POSSESS"/>
+        <sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Pl"/>
@@ -92,20 +89,11 @@
       <text>MAINVOBJ cî mâna OBJECT</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prs+3Sg+4Sg/PlO"/>
-		<sem class="MOVE_SOMETHING"/>
-        <sem class="POSSESS"/>
+		<sem class="TASTE"/>
+		<sem class="PREPARE_FOOD"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Sg+Obv"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
 			<sem class="FOOD"/>
       </element>
     </question>
@@ -134,8 +122,7 @@
       <text>MAINVOBJ cî mâna OBJECT</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prs+3Sg+4Sg/PlO"/>
-		<sem class="MOVE_SOMETHING"/>
-        <sem class="POSSESS"/>
+		<sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Pl"/>
@@ -176,8 +163,7 @@
       <text>MAINVOBJ cî mâna OBJECT</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prs+2Pl+3SgO"/>
-		<sem class="MOVE_SOMETHING"/>
-        <sem class="POSSESS"/>
+        <sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Sg"/>
@@ -218,9 +204,7 @@
       <text>MAINVOBJ cî mâna OBJECT</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prs+2Pl+3PlO"/>
-		<sem class="MOVE_SOMETHING"/>
-        <sem class="MOVE"/>
-        <sem class="POSSESS"/>
+        <sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Pl"/>
@@ -261,8 +245,7 @@
       <text>MAINVOBJ cî mâna OBJECT</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prs+12Pl+3SgO"/>
-		<sem class="MOVE_SOMETHING"/>
-        <sem class="POSSESS"/>
+		<sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Sg"/>
@@ -303,9 +286,7 @@
       <text>MAINVOBJ cî mâna OBJECT</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prs+12Pl+3PlO"/>
-		<sem class="MOVE_SOMETHING"/>
-        <sem class="MOVE"/>
-        <sem class="POSSESS"/>
+		<sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Pl"/>
@@ -346,9 +327,7 @@
       <text>MAINVOBJ cî mâna OBJECT</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prs+3Pl+4Sg/PlO"/>
-		<sem class="MOVE_SOMETHING"/>
-        <sem class="MOVE"/>
-        <sem class="POSSESS"/>
+		<sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Sg"/>
@@ -389,21 +368,11 @@
       <text>MAINVOBJ cî mâna OBJECT</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prs+3Pl+4Sg/PlO"/>
-		<sem class="MOVE_SOMETHING"/>
-        <sem class="MOVE"/>
-        <sem class="POSSESS"/>
+		<sem class="TASTE"/>
+		<sem class="PREPARE_FOOD"
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Pl"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
 			<sem class="FOOD"/>
       </element>
     </question>
@@ -431,10 +400,8 @@
     <question>
       <text>John okosisa MAINVOBJ cî mâna OBJECT</text>
       <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prs+4Sg/Pl+3SgO"/>
-		<sem class="MOVE_SOMETHING"/>
-        <sem class="MOVE"/>
-        <sem class="POSSESS"/>
+            <grammar tag="V+TA+Ind+Prs+4Sg/Pl+5Sg/PlO"/>
+		<sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Sg+Obv"/>
@@ -453,7 +420,7 @@
     <answer> 
       <text>êha, MAINVOBJ mâna OBJECT</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prs+4Sg/Pl+3SgO"/>
+        <grammar tag="V+TA+Ind+Prs+4Sg/Pl+5Sg/PlO"/>
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Sg+Obv"/>
@@ -462,42 +429,31 @@
     <answer> 
       <text>namôya, namôya MAINVOBJ mâna OBJECT</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prs+4Sg/Pl+3SgO"/>
+        <grammar tag="V+TA+Ind+Prs+4Sg/Pl+5Sg/PlO"/>
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Sg+Obv"/>
       </element>
     </answer>
   </q>
-  <!-- TODO: fix
   <q id="vtaprs12">
     <qtype>V-TA-PRS</qtype>
     <question>
       <text>Mary otânisa MAINVOBJ cî mâna OBJECT</text>
       <element id="MAINVOBJ">
           <grammar tag="V+TA+Ind+Prs+4Sg/Pl+5Sg/PlO"/>
-		<sem class="MOVE_SOMETHING"/>
-        <sem class="MOVE"/>
-        <sem class="POSSESS"/>
+		<sem class="TASTE"/>
+		<sem class="PREPARE_FOOD"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Pl+Obv"/>			
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
 			<sem class="FOOD"/>
       </element>
     </question>
     <answer> 
       <text>êha, MAINVOBJ mâna OBJECT</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-          <grammar tag="V+TA+Ind+Prs+4Sg/Pl+3PlO"/>
+          <grammar tag="V+TA+Ind+Prs+4Sg/Pl+5Sg/PlO"/>
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Pl"/>
@@ -506,110 +462,33 @@
     <answer> 
       <text>namôya, namôya MAINVOBJ mâna OBJECT</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-          <grammar tag="V+TA+Ind+Prs+4Sg/Pl+3PlO"/>
+          <grammar tag="V+TA+Ind+Prs+4Sg/Pl+5Sg/PlO"/>
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Pl"/>
       </element>
     </answer>
   </q>
-  -->
-  <q id="vtaprs13">
-    <qtype>V-TA-PRS</qtype>
-    <question>
-      <text>MAINVOBJ cî mâna OBJECT</text>
-      <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prs+3Pl+4Sg/PlO"/>
-        <sem class="QUANTITY"/>
-      </element>
-      <element id="OBJECT">
-            <grammar tag="N+AN+Sg+Obv"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
-			<sem class="FOOD"/>
-      </element>
-    </question>
-    <answer> 
-      <text>êha, MAINVOBJ mâna OBJECT</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prs+3Pl+4Sg/PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Sg+Obv"/>
-      </element>
-    </answer>
-    <answer> 
-      <text>namôya, namôya MAINVOBJ mâna OBJECT</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prs+3Pl+4Sg/PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Sg+Obv"/>
-      </element>
-    </answer>
-  </q>
-  <q id="vtaprs14">
-    <qtype>V-TA-PRS</qtype>
-    <question>
-      <text>MAINVOBJ cî mâna OBJECT</text>
-      <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prs+3Pl+4Sg/PlO"/>
-        <sem class="QUANTITY"/>
-      </element>
-      <element id="OBJECT">
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
-			<sem class="FOOD"/>
-      </element>
-    </question>
-    <answer> 
-      <text>êha, MAINVOBJ mâna OBJECT</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prs+3Pl+4Sg/PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Pl"/>
-      </element>
-    </answer>
-    <answer> 
-      <text>namôya, namôya MAINVOBJ mâna OBJECT</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prs+3Pl+4Sg/PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Pl"/>
-      </element>
-    </answer>
-  </q>
- <!-- <q id="vtaprt1">
+  <q id="vtaprt1">
     <qtype>V-TA-PRT</qtype>
     <question>
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prt+2Sg+3SgO"/>
-        <sem class="mMOVE"/>
-        <sem class="mNAME"/>
-        <sem class="mTHINK"/>
-        <sem class="mCOMMUNICATION"/>
-        <sem class="mSENSE"/>
-        <sem class="mIMPACT"/>
+        <sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Sg"/>
+			<sem class="THING"/>
+			<sem class="TOOL"/>
+			<sem class="CLOTHING"/>
+			<sem class="TOY"/>
+			<sem class="PLANT"/>
+			<sem class="MUSIC"/>
+			<sem class="UTENSIL"/>
+			<sem class="SCHOOL"/>
+			<sem class="HANDICRAFT"/>
+			<sem class="FOOD"/>
       </element>
     </question>
     <answer> 
@@ -619,7 +498,6 @@
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Sg"/>
-			<sem class="FOOD"/>
       </element>
     </answer>
     <answer> 
@@ -629,7 +507,6 @@
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Sg"/>
- 			<sem class="FOOD"/>
      </element>
     </answer>
   </q>
@@ -639,15 +516,19 @@
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prt+3Sg+4Sg/PlO"/>
-        <sem class="mMOVE"/>
-        <sem class="mNAME"/>
-        <sem class="mTHINK"/>
-        <sem class="mCOMMUNICATION"/>
-        <sem class="mSENSE"/>
-        <sem class="mIMPACT"/>
+        <sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Sg+Obv"/>
+			<sem class="THING"/>
+			<sem class="TOOL"/>
+			<sem class="CLOTHING"/>
+			<sem class="TOY"/>
+			<sem class="PLANT"/>
+			<sem class="MUSIC"/>
+			<sem class="UTENSIL"/>
+			<sem class="SCHOOL"/>
+			<sem class="HANDICRAFT"/>
 			<sem class="FOOD"/>
       </element>
     </question>
@@ -658,7 +539,6 @@
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Sg+Obv"/>
-			<sem class="FOOD"/>
       </element>
     </answer>
     <answer> 
@@ -668,7 +548,6 @@
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Sg+Obv"/>
-			<sem class="FOOD"/>
       </element>
     </answer>
   </q>
@@ -678,17 +557,21 @@
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prt+2Pl+3SgO"/>
-        <sem class="mMOVE"/>
-        <sem class="mNAME"/>
-        <sem class="mTHINK"/>
-        <sem class="mCOMMUNICATION"/>
-        <sem class="mSENSE"/>
-        <sem class="mIMPACT"/>
+        <sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Sg"/>
+			<sem class="THING"/>
+			<sem class="TOOL"/>
+			<sem class="CLOTHING"/>
+			<sem class="TOY"/>
+			<sem class="PLANT"/>
+			<sem class="MUSIC"/>
+			<sem class="UTENSIL"/>
+			<sem class="SCHOOL"/>
+			<sem class="HANDICRAFT"/>
 			<sem class="FOOD"/>
-      </element>
+			</element>
     </question>
     <answer> 
       <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
@@ -717,15 +600,19 @@
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prt+12Pl+3SgO"/>
-        <sem class="mMOVE"/>
-        <sem class="mNAME"/>
-        <sem class="mTHINK"/>
-        <sem class="mCOMMUNICATION"/>
-        <sem class="mSENSE"/>
-        <sem class="mIMPACT"/>
+        <sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Sg"/>
+			<sem class="THING"/>
+			<sem class="TOOL"/>
+			<sem class="CLOTHING"/>
+			<sem class="TOY"/>
+			<sem class="PLANT"/>
+			<sem class="MUSIC"/>
+			<sem class="UTENSIL"/>
+			<sem class="SCHOOL"/>
+			<sem class="HANDICRAFT"/>
 			<sem class="FOOD"/>
       </element>
     </question>
@@ -756,17 +643,22 @@
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prt+3Pl+4Sg/PlO"/>
-        <sem class="mMOVE"/>
-        <sem class="mNAME"/>
-        <sem class="mTHINK"/>
-        <sem class="mCOMMUNICATION"/>
-        <sem class="mSENSE"/>
-        <sem class="mIMPACT"/>
+        <sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Sg+Obv"/>
+       <grammar tag="N+AN+Sg"/>
+			<sem class="THING"/>
+			<sem class="TOOL"/>
+			<sem class="CLOTHING"/>
+			<sem class="TOY"/>
+			<sem class="PLANT"/>
+			<sem class="MUSIC"/>
+			<sem class="UTENSIL"/>
+			<sem class="SCHOOL"/>
+			<sem class="HANDICRAFT"/>
 			<sem class="FOOD"/>
-      </element>
+			</element>
     </question>
     <answer> 
       <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
@@ -794,37 +686,39 @@
     <question>
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prt+5Sg/Pl+4Sg/PlO"/>
-        <sem class="mMOVE"/>
-        <sem class="mNAME"/>
-        <sem class="mTHINK"/>
-        <sem class="mCOMMUNICATION"/>
-        <sem class="mSENSE"/>
-        <sem class="mIMPACT"/>
+            <grammar tag="V+TA+Ind+Prt+4Sg/Pl+5Sg/PlO"/>
+        <sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Sg+Obv"/>
-		<sem class="FOOD"/>
-      </element>
+			<sem class="THING"/>
+			<sem class="TOOL"/>
+			<sem class="CLOTHING"/>
+			<sem class="TOY"/>
+			<sem class="PLANT"/>
+			<sem class="MUSIC"/>
+			<sem class="UTENSIL"/>
+			<sem class="SCHOOL"/>
+			<sem class="HANDICRAFT"/>
+			<sem class="FOOD"/>
+			</element>
     </question>
     <answer> 
       <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+5Sg/Pl+4Sg/PlO"/>
+        <grammar tag="V+TA+Ind+Prt+4Sg/Pl+5Sg/PlO"/>
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Sg+Obv"/>
- 			<sem class="FOOD"/>
      </element>
     </answer>
     <answer> 
       <text>namôya, namôya MAINVOBJ OBJECT otâkosîhk</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+5Sg/Pl+4Sg/PlO"/>
+        <grammar tag="V+TA+Ind+Prt+4Sg/Pl+5Sg/PlO"/>
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Sg+Obv"/>
- 			<sem class="FOOD"/>
      </element>
     </answer>
   </q>
@@ -834,17 +728,21 @@
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prt+2Sg+3PlO"/>
-        <sem class="mMOVE"/>
-        <sem class="mNAME"/>
-        <sem class="mTHINK"/>
-        <sem class="mCOMMUNICATION"/>
-        <sem class="mSENSE"/>
-        <sem class="mIMPACT"/>
+        <sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Pl"/>
+			<sem class="THING"/>
+			<sem class="TOOL"/>
+			<sem class="CLOTHING"/>
+			<sem class="TOY"/>
+			<sem class="PLANT"/>
+			<sem class="MUSIC"/>
+			<sem class="UTENSIL"/>
+			<sem class="SCHOOL"/>
+			<sem class="HANDICRAFT"/>
 			<sem class="FOOD"/>
-      </element>
+			</element>
     </question>
     <answer> 
       <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
@@ -853,7 +751,6 @@
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Pl"/>
-			<sem class="FOOD"/>
       </element>
     </answer>
     <answer> 
@@ -863,7 +760,6 @@
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Pl"/>
-			<sem class="FOOD"/>
       </element>
     </answer>
   </q>
@@ -873,17 +769,21 @@
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prt+2Pl+3PlO"/>
-        <sem class="mMOVE"/>
-        <sem class="mNAME"/>
-        <sem class="mTHINK"/>
-        <sem class="mCOMMUNICATION"/>
-        <sem class="mSENSE"/>
-        <sem class="mIMPACT"/>
+        <sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Pl"/>
+			<sem class="THING"/>
+			<sem class="TOOL"/>
+			<sem class="CLOTHING"/>
+			<sem class="TOY"/>
+			<sem class="PLANT"/>
+			<sem class="MUSIC"/>
+			<sem class="UTENSIL"/>
+			<sem class="SCHOOL"/>
+			<sem class="HANDICRAFT"/>
 			<sem class="FOOD"/>
-      </element>
+	  </element>
     </question>
     <answer> 
       <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
@@ -892,7 +792,6 @@
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Pl"/>
-			<sem class="FOOD"/>
       </element>
     </answer>
     <answer> 
@@ -902,7 +801,6 @@
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Pl"/>
-			<sem class="FOOD"/>
       </element>
     </answer>
   </q>
@@ -912,17 +810,21 @@
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prt+12Pl+3PlO"/>
-        <sem class="mMOVE"/>
-        <sem class="mNAME"/>
-        <sem class="mTHINK"/>
-        <sem class="mCOMMUNICATION"/>
-        <sem class="mSENSE"/>
-        <sem class="mIMPACT"/>
+            <sem class="mACTIVITY"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Pl"/>
+			<sem class="THING"/>
+			<sem class="TOOL"/>
+			<sem class="CLOTHING"/>
+			<sem class="TOY"/>
+			<sem class="PLANT"/>
+			<sem class="MUSIC"/>
+			<sem class="UTENSIL"/>
+			<sem class="SCHOOL"/>
+			<sem class="HANDICRAFT"/>
 			<sem class="FOOD"/>
-      </element>
+			</element>
     </question>
     <answer> 
       <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
@@ -931,7 +833,6 @@
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Pl"/>
-			<sem class="FOOD"/>
       </element>
     </answer>
     <answer> 
@@ -941,7 +842,6 @@
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Pl"/>
-			<sem class="FOOD"/>
       </element>
     </answer>
   </q>
@@ -951,17 +851,13 @@
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prt+3Sg+4Sg/PlO"/>
-        <sem class="mMOVE"/>
-        <sem class="mNAME"/>
-        <sem class="mTHINK"/>
-        <sem class="mCOMMUNICATION"/>
-        <sem class="mSENSE"/>
-        <sem class="mIMPACT"/>
+        <sem class="PREPARE_FOOD"/>
+		<sem class="TASTE"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Pl"/>
 			<sem class="FOOD"/>
-      </element>
+			</element>
     </question>
     <answer> 
       <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
@@ -970,7 +866,6 @@
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Pl"/>
-			<sem class="FOOD"/>
       </element>
     </answer>
     <answer> 
@@ -980,7 +875,6 @@
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Pl"/>
-			<sem class="FOOD"/>
       </element>
     </answer>
   </q>
@@ -990,12 +884,8 @@
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prt+3Pl+4Sg/PlO"/>
-        <sem class="mMOVE"/>
-        <sem class="mNAME"/>
-        <sem class="mTHINK"/>
-        <sem class="mCOMMUNICATION"/>
-        <sem class="mSENSE"/>
-        <sem class="mIMPACT"/>
+        <sem class="TASTE"/>
+        <sem class="PREPARE_FOOD"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Pl"/>
@@ -1009,7 +899,6 @@
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Pl"/>
-			<sem class="FOOD"/>
       </element>
     </answer>
     <answer> 
@@ -1019,7 +908,6 @@
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Pl"/>
-			<sem class="FOOD"/>
       </element>
     </answer>
   </q>
@@ -1028,13 +916,9 @@
     <question>
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prt+5Sg/Pl+4Sg/PlO"/>
-        <sem class="mMOVE"/>
-        <sem class="mNAME"/>
-        <sem class="mTHINK"/>
-        <sem class="mCOMMUNICATION"/>
-        <sem class="mSENSE"/>
-        <sem class="mIMPACT"/>
+            <grammar tag="V+TA+Ind+Prt+4Sg/Pl+5Sg/PlO"/>
+        <sem class="TASTE"/>
+        <sem class="PREPARE_FOOD"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Pl"/>
@@ -1044,44 +928,33 @@
     <answer> 
       <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+5Sg/Pl+4Sg/PlO"/>
+        <grammar tag="V+TA+Ind+Prt+4Sg/Pl+5Sg/PlO"/>
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Pl"/>
-			<sem class="FOOD"/>
       </element>
     </answer>
     <answer> 
       <text>namôya, namôya MAINVOBJ OBJECT otâkosîhk</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+5Sg/Pl+4Sg/PlO"/>
+        <grammar tag="V+TA+Ind+Prt+4Sg/Pl+5Sg/PlO"/>
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Pl"/>
-			<sem class="FOOD"/>
       </element>
     </answer>
-  </q>-->
+
   <q id="vtaprt13">
     <qtype>V-TA-PRT</qtype>
     <question>
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prt+2Sg+3SgO"/>
-			<sem class="MOVE_SOMETHING"/>
-			<sem class="POSSESS"/>
+			<sem class="TASTE"/>
+			<sem class="PREPARE_FOOD"/>
 			</element>
         <element id="OBJECT">
             <grammar tag="N+AN+Sg"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
 			<sem class="FOOD"/>
       </element>
     </question>
@@ -1104,33 +977,23 @@
      </element>
     </answer>
   </q>
-<q id="vtaprt14">
+  <q id="vtaprt14">
     <qtype>V-TA-PRT</qtype>
     <question>
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prt+3Sg+4Sg/PlO"/>
-			<sem class="MOVE_SOMETHING"/>
-			<sem class="POSSESS"/>
+            <grammar tag="V+TA+Ind+Prt+2Pl+3SgO"/>
+			<sem class="TASE"/>
+			<sem class="PREPARE_FOOD"/>
       </element>
       <element id="OBJECT">
-            <grammar tag="N+AN+Sg+Obv"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
 			<sem class="FOOD"/>
       </element>
     </question>
     <answer> 
       <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+3Sg+4Sg/PlO"/>
+        <grammar tag="V+TA+Ind+Prt+1Pl+3SgO"/>
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Sg+Obv"/>
@@ -1139,7 +1002,7 @@
     <answer> 
       <text>namôya, namôya MAINVOBJ OBJECT otâkosîhk</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+3Sg+4Sg/PlO"/>
+        <grammar tag="V+TA+Ind+Prt+1Pl+3SgO"/>
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Sg+Obv"/>
@@ -1151,28 +1014,19 @@
     <question>
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prt+2Pl+3SgO"/>
-			<sem class="MOVE_SOMETHING"/>
-			<sem class="POSSESS"/>
+            <grammar tag="V+TA+Ind+Prt+12Pl+3SgO"/>
+			<sem class="TASTE"/>
+			<sem class="PREPARE_FOOD"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Sg+Obv"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
 			<sem class="FOOD"/>
       </element>
     </question>
     <answer> 
       <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+1Pl+3SgO"/>
+        <grammar tag="V+TA+Ind+Prt+12Pl+3SgO"/>
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Sg+Obv"/>
@@ -1181,52 +1035,41 @@
     <answer> 
       <text>namôya, namôya MAINVOBJ OBJECT otâkosîhk</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+1Pl+3SgO"/>
+        <grammar tag="V+TA+Ind+Prt+12Pl+3SgO"/>
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Sg+Obv"/>
-     </element>
+      </element>
     </answer>
-  </q>
   <q id="vtaprt16">
     <qtype>V-TA-PRT</qtype>
     <question>
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prt+12Pl+3SgO"/>
-			<sem class="MOVE_SOMETHING"/>
-			<sem class="POSSESS"/>
+            <grammar tag="V+TA+Ind+Prt+2Sg+3PlO"/>
+			<sem class="TASTE"/>
+			<sem class="PREPARE_FOOD"/>
       </element>
       <element id="OBJECT">
-            <grammar tag="N+AN+Sg+Obv"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
 			<sem class="FOOD"/>
       </element>
     </question>
     <answer> 
       <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+12Pl+3SgO"/>
+        <grammar tag="V+TA+Ind+Prt+1Sg+3PlO"/>
       </element>
       <element id="OBJECT">
-        <grammar tag="N+AN+Sg+Obv"/>
-     </element>
+        <grammar tag="N+AN+Pl"/>
+      </element>
     </answer>
     <answer> 
       <text>namôya, namôya MAINVOBJ OBJECT otâkosîhk</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+12Pl+3SgO"/>
+        <grammar tag="V+TA+Ind+Prt+1Sg+3PlO"/>
       </element>
       <element id="OBJECT">
-        <grammar tag="N+AN+Sg+Obv"/>
+        <grammar tag="N+AN+Pl"/>
       </element>
     </answer>
   </q>
@@ -1235,41 +1078,32 @@
     <question>
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prt+3Pl+4Sg/PlO"/>
-			<sem class="MOVE_SOMETHING"/>
-			<sem class="POSSESS"/>
+            <grammar tag="V+TA+Ind+Prt+2Pl+3PlO"/>
+			<sem class="PREPARE_FOOD"/>
+			<sem class="TASTE"/>
       </element>
       <element id="OBJECT">
-            <grammar tag="N+AN+Sg+Obv"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
+            <grammar tag="N+AN+Pl"/>
 			<sem class="FOOD"/>
       </element>
     </question>
     <answer> 
       <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+3Pl+4Sg/PlO"/>
+        <grammar tag="V+TA+Ind+Prt+1Pl+3PlO"/>
       </element>
       <element id="OBJECT">
-        <grammar tag="N+AN+Sg+Obv"/>
-     </element>
+        <grammar tag="N+AN+Pl"/>
+      </element>
     </answer>
     <answer> 
       <text>namôya, namôya MAINVOBJ OBJECT otâkosîhk</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+3Pl+4Sg/PlO"/>
+        <grammar tag="V+TA+Ind+Prt+1Pl+3PlO"/>
       </element>
       <element id="OBJECT">
-        <grammar tag="N+AN+Sg+Obv"/>
-     </element>
+        <grammar tag="N+AN+Pl"/>
+      </element>
     </answer>
   </q>
   <q id="vtaprt18">
@@ -1277,189 +1111,12 @@
     <question>
       <text>MAINVOBJ cî OBJECT otâkosîhk</text>
       <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prt+5Sg/Pl+4Sg/PlO"/>
- 			<sem class="MOVE_SOMETHING"/>
-			<sem class="POSSESS"/>
-      </element>
-      <element id="OBJECT">
-            <grammar tag="N+AN+Sg+Obv"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
-			<sem class="FOOD"/>
-      </element>
-    </question>
-    <answer> 
-      <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+5Sg/Pl+4Sg/PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Sg+Obv"/>
-     </element>
-    </answer>
-    <answer> 
-      <text>namôya, namôya MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+5Sg/Pl+4Sg/PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Sg+Obv"/>
-     </element>
-    </answer>
-  </q>
-  <q id="vtaprt19">
-    <qtype>V-TA-PRT</qtype>
-    <question>
-      <text>MAINVOBJ cî OBJECT otâkosîhk</text>
-      <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prt+2Sg+3PlO"/>
-			<sem class="MOVE_SOMETHING"/>
-			<sem class="POSSESS"/>
-      </element>
-      <element id="OBJECT">
-            <grammar tag="N+AN+Pl"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
-			<sem class="FOOD"/>
-      </element>
-    </question>
-    <answer> 
-      <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+1Sg+3PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Pl"/>
-      </element>
-    </answer>
-    <answer> 
-      <text>namôya, namôya MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+1Sg+3PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Pl"/>
-      </element>
-    </answer>
-  </q>
-<q id="vtaprt20">
-    <qtype>V-TA-PRT</qtype>
-    <question>
-      <text>MAINVOBJ cî OBJECT otâkosîhk</text>
-      <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prt+3Sg+4Sg/PlO"/>
-			<sem class="MOVE_SOMETHING"/>
-			<sem class="POSSESS"/>
-      </element>
-      <element id="OBJECT">
-            <grammar tag="N+AN+Pl"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
-			<sem class="FOOD"/>
-      </element>
-    </question>
-    <answer> 
-      <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+3Sg+4Sg/PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Pl"/>
-      </element>
-    </answer>
-    <answer> 
-      <text>namôya, namôya MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+3Sg+4Sg/PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Pl"/>
-      </element>
-    </answer>
-  </q>
-  <q id="vtaprt21">
-    <qtype>V-TA-PRT</qtype>
-    <question>
-      <text>MAINVOBJ cî OBJECT otâkosîhk</text>
-      <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prt+2Pl+3PlO"/>
-			<sem class="MOVE_SOMETHING"/>
-			<sem class="POSSESS"/>
-      </element>
-      <element id="OBJECT">
-            <grammar tag="N+AN+Pl"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
-			<sem class="FOOD"/>
-      </element>
-    </question>
-    <answer> 
-      <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+1Pl+3PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Pl"/>
-      </element>
-    </answer>
-    <answer> 
-      <text>namôya, namôya MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+1Pl+3PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Pl"/>
-      </element>
-    </answer>
-  </q>
-  <q id="vtaprt22">
-    <qtype>V-TA-PRT</qtype>
-    <question>
-      <text>MAINVOBJ cî OBJECT otâkosîhk</text>
-      <element id="MAINVOBJ">
             <grammar tag="V+TA+Ind+Prt+12Pl+3PlO"/>
-			<sem class="MOVE_SOMETHING"/>
-			<sem class="POSSESS"/>
+			<sem class="TASTE"/>
+			<sem class="PREPARE_FOOD"/>
       </element>
       <element id="OBJECT">
             <grammar tag="N+AN+Pl"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
 			<sem class="FOOD"/>
       </element>
     </question>
@@ -1476,162 +1133,6 @@
       <text>namôya, namôya MAINVOBJ OBJECT otâkosîhk</text>
       <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
         <grammar tag="V+TA+Ind+Prt+12Pl+3PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Pl"/>
-      </element>
-    </answer>
-  </q>
-  <q id="vtaprt23">
-    <qtype>V-TA-PRT</qtype>
-    <question>
-      <text>MAINVOBJ cî OBJECT otâkosîhk</text>
-      <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prt+5Sg/Pl+4Sg/PlO"/>
-			<sem class="MOVE_SOMETHING"/>
-			<sem class="POSSESS"/>
-      </element>
-      <element id="OBJECT">
-            <grammar tag="N+AN+Sg+Obv"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
-			<sem class="FOOD"/>
-      </element>
-    </question>
-    <answer> 
-      <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+5Sg/Pl+4Sg/PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Sg+Obv"/>
-     </element>
-    </answer>
-    <answer> 
-      <text>namôya, namôya MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+5Sg/Pl+4Sg/PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Sg+Obv"/>
-     </element>
-    </answer>
-  </q>
-  <q id="vtaprt24">
-    <qtype>V-TA-PRT</qtype>
-    <question>
-      <text>MAINVOBJ cî OBJECT otâkosîhk</text>
-      <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prt+4Sg/Pl+3PlO"/>
-			<sem class="MOVE_SOMETHING"/>
-			<sem class="POSSESS"/>
-      </element>
-      <element id="OBJECT">
-            <grammar tag="N+AN+Pl"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
-			<sem class="FOOD"/>
-      </element>
-    </question>
-    <answer> 
-      <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+4Sg/Pl+3PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Pl"/>
-      </element>
-    </answer>
-    <answer> 
-      <text>namôya, namôya MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+4Sg/Pl+3PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Pl"/>
-      </element>
-    </answer>
-  </q>
-  <q id="vtaprt25">
-    <qtype>V-TA-PRT</qtype>
-    <question>
-      <text>MAINVOBJ cî OBJECT otâkosîhk</text>
-      <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prt+3Pl+4Sg/PlO"/>
-        <sem class="QUANTITY"/>
-      </element>
-      <element id="OBJECT">
-            <grammar tag="N+AN+Sg+Obv"/>
-      </element>
-    </question>
-    <answer> 
-      <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+3Pl+4Sg/PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Sg+Obv"/>
-     </element>
-    </answer>
-    <answer> 
-      <text>namôya, namôya MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+3Pl+4Sg/PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Sg+Obv"/>
-     </element>
-    </answer>
-  </q>
-  <q id="vtaprt26">
-    <qtype>V-TA-PRT</qtype>
-    <question>
-      <text>MAINVOBJ cî OBJECT otâkosîhk</text>
-      <element id="MAINVOBJ">
-            <grammar tag="V+TA+Ind+Prt+3Pl+4Sg/PlO"/>
-        <sem class="QUANTITY"/>
-      </element>
-      <element id="OBJECT">
-            <grammar tag="N+AN+Pl"/>
-			<sem class="THING"/>
-			<sem class="TOOL"/>
-			<sem class="CLOTHING"/>
-			<sem class="TOY"/>
-			<sem class="PLANT"/>
-			<sem class="MUSIC"/>
-			<sem class="UTENSIL"/>
-			<sem class="SCHOOL"/>
-			<sem class="HANDICRAFT"/>
-			<sem class="FOOD"/>
-      </element>
-    </question>
-    <answer> 
-      <text>êha, MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+3Pl+4Sg/PlO"/>
-      </element>
-      <element id="OBJECT">
-        <grammar tag="N+AN+Pl"/>
-      </element>
-    </answer>
-    <answer> 
-      <text>namôya, namôya MAINVOBJ OBJECT otâkosîhk</text>
-      <element game='morfa' id="MAINVOBJ" content="MAINVOBJ" task="yes">
-        <grammar tag="V+TA+Ind+Prt+3Pl+4Sg/PlO"/>
       </element>
       <element id="OBJECT">
         <grammar tag="N+AN+Pl"/>
