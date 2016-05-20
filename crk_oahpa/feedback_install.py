@@ -260,7 +260,8 @@ class Feedback_install(object):
     # TODO: need to fill out these values depending on which
     # attributes they have 
     word_attribute_names = OrderedDict([
-        ("N", ['stem',  'animacy', 'rime']),
+        ("N", ['stem',  'animacy', 'rime', 't2c']),
+        ("Pron", []),
         # TODO: ("A", ['stem',  'rime', 'attrsuffix', 'compsuffix',]),
         # TODO: ("Num", ['stem',  'rime', ]),
         ("V", ['stem',  'trans_anim', 'init', 'rime']),
@@ -269,6 +270,7 @@ class Feedback_install(object):
     # Each part of speech followed by relevant tag/wordform attributes
     tag_attribute_names = OrderedDict([
         ("N", ('case', 'number', 'possessive', 'derivation')),
+        ("Pron", ['subclass', 'number', 'distance']),
         # TODO: ("A", ('case', 'number', 'grade', 'attributive', )),
         # TODO: ("Num", ('case', 'number',)),
         ("V", ('subclass', 'infinite', 'mood', 'tense', 'personnumber', 'object', )),
