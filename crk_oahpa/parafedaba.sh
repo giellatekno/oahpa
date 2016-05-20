@@ -607,6 +607,13 @@ echo " "
 echo "done"
 echo "==================================================="
 
+echo "==================================================="
+echo "adding feedback to pronouns"
+$P install.py -f $DPS/V_crk.xml --feedbackfile $META/feedback_pronouns.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
 # echo "==================================================="
 # echo "adding feedback to adjectives"
 # $P install.py -f $DPS/a_crknob.xml --feedbackfile $META/feedback_adjectives.xml
