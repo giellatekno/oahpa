@@ -50,10 +50,9 @@
       <attribute name="rime" value="aw"/>
       <attribute name="rime" value="ay"/>
       <attribute name="rime" value="iw"/>
-      <attribute name="rime" value="eew"/>
-      <attribute name="rime" value="oow"/>
-      <attribute name="rime" value="und-w"/>
-      <attribute name="rime" value="atim"/>
+	  <attribute name="rime" value="irr"/>
+<!--  <attribute name="rime" value="und-w"/>
+      <attribute name="rime" value="atim"/>-->
       <attribute name="rime" value="ow"/>
 	  <attribute name="rime" value="v-is"/>
 	  <attribute name="rime" value="wa"/>
@@ -151,20 +150,10 @@ iyiw-Obv
       <note> </note>
     </l>
 
- <!--   <l animacy="IN">
-      <msg number="Pl">plural-a</msg>
-      <note> </note>
-    </l>
-
-    <l animacy="IN" rime="k">
-      <msg number="Pl">plural-wa</msg>
-      <note> </note>
-    </l>
-
     <l animacy="IN" rime="i">
       <msg number="Pl">plural-i-a</msg>
       <note> </note>
-    </l> -->
+    </l> 
 
     <l rime="0">
       <msg case="Loc">locative-ihk</msg>
@@ -186,7 +175,7 @@ iyiw-Obv
       <note>asinîhk</note>
     </l>
 
-    <l rime="und-w">
+ <!--   <l rime="und-w">
       <msg number="Pl">und-w</msg>
       <note>Add the underlying -w-.</note>
     </l>
@@ -194,12 +183,7 @@ iyiw-Obv
     <l rime="atim">
       <msg number="Pl">und-w</msg>
       <note>Add the underlying -w-.</note>
-    </l>
-
-    <l rime="k">
-      <msg case="Loc">locative-ohk</msg>
-      <note>sôniyâwikamik - sôniyâwikamikohk</note>
-    </l>
+    </l> USE FOR DISTRIBUTIVE WHEN/IF IT IS IMPLEMENTED-->
 
     <l rime="k">
       <msg case="Loc">k-gives-ohk</msg>
@@ -241,70 +225,45 @@ iyiw-Obv
       <note>mihtawakay - mihtawakâhk</note>
     </l>
 
-    <l rime="eew" animacy="IN">
-      <msg case="Loc">locative-irreg</msg>
-      <note>iskotêw - iskotêwihk</note>
-    </l>
-
-    <l rime="eew" animacy="IN">
+    <l rime="irr" animacy="IN">
       <msg case="Loc">irreg</msg>
       <note>iskotêw - iskotêwihk</note>
     </l>
-
-    <l rime="oow" animacy="IN">
-      <msg case="Loc">locative-irreg</msg>
-      <note>  </note> 
-    </l>
-
-    <l rime="oow" animacy="IN">
-      <msg case="Loc">irreg</msg>
-      <note>  </note>
-    </l>
-  
-    <l rime="eew" animacy="AN">
-      <msg case="Loc">locative-naahk</msg>
-      <note>iskwêw - iskwênâhk</note>
-    </l>
-
-    <l rime="eew" animacy="AN">
-      <msg case="Loc">distributive</msg>
-      <note>iskwêw - iskwênâhk</note>
-    </l>
-
-    <l rime="oow" animacy="AN">
-      <msg case="Loc">locative-naahk</msg>
-      <note>  </note> 
-    </l>
-
-    <l rime="oow" animacy="AN">
-      <msg case="Loc">distributive</msg>
-      <note>  </note>
-    </l>
-
-    <l lemma="mostos">
-      <msg case="Loc">locative-naahk</msg>
-      <note>mostos - mostosonâhk - not in FST </note>
-    </l>
-
-    <l lemma="mostos">
-      <msg case="Loc">distributive</msg>
-      <note>mostos - mostosonâhk - not in FST </note>
-    </l>
-
-    <l lemma="ôhow">
-      <msg case="Loc">locative-naahk</msg>
-      <note>ôhow-ôhônâhk</note>
-    </l>
-
-    <l lemma="ôhow">
-      <msg case="Loc">distributive</msg>
-      <note>ôhow-ôhônâhk</note>
-    </l>
-
-    <l rime="i">
+	
+	<l rime="i">
       <msg case="Loc">locative-i</msg>
       <note>wâwi - wâwihk</note>
     </l>
+  
+ <!--      <l rime="irr" animacy="AN">
+      <msg case="Loc">locative-naahk</msg>
+      <note>iskwêw - iskwênâhk</note>
+    </l>
+
+    <l rime="irr" animacy="AN">
+      <msg case="Loc">distributive</msg>
+      <note>iskwêw - iskwênâhk</note>
+    </l>
+
+    <l lemma="mostos">
+      <msg case="Loc">locative-naahk</msg>
+      <note>mostos - mostosonâhk - not in FST </note>
+    </l>
+
+ <l lemma="mostos">
+      <msg case="Loc">distributive</msg>
+      <note>mostos - mostosonâhk - not in FST </note>
+    </l>
+
+    <l lemma="ôhow">
+      <msg case="Loc">locative-naahk</msg>
+      <note>ôhow-ôhônâhk</note>
+    </l>
+
+    <l lemma="ôhow">
+      <msg case="Loc">distributive</msg>
+      <note>ôhow-ôhônâhk</note>
+    </l>  WE CURRENTLY DON'T HAVE DISTRIBUTIVE-->
 	
     <l rime="k">
       <msg derivation="Der/Dim">base-k</msg>
