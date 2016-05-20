@@ -21,19 +21,13 @@ try:
 except:
 	fstdir = "/opt/smi/crk/bin"
 
-try:
-	lookup = settings.LOOKUP_TOOL
-except:
-	lookup = "/usr/local/bin/lookup"
+lookup = settings.LOOKUP_TOOL
 
-try:
-	language = settings.MAIN_LANGUAGE[0]
-except:
-	language = "crk"
+language = settings.MAIN_LANGUAGE[0]
 
 #numfst = fstdir + "/" + language + "-num.fst"
 numfst = fstdir + "/" + "transcriptor-numbers-digit2text.filtered.lookup.xfst"
-gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst" # this is xfst 
+gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.hfstol" # this is xfst 
 # gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.hfstol" # this is hfst
 
 
@@ -587,6 +581,7 @@ class Paradigm:
 													possessive=g.get('Possessive',""),grade=g.get('Grade',""),\
 													infinite=g.get('Infinite',""), \
 													personnumber=g.get('Person-Number',""),\
+													distance=g.get('Distance',""),\
 													object=g.get('Object',""),\
 													polarity=g.get('Polarity',""),\
 													tense=g.get('Tense',""),mood=g.get('Mood',""), \
