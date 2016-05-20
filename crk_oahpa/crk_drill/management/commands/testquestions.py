@@ -1,5 +1,5 @@
-from django.core.management.base import BaseCommand, CommandError
 # -*- encoding: utf-8 -*-
+from django.core.management.base import BaseCommand, CommandError
 # from_yaml(cls, loader, node)
 
 from optparse import make_option

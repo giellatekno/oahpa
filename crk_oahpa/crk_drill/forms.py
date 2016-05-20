@@ -1546,12 +1546,15 @@ class NumQuestion(OahpaQuestion):
 		self.error = "error"
 		self.iscorrect = False
 
-		correct_test = self.game_obj.check_answer(self.question_str,
+		correct_test, errs = self.game_obj.check_answer(self.question_str,
 													self.userans,
 													self.correct_anslist)
+		print "bbq errors"
+		print errs
 		if correct_test:
 			self.error = "correct"
 			self.iscorrect = True
+			self.relaxings = errs
 
 		self.correctlist = u",".join(list(set(self.correct_anslist)))
 
@@ -1572,8 +1575,8 @@ class NumQuestion(OahpaQuestion):
 		super(NumQuestion, self).__init__(*args, **kwargs)
 		wforms = []
 		self.relaxings = []
-                self.gametype = gametype
-                self.translang = 'crk'
+		self.gametype = gametype
+		self.translang = 'crk'
 
 		# Initialize variables
 		if gametype == "string":

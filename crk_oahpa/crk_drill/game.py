@@ -310,7 +310,7 @@ class BareGame(Game):
 	casetable = {
 		'N-PL': ("", ["Pl"], "", ""),
 		'N-LOC': ("Loc", [""] , "", ""),
-		'N-DIM': ("", ["Sg"], "", "Der/Dim"),
+		'N-REVDIM': ("", ["Sg"], "", "Der/Dim"),
 		'N-PX': ("", ["Sg", "Pl"], "Px", ""),
 		'N-2SG': ("", ["Sg"], "Px2Sg", ""),
 		'N-3SG': ("", ["Sg"], "Px3Sg", ""),
@@ -638,7 +638,10 @@ class BareGame(Game):
 						Q(case=case)
 						# regardless of whether it's Actor, Coll, etc.
 
-		if pos in ['N', 'Px']:
+		if self.settings.get('case') == 'N-REVDIM':
+			TAG_QUERY = Q(derivation=derivation, possessive='')
+			
+		elif pos in ['N', 'Px']:
 			#if singular_only:   # if the user has checked the box "singular only"
 			#	TAG_QUERY = TAG_QUERY & Q(number='Sg')
 			#if possessive == '':
@@ -647,7 +650,6 @@ class BareGame(Game):
 				#TAG_QUERY = TAG_QUERY & Q(number__in=number, possessive__contains='Px', derivation=derivation)
 			if pos == 'Px':
 				pos = 'N'
-
 
 
 		# 'Pers' subclass for pronouns, otherwise none.
@@ -1008,7 +1010,7 @@ class BareGame(Game):
 			db_info['conneg'] = False
 
 		# For the task 'N-DIM' the reverse task is created at first and then the form and the baseform will be swapped. The reason is that every word does not have a diminutive.
-		if (self.settings['case'] == 'N-DIM'):
+		if (self.settings['case'] == 'N-REVDIM'):
 				tmp = form_list
 				form_list = base_forms
 				form = base_forms[0]
@@ -1113,7 +1115,12 @@ class NumGame(Game):
 				else:
 					nums = tuple(nums)
 			cleaned.append(nums)
-		return cleaned
+		# split the analysis to get error tags
+		t_cleaned = []
+		for (a, b) in cleaned:
+			analysis, _, tags = b.partition('+')
+			t_cleaned.append((a, analysis, tags))
+		return t_cleaned
 
 	def strip_unknown(self, analyses):
 		return [a for a in analyses if a[1] != '?']
@@ -1139,27 +1146,30 @@ class NumGame(Game):
 			if gametype == 'string':
 				# user answer must match with numeral generated from
 				# the question
+				error_tags = []
 
 				if useranswer in [a[0] for a in num_list] and \
 					question in [a[1] for a in num_list]:
-					return True
+					return True, error_tags
 				else:
-					return False
+					return False, error_tags
 
 			elif gametype == 'numeral':
 				# Numbers generated from user answer must match up
 				# with numeral in the question
+				error_tags = [c for a, b, c in num_list if a == useranswer and b == question]
 				num_list = num_list + formanswer
+
 				try:
 					_ = int(useranswer)
-					return False
+					return False, error_tags
 				except ValueError:
 					pass
 				if question in [a[1] for a in num_list] or \
 					useranswer in num_list:
-					return True
+					return True, error_tags
 				else:
-					return False
+					return False, error_tags
 
 
 
