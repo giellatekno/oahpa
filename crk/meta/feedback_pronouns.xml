@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<feedback pos="N">
+<feedback pos="Pron">
   <defaultvalues>
 	  
+      <attribute name="subclass" value="Dem"/>
+
 	  <attribute name="number" value=""/>
       <attribute name="number" value="Pl"/>
       <attribute name="number" value="Sg"/>
 	  
-	  <attribute name="demonstrative" value="Prox"/>
-	  <attribute name="demonstrative" value="Med"/>
+	  <attribute name="distance" value="Prox"/>
+	  <attribute name="distance" value="Med"/>
 	  
   </defaultvalues>
   
   <stems>
   
-  <l number="Sg">
-    <msg demonstrative="Prox">prox-sg</msg>
-	<msg demonstrative="Med">med-sg</msg>
-  </l>
-  
-  <l number="Pl">
-    <msg demonstrative="Prox">prox-pl</msg>
-	<msg demonstrative="Med">med-pl</msg>
+  <l>
+    <msg subclass="Dem" number="Sg" distance="Prox">prox-sg</msg>
+	<msg subclass="Dem" number="Sg" distance="Med">med-sg</msg>
+    <msg subclass="Dem" number="Pl" distance="Prox">prox-pl</msg>
+	<msg subclass="Dem" number="Pl" distance="Med">med-pl</msg>
   </l>
 
   </stems>
