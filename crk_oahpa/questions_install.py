@@ -9,6 +9,7 @@ import sys
 import re
 import string
 import codecs
+from collections import OrderedDict
 
 def monitor(function):
 	from functools import wraps
@@ -332,12 +333,14 @@ class Questions:
 		if not tagelements and not agr_elements:
 			print "\tno inflection for", el_id
 			if len(grammars) > 0:
-				additional_messages = {
-					'Grammar tags available for word id': 
-						sum([a[0] for a in not_found], []),
-					'<grammar /> specified': 
-						[a[1] for a in not_found],
-				}
+				additional_messages = OrderedDict([
+					('Grammar tags available for word id', 
+						sum([a[0] for a in not_found], [])),
+					('<grammar /> specified', 
+						[a[1] for a in not_found]),
+					('Tags specified, check tags.txt for all parts',
+						tags)
+				])
 				raise TagError(additional_messages)
 			return
 
