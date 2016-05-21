@@ -501,7 +501,7 @@ class Word(models.Model):
 	motion = models.CharField(max_length=20) # motion partner (verbs only)
 	rime = models.CharField(max_length=8)
 	init = models.CharField(max_length=8)
-	# t2c = models.CharField(max_length=8)
+	t2c = models.CharField(max_length=8)
 
 
 	def morphTag(self, nosave=True):
