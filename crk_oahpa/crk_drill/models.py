@@ -501,6 +501,7 @@ class Word(models.Model):
 	motion = models.CharField(max_length=20) # motion partner (verbs only)
 	rime = models.CharField(max_length=8)
 	init = models.CharField(max_length=8)
+	# t2c = models.CharField(max_length=8)
 
 
 	def morphTag(self, nosave=True):
@@ -717,6 +718,7 @@ class Tag(models.Model):
 	pos = models.CharField(max_length=12)
 	possessive = models.CharField(max_length=10)
 	derivation = models.CharField(max_length=7)
+	distance = models.CharField(max_length=7)
 	subclass = models.CharField(max_length=10)
 	tense = models.CharField(max_length=5)
 	# language = models.CharField(max_length=8)

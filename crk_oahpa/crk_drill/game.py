@@ -30,6 +30,21 @@ DEFAULT_DIALECT = crk_oahpa.settings.DEFAULT_DIALECT
 LOOKUP_OPTS = crk_oahpa.settings.LOOKUP_OPTS
 GAME_FSTS = crk_oahpa.settings.GAME_FSTS
 
+from crk_oahpa.errorapi.messages import *
+from crk_oahpa.errorapi.processes import FeedbackFST
+from crk_oahpa.errorapi.log import ERROR_FST_LOG
+
+ERROR_FST_SETTINGS = settings.ERROR_FST_SETTINGS
+
+_fst_file = ERROR_FST_SETTINGS.get('fst_path')
+
+if not os.path.isfile(_fst_file):
+    print >> sys.stderr, "FST file at <%s> does not exist."
+    print >> sys.stderr, "Check the path in settings.py and try again."
+
+error_files = ERROR_FST_SETTINGS.get('error_message_files', {}).values()
+feedback_messages = FeedbackMessageStore(*error_files)
+feedback_api = FeedbackFST(feedback_messages)
 
 # FST_DIRECTORY = '/opt/smi/sme/bin' #Just testing. Hardcoded here because it looks like looking it up in settings.py failed
 # LOOKUP_TOOL = '/usr/local/bin/lookup'
@@ -1141,35 +1156,46 @@ class NumGame(Game):
 			num_list = self.clean_fst_output(output)
 			num_list = self.strip_unknown(num_list)
 			# print repr([question, useranswer, num_list])
+			
+			task = 'word2text'
+			intended_lemma = 'asdf'
+
+			message_kwargs = {
+				'display_lang': 'eng',
+				'task': 'word2text',
+				# 'intended_lemma': formanswer[0]
+			}
+
+			error_fst = \
+				feedback_api.get_all_feedback_for_form(useranswer.strip(),
+											**message_kwargs)
 
 			# 'string' refers to the question here, not the answer
 			if gametype == 'string':
 				# user answer must match with numeral generated from
 				# the question
-				error_tags = []
 
 				if useranswer in [a[0] for a in num_list] and \
 					question in [a[1] for a in num_list]:
-					return True, error_tags
+					return True, error_fst
 				else:
-					return False, error_tags
+					return False, error_fst
 
 			elif gametype == 'numeral':
 				# Numbers generated from user answer must match up
 				# with numeral in the question
-				error_tags = [c for a, b, c in num_list if a == useranswer and b == question]
 				num_list = num_list + formanswer
 
 				try:
 					_ = int(useranswer)
-					return False, error_tags
+					return False, error_fst
 				except ValueError:
 					pass
 				if question in [a[1] for a in num_list] or \
 					useranswer in num_list:
-					return True, error_tags
+					return True, error_fst
 				else:
-					return False, error_tags
+					return False, error_fst
 
 
 
@@ -1614,3 +1640,5 @@ class QuizzGame(Game):
 					data,
 					prefix=n,))
 		return form, word.id
+
+# vim: set ts=4 sw=4 tw=72 syntax=python :
