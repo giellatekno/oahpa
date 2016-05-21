@@ -27,11 +27,14 @@
 
 		{# Feedback messages #}
 		{% for form in forms %}
-			{% ifequal form.error "error" %}
+			{% if form.error == "error" or form.relaxing_note %}
 				{% if form.feedback %}
 					{% include 'feedback_tooltip.html' %}
 				{% endif %}
-			{% endifequal %}
+				{% if form.relaxing_note %}
+					{% include 'relaxing_tooltip.html' %}
+				{% endif %}
+			{% endif %}
 		{% endfor %}
 
 	</div>
@@ -69,7 +72,9 @@
 		{% if form.answertext1 %}{{ form.answertext1 }}{% endif %}
 
 		{% if form.pron %}<span class="pronoun {% if form.object %}has_object{% endif %}">{{ form.pron }}</span>{% endif %}
-		{% ifequal form.error "correct" %}
+		{% if form.relaxing_note %}
+			<span class="correct relaxing">{{ form.userans }}</span>
+		{% elif form.error == "correct" %}
 			<span class="correct">{{ form.userans }}</span>
 		{% else %}
 			{% ifequal form.error "error" %}
@@ -77,7 +82,7 @@
 			{% else %}
 				<span class="blankentry">________________</span>{# Blank answer, this gets hidden via CSS in leksa and morfa, but not morfac #}
 			{% endifequal %}
-		{% endifequal %}
+		{% endif %}
 
 		{% if form.pron_imp %}
 			<span class="pronoun {% if form.object %}has_object{% endif %}">{{ form.pron_imp }}</span>
@@ -100,12 +105,14 @@
 
 			{% if form.pron %}<span class="pronoun {% if form.object %}has_object{% endif %}">{{ form.pron }}</span>{% endif %}
 
-			{% ifequal form.error "correct" %}
+			{% if form.relaxing_note %}
+				<span class="correct relaxing">{{ form.userans }}</span>
+			{% elif form.error == "correct" %}
 				<span class="correct">{{ form.userans }}</span>
 			{% else %}
 				<!-- Answer field -->
 				<span class="incorrect">{{ form.answer }}</span>
-			{% endifequal %}
+			{% endif %}
 
 			{% if form.pron_imp %}
                 <span class="pronoun {% if form.object %}has_object{% endif %}">{{ form.pron_imp }}</span>
@@ -155,6 +162,11 @@
 				{% if form.tcomm %}{% trans "This is almost correct!" %}{% endif %}
 			{% endif %}
 		{% endifequal %}
+		{% if form.relaxing_note %}
+			<a href="#" class="feedback_link relaxing_link" id="link_feedback-{{ forloop.counter }}">
+				 {% trans "note" %}
+			</a>
+		{% endif %}	
 
 	</span>
 	{% endif %}

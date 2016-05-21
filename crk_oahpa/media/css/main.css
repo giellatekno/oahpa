@@ -492,6 +492,11 @@ dl#question_set dt {
 	color: green;
 }
 
+#question_set .correct.relaxing {
+    color: orange;
+    font-weight: bold;
+}
+
 #question_set .incorrect {
 	color: red;
 	font-weight: bold;
@@ -555,6 +560,13 @@ span.leftpart {
 	width: 100%;
 	position: absolute;
 	left: 0;
+}
+
+a.relaxing_link {
+    margin-left: 2em;
+    font-size: 10pt;
+    font-style: italic;
+    color: #5F5D5D !important;
 }
 
 span.rightpart a.feedback_link {

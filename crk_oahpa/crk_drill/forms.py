@@ -1549,12 +1549,19 @@ class NumQuestion(OahpaQuestion):
 		correct_test, errs = self.game_obj.check_answer(self.question_str,
 													self.userans,
 													self.correct_anslist)
-		print "bbq errors"
-		print errs
+		# print "bbq errors"
+		# print errs
+		if errs:
+			if 'messages' in errs:
+				ms = sum([m.get('message') for m in errs.get('messages')], [])
+				self.relaxing_note = ' '.join([m.get('title') + ' ' + m.get('description') for m in ms])
+				self.relaxings = self.relaxing_note
+				self.is_relaxed = True
+				# print self.feedback
 		if correct_test:
 			self.error = "correct"
 			self.iscorrect = True
-			self.relaxings = errs
+			# self.relaxings = errs
 
 		self.correctlist = u",".join(list(set(self.correct_anslist)))
 
