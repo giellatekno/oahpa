@@ -1,77 +1,93 @@
 !!List of items of semantic classes
 The list is in alphabetic order. The commands for making the list are in the bottom.
 
-!nouns
-*   1 ACTIVITY
-*  35 ANIMAL
-*   7 ANIMAL_PART
-*  24 BODY
-*   2 BODY_CONDITION
-*  13 CLOTHING
-*   3 CONTAINER
-*   1 COOKWARE
-*   1 DATES
-*   5 DINNERWARE
-*   7 DRINK
-*  21 FOOD
-*   2 FURNITURE
-*   5 HANDICRAFT
-*   3 HOME
-*   1 IDENTITY
-*  20 KIN
-*   2 LANGUAGE
-*   4 MONEY
-*  15 MORFAPOSS
-*   2 MUSIC
-*  18 NATURE
-*  21 NOTLEKSA
-*  30 PEOPLE
-*   4 PLACE
-*   5 PLANT
-*   1 QUANTITY
-*   3 RELATIONSHIPS
-*   3 SCHOOL
-*   4 SPORT
-*  10 THING
-*   5 TIME
-*   6 TOOL
-*   3 TOY
-*  10 TRANSPORTATION
-*   6 UTENSIL
-*   1 VEHICLE
-*   2 WEATHER
-*   5 WORK
-*   3 mBUSINESS
-*  18 mKIN
-*  11 mPLACE
-*   1 mSPORT
+!AN-NOUNS
+*   33 ANIMAL
+*    4 ANIMAL_PART
+*    2 BODY
+*    2 BODY_CONDITION
+*    9 CLOTHING
+*    1 CONTAINER
+*    1 COOKWARE
+*    1 DATES
+*   11 FOOD
+*    5 HANDICRAFT
+*    1 IDENTITY
+*    3 MONEY
+*    2 MUSIC
+*    8 NATURE
+*   20 NOTLEKSA
+*    9 PEOPLE
+*    3 PLANT
+*    1 RELATIONSHIPS
+*    3 SCHOOL
+*    3 SPORT
+*    9 THING
+*    1 TIME
+*    5 TOOL
+*    3 TOY
+*    8 TRANSPORTATION
+*    3 UTENSIL
+*    1 VEHICLE
+*    2 WEATHER
+*    5 WORK
+*   18 mKIN
 
-!!TA-VERBS
+!IN-NOUNS
+*    1 ACTIVITY
+*    1 ANIMAL
+*    3 ANIMAL_PART
+*   20 BODY
+*    3 CLOTHING
+*    2 CONTAINER
+*    5 DINNERWARE
+*    7 DRINK
+*   10 FOOD
+*    2 FURNITURE
+*    3 HOME
+*    2 LANGUAGE
+*    1 MONEY
+*   15 MORFAPOSS
+*   10 NATURE
+*    4 PLACE
+*    1 PLANT
+*    1 QUANTITY
+*    1 SPORT
+*    1 THING
+*    4 TIME
+*    1 TOOL
+*    2 TRANSPORTATION
+*    3 UTENSIL
+*    3 mBUSINESS
+*   11 mPLACE
+*    1 mSPORT
+
+!! TA-VERBS
 *    1 BRING
 *    1 COMMUNICATION
 *    3 IMPACT
 *    1 MOVE
 *    6 MOVE_SOMETHING
 *    2 NAME
-*    1 POSESS
-*    1 POSSESS
+*    2 POSSESS
 *    2 PREPARE_FOOD
 *    1 QUANTITY
 *    4 SENSE
 *    2 TASTE
-*    3 THINK
+*    2 THINK
 *    1 TRANSPORTATION
 *    2 WANT
+*   10 mACTIVITITY
+*    3 mACTIVITY
 *    5 mBRING
 *    1 mCOMMUNICATION
 *    1 mIMPACT
-*    1 mMOVE
 *    1 mMOVEMENT
 *    2 mNAME
 *    3 mSENSE
-*    3 mTHINK
+*    2 mTHINK
 
-!!TI-VERBS
+!! TI-VERBS
 *    1 EMOTION
 *    3 IMPACT
 *    6 MOVE
@@ -84,8 +100,10 @@ The list is in alphabetic order. The commands for making the list are in the bot
 *    2 TASTE
 *    1 THINK
 *    2 WANT
+*   15 mACTIVITITY
+*    3 mSENSE
 
-!!AI-VERBS
+!! AI-VERBS
 *    7 ACTIVITY
 *    1 AGE
 *    2 APPEARANCE
@@ -110,10 +128,11 @@ The list is in alphabetic order. The commands for making the list are in the bot
 *    7 TRANSPORTATION
 *    1 WANT
 *    1 WORK
+*    2 mACTIVITITY
 *   27 mACTIVITY
 *    4 mMOVEMENT
 
-!!II-VERBS
+!! II-VERBS
 *    2 APPEARANCE
 *   11 COLOUR
 *    7 DAYS_OF_THE_WEEK
@@ -126,7 +145,7 @@ The list is in alphabetic order. The commands for making the list are in the bot
 *    2 WEATHER
 *    2 mTIME
 
-!!particles
+!! PARTICLES
 *   1 ADVERBIAL_CLAUSE
 *   2 BASIC-CONVERSATION
 *   2 COORDINATE_RELATIONS
@@ -136,14 +155,17 @@ The list is in alphabetic order. The commands for making the list are in the bot
 *   3 PLACE
 *   7 QUANTITY
 *   6 QUESTION
-*  13 TIME
+*  12 TIME
 
 !!commands
 {{{
-echo '!! nouns' > overview 
-cat N_crk.xml | grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' >> overview
+echo '!! AN-NOUNS' > overview 
+cat N_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep 'AN'  |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview
 echo '' >> overview 
-echo '!! TA-verbs' >> overview 
+echo '!! IN-NOUNS' >> overview 
+cat N_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep 'IN'  |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview
+echo '' >> overview 
+echo '!! TA-VERBS' >> overview 
 cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"TA"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview 
 echo '' >> overview 
 echo '!! TI-VERBS' >> overview 
@@ -155,7 +177,7 @@ echo '' >> overview
 echo '!! II-VERBS' >> overview 
 cat V_crk.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |grep '"II"' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview 
 echo '' >> overview 
-echo '!! particles' >> overview 
+echo '!! PARTICLES' >> overview 
 cat Ipc_crk.xml | grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' >> overview 
 }}}
 
