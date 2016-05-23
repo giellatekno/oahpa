@@ -163,8 +163,9 @@
 			{% endif %}
 		{% endifequal %}
 		{% if form.relaxing_note %}
-			<a href="#" class="feedback_link relaxing_link" id="link_feedback-{{ forloop.counter }}">
-				 {% trans "note" %}
+		    <img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
+			<a href="#" class="feedback_link" id="link_feedback-{{ forloop.counter }}">
+				{% trans "help" %}
 			</a>
 		{% endif %}	
 
