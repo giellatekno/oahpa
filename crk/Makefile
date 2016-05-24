@@ -1,4 +1,4 @@
 check:
-	@ls -c1 ../crk/src/*.xml ../crk/meta/*.xml ../crk/meta/verb_questions/*.xml | xargs xmllint --format 1>err.tmp
+	@find . \ -type file -name "*.xml" -print0 | xargs -0 xmllint --format 1>err.tmp
 	@rm err.tmp
 
