@@ -1,4 +1,4 @@
-{% extends "game.html" %}
+﻿{% extends "game.html" %}
 {% load i18n %}
 
 {% block helpaddress %}
@@ -38,7 +38,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.nno.html
 {% endblock %}
 
 {% block instructions %}
-	{% trans "Give translations for each word. You can choose a semantic set or part of the textbook but not both. For verbs, give the 3S form." %}
+	Give translations for each word. For verbs, give the <a class="helptext" href="#">3S<span class="shortinfo">Ex. "mîcisow" = "S/he eats"</span></a> form. Words given in green are animate and words given in black are inanimate. Need help <a class="helptext" href="#">selecting<span class="shortinfo">You can choose a semantic set or part of the textbook but not both.</span></a> the proper exercises?
 {% endblock %}
 
 {% block name %}{% trans "Quizz" %}{% endblock %}
