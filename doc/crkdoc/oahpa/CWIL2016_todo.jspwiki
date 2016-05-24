@@ -27,8 +27,12 @@
 
 !Morfa S tasks
 # Morfa-S AI verb exercise still generates some TI verbs.
+# Morfa-S __N-REVDIM__: both questions and answers should be Sg
+
+!Generation
+
 # Morfa-S verbs: The preferred answers given contain "%".
-## __new generators in opt are ok__  reinstall with the new analyzers
+## __new generators in opt are now ok, copied from Lene's Mac __  reinstall with the new analyzers
 # Morfa-S past tense AI verbs: help is not showing past tense message (the message is defined the same as the TI verbs, which works.)
 
 !Feedback
@@ -105,7 +109,8 @@
 
 !! Numra
 * words with vowel length errors or typos should be marked with __Err/ShLo__, which will give it possible to give spesific feedback, and mark the answer in yellow with the opportunity for correction. It's now added to the Numra FSTs, but we will consider it for the ped.FTS __ implementing in Numra: Ryan__, the message file is: meta/errorfstmessages.xml. There are new transcriptors on gtoahpa.
-* Dates: Numeral to word should be __English to Cree__, make a special html-file for dates?
+* Dates: Numeral to word should be __English to Cree__, make a special html-file for dates
+** __fixed__
 * Numra needs a filter for not including missings, __hava a look, Ryan__ 
 
 !! Vasta F
