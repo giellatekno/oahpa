@@ -1,0 +1,56 @@
+!!List of items of semantic classes
+The list is in alphabetic order. The commands for making the list are in the bottom.
+
+!! NOUNS
+*    1 ABSTRACT
+*    6 ANIMAL
+*    4 BEVERAGE
+*    3 BIRD
+*    9 BUILDING
+*   15 CLOTHING
+*    9 FOOD
+*    1 GEOGRAPHY
+*    2 HOME
+*   41 HOUSEHOLD
+*   47 HUMAN
+*   34 KIN
+*   14 LOCATION
+*    2 LOCATION_BUILDING
+*    2 NATURE
+*    2 PLACE
+
+!! VERBS
+*   93 ACTION
+*    4 ANIMATE
+*    6 AUX
+*   10 COLOR
+*   29 HUMAN
+*    4 MOTION
+*   53 STATE
+*    1 VERBAL
+
+!! PARTICLES
+*   1 TIME
+
+!! ADVERBS
+*  14 DAYS
+*   4 SEASON
+*  44 TIME
+*  11 xx
+
+
+!!commands
+{{{
+echo '!! NOUNS' > overview 
+cat N_hdn.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c'  |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview
+echo '' >> overview 
+echo '!! VERBS' >> overview 
+cat V_hdn.xml | sed 's/<l /¢<l/' | sed 's/<tg /¢<tg /' | tr '\n' '€' | tr '¢' '\n'|  grep '<sem c' |  grep -v '"none"' | tr '€' '\n' | grep 'sem c' |cut -d '"' -f2 |sort | uniq -c | sed 's/^/* /' >> overview 
+echo '' >> overview 
+echo '!! PARTICLES' >> overview 
+cat Ipc_hdn.xml | grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' >> overview 
+echo '' >> overview 
+echo '!! ADVERBS' >> overview 
+cat ADV_hdn.xml | grep '<sem c' |cut -d '"' -f2 |sort | uniq -c |sed 's/^/*/' >> overview 
+}}}
+
