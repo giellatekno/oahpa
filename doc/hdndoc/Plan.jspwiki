@@ -5,16 +5,27 @@
 This documents gives a sketch of Status quo and next steps for Northern Haida Oahpa
 
 !!!Status 
+The Haida Oahpa is online. Here is the status for the different Oapha programs:
 
-|| Issue         || Status
-|  Oahpa online  | ok
-| Oahpa programs | –
-| cardinals      | testing 
-| date.lexc      | later
-| clock.lexc     | under planning
+|| Issue         || Type    || Status
+| __MofaC__      | Inflecting words in context | Not implemented
+| __MofaS__      | Inflecting words w/o context | Not implemented
+| __Leksa__      | Vocabulary training | Implemented, contains 382 entries
+| __Numra__      | Training numerals | Subtypes:
+| __cardinals__      | 1-100 numbers | Implemented 
+| __ordinals __      | 1-100 numbers | Not implemented 
+| __Time     __      | hh:mm | Implemented
+| __Date     __      | date.month | Implemented
+| __Money    __       |   | Not implemented
+
 
 !!!Plans ahead
 
+!! MorfaC
+MorfaC is a program for inflecting words in context. It is not yet operative.
+
+!! MorfaS
+MorfaS is a program for inflecting words in isolation. It is not yet operative.
 
 !! Leksa
 
@@ -27,9 +38,9 @@ This documents gives a sketch of Status quo and next steps for Northern Haida Oa
 !Content
 * Numbers 1-100
 ** automaton done
-** todo: Implement 1-100 (not 1-1000)
+** Implement 1-100 (not 1-1000): DONE
 ** todo (probably): Look for spellrelax issues
-* Clock
+* Time and Date
 ** Implement the automaton
 ** Thereafter, Numra should be good as it is
 
