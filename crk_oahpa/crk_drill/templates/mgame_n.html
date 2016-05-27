@@ -21,10 +21,10 @@
 	  {% trans "Complete the response to the question." %}
         Enter the <a class="helptext" href="#">{% trans "locative form" %}<span class="shortinfo">Ex. If you are given "(mîcisowikamik)", answer "mîcisowikamikohk".</span></a> of the noun given in brackets.
       {% elif settings.case_context == 'N-PX' %}
-		{% trans 'The noun is given in the 1S possessive form. Select which type (2S or 3S) you want to practice in the drop down menu above and then enter the correct possessive form of each noun.' %}
+		{% trans "Complete the response to the question." %}
+		Enter the correct <a class="helptext" href="#">possessive form<span class="shortinfo">Answer with the 1S form of the noun in question.</span></a> of the noun.
       {% else %}
-	  {% trans "Complete the response to the question." %}
-        Enter the correct <a class="helptext" href="#">{% trans "possessive form" %}<span class="shortinfo">Answer with the 1S form of the noun in question.</span></a> of the noun.
+	  {% trans 'The noun is given in the 1S possessive form. Select which type (2S or 3S) you want to practice in the drop down menu above and then enter the correct possessive form of each noun.' %}
       {% endif %}
   {% endif %}
 <a class="helptext" href="#">Translate<span class="shortinfo">{% trans "Hold the ALT key and click on any word for its translation." %}</span></a> this page.
