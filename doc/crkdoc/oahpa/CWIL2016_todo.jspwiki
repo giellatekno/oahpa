@@ -1,5 +1,81 @@
 !!!The list
 
+!! Priorities (Things that must be completed before mid-June)
+
+#. Ensure existing exercises are functioning
+#. Instructions are on correct pages
+#. Help Messages are showing up when they're supposed to
+#. Add a typer.
+#. Conjunct- Accept both with prefix and without, but prefer prefix.  (Right now it doesn't even accept a prefix.)
+
+Current Extensive Error List for Morfa
+
+{{{
+    Morfa-C  Nouns  Possessive  : Should have N-PX instructions from mgame_n.html
+
+    Morfa-C  Verbs  AI  Ind  Prs :  Remove Cnj help message.
+
+    Morfa-C  Verbs  AI  Ind  Prt/FutDef/FutInt : Attribute error, exception at line 155 qagame.html
+
+    Morfa-C  Verbs  AI  Cnj  Prs : Should have V-AI-CNJ-PRS instructions (line 35 mgame_v.html)
+                                                   Remove Ind help message.
+
+    Morfa-C  Verbs  AI  Cnj  Prt : Should have V-AI-CNJ-PRT instructions (line 43 mgame_v.html)
+                                                   Remove Ind help message.
+
+    Morfa-C  Verbs  AI  Cnj  FutInt : Should have V-AI-CNJ-FUT-INT instructions (line 50 mgame_v.html)
+                                                        Remove Ind help message.
+
+    Morfa-C  Verbs  TI  Ind  Prs : Should have V-TI-PRS instructions (line 21 mgame_v.html)
+                                                   Remove Cnj help message.
+                                                   Should have TI questions and help, not TA. (This is hopefully fixed.)
+
+    Morfa-C Verbs  TI  Ind  Prt : Should have V-TI-PRT instructions (line 23 mgame_v.html)
+                                                 Remove Cnj help message.
+                                                 Should have TI questions and help, not TA. (This is hopefully fixed.)
+
+    Morfa-C Verbs  TI  Ind  FutInt : Attribut error, exception at line 155 qagame.html
+
+    Morfa-C  Verbs  TI  Cnj  Prs/Prt/FutInt : Value error, exception in query.py in add_filter, line 1095
+
+    Morfa-C  Verbs  TA  Ind  Prs : Should have V-TA-PRS instructions (line 17 mgame_v.html)
+                                                    Remove Cnj help message.
+                                                    4Sg/Pl help not working (This is hopefully fixed.)
+
+    Morfa-C  Verbs  TA  Ind  Prt : Should have V-TA-PRT instructions (line 19 mgame_v.html)
+                                                   Remove Cnj help message. 
+
+    Morfa-C Verbs  TA  Ind  FutInt : Page not found.
+
+    Morfa-C  Verbs  TA  Cnj  Prs : Should have V-TA-CNJ-PRS instructions (line 41 mgame_v.html)
+                                                    Remove Ind help message.
+                                                    2Pl->3SgO question was missing help. (This is hopefully fixed.)
+
+    Morfa-C  Verbs  TA  Cnj  Prt : Should have V-TA-CNJ-PRT instructions (line 43 mgame_v.html)
+                                                    Remove Ind help message.
+
+    Morfa-C  Verbs  TA  Cnj  FutInt : Should have V-TA-CNJ-FUT-INT instructions (line 52 mgame_v.html)
+                                                        Remove Ind help message.
+
+    Morfa-C  Verbs  II  Ind  Prs : Should have V-II-PRS instructions (line 15 mgame_v.html)
+                                                  Remove Cnj help message. (This is temporarily fixed.)
+
+    Morfa-S  Nouns  Pl : Should have instructions from mgame_s_h.html.
+                                      Remove N-2SG instructions.
+                                      Don't allow for diminutive or locative nouns in questions.
+
+    Morfa-S  Nouns  Loc : Should have instructions from mgame_s_h.html.
+                                        Remove N-2SG instructions.
+                                        Don't allow for diminutive or plural nouns in questions.
+
+    Morfa-S  Nouns  Rev.Dim: Should have instructions from mgame_s_h.html.
+                                               Remove N-2SG instructions.
+                                               Don't allow for plural or locative nouns in questions.
+                                               t2c message not working.
+
+    Morfa-S Verbs ALL: Should only show either Ind or Cnj help message only.
+}}}
+
 !!Bugs - not fixed?
 
 !Instructions
@@ -101,6 +177,7 @@
 * words with vowel length errors or typos should be marked with __Err/ShLo__, which will give it possible to give spesific feedback, and mark the answer in yellow with the opportunity for correction. It's now added to the Numra FSTs, but we will consider it for the ped.FTS __ implementing in Numra: Ryan__, the message file is: meta/errorfstmessages.xml. There are new transcriptors on gtoahpa.
 * Dates: Numeral to word should be __English to Cree__, make a special html-file for dates
 ** __fixed__
+** __done__
 * Numra needs a filter for not including missings, __hava a look, Ryan__ 
 
 !!Further on:
