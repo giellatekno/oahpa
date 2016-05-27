@@ -6,12 +6,11 @@
 {% endblock %}
 {% block instructions %}
   {% if settings.gametype == "bare" %}
-  
   {% elif settings.gametype == "context" %}
       {% if settings.case_context == 'N-PL' %}
-		{% trans "Enter the plural form of the given noun." %}
+  Enter the <a class="helptext" href="#">{% trans "plural form" %}<span class="shortinfo">Ex. If you are given "nêhiyaw", answer "nêhiyawak".</span></a> of the given noun.
       {% elif settings.case_context == 'N-LOC' %} 
-		{% trans "Enter the locative form of the given noun." %}
+		Enter the <a class="helptext" href="#">{% trans "locative form" %}<span class="shortinfo">Ex. If you are given "(mîcisowikamik)", answer "mîcisowikamikohk".</span></a> of the noun given in brackets.
       {% else %}
 	  Enter the <a class="helptext" href="#">baseform<span class=shortinfo> Ex. "sikâk" is the baseform of "sikâkos"</span></a> of the given diminutive noun.
       {% endif %}
