@@ -3,11 +3,13 @@
 !!Bugs - not fixed?
 
 !Instructions
-# Possessive, diminutive Morfa-C instructions
-## The possessive instructions still showing for Morfa-C diminutives should be showing for Morfa-C possessives.
-## The instructions currently showing for Morfa-C possessives should be removed completely.
-# Morfa-S diminutive instruction is showing up in the new Morfa-C diminutive exercise. New help needs to be made for Morfa-C and the current help messages should be removed.
-# Morfa-C verb exercises only showing "present tense AI" instructions
+# Possessive Morfa-C instructions
+## The N-PX instructions from mgame_n.html on line 25 should be showing for Morfa-C possessives.
+## The instructions currently showing for Morfa-C possessives are not needed.
+# Morfa-S Nouns: Has new mgame_s_h.html been implemented/coded properly? 
+##Plural, Locative and Rev. Diminutive are all showing N-2SG instructions.
+##Possessive instructions are correct and are from N-2SG and N-3SG in mgame_n.html file.
+# Morfa-C verb exercises are all only showing only "present tense AI" instructions.
 
 !Design
 # Define "mode" attribute
@@ -19,33 +21,24 @@
 # TI-Ind-Prt,TA-Ind-Prt, and TA-Ind-fut-def,  still showing % in generated verbs.
 ## TODO: ryan
 ## names?
-# V-AI-FUT-INT - doesn't work
+# V-AI-FUT-INT, + PRT + FUT-DEF - doesn't work
 ## installs successfully, but errors in generation? Lene has checked FST-generation for these word forms, and it is ok. __Ryan__
-# Morfa-C TI, TA, and II verb help is not functioning.
+# Morfa-C TI, TA, and II verb help is not functioning. FUT-DEF and FUT-INT marker help is not functioning either.
 ##TI only has part of TA help. TA only has part of help (this hopefully fixed).
 #pronouns are now broken
 
-
 !Morfa S tasks
-# Morfa-S AI verb exercise still generates some TI verbs.
-# Morfa-S __N-REVDIM__: both questions and answers should be Sg
+# Morfa-S __All Nouns__: both questions should be Sg- not plural, loc, or diminutive. (e.g. no plural in loc or dim exercises) This causes help messages to show up in the wrong exercises.
 
 !Generation
-
-# Morfa-S verbs: The preferred answers given contain "%".
-## __new generators in opt are now ok, copied from Lene's Mac __  reinstall with the new analyzers
-# Morfa-S past tense AI verbs: help is not showing past tense message (the message is defined the same as the TI verbs, which works.)
-#mistik,asiniy, and astis have both AN and IN forms. The course material only uses the AN form but the feedback is being generated for the IN form in morfa-c plural. How is this fixed?
+#CNJ should accept answers both with and without "ê" prefix but WITH prefix should be the preferred answer.
+#After "fillings", nouns are generated but not in N_Crk? How do we create help for them.
 
 !Feedback
 # Added a "t2c" tag for nouns with values "yes" or "no". Need to be added to tag list.
 # Conjunct and Independent help messages are showing up together in independent and conjunct exercises in Morfa-C and S. __Lene probably fixed in source file__ still NOT fixed
 
 # Gold page for Diminutive qagame.py:l.155, add qid
-
-!Other
-# Leksa: audio files not working with Safari
-## Not prioritized
 
 !! morfa-c question types
 
@@ -87,13 +80,6 @@
 *implement vowel-length error/ almost correct feedback into larger fst for all exercises
 ** Add Use/NG tags to lexc __Lene, done__
 
-
-!! New things (for the content of tasks)
-* ensure orthographic conventions used are consistent with the textbook and any links provided (should wait until Arok is done editing the texts for this step)
-* s/he should be equivalent with (a list), and more....
-* help-function in Numra
-
-
 !! MorfaC: New tasks
 * MorfaC verbs: 
 ** __TI__ (TI-PRS_PRT_FUTDEF_FUTINT.xml) 
@@ -106,14 +92,27 @@
 * MorfaC verbs: translation tasks
 ** pronouns (transl_questions.xml): __fixed__
 ** II verbs with tranlastions from English (II-PRS.xml) __not functioning yet__
+*** __now installs__
 ** nouns: diminutive (in noun_questions.xml)
 *** __now installs__
 
 !! Numra
+*Seems to be breaking when testing/showing answers.
 * words with vowel length errors or typos should be marked with __Err/ShLo__, which will give it possible to give spesific feedback, and mark the answer in yellow with the opportunity for correction. It's now added to the Numra FSTs, but we will consider it for the ped.FTS __ implementing in Numra: Ryan__, the message file is: meta/errorfstmessages.xml. There are new transcriptors on gtoahpa.
 * Dates: Numeral to word should be __English to Cree__, make a special html-file for dates
 ** __fixed__
 * Numra needs a filter for not including missings, __hava a look, Ryan__ 
+
+!!Further on:
+
+!! New things (for the content of tasks)
+* ensure orthographic conventions used are consistent with the textbook and any links provided (should wait until Arok is done editing the texts for this step)
+* s/he should be equivalent with (a list), and more....
+* help-function in Numra
+
+!Other
+# Leksa: audio files not working with Safari
+## Not prioritized
 
 !! Vasta F
 * translation tasks (eng_questions_vasta)
@@ -126,13 +125,10 @@
 * s/he should be equivalent with (a list), and more....
 * Dialect choice: Regina and Mascochis
 
-!!Further on:
-
 !!Tasks 
 * Introduction tasks: Use your new keyboard
 * Write the audio file (also as help function?)
 * audio-files in Numra and Leksa
-
 
 !Common resourse page
 * grammar course?
@@ -180,7 +176,11 @@
 ## __fixed__
 # Implement noun question instructions file for morfa-s mgame_s_n.html
 ## __fixed__ instructions now seem to be implemented in mgame_n.html?
-
+#mistik,asiniy, and astis have both AN and IN forms. The course material only uses the AN form but the feedback is being generated for the IN form in morfa-c plural. How is this fixed?
+# Morfa-S verbs: The preferred answers given contain "%".
+#Morfa-S AI verb exercise still generates some TI verbs. -It was an AI verb with an object. Fixed in N_crk
+# __new generators in opt are now ok, copied from Lene's Mac __  reinstall with the new analyzers
+# Morfa-S past tense AI verbs: help is not showing past tense message (the message is defined the same as the TI verbs, which works.)
 
 !!Design - general - fixed
 * get Cree words into the left menu: __fixed__
