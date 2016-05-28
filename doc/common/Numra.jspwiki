@@ -5,6 +5,58 @@ which contains documentations for linguists making the automata for the actual l
 
 The files are, as always, in ped/LANG_oahpa/, except for North Sámi where the the prefix ''univ'' is used instead of sme.
 
+!!!Intro
+
+Numra differs from Morfa in not using the MySQL database, but using transducers directly.
+
+The transducers behind numra are stored in $GTHOME/langs, and are the following (where $LANG is the iso code for your language):
+
+* Cardinal and ordinal numbers: {{$LANG/src/transcriptions/transcriptor-numbers-digit2text.lexc}}
+* Clock: {{$LANG/src/transcriptions/transcriptor-clock-digit2text.lexc}}
+* Date: {{$LANG/src/transcriptions/transcriptor-date-digit2text.lexc}}
+
+
+Note that the order of
+writing in the lexc file should be as indicated in the filenames, thus one should write
+{{2:two }} (''digit2text'') rather than {{two:2}}, as it is (wrongly)
+written for some of the languages.
+
+The files governing the four programs are ''num.html, num_ord.html, clock.html, date.html''. These files are found here:
+
+* for sme: ''ped/univ_oahpa/univ_drill/templates/'', 
+* for sma: ''ped/smaoahpa/smadrill/templates/''
+* for all other languages: ''ped/LANG_oahpa/LANG_drill/templates/'', where
+** LANG = the iso code of the language in question
+
+These files refer to the fsts on gtoahpa and gtlab, in the {{/opt/smi/}} catalogue there. Oahpa versions
+with an url ''testing.oahpa.no'' are on __gtlab__, 
+versions with url ''oahpa.no'' are on __gtoahpa__.
+
+!!!Debugging lexc inconsistency
+
+Unfortunately, the Numra transducers were from the beginning written in two different directions, as referred to above. Instead of correcting this, this inconcistency was projected over to new languages, and into the Oahpa code. During the Oahpa newinfra project this should be fixed, in the following way:
+
+# in $GTHOME/langs/LANG/src/transcriptors, the files should get intended filenames __DONE__
+# The lexc content should be harmonised to the {{2:two}} pattern __PARTLY DONE__
+# The same filename should be used in {{/opt/LANG/}} __PARTLY DONE__
+# The same filename (and {{2:two}} pattern) should be used in the Oahpa code __PARTLY DONE__
+
+The command (in ped/)
+
+{{grep -A1 'class NumGame' *_oahpa/*_drill/game.py }}
+
+reveals that file references for appr. half of the Numras have been updated.
+As a quick fix for several languages, the content of the correct filenames have been copied
+over to the old ones in {{/opt/smi/LANG/bin}} on ''gtoahpa'' (TT).
+
+To sum up: Such file names are in use in {{/opt/smi/}} and the Numra code:
+
+* WRONG: smn-num.fst
+* WRONG: transcriptor-numbers2text-desc.xfst
+* Correct: transcriptor-numbers-digit2text.filtered.lookup.xfst
+
+
+
 !!!Class inheritance structure
 
 The class inheritance structure for the three Numra modes ''Numra'', ''Klokka'' 
@@ -29,17 +81,17 @@ There is room for some decoupling of functionality in LANG_drill/forms.py and LA
 *** class Numview(Gameview)
 
 * Cardinals & Ordinals
-* forms.py
-** … (relevant classes for this program)
-* game.py
-** NumGame (see docstrings for method information)
-* views.py
-** ...
+** forms.py
+*** … (relevant classes for this program)
+** game.py
+*** NumGame (see docstrings for method information)
+** views.py
+*** ...
 
 * Klokka
-* forms.py:
-* game.py: Klokka (subclass of NumGame)
-** Subclass contains filenames of the question/answer FSTs, and depends on settings.FST_DIRECTORY
+** forms.py:
+** game.py: Klokka (subclass of NumGame)
+*** Subclass contains filenames of the question/answer FSTs, and depends on settings.FST_DIRECTORY
 ** Subclass of NumGame, results in need to only override NumGame.get_db_info and NumGame.create_form
 
 * Dato
@@ -58,6 +110,8 @@ There is room for some decoupling of functionality in LANG_drill/forms.py and LA
 *** views call the farthest down template in the inheritance hierarchy, and
     the rest are extended via the {% extends %} template tag.
 
+The files are the following:
+
 {{{
 templates/LANG_oahpa_main.html
 	templates/LANG_oahpa.html
@@ -67,32 +121,6 @@ templates/LANG_oahpa_main.html
 				LANG_drill/templates/clock.html
 				LANG_drill/templates/dato.html
 }}}
-
-!!!Intro
-
-Numra differs from Morfa in not using the MySQL database, but using transducers directly.
-
-The transducers behind numra are (where $LANG is the iso code for your language):
-
-* Cardinal and ordinal numbers: $LANG/src/transcriptions/transcriptor-numbers-digit2text.lexc
-* Clock: $LANG/src/transcriptions/transcriptor-clock-digit2text.lexc
-* Date: $LANG/src/transcriptions/transcriptor-date-digit2text.lexc
-
-For example files, look at related languges. Note that the order of
-writing the lexc file should be as indicated in the filenames, thus
-{{2:two}} (''digit2text'') rather than {{two:2}}, as it is (wrongly)
-written for some of the languages.
-
-The files governing the four programs are ''num.html, num_ord.html, clock.html, date.html''. These files are found here:
-
-* for sme: ''ped/univ_oahpa/univ_drill/templates/'', 
-* for sma: ''pedversions/smaoahpa/smadrill/templates/''
-* for all other languages: ''ped/LANG_oahpa/LANG_drill/templates/'', where
-** LANG = the iso code of the language in question
-
-These files refer to the fsts on gtoahpa and gtlab, in the opt catalogue there. Oahpa versions
-with an url ''testing.oahpa.no'' are on __gtlab__, 
-versions with url ''oahpa.no'' are on __gtoahpa__.
 
 
 !!!Documentation of the content production
