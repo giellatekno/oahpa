@@ -419,8 +419,11 @@ echo "==================================================="
 # echo "==================================================="
 
 echo "==================================================="
-echo "installing Morfa-C questions for V - TA - Prs, Prt, FutDef FutInt"
-$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/TA-PRS_PRT_FUTDEF_FUTINT.xml 2>>error.log
+echo "installing Morfa-C questions for V - TA - Prs, Prt, FutDef, FutInt"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TA-PRS.xml 2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TA-PRT.xml 2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TA-FUTDEF.xml 2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TA-FUTINT.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
