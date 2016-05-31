@@ -440,7 +440,9 @@ echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C questions for V - TA CNJ - Prs, Prt, FutDef FutInt"
-$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/TA-CNJ-PRS_PRT_FUTINT.xml 2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TA-CNJ-PRS.xml  2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TA-CNJ-PRT.xml  2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TA-CNJ-FUTINT.xml  2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
