@@ -430,7 +430,10 @@ echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C questions for V - TI - Prs, Prt, FutDef FutInt"
-$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/TI-PRS_PRT_FUTDEF_FUTINT.xml 2>>error.log
+$P install.py -g $METI/grammar_defaults.xml -q $METI/verb_questions/V-TI-PRS.xml 2>>error.log
+$P install.py -g $METI/grammar_defaults.xml -q $METI/verb_questions/V-TI-PRT.xml 2>>error.log
+$P install.py -g $METI/grammar_defaults.xml -q $METI/verb_questions/V-TI-FUTDEF.xml 2>>error.log
+$P install.py -g $METI/grammar_defaults.xml -q $METI/verb_questions/V-TI-FUTINT.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
