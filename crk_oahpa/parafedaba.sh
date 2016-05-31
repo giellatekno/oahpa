@@ -439,6 +439,13 @@ echo "done"
 echo "==================================================="
 
 echo "==================================================="
+echo "installing Morfa-C questions for V - II - Prs"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/II-PRS.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
 echo "installing Morfa-C questions for V - TA CNJ - Prs, Prt, FutDef FutInt"
 $P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TA-CNJ-PRS.xml  2>>error.log
 $P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TA-CNJ-PRT.xml  2>>error.log
@@ -448,29 +455,19 @@ echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "installing Morfa-C questions for V - II - Prs"
-$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/II-PRS.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "installing Morfa-C questions for AI - CNJ - Prt, Prs"
-$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/TA-CNJ-PRS_PRT_FUTINT.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
 echo "installing Morfa-C questions for TI - CNJ - Prt, Prs"
-$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/TI-CNJ-PRS_PRT_FUTINT.xml 2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TI-CNJ-PRS.xml  2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TI-CNJ-PRT.xml  2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TI-CNJ-FUTINT.xml  2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C questions for AI - CNJ - Prt, Prs"
-$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/AI-CNJ-PRT_PRS_FUTINT.xml 2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-AI-CNJ-PRS.xml  2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-AI-CNJ-PRT.xml  2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-AI-CNJ-FUTINT.xml  2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
