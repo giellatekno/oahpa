@@ -10,72 +10,35 @@
 ##. Conjunct- Accept both with prefix and without, but prefer prefix. (Right now it doesn't even accept a prefix.)
 ##. sôniyâwikamik vs. sôniyâw'kamik
 
+* check t2c, should be included in install now 
+* recheck Cnj feedback messages appear
+
 Current Extensive Error List for Morfa
 
 {{{
-    Morfa-C  Nouns  Possessive  : Should have N-PX instructions from mgame_n.html
+    Morfa-C  Verbs  II  Cnj - questions missing from install?
+
+    Morfa-C  Verbs  TI  Cnj  Prs/Prt : Cannot use None as a query value
+        - some semantic set problems with these questions
+
+		questions containing mACTIVITY and V+TI+Cnj+Prs+4Sg/Pl
+		also DINNERWARE and N+AN+Sg
 
     Morfa-C  Verbs  AI  Ind  Prs :  Remove Cnj help message.
+    Morfa-C  Verbs  TA  Ind  Prs : Remove Cnj help message.
+                    4Sg/Pl help not working (This is hopefully fixed.)
+    Morfa-C  Verbs  TA  Ind  Prt : Remove Cnj help message. 
+    Morfa-C  Verbs  TA  Cnj  Prs : Remove Ind help message.
+                    2Pl->3SgO question was missing help. (This is hopefully fixed.)
 
-    Morfa-C  Verbs  AI  Ind  Prt/FutDef/FutInt : Attribute error, exception at line 155 qagame.html
+    Morfa-C  Verbs  TA  Cnj  Prt : Remove Ind help message.
+    Morfa-C  Verbs  TA  Cnj  FutInt : Remove Ind help message.
 
-    Morfa-C  Verbs  AI  Cnj  Prs : Should have V-AI-CNJ-PRS instructions (line 35 mgame_v.html)
-                                                   Remove Ind help message.
+    Morfa-S  Nouns  Pl: 
+    Morfa-S  Nouns  Loc:
+    Morfa-S  Nouns  Rev.Dim: 
+                           Don't allow for plural or locative nouns in questions.
 
-    Morfa-C  Verbs  AI  Cnj  Prt : Should have V-AI-CNJ-PRT instructions (line 43 mgame_v.html)
-                                                   Remove Ind help message.
-
-    Morfa-C  Verbs  AI  Cnj  FutInt : Should have V-AI-CNJ-FUT-INT instructions (line 50 mgame_v.html)
-                                                        Remove Ind help message.
-
-    Morfa-C  Verbs  TI  Ind  Prs : Should have V-TI-PRS instructions (line 21 mgame_v.html)
-                                                   Remove Cnj help message.
-                                                   Should have TI questions and help, not TA. (This is hopefully fixed.)
-
-    Morfa-C Verbs  TI  Ind  Prt : Should have V-TI-PRT instructions (line 23 mgame_v.html)
-                                                 Remove Cnj help message.
-                                                 Should have TI questions and help, not TA. (This is hopefully fixed.)
-
-    Morfa-C Verbs  TI  Ind  FutInt : Attribut error, exception at line 155 qagame.html
-
-    Morfa-C  Verbs  TI  Cnj  Prs/Prt/FutInt : Value error, exception in query.py in add_filter, line 1095
-
-    Morfa-C  Verbs  TA  Ind  Prs : Should have V-TA-PRS instructions (line 17 mgame_v.html)
-                                                    Remove Cnj help message.
-                                                    4Sg/Pl help not working (This is hopefully fixed.)
-
-    Morfa-C  Verbs  TA  Ind  Prt : Should have V-TA-PRT instructions (line 19 mgame_v.html)
-                                                   Remove Cnj help message. 
-
-    Morfa-C Verbs  TA  Ind  FutInt : Page not found.
-
-    Morfa-C  Verbs  TA  Cnj  Prs : Should have V-TA-CNJ-PRS instructions (line 41 mgame_v.html)
-                                                    Remove Ind help message.
-                                                    2Pl->3SgO question was missing help. (This is hopefully fixed.)
-
-    Morfa-C  Verbs  TA  Cnj  Prt : Should have V-TA-CNJ-PRT instructions (line 43 mgame_v.html)
-                                                    Remove Ind help message.
-
-    Morfa-C  Verbs  TA  Cnj  FutInt : Should have V-TA-CNJ-FUT-INT instructions (line 52 mgame_v.html)
-                                                        Remove Ind help message.
-
-    Morfa-C  Verbs  II  Ind  Prs : Should have V-II-PRS instructions (line 15 mgame_v.html)
-                                                  Remove Cnj help message. (This is temporarily fixed.)
-
-    Morfa-S  Nouns  Pl : Should have instructions from mgame_s_h.html.
-                                      Remove N-2SG instructions.
-                                      Don't allow for diminutive or locative nouns in questions.
-
-    Morfa-S  Nouns  Loc : Should have instructions from mgame_s_h.html.
-                                        Remove N-2SG instructions.
-                                        Don't allow for diminutive or plural nouns in questions.
-
-    Morfa-S  Nouns  Rev.Dim: Should have instructions from mgame_s_h.html.
-                                               Remove N-2SG instructions.
-                                               Don't allow for plural or locative nouns in questions.
-                                               t2c message not working.
-
-    Morfa-S Verbs ALL: Should only show either Ind or Cnj help message only.
 }}}
 
 !!Bugs - not fixed?
