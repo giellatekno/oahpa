@@ -183,10 +183,10 @@ class Questions:
 			if word_id:
 				if word_id_hid:
 					print "\tfound word %s/%s" % (word_id, word_id_hid)
-					word_elements = Word.objects.filter(wordid=word_id, hid=int(word_id_hid), language=self.source_language)
+					word_elements = Word.objects.filter(wordid=word_id, hid=int(word_id_hid))
 				else:
 					print "\tfound word %s" % word_id
-					word_elements = Word.objects.filter(wordid=word_id, language=self.source_language)
+					word_elements = Word.objects.filter(wordid=word_id)
 				# Add pos information here!
 				if not word_elements:
 					print "\tWord not found! " + word_id
@@ -198,21 +198,21 @@ class Questions:
 			if el:
 				semclasses = [s.getAttribute('class') for s in el.getElementsByTagName("sem")]
 				if semclasses:
-					word_elements = Word.objects.filter(semtype__semtype__in=semclasses, language=self.source_language)
+					word_elements = Word.objects.filter(semtype__semtype__in=semclasses)
 			elif qaelement.question:
 				# check question for copy, grab semclasses
 				has_copies = QElement.objects.filter(question=qaelement.question,
 								identifier=el_id)
 				if has_copies:
 					semclasses = list(has_copies.values_list('semtype__semtype', flat=True))
-					word_elements = Word.objects.filter(semtype__semtype__in=semclasses, language=self.source_language)
+					word_elements = Word.objects.filter(semtype__semtype__in=semclasses)
 
 			if el:
 				valclasses = el.getElementsByTagName("val")
 
 				if valclasses:
 					valclass = valclasses[0].getAttribute("class")
-					word_elements = Word.objects.filter(valency=valclass, language=self.source_language)
+					word_elements = Word.objects.filter(valency=valclass)
 
 		# If still no words, get the default words for this element:
 		if not word_elements:
@@ -439,10 +439,15 @@ class Questions:
 				
 				# Just filtering isn't enough; .filter() doesn't return a list of unique items with this kind of query. 
 				
-				if semclasses:
-					word_pks = Word.objects.filter(form__tag__in=qe.tags.all(), language=self.source_language).filter(semtype=qe.semtype).values_list('pk', flat=True)
-				else:
-					word_pks = Word.objects.filter(form__tag__in=qe.tags.all(), language=self.source_language).values_list('pk', flat=True)
+				try:
+					if semclasses:
+						word_pks = Word.objects.filter(form__tag__in=qe.tags.all()).filter(semtype=qe.semtype).values_list('pk', flat=True)
+					else:
+						word_pks = Word.objects.filter(form__tag__in=qe.tags.all()).values_list('pk', flat=True)
+				except:
+					import pdb
+					pdb.set_trace()
+
 				word_pks = list(set(word_pks))
 				if len(word_pks) == 0:
 					print 'Error: Elements with zero possibilities not permitted.'
@@ -742,7 +747,7 @@ class Questions:
 				word_id = word_ids[0].firstChild.data
 				word_id_hid = word_ids[0].getAttribute("hid").strip()
 				if word_id:
-					words = Word.objects.filter(wordid=word_id, language=self.source_language)
+					words = Word.objects.filter(wordid=word_id)
 					if word_id_hid:
 						words = words.filter(hid=int(word_id_hid))
 					grammar_default.words = words
