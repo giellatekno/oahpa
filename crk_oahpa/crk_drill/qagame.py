@@ -146,7 +146,7 @@ class QAGame(Game):
 				word = word.order_by('?')[0]
 		else:
 			# Do not filter dialect here
-			possible_words = Word.objects.filter(wordqelement__qelement=qelement,
+			possible_words = word.objects.filter(wordqelement__qelement=qelement,
 												form__tag=tag_el.id)
 			if possible_words.count() > 0:
 				word = possible_words.order_by('?')[0]
