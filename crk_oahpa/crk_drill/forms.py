@@ -293,6 +293,9 @@ V_TYPE_FILTER_OPTIONS = {
     ('V', 'TA', 'Cnj', 'Prs'): 'V-TA-CNJ-PRS',
     ('V', 'TA', 'Cnj', 'Prt'): 'V-TA-CNJ-PRT',
 
+    ('V', 'TI', 'Cnj', 'Prs'): 'V-TI-CNJ-PRS',
+    ('V', 'TI', 'Cnj', 'Prt'): 'V-TI-CNJ-PRT',
+
     # TODO: exclude this one option
     # ('V', 'TA', 'Cnj', 'Fut+Def'): 'V-TA-CNJ-FUT-DEF',
 
@@ -1557,6 +1560,7 @@ class NumQuestion(OahpaQuestion):
 				self.relaxing_note = ' '.join([m.get('title') + ' ' + m.get('description') for m in ms])
 				self.relaxings = self.relaxing_note
 				self.is_relaxed = True
+				self.error = "error"
 				# print self.feedback
 		if correct_test:
 			self.error = "correct"
@@ -2980,3 +2984,5 @@ class CealkkaQuestion(OahpaQuestion):
         # set correct and error values
         if correct_val == "correct":
             self.error="correct"
+
+# vim: set ts=4 sw=4 tw=72 syntax=python :
