@@ -699,7 +699,7 @@ class Words(object):
 		changes_to_xml = True
 		changes_to_paradigm = True
 		# Initialize null variables
-		stem, forms, gradation, rime, animacy, trans_anim, v_object, audio  =	[""]*8
+		stem, forms, gradation, rime, animacy, trans_anim, v_object, audio, t2c  =	[""]*9
 		wordclass, attrsuffix, compsuffix, soggi, valency	=	[""]*5
 		compare, frequency, geography, presentationform, excl_dialect	=	[""]*5
 
