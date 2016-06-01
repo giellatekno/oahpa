@@ -6,11 +6,17 @@
 {% endblock %}
 {% block instructions %}
   {% if settings.gametype == "bare" %}
-	{% if settings.possessive_case == 'N-2SG' %}
-		Enter the 2S possessive form of the <a class="helptext" href="#">{% trans "given noun" %}<span class="shortinfo">The noun is given in the 1S possessive form.</span></a>.
-	{% elif settings.possessive_case == 'N-3SG' %}
-		Enter the 3S possessive form of the <a class="helptext" href="#">{% trans "given noun" %}<span class="shortinfo">The noun is given in the 1S possessive form.</span></a>.
-	{% else %}
+      {% if settings.case == 'N-PL' %}
+		{% trans "Enter the plural form of the given noun." %}
+      {% elif settings.case == 'N-LOC' %} 
+		{% trans "Enter the locative form of the given noun." %}
+	  {% elif settings.case == 'N-PX' %}
+	    {% if settings.possessive_case == 'N-2SG' %}
+		    Enter the 2S possessive form of the <a class="helptext" href="#">{% trans "given noun" %}<span class="shortinfo">The noun is given in the 1S possessive form.</span></a>.
+	    {% elif settings.possessive_case == 'N-3SG' %}
+		    Enter the 3S possessive form of the <a class="helptext" href="#">{% trans "given noun" %}<span class="shortinfo">The noun is given in the 1S possessive form.</span></a>.
+	    {% endif %}
+      {% else %}
 		 {% trans "Add nouns in correct forms." %}
 	{% endif %}
   {% elif settings.gametype == "context" %}
