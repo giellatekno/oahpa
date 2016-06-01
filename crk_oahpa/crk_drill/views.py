@@ -288,8 +288,6 @@ class Gameview(object):
 
 		game = self.GameClass(self.settings)
 
-		self.set_gamename()
-
 		if is_new_game:
 			game = self.change_game_settings(game)
 			game.new_game()
@@ -305,6 +303,8 @@ class Gameview(object):
 
 			if "show_correct" in settings_form.data:
 				game.show_correct = 1
+
+		self.set_gamename()
 
 		return self.context(request, game, settings_form)
 
@@ -587,8 +587,10 @@ class Morfaview(Gameview):
 		'COND':  _('Practice conditional'),
 		'IMPRT':  _('Practice imperative'),
 		'POT':  _('Practice potential'),
-        'V-II-PRS': _('Practice Inanimate Intransitive (II) verbs in present tense.'),
+
+		'V-II-PRS': _('Practice Inanimate Intransitive (II) verbs in present tense.'),
 		'V-AI-PRS':  _('Practice Animate Intransitive (AI) verbs in present tense.'),
+
 		'V-TA-PRS': _('Practice Transitive Animate (TA) verbs in present tense.'),
 		'V-TA-PRT': _('Practice Transitive Animate (TA) verbs in past tense.'),
 		'V-TA-FUT-DEF': _('Practice Transitive Animate (TA) verbs in future definite.'),
@@ -602,17 +604,18 @@ class Morfaview(Gameview):
 		'V-TA-CNJ-PRS': _('Practice Transitive Animate (TA) Conjunct in present tense.'),
 		'V-TA-CNJ-PRT': _('Practice Transitive Animate (TA) Conjunct in past tense.'),
 		'V-TA-CNJ-FUT-INT': _('Practice Transitive Animate (TA) Conjunct future intentional.'),
+
 		'V-AI-CNJ-PRS': _('Practice Animate Intransitive (AI) Conjunct in present tense (AI).'),
 	    'V-AI-CNJ-PRT':  _('Practice Animate Intransitive (AI) Conjunct in past tense (AI).'),
-	    'V-TI-CNJ-PRT':  _('Practice Transitive Inanimate (TI) Conjunct in past tense (TI).'),
-	    'V-TI-CNJ-FUT-INT':  _('Practice Transitive Inanimate (TI) Conjunct in future intentional (TI).'),
 	    'V-AI-CNJ-FUT-INT':  _('Practice Animate Intransitive (AI) Conjunct in future intentional (AI).'),
-
 		'V-AI-FUT-INT':  _('Practice Animate Intransitive (AI) verbs in the future intentional form.'),
 		'V-AI-FUT-DEF':  _('Practice Animate Intransitive (AI) verbs in the future definite form.'),
+
+		'V-TI-CNJ-PRT':  _('Practice Transitive Inanimate (TI) Conjunct in past tense (TI).'),
+		'V-TI-CNJ-FUT-INT':  _('Practice Transitive Inanimate (TI) Conjunct in future intentional (TI).'),
+
 		'V-AI-PRT':  _('Practice Animate Intransitive (AI) verbs in past tense.'),
 		'V-AI-PRF':  _('practice perfect'),
-#		'V-II-PRT': _('Practice Intransitive Inanimate (II) verbs in past tense.'),
 
 		'V-GER':  _('Practice gerund'),
 		'V-COND':  _('practice conditional'),
