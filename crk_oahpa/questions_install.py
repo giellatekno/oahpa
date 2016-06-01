@@ -439,14 +439,10 @@ class Questions:
 				
 				# Just filtering isn't enough; .filter() doesn't return a list of unique items with this kind of query. 
 				
-				try:
-					if semclasses:
-						word_pks = Word.objects.filter(form__tag__in=qe.tags.all()).filter(semtype=qe.semtype).values_list('pk', flat=True)
-					else:
-						word_pks = Word.objects.filter(form__tag__in=qe.tags.all()).values_list('pk', flat=True)
-				except:
-					import pdb
-					pdb.set_trace()
+				if semclasses:
+					word_pks = Word.objects.filter(form__tag__in=qe.tags.all()).filter(semtype=qe.semtype).values_list('pk', flat=True)
+				else:
+					word_pks = Word.objects.filter(form__tag__in=qe.tags.all()).values_list('pk', flat=True)
 
 				word_pks = list(set(word_pks))
 				if len(word_pks) == 0:
