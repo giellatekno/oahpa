@@ -150,6 +150,9 @@ class QAGame(Game):
 												form__tag=tag_el.id)
 			if possible_words.count() > 0:
 				word = possible_words.order_by('?')[0]
+			else:
+				print >> sys.stderr, "Could not find word-qelements for %s / %s" % (qelement.question.qid, qelement.identifier)
+				return None
 
 		form_set_filter = self.filter_forms_by_dialect(
 							word.form_set.filter(tag=tag_el.id))
