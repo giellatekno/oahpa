@@ -213,6 +213,7 @@ class Entry(object):
 			("gradation", None),
 			("diphthong", None),
 			("rime", None),
+			("t2c", None),
 			("attrsuffix", None),
 			("compsuffix", None),
 			("soggi", None),
@@ -780,6 +781,9 @@ class Words(object):
 
 		if entry.rime:
 			rime = entry.rime
+
+		if entry.t2c:
+			t2c = entry.t2c
 			
 		if entry.animacy:
 			animacy = entry.animacy
@@ -845,6 +849,7 @@ class Words(object):
 			# w.presentationform = presentationform
 			w.stem = stem
 			w.rime = rime
+			w.t2c = t2c
 			w.compare = compare
 			w.attrsuffix = attrsuffix
 			w.compsuffix = compsuffix
