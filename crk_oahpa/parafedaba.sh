@@ -398,13 +398,6 @@ echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "installing Morfa-C questions for verbs"
-$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
 echo "installing Morfa-C questions for translation"
 $P install.py -g $META/grammar_defaults.xml -q $META/transl_questions.xml 2>>error.log
 echo " "
@@ -419,6 +412,16 @@ echo "==================================================="
 # echo "==================================================="
 
 echo "==================================================="
+echo "installing Morfa-C questions for V - AI - Prs, Prt, FutDef, FutInt"
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-AI-PRS.xml 2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-AI-PRT.xml 2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-AI-FUTDEF.xml 2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-AI-FUTINT.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
 echo "installing Morfa-C questions for V - TA - Prs, Prt, FutDef, FutInt"
 $P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TA-PRS.xml 2>>error.log
 $P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TA-PRT.xml 2>>error.log
@@ -430,10 +433,10 @@ echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C questions for V - TI - Prs, Prt, FutDef FutInt"
-$P install.py -g $META/grammar_defaults.xml -q $METI/verb_questions/V-TI-PRS.xml 2>>error.log
-$P install.py -g $META/grammar_defaults.xml -q $METI/verb_questions/V-TI-PRT.xml 2>>error.log
-$P install.py -g $META/grammar_defaults.xml -q $METI/verb_questions/V-TI-FUTDEF.xml 2>>error.log
-$P install.py -g $META/grammar_defaults.xml -q $METI/verb_questions/V-TI-FUTINT.xml 2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TI-PRS.xml 2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TI-PRT.xml 2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TI-FUTDEF.xml 2>>error.log
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions/V-TI-FUTINT.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
