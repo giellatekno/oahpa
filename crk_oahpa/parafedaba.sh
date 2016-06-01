@@ -95,9 +95,10 @@ echo "==================================================="
  #echo "done"
  #echo "==================================================="
 
+ # NB: manually specify POS because of preverbs
  echo "==================================================="
  echo "feeding db with $DPS/V_crk.xml"
- $P install.py --file $DPS/V_crk.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt 2>>error.log
+ $P install.py --file $DPS/V_crk.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt --pos V 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
