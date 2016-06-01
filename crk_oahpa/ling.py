@@ -15,6 +15,8 @@ import codecs
 # _D = open('/dev/ttys005', 'w')
 _D = open('/dev/null', 'w')
 
+PREVERBS = ['PV/e']
+
 
 try:
 	fstdir = settings.FST_DIRECTORY
@@ -165,7 +167,7 @@ class Paradigm:
 			self.tagset = tagset_dict
 
 
-	def read_paradigms(self, paradigmfile, tagfile, add_database):
+	def read_paradigms(self, paradigmfile, tagfile, add_database, pos=False):
 		""" The function is called from install.py and its aim is to install the contents of the paradigm file (e.g. paradigms.txt) into the database.
 		"""
 		if not self.tagset:
@@ -183,8 +185,9 @@ class Paradigm:
 			
 			matchObj = posObj.search(line)
 			
-			if matchObj:
-				pos = matchObj.expand(r'\g<posString>')
+			if not pos:
+				if matchObj:
+					pos = matchObj.expand(r'\g<posString>')
 			try:
 				if not self.paradigms.has_key(pos):
 					self.paradigms[pos]=[]
@@ -295,11 +298,17 @@ class Paradigm:
 				if gen_only:
 					for c in gen_only:
 						if c in tag:
-							lookups = lookups + lemma + hid + "+" + tag
+							if 'LEMMA' in tag:
+								lookups = lookups + tag.replace('LEMMA', lemma)
+							else:
+								lookups = lookups + lemma + hid + "+" + tag
 				else:
 					if not lemma:
 						raise TypeError
-					lookups = lookups + lemma + hid + "+" + tag
+					if 'LEMMA' in tag:
+						lookups = lookups + tag.replace('LEMMA', lemma)
+					else:
+						lookups = lookups + lemma + hid + "+" + tag
 
 					lookups += '\n\n\n'
 
@@ -333,11 +342,13 @@ class Paradigm:
 			items = line.split('\n')
 			for item in items:
 				result = item.split('\t')
-				lemma = result[0].partition('+')[0]
+				parts = result[0].split('+')
+				no_pv = [p for p in parts if p not in PREVERBS]
+				lemma = no_pv[0]
 				if lemma:
-						generated_form = result[1]
+					generated_form = result[1]
 				else:
-						generated_form = ""
+					generated_form = ""
 				#print >> STDOUT, 'lemma: %s' % lemma
 				#print >> STDOUT, 'generated form: %s' % result[1]
 				try:
@@ -385,8 +396,16 @@ class Paradigm:
 				# line: 
 				# govledh+2+V+Ind+Prt+Pl3\tgovlin
 				# lea+V+Ind+Prt+Pl3\tlij
-
-				lem, _, rest = line.partition('+')
+				parts = line.split('+')
+				has_preverb = len([p for p in parts if p in PREVERBS]) > 0
+				if has_preverb:
+					existing_pvs = [p for p in parts if p in PREVERBS]
+					rest = [p for p in parts if p not in PREVERBS]
+					rest = rest + existing_pvs
+					lem = rest[0]
+					rest = '+'.join(rest[1::])
+				else:
+					lem, _, rest = line.partition('+')
 				# ('govledh', '+', '2+V+Ind+Prt+Pl3\tgovlin')
 				# ('lea', '+', '2+V+Ind+Prt+Pl3\tlij')
 
@@ -409,6 +428,8 @@ class Paradigm:
 					tag = ''.join(hid_test)
 				
 				tag = tag.partition('\t')[0]
+				if has_preverb:
+					tag += '+' + '+'.join(existing_pvs)
 				# 'V+Ind+Prt+Pl3'
 				# Never gets hid number, due to testing above
 
@@ -581,6 +602,7 @@ class Paradigm:
 													possessive=g.get('Possessive',""),grade=g.get('Grade',""),\
 													infinite=g.get('Infinite',""), \
 													personnumber=g.get('Person-Number',""),\
+													preverb=g.get('Preverb',""),\
 													distance=g.get('Distance',""),\
 													object=g.get('Object',""),\
 													polarity=g.get('Polarity',""),\

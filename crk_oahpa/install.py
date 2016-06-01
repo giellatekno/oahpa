@@ -57,7 +57,7 @@ OPTION_LIST = (
 	make_option("-w", "--wid", dest="wordid",
 					  help="delete word using id or lemma"),
 	make_option("-p", "--pos", dest="pos",
-					  help="pos of the deleted word"),
+					  help="pos of the word"),
 	make_option("-r", "--paradigmfile", dest="paradigmfile",
 					  help="Generate paradigms"))
 
@@ -89,7 +89,7 @@ def main(opts):
 		linginfo.handle_tags(options.tagfile, options.add_db)  # install tags
 
 	if options.paradigmfile:
-		linginfo.read_paradigms(options.paradigmfile, options.tagfile, options.add_db)   # install paradigms
+		linginfo.read_paradigms(options.paradigmfile, options.tagfile, options.add_db, pos=options.pos)   # install paradigms
 
 	if options.wordid:
 		words.delete_word(options.wordid,options.pos)
