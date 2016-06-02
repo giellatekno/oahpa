@@ -18,8 +18,6 @@
 	  <attribute name="rime" value="wy"/>
 	  <attribute name="rime" value="an"/>
 	  <attribute name="rime" value="inon"/>
-	  
-
 
 	  <attribute name="personnumber" value="12Pl"/>
 	  <attribute name="personnumber" value="1Pl"/>
@@ -47,7 +45,6 @@
 	  <attribute name="mode" value="Ind"/>
 	  <attribute name="mode" value="Cnj"/>
 
-	  <attribute name="intentional_definite" value=""/>
 	  <attribute name="intentional_definite" value="Int"/>
 	  <attribute name="intentional_definite" value="Def"/>
 	  
@@ -232,28 +229,19 @@
 	
 	<l trans_anim="AI">
       <msg tense="Fut" intentional_definite="Int">futint</msg>
-    </l>
-	
-	<l trans_anim="TI">
-      <msg tense="Fut" intentional_definite="Int">futint</msg>
-    </l>
-	
-	<l trans_anim="TA">
-      <msg tense="Fut" intentional_definite="Int">futint</msg>
-    </l>
-	
-	<l trans_anim="AI">
       <msg tense="Fut" intentional_definite="Def">futdef</msg>
     </l>
 	
 	<l trans_anim="TI">
+      <msg tense="Fut" intentional_definite="Int">futint</msg>
       <msg tense="Fut" intentional_definite="Def">futdef</msg>
     </l>
 	
 	<l trans_anim="TA">
+      <msg tense="Fut" intentional_definite="Int">futint</msg>
       <msg tense="Fut" intentional_definite="Def">futdef</msg>
     </l>
-  
+	
     <l init="vow"  trans_anim="TA">
       <msg mode="Ind" tense="Prs">t-joiner</msg>
 	  <msg mode="Ind" tense="Prt">t-joiner</msg>
@@ -263,6 +251,7 @@
 	  <msg mode="Cnj" tense="Prt">h-joiner</msg>
 	  <msg mode="Cnj" tense="Fut" intentional_definite="Int">h-joiner</msg>
 	</l>
+
     <l init="vow"  trans_anim="TI">
       <msg mode="Ind" tense="Prs">t-joiner</msg>
 	  <msg mode="Ind" tense="Prt">t-joiner</msg>
