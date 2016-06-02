@@ -1333,7 +1333,7 @@ class MorfaSettings(OahpaSettings):
 					self.fields['proncase'].choices = RECIP_REFL_CHOICES
 			if 'v_mode_context' in post_data:
 				if post_data['v_trans_anim_context'] == 'II':
-					self.fields['v_trans_anim_context'].choices = [(a, b) for a, b in V_TENSE_CONTEXT_CHOICES
+					self.fields['v_mode_context'].choices = [(a, b) for a, b in V_MODE_CONTEXT_CHOICES
 																	if a != 'Cnj']
 					self.fields['v_tense_context'].choices = [(a, b) for a, b in V_TENSE_CONTEXT_CHOICES
 																	if a != 'Fut' or a != 'Prt']
