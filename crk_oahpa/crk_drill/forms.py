@@ -123,7 +123,7 @@ PRONOUN_SUBCLASSES = (
 CASE_CONTEXT_CHOICES = (
     ('N-PL', _('Plural')),
     ('N-LOC', _('Locative')),
-    ('N-DIM', _('Diminutive')),
+    # ('N-DIM', _('Diminutive')),
     ('N-PX', _('Possessive')),
     #('N-INE', _('Inessive')),
     #('N-ELA', _('Elative')),
