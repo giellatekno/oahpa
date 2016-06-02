@@ -288,8 +288,6 @@ V_TYPE_FILTER_OPTIONS = {
 
     ('V', 'AI', 'Cnj', 'Prs'): 'V-AI-CNJ-PRS',
     ('V', 'AI', 'Cnj', 'Prt'): 'V-AI-CNJ-PRT',
-    ('V', 'II', 'Cnj', 'Prs'): 'V-II-CNJ-PRS',
-    ('V', 'II', 'Cnj', 'Prt'): 'V-II-CNJ-PRT',
     ('V', 'TA', 'Cnj', 'Prs'): 'V-TA-CNJ-PRS',
     ('V', 'TA', 'Cnj', 'Prt'): 'V-TA-CNJ-PRT',
 
@@ -304,6 +302,9 @@ V_TYPE_FILTER_OPTIONS = {
     ('V', 'TI', 'Cnj', 'Fut+Int'): 'V-TI-CNJ-FUT-INT',
     ('V', 'AI', 'Cnj', 'Fut+Def'): 'V-AI-CNJ-FUT-DEF',
     ('V', 'AI', 'Cnj', 'Fut+Int'): 'V-AI-CNJ-FUT-INT',
+
+    # ('V', 'II', 'Cnj', 'Prs'): 'V-II-CNJ-PRS',
+    # ('V', 'II', 'Cnj', 'Prt'): 'V-II-CNJ-PRT',
 }
 
 TRANS_ANIM_CONTEXT_CHOICES = (
@@ -1331,6 +1332,11 @@ class MorfaSettings(OahpaSettings):
 				if post_data['pron_type'].lower() in ['refl', 'recipr']:
 					self.fields['proncase'].choices = RECIP_REFL_CHOICES
 			if 'v_mode_context' in post_data:
+				if post_data['v_trans_anim_context'] == 'II':
+					self.fields['v_trans_anim_context'].choices = [(a, b) for a, b in V_TENSE_CONTEXT_CHOICES
+																	if a != 'Cnj']
+					self.fields['v_tense_context'].choices = [(a, b) for a, b in V_TENSE_CONTEXT_CHOICES
+																	if a != 'Fut' or a != 'Prt']
 				if post_data['v_mode_context'] == 'Cnj':
 					self.fields['v_tense_context'].choices = [(a, b) for a, b in V_TENSE_CONTEXT_CHOICES
 																if a != 'Fut+Def']
