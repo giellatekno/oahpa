@@ -1336,7 +1336,7 @@ class MorfaSettings(OahpaSettings):
 					self.fields['v_mode_context'].choices = [(a, b) for a, b in V_MODE_CONTEXT_CHOICES
 																	if a != 'Cnj']
 					self.fields['v_tense_context'].choices = [(a, b) for a, b in V_TENSE_CONTEXT_CHOICES
-																	if a != 'Fut' or a != 'Prt']
+																	if a == 'Prs']
 				if post_data['v_mode_context'] == 'Cnj':
 					self.fields['v_tense_context'].choices = [(a, b) for a, b in V_TENSE_CONTEXT_CHOICES
 																if a != 'Fut+Def']
