@@ -764,7 +764,12 @@ class Morfaview(Gameview):
 				gamename_key = self.settings['vtype']
 
 			else:
-				gamename_key = self.settings['vtype_context']
+				v_trans_anim_context = self.settings['v_trans_anim_context']
+				v_mode_context = self.settings['v_mode_context']
+				v_tense_context = self.settings['v_tense_context']
+				params = ('V', v_trans_anim_context, v_mode_context,
+							v_tense_context)
+				gamename_key = V_TYPE_FILTER_OPTIONS.get(params)
 
 		# ATTR - COMP
 		if self.settings['pos'] == "A":
@@ -1005,8 +1010,6 @@ class Sahkaview(Cealkkaview):
 		#
 		game = self.GameClass(self.settings)
 		
-		self.set_gamename()
-
 		if is_new_game:
 			# Set default topic number, clear wordlist.
 			#
@@ -1035,6 +1038,8 @@ class Sahkaview(Cealkkaview):
 			else:
 				game.settings['attempts'] = game.settings['attempts'] + 1
 		
+		self.set_gamename()
+
 		settings_form.init_hidden(
 			game.settings['topicnumber'],
 			game.num_fields,
