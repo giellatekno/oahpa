@@ -21,6 +21,7 @@
 	<li class="game">
 		<a href="{% url numra %}">
 			<img src="{{ MEDIA_URL }}/images/numra_small.png" alt="akihtâsona"/><br/>
+			<span class="gamename">akihtâsona</span>
 		</a>
 	</li>
 
@@ -34,25 +35,6 @@
 	</li>
     {% endcomment %}
     
-	<li class="game">
-		<a href="{% url leksa %}">
-			<img src="{{ MEDIA_URL }}/images/leksa_small.png" alt="itwêwina êkwa itwêstamâkêwina"/><br/>
-		</a>
-	</li>
-
-	<li class="game">
-		<a href="{% url morfa_s.noun %}">
-			<img src="{{ MEDIA_URL }}/images/morfa_small.png" alt="itwêwinihkewin"/><br/>
-		</a>
-	</li>
-
-	<li class="game">
-		<a href="{% url morfa_c.noun %}">
-			<img src="{{ MEDIA_URL }}/images/morfac_small.png" alt="kakwêcihkêmowina"/><br/>
-		</a>
-	</li>
-
-
     <!--
     <li class="game">
 		<a href="{% url sahka %}">
@@ -61,6 +43,28 @@
 		</a>
 	</li>  -->
     
+	<li class="game">
+		<a href="{% url leksa %}">
+			<img src="{{ MEDIA_URL }}/images/leksa_small.png" alt="itwêwina êkwa itwêstamâkêwina"/><br/>
+			<span class="gamename">itwêwina</span>
+		</a>
+	</li>
+
+	<li class="game">
+		<a href="{% url morfa_s.noun %}">
+			<img src="{{ MEDIA_URL }}/images/morfa_small.png" alt="itwêwinihkewin"/><br/>
+			<span class="gamename">itwêwinihkêwin</span>
+		</a>
+	</li>
+
+	<li class="game">
+		<a href="{% url morfa_c.noun %}">
+			<img src="{{ MEDIA_URL }}/images/morfac_small.png" alt="kakwêcihkêmowina"/><br/>
+			<span class="gamename">kakwêcihkêmowina</span>
+		</a>
+	</li>
+
+
 	
 
 </ul>
