@@ -1166,9 +1166,14 @@ class NumGame(Game):
 				# 'intended_lemma': formanswer[0]
 			}
 
-			error_fst = \
-				feedback_api.get_all_feedback_for_form(useranswer.strip(),
-											**message_kwargs)
+			try:
+				error_fst = \
+					feedback_api.get_all_feedback_for_form(useranswer.strip(),
+												**message_kwargs)
+			except Exception, e:
+				print >> sys.stderr, "Error from feedback API"
+				print >> sys.stderr, e
+				error_fst = False
 
 			# 'string' refers to the question here, not the answer
 			if gametype == 'string':
