@@ -133,7 +133,10 @@ class FeedbackFST(object):
         def replace_string(msg):
             if 'title' in msg:
                 msg["title"] = msg["title"].replace('WORDFORM', '"%s"' % wordform)
-            msg["description"] = msg["description"].replace('WORDFORM', '"%s"' % wordform)
+            if msg.get('description', False):
+                msg["description"] = msg["description"].replace('WORDFORM', '"%s"' % wordform)
+            else:
+                msg["description"] = ""
             return msg
 
         # TODO: is this an issue? 
