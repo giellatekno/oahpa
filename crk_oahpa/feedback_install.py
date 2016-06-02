@@ -264,7 +264,7 @@ class Feedback_install(object):
         ("Pron", []),
         # TODO: ("A", ['stem',  'rime', 'attrsuffix', 'compsuffix',]),
         # TODO: ("Num", ['stem',  'rime', ]),
-        ("V", ['stem',  'trans_anim', 'init', 'rime', 'mode']),
+        ("V", ['stem',  'trans_anim', 'init', 'rime']),
     ])
 
     # Each part of speech followed by relevant tag/wordform attributes
@@ -273,7 +273,7 @@ class Feedback_install(object):
         ("Pron", ['subclass', 'number', 'distance']),
         # TODO: ("A", ('case', 'number', 'grade', 'attributive', )),
         # TODO: ("Num", ('case', 'number',)),
-        ("V", ('subclass', 'infinite', 'mood', 'tense', 'personnumber', 'object', )),
+        ("V", ('subclass', 'infinite', 'mood', 'tense', 'personnumber', 'object', 'mode')),
     ])
 
     # NOTE: processing of dialects and lemma exclusions is not something that
