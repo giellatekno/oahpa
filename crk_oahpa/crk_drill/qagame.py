@@ -1070,6 +1070,7 @@ class QAGame(Game):
 							v_tense_context)
 				qtype = V_TYPE_FILTER_OPTIONS.get(params)
 				self.settings['vtype_context'] = qtype
+				self.settings['vtype_name'] = qtype
 			if pos == "Num":
 				qtype = self.settings['num_context']
 			if pos == "A":
