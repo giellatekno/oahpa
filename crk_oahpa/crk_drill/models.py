@@ -723,6 +723,7 @@ class Tag(models.Model):
 	mode = models.CharField(max_length=7)
 	subclass = models.CharField(max_length=10)
 	tense = models.CharField(max_length=5)
+	intentional_definite = models.CharField(max_length=5)
 	# language = models.CharField(max_length=8)
 
 	class Admin:
