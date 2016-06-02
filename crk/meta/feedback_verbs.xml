@@ -46,6 +46,10 @@
 	  
 	  <attribute name="mode" value="Ind"/>
 	  <attribute name="mode" value="Cnj"/>
+
+	  <attribute name="intentional_definite" value=""/>
+	  <attribute name="intentional_definite" value="Int"/>
+	  <attribute name="intentional_definite" value="Def"/>
 	  
 	<!--  <attribute name="trans_anim_mode" value="AI+Cnj"/>
 	  <attribute name="trans_anim_mode" value="TI+Cnj"/>
@@ -54,9 +58,8 @@
 	  
       <attribute name="tense" value="Prs"/>
       <attribute name="tense" value="Prt"/>
-	  <attribute name="tense" value="Fut-Def"/>
-	  <attribute name="tense" value="Fut-Int"/>
-	  
+      <attribute name="tense" value="Fut"/>
+
 </defaultvalues>
 
 <stems>
@@ -228,68 +231,68 @@
     </l>
 	
 	<l trans_anim="AI">
-      <msg tense="Fut+Int">futint</msg>
+      <msg tense="Fut" intentional_definite="Int">futint</msg>
     </l>
 	
 	<l trans_anim="TI">
-      <msg tense="Fut+Int">futint</msg>
+      <msg tense="Fut" intentional_definite="Int">futint</msg>
     </l>
 	
 	<l trans_anim="TA">
-      <msg tense="Fut+Int">futint</msg>
+      <msg tense="Fut" intentional_definite="Int">futint</msg>
     </l>
 	
 	<l trans_anim="AI">
-      <msg tense="Fut+Def">futdef</msg>
+      <msg tense="Fut" intentional_definite="Def">futdef</msg>
     </l>
 	
 	<l trans_anim="TI">
-      <msg tense="Fut+Def">futdef</msg>
+      <msg tense="Fut" intentional_definite="Def">futdef</msg>
     </l>
 	
 	<l trans_anim="TA">
-      <msg tense="Fut+Def">futdef</msg>
+      <msg tense="Fut" intentional_definite="Def">futdef</msg>
     </l>
   
     <l init="vow"  trans_anim="TA">
       <msg mode="Ind" tense="Prs">t-joiner</msg>
 	  <msg mode="Ind" tense="Prt">t-joiner</msg>
-	  <msg mode="Ind" tense="Fut+Def">t-joiner</msg>
-	  <msg mode="Ind" tense="Fut+Int">t-joiner</msg>
+	  <msg mode="Ind" tense="Fut" intentional_definite="Def">t-joiner</msg>
+	  <msg mode="Ind" tense="Fut" intentional_definite="Int">t-joiner</msg>
 	  <msg mode="Cnj" tense="Prs">h-joiner</msg>
 	  <msg mode="Cnj" tense="Prt">h-joiner</msg>
-	  <msg mode="Cnj" tense="Fut+Int">h-joiner</msg>
+	  <msg mode="Cnj" tense="Fut" intentional_definite="Int">h-joiner</msg>
 	</l>
     <l init="vow"  trans_anim="TI">
       <msg mode="Ind" tense="Prs">t-joiner</msg>
 	  <msg mode="Ind" tense="Prt">t-joiner</msg>
-	  <msg mode="Ind" tense="Fut+Def">t-joiner</msg>
-	  <msg mode="Ind" tense="Fut+Int">t-joiner</msg>
+	  <msg mode="Ind" tense="Fut" intentional_definite="Def">t-joiner</msg>
+	  <msg mode="Ind" tense="Fut" intentional_definite="Int">t-joiner</msg>
 	  <msg mode="Cnj" tense="Prs">h-joiner</msg>
 	  <msg mode="Cnj" tense="Prt">h-joiner</msg>
-	  <msg mode="Cnj" tense="Fut+Int">h-joiner</msg>
+	  <msg mode="Cnj" tense="Fut" intentional_definite="Int">h-joiner</msg>
 	</l>
 
     <l init="vow"  trans_anim="AI">
       <msg mode="Ind" tense="Prs">t-joiner</msg>
 	  <msg mode="Ind" tense="Prt">t-joiner</msg>
-	  <msg mode="Ind" tense="Fut+Def">t-joiner</msg>
-	  <msg mode="Ind" tense="Fut+Int">t-joiner</msg>
+	  <msg mode="Ind" tense="Fut" intentional_definite="Def">t-joiner</msg>
+	  <msg mode="Ind" tense="Fut" intentional_definite="Int">t-joiner</msg>
 	  <msg mode="Cnj" tense="Prs">h-joiner</msg>
 	  <msg mode="Cnj" tense="Prt">h-joiner</msg>
-	  <msg mode="Cnj" tense="Fut+Int">h-joiner</msg>
+	  <msg mode="Cnj" tense="Fut" intentional_definite="Int">h-joiner</msg>
 	</l>
 
      <l init="vow"  trans_anim="II">
       <msg mode="Ind" tense="Prs">t-joiner</msg>
 	  <msg mode="Ind" tense="Prt">t-joiner</msg>
-	  <msg mode="Ind" tense="Fut+Def">t-joiner</msg>
-	  <msg mode="Ind" tense="Fut+Int">t-joiner</msg>
+	  <msg mode="Ind" tense="Fut" intentional_definite="Def">t-joiner</msg>
+	  <msg mode="Ind" tense="Fut" intentional_definite="Int">t-joiner</msg>
 	</l>
 
 	<!--  PUT THIS BACK INTO THE <l init="vow" trans_anim="II"> TAG WHEN CNJ II EXERCISES EXIST  <msg mode="Cnj" tense="Prs">h-joiner</msg>
 	  <msg mode="Cnj" tense="Prt">h-joiner</msg>
-	  <msg mode="Cnj" tense="Fut+Int">h-joiner</msg> --> 
+	  <msg mode="Cnj" tense="Fut" intentional_definite="Int">h-joiner</msg> --> 
  
 </stems>
       
