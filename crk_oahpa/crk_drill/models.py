@@ -720,6 +720,7 @@ class Tag(models.Model):
 	possessive = models.CharField(max_length=10)
 	derivation = models.CharField(max_length=7)
 	distance = models.CharField(max_length=7)
+	mode = models.CharField(max_length=7)
 	subclass = models.CharField(max_length=10)
 	tense = models.CharField(max_length=5)
 	# language = models.CharField(max_length=8)

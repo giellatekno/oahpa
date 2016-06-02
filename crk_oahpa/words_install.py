@@ -208,6 +208,7 @@ class Entry(object):
 			("p3p", None),
 			("pos", None),
 			("animacy", None),
+			("mode", None),
 			("trans_anim", None), # for verbs: transitivity-animacy
 			("object", None), # TODO: maybe need to relabel this v_object if python doesn't like object attribute
 			("audio", None),
@@ -700,7 +701,7 @@ class Words(object):
 		changes_to_xml = True
 		changes_to_paradigm = True
 		# Initialize null variables
-		stem, forms, gradation, rime, animacy, trans_anim, v_object, audio, t2c  =	[""]*9
+		stem, forms, gradation, rime, animacy, trans_anim, v_object, audio, t2c, mode  =	[""]*10
 		wordclass, attrsuffix, compsuffix, soggi, valency	=	[""]*5
 		compare, frequency, geography, presentationform, excl_dialect	=	[""]*5
 
@@ -791,6 +792,7 @@ class Words(object):
 			
 		if entry.trans_anim:
 			trans_anim = entry.trans_anim
+
 			
 		if entry.object:
 			v_object = entry.object
@@ -1013,6 +1015,7 @@ class Words(object):
 						'subclass':		g.get('Subclass',""),
 						'attributive':		g.get('Attributive',""),
 						'trans_anim':       g.get('Transitivity-Animacy', ""),
+						'mode':       g.get('Mode', ""),
 						#'animacy':        g.get('Animacy',""),
 					}
 

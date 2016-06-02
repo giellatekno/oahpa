@@ -264,7 +264,7 @@ class Feedback_install(object):
         ("Pron", []),
         # TODO: ("A", ['stem',  'rime', 'attrsuffix', 'compsuffix',]),
         # TODO: ("Num", ['stem',  'rime', ]),
-        ("V", ['stem',  'trans_anim', 'init', 'rime']),
+        ("V", ['stem',  'trans_anim', 'init', 'rime', 'mode']),
     ])
 
     # Each part of speech followed by relevant tag/wordform attributes
