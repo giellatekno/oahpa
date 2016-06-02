@@ -273,7 +273,7 @@ class Feedback_install(object):
         ("Pron", ['subclass', 'number', 'distance']),
         # TODO: ("A", ('case', 'number', 'grade', 'attributive', )),
         # TODO: ("Num", ('case', 'number',)),
-        ("V", ('subclass', 'infinite', 'mood', 'tense', 'personnumber', 'object', 'mode')),
+        ("V", ('subclass', 'infinite', 'mood', 'tense', 'personnumber', 'object', 'mode', 'intentional_definite')),
     ])
 
     # NOTE: processing of dialects and lemma exclusions is not something that
