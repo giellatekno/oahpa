@@ -1,6 +1,16 @@
 This is a document for ideas and discussion about the new Oahpa code. 
 
+workshop-week from 12. Sept
+
 !!!IDEAS
+
+Requirements, from different perspectives:
+* programmer 
+* linguist
+* teacher
+* students
+
+!!New ideas (don't hesitate)
 
 !!What to send to analyser
 
@@ -14,31 +24,163 @@ This is a document for ideas and discussion about the new Oahpa code.
 
 
 !!Modularity
+We should get the linguistic data out of the system files
 
-!Linguistic information
+!Linguistic data
+
+Different kinds of data:
+* information in the source files
+* coordinated with the information in the systemfiles
+** for choices in menus
+** for producing the tasks
+
+
+Small FST for Oahpa? Containing the lexicon from ped/LANG/src/
+This may be included in the standard newinfra build process:
+./configure --enable-minimal-oahpa-fst
 
 !System files
 
-!!Audio files
-
+!!Audio files/Text-to-speech
+There are some audio files in Leksa in crk-oahpa
 
 !!How to make Oahpa for new languages
 
 !!Maintainence
 The linguist should be able to install/remove new lemmas and tasks.
 
+!!Konteaksta
+We have a version for sme
+
+!!Student-log-in
+We have a demo-version
+
 !!Experiences from working with Oahpa from different languages
 
+Document the differences between the versions
+
+The full list (24 Oahpas), is, as always, [http://giellatekno.uit.no/ped/index.html] .
+URLs starting with testing.oahpa.no are on gtlab, URLs with oahpa.no are on gtoahpa.
+
+Most differences follow from the availability of basis resources.
+* Only sme has a full CG program, so only sme has Sahka
+* We are now working on Vasta-F for translation  (with CG) for crk and est
+* Languages without CG but with an FST typically have 4 programs
+* Languages also an FST typically have 2 programs, Numra and Leksa
+
 !sme
+* [http://oahpa.no/davvi/]
+* 6 programs: Morfa-S, Morfa-C, Leksa, Numra, Vasta-S, Vasta-F, Sahka
 
 !sma
+* [http://oahpa.no/aarjel/]
+* 4 programs: Morfa-R (= Morfa-C), Morfa-B (= Morfa-S), Leksa, Numra
 
 !est
+* oahpa: [http://testing.oahpa.no/eesti/]
+* docu: [http://giellatekno.uit.no/ped/est-oahpa.html]
+* 5 programs
+
+!vro
+* [http://testing.oahpa.no/voro/]
 
 !crk
+http://giellatekno.uit.no/ped/crkdoc/crk-oahpa.html
+* 4 programs
+* crk has some audio files.
+
+
+!liv
+* http://testing.oahpa.no/livokel/]
+* http://giellatekno.uit.no/ped/liv-oahpa.html]
+* 4 working programs
+* The code for this setup is the same as for the other
+* This is the language with the most complicated writing system, and it
+  may therefore be a testing ground for different spellrelax issues.
+
+!rus
+* http://giellatekno.uit.no/ped/rus-oahpa.html]
+* http://testing.oahpa.no/rusoahpa/]
+* 4 programs
+* Russian has a mechanism for handling stress
+* rusoahpa should be moved from gtlab to gtoahpa
+
+
+!!The other Oahpas (probably not so relevant for the initial part of the work)
+
+!izh
+* [http://testing.oahpa.no/izh_oahpa/                 ]
+* [http://giellatekno.uit.no/ped/izhdoc/izh-oahpa.html]
+
+!mhr
+* [http://testing.oahpa.no/mhr_oahpa/]
+* 4 programs
+
+!mrj
+* [http://testing.oahpa.no/mrj_oahpa/          ]
+* [http://giellatekno.uit.no/ped/mrj-oahpa.html]
+4 programs
+
+!myv
+* [http://oahpa.no/erzya/]
+* [http://giellatekno.uit.no/ped/myv-oahpa.html]
+* 4 programs
+
+!fkv
+* [http://giellatekno.uit.no/ped/fkv-oahpa.html]
+* [http://oahpa.no/kveeni/]
+* 4 programs
+
+!mdf
+* [http://giellatekno.uit.no/ped/mdfdoc/mdf-oahpa.html]
+* [http://testing.oahpa.no/mdf_oahpa/]
+4 programs
+
+!bxr
+* [http://testing.oahpa.no/bxr_oahpa/]
+* 3 programs working: Leksa, Numra, Morfa-S
+
+!olo
+* [http://giellatekno.uit.no/ped/olo-oahpa.html]
+* [http://testing.oahpa.no/olo_oahpa/]
+* 4 programs
+
+!yrk
+* [http://giellatekno.uit.no/ped/yrk-oahpa.html]
+* [http://oahpa.no/yrkoahpa/]
+* 4 programs
 
 
 
 
+!!FST exists but it not really implemented
 
+!hdn
+[http://oahpa.no/hdn_oahpa/]
+
+
+!!The FST-less Oahpas
+
+!rup
+[http://oahpa.no/armaneshte/]
+http://giellatekno.uit.no/ped/rupdoc/rup-oahpa.html]
+
+!kpv
+http://oahpa.no/kpvoahpa/]
+http://giellatekno.uit.no/ped/kpv-oahpa.html]
+Leksa, Numra
+
+!sjd
+sjd has some audio files, and plans for extending them.
+Leksa, Numra
+
+!udm
+* [http://giellatekno.uit.no/ped/udmdoc/udm-oahpa.html]
+* 2 programs
+
+
+
+!smn
+* [http://oahpa.no/aanaar/]
+* Two programs: Leksa, Numra
 
