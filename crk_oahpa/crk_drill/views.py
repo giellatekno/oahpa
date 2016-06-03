@@ -611,6 +611,7 @@ class Morfaview(Gameview):
 		'V-AI-FUT-INT':  _('Practice Animate Intransitive (AI) verbs in the future intentional form.'),
 		'V-AI-FUT-DEF':  _('Practice Animate Intransitive (AI) verbs in the future definite form.'),
 
+		'V-TI-CNJ-PRS':  _('Practice Transitive Inanimate (TI) Conjunct in present.'),
 		'V-TI-CNJ-PRT':  _('Practice Transitive Inanimate (TI) Conjunct in past tense.'),
 		'V-TI-CNJ-FUT-INT':  _('Practice Transitive Inanimate (TI) Conjunct in future intentional form.'),
 
