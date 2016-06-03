@@ -18,6 +18,10 @@
 	  <attribute name="rime" value="wy"/>
 	  <attribute name="rime" value="an"/>
 	  <attribute name="rime" value="inon"/>
+	  <attribute name="rime" value="w"/>
+	  <attribute name="rime" value="m"/>
+	  
+
 
 	  <attribute name="personnumber" value="12Pl"/>
 	  <attribute name="personnumber" value="1Pl"/>
@@ -45,6 +49,7 @@
 	  <attribute name="mode" value="Ind"/>
 	  <attribute name="mode" value="Cnj"/>
 
+	  <attribute name="intentional_definite" value=""/>
 	  <attribute name="intentional_definite" value="Int"/>
 	  <attribute name="intentional_definite" value="Def"/>
 	  
@@ -118,7 +123,7 @@
 	  <msg mode="Cnj" personnumber="4Sg/Pl">ai-cnj-4sgp</msg>
 	</l>
 	
-    <l trans_anim="TI">
+    <l trans_anim="TI" rime="m">
       <msg mode="Ind" personnumber="1Sg">ti-1s</msg>
       <msg mode="Ind" personnumber="2Sg">ti-2s</msg>
       <msg mode="Ind" personnumber="3Sg">ti-3s</msg>
@@ -137,6 +142,25 @@
 	  <msg mode="Cnj" personnumber="4Sg/Pl">ti-cnj-4sgp</msg>
     </l>
 	
+    <l trans_anim="TI" rime="w">
+      <msg mode="Ind" personnumber="1Sg">ai-1s</msg>
+      <msg mode="Ind" personnumber="2Sg">ai-2s</msg>
+      <msg mode="Ind" personnumber="3Sg">ai-3s</msg>
+      <msg mode="Ind" personnumber="1Pl">ai-1p</msg>
+      <msg mode="Ind" personnumber="12Pl">ai-12p</msg>
+      <msg mode="Ind" personnumber="2Pl">ai-2p</msg>
+      <msg mode="Ind" personnumber="3Pl">ai-3p</msg>
+	  <msg mode="Ind" personnumber="4Sg/Pl">ai-4sgp</msg>
+	  <msg mode="Cnj" personnumber="1Sg">ai-cnj-1s</msg>
+      <msg mode="Cnj" personnumber="2Sg">ai-cnj-2s</msg>
+      <msg mode="Cnj" personnumber="3Sg">ai-cnj-3s</msg>
+      <msg mode="Cnj" personnumber="1Pl">ai-cnj-1p</msg>
+      <msg mode="Cnj" personnumber="12Pl">ai-cnj-12p</msg>
+      <msg mode="Cnj" personnumber="2Pl">ai-cnj-2p</msg>
+      <msg mode="Cnj" personnumber="3Pl">ai-cnj-3p</msg>
+	  <msg mode="Cnj" personnumber="4Sg/Pl">ai-cnj-4sgp</msg>
+	</l>	
+	
     <l trans_anim="TA">
       <msg mode="Ind" personnumber="1Sg" object="3SgO">ta-1s-3sgo</msg>
       <msg mode="Ind" personnumber="2Sg" object="3SgO">ta-2s-3sgo</msg>
@@ -154,7 +178,7 @@
       <msg mode="Cnj" personnumber="1Sg" object="3SgO">ta-cnj-1s-3sgo</msg>
       <msg mode="Cnj" personnumber="2Sg" object="3SgO">ta-cnj-2s-3sgo</msg>
       <msg mode="Cnj" personnumber="3Sg" object="4Sg/PlO">ta-cnj-3s-4sgo</msg>
-      <msg mode="Cnj" personnumber="1Pl" object="3Sgo">ta-cnj-1p-3sgo</msg>
+      <msg mode="Cnj" personnumber="1Pl" object="3SgO">ta-cnj-1p-3sgo</msg>
       <msg mode="Cnj" personnumber="12Pl" object="3SgO">ta-cnj-12p-3sgo</msg>
       <msg mode="Cnj" personnumber="2Pl" object="3SgO">ta-cnj-2p-3sgo</msg>
       <msg mode="Cnj" personnumber="3Pl" object="4Sg/PlO">ta-cnj-3p-4sgo</msg>
@@ -229,19 +253,28 @@
 	
 	<l trans_anim="AI">
       <msg tense="Fut" intentional_definite="Int">futint</msg>
-      <msg tense="Fut" intentional_definite="Def">futdef</msg>
     </l>
 	
 	<l trans_anim="TI">
       <msg tense="Fut" intentional_definite="Int">futint</msg>
-      <msg tense="Fut" intentional_definite="Def">futdef</msg>
     </l>
 	
 	<l trans_anim="TA">
       <msg tense="Fut" intentional_definite="Int">futint</msg>
+    </l>
+	
+	<l trans_anim="AI">
       <msg tense="Fut" intentional_definite="Def">futdef</msg>
     </l>
 	
+	<l trans_anim="TI">
+      <msg tense="Fut" intentional_definite="Def">futdef</msg>
+    </l>
+	
+	<l trans_anim="TA">
+      <msg tense="Fut" intentional_definite="Def">futdef</msg>
+    </l>
+  
     <l init="vow"  trans_anim="TA">
       <msg mode="Ind" tense="Prs">t-joiner</msg>
 	  <msg mode="Ind" tense="Prt">t-joiner</msg>
@@ -251,7 +284,6 @@
 	  <msg mode="Cnj" tense="Prt">h-joiner</msg>
 	  <msg mode="Cnj" tense="Fut" intentional_definite="Int">h-joiner</msg>
 	</l>
-
     <l init="vow"  trans_anim="TI">
       <msg mode="Ind" tense="Prs">t-joiner</msg>
 	  <msg mode="Ind" tense="Prt">t-joiner</msg>
