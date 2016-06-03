@@ -103,6 +103,13 @@ echo "==================================================="
  echo "done"
  echo "==================================================="
 
+ echo "==================================================="
+ echo "feeding db with $META/cnjparadigms.txt"
+ $P manage.py add_static_wordforms --filename=$META/cnjparadigms.txt
+ echo " "
+ echo "done"
+ echo "==================================================="
+
 # # NOTE: --append here, so that the install only adds the forms, but doesn't delete existing ones.
 # echo "==================================================="
 # echo "feeding db with $DPS/v_pass.xml"
