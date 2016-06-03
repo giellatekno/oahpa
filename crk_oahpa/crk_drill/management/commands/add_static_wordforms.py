@@ -29,25 +29,24 @@ def install_file(filename):
         print 'lemma: ', lemma
         for tag, wfs in forms.iteritems():
             fs = Form.objects.filter(word__lemma=lemma, tag__string=tag)
+            if len(fs) > 0:
+                first = fs[0]
+            else:
+                continue
+            t = first.tag
+            w = first.word
+            fb = first.feedback.all()
+            ds = first.dialects.all()
+            fs.delete()
             print '  ', tag
-            last_db = False
-            for new_form, db_form in izip_longest(wfs, fs, fillvalue=False):
-                if db_form:
-                    print '    ', "updating ", db_form, " with ", new_form
-                    db_form.fullform = new_form
-                    db_form.save()
-                else:
-                    print '    ', "creating new form for ", db_form, " with ", new_form
-                    new = Form.objects.create(word=last_db.word,
-                                        tag=last_db.tag,
-                                        fullform=new_form,)
-                    for d in last_db.dialects.all():
-                        new.dialects.add(d)
-                    for fb in last_db.feedback.all():
-                        new.feedback.add(fb)
-                    new.save()
-
-                last_db = db_form
+            for new_form in wfs:
+                new = Form.objects.create(word=w, tag=t, fullform=new_form)
+                for f in fb:
+                    new.feedback.add(f)
+                for d in ds:
+                    first.dialects.add(d)
+                new.save()
+                print '    ', "creating new form for ", new_form
 
 
 
