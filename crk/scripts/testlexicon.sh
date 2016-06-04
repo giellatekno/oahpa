@@ -1,4 +1,4 @@
-# sh scripts/testlexicon.sh in ped/crk directory
+# sh scripts/testlexicon.sh 
 
 #The test gives and opens a dokument: testresult.txt with lemmas which are not generated and how the dependent nouns are generated for Px1Sg. 
 
