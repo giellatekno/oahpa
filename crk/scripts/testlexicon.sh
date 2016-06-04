@@ -13,7 +13,7 @@ echo "Not generated verb lemma(s):" > testresult.txt
 comm -23 lemmas genlemmas >> testresult.txt
 echo "" >> testresult.txt
 
-grep '<l ' src/N_crk.xml | grep -v '"none"' |grep AN | tr '<' '>' | cut -d '>' -f3 | grep -v '^-' |sed 's/$/+N+AN+Sg/' |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst > tmp_test/generation_allnouns.txt
+grep '<l ' src/N_crk.xml | grep -v '"none"' |grep AN | tr '<' '>' | cut -d '>' -f3 | grep -v '^-' |sed 's/$/+N+AN+Sg/' |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst > generation_allnouns.txt
 
 grep '<l ' src/N_crk.xml | grep -v '"none"' |grep IN | tr '<' '>' | cut -d '>' -f3 |sed 's/$/+N+IN+Sg/' |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst >> generation_allnouns.txt
 
