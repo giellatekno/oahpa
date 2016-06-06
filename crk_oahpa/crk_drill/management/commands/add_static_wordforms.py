@@ -6,7 +6,7 @@ from optparse import make_option
 
 import sys
 
-from crk_drill.models import Form
+from crk_drill.models import Form, Word, Tag
 
 def install_file(filename):
     from collections import defaultdict
@@ -27,10 +27,15 @@ def install_file(filename):
 
     for lemma, forms in words_to_install.iteritems():
         print 'lemma: ', lemma
+        ws = Word.objects.filter(lemma=lemma, pos='V')
+        w = ws[0]
         for tag, wfs in forms.iteritems():
             fs = Form.objects.filter(word__lemma=lemma, tag__string=tag)
             print '  ', tag
             last_db = False
+            t, _c = Tag.objects.get_or_create(string=tag)
+            if _c:
+                t.save()
             for new_form, db_form in izip_longest(wfs, fs, fillvalue=False):
                 if db_form:
                     print '    ', "updating ", db_form, " with ", new_form
@@ -38,13 +43,20 @@ def install_file(filename):
                     db_form.save()
                 else:
                     print '    ', "creating new form for ", db_form, " with ", new_form
-                    new = Form.objects.create(word=last_db.word,
-                                        tag=last_db.tag,
+                    if last_db:
+                        wo = last_db.word
+                        ta = last_db.tag
+                    else:
+                        wo = w
+                        ta = t
+                    new = Form.objects.create(word=wo,
+                                        tag=ta,
                                         fullform=new_form,)
-                    for d in last_db.dialects.all():
-                        new.dialects.add(d)
-                    for fb in last_db.feedback.all():
-                        new.feedback.add(fb)
+                    if last_db:
+                        for d in last_db.dialects.all():
+                            new.dialects.add(d)
+                        for fb in last_db.feedback.all():
+                            new.feedback.add(fb)
                     new.save()
 
                 last_db = db_form
