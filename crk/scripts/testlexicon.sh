@@ -9,22 +9,26 @@ grep '<l ' src/V_crk.xml | grep -v '"none"' |grep '"TA"' | tr '<' '>' | cut -d '
 
 cat generation_allverbs.txt | cut -f1 | cut -d '+' -f1 | sort -u > lemmas
 cat generation_allverbs.txt | cut -f2 | sort -u > genlemmas
-echo "Not generated verb lemma(s):" > testresult.txt
-comm -23 lemmas genlemmas >> testresult.txt
-echo "" >> testresult.txt
+echo "Not generated verb lemma(s):"  
+comm -23 lemmas genlemmas  
+echo ""  
 
 grep '<l ' src/N_crk.xml | grep -v '"none"' |grep AN | tr '<' '>' | cut -d '>' -f3 | grep -v '^-' |sed 's/$/+N+AN+Sg/' |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst > generation_allnouns.txt
 
 grep '<l ' src/N_crk.xml | grep -v '"none"' |grep IN | tr '<' '>' | cut -d '>' -f3 |sed 's/$/+N+IN+Sg/' |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst >> generation_allnouns.txt
 
-echo 'mîscakâsa+N+IN+Pl' |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst >> generation_allnouns.txt
+grep '<l ' src/N_crk.xml | grep  '"Pl"' |grep IN | tr '<' '>' | cut -d '>' -f3 |sed 's/$/+N+IN+Pl/' |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst >> generation_allnouns.txt
+
+grep '<l ' src/N_crk.xml | grep  '"Pl"' |grep AN | tr '<' '>' | cut -d '>' -f3 |sed 's/$/+N+AN+Pl/' |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst >> generation_allnouns.txt
 
 cat generation_allnouns.txt | cut -f1 | cut -d '+' -f1 | sort -u > lemmas
 cat generation_allnouns.txt | cut -f2 | sort -u > genlemmas
-echo "Not generated noun lemma(s):" >> testresult.txt
-comm -23 lemmas genlemmas >> testresult.txt
-echo "" >> testresult.txt
-echo "Generating depented lemmas for manual check:" >> testresult.txt
+echo "Not generated noun lemma(s):" 
+comm -23 lemmas genlemmas  
+echo ""  
+
+echo "Generating depented lemmas in a document for manual check, , opening now."  
+echo "Generating depended lemmas for manual check" > testresult.txt
 echo "" >> testresult.txt
 grep '<l ' src/N_crk.xml | grep -v '"none"' |grep 'AN.*>-' | tr '<' '>' | cut -d '>' -f3 |sed 's/$/+N+AN+Sg+Px1Sg/' |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst >> testresult.txt
 
