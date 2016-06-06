@@ -10,40 +10,21 @@
 ##. Conjunct- Accept both with prefix and without, but prefer prefix. (Right now it doesn't even accept a prefix.)
 ##. sôniyâwikamik vs. sôniyâw'kamik
 
-* check t2c, should be included in install now 
-* recheck Cnj feedback messages appear
+Code & reinstall
+
+# feedback for II verbs with the +V+II+Ind+Prs+4Pl tag, does not work for some reason?
+# joiner messages are not working
+
+Misc
+
+# export lemma / form and tag test list for FST people?
 
 Current Extensive Error List for Morfa
 
-TODO: Fut-Def Fut-Int, not working in feedback
-TODO: numra write a form without a long vowel, maybe hide the errors if there is an error generatign feedback
-TODO: ti - cnj - present tense, process hangs
-TODO: gametype list instructions correct, but when you test answers it's not 
-TODO: remove II Cnj, and ind-prt,futdef, and futint from menu
-TODO: remove morfa-c diminutive from list
-TODO: morfa-c pronouns broken for now
-TODO: export lemma / form and tag test list for FST people?
-TODO: feedback for II verbs with the +V+II+Ind+Prs+4Pl tag, does not work for some reason?
-TODO: joiner messages are not working
-
 {{{
-    Morfa-C  Verbs  II  Cnj - questions missing from install?
 
-    Morfa-C  Verbs  TI  Cnj  Prs/Prt : Cannot use None as a query value
-        - some semantic set problems with these questions
-
-		questions containing mACTIVITY and V+TI+Cnj+Prs+4Sg/Pl
-		also DINNERWARE and N+AN+Sg
-
-    Morfa-C  Verbs  AI  Ind  Prs :  Remove Cnj help message.
-    Morfa-C  Verbs  TA  Ind  Prs : Remove Cnj help message.
-                    4Sg/Pl help not working (This is hopefully fixed.)
-    Morfa-C  Verbs  TA  Ind  Prt : Remove Cnj help message. 
-    Morfa-C  Verbs  TA  Cnj  Prs : Remove Ind help message.
-                    2Pl->3SgO question was missing help. (This is hopefully fixed.)
-
-    Morfa-C  Verbs  TA  Cnj  Prt : Remove Ind help message.
-    Morfa-C  Verbs  TA  Cnj  FutInt : Remove Ind help message.
+    Morfa-C  Verbs  TA  Ind  Prs : 4Sg/Pl help not working (This is hopefully fixed.)
+    Morfa-C  Verbs  TA  Cnj  Prs : 2Pl->3SgO question was missing help. (This is hopefully fixed.)
 
     Morfa-S  Nouns  Pl: 
     Morfa-S  Nouns  Loc:
@@ -53,6 +34,7 @@ TODO: joiner messages are not working
 }}}
 
 !!Bugs - not fixed?
+
 
 !Instructions
 # Possessive Morfa-C instructions
