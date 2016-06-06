@@ -225,4 +225,72 @@ function SetIndex(list,value) {
 //   }
 // } 
 
+$(document).ready(function(){
+    console.log("ready");
+
+    $(window).resize(function(o){
+        $('a.last').html(window.outerHeight);
+
+    });
+
+    // Add keyboard markup after inputs, and then initialize the
+    // listeners
+    (function(){
+        // Add the keyboards
+        $('input[type=text]').each(function(o, i){
+            var i_id = $(this).attr('id');
+            var input = this;
+
+            var kbd = $( $('#kbd_template').html() );
+            kbd.attr('data-for', i_id);
+
+            $(input).before(kbd);
+
+            $(input).focus(function(){
+                $(kbd).show();
+            });
+
+            // Set some events to track where the click is
+            $(kbd).mousedown(function() {
+                window.click_in_keyboard = true;
+            });
+
+            $(kbd).bind('touchstart', function(){
+                window.click_in_keyboard = true;
+            });
+
+            $(input).blur(function(o) {
+                if (window.click_in_keyboard) {
+                    window.click_in_keyboard = false;
+                } else {
+                    $(kbd).hide();
+                }
+            });
+
+            $(kbd).find('a').click(function(_char){
+                _im_listening = true;
+                var _val = $(input).val()
+                  , _c   = $(_char.target).attr('data-char')
+                  ;
+
+                insert_ind = _val.slice(0, input.selectionStart).length;
+                text_max = _val.length;
+
+                console.log(insert_ind);
+
+                if (_c) {
+                    var new_val = _val.slice(0, insert_ind) + _c + _val.slice(insert_ind, text_max);
+                    $(input).val(new_val)
+                            .trigger("keyup")
+                            .focus()
+                            ;
+                }
+                return false;
+            });
+
+        });
+
+    })();
+
+});
 
