@@ -126,12 +126,12 @@ sed 's/^/PV\/e\+wâpamêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator
 sed 's/^/PV\/e\+nitawêyimêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+nisitawêyimêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+pîkiskwâtêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
-sed 's/^/PV\/e\+wîhkistêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
+sed 's/^/PV\/e\+wihkistêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+pôsihêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+kitâpamêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+mowêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+pakamahwêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
-sed 's/^/PV\/e\+nawacîw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
+sed 's/^/PV\/e\+nawacîw\+/' AIcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+kîsiswêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+sâminêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+pôtâtêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
@@ -146,7 +146,7 @@ sed 's/^/PV\/e\+itohtahêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generato
 sed 's/^/PV\/e\+naskwênêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+tahkonêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+pîkonêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
-sed 's/^/PV\/e\+nakasiwêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
+sed 's/^/PV\/e\+nakasiwêw\+/' AIcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+ahêw\+/' TAcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+isiyihkâtâw\+/' TIcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+wâpahtam\+/' TIcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
