@@ -157,7 +157,6 @@ sed 's/^/PV\/e\+wîhkistam\+/' TIcnjtags |$LOOKUP $GTHOME/langs/crk/src/generato
 sed 's/^/PV\/e\+kitâpahtam\+/' TIcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+mîciw\+/' TIcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+pakamaham\+/' TIcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
-sed 's/^/PV\/e\+nawacîw\+/' TIcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+kîsisam\+/' TIcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+sâminam\+/' TIcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
 sed 's/^/PV\/e\+pôtâtam\+/' TIcnjtags |$LOOKUP $GTHOME/langs/crk/src/generator-gt-norm.xfst |grep -v '?' | grep e >> allparadigms.txt
