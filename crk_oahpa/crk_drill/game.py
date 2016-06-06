@@ -654,7 +654,7 @@ class BareGame(Game):
 						# regardless of whether it's Actor, Coll, etc.
 
 		if self.settings.get('case') == 'N-REVDIM':
-			TAG_QUERY = Q(derivation=derivation, possessive='')
+			TAG_QUERY = Q(derivation=derivation, possessive='', case='')
 			
 		elif pos in ['N', 'Px']:
 			#if singular_only:   # if the user has checked the box "singular only"
