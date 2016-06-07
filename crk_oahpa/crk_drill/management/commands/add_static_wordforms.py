@@ -31,35 +31,20 @@ def install_file(filename):
         w = ws[0]
         for tag, wfs in forms.iteritems():
             fs = Form.objects.filter(word__lemma=lemma, tag__string=tag)
+            fs.delete()
             print '  ', tag
             last_db = False
             t, _c = Tag.objects.get_or_create(string=tag)
             if _c:
                 t.save()
-            for new_form, db_form in izip_longest(wfs, fs, fillvalue=False):
-                if db_form:
-                    print '    ', "updating ", db_form, " with ", new_form
-                    db_form.fullform = new_form
-                    db_form.save()
-                else:
-                    print '    ', "creating new form for ", db_form, " with ", new_form
-                    if last_db:
-                        wo = last_db.word
-                        ta = last_db.tag
-                    else:
-                        wo = w
-                        ta = t
-                    new = Form.objects.create(word=wo,
-                                        tag=ta,
-                                        fullform=new_form,)
-                    if last_db:
-                        for d in last_db.dialects.all():
-                            new.dialects.add(d)
-                        for fb in last_db.feedback.all():
-                            new.feedback.add(fb)
-                    new.save()
-
-                last_db = db_form
+            for new_form in wfs:
+                print '    ', "creating new form for ", new_form
+                wo = w
+                ta = t
+                new = Form.objects.create(word=w,
+                                    tag=t,
+                                    fullform=new_form,)
+                new.save()
 
 
 
