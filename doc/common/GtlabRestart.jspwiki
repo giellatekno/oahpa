@@ -8,11 +8,16 @@ and other applications. See [how to restart nginx itself|RestartingNginx.html]
 if needed (after an ordinary update is often is not).
 
 Some Oahpa versions are on gtoahpa, others are on gtlab. To find them, write
-{{ls -l /home/|grep oahpa}} on the respective machines.
+{{ls -l /home/|grep oahpa}} on the respective machines (or check the table below).
+
+
 
 !! In case of emergencies... 
 
 !The test versions of Oahpa (on testing.oahpa.no)
+
+If all the Oahpa instances on gtlab are down (for example after server reboot) then you can start all the Oahpas at once, using the script {{{start_all_oahpas.sh}}} located in the directory {{{/home/oahpa_scripts}}} (requires sudo rights).
+
 
 If an Oahpa on __gtlab__ (e.g. testing.oahpa.no/crk_oahpa) gives "__404 Not found__" error then it means that nginx is running but the Oahpa (fastcgi) process has been stopped. For checking if the particular Oahpa process is running give the command:
 
@@ -26,8 +31,28 @@ If this command does not output 5-6 lines of fastcgi processes then you need to 
     sudo ./crk_oahpa.sh --run
 }}}
 
-If all the Oahpa instances on gtlab are down (for example after server reboot) then you can start all the Oahpas at once, using the script {{{start_all_oahpas.sh}}} located in the directory {{{/home/oahpa_scripts}}} (requires sudo rights).
- 
+For making sure the Oahpas are online, you may click these links:
+
+|| URLs for the oahpa versions on gtlab
+| [http://testing.oahpa.no/bxr_oahpa]
+| [http://testing.oahpa.no/crk_oahpa]
+| [http://testing.oahpa.no/est_oahpa]
+| [http://testing.oahpa.no/fkv_oahpa]
+| [http://testing.oahpa.no/izh_oahpa]
+| [http://testing.oahpa.no/liv_oahpa]
+| [http://testing.oahpa.no/mdf_oahpa]
+| [http://testing.oahpa.no/mhr_oahpa]
+| [http://testing.oahpa.no/mrj_oahpa]
+| [http://testing.oahpa.no/olo_oahpa]
+| [http://testing.oahpa.no/ruskonteaksta]
+| [http://testing.oahpa.no/rusoahpa]
+| [http://testing.oahpa.no/teaksta]
+| [http://testing.oahpa.no/udm_oahpa]
+| [http://testing.oahpa.no/univ_oahpa]
+| [http://testing.oahpa.no/vep_oahpa]
+| [http://testing.oahpa.no/vro_oahpa]
+
+
  
 !!Restarting Nginx
 
