@@ -16,8 +16,7 @@ def install_file(filename, pos):
         for l in F.readlines():
             _tag, _, form = l.strip().partition('\t')
             lemma, _, tag = _tag.partition('+')
-            if lemma == 'pêtawêw':
-                print lemma, tag
+
             if lemma not in words_to_install:
                 words_to_install[lemma] = {}
 
