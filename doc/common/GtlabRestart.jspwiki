@@ -19,40 +19,38 @@ Some Oahpa versions are on gtoahpa, others are on gtlab. To find them, write
 If all the Oahpa instances on gtlab are down (for example after server reboot) then you can start all the Oahpas at once, using the script {{{start_all_oahpas.sh}}} located in the directory {{{/home/oahpa_scripts}}} (requires sudo rights).
 
 
-If an Oahpa on __gtlab__ (e.g. testing.oahpa.no/crk_oahpa) gives "__404 Not found__" error then it means that nginx is running but the Oahpa (fastcgi) process has been stopped. For checking if the particular Oahpa process is running give the command:
+If an Oahpa on __gtlab__ (e.g. testing.oahpa.no/izh_oahpa) gives "__404 Not found__" error then it means that nginx is running but the Oahpa (fastcgi) process has been stopped. For checking if the particular Oahpa process is running give the command:
 
 {{{
-    ps -ef | grep 'crk_oahpa'
+    ps -ef | grep 'izh_oahpa'
 }}}
 
-If this command does not output 5-6 lines of fastcgi processes then you need to start the Oahpa process again. For doing that, go to the respective Oahpa's home directory, e.g. {{{/home/crk_oahpa/crk_oahpa}}} and give the command (as sudo, if needed):
+If this command does not output 5-6 lines of fastcgi processes then you need to start the Oahpa process again. For doing that, go to the respective Oahpa's home directory, e.g. {{{/home/izh_oahpa/izh_oahpa}}} and give the command (as sudo, if needed):
 
 {{{
-    sudo ./crk_oahpa.sh --run
+    sudo ./izh_oahpa.sh --run
 }}}
 
 For making sure the Oahpas are online, you may click these links:
 
-|| URLs for the oahpa versions on gtlab
-| [http://testing.oahpa.no/bxr_oahpa]
-| [http://testing.oahpa.no/crk_oahpa]
-| [http://testing.oahpa.no/est_oahpa]
-| [http://testing.oahpa.no/fkv_oahpa]
-| [http://testing.oahpa.no/izh_oahpa]
-| [http://testing.oahpa.no/liv_oahpa]
-| [http://testing.oahpa.no/mdf_oahpa]
-| [http://testing.oahpa.no/mhr_oahpa]
-| [http://testing.oahpa.no/mrj_oahpa]
-| [http://testing.oahpa.no/olo_oahpa]
-| [http://testing.oahpa.no/ruskonteaksta]
-| [http://testing.oahpa.no/rusoahpa]
-| [http://testing.oahpa.no/teaksta]
-| [http://testing.oahpa.no/udm_oahpa]
-| [http://testing.oahpa.no/univ_oahpa]
-| [http://testing.oahpa.no/vep_oahpa]
-| [http://testing.oahpa.no/vro_oahpa]
+|| Oahpa-name   ||  URLs for the oahpa versions on gtlab
+| bxr_oahpa     | [http://testing.oahpa.no/bxr_oahpa]
+| est_oahpa     | [http://testing.oahpa.no/eesti]  
+| izh_oahpa     | [http://testing.oahpa.no/izh_oahpa]
+| liv_oahpa     | [http://testing.oahpa.no/livokel]
+| mdf_oahpa     | [http://testing.oahpa.no/mdf_oahpa]
+| mhr_oahpa     | [http://testing.oahpa.no/mhr_oahpa]
+| mrj_oahpa     | [http://testing.oahpa.no/mrj_oahpa]
+| olo_oahpa     | [http://testing.oahpa.no/olo_oahpa]
+| ruskonteaksta | [http://testing.oahpa.no/ruskonteaksta]
+| rus_oahpa     | [http://testing.oahpa.no/rusoahpa]
+| udm_oahpa     | [http://testing.oahpa.no/udm_oahpa]
+| liv_oahpa     | [http://testing.oahpa.no/vep_oahpa]
+| vro_oahpa     | [http://testing.oahpa.no/voro]
 
-
+(The following Oahpas and Konteakstas are still listed on gtlab, 
+but have been moved to gtoahpa: crk_oahpa, fkv_oahpa, 
+sme Konteaksta (teaksta), univ_oahpa)
  
 !!Restarting Nginx
 
