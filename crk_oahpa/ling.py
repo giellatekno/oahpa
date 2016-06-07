@@ -607,7 +607,9 @@ class Paradigm:
 													trans_anim=g.get('Transitivity-Animacy',""),\
 													object=g.get('Object',""),\
 													polarity=g.get('Polarity',""),\
-													tense=g.get('Tense',""),mood=g.get('Mood',""), \
+													tense=g.get('Tense',""),
+													mood=g.get('Mood',""), \
+													mode=g.get('Mode', ""), \
 													subclass=g.get('Subclass',""), \
 													attributive=g.get('Attributive',""))
 				

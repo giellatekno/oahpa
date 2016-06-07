@@ -744,6 +744,7 @@ class Tag(models.Model):
 #			'grade': 'Grade',
 			'infinite': 'Infinite',
 			'mood': 'Mood',
+			'mode': 'Mode',
 			'preverb': 'Preverb',
 			'distance': 'Distance',
 			'object': 'Object',
