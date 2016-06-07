@@ -105,7 +105,7 @@ echo "==================================================="
 
  echo "==================================================="
  echo "feeding db with $META/cnjparadigms.txt"
- $P manage.py add_static_wordforms --filename=$META/cnjparadigms.txt
+ $P manage.py add_static_wordforms --filename=$META/cnjparadigms.txt --pos=V
  echo " "
  echo "done"
  echo "==================================================="
