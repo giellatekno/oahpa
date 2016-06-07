@@ -72,13 +72,11 @@
 		{% if form.answertext1 %}{{ form.answertext1 }}{% endif %}
 
 		{% if form.pron %}<span class="pronoun {% if form.object %}has_object{% endif %}">{{ form.pron }}</span>{% endif %}
-		{% if form.relaxing_note %}
-			<span class="correct relaxing">{{ form.userans }}</span>
-		{% elif form.error == "correct" %}
+		{% if form.error == "correct" %}
 			<span class="correct">{{ form.userans }}</span>
 		{% else %}
 			{% ifequal form.error "error" %}
-				<span class="incorrect">{{ form.userans }}</span>
+				<span class="incorrect relaxing">{{ form.userans }}</span>
 			{% else %}
 				<span class="blankentry">________________</span>{# Blank answer, this gets hidden via CSS in leksa and morfa, but not morfac #}
 			{% endifequal %}
@@ -105,13 +103,15 @@
 
 			{% if form.pron %}<span class="pronoun {% if form.object %}has_object{% endif %}">{{ form.pron }}</span>{% endif %}
 
-			{% if form.relaxing_note %}
-				<span class="correct relaxing">{{ form.userans }}</span>
-			{% elif form.error == "correct" %}
+			{% if form.error == "correct" %}
 				<span class="correct">{{ form.userans }}</span>
 			{% else %}
 				<!-- Answer field -->
-				<span class="incorrect">{{ form.answer }}</span>
+			    {% if form.relaxing_note %}
+				    <span class="incorrect relaxing">{{ form.answer }}</span>
+				{% else %}
+				    <span class="incorrect">{{ form.answer }}</span>
+			    {% endif %}
 			{% endif %}
 
 			{% if form.pron_imp %}
@@ -163,7 +163,6 @@
 			{% endif %}
 		{% endifequal %}
 		{% if form.relaxing_note %}
-		    <img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
 			<a href="#" class="feedback_link" id="link_feedback-{{ forloop.counter }}">
 				{% trans "help" %}
 			</a>

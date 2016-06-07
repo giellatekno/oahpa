@@ -1198,7 +1198,11 @@ class NumGame(Game):
 					pass
 				if question in [a[1] for a in num_list] or \
 					useranswer in num_list:
-					return True, error_fst
+					is_corr = True
+					if error_fst:
+						if len(error_fst.get('messages')) > 0:
+							is_corr = False
+					return is_corr, error_fst
 				else:
 					return False, error_fst
 
