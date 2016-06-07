@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 from django.core.management.base import BaseCommand, CommandError
 
 # from_yaml(cls, loader, node)
@@ -8,26 +9,28 @@ import sys
 
 from crk_drill.models import Form, Word, Tag
 
-def install_file(filename):
+def install_file(filename, pos):
     from collections import defaultdict
     words_to_install = defaultdict(list)
     with open(filename, 'r') as F:
         for l in F.readlines():
-            tag, _, form = l.strip().partition('\t')
-            lemma, _, tag = tag.partition('+')
-            if lemma in words_to_install:
-                if tag in words_to_install[lemma]:
-                    words_to_install[lemma][tag].append(form)
-                else:
-                    words_to_install[lemma] = {tag: [form]}
-            else:
-                words_to_install[lemma] = {tag: [form]}
+            _tag, _, form = l.strip().partition('\t')
+            lemma, _, tag = _tag.partition('+')
+            if lemma == 'pêtawêw':
+                print lemma, tag
+            if lemma not in words_to_install:
+                words_to_install[lemma] = {}
+
+            if tag not in words_to_install[lemma]:
+                words_to_install[lemma][tag] = []
+
+            words_to_install[lemma][tag].append(form)
 
     from itertools import izip_longest
 
     for lemma, forms in words_to_install.iteritems():
         print 'lemma: ', lemma
-        ws = Word.objects.filter(lemma=lemma, pos='V')
+        ws = Word.objects.filter(lemma=lemma, pos=pos)
         w = ws[0]
         for tag, wfs in forms.iteritems():
             fs = Form.objects.filter(word__lemma=lemma, tag__string=tag)
@@ -38,9 +41,7 @@ def install_file(filename):
             if _c:
                 t.save()
             for new_form in wfs:
-                print '    ', "creating new form for ", new_form
-                wo = w
-                ta = t
+                print '    ', new_form
                 new = Form.objects.create(word=w,
                                     tag=t,
                                     fullform=new_form,)
@@ -80,6 +81,8 @@ class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
         make_option("-f", "--filename", dest="filename", default=False,
                           help="Static file to read from"),
+        make_option("-p", "--pos", dest="pos", default=False,
+                          help="Part of speech"),
         # make_option("-d", "--dryrun", dest="dryrun", default="True",
         #                   help="List tags matching element instead of merging"),
 
@@ -90,6 +93,7 @@ class Command(BaseCommand):
         import sys, os
 
         filename = options['filename']
+        pos = options['pos']
 
-        install_file(filename=filename)
+        install_file(filename=filename, pos=pos)
 
