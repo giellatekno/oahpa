@@ -1,5 +1,7 @@
 !!!Restarting the httpd server on gtweb
 
+(For interactive linguistic analysers' malfunctioning, see the bottom of the page)
+
 On {{{gtweb}}}, two httpd services are used. {{{nginx}}} is the primary system
 for serving all projects, however {{{apache/httpd}}} is used to run certain CGI
 and MT scripts which Nginx does not have support for. This is done via
@@ -112,3 +114,14 @@ sudo /etc/init.d/mysqld start
 {{{
   sudo service eXist-db start
 }}}
+
+
+!!!Interactive web analysers are down
+
+A server reboot should not affect the web servers. After the reboot, the web 
+servers are automatically running again.
+
+Eventual malfunctioning here is due to errors in the pipeline being used by the analysers.
+
+The documentation is found on [the cgi-bin documentation page|docu-cgi-bin.html]
+
