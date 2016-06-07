@@ -604,6 +604,7 @@ class Paradigm:
 													personnumber=g.get('Person-Number',""),\
 													preverb=g.get('Preverb',""),\
 													distance=g.get('Distance',""),\
+													trans_anim=g.get('Transitivity-Animacy',""),\
 													object=g.get('Object',""),\
 													polarity=g.get('Polarity',""),\
 													tense=g.get('Tense',""),mood=g.get('Mood',""), \
