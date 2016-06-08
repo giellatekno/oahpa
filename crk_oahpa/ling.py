@@ -605,6 +605,7 @@ class Paradigm:
 													preverb=g.get('Preverb',""),\
 													distance=g.get('Distance',""),\
 													trans_anim=g.get('Transitivity-Animacy',""),\
+													intentional_definite=g.get('Intentional-Definite',""),\
 													object=g.get('Object',""),\
 													polarity=g.get('Polarity',""),\
 													tense=g.get('Tense',""),
