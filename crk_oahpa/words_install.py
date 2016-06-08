@@ -209,13 +209,13 @@ class Entry(object):
 			("p3p", None),
 			("pos", None),
 			("animacy", None),
-			("mode", None),
 			("trans_anim", None), # for verbs: transitivity-animacy
 			("object", None), # TODO: maybe need to relabel this v_object if python doesn't like object attribute
 			("audio", None),
 			("gradation", None),
 			("diphthong", None),
 			("rime", None),
+			("init", None),
 			("t2c", None),
 			("attrsuffix", None),
 			("compsuffix", None),
@@ -702,7 +702,7 @@ class Words(object):
 		changes_to_xml = True
 		changes_to_paradigm = True
 		# Initialize null variables
-		stem, forms, gradation, rime, animacy, trans_anim, v_object, audio, t2c, mode  =	[""]*10
+		stem, forms, gradation, rime, animacy, trans_anim, v_object, audio, t2c, mode, init  =	[""]*10
 		wordclass, attrsuffix, compsuffix, soggi, valency	=	[""]*5
 		compare, frequency, geography, presentationform, excl_dialect	=	[""]*5
 
@@ -785,6 +785,9 @@ class Words(object):
 		if entry.rime:
 			rime = entry.rime
 
+		if entry.init:
+			init = entry.init
+
 		if entry.t2c:
 			t2c = entry.t2c
 			
@@ -853,6 +856,7 @@ class Words(object):
 			# w.presentationform = presentationform
 			w.stem = stem
 			w.rime = rime
+			w.init = init
 			w.t2c = t2c
 			w.compare = compare
 			w.attrsuffix = attrsuffix
