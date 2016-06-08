@@ -494,15 +494,16 @@ dl#question_set dt {
 	color: green;
 }
 
-#question_set .correct.relaxing {
-    color: orange;
-    font-weight: bold;
-}
-
 #question_set .incorrect {
 	color: red;
 	font-weight: bold;
 }
+
+#question_set .correct.relaxing, .relaxing input {
+    color: #CE8500 !important;
+    font-weight: bold;
+}
+
 
 #question_set .correctanswertext {
 	position: absolute;
