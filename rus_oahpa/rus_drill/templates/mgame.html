@@ -68,7 +68,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
 	</ul>
 	
 	<ul id="submittable">
-	    <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
+	    <li><input type="submit" name="settings" value="{% trans "New set" %}" />{% csrf_token %}</li>
 	</ul>
 
 {% endblock %}
