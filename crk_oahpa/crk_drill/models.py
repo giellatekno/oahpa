@@ -743,7 +743,7 @@ class Tag(models.Model):
 #			'conneg': 'ConNeg',
 #			'grade': 'Grade',
 			'infinite': 'Infinite',
-			'mood': 'Mood',
+			# 'mood': 'Mood',
 			'mode': 'Mode',
 			'preverb': 'Preverb',
 			'distance': 'Distance',
