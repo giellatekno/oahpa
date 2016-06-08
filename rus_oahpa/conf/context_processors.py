@@ -1,7 +1,7 @@
-import rus_oahpa.settings
+import settings
 
 try:
-	default = rus_oahpa.settings.DEFAULT_DIALECT
+	default = settings.DEFAULT_DIALECT
 except:
 	default = 'GG'
 
@@ -11,7 +11,7 @@ def dialect(request):
     return {'dialect': request.session.get('dialect')}
 
 def site_root(request):
-	return {'URL_PREFIX': rus_oahpa.settings.URL_PREFIX}
+	return {'URL_PREFIX': settings.URL_PREFIX}
 
 def grammarlinks(request):
 	from rus_drill.models import Grammarlinks

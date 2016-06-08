@@ -42,11 +42,12 @@
 						<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
 						<select id="language_select" name="language" onChange="javascript:this.form.submit();">
 
+			<!--
 						{% ifequal LANGUAGE_CODE "ru" %}
 							<option value="ru" selected="selected">Pусский язык</option>
 						{% else %}
 							<option value="ru">Pусский язык</option>
-						{% endifequal %}
+						{% endifequal %} -->
 
 						{% ifequal LANGUAGE_CODE "en" %}
 							<option value="en" selected="selected">English</option>
@@ -54,11 +55,12 @@
 							<option value="en">English</option>
 						{% endifequal %}
 
+			<!--
 						{% ifequal LANGUAGE_CODE "no" %}
 							<option value="no" selected="selected">Norsk</option>
 						{% else %}
 							<option value="no">Norsk</option>
-						{% endifequal %}
+						{% endifequal %} -->
 
 					</select>
 					</dd>
@@ -105,14 +107,14 @@
 			<ul id="games_menu">
 
         <!--        <li class="game">
-					<a href="{% url vasta_s %}">
+					<a href="{% url 'vasta_s' %}">
 						<span>VASTA</span><br />
 						<img src="{{ MEDIA_URL }}/images/vasta.png" alt="VASTA" /><br />
 						<span>{% trans "Answer to questions" %}<font color="#FF0000" size="3pt"> (under construction) </font></span>
 					</a>
 				</li>  --->
 				<li class="game">
-					<a href="{% url leksa %}">
+					<a href="{% url 'leksa' %}">
 						<span>LEKSA</span><br />
 						<img src="{{ MEDIA_URL }}/images/leksa.png" alt="LEKSA" /><br />
 						<span>{% trans "Words and translations" %}</span>
@@ -120,7 +122,7 @@
 				</li>
 				
 				<li class="game">
-					<a href="{% url morfa_s.noun %}">
+					<a href="{% url 'morfa_s.noun' %}">
 						<span>MORFA-S</span><br />
 						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-S" /><br />
 						<span>{% trans "Practice morphology" %}</span>
@@ -128,7 +130,7 @@
 				</li>
 
 				<li class="game">
-                    <a href="{% url morfa_c.noun %}">
+                    <a href="{% url 'morfa_c.noun' %}">
 						<span>MORFA-C</span><br />
 						<img src="{{ MEDIA_URL }}/images/morfac.png" alt="MORFA-C" /><br />
 						<span>{% trans "Practice morphology in context" %}</span>
@@ -136,14 +138,14 @@
 				</li>
 				
 <!--            <li class="game">
-                        <a href="{% url sahka %}">
+                        <a href="{% url 'sahka' %}">
 						<span>SAHKA</span><br />
 						<img src="{{ MEDIA_URL }}/images/sahka.png" alt="SAHKA" /><br />
 						<span>{% trans "Dialogue game" %} <font color="#FF0000" size="3pt"> (under construction) </font></span>
 					</a>
 				</li>   ---->
                 <li class="game">
-                    <a href="{% url numra %}">
+                    <a href="{% url 'numra' %}">
 						<span>NUMRA</span><br />
 						<img src="{{ MEDIA_URL }}/images/numra.png" alt="NUMRA" /><br />
 						<span>{% trans "Practice numerals" %}</span>
@@ -205,7 +207,7 @@
             
 			</ul>
 
-			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p> -->
+			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url 'courses.views.courses_main' %}">{% trans "Log in here" %}</a></p> -->
 			{% endblock %}
 		</div>
 

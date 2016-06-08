@@ -4,13 +4,13 @@ from django.db.models import Q
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
-import rus_oahpa.settings as settings
+import settings as settings
 
-from rus_oahpa.conf.tools import switch_language_code
+from conf.tools import switch_language_code
 
 from models import *
 #from game import *
-#from rus_oahpa.rus_drill.game import relax
+#from rus_drill.game import relax
 import datetime
 import socket
 import sys, os
@@ -515,8 +515,8 @@ GAME_FILTER_DEFINITIONS = {
 
 import re
 
-from rus_oahpa.settings import INFINITIVE_SUBTRACT as infinitives_sub
-from rus_oahpa.settings import INFINITIVE_ADD as infinitives_add
+from settings import INFINITIVE_SUBTRACT as infinitives_sub
+from settings import INFINITIVE_ADD as infinitives_add
 
 def relax(strict):
 	"""Returns a list of relaxed possibilities, making changes by relax_pairs.

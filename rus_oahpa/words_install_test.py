@@ -443,7 +443,7 @@ class Words(object):
 			return True
 
 
-	@transaction.commit_on_success
+	@transaction.atomic
 	def install_lexicon(self,infile,linginfo,delete=None,paradigmfile=False, verbose=True):
 		global VERBOSE
 		VERBOSE = verbose

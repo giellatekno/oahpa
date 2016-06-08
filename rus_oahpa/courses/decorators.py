@@ -61,7 +61,7 @@ class trackGrade(object):
 
 	In order to use this import the following things 
 
-		from courses.views import render_to_response
+		from courses.views import render
 		from courses.decorators import trackGrade
 
 	And then decorate a view function, passing a log entry heading to the
@@ -84,7 +84,7 @@ class trackGrade(object):
 		"""
 
 		def decorated_function(*args, **kwargs):
-			from rus_oahpa.courses.views import trackGrade
+			from courses.views import trackGrade
 
 			# grab the request, and execute the view function as normal
 			request = args[0]

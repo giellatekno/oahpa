@@ -1,6 +1,6 @@
-from rus_oahpa.rus_drill.models import Log, Word, Semtype, Source, Form, Tag, Feedbackmsg, Feedbacktext, Question, QElement, WordQElement, WordTranslation
+from rus_drill.models import Log, Word, Semtype, Source, Form, Tag, Feedbackmsg, Feedbacktext, Question, QElement, WordQElement, WordTranslation
 from django.contrib import admin
-from django.contrib.contenttypes import generic
+###from django.contrib.contenttypes import generic # not needed in django 1.8 # not needed in django 1.8 # not needed in django 1.8
 
 class LogAdmin(admin.ModelAdmin):
 	list_display = ('example','userinput','iscorrect','correct','game','date')

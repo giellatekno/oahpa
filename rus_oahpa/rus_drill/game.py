@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from rus_oahpa.rus_drill.models import *
-from rus_oahpa.rus_drill.forms import *
+from models import *
+from forms import *
 
-from rus_oahpa.conf.tools import switch_language_code
+from conf.tools import switch_language_code
 
 from django.db.models import Q, Count
 from django.http import HttpResponse, Http404
@@ -16,7 +16,7 @@ import os
 import re
 import itertools
 
-import rus_oahpa.settings
+import settings
 
 # DEBUG = open('/dev/ttys001', 'w')
 
@@ -24,23 +24,23 @@ from random import choice
 from .forms import PRONOUNS_LIST
 
 try:
-	L1 = rus_oahpa.settings.L1
+	L1 = settings.L1
 except:
 	L1 = 'rus'  # was: sme
 
 try:
-	LOOKUP_TOOL = rus_oahpa.settings.LOOKUP_TOOL
+	LOOKUP_TOOL = settings.LOOKUP_TOOL
 except:
 	LOOKUP_TOOL = 'lookup'
 
 
 try:
-	FST_DIRECTORY = rus_oahpa.settings.FST_DIRECTORY
+	FST_DIRECTORY = settings.FST_DIRECTORY
 except:
 	FST_DIRECTORY = False
 
 try:
-	DEFAULT_DIALECT = rus_oahpa.settings.DEFAULT_DIALECT
+	DEFAULT_DIALECT = settings.DEFAULT_DIALECT
 except:
 	DEFAULT_DIALECT = None
 

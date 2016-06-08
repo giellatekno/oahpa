@@ -74,7 +74,9 @@ class UserProfile(models.Model):
 			return grades
 		else:
 			return None
-	
+
+	class Meta:
+	        managed = True
 
 
 class UserLogin(models.Model):
@@ -85,6 +87,9 @@ class UserLogin(models.Model):
 	
 	user = models.ForeignKey(UserProfile) 
 	timestamp = models.DateTimeField()
+        
+	class Meta:
+	        managed = True
 
 class UserGradeSummary(models.Model):
 	""" Stores the summary for each game for grading purposes.
@@ -98,6 +103,7 @@ class UserGradeSummary(models.Model):
 	count = models.IntegerField(default=0)
 	
 	class Meta:
+	        managed = True
 		verbose_name_plural = 'User grade summaries'
 		ordering = ['average']
 	
@@ -125,6 +131,7 @@ class UserGrade(models.Model):
 		return u'Summary for %s from %s' % (self.user.user.username, self.game.name)
 
 	class Meta:
+	        managed = True
 		ordering = ['-datetime']
 		permissions = (("can_change_score", "Can change grade"),)
 
@@ -137,6 +144,7 @@ class Activity(models.Model):
 	name = models.CharField(max_length=50)
 	
 	class Meta:
+        	managed = True
 		verbose_name = 'activity'
 		verbose_name_plural = 'activities'
 	
@@ -160,7 +168,7 @@ class Course(models.Model):
 	identifier = models.CharField(max_length=12, default="SAM-1234")
 	# instructors = models.ManyToManyField(User, related_name='instructorships')
 	# students = models.ManyToManyField(User, related_name='studentships')
-	site_link = models.URLField(verify_exists=False, max_length=200, blank=True, null=True)
+	site_link = models.URLField(max_length=200, blank=True, null=True)
 	end_date = models.DateTimeField(null=True, default=None)
 
 	@property
@@ -168,6 +176,9 @@ class Course(models.Model):
 		us = UserProfile.objects.filter(user__courserelationship__course=self)\
 								.distinct()
 		return us
+
+	class Meta:
+	        managed = True
 
 class CourseRelationship(models.Model):
 	""" This model contains information about the relationships of
@@ -189,6 +200,7 @@ class CourseRelationship(models.Model):
 	end_date = models.DateTimeField(null=True, blank=True, help_text=DATE_HELP)
 
 	class Meta:
+        	managed = True
 		unique_together = ("user",
 							"course",
 							"relationship_type",)
@@ -198,14 +210,14 @@ from django.db.models.signals import post_save, pre_save
 from signals import create_profile, aggregate_grades, user_presave, course_relationship_postsave
 
 post_save.connect(create_profile, sender=User, 
-	dispatch_uid="rus_oahpa.courses.models.post_save")
+	dispatch_uid="courses.models.post_save")
 
 post_save.connect(aggregate_grades, sender=UserGrade,
-	dispatch_uid="rus_oahpa.courses.models.post_save")
+	dispatch_uid="courses.models.post_save")
 
 post_save.connect(course_relationship_postsave, sender=CourseRelationship,
-	dispatch_uid="rus_oahpa.courses.models.post_save")
+	dispatch_uid="courses.models.post_save")
 
 pre_save.connect(user_presave, sender=User,
-	dispatch_uid="rus_oahpa.courses.models.pre_save")
+	dispatch_uid="courses.models.pre_save")
 

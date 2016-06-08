@@ -7,7 +7,13 @@ print " * Correcting paths"
 cur_path = os.getcwd()
 parent_path = '/' + '/'.join([a for a in cur_path.split('/') if a][0:-1]) + '/'
 sys.path.insert(0, parent_path)
-environ['DJANGO_SETTINGS_MODULE'] = 'rus_oahpa.settings'
+#environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+
+import django
+#from django.conf import settings
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
+django.setup()
+
 
 settings.DEBUG = False
 

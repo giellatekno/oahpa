@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404
 from django.utils.translation import ugettext_lazy as _
 
-from rus_oahpa.conf.tools import switch_language_code
+from conf.tools import switch_language_code
 
 from random import randint
 
@@ -23,22 +23,20 @@ from cealkka import *
 # applies a context attribute to the returned response so that
 # the trackGrade decorator can work.
 
-from courses.views import render_to_response
+from courses.views import render
 from courses.decorators import trackGrade
 
 def index(request):
 	c = RequestContext(request, {
 		'jee': "joku arvo",
 		})
-	return render_to_response('rus_oahpa_main.html', c,
-				context_instance=RequestContext(request))
+	return render(request, 'rus_oahpa_main.html', c) 
 
 def updating(request):
 	c = RequestContext(request, {
 		'jee': "joku arvo",
 		})
-	return render_to_response('updating.html', c,
-				context_instance=RequestContext(request))
+	return render(request, 'updating.html', c)
 
 class Gameview(object):
 	""" Gameview is instantiated with a Settings object and a Game object,
@@ -294,7 +292,7 @@ class Leksaview(Gameview):
 
 	def context(self, request, game, settings_form):
 
-		return Context({
+		return RequestContext(request, {
 			'settingsform': settings_form,
 			'settings' : self.settings,
 			'forms': game.form_list,
@@ -364,7 +362,7 @@ class LeksaPlaceview(Gameview):
 		self.settings['gamename_key'] = "Place - %s - %s" % (geog, freq)
 
 	def context(self, request, game, settings_form):
-		return Context({
+		return RequestContext(request, {
 			'settingsform': settings_form,
 			'settings' : self.settings,
 			'forms': game.form_list,
@@ -395,14 +393,13 @@ def leksa_game(request, place=False):
 		if sess_lang == 'rus':  # was: sme
 			sess_lang = 'nob'  # was: nob
 	else:
-		sess_lang = 'nob'
+		sess_lang = 'en'
 
 	default_langpair = 'rus%s' % sess_lang  # was: sme
 
 	c = leksagame.create_game(request, initial_transtype=default_langpair)
 
-	return render_to_response(template, c,
-				context_instance=RequestContext(request))
+	return render(request, template, c)
 
 
 class Numview(Gameview):
@@ -420,7 +417,7 @@ class Numview(Gameview):
 
 	def context(self, request, game, settings_form):
 
-		return Context({
+		return RequestContext(request, {
 			'settingsform': settings_form,
 			'settings' : self.settings,
 			'forms': game.form_list,
@@ -443,8 +440,7 @@ def num_clock(request):
 
 	c = numgame.create_game(request)
 
-	return render_to_response('clock.html', c,
-				context_instance=RequestContext(request))
+	return render(request, 'clock.html', c)
 
 @trackGrade("Numra ordinal")
 def num_ord(request):
@@ -454,8 +450,7 @@ def num_ord(request):
 
 	c = numgame.create_game(request)
 
-	return render_to_response('num_ord.html', c,
-				context_instance=RequestContext(request))
+	return render(request, 'num_ord.html', c)
 
 
 @trackGrade("Numra cardinal")
@@ -465,8 +460,7 @@ def num(request):
 
 	c = numgame.create_game(request)
 
-	return render_to_response('num.html', c,
-				context_instance=RequestContext(request))
+	return render(request, 'num.html', c)
 
 @trackGrade("Numra dato")
 def dato(request):
@@ -475,8 +469,7 @@ def dato(request):
 
 	c = datogame.create_game(request)
 
-	return render_to_response('dato.html', c,
-				context_instance=RequestContext(request))
+	return render(request, 'dato.html', c)
 
 
 class Morfaview(Gameview):
@@ -759,8 +752,7 @@ def morfa_game(request, pos):
 	c = mgame.create_game(request)
 
 
-	return render_to_response(template, c,
-				context_instance=RequestContext(request))
+	return render(request, template, c)
 
 
 
@@ -785,8 +777,7 @@ def cmgame(request, pos):
 	template = "mgame_%s.html" % p
 	c = mgame.create_game(request)
 
-	return render_to_response(template, c,
-				context_instance=RequestContext(request))
+	return render(request, template, c)
 
 class Vastaview:
 
@@ -877,7 +868,7 @@ class Vastaview:
 		if game.form_list[0].error == "correct":
 			all_correct = 1
 
-		c = Context({
+		c = RequestContext(request, {
 			'settingsform': settings_form,
 			'forms': game.form_list,
 			'messages': game.form_list[0].messages,
@@ -896,7 +887,7 @@ def vasta(request):
 	vastagame.settings['gametype'] = "qa"
 
 	c = vastagame.create_vastagame(request)
-	return render_to_response('vasta.html', c, context_instance=RequestContext(request))
+	return render(request, 'vasta.html', c)
 
 
 class Cealkkaview(Gameview):
@@ -923,7 +914,7 @@ class Cealkkaview(Gameview):
 
 	def context(self, request, game, settings_form):
 
-		c = Context({
+		c = RequestContext(request, {
 			'settingsform': settings_form,
 			'forms': game.form_list,
 			'messages': game.form_list[0].messages,
@@ -945,7 +936,7 @@ def cealkka(request):
 	cealkkagame.init_settings()
 
 	c = cealkkagame.create_game(request)
-	return render_to_response('vasta.html', c, context_instance=RequestContext(request))
+	return render(request, 'vasta.html', c)
 
 
 class Sahkaview(Cealkkaview):
@@ -1035,7 +1026,7 @@ class Sahkaview(Cealkkaview):
 		for f in game.form_list:
 			errormsg = errormsg + f.errormsg
 
-		c = Context({
+		c = RequestContext(request, {
 			'settingsform': settings_form,
 			'forms': game.form_list,
 			'messages': getmessages(game),
@@ -1065,4 +1056,4 @@ def sahka(request):
 	sahkagame.init_settings()
 
 	c = sahkagame.create_game(request)
-	return render_to_response('sahka.html', c, context_instance=RequestContext(request))
+	return render(request, 'sahka.html', c)

@@ -12,12 +12,12 @@
 {% endif %}
 
 {% if user.is_authenticated %}
-<p>You are currently logged in. <a href="{% url rus_oahpa.courses.urls.logout %}">{% trans "Log out?" %}</a></p>
+<p>You are currently logged in. <a href="{% url 'courses.urls.logout' %}">{% trans "Log out?" %}</a></p>
 {% else %}
 <p>{% trans "Please log in to continue..." %}</p>
 {% endif %}
 
-<form method="post" action="{% url rus_oahpa.courses.urls.login %}">
+<form method="post" action="{% url 'courses.urls.login' %}">
 {% csrf_token %}
 <table>
 <tr>

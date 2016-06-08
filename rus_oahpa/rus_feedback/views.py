@@ -1,5 +1,5 @@
 from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 import datetime
 
 from rusfeedback.models import FeedbackForm
@@ -29,5 +29,5 @@ def feedback(request):
 	template = 'feedback.html'
 	context['form'] = feedback_form
 	
-	return render_to_response(template, context, context_instance=RequestContext(request))
+	return render(request, template, context)
 
