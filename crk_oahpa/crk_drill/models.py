@@ -751,6 +751,7 @@ class Tag(models.Model):
 			'number': 'Number',
 			'personnumber': 'Person-Number',
 			'trans_anim': 'Transitivity-Animacy',
+			'intentional_definite': 'Intentional-Definite',
 			'polarity': 'Polarity',
 			'pos': 'Wordclass',
 			'possessive': 'Possessive',
