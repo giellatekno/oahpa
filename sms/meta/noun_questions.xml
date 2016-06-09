@@ -888,6 +888,30 @@ Päärnaž vaaʹldi suu jeäʹnnen.
     </answer>
     </q>
 
+
+  <q id="ness10">
+      <qtype>N-ESS</qtype>
+      <question>
+          <text>Mââʹđen SUBJ MAINV suu</text>
+          <element id="SUBJ">
+              <grammar tag="N+Sg+Nom"/>
+              <sem class="M_PEOPLE"/>
+          </element>
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prt+Sg3"/>
+        <id>suõʹppjõõttâd</id>
+      </element>
+    </question>
+    <answer> 
+        <text>SUBJ MAINV suu N-ESS</text>
+        <element game='morfa' id="N-ESS" task="yes">
+            <grammar tag="N+Ess"/>
+            <sem class="M_BEING_ESS"/>
+        </element>
+    </answer>
+    </q>
+
+
 <!--
 TODO: need numerals first 
 
