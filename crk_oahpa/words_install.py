@@ -215,7 +215,7 @@ class Entry(object):
 			("gradation", None),
 			("diphthong", None),
 			("rime", None),
-			("init", None),
+			("initial", None),
 			("t2c", None),
 			("attrsuffix", None),
 			("compsuffix", None),
@@ -702,7 +702,7 @@ class Words(object):
 		changes_to_xml = True
 		changes_to_paradigm = True
 		# Initialize null variables
-		stem, forms, gradation, rime, animacy, trans_anim, v_object, audio, t2c, mode, init  =	[""]*11
+		stem, forms, gradation, rime, animacy, trans_anim, v_object, audio, t2c, mode, initial  =	[""]*11
 		wordclass, attrsuffix, compsuffix, soggi, valency	=	[""]*5
 		compare, frequency, geography, presentationform, excl_dialect	=	[""]*5
 
@@ -785,8 +785,8 @@ class Words(object):
 		if entry.rime:
 			rime = entry.rime
 
-		if entry.init:
-			init = entry.init
+		if entry.initial:
+			initial = entry.initial
 
 		if entry.t2c:
 			t2c = entry.t2c
@@ -856,7 +856,7 @@ class Words(object):
 			# w.presentationform = presentationform
 			w.stem = stem
 			w.rime = rime
-			w.init = init
+			w.initial = initial
 			w.t2c = t2c
 			w.compare = compare
 			w.attrsuffix = attrsuffix

@@ -275,7 +275,7 @@
       <msg tense="Fut" intentional_definite="Def">futdef</msg>
     </l>
   
-    <l init="vow"  trans_anim="TA">
+    <l initial="vow"  trans_anim="TA">
       <msg mode="Ind" tense="Prs">t-joiner</msg>
 	  <msg mode="Ind" tense="Prt">t-joiner</msg>
 	  <msg mode="Ind" tense="Fut" intentional_definite="Def">t-joiner</msg>
@@ -284,17 +284,7 @@
 	  <msg mode="Cnj" tense="Prt">h-joiner</msg>
 	  <msg mode="Cnj" tense="Fut" intentional_definite="Int">h-joiner</msg>
 	</l>
-    <l init="vow"  trans_anim="TI">
-      <msg mode="Ind" tense="Prs">t-joiner</msg>
-	  <msg mode="Ind" tense="Prt">t-joiner</msg>
-	  <msg mode="Ind" tense="Fut" intentional_definite="Def">t-joiner</msg>
-	  <msg mode="Ind" tense="Fut" intentional_definite="Int">t-joiner</msg>
-	  <msg mode="Cnj" tense="Prs">h-joiner</msg>
-	  <msg mode="Cnj" tense="Prt">h-joiner</msg>
-	  <msg mode="Cnj" tense="Fut" intentional_definite="Int">h-joiner</msg>
-	</l>
-
-    <l init="vow"  trans_anim="AI">
+    <l initial="vow"  trans_anim="TI">
       <msg mode="Ind" tense="Prs">t-joiner</msg>
 	  <msg mode="Ind" tense="Prt">t-joiner</msg>
 	  <msg mode="Ind" tense="Fut" intentional_definite="Def">t-joiner</msg>
@@ -304,14 +294,24 @@
 	  <msg mode="Cnj" tense="Fut" intentional_definite="Int">h-joiner</msg>
 	</l>
 
-     <l init="vow"  trans_anim="II">
+    <l initial="vow"  trans_anim="AI">
+      <msg mode="Ind" tense="Prs">t-joiner</msg>
+	  <msg mode="Ind" tense="Prt">t-joiner</msg>
+	  <msg mode="Ind" tense="Fut" intentional_definite="Def">t-joiner</msg>
+	  <msg mode="Ind" tense="Fut" intentional_definite="Int">t-joiner</msg>
+	  <msg mode="Cnj" tense="Prs">h-joiner</msg>
+	  <msg mode="Cnj" tense="Prt">h-joiner</msg>
+	  <msg mode="Cnj" tense="Fut" intentional_definite="Int">h-joiner</msg>
+	</l>
+
+     <l initial="vow"  trans_anim="II">
       <msg mode="Ind" tense="Prs">t-joiner</msg>
 	  <msg mode="Ind" tense="Prt">t-joiner</msg>
 	  <msg mode="Ind" tense="Fut" intentional_definite="Def">t-joiner</msg>
 	  <msg mode="Ind" tense="Fut" intentional_definite="Int">t-joiner</msg>
 	</l>
 
-	<!--  PUT THIS BACK INTO THE <l init="vow" trans_anim="II"> TAG WHEN CNJ II EXERCISES EXIST  <msg mode="Cnj" tense="Prs">h-joiner</msg>
+	<!--  PUT THIS BACK INTO THE <l initial="vow" trans_anim="II"> TAG WHEN CNJ II EXERCISES EXIST  <msg mode="Cnj" tense="Prs">h-joiner</msg>
 	  <msg mode="Cnj" tense="Prt">h-joiner</msg>
 	  <msg mode="Cnj" tense="Fut" intentional_definite="Int">h-joiner</msg> --> 
  

@@ -500,7 +500,7 @@ class Word(models.Model):
 	aspect = models.CharField(max_length=20) # aspect partner (verbs only)
 	motion = models.CharField(max_length=20) # motion partner (verbs only)
 	rime = models.CharField(max_length=8)
-	init = models.CharField(max_length=8)
+	initial = models.CharField(max_length=8)
 	t2c = models.CharField(max_length=8)
 
 
