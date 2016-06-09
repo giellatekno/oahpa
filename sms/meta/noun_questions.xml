@@ -117,6 +117,113 @@
     </answer>
   </q>
 
+<!-- Sg Com -->
+  <q id="nsgcom1">
+    <qtype>N-SG-COM</qtype>
+    <question>
+      <text>Ǩeäin SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <id>saǥstõõllâd</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-SG-COM</text>
+      <element game='morfa' id="N-SG-COM" task="yes">
+        <grammar tag="N+Sg+Com"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+    </answer>
+  </q>
+  <q id="nsgcom2">
+    <qtype>N-SG-COM</qtype>
+    <question>
+      <text>Ǩeäin SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <id>mainsted</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-SG-COM</text>
+      <element game='morfa' id="N-SG-COM" task="yes">
+        <grammar tag="N+Sg+Com"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+    </answer>
+  </q>
+  <q id="nsgcom3">
+    <qtype>N-SG-COM</qtype>
+    <question>
+      <text>Ǩeäin SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <id>reâuggad</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-SG-COM</text>
+      <element game='morfa' id="N-SG-COM" task="yes">
+        <grammar tag="N+Sg+Com"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+    </answer>
+  </q>
+  <q id="nsgcom4">
+    <qtype>N-SG-COM</qtype>
+    <question>
+      <text>Ǩeäin SUBJ MAINV reissu</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <id>vueʹlǧǧed</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV reissu N-SG-COM</text>
+      <element game='morfa' id="N-SG-COM" task="yes">
+        <grammar tag="N+Sg+Com"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+    </answer>
+  </q>
+  <q id="nsgcom5">
+    <qtype>N-SG-COM</qtype>
+    <question>
+      <text>Ǩeäin SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <id>pueʹtted</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-SG-COM</text>
+      <element game='morfa' id="N-SG-COM" task="yes">
+        <grammar tag="N+Sg+Com"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+    </answer>
+  </q>
+
 <!-- YKS. KOMITATIIVI + verbi y.3.p.
 
 Ǩeäin piisar saǥstââll? (koontâršurr) 	[kenen kanssa sihteeri neuvottelee (konttoripäällikkö)]
@@ -249,42 +356,112 @@ Mieʹcsteei puätt taaurõõžžin.
 
    -->
 
-
-  <q id="nsgcom1">
-      <qtype>N-SG-COM</qtype>
-      <question>
-          <text>Ǩeäin SUBJ saǥstââll</text>
-          <element id="SUBJ">
-              <grammar tag="N+Sg+Nom"/>
-              <sem class="M_PEOPLE"/>
-          </element>
+<!-- PL. COM. -->
+  <q id="nplcom1">
+    <qtype>N-PL-COM</qtype>
+    <question>
+      <text>Ǩeäin SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <id>saǥstõõllâd</id>
+      </element>
     </question>
     <answer> 
-        <text>SUBJ saǥstââll N-SG-COM</text>
-        <element game='morfa' id="N-SG-COM" task="yes">
-            <grammar tag="N+Sg+Com"/>
-            <sem class="M_PEOPLE"/>
-        </element>
+      <text>SUBJ MAINV N-PL-COM</text>
+      <element game='morfa' id="N-PL-COM" task="yes">
+        <grammar tag="N+Pl+Com"/>
+        <sem class="M_PEOPLE"/>
+      </element>
     </answer>
-    </q>
-
-  <q id="nsgcom2">
-      <qtype>N-SG-COM</qtype>
-      <question>
-          <text>Ǩeäin SUBJ vuâlgg reissu</text>
-          <element id="SUBJ">
-              <grammar tag="N+Sg+Nom"/>
-              <sem class="M_PEOPLE"/>
-          </element>
+  </q>
+  <q id="nplcom2">
+    <qtype>N-PL-COM</qtype>
+    <question>
+      <text>Ǩeäivuiʹm SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <id>mainsted</id>
+      </element>
     </question>
     <answer> 
-        <text>SUBJ vuâlgg reissu N-SG-COM</text>
-        <element game='morfa' id="N-SG-COM" task="yes">
-            <grammar tag="N+Sg+Com"/>
-            <sem class="M_PEOPLE"/>
-        </element>
+      <text>SUBJ MAINV N-PL-COM</text>
+      <element game='morfa' id="N-PL-COM" task="yes">
+        <grammar tag="N+Pl+Com"/>
+        <sem class="M_PEOPLE"/>
+      </element>
     </answer>
-    </q>
+  </q>
+  <q id="nplcom3">
+    <qtype>N-PL-COM</qtype>
+    <question>
+      <text>Ǩeäivuiʹm SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <id>reâuggad</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-PL-COM</text>
+      <element game='morfa' id="N-PL-COM" task="yes">
+        <grammar tag="N+Pl+Com"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+    </answer>
+  </q>
+  <q id="nplcom4">
+    <qtype>N-PL-COM</qtype>
+    <question>
+      <text>Ǩeäivuiʹm SUBJ MAINV reissu</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <id>vueʹlǧǧed</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV reissu N-PL-COM</text>
+      <element game='morfa' id="N-PL-COM" task="yes">
+        <grammar tag="N+Pl+Com"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+    </answer>
+  </q>
+  <q id="nplcom5">
+    <qtype>N-PL-COM</qtype>
+    <question>
+      <text>Ǩeäivuiʹm SUBJ MAINV</text>
+      <element id="SUBJ">
+            <grammar tag="N+Sg+Nom"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+      <element id="MAINV">
+        <grammar tag="V+Ind+Prs+Sg3"/>
+        <id>pueʹtted</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-PL-COM</text>
+      <element game='morfa' id="N-PL-COM" task="yes">
+        <grammar tag="N+Pl+Com"/>
+        <sem class="M_PEOPLE"/>
+      </element>
+    </answer>
+  </q>
 
 <!--  MON. KOMITATIIVI + verbi yks.3.p
 
@@ -385,41 +562,7 @@ Stoolarååum puätt snekkrivuiʹm.
 Mieʹcsteei puätt taaurõõžživuiʹm.
 
 -->
-  <q id="nplcom1">
-      <qtype>N-PL-COM</qtype>
-      <question>
-          <text>Ǩeäivuiʹm SUBJ saǥstââll</text>
-          <element id="SUBJ">
-              <grammar tag="N+Sg+Nom"/>
-              <sem class="M_PEOPLE"/>
-          </element>
-    </question>
-    <answer> 
-        <text>SUBJ saǥstââll N-PL-COM</text>
-        <element game='morfa' id="N-PL-COM" task="yes">
-            <grammar tag="N+Pl+Com"/>
-            <sem class="M_PEOPLE"/>
-        </element>
-    </answer>
-    </q>
 
-  <q id="nplcom2">
-      <qtype>N-PL-COM</qtype>
-      <question>
-          <text>Ǩeäivuiʹm SUBJ vuâlgg reissu</text>
-          <element id="SUBJ">
-              <grammar tag="N+Sg+Nom"/>
-              <sem class="M_PEOPLE"/>
-          </element>
-    </question>
-    <answer> 
-        <text>SUBJ vuâlgg reissu N-PL-COM</text>
-        <element game='morfa' id="N-PL-COM" task="yes">
-            <grammar tag="N+Pl+Com"/>
-            <sem class="M_PEOPLE"/>
-        </element>
-    </answer>
-    </q>
 
   <!--
 
@@ -478,14 +621,14 @@ TODO: can morfa-c allow the task word to not be in the question at all?
   <q id="ness1">
       <qtype>N-ESS</qtype>
       <question>
-          <text>Mââʹđen SUBJ õõni suu</text>
+          <text>Mââʹđen SUBJ õõʹni suu</text>
           <element id="SUBJ">
               <grammar tag="N+Sg+Nom"/>
               <sem class="M_PEOPLE"/>
           </element>
     </question>
     <answer> 
-        <text>SUBJ õõni suu N-ESS</text>
+        <text>SUBJ õõʹni suu N-ESS</text>
         <element game='morfa' id="N-ESS" task="yes">
             <grammar tag="N+Ess"/>
             <sem class="M_PEOPLE_ESS"/>
@@ -497,14 +640,14 @@ TODO: can morfa-c allow the task word to not be in the question at all?
 
 TODO: make sure all nouns are included
 {{{
-Ǩeäʹđen vuäʹbb õõni suu? (vuõddâm [sulhanen])	[kenenä sisko piti häntä? (sulhanen)]
-Vuäʹbb õõni suu vuõddmen.		[sisko piti häntä sulhasena]
+Ǩeäʹđen vuäʹbb õõʹni suu? (vuõddâm [sulhanen])	[kenenä sisko piti häntä? (sulhanen)]
+Vuäʹbb õõʹni suu vuõddmen.		[sisko piti häntä sulhasena]
 
-Ǩeäʹđen kaʹrštar õõni suu? (koonǥõs [kuningas])
-Kaʹrštar õõni suu koonǥõssân.
+Ǩeäʹđen kaʹrštar õõʹni suu? (koonǥõs [kuningas])
+Kaʹrštar õõʹni suu koonǥõssân.
 
-Ǩeäʹđen tollšur õõni suu? (triâŋgg [renki])
-Tollšurr õõni suu triâŋggân.
+Ǩeäʹđen tollšur õõʹni suu? (triâŋgg [renki])
+Tollšurr õõʹni suu triâŋggân.
 
 Ǩeäʹđen jaakân õõni suu? (papp [pappi])
 Jaakân õõni suu pappân.
@@ -524,14 +667,14 @@ Källsaž õõni suu nijddân.
   <q id="ness2">
       <qtype>N-ESS</qtype>
       <question>
-          <text>Ǩeäʹđen SUBJ õõni suu</text>
+          <text>Ǩeäʹđen SUBJ õõʹni suu</text>
           <element id="SUBJ">
               <grammar tag="N+Sg+Nom"/>
               <sem class="M_PEOPLE"/>
           </element>
     </question>
     <answer> 
-        <text>SUBJ õõni suu N-ESS</text>
+        <text>SUBJ õõʹni suu N-ESS</text>
         <element game='morfa' id="N-ESS" task="yes">
             <grammar tag="N+Ess"/>
             <sem class="M_PEOPLE_ESS"/>
@@ -802,6 +945,7 @@ Reʹssvästt lij piijjum uhssâd vuâstta.
 
 
 PARTITIIVIN KÄYTTÖ VERTAILUSSA
+__questions do not presuppose subsequent answers.__
 Lij-a äkk puärrsab ko äʹjj? (äkk [mummo])         [onko mummo vanhempi kuin ukki? (mummo)]
 Äʹjj lij puärrsab äkkad.		           [ukki on mummoa vanhempi]
 
