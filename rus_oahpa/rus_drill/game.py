@@ -28,7 +28,9 @@ try:
 except:
 	L1 = 'rus'  # was: sme
 
-try:
+LL1 = 'rus' # settings L1 is 'ru' as oficial ISO 639 language code (file:///home/tiina/Desktop/Using%20Language%20Identifiers%20%28RFC%203066%29.html), but dictionary uses 'rus'
+
+try: 
 	LOOKUP_TOOL = settings.LOOKUP_TOOL
 except:
 	LOOKUP_TOOL = 'lookup'
@@ -843,14 +845,14 @@ class BareGame(Game):
 
 				if tag.pos in ["A", "V"]:
 				    WORD_FILTER = Q()
-				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)
+				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=LL1)
 				if random_word == []: # Program tried to pick a Loc2 or Gen2 form for the word that does not have it.
 				    if tag.case == "Loc2":
 				        tag = tags.filter(case='Loc')
 				    if tag.case == "Gen2":
 				        tag = tags.filter(case='Gen')
 				    tag = tags.order_by('?')[0]
-				    random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)
+				    random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=LL1)
 				print "random word:", random_word
 				
 
@@ -1217,9 +1219,9 @@ class NumGame(Game):
 	def create_form(self, db_info, n, data=None):
 
 		if self.settings['gametype'] in ["ord", "card"]:
-			language = L1
+			language = LL1
 		else:
-			language = L1
+			language = LL1
 
 		numstring = ""
 
@@ -1353,7 +1355,7 @@ class Klokka(NumGame):
 
 	def create_form(self, db_info, n, data=None):
 		if self.settings['gametype'] in ["kl1", "kl2", "kl3"]:
-			language = L1
+			language = LL1
 
 		numstring = ""
 
