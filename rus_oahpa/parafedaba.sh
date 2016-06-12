@@ -16,7 +16,8 @@ DPE="$DATA/engrus"
 
 echo "==================================================="
 echo "installing tags and paradigms for Morfa"
-$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>>../logs/error.log
+printf $META
+$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -26,14 +27,14 @@ echo "==================================================="
 
 #echo "==================================================="
 #echo "installing MiPListAlpha.xml"
-#$P install.py --file $INC/MiPListAlpha_corrected.xml --tagfile $META/tags.txt --paradigmfile $META/paradigms.txt #2>../logs/error.log
+#$P install.py --file $INC/MiPListAlpha_corrected.xml --tagfile $META/tags.txt --paradigmfile $META/paradigms.txt #2>error.log
 #echo " "
 #echo "done"
 #echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPS/N_rusnob.xml"
-$P install.py --file $DPS/N_rusnob.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>../logs/error.log
+$P install.py --file $DPS/N_rusnob.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -127,7 +128,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPE/MiPListAlpha_engrus.xml"
-$P install.py --file $DPD/MiPListAlpha_engrus.xml 2>>error.log
+$P install.py --file $DPE/MiPListAlpha_engrus.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
