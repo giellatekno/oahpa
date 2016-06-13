@@ -1047,19 +1047,10 @@ class QAGame(Game):
 		db_info['qid'] = question.qid
 		return db_info
 
-	######## Morfa questions
-	def get_question_morfa(self, db_info, qtype):
-		qwords = {}
-		
-		pos = self.settings.get('pos', False)
-		
-		qtype_wordform = False
-		# TODO: V_TYPE_FILTER_OPTIONS
-		#  ('V', trans_anim, mode, tense, definiteness
-
-
+	def get_qtype(self, db_info):
 		# Get qtype from settings.
-		if not qtype:
+		pos = self.settings.get('pos', False)
+		if 'qtype' not in self.settings:
 			if pos == "N":
 				qtype = self.settings['case_context']
 			if pos == "V":
@@ -1070,7 +1061,6 @@ class QAGame(Game):
 							v_tense_context)
 				qtype = V_TYPE_FILTER_OPTIONS.get(params)
 				self.settings['vtype_context'] = qtype
-				self.settings['vtype_name'] = qtype
 			if pos == "Num":
 				qtype = self.settings['num_context']
 			if pos == "A":
@@ -1079,6 +1069,22 @@ class QAGame(Game):
 				qtype = self.settings['pron_context']
 			if pos == "Der":
 				qtype = self.settings['derivation_type_context']
+			self.settings['qtype'] = qtype
+		else:
+			qtype = self.settings['qtype']
+		return qtype
+
+	######## Morfa questions
+	def get_question_morfa(self, db_info, qtype):
+		qwords = {}
+		
+		pos = self.settings.get('pos', False)
+		
+		qtype_wordform = False
+		# TODO: V_TYPE_FILTER_OPTIONS
+		#  ('V', trans_anim, mode, tense, definiteness
+
+		qtype = self.get_qtype(db_info)
 
 		books = self.settings.get('book', None)
 
@@ -1229,6 +1235,9 @@ class QAGame(Game):
 
 	def get_db_info(self, db_info,qtype=None,default_qid=None):
 		anslist=[]
+		print 'bbq db info'
+
+		self.get_qtype(db_info)
 
 		# If the question id is received from the interface, use that question info
 		# Otherwise select random question
