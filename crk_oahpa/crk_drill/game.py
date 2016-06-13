@@ -806,7 +806,8 @@ class BareGame(Game):
 				if tag.pos == 'Pron':
 					tag = tags.order_by('?')[0]
 
-				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)
+				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)\
+											.exclude(word__semtype__semtype="NOTMORFA")
 				
 
 				# if not tag.pos in ['Pron', 'Num'] and \
