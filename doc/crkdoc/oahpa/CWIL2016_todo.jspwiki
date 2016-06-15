@@ -2,132 +2,27 @@
 
 !! Priorities (Things that must be completed before mid-June)
 
-##. Conjunct- Accept both with prefix and without, but prefer prefix. (Right now it doesn't even accept a prefix.)
-##. remove Cnj from paradigms and change fullform update script to create
+#. Conjunct: accepts preverb forms now, but forms without have been removed.
+##. If we want prefixless forms still, we will need to add these with Use/NG to the static file, but after the forms with the preverb, and all forms will need to not have any preverb tags.
+
 #. test install without Pron_crk, since these are in fillings.xml
 ##. generation errors somehow, less forms available-- apparently we need the exact structure the static forms in Pron_crk.xml provides
+
 #. Numra dates should be all in cree (easy/hard setting? One with digits  and then cree months, the other all cree)
 #. begin getting basic vasta working, once all these others are taken care of
 
 Missing feedback messages
-#. TEST: t-joiner
-##. problem was missing init for Word attributes, not installed
-#. TEST: Fut+Int marker for Cnj
-##. problem was missing this particular attribute for the tagset install process
-#. TODO: II verbs don't seem to be working now for some reason, but when they were working the help for 4Sg and 4Pl didn't seem to work.
-#. mgame_s_n instructions for morfa-s nouns
+#. Fut+Int marker for Cnj
+##. problem was missing this particular attribute for the tagset install
+##. process, there are three places to add them so it gets tricky
+#. II verbs don't seem to be working now for some reason, but when they were working the help for 4Sg and 4Pl didn't seem to work.
+##. This was simpler than it looked given all the other issues-- 4Sg and 4Pl were missing from tags.txt
 
 Misc
 
 # export lemma / form and tag test list for FST people?
 
-Current Extensive Error List for Morfa
-
-{{{
-
-    Morfa-S  Nouns  Pl: 
-    Morfa-S  Nouns  Loc:
-                           Don't allow for plural or locative nouns in questions.
-
-}}}
-
-!!Bugs - not fixed?
-
-
-!Instructions
-# Possessive Morfa-C instructions
-## The N-PX instructions from mgame_n.html on line 25 should be showing for Morfa-C possessives.
-## The instructions currently showing for Morfa-C possessives are not needed.
-# Morfa-S Nouns: Has new mgame_s_h.html been implemented/coded properly? 
-##Plural, Locative and Rev. Diminutive are all showing N-2SG instructions.
-##Possessive instructions are correct and are from N-2SG and N-3SG in mgame_n.html file.
-# Morfa-C verb exercises are all only showing only "present tense AI" instructions.
-
-!Design
-# Define "mode" attribute
-## __fixed in morfa-c, do we want this in morfa-s?__
-
-!Morfa C tasks
-#Remove Diminutive task from menu bar (temporarily)
-#When you select TI for prs and prt, you actually get TA questions (That is why the TA help was showing up.). __hopefully fixed in forms__
-# Verbs AI Ind (prt,futdef,futint--(attribute errors __UPDATE:Now they say Page Not Found__), AI Cnj (prt, futint - Page not Found), TI Ind (futdef, futint)__ALL TI verbs are now broken__, II Ind and Cnj pages not found. All TA now broken.
-# TI-Ind-Prt,TA-Ind-Prt, and TA-Ind-fut-def,  still showing % in generated verbs.
-## TODO: ryan
-## names?
-# V-AI-FUT-INT, + PRT + FUT-DEF - doesn't work
-## installs successfully, but errors in generation? Lene has checked FST-generation for these word forms, and it is ok. __Ryan__
-# Morfa-C TI, TA, and II verb help is not functioning. FUT-DEF and FUT-INT marker help is not functioning either.
-##TI only has part of TA help. TA only has part of help (this hopefully fixed).
-#pronouns are now broken
-
-!Morfa S tasks
-# Morfa-S __All Nouns__: both questions should be Sg- not plural, loc, or diminutive. (e.g. no plural in loc or dim exercises) This causes help messages to show up in the wrong exercises.
-
-!Generation
-#CNJ should accept answers both with and without "ê" prefix but WITH prefix should be the preferred answer.
-#After "fillings", nouns are generated but not in N_Crk? How do we create help for them.
-
-!Feedback
-# Added a "t2c" tag for nouns with values "yes" or "no". Need to be added to tag list.
-# Conjunct and Independent help messages are showing up together in independent and conjunct exercises in Morfa-C and S. __Lene probably fixed in source file__ still NOT fixed
-# If the user has the answer completely correct and they "show answers" it should only show answers for the questions not completely correct
-# Gold page for Diminutive qagame.py:l.155, add qid
-
-!! morfa-c question types
-
-# V-AI-FUT-INT
-# V-AI-PRS
-# V-AI-PRT
-# V-II-PRS
-# V-TA-CNJ-FUT-INT
-# V-TA-CNJ-PRS
-# V-TA-CNJ-PRT
-# V-TA-FUT-DEF
-# V-TA-FUT-INT
-# V-TA-PRS
-# V-TA-PRT
-# V-TI-CNJ-FUT-INT
-# V-TI-CNJ-PRS
-# V-TI-CNJ-PRT
-# V-TI-FUT-DEF
-# V-TI-FUT-INT
-# V-TI-PRS
-# V-TI-PRT
-
 !! Bug notes
-
-# question install process may now use multiple semtypes per element, and a word will be matched and used in the question if at least one semtype matches. if we need to have them all match we'll have to do something else
-
-# feedback install for Subj+Obj tag has to be switched to multiple attributes (see verb feedback file for example)
-
-!!Design - general - not fixed
-* Add a typer!: __Ryan__
-* Find where to change the names of the exercise on the side of each exercise page __Ryan__
-** Look through the templates for the block named "gametitlename", i.e., line 6 in mgame.html. 
-
-!!Task design - not fixed
-* all programs: should allow accidental spaces before/after answers
-* Morfa-S Verb exercises. Move the verblemma, pronoun and blank onto the same line: __Ryan__
-* Morfa-S: switch diminutive-tasks from neutral form to diminutive
-** Implement in code: __Ryan__
-*implement vowel-length error/ almost correct feedback into larger fst for all exercises
-** Add Use/NG tags to lexc __Lene, done__
-
-!! MorfaC: New tasks
-* MorfaC verbs: 
-** __TI__ (TI-PRS_PRT_FUTDEF_FUTINT.xml) 
-*** __now installs__
-** __TA__ (TA-PRS_PRT_FUTDEF_FUTINT.xml) 
-*** __now installs__
-** __conjunct__ (AI-CNJ-PRT_PRS_FUTINT.xml, TA-CNJ-PRS_PRT_FUTINT.xml, TI-CNJ-PRS_PRT_FUTINT.xml)
-*** __now installs__
-*** __added missing AI-CNJ-PRT_PRS_FUTINT, but some questions need a look over__
-* MorfaC verbs: translation tasks
-** pronouns (transl_questions.xml): __fixed__
-** II verbs with tranlastions from English (II-PRS.xml) __not functioning yet__
-*** __now installs__
-** nouns: diminutive (in noun_questions.xml)
-*** __now installs__
 
 !! Numra
 * words with vowel length errors or typos should be marked with __Err/ShLo__, which will give it possible to give spesific feedback, and mark the answer in yellow with the opportunity for correction. It's now added to the Numra FSTs, but we will consider it for the ped.FTS __ implementing in Numra: Ryan__, the message file is: meta/errorfstmessages.xml. There are new transcriptors on gtoahpa.
