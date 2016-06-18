@@ -150,8 +150,9 @@ CASE_CONTEXT_CHOICES = (
 	#('N-GEN', _('genitive')),
 	#('N-ILL', _('illative')),
 	#('N-LOC', _('locative')),
-	#('N-COM', _('comitative')),
-	#('N-ESS', _('essive')),
+	('N-SG-COM', _('singular comitative')),
+	('N-PL-COM', _('plural comitative')),
+	('N-ESS', _('essive')),
 	#('N-MIX', _('mix')),
 )
 
