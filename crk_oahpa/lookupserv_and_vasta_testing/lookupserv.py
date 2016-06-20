@@ -19,7 +19,7 @@ import time
 class Server:
     def __init__(self):
         self.host = ''
-        self.port = 9000
+        self.port = 9007
         self.backlog = 5
         self.size = 1024
         self.server = None
@@ -28,13 +28,12 @@ class Server:
 
         #fstdir="/Users/saara/gt/rus/bin"
         #lo="/Users/saara/bin/lookup"
-        fstdir="/opt/smi/rus/bin"
-        lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
-        #logfile= "/home/saara/foo.log"
-        logfile= "/var/log/lserv.log"
+        fstdir="/opt/smi/crk/bin"
+        lo = "/usr/local/bin/lookup"
+        logfile= "/var/log/lserv-crk.log"
         f = open(logfile, 'a')        
 
-        fst = fstdir + "/ped-rus.fst"
+        fst = fstdir + "analyser-gt-desc.xfst"
         self.lookup = lo + " -flags mbTT -utf8 " + fst
         #print self.lookup
         self.look = pexpect.spawn(self.lookup)
