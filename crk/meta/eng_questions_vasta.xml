@@ -1,325 +1,328 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<questions>
-  <q id="vtrdem1">
-    <qtype>V-P-DEM</qtype>
-    <question>
-      <text>P-DEM MAINV OBJ</text> <!-- That is a shoe. -->
-	  <element id='P-DEM'>
-		  <grammar tag="Pron+Dem+Med+Sg+&lt;eng&gt;"/>
-	  </element>
-	  <element id='MAINV'>
-		  <grammar tag="V+Ind+Prs+3Sg+&lt;eng&gt;"/>
-		  <id>be</id>
-	  </element>
-	  <element id='OBJ'>
-		  <grammar tag="N+Sg+Indef+&lt;eng&gt;"/>
-		  <sem class="OBJECT"/>
-	  </element>
-	</question>
-<!--   <answer> 
+<questions game="cealkka">
+    <q id="vtrdem1">
+        <qtype>V-P-DEM</qtype>
+        <question>
+            <text>P-DEM MAINV OBJ</text> <!-- That is a shoe. -->
+	        <element id='P-DEM'>
+		        <grammar tag="Pron+Dem+Med+Sg+&lt;eng&gt;"/>
+	        </element>
+	        <element id='MAINV'>
+		        <grammar tag="V+Ind+Prs+3Sg+&lt;eng&gt;"/>
+		        <id>be</id>
+	        </element>
+	        <element id='OBJ'>
+		        <grammar tag="N+Sg+Indef+&lt;eng&gt;"/>
+		        <sem class="OBJECT"/>
+	        </element>
+	    </question>
+   <answer> 
       <text>maskisina V-P-DEM</text> 
       <element game='morfa' id="V-P-DEM" task="yes">
         <grammar tag="Pron+Dem+Med+IN+Pl"/>
-        <id>ôma</id>
+        <id>awa</id>
       </element>
-     </answer> -->
+     </answer>
   </q>
-    <q id="vtrdem2">
+  <q id="vtrdem2">
       <qtype>V-P-DEM</qtype>
       <question>
-        <text>P-DEM MAINV OBJ</text> <!-- Those are shoes. -->
-  	  <element id='P-DEM'>
-  		  <grammar tag="Pron+Dem+Med+Pl+&lt;eng&gt;"/>
-  	  </element>
-  	  <element id='MAINV'>
-  		  <grammar tag="V+Ind+Prs+3Pl+&lt;eng&gt;"/>
-  		  <id>be</id>
-  	  </element>
-  	  <element id='OBJ'>
-  		  <grammar tag="N+Pl+&lt;eng&gt;"/>
-  		  <sem class="OBJECT"/>
-  	  </element>
-  	</question>
-  <!--   <answer> 
+          <text>P-DEM MAINV OBJ</text> <!-- Those are shoes. -->
+  	      <element id='P-DEM'>
+  		      <grammar tag="Pron+Dem+Med+Pl+&lt;eng&gt;"/>
+  	      </element>
+  	      <element id='MAINV'>
+  		      <grammar tag="V+Ind+Prs+3Pl+&lt;eng&gt;"/>
+  		      <id>be</id>
+  	      </element>
+  	      <element id='OBJ'>
+  		      <grammar tag="N+Pl+&lt;eng&gt;"/>
+  		      <sem class="OBJECT"/>
+  	      </element>
+  	  </question>
+      <answer> 
         <text>maskisina V-P-DEM</text> 
         <element game='morfa' id="V-P-DEM" task="yes">
           <grammar tag="Pron+Dem+Med+IN+Pl"/>
-          <id>ôma</id>
+          <id>awa</id>
         </element>
-       </answer> -->
+       </answer>
    </q>
-	 <q id="vtrdem3">
+   <q id="vtrdem3">
 	   <qtype>V-P-DEM</qtype>
 	   <question>
-	     <text>P-DEM MAINV OBJ</text>  <!-- This is a shoe. -->
-		 <element id='P-DEM'>
-			 <grammar tag="Pron+Dem+Prox+Sg+&lt;eng&gt;"/>
-		 </element>
-		 <element id='MAINV'>
-			 <grammar tag="V+Ind+Prs+3Sg+&lt;eng&gt;"/>
-			 <id>be</id>
-		 </element>
-		 <element id='OBJ'>
-			 <grammar tag="N+Sg+Indef+&lt;eng&gt;"/>
-			 <sem class="OBJECT"/>
-		 </element>
-	  </question>
-	<!--   <answer> 
+	       <text>P-DEM MAINV OBJ</text>  <!-- This is a shoe. -->
+		   <element id='P-DEM'>
+			   <grammar tag="Pron+Dem+Prox+Sg+&lt;eng&gt;"/>
+		   </element>
+		   <element id='MAINV'>
+			   <grammar tag="V+Ind+Prs+3Sg+&lt;eng&gt;"/>
+			   <id>be</id>
+		   </element>
+		   <element id='OBJ'>
+			   <grammar tag="N+Sg+Indef+&lt;eng&gt;"/>
+			   <sem class="OBJECT"/>
+		   </element>
+	   </question>
+	   <answer> 
 	      <text>maskisina V-P-DEM</text> 
 	      <element game='morfa' id="V-P-DEM" task="yes">
 	        <grammar tag="Pron+Dem+Med+IN+Pl"/>
-	        <id>ôma</id>
+	        <id>awa</id>
 	      </element>
-	     </answer> -->
+	   </answer>
 	</q>
-	  <q id="vtrdem4">
+	<q id="vtrdem4">
 	    <qtype>V-P-DEM</qtype>
 	    <question>
-	      <text>P-DEM MAINV OBJ</text> <!-- These are shoes. -->
-	  	  <element id='P-DEM'>
-	  		  <grammar tag="Pron+Dem+Prox+Pl+&lt;eng&gt;"/>
-	  	  </element>
-	  	  <element id='MAINV'>
-	  		  <grammar tag="V+Ind+Prs+3Pl+&lt;eng&gt;"/>
-	  		  <id>be</id>
-	  	  </element>
-	  	  <element id='OBJ'>
-	  		  <grammar tag="N+Pl+&lt;eng&gt;"/>
-	  		  <sem class="OBJECT"/>
-	  	  </element>
+	        <text>P-DEM MAINV OBJ</text> <!-- These are shoes. -->
+	  	    <element id='P-DEM'>
+	  		    <grammar tag="Pron+Dem+Prox+Pl+&lt;eng&gt;"/>
+	  	    </element>
+	  	    <element id='MAINV'>
+	  		    <grammar tag="V+Ind+Prs+3Pl+&lt;eng&gt;"/>
+	  		    <id>be</id>
+	  	    </element>
+	  	    <element id='OBJ'>
+	  		    <grammar tag="N+Pl+&lt;eng&gt;"/>
+	  		    <sem class="OBJECT"/>
+	  	    </element>
 	  	</question>
-	  <!--   <answer> 
+	    <answer> 
 	        <text>maskisina V-P-DEM</text> 
 	        <element game='morfa' id="V-P-DEM" task="yes">
 	          <grammar tag="Pron+Dem+Med+IN+Pl"/>
-	          <id>ôma</id>
+	          <id>awa</id>
 	        </element>
-	       </answer> -->
+	       </answer>
 	  </q>
 	  <q id="vtrdem5">
-	    <qtype>V-P-DEM</qtype>
-	    <question>
-	      <text>P-DEM OBJ</text> <!-- That shoe -->
-		  <element id='P-DEM'>
-			  <grammar tag="Pron+Dem+Med+Sg+&lt;eng&gt;"/>
-		  </element>
-		  <element id='OBJ'>
-			  <grammar tag="N+Sg+&lt;eng&gt;"/>
-			  <sem class="OBJECT"/>
-		  </element>
-		</question>
-	<!--   <answer> 
+	      <qtype>V-P-DEM</qtype>
+	      <question>
+	          <text>P-DEM OBJ</text> <!-- That shoe -->
+		      <element id='P-DEM'>
+			      <grammar tag="Pron+Dem+Med+Sg+&lt;eng&gt;"/>
+		      </element>
+		      <element id='OBJ'>
+			      <grammar tag="N+Sg+&lt;eng&gt;"/>
+			      <sem class="OBJECT"/>
+		      </element>
+		  </question>
+	      <answer> 
 	      <text>maskisina V-P-DEM</text> 
 	      <element game='morfa' id="V-P-DEM" task="yes">
 	        <grammar tag="Pron+Dem+Med+IN+Pl"/>
-	        <id>ôma</id>
+	        <id>awa</id>
 	      </element>
-	     </answer> -->
+	     </answer>
 	  </q>
-	    <q id="vtrdem6">
+	  <q id="vtrdem6">
 	      <qtype>V-P-DEM</qtype>
 	      <question>
-	        <text>P-DEM OBJ</text> <!-- Those shoes -->
-	  	  <element id='P-DEM'>
-	  		  <grammar tag="Pron+Dem+Med+Pl+&lt;eng&gt;"/>
-	  	  </element>
-	  	  <element id='OBJ'>
-	  		  <grammar tag="N+Pl+&lt;eng&gt;"/>
-	  		  <sem class="OBJECT"/>
-	  	  </element>
-	  	</question>
-	  <!--   <answer> 
+	          <text>P-DEM OBJ</text> <!-- Those shoes -->
+	  	      <element id='P-DEM'>
+	  		      <grammar tag="Pron+Dem+Med+Pl+&lt;eng&gt;"/>
+	  	      </element>
+	  	      <element id='OBJ'>
+	  		      <grammar tag="N+Pl+&lt;eng&gt;"/>
+	  		      <sem class="OBJECT"/>
+	  	      </element>
+	  	  </question>
+	      <answer> 
 	        <text>maskisina V-P-DEM</text> 
 	        <element game='morfa' id="V-P-DEM" task="yes">
 	          <grammar tag="Pron+Dem+Med+IN+Pl"/>
-	          <id>ôma</id>
+	          <id>awa</id>
 	        </element>
-	       </answer> -->
+	       </answer>
 	    </q>
-		  <q id="vtrdem7">
+		<q id="vtrdem7">
 		    <qtype>V-P-DEM</qtype>
 		    <question>
-		      <text>P-DEM OBJ</text> <!-- This shoe -->
-			  <element id='P-DEM'>
-				  <grammar tag="Pron+Dem+Prox+Sg+&lt;eng&gt;"/>
-			  </element>
-			  <element id='OBJ'>
-				  <grammar tag="N+Sg+&lt;eng&gt;"/>
-				  <sem class="OBJECT"/>
-			  </element>
+		        <text>P-DEM OBJ</text> <!-- This shoe -->
+			    <element id='P-DEM'>
+				    <grammar tag="Pron+Dem+Prox+Sg+&lt;eng&gt;"/>
+			    </element>
+			    <element id='OBJ'>
+				    <grammar tag="N+Sg+&lt;eng&gt;"/>
+				    <sem class="OBJECT"/>
+			    </element>
 			</question>
-		<!--   <answer> 
+		    <answer> 
 		      <text>maskisina V-P-DEM</text> 
 		      <element game='morfa' id="V-P-DEM" task="yes">
 		        <grammar tag="Pron+Dem+Med+IN+Pl"/>
-		        <id>ôma</id>
+		        <id>awa</id>
 		      </element>
-		     </answer> -->
+		     </answer>
 		  </q>
-		    <q id="vtrdem8">
+		  <q id="vtrdem8">
 		      <qtype>V-P-DEM</qtype>
 		      <question>
-		        <text>P-DEM OBJ</text> <!-- These shoes -->
-		  	  <element id='P-DEM'>
-		  		  <grammar tag="Pron+Dem+Prox+Pl+&lt;eng&gt;"/>
-		  	  </element>
-		  	  <element id='OBJ'>
-		  		  <grammar tag="N+Pl+&lt;eng&gt;"/>
-		  		  <sem class="OBJECT"/>
-		  	  </element>
-		  	</question>
-		  <!--   <answer> 
+		          <text>P-DEM OBJ</text> <!-- These shoes -->
+		  	      <element id='P-DEM'>
+		  		      <grammar tag="Pron+Dem+Prox+Pl+&lt;eng&gt;"/>
+		  	      </element>
+		  	      <element id='OBJ'>
+		  		      <grammar tag="N+Pl+&lt;eng&gt;"/>
+		  		      <sem class="OBJECT"/>
+		  	      </element>
+		  	  </question>
+		      <answer> 
 		        <text>maskisina V-P-DEM</text> 
 		        <element game='morfa' id="V-P-DEM" task="yes">
 		          <grammar tag="Pron+Dem+Med+IN+Pl"/>
-		          <id>ôma</id>
+		          <id>awa</id>
 		        </element>
-		       </answer> -->
+		       </answer>
           </q>
-             <q id="vadji1">
-                <qtype>V-AI-II-PRS</qtype>
-                <question>
-                    <text>SUBJ MAINV ADJ</text> <!--The chair is red. -->
-                <element id='SUBJ'>
-                    <grammar tag="N+Sg+Def+&lt;eng&gt;"/>
-                </element>
-                <element id='MAINV'>
-                <grammar tag="V+Ind+Prs+3Sg+&lt;eng&gt;"/>
-                </element>
-                <element id='ADJ'>
-                <grammar tag="A+Pos+&lt;eng&gt;"/>
-                <sem class="COLOUR"/>
-                </element>
-                </question>
+
+
+          <q id="vadji1">
+              <qtype>V-AI-II-PRS</qtype>
+              <question>
+                  <text>SUBJ MAINV ADJ</text> <!--The chair is red. -->
+                  <element id='SUBJ'>
+                      <grammar tag="N+Sg+Def+&lt;eng&gt;"/>
+                  </element>
+                  <element id='MAINV'>
+                      <grammar tag="V+Ind+Prs+3Sg+&lt;eng&gt;"/>
+                  </element>
+                  <element id='ADJ'>
+                      <grammar tag="A+Pos+&lt;eng&gt;"/>
+                      <sem class="COLOUR"/>
+                  </element>
+              </question>
           </q>
-<q id="vadji2">
-    <qtype>V-AI-II-PRS</qtype>
-    <question>
-        <text>SUBJ MAINV ADJ</text> <!--The shoes are black. -->
-        <element id='SUBJ'>
-            <grammar tag="N+Pl+Def+&lt;eng&gt;"/>
-        </element>
-        <element id='MAINV'>
-            <grammar tag="V+Ind+Prs+3Pl+&lt;eng&gt;"/>
-        </element>
-        <element id='ADJ'>
-            <grammar tag="A+Pos+&lt;eng&gt;"/>
-            <sem class="COLOUR"/>
-        </element>
-    </question>
-</q>
-<q id="vadji3">
-    <qtype>V-AI-II-PRS</qtype>
-    <question>
-        <text>POSS SUBJ MAINV ADJ</text> <!--Mary's books are green. -->
-        <element id='POSS'>
-            <grammar tag="N+Prop+Px3Sg+&lt;eng&gt;"/>
-        </element>
-        <element id='SUBJ'>
-            <grammar tag="N+Pl+&lt;eng&gt;"/>
-        </element>
-        <element id='MAINV'>
-            <grammar tag="V+Ind+Prs+3Pl+&lt;eng&gt;"/>
-        </element>
-        <element id='ADJ'>
-            <grammar tag="A+Pos+&lt;eng&gt;"/>
-            <sem class="COLOUR"/>
-        </element>
-    </question>
-</q>
-<q id="vadji4">
-    <qtype>V-AI-II-PRS</qtype>
-    <question>
-        <text>POSS SUBJ MAINV ADJ</text> <!--The duck's egg is white.-->
-        <element id='POSS'>
-            <grammar tag="N+Sg+Px3Sg+&lt;eng&gt;"/>
-        </element>
-        <element id='SUBJ'>
-            <grammar tag="N+Pl+&lt;eng&gt;"/>
-        </element>
-        <element id='MAINV'>
-            <grammar tag="V+Ind+Prs+3Sg+&lt;eng&gt;"/>
-        </element>
-        <element id='ADJ'>
-            <grammar tag="A+Pos+&lt;eng&gt;"/>
-            <sem class="COLOUR"/>
-        </element>
-    </question>
-</q>
-<q id="vadji5">
-    <qtype>V-AI-II-PRS</qtype>
-    <question>
-        <text>POSS SUBJ MAINV ADJ</text> <!--The chefs' knives are big.-->
-        <element id='POSS'>
-            <grammar tag="N+Pl+Px3Pl+&lt;eng&gt;"/>
-        </element>
-        <element id='SUBJ'>
-            <grammar tag="N+Pl+&lt;eng&gt;"/>
-        </element>
-        <element id='MAINV'>
-            <grammar tag="V+Ind+Prs+3Pl+&lt;eng&gt;"/>
-        </element>
-        <element id='ADJ'>
-            <grammar tag="A+Pos+&lt;eng&gt;"/>
-            <sem class="STATE"/>
-        </element>
-    </question>
-</q>
-<q id="vadji6">
-    <qtype>V-AI-II-PRS</qtype>
-    <question>
-        <text>POSS SUBJ MAINV ADJ</text> <!--The girls' store is beautiful.-->
-        <element id='POSS'>
-            <grammar tag="N+Pl+Px3Pl+&lt;eng&gt;"/>
-        </element>
-        <element id='SUBJ'>
-            <grammar tag="N+Sg+&lt;eng&gt;"/>
-        </element>
-        <element id='MAINV'>
-            <grammar tag="V+Ind+Prs+3Sg+&lt;eng&gt;"/>
-        </element>
-        <element id='ADJ'>
-            <grammar tag="A+Pos+&lt;eng&gt;"/>
-            <sem class="APPEARANCE"/>
-        </element>
-    </question>
-</q>
-<q id="vadji7">
-    <qtype>V-AI-II-PRS</qtype>
-    <question>
-        <text>POSS SUBJ MAINV ADJ</text> <!--The boy's cheeks are red. -->
-        <element id='POSS'>
-            <grammar tag="N+Prop+Px3Sg+&lt;eng&gt;"/>
-        </element>
-        <element id='SUBJ'>
-            <grammar tag="N+Pl+&lt;eng&gt;"/>
-        </element>
-        <element id='MAINV'>
-            <grammar tag="V+Ind+Prs+3Pl+&lt;eng&gt;"/>
-        </element>
-        <element id='ADJ'>
-            <grammar tag="A+Pos+&lt;eng&gt;"/>
-            <sem class="COLOUR"/>
-        </element>
-    </question>
-</q>
-<q id="vadji8">
-    <qtype>V-AI-II-PRS</qtype>
-    <question>
-        <text>POSS SUBJ MAINV ADJ</text> <!--Paul's restaurant is good.-->
-        <element id='POSS'>
-            <grammar tag="N+Prop+Px3Sg+&lt;eng&gt;"/>
-        </element>
-        <element id='SUBJ'>
-            <grammar tag="N+Pl+&lt;eng&gt;"/>
-        </element>
-        <element id='MAINV'>
-            <grammar tag="V+Ind+Prs+3Sg+&lt;eng&gt;"/>
-        </element>
-        <element id='ADJ'>
-            <grammar tag="A+Pos+&lt;eng&gt;"/>
-            <sem class="STATE"/>
-        </element>
-    </question>
-</q>
-</questions>
+
+          <q id="vadji2">
+              <qtype>V-AI-II-PRS</qtype>
+              <question>
+                  <text>SUBJ MAINV ADJ</text> <!--The shoes are black. -->
+                  <element id='SUBJ'>
+                      <grammar tag="N+Pl+Def+&lt;eng&gt;"/>
+                  </element>
+                  <element id='MAINV'>
+                      <grammar tag="V+Ind+Prs+3Pl+&lt;eng&gt;"/>
+                  </element>
+                  <element id='ADJ'>
+                      <grammar tag="A+Pos+&lt;eng&gt;"/>
+                      <sem class="COLOUR"/>
+                  </element>
+              </question>
+          </q>
+          <q id="vadji3">
+              <qtype>V-AI-II-PRS</qtype>
+              <question>
+                  <text>POSS SUBJ MAINV ADJ</text> <!--Mary's books are green. -->
+                  <element id='POSS'>
+                      <grammar tag="N+Prop+Sg+Px3Sg+&lt;eng&gt;"/>
+                  </element>
+                  <element id='SUBJ'>
+                      <grammar tag="N+Pl+&lt;eng&gt;"/>
+                  </element>
+                  <element id='MAINV'>
+                      <grammar tag="V+Ind+Prs+3Pl+&lt;eng&gt;"/>
+                  </element>
+                  <element id='ADJ'>
+                      <grammar tag="A+Pos+&lt;eng&gt;"/>
+                      <sem class="COLOUR"/>
+                  </element>
+              </question>
+          </q>
+          <q id="vadji4">
+              <qtype>V-AI-II-PRS</qtype>
+              <question>
+                  <text>POSS SUBJ MAINV ADJ</text> <!--The duck's egg is white.-->
+                  <element id='POSS'>
+                      <grammar tag="N+Sg+Px3Sg+&lt;eng&gt;"/>
+                  </element>
+                  <element id='SUBJ'>
+                      <grammar tag="N+Pl+&lt;eng&gt;"/>
+                  </element>
+                  <element id='MAINV'>
+                      <grammar tag="V+Ind+Prs+3Sg+&lt;eng&gt;"/>
+                  </element>
+                  <element id='ADJ'>
+                      <grammar tag="A+Pos+&lt;eng&gt;"/>
+                      <sem class="COLOUR"/>
+                  </element>
+              </question>
+          </q>
+          <q id="vadji5">
+              <qtype>V-AI-II-PRS</qtype>
+              <question>
+                  <text>POSS SUBJ MAINV ADJ</text> <!--The chefs' knives are big.-->
+                  <element id='POSS'>
+                      <grammar tag="N+Pl+Px3Pl+&lt;eng&gt;"/>
+                  </element>
+                  <element id='SUBJ'>
+                      <grammar tag="N+Pl+&lt;eng&gt;"/>
+                  </element>
+                  <element id='MAINV'>
+                      <grammar tag="V+Ind+Prs+3Pl+&lt;eng&gt;"/>
+                  </element>
+                  <element id='ADJ'>
+                      <grammar tag="A+Pos+&lt;eng&gt;"/>
+                      <sem class="STATE"/>
+                  </element>
+              </question>
+          </q>
+          <q id="vadji6">
+              <qtype>V-AI-II-PRS</qtype>
+              <question>
+                  <text>POSS SUBJ MAINV ADJ</text> <!--The girls' store is beautiful.-->
+                  <element id='POSS'>
+                      <grammar tag="N+Pl+Px3Pl+&lt;eng&gt;"/>
+                  </element>
+                  <element id='SUBJ'>
+                      <grammar tag="N+Sg+&lt;eng&gt;"/>
+                  </element>
+                  <element id='MAINV'>
+                      <grammar tag="V+Ind+Prs+3Sg+&lt;eng&gt;"/>
+                  </element>
+                  <element id='ADJ'>
+                      <grammar tag="A+Pos+&lt;eng&gt;"/>
+                      <sem class="APPEARANCE"/>
+                  </element>
+              </question>
+          </q>
+          <q id="vadji7">
+              <qtype>V-AI-II-PRS</qtype>
+              <question>
+                  <text>POSS SUBJ MAINV ADJ</text> <!--The boy's cheeks are red. -->
+                  <element id='POSS'>
+                      <grammar tag="N+Prop+Sg+Px3Sg+&lt;eng&gt;"/>
+                  </element>
+                  <element id='SUBJ'>
+                      <grammar tag="N+Pl+&lt;eng&gt;"/>
+                  </element>
+                  <element id='MAINV'>
+                      <grammar tag="V+Ind+Prs+3Pl+&lt;eng&gt;"/>
+                  </element>
+                  <element id='ADJ'>
+                      <grammar tag="A+Pos+&lt;eng&gt;"/>
+                      <sem class="COLOUR"/>
+                  </element>
+              </question>
+          </q>
+          <q id="vadji8">
+              <qtype>V-AI-II-PRS</qtype>
+              <question>
+                  <text>POSS SUBJ MAINV ADJ</text> <!--Paul's restaurant is good.-->
+                  <element id='POSS'>
+                      <grammar tag="N+Prop+Sg+Px3Sg+&lt;eng&gt;"/>
+                  </element>
+                  <element id='SUBJ'>
+                      <grammar tag="N+Pl+&lt;eng&gt;"/>
+                  </element>
+                  <element id='MAINV'>
+                      <grammar tag="V+Ind+Prs+3Sg+&lt;eng&gt;"/>
+                  </element>
+                  <element id='ADJ'>
+                      <grammar tag="A+Pos+&lt;eng&gt;"/>
+                      <sem class="STATE"/>
+                  </element>
+              </question>
+          </q>
+      </questions>
