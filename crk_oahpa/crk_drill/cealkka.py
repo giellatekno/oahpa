@@ -760,8 +760,7 @@ class CealkkaGame(Game):
                  #   lemmacount=int(self.settings['lemmacount'])
                 #else:
                  #   lemmacount=2		
-		q_count = Question.objects.filter(gametype="cealkka", level__lte=level).count()
-		question = Question.objects.filter(gametype="cealkka", level__lte=level)[randint(0,q_count-1)]  # removed lemmacount filter lemmacount=lemmacount
+		question = Question.objects.filter(gametype="cealkka", level__lte=level).annotate(ac=Count('answer_set')).filter(ac__gt=0).order_by('?')[0]
 		#print level
 		#print lemmacount 
 		#question = Question.objects.get(id="107")
@@ -882,3 +881,4 @@ class CealkkaGame(Game):
 
 		return form, None
 
+#  vim: set ts=4 sw=4 tw=72 syntax=python :
