@@ -16,13 +16,21 @@
  * small fixes to cealkka so that it won't break if a question has no
    answers installed
 
+ * add some ENG_ settings in settings.py
+
+{{{
+    ENG_FST_DIRECTORY = '../crk/englexc/'
+    ENG_DIALECTS = {
+        'main': ('../crk/englexc/ieng.fst', 'Unrestricted'),
+    }
+
+    ENG_HLOOKUP_TOOL = '/usr/local/bin/lookup'
+    ENG_LOOKUP_TOOL = '/usr/local/bin/lookup -flags mbTT'
+}}}
+
+
 TODO
 
  * all eng tags? do these conflict with crk at all?
- * troubleshoot install problems beginning with vadji1
 
- * check conflict with crk? ling.py needs to look at some language attr to select the right
-   analyzer
- * filter paradigms into individual eng_ pos files?
- 
  * enable in UI
