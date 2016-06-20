@@ -23,15 +23,20 @@ try:
 except:
 	fstdir = "/opt/smi/crk/bin"
 
-lookup = settings.LOOKUP_TOOL
 
 language = settings.MAIN_LANGUAGE[0]
 
-#numfst = fstdir + "/" + language + "-num.fst"
-numfst = fstdir + "/" + "transcriptor-numbers-digit2text.filtered.lookup.xfst"
-gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.hfstol" # this is xfst 
-# gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.hfstol" # this is hfst
-
+if 'eng' in sys.argv:
+    lookup = settings.ENG_LOOKUP_TOOL
+    fstdir = settings.ENG_FST_DIRECTORY
+    gen_norm_fst = settings.ENG_DIALECTS.get('main')[0]
+    language = 'eng'
+else:
+    lookup = settings.LOOKUP_TOOL
+    #numfst = fstdir + "/" + language + "-num.fst"
+    numfst = fstdir + "/" + "transcriptor-numbers-digit2text.filtered.lookup.xfst"
+    gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.hfstol" # this is xfst 
+    # gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.hfstol" # this is hfst
 
 STDERR = sys.stderr
 STDOUT = sys.stdout

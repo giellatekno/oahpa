@@ -30,6 +30,7 @@ _STDOUT = sys.stdout
 
 try:
 	DIALECTS = settings.DIALECTS
+	ENG_DIALECTS = settings.ENG_DIALECTS
 	NG_DIALECT = settings.NONGEN_DIALECT
 except:
 	print """Dialects not defined in settings.py... 
