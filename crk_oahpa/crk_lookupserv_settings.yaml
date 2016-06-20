@@ -1,0 +1,27 @@
+##
+#  This is the main config file for the lookupserv. see
+#  main/ped/lookupserv/README.md for documentation
+#
+
+# This defines how clients connect.
+#
+Services:
+
+  - port: 9008
+    type: 'telnet'
+    name: 'Plains Cree'
+    # define utilities to be accessible from this service
+    utilities:
+      - 'crk-vasta-analyze'
+
+
+# This defines the utilities that clients can access, and under what
+# name.
+#
+Utilities:
+
+  # name must have no spaces, make it like a filename
+
+  - name: "crk-vasta-analyze"
+    pipeline: "/Users/pyry/gtsvn/gtcore/scripts/preprocess | /usr/local/bin/lookup -flags mbTT /opt/smi/crk/bin/analyser-dict-gt-desc.xfst | /Users/pyry/gtsvn/gtcore/scripts/lookup2cg | /usr/local/bin/vislcg3 -g /Users/pyry/gtsvn/ped/crk/src/crk-ped.cg3"
+
