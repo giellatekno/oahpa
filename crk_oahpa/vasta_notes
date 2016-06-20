@@ -4,8 +4,22 @@
  * install eng lexicon
  * added --language setting for install process, with very quick hack
    for ling.py
+ * question format requires
+    <questions game="vasta">
+
+ * Pron_crk contains pos="Dem", needed to be "Pron"
+
+ * proper nouns need to be installed and generated (added to
+   N_Prop_eng.xml) so that forms generate with <eng> and questions can
+   find them
+
+ * small fixes to cealkka so that it won't break if a question has no
+   answers installed
 
 TODO
+
+ * all eng tags? do these conflict with crk at all?
+ * troubleshoot install problems beginning with vadji1
 
  * check conflict with crk? ling.py needs to look at some language attr to select the right
    analyzer
