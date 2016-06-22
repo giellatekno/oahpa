@@ -51,14 +51,14 @@ try:
 except:
 	print """Infinitives not defined in settings.py...
 		 	INFINITIVE_SUBTRACT = {
-		 		'nob': ur'^(?P<inf>å )?(?P<lemma>.*)$',
+		 		'nob': ur'^(?P<inf>책 )?(?P<lemma>.*)$',
 		 		'swe': ur'^(?P<inf>att )?(?P<lemma>.*)$',
 		 		'eng': ur'^(?P<inf>to )?(?P<lemma>.*)$',
 		 		'deu': ur'^(?P<inf>zu )?(?P<lemma>.*)$',
 		 	}
 		 	
 		 	INFINITIVE_ADD = {
-		 		'nob': ur'å \g<lemma>',
+		 		'nob': ur'책 \g<lemma>',
 		 		'swe': ur'att \g<lemma>',
 		 		'eng': ur'to \g<lemma>',
 		 		'deu': ur'zu \g<lemma>',
@@ -966,10 +966,12 @@ class Words(object):
 
 					if not COUNT_ONLY:
 						if VERBOSE:
-							fmt = (t.string, 
+							tagstring = force_unicode(t.string)	 # force_unicode() is applied because some tags contain non-ascii characters	
+				
+							fmt = (tagstring, 
 									f.form, 
 									', '.join(list(names)))
-							
+
 							_outstr = u"Created form: %s\t%s\t\t%s" % fmt
 							OUT_STRS.append(_outstr)
 
