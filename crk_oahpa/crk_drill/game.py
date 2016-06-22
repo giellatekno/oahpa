@@ -723,6 +723,7 @@ class BareGame(Game):
 		# 	.exclude(subclass='Prop')\
 		# 	.exclude(polarity='Neg')
 
+		tags = tags.exclude(string__contains='<eng>')
 		if TAG_EXCLUDES:
 			tags = tags.exclude(TAG_EXCLUDES)
 
