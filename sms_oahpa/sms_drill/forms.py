@@ -37,7 +37,7 @@ PASSIVE_PRONOUNS_LIST = {'Sg1':'mon', 'Sg2':'ton', 'Sg3':'dat',
 		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
 
 
-NEGATIVE_VERB_PRES = {'Sg1':u'jiõm', 'Sg2':u'jiõk', 'Sg3':u'ij', 'Sg4':u'ij',
+NEGATIVE_VERB_PRES = {'Sg1':u'jiõm', 'Sg2':u'jiõk', 'Sg3':u'ij', 'Sg4':u'jeäʹt',
 		  'Pl1':u'jeäʹp', 'Pl2':u'jeäʹped', 'Pl3':u'jiâ',
 		  'Du1':u'jeäʹp', 'Du2':u'jeäʹped', 'Du3':u'jiâ'}
 
