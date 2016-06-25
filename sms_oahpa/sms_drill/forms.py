@@ -26,7 +26,7 @@ except:
 
 PRONOUNS_LIST = {'Sg1':'mon', 'Sg2':'ton', 'Sg3':'son', 'Sg4':'(4)',
 		  'Pl1':'mij', 'Pl2':'tij', 'Pl3':'sij',
-		  'Du1':u'muäʹna', 'Du2':u'tuäʹna', 'Du3':u'suäʹna'}
+		  'Du1':u'muäna', 'Du2':u'tuäna', 'Du3':u'suäna'}
 
 POSSESSIVE_PRONOUNS_LIST = {'Sg1':u'muu', 'Sg2':u'tuu', 'Sg3':u'suu',
 		  'Pl1':u'mij', 'Pl2':u'tij', 'Pl3':u'sij'}
