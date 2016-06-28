@@ -1172,6 +1172,12 @@ class NumGame(Game):
 		return [a for a in analyses if a[1] != '?']
 
 	def check_answer(self, question, useranswer, formanswer):
+		# modified 'numeral' test accordingly to new text2digit transducers that have correspondences  
+		# of strings with optional stress marks and the numbers with a tag +Err/ShLo like
+		# три тысячи девятьсот семьдесят  -  3970+Err/ShLo
+		# that enables to accept students answers with some or all missing stress marks
+		# If there are incorrect stress marks in the answer, it should be considered an error,
+		# although it could get an appropriate error message
 		gametype = self.settings['numgame']
 		# print gametype
 		if useranswer.strip():
@@ -1208,8 +1214,11 @@ class NumGame(Game):
 					return False
 				except ValueError:
 					pass
+				#if question in [a[1] for a in num_list] or \
+				#	useranswer in num_list:
 				if question in [a[1] for a in num_list] or \
-					useranswer in num_list:
+					question+"+Err/ShLo" in [a[1] for a in num_list] or \
+					useranswer in formanswer:
 					return True
 				else:
 					return False
@@ -1305,8 +1314,12 @@ class Klokka(NumGame):
 
 
 	def check_answer(self, question, useranswer, formanswer):
-		# TODO: in string->num, need to display the corresponding numeral if
-		# it is one that can be 14 hour time
+		# modified 'numeral' test accordingly to new text2digit transducers that have correspondences  
+		# of strings with optional stress marks and the numbers with a tag +Err/ShLo like
+		# три тысячи девятьсот семьдесят  -  3970+Err/ShLo
+		# that enables to accept students answers with some or all missing stress marks
+		# If there are incorrect stress marks in the answer, it should be considered an error,
+		# although it could get an appropriate error message
 		gametype = self.settings['numgame']
 		if useranswer.strip():
 			forms = useranswer.encode('utf-8')
@@ -1340,6 +1353,7 @@ class Klokka(NumGame):
 				# Bug in numeral game seems to be presenting wrong set of numerals,
 				# so if answerset contains 13+, need to remove and take the lower.
 				# Or 'militaryrelax' the answer
+				# ??
 
 				num_list = num_list + formanswer
 				try:
@@ -1347,8 +1361,11 @@ class Klokka(NumGame):
 					return False
 				except ValueError:
 					pass
+				#if question in [a[1] for a in num_list] or \
+				#	useranswer in num_list:
 				if question in [a[1] for a in num_list] or \
-					useranswer in num_list:
+					question+"+Err/ShLo" in [a[1] for a in num_list] or \
+					useranswer in formanswer:
 					return True
 				else:
 					return False

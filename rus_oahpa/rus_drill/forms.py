@@ -540,6 +540,8 @@ def relax(strict):
 				... but ...
 				*miele is accepted for mïele.
 	"""
+	# Not needed in NumQuestion and KlokkaQuestion anymore as this is done by new text2digit trascriptors
+	# Still used in OahpaQuestion and ContextMorfaQuestion until other oahpa transducers incorporate the feature
 	from django.utils.encoding import force_unicode
 
 	relaxed = strict
@@ -583,8 +585,47 @@ def relax(strict):
 	# Return list of unique possibilities
 	relaxed_perms = list(set(relaxed_perms))
 	relaxed_perms = [force_unicode(item) for item in relaxed_perms]
-
+	
 	return relaxed_perms
+
+def relax_stress(strict):
+	"""Returns a string without stress marks (all). 
+	It is difefrent from the previous relax() as for stress relaxing there is no need 
+	for the list of input string with different pair substitutions. The original relax() was
+	written for different purpose, where each substitution has its own meaning. This is 
+	not applicable for stress marks as its meaning for different letters is identical. 
+	And it is not sufficient to have string with only one substitution, if there are multiple 
+	stress marks missing or incorrect in the answer string. For written text it is necessary 
+	and sufficient if the student answer without stress marks matches the correct answer 
+	without stress marks. 
+	"""
+	from django.utils.encoding import force_unicode
+
+	relaxed = strict
+	sub_str = lambda _string, _target, _sub: _string.replace(_target, _sub)
+
+	relax_pairs = {
+		# key: value
+		# value is accepted for key - have changed the order in the pairs because the key must be unique
+		# For Russian: spellrelax for je vs jo, vowels with and without stress marks
+	   u'а́': u'а',
+	   u'е́': u'е',
+	   u'и́': u'и',
+	   u'о́': u'о',
+	   u'у́': u'у',
+	   u'ы́': u'ы',
+	   u'э́': u'э',
+	   u'ю́': u'ю',
+	   u'я́': u'я',
+	   u'ё': u'е',
+	   u'ё́': u'е',
+	}
+
+	searches = relax_pairs.items()
+	for R, S in searches:
+		relaxed = sub_str(relaxed, R, S)
+
+	return relaxed
 
 def is_correct(self, game, example=None):
 	"""
@@ -896,9 +937,12 @@ class OahpaQuestion(forms.Form):
 		today = datetime.date.today()
 		# print ','.join(self.correct_anslist)
 
+		is_correct_answer = self.iscorrect
+		if self.error == "error": # here: correct answer string except wrong stress mark(s)
+			is_correct_answer = False 
 		log, c = Log.objects.get_or_create(userinput=self.answer,
 											correct=','.join(self.correct_anslist),
-											iscorrect=self.iscorrect,
+											iscorrect=is_correct_answer,
 											example=self.example,
 											game=self.game,
 											date=today)
@@ -1368,6 +1412,9 @@ class NumQuestion(OahpaQuestion):
 		if correct_test:
 			self.error = "correct"
 			self.iscorrect = True
+		elif relax_stress(self.userans) in [relax_stress(corans) for corans in self.correct_anslist]:
+			# which one should be logged?
+			self.iscorrect = True	
 
 		self.correctlist = u",".join(list(set(self.correct_anslist)))
 
@@ -1396,7 +1443,7 @@ class NumQuestion(OahpaQuestion):
 			self.question_str = num_string
 		else:
 			self.init_variables(force_unicode(num_list[0]), userans_val, num_list)
-			wforms = sum([relax(force_unicode(item)) for item in num_list], [])
+			#wforms = sum([relax(force_unicode(item)) for item in num_list], [])
 			# need to subtract legal answers and make an only relaxed list.
 			self.relaxings = [item for item in wforms if item not in num_list]
 			example = numeral
@@ -1418,8 +1465,8 @@ class NumQuestion(OahpaQuestion):
 		if correct_val:
 			if correct_val == "correct":
 				self.error = "correct"
-			# relax
-			if userans_val in self.relaxings:
+			# always accept relaxed spelling
+			# if userans_val in self.relaxings:
 				self.is_relaxed = "relaxed"
 				self.strict = 'Strict form'
 			else:
@@ -1512,7 +1559,7 @@ class KlokkaQuestion(NumQuestion):
 
 		else:
 			self.init_variables(force_unicode(accept_list), userans_val, present_list)
-			wforms = sum([relax(force_unicode(item)) for item in accept_list], [])
+			#wforms = sum([relax(force_unicode(item)) for item in accept_list], [])
 			# need to subtract legal answers and make an only relaxed list.
 			self.relaxings = [item for item in wforms if item not in accept_list]
 			example = numeral
@@ -1541,8 +1588,8 @@ class KlokkaQuestion(NumQuestion):
 		if correct_val:
 			if correct_val == "correct":
 				self.error = "correct"
-			# relax
-			if userans_val in self.relaxings:
+			# always accept relaxed spelling
+			# if userans_val in self.relaxings:
 				self.is_relaxed = "relaxed"
 				self.strict = 'Strict form'
 			elif userans_val in accept_list and userans_val not in present_list:
@@ -1570,6 +1617,9 @@ class KlokkaQuestion(NumQuestion):
 		if correct_test:
 			self.error = "correct"
 			self.iscorrect = True
+		elif relax_stress(self.userans) in [relax_stress(corans) for corans in self.correct_anslist]:
+			# which one should be logged?
+			self.iscorrect = True	
 
 		self.correctlist = u",".join(list(set(self.correct_anslist)))
 

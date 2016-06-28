@@ -129,7 +129,11 @@
 
 
 		{% ifequal form.error "error" %}
-		    <img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
+            {% if form.iscorrect %}
+                        	<img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/herror.png"/>
+	        {% else %}
+                        	<img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
+	        {% endif %}
 		    {% if not show_correct %}
                 {% if settings.gametype == "bare" or settings.transtype == "nobrus" or settings.transtype == "danrus" or settings.transtype == "engrus" %}
     			 <span class="click-to-stress">Insert stress mark</span>
