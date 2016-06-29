@@ -509,6 +509,13 @@ class Questions:
 			if not found:
 				self.read_element(qaelement,None,syntax,qtype)
 
+	def delete_question_by_qid(self, qid=None):
+		#If there exists already a question with that name, delete all the references to it.
+		if qid:
+			questions = Question.objects.filter(qid=qid)
+			if questions:
+				questions[0].delete()
+
 	def read_questions(self, infile, grammarfile):
 
 		xmlfile=file(infile)
