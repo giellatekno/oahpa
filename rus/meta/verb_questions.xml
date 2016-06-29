@@ -18,7 +18,7 @@
     </answer>
   </q>
 
-  <q id="pst_yesterday">
+  <q id="pst_yesterday_msc">
     <qtype>V-PST</qtype>
     <question>
       <text>Что SUBJ делал вчера</text>
@@ -32,6 +32,25 @@
       <text>SUBJ MAINV</text>
       <element game='morpha' task='yes' id="MAINV">
         <grammar tag="V+Impf+IV+Pst+Msc+Sg"/>
+        <sem class="mACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+
+  <q id="pst_yesterday_fem">
+    <qtype>V-PST</qtype>
+    <question>
+      <text>Что SUBJ делала вчера</text>
+      <element id="SUBJ">
+        <grammar tag="N+Fem+Anim+Sg+Nom"/>
+        <gender>Fem</gender>
+        <sem class="OCCUPATIONS"/>
+      </element>
+    </question>
+    <answer>
+      <text>SUBJ MAINV</text>
+      <element game='morpha' task='yes' id="MAINV">
+        <grammar tag="V+Impf+IV+Pst+Fem+Sg"/>
         <sem class="mACTIVITY"/>
       </element>
     </answer>

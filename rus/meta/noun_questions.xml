@@ -322,12 +322,12 @@
     </answer>
 </q>
   
-    <q id="acc_dirobj_anim">
+    <q id="acc_dirobj_anim_subj_msc">
     <qtype>N-ACC</qtype>
     <question>
       <text>Кого SUBJ видел в LOCATION</text>
       <element id="SUBJ">
-        <grammar tag="N+Gender+Anim+Sg+Nom"/>
+        <grammar tag="N+Msc+Anim+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
       <element id="LOCATION">
@@ -338,7 +338,29 @@
     <answer>
       <text>SUBJ видел N-ACC </text>
       <element game='morfa' task='yes' id="N-ACC">
-        <grammar tag="N+Gender+Anim+Sg+Acc"/>
+        <grammar tag="N+Msc+Anim+Sg+Acc"/>
+        <sem class="PEOPLE"/>
+      </element>
+    </answer>
+  </q>
+
+    <q id="acc_dirobj_anim_subj_fem">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Кого SUBJ видела в LOCATION</text>
+      <element id="SUBJ">
+        <grammar tag="N+Fem+Anim+Sg+Nom"/>
+        <sem class="PEOPLE"/>
+      </element>
+      <element id="LOCATION">
+        <grammar tag="N+Gender+Inan+Sg+Loc"/>
+        <sem class="LOCATION-V-LOC"/>
+      </element>
+    </question>
+    <answer>
+      <text>SUBJ видела N-ACC </text>
+      <element game='morfa' task='yes' id="N-ACC">
+        <grammar tag="N+Fem+Anim+Sg+Acc"/>
         <sem class="PEOPLE"/>
       </element>
     </answer>
