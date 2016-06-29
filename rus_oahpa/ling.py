@@ -31,7 +31,7 @@ try:
 except:
 	language = "rus"
 
-numfst = fstdir + "/" + "transcriptor-numbers-digit2text.xfst"
+numfst = fstdir + "/" + "transcriptor-numbers-digit2text.filtered.lookup.xfst"
 gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst"
 analysis_fst = fstdir + "/" + "analyser-oahpa-gt-norm.xfst" 
 
