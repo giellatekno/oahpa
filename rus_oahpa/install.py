@@ -59,6 +59,8 @@ OPTION_LIST = (
                   help="XML-file for feedback messages"),
 	make_option("-q", "--questionfile", dest="questionfile",
 	              help="XML-file that contains questions"),
+	make_option("-j", "--delete-qid", dest="questionid",
+					  help="delete questions by qid"),
 	make_option("-k", "--sahka", dest="sahkafile",
                   help="XML-file for Dialogues"),  # added
 	make_option("-w", "--wid", dest="wordid",
@@ -100,6 +102,10 @@ def main(opts):
 
 	if options.wordid:
 		words.delete_word(options.wordid,options.pos)
+		sys.exit()
+
+	if options.questionid:
+		questions.delete_question_by_qid(options.questionid)
 		sys.exit()
 
 	if options.questionfile and options.grammarfile:
