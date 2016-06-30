@@ -16,7 +16,7 @@ TODO: internationalization strings
 	{# Add blocktrans and trans tags #}
 	<div id="courses">
 		<ul id="subnav">
-			<li><a href="{% url crk_oahpa.courses.urls.logout %}">Log out</a></li>
+			<li><a href="{% url "crk_oahpa.courses.urls.logout" %}">Log out</a></li>
 		</ul>
 		<h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
 

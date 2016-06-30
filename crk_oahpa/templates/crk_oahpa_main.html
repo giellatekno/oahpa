@@ -112,14 +112,14 @@
 			<ul id="games_menu">
 
         <!--        <li class="game">
-					<a href="{% url vasta_s %}">
+					<a href="{% url "vasta_s" %}">
 						<span>VASTA</span><br />
 						<img src="{{ MEDIA_URL }}/images/vasta.png" alt="VASTA" /><br />
 						<span>{% trans "Answer to questions" %}<font color="#FF0000" size="3pt"> (under construction) </font></span>
 					</a>
 				</li>  --->
 				<li class="game">
-					<a href="{% url leksa %}">
+					<a href="{% url "leksa" %}">
 						<span>itwêwina êkwa itwêstamâkêwina</span><br />
 						<img src="{{ MEDIA_URL }}/images/leksa.png" alt="LEKSA" /><br />
 						<span>{% trans "Words and translations" %}</span>
@@ -127,7 +127,7 @@
 				</li>
 				
 				<li class="game">
-					<a href="{% url morfa_s.noun %}">
+					<a href="{% url "morfa_s.noun" %}">
 						<span>itwêwinihkêwin</span><br />
 						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-S" /><br />
 						<span>{% trans "Inflect words" %}</span>
@@ -135,7 +135,7 @@
 				</li>
 
 				<li class="game">
-                    <a href="{% url morfa_c.noun %}">
+                    <a href="{% url "morfa_c.noun" %}">
 						<span>kakwêcihkêmowina </span><br />
 						<img src="{{ MEDIA_URL }}/images/morfac.png" alt="MORFA-C" /><br />
 						<span>{% trans "Inflect words in sentences" %}</span>
@@ -143,14 +143,14 @@
 				</li>
 				
 <!--            <li class="game">
-                        <a href="{% url sahka %}">
+                        <a href="{% url "sahka" %}">
 						<span>SAHKA</span><br />
 						<img src="{{ MEDIA_URL }}/images/sahka.png" alt="SAHKA" /><br />
 						<span>{% trans "Dialogue game" %} <font color="#FF0000" size="3pt"> (under construction) </font></span>
 					</a>
 				</li>   ---->
                 <li class="game">
-                    <a href="{% url numra %}">
+                    <a href="{% url "numra" %}">
 						<span>akihtâsona</span><br />
 						<img src="{{ MEDIA_URL }}/images/numra.png" alt="NUMRA" /><br />
 						<span>{% trans "Practice numerals" %}</span>
@@ -211,7 +211,7 @@
             -->
 			</ul>
 
-<!---			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p> -->
+<!---			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url "courses.views.courses_main" %}">{% trans "Log in here" %}</a></p> -->
 			{% endblock %}
 		</div>
 
