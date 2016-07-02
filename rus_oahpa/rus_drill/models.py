@@ -889,6 +889,11 @@ class Form(models.Model):
 			else:
 				number = 'Sg'
 
+			if self.tag.gender:
+				gender = self.tag.gender
+			else:
+				gender = ''
+
 			if self.tag.subclass:
 				subclass = self.tag.subclass
 			else:
@@ -897,6 +902,7 @@ class Form(models.Model):
 			print subclass
 			baseform = self.word.form_set.filter(tag__case='Nom',
 													tag__number=number,
+													tag__gender=gender,
 													tag__grade='',
 													tag__subclass=subclass,
 													tag__attributive='')
