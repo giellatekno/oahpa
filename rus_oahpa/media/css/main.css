@@ -585,6 +585,19 @@ span.click-to-stress {
 	display: inline;
 }
 
+#question_set span.blankentrys {
+	color: transparent;
+	visibility: hidden;
+	display: none;
+}
+
+#question_set.morfa span.blankentrys {
+	margin-left: 11em;
+	color: black;
+	visibility: visible;
+	display: inline;
+}
+
 /* morfa-s */
 
 #question_set dt {
@@ -616,6 +629,12 @@ span.click-to-stress {
 #question_set input[type='text'] {
 	border-width: 1px;
 	border-color: #bbb;
+}
+
+#question_set.morfa input[type='text'] {
+	border-width: 1px;
+	border-color: #bbb;
+	width: 17.8em;
 }
 
 span.incorrect input {

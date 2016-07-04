@@ -109,10 +109,11 @@
 
 		{% else %}
 			<!-- Answer field -->
-			{% if form.pron %}<span class="pronoun">{{ form.pron }}</span>{% endif %}
 			{% if gametype != "sahka" or forloop.last %}
-                {{ form.answer }}
-                {% if settings.gametype == "bare" or settings.transtype == "nobrus" or settings.transtype == "danrus" or settings.transtype == "engrus" %}
+				{% if form.pron %}<span class="pronoun">{{ form.pron }}</span>{% endif %}
+                {{ form.answer }} 				
+                {% ifequal settings.pos "V" %}<span class="blankentrys">_______________ </span>{% endifequal %}
+                {% if settings.gametype == "bare" or settings.gametype == "context" or settings.gametype == "qa" or settings.transtype == "nobrus" or settings.transtype == "danrus" or settings.transtype == "engrus" %}
                     <span class="click-to-stress">Insert stress mark</span>
                 {% endif %}
 			{% endif %}
