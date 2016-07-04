@@ -235,7 +235,8 @@ class Paradigm:
 			#print >> STDOUT, 'A line from paradigms: %s' % line
 			
 			if not line: break
-			if not line.strip(): continue
+			line = line.strip()
+			if not line: continue
 			
 			matchObj = posObj.search(line)
 			
@@ -249,8 +250,14 @@ class Paradigm:
 				print >> STDERR, ' * Error on line: %s' % line
 				sys.exit()
 			self.paradigms[pos].append(line)
-			# print >> STDERR, '%s paradigm: %s' % (pos,self.paradigms[pos])
+			#print >> STDERR, '%s paradigm: %s' % (pos,self.paradigms[pos])
+			print line
+			if len(line)<41: # currently only duplicates 
+				tag, created = Tag.objects.get_or_create(string=line)
+				tag.save()
+				#print "create ", tag, tag.pos, tag.case, tag.infinite, tag.mood, tag.number, tag.gender, tag.animate
 
+				
 	def create_paradigm_no_gen(self, lemma, pos, baseform, wordforms):
 		""" Creates paradigm objects as does create_paradigm, but using data
 			stored in XML. This data is already parsed in words_install, for the

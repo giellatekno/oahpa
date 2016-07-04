@@ -728,6 +728,7 @@ class Tag(models.Model):
 			'tense': 'Tense',
 			'gender': 'Gender',
 			'animate': 'Animate',
+			'subclass': 'Aspect',
 		}
 
 		tagname_to_set = {}
@@ -744,14 +745,17 @@ class Tag(models.Model):
 
 			if attrname:
 				self.__setattr__(attrname, piece)
+				
+		if self.pos=='V' and self.infinite=='' and self.mood=='':
+			self.mood = 'Ind'
 
 	def create(self, *args, **kwargs):
 		self.fix_attributes()
 		super(Tag, self).create(*args, **kwargs)
 
-	# def save(self, *args, **kwargs):
-	# 	self.fix_attributes()
-	# 	super(Tag, self).save(*args, **kwargs)
+	def save(self, *args, **kwargs):
+	 	self.fix_attributes()
+	 	super(Tag, self).save(*args, **kwargs)
 
 class Form(models.Model):
 	word = models.ForeignKey(Word)
