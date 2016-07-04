@@ -795,7 +795,7 @@ class Words(object):
 			# actually fetch an existing word entry,
 			# and add the lemma here as fullform to Form models
 			exist_kwargs['lemma'] = entry.lemma_stressed
-			exist_kwargs['wordid'] = entry.lemma_stressed
+			exist_kwargs['wordid'] = entry.lemma # was: lemma_stressed, but then does not find the instance
 		else:
 			exist_kwargs['lemma'] = lemma
 			exist_kwargs['wordid'] = lemma
