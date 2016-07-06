@@ -728,7 +728,6 @@ class Tag(models.Model):
 			'tense': 'Tense',
 			'gender': 'Gender',
 			'animate': 'Animate',
-			'subclass': 'Aspect',
 		}
 
 		tagname_to_set = {}
@@ -739,13 +738,16 @@ class Tag(models.Model):
 			for t in tagnames:
 					tagname_to_set[t] = attr
 
-
-		for piece in self.string.split('+'):
+		attrs = self.string.split('+')
+		for piece in attrs:
 			attrname = tagname_to_set.get(piece, False)
 
 			if attrname:
 				self.__setattr__(attrname, piece)
 				
+		if attrs[0][0] != self.pos[0]:
+			self.__setattr__('pos', attrs[0])
+		
 		if self.pos=='V' and self.infinite=='' and self.mood=='':
 			self.mood = 'Ind'
 
