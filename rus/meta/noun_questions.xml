@@ -19,7 +19,7 @@
     <question>
       <text>Где SUBJ</text>
       <element id="SUBJ">
-        <grammar tag="N+Gender+Anim+Sg+Nom"/>
+        <grammar tag="N+GenderA+Anim+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
     </question>
@@ -69,7 +69,7 @@
     <question>
       <text>Где SUBJ</text>
       <element id="SUBJ">
-        <grammar tag="N+Gender+Anim+Sg+Nom"/>
+        <grammar tag="N+GenderA+Anim+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
     </question>
@@ -108,7 +108,7 @@
     <question>
       <text>Что SUBJ обычно пьют</text>
       <element id="SUBJ">
-        <grammar tag="N+Gender+Anim+Pl+Nom"/>
+        <grammar tag="N+GenderA+Anim+Pl+Nom"/>
         <sem class="PEOPLE"/>
       </element>
     </question>
@@ -126,7 +126,7 @@
     <question>
       <text>Что SUBJ обычно едят</text>
       <element id="SUBJ">
-        <grammar tag="N+Gender+Anim+Pl+Nom"/>
+        <grammar tag="N+GenderA+Anim+Pl+Nom"/>
         <sem class="PEOPLE"/>
       </element>
     </question>
@@ -180,7 +180,7 @@
     <question>
       <text>Откуда SUBJ</text>
       <element id="SUBJ">
-        <grammar tag="N+Gender+Anim+Pl+Nom"/>
+        <grammar tag="N+GenderA+Anim+Pl+Nom"/>
         <sem class="PEOPLE"/>
       </element>
     </question>
@@ -205,7 +205,7 @@
     <answer>
       <text>Это SUBJ для N-GEN</text>
       <element game='morfa' task='yes' id="N-GEN">
-        <grammar tag="N+Gender+Anim+Sg+Gen"/>
+        <grammar tag="N+GenderA+Anim+Sg+Gen"/>
         <sem class="PEOPLE"/>
       </element>
     </answer>
@@ -222,7 +222,7 @@
     <answer>
       <text>Этот SUBJ для N-GEN</text>
       <element game='morfa' task='yes' id="N-GEN">
-        <grammar tag="N+Gender+Anim+Sg+Gen"/>
+        <grammar tag="N+GenderA+Anim+Sg+Gen"/>
         <sem class="PEOPLE"/>
       </element>
     </answer>
@@ -239,53 +239,95 @@
     <answer>
       <text>Эта SUBJ для N-GEN</text>
       <element game='morfa' task='yes' id="N-GEN">
-        <grammar tag="N+Gender+Anim+Sg+Gen"/>
+        <grammar tag="N+GenderA+Anim+Sg+Gen"/>
         <sem class="PEOPLE"/>
       </element>
     </answer>
   </q>
 
 
-<!--  <q id="dat_indobj">
+  <q id="dat_indobj_subj_msc">
     <qtype>N-DAT</qtype>
     <question>
-      <text>Кому SUBJ дал N-ACC</text> How to make дал agree with SUBJ? 
+      <text>Кому SUBJ дал N-ACC</text>
       <element id="SUBJ">
-        <grammar tag="N+Sg+Nom"/>
+        <grammar tag="N+Msc+Anim+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
       <element id="N-ACC">
-        <grammar tag="N+Sg+Acc"/>
-        <sem class="OBJECT"/>
+        <grammar tag="N+Gender+Inan+Sg+Acc"/>
+        <sem class="FOOD_DRINK"/>
+        <!--<sem class="OBJECT"/>-->
       </element>
     </question>
     <answer>
       <text>SUBJ дал N-ACC N-DAT</text>
       <element game='morfa' task='yes' id="N-DAT">
-        <grammar tag="N+Sg+Dat"/>
+        <grammar tag="N+GenderA+Anim+Sg+Dat"/>
         <sem class="PEOPLE"/>
       </element>
     </answer>
   </q>
 
-  <q id="dat_k">
+<q id="dat_indobj_subj_fem">
     <qtype>N-DAT</qtype>
     <question>
-      <text>К кому SUBJ поехал</text> How to make поехал agree with SUBJ? 
+        <text>Кому SUBJ дала N-ACC</text>
+        <element id="SUBJ">
+            <grammar tag="N+Fem+Anim+Sg+Nom"/>
+            <sem class="PEOPLE"/>
+        </element>
+        <element id="N-ACC">
+            <grammar tag="N+Gender+Inan+Sg+Acc"/>
+            <sem class="FOOD_DRINK"/>
+            <!--<sem class="OBJECT"/>-->
+        </element>
+    </question>
+    <answer>
+        <text>SUBJ дала N-ACC N-DAT</text>
+        <element game='morfa' task='yes' id="N-DAT">
+            <grammar tag="N+GenderA+Anim+Sg+Dat"/>
+            <sem class="PEOPLE"/>
+        </element>
+    </answer>
+</q>
+
+<q id="dat_subj_msc">
+    <qtype>N-DAT</qtype>
+    <question>
+        <text>К кому SUBJ поехал</text>
+        <element id="SUBJ">
+            <grammar tag="N+Msc+Anim+Sg+Nom"/>
+            <sem class="PEOPLE"/>
+        </element>
+    </question>
+    <answer>
+        <text>SUBJ поехал к N-DAT</text>
+        <element game='morfa' task='yes' id="N-DAT">
+            <grammar tag="N+GenderA+Anim+Sg+Dat"/>
+            <sem class="PEOPLE"/>
+        </element>
+    </answer>
+  </q>
+
+  <q id="dat_subj_fem">
+    <qtype>N-DAT</qtype>
+    <question>
+      <text>К кому SUBJ поехала</text>
       <element id="SUBJ">
-        <grammar tag="N+Sg+Nom"/>
+        <grammar tag="N+Fem+Anim+Sg+Nom"/>
         <sem class="PEOPLE"/>
       </element>
     </question>
     <answer>
-      <text>SUBJ поехал к N-DAT</text>
+      <text>SUBJ поехала к N-DAT</text>
       <element game='morfa' task='yes' id="N-DAT">
-        <grammar tag="N+Sg+Dat"/>
+        <grammar tag="N+GenderA+Anim+Sg+Dat"/>
         <sem class="PEOPLE"/>
       </element>
     </answer>
   </q>
--->
+
   <q id="dat_nravitsja_1">
     <qtype>N-DAT</qtype>
     <question>
@@ -298,13 +340,13 @@
     <answer>
       <text>N-DAT нравится SUBJ</text>
       <element game='morfa' task='yes' id="N-DAT">
-        <grammar tag="N+Gender+Anim+Sg+Dat"/>
+        <grammar tag="N+GenderA+Anim+Sg+Dat"/>
         <sem class="PEOPLE"/>
       </element>
     </answer>
   </q>
 
-<q id="dat_nravitsja_2">
+  <q id="dat_nravitsja_2">
     <qtype>N-DAT</qtype>
     <question>
       <text>Кому нравится SUBJ</text>
@@ -316,7 +358,7 @@
     <answer>
       <text>N-DAT нравится SUBJ</text>
       <element game='morfa' task='yes' id="N-DAT">
-        <grammar tag="N+Gender+Anim+Sg+Dat"/>
+        <grammar tag="N+GenderA+Anim+Sg+Dat"/>
         <sem class="PEOPLE"/>
       </element>
     </answer>

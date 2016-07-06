@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <questions>
-  <q id="prs_occupations">
+    <q id="prs_occupations_sg">
+        <qtype>V-PRS</qtype>
+        <question>
+            <text>Что делает SUBJ</text>
+            <element id="SUBJ">
+                <grammar tag="N+GenderA+Anim+Sg+Nom"/>
+                <sem class="OCCUPATIONS"/>
+            </element>
+        </question>
+        <answer>
+            <text>SUBJ MAINV</text>
+            <element game='morpha' task='yes' id="MAINV">
+                <grammar tag="V+Impf+IV+Prs+Sg3"/>
+                <sem class="mACTIVITY"/>
+            </element>
+        </answer>
+  </q>
+  <q id="prs_occupations_pl">
     <qtype>V-PRS</qtype>
     <question>
       <text>Что делают SUBJ</text>
       <element id="SUBJ">
-        <grammar tag="N+Gender+Anim+Pl+Nom"/>
+        <grammar tag="N+GenderA+Anim+Pl+Nom"/>
         <sem class="OCCUPATIONS"/>
       </element>
     </question>
@@ -53,6 +70,25 @@
         <grammar tag="V+Impf+IV+Pst+Fem+Sg"/>
         <sem class="mACTIVITY"/>
       </element>
+    </answer>
+  </q>
+
+  <q id="pst_yesterday_pl">
+    <qtype>V-PST</qtype>
+    <question>
+        <text>Что SUBJ делали вчера</text>
+        <element id="SUBJ">
+            <grammar tag="N+GenderA+Anim+Pl+Nom"/>
+            <gender>Fem</gender>
+            <sem class="OCCUPATIONS"/>
+        </element>
+    </question>
+    <answer>
+        <text>SUBJ MAINV</text>
+        <element game='morpha' task='yes' id="MAINV">
+            <grammar tag="V+Impf+IV+Pst+MFN+Pl"/>
+            <sem class="mACTIVITY"/>
+        </element>
     </answer>
   </q>
 </questions>
