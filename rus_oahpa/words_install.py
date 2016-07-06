@@ -114,15 +114,15 @@ class Analysis(object):
 			'gender': self.classes.get('Gender', ""),  # PI: added for Russian
 			'animate': self.classes.get('Animate',""),
 			'case': self.classes.get('Case',""),
-			'inflection_class': self.classes.get('Inflectionclass',""),  # added by Heli: this is the Zaliznjak code 
+#			'inflection_class': self.classes.get('Inflectionclass',""),  # added by Heli: this is the Zaliznjak code 
 #			'possessive': self.classes.get('Possessive',""),
-#			'grade': self.classes.get('Grade',""),
-#			'infinite': self.classes.get('Infinite',""),
+			'grade': self.classes.get('Grade',""),
+			'infinite': self.classes.get('Infinite',""),
 			'personnumber': self.classes.get('Person-Number',""),
 #			'polarity': self.classes.get('Polarity',""),
 			'tense': self.classes.get('Tense',""),
 			'mood': self.classes.get('Mood',""),
-#			'subclass': self.classes.get('Subclass',""),
+			'subclass': self.classes.get('Subclass',""),
 			'attributive': self.classes.get('Attributive',"")
 		}
 
@@ -987,19 +987,20 @@ class Words(object):
 						'gender':           g.get('Gender', ""),
 						'animate':          g.get('Animate', ""),   
 #						'inflection_class':   g.get('Inflectionclass', ""),
-#						'grade': 			g.get('Grade',""),
+						'grade': 			g.get('Grade',""),
 #						'infinite': 		g.get('Infinite',""),
 						'personnumber': 	g.get('Person-Number',""),
 #						'polarity': 		g.get('Polarity',""),
 						'tense': 			g.get('Tense',""),
-						'mood': 			g.get('Mood',""),
+#						'mood': 			g.get('Mood',""),
 #						'subclass': 		g.get('Subclass',""),
 						'attributive': 		g.get('Attributive',""),
+#						'infinite': 		g.get('Infinite',""),
 					}
 
 					t,created=Tag.objects.get_or_create(**tag_kwargs)
 
-					t.save()
+					#t.save() # tag meta install/update should be done as a first separate step, not in word install/update 
 
 					# form = Form(fullform=f.form,tag=t,word=w)
 
