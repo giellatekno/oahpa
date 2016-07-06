@@ -1090,3 +1090,14 @@ class Words(object):
 				w.delete()
 		if not words:
 			print wid, "not found"
+			
+	def delete_words_by_pos(self, pos=None):
+
+		print pos
+		if not pos:
+			print "specify the part of speech with option -D"
+		else:
+			words = Word.objects.filter(pos=pos)
+			print words.count()
+			for w in words:
+				w.delete()

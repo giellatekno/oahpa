@@ -43,6 +43,8 @@ OPTION_LIST = (
 	make_option("-d", "--delete", dest="delete",
 					  action="store_true", default=False,
 					  help="delete words that do not appear in the lexicon file of certain pos"),
+	make_option("-D", "--delete-all-by-pos", dest="delete_pos", default=False,
+					  help="delete all words of certain pos"),
 	make_option("-e", "--feedbackfile", dest="feedbackfile",
 					  help="XML-file for feedback"),
 	make_option("-f", "--file", dest="infile",
@@ -102,6 +104,10 @@ def main(opts):
 
 	if options.wordid:
 		words.delete_word(options.wordid,options.pos)
+		sys.exit()
+
+	if options.delete_pos:
+		words.delete_words_by_pos(options.delete_pos)
 		sys.exit()
 
 	if options.questionid:
