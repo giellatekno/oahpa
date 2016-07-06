@@ -789,8 +789,8 @@ class BareGame(Game):
 		try: 
 			
 			WORD_FILTER = Q()
-			tag = tags.order_by('?')[0]
-			print "tag:", tag
+			#tag = tags.order_by('?')[0] # moved inside while
+			#print "tag:", tag
 			
 			# Loc2 and Gen2 need a special treatment.
 			"""if case == 'Loc': # exercise on Locative2
@@ -838,6 +838,9 @@ class BareGame(Game):
 			count = 0
 			while no_form and count < 10:
 
+				tag = tags.order_by('?')[0] # ensure that it is possible to choose tag with non-empty form set
+				print "tag:", tag
+				
 				# Pronouns are a bit different, so we need to resort the tags
 				# PI: Huh? Seems all the same to me. Anyway...
 				if tag.pos == 'Pron':
@@ -992,7 +995,7 @@ class BareGame(Game):
 			#   Get baseforms, and filter based on dialects.
 
 			#	NOTE: Need to use getBaseform on Form object, not Word,
-			#	because Word.getBaseform doesn't pay attention to number.
+			#	because Word.getBaseform doesn't pay attention to number and gender.
 
 			if self.settings.has_key('dialect'):
 				UI_Dialect = self.settings['dialect']
