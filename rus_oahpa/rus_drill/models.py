@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from random import choice
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.db.models import Q
@@ -895,10 +896,11 @@ class Form(models.Model):
 			else:
 				number = 'Sg'
 
-			if self.tag.gender:
+			if self.tag.gender and (self.tag.case!='Nom' or self.tag.number!='Pl'): # default: same as required answer
 				gender = self.tag.gender
-			else:
-				gender = ''
+			else:										# required Pl+Nom: baseform Sg+{'Msc', 'Fem', 'Neu'}
+				gender = choice(['Msc', 'Fem', 'Neu'])  # Adj gender in plural is MFN
+				number = 'Sg'
 
 			if self.tag.subclass:
 				subclass = self.tag.subclass
