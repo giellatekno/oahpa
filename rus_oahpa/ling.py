@@ -235,6 +235,7 @@ class Paradigm:
 			#print >> STDOUT, 'A line from paradigms: %s' % line
 			
 			if not line: break
+			if line[0]=='!': continue  # comment
 			line = line.strip()
 			if not line: continue
 			
