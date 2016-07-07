@@ -13,23 +13,21 @@ Requirements, from different perspectives:
 !!Today: Special features, not used for all languages
 
 ! Leksa:
-* audio-files
-** crk-oahpa: {{{ <l pos="N" animacy="AN" t2c="no" rime="0" gen_only="Pl,Sg" audio="kohkos">kohkôs</l>}}}
+* audio-files (crk-oahpa)
 ** for the time being: audio files are not functioning with Safari
-* almost correct feedback to the student (tcomm)
-** sma-oahpa, sme-oahpa:   
+{{{ <l pos="N" animacy="AN" t2c="no" rime="0" gen_only="Pl,Sg" audio="kohkos">kohkôs</l>}}}
+* almost correct feedback to the student (tcomm) for sma-oahpa, sme-oahpa   
 {{{         <t pos="n" stat="pref">mors eldre søster</t>
             <t pos="n">eldre søster til mor</t>
             <t pos="n" tcomm="yes">tante</t>
  }}}
-* different colours for different animacy
+* different colours for different animacy (crk-oahpa)
 ** crk-oahpa: green for N+AN, or animacy="AN"
 
 ! Morfa
 * Dictionary (NDS) is integrated (crk-oahpa)
 * only-sg choice in menu (fkv-oahpa)
-* Transitive verbs (TI) are presented with object in Morfa-S 
-** crk-oahpa:
+* Transitive verbs (TI) are presented with object in Morfa-S (crk-oahpa)
 {{{<l pos="V" object="iskocês" trans_anim="TI" initial="c" rime="m">wâpahtam</l>}}}
 * Translation tasks in Morfa-C (crk-oahpa)
 ** [pronouns|http://oahpa.no/nehiyawetan/morfac/p/]
@@ -37,6 +35,8 @@ Requirements, from different perspectives:
 
 ! FST with error-tags (Err)
 * only for sme, in old infra: {{{lookup -flags mbTT -utf8 /Users/lan000/errortag-gt/gt/sme/bin/ped-sme.fst}}}
+and is used for Vasta and Sahka.
+
 e.g.
 {{{viessui	viessu+Build+N+DiphErr+Sg+Ill
 vissui	viessu+Build+N+Sg+Ill
@@ -54,7 +54,7 @@ pêyak	1
 }}}
 
 ! Numra
-* Numra: special feedback for tag {{+Err/ShLo}}
+* Numra: special feedback for tag {{+Err/ShLo}} (crk-oahpa)
 ** crk-oahpa: you can test with peyak for 1
 
 !Interface design
