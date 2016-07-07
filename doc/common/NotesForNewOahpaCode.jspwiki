@@ -29,12 +29,17 @@ Requirements, from different perspectives:
 
 ! Morfa
 * Dictionary (NDS) is integrated (crk-oahpa)
-* only-sg choice in menu (fkv-oahpa)
+* only-sg choice in menu (fkv-oahpa, rus-oahpa)
 * Transitive verbs (TI) are presented with object in Morfa-S (crk-oahpa)
 {{{<l pos="V" object="iskocês" trans_anim="TI" initial="c" rime="m">wâpahtam</l>}}}
 * Translation tasks in Morfa-C (crk-oahpa)
 ** [pronouns|http://oahpa.no/nehiyawetan/morfac/p/]
 ** [verbs|http://oahpa.no/nehiyawetan/morfac/v/] choose II verbs
+
+* What kind of agreement or other rule inducement is used or is needed
+** rus-oahpa: agreement of subject and main verb in number for pres/past, in gender for past tense (in elaborated multiple sentence tasks may be actual, not grammatical gender for professions)
+** rus-oahpa: agreement of modifier (adj or adj-l pron) and noun in gender and case in singular, MFN as gender (for modifier) and case in plural. Implies also change of gender for Adj Sg Nom -> Pl Nom task: {Msc, Fem, Neu} -> MFN 
+** rus-oahpa: verb passive forms may be congruent with reflexive verb forms, whereas not all reflexive verbs from dictionary are suitable to be used for questions-answers in active voice (passive is not curently used in tasks)
 
 ! FST with error-tags (Err)
 * only for sme, in old infra: {{{lookup -flags mbTT -utf8 /Users/lan000/errortag-gt/gt/sme/bin/ped-sme.fst}}}
@@ -59,6 +64,7 @@ pêyak	1
 ! Numra
 * Numra: special feedback for tag {{+Err/ShLo}} (crk-oahpa)
 ** crk-oahpa: you can test with peyak for 1
+** rus-oahpa: tag {{+Err/ShLo}} is added if one or more stress marks are missing in a numeral string, accepted as a correct answer. The student's answer with incorrect stress marks is not accepted (although almost correct).
 
 !Interface design
 * all relevant menus in the top, also PoS choice (crk-oahpa)
