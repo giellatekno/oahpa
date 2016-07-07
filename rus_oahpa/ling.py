@@ -32,8 +32,8 @@ except:
 	language = "rus"
 
 numfst = fstdir + "/" + "transcriptor-numbers-digit2text.filtered.lookup.xfst"
-gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst"
-analysis_fst = fstdir + "/" + "analyser-oahpa-gt-norm.xfst" 
+gen_norm_fst = fstdir + "/" + "generator-gt-norm.xfst" # "generator-oahpa-gt-norm.xfst"
+analysis_fst = fstdir + "/" + "analyser-gt-norm.xfst" # "analyser-oahpa-gt-norm.xfst"
 
 
 STDERR = sys.stderr
