@@ -15,6 +15,7 @@ Requirements, from different perspectives:
 ! Leksa:
 * audio-files
 ** crk-oahpa: {{{ <l pos="N" animacy="AN" t2c="no" rime="0" gen_only="Pl,Sg" audio="kohkos">kohkôs</l>}}}
+** for the time being: audio files are not functioning with Safari
 * almost correct feedback to the student (tcomm)
 ** sma-oahpa, sme-oahpa:   
 {{{         <t pos="n" stat="pref">mors eldre søster</t>
@@ -34,6 +35,24 @@ Requirements, from different perspectives:
 ** [pronouns|http://oahpa.no/nehiyawetan/morfac/p/]
 ** [verbs|http://oahpa.no/nehiyawetan/morfac/v/] choose II verbs
 
+! FST with error-tags (Err)
+* only for sme, in old infra: {{{lookup -flags mbTT -utf8 /Users/lan000/errortag-gt/gt/sme/bin/ped-sme.fst}}}
+e.g.
+{{{viessui	viessu+Build+N+DiphErr+Sg+Ill
+vissui	viessu+Build+N+Sg+Ill
+lavka	lávka+N+Sg+Nom+AErr
+lávka	lávka+N+Sg+Nom
+lávka	lávka+N+CGErr+Sg+Gen
+lávkka	lávka+N+Sg+Gen
+}}}
+
+We want this for more languages, but implemented in another way than for sme. By concatinating FSTs in stead of messing up the source files, which is a big work to mantain.
+
+That we have done for numeral transcriptor in crk (Err/ShLo means error marking short/long vowel)
+{{{peyak	1+Err/ShLo
+pêyak	1
+}}}
+
 ! Numra
 * Numra: special feedback for tag {{+Err/ShLo}}
 ** crk-oahpa: you can test with peyak for 1
@@ -43,7 +62,8 @@ Requirements, from different perspectives:
 * instructions is given over the tasks, instead of in a box to the right (crk-oahpa)
 * tool tip in instructions, eg. example of how to answer (crk-oahpa)
 * tool tip in morphological feedback (crk-oahpa)
-* special characters are given 
+* special characters are given in a typer for all programs (crk-oahpa)
+** it appears when you click in the blank
 
 
 !!New ideas (don't hesitate)
@@ -121,7 +141,7 @@ Most differences follow from the availability of basis resources.
 * [http://testing.oahpa.no/voro/]
 
 !crk
-http://giellatekno.uit.no/ped/crkdoc/crk-oahpa.html
+* [http://giellatekno.uit.no/ped/crkdoc/oahpa/crk-oahpa.html]
 * 4 programs
 * crk has some audio files.
 
