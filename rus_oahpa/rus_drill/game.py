@@ -1492,6 +1492,7 @@ class QuizzGame(Game):
 
 		# Excludes
 		excl = ['exclude_' + self.settings['transtype']]
+		excl.append('exclude_' + self.settings['gametype'])
 
 		error = "QuizzGame.get_db_info: Database may be improperly loaded. \
 		Query for semantic type %s and book %s returned zero results." % ((semtypes, source))

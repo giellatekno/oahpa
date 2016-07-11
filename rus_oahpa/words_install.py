@@ -229,6 +229,8 @@ class Entry(object):
 		l_attrs = [
 			("class", "wordclass"),
 			("pos", None),
+			("hid", None),
+ 			("gen_only", None),
 			("animate", None),
 			("declension", None),
 			("gender", None),
@@ -510,12 +512,12 @@ class Words(object):
 					paradigm_args = [
 						entry.lemma,
 						entry.pos,
-						#entry.hid,
-						#entry.wordtype,		# TV, IV, TODO: Neg
-						#entry.gen_only,
+						entry.hid,
+						entry.gen_only,
 						[],
 					]
-					print "lemma: %s" % entry.lemma.encode('utf-8')
+					#	#entry.wordtype,		# TV, IV, TODO: Neg
+					print "lemma: %s %s" % (entry.lemma.encode('utf-8'), entry.pos.encode('utf-8'))
 					if (entry.pos.upper() in ['N', 'V', 'A']):  # only N, A, V paradigm generation now
 						try:
 							linginfo.collect_gen_data(*paradigm_args)
@@ -729,13 +731,13 @@ class Words(object):
 
 		# Part of speech information
 		pos = entry.pos
-#		hid = entry.hid
+		hid = entry.hid
 
-		# if entry.hid:
-		# 	hid = int(entry.hid)
-		# 	exist_kwargs['hid'] = hid
-		# else:
-		# 	hid = None
+		if entry.hid:
+		 	hid = int(entry.hid)
+		 	exist_kwargs['hid'] = hid
+		else:
+		 	hid = None
 
 		pos = pos.upper()
 		if pos.startswith('PHRASE'):
@@ -846,7 +848,7 @@ class Words(object):
 		OUT_STRS.append(frequency)
 		OUT_STRS.append(geography)
 		w.geography = geography
-#		w.hid = hid
+		w.hid = hid
 		w.save()
 
 		dialect_objects = []

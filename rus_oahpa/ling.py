@@ -32,8 +32,8 @@ except:
 	language = "rus"
 
 numfst = fstdir + "/" + "transcriptor-numbers-digit2text.filtered.lookup.xfst"
-gen_norm_fst = fstdir + "/" + "generator-gt-norm.xfst" # "generator-oahpa-gt-norm.xfst"
-analysis_fst = fstdir + "/" + "analyser-gt-norm.xfst" # "analyser-oahpa-gt-norm.xfst"
+gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst"
+analysis_fst = fstdir + "/" + "analyser-oahpa-gt-norm.xfst"
 
 
 STDERR = sys.stderr
@@ -120,7 +120,7 @@ def FSTLookup(data, fst_file):
 			gender = ""
 			animacy = ""
 
-			if data_tokens[1] == 'N' and lemma != previous_lemma:
+			if data_tokens[1] == 'N' and lemma != previous_lemma and '+Msc' not in row and '+Fem' not in row and '+Neu' not in row and '+MFN' not in row:
 				try:
 					morfanal_lemma = os.popen("echo \"" + lemma + "\" | " + cmd_analysis).readlines()  # Use morph analysis to obtain gender and animacy, because this is not given in the lexicon.
 				except OSError:
@@ -290,7 +290,7 @@ class Paradigm:
 						g.classes[tagclass] = t
 			self.paradigm.append(g)
 			
-	def collect_gen_data(self, lemma, pos, forms): #hid, wordtype, gen_only, forms):
+	def collect_gen_data(self, lemma, pos, hid, gen_only, forms): # wordtype, 
 		"""
 			Collects tags and paradigms to be passed off to the FST for generation.
 			Tags and items to be generated are filtered based on following parameters
@@ -370,19 +370,17 @@ class Paradigm:
 				#		tag = "%s%s+%s" % (_pos, wordtype, _rest)
 				#else:
 				#	tag = a
-				
-				#if gen_only:
-				#	for c in gen_only:
-				#		if c in tag:
-				#			lookups = lookups + lemma + hid + "+" + tag
-				#else:
-				print >> STDOUT, 'lemma: %s' % lemma.encode('utf-8')
-				print >> STDOUT, 'tag string: %s' % a
-				#if not lemma:
-				 #   print >> STDOUT, 'there is no lemma!'
-				  #  raise TypeError
-				print >> STDOUT, "lookup string: %s+%s " % (lemma,a)  
-				lookups = lookups + lemma + "+" + a  # was: tag instead of a
+				tag = a
+				if gen_only:
+					#for c in gen_only:
+					#	if c in tag:
+					if gen_only in tag:
+							lookups = lookups + lemma + hid + "+" + tag
+				else:
+					if not lemma:
+						print >> STDOUT, 'there is no lemma!'
+						raise TypeError
+					lookups = lookups + lemma + "+" + tag  # was: tag instead of a
 				lookups += '\n'
 		print >> STDOUT, "data for generation: %s" % lookups
 		self.generate_data.append(lookups)
