@@ -23,9 +23,8 @@ PRONOUNS_LIST = {'Sg1':u'я', 'Sg2':u'ты', 'Sg3':u'он',
 		  'Pl1':u'мы', 'Pl2':u'вы', 'Pl3':u'они'}
 
 # DEMONSTRATIVE_PRESENTATION plus Sg3/Pl3
-PASSIVE_PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'dat',
-		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'dat',
-		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
+PASSIVE_PRONOUNS_LIST = {'Sg1':'меня́', 'Sg2':'тебя́', 'Sg3':'его́',
+		  'Pl1':'нас', 'Pl2':'вас', 'Pl3':'их'}
 
 
 NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
@@ -34,7 +33,7 @@ NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
 
 TENSE_PRESENTATION = {
 	'Prs': u'сегодня',
-	'Prt': u'вчера',
+	'Pst': u'вчера',
 }
 
 RECIPROCATIVE_PRESENTATION = {
@@ -169,11 +168,11 @@ WORDFORM_TYPE_CHOICES = (
 
 ADJCASE_CHOICES = (
 	('N-NOM-PL', _('plural')),
-	#('N-ACC', _('Accusative')),
+	('N-ACC', _('Accusative')),
     ('N-GEN', _('Genitive')),
-    #('N-DAT', _('Dative')),
-    #('N-INS', _('Instrumental')),
-    #('N-LOC', _('Locative')),
+    ('N-DAT', _('Dative')),
+    ('N-INS', _('Instrumental')),
+    ('N-LOC', _('Locative')),
 )
 
 ADJECTIVE_QUESTION_ANSWER = {
@@ -253,17 +252,17 @@ NUM_TYPE_CHOICES = (
 
 VTYPE_CHOICES = (
 	('PRS', _('present')),
-	#('PRT', _('past')),
+	('PRT', _('past')),
 	#('PRF', _('perfect')),
 	#('GER', _('gerund')),
 	#('COND', _('conditional')),
-	#('IMPRT', _('imperative')),
+	('IMPRT', _('imperative')),
 	#('POT', _('potential')),
 )
 
 VERB_QUESTION_ANSWER = {
 	'PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
-	'PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
+	'PRT': [('V+Inf', 'V+Ind+Pst+Person-Number')],
 	'PRF': [('V+Inf', 'V+PrfPrc')],
 	'GER': [('V+Inf', 'V+Ger')],
 	'COND': [('V+Inf', 'V+Cond+Prs+Person-Number')],
@@ -1178,7 +1177,7 @@ class MorfaSettings(OahpaSettings):
 	grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
 
 	# PI added
-	noun_type = forms.ChoiceField(initial='N-MASC-INANIM', choices=NOUN_TYPE_CHOICES, widget=forms.Select)
+	noun_type = forms.ChoiceField(initial='all', choices=NOUN_TYPE_CHOICES, widget=forms.Select)
 	# HU added
 	singular_only = forms.BooleanField(required=False, initial=False)
 
@@ -1291,7 +1290,9 @@ class MorfaQuestion(OahpaQuestion):
 					# TODO: conneg only in Prs
 
 			# Odne 'today', ikte 'yesterday'
-			if (tag.tense in ['Prs','Prt']) and (tag.mood == 'Ind'):
+			if (tag.tense in ['Prs','Pst']) and (tag.mood == 'Ind'):
+				if tag.tense == 'Pst':
+					pronoun = self.PronPNBase[tag.number+choice(['1', '2', '3'])]
 				time = TENSE_PRESENTATION.get(tag.tense, False)
 				self.pron = ' '.join([time, pronoun])
 

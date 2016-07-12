@@ -535,7 +535,7 @@ class Morfaview(Gameview):
 		# 'COLL-NOMPL':  _('Practice collective numerals in plural'),
 		# 'COLL-N-LOC':  _('Practice collective numerals in locative'),
 		 'PRS':  _('Practice present'),
-		 'PST':  _('Practice past'),
+		 'PRT':  _('Practice past'),
 		 'PRF':  _('Practice perfect'),
 		 'GER':  _('Practice gerund'),
 		 'COND':  _('Practice conditional'),

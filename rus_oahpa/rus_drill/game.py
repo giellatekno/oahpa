@@ -520,11 +520,11 @@ class BareGame(Game):
 
 		pos_mood_tense = {
 			"PRS":	("Ind", "Prs", ""),
-			"PRT":	("Ind", "Prt", ""),
+			"PRT":	("Ind", "Pst", ""),
 			"PRF":	("Perf", "Fut", ""),
 			"GER":	("", "", "Ger"),
 			"COND":   ("Cond", "Prs", ""),
-			"IMPRT":  ("Imp", "Impf", ""),
+			"IMPRT":  ("Imp", "", ""),
 			"POT":	("Pot", "Prs", "")
 		}
 
@@ -697,13 +697,15 @@ class BareGame(Game):
 				TAG_QUERY = TAG_QUERY & Q(number__in=['Sg','Pl'])
 
 		if pos == 'V':
+			#if mood=='Imp':
+			#	tense=''
 			TAG_QUERY =  TAG_QUERY & \
 							Q(tense=tense) & \
 							Q(mood=mood) & \
 							Q(infinite=infinite)
 
-			if tense != 'Prs':
-				TAG_EXCLUDES = Q(string__contains='ConNeg')
+			#if tense != 'Prs':
+			#	TAG_EXCLUDES = Q(string__contains='ConNeg')
 
 		if pos == 'A':
 			if pos2 == 'Num':
