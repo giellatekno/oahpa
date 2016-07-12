@@ -1292,7 +1292,10 @@ class MorfaQuestion(OahpaQuestion):
 			# Odne 'today', ikte 'yesterday'
 			if (tag.tense in ['Prs','Pst']) and (tag.mood == 'Ind'):
 				if tag.tense == 'Pst':
-					pronoun = self.PronPNBase[tag.number+choice(['1', '2', '3'])]
+					if Word.objects.filter(id=word.id, semtype__semtype="PERSON3"):
+						pronoun = self.PronPNBase[tag.number+'3']
+					else:
+						pronoun = self.PronPNBase[tag.number+choice(['1', '2', '3'])]
 				time = TENSE_PRESENTATION.get(tag.tense, False)
 				self.pron = ' '.join([time, pronoun])
 
