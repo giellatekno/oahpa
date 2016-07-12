@@ -98,7 +98,7 @@ anymore. However if victorio is very slow, check the memory by writing:
 
 If the result indicates memory use too close to 100, this is a clear
 problem indication. The answer is to restart the apache web server,
-and thereafter, if need, to [restart mysqld|Mysql.html].
+and thereafter, if need, to [restart mysqld|mysql.html].
 
 If the webserver takes too much memory, you may also want to stop
 apache first, and then myql, and then starting them again:
@@ -123,5 +123,5 @@ servers are automatically running again.
 
 Eventual malfunctioning here is due to errors in the pipeline being used by the analysers.
 
-The documentation is found on [the cgi-bin documentation page|docu-cgi-bin.html]
+The documentation is found on [the cgi-bin documentation page|../../doc/infra/docu-cgi-bin.html]
 
