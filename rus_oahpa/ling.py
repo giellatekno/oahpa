@@ -372,10 +372,31 @@ class Paradigm:
 				#	tag = a
 				tag = a
 				if gen_only:
-					#for c in gen_only:
-					#	if c in tag:
-					if gen_only in tag:
-							lookups = lookups + lemma + hid + "+" + tag
+					lookupj = ''
+					positive = False
+					for c in gen_only.split(','):
+						if c[0] != '!':  # positive-inclusive conditions
+							allin = True
+							positive = True
+							for cc in c.split('+'): # all parts of + string
+								if cc not in tag: 
+									allin = False
+									break
+							if allin:
+								lookupj = lemma + hid + "+" + tag
+					if not positive: # no positive condition s
+						lookupj = lemma + hid + "+" + tag
+					for c in gen_only.split(','):
+						if c[0] == '!':  # negative-exclusive conditions 
+							allin = True
+							for cc in c[1:].split('+'): # all parts of + string
+								if cc not in tag:  
+									allin = False
+									break
+							if allin:
+								lookupj = ''
+								break 
+					lookups = lookups + lookupj
 				else:
 					if not lemma:
 						print >> STDOUT, 'there is no lemma!'
