@@ -2,9 +2,10 @@
 <!-- Specify subsets for sematic supersets here -->
 <lexicon>
 	<subclasses class="HUMAN">  
-      <sem class="PEOPLE"/>   
-      <sem class="FAMILY"/>
-      <sem class="PROFESSION"/>
+      <subclasses class="PEOPLE">   
+        <sem class="FAMILY"/>
+        <sem class="PROFESSION"/>
+	    </subclasses>
       <sem class="EXPERIENCE_V"/>
       <sem class="ACTION_V"/>
       <sem class="FINANCE_V"/>
