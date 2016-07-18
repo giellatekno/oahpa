@@ -180,9 +180,9 @@
                     {% endcomment %}
 
                     <a data-error-fst href="#" data-lemma="{{ form.lemma }}" data-input-form="{{ form.userans }}" data-task="{{ form.user_task }}">
-                        <img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
+            			<img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
     					{% ifnotequal gametype "leksa" %} {% trans_to "help" "sme"%} {% endifnotequal %}
-				    </a>
+				    </a> 
 				    
                     {% if form.tcomm %}
                         <t class="interface">{% trans_to "This is almost correct!" "sme" %}<span class="invisible">{% trans "This is almost correct!" %}</span></t>

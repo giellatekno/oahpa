@@ -2,7 +2,8 @@
 
 P="python2.7"
 #DATA="$GTHOME/ped/sme/"
-DATA="/home/univ_oahpa/sme"
+#DATA="/home/univ_oahpa/sme"
+DATA="/Users/tiina/main/ped/sme/"
 DPS="$DATA/src"
 META="$DATA/meta"
 DPN="$DATA/nobsme"

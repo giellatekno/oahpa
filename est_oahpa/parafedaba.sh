@@ -2,7 +2,7 @@
 
 P="python2.7"
 #EST_HOME="/home/est_oahpa"
-EST_HOME="/home/tiina/svn-giellatekno/main/ped"
+EST_HOME="/Users/tiina/main/ped"
 LANGDIR="est"
 DATA=$EST_HOME/$LANGDIR
 DPS="$DATA/src"
