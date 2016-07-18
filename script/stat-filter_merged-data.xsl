@@ -43,8 +43,8 @@
   <!-- input dir -->
   <xsl:param name="inDir" select="concat('to_filter_',$slang)"/>
   <!-- <xsl:param name="inFile" select="'default.xml'"/> -->
-  <xsl:param name="slang" select="'deu'"/>
-  <xsl:param name="tlang" select="'est'"/>
+  <xsl:param name="slang" select="'sme'"/>
+  <xsl:param name="tlang" select="'eng'"/>
   <xsl:param name="outDir" select="concat($slang,$tlang)"/>
   
   <!-- Patterns for the feature values -->

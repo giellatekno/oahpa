@@ -18,11 +18,11 @@
 	      indent="yes"/>
 
   <!-- input dir -->
-  <xsl:param name="inDir" select="'est'"/>
+  <xsl:param name="inDir" select="'sme'"/>
   <!-- source language -->
-  <xsl:param name="slang" select="'est'"/>
+  <xsl:param name="slang" select="'sme'"/>
   <!-- target language: nob is default! -->
-  <xsl:param name="tlang" select="'swe'"/>
+  <xsl:param name="tlang" select="'eng'"/>
   <!-- Output dir, files -->
   <xsl:param name="outDir" select="concat('_reverted2', $tlang)"/>
   <xsl:variable name="of" select="'xml'"/>
