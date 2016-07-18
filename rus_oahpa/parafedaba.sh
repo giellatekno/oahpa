@@ -1,9 +1,7 @@
 #!/bin/sh
 
 P="python2.7"
-#GTHOME="/home/rus_oahpa"
-GTHOME="/Users/tiina/main/ped"
-#GTHOME="/home/tiina/svn-giellatekno/main/ped"
+GTHOME="/home/rus_oahpa"
 LANGDIR="rus"
 DATA=$GTHOME/$LANGDIR
 DPS="$DATA/src"
@@ -18,6 +16,7 @@ DPE="$DATA/engrus"
 
 echo "==================================================="
 echo "installing tags and paradigms for Morfa"
+printf $META
 $P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>>error.log
 echo " "
 echo "done"

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 P="python2.7"
-PEDHOME="/Users/tiina/main/ped"
+PEDHOME="/Users/mslm/main/ped"
 OAHPAHOME="/home/vro_oahpa"
 LANGDIR="vro"
 #DATA=$OAHPAHOME/$LANGDIR  # on gtlab

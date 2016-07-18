@@ -87,7 +87,6 @@ class Game(object):
 	def __init__(self, settings):
 		self.query_set = False
 		self.lemmas_selected = []
-		self.lletter = ""
 		self.form_list = []
 		self.count = ""
 		self.score = ""
@@ -698,6 +697,8 @@ class BareGame(Game):
 				TAG_QUERY = TAG_QUERY & Q(number__in=['Sg','Pl'])
 
 		if pos == 'V':
+			#if mood=='Imp':
+			#	tense=''
 			TAG_QUERY =  TAG_QUERY & \
 							Q(tense=tense) & \
 							Q(mood=mood) & \
@@ -1547,11 +1548,6 @@ class QuizzGame(Game):
 		try:
 			while True:
 				random_word = choice(self.query_set)
-				#if len(self.lemmas_selected) == 0:
-				#	self.lletter = random_word
-				#	print "smart", smart_unicode(self.lletter)
-				#if self.lletter != '' and self.lletter not in random_word:
-				#	continue
 				if random_word[1] not in self.lemmas_selected:
 					break
 				else:

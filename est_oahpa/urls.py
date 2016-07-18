@@ -8,7 +8,7 @@ here_cross = lambda x: os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-#admin.autodiscover()
+admin.autodiscover()
 
 from settings import URL_PREFIX as prefix
 

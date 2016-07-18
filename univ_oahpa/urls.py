@@ -8,7 +8,7 @@ from django.conf import settings
 here = lambda x: os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), x)
 here_cross = lambda x: os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), *x)
 
-#admin.autodiscover()
+admin.autodiscover()
 admin.site.login = login_required(admin.site.login)
 
 from settings import URL_PREFIX as prefix
