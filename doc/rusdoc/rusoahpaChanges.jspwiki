@@ -1,0 +1,66 @@
+!!!Changes that accompanied moving of rusoahpa from gtlab to gtoahpa server (June-July 2016).
+
+!!!I Physical movement
+
+!!!Code
+The Django version is upgraded to 1.8.6 with consequent changes in the code.
+
+!!!II Correction of obvious errors and faults
+
+!!!Morfa-S: 
+* Fixed the gender agreement in adjective question-answer pairs (otherwise, for example, the 'correct' answer for маршру́тный  was маршру́тную​).
+* Added task for indicative present tense verb forms.
+* Removed the generation of passive forms into oahpa paradigm database until they will be used in some task - otherwise some passive forms (can be easily confused with reflexive ones) appeared into active voice tasks (as читаться - сегодня ты ...).
+
+!!!Morfa-C: 
+* Agreement in gender between subject and main verb in questions in past tense (otherwise the questions were systematically wrong as, for example, девушка видел ...).
+* Added a couple of additional commented out templates for genitive and dative cases in noun questions.
+* Verb questions function now for both present and past tense in singular and plural.
+
+!!!Numra: 
+* All parts are working: cardinals, ordinals, clock and date, based on new transducers (were non-operative in gtlab).
+* Addition: if one or more stress marks are missing in an answer's numeral string, it is still accepted as a correct answer. The student's answer with incorrect stress marks is not accepted (although the 'incorrectness' sign is showed in lighter colour indicating that the answer is almost correct).
+
+
+!!!III Further refinement
+
+!!!Leksa
+* Could use to have more acceptable correct answers, for example ученик could also be student, not just pupil (this word is a bit archaic in the US), надеть could accept just put on, not require put on clothing, познако́миться could allow become acquainted.
+** Suggestions are added to the lexicon, there are no programmatical obstacles to add more translations.
+
+!!!Morfa-S
+!!Nouns
+* Maybe we don’t need to ask for the plural forms for months? It often asks for months, which we rarely see in the plural so it would be better to exclude those. Another strange plural that turned up was погоды. That word is fairly rare in the plural. Other strange plurals: капитализмы, вёсны.
+** Added the possibility to constrain the form generation and constrained the generation of forms for months (and погоды, капитализмы​) only to singular forms by adding the parameter  'gen_only=“Features,To,Generate,Or,!NotGenerate”' (in particular case 'gen_only=“Sg”') into the lexicon, analogically can be done for other words if needed.
+Didn't constrain the seasons as the use of plural forms for them is not so theoretical anymore, especially in some poetic or folklore text (зимами-вёснами). 
+
+* The default setting for type for nouns should be All, not masculine inanimate.
+** Changed.
+
+* The word окно shows up with stress marks on both of its vowels. It should be stressed only on the second vowel. 
+** Corrected the fst rule handling possible stressed vowels at the beginning of the word.
+** Also added distinction of different homonyms of дарить, which give two different forms да́ришь and дари́шь, although only one of them is needed for oahpa.
+
+!!Verbs
+* Present: There are still some forms that do not make sense: сегодня мы кончаемся.
+** Added a semantic set PERSON3 for verbs that are not desirable to appear in person 1 and 2. Can be added to other verbs as well if needed.
+
+* There should be an exercise asking students to form imperative forms of verbs also.
+** Added, now the choices are: present, past, imperative. 
+
+!!Adjectives 
+* Why are there only Nominative plural and Genitive options?
+** As were in gtlab version. Added other cases as well.
+
+!!!Morfa-C
+* I asked for a set of sentences with accusative and of five options, two were of сок, two were of пассажир, and one was of сыр. In the next set the word девушка came up three times. Is it possible to restrict any word from appearing more than once in a set?
+** Restricted the generated words to appear only once in one set. Restriction to appear only once in more sets requires logging and also more suitable words for question templates (regarding assigned semantic sets and also genders).
+** Changed PEOPLE semantic set to include also family and profession semantic sets as otherwise it contains too few words (and question templates do not get enough words for generation).
+** Also added some more female professions, aiming to provide tasks for all genders and at the same time avoid database errors.
+
+* In the dative case set, only nouns had stress marks in the sentences. Stress marks are needed for verbs and pronouns too.
+** Added in the templates.
+
+!!!Numra 
+Was non-operative on gtlab.
+Looks good.
