@@ -1,38 +1,56 @@
-!!! July 2016
-!!!Participants: Laura Janda, Trond Trosterud, Lene Antonsen, Robert Reynolds, Tiina Puolakainen
+July 2016
+
+Participants: Laura Janda, Trond Trosterud, Lene Antonsen, Robert Reynolds, Tiina Puolakainen (Tore Nesset, Svetlana Sokolova)
 
 !!!Morfa-S
+
+* Proper noun appers too frequently 
 
 In one set I got Копенгаген in two slots, both as the first and as the second noun. And in general, the word Копенгаген shows up too often, almost n every other set of words.
 
 It shouldn't appear twice in one set anymore, but the real reason for frequent appearing in the task is the fact that where is only one masculine proper noun in dataset (and 6 proper nouns altogether) and currently it is included as a class (of proper nouns, but this class contains only one representative) into search for lexical entries, and so it comes so frequently. There are different possible solutions for that: to forbid proper nouns (in particular tasks), to forbid repeating particular words (but cannot forbid repeating entirely?), but better maybe would be to widen the representativeness of particular classes. 
 
-!!!Morfa-C
+* Genitive 2, Locative 2 tasks
 
 Genitive 2 needs serious revision! This should be restricted only to words that have a special Genitive 2 form. I clicked through over a dozen sets and NONE of the words had a Genitive 2 form, so what аre we looking for here? And the answers are the same as those for Genitive, which is wrong.
 Locative 2 has the SAME problem. Should be restricted only to the words with a special Locative 2 form (like ряд, снег, сад) and ask only for that form, not for the regular Locative.
 
 Earlier statement: Gen2 / Loc2 does not exist for all nouns. The user must decide if a word has Loc2 or only one form for Loc - therefore all the words can occur in this exercise.
 
+----
+
+I think that there are only two good solutions to this, depending on what we decide is the best pedagogical approach. If we want learners to be making the decision of whether a word has a Gen2 or Loc2 form, then we should make sure that in any given set of exercises, the student has a good mix of Gen/Gen2 or Loc/Loc2. On the other hand, if just want learners to be practicing the Gen2 or Loc2 forms only, then of course we only give them those nouns.
+
+It seems to me that since Morfa-S is primarily concerned with particular wordforms, without reference to context, it makes more sense to have the Gen2 and the Loc2 exercises exclusively use words with those forms. I like the idea of an exercise that makes the student decide whether a word has Gen2 or Loc2, but that seems better suited to Morfa-C.
+
+----
+
+I think, that it is a good idea to have a mix of words with and without Gen2/Loc2 forms in this exercise as in real language usage student will need to know which forms to use (or which are non-existent at all, as, for example, it is always said в лесу́, never в ле́се regardless of the context, although such form is also generated -- this particular example is in fact even more about the opposite issue - not to ask from student Loc forms if only Loc2 are in real use).  The task description for the student also contains a clear explanation "If the word does not have a distinct form for locative2/genitive2 then write the form of singular locative/genitive." But every task should really contain at least 1 or 2 (?) words with existent Gen2/Loc2 form (exact proportion though could be random).
+
+But such 'mixed' task would also possibly be quite difficult for beginners as assumes already a good portion of knowledge, so one more solution could be to keep the 'mixed' task for 'advanced' learners and add the choice into the game menu as for 'only Gen2/Loc2 forms' or the 'mixed task'. 
+
 !!!Paradigms and tags
 
-!!Confusing secondary tag in verb paradigm that coincide with PoS tag
+* Confusing secondary tag in verb paradigm that coincide with PoS tag
 
 Adverbial participle forms of verbs (деепричастия) get currently analysed with additional +Adv tag indicating 'adverbial' part, but this is also a tag for a part-of-speech Adverb, so they are exactly the same and can be easily confused. Also from technical side it is not good to relay purely on the position of the tag, especially if it is concerning the basic PoS tag. The analyses of adverbial participles are currently as follows:
+{{{
 V+Impf+IV+PrsAct+Adv
 V+Impf+TV+PstAct+Adv
 V+Perf+TV+PstAct+Adv
-
+}}}
 Whereas the analyses of other participles are like, where participle tags are +PrsAct, +PstAct, +PrsPss or +PstPss:
+{{{
 V+Impf+IV+PrsAct+Msc+AnIn+Sg+Nom
 V+Impf+IV+PstAct+Msc+AnIn+Sg+Nom​
 V+Impf+IV+PrsPss+Msc+AnIn+Sg+Nom
 V+Impf+IV+PstPss+Msc+AnIn+Sg+Nom​
 ...
-​
+​}}}
 The suggestion is to change the secondary +Adv tag into something distinguishable from the PoS tag and also to be more similar with other participles. One choice could be to use instead +PrsAdv and +PstAdv tags - they would indicate the tense and omit the Act part (as for other participles, but adverbial participles are only active) replacing it with Adv part and so would be also more similar with other participles' analyses. So the analyses could be:
+{{{
 V+Impf+IV+PrsAdv
 V+Impf+TV+PstAdv
 V+Perf+TV+PstAdv​
-
+}}}
 Concerning деепричастия, which we often call “gerunds” (“adverbial participle” is a British standard): it is good suggestion to use +PrsAdv, +PstAdv instead of the clumsy and confusing current solution. This solution makes it clear that these are neither participles nor adverbs, but something in between. However, it is also important to make things consistent across languages where possible.
