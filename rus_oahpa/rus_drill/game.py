@@ -138,6 +138,7 @@ class Game(object):
 		tries = 0
 		maxtries = 40
 
+		form2 = 0
 		while i < self.num_fields and len(self.form_list) < 5 and tries < maxtries:
 			tries += 1
 			db_info = {}
@@ -145,7 +146,15 @@ class Game(object):
 			db_info['correct'] = ""
 
 			errormsg = self.get_db_info(db_info)
-
+			
+			if 'case' in db_info and db_info['case'] in ['Loc2', 'Gen2']: # asked and got form2
+				form2 = form2 + 1
+			if form2 == 0 and len(self.form_list) == self.num_fields - 1 and 'case' in self.settings and self.settings['case'] in ['Loc2', 'Gen2']: 
+				while form2 == 0: # at least one form2 if asked that
+					errormsg = self.get_db_info(db_info)
+					if 'case' in db_info and db_info['case'] in ['Loc2', 'Gen2']:
+						form2 = form2 + 1
+						
 			if errormsg and errormsg == "error":
 				# i = i+1
 				continue
@@ -636,12 +645,13 @@ class BareGame(Game):
 			sylls = False
 			source = False
 
+				
 		if pos == 'N':
 			if singular_only:   # if the user has checked the box "singular only"
 				TAG_QUERY = TAG_QUERY & Q(number='Sg')
 			else:
 				TAG_QUERY = TAG_QUERY & Q(number__in=number)
-				
+
             # Process the selection from the noun_type menu (incorporates gender, animacy and inflection type). The selection by gender and animacy has been moved from WORD_FILTER to TAG_QUERY, as gender and animacy are now also included in the tag string and are written in the respective columns in the rus_drill_tag table.
 			if noun_type == "N-NEUT":
 				TAG_QUERY = TAG_QUERY & Q(gender='Neu')
@@ -651,13 +661,19 @@ class BareGame(Game):
 				TAG_QUERY = TAG_QUERY & Q(gender='Msc',animate='Anim')
 			elif noun_type in ["N-FEM-8", "N-FEM-other"]:
 				TAG_QUERY = TAG_QUERY & Q(gender='Fem')
+		elif pos in ['Pron', 'N', 'Num']:
+			TAG_QUERY = TAG_QUERY & \
+						Q(case=case)
+						# regardless of whether it's Actor, Coll, etc.
 
             # Gen2 / Loc2 does not exist for all nouns. The user must decide if a word has Loc2 or only one form for Loc - therefore all the words can occur in this exercise. We need to make a more complicated query because the case tags are different: Loc and Loc2. The same for Gen2 (tags 'Gen' and 'Gen2'). The words having Loc2 resp. Gen2 are marked in the database: there are fields loc2 and gen2 in the Word table.
 		if case == 'Loc2':
-			if noun_type == "N-MASC-INANIM":
-				CASE_QUERY = Q(case=case) # Only Msc Inanim nouns have Loc2.
+			if noun_type == "N-MASC-INANIM" or noun_type == "N-FEM-8" or noun_type == "all":
+				db_info['case']=choice([case, case, 'Loc', 'Loc', 'Loc'])
+				CASE_QUERY = Q(case=db_info['case'])
 			else:
 				CASE_QUERY = Q(case='Loc')
+				db_info['case']='Loc'
 			TAG_QUERY = TAG_QUERY & CASE_QUERY
 			#TAG_EXCLUDES = Q(case='Prp', form__word__loc2=1)
 				    
@@ -665,17 +681,16 @@ class BareGame(Game):
                 #random_word = random_word.exclude(fullform__contains='#').exclude(fullform__contains='*')
 				    
 		elif case == 'Gen2': # was Par in apertium fst
-			if noun_type == "N-MASC-INANIM":
-				CASE_QUERY = Q(case=case)
+			if noun_type == "N-MASC-INANIM" or noun_type == "all":
+				db_info['case']=choice([case, case, 'Gen', 'Gen', 'Gen'])
+				CASE_QUERY = Q(case=db_info['case'])
 			else:
 				CASE_QUERY = Q(case='Gen')
+				db_info['case']='Gen'
+				#noun_type = "N-MASC-INANIM"
+				#self.settings['noun_type']='N-MASC-INANIM'
+				#CASE_QUERY = Q(case=case)
 			TAG_QUERY = TAG_QUERY & CASE_QUERY
-
-		
-		elif pos in ['Pron', 'N', 'Num']:
-			TAG_QUERY = TAG_QUERY & \
-						Q(case=case)
-						# regardless of whether it's Actor, Coll, etc.
 
 		
 		# 'Pers' subclass for pronouns, otherwise none.
@@ -689,6 +704,7 @@ class BareGame(Game):
 			# PI: 'subclass' removed from models.py, but that could've been a mistake
 			# else:
 			# 	TAG_QUERY = TAG_QUERY & Q(subclass='')
+
 
 		if pos == 'Num' or pos2 == 'Num':
 			if num_level == '1':  # Numerals in Sg on level 1
@@ -841,6 +857,8 @@ class BareGame(Game):
 			while no_form and count < 10:
 
 				tag = tags.order_by('?')[0] # ensure that it is possible to choose tag with non-empty form set
+				if len(tags) > 1 and tag.string.find('Sem/Alt') > 0 and randint(0,1000) > 100: # less proper nouns
+					continue
 				print "tag:", tag
 				
 				# Pronouns are a bit different, so we need to resort the tags
@@ -961,7 +979,15 @@ class BareGame(Game):
 				tag_strings.append(tag.string.replace('PassS', 'PassL'))
 			form_list = word.form_set.filter(tag__string__in=tag_strings)
 		else:
-			form_list = word.form_set.filter(tag=tag)
+			if self.settings and self.settings['case'] in ['Loc2', 'Gen2']: # asked form2,
+				if tag.string.find('Loc2')<0 and tag.string.find('Gen2')<0: # got form
+					tag2str = tag.string.replace('Loc', 'Loc2').replace('Gen', 'Gen2')
+					tag2 = Tag.objects.get(string=tag2str)
+					form_list = word.form_set.filter(tag=tag2) # ensure that form2 is used even if found form
+					if not form_list:
+						form_list = word.form_set.filter(tag=tag)
+			else:
+				form_list = word.form_set.filter(tag=tag)
 
 		if not form_list:
 			raise Form.DoesNotExist

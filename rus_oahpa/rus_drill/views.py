@@ -109,7 +109,7 @@ class Gameview(object):
 
 		return '?' + '&'.join(key_values)
 
-	def change_game_settings(self, game):
+	def change_game_settings(self, game, settings_form):
 		""" If any settings need to be set before Game.new_game is called,
 		they are set here. """
 
@@ -254,10 +254,10 @@ class Gameview(object):
 		self.set_gamename()
 
 		if is_new_game:
-			game = self.change_game_settings(game)
+			game = self.change_game_settings(game, settings_form)
 			game.new_game()
 		else:
-			game = self.change_game_settings(game)
+			game = self.change_game_settings(game, settings_form)
 			game.check_game(settings_form.data)
 			game.get_score(settings_form.data)
 
@@ -638,6 +638,13 @@ class Morfaview(Gameview):
 			'deeplink': self.create_deeplink(game, settings_form),
 			})
 
+	def change_game_settings(self, game, settings_form):
+		""" This is run before Game.new_game() is called.
+		"""
+
+		game.settings['noun_type'] = settings_form.data['noun_type']
+		return game
+
 	def additional_settings(self, settings_form):
 
 		self.settings['allcase'] = settings_form.allcase
@@ -645,11 +652,12 @@ class Morfaview(Gameview):
 		self.settings['allnum_type'] = settings_form.allnum_type  # added by Heli
 		self.settings['allnoun_type'] = settings_form.allnoun_type
 
-		#if 'noun_type' in settings_form.data:
-            # Gen2 and Loc2 only exist for (some) masculine nouns. 
-		#	if self.settings['case'] in ['N-GEN2','N-LOC2']:
-		#		settings_form.data['noun_type'] = "N-MASC-INANIM"
-         #               self.settings['noun_type'] = settings_form.data['noun_type']
+		if 'noun_type' in settings_form.data:
+            # Gen2 and Loc2 only exist for (some) masculine (and Loc2 for few feminine) nouns. 
+			if self.settings['case']=='N-GEN2':
+				settings_form.data['noun_type'] = "N-MASC-INANIM"
+			elif self.settings['case']=='N-LOC2' and settings_form.data['noun_type'] not in ["N-MASC-INANIM", "N-FEM-8"]:
+				settings_form.data['noun_type'] = "all"
 
 	def set_gamename(self):
 		subname = False
@@ -901,7 +909,7 @@ class Cealkkaview(Gameview):
 	def additional_settings(self, settings_form):
 		self.settings['gametype'] = "cealkka"
 
-	def change_game_settings(self, game):
+	def change_game_settings(self, game, settings_form):
 		""" This is run before Game.new_game() is called.
 		"""
 
