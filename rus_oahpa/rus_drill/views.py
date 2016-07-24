@@ -254,7 +254,7 @@ class Gameview(object):
 		self.set_gamename()
 
 		if is_new_game:
-			game = self.change_game_settings(game, settings_form)
+			#game = self.change_game_settings(game, settings_form)
 			game.new_game()
 		else:
 			game = self.change_game_settings(game, settings_form)
