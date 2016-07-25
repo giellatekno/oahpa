@@ -149,7 +149,7 @@ class Game(object):
 			
 			if 'case' in db_info and db_info['case'] in ['Loc2', 'Gen2']: # asked and got form2
 				form2 = form2 + 1
-			if form2 == 0 and len(self.form_list) == self.num_fields - 1 and 'case' in self.settings and self.settings['case'] in ['Loc2', 'Gen2']: 
+			if form2 == 0 and len(self.form_list) == self.num_fields - 2 and 'case' in self.settings and self.settings['case'] in ['N-LOC2', 'N-GEN2']: 
 				while form2 == 0: # at least one form2 if asked that
 					errormsg = self.get_db_info(db_info)
 					if 'case' in db_info and db_info['case'] in ['Loc2', 'Gen2']:
@@ -172,7 +172,7 @@ class Game(object):
 			# Do not generate same question twice
 			if word_id:
 				num = num + 1
-				if word_id in set(word_ids): #and not (self.settings['gametype'] == "bare" and self.settings['pron_type'] in ['Rel','Dem']): # If there are less than 5 different lemmas to choose from then this causes a "No questions were able to be generated."
+				if word_id in word_ids: #and not (self.settings['gametype'] == "bare" and self.settings['pron_type'] in ['Rel','Dem']): # If there are less than 5 different lemmas to choose from then this causes a "No questions were able to be generated."
 					continue
 				else: word_ids.append(word_id)
 
@@ -964,6 +964,7 @@ class BareGame(Game):
 		# and PassL, but show only PassL in the answers.
 
 		# Get the initial form list of forms matching the tag and word id
+		form_list = []
 		if pos == 'Pron':
 			# Need to filter by the word lemma for pronouns, otherwise
 			# ambiguities arise
@@ -979,13 +980,14 @@ class BareGame(Game):
 				tag_strings.append(tag.string.replace('PassS', 'PassL'))
 			form_list = word.form_set.filter(tag__string__in=tag_strings)
 		else:
-			if self.settings and self.settings['case'] in ['Loc2', 'Gen2']: # asked form2,
+			if self.settings and self.settings['case'] in ['N-LOC2', 'N-GEN2']: # asked form2,
 				if tag.string.find('Loc2')<0 and tag.string.find('Gen2')<0: # got form
 					tag2str = tag.string.replace('Loc', 'Loc2').replace('Gen', 'Gen2')
-					tag2 = Tag.objects.get(string=tag2str)
-					form_list = word.form_set.filter(tag=tag2) # ensure that form2 is used even if found form
-					if not form_list:
-						form_list = word.form_set.filter(tag=tag)
+					tag2 = Tag.objects.filter(string=tag2str)
+					if tag2:
+						form_list = word.form_set.filter(tag=tag2[0]) # ensure that form2 is used even if found form
+				if len(form_list) < 1:
+					form_list = word.form_set.filter(tag=tag)
 			else:
 				form_list = word.form_set.filter(tag=tag)
 

@@ -254,7 +254,7 @@ class Gameview(object):
 		self.set_gamename()
 
 		if is_new_game:
-			#game = self.change_game_settings(game, settings_form)
+			game = self.change_game_settings(game, settings_form)
 			game.new_game()
 		else:
 			game = self.change_game_settings(game, settings_form)
@@ -641,8 +641,8 @@ class Morfaview(Gameview):
 	def change_game_settings(self, game, settings_form):
 		""" This is run before Game.new_game() is called.
 		"""
-
-		game.settings['noun_type'] = settings_form.data['noun_type']
+		if settings_form and settings_form.data and 'noun_type' in settings_form.data:
+			game.settings['noun_type'] = settings_form.data['noun_type']
 		return game
 
 	def additional_settings(self, settings_form):
