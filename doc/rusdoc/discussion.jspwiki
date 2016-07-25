@@ -10,6 +10,8 @@ In one set I got Копенгаген in two slots, both as the first and as the
 
 It shouldn't appear twice in one set anymore, but the real reason for frequent appearing in the task is the fact that where is only one masculine proper noun in dataset (and 6 proper nouns altogether) and currently it is included as a class (of proper nouns, but this class contains only one representative) into search for lexical entries, and so it comes so frequently. There are different possible solutions for that: to forbid proper nouns (in particular tasks), to forbid repeating particular words (but cannot forbid repeating entirely?), but better maybe would be to widen the representativeness of particular classes. 
 
+** Restricted the proper nouns to appear ten times less as they otherwise would be randomly generated until there are no sufficient number of proper nouns in the database.
+
 * Genitive 2, Locative 2 tasks
 
 Genitive 2 needs serious revision! This should be restricted only to words that have a special Genitive 2 form. I clicked through over a dozen sets and NONE of the words had a Genitive 2 form, so what аre we looking for here? And the answers are the same as those for Genitive, which is wrong.
@@ -28,6 +30,19 @@ It seems to me that since Morfa-S is primarily concerned with particular wordfor
 I think, that it is a good idea to have a mix of words with and without Gen2/Loc2 forms in this exercise as in real language usage student will need to know which forms to use (or which are non-existent at all, as, for example, it is always said в лесу́, never в ле́се regardless of the context, although such form is also generated -- this particular example is in fact even more about the opposite issue - not to ask from student Loc forms if only Loc2 are in real use).  The task description for the student also contains a clear explanation "If the word does not have a distinct form for locative2/genitive2 then write the form of singular locative/genitive." But every task should really contain at least 1 or 2 (?) words with existent Gen2/Loc2 form (exact proportion though could be random).
 
 But such 'mixed' task would also possibly be quite difficult for beginners as assumes already a good portion of knowledge, so one more solution could be to keep the 'mixed' task for 'advanced' learners and add the choice into the game menu as for 'only Gen2/Loc2 forms' or the 'mixed task'. 
+
+----
+
+Then for a Morfa-C activity, it would be good to have a variety of contexts, some of which require only Loc (such as the preposition о(б)), and others that are unambiguously locational (such as находится, etc.) and therefore require Loc2 for nouns that have a Loc2 form. For this activity, we should try to ensure that at least one or two Loc2 lexemes comes up in each set.
+
+----
+
+For Morfa-S (the activity that only asks for forms) it would be best to make sure that every set of five nouns contains at least one noun that has a special Loc2 (or for the Gen2 exercise, Gen2) form. The pedagogical point of the exercise is for students to learn which words have special Loc2 and Gen2 forms, and this arrangement would support that goal. So distinguishing when to use Loc2 and Gen2 is for the Morfa-C (contextualized) exercise, whereas in Morfa-S, all words that have a special Loc2 or Gen2 form should target those forms and there should always be at least one such form in every set.
+
+** Implemented 'mixed' task for Gen2/Loc2:
+*** Each set of five nouns contains at least one noun that has a special Loc2 (or for the Gen2 exercise, Gen2) form. The exact number varies randomly from 1 to 5. 
+*** As Gen2 form is possible only for some masculine inanimate nouns, then choosing Gen2 exercise will automatically restrict the noun choice to 'masculine inanimate'. The Loc2 is possible for 'masculine inanimate' and 'feminine in -ь', so choosing Loc2 exercise having some other noun choice than one of these two will change the noun type automatically to 'all' (not having 'special' choice for both 'masculine inanimate' and 'feminine in -ь' but not others).
+*** Added more words to the lexicon having Gen2/Loc2 forms, otherwise the choice could be made only from 9 or 10 words respectively.
 
 !!!Paradigms and tags
 
@@ -54,3 +69,5 @@ V+Impf+TV+PstAdv
 V+Perf+TV+PstAdv​
 }}}
 Concerning деепричастия, which we often call “gerunds” (“adverbial participle” is a British standard): it is good suggestion to use +PrsAdv, +PstAdv instead of the clumsy and confusing current solution. This solution makes it clear that these are neither participles nor adverbs, but something in between. However, it is also important to make things consistent across languages where possible.
+
+** Unless Trond or Lene have suggestions for different spellings of these tags that would be better aligned with other GT languages, then Robert will implement that change in the FST.
