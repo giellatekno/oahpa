@@ -1,0 +1,89 @@
+{% extends "game.html" %}
+{% load i18n %}
+{% load trans_to %}
+
+{% block helpaddress %}
+{% ifequal LANGUAGE_CODE "no" %}
+<a href="http://giellatekno.uit.no/smaoahpa/numra.nob.html"
+{% else %}
+<a href="http://giellatekno.uit.no/smaoahpa/numra.html"
+{% endifequal %}
+{% endblock %}
+
+{% block gametitlename %}NUMRA{% endblock %}
+{% block imgprefix %}numra{% endblock %}
+
+
+{% block veiledning %}
+{% ifequal LANGUAGE_CODE "sme" %}
+http://oahpa.no/sme/useoahpa/numra.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "fi" %}
+http://oahpa.no/sme/useoahpa/numra.fin.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "en" %}
+http://oahpa.no/sme/useoahpa/numra.eng.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "no" %}
+http://oahpa.no/sme/useoahpa/numra.nob.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "sv" %}
+http://oahpa.no/sme/useoahpa/numra.nob.html
+{% endifequal %}
+{% endblock %}
+
+{% block navbar %}
+	{% with "numra_cardinal" as gamename_nav %}
+        {% include 'numra_submenu.html' %}
+	{% endwith %}
+{% endblock %}
+
+{% block name %}<t class="interface">{% trans_to "Numerals" "sme" %}<span class="invisible">{% trans "Numerals" %}</span></t>{% endblock %}
+{% block pagename %}/{{ URL_PREFIX }}/numra/{% endblock %}
+
+{% block instructions %}
+  {# TODO: strings for instructions. #}
+  {% block gamename %}{% endblock %}
+  {% ifequal gametype "string" %}
+    <t class="interface">{% trans_to "Enter the numeral. (Ex. 8)" "sme" %}<span class="invisible">{% trans "Enter the numeral. (Ex. 8)" %}</span></t>
+  {% else %}
+    <t class="interface">{% trans_to "Enter the North Sámi number. (Ex. vihtta)." "sme" %}<span class="invisible">{% trans "Enter the North Sámi number. (Ex. vihtta)." %}</span></t>
+  {% endifequal %}
+{% endblock %}
+
+
+{% block settings %}
+    <div class="grammarlinks">
+        {% include 'grammar_links_menu.html' %}
+    </div>
+    
+    <ul id="settingsform">
+<!-- emergency tag starts -->    
+    <!--<li>
+{% trans "NB! NB! The Numra game is not working properly, due to technical problems! NB! NB!" %}
+</li>-->    
+<!-- emergency tag ends -->
+        {% block setting_items %}
+    	<li><label for="id_{{ settingsform.maxnum.name }}" class="interface">{% trans_to "Select the range of numerals." "sme" %}<span class="invisible">{% trans "Select the range of numerals." %}</span></label>
+    		{{ settingsform.maxnum }} </li>
+    	<li><label for="id_{{ settingsform.numgame.name }}" class="interface">{% trans_to "Select the direction" "sme" %}<span class="invisible">{% trans "Select the direction" %}</span></label>
+        {{ settingsform.numgame }}
+        </li>
+        {% endblock %}
+    </ul>
+    
+    <ul id="submittable">
+        <li><t class="interface"> <input type="submit" name="settings" value="{% trans_to "New set" "sme" %}" /><span class="invisible">{% trans "New set" %}</span></t></li>
+    </ul>
+{% endblock %}
+
+
+{% block question %}
+{% if form.numstring %}
+{{ form.numstring }} 
+{% else %}
+{{ form.numeral }} 
+{% endif %}
+{{ form.numeral_id }}
+{% endblock %}
+

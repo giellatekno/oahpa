@@ -1,0 +1,11 @@
+{% load i18n %}
+
+<li class="inactive"><a href="#">{{ user.username }}</a></li>
+<li><a href="{% url 'davvi_oahpa.courses.urls.courses_main' %}">{% trans "Courses" %}</a></li>
+<li><a href="{% url 'davvi_oahpa.courses.urls.personal_goals' %}">{% trans "Personal Goals" %}</a></li>
+<li><a href="{% url 'davvi_oahpa.courses.urls.courses_stats' %}">{% trans "Learning History" %}</a></li>
+<li><a href="{% url 'django_messages.urls.inbox' %}">{% trans "Messages" %}</a></li>
+<li><a href="{% url 'davvi_oahpa.courses.urls.logout' %}">{% trans "Log out" %}</a></li>
+{% if user_has_surveys %}
+    <li><a href="/{{ URL_PREFIX }}/survey/answer/">{% trans "Answer a survey" %}</a></li>
+{% endif %}

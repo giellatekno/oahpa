@@ -1,0 +1,72 @@
+﻿{% extends 'davvi_oahpa.html' %}
+{% load i18n %}
+{% load goal_filters %}
+{% get_current_language as LANGUAGE_CODE %}
+{% load staticfiles %}
+
+{% comment %}
+TODO: link in user interface
+
+{% endcomment %}
+
+{% block main_js %}{% endblock %}
+
+{% block extrajs %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap_namespaced.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/courses.css" %}" />
+
+	<script src="{% static "js/angular.min.js" %}" type="text/javascript"></script>
+	<script src="{% static "js/angular-cookies.js" %}" type="text/javascript"></script>
+	<script src="{% static "js/coursepage.js" %}" type="text/javascript"></script> 
+{% endblock %}
+
+{% block page_class %}fixed{% endblock %}
+{% block imgprefix %}numra{% endblock %}
+
+{% block content %}
+	{# Add blocktrans and trans tags #}
+	<div id="courses" class="bootstrap-styles" ng-app="CoursePage">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-md-7 col-sm-7 col-lg-7">
+
+	                <div class="row">
+	                    <br />
+		                <ul id="subnav" class="nav nav-tabs">
+		                    {% include 'student_course_nav_items.html' %}
+		                </ul>
+	                </div>
+
+		            <div class="row">
+		                <div class="col-md-12 col-sm-12 col-lg-12">
+			                <div class="goals_overview">
+			                    <div class="col-md-4 col-sm-4 col-lg-4">
+			                        <h4>{% trans "Your personal goals" %}</h4>
+				                    <div class="well">
+				                        <p>{% trans "Track your own progress outside of courses with personal goals." %}</p>
+				                    </div>
+			                    </div>
+
+		                        <div class="col-md-8 col-sm-8 col-lg-8">
+		                            {% if user_defined_goals|length > 0 %}
+			                            {% with user_defined_goals as goal_set %}
+				                            {% include 'goal_table_list.html' %}
+			                            {% endwith %}
+			                        {% endif %}
+			                        <a id="create_self_goal" class="btn btn-success" href="{% url 'courses.views.courses_goal_construction' %}">{% trans "Create a task" %}</a>
+			                    </div>
+			                </div>
+
+		                </div>
+		            </div>
+
+		        </div>
+	        </div>
+		</div>
+	</div>
+
+{% endblock %}
+
+{# vim: set ts=4 sw=4 tw=0 syntax=htmldjango : #}
+

@@ -1,0 +1,802 @@
+/* @override 
+	http://localhost:8000/media/css/smaoahpa_main.css
+	http://localhost:8000/aarjel/media//css/main.css
+	http://localhost:8000/davvi_oahpa/media//css/main.css
+*/
+
+/* @group CSS Reset */
+
+* {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+body {
+	font-family: sans-serif;
+	font-size: 100%;
+	width: 100%;
+	background-color: #AAA ;
+}
+
+p {
+	font-family: HelveticaNeue, sans-serif;
+	margin-bottom: 0;
+}
+
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img { 
+	border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol,ul {
+	list-style:none;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { border:0;
+}
+
+/* @end */
+
+body {
+  overflow: scroll;
+  font-family: "Helvetica Neue", sans-serif; 
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  color: #150517;
+  font-size: 110%;
+  background-color: #e5e7e6;
+  background: url(../images/grey_orange_grey.png) repeat-x;
+}
+
+body.main {
+  background: url(../images/orange_blue_grey.png) repeat-x;
+}
+
+#content a {
+	color: #144ea6;
+	text-decoration: none;
+}
+
+.hide {
+	position: absolute;
+	top: -6000px;
+	left: -6000px;
+}
+
+#header h1 {
+	display: block;
+	width: 180px;
+	height: 80px;
+	margin: 0 auto;
+}
+
+#header h1 img {
+	width: 180px;
+}
+
+h2 {
+	color: #e98300;
+	text-align: center;
+	font-size: 150%;
+	letter-spacing: 1px;
+	font-family: Arial, sans-serif;
+	margin-bottom: .5em;
+}
+
+#page {
+	position: relative;
+	margin: 3em auto ;
+	padding: .25em;
+	background-color: #FFF;
+	border: 1px solid #144ea6;
+	max-width: 760px;
+}
+
+#language_options {
+	position: absolute;
+	z-index: 20;
+	font-size: 80%;
+	text-align: right;
+	right:  5px;
+	padding: 5px;
+}
+
+#language_options label {
+	font-size: 90%;
+}
+
+#language_options select {
+	margin-left: 7px;
+	display: table-cell ;
+	text-align: left;
+	margin-top: 2px;
+}
+
+#language_options dl {
+	margin-bottom: 10px;
+} 
+
+#page p {
+	margin: 0 1em;	
+}
+
+#page p.intro {
+	margin-top: .25em;
+	font-size: 95%;
+	line-height: 1.2em;
+}
+
+
+
+ul#games_menu {
+	display: table;
+	margin: 1em auto;
+}
+
+#page.game ul#games_menu {
+	position: absolute;
+	margin: 0 0 0 0;
+	right: 0;
+	top: -5em;
+}
+
+ul#games_menu li {
+	vertical-align: top;
+}
+
+#games_menu li.game {
+	display: table-cell;
+	width: 165px;
+}
+
+
+#games_menu.small li {
+	width: 70px;
+	padding-left: 20px;
+}
+
+#games_menu img {
+	width: 80px;
+	height: 80px;
+}
+
+#games_menu.small .gamename {
+	color: #144ea6;
+}
+
+#games_menu.small img {
+	width: 60px;
+	height: 60px;
+	
+}
+
+#games_menu.small a {
+	color: #000;
+	font-size: 80%;
+}
+
+#games_menu a {
+	display: block;	
+	width: inherit;
+	text-decoration: none;
+	text-align: center;
+}
+
+#footer {
+	margin-top: 1.5em;
+	margin-bottom: .75em;
+	font-size: 80%;
+	
+}
+
+#page.game #footer {
+	position: relative;
+	width: 700px;
+	padding: 0 15px;
+	left: 9em;
+}
+
+#page.game #footer p {
+	font-size: 95%;
+	line-height: 1.4em;
+}
+
+ul.linklist {
+	margin: 1em 2em;
+}
+
+ul.linklist a {
+	text-decoration: none;
+}
+
+/* Game page */
+
+#page.game {
+	background-color: transparent;
+	border: none;
+	padding: .25em;
+	max-width: 800px;
+	margin-top: 90px;
+	margin-left: 0;
+}
+
+
+#page.game #header {
+	position: relative;
+	display: block;
+	z-index: 10;
+	right: -8em;
+}
+
+/* TODO: relocate div here */
+#page #headerimg {
+	display: none;
+}
+
+#page.game #headerimg {
+	display: block;
+	position: absolute;
+	top: -4.5em;
+	left: 9em;
+}
+
+#headerimg img {
+	width: 200px;
+	height: 70px;
+}
+
+#page.game #content {
+	position: relative;
+	border: 1px solid #999;
+	background-color: #FFF;
+	width: 95%;
+	left: 8.75em;
+	z-index: 1;
+}
+
+#page.game #rightcontent {
+	margin: 15px 15px;
+}
+
+#game_header {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+/* settings form */
+div#settings {
+	font-size: 80%;
+	padding-top: .5em;
+}
+
+#settings input[type="radio"] {
+	margin: 2px 5px 3px 10px;
+}
+
+#settingsform {
+	display: table-row;
+}
+
+#submittable {
+	display: table-row;
+	width: 100%;
+}
+
+#submittable li {
+	display: table-cell;
+	padding: .75em 0 0 0;
+	text-align: left;
+}
+
+.grammarlinks {
+	position: absolute;
+	top: 6em;
+	right: .5em;
+}
+
+div#interface_language {
+	position: absolute;
+	top: .8em;
+	right: -9.5em;
+    font-size: 80%;
+    font-style: italic;
+    line-height: 1.5em;
+    /*text-align: right; */
+}
+
+div#dialect_selection {
+	position: absolute;
+	top: .8em;
+	right: .5em;
+    font-size: 80%;
+    font-style: italic;
+    line-height: 1.5em;
+    text-align: right;
+}
+
+.language_help {
+	position: absolute;
+	top: 1em;
+	right: -3.5em;
+}
+
+.language_help_frontpage {
+	position: absolute;
+	top: 1em;
+	left: 1em;
+}
+
+
+#submittable select {
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+/* first label, not embedded ul>li>label */
+#settingsform > li > label {
+	display: list-item;
+	font-size: 95%;
+	line-height: 1.5em;
+	padding-bottom: .25em;
+	font-style: italic;
+}
+
+#settingsform > li {
+	position: relative;
+	display: table-cell;
+	vertical-align: top;
+	padding: .5em 2em .5em 0em;
+}
+
+div#instructions {
+	border: 1px solid #CCC;
+	padding: 10px;
+	margin-top: 1.25em;
+	margin-bottom: 1em;
+
+	font-size: 95%;	
+}
+
+div#instructions p {
+	margin: 0 0 .75em 0;
+	padding: 0 0 0 0;
+}
+
+div#tooltips {
+	padding: 0;
+	margin: 0;
+}
+
+div.tooltip {
+	border: 1px solid #CCC;
+	padding: 10px;
+	
+	font-size: 95%;
+}
+
+/* TODO: copyright position */
+
+
+#game #score {
+	margin-top: 10px;
+}
+
+#score .points {
+	font-weight: bold;
+}
+
+div#game hr {
+	margin-bottom: .5em;
+}
+
+
+/* left menu */
+
+#leftcontent {
+	position: absolute;
+	top: 5em;
+	left: -8.5em;
+	z-index: −1;
+	width: 8.5em;
+}
+
+#leftcontent .bigheader {
+	text-align: left;
+	font-weight: light;
+	margin-bottom: .75em;
+	font-size: 125%;
+	letter-spacing: 1px;
+	color: #144ea6;
+}
+
+#leftcontent img {
+	display: block;
+	margin: 0 auto;
+}
+
+#leftcontent strong {
+	color: #e98300;
+	font-weight: bold;
+}
+
+#leftcontent ul.sidelist {
+	margin-bottom: 1.75em;
+	margin-top: .25em;
+}
+
+#leftcontent ul.sidelist li {
+	padding-bottom: .25em;
+}
+
+#leftcontent ul.sidelist.small, ul.sidelist li  {
+	font-size: 90%;
+}
+
+#leftcontent ul.sidelist li.selected a {
+	color: #e98300;
+}
+
+
+
+/* Game forms */
+
+/* table */
+
+
+
+/*div#game_right_float {
+	display: table-cell;
+	table-layout:auto;
+}*/
+
+/*div#game_right_float {
+	width: 25%;
+}*/
+
+dl#question_set {
+	display: table;
+	width: 100%;
+	position: relative;
+	margin: 1em .5em;
+	font-size: 95%;
+}
+
+
+
+dl#question_set input[type='text'] {
+	padding: 2px 2px;
+	font-size: 100%;
+	width: 65%;
+}
+
+dl#question_set.morfac input[type='text'] {
+	width: 7.5em;
+}
+
+dl#question_set dt {
+	margin-bottom: 0;
+}
+
+
+
+#question_set .correct {
+	color: green;
+}
+
+#question_set .incorrect {
+	color: red;
+	font-weight: bold;
+}
+
+#question_set .correctanswertext {
+	position: absolute;
+	right: 0;
+	width: 100%;
+	text-align: right;
+	border-bottom: 1px dashed #666;
+	padding-bottom: 2px;
+}
+
+#question_set a {
+	text-decoration: none;
+	color: black;
+}
+
+/* morfa-c */
+
+div#game {
+	display: table;
+	position: relative;
+	
+	width: 100%;
+	font-size: 85%;
+	
+	margin-top: .5em;
+	padding-top: .5em;
+}
+
+#game_right_float {
+	display: table-cell;
+	position: relative;
+	float: right;
+	
+	width: 25%;	
+}
+
+#game_left {
+	width: 72%;
+	display: table;
+	position: relative;
+}
+
+
+#question_set.morfac .correctanswertext {
+	position: absolute;
+	right: 0;
+	text-align: right;
+	border-bottom: none;
+	padding-bottom: 2px;
+}
+
+span.leftpart, span.rightpart {
+	display: table-cell;
+}
+
+span.leftpart {
+	width: 100%;
+	position: absolute;
+	left: 0;
+}
+
+span.rightpart a.feedback_link {
+	position: absolute;
+	left: 0;
+}
+
+#question_set.morfac dt {
+	padding-bottom: .25em;
+}
+
+#question_set.morfac dd {
+	margin-left: 1em;
+	line-height: 1em;
+	padding-bottom: 2.25em;
+}
+
+#question_set span.blankentry {
+	color: transparent;
+	visibility: hidden;
+	display: none;
+}
+
+#question_set.morfac span.blankentry {
+	color: black;
+	visibility: visible;
+	display: inline;
+}
+
+/* morfa-s */
+
+#question_set dt {
+	padding-bottom: .25em;
+}
+
+#question_set dd {
+	display: tablerow;
+	padding-top: .25em;
+	margin-bottom: .75em;
+	padding-bottom: 1.5em;
+	position: inherit;
+}
+
+#question_set.morfa span.pronoun {
+	margin-left: .75em;
+	display: inline;
+}
+
+.morfa span.pronoun + input[type='text'] {
+	display: inline;
+	position: absolute;
+	margin-left: 5px;
+	top: 0px;
+	width: 80%;
+}
+
+
+#question_set input[type='text'] {
+	border-width: 1px;
+	border-color: #bbb;
+}
+
+span.incorrect input {
+	color: #900;
+}
+
+
+
+#footer a {
+	text-decoration: none;
+}
+
+
+#errorpage {
+	display:  block;
+	height:  425px ;
+}
+
+#login p {
+	padding: 0;
+	margin: 0;
+	text-indent: 0;
+}
+
+#login form {
+	margin: 2em;
+}
+
+#login table {
+	margin: .75em ;
+}
+
+#login table td {
+	padding-bottom: .5em;
+	padding-right: .5em;
+}
+
+#login table {
+	font-size: 120%;
+}
+
+#login input {
+	font-size: 120%;
+}
+
+#loginnotice {
+	margin: .75em 1.25em;
+}
+
+#deeplink {
+	position: absolute;
+	font-size: 80%;
+	color: #009;
+	top: 0;
+	right: -2em;
+
+}
+
+
+
+/* Short explanation tooltip inside Vasta and Sahka feedback messages. */
+/* The class 'helptext' makes a text box pop up with an explanation of the highlighted term when the user points to the text that is between <span> tags. Texts and hyperlinks are given in the file messages_vasta.xml*/
+
+.helptext {
+        /*border-bottom: 1px dotted #000000;*/ 
+        color: #000000; 
+        outline: none;
+        cursor: help; 
+        text-decoration: none;
+        position: relative;
+}
+
+.helptext span {
+        margin-left: -999em;
+        position: absolute;
+}
+		
+.helptext:hover span {
+        border-radius: 5px 5px; 
+        -moz-border-radius: 5px; 
+        -webkit-border-radius: 5px; 
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); 
+        -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1); 
+        -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+        font-family: Calibri, Tahoma, Geneva, sans-serif;
+        position: absolute; 
+        left: 0em; top: 2em; 
+        z-index: 99;
+        margin-left: 0; 
+        width: 180px;
+}
+
+.helptext:hover img {
+        border: 0; 
+        margin: -10px 0 0 -55px;
+        float: left; 
+        position: absolute;
+}
+
+.helptext:hover em {
+        font-family: Candara, Tahoma, Geneva, sans-serif; 
+        font-size: 1.2em; 
+        font-weight: bold;
+        display: block; 
+        padding: 0.2em 0 0.6em 0;
+}
+
+.shortinfo { 
+        padding: 0.8em 1em;
+        background: #FFFFAA; 
+        border: 1px solid #FFAD33;
+        font-size: 14px;
+        width: 150px; 
+}
+
+.shortinfo_lang { 
+        padding: 0.3em 0.3em 0.3em 0.3em;
+        border: 1px solid #FFAD33; 
+}
+
+/* The class "interface" describes the localisation tooltips. By default, the user interface is mostly in North Sámi. But if user points to a text, at the same time holding down [Alt] key, the translation in the user's language will be shown as a tooltip. */
+.interface {
+        /*border-bottom: 1px dotted #000000;*/ 
+        color: #000000; 
+        outline: none;
+        cursor: help; 
+        text-decoration: none;
+        position: relative;
+}
+
+.interface span {
+        margin-left: -999em;
+        position: absolute;
+}
+		
+.interface:hover span {
+        border-radius: 5px 5px; 
+        -moz-border-radius: 5px; 
+        -webkit-border-radius: 5px; 
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); 
+        -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1); 
+        -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+        font-family: Calibri, Tahoma, Geneva, sans-serif;
+        position: absolute; 
+        left: 5em; top: 0.8em; 
+        z-index: 99;
+        margin-left: 0; 
+        width: 150px;
+        text-align: center;
+        color: #000000;
+        background-color: #DDDDDD;
+        font-weight: normal;
+}
+
+
+.interface:hover img {
+        border: 0; 
+        margin: -10px 0 0 -55px;
+        /*float: left; */
+        position: absolute;
+}
+
+.interface:hover em {
+        font-family: Candara, Tahoma, Geneva, sans-serif; 
+        font-size: 1.2em; 
+        font-weight: bold;
+        display: block; 
+        padding: 0.2em 0 0.6em 0;
+}
+
+.invisible {
+        visibility:hidden;
+        display:none;
+}
+
+* html a:hover { background: transparent; }

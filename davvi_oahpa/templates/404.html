@@ -1,0 +1,14 @@
+{% extends "davvi_oahpa.html" %}
+{% load i18n %}
+
+
+{% block rightcontent %}
+
+<div id="errorpage">
+	<h3>{% trans "Error" %} 404</h3>
+	<p>{% trans "Page not found." %}</p>
+</div>
+
+{% endblock %}
+{% block imgprefix %}morfa{% endblock %}
+{% block gametitlename %}404{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "mgame.html" %}
+{% load i18n %}
+{% load trans_to %}
+
+{% block gamename %}<t class="interface">{% trans_to settings.gamename "sme" %}<span class="invisible">{% trans settings.gamename %}</span></t>{% endblock %}
+{% block instructions %}
+ <!-- {% ifequal settings.gametype "bare" %}  -->
+    <t class="interface">{% trans_to "Add verbs in correct forms. You get translation if you click the word." "sme" %}<span class="invisible">{% trans "Add verbs in correct forms. You get translation if you click the word." %}</span></t>
+<!--  {% else %}
+    {% trans "Add verbs in correct forms." %}
+  {% endifequal %}  -->
+{% endblock %}
+
+
+{% block subsetting %}
+	{% ifequal settings.gametype "bare" %}
+		<li><label for="id_{{ settingsform.vtype.name }}" class="interface">{% trans_to "Type" "sme" %}<span class="invisible">{% trans "Type" %}</span></label>
+			{{ settingsform.vtype }}</li>
+	<li><label class="interface">{% trans_to "Stem" "sme" %}<span class="invisible">{% trans "Stem" %}</span></label>
+		<ul>
+			<li>{{ settingsform.bisyllabic }} <label for="id_{{ settingsform.bisyllabic.name }}" class="interface">{% trans_to "bisyllabic" "sme" %}<span class="invisible">{% trans "bisyllabic" %}</span></label></li>
+			<li>{{ settingsform.trisyllabic }} <label for="id_{{ settingsform.trisyllabic.name }}" class="interface">{% trans_to "trisyllabic" "sme" %}<span class="invisible">{% trans "trisyllabic" %}</span></label></li>
+			<li>{{ settingsform.contracted }} <label for="id_{{ settingsform.contracted.name }}" class="interface">{% trans_to "contracted" "sme" %}<span class="invisible">{% trans "contracted" %}</span></label></li>
+		</ul>
+	</li>
+	{% else %}
+		<li><label for="id_{{ settingsform.vtype_context.name }}" class="interface">{% trans_to "Type" "sme" %}<span class="invisible">{% trans "Type" %}</span></label>
+			{{ settingsform.vtype_context }}</li>
+	{% endifequal %}
+{% endblock %}
+

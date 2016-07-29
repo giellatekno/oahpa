@@ -1,0 +1,47 @@
+{% extends "leksa.html" %}
+{% load i18n %}
+{% load trans_to %}
+
+{% block navbar %}
+<ul class="sidelist">
+	<li><a href="{% url 'leksa' %}" class="interface">{% trans_to 'Words' "sme" %}<span class="invisible">{% trans "Words" %}</span></a></li>
+	<li class="selected"><a href="{% url 'leksa.sted' %}" class="interface">{% trans_to 'Placenames' "sme" %}<span class="invisible">{% trans "Placenames" %}</span></a></li>
+</ul>
+{% endblock %}
+
+{% block instructions %}<t class="interface">{% trans_to "Give translations for placenames." "sme" %}<span class="invisible">{% trans "Give translations for placenames." %}</span></t>{% endblock %}
+
+{% block settings %}
+<div class="grammarlinks">
+    {% include 'grammar_links_menu.html' %}
+</div>
+
+<ul id="settingsform">
+	<li><label for="{{ settingsform.geography.name }}" class="interface">{% trans_to "Geography" "sme" %}<span class="invisible">{% trans "Geography" %}</span></label>
+		{{ settingsform.geography }}</li>
+    <li><label class="interface">{% trans_to "Frequency" "sme" %}<span class="invisible">{% trans "Frequency" %}</span></label>
+    <ul>
+        <li>{{ settingsform.common }} <label for="id_{{ settingsform.common.name }}" class="interface">{% trans_to settingsform.common.name "sme" %}<span class="invisible">{% trans settingsform.common.name %}</span></label></li>
+        <li>{{ settingsform.rare }} <label for="id_{{ settingsform.rare.name }}" class="interface">{% trans_to settingsform.rare.name "sme" %}<span class="invisible">{% trans settingsform.rare.name %}</span></label></li>
+    </ul>
+   <!--- <li><label for="id_{{ settingsform.frequency.name }}">{% trans "Frequency" %}</label> -->    
+	<li><label for="{{ settingsform.transtype.name }}" class="interface">{% trans_to "Select the language pair" "sme" %}<span class="invisible">{% trans "Select the language pair" %}</span></label>
+		{{ settingsform.transtype }}</li>
+</ul>
+
+{# {{ settingsform.sapmi }}{% trans "sapmi" %}<br/> #}
+{# {{ settingsform.world }}{% trans "world" %}<br/> #}
+{# {{ settingsform.suopma }}{% trans "suopma" %}<br/> #}
+
+<input type="hidden" name="semtype" value="PLACE_NAME" />
+<input type="hidden" name="source" value="all" />
+<!--- <input type="hidden" name="frequency" value="common" /> --->
+<!---<input type="hidden" name="common" value=TRUE /> --->
+<!---<input type="hidden" name="rare" value=FALSE /> --->
+
+<ul id="submittable">
+    <li><t class="interface"> <input type="submit" name="settings" value="{% trans_to "New set" "sme" %}" /><span class="invisible">{% trans "New set" %}</span></t>
+    </li>
+</ul>
+{% endblock %}
+

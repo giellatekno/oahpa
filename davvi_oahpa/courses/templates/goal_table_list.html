@@ -1,0 +1,69 @@
+﻿{% load goal_filters %}
+{% load i18n %}
+
+<table class="course_goals">
+    <tr>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th>{% trans "Task" %}</th>
+        {% comment %}
+        <th>&nbsp;</th>
+        {% endcomment %}
+        <th>{% trans "Progress" %}</th>
+        <th>&nbsp;</th>
+    </tr>
+{% for goal in goal_set %}
+    <tr>
+        {% comment %}TODO: test if it's already in progress or
+        been done and restyle, or sort by completed
+        date? {% endcomment %}
+
+        {# stars #}
+        <td>
+            {% if goal|complete_for:user %}
+                <span class="star">&#9733;</span>
+            {% else %}
+                <span class="star clear">&#9733;</span>
+            {% endif %}
+        </td>
+
+        <td>{% if goal_number %}{{ goal_number }}.{% endif %}{{ forloop.counter }}</td>
+
+        {# Goal begin/redo links #}
+        <td>
+            {% if goal|goal_instances_for:user|length > 0 %}
+                {% if goal|complete_for:user %}
+                    <a class="begin_goal" href="{% url courses.views.begin_course_task goal.id %}"><span class="label label-info">{% trans "More?" %}</span></a>
+                {% else %}
+                    <a class="begin_goal" href="{% url courses.views.begin_course_task goal.id %}"><span class="label label-success">{% trans "Continue" %}</span></a>
+                {% endif %}
+            {% else %}
+                <a class="begin_goal" href="{% url courses.views.begin_course_task goal.id %}"><span class="label label-success">{% trans "Begin" %}</span></a>
+            {% endif %}
+        </td>
+
+        <td>{{ goal.short_name }}</td>
+        {% comment %}
+        <td>{% for n, g in goal.summary %}<em>{{ n }}</em>: {{ g }}{% if not forloop.last %}<br />{% endif %}{% endfor %}</td>
+        {% endcomment %}
+
+        {% if goal|goal_instances_for:user %}
+            {% with goal|goal_instances_for:user|first as g %}
+            {# progress percentage #}
+            <td class="current_progress">
+                {{ g.progress|floatformat }}%
+            </td>
+            <td class="current_progress sets">
+                <a class="goal_history" href="{% url courses.views.goal_history goal.id %}"><span class="label label-primary">{% trans "History" %}</span></a>
+            </td>
+            {% endwith %}
+        {% else %}
+            <td></td>
+            <td></td>
+            <td></td>
+        {% endif %}
+    </tr>
+{% endfor %}
+</table>
+
