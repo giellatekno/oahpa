@@ -12,12 +12,16 @@ with ''sjd'', etc. For univ_oahpa, replace with univ_.
 For the __old__ (sme) oahpa, remove the prefix, and write only 
 ''oahpa, drill_log'', etc.
 
-On victorio, go to the production catalogue (not actually needed):
+On both gtoahpa and gtlab, go to the production catalogue (not actually needed, you may acces mysql from anywhere) and write:
 
 {{{
-mysql -u admin -p
+mysql -u root -p
 salasana: 
+}}}
 
+And then, dependent upon the oahpa version you want to extract data for, write:
+
+{{{
 mysql> use smaoahpa;
 mysql> select * from smadrill_log order by game into outfile '/usr/tmp/smaoahpalog.txt' fields terminated by '|';
 mysql> exit
@@ -25,11 +29,6 @@ mysql> exit
 
 … and correspondingly for the command line option.
 
-Note that the command on gtoahpa is
-
-{{{
-mysql -u root -p
-}}}
 
 The relevant variables are found in the file {{pro...}}.
 
