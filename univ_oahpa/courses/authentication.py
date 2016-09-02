@@ -23,6 +23,10 @@ from courses.models import Course
 
 __all__ = ['CookieAuthMiddleware', 'CookieAuth']
 
+from logging import getLogger
+
+# DEV_LOG = getLogger('dev_log')
+
 class CookieAuthMiddleware(object):
     """ Middleware that allows cookie authentication.
 
@@ -30,15 +34,26 @@ class CookieAuthMiddleware(object):
     """
 
     def get_cookie_user(self, request):
+        # DEV_LOG.error("CookieAuthMiddleware.get_cookie_user - check for matching cookies:")
         matching_cookies = [(c, v) for c, v in request.COOKIES.iteritems()
                                     if c.startswith(settings.COOKIE_NAME_STARTSWITH)]
+        # DEV_LOG.error(repr(matching_cookies))
+
+        # DEV_LOG.info("get_cookie_user")
+        # DEV_LOG.info(repr(matching_cookies))
 
         try:
             cookie_name, wp_cookie = matching_cookies[0]
-            wp_username, session, session_hex = wp_cookie.split('%7C')
+            wp_username, expiration, session, session_hex = wp_cookie.split('%7C')
             cookie_uid = wp_username
-        except:
+        except Exception, e:
+            # DEV_LOG.error("Except " + repr(e))
             cookie_uid = False
+
+        # if cookie_uid:
+        #     DEV_LOG.error("Got cookie uid " + repr(cookie_uid))
+        # else:
+        #     DEV_LOG.error("No cookie uid ")
 
         return cookie_uid
 
@@ -51,8 +66,10 @@ class CookieAuthMiddleware(object):
         view functions.
         """
         from django.contrib import auth
+        # DEV_LOG.error("cookie_auth - process_view: start")
 
-        auth_source = request.session.get('auth_source', 'standard')
+        auth_source = request.session.get('auth_source', False)
+        # DEV_LOG.error("cookie_auth - process_view: auth_source: " + repr(auth_source))
 
         if auth_source == 'standard':
             return None
@@ -75,6 +92,7 @@ class CookieAuthMiddleware(object):
                         request.session['auth_source'] = 'cookie'
             else:
                 if request.user.is_authenticated():
+                    request.session['auth_source'] = 'standard'
                     return HttpResponseRedirect(reverse(cookie_logout))
 
             # Otherwise do not care.
