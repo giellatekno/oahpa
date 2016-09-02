@@ -1,6 +1,6 @@
 This is a document for ideas and discussion about the new Oahpa code. 
 
-workshop-week from 12. Sept
+workshop-week from 19. Sept
 
 !!!IDEAS
 
@@ -54,7 +54,7 @@ lávka	lávka+N+CGErr+Sg+Gen
 lávkka	lávka+N+Sg+Gen
 }}}
 
-We want this for more languages, but implemented in another way than for sme. By concatinating FSTs in stead of messing up the source files, which is a big work to mantain.
+We want this for more languages, but implemented in another way than for sme. By concatenating FSTs instead of messing up the source files, which is a big work to maintain.
 
 That we have done for numeral transcriptor in crk (Err/ShLo means error marking short/long vowel)
 {{{peyak	1+Err/ShLo
@@ -112,23 +112,32 @@ This may be included in the standard newinfra build process:
 !System files
 
 !!Audio files/Text-to-speech
-There are some audio files in Leksa in crk-oahpa
+There are some audio files in Leksa in crk-oahpa and vro-oahpa. In vro we are also developing a new feature: reading aloud Morfa-C questions with the help of text-to-speech software.
 
 !!How to make Oahpa for new languages
 
 !!Maintainence
 The linguist should be able to install/remove new lemmas and tasks.
+Teacher interface for Oahpa, e.g. (taken from oahpapres.pdf):
+Good morning, Dorothy!
+# Mark (in the list) the part of speech and the
+morphological inflection you want Morfa S task for
+# Mark (in the list) the lemmas you want to include
+in the task
+# Write the instruction for the students
+# – Wait, while the program is compiling –
+# Test the tasks. Click for the next step.
 
 !!Consistency in naming
 * Aim to introduce/keep names the same for the same things (and better different for substantial differences)
 * Tag collisions
 ** Different uses of +Pass tag in sme and rus-oahpa (affects also nob, smn, sms, fin, est, vro, fkv, fao, mhr, vep)
 ** rus-oahpa: some verb forms have secondary tags that are confused even with PoS tag (Adv) 
-* Databse fields 
+* Database fields 
 ** Database tables have columns named with actually reserved words: string, case. This could be avoided.
 
 !!Konteaksta
-We have a version for sme
+We have a version for sme and two versions for rus (Ruskonteaksta and RusVIEW).
 
 !!Student-log-in
 We have a demo-version
@@ -161,6 +170,10 @@ Most differences follow from the availability of basis resources.
 
 !vro
 * [http://testing.oahpa.no/voro/]
+* 4 programs
+* spell-relax issues because of different ways of marking palatalisation and glottal stop
+* some audio files in Leksa (the full lexicon coming soon)
+* TTS integration under development
 
 !crk
 * [http://giellatekno.uit.no/ped/crkdoc/oahpa/crk-oahpa.html]
@@ -183,6 +196,11 @@ Most differences follow from the availability of basis resources.
 * Russian has a mechanism for handling stress
 * rusoahpa should be moved from gtlab to gtoahpa
 
+!sms
+* [http://oahpa.no/nuorti/]
+* [http://giellatekno.uit.no/doc/lang/sms/j-sms.html]
+* 4 programs
+* Morfa-S nouns: diminutives, possessives and their combinations
 
 !!The other Oahpas (probably not so relevant for the initial part of the work)
 
