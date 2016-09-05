@@ -13,7 +13,7 @@ Requirements, from different perspectives:
 !!Today: Special features, not used for all languages
 
 ! Leksa:
-* audio-files (crk-oahpa)
+* audio-files (crk-oahpa, vro-oahpa)
 ** for the time being: audio files are not functioning with Safari
 {{{ <l pos="N" animacy="AN" t2c="no" rime="0" gen_only="Pl,Sg" audio="kohkos">kohkôs</l>}}}
 * almost correct feedback to the student (tcomm) for sma-oahpa, sme-oahpa   
@@ -79,6 +79,7 @@ pêyak	1
 ** only one dialect is presented in the tasks, but both dialects are accepted as input from the student
 ** the morphological feedback is according to the chosen dialect
 * all instruction is in target language, but the student gets a tool tip translation by clicking Alt (sme-oahpa)
+* short verbal explanation of the game topic under each game icon and name (vro-oahpa)
 
 !!New ideas (don't hesitate)
 
@@ -104,6 +105,10 @@ Different kinds of data:
 ** for choices in menus
 ** for producing the tasks
 
+Contents of drop-down menus (semantic supersets, case a.o. grammatical category lists, source lists (books and chapters), etc.) should be in separate file(s), not inside the program code files. 
+* Create a procedure for automatically generating these lists out of the Oahpa source files (lexicon, tags, paradigms, semantic sets). 
+* In the teacher interface there could be an option to check the contents of the automatically generated menus and to suppress the unwanted items.
+
 
 Small FST for Oahpa? Containing the lexicon from ped/LANG/src/
 This may be included in the standard newinfra build process:
@@ -117,8 +122,8 @@ There are some audio files in Leksa in crk-oahpa and vro-oahpa. In vro we are al
 !!How to make Oahpa for new languages
 
 !!Maintainence
-The linguist should be able to install/remove new lemmas and tasks.
-Teacher interface for Oahpa, e.g. (taken from oahpapres.pdf):
+* Linguist interface. The linguist should be able to install/remove new lemmas and tasks.
+* Teacher interface, e.g. (taken from oahpapres.pdf):
 Good morning, Dorothy!
 # Mark (in the list) the part of speech and the
 morphological inflection you want Morfa S task for
