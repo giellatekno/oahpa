@@ -1,0 +1,72 @@
+!!!Võru koosolek 31.08.2016
+Kohal: Jack, Sulev, Heli
+
+!!Kokkuvõte eelnevast
+
+Sulev testis Oahpat (juunis). Siin on loetelu leitud vigadest ja soovitavatest täiendustest: 
+
+* Morfa-C noun harjutustel vähe sõnu. Sõnad, mis on sem. klassist building või room, aga millel  pole sisseütlevat (vbl pole üldse FST-s) -> võtta välja see loend ja  saata Jackile, et ta paneks FST-sse.
+* Morfa-C verb. Ei tegijad ega verbid ei tohiks korduda. Lisada vastavad  kontrollid. (Miks praegune verbi korduste vältimise algoritm ei  tööta???) Tegijate varieerimiseks lisada uusi malle, kus tegijaks  FAMILY, PEOPLE vms.
+* Morfa-C verb MAINV antakse õige vastusena (verb: luuletama) 
+* Morfa-C noun Kaasaütlev: vastuste kontrollimise juures unhandled exception 
+* Genereerida uus Oahpa andmebaas serveris. -> testida uuesti, kas  on rohkem sõnu Morfa-C harjutustes, eriti kaasaütlev ja sisseütlev. 
+* Lokaliseerimine.  Inglise ja soome keeles käänete küsimused. On ainult mida?, peaks olema keda? mida? 
+* Avalehele veel linke teistele õppematerjalidele. umakiil.eu/grammatika (häälikuõpetus) äänioppiMein Zimmer (ediv.planet.ee/meinZimmer) - Võtmepeituse mäng = harjutus kaassõnade kasutamise kohta. võru k. ede-tagasõna - OK
+* Morfa-C harjutuste ettelugemine häälega (kõnesüntees). Häälekõvendaja ikoon küsimuse järele. - Heli tegeles, aga tekkisid tehnilised probleemid.
+
+__Heli__ teeb need parandused ja täiendused hiljemalt oktoobriks (hea, kui jõuaks sügissemestri alguseks). 
+
+__Sulev:__ 1/5 noomenite korrektuuritabelist teha. Edasi töö verbide tabeliga.
+
+!!Märkused, kommentaarid, probleemid ja nende arutelu
+
+!Morfa-C nimisõna vead:
+
+* kaasaütlev
+* translatiiv - ainult üks lause.
+
+!Morfa-C tegusõna viga:
+
+ühekülgne: ainult oleviku mitmuse 3. pööre ja mineviku ainsuse 3. pööre. realiseerida rohkem malle.
+
+!Hääldused Leksas
+
+__Sulev__ küsib Kaurilt sõnaraamatu helifailid (õigemini, kuidas failid endale saada nii, et seisu saaks automaatselt uuendada).
+ 
+!3. välte märkimine?
+
+EKI ja TÜ, keeleteaduslikus kirjanduses - graavis
+
+Võru sõnaraamatus - punkt sõna ees, vahel ka sõnaosa ees, kui see on kaasrõhuline
+
+!Võru wikipedia tekstide analüüsimine. 
+
+Praegune seis: 76% tundmatud vormid.
+
+!Kohanimed 
+
+__Jack__ paneb svn-i faili propernouns_newwords
+
+__Sulev__ määrab tüübid.
+
+Kohanimede tüüpe on määratud kahte moodi:
+
+a) ainsuse nimetav ''Vahtseliin''
+
+b) ainsuse nimetav ''Vahtseliina''
+
+Otsustasime, et kohanimedele pole vaja tüüpe, vaja on kolme põhivormi.
+
+!Liitsõnad
+
+''piir'' - analüüsitav
+
+''kund'' - analüüsitav
+
+''piirkund'' - tundmatu
+
+__Vaja teha:__ Liitsõnade genereerimise reeglid FST-sse panna.
+
+!!!Järgmise koosoleku aeg
+
+__N, 15. sept. kell 10__ Eesti aja järgi
