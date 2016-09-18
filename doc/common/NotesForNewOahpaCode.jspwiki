@@ -83,6 +83,111 @@ pêyak	1
 
 !!New ideas (don't hesitate)
 
+! General structure ideas
+
+Will need some discussion:
+
+Oahpa needs more separation within the source code, there is a lot of logic
+relating to rendering exercises spread across various parts.
+
+One way to simplify this could be separating Oahpa into two major pieces: (1)
+linguistic and exercise generation functions, which could be separated out into
+an internal-use-only JSON API, (2) frontend stuff, like presenting exercises to
+users, tracking user login, course management, etc.
+
+These two pieces could either exist as their own separate codebases, or be in
+one. Separating them should allow us to write unit tests for exercise
+generation with a fake language only for Oahpa testing, and ensure that as
+language needs change, we have less surprises.
+
+Each language project should have a central configuration setup for linguistic
+info and meta-info, and we should avoid copying code for each new project.
+
+Other:
+
+* Newest version of Django
+* Use django-rest-API for exercise generation pieces?
+* Word database structure is otherwise great, tagsets, semantics, etc., but it
+may be possible to extract wordforms from this (see below)
+
+! Exercises
+
+* Defining Morfa-S and Leksa exercises should be as simple as editing YAML;
+some bits of this are coded already in the inner workings of morfa-s, but
+this should be the default for morfa-s, leksa, and numra-type exercises that
+require no syntax. More info below
+
+* Exercise code needs to produce very simple output, so that we can write
+automated tests with a sample project and maybe with a fake language project
+where we only add linguistic data we need to test
+
+* Morfa-C: we can write some generalized agreement process that allows a
+language maintainer to easily define syntax relationships. These have been
+hard to add in python, and require significant work, but it could be
+simplified... Ryan may have a sample checked in somewhere, when it comes to it
+
+! Exercise Definitions
+
+For exercise definitions there are three parts:
+
+1.) defining how menus appear, and what content goes in them
+2.) defining how the questions appear
+3.) defining connections between (1) and (2)
+
+For leksa, numra, and morfa-s, the general structure is shared: question is a word with a particular form, answer is a question with a particular form.
+
+Question form:
+* internal question ID, for making menus, etc.?
+* language iso
+* word semantics
+* word morphology
+* context 
+
+Answer form:
+* language iso
+* word semantics (usually same)
+* word morphology (leksa: usually lemma, morfa-s: cases, tense, etc)
+* context
+
+Some of the ideas here exist in NDS (context-dependent question context)
+
+! Database
+
+As far as django is concerned, there should be a separate lexicon/morphology
+database from user and login data.
+
+It should be possible to install wordforms as a separate part of the process:
+
+* Example: the word structure, semantics, and Morfa-C exercises all do not
+need to be updated, but wordforms have changed and need to be replaced
+* Example: wordforms are fine, but Morfa-S or Leksa question/answer pairs have changed
+* Example: wordforms are fine, but Morfa-C has a new question, or a changed question
+* Example: wordforms are fine, questions are fine, but semantic sets need to be changed
+* Example: maybe more ideas ... 
+
+An option is using the FSTs "live", and only caching the last forms generated,
+unless the FST changes. Forms would be incrementally updated as users request
+them, and an install process could install only the word metadata structure,
+which should make the install process faster. Typically, unless the FST is very
+slow, these lookups can happen very quickly.
+
+We can rely on an updated lookup server daemon, which already exists, to speed
+up this process as well. (See main/ped/lookupserv/)
+
+! Install definition
+
+The install process should be defined in some system other than a `bash file,
+perhaps also .yaml, alongside the systemwide configuration.
+
+
+! Would be very nice to have ideas
+
+... but not immediately crucial
+
+* Morfa-C could use a word / wordform / semantics browser interface to simplify
+our troubleshooting processes, and help define exercises. Export XML? 
+
+
 !!What to send to analyser
 
 !Today
@@ -101,6 +206,7 @@ We should get the linguistic data out of the system files
 
 Different kinds of data:
 * information in the source files
+* definitions of how to display content based on morphology, contained within python (ex. if noun, add verb pronoun context, if Essive, no Sg or Pl.)
 * coordinated with the information in the systemfiles
 ** for choices in menus
 ** for producing the tasks
@@ -148,6 +254,26 @@ We have a version for sme and two versions for rus (Ruskonteaksta and RusVIEW).
 We have a demo-version
 
 !!Experiences from working with Oahpa from different languages
+
+! Pain points
+
+# database update takes time, sometimes changes are small (i.e., subset of
+  wordforms updated in FST, but still need to run whole install)
+
+# database update requires a lot of awareness of an individual oahpa installation
+
+# database: lots of places to configure data being installed, adding files is
+  not transparent
+
+# exercises: Morfa-C: adding new types of agreement is tricky
+# exercises: Morfa-S: new types of exercises are also tricky
+# exercises: Numra relies on some external FSTs, which Morfa currently does
+  not, need better error feedback for whoever is maintaining the processes that
+  these are missing when the process starts
+# exercise: sahka / vasta lookupserv is tough to configure (new version exists:
+  main/ped/lookupserv/)
+
+# general: errors are opaque, the backend could do a better job of explaining what is wrong
 
 Document the differences between the versions
 
