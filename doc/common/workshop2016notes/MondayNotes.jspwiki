@@ -1,1 +1,171 @@
-sadf
+
+Here are the monday notes, links to be moved.
+
+!!!
+!!Randomisation
+Not function how it should.
+Avoid repeating words.
+
+!!Category dependencies
+
+
+
+
+
+!!Modularisations
+
+
+
+
+
+
+!!Leksa
+
+* Outsource the development?
+* Enhance the lexicon with frequency information
+* Adding much more spellrelax to Leksa
+* Sound  (either read, or synthetic speech)
+* Picture
+* Self-made association clues
+
+
+!!Morfa-C
+
+Read aloud the sentences (synthetic speech)
+
+!!Pronounciation exercises 
+Calst pronouncation/sound program
+
+# System speaks
+# Student speaks
+# Student listens to own pronounciation
+# The system might even give feedback on the error (segment length..)
+
+Choose the correct written form
+
+!!Gielese
+* [http://gielese.no]
+* [http://giellatekno.uit.no/ped/crkdoc/gielese/crk-gielese.html]
+
+!!Anki
+* the user makes his own flashcards or download what others have done
+* the user decides how hard/easy the word was => repetion algorithm
+* the user downloads it, uses it offline
+* open source
+
+Vocabulary
+
+"Fluent forever"
+
+No repetition function
+
+Anki, Mnemonise
+
+Space repetition is much more efficient than going through all cards again
+
+Anki calculated the time span
+
+E.g.
+
+picture one side
+Northern Saami on the other side
+No Norwegian, English, anywhere
+
+You report how well you remembered it (1, 2, 3)
+Intervals: now, an hour, tomorrow, next week, month, year
+We already know the intervals
+
+Portability
+
+gïelese
+
+lär
+
+Anki asks, I have to think 
+We should be able to integrate user input
+
+
+!!Duo Lingo
+* Ready made flashcards of different kinds,
+* presented mixed, tests, discussion pages
+* repetition algorithm?
+* the user uses it online, or can download an app
+* not open-source, but free to use
+
+
+!!Memrise
+* anyone can upload content
+* not open-source
+* judge the time you use adding answer
+* have to be online
+
+
+
+
+!!Variation across the Oahpas so far
+
+
+The game.py file
+
+{{{
+tf-hsl-m0016:ped ttr000$ wc -l *_oahpa/*_drill/game.py |sort -nr
+    1658 rus_oahpa/rus_drill/game.py
+    1655 crk_oahpa/crk_drill/game.py
+    1621 hdn_oahpa/hdn_drill/game.py
+    1618 univ_oahpa/univ_drill/game.py
+    1618 davvi_oahpa/davvi_drill/game.py
+    1604 est_oahpa/est_drill/game.py
+    1582 vro_oahpa/vro_drill/game.py
+    
+    1564 vep_oahpa/vep_drill/game.py
+    1564 udm_oahpa/udm_drill/game.py
+    1564 sms_oahpa/sms_drill/game.py
+    1564 olo_oahpa/olo_drill/game.py
+    1564 mhr_oahpa/mhr_drill/game.py
+    1564 mdf_oahpa/mdf_drill/game.py
+    1564 izh_oahpa/izh_drill/game.py
+    1564 bxr_oahpa/bxr_drill/game.py
+    1563 mrj_oahpa/mrj_drill/game.py
+    1559 liv_oahpa/liv_drill/game.py
+    
+    1553 rup_oahpa/rup_drill/game.py
+    1553 myv_oahpa/myv_drill/game.py
+    1535 fkv_oahpa/fkv_drill/game.py
+    1498 yrk_oahpa/yrk_drill/game.py
+    1497 smn_oahpa/smn_drill/game.py
+    1497 sjd_oahpa/sjd_drill/game.py
+    1497 kpv_oahpa/kpv_drill/game.py
+    1185 sms_oahpa/fst_drill/game.py
+     919 nu_oahpa/nu_drill/game.py
+}}}
+
+The database installation
+
+{{{     
+tf-hsl-m0016:ped ttr000$ wc -l *_oahpa/install.py |sort -nr
+     157 rus_oahpa/install.py
+     149 davvi_oahpa/install.py
+     144 crk_oahpa/install.py
+     143 univ_oahpa/install.py
+     142 hdn_oahpa/install.py
+     139 yrk_oahpa/install.py
+     139 sms_oahpa/install.py
+     139 smn_oahpa/install.py
+     139 sjd_oahpa/install.py
+     139 rup_oahpa/install.py
+     139 myv_oahpa/install.py
+     139 kpv_oahpa/install.py
+     138 vro_oahpa/install.py
+     138 vep_oahpa/install.py
+     138 udm_oahpa/install.py
+     138 olo_oahpa/install.py
+     138 mrj_oahpa/install.py
+     138 mhr_oahpa/install.py
+     138 mdf_oahpa/install.py
+     138 liv_oahpa/install.py
+     138 izh_oahpa/install.py
+     138 fkv_oahpa/install.py
+     138 est_oahpa/install.py
+     138 bxr_oahpa/install.py
+     135 nu_oahpa/install.py
+}}}          
