@@ -3,7 +3,234 @@ Here are the Tuesday notes, links to be moved.
 !!! Notes
 
 !! General ideas about the program
-separate back-end from front-end
-separate linguistic (declarative) information from the procedural code
+* separate back-end from front-end
+* separate linguistic (declarative) information from the procedural code
 
-Proposal for new structure outline for linguistic features and task menu items[FeaturesandMenus.png]
+
+
+!!!The solution 
+
+:-)
+
+* The language-dependent file be __declarative__
+* The language-independent file be __procedural__
+* We must also change the structure of the database
+* Abstract ling features, menu items
+
+!!!Users' comments
+
+
+!!B-A
+
+
+!Leksa
+
+Missing in Leksa:  ''levels''
+
+You click on __Clothes__ and get traditional Saami clothes, before the basic clothes.
+The same thing goes for birds, so rare birds are dominant.
+
+So: Levels of vocabulary.
+
+
+I like Morfa-C
+
+Now you choose working on bisyllabics, trisyllabics.
+This could be re
+
+
+Morfa-S is useful for some people, but for verbs it is good that
+you see more of the sentence. I would like there to be levels there as well.
+
+They need as much linguistic input as possible.
+
+!The learning path:
+
+We had the function of letting the teacher see what the student did.
+As a teacher, I would like to see __tests__, so that I do not need to
+make tests myself all the time. I would like them to go in and do the test,
+so that the program grades it.
+
+Also, if it not organised as a test, 50% of the students will not do it.
+But if the tasks are named ''test'', and given as a requirement, then
+all of them will do it. I would thus be able to force the students to go in.
+
+The last time it was work on this, B-A was working with a class, and saw
+what the students did. Some went in and worked, others not. This was illuminating
+to the teacher.
+
+Today's solution is actually already better.
+
+Leksa:
+
+More info
+
+
+!Sound
+
+Audio files
+
+
+
+!!Erlend
+
+!The site oahpa.no
+
+There is no explanation on what Oahpa really is.
+
+On [http://oahpa.no] there are logs of links, but no explanation
+
+If I know that ''davvi'' means "North" I would perhaps press that link, 
+but I would actually find the course ''kursa''. The reference to kursa is, 
+unfortunately, hidden somewhere down there.
+
+I find it hard to navigate on the Oahpa pages.
+
+I need a home page with the rehearse links along the other links, like 
+dictionary etc.
+
+The tasks were also too hard for me, they demanded that I wrote exactly correct.
+
+
+The names Vasta, Sahka, Leksa are not in the dictionary. I assumed they were North
+Saami words. So, what do they mean?
+
+
+All the words on the Oahpa pages should be in NDS. Also all words in Kursa
+
+
+There are all too many links on the [http://oahpa.no] pages. We want more pages, less links.
+
+
+!The dictionary
+
+I use the dictionary a lot, it is good. The placename have been a great help.
+
+I miss the autocomplete feature.
+
+When I studied Russian I did not have access to these features.
+
+Why Giellatekno __and__ Oahpa? What is Oahpa, anyway?
+
+
+There is no link to  ''Kursa'', neither from [http://oahpa.no/davvi/] nor from the 
+links ''Ressurssat'' on the task pages.
+
+!!! The structure of Oahpa 2.0.
+Modules:
+* backend (data processing)
+** exercise generation
+** database installation
+** user authentication
+* frontend
+** different games, how they look like on the screen, etc.
+
+Using FST live or not?
+Some FST-s are quick, others are slow.
+
+Logging the user actiivity should also be possible when inlogging is done via Google or FB account, or even if the user is not logged in.
+
+!!!Oahpa for mobile devices
+
+Technical: We can use e.g. Bootstrap to build a mobile version.
+
+!! User interface
+
+Not possible to have so many menus from left to right. E.g. Morfa-S - maybe we can decrease the number of menus. Interface language and dialect will be chosen on the front page. The task will be defined by max two menus (see the abstract idea at [FeaturesandMenus.png]).
+On mobile devices we should go more for clicking on words instead of typing a lot of characters. Multiple choice instead of free input.
+
+Vasta-S or Morfa-C for mobile devices:
+--------------------------------
+| Oahpa | Exercises | Users     |
+|                               |
+|   Question                    |
+|       Answer1                 |
+|       Answer2                 |
+|       Answer3                 | 
+|       Answer4                 |    
+--------------------------------
+
+Vasta mobile: users build up sentences with existing words on the screen, but we shouldn't show non-existing wordforms (wrong illative suffix) or non-existing sentences, have to be careful about exposing users to incorrect input
+Morfa-S mobile: option for multiple-choice 
+
+One of the answers is correct, the others contain one or more other forms of the given lemmas.
+Multiple choice (as in Konteaksta mc exercise) is better than presenting wrong sentences. The Sámi languages are not so widely spread in the written form, so exposing the students to the wrong forms is bad. It is better to give a list of correct forms (of different cases).
+
+So:
+# as little information on the screen as possible
+# clicking on words/menus instead of typing long text
+
+We have a scheme about features and tasks.
+Another thing (object) to deal with in Oahpa: memory of the generated tasks or timeline of the exercise.
+
+Presenting five exercises at once is arbitrary.
+We can give the users a choice how many exercises they want to see at once.
+
+Present all words coming in the next task/level, the student can even print it out.
+
+If we take the exercises one by one then after ten answers the user gets the feedback: you have done all 10 correct! Then the next ten words will be on the next level.
+The levels can be determined by the frequency in the everyday speech. 
+Level 1: 50 most frequent words
+Level 2: Those 50 plus 50 little less frequent
+etc.
+Words in the sections (lists) of different level, so that teacher can download the list, or the student can look at the list of the words on the next level.
+
+Levels in morfa could constrain possible wordforms to draw from, ex. start with Verb 1p, then later add 2nd person
+ 
+The Kursa / Oahpa sme and sma Grammars -- we want them as __.pdf__ and __.epub__ (!) 
+ 
+ 
+ Core MorfaS forms: 
+ * Prsent Sg1, Sg2, Sg3, + then: Pl1, Pl2, Pl3
+ * Then Past, then other modes later on
+ * Number: Singular before plural
+ 
+ 
+ Two paths to "the top"
+ 
+# By reading "the book" (the Kursa or similar): Start on chapter 7, and get 
+  deeplinked to advanced stuff
+# By doing the exercises from scratch, and going up one level to the next,
+## getting "money", cheering hippopotamuses, a new colour on your karate belt 
+   or whatever
+# guiding the student
+## default: packages with different kinds of grammar/vocabulary, on different levels, going from one level to the next: A1-2-3-4... B1-2-3-4... C1-2-3-4...
+## also possible to go to a particular exercise 
+## links from course material 
+ 
+Teacher interface for adding forms that are often misspelled, with comments to the student.
+Leksa: teacher to add more accepted translations
+Button in interface: User can suggest new translations, or new words & sentences.
+
+! new task types
+
+''existing task types'' 
+# leksa: translation - word -> word
+# morfa-s: inflection - word -> wordform
+## mobile: fancy solution to avoid writing
+# morfa-c: inflection - sentence -> sentence
+# numra: translation - numeral -> text, text -> numeral
+# vasta: inflection - sentence lemmas -> inflected sentence
+## mobile: fancy solution to avoid writing
+# sahka: dialogue
+
+''new task types''
+# dictation: audio -> word / sentence. + potential for analyzing input for feedback
+# dictation: audio -> multiple choice / minimal pairs of new sounds
+# images: image -> text/word, text/word -> image.
+## could use vasta machinery, but presenting images instead
+# translation: defining language of question and answer/user input
+# feedback on writing
+
+! getting going? 
+
+# produce a demo for Russian, with a subset of words, to test with students & instructors
+
+ 
+! wednesday
+
+# blank page and colored pens: technical planning project structure based on the above notes
+# how much {{ped}} data to copy to new pedagogical directory {{icall}}
+
+
+ 
