@@ -16,17 +16,17 @@ Requirements, from different perspectives:
 * audio-files (crk-oahpa, vro-oahpa)
 ** for the time being: audio files are not functioning with Safari
 {{{ <l pos="N" animacy="AN" t2c="no" rime="0" gen_only="Pl,Sg" audio="kohkos">kohkôs</l>}}}
-* almost correct feedback to the student (tcomm) for sma-oahpa, sme-oahpa   
+* "almost correct"-feedback to the student (tcomm) for sma-oahpa, sme-oahpa   
 {{{         <t pos="n" stat="pref">mors eldre søster</t>
             <t pos="n">eldre søster til mor</t>
             <t pos="n" tcomm="yes">tante</t>
  }}}
-* different colours for different animacy (crk-oahpa)
+* different colours in teh interface for different animacy (crk-oahpa)
 ** crk-oahpa: green for N+AN, or animacy="AN"
 * Place names as an option (sme-oahpa, sma-oahpa)
 * Multiword expressions as an option in menu (sme-oahpa, sma-oahpa)
-** the target language is multiword expression
-
+** the target language is multiword expression \\
+It is important to distinguish this from the ordinary Leksa choices, so the user knows that Leksa is not aksing for "the Saami word" for so-and-so, but for something which is more than one word.
 ! Morfa
 * Dictionary (NDS) is integrated (crk-oahpa)
 * only-sg choice in menu (fkv-oahpa, rus-oahpa)
@@ -66,7 +66,24 @@ pêyak	1
 ** crk-oahpa: you can test with peyak for 1
 ** rus-oahpa: tag {{+Err/ShLo}} is added if one or more stress marks are missing in a numeral string, accepted as a correct answer. The student's answer with incorrect stress marks is not accepted (although almost correct).
 
-!Interface design
+!!Different ways of adding limitations for words or forms
+!Leksa
+* exclude="smenob" in e-element (smeOahpa, smaOahpa)
+** for excluding nobsme: remove the nobsme entry
+* <sem class="NOTLEKSA"/>  (crkOahpa)
+
+!Morfa completily
+* morfas="no" in l-element (smeOahpa)
+* gen_only="None" (crkOahpa)
+
+!Morfa partly
+* to be included in some Morfa tasks: gen_only="Pl,Sg" (crkOahpa)
+* to be included in one Morfa task: <sem class="MORFAPOSS"/> (crkOahpa)
+* to be included in Morfa tasks: <sem class="MORFA"/> (fkvOahpa)
+* to be included in Morfa tasks: <sem class="MORFAS"/> (smeOahpa, smaOahpa)
+
+
+!!Interface design
 * all relevant menus in the top, also PoS choice (crk-oahpa)
 * instructions is given over the tasks, instead of in a box to the right (crk-oahpa)
 * morphological feedback appears to the right of the question it is referring to (crk-oahpa)
