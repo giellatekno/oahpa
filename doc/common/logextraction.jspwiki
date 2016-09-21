@@ -12,7 +12,14 @@ with ''sjd'', etc. For univ_oahpa, replace with univ_.
 For the __old__ (sme) oahpa, remove the prefix, and write only 
 ''oahpa, drill_log'', etc.
 
-On both gtoahpa and gtlab, go to the production catalogue (not actually needed, you may acces mysql from anywhere) and write:
+First, create a directory under your home directory where everybody has the writing permission:
+
+{{{
+mkdir ~/logdata
+chmod 777 logdata
+}}}
+
+On both gtoahpa and gtlab write:
 
 {{{
 mysql -u root -p
@@ -23,9 +30,11 @@ And then, dependent upon the oahpa version you want to extract data for, write:
 
 {{{
 mysql> use smaoahpa;
-mysql> select * from smadrill_log order by game into outfile '/usr/tmp/smaoahpalog.txt' fields terminated by '|';
+mysql> select * from smadrill_log order by game into outfile '/home/your_username/logdata/smaoahpalog.txt' fields terminated by '|';
 mysql> exit
 }}}
+
+where your_username is replaced with your user name on the server.
 
 More useful commands:
 
@@ -40,11 +49,12 @@ Here is the command set for old oahpa:
 
 {{{
 mysql> use oahpa;
-mysql> select * from drill_log order by game into outfile '/usr/tmp/oahpalog.txt' fields terminated by '|';
+mysql> select * from drill_log order by game into outfile '/home/your_username/logdata/oahpalog.txt' fields terminated by '|';
 }}}
 
-The resulting file can then be gathered. As can be seen, more refined commands 
-are possible (refining the log result).
+The resulting file can then be gathered.
+
+As can be seen, more refined commands are possible (refining the log result).
 
 Logs may also be extracted from the command line directly, and one program 
 at a time. This command prints all the entries:
