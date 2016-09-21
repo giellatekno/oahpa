@@ -162,3 +162,43 @@ When updates to Oahpa occur, we can bump the version number in these projects.
 Perhaps something like a [cookiecutter|https://github.com/audreyr/cookiecutter] template would be useful for helping a linguist/programmer to get going on a new project?
 
 
+!! app directory structure
+
+! backend
+
+oahpa/backend/database - data structure
+oahpa/backend/configuration - project configuration
+oahpa/backend/generation - exercise generation
+oahpa/backend/answers - exercise answers 
+oahpa/backend/linguistics - lexicon, grammar
+
+oahpa/backend/tests - 
+oahpa/backend/lookup_server - 
+
+oahpa/backend/progressions - learning progressions
+oahpa/backend/users - authentication, user data
+oahpa/backend/interactions - user interaction, logs
+
+oahpa/backend/feedback - morphological feedback, error FST,
+oahpa/backend/suggestions - reporting errors in content
+
+oahpa/backend/media - media
+oahpa/backend/localization - 
+
+! frontend
+
+oahpa/frontend/pages/ - mostly static content views
+oahpa/frontend/administrators/ - administrator interface
+oahpa/frontend/linguists/ - linguist-based frontend 
+oahpa/frontend/instructors/ - instructor-oriented views interface
+oahpa/frontend/students/ - student overview 
+oahpa/frontend/learning/ - learning / exercise interfaces
+
+
+!! wireframes 
+
+We drew some wireframes, which we will upload somehow
+
+1. landing page
+2. package summary / are you following a course?
+3. learning package A
