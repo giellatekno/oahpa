@@ -3,7 +3,7 @@
 overview:
 
 # sketch out directory structure and project structure
-# 
+ 
 
 !!! The structure of Oahpa 2.0.
 
@@ -11,121 +11,121 @@ overview:
 
 General functionality-oriented module structure for backend
 
-* backend (data processing)
-** project configuration
-*** system settings
-*** languages available
-*** grammar data
-** learning progression
-*** create progression/levels
-**** add task to progression
-**** create deep links to progressions, or levels
-*** create/edit task
-**** morfa-s: select question morphology, answer morphology
-**** leksa: select question semantics and language, answer language
-**** morfa-c: select template, task type, add words to empty slots
-**** ... more for each type ... 
-**** adding help/reference info for tasks
-*** order progression
-** lexicon and grammar management
-*** group words into levels
-*** group morphology into levels
-*** choosing words for exercises
-*** adding help/reference info for words or categories
-** media management
-*** audio links/files <-> word relationships 
-*** image links/files <-> word relationships
-** exercise generation
-*** morfa-s
-**** answer type subclasses? text -> text, text -> select word, etc?
+! backend (data processing)
+* project configuration
+** system settings
+** languages available
+** grammar data
+* learning progression
+** create progression/levels
+*** add task to progression
+*** create deep links to progressions, or levels
+** create/edit task
+*** morfa-s: select question morphology, answer morphology
+*** leksa: select question semantics and language, answer language
+*** morfa-c: select template, task type, add words to empty slots
+*** ... more for each type ... 
+*** adding help/reference info for tasks
+** order progression
+* lexicon and grammar management
+** group words into levels
+** group morphology into levels
+** choosing words for exercises
+** adding help/reference info for words or categories
+* media management
+** audio links/files <-> word relationships 
+** image links/files <-> word relationships
+* exercise generation
+** morfa-s
+*** answer type subclasses? text -> text, text -> select word, etc?
+** morfa-c
+** leksa
+** numra
+** vasta 
+** sahka
+** dictation
+** translation 
+** ... general subclasses for more ... 
+* exercise answer validation
+** numra: requires FST for answers
+** morfa-s: uses database for answers (but also FST for orthography)
+** leksa: uses database
+** sahka: complex question
+** ... more ... 
+** general mechanism for spell-relax
+* lookup server
+** includes various pipelines
+** main oahpa process launches this together with web/wsgi service
+* database
+** installation and models 
+** maintenance 
+*** backup and restore
+*** add/correct/delete a single object (word etc.)
+* user data
+** authentication
+** user roles (instructor, admin, linguist)
+** survey responses
+* user interaction logging
+** generated exercises and answers submitted by users (used for spaced repetition?)
+** feedback submitted by users (error reports, suggestions for new words, example sentences etc.)
+* django localization
+* unit tests
+* feedback
+** morphological feedback from user errors
+** FST feedback from error FST
+** morphology & syntax feedback tooltips for vasta
+* feedback / reporting errors in content
+
+!!Functionality-oriented structure for frontend 
+
+! frontend
+* introductory pages
+** set interface language / help language (dialects?)
+** surveys
+** account creation
+** data anonymity message
+*** course selection (public vs private via deep link courses)
+* administrator interface
+** user administration
+*** student <-> teacher connections
+** database tasks
+*** extract
+* linguist interface
+** browse lexicon, and FST to construct exercises
+*** type in sentence -> turn it into a morfa-c exercise (or other)
+** extract data for research
+* instructor interface
+** create/manage progression & levels
+*** add tasks to progressions
+*** create/edit tasks
+** create/manage lexicon 
+** create/manage reference and help info for levels and lexicon or morphology
+** view student progress
+** create localization translations
+** access deep links to progressions, levels to invite users
+* student overview
+** scores
+** view progression (one of two 'paths to the top')
+*** view exercises
+** view tasks to jump to wherever (two of two paths to the top) 
+* learning/exercise interface
+** do exercise rounds
+*** see exercise wordlist
+*** do individual exercises
+*** different exercise styles
+*** report a bug / error in exercises
 *** morfa-c
-*** leksa
-*** numra
-*** vasta 
-*** sahka
-*** dictation
-*** translation 
-*** ... general subclasses for more ... 
-** exercise answer validation
-*** numra: requires FST for answers
-*** morfa-s: uses database for answers (but also FST for orthography)
-*** leksa: uses database
-*** sahka: complex question
-*** ... more ... 
-*** general mechanism for spell-relax
-** lookup server
-*** includes various pipelines
-*** main oahpa process launches this together with web/wsgi service
-** database
-*** installation and models 
-*** maintenance 
-**** backup and restore
-**** add/correct/delete a single object (word etc.)
-** user data
-*** authentication
-*** user roles (instructor, admin, linguist)
-*** survey responses
-** user interaction logging
-*** generated exercises and answers submitted by users (used for spaced repetition?)
-*** feedback submitted by users (error reports, suggestions for new words, example sentences etc.)
-** django localization
-** unit tests
-** feedback
-*** morphological feedback from user errors
-*** FST feedback from error FST
-*** morphology & syntax feedback tooltips for vasta
-** feedback / reporting errors in content
+*** x text -> text
+*** x text -> word selection
+*** morfa-s
+*** x text -> text
+*** x text -> multiple choice?
+*** x picture -> text
+*** x audio -> text
+*** etc... for each exercise type
+** track student progress
 
-Functionality-oriented structure for frontend 
-
-* frontend
-** introductory pages
-*** set interface language / help language (dialects?)
-*** surveys
-*** account creation
-*** data anonymity message
-**** course selection (public vs private via deep link courses)
-** administrator interface
-*** user administration
-**** student <-> teacher connections
-*** database tasks
-**** extract
-** linguist interface
-*** browse lexicon, and FST to construct exercises
-**** type in sentence -> turn it into a morfa-c exercise (or other)
-*** extract data for research
-** instructor interface
-*** create/manage progression & levels
-**** add tasks to progressions
-**** create/edit tasks
-*** create/manage lexicon 
-*** create/manage reference and help info for levels and lexicon or morphology
-*** view student progress
-*** create localization translations
-*** access deep links to progressions, levels to invite users
-** student overview
-*** scores
-*** view progression (one of two 'paths to the top')
-**** view exercises
-*** view tasks to jump to wherever (two of two paths to the top) 
-** learning/exercise interface
-*** do exercise rounds
-**** see exercise wordlist
-**** do individual exercises
-**** different exercise styles
-**** report a bug / error in exercises
-**** morfa-c
-***** text -> text
-***** text -> word selection
-**** morfa-s
-***** text -> text
-***** text -> multiple choice?
-***** picture -> text
-***** audio -> text
-**** etc... for each exercise type
-*** track student progress
-
-misc:
+!!misc:
 
 # consider: mobile vs. desktop views when responsive solution isn't enough
 
