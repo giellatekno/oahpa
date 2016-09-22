@@ -1,0 +1,80 @@
+!!! Thursday
+
+# sketch modules from backend, and their connections 
+
+first the structure from yesterday ... 
+
+{{{
+    oahpa/backend/database - data structure
+    oahpa/backend/configuration - project configuration
+    oahpa/backend/generation - exercise generation
+    oahpa/backend/answers - exercise answers 
+    oahpa/backend/linguistics - lexicon, grammar
+
+    oahpa/backend/tests - 
+    oahpa/backend/lookup_server - 
+
+    oahpa/backend/progressions - learning progressions
+    oahpa/backend/users - authentication, user data
+    oahpa/backend/interactions - user interaction, logs
+
+    oahpa/backend/feedback - morphological feedback, error FST,
+    oahpa/backend/suggestions - reporting errors in content
+
+    oahpa/backend/media - media
+    oahpa/backend/localization - 
+}}}
+
+!! sketches 
+
+Scans are uploaded in this directory ... 
+
+Backend sketches of module interactions and view endpoints:
+
+1. Initial overview of backend
+2. user interaction: instructors, students, authentication, suggestions, logging - with user DB and linguistic DB
+3. exercise and answer generation
+4. answer validation / DB, FST, CG equivalence checks, user feedback, validation steps
+5. high level look at task, package and course activities and views
+
+Frontend sketches of user interactions with frontend views and backend connections:
+
+1. user topic / exercise, frontend and backend interactions
+2. user course and level flow
+
+Discussion:
+
+# how linguist can modify linguistic data, and does this conflict 
+with need to install linguistic DB ever? mark entries as edited, etc.
+## 'linguist' can make most of the changes, 'instructor' less, personalize levels (add more words from database) or feedback messages, delete only his created data
+## the generated forms will remain one-side - only imported from installation/maintenance modul (using fst), but semantic classes for example need to be also exported 
+## we will have suggestions from student -> instructor / linguist, and 
+suggestions from instructor -> linguist, so the linguist can later determine
+what to put in the FST and lexicon for later generation from FST
+
+# Views should be simple, serializable (for mobile devices). We can use e.g. json format.
+
+# we may need a glossary of our own terms, so we know what is what: feedback, suggestions, learning packages, topics, test (technical vs. learning), etc.
+
+# morfa-c sentence templates: do we want to constrain relevant wordforms to individual templates, or include relevant wordforms in a processing phase of exercise generation
+## ex. subject-verb agreement, use the user progression to choose a relevant wordform because the user has done a lot of 1st person and needs to work on 2nd person ... or ... use level definitions in the sentence templates to determine a learning progression between 1st person agreement and 2nd person, etc.
+
+# consider generalization of exercise types: leksa, morfa-s, numra are very similar; while vasta and morfa-c are similar. 
+## generalization of the first 3 could allow for more flexible types of exercises: picture to morfa-c sentence; a translation task: meta language sentence -> target language morfa-c sentence
+
+database considerations:
+
+# database maintenance is tricky when the 'instructor' is allowed to edit words, and wordforms, and things that need to be sent to the 'linguist' to update XML or FSTs, so we need some strategy for this.
+# user activity log, words and wordforms should include GUID for predicting relevant words and wordforms.  if data in the linguistic DB updates, these old GUIDs are no longer relevant, but that's not the worst thing because users can always benefit from seeing a word again, but GUID will result in almost zero clashes for this task
+
+
+backend views:
+
+# django REST framework 
+
+
+frontend discussion:
+
+# best ways to track user round and task progress, user activity log could eventually be quite big for one user, so if those queries aren't fast, what to do: store in session? use user level progress summary objects?
+# for courses, perahps we should save user level progress and grades so the instructor can see a summary
+
