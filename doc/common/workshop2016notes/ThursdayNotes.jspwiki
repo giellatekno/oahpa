@@ -31,16 +31,17 @@ Scans are uploaded in this directory ...
 
 !Backend sketches of module interactions and view endpoints:
 
-# Initial overview of backend
-# user interaction: instructors, students, authentication, suggestions, logging - with user DB and linguistic DB
-# exercise and answer generation
-# answer validation / DB, FST, CG equivalence checks, user feedback, validation steps
-# high level look at task, package and course activities and views
+# [Initial overview of backend|schemes/Backend_Overview.pdf]                                 
+# [user interaction: instructors, students, authentication, suggestions, logging - with user DB and linguistic DB|schemes/Backend_Userinteraction.pdf] 
+# [exercise and answer generation|schemes/Backend_Exercisegeneration.pdf] 
+# [answer validation|schemes/Backend_Answervalidation.pdf]  / DB, FST, CG equivalence checks, user feedback, validation steps
+# [high level look at task, package and course activities and views|schemes/Backend_Learningpackages.pdf]
 
 !Frontend sketches of user interactions with frontend views and backend connections:
 
-# user topic / exercise, frontend and backend interactions
-# user course and level flow
+# [user topic / exercise, frontend and backend interactions|schemes/Frontend_Exercise_Interactions_Topics.pdf]
+# [user course and level flow|schemes/Frontend_Exercise_Interactions_Learningpackages.pdf]
+
 
 !Discussion:
 
@@ -73,4 +74,7 @@ what to put in the FST and lexicon for later generation from FST
 
 # best ways to track user round and task progress, user activity log could eventually be quite big for one user, so if those queries aren't fast, what to do: store in session? use user level progress summary objects?
 # for courses, perahps we should save user level progress and grades so the instructor can see a summary
+
+                      
+                          
 
