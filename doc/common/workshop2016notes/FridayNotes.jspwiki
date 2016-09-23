@@ -1,33 +1,135 @@
 !!! Friday
 
-Planning topics:
-
 # Database model details
 
-!!Last session (after lunch):
+Last session (after lunch):
 
 # Scan in more schemes and add to SVN
+#
 # Where to start?
 ## look at frontend and backend schemes
 ## action points, order, time, planning
+
+# Start up django project and initial modules in {{icall/oahpa/}}
+
 # Divide the project subtasks and milestones between Tiina, Ryan and Heli
 ## how much time everyone has
 ## time span forward
 ## deadlines for milestones
+
 # future organization (tools: trello, slack, etc.)
 # stakeholders (Russian instructors and representatives)
 # pilot language: Russian, test languages: North Saami, other Saami languages
 
-!! Database model details
+!!Milestones
 
-! Database model sketches
+First goal: Topic -> Exercise rounds: "Leksa" exercise types. 
+
+# Working demo for some part of Russian, and a demo for some part of North Saami
+
+General steps
+
+# Linguistic database: Lexicon and morphology models
+# linguistic database: some unittests for data relationships 
+# Linguistic database install: initial word and feature models, with extensibility
+# linguistic database install: FST generation of wordforms from lookup server
+# Frontend: topic list view, task list (exercises) view(s)
+# backend: topic list view data structure
+# backend: exercise question and answer format
+# backend: exercise submission format
+# backend: exercise question generation for "Leksa" with types (text -> text, text -> multiple choice)
+# backend: exercise answer validation for these types
+
+Working on modules, task assignment: 
+
+## (lene: wednesday, sept 28) first learning package for saami
+## (lene, trond) looking at leksa logging
+## (tiina) backend database
+## (tiina) backend configuration
+## (tiina) backend linguistics
+## (heli) backend generation
+## (heli) backend answers
+## (ryan) frontend views
+## (ryan) frontend templates
+## (ryan) frontend basic css
+## (ryan) frontend connections to backend
+## (ryan) lookup server copy / integration
+## (robert) first learning package for russian
+## (lene, robert) start with error FSTs for Oahpa for Numra and lexicon - north saami, russian
+
+!Notes
+
+# Don't be afraid to ask people to contribute
+
+# level model must contain 
+## task objects for words, grammar to display
+## amount of questions to answer
+## types of exercises to present 
+## percentages of new, old, and missed words to present
+# level that is a test
+
+!!!Next Meeting
+
+11. Oct 2016, Minnesota: 08.00, Norway/Sweden: 15.00
+
+
+!!Initial project setup
+
+# create virtual environment
+# initialize django structure
+# initialize main apps:
+## backend
+## frontend
+# initialize backend sub-apps:
+## linguistics database
+## configuration
+## generation
+## answers
+# initialize frontend sub-apps:
+## topics
+## exercises
+## pages
+
+!Technical notes
+
+# Python 2.7
+# [virtualenv|https://virtualenv.pypa.io/en/stable/]
+# [Django 1.8.8|https://www.djangoproject.com/download/] (see LTS notes)
+## [Django 1.8 docs|https://docs.djangoproject.com/en/1.8/]
+# MySQL / Mariadb
+
+!Starting up with django
+
+virtualenv env
+
+first time only: django-admin startproject oahpa
+
+then, create apps with: python manage.py startapp
+
+
+
+
+
+
+
+!!!Sketching things out
+
+
+!!Database model details
+
+!Database model sketches
 
 # Answer validation models
 # Question/Answer generation models
 # user interaction backend models?
 
+Today's schemes:
+* [Backend Models: User interaction|Backend_User_interaction.pdf]
+* [Frontend Exercise Interactions for Student|Frontend_Exercise_Interactions_Student.pdf]
+* [Instructor's interface for adding tasks (Jordan's dream)|Instructors_interface.pdf]
+* [Question/Answer generation|Question_answer_generation.pdf]
 
-! Database model sketch discussion
+!Database model sketch discussion
 
 Answer validation models
 
@@ -43,6 +145,14 @@ Question/Answer generation models:
 !user interaction models:
 
 # topics should be enough to get back to the 'old' oahpa of specified training
+# 
 
 
+http://giellatekno.uit.no/ped/crkdoc/meetings/150306.html
+
+
+!!!Next meeting
+
+Meeting time:
+Minnesota: 0800 -> ( = 15 -> Norw time
 
