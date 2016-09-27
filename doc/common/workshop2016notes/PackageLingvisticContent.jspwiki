@@ -1,124 +1,159 @@
 !!!Package
 * Each course can have more than one package: A B C D..
 * Each package have 10 (?) levels
-* Each level contains (both writing and multiple choice):
+* Each level contains of tasks (first multiple choice and then write):
 ** VOC: vocabulary training (20 items?) - the same items will be used in the other tasks
+*** repetition: some words from the former levels also (repetion algorithm)
 ** MORPH: grammar training
+*** repetition: some tasks from the former level
 ** PHRASES: can be used both in vocabulary training and in VASTA and SAHKA tasks
 ** dialog training: VASTA and SAHKA
-** dictates: VASTA and LEKSA
+** dictates with audio file or TTS: VASTA and LEKSA
 
 !! Ex. SAM introductory course, 20 points, 5 packages
 
 !! Package A
-!  Level 1: What is your name, telling about family
-* VOC: 
-** leat 
-** orrut 
-** dovdat 
-** diehtit 
-** don 
-** mun 
-** son 
-** naba 
-** áhčči 
-** eadni 
-** viellja 
-** oabbá 
-** áddjá 
-** áhkku 
-** mánná 
-** beana 
-** bussá 
-** gos 
-** mii 
-** gii 
-** Romsa+N+Prop+Sg+Loc 
-** Gáivuotna+N+Prop+Sg+Loc 
-** Kárášjohka+N+Prop+Sg+Loc
-* PHRASES: 
-** buorre beaivi 
-** ipmel atti 
-** mana dearvan 
-** báze dearvan 
-** bures 
-** bures bures
-** Mii dát lea? 
-** Gii don leat? 
-** Gii son lea? 
-** gos don orut 
-** gos X orru
-* MORPH:  
-** V+Ind+Prs+Sg1, V+Ind+Prs+Sg2, V+Ind+Prs+Sg3
+!  Level 1: What is your name, telling about family. Some placenames in locative form
+# VOC: 
+## leat 
+## orrut 
+## diehtit 
+## don 
+## mun 
+## son 
+## naba 
+## áhčči 
+## eadni 
+## viellja 
+## oabbá 
+## áddjá 
+## áhkku 
+## beana 
+## gos 
+## mii+Pron+Interr+Sg+Nom 
+## gii+Pron+Interr+Sg+Nom 
+## Romsa+N+Prop+Sg+Loc 
+## Gáivuotna+N+Prop+Sg+Loc 
+## Kárášjohka+N+Prop+Sg+Loc
+# PHRASES: 
+## buorre beaivi 
+## ipmel atti 
+## mana dearvan 
+## báze dearvan 
+## bures 
+## bures bures
+## Mii dát lea? 
+## Gii don leat? 
+## Gii son lea? 
+## gos don orut 
+## gos X orru
+# MORPH:  
+## V+Ind+Prs+Sg1, V+Ind+Prs+Sg2, V+Ind+Prs+Sg3
 !  Level 2: How old are you, tell more about yourself and others
-* VOC: 
-** boaris 
-** telefunnummir 
-** logut: 1-100 
-** nisu 
-** dievdu 
-** nieida 
-** bárdni 
-** sápmelaš 
-** hupmat 
-** náitalan 
-** oahppat 
-** ovttasorru 
-** ruovttus 
-** barggus 
-** gos
-* PHRASES: 
-** where are you/is she
-** how old are you/is she
-* MORPH:  
-** more verbs: V+Ind+Prs+Sg1, V+Ind+Prs+Sg2, V+Ind+Prs+Sg3
-!  Level 3: Coffeebreak, asking and answering
-* VOC: 
-** borrat 
-** juhkat 
-** sihtat 
-** boahtit 
-** čállit 
-** gáffe+N+Sg+Acc 
-** deadja+N+Sg+Acc
-** mielki+N+Sg+Acc 
-** honnet+N+Sg+Acc 
-** gohppu+N+Sg+Acc 
-** lávcca+N+Sg+Acc 
-** gáhkku+N+Sg+Acc 
-** keaksa+N+Sg+Acc 
-** láibi+N+Sg+Acc 
-** giitu
-* PHRASES: 
-** Do you drink/eat/want X? Are you X? Do you live in X?
-* MORPH: 
-** ask yes/no questions 
-** negation
-!  Level 4: Habitive, illative (I give you)
-*  VOC: 
-** girji 
-** filbma 
-** geas 
-** dutnje 
-** munnje
-* PHRASES:  
-** Do you have X? How many X do you have?
-* MORPH: 
-** pronouns locative
+# VOC: 
+## boaris 
+## telefunnummir 
+## logut: 1-100 
+## nisu 
+## dievdu 
+## nieida 
+## bárdni 
+## sápmelaš 
+## náitalan 
+## oahppat 
+## ovttasorru 
+## ruoktu+N+Sg+Loc 
+## bargu+N+Sg+Loc 
+## universitehta+N+Sg+Loc 
+## gos
+# PHRASES: 
+## where are you/is she
+## how old are you/is she
+# MORPH:  
+## more verbs: V+Ind+Prs+Sg1, V+Ind+Prs+Sg2, V+Ind+Prs+Sg3
+!  Level 3: Coffeebreak 1, asking and answering. Only accusative forms.
+# VOC: 
+## borrat 
+## juhkat 
+## sihtat 
+## oahppat  
+## hupmat 
+## máhttit  
+## niesti+N+Sg+Acc 
+## gáffe+N+Sg+Acc 
+## deadja+N+Sg+Acc
+## mielki+N+Sg+Acc 
+## sohkar+N+Pl+Acc 
+## honnet+N+Sg+Acc 
+## gohppu+N+Sg+Acc 
+## lákca+N+Sg+Acc 
+## gáhkku+N+Sg+Acc 
+## keaksa+N+Sg+Acc 
+## láibi+N+Sg+Acc 
+## sámegiella+N+Sg+Acc 
+## suomagiella+N+Sg+Acc 
+## dárogiella+N+Sg+Acc 
+## giitu
+# PHRASES: 
+## Do you drink/eat/want X? Are you X? Do you live in X?
+# MORPH: 
+## ask yes/no questions 
+## negation
+!  Level 4: Coffeebreak 2, Habitive
+#  VOC: 
+## boahtit 
+## mannat 
+## vázzit 
+## sihkkelastit 
+## čállit 
+## lohkat
+## oastit  
+## viežžat
+## mánná 
+## biila 
+## sihkkel 
+## girji 
+## filbma 
+## ruoktot 
+## bargu+N+Sg+Ill 
+## universitehta+N+Sg+Ill 
+## gii+Pron+Interr+Sg+Loc 
+## mun+Pron+Pers+Sg1+Loc 
+## don+Pron+Pers+Sg2+Loc 
+## son+Pron+Pers+Sg3+Loc 
+# PHRASES:  
+## Do you have X? How many X do you have?
+# MORPH: 
+## pronouns locative
 !  Level 5: illative, locative, accusative
-*  VOC: 
-** girji 
-** filbma 
-** geas 
-** geasa
-** dutnje 
-** munnje
-** sutnje
-* PHRASES:  
-** I have X, I give you X
-* MORPH: 
-** pronouns illative
-** pronouns accusative 
+#  VOC: 
+## girji 
+## sátnegirji 
+## oahppogirji 
+## lávka 
+## peanná 
+## filbma 
+## bussá 
+## loddi 
+## addit 
+## geiget 
+## dovdat 
+## oaidnit 
+## gullat 
+## geahččat 
+## gii+Pron+Interr+Sg+Ill 
+## mun+Pron+Pers+Sg1+Ill 
+## don+Pron+Pers+Sg2+Ill 
+## son+Pron+Pers+Sg3+Ill 
+## mun+Pron+Pers+Sg1+Acc 
+## don+Pron+Pers+Sg2+Acc 
+## son+Pron+Pers+Sg3+Acc 
+## gii+Pron+Interr+Sg+Acc 
+# PHRASES:  
+## Do you have, I have X, I give you X
+# MORPH: 
+## pronouns illative
+## pronouns accusative 
 ! Level 5: Clothes and colours 1
 ! Level 6: Clothes and colours 2
 ! Level 7: Bodyparts 1
