@@ -74,7 +74,8 @@ function playSound(soundfile) {
 </script>
 {{ form.lemma }}
     <audio id="pronounce{{ forloop.counter }}"></audio> 
-    <a onclick=playSound("{{ MEDIA_URL }}/audio/{{ form.audio }}.wav") href="#"> 
+   <!-- <a onclick=playSound("{{ MEDIA_URL }}/audio/{{ form.audio }}.wav") href="#"> -->
+    <a onclick=playSound("{{ form.audio }}") href="#">  
     {% if form.audio %}
         <img src="{{ MEDIA_URL }}/images/loudspeaker.jpg" heigth="15px" width="20px"/>
     {% endif %}
