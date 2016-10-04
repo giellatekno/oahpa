@@ -75,6 +75,80 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
 {% endblock %}
 
 {% block question %}
+<script>	  
+  function speakQuestion(sentence) {
+     /*var xForm=document.getElementById("MyForm-{{ forloop.counter }}");
+     xForm.speech.value=sentence;
+     xForm.submit();*/
+     var speechWindow=window.open("http://www.eki.ee/~indrek/voru/index.php");
+     var speechDoc=speechWindow.document;
+     //var audioForm=speechDoc.forms[0];
+     var textField=speechDoc.getElementsByTagName("textarea")[0];
+     //window.alert(textField);
+     //window.alert("textarea: ", textField.innerHTML);
+     var voice=speechDoc.getElementsByName("v")[0];
+     var submitButton=speechDoc.getElementsByName("make_audio")[0];
+     textField.innerHMTL=sentence;
+     voice.option.value=2;
+     //speechWindow.reload();
+     //audioForm.submit();
+     submitButton.click();
+  }
+  function speak(sentence) {
+     document.body.innerHTML += '<form id="dynForm" action="http://www.eki.ee/~indrek/voru/index.php" method="post"><input type="hidden" name="speech" value="blablabla"></form>';
+     document.getElementById("dynForm").submit();
+  }
+  function loadXMLDoc(sentence) {
+  var url = "http://www.eki.ee/~indrek/voru/index.php";
+  var parameters = "speech=sentence"; // Construct your form values like field=value&field2=value2&...
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      var response = xmlhttp.responseText;
+    }
+  }
+  xmlhttp.open("POST", url, true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.setRequestHeader("Content-length", parameters.length);
+  xmlhttp.setRequestHeader("Connection", "close");
+  xmlhttp.send(parameters);
+  }
+  function sendData(data) {
+  var XHR = new XMLHttpRequest();
+  var urlEncodedData = "";
+  var urlEncodedDataPairs = [];
+  var name;
+
+  // We turn the data object into an array of URL encoded key value pairs.
+  for(name in data) {
+    urlEncodedDataPairs.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
+  }
+
+  // We combine the pairs into a single string and replace all encoded spaces to 
+  // the plus character to match the behaviour of the web browser form submit.
+  urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+');
+
+  // We define what will happen if the data is successfully sent
+  XHR.addEventListener('load', function(event) {
+    alert('Yeah! Data sent and response loaded.');
+  });
+
+  // We define what will happen in case of error
+  XHR.addEventListener('error', function(event) {
+    alert('Oups! Something goes wrong.');
+  });
+
+  // We setup our request
+  XHR.open('POST', 'http://www.eki.ee/~indrek/voru/index.php');
+
+  // We add the required HTTP header to handle a form data POST request
+  XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  XHR.setRequestHeader('Content-Length', urlEncodedData.length);
+
+  // And finally, We send our data.
+  XHR.send(urlEncodedData);
+}
+</script>	
 	{% ifequal settings.gametype "bare" %}
 	         {% if settings.pos == "Pron" or settings.pos == "Num" %}
 		      {{ form.lemma }}
@@ -82,8 +156,17 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
 		      <a href="#" class="link_tooltip" id="link_tooltip-{{ forloop.counter }}">{{ form.lemma }}</a>
 		 {% endif %}
 	{% else %} {# Morfa-C #}
-		{{ form.question }} {% if form.lemma %} (<a href="#" class="link_tooltip" id="link_tooltip-{{ forloop.counter }}">{{ form.lemma }}</a>) {% endif %}
-	{% endifequal %}
+		      {{ form.question }}
+		 <!--     <input type="hidden" name="speech_site" id="speech_site" value="http://www.eki.ee/~indrek/voru/index.php" />
+			  <a href="#" onclick="this.href=document.getElementById('speech_site').value" target="_blank"><img src="{{ MEDIA_URL }}/images/loudspeaker.jpg" heigth="15px" width="20px"/></a> -->
+		      <a href="#" onclick="sendData({speech:'{{ form.question }}'});" >
+		<img src="{{ MEDIA_URL }}/images/loudspeaker.jpg" heigth="15px" width="20px"/>
+		      </a>
+		      {% if form.lemma %} (<a href="#" class="link_tooltip" id="link_tooltip-{{ forloop.counter }}">{{ form.lemma }}</a>) {% endif %}
+		   {% endifequal %}
+		 <form method="post" id="MyForm-{{ forloop.counter }}" action="http://www.eki.ee/~indrek/voru/index.php">
+                   <input type="hidden" id="speech" name="speech" value="">
+                 </form>
 {% endblock %}
 
 {% block tooltip %}
