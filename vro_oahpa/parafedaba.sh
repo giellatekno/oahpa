@@ -4,8 +4,8 @@ P="python2.7"
 PEDHOME="/Users/mslm/main/ped"
 OAHPAHOME="/home/vro_oahpa"
 LANGDIR="vro"
-#DATA=$OAHPAHOME/$LANGDIR  # on gtlab
-DATA=$PEDHOME/$LANGDIR  # locally
+DATA=$OAHPAHOME/$LANGDIR  # on gtlab
+#DATA=$PEDHOME/$LANGDIR  # locally
 DPS="$DATA/src"
 INC="$DATA/inc"
 META="$DATA/meta"
@@ -41,7 +41,7 @@ echo "==================================================="
  
  echo "==================================================="
  echo "installing substantives from $DPS/oahpa_lexicon_new.xml"
- $P install.py --file $DPS/oahpa_lexicon_new.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt --append 2>>error.log
+ $P install.py --file $DPS/oahpa_lexicon_audio_ready.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt --append 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
@@ -70,14 +70,14 @@ echo "==================================================="
 
  echo "==================================================="
  echo "installing adjectives from $DPS/oahpa_lexicon_new.xml"
- $P install.py --file $DPS/oahpa_lexicon_new.xml --tagfile $META/tags.txt --paradigmfile $META/a_paradigms.txt --append 2>>error.log
+ $P install.py --file $DPS/oahpa_lexicon_audio_ready.xml --tagfile $META/tags.txt --paradigmfile $META/a_paradigms.txt --append 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
 
  echo "==================================================="
  echo "installing verbs from $DPS/oahpa_lexicon_new.xml"
- $P install.py --file $DPS/oahpa_lexicon_new.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt --append 2>>error.log
+ $P install.py --file $DPS/oahpa_lexicon_audio_ready.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt --append 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
@@ -346,22 +346,22 @@ echo "done"
 echo "==================================================="
 
  echo "==================================================="
- echo "feeding db with $DPL/Adv_estvro.xml"
- $P install.py --file $DPL/Adv_estvro.xml
+ echo "feeding db with $DPL/Adv_swevro.xml"
+ $P install.py --file $DPL/Adv_swevro.xml
  echo " "
  echo "done"
  echo "==================================================="
 
  echo "==================================================="
- echo "feeding db with $DPL/Mwe_estvro.xml"
- $P install.py --file $DPL/Mwe_estvro.xml
+ echo "feeding db with $DPL/Mwe_swevro.xml"
+ $P install.py --file $DPL/Mwe_swevro.xml
  echo " "
  echo "done"
  echo "==================================================="
 
 echo "==================================================="
- echo "feeding db with $DPL/Num_estvro.xml"
- $P install.py --file $DPL/Num_estvro.xml 2>>error.log
+ echo "feeding db with $DPL/Num_swevro.xml"
+ $P install.py --file $DPL/Num_swevro.xml 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
