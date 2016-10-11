@@ -1805,6 +1805,15 @@ class ContextMorfaQuestion(OahpaQuestion):
 					qstring = qstring + " " + force_unicode(w)
 		qstring=qstring.replace(" -","-")
 		qstring=qstring.replace(" .",".")
+		# Creation of the audio file for the question using the speech synthesis.
+		audiofilename = MEDIA_URL + '/audio/audio_out' + prefix + '.wav'
+		audiofile = open(audiofilename,'w')
+		questionfilename = {{ MEDIA_URL }} + '/audio/audio_in.txt'
+		questionfile = open(questionfilename,'w')
+		questionfile.write(sentence)
+		questionfile.close()
+        pipeline = TTS_DIR +'/bin/synthts_vr -o ' + audiofilename + ' -f ' + questionfilename + ' -m ' + TTS_DIR + '/htsvoices/eki_et_hll.htsvoice -r 1.1'
+
 
 
 		try:
