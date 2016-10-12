@@ -1808,7 +1808,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 		# Creation of the audio file for the question using the speech synthesis.
 		audiofilename = MEDIA_URL + '/audio/audio_out' + prefix + '.wav'
 		audiofile = open(audiofilename,'w')
-		questionfilename = {{ MEDIA_URL }} + '/audio/audio_in.txt'
+		questionfilename = MEDIA_URL + '/audio/audio_in.txt'
 		questionfile = open(questionfilename,'w')
 		questionfile.write(sentence)
 		questionfile.close()

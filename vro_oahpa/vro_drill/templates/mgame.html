@@ -76,16 +76,8 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
 
 {% block question %}
 <script>	  
-  function speakQuestion(sentence) {
-    audiofilename = '/home/vro_oahpa/vro_oahpa/audio_out.wav'
-    audiofile = open(audiofilename,'w')
-    questionfilename = 'in.txt'
-    questionfile = open(questionfilename,'w')
-    questionfile.write(sentence)
-    questionfile.close()
-    pipeline = TTS_DIR+'/bin/synthts_vr -o ' + audiofilename + ' -f ' + questionfilename + ' -m ' + TTS_DIR + '/htsvoices/eki_et_hll.htsvoice -r 1.1'
+  function speakQuestion() {
     var audio=document.getElementById("pronounce{{ forloop.counter }}");
-    audio.src=audiofilename;
     audio.play();
   }
 </script>	
@@ -97,8 +89,8 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
 		 {% endif %}
 	{% else %} {# Morfa-C #}
 		      {{ form.question }}
-		      <audio id="pronounce{{ forloop.counter }}"></audio>
-		      <a href="#" onclick="speakQuestion('{{ form.question }}');" >
+		      <audio id="pronounce{{ forloop.counter }}" src="{{ MEDIA_URL }}/audio/audio_out{{ forloop.counter }}.wav"></audio>
+		      <a href="#" onclick="speakQuestion();" >
 		<img src="{{ MEDIA_URL }}/images/loudspeaker.jpg" heigth="15px" width="20px"/>
 		      </a>
 		      {% if form.lemma %} (<a href="#" class="link_tooltip" id="link_tooltip-{{ forloop.counter }}">{{ form.lemma }}</a>) {% endif %}
