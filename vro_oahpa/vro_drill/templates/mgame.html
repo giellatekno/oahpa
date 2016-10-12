@@ -1,5 +1,6 @@
 {% extends "game.html" %}
 {% load i18n %}
+{% load cache %}
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block questionsetclass %}{% ifequal settings.gametype "bare" %}morfa{% else %}morfac{% endifequal %}{% endblock %}
@@ -76,10 +77,11 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
 
 {% block question %}
 <script>	  
-  function speakQuestion() {
+function playSound(soundfile) {
     var audio=document.getElementById("pronounce{{ forloop.counter }}");
+    audio.src=soundfile;
     audio.play();
-  }
+}
 </script>	
 	{% ifequal settings.gametype "bare" %}
 	         {% if settings.pos == "Pron" or settings.pos == "Num" %}
@@ -89,10 +91,12 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
 		 {% endif %}
 	{% else %} {# Morfa-C #}
 		      {{ form.question }}
-		      <audio id="pronounce{{ forloop.counter }}" src="{{ MEDIA_URL }}/audio/audio_out{{ forloop.counter }}.wav"></audio>
-		      <a href="#" onclick="speakQuestion();" >
+		  
+		     <audio id="pronounce{{ forloop.counter }}"></audio>
+		      <a onclick=playSound("{{ MEDIA_URL }}/audio/audio_out{{ forloop.counter }}.wav") href="#">
 		<img src="{{ MEDIA_URL }}/images/loudspeaker.jpg" heigth="15px" width="20px"/>
 		      </a>
+		     
 		      {% if form.lemma %} (<a href="#" class="link_tooltip" id="link_tooltip-{{ forloop.counter }}">{{ form.lemma }}</a>) {% endif %}
 		   {% endifequal %}
 {% endblock %}

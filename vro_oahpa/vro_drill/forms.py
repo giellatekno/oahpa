@@ -17,6 +17,9 @@ import sys, os
 import itertools
 from random import choice
 
+media_dir = settings.MEDIA_DIR
+tts_dir = settings.TTS_DIR
+
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
 PRONOUNS_LIST = {'Sg1':u'ma', 'Sg2':u'sa', 'Sg3':u'tä',
@@ -1098,7 +1101,7 @@ class LeksaQuestion(OahpaQuestion):
 		self.translang = transtype[-3::]
 		self.sourcelang = transtype[0:3]
 		self.word = word
-		self.audio = word.audio # pronounciation
+		self.audio = word.audio # pronunciation
 		self.gametype = 'leksa'
 		kwargs['correct_val'] = correct_val
 		super(LeksaQuestion, self).__init__(*args, **kwargs)
@@ -1715,6 +1718,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 		self.lemma = ""
 		self.dialect = dialect
 		self.translang = 'vro'
+		prefix = kwargs.get('prefix')
 		self.gametype = 'morfa' # not sure if this is ok
 
 		qtype=question.qtype
@@ -1805,14 +1809,15 @@ class ContextMorfaQuestion(OahpaQuestion):
 					qstring = qstring + " " + force_unicode(w)
 		qstring=qstring.replace(" -","-")
 		qstring=qstring.replace(" .",".")
-		# Creation of the audio file for the question using the speech synthesis.
-		audiofilename = MEDIA_URL + '/audio/audio_out' + prefix + '.wav'
+		# Creation of the audio file for the question using speech synthesis.
+		audiofilename = media_dir + '/audio/audio_out' + str(prefix) + '.wav'
 		audiofile = open(audiofilename,'w')
-		questionfilename = MEDIA_URL + '/audio/audio_in.txt'
+		questionfilename = media_dir + '/audio/audio_in.txt'
 		questionfile = open(questionfilename,'w')
-		questionfile.write(sentence)
+		questionfile.write((qstring+'?').encode('utf8'))  # The question is written to the file audio_in.txt
 		questionfile.close()
-        pipeline = TTS_DIR +'/bin/synthts_vr -o ' + audiofilename + ' -f ' + questionfilename + ' -m ' + TTS_DIR + '/htsvoices/eki_et_hll.htsvoice -r 1.1'
+		# Speech synthesis is run and the result is saved as audio_outN.wav where N=1..5:
+		os.system(tts_dir +'/bin/synthts_vr -o ' + audiofilename + ' -f ' + questionfilename + ' -m ' + tts_dir + '/htsvoices/eki_et_hll.htsvoice -r 1.1')
 
 
 
