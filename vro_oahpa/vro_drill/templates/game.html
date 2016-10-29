@@ -9,6 +9,13 @@
 {% endblock %}
 
 {% block content %}
+<script>
+function playSound(soundfile) {
+    var audio=document.getElementById("pronounce{{ forloop.counter }}");
+    audio.src=soundfile;
+    audio.play();
+}
+</script>
 {% ifnotequal gametype "sahka" %}
 {% ifnotequal gametype "sahka_main" %}
 <hr/>
@@ -144,9 +151,12 @@
 	</span>
 	{% endif %}
 	<span class="rightpart">
+
 	{% if show_correct %}
+	    <audio id="pronounce{{ forloop.counter }}"></audio>
 		{% ifnotequal form.error "correct" %}
-			<span class="correctanswertext">{{ form.correct_answers }}</span>
+			<span class="correctanswertext">{{ form.correct_answers }}
+			</span>
 		{% else %}
 			{# Parens around correct, non-relaxed form. #}
 			{% ifequal form.is_relaxed "relaxed" %}
@@ -154,6 +164,12 @@
 				<span class="relaxed">{{ form.relaxed }}</span>
 			{% endifequal %}
 		{% endifnotequal %}
+		 <a onclick=playSound("{{ form.transl_audio }}") href="#">  
+        {% if form.transl_audio %}
+        <img src="{{ MEDIA_URL }}/images/loudspeaker.jpg" heigth="15px" width="20px"/>
+        {% endif %}
+    </a>
+
 
 	{% endif %}
 	</span>
