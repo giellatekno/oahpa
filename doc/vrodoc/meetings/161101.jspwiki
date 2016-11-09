@@ -1,0 +1,51 @@
+!!!Võru Oahpa arutelu 1.11.2016 Tartus
+Kohal: Sulev, Heli
+
+!!!Võro Oahpa parandamise ideid
+
+!! Parandused kasutajaliideses, lokaliseerimine, uuendamine
+# Logo OAHPA all lisaks "Opiq võro kiilt!" ka mängude sees.
+# Punane hoiatus ka Morfa-S ja Morfa-C sees. Üleval harjutuse juhise kohal.
+# Pealehel "Other online materials" - lokaliseerida eesti ja soome keelde.
+MeinZimmer link ei tööta praegu üldse. Sulev küsib, ja kui ei ole lähemal ajal lootust, siis üldse välja kommenteerida.
+# Esimene link inglise k. -> parandada "Phonetics and orthography of Võro".
+# Ehitada Numra automaadid uuesti gtoahpas (pehmendusmärk ei töötanud enne nii nagu vaja).
+
+!! Vead
+! Leksa
+* Pehmendusmärk
+
+Akuuti (') ja tähe kohal olevat sümbolit (s,r,g,m,n,b,v,h) ei loeta õigeks pehmendusmärgi sümboliks. Vaadata üle spell-relax reeglid.
+
+! Morfa-S ja Morfa-C 
+# Tõlke-tooltip ei tööta.
+# Mõnel sõnal (''ilves'', ''jutus'') ei näidata õiget vastust alaleütlevast käändest. Kas vastavad vormid puudu?
+# Õige vastuse näitamine. Näidata tuleks yaml-testis olevat esimest vormi. Teistel peaks olema juures märgend +Use/NG ja neid õigete vastustena ei tohi näidata. Uurida, kas viga on FST-s või Oahpas.
+
+!! Lähtefailide täiendamine ja parandamine
+! Leksa 
+# Tõlkida ära puuduvad sõnad eng, fin (Sulev) ja nob, swe (Heli)
+deu - filtreerida välja harjutustest sõnad, millel saksakeelseks tõlkeks _DEU, sest neid on päris palju.
+# Hääldused (fail puuduvad_hääldused_uus.csv): €S ja €M - saab kohe lisada. €L (lugeda) osa - vaadata, mis sõnad ja kui palju seal on ja mis nendega teha.
+
+!! Uued funktsioonid, mida programmeerida
+! Leksa
+Õigete vastuste hääldused (kui keeltepaar on X-> võru).
+
+! Morfa-S
+# Hääldus nii algvormil (Sg Nom sõnaraamatust, Pl Nom kõnesünteesiga) kui ka õigel muutevormil (kõnesünteesiga)
+# Panna tööle Opiraamat-menüü (tüüpsõnad / kõik).
+* Nimisõnatüüpide loend on olemas, aga vaja markeerida sõnastikus ning selle alusel menüü toimima panna.
+* Verbitüüpide loend (40 verbi) võtta Sulevi doktoritööst (Tabel 21).
+
+! Morfa-C
+Vastus (terve lause) lugeda ka häälega ette. 
+
+! Numra
+
+Lisada hääldused:
+* hääldus sõnaraamatust (põhi- ja järgarvsõnad ja ühesõnalised ajaväljendid, mis on olemas)
+* hääldus kõnesünteesiga (mitmesõnalised ajaväljendid)
+
+!!! Järgmine skaibikoosolek
+__T, 15. nov. kell 10__ Eesti aja järgi.
