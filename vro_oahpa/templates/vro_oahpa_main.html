@@ -32,7 +32,18 @@
 		<div id="headerimg"><a href="/{{ URL_PREFIX }}/"><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!"/></a>
         </div>
 		<a class="hide" href="#content">Skip to content</a>		
-		{% block language_select %}
+		
+		<div id="header">
+			{% block header_content %}
+			<h1><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!" /></h1>
+			<h2>Opiq võro kiilt!</h2>
+			{% endblock %}
+		</div>
+		
+		<div id="content">
+			{% block main_content %}
+			
+			 {% block language_select %}
 		<div id="language_options">
 			{% get_current_language as LANGUAGE_CODE %}
 			<form action="/{{ URL_PREFIX }}/i18n/setlang/" method="post" name="newlang">
@@ -79,15 +90,6 @@
          </div>
 		{% endblock %}
 
-		<div id="header">
-			{% block header_content %}
-			<h1><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!" /></h1>
-			<h2>Opiq võro kiilt!</h2>
-			{% endblock %}
-		</div>
-		
-		<div id="content">
-			{% block main_content %}
 						<ul id="games_menu">
 
         <!--        <li class="game">
@@ -179,6 +181,7 @@
  {% endcomment %}
             </br>
             <p class="intro"><a href="http://oahpa.no/davvi" style="font-size:13px">{% trans "North Saami Oahpa" %}</a></p>
+            
 
 <!---			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p> -->
 			{% endblock %}

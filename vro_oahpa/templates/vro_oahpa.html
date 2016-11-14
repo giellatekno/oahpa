@@ -16,11 +16,6 @@
 
 {% block main_content %}
 
-{% comment %} {% block language_select %}
-<div id="language_options">
-    {% include 'language_menu.html' %} 
-</div>
-{% endblock %} {% endcomment %}
 
 <ul id="games_menu" class="small">
 
@@ -76,6 +71,7 @@
 	
 
 </ul>
+
 <div id="leftcontent">
 	<div id="navbar">
 		<img width="120" height="120" border="0" src="{{ MEDIA_URL }}/images/{% block imgprefix %}{% endblock %}_big.png" alt="Game logo" />
@@ -128,6 +124,14 @@
 
 <div id="rightcontent">
 	{% block rightcontent %}
+	
+	{% block language_select %}
+<div id="language_options">
+    {% include 'language_menu.html' %} 
+</div>
+{% endblock %}
+	{% endblock %}
+	
 	<a name="content" class="hide">&nbsp;</a>
 	<form action="" method="post" id="gameform" name="gameform">
 		
@@ -140,7 +144,6 @@
 	</div>
 	
 	</form>
-	{% endblock %}
 
 </div>
 
