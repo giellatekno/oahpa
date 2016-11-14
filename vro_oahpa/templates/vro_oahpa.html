@@ -9,16 +9,19 @@
 {% block bodyclass %} {% endblock %}
 {% block pageclass %}game{% endblock %}
 
-{% block header_content %} {% endblock %}
-
-{% block language_select %}
-<div id="language_options">
-    {% include 'language_menu.html' %} 
-</div>
+{% block header_content %} 
+<h2 style="text-align:left">&nbsp;&nbsp;Opiq võro kiilt!</h2>
 {% endblock %}
 
 
 {% block main_content %}
+
+{% comment %} {% block language_select %}
+<div id="language_options">
+    {% include 'language_menu.html' %} 
+</div>
+{% endblock %} {% endcomment %}
+
 <ul id="games_menu" class="small">
 
 	<li class="game">

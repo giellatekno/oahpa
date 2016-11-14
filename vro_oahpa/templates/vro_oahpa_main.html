@@ -28,10 +28,10 @@
 	{% load i18n %}
 
 <body class="{% block bodyclass %}main{% endblock %}">
-	<div id="page" class="{% block pageclass %}{% endblock %}">
-		<div id="headerimg"><a href="/{{ URL_PREFIX }}/"><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!"/></a></div>
-		<a class="hide" href="#content">Skip to content</a>
-
+	<div id="page" class="{% block pageclass %}{% endblock %}">				
+		<div id="headerimg"><a href="/{{ URL_PREFIX }}/"><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!"/></a>
+        </div>
+		<a class="hide" href="#content">Skip to content</a>		
 		{% block language_select %}
 		<div id="language_options">
 			{% get_current_language as LANGUAGE_CODE %}
@@ -76,32 +76,7 @@
 				</dl>
 				<input type="submit" class="hide" value="submit" />
 			</form>
-			<!--
-			<form action="/{{ URL_PREFIX }}/dialect/" method="post">
-				<dl>
-					<dt><label for="dialect">{% trans "Russian dialect" %}</label></dt>
-					<dd>
-						<input name="next" type="hidden" value="/{{ URL_PREFIX }}/" />
-						<select name="dialect" onChange="javascript:this.form.submit();">
-						{% if dialect %}
-							{% ifequal dialect "GG" %}
-								<option value="GG" selected="selected">{% trans 'GG' %}</option>
-								<option value="KJ">{% trans 'KJ' %}</option>
-							{% else %}
-								<option value="GG">{% trans 'GG' %}</option>
-								<option value="KJ" selected="selected">{% trans 'KJ' %}</option>
-							{% endifequal %}
-						{% else %}
-							<option value="GG">{% trans 'GG' %}</option>
-							<option value="KJ">{% trans 'KJ' %}</option>
-						{% endif %}
-					</select>
-					</dd>
-				</dl>
-				<input type="submit" class="hide" value="submit" />
-			</form>
-			-->
-		</div>
+         </div>
 		{% endblock %}
 
 		<div id="header">
@@ -110,10 +85,10 @@
 			<h2>Opiq võro kiilt!</h2>
 			{% endblock %}
 		</div>
-
+		
 		<div id="content">
 			{% block main_content %}
-			<ul id="games_menu">
+						<ul id="games_menu">
 
         <!--        <li class="game">
 					<a href="{% url vasta_s %}">
@@ -177,7 +152,7 @@
                 </ul>
 		<p class="intro"> {% trans "Other online materials:" %}</p>
 		<ul style="padding-left:40px">
-                <li><a target="_blank" href="http://umakiil.eu/grammatika"  style="font-size:14px">umakiil.eu</a> <span style="font-size:13px">({% trans "Phonetics of Võro" %})</span></li>
+                <li><a target="_blank" href="http://umakiil.eu/grammatika"  style="font-size:14px">umakiil.eu</a> <span style="font-size:13px">({% trans "Phonetics and orthography of Võro" %})</span></li>
                 <li><a target="_blank" href="http://ediv.planet.ee/meinZimmer"  style="font-size:14px">ediv.planet.ee/meinZimmer</a> <span style="font-size:13px">({% trans "Exercises on Võro adpositions as Find-the-key-game" %})</span></li>
 		</ul>
                 
