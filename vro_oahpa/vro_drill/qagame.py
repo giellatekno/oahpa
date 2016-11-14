@@ -29,7 +29,7 @@ class QAGame(Game):
 		Initialize the grammatical information.
 		This information should be moved to parameters
 		"""
-		self.num_fields = 6
+		self.num_fields = 4 # was: 6, decreased the number of exercises to 3 because preparation of the audio files for the questions (speech synthesis) takes time.
 		self.syntax =('MAINV','SUBJ','HAB')
 		self.qtype_verbs = set(['V-COND','V-IMPRT','V-POT', 'PRS','PRT', 'V-PRS', 'V-PRT', 'V-GER', 'V-PRF'])
 
