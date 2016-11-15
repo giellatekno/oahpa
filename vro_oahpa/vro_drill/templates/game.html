@@ -156,6 +156,11 @@ function playSound(soundfile) {
 	    <audio id="pronounce{{ forloop.counter }}"></audio>
 		{% ifnotequal form.error "correct" %}
 			<span class="correctanswertext">{{ form.correct_answers }}
+			<a onclick=playSound("{{ form.transl_audio }}") href="#">  
+            {% if form.transl_audio %}
+                <img src="{{ MEDIA_URL }}/images/loudspeaker.jpg" heigth="15px" width="20px"/>
+            {% endif %}
+            </a>
 			</span>
 		{% else %}
 			{# Parens around correct, non-relaxed form. #}
@@ -164,11 +169,7 @@ function playSound(soundfile) {
 				<span class="relaxed">{{ form.relaxed }}</span>
 			{% endifequal %}
 		{% endifnotequal %}
-		 <a onclick=playSound("{{ form.transl_audio }}") href="#">  
-        {% if form.transl_audio %}
-        <img src="{{ MEDIA_URL }}/images/loudspeaker.jpg" heigth="15px" width="20px"/>
-        {% endif %}
-    </a>
+		 
 
 
 	{% endif %}

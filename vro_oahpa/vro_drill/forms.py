@@ -1142,7 +1142,7 @@ class LeksaQuestion(OahpaQuestion):
 
 		if self.translang == "vro":
 			for transl_word in translations:
-				transl_obj = Word.objects.get(lemma=transl_word)
+				transl_obj = Word.objects.filter(lemma=transl_word)[0]
 				self.transl_audio = transl_obj.audio
 		
 		self.is_correct("leksa", self.lemma)
