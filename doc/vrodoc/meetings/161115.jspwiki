@@ -1,0 +1,147 @@
+!!! Võru Oahpa koosolek 15. nov. 2016
+Kohal: Sulev, Jack, Heli
+
+!!! Päevakord
+* Pehmendusmärgid Numra automaatides
+* Leksa bug
+* testing.oahpa.no/voro
+* Eelmisel kohtumisel kirjapandud todo-listi staatus
+* Järgmine koosolek
+
+!! Pehmendusmärgid Numra automaatides
+
+Numbrite automaat:
+
+{{{
+lookup transcriptor-numbers-text2digit.filtered.lookup.xfst
+0%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>100%
+
+  *****  LEXICON LOOK-UP  *****
+
+kuus'
+kuus'    kuus'    +?
+
+
+ gtsvn/langs/vro/src/orthography/spellrelax.regex
+ 24:katsʼkümmend% neli%   ANDMINUTES_first ;
+25:katsʼkümmend% viisʼ%   ANDMINUTES_first ;
+26:katsʼkümmend% kuusʼ+Use/NG%   ANDMINUTES_first ;
+27:katsʼkümmend% säidse+Use/NG%  ANDMINUTES_first ;
+28:katsʼkümmend% katõsa+Use/NG%   ANDMINUTES_first ;
+ 24:kats'kümmend% neli+Use/NG%   ANDMINUTES_first ;
+}}}
+
+Lene: But you can also concatenate the transcriptor fst with a spellrelax with a tag, so you can give specific feedback about wrong character to the user.
+
+like in Plains Cree:
+
+niyanan 5+Err/ShLo
+
+You can look at the code, to see how it is done.
+
+niyânan is correct
+
+{{{
++Err/ShLo = the long vowel is not marked (â), or the other way round
+   langs/crk/src/orthography/spellrelax-tags.regex
+  langs/crk/src/orthography/spellrelax-with-tags.xfscript
+}}}  
+
+Numras veel üks parandus: sõna puul > puul' (clock).
+  
+__Vaja teha:__
+ 
+* Jack proovib esmalt lahendada spell-relaxi FST-s.
+Hea oleks, kui töötaks vähemalt tavaline apostroof (üts') ja tavaline akuut tähe järel (üts´).
+See, kui on tähe peal akuut, juba töötab: ütś, viiś, kuuś.
+* Kui liiga keeruline või FST läheb suureks, siis Heli realiseerib Numra spell-relaxi Oahpas.
+
+
+!! Leksa bug
+
+Kui valida keeltepaariks eesti - võru, siis tulemuseks kollane leht veateatega: 
+
+{{{
+MultipleObjectsReturned at /voro/leksa/   
+get() returned more than one Word -- it returned 2!
+}}}
+
+Heli selgitab välja, milles asi.
+Viga tekkis õigetele vastustele häälduste lisamisel. Quick fix tehtud, kollast lehte enam ei anna, aga hääldus antakse praegu ainult esimesele õigele vastusele, kui neid on mitu.
+
+!! testing.oahpa.no/voro
+
+Suunata ümber lehele oahpa.no/voro - OK (17. nov.)
+
+!! Eelmise koosoleku märkmed:
+
+1. nov. 2016
+
+Võru Oahpa parandamise ideid
+1. Parandused kasutajaliideses, lokaliseerimine, uuendamine
+* Logo OAHPA all lisaks võrukeelne selgitus s"Opiq võro kiilt!" ka mängude sees. - OK
+* Punane hoiatus ka Morfa-S ja Morfa-C sees. Üleval harjutuse juhise kohal. - OK
+* Pealehel "Other online materials" - lokaliseerida eesti ja soome keelde. - OK
+* MeinZimmer link ei tööta praegu üldse. Sulev küsib, ja kui ei ole lähemal ajal lootust, siis üldse välja kommenteerida.
+* Esimene link inglise k. -> parandada "Phonetics and orthography of Võro". - OK
+* Ehitada Numra automaadid uuesti gtoahpas (pehmendusmärk ei töötanud enne nii nagu vaja).
+- Automaadid uuendatud, aga apostroofi ei aktsepteerita endiselt pehmendusmärgina.
+
+2. Vead
+2.1. Leksa
+
+* Pehmendusmärk
+Akuuti (') ja tähe kohal olevat sümbolit (s,r,g,m,n,b,v,h) ei loeta õigeks pehmendusmärgi sümboliks. Vaadata üle spell-relax reeglid.
+
+2.2. Morfa-S ja Morfa-C
+
+* Tõlke-tooltip ei tööta. - nüüd töötab
+* Mõnel sõnal (ilves, jutus, katus) ei näidata õiget vastust alaleütlevast käändest (ilves+N+Sg+All). Kas vastavad vormid puudu? Ei ole puudu, aga on märgitud kui no-show, järelikult on nad FST-s märgitud kui +Use/NG (ilvessõlõ (vok-harmoonia viga), õige: ilvessele) 
+
+"ilvessõlõ" ei ole olemas lookup generator-oahpa-gt-norm-dial_main.xfst  -s
+
+on olemas generator-oahpa-gt-norm.xfst -s
+
+__Vaja teha:__
+
+Parandused FST-s ''ilves''-tüübis (Jack)
+
+* Õige vastuse näitamine. Näidata tuleks yaml-testis olevat esimest vormi. Teistel peaks olema juures märgend +Use/NG ja neid õigete vastustena ei tohi näidata. Uurida, kas viga on FST-s või Oahpas. - Oahpa peaks neid õigesti käsitlema.
+
+3. Lähtefailide täiendamine ja parandamine
+
+3.1. Leksa
+
+* Tõlkida ära puuduvad sõnad eng, fin (Sulev - tehtud!) ja nob, swe (Heli).
+deu - filtreerida harjutustest välja sõnad, millel saksakeelseks tõlkeks _DEU, sest neid on päris palju. Tavalisemad sõnad tõlkida ära.
+
+* Hääldused (fail puuduvad_hääldused_uus.csv): €S ja €M - saab kohe lisada. €L (lugeda) osa - vaadata, mis sõnad ja kui palju seal on ja mis nendega teha.
+
+4. Uued funktsioonid, mida programmeerida
+
+4.1. Leksa
+
+* Õigete vastuste hääldused (kui keeltepaar on X -> võru).
+4.2. Morfa-S
+
+* Hääldus nii algvormil (Sg Nom sõnaraamatust, Pl Nom kõnesünteesiga) kui ka õigel muutevormil (kõnesünteesiga)
+* Panna tööle Opiraamat-menüü (tüüpsõnad / kõik).
+
+a) Nimisõnatüüpide loend on olemas, aga vaja markeerida sõnastikus ning selle alusel menüü toimima panna.
+
+b) Verbitüüpide loend (40 verbi) võtta Sulevi doktoritööst (Tabel 21).
+
+4.3. Morfa-C
+
+* Vastus (terve lause) lugeda ka häälega ette.
+
+4.4. Numra
+
+* Lisada hääldused:
+
+a) hääldus sõnaraamatust (põhi- ja järgarvsõnad ja ühesõnalised ajaväljendid, mis on olemas)
+    
+b) hääldus kõnesünteesiga (mitmesõnalised ajaväljendid)
+
+!!! Järgmine koosolek
+__T, 29. nov. kell 10__ Eesti aja järgi
