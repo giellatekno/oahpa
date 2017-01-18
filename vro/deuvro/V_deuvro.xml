@@ -65,9 +65,9 @@
          </tg>
       </mg>
    </e>
-   <e id="tro_DEU_V" stat="pref">
+   <e id="glauben_V" stat="pref">
       <lg>
-         <l pos="V">tro_DEU</l>
+         <l pos="V">glauben</l>
       </lg>
       <mg>
          <semantics>
@@ -75,6 +75,20 @@
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">arvama</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="meinen_V" stat="pref">
+      <lg>
+         <l pos="V">meinen</l>
+      </lg>
+      <mg>
+         <semantics>
+            <sem class="EXPERIENCE_V"/>
+         </semantics>
+         <tg xml:lang="vro">
+            <t pos="V" stat="pref">tähendämä</t>
+            <t pos="V" sem-cl="EXPERIENCE_V" src="" deu-stat="yes">arvama</t>
          </tg>
       </mg>
    </e>
@@ -91,9 +105,9 @@
          </tg>
       </mg>
    </e>
-   <e id="ta et skritt_DEU_V" stat="pref">
+   <e id="treten_V" stat="pref">
       <lg>
-         <l pos="V">ta et skritt_DEU</l>
+         <l pos="V">treten</l>
       </lg>
       <mg>
          <semantics>
@@ -189,7 +203,6 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">har'otama</t>
@@ -222,7 +235,7 @@
          </tg>
       </mg>
    </e>
-   <e id="sich bewegen_V" stat="pref">
+   <e id="1_sich bewegen_V" stat="pref">
       <lg>
          <l pos="V">sich bewegen</l>
       </lg>
@@ -232,6 +245,21 @@
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">heränemä</t>
+            <t pos="V" sem-cl="BODY_V" src="" deu-stat="yes">liikma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_sich bewegen_V" stat="pref">
+      <lg>
+         <l pos="V">sich bewegen</l>
+      </lg>
+      <mg>
+         <semantics>
+            <sem class="BODY_V"/>
+         </semantics>
+         <tg xml:lang="vro">
+            <t pos="V" stat="pref">liikma</t>
+            <t pos="V" sem-cl="HUM_V" src="" deu-stat="yes">heränemä</t>
          </tg>
       </mg>
    </e>
@@ -274,9 +302,9 @@
          </tg>
       </mg>
    </e>
-   <e id="glitre_DEU_V" stat="pref">
+   <e id="glänzen_V" stat="pref">
       <lg>
-         <l pos="V">glitre_DEU</l>
+         <l pos="V">glänzen</l>
       </lg>
       <mg>
          <semantics>
@@ -287,9 +315,9 @@
          </tg>
       </mg>
    </e>
-   <e id="puste_DEU_V" stat="pref">
+   <e id="atmen_V" stat="pref">
       <lg>
-         <l pos="V">puste_DEU</l>
+         <l pos="V">atmen</l>
       </lg>
       <mg>
          <semantics>
@@ -313,9 +341,9 @@
          </tg>
       </mg>
    </e>
-   <e id="være sjenert_DEU_V" stat="pref">
+   <e id="sich schämen_V" stat="pref">
       <lg>
-         <l pos="V">være sjenert_DEU</l>
+         <l pos="V">sich schämen</l>
       </lg>
       <mg>
          <semantics>
@@ -346,16 +374,15 @@
       <mg>
          <semantics>
             <sem class="VERBAL_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">ikma</t>
          </tg>
       </mg>
    </e>
-   <e id="bli forsinket_DEU_V" stat="pref">
+   <e id="aufgehalten werden_V" stat="pref">
       <lg>
-         <l pos="V">bli forsinket_DEU</l>
+         <l pos="V">aufgehalten werden</l>
       </lg>
       <mg>
          <semantics>
@@ -467,7 +494,7 @@
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">jauhma</t>
-            <t pos="V" sem-cl="ACTION_V-MORFAC_V" src="" deu-stat="yes">maal'ma</t>
+            <t pos="V" sem-cl="ACTION_V" src="" deu-stat="yes">maal'ma</t>
          </tg>
       </mg>
    </e>
@@ -478,7 +505,6 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">maal'ma</t>
@@ -506,7 +532,6 @@
       <mg>
          <semantics>
             <sem class="SCHOOL_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">joonistama</t>
@@ -546,7 +571,6 @@
       <mg>
          <semantics>
             <sem class="FOOD_DRINK_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">juuma</t>
@@ -560,7 +584,6 @@
       <mg>
          <semantics>
             <sem class="ANIMAL_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">juuskma</t>
@@ -606,23 +629,22 @@
          </tg>
       </mg>
    </e>
-   <e id="regret_DEU_V" stat="pref">
+   <e id="bereuen_V" stat="pref">
       <lg>
-         <l pos="V">regret_DEU</l>
+         <l pos="V">bereuen</l>
       </lg>
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">kahitsõma</t>
          </tg>
       </mg>
    </e>
-   <e id="grave_DEU_V" stat="pref">
+   <e id="graben_V" stat="pref">
       <lg>
-         <l pos="V">grave_DEU</l>
+         <l pos="V">graben</l>
       </lg>
       <mg>
          <semantics>
@@ -646,9 +668,9 @@
          </tg>
       </mg>
    </e>
-   <e id="lide_DEU_V" stat="pref">
+   <e id="leiden_V" stat="pref">
       <lg>
-         <l pos="V">lide_DEU</l>
+         <l pos="V">leiden</l>
       </lg>
       <mg>
          <semantics>
@@ -711,9 +733,9 @@
          </tg>
       </mg>
    </e>
-   <e id="skravle_DEU_V" stat="pref">
+   <e id="schnattern_V" stat="pref">
       <lg>
-         <l pos="V">skravle_DEU</l>
+         <l pos="V">schnattern</l>
       </lg>
       <mg>
          <semantics>
@@ -724,7 +746,7 @@
          </tg>
       </mg>
    </e>
-   <e id="kochen_V" stat="pref">
+   <e id="1_kochen_V" stat="pref">
       <lg>
          <l pos="V">kochen</l>
       </lg>
@@ -734,6 +756,21 @@
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">kiimä</t>
+            <t pos="V" sem-cl="FOOD_DRINK_V" src="" deu-stat="yes">süvväq tegemä</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_kochen_V" stat="pref">
+      <lg>
+         <l pos="V">kochen</l>
+      </lg>
+      <mg>
+         <semantics>
+            <sem class="FOOD_DRINK_V"/>
+         </semantics>
+         <tg xml:lang="vro">
+            <t pos="V" stat="pref">süvväq tegemä</t>
+            <t pos="V" sem-cl="FOOD_DRINK_V" src="" deu-stat="yes">kiimä</t>
          </tg>
       </mg>
    </e>
@@ -783,7 +820,6 @@
       <mg>
          <semantics>
             <sem class="SCHOOL_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">kirotama</t>
@@ -875,7 +911,6 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">kolima</t>
@@ -908,9 +943,9 @@
          </tg>
       </mg>
    </e>
-   <e id="holde på å rydde_DEU_V" stat="pref">
+   <e id="1_aufräumen_V" stat="pref">
       <lg>
-         <l pos="V">holde på å rydde_DEU</l>
+         <l pos="V">aufräumen</l>
       </lg>
       <mg>
          <semantics>
@@ -918,6 +953,21 @@
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">kraam'ma</t>
+            <t pos="V" sem-cl="ACTION_V" src="" deu-stat="yes">kraam’ma</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_aufräumen_V" stat="pref">
+      <lg>
+         <l pos="V">aufräumen</l>
+      </lg>
+      <mg>
+         <semantics>
+            <sem class="ACTION_V"/>
+         </semantics>
+         <tg xml:lang="vro">
+            <t pos="V" stat="pref">kraam’ma</t>
+            <t pos="V" sem-cl="LEISURETIME_HOME_V" src="" deu-stat="yes">kraam'ma</t>
          </tg>
       </mg>
    </e>
@@ -934,23 +984,9 @@
          </tg>
       </mg>
    </e>
-   <e id="aufräumen_V" stat="pref">
+   <e id="stricken_V" stat="pref">
       <lg>
-         <l pos="V">aufräumen</l>
-      </lg>
-      <mg>
-         <semantics>
-            <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
-         </semantics>
-         <tg xml:lang="vro">
-            <t pos="V" stat="pref">kraam’ma</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="verknüpfen_V" stat="pref">
-      <lg>
-         <l pos="V">verknüpfen</l>
+         <l pos="V">stricken</l>
       </lg>
       <mg>
          <semantics>
@@ -971,6 +1007,7 @@
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">kuioma</t>
+            <t pos="V" sem-cl="FOOD_DRINK_V" src="" deu-stat="yes">kuivama</t>
             <t pos="V" sem-cl="HUM_V" src="" deu-stat="yes">pühk'mä</t>
          </tg>
       </mg>
@@ -981,24 +1018,27 @@
       </lg>
       <mg>
          <semantics>
+            <sem class="FOOD_DRINK_V"/>
+         </semantics>
+         <tg xml:lang="vro">
+            <t pos="V" stat="pref">kuivama</t>
+            <t pos="V" sem-cl="EXPOSURE_V" src="" deu-stat="yes">kuioma</t>
+            <t pos="V" sem-cl="HUM_V" src="" deu-stat="yes">pühk'mä</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="3_trocknen_V" stat="pref">
+      <lg>
+         <l pos="V">trocknen</l>
+      </lg>
+      <mg>
+         <semantics>
             <sem class="HUM_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">pühk'mä</t>
             <t pos="V" sem-cl="EXPOSURE_V" src="" deu-stat="yes">kuioma</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="tørke_DEU_V" stat="pref">
-      <lg>
-         <l pos="V">tørke_DEU</l>
-      </lg>
-      <mg>
-         <semantics>
-            <sem class="FOOD_DRINK_V"/>
-         </semantics>
-         <tg xml:lang="vro">
-            <t pos="V" stat="pref">kuivama</t>
+            <t pos="V" sem-cl="FOOD_DRINK_V" src="" deu-stat="yes">kuivama</t>
          </tg>
       </mg>
    </e>
@@ -1110,9 +1150,9 @@
          </tg>
       </mg>
    </e>
-   <e id="gjemme seg_DEU_V" stat="pref">
+   <e id="sich verstecken_V" stat="pref">
       <lg>
-         <l pos="V">gjemme seg_DEU</l>
+         <l pos="V">sich verstecken</l>
       </lg>
       <mg>
          <semantics>
@@ -1123,30 +1163,31 @@
          </tg>
       </mg>
    </e>
-   <e id="befale_DEU_V" stat="pref">
+   <e id="1_befehlen_V" stat="pref">
       <lg>
-         <l pos="V">befale_DEU</l>
+         <l pos="V">befehlen</l>
       </lg>
       <mg>
          <semantics>
             <sem class="VERBAL_V"/>
          </semantics>
          <tg xml:lang="vro">
-            <t pos="V" stat="pref">käsk'mä</t>
+            <t pos="V" stat="pref">käskmä</t>
+            <t pos="V" sem-cl="ACTION_V" src="" deu-stat="yes">käsütämä</t>
          </tg>
       </mg>
    </e>
-   <e id="befehlen_V" stat="pref">
+   <e id="2_befehlen_V" stat="pref">
       <lg>
          <l pos="V">befehlen</l>
       </lg>
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">käsütämä</t>
+            <t pos="V" sem-cl="VERBAL_V" src="" deu-stat="yes">käskmä</t>
          </tg>
       </mg>
    </e>
@@ -1173,7 +1214,7 @@
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">käümä</t>
-            <t pos="V" sem-cl="CITY-MORFAC_V" src="" deu-stat="yes">kõnd'ma</t>
+            <t pos="V" sem-cl="CITY" src="" deu-stat="yes">kõnd'ma</t>
          </tg>
       </mg>
    </e>
@@ -1184,7 +1225,6 @@
       <mg>
          <semantics>
             <sem class="CITY"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">kõnd'ma</t>
@@ -1277,7 +1317,6 @@
       <mg>
          <semantics>
             <sem class="BODY_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">köhimä</t>
@@ -1375,9 +1414,9 @@
          </tg>
       </mg>
    </e>
-   <e id="intervjue_DEU_V" stat="pref">
+   <e id="befragen_V" stat="pref">
       <lg>
-         <l pos="V">intervjue_DEU</l>
+         <l pos="V">befragen</l>
       </lg>
       <mg>
          <semantics>
@@ -1462,16 +1501,15 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">laiskõlõma</t>
          </tg>
       </mg>
    </e>
-   <e id="slikke_DEU_V" stat="pref">
+   <e id="1_lecken_V" stat="pref">
       <lg>
-         <l pos="V">slikke_DEU</l>
+         <l pos="V">lecken</l>
       </lg>
       <mg>
          <semantics>
@@ -1482,9 +1520,9 @@
          </tg>
       </mg>
    </e>
-   <e id="schlecken_V" stat="pref">
+   <e id="2_lecken_V" stat="pref">
       <lg>
-         <l pos="V">schlecken</l>
+         <l pos="V">lecken</l>
       </lg>
       <mg>
          <semantics>
@@ -1502,23 +1540,9 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">laulma</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="bevege seg_DEU_V" stat="pref">
-      <lg>
-         <l pos="V">bevege seg_DEU</l>
-      </lg>
-      <mg>
-         <semantics>
-            <sem class="BODY_V"/>
-         </semantics>
-         <tg xml:lang="vro">
-            <t pos="V" stat="pref">liikma</t>
          </tg>
       </mg>
    </e>
@@ -1555,7 +1579,6 @@
       <mg>
          <semantics>
             <sem class="SCHOOL_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">lugõma</t>
@@ -1569,7 +1592,6 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">luulõtama</t>
@@ -1602,9 +1624,9 @@
          </tg>
       </mg>
    </e>
-   <e id="klippe til_DEU_V" stat="pref">
+   <e id="1_schneiden_V" stat="pref">
       <lg>
-         <l pos="V">klippe til_DEU</l>
+         <l pos="V">schneiden</l>
       </lg>
       <mg>
          <semantics>
@@ -1615,7 +1637,7 @@
          </tg>
       </mg>
    </e>
-   <e id="schneiden_V" stat="pref">
+   <e id="2_schneiden_V" stat="pref">
       <lg>
          <l pos="V">schneiden</l>
       </lg>
@@ -1628,9 +1650,9 @@
          </tg>
       </mg>
    </e>
-   <e id="abschliessen_V" stat="pref">
+   <e id="abschließen_V" stat="pref">
       <lg>
-         <l pos="V">abschliessen</l>
+         <l pos="V">abschließen</l>
       </lg>
       <mg>
          <semantics>
@@ -1680,9 +1702,9 @@
          </tg>
       </mg>
    </e>
-   <e id="sette seg_DEU_V" stat="pref">
+   <e id="sich setzen_V" stat="pref">
       <lg>
-         <l pos="V">sette seg_DEU</l>
+         <l pos="V">sich setzen</l>
       </lg>
       <mg>
          <semantics>
@@ -1713,7 +1735,6 @@
       <mg>
          <semantics>
             <sem class="BODY_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">magama</t>
@@ -1733,9 +1754,9 @@
          </tg>
       </mg>
    </e>
-   <e id="smake på_DEU_V" stat="pref">
+   <e id="schmecken_V" stat="pref">
       <lg>
-         <l pos="V">smake på_DEU</l>
+         <l pos="V">schmecken</l>
       </lg>
       <mg>
          <semantics>
@@ -1746,16 +1767,16 @@
          </tg>
       </mg>
    </e>
-   <e id="legge til_DEU_V" stat="pref">
+   <e id="hinzufügen_V" stat="pref">
       <lg>
-         <l pos="V">legge til_DEU</l>
+         <l pos="V">hinzufügen</l>
       </lg>
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
          </semantics>
          <tg xml:lang="vro">
-            <t pos="V" stat="pref">mano pandma</t>
+            <t pos="V" stat="pref">manoq pandma</t>
          </tg>
       </mg>
    </e>
@@ -1772,9 +1793,9 @@
          </tg>
       </mg>
    </e>
-   <e id="lokke_DEU_V" stat="pref">
+   <e id="verlocken_V" stat="pref">
       <lg>
-         <l pos="V">lokke_DEU</l>
+         <l pos="V">verlocken</l>
       </lg>
       <mg>
          <semantics>
@@ -1798,9 +1819,9 @@
          </tg>
       </mg>
    </e>
-   <e id="sørge_DEU_V" stat="pref">
+   <e id="sorgen_V" stat="pref">
       <lg>
-         <l pos="V">sørge_DEU</l>
+         <l pos="V">sorgen</l>
       </lg>
       <mg>
          <semantics>
@@ -1857,7 +1878,6 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">märgütämä</t>
@@ -1899,7 +1919,6 @@
       <mg>
          <semantics>
             <sem class="HUM_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">mõtlõma</t>
@@ -1939,7 +1958,6 @@
       <mg>
          <semantics>
             <sem class="BODY_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">naarahtama</t>
@@ -1966,16 +1984,15 @@
       <mg>
          <semantics>
             <sem class="VERBAL_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">naardma</t>
          </tg>
       </mg>
    </e>
-   <e id="svelge_DEU_V" stat="pref">
+   <e id="schlucken_V" stat="pref">
       <lg>
-         <l pos="V">svelge_DEU</l>
+         <l pos="V">schlucken</l>
       </lg>
       <mg>
          <semantics>
@@ -1986,9 +2003,9 @@
          </tg>
       </mg>
    </e>
-   <e id="suge_DEU_V" stat="pref">
+   <e id="saugen_V" stat="pref">
       <lg>
-         <l pos="V">suge_DEU</l>
+         <l pos="V">saugen</l>
       </lg>
       <mg>
          <semantics>
@@ -2032,7 +2049,6 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">närvitsemä</t>
@@ -2065,9 +2081,9 @@
          </tg>
       </mg>
    </e>
-   <e id="løfte_DEU_V" stat="pref">
+   <e id="heben_V" stat="pref">
       <lg>
-         <l pos="V">løfte_DEU</l>
+         <l pos="V">heben</l>
       </lg>
       <mg>
          <semantics>
@@ -2078,9 +2094,9 @@
          </tg>
       </mg>
    </e>
-   <e id="1_stige_DEU_V" stat="pref">
+   <e id="1_steigen_V" stat="pref">
       <lg>
-         <l pos="V">stige_DEU</l>
+         <l pos="V">steigen</l>
       </lg>
       <mg>
          <semantics>
@@ -2091,9 +2107,9 @@
          </tg>
       </mg>
    </e>
-   <e id="2_stige_DEU_V" stat="pref">
+   <e id="2_steigen_V" stat="pref">
       <lg>
-         <l pos="V">stige_DEU</l>
+         <l pos="V">steigen</l>
       </lg>
       <mg>
          <semantics>
@@ -2176,16 +2192,15 @@
       <mg>
          <semantics>
             <sem class="SCHOOL_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">oppama</t>
          </tg>
       </mg>
    </e>
-   <e id="delta_DEU_V" stat="pref">
+   <e id="teilnehmen_V" stat="pref">
       <lg>
-         <l pos="V">delta_DEU</l>
+         <l pos="V">teilnehmen</l>
       </lg>
       <mg>
          <semantics>
@@ -2203,7 +2218,6 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">ossõndama</t>
@@ -2223,7 +2237,7 @@
          </tg>
       </mg>
    </e>
-   <e id="suchen_V" stat="pref">
+   <e id="1_suchen_V" stat="pref">
       <lg>
          <l pos="V">suchen</l>
       </lg>
@@ -2236,9 +2250,9 @@
          </tg>
       </mg>
    </e>
-   <e id="savne_DEU_V" stat="pref">
+   <e id="2_suchen_V" stat="pref">
       <lg>
-         <l pos="V">savne_DEU</l>
+         <l pos="V">suchen</l>
       </lg>
       <mg>
          <semantics>
@@ -2272,7 +2286,7 @@
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">pahanõma</t>
-            <t pos="V" sem-cl="ACTION_V-MORFAC_V" src="" deu-stat="yes">vihastama</t>
+            <t pos="V" sem-cl="ACTION_V" src="" deu-stat="yes">vihastama</t>
          </tg>
       </mg>
    </e>
@@ -2283,7 +2297,6 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">vihastama</t>
@@ -2304,26 +2317,13 @@
          </tg>
       </mg>
    </e>
-   <e id="1_pakke_DEU_V" stat="pref">
+   <e id="packen_V" stat="pref">
       <lg>
-         <l pos="V">pakke_DEU</l>
+         <l pos="V">packen</l>
       </lg>
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-         </semantics>
-         <tg xml:lang="vro">
-            <t pos="V" stat="pref">pak'ma</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_pakke_DEU_V" stat="pref">
-      <lg>
-         <l pos="V">pakke_DEU</l>
-      </lg>
-      <mg>
-         <semantics>
-            <sem class="HUM_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">pak'ma</t>
@@ -2371,9 +2371,9 @@
          </tg>
       </mg>
    </e>
-   <e id="be_DEU_V" stat="pref">
+   <e id="beten_V" stat="pref">
       <lg>
-         <l pos="V">be_DEU</l>
+         <l pos="V">beten</l>
       </lg>
       <mg>
          <semantics>
@@ -2430,7 +2430,6 @@
       <mg>
          <semantics>
             <sem class="EXPERIENCE_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">pelgämä</t>
@@ -2509,16 +2508,15 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">pingutama</t>
          </tg>
       </mg>
    </e>
-   <e id="planlegge_DEU_V" stat="pref">
+   <e id="planieren_V" stat="pref">
       <lg>
-         <l pos="V">planlegge_DEU</l>
+         <l pos="V">planieren</l>
       </lg>
       <mg>
          <semantics>
@@ -2575,16 +2573,15 @@
       <mg>
          <semantics>
             <sem class="mUSETIME"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">puhkama</t>
          </tg>
       </mg>
    </e>
-   <e id="bite_DEU_V" stat="pref">
+   <e id="beißen_V" stat="pref">
       <lg>
-         <l pos="V">bite_DEU</l>
+         <l pos="V">beißen</l>
       </lg>
       <mg>
          <semantics>
@@ -2602,7 +2599,6 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">puuduma</t>
@@ -2616,16 +2612,15 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">päsemä</t>
          </tg>
       </mg>
    </e>
-   <e id="redde_DEU_V" stat="pref">
+   <e id="retten_V" stat="pref">
       <lg>
-         <l pos="V">redde_DEU</l>
+         <l pos="V">retten</l>
       </lg>
       <mg>
          <semantics>
@@ -2636,9 +2631,9 @@
          </tg>
       </mg>
    </e>
-   <e id="frelse_DEU_V" stat="pref">
+   <e id="bewahren_V" stat="pref">
       <lg>
-         <l pos="V">frelse_DEU</l>
+         <l pos="V">bewahren</l>
       </lg>
       <mg>
          <semantics>
@@ -2682,7 +2677,6 @@
       <mg>
          <semantics>
             <sem class="SCHOOL_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">rehkendämä</t>
@@ -2709,23 +2703,22 @@
       <mg>
          <semantics>
             <sem class="mACTIVITY"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">reis'mä</t>
          </tg>
       </mg>
    </e>
-   <e id="leie av noen_DEU_V" stat="pref">
+   <e id="mieten_V" stat="pref">
       <lg>
-         <l pos="V">leie av noen_DEU</l>
+         <l pos="V">mieten</l>
       </lg>
       <mg>
          <semantics>
             <sem class="CITY"/>
          </semantics>
          <tg xml:lang="vro">
-            <t pos="V" stat="pref">rintmä</t>
+            <t pos="V" stat="pref">rint’mä</t>
          </tg>
       </mg>
    </e>
@@ -2755,9 +2748,9 @@
          </tg>
       </mg>
    </e>
-   <e id="jemanden ausziehen_V" stat="pref">
+   <e id="sich ausziehen_V" stat="pref">
       <lg>
-         <l pos="V">jemanden ausziehen</l>
+         <l pos="V">sich ausziehen</l>
       </lg>
       <mg>
          <semantics>
@@ -2788,16 +2781,15 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">rõõmustama</t>
          </tg>
       </mg>
    </e>
-   <e id="rope plutselig_DEU_V" stat="pref">
+   <e id="aufschreien_V" stat="pref">
       <lg>
-         <l pos="V">rope plutselig_DEU</l>
+         <l pos="V">aufschreien</l>
       </lg>
       <mg>
          <semantics>
@@ -2818,7 +2810,7 @@
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">rüük'mä</t>
-            <t pos="V" sem-cl="ACTION_V-MORFAC_V" src="" deu-stat="yes">rüük’mä</t>
+            <t pos="V" sem-cl="ACTION_V" src="" deu-stat="yes">rüük’mä</t>
          </tg>
       </mg>
    </e>
@@ -2829,7 +2821,6 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">rüük’mä</t>
@@ -3019,19 +3010,6 @@
          </tg>
       </mg>
    </e>
-   <e id="kochen machen_V" stat="pref">
-      <lg>
-         <l pos="V">kochen machen</l>
-      </lg>
-      <mg>
-         <semantics>
-            <sem class="FOOD_DRINK_V"/>
-         </semantics>
-         <tg xml:lang="vro">
-            <t pos="V" stat="pref">süvväq tegemä</t>
-         </tg>
-      </mg>
-   </e>
    <e id="essen_V" stat="pref">
       <lg>
          <l pos="V">essen</l>
@@ -3039,7 +3017,6 @@
       <mg>
          <semantics>
             <sem class="FOOD_DRINK_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">süümä</t>
@@ -3079,7 +3056,6 @@
       <mg>
          <semantics>
             <sem class="BODY_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">tands'ma</t>
@@ -3229,14 +3205,13 @@
          </tg>
       </mg>
    </e>
-   <e id="lange streichen_V" stat="pref">
+   <e id="streichen_V" stat="pref">
       <lg>
-         <l pos="V">lange streichen</l>
+         <l pos="V">streichen</l>
       </lg>
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">triik'mä</t>
@@ -3295,7 +3270,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_entdecken_V" stat="pref">
+   <e id="entdecken_V" stat="pref">
       <lg>
          <l pos="V">entdecken</l>
       </lg>
@@ -3308,9 +3283,9 @@
          </tg>
       </mg>
    </e>
-   <e id="2_entdecken_V" stat="pref">
+   <e id="bemerken_V" stat="pref">
       <lg>
-         <l pos="V">entdecken</l>
+         <l pos="V">bemerken</l>
       </lg>
       <mg>
          <semantics>
@@ -3328,19 +3303,6 @@
       <mg>
          <semantics>
             <sem class="EXPOSURE_V"/>
-         </semantics>
-         <tg xml:lang="vro">
-            <t pos="V" stat="pref">tähendämä</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="meinen_V" stat="pref">
-      <lg>
-         <l pos="V">meinen</l>
-      </lg>
-      <mg>
-         <semantics>
-            <sem class="EXPERIENCE_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">tähendämä</t>
@@ -3373,9 +3335,9 @@
          </tg>
       </mg>
    </e>
-   <e id="tømme_DEU_V" stat="pref">
+   <e id="leeren_V" stat="pref">
       <lg>
-         <l pos="V">tømme_DEU</l>
+         <l pos="V">leeren</l>
       </lg>
       <mg>
          <semantics>
@@ -3406,7 +3368,6 @@
       <mg>
          <semantics>
             <sem class="WORK_ECONOMY_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">tüütämä</t>
@@ -3433,7 +3394,6 @@
       <mg>
          <semantics>
             <sem class="BODY_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">ujoma</t>
@@ -3447,7 +3407,6 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">ullitama</t>
@@ -3532,9 +3491,9 @@
          </tg>
       </mg>
    </e>
-   <e id="skifte_DEU_V" stat="pref">
+   <e id="wechseln_V" stat="pref">
       <lg>
-         <l pos="V">skifte_DEU</l>
+         <l pos="V">wechseln</l>
       </lg>
       <mg>
          <semantics>
@@ -3565,7 +3524,6 @@
       <mg>
          <semantics>
             <sem class="ACTION_V"/>
-            <sem class="MORFAC_V"/>
          </semantics>
          <tg xml:lang="vro">
             <t pos="V" stat="pref">varastama</t>
@@ -3624,9 +3582,9 @@
          </tg>
       </mg>
    </e>
-   <e id="riste_DEU_V" stat="pref">
+   <e id="zittern_V" stat="pref">
       <lg>
-         <l pos="V">riste_DEU</l>
+         <l pos="V">zittern</l>
       </lg>
       <mg>
          <semantics>
