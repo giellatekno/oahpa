@@ -16,7 +16,7 @@ _D = open('/dev/null', 'w')
 
 COUNT_ONLY = False
 
-supported_langs = ['vro', 'nob', 'fin', 'eng', 'est', 'rus']
+supported_langs = ['vro', 'nob', 'fin', 'eng', 'est', 'rus', 'swe', 'sme', 'deu']
 
 # # # 
 # 
@@ -341,7 +341,8 @@ class Entry(object):
 					'phrase': False,
 					'explanation': False,
 				}
-				trans_list.append(trans)
+				if trans['lemma'].find("_") == -1:  # Do not add those "translations" to the database that are not translated yet (e.g. granaattiomena_SME).
+					trans_list.append(trans)
 
 			TFs = _elements(tg, "tf")
 			for T in TFs:
@@ -701,9 +702,13 @@ class Words(object):
 		if not wid:
 			wid = lemma
 		
+		
 		exist_kwargs['language'] = mainlang
 
-		self.all_wordids.append(wid)
+		if entry.lemma.find("_") == -1:  # The words from the reverted lexicon (in the files like N_smevro.xml) that have not been translated will not be saved in the database (e.g. ranskanperunat_SME).
+		      self.all_wordids.append(wid)
+		else: 
+			return False
 		
 		
 		if entry.wordtype:
