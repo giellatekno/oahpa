@@ -786,14 +786,8 @@ class BareGame(Game):
 			# Process the selection from the noun_type menu (incorporates gender, animacy and inflection type):
 				
 			SOURCE_FILTER = Q() 
-			"""if source.lower() != 'all':
-				if source == "l1":
-				    SOURCE_FILTER = Q(word__chapter__in=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5'])
-				elif source == "l2":
-				    SOURCE_FILTER =  Q(word__chapter__in=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5','L6','L7','L8','L9','L10','L11','L12'])
-				elif source == "l3":
-				    SOURCE_FILTER = Q(word__chapter__in=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5','L6','L7','L8','L9','L10','L11','L12','L13','L14','L15','L16','L17'])"""
-
+			if source.lower() != 'all':
+				SOURCE_FILTER = Q(word__source__name=source)
                            
 			""" commented out for testing without noun_class
 			normalized_noun_class = [item.lower().capitalize() for item in noun_class.split('-')]
