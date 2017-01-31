@@ -320,8 +320,9 @@ LEVEL_CHOICES = (
 
 
 DERIVATION_CHOICES = (
- 	('V-DER-PASS', _('passive derivation')),
- 	('A-DER-V', _('adjective->verb derivation')),
+ 	('V-DER-N-Ag', _('verb->agent derivation')),
+ 	('V-DER-N-Act', _('verb->action derivation')),
+ 	#('A-DER-V', _('adjective->verb derivation')),
 )
 
 DERIVATION_QUESTION_ANSWER = {
@@ -890,7 +891,7 @@ class OahpaSettings(forms.Form):
 					'possessive_type': 'PxSg1',
 					'num_level' : '1',
 					'num_type' : 'CARD',  # added by Heli
-					'derivation_type' : 'V-DER-PASS',
+					'derivation_type' : 'V-DER-N-Act',
 					'derivation_type_context' : 'DER-PASSV', # was V-DER
 					'geography': 'world',
 					'frequency' : [],
@@ -1130,7 +1131,7 @@ class MorfaSettings(OahpaSettings):
 	num_bare = forms.ChoiceField(initial='N-ILL', choices=NUM_BARE_CHOICES, widget=forms.Select)
 	num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)
 	num_type = forms.ChoiceField(initial='CARD',choices=NUM_TYPE_CHOICES, widget=forms.Select)
-	derivation_type = forms.ChoiceField(initial='V-DER-PASS', choices=DERIVATION_CHOICES, widget=forms.Select)
+	derivation_type = forms.ChoiceField(initial='V-DER-N-Act', choices=DERIVATION_CHOICES, widget=forms.Select)
 	derivation_type_context = forms.ChoiceField(initial='DER-PASSV', choices=DERIVATION_CHOICES_CONTEXT, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
 	case_context = forms.ChoiceField(initial='N-SG-ACC', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)

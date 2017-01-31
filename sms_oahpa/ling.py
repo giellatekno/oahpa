@@ -23,8 +23,10 @@ except:
 
 try:
 	lookup = settings.LOOKUP_TOOL
+	hfst_lookup = settings.HFST_LOOKUP
 except:
 	lookup = "/usr/local/bin/lookup"
+	hfst_lookup = "/usr/local/bin/hfst-lookup"
 
 try:
 	language = settings.MAIN_LANGUAGE[0]
@@ -33,8 +35,8 @@ except:
 
 #numfst = fstdir + "/" + language + "-num.fst"
 numfst = fstdir + "/" + "transcriptor-numbers2text-desc.xfst"
-gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm-dial_main.xfst"
-gen_all_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst" 
+gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm-dial_main.hfstol"
+gen_all_fst = fstdir + "/" + "generator-oahpa-gt-norm.hfstol" 
 
 
 STDERR = sys.stderr
@@ -97,7 +99,8 @@ def Popen(cmd, data=False, ret_err=False, ret_proc=False):
 def FSTLookup(data, fst_file):
 	gen_fst = fst_file 
 	# cmd = 'hfst-optimized-lookup /opt/local/share/omorfi/mor-omorfi.apertium.hfst.ol'
-	cmd = lookup + " -flags mbTT -utf8 -d " + gen_fst
+	# cmd = lookup + " -flags mbTT -utf8 -d " + gen_fst # xfst
+	cmd = hfst_lookup + " " + gen_fst # hfst
 	
 	if type(data) == list:
 		data = [a.strip() for a in list(set(data)) if a.strip()]
@@ -327,10 +330,12 @@ class Paradigm:
 			for item in items:
 				result = item.split('\t')
 				lemma = result[0].partition('+')[0]
+				if lemma:  # added for hfst
+					generated_form = result[1]
 				try:
-				    lookup_dictionary[lemma] += item + '\n'
+				    lookup_dictionary[lemma] += result[0] + '\t' + generated_form + '\n'  # changed for hfst
 				except KeyError:
-				    lookup_dictionary[lemma] = item + '\n'
+				    lookup_dictionary[lemma] = result[0] + '\t' + generated_form + '\n'
 		
 		for line in lookups_all.split('\n\n'):
 			#print >> STDOUT, 'line in lookups_all: %s' % line
@@ -342,9 +347,9 @@ class Paradigm:
 				    fullform = result[1]
 				    if fullform not in lookup_dictionary[lemma]:
 				        try:
-				            lookup_dictionary[lemma] += item + 'UseNG\n'
+				            lookup_dictionary[lemma] += result[0] + '\t' + fullform + 'UseNG\n'  # changed for hfst
 				        except KeyError:
-				            lookup_dictionary[lemma] = item + 'UseNG\n'
+				            lookup_dictionary[lemma] = result[0] + '\t' + fullform + 'UseNG\n'
 
 		self.master_paradigm[dialect] = lookup_dictionary
 		

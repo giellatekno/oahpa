@@ -580,6 +580,8 @@ class Morfaview(Gameview):
 		'V-COND':  _('Practise conditional'),
 		'V-IMPRT':  _('Practise imperative'),
 		'V-POT':  _('Practise potential'),
+		'V-DER-N-Ag': _('Practise deverbal nouns'),
+		'V-DER-N-Act': _('Practise deverbal nouns'),
 		'P-PERS':  _('Practise '),
 		'P-RECIPR':  _('Practise reciprocative pronouns'),
 		'P-REFL':  _('Practise reflexive pronouns'),

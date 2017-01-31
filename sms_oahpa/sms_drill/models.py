@@ -752,7 +752,9 @@ class Form(models.Model):
 				 ... etc
 		"""
 
-		# Exceptional behavior for Der/AV, and other possibilities, f. ex., Der/AN
+		print "The pos is defined as: ", self.tag.pos
+		# Exceptional behavior for Der/AV, and other possibilities, f. ex., Der/AN      
+		"""
 		if self.tag.subclass.find('Der/') > -1:
 			# Der  /  AV
 			_, _, poses = self.tag.subclass.partition('/')
@@ -773,8 +775,13 @@ class Form(models.Model):
 				return self.word.form_set.filter(tag__pos=_from)[0].getBaseform(
 					match_num=match_num,
 					return_all=False)
-				
-		if self.tag.pos in ['N', 'n', 'Num']:
+		"""
+		# In the verb -> substantive derivation exercises the given form is V+Inf.
+		if self.tag.string.find('V+Der') > -1:
+			kwarg = {'tag__infinite': 'Inf'}
+			baseform = self.word.form_set.exclude(tag__string__contains='Der').exclude(no_show='True').filter(**kwarg)
+
+		elif self.tag.pos in ['N', 'n', 'Num']:
 			if match_num:
 				number = self.tag.number
 			else:
@@ -825,15 +832,15 @@ class Form(models.Model):
 			if baseform.count() == 0 and number_match == 'Sg' and baseform_num.count() > 0:
 				baseform = baseform_num
 			
-		elif self.tag.pos in ['V', 'v']:
+		elif self.tag.pos in ['V', 'v']: 
 			#if self.word.lemma in [u'lea', u'ii']:
 			#	kwarg = {'tag__personnumber': 'Sg3'}
 			#else:
 			kwarg = {'tag__infinite': 'Inf'}
 			
 			# Non-derived verbs need to exclude Der
-			baseform = self.word.form_set.exclude(tag__string__contains='Der').exclude(no_show='True')\
-											.filter(**kwarg)
+			baseform = self.word.form_set.exclude(tag__string__contains='Der').exclude(no_show='True').filter(**kwarg)
+			print "Baseform in models.py: ", baseform
 			if baseform.count() == 0:
 				baseform = self.word.form_set.filter(tag__personnumber='Sg3', tag__mood='Ind', tag__tense='Prs')
 			if baseform.count() == 0:

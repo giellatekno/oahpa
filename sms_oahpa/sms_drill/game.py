@@ -353,6 +353,7 @@ class BareGame(Game):
 		'CARD': '', # CARD, ORD, COLL added for implementing num_type choice
 		'ORD': 'A+Ord',
 		'COLL': 'N+Coll',
+		'V-DER-N': 'V+Der',
 		'A-DER-V': 'A+Der/AV+V',
 		'V-DER-PASS': '',
 		'': '',
@@ -668,16 +669,23 @@ class BareGame(Game):
 				return False
 
 		if pos == "Der":
+			print "Derivation exercise..."
 			derivation_types = {
 				# 'Der/AV': parse_tag("A+Der/AV+V+Mood+Tense+Person-Number"),
+				'V-DER-N-Act': "Der/NomAct+N+Sg+Nom", # NB! This is not finished!!!
+				'V-DER-N-Ag': "Der/NomAg+N+Sg+Nom",
 				'A-DER-V': parse_tag("A+Der/AV+V+Ind+Prs+Person-Number-ConNeg"),
 				'V-DER-PASS': parse_tag("V+Der/PassL+V+Ind+Tense+Person-Number-ConNeg"),
 			}
 
-			TAG_QUERY = Q(string__in=derivation_types[derivation_type])
+			print "derivation type: ", derivation_type
+			
+			TAG_QUERY = Q(string__contains=derivation_types[derivation_type])
+			#TAG_QUERY = Q(string__contains='V+Der') # I know that this is too general. To be specified later!
 			TAG_EXCLUDES = False
 			sylls = False
 			source = False
+			print "tag query:",TAG_QUERY
 
 		if pos in ['Pron', 'N', 'Num', 'Px']:		
 			if diminutive == '1':
@@ -917,11 +925,12 @@ class BareGame(Game):
 			raise Form.DoesNotExist
 
 		# TODO: check this, there may be some forms that need to be filtered
-		# here instead.
-		if pos == 'Der':
-			correct = form_list.filter(tag__string__contains='PassL')
+		# here instead. Commented the following two rows out because in nuorti the PassL tag is not relevant. 
+		#if pos == 'Der':
+		#	correct = form_list.filter(tag__string__contains='PassL')
 
 		correct = form_list[0]
+		print "Correct form: ", correct
 		
 		# Due to the pronoun ambiguity potential (gii 'who', gii 'which'), 
 		# we need to make sure that the word is the right one.
@@ -957,6 +966,7 @@ class BareGame(Game):
 			# Derived forms need return_all=False otherwise derived infinitive
 			# forms may be returned, and we need them to be underived in
 			# presentation of the question wordform.
+			# NB! Now we have a different type of derivation exercise where we are just interested in the V+Inf form as a baseform.
 			if pos == 'Der':
 				try:
 					bfs = form.getBaseform(match_num=match_number, return_all=False)
@@ -1000,8 +1010,9 @@ class BareGame(Game):
 		# Just the ones we want to present for just one dialect
 		#presentation = form_list.filter(dialects=Q_DIALECT)
 
-		if pos == 'Der':
-			presentation = presentation.filter(tag__string__contains='PassL')
+		# We no not have PassL exercise in Skolt, therefore I have commented out the following if-statement:
+		#if pos == 'Der':
+		#	presentation = presentation.filter(tag__string__contains='PassL')
 		
 		# Unless there aren't any ... 
 		#if presentation.count() == 0:
