@@ -3,10 +3,10 @@
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
-  {% ifequal settings.gametype "bare" %}
-    {% trans "Write the derived form." %}
+  {% ifequal settings.derivation_type "V-DER-N-Act" %}
+    {% trans "Enter the Skolt Sámi noun for doing (e.g. raajjâd >> raajjmõš)." %}
   {% else %}
-    {% trans "Write the derived form." %}
+    {% trans "Enter the Skolt Sámi noun for doer (e.g. raajjâd >> raajji)." %}
   {% endifequal %}
 {% endblock %}
 
