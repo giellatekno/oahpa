@@ -1066,8 +1066,10 @@ class BareGame(Game):
 
 
 class NumGame(Game):
-	generate_fst = 'transcriptor-numbers-digit2text.filtered.lookup.hfst'
-	answers_fst = 'transcriptor-numbers-text2digit.filtered.lookup.hfst'
+	generate_fst = 'transcriptor-numbers-digit2text.filtered.lookup.xfst'
+	answers_fst = 'transcriptor-numbers-text2digit.filtered.lookup.xfst'
+	#generate_fst = 'transcriptor-numbers-digit2text.filtered.lookup.hfst'
+	#answers_fst = 'transcriptor-numbers-text2digit.filtered.lookup.hfst'
 	
 	def get_db_info(self, db_info):
 		""" Options supplied by views
@@ -1095,15 +1097,16 @@ class NumGame(Game):
 		import subprocess
 		from threading import Timer
 		
-		lookup = HFST_LOOKUP_TOOL
+		lookup = LOOKUP_TOOL # now we use xfst
+		#lookup = HFST_LOOKUP_TOOL
 		gen_norm_fst = FST_DIRECTORY + "/" + fstfile
 		try:
 			open(gen_norm_fst)
 		except IOError:
 			raise Http404("File %s does not exist." % gen_norm_fst)
 		
-		#gen_norm_command = [lookup, "-flags", "mbTT", "-utf8", "-d", gen_norm_fst]  # xfst
-		gen_norm_command = [lookup, "-p", gen_norm_fst] # hfst
+		gen_norm_command = [lookup, "-flags", "mbTT", "-utf8", "-d", gen_norm_fst]  # xfst
+		#gen_norm_command = [lookup, "-p", gen_norm_fst] # hfst
 		
 		try:
 			forms.encode('utf-8')
@@ -1137,8 +1140,8 @@ class NumGame(Game):
 			# line = line.replace(' ','')
 			if line:
 				nums = line.split('\t')
-				#if len(nums) == 3: # xfst
-				if nums[2] == 'inf': # hfst
+				if len(nums) == 3: # xfst
+				#if nums[2] == 'inf': # hfst
 					nums = (nums[0], '?')
 				else:
 					nums = tuple(nums)
@@ -1244,8 +1247,10 @@ class Klokka(NumGame):
 
 	QuestionForm = KlokkaQuestion
 	
-	generate_fst = 'transcriptor-clock-digit2text.filtered.lookup.hfst'
-	answers_fst = 'transcriptor-clock-text2digit.filtered.lookup.hfst' 
+	generate_fst = 'transcriptor-clock-digit2text.filtered.lookup.xfst'
+	answers_fst = 'transcriptor-clock-text2digit.filtered.lookup.xfst'
+	#generate_fst = 'transcriptor-clock-digit2text.filtered.lookup.hfst'
+	#answers_fst = 'transcriptor-clock-text2digit.filtered.lookup.hfst' 
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1380,8 +1385,10 @@ class Dato(Klokka):
 
 	# QuestionForm = DatoQuestion
 	
-	generate_fst = 'transcriptor-date-digit2text.filtered.lookup.hfst'
-	answers_fst = 'transcriptor-date-text2digit.filtered.lookup.hfst'
+	generate_fst = 'transcriptor-date-digit2text.filtered.lookup.xfst'
+        answers_fst = 'transcriptor-date-text2digit.filtered.lookup.xfst'
+	#generate_fst = 'transcriptor-date-digit2text.filtered.lookup.hfst'
+	#answers_fst = 'transcriptor-date-text2digit.filtered.lookup.hfst'
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
 					 or Dato is unable to look up forms."

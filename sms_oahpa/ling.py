@@ -19,7 +19,7 @@ _D = open('/dev/null', 'w')
 try:
 	fstdir = settings.FST_DIRECTORY
 except:
-	fstdir = "/opt/smi/sme/bin"
+	fstdir = "/opt/smi/sms/bin"
 
 try:
 	lookup = settings.LOOKUP_TOOL

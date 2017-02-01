@@ -152,7 +152,7 @@ CASE_CONTEXT_CHOICES = (
 	#('N-LOC', _('locative')),
 	('N-SG-COM', _('singular comitative')),
 	('N-PL-COM', _('plural comitative')),
-	('N-ESS', _('essive')),
+	#('N-ESS', _('essive')),
 	#('N-MIX', _('mix')),
 )
 
@@ -1230,7 +1230,7 @@ class MorfaQuestion(OahpaQuestion):
 				else:
 					num = ''
 				self.pron = '(%s%s)' % (pronoun, num)
-				print "pronoun as a hint for possessive: ", self.pron
+				#print "pronoun as a hint for possessive: ", self.pron
 
 
 		if tag.pos == 'Pron':

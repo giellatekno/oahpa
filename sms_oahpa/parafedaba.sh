@@ -1,7 +1,7 @@
 #!/bin/sh
 
 P="python2.7"
-GTHOME="/Users/mslm/main/ped"
+GTHOME="/home/sms_oahpa"
 LANGDIR="sms"
 DATA=$GTHOME/$LANGDIR
 DPS="$DATA/src"
@@ -15,6 +15,7 @@ DPE="$DATA/engsms"
 echo "==================================================="
 echo "installing tags and paradigms for Morfa-C"
 $P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>error.log
+$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -264,36 +265,36 @@ echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/cs_finsms.xml"
-$P install.py --file $DPS/cs_finsms.xml 2>>error.log
+echo "feeding db with $DPF/cs_finsms.xml"
+$P install.py --file $DPF/cs_finsms.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/i_finsms.xml"
-$P install.py --file $DPS/i_finsms.xml 2>>error.log
+echo "feeding db with $DPF/i_finsms.xml"
+$P install.py --file $DPF/i_finsms.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/det_finsms.xml"
-$P install.py --file $DPS/det_finsms.xml 2>>error.log
+echo "feeding db with $DPF/det_finsms.xml"
+$P install.py --file $DPF/det_finsms.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/pro_finsms.xml"
-$P install.py --file $DPS/pro_finsms.xml 2>>error.log
+echo "feeding db with $DPF/pro_finsms.xml"
+$P install.py --file $DPF/pro_finsms.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/pcle_finsms.xml"
-$P install.py --file $DPS/pcle_finsms.xml 2>>error.log
+echo "feeding db with $DPF/pcle_finsms.xml"
+$P install.py --file $DPF/pcle_finsms.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -516,7 +517,7 @@ echo "feeding db with messages to feedback"
 #$P install.py --messagefile $META/messages.eng.xml 2>>error.log
 echo " "
 echo "done"
-cho "==================================================="
+echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with messages to feedback"

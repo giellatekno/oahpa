@@ -11,7 +11,7 @@ urlpatterns = patterns('sms_oahpa.sms_drill.views',
 	url(r'^morfas/p/$', 'morfa_game', {'pos': 'Pron'}, name="morfa_s.pron"),
 	url(r'^morfas/l/$', 'morfa_game', {'pos': 'Num'}, name="morfa_s.num"),
 	url(r'^morfas/$', 'morfa_game', {'pos': 'N'}, name="morfa_s.noun"),
-	
+	url(r'^morfas/s/px/$', 'morfa_game', {'pos': 'Px'}, name="morfa_s.px"),
 	url(r'^leksa/$', 'leksa_game', name="leksa"),
 	url(r'^leksa/names/$', 'leksa_game', {'place': True}, name="leksa.sted"),
 
