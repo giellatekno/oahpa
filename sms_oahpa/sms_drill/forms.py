@@ -325,6 +325,17 @@ DERIVATION_CHOICES = (
  	#('A-DER-V', _('adjective->verb derivation')),
 )
 
+DERIVATION_CASE_CHOICES = (
+    ('N-NOM', _('nominative')),
+	('N-ACC', _('accusative')),
+	('N-ILL', _('illative')),
+	('N-LOC', _('locative')),
+	('N-COM', _('comitative')),
+	('N-GEN', _('genitive')),
+	# ('N-ESS', _('essive')),
+)
+
+
 DERIVATION_QUESTION_ANSWER = {
 	'A-DER-V': [('A+Sg+Nom', 'A+Der/AV+V+Ind+Prs+Person-Number')],
 
@@ -892,6 +903,7 @@ class OahpaSettings(forms.Form):
 					'num_level' : '1',
 					'num_type' : 'CARD',  # added by Heli
 					'derivation_type' : 'V-DER-N-Act',
+                    'derivation_case' : 'N-NOM',
 					'derivation_type_context' : 'DER-PASSV', # was V-DER
 					'geography': 'world',
 					'frequency' : [],
@@ -1126,6 +1138,7 @@ class MorfaSettings(OahpaSettings):
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='A-NOM', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
+	derivation_case = forms.ChoiceField(initial='N-NOM', choices=DERIVATION_CASE_CHOICES, widget=forms.Select)
 	possessive_type = forms.ChoiceField(initial='PxSg1', choices=POSSESSIVE_CHOICES, widget=forms.Select)
 	vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
 	num_bare = forms.ChoiceField(initial='N-ILL', choices=NUM_BARE_CHOICES, widget=forms.Select)

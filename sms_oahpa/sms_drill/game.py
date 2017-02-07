@@ -488,6 +488,7 @@ class BareGame(Game):
 		pron_type = True and self.settings.get('pron_type') or   ""
 		proncase = True and self.settings.get('proncase') or   ""
 		derivation_type = True and self.settings.get('derivation_type') or   ""
+		derivation_case = True and self.settings.get('derivation_case') or   ""
 		possessive_type = True and self.settings.get('possessive_type') or   ""
 		grade = True and self.settings.get('grade')  or  ""
 		num_type = True and self.settings.get('num_type') or ""  # added to get num_type from settings
@@ -532,7 +533,7 @@ class BareGame(Game):
 			"Num":  num_bare,
 			"V":	"",
 			"Pron": proncase,
-			"Der": derivation_type, 
+			"Der": derivation_case, 
 			"Px":  case,
 		}
 		
@@ -552,13 +553,10 @@ class BareGame(Game):
 	#	if pos == 'Pron':
 	#		syll = ['']
 		
-		if pos == 'N':  # Maybe need to add also Num and Pron here
+		if pos in ['N','Px','Der']:  # Maybe need to add also Num and Pron here
 			case = self.casetable[pos_tables[pos]]
 		elif pos == 'A':
 			case, number = self.casetable[pos_tables[pos]]
-		elif pos == 'Px':
-			case = self.casetable[pos_tables[pos]]
-			#possessive = possessive_type  # trying out the mix of possessive exercises 
             
 		grade = self.casetable[grade]
 		num_type = self.casetable[num_type] # added by Heli
@@ -672,16 +670,16 @@ class BareGame(Game):
 			print "Derivation exercise..."
 			derivation_types = {
 				# 'Der/AV': parse_tag("A+Der/AV+V+Mood+Tense+Person-Number"),
-				'V-DER-N-Act': "Der/NomAct+N+Sg+Nom", # NB! This is not finished!!!
-				'V-DER-N-Ag': "Der/NomAg+N+Sg+Nom",
+				'V-DER-N-Act': "Der/NomAct+N",
+				'V-DER-N-Ag': "Der/NomAg+N",
 				'A-DER-V': parse_tag("A+Der/AV+V+Ind+Prs+Person-Number-ConNeg"),
 				'V-DER-PASS': parse_tag("V+Der/PassL+V+Ind+Tense+Person-Number-ConNeg"),
 			}
 
-			print "derivation type: ", derivation_type
+			#print "derivation type: ", derivation_type
+			#print "derivation_case: ", derivation_case
 			
-			TAG_QUERY = Q(string__contains=derivation_types[derivation_type])
-			#TAG_QUERY = Q(string__contains='V+Der') # I know that this is too general. To be specified later!
+			TAG_QUERY = Q(string__contains=derivation_types[derivation_type],case=case,number=number)
 			TAG_EXCLUDES = False
 			sylls = False
 			source = False

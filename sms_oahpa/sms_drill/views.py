@@ -645,6 +645,8 @@ class Morfaview(Gameview):
 				return ['pron_type', 'proncase']
 			if self.settings['pos'] == 'Num':
 				return ['num_bare', 'num_level', 'num_type', 'book'] # added num_type
+			if self.settings['pos'] == 'Der':
+				return ['derivation_type', 'derivation_case', 'book']
 		else:
 			if self.settings['pos'] == 'N':
 				return ['case_context']
@@ -725,10 +727,11 @@ class Morfaview(Gameview):
 			else:
 				gamename_key = self.settings['adj_context']
 
-		# A-DER-V
+		# Derivation
 		if self.settings['pos'] == "Der":
 			if self.settings['gametype'] == "bare":
 				gamename_key = self.settings['derivation_type']
+				subname = self.settings['derivation_case']
 			else:
 				gamename_key = self.settings['derivation_type_context']
 
