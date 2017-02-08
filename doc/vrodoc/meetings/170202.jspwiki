@@ -1,0 +1,51 @@
+!!!Võru koosolek 2.02.2017
+
+Kohal: Sulev, Jack, Heli
+
+Eelmisel neljapäeval FST-alane koostöö (Sulev, Jack).
+
+Sulevi arvutis FST-de ehitamine ja testimine toimib nüüd (Heli aitas korda teha).
+ 
+Skripti kasutamine hõlbustab Sulevi ja Jacki vahelist koostööd.
+
+{{{
+cd gtsvn/langs/vro
+sh test/yaml-check.sh
+}}}
+
+__Praegune seis__:
+
+SUMMARY for the gt-norm fst(s): PASSES: 8530 / FAILS: 3313 / TOTAL: 11843
+
+Skripti abil on kergem näha, kus probleemid on.
+
+Jack tegeles põhiliselt noomenitega.
+Tegusõnade kohta arutasime koos Suleviga, et mitmuse 1. ning 2. isiku vormide hulka kuulub mõni vorm, mis on tegelikult ainsuse vormid.
+
+__Vokaalharmoonia__ -- kirjandus?
+* Kõige lihtsam ülevaade koos erandite loeteluga: umakiil.eu/grammatika
+
+Vahepeal tuli välja võru sõnaraamatu uue kujundusega versioon, mis sobib kasutamiseks ka telefonis.
+
+__Bug:__ Oahpa Numra tavaline apostroof ei tööta:
+
+üts' kats' viis' jne. 
+
+Heli masinas töötab. Vaja uuendada serveris Numra FST-sid?
+
+Sümbolit koode saab muuhulgas kontrollida siit:
+
+[https://unicode-table.com/en/]
+
+
+__Heli__ uurib, kas serveris tuleks FST-sid uuendada. Lokaalselt töötab apostroofide aktsepteerimine, aga oahpa.no/voro mitte.
+
+Pluss 15. nov. ülesanded.
+
+Heli tegi Oahpa puuduvate häälduste nimekirja. 
+
+__Sulev__ loeb need ca 120 sõna eraldi sisse.
+
+
+!!! Järgmine koosolek
+__N, 16.02. kell 10__ Eesti / Soome aja järgi.
