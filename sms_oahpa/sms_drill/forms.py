@@ -335,6 +335,11 @@ DERIVATION_CASE_CHOICES = (
 	# ('N-ESS', _('essive')),
 )
 
+DERIVED_VERB_CHOICES = (
+ 	('V-DER-Inc', _('verb->inchoative verb')),
+ 	('V-DER-Dim', _('verb->diminutive verb')),
+)
+
 
 DERIVATION_QUESTION_ANSWER = {
 	'A-DER-V': [('A+Sg+Nom', 'A+Der/AV+V+Ind+Prs+Person-Number')],
@@ -904,6 +909,7 @@ class OahpaSettings(forms.Form):
 					'num_type' : 'CARD',  # added by Heli
 					'derivation_type' : 'V-DER-N-Act',
                     'derivation_case' : 'N-NOM',
+                    'derived_verb_type' : 'V-DER-Inc',
 					'derivation_type_context' : 'DER-PASSV', # was V-DER
 					'geography': 'world',
 					'frequency' : [],
@@ -1146,6 +1152,7 @@ class MorfaSettings(OahpaSettings):
 	num_type = forms.ChoiceField(initial='CARD',choices=NUM_TYPE_CHOICES, widget=forms.Select)
 	derivation_type = forms.ChoiceField(initial='V-DER-N-Act', choices=DERIVATION_CHOICES, widget=forms.Select)
 	derivation_type_context = forms.ChoiceField(initial='DER-PASSV', choices=DERIVATION_CHOICES_CONTEXT, widget=forms.Select)
+	derived_verb_type = forms.ChoiceField(initial='V-DER-Inc', choices=DERIVED_VERB_CHOICES, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
 	case_context = forms.ChoiceField(initial='N-SG-ACC', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)

@@ -489,6 +489,7 @@ class BareGame(Game):
 		proncase = True and self.settings.get('proncase') or   ""
 		derivation_type = True and self.settings.get('derivation_type') or   ""
 		derivation_case = True and self.settings.get('derivation_case') or   ""
+		derived_verb_type = True and self.settings.get('derived_verb_type') or   ""
 		possessive_type = True and self.settings.get('possessive_type') or   ""
 		grade = True and self.settings.get('grade')  or  ""
 		num_type = True and self.settings.get('num_type') or ""  # added to get num_type from settings
@@ -685,6 +686,21 @@ class BareGame(Game):
 			source = False
 			print "tag query:",TAG_QUERY
 
+		if pos == "Derverb":
+			print "Verb -> Verb derivation exercise..."
+			derivation_types = {
+				'V-DER-Inc': "V+Der/škueʹtted",
+				'V-DER-Dim': "V+Der/Dimin",
+			}
+
+			print "Type of the derived verb: ", derived_verb_type
+			
+			TAG_QUERY = Q(string__contains=derivation_types[derived_verb_type],mood='Ind')
+			TAG_EXCLUDES = False
+			sylls = False
+			source = False
+			print "tag query:",TAG_QUERY
+            
 		if pos in ['Pron', 'N', 'Num', 'Px']:		
 			if diminutive == '1':
 				diminutive = 'Der/Dimin'

@@ -33,7 +33,8 @@ http://oahpa.no/sms/index.rus.html
         {% ifequal settings.pos "Px" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.px %}">{% trans 'Possessives' %}</a></li> 
        <!-- 		{% ifequal settings.pos "Pron" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.pron %}">{% trans 'Pronouns' %}</a></li>
         {% ifequal settings.pos "Num" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.num %}">{% trans 'Numerals' %}</a></li> -->
-        {% ifequal settings.pos "Der" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.der %}">{% trans 'Derivations' %}</a></li>  
+        {% ifequal settings.pos "Der" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.der %}">{% trans 'Derived nouns' %}</a></li>  
+        {% ifequal settings.pos "Derverb" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.derverb %}">{% trans 'Derived verbs' %}</a></li>  
 	</ul>        
 {% else %}
 	<ul class="sidelist"> 

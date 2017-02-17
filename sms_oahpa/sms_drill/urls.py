@@ -4,6 +4,7 @@ from django.conf.urls.defaults import patterns, url, include, handler404, handle
 urlpatterns = patterns('sms_oahpa.sms_drill.views',
 	# (r'^morfa/substantiv/$', 'sms_oahpa.sms_drill.views.morfa_game', {'pos': 'N'}),
 	url(r'^morfas/der/$', 'morfa_game', {'pos': 'Der'}, name="morfa_s.der"),
+	url(r'^morfas/derverb/$', 'morfa_game', {'pos': 'Derverb'}, name="morfa_s.derverb"),
 	url(r'^morfas/v/$', 'morfa_game', {'pos': 'V'}, name="morfa_s.verb"),
 	url(r'^morfas/s/$', 'morfa_game', {'pos': 'N'}),
 	url(r'^morfas/s/px/$', 'morfa_game', {'pos': 'Px'}, name="morfa_s.px"),

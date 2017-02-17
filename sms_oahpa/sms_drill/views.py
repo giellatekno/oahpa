@@ -582,6 +582,8 @@ class Morfaview(Gameview):
 		'V-POT':  _('Practise potential'),
 		'V-DER-N-Ag': _('Practise deverbal nouns.'),
 		'V-DER-N-Act': _('Practise deverbal nouns.'),
+		'V-DER-Inc': _('Practise verb derivation.'),
+		'V-DER-Dim': _('Practise verb derivation.'),
 		'P-PERS':  _('Practise '),
 		'P-RECIPR':  _('Practise reciprocative pronouns'),
 		'P-REFL':  _('Practise reflexive pronouns'),
@@ -727,7 +729,7 @@ class Morfaview(Gameview):
 			else:
 				gamename_key = self.settings['adj_context']
 
-		# Derivation
+		# Derivation verb -> noun
 		if self.settings['pos'] == "Der":
 			if self.settings['gametype'] == "bare":
 				gamename_key = self.settings['derivation_type']
@@ -735,6 +737,13 @@ class Morfaview(Gameview):
 			else:
 				gamename_key = self.settings['derivation_type_context']
 
+		# Derivation verb -> verb
+		if self.settings['pos'] == "Derverb":
+			if self.settings['gametype'] == "bare":
+				gamename_key = self.settings['derived_verb_type']
+			else:
+				gamename_key = self.settings['derived_verb_context']
+				
 		# Px
 		if self.settings['pos'] == "Px":
 			if self.settings['gametype'] == "bare":
@@ -770,7 +779,7 @@ class Morfaview(Gameview):
 @trackGrade("Morfa")
 def morfa_game(request, pos):
 	"""
-		View for Morfa game. Requires pos argument, ['N', 'V', 'A', 'Num']
+		View for Morfa game. Requires pos argument, ['N', 'V', 'A', 'Num', 'Px', 'Der', 'Derverb']
 	"""
 	mgame = Morfaview(MorfaSettings, BareGame)
 
@@ -779,15 +788,12 @@ def morfa_game(request, pos):
 
 	if pos == 'Num':
 		template = 'mgame_l.html'
-	elif pos == 'Der':
-		template = 'mgame_der.html'
-	elif pos == 'Px':
-		template = 'mgame_px.html'
 	else:
-		template = 'mgame_%s.html' % pos.lower()[0]
+		template = 'mgame_%s.html' % pos.lower()
 
+	print "template file name: ", template
 	c = mgame.create_game(request)
-	
+
 	#print "game created and ready for rendering..."
 
 	return render_to_response(template, c,
