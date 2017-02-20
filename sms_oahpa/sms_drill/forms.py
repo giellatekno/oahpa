@@ -332,7 +332,8 @@ DERIVATION_CASE_CHOICES = (
 	('N-LOC', _('locative')),
 	('N-COM', _('comitative')),
 	('N-GEN', _('genitive')),
-	# ('N-ESS', _('essive')),
+    ('N-ESS', _('essive')),
+	('N-PAR', _('partitive')),
 )
 
 DERIVED_VERB_CHOICES = (
