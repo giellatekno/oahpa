@@ -1,0 +1,63 @@
+!!!Võru koosolek 16.02.2017
+
+Kohal: Jack, Sulev, Heli
+ 
+!!!FST seis
+
+Jack on Sulevi abiga vahepeal arendanud FST-d palju edasi. Lisanud uusi alamtüüpe, kui on olnud vormistikus kõrvalekaldeid reeglipärasest.
+
+Eelmise korra seis: 
+SUMMARY for the gt-norm fst(s): PASSES: 8530 / FAILS: 3313 / TOTAL: 11843
+
+Praegune seis:
+SUMMARY for the gt-norm fst(s): PASSES: 11784 / FAILS: 1062 / TOTAL: 12846
+
+!!!Palatalisatsiooni tähistamine ja erinevate tähistusviiside aktsepteerimine
+
+__Tavaline apostroof__ on peenedusmärgina aktsepteeritav nii Numras kui Leksas.
+
+__Kombineeritud palataliseeritud tähed__: ś ŕ = s + combining accute accent ( U+0301) töötavad Numras, aga Leksas mitte.
+
+Ku Numrah tüütäs ka umaette sümboliga ś (ütś = üts' = üts), sis Leksah mitte. Ku kirotat Leksahtõ aadrõś, õnń, kuuŕma vms, sis naid taa ärq ei tunnõq, lugõ vias. Võisiq ollaq: Ś ś Ń ń Ŕ ŕ Ǵ ǵ Ḿ ḿ Ṕ ṕ = S' s' N' n' R' r' G' g' M' m' P' p' = S s N n R r G g M m P p.
+
+Ś ś Ń ń Ŕ ŕ Ǵ ǵ Ḿ ḿ Ṕ ṕ ummaq umaette pehmendüsmärgitäheq, miä Unicode'ih tävveste õigõl kujol olõmah ummaq.
+Tõisil pehmendüsega tähil (B' b' D' d' F' f' H' h' K' k' L' l' T' t' V' v') Unicode'ih umaette õigõt sümbolit ei olõq, a naid kõiki saa tetäq märgi "combining accute accent" abil (täht + combining accute accent: B́ b́ D́ d́ F́ f́ Ǵ ǵ H́ h́ Ḱ ḱ Ĺ ĺ Ḿ ḿ Ń ń Ṕ ṕ Ŕ ŕ T́ t́ V́ v́).
+Nii et tegeligult olnuq hää võttaq spell relaxi sisse ka kõik paariq (täht + combining accent):
+B́ b́ D́ d́ F́ f́ Ǵ ǵ H́ h́ Ḱ ḱ Ĺ ĺ Ḿ ḿ Ń ń Ṕ ṕ Ŕ ŕ T́ t́ V́ v́ = B' b' D' d' jne = B b D d jne.
+
+Seto sõnastik: (http://www.eki.ee/dict/setosonastik/) imä imä immä 1. lapse ema; emaloom viiś last imäle mahass arʔ `üśkä, a viiele latsõlõ immä maha aiʔ `üśkä Se; uni magusap mett, a ahi `armap immä Se Kos; kolm `aśja om, mitä om rassõ `täütäʔ: jumalat paɫɫõldaʔ, `võɫga tassoʔ ni immä essä ravidaʔ Se Kos; pujas‿saava inne `ilma ku imä? - haina ruaʔ, kuhi Se Kos; oĺl vika minijide man, oĺl vika iḿmi man Se Kos| Vrd ime 2. kõnetlussõna: ema; vanaema; vanem naine 3. särgi pihaosa `hammõ imä ni `hammõ `käüse oĺlil‿linadsõʔ Se Kos; `hammõ imä `rõivakõnõ vai määne taht ńardsukõnõ 
+
+vot = Heinike Heinsoo kasutab combining right comma above U+0315
+
+b̕ d̕ h̕ l̕ m̕ v̕ t̕ p̕ n̕ h̕ f̕
+
+avʼa (U+02BC)
+
+av̕ a av'a
+
+Võro uue sõnaraamatu kujunduse plaan: (täht + combining accent):
+
+B́ b́ D́ d́ F́ f́ Ǵ ǵ H́ h́ Ḱ ḱ Ĺ ĺ Ḿ ḿ Ń ń Ṕ ṕ Ŕ ŕ T́ t́ V́ v́ + uus font, kus tähekujud õiged.
+
+__Sulev__ teeb ettepaneku Unicode'i organisatsioonile, et lisada puuduvad tähed.
+
+__Kõigile__ eesmärk järgmiseks korraks: FST ja Oahpa nii headeks kui võimalik
+* võru keele algkursus on juba alanud, seal oleks hea Oahpat kasutada
+* Nodalida workshopi ja demo tähtaeg 20. märts
+
+
+__Sulev__ vaatab üle, et noomenid, mis on tegelikult adj, num, prop vm. saaksid õige märgendi:
+
+main/langs/vro/src/morphology/stems/nouns_newwords.lexc
+
+{{{
+(1) N_....
+>> A_...
+>>NUM_...
+>>PROP_...
+(2) NMN_
+>> A_, NUM_, PROP_
+}}}
+
+!!!Järgmine koosolek
+__N, 2. märtsil kell 10__ Eesti / Soome aja järgi.
