@@ -576,14 +576,21 @@ def relax(strict):
 	relaxed = strict
 	sub_str = lambda _string, _target, _sub: _string.replace(_target, _sub)
 
+	# The spell-relax rules for Võro
+	
+	PALAT_LETTERS = {'b', 'd', 'f', 'g', 'h', 'k', 'l', 'm', 'n', 'p' ,'r', 's', 't', 'v'}
+	#Different apostrophe-like symbols are accepted instead of modifier apostrophe:
+	relax1 = {c + u'\'' : c + u'ʼ' for c in PALAT_LETTERS} # the regular apostrophe
+	relax2 = {c + u'´' : c + u'ʼ' for c in PALAT_LETTERS}  # accute
+	relax3 = {c + u'`' : c + u'ʼ' for c in PALAT_LETTERS}  # gravis
+	relax4 = {c + u'’' : c + u'ʼ' for c in PALAT_LETTERS} #  right single apostrophe
 	relax_pairs = {
 		# key: value
 		# key is accepted for value
-		# For Russian: spellrelax for 'е' vs 'ё', vowels with and without stress marks
-		# The spell-relax rules for Võro:
-	   u'b́' : u'bʼ',
-	   u'b' : u'bʼ',
-	   u'd́': u'dʼ',
+	   
+	   u'b́' : u'bʼ',  # combined b and ´  
+	   u'b' : u'bʼ',  # It is also allowed to completely skip the palatalisation mark.
+	   u'd́': u'dʼ',  # similarly for the rest of palatalised consonants...
 	   u'd': u'dʼ',
 	   u'f ́': u'fʼ',
 	   u'f': u'fʼ',
@@ -609,38 +616,26 @@ def relax(strict):
 	   u't' : u'tʼ',
 	   u'v́' : u'vʼ',
 	   u'v' : u'vʼ',
-	   # different apostrophy-like characters are accepted:
-	   u'\'' : u'ʼ', # the regular apostrophy
-	   u'´' : u'ʼ', # acute
-	   u'`' : u'ʼ', # gravis
-	   u'’' : u'ʼ', # right single apostrophy
+
 	   # spell-relax for glottal stop denoted by q
 	   u'ʼ' : u'q', # modifier letter apostrophy
 	   u'\'' : u'q', # the regular apostrophy
 	   u'´' : u'q', # acute
 	   u'`' : u'q', # gravis
 	   u'’' : u'q', # right single apostrophy
-	   # It is allowed to skip the palatalisation mark when writing the answers in Leksa:
-	   u'b' : u'b\'',
-	   u'd' : u'd\'',
-	   u'f' : u'f\'',
-	   u'g' : u'g\'',
-	   u'h' : u'h\'',
-	   u'k' : u'k\'',
-	   u'l' : u'l\'',
-	   u'm' : u'm\'',
-	   u'n' : u'n\'',
-	   u'p' : u'p\'',
-	   u'r' : u'r\'',
-	   u's' : u's\'',
-	   u't' : u't\'',
-	   u'v' : u'v\'',
+
 	}
+	
+	#Join all the sets of the symbol pairs:
+	relax_pairs.update(relax1)  
+	relax_pairs.update(relax2)
+	relax_pairs.update(relax3)
+	relax_pairs.update(relax4)
 
 	# Create an iterator. We want to generate as many possibilities as
 	# possible (very fast), so more relaxed options are available.
 	searches = relax_pairs.items()
-	# HU: Commented out the following complex code because it was causing an infinite loop or similar. And the generation of relaxed forms works fine without it. :)
+	# HU: Commented out the following complex code because it was causing an infinite loop or filling up the memory. And the generation of relaxed forms works fine without it. :)
 	#print "searches composed", searches
 	#permutations = itertools.chain(itertools.permutations(searches))
 	#print "permutations composed"
@@ -648,14 +643,18 @@ def relax(strict):
 	#print "list of permutations ",perms_flat
 
 	# Individual possibilities
-	relaxed_perms = [sub_str(relaxed, R, S) for S, R in searches]
-	#print relaxed_perms
+	#print "strict form: ", strict
+	#relaxed_perms = [sub_str(relaxed, S, R) for R, S in searches]
+	
 
 	# Possibilities applied one by one
-	#for S, R in perms_flat:
-	#	relaxed = sub_str(relaxed, R, S)
-	#	relaxed_perms.append(relaxed)
+	relaxed_perms = []
+	for R, S in searches:
+		relaxed = sub_str(strict, S, R)
+		#print "relaxed form: ", relaxed
+		relaxed_perms.append(relaxed)
 
+	#print "spell-relaxed accepted forms: ", relaxed_perms
 	# Return list of unique possibilities
 	relaxed_perms = list(set(relaxed_perms))
 	relaxed_perms = [force_unicode(item) for item in relaxed_perms]
