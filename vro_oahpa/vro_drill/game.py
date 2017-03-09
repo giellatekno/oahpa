@@ -32,6 +32,11 @@ try:
 	LOOKUP_TOOL = vro_oahpa.settings.LOOKUP_TOOL
 except:
 	LOOKUP_TOOL = 'lookup'
+	
+try:
+	HFST_LOOKUP_TOOL = vro_oahpa.settings.HFST_LOOKUP_TOOL
+except:
+	HFST_LOOKUP_TOOL = 'hfst-lookup'
 
 
 try:
@@ -1062,8 +1067,8 @@ class BareGame(Game):
 
 
 class NumGame(Game):
-	generate_fst = 'transcriptor-numbers-digit2text.filtered.lookup.xfst'
-	answers_fst = 'transcriptor-numbers-text2digit.filtered.lookup.xfst'
+	generate_fst = 'transcriptor-numbers-digit2text.filtered.lookup.hfstol'
+	answers_fst = 'transcriptor-numbers-text2digit.filtered.lookup.hfstol'
 
 	def get_db_info(self, db_info):
 		""" Options supplied by views
@@ -1091,14 +1096,15 @@ class NumGame(Game):
 		import subprocess
 		from threading import Timer
 
-		lookup = LOOKUP_TOOL
+		lookup = HFST_LOOKUP_TOOL   # We use hfst transducers in vro Numra because xfst tools have a bug that breaks the compilation of the clock transducers.
 		gen_norm_fst = FST_DIRECTORY + "/" + fstfile
 		try:
 			open(gen_norm_fst)
 		except IOError:
 			raise Http404("File %s does not exist." % gen_norm_fst)
 
-		gen_norm_command = [lookup, "-flags", "mbTT", "-utf8", "-d", gen_norm_fst]
+		#gen_norm_command = [lookup, "-flags", "mbTT", "-utf8", "-d", gen_norm_fst]  # xfst
+		gen_norm_command = [lookup, gen_norm_fst]
 
 		try:
 			forms.encode('utf-8')
@@ -1132,7 +1138,8 @@ class NumGame(Game):
 			# line = line.replace(' ','')
 			if line:
 				nums = line.split('\t')
-				if len(nums) == 3:
+				#if len(nums) == 3: The hfst output lines have the weight in the third column, so we cannot use this condition.
+				if nums[2] == 'inf':
 					nums = (nums[0], '?')
 				else:
 					nums = tuple(nums)
@@ -1155,9 +1162,11 @@ class NumGame(Game):
 
 			output, err = self.generate_forms(smart_unicode(forms), fstfile)
 
+			print "generated answers: ", output
 			num_list = self.clean_fst_output(output)
 			num_list = self.strip_unknown(num_list)
-			# print repr([question, useranswer, num_list])
+			print "question, useranswer, correct answer: "
+			print repr([question, useranswer, num_list])
 
 			# 'string' refers to the question here, not the answer
 			if gametype == 'string':
@@ -1239,8 +1248,8 @@ class Klokka(NumGame):
 
 	QuestionForm = KlokkaQuestion
 
-        generate_fst = 'transcriptor-clock-digit2text.filtered.lookup.xfst'
-        answers_fst = 'transcriptor-numbers-text2digit.filtered.lookup.xfst'        
+        generate_fst = 'transcriptor-clock-digit2text.filtered.lookup.hfstol'
+        answers_fst = 'transcriptor-numbers-text2digit.filtered.lookup.hfstol'        
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1376,8 +1385,8 @@ class Dato(Klokka):
 
 	# QuestionForm = DatoQuestion
 
-        generate_fst = 'transcriptor-date-digit2text.filtered.lookup.xfst'
-        answers_fst = 'transcriptor-date-text2digit.filtered.lookup.xfst'
+        generate_fst = 'transcriptor-date-digit2text.filtered.lookup.hfstol'
+        answers_fst = 'transcriptor-date-text2digit.filtered.lookup.hfstol'
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
 					 or Dato is unable to look up forms."

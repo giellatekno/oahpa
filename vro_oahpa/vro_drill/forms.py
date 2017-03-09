@@ -642,19 +642,25 @@ def relax(strict):
 	#perms_flat = sum([list(a) for a in permutations], [])
 	#print "list of permutations ",perms_flat
 
-	# Individual possibilities
-	#print "strict form: ", strict
-	#relaxed_perms = [sub_str(relaxed, S, R) for R, S in searches]
-	
+	print "strict form: ", strict
+	# Count the number of "relaxable" characters in the form:
+	nr_q = strict.count('q')
+	nr_palatalised = strict.count(u'ʼ')
+	nr_relaxable = nr_q + nr_palatalised 
 
 	# Possibilities applied one by one
-	relaxed_perms = []
-	for R, S in searches:
-		relaxed = sub_str(strict, S, R)
-		#print "relaxed form: ", relaxed
-		relaxed_perms.append(relaxed)
+	relaxed_perms = [strict]
+	i = 0
+	while i < nr_relaxable:
+		for perm in relaxed_perms:
+			for R, S in searches:
+				relaxed = sub_str(perm, S, R)
+				if relaxed != perm:
+					#print "relaxed form: ", relaxed
+					relaxed_perms.append(relaxed)
+		i=i+1
+		  
 
-	#print "spell-relaxed accepted forms: ", relaxed_perms
 	# Return list of unique possibilities
 	relaxed_perms = list(set(relaxed_perms))
 	relaxed_perms = [force_unicode(item) for item in relaxed_perms]
