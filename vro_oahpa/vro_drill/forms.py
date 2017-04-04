@@ -287,6 +287,7 @@ VTYPE_CHOICES = (
 VERB_QUESTION_ANSWER = {
 	'V-PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
 	'V-PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
+    'NEG': [('V+Inf', 'V+Ind+Prs+Neg')],
 #	'PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
 #	'PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
 #	'PRF': [('V+Inf', 'V+PrfPrc')],
@@ -301,6 +302,7 @@ VERB_FILTER_DEFINITION = ['stem', 'source']
 VTYPE_CONTEXT_CHOICES = (
 	('V-PRS', _('present')),
 	('V-PRT', _('past')),
+	('NEG', _('back negation present tense')),
 #	('V-PRF', _('perfect')),
 #	('V-GER', _('gerund')),
 #	('V-COND', _('conditional')),
@@ -1318,13 +1320,16 @@ class MorfaQuestion(OahpaQuestion):
 
 		if tag.pos == "V":
 			if not self.pron:
-				if tag.string.find("ConNeg") > -1:
+				if tag.string.find("ConNeg") > -1: # front negation: ei olõq
 					# TODO: New choice for every refresh, fix!
 					pers = conneg_agr
 					pronoun = self.PronPNBase[pers]
 					neg_verb = NEGATIVE_VERB_PRES[pers]
 
 					self.pron = '%s %s' % (pronoun, neg_verb)
+				elif tag.string.find("Neg") > -1: # back negation: olõ-õiq
+				    pers = "Sg3"
+				    pronoun = self.PronPNBase[pers]
 				elif tag.personnumber:
 					pronbase = self.PronPNBase[tag.personnumber]
 					pronoun = pronbase

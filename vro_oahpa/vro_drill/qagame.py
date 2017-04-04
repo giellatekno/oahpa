@@ -31,7 +31,7 @@ class QAGame(Game):
 		"""
 		self.num_fields = 4 # was: 6, decreased the number of exercises to 3 because preparation of the audio files for the questions (speech synthesis) takes time.
 		self.syntax =('MAINV','SUBJ','HAB')
-		self.qtype_verbs = set(['V-COND','V-IMPRT','V-POT', 'PRS','PRT', 'V-PRS', 'V-PRT', 'V-GER', 'V-PRF'])
+		self.qtype_verbs = set(['V-COND','V-IMPRT','V-POT', 'PRS','PRT', 'NEG', 'V-PRS', 'V-PRT', 'V-GER', 'V-PRF'])
 
 		# Default tense and mood for testing
 		self.tense = "Prs"
@@ -93,6 +93,8 @@ class QAGame(Game):
 			dialect = DEFAULT_DIALECT
 
 		word=None
+		print "tag: ", tag_el
+		print "qelement: ", qelement
 		if tag_el.pos=="Num" and self.settings.has_key('num_level') and str(self.settings['num_level'])=="1":
 			smallnum = ["1","2","3","4","5","6","7","8","9","10"]
 			word = Word.objects.filter(wordqelement__qelement=qelement,
