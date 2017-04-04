@@ -94,13 +94,13 @@
       </element>
     </answer>
   </q>
-   <q id="vprt0">
+<!--   <q id="vprt0">
     <qtype>V-PRT</qtype>
     <qtype>V-MIX</qtype>
    <question>
       <text>Midä SUBJ eeläq MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar pos="Pron"/> töö pronoomenitega on pooleli
       </element>
       <element id="MAINV">
 	<id>tegemä</id>
@@ -117,7 +117,7 @@
 	<grammar tag="V+Act+Ind+Prt+Person-Number"/>
       </element>
     </answer>
-  </q> 
+  </q> --> 
      <q id="vprt1sg">
     <qtype>V-PRT</qtype>
     <question>
@@ -155,6 +155,123 @@
 	<sem class="ACTION_V"/>
       </element>
     </answer>
+  </q>
+  <!-- Back negation: olõ-õiq, süü-üiq jne. -->
+  <q id="vbacknegprs1">
+    <qtype>V-NEG</qtype>
+    <qtype>V-MIX</qtype>
+    <question>
+      <text>Midä sa kunagiq ei tiiq</text>
+    </question>
+    <answer> 
+      <text>Ma MAINV kunagiq kärbläsesiint</text>
+      <element game="morfa" id="MAINV" task="yes">
+	<grammar tag="V+Act+Ind+Prs+Neg"/>
+	<id>süümä</id>
+      </element>
+    </answer> 
+    <answer> 
+      <text>Ma MAINV hinnäst purjo</text>
+      <element game="morfa" id="MAINV" task="yes">
+	    <grammar tag="V+Act+Ind+Prs+Neg"/>
+	    <id>juuma</id>
+      </element>
+    </answer> 
+    <answer> 
+      <text>Ma MAINV kunagiq talvõl pall'a päägaq</text>
+      <element game="morfa" id="MAINV" task="yes">
+	    <grammar tag="V+Act+Ind+Prs+Neg"/>
+	    <id>käümä</id>
+      </element>
+    </answer> 
+    <answer> 
+      <text>Ma MAINV tõisi takan</text>
+      <element game="morfa" id="MAINV" task="yes">
+	    <grammar tag="V+Act+Ind+Prs+Neg"/>
+	    <id>kõnõlõma</id>
+      </element>
+    </answer>
+    <answer> 
+      <text>Ma MAINV kunagiq verevä tulõgaq üle tii</text>
+      <element game="morfa" id="MAINV" task="yes">
+	    <grammar tag="V+Act+Ind+Prs+Neg"/>
+	    <id>minemä</id> 
+      </element>
+    </answer>    
+    <answer> 
+      <text>Ma MAINV tõõsõlõ haigõt</text>
+      <element game="morfa" id="MAINV" task="yes">
+	    <grammar tag="V+Act+Ind+Prs+Neg"/>
+	    <id>tegemä</id>
+      </element>
+    </answer>
+    <answer> 
+      <text>Ma MAINV arvit pangaautomaadin</text>
+      <element game="morfa" id="MAINV" task="yes">
+	    <grammar tag="V+Act+Ind+Prs+Neg"/>
+	    <id>tasoma</id>
+      </element>
+    </answer>            
+  </q>
+  <q id="vbacknegprs2">
+    <qtype>V-NEG</qtype>
+    <qtype>V-MIX</qtype>
+    <question>
+      <text>Midä sa ei tiiq</text>
+    </question>
+    <answer> 
+      <text>Ma MAINV</text>
+      <element game="morfa" id="MAINV" task="yes">
+	    <grammar tag="V+Act+Ind+Prs+Neg"/>
+	    <id>varastama</id>
+      </element>
+    </answer>
+    <answer> 
+      <text>Ma MAINV tõisil ummi töid ärq tetäq</text>
+      <element game="morfa" id="MAINV" task="yes">
+	    <grammar tag="V+Act+Ind+Prs+Neg"/>
+	    <id>käskmä</id>
+      </element>
+    </answer>
+  </q>
+  <q id="vbacknegprs3">
+    <qtype>V-NEG</qtype>
+    <qtype>V-MIX</qtype>
+    <question>
+      <text>Määne sa kunagiq ei olõq</text>
+    </question>
+    <answer> 
+      <text>Ma MAINV kunagiq hõel ja kuri</text>
+      <element game="morfa" id="MAINV" task="yes">
+	   <grammar tag="V+Act+Ind+Prs+Neg"/>
+	   <id>olõma</id> 
+      </element>
+    </answer> 
+    <answer> 
+      <text>Ma MAINV kunagiq kadõ</text>
+      <element game="morfa" id="MAINV" task="yes">
+	   <grammar tag="V+Act+Ind+Prs+Neg"/>
+	   <id>olõma</id> 
+      </element>
+    </answer> 
+  </q>
+  <q id="vbacknegprs4">
+    <qtype>V-NEG</qtype>
+    <qtype>V-MIX</qtype>
+    <question>
+      <text>Määne sa ei olõq</text>
+    </question>
+    <answer> 
+      <text>Ma MAINV ADJ</text>
+      <element game="morfa" id="MAINV" task="yes">
+	   <grammar tag="V+Act+Ind+Prs+Neg"/>
+	   <id>olõma</id> 
+      </element>
+      <element game="morfa" id="ADJ">
+	   <grammar tag="A+Sg+Nom"/>
+	   <sem class="HUM_A"/> 
+      </element>
+    </answer> 
   </q>
 </questions>
 
