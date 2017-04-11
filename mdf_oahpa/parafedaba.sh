@@ -1,9 +1,11 @@
 #!/bin/sh
 
-P="python2.7"
-GTHOME="/home/mdf_oahpa"
+P="python"
+GTHOME="/Users/mslm/main/ped/" # locally
+GTLABHOME="/home/mdf_oahpa" # on gtlab
 LANGDIR="mdf"
-DATA=$GTHOME/$LANGDIR
+#DATA=$GTLABHOME/$LANGDIR  # on gtlab
+DATA=$GTHOME/$LANGDIR # locally
 DPS="$DATA/src"
 INC="$DATA/inc"
 META="$DATA/meta"
@@ -30,8 +32,7 @@ echo "==================================================="
 
  echo "==================================================="
  echo "feeding db with $DPS/n_mdf2X.xml"
- $P install.py --file $DPS/n_mdf2X.xml 
-# --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>error.log
+ $P install.py --file $DPS/n_mdf2X.xml --tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>error.log
  echo " "
  echo "done"
  echo "==================================================="
@@ -69,8 +70,7 @@ echo "==================================================="
 
  echo "==================================================="
  echo "feeding db with $DPS/v_mdf2X.xml"
- $P install.py --file $DPS/v_mdf2X.xml 
-# --tagfile $META/tags.txt --paradigmfile $META/V_paradigms.txt 2>>error.log
+ $P install.py --file $DPS/v_mdf2X.xml --tagfile $META/tags.txt --paradigmfile $META/V_paradigms.txt 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
@@ -102,12 +102,12 @@ echo "==================================================="
 # ## nobmdf
 # ##
 
-echo "==================================================="
-echo "feeding db with $DPN/N_nobmdf.xml"
-$P install.py --file $DPN/N_nobmdf.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
+#echo "==================================================="
+#echo "feeding db with $DPN/N_nobmdf.xml"
+#$P install.py --file $DPN/N_nobmdf.xml 2>>error.log
+#echo " "
+#echo "done"
+#echo "==================================================="
 
 #echo "==================================================="
 #echo "feeding db with $DPN/num_nobmdf.xml"
@@ -116,19 +116,19 @@ echo "==================================================="
 #echo "done"
 #echo "==================================================="
 
- echo "==================================================="
- echo "feeding db with $DPN/V_nobmdf.xml"
- $P install.py --file $DPN/V_nobmdf.xml 2>>error.log
- echo " "
- echo "done"
- echo "==================================================="
+# echo "==================================================="
+# echo "feeding db with $DPN/V_nobmdf.xml"
+# $P install.py --file $DPN/V_nobmdf.xml 2>>error.log
+# echo " "
+# echo "done"
+# echo "==================================================="
  
- echo "==================================================="
- echo "feeding db with $DPN/A_nobmdf.xml"
- $P install.py --file $DPN/A_nobmdf.xml 2>>error.log
- echo " "
- echo "done"
- echo "==================================================="
+# echo "==================================================="
+# echo "feeding db with $DPN/A_nobmdf.xml"
+# $P install.py --file $DPN/A_nobmdf.xml 2>>error.log
+# echo " "
+# echo "done"
+# echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $DPN/adv_nobmdf.xml"

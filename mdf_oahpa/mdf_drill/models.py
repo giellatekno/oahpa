@@ -700,6 +700,7 @@ class Tag(models.Model):
 	# polarity = models.CharField(max_length=5)
 	pos = models.CharField(max_length=12)
 	# possessive = models.CharField(max_length=5)
+	definite = models.CharField(max_length=5)
 	# subclass = models.CharField(max_length=10)
 	tense = models.CharField(max_length=5)
 

@@ -105,6 +105,7 @@ class Analysis(object):
 			'pos': self.classes.get('Wordclass', ""),
 			'number': self.classes.get('Number',""),
 			'case': self.classes.get('Case',""),
+			'definite':self.classes.get('Definite',""),
 			'possessive': self.classes.get('Possessive',""),
 			'grade': self.classes.get('Grade',""),
 			'infinite': self.classes.get('Infinite',""), 
@@ -132,6 +133,8 @@ class Analysis(object):
 				tagclasses = linginfo.tagset[t]
 				for tagclass in tagclasses:
 					self.classes[tagclass] = t
+					print "tagclass: ", tagclass
+					print "tag: ", t
 
 class Entry(object):
 	""" The beginning of a class for parsing entry nodes. 
@@ -965,6 +968,7 @@ class Words(object):
 						'number':			g.get('Number',""),
 						'case':			g.get('Case',""),
 						#'possessive':		g.get('Possessive',""),
+						'definite':       g.get('Definite',""),
 						'grade':			g.get('Grade',""),
 						'infinite':		g.get('Infinite',""), 
 						'personnumber':	g.get('Person-Number',""),

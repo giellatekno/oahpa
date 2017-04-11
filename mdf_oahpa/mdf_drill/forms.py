@@ -53,19 +53,13 @@ POS_CHOICES = (
 )
 
 CASE_CHOICES = (
-    #('N-NOM-PL', _('Nominative Plural')),
-    ('N-GEN', _('Genitive')),
-    ('N-PAR', _('Partitive')),
-    ('N-ILL', _('Illative')),
-    ('N-INE', _('Inessive')),
-    ('N-ELA', _('Elative')),
-    ('N-ALL', _('Allative')),
-    ('N-ADE', _('Adessive')),
-    ('N-ABL', _('Ablative')),
-    ('N-TRA', _('Translative')),
-    ('N-TER', _('Terminative')),
-    ('N-ABESS', _('Abessive')),
-    ('N-COM', _('Comitative')),
+    ('N-GEN-DEF', _('Definite genitive singular')),
+    ('N-PL-GEN-DEF', _('Definite genitive plural')),
+    ('N-NOM-DEF', _('Definite nominative singular')),
+    ('N-NOM-PL-DEF', _('Definite nominative plural')),
+    ('N-DAT-DEF', _('Definite dative singular')),
+    ('N-DAT-PL-DEF', _('Definite dative plural')),
+    ('N-CAU', _('Indefinite causative')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -868,7 +862,7 @@ class OahpaSettings(forms.Form):
 					'contracted': False,
 					'level' : 'all',
 					'lemmacount' : '2',
-					'case': 'N-PAR',
+					'case': 'N-GEN-DEF',
 					'pos' : 'N',
 					'vtype' : 'PRS',
 					'adjcase' : 'NOM',
@@ -1131,7 +1125,7 @@ class MorfaSettings(OahpaSettings):
 		$home/morfa/ came from, because instead of an
 		exception there was a relatively unhelpful 404 error.
 	"""
-	case = forms.ChoiceField(initial='N-PAR', choices=CASE_CHOICES, widget=forms.Select)
+	case = forms.ChoiceField(initial='N-GEN-DEF', choices=CASE_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES

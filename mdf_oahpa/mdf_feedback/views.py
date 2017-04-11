@@ -2,7 +2,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 import datetime
 
-from liv_feedback.models import FeedbackForm
+from mdf_feedback.models import FeedbackForm
 
 
 def feedback(request):

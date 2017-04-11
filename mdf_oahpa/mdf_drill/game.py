@@ -323,19 +323,13 @@ class Game(object):
 class BareGame(Game):
 
 	casetable = {
-		'N-NOM-PL': ('Nom', ['Pl']),
-		'N-GEN': ('Gen', ['Sg','Pl']),
-		'N-PAR': ('Par', ['Sg','Pl']),
-		'N-ILL': ('Ill', ['Sg','Pl']),
-		'N-INE': ('Ine', ['Sg','Pl']),
-		'N-ELA': ('Ela', ['Sg','Pl']),
-		'N-ALL': ('All', ['Sg','Pl']),
-		'N-ADE': ('Ade', ['Sg','Pl']),
-		'N-ABL': ('Abl', ['Sg','Pl']),
-        'N-TRA': ('Tra', ['Sg','Pl']),
-        'N-TER': ('Ter', ['Sg','Pl']),
-        'N-ABESS': ('Abe', ['Sg','Pl']),
-        'N-COM': ('Com', ['Sg','Pl']),
+	    'N-NOM-DEF': ('Nom', ['Sg'], 'Def'),
+		'N-NOM-PL-DEF': ('Nom', ['Pl'], 'Def'),
+		'N-GEN-DEF': ('Gen', ['Sg'], 'Def'),
+		'N-PL-GEN-DEF': ('Gen', ['Pl'], 'Def'),
+		'N-DAT-DEF': ('Dat', ['Sg'], 'Def'),
+		'N-DAT-PL-DEF': ('Dat', ['Pl'], 'Def'), 
+		'N-CAU': ('Cau', ['SP'], 'Indef'),
 		'': '',
 	}
 
@@ -517,7 +511,7 @@ class BareGame(Game):
 		# 	syll = ['']
 
 		if pos in ['N', 'Num', 'Pron']:
-			case, number = self.casetable[pos_tables[pos]]
+			case, number, definite = self.casetable[pos_tables[pos]]
 		else:
 			case = self.casetable[pos_tables[pos]]
 		grade = self.casetable.get('grade', '')
@@ -651,6 +645,8 @@ class BareGame(Game):
 				TAG_QUERY = TAG_QUERY & Q(number='Sg')
 			else:
 				TAG_QUERY = TAG_QUERY & Q(number__in=number)
+			TAG_QUERY = TAG_QUERY & Q(definite=definite) # added for mdf
+
 
 
 
