@@ -1,0 +1,88 @@
+!!!Võru koosolek 11.04.2017
+
+Kohal: Jack, Sulev, Heli
+
+!!Mis tehtud, mis teoksil, probleemid jne.
+
+! Adjektiivide eraldamine noomenitest
+
+* Sulev on eraldanud adjektiivid, pronoomenid ja numeraalid substantiividest. Jack teeb vastavad muudatused FST-sse.
+
+! Kohanimed
+
+* Kohanimedele tüübinumbrid panna/kontrollida: 
+{{{
+Linakülä+%<pcl_ine%>:Lina#külä PROP_35PESÄ "XXXX" ;
+
+Ameeriga+%<pcl_ine%>:Ameerika PROP_ "" ;!
+
+Ameerigalõ
+Ameerik
+Ameerikah
+Ameerikahe
+Ameerikan
+Ameerikat
+
+
+nom Ameeriga 
+gen Ameeriga 
+part Ameerikat
+illat Ameerikahe
+jne Ameerika-
+}}}
+                                                
+tüüp: ''harak : haraga : harakat : harkahe'' jne
+
+Näide pärisnimede kasutamisest mitmuses:
+''Miiq ei kõnõlõq Trumbõst, Le Penest ja Putiniist. Kaljulaidõst kah mitte.''
+
+Kohanimede loend: 
+main/langs/vro/src/morphology/stems/propernouns_newwords.lexc
+
+! Oahpa
+
+* Heli pani püsti Morfa-C verbi tagaeituse ülesande, vt. [http://oahpa.no/voro/morfac/v/].
+
+* Probleem, mis vajab lahendamist: dict vormid Oahpas (sü̬ü̬, ˋkäse-eiq jms.) asendada korrektse õigekirja vormidega (süü, käse-eiq jms.)
+
+affixes/adjectives.lexc, nouns.lexc, verbs.lexc
+
+# +Err/Orth+Use/NG - see on vorm, mis on Oahpa jaoks eraldatud
+# +Use/NG+Err/Orth - see on vorm, mis on tõesti mittesoovitav ortograafiliselt
+
+{{{
++Dial/...
+-d- +Dial/Tart
+illat de/dõ Dial/Tart
++Dial/-Main 
+(1) +Err/Orth+Use/NG  >>(1) +Dial/-Main+Use/NG 
+
+
+Norm:
+-gʼ-  -gj- 
+magjahus+Use/NG:magʼahus N_18AIVASTUS "_#õ, #t__magʼahus_" ;
+magjahus:magjahus N_18AIVASTUS "_#õ, #t__magjahus_" ;
+järgʼmäne:ˋ#järgʼmä A_19PEDÄJÄNE "_#dse, #st__ˋjärgʼmä|ne_" ;
+lagja = lag'a
+lagʼa:lagʼa A_44SÕDA "_#laja, #lakʼa__la|gʼa_" ;
+
+lagja : laja : lakja : lakja
+sõda : sõa : sõta : sõtta
+
+$ sü̬vväq
+€ süvväq
+}}}
+
+foneettisesti: ''sü̬ü̬ = süü'' (lähes)
+
+!! Artikkel NLP4CALL&LA workshopile
+
+Valmis versiooni saatmise tähtaega pikendati 25. aprillini.
+Retsensentide kommentaare arvesse võttes peame tegema parandusi ja täiendusi.
+
+!! Keeletehnoloogia konverents 19.-20. aprillil 
+Sel ajal peab Oahpa töötama!
+
+!!!Järgmine koosolek
+
+Lepime aja kokku meili teel.
