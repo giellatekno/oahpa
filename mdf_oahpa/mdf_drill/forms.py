@@ -884,7 +884,7 @@ class OahpaSettings(forms.Form):
 					'adj_context' : 'ATTRPOS',
 					'book' : 'all',
 					'noun_type': 'N-MASC-INANIM',
-					'singular_only' : True}
+					'singular_only' : False}
 
 
 
@@ -1150,7 +1150,7 @@ class MorfaSettings(OahpaSettings):
 	# PI added
 	noun_type = forms.ChoiceField(initial='N-MASC-INANIM', choices=NOUN_TYPE_CHOICES, widget=forms.Select)
 	# HU added
-	singular_only = forms.BooleanField(required=False, initial=True)
+	singular_only = forms.BooleanField(required=False, initial=False)
 
 	def __init__(self, *args, **kwargs):
 		self.set_settings()

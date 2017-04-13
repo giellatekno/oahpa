@@ -914,6 +914,7 @@ class BareGame(Game):
 		else:
 			form_list = word.form_set.filter(tag=tag)
 
+		print "form list: ", form_list
 		if not form_list:
 			raise Form.DoesNotExist
 
@@ -938,7 +939,7 @@ class BareGame(Game):
 		# about turning nominative singular into nominative plural,
 		# thus all baseforms should be singular.
 
-		if tag.case in ['Nom'] or tag.attributive:
+		if tag.case in ['Nom', 'Cau'] or tag.attributive:
 			match_number = False
 		else:
 			match_number = True
