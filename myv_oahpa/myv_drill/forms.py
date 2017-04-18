@@ -54,23 +54,30 @@ POS_CHOICES = (
 )
 
 CASE_CHOICES = (
-    ('N-GEN', _('Definite genitive singular')),
-    ('N-PL-GEN', _('Definite genitive plural')),
+    ('N-GEN', _('Definite genitive singular')), #N+Sg+Gen+Def
+    #('N-GEN', _('Indefinite genitive')), N+SP+Gen+Indef
+    ('N-PL-GEN', _('Definite genitive plural')), #N+Pl+Gen+Def
     ('N-NOM-DEF', _('Definite nominative singular')),
     ('N-NOM-PL', _('Indefinite nominative plural')),
-    #('N-DAT', _('Dative')),
-    #('N-ILL', _('Illative')),
-    ('N-INE', _('Indefinite inessive')),
-    #('N-ELA', _('Elative')),
+    #('N-DAT', _('Indefinite dative')),
+    #('N-DAT-DEF', _('Definite dative singular')),
+    #('N-PL-DAT', _('Definite dative plural')),
+    #('N-ILL', _('Indefinite illative')),
+    ('N-INE', _('Indefinite inessive')), #N+SP+Gen+Indef
+    #('N-ELA', _('Indefinite elative')),
+    #('N-ELA-DEF', _('Definite elative singular')),
     #('N-PX', _('Sg Nom + possessive suffix')),
     #('N-PX-PL', _('Pl Nom + possessive suffix')),
     ('N-TRA', _('Indefinite translative')),
     ('N-ABL', _('Indefinite ablative')),
     ('N-ABL-DEF', _('Definite ablative singular')),
-    #('N-ABE', _('Abessive')),
-    #('N-COM', _('Comitative')),
-    #('N-COMP', _('Comparative')),
-    #('N-PRL', _('Prolative')),   
+    #('N-ABE', _('Indefinite abessive')),
+    #('N-ABE-DEF', _('Definite abessive singular')),
+    #('N-CMPR', _('Indefinite comparative')),
+    #('N-CMPR-DEF', _('Definite comparative singular')),
+    #('N-PRL', _('Indefinite prolative')),   
+    #('N-PRL-DEF', _('Definite prolative singular')),   
+    #('N-COM', _('Indefinite comitative')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
