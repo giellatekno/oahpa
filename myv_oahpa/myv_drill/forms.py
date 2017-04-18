@@ -84,9 +84,7 @@ CASE_CHOICES = (
     ('N-CMPR', _('Indefinite comparative')),
     ('N-ABE', _('Indefinite abessive')),
     ('N-TRA', _('Indefinite translative')),
-    ('N-COM', _('Indefinite comitative')),
-    #('N-PX', _('Sg Nom + possessive suffix')),
-    #('N-PX-PL', _('Pl Nom + possessive suffix')),  
+    ('N-COM', _('Indefinite comitative')), 
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
