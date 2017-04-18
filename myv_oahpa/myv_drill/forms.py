@@ -71,6 +71,7 @@ CASE_CHOICES = (
     ('N-PL-PRL-DEF', _('Definite prolative plural')),
     ('N-CMPR-DEF', _('Definite comparative singular')),
     ('N-PL-CMPR-DEF', _('Definite comparative plural')),
+    ('N-PL-TRA-DEF', _('Definite translative plural')),
     ('N-ABE-DEF', _('Definite abessive singular')),
     ('N-PL-ABE-DEF', _('Definite abessive plural')),
     ('N-NOM-PL', _('Indefinite nominative plural')),
@@ -84,6 +85,7 @@ CASE_CHOICES = (
     ('N-CMPR', _('Indefinite comparative')),
     ('N-ABE', _('Indefinite abessive')),
     ('N-TRA', _('Indefinite translative')),
+    ('N-LAT', _('Indefinite lative')),
     ('N-COM', _('Indefinite comitative')), 
 )
 
