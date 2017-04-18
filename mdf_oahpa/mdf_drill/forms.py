@@ -59,7 +59,19 @@ CASE_CHOICES = (
     ('N-NOM-PL-DEF', _('Definite nominative plural')),
     ('N-DAT-DEF', _('Definite dative singular')),
     ('N-DAT-PL-DEF', _('Definite dative plural')),
+    ('N-NOM-PL', _('Indefinite nominative plural')),
     ('N-CAU', _('Indefinite causative')),
+    ('N-GEN', _('Indefinite genitive')),
+    ('N-DAT', _('Indefinite dative')),
+    ('N-ABL', _('Indefinite ablative')),
+    ('N-ILL', _('Indefinite illative')), 
+    ('N-INE', _('Indefinite inessive')),
+    ('N-ELA', _('Indefinite elative')),
+    ('N-PRL', _('Indefinite prolative')),
+    ('N-CMPR', _('Indefinite comparative')),
+    ('N-ABE', _('Indefinite abessive')),
+    ('N-TRA', _('Indefinite translative')),
+    ('N-LAT', _('Indefinite lative')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new

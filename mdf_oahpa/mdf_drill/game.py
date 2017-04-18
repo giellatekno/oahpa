@@ -329,7 +329,19 @@ class BareGame(Game):
 		'N-PL-GEN-DEF': ('Gen', ['Pl'], 'Def'),
 		'N-DAT-DEF': ('Dat', ['Sg'], 'Def'),
 		'N-DAT-PL-DEF': ('Dat', ['Pl'], 'Def'), 
+		'N-NOM-PL': ('Nom', ['Pl'], 'Indef'),
 		'N-CAU': ('Cau', ['SP'], 'Indef'),
+		'N-GEN': ('Gen', ['SP'], 'Indef'),
+		'N-DAT': ('Dat', ['SP'], 'Indef'),
+		'N-ABL': ('Abl', ['SP'], 'Indef'),
+		'N-ILL': ('Ill', ['SP'], 'Indef'),
+		'N-INE': ('Ine', ['SP'], 'Indef'),
+		'N-ELA': ('Ela', ['SP'], 'Indef'),
+		'N-PRL': ('Prl', ['SP'], 'Indef'),
+		'N-CMPR': ('Cau', ['SP'], 'Indef'),
+		'N-ABE': ('Cau', ['SP'], 'Indef'),
+		'N-TRA': ('Cau', ['SP'], 'Indef'),
+		'N-LAT': ('Cau', ['SP'], 'Indef'),
 		'': '',
 	}
 
@@ -939,7 +951,7 @@ class BareGame(Game):
 		# about turning nominative singular into nominative plural,
 		# thus all baseforms should be singular.
 
-		if tag.case in ['Nom', 'Cau'] or tag.attributive:
+		if tag.case in ['Nom', 'Cau', 'Ill', 'Ine', 'Ela', 'Prl', 'Cmpr', 'Abe', 'Tra', 'Lat'] or tag.attributive:
 			match_number = False
 		else:
 			match_number = True
