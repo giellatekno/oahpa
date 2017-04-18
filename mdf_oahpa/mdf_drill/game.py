@@ -951,7 +951,7 @@ class BareGame(Game):
 		# about turning nominative singular into nominative plural,
 		# thus all baseforms should be singular.
 
-		if tag.case in ['Nom', 'Cau', 'Ill', 'Ine', 'Ela', 'Prl', 'Cmpr', 'Abe', 'Tra', 'Lat'] or tag.attributive:
+		if tag.case in ['Nom'] or tag.definite == 'Indef' or tag.attributive:
 			match_number = False
 		else:
 			match_number = True
