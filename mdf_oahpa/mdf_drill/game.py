@@ -338,10 +338,10 @@ class BareGame(Game):
 		'N-INE': ('Ine', ['SP'], 'Indef'),
 		'N-ELA': ('Ela', ['SP'], 'Indef'),
 		'N-PRL': ('Prl', ['SP'], 'Indef'),
-		'N-CMPR': ('Cau', ['SP'], 'Indef'),
-		'N-ABE': ('Cau', ['SP'], 'Indef'),
-		'N-TRA': ('Cau', ['SP'], 'Indef'),
-		'N-LAT': ('Cau', ['SP'], 'Indef'),
+		'N-CMPR': ('Cmpr', ['SP'], 'Indef'),
+		'N-ABE': ('Abe', ['SP'], 'Indef'),
+		'N-TRA': ('Tra', ['SP'], 'Indef'),
+		'N-LAT': ('Lat', ['SP'], 'Indef'),
 		'': '',
 	}
 
