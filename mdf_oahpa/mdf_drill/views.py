@@ -562,6 +562,7 @@ class Morfaview(Gameview):
 		'N-DAT-DEF':  _('Practise definite dative'),
         'N-DAT-PL-DEF': _('Practise definite dative plural'),
         'N-CAU': _('Practise causative'),
+        'N-GEN': _('Practise indefinite genitive'),
         'N-DAT':  _('Practise indefinite dative'),
         'N-ILL': _('Practise illative'),
         'N-INE': _('Practise inessive'),
