@@ -75,6 +75,7 @@ CASE_CHOICES = (
     ('N-ABE-DEF', _('Definite abessive singular')),
     ('N-PL-ABE-DEF', _('Definite abessive plural')),
     ('N-NOM-PL', _('Indefinite nominative plural')),
+    ('N-NOM', _('Indefinite nominative')),
     ('N-GEN', _('Indefinite genitive')),
     ('N-DAT', _('Indefinite dative')),
     ('N-ABL', _('Indefinite ablative')),
@@ -850,7 +851,7 @@ class OahpaSettings(forms.Form):
 					'contracted': False,
 					'level' : 'all',
 					'lemmacount' : '2',
-					'case': 'N-GEN',
+					'case': 'N-GEN-DEF',
 					'pos' : 'N',
 					'vtype' : 'PRS',
 					'adjcase' : 'NOM',
@@ -1107,7 +1108,7 @@ class MorfaSettings(OahpaSettings):
 		$home/morfa/ came from, because instead of an
 		exception there was a relatively unhelpful 404 error.
 	"""
-	case = forms.ChoiceField(initial='N-GEN', choices=CASE_CHOICES, widget=forms.Select)
+	case = forms.ChoiceField(initial='N-GEN-DEF', choices=CASE_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
