@@ -32,8 +32,10 @@ except:
 	language = "vro"
 
 numfst = fstdir + "/transcriptions/" + "transcriptor-numbers-digit2text.filtered.lookup.hfstol"
-gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm-dial_main.hfstol"
-gen_all_fst = fstdir + "/" + "generator-oahpa-gt-norm.hfstol" 
+gen_norm_fst = fstdir + "/" + "generator-gt-norm.hfstol" # excl +Err/Orth forms
+gen_all_fst = fstdir + "/" + "generator-gt-desc.hfstol" # incl +Err/Orth forms
+#gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm-dial_main.hfstol" # excl +Use/NG forms
+#gen_all_fst = fstdir + "/" + "generator-oahpa-gt-norm.hfstol" # incl +Use/NG forms
 #gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm-dial_main.xfst"
 #gen_all_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst" 
 
