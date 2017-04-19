@@ -992,6 +992,7 @@ class BareGame(Game):
 				return list(filtered)
 
 		base_forms = map(baseformFilter, form_list)
+		#print "Baseforms: ", base_forms
 
 		# Flatten the lists, but if this isn't an iterateable object, don't worry
 		try:
