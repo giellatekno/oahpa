@@ -698,8 +698,9 @@ class BareGame(Game):
 							Q(mood=mood) & \
 							Q(infinite=infinite)
 
+			TAG_EXCLUDES = Q(string__contains='Neg')
 			if tense != 'Prs':
-				TAG_EXCLUDES = Q(string__contains='ConNeg')
+				TAG_EXCLUDES = TAG_EXCLUDES & Q(string__contains='ConNeg')
 
 		if pos == 'A':
 			if pos2 == 'Num':
