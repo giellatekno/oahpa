@@ -33,7 +33,7 @@ except:
 
 #numfst = fstdir + "/" + language + "-num.fst"
 numfst = fstdir + "/" + "transcriptor-numbers2text-desc.xfst"
-gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst" 
+gen_norm_fst = fstdir + "/" + "generator-gt-desc.xfst" 
 
 
 STDERR = sys.stderr

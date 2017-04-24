@@ -925,6 +925,7 @@ class BareGame(Game):
 		else:
 			form_list = word.form_set.filter(tag=tag)
 
+		#print "form_list: ", form_list
 		if not form_list:
 			raise Form.DoesNotExist
 
@@ -934,6 +935,7 @@ class BareGame(Game):
 			correct = form_list.filter(tag__string__contains='PassL')
 
 		correct = form_list[0]
+		print "correct form: ", correct
 
 		# Due to the pronoun ambiguity potential (gii 'who', gii 'which'),
 		# we need to make sure that the word is the right one.

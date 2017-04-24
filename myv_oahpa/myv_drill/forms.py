@@ -1199,8 +1199,8 @@ class MorfaQuestion(OahpaQuestion):
 		if not self.pron:
 			self.pron = False
 
-		#print self.lemma, correct
-		#print baseform.tag, correct.tag
+		print self.lemma, correct
+		print baseform.tag, correct.tag
 
 		# Retrieve feedback information
 		self.get_feedback(correct, language)
@@ -1227,7 +1227,7 @@ class MorfaQuestion(OahpaQuestion):
 
 					self.pron = '%s %s' % (pronoun, neg_verb)
 				elif tag.personnumber:
-					pronbase = self.PronPNBase[tag.personnumber]
+					pronbase = self.PronPNBase[tag.personnumber[-3:]] # Last three characters are the usual person-number tags Sg1..Pl3.
 					pronoun = pronbase
 					self.pron = pronoun
 
@@ -1248,7 +1248,7 @@ class MorfaQuestion(OahpaQuestion):
 
 				# Choose one if not set, if set then game is in progress, and
 				# do not choose another
-				pers = tag.personnumber
+				pers = tag.personnumber[-3:]
 				if not pers:
 					pers = conneg_agr
 				time = TENSE_PRESENTATION.get(tag.tense, False)
@@ -1256,7 +1256,7 @@ class MorfaQuestion(OahpaQuestion):
 
 				number = ''
 				if pers in ['Sg3', 'Pl3']:
-					number = '(%s)' % DEMONSTRATIVE_PRESENTATION.get(tag.personnumber, False)
+					number = '(%s)' % DEMONSTRATIVE_PRESENTATION.get(tag.personnumber[-3:], False)
 
 				self.pron = ' '.join([time, pronoun, number])
 
@@ -1308,6 +1308,7 @@ class MorfaQuestion(OahpaQuestion):
 			#	self.is_relaxed = ""
 
 		self.correct_ans = answer_presentation
+		
 # #
 #
 # Numra Forms
