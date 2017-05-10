@@ -1,0 +1,94 @@
+!!!Võru koosolek 4. mail 2017
+
+Kohal: Heli, Sulev, Jack
+
+!!!Päevakord
+* Projekt on läbi, kuidas edasi?
+* Jooksvad küsimused
+** Võru klaviatuur mobiiltelefonis
+** Võru speller
+** Masintõlge
+* Võru keeletehnoloogia ühepäevane seminar sügisel
+* Tööülesanded enne suve
+* Ideid, mida edaspidi teha
+* Järgmine koosolek 
+
+!!! Projekt on läbi, kuidas edasi?
+
+Finantseerimine?
+Eesti keeletehnoloogia konverentsil räägiti, et 2018-.... peaks toetatama ka rahvusvahelist koostööd.
+Uus keeletehnoloogia programm kindlasti tuleb. Sealt võiksime taotleda võru keele FST ja Oahpa, võib-olla ka Apertiumi masintõlke projekti.
+
+!!! Jooksvad küsimused
+!! Võru klaviatuur mobiiltelefonis
+
+Võru keele jaoks pole olemas spetsiaalset Androidi klaviatuuri, aga tähele kauem vajutades tulevad variandid, sealhulgas palatalisatsioonimärgiga täht.
+Sjur praegu tegeleb.
+Soovitav oleks combining accute kõikidele.
+
+{{{ 
+gtsvn/keyboards/
+}}}
+
+Transduktoris on nii, et kui valmis palatalisatsiooniga täht on olemas, siis kasutada seda. Kui ei, siis combining accent.
+
+koodiga 0301
+
+__Jack__ teeb transduktori ümber, et samal moel oleks.
+
+
+!! Võru speller
+Trond pani üles muuhulgas ka võru spelleri. Sulevil installeerimine LibreOffice 5.2. ei õnnestunud.
+Jack kompileeris lähtekoodist, siis õnnestus.
+
+Lähtekoodist kompileerimine käib nii:
+
+{{{
+cd gtsvn/langs/vro/
+./configure --with-hfst --without-xfst --enable-dicts --enable-oahpa --enable-spellers GTCORE=/Users/jackrueter/main/giella-core
+make
+sudo make install
+}}}
+
+!! Masintõlge
+Ants Aader, kes teeb ise võru masintõlget (reeglipõhine, sõnastikul põhinev, viskab sõnavormidel kuidagi lõppe ära). Sulev soovitas tal proovida olemasolevat morf. analüüsi.
+Sel teemal oleks võimalik teha mitmeid üliõpilaste uurimistöid.
+
+!! Võru keeletehnoloogia seminar sügisel
+
+Idee: võru keeletehnoloogia 1-päevane seminar Võru Instituudis sept-okt. Üldine arutelu. enne, kui taotleda projekte keeletehnoloogia programmist (tähtaeg on ca novembris), tuleks selgeks teha, mida kõige rohkem vaja on.
+
+!!Enne suve teha:
+* Artiklid Võru Instituudi toimetistesse (konverentsi postri/ettekande laiendus). (__kõik__)
+* Hääldus (sünteeskõne teistes brauserites peale Safari). (__Heli__)
+* Puuduvad hääldused sisse lugeda (__Sulev__)
+* __Jack__ õpetab __Sulevile__ FST reeglite ehitamist. (interaktiivne töö)
+* __Jack__ genereerib praeguse seisuga uued korrektuuritabelid noomeni, verbi ja adjektiivi jaoks.
+* __Sulev__ paneb üles Doodle'i küsitluse, et määrata sügisese seminari päev.
+* __Sulev__ laseb Kauril Agu sisseloetud helifailid kõvemaks keerata.
+* __Sulev__ paneb Oahpa lingid synaq.org-i, umakiil.eu ja Võru Instituudi kodulehele.
+* Eesnimed tegijateks Morfa-C harjutustes (__Heli__).
+* __Heli__ installeerib endale vro spelleri ja jagab Sulevile kogemusi.
+
+! Ebasüstemaatiline tagaeitus:
+
+aktsepteerib:
+süü-i
+süü-iq
+süü-üiq
+
+aga loeb veaks ''süü-üi'', ''süü eiq'' ja ''süü ei''
+
+Vastav parandus FST-sse teha (__Sulev, Jack__).
+
+
+!!Ülesandeid tulevikuprojektidesse:
+* kohanimede tüüpide määramine
+* FST tüvedesõnastiku laiendamine (et spelleri ja morf analüsaatori katvust suurendada)
+
+
+!!!Järgmine koosolek
+__T, 20. juuni kell 10__ Eesti / Soome aja järgi
+
+
+
