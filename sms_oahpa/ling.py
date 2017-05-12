@@ -35,7 +35,7 @@ except:
 
 #numfst = fstdir + "/" + language + "-num.fst"
 numfst = fstdir + "/" + "transcriptor-numbers2text-desc.xfst"
-gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm-dial_main.hfstol"
+gen_norm_fst = fstdir + "/" + "generator-gt-norm.hfstol"
 gen_all_fst = fstdir + "/" + "generator-oahpa-gt-norm.hfstol" 
 
 
