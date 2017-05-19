@@ -1718,7 +1718,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 	"""
 
 	select_words = select_words
-	qtype_verbs = set(['MAINV', 'V-PRS', 'V-PRT', 'V-COND','V-IMPRT', 'TEST']) # added MAINV for liv
+	qtype_verbs = set(['MAINV', 'V-PRS', 'V-PRT', 'V-COND','V-IMPRT', 'TEST', 'V-NEG']) # added MAINV for liv
 
 	def generate_fields(self,answer_size, maxlength):
 		self.fields['answer'] = forms.CharField(max_length = maxlength, \
