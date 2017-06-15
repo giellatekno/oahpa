@@ -744,7 +744,9 @@ class BareGame(Game):
 							Q(infinite=infinite)
 
 			if tense != 'Prs':
-				TAG_EXCLUDES = Q(string__contains='ConNeg')
+				TAG_EXCLUDES = Q(string__contains='ConNeg') | Q(string__contains='Der')
+			else:
+				TAG_EXCLUDES = Q(string__contains='Der') # Added to filter out the derived verb forms.
 			print "tag query:",TAG_QUERY
 			
 		if pos == 'A':
