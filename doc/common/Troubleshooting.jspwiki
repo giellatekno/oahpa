@@ -1,0 +1,19 @@
+Here we describe some of the most common problems and how to solve them.
+!! Problem (sme-oahpa):  Sahka and Vasta accept all the answers, even if they are incorrect.
+! Solution
+
+After each step check if the problem still persists.
+
+1. Look at the lookupserver's log file __/var/log/lserv.log__. 
+
+If lookupserver is working properly then the file should contain the results of the morphological analysis of the recent user input to Sahka and Vasta.
+
+If the log's content does not look good then __restart lookupserver__:
+
+{{ sudo service lookupserv restart }}
+
+2. Look at the file __univ_drill/vastas_log.txt__.
+
+In this log file the pipeline of the CG analysis that is used in Vasta-S, and the output of the CG analysis are saved. If you do not see any CG output in the log file then try to run the same pipeline from the command line.
+
+If you get an error, e.g. "command not found" then find out the correct paths to  vislcg3 and the FST tools (the useful commands are ''which vislcg3'' and ''which lookup'') and change the paths in the file __settings.py__.
