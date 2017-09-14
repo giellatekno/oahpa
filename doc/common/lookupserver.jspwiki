@@ -11,7 +11,11 @@ __NB:__ Any update of the FST requires a restart of the lookup server!
 
 * __(re-)starting__ the server (gtlab, gtoahpa):
 ** go to the {{src}} folder in the {{ped}} folder of the running oapha production folder (you will find the lookupserv document there)
-** type the command {{sudo ./lookupserv restart}}
+** type the command
+
+{{{
+sudo service lookupserv restart
+}}}
 
 * __testing__ the server using the commad-line tool, that takes one word at a time (OAHPA a variable for oahpa version):
 ** go to {{/home/OAHPA/ped/src}}
