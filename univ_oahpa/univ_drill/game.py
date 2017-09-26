@@ -498,6 +498,7 @@ class BareGame(Game):
 
 		syll = True and	self.settings.get('syll')	or ['']
 		case = True and	self.settings.get('case')	or   ""
+		singular_only = self.settings.get('singular_only', False)  # make it possible to only generate singular exercises if the user wishes so
 		levels = True and self.settings.get('level')   or   []
 		adjcase = True and self.settings.get('adjcase') or   ""
 		pron_type = True and self.settings.get('pron_type') or   ""
@@ -709,9 +710,12 @@ class BareGame(Game):
 						# regardless of whether it's Actor, Coll, etc.
 
 			if pos == 'N':
-				TAG_QUERY = TAG_QUERY & \
+				if singular_only:   # if the user has checked the box "singular only"
+					TAG_QUERY = TAG_QUERY & Q(number='Sg') & Q(possessive="")
+				else:		
+					TAG_QUERY = TAG_QUERY & \
 							Q(possessive="") & \
-							Q(number__in=number) # exclude possessive forms
+							Q(number__in=number) # number sg or pl; exclude possessive forms
 
 			# 'Pers' subclass for pronouns, otherwise none.
 			# TODO: combine all subclasses so forms can be fetched
@@ -824,7 +828,7 @@ class BareGame(Game):
 			morfas_log.info(tag.string)
 			no_form = True
 			count = 0
-			while no_form and count < 10: 
+			while no_form and count < 10:
 
 				# Pronouns are a bit different, so we need to resort the tags
 				if tag.pos == 'Pron':

@@ -15,6 +15,7 @@
 	{% ifequal settings.gametype "bare" %}
 	<li><label for="id_{{ settingsform.case.name }}" class="interface">{% trans_to "Case" "sme" %}<span class="invisible">{% trans "Case" %}</span></label>
 		{{ settingsform.case }}</li>
+    <li><label class="interface">{% trans_to "Stem" "sme" %}<span class="invisible">{{ settingsform.singular_only }}{% trans " singular only" %}</span></label></li>
 	<li><label class="interface">{% trans_to "Stem" "sme" %}<span class="invisible">{% trans "Stem" %}</span></label>
 		<ul>
 			<li>{{ settingsform.bisyllabic }} <label for="id_{{ settingsform.bisyllabic.name }}" class="interface">{% trans_to "bisyllabic" "sme" %}<span class="invisible">{% trans "bisyllabic" %}</span></label></li>

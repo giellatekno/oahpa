@@ -998,7 +998,8 @@ class OahpaSettings(forms.Form):
 					'frequency' : ['common'],
 					'num_bare' : 'NOMPL',
 					'adj_context' : 'ATTRPOS',
-					'source' : 'all'}
+					'source' : 'all',
+					'singular_only' : False}
 
 
 
@@ -1270,7 +1271,8 @@ class MorfaSettings(OahpaSettings):
 	bisyllabic = forms.BooleanField(required=False, initial=True)
 	trisyllabic = forms.BooleanField(required=False, initial=True)
 	contracted = forms.BooleanField(required=False, initial=True)
-	grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select) 
+	grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
+	singular_only = forms.BooleanField(required=False, initial=False) 
 	
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -2094,6 +2096,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 		_ = settings.LOOKUP2CG
 		_ = settings.CG3
 		_ = settings.PREPROCESS
+		#_ = settings.CG_RULES_DIRECTORY
 	except:
 		err =  "Check that settings.py contains the following settings:"
 		err += "  FST_DIRECTORY, LOOKUP_TOOL, LOOKUP2CG, CG3, PREPROCESS"
@@ -2115,8 +2118,9 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	lookup2cg = " | " + settings.LOOKUP2CG
 	cg3 = settings.CG3
 	preprocess = " | " + settings.PREPROCESS
-	#preprocess = " | /Users/mslm/main/gt/script/preprocess "
-	dis_bin = settings.FST_DIRECTORY + "/sme-ped.cg3"
+	#preprocess = " | /Users/mslm/main/gt/script/preprocess "	
+	dis_bin = settings.FST_DIRECTORY + "/sme-ped.cg3" # on the server
+	#dis_bin = settings.CG_RULES_DIRECTORY + "/sme-ped.cg3"
 
 	vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
 	
@@ -2260,7 +2264,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 				spelling = True
 			msgstrings[wordform][msgstring] = 1
 
-		#Store the baseform if tehre is dia-whatever
+		#Store the baseform if there is dia-whatever
 		matchObj=targetObj.search(line)
 		if matchObj:
 			msgstring = matchObj.expand(r'\g<targetString>')
@@ -2320,7 +2324,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 		if msgstrings[w].has_key('dia-unknown'):
 			constant = msgstrings[w]['dia-lemma']
 			variable = msgstrings[w]['dia-unknown']
-
+			
+    
 	#iscorrect is used only in logging
 	iscorrect=False
 	if not msg:
