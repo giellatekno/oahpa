@@ -741,7 +741,7 @@ class BareGame(Game):
 							Q(infinite=infinite)
 
 			if mood == 'Imprt':
-				TAG_QUERY = TAG_QUERY & Q(Person-Number__in=['Sg2','Du2','Pl2'])
+				TAG_QUERY = TAG_QUERY & Q(personnumber__contains='2')
 			if tense != 'Prs':
 				TAG_EXCLUDES = Q(string__contains='ConNeg')
 			
