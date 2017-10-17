@@ -39,12 +39,6 @@
 		<div id="headerimg"><a href="/{{ URL_PREFIX }}/"><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!"/></a></div>
 		<a class="hide" href="#content">Skip to content</a>
 		
-        <div id="language_options">
-		{% block language_select %}
-		
-		{% endblock %}
-        </div>
-		
 		<div id="header">
 			{% block header_content %}
 			<h1><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!" /></h1>
@@ -54,6 +48,11 @@
 
 		<div id="content">
 			{% block main_content %}
+
+			{% block language_select %} 
+			     {% include 'language_menu.html' %} 
+			{% endblock %}
+        </div>
 <!---			<p align="center"><b><span style="color: #993366">Hjelp oss å utvikle Oahpa – svar på et lite <span style="color: #9933FF"><a href="http://kursa.oahpa.no/2012/03/27/sporreskjema/">spørreskjema </a></span>om bruk av noen av programmene.</span></b></p>
 			<hr color="#CCCCCC">  --->
 			<ul id="games_menu">
