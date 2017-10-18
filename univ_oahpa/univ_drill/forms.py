@@ -999,7 +999,7 @@ class OahpaSettings(forms.Form):
 					'num_bare' : 'NOMPL',
 					'adj_context' : 'ATTRPOS',
 					'source' : 'all',
-					'singular_only' : False  # Morfa-S noun
+					'singular_only' : False,  # Morfa-S noun
 					'sg2_only' : False  # Morfa-S verb imperative
 					}
 
@@ -2137,7 +2137,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	qtext = question
 	qtext = qtext.rstrip('.!?,')
 
-	#logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastaF_and_Sahka_CGanalysis_log.txt','w')
+	logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastaF_and_Sahka_CGanalysis_log.txt','w')
 	
 	host = 'localhost'
 	port = settings.LOOKUPSERV_PORT
@@ -2168,7 +2168,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 		else:
 			analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
-	   #logfile.write(analysis+"\n")
+		logfile.write(analysis+"\n")
 		data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
 		words = os.popen(data_lookup).readlines()
 		analyzed=""
@@ -2203,7 +2203,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 		else:
 			analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
-		#logfile.write(analysis+"\n")
+		logfile.write(analysis+"\n")
 		
 		# analyse words in the answer
 		
@@ -2221,7 +2221,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
    # except socket.timeout:
 	#	raise Http404("Technical error, please try again later.")			
 
-	#logfile.write(analyzed+"\n")
+	logfile.write(analyzed+"\n")
 	print "morph. analysis:\n",analyzed
 	analysis = analysis + analyzed
 	analysis = analysis + "\"<.>\"\n\t\".\" CLB"
@@ -2246,7 +2246,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	lemma=""
 	for line in checked:
 		line = line.strip()
-		#logfile.write(line+"\n")
+		logfile.write(line+"\n")
 
 		#Find the lemma first
 		matchObj=constantObj.search(line)
@@ -2290,7 +2290,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	constant=""
 	found=False
 	#Interface language	
-	if not language: language = "nob"
+	if not language: language = "no"
 	language = switch_language_code(language)
 	#if language == "no" : language = "nob"
 	#if language == "fi" : language = "fin"
@@ -2498,7 +2498,7 @@ class SahkaSettings(OahpaSettings):
 
 		# Link to grammatical explanation for each page
 		self.grammarlinkssme = Grammarlinks.objects.filter(language="sme")
-		self.grammarlinksno = Grammarlinks.objects.filter(language="no")
+		self.grammarlinksno = Grammarlinks.objects.filter(language="nob")
 
 	def init_hidden(self, topicnumber, num_fields, dialogue, image, wordlist, attempts):
 		
@@ -2686,7 +2686,9 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	qtext = question
 	qtext = qtext.rstrip('.!?,')
 
-	#logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/CGanalysis_log.txt', 'w')
+	logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastas_log.txt', 'w')
+	#logfile.write(question)
+	#logfile.write(answer)
 	host = 'localhost'
 	port = settings.LOOKUPSERV_PORT
 	size = 1024
@@ -2717,7 +2719,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 				raise Http404
 			#logfile.write(cohort+"\n")
 			analysis = analysis + force_unicode(cohort).encode('utf-8')
-		#logfile.write(analysis+"\n")
+		logfile.write(analysis+"\n")
 			#print analysis
 		### Lemmas and POS tags of task words are gathered into the variables 
 		### tasklemmas and taskpos respectively. Tasklemmas and taskpos will be 
@@ -2884,6 +2886,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
 	checked = os.popen(ped_cg3).readlines()
 	#print "Syntax analysis: \n", checked
+	logfile.write(ped_cg3+"\n")
 
 	wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
 	messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
@@ -2899,6 +2902,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	lemma=""
 	for line in checked:
 		line = line.strip()
+		logfile.write(line+"\n")
 
 		#Find the lemma first
 		matchObj=constantObj.search(line)
@@ -2942,7 +2946,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	constant=""
 	found=False
 	#Interface language	
-	if not language: language = "nob"
+	if not language: language = "no"
 	language = switch_language_code(language)
 	#if language == "no" : language = "nob"
 	#if language == "fi" : language = "fin"

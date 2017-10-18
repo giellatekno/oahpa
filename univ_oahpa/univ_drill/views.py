@@ -13,6 +13,7 @@ from forms import *
 from qagame import *
 from sahka import *
 from cealkka import *
+import logging
 
 # comment this out
 # DEBUG = open('/dev/ttys001', 'w')
@@ -251,7 +252,7 @@ class Gameview(object):
 				self.settings['language'] = request.LANGUAGE_CODE
 				request.session['django_language'] = request.LANGUAGE_CODE
         
-                print "get_settings_form language: "+self.settings['language']
+                logging.debug("get_settings_form language: "+self.settings['language'])
 				
 				
 		if request.user.is_authenticated():
@@ -437,6 +438,7 @@ def leksa_game(request, place=False):
 		template = 'leksa.html'
 
 	sess_lang = request.session.get('django_language')
+	logging.debug("Session language: ",sess_lang)
 
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
@@ -445,6 +447,8 @@ def leksa_game(request, place=False):
 	else:
 		sess_lang = 'nob'
 
+	
+	logging.debug("Session language after switching the code to ISO 639-2: ",sess_lang)
 	default_langpair = 'sme%s' % sess_lang
 
 	c = leksagame.create_game(request, initial_transtype=default_langpair)
