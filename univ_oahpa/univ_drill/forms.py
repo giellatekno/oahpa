@@ -999,7 +999,9 @@ class OahpaSettings(forms.Form):
 					'num_bare' : 'NOMPL',
 					'adj_context' : 'ATTRPOS',
 					'source' : 'all',
-					'singular_only' : False}
+					'singular_only' : False  # Morfa-S noun
+					'sg2_only' : False  # Morfa-S verb imperative
+					}
 
 
 
@@ -1272,7 +1274,8 @@ class MorfaSettings(OahpaSettings):
 	trisyllabic = forms.BooleanField(required=False, initial=True)
 	contracted = forms.BooleanField(required=False, initial=True)
 	grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
-	singular_only = forms.BooleanField(required=False, initial=False) 
+	singular_only = forms.BooleanField(required=False, initial=False)
+	sg2_only = forms.BooleanField(required=False, initial=False) 
 	
 	def __init__(self, *args, **kwargs):
 		self.set_settings()

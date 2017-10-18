@@ -16,6 +16,9 @@
 	{% ifequal settings.gametype "bare" %}
 		<li><label for="id_{{ settingsform.vtype.name }}" class="interface">{% trans_to "Type" "sme" %}<span class="invisible">{% trans "Type" %}</span></label>
 			{{ settingsform.vtype }}</li>
+    {% ifequal {{ settingsform.vtype}} "IMPRT" %}
+	   <li><label class="interface">{{ settingsform.sg2_only }}{% trans_to " singular 2. person only" "sme" %}<span class="invisible">{{ settingsform.sg2_only }}{% trans " singular 2. person only" %}</span></label></li>
+    {% endifequal %}		
 	<li><label class="interface">{% trans_to "Stem" "sme" %}<span class="invisible">{% trans "Stem" %}</span></label>
 		<ul>
 			<li>{{ settingsform.bisyllabic }} <label for="id_{{ settingsform.bisyllabic.name }}" class="interface">{% trans_to "bisyllabic" "sme" %}<span class="invisible">{% trans "bisyllabic" %}</span></label></li>

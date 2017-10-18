@@ -67,7 +67,7 @@ http://oahpa.no/sme/useoahpa/numra.nob.html
     	<li><label for="id_{{ settingsform.maxnum.name }}" class="interface">{% trans_to "Select the range of numerals." "sme" %}<span class="invisible">{% trans "Select the range of numerals." %}</span></label>
     		{{ settingsform.maxnum }} </li>
     	<li><label for="id_{{ settingsform.numgame.name }}" class="interface">{% trans_to "Select the direction" "sme" %}<span class="invisible">{% trans "Select the direction" %}</span></label>
-        {{ settingsform.numgame }}
+       {% blocktrans %} Numerals {{ settingsform.numgame }} {% endblocktrans %}
         </li>
         {% endblock %}
     </ul>

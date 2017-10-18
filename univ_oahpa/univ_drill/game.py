@@ -498,7 +498,8 @@ class BareGame(Game):
 
 		syll = True and	self.settings.get('syll')	or ['']
 		case = True and	self.settings.get('case')	or   ""
-		singular_only = self.settings.get('singular_only', False)  # make it possible to only generate singular exercises if the user wishes so
+		singular_only = self.settings.get('singular_only', False)  # Make it possible to only generate singular exercises for noun if the user wishes so.
+		sg2_only = self.settings.get('sg2_only', False) # Only sg2 exercises can be chosen for Morfa-S verb imperative.
 		levels = True and self.settings.get('level')   or   []
 		adjcase = True and self.settings.get('adjcase') or   ""
 		pron_type = True and self.settings.get('pron_type') or   ""
@@ -742,6 +743,9 @@ class BareGame(Game):
 
 			if mood == 'Imprt':
 				TAG_QUERY = TAG_QUERY & Q(personnumber__contains='2')
+				if sg2_only:   # if the user has checked the box "singular 2. person only"
+					TAG_QUERY = TAG_QUERY & Q(personnumber='Sg2')
+
 			if tense != 'Prs':
 				TAG_EXCLUDES = Q(string__contains='ConNeg')
 			
