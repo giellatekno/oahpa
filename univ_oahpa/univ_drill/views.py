@@ -683,7 +683,7 @@ class Morfaview(Gameview):
 						'book',]
 			if self.settings['pos'] == 'V':
 				return ['vtype', 'bisyllabic', 'trisyllabic', 'contracted',
-						'book',]
+						'book', 'sg2_only',]
 			if self.settings['pos'] == 'A':
 				return ['adjcase', 'grade', 'bisyllabic', 'trisyllabic',
 						'contracted', 'book',]
