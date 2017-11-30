@@ -96,7 +96,7 @@ class Game(object):
 		if not self.settings.has_key('gametype'):
 			self.settings['gametype'] = "bare"
 		
-		if self.settings['gametype'] == "bare" and self.settings.has_key('pron_type') and self.settings['pron_type'] in ['Rel', 'Dem']:
+		if self.settings['gametype'] == "bare" and self.settings.has_key('pron_type') and self.settings['pron_type'] in ['Rel', 'Dem'] or self.settings['pos'] == 'A' and self.settings['book'] == 'd1':
 			self.num_fields = 4
             
 		if self.settings.has_key('semtype'):
