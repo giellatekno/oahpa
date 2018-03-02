@@ -1,0 +1,91 @@
+!!XFST vs HFST, both local and gtoahpa
+
+dearvvu2.txt contains the following 2 lines:
+
+Dearvvuođat midjiide.\\
+Dearvvuo đ at
+
+
+!LOCAL
+
+*TEST 1: hfst-lookup, .hfstol\\
+{{{
+cat "dearvvu2.txt" | \
+/main/gt/script/preprocess --abbr=/main/langs/sme/src/abbr.txt | \
+/usr/local/bin/hfst-lookup --output-format=cg /main/langs/sme/src/analyser-disamb-gt-desc.hfstol > test1.txt
+}}}
+
+*TEST 2: lookup, xfst\\
+{{{
+cat "dearvvu2.txt" | \
+/main/gt/script/preprocess --abbr=/main/langs/sme/src/abbr.txt | \
+/usr/local/bin/lookup /main/langs/sme/src/analyser-disamb-gt-desc.xfst | \
+/main/gt/script/lookup2cg | \
+/usr/local/bin/vislcg3 -g /main/langs/sme/src/syntax/disambiguator.cg3 > test2.txt
+}}}
+
+*TEST 3: hfst-optimized-lookup, .hfstol\\
+{{{
+cat "dearvvu2.txt" | \
+/main/gt/script/preprocess --abbr=/main/langs/sme/src/abbr.txt | \
+/usr/local/bin/hfst-optimized-lookup  /main/langs/sme/src/analyser-disamb-gt-desc.hfstol | \
+/opt/local/bin/perl /main/gt/script/lookup2cg | \
+/usr/local/bin/vislcg3 -g /main/langs/sme/src/syntax/disambiguator.cg3 > test3.txt
+}}}
+
+!GTOAHPA
+
+*TEST 1: hfst-lookup, .hfstol\\
+{{{
+cat "dearvvu2.txt" | \
+/opt/smi/sme/bin/preprocess --abbr=/opt/smi/sme/bin/abbr.txt | \
+/usr/bin/hfst-lookup --output-format=cg /opt/smi/sme/bin/analyser-disamb-gt-desc.hfstol > test1_s.txt
+}}}
+
+*TEST 2: lookup, xfst\\
+{{{
+cat "dearvvu2.txt" | \
+/opt/smi/sme/bin/preprocess --abbr=/opt/smi/sme/bin/abbr.txt | \
+/usr/bin/lookup /opt/smi/sme/bin/analyser-disamb-gt-desc.xfst | \
+/opt/smi/sme/bin/lookup2cg | /usr/local/bin/vislcg3 -g /opt/smi/sme/bin/disambiguator.cg3 > test2_s.txt
+}}}
+
+*TEST 3: hfst-optimized-lookup, .hfstol\\
+{{{
+cat "dearvvu2.txt" | \
+/opt/smi/sme/bin/preprocess --abbr=/opt/smi/sme/bin/abbr.txt | \
+/usr/bin/hfst-optimized-lookup  /opt/smi/sme/bin/analyser-disamb-gt-desc.hfstol | \
+/opt/smi/sme/bin/lookup2cg | /usr/local/bin/vislcg3 -g /opt/smi/sme/bin/disambiguator.cg3 > test3_s.txt
+}}}
+
+!RESULTS:
+*test1.txt = test1_s.txt (apart from weight being 0.0000 loc, 0,0000 gtoahpa)
+*test2.txt = test2_s.txt (apart from analyses for đ coming in different order)
+*test3.txt = test3_s.txt --- this is the pipeline that produced correct exercise for konteaksta locally but not on gtoahpa.
+Dearvvuo is present loc, but missing on gtoahpa(!)
+**LOCAL\\\\
+"<Dearvvuođat>"\\
+"dearvvuohta" N <sme> Sem/Prod-ling Pl Nom\\
+"<midjiide>"\\
+"mun" Pron <sme> Pers Pl1 Ill\\
+"<.>"\\
+"." CLB\\\\
+"<Dearvvuo>"\\
+"Dearvvuo" ?\\
+"<đ>"\\
+"đ" N <sme> Sem/Sign ABBR Sg Gen\\
+"đ" N <sme> Sem/Sign ABBR Attr\\
+"đ" N <sme> Sem/Sign ABBR Sg Nom\\\\
+"<at>"\\
+"at" Err/Lex CC <sme> @CNP\\\\
+**GTOAHPA\\\\
+"<Dearvvuođat>"\\
+"dearvvuohta" N <sme> Sem/Prod-ling Pl Nom\\
+"<midjiide>"\\
+"mun" Pron <sme> Pers Pl1 Ill\\
+"<.>"\\
+"." CLB\\\\
+"<đ>"\\
+"đ" N <sme> Sem/Sign ABBR Sg Nom\\\\
+"<at>"\\
+"at" Err/Lex CC <sme> @CNP\\
