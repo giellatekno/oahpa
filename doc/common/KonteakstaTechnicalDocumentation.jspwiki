@@ -3,7 +3,7 @@
 * [The main Konteaksta background document|../nudoc/konteaksta.html]
 * The test url: [http://oahpa.no/konteaksta]
 
-The core of Konteaksta is implemented as a Java servlet on Apache Tomcat web server. 
+The core of Konteaksta is implemented as a Java servlet on Apache Tomcat web server.
 
 Updating the code on gtoahpa
 
@@ -24,15 +24,16 @@ The logs of running Konteaksta can be found in the directory {{$CATALINA_HOME/lo
 
 The pipeline is:
 
-
 {{{
 cat text | \
-preprocess --abbr=/opt/smi/sme/bin/abbr.txt --corr=/opt/smi/sme/bin/corr.txt | \
-lookup -flags mbTT /opt/smi/sme/bin/sme.fst | \
-lookup2cg | \
-vislcg3 -g /opt/smi/sme/bin/disambiguation.cg3 | \
-vislcg3 -g /opt/smi/sme/bin/functions.cg3
+/opt/smi/sme/bin/preprocess --abbr=/opt/smi/sme/bin/abbr.txt --corr=/opt/smi/sme/bin/corr.txt | \
+/usr/bin/lookup -flags mbTT /opt/smi/sme/bin/analyser-disamb-gt-desc.xfst | \
+/opt/smi/sme/bin/lookup2cg | \
+/usr/local/bin/vislcg3 -g /opt/smi/sme/bin/disambiguator.cg3
 }}}
+
+As of Mar-2018 tests have been performed using xfst vs hfst in the pipeline (see [FSTs tests| konteakstaFstTests.html]).
+
 
 !!!File structure
 
@@ -42,16 +43,16 @@ The source code of North Sámi Konteaksta is in {{$GTHOME/apps/teaksta/sme/src/m
 Exercise topics are defined in {{src/main/webapp/activities/}}.
 Each topic has its folder.
 
-* Adverbial/           
-* InfiniteVerbs/       
-* Object/              
-* SubstantivePlural/   
-* VerbConjugation/     
-* Conjunctions/        
-* NegVerbs/            
-* Subject/             
-* SubstantiveSingular/ 
- 
+* Adverbial/
+* InfiniteVerbs/
+* Object/
+* SubstantivePlural/
+* VerbConjugation/
+* Conjunctions/
+* NegVerbs/
+* Subject/
+* SubstantiveSingular/
+
 
 For each folder, there are three files:
 
@@ -71,7 +72,7 @@ Instructions of how to add a new exercise topic are [here|KonteakstaAddingNewTop
 
 Konteaksta front page is {{src/main/webapp/index.html}}. It is written in HTML and Javascript. When pressing the button "Go!" the Java servlet will be run that does the following:
 
-# preprocessing: 
+# preprocessing:
 ## extracting the textual content from the webpage
 ## tokenisation
 ## sentence boundary detection
@@ -79,7 +80,7 @@ Konteaksta front page is {{src/main/webapp/index.html}}. It is written in HTML a
 ### morphological analysis (FST)
 ### morphological disambiguation (CG)
 ### shallow syntactic parsing (CG)
-# postprocessing (one of the ''Topic''Enhancer.java files in {{src/main/java/werti/uima/enhancer/}}): 
+# postprocessing (one of the ''Topic''Enhancer.java files in {{src/main/java/werti/uima/enhancer/}}):
 ## Selection of the tokens that are relevant for the topic
 ## Enhancement - enriching the HTML code with additional attributes. The relevant tokens will be marked and provided with attributes as __lemma__, __distractors__ and __answer__.
 # Loads the enhanced page to the browser. The four different exercise types (color, click, multiple choice, cloze) are implemented in Javascript.
@@ -87,10 +88,10 @@ Konteaksta front page is {{src/main/webapp/index.html}}. It is written in HTML a
 !!!Example of enhanced HTML code
 
 {{{
-<span id="WERTi-span- Ind Prt-2" 	     
-      class="wertiviewtoken  wertiviewVerbConjugation" 
-      lemma="leat" 
-      distractors="leat lean leat leahkit leame leamen leahkime lea " 
+<span id="WERTi-span- Ind Prt-2"
+      class="wertiviewtoken  wertiviewVerbConjugation"
+      lemma="leat"
+      distractors="leat lean leat leahkit leame leamen leahkime lea "
       answer="lei leai ">  lei
 </span>
 }}}
