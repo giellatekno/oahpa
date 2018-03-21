@@ -1,7 +1,0 @@
-{% load i18n %}
-<div class="tooltip" id='tooltip-{{ forloop.counter }}' style="display:none;">
-    {% if settings.pos == "V" or settings.pos == "N" or settings.pos == "A" or settings.pos == "Der" %}
-       {% if form.translations %}{{ form.translations }}{% endif %}
-    {% endif %} 
-    {% ifequal settings.gametype "context" %}<br /><br /><span style="color: #888; font-size:80%; font-style: italic;">{{ form.tooltip_question_id }}</span>{% endifequal %}
-</div>
