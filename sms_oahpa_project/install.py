@@ -5,19 +5,19 @@ import django
 django.setup()
 from os import environ
 
-from local_conf import LLL_OAHPA
+from local_conf import LLL1
 import importlib
-settings = importlib.import_module(LLL_OAHPA+'.settings')
-sdm = importlib.import_module(LLL_OAHPA+'.drill.models')
+settings = importlib.import_module(LLL1+'_oahpa.settings')
+sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
 
 import os, sys
-print " * Correcting paths"	
+print " * Correcting paths"
 cur_path = os.getcwd()
 parent_path = '/' + '/'.join([a for a in cur_path.split('/') if a][0:-1]) + '/'
 sys.path.insert(0, parent_path)
 
 settings.DEBUG = True
-environ['DJANGO_SETTINGS_MODULE'] = LLL_OAHPA+'.settings'
+environ['DJANGO_SETTINGS_MODULE'] = LLL1+'_oahpa.settings'
 
 from optparse import OptionParser, make_option
 import sys
@@ -75,7 +75,7 @@ class Command(BaseCommand):
         can_import_settings = True
 	#option_list = BaseCommand.option_list + OPTION_LIST
 	help = 'Help text goes here'
-		
+
 	def handle(self, **options):
 		main(opts=option_list)
 
@@ -84,7 +84,7 @@ def main(opts):
 		parser = OptionParser(option_list=opts)
 	else:
 		parser = OptionParser(option_list=OPTION_LIST)
-	
+
 	(options, args) = parser.parse_args()
 
 	linginfo = Paradigm()
@@ -107,15 +107,15 @@ def main(opts):
 	if options.questionfile and options.grammarfile:
 	    questions.read_questions(options.questionfile,options.grammarfile)
 	    sys.exit()
-	
+
 	if options.semtypefile:
 		extra.read_semtypes(options.semtypefile)
 		sys.exit()
-	
+
 	if options.messagefile:
 	    feedback.read_messages(options.messagefile)
 	    sys.exit()
-	    
+
 	if options.sahkafile:
 		sahka.read_dialogue(options.sahkafile)
 		sys.exit()
@@ -123,7 +123,7 @@ def main(opts):
 	if options.feedbackfile and options.infile:
 	    feedback.read_feedback(options.feedbackfile,options.infile)
 	    sys.exit()
-	
+
 	if options.linkfile:
 		extra.read_address(options.linkfile)
 		sys.exit()
