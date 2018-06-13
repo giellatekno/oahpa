@@ -2,10 +2,10 @@
 import os
 import sys
 
-from local_conf import LLL_OAHPA
+from local_conf import LLL1
 
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", LLL_OAHPA+".settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", LLL1+"_oahpa.settings")
     try:
         from django.core.management import execute_from_command_line
     except ImportError:

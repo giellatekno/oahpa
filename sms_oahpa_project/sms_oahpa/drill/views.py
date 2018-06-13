@@ -5,9 +5,6 @@ oahpa_module = importlib.import_module(LLL1+'_oahpa')
 tls = importlib.import_module(LLL1+'_oahpa.conf.tools')
 cvs = importlib.import_module(LLL1+'_oahpa.courses.views')
 cds = importlib.import_module(LLL1+'_oahpa.courses.decorators')
-settings = importlib.import_module(LLL1+'_oahpa.settings')
-current_oahpa = settings.XXX_OAHPA
-XXX1 = settings.XXX1
 
 from django.template import Context, RequestContext, loader
 from django.db.models import Q
@@ -41,7 +38,7 @@ def index(request):
 	c = {
 		'jee': "joku arvo",
 		}
-	return render_to_response(request, current_oahpa+'_main.html', c)
+	return render_to_response(request, LLL1+'_oahpa_main.html', c)
 
 def updating(request):
 	c = {
@@ -313,8 +310,8 @@ class Leksaview(Gameview):
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
 			'deeplink': self.create_deeplink(game, settings_form),
-			'lll1_oahpa': current_oahpa+'.html',
-			'lll1': XXX1,
+			'lll1_oahpa': LLL1+'_oahpa.html',
+			'lll1': LLL1,
 			}
 
 
@@ -385,8 +382,8 @@ class LeksaPlaceview(Gameview):
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
 			'deeplink': self.create_deeplink(game, settings_form),
-			'lll1_oahpa': current_oahpa+'.html',
-			'lll1': XXX1,
+			'lll1_oahpa': LLL1+'_oahpa.html',
+			'lll1': LLL1,
 			}
 
 
@@ -405,12 +402,12 @@ def leksa_game(request, place=False):
 
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
-		if sess_lang == XXX1:
+		if sess_lang == LLL1:
 			sess_lang = 'rus'  # was: nob
 	else:
 		sess_lang = 'nob'
 
-	default_langpair = XXX1+'%s' % sess_lang
+	default_langpair = LLL1+'%s' % sess_lang
 
 	c = leksagame.create_game(request, initial_transtype=default_langpair)
 
@@ -446,8 +443,8 @@ class Numview(Gameview):
 			'show_correct': game.show_correct,
 			'gametype': self.settings['numgame'],
 			'deeplink': self.create_deeplink(game, settings_form),
-			'lll1_oahpa': current_oahpa+'.html',
-			'lll1': XXX1,
+			'lll1_oahpa': LLL1+'_oahpa.html',
+			'lll1': LLL1,
 		 #   'numstring': numstring,
 			}
 
@@ -696,8 +693,8 @@ class Morfaview(Gameview):
 			'show_correct': game.show_correct,
 			'language' : self.settings['language'],
 			'deeplink': self.create_deeplink(game, settings_form),
-			'lll1_oahpa': current_oahpa+'.html',
-			'lll1': XXX1,
+			'lll1_oahpa': LLL1+'_oahpa.html',
+			'lll1': LLL1,
 			}
 
 	def additional_settings(self, settings_form):
@@ -1002,8 +999,8 @@ class Cealkkaview(Gameview):
 			'show_correct': game.show_correct,
 			'gametype': "cealkka",
 			'deeplink': self.create_deeplink(game, settings_form),
-			'lll1_oahpa': current_oahpa+'.html',
-			'lll1': XXX1,
+			'lll1_oahpa': LLL1+'_oahpa.html',
+			'lll1': LLL1,
 			}
 		return c
 
