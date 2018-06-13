@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from local_conf import LLL_OAHPA
+from local_conf import LLL1
 import importlib
-sdm = importlib.import_module(LLL_OAHPA+'.drill.models')
+sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
 
 from django.db.models import Q
 from xml.dom import minidom as _dom

@@ -125,10 +125,10 @@ various permutations of morphosyntactic features.
 
 """
 
-from local_conf import LLL_OAHPA
+from local_conf import LLL1
 import importlib
-settings = importlib.import_module(LLL_OAHPA+'.settings')
-sdm = importlib.import_module(LLL_OAHPA+'.drill.models')
+settings = importlib.import_module(LLL1+'_oahpa.settings')
+sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
 
 from xml.dom import minidom as _dom
 from django.db.models import Q
