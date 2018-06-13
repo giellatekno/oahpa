@@ -1,1 +1,1 @@
-LLL1 = 'my_sms'
+LLL1 = 'sms'

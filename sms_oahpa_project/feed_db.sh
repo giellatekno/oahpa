@@ -15,18 +15,8 @@ echo " "
 echo "done"
 echo "==================================================="
 
-# echo "==================================================="
-# for PARADGIM_FILE in $(ls $META/*_paradigms.txt)
-
-# echo "feeding db with $DPS/N_sms2X.xml"
-# $P install.py --file $DPS/N_sms2X.xml --tagfile $META/tags.txt --paradigmfile $META/$PARADGIM_FILE 2>>error.log
-# echo " "
-# echo "done"
-
-# echo "==================================================="
-
-
-#my_sms_oahpa>export DJANGO_SETTINGS_MODULE=my_sms_oahpa.settings
+# NB:
+#sms_oahpa>export DJANGO_SETTINGS_MODULE=sms_oahpa.settings
 
 for xfile in $(ls $SMS/*.xml)
 do

@@ -1,1 +1,1 @@
-LLL_OAHPA = 'my_sms_oahpa'
+LLL1 = 'sms'
