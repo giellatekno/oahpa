@@ -12,7 +12,6 @@ from django.utils.encoding import force_unicode
 
 settings = oahpa_module.settings
 switch_language_code = oahpa_module.conf.tools.switch_language_code
-XXX1 = settings.XXX1
 
 from models import *
 import datetime
@@ -889,7 +888,7 @@ class OahpaSettings(forms.Form):
 
 	def set_default_data(self):
 		self.default_data = {
-					'language' : XXX1,  # sme in univ_oahpa
+					'language' : LLL1,  # sme in univ_oahpa
 					'syll' : ['2syll'],
 					'bisyllabic': 'on',
 					'trisyllabic': False,
@@ -985,7 +984,7 @@ class OahpaQuestion(forms.Form):
 		forms = []
 		relaxings = []
 		if hasattr(self, 'translang'):
-			if self.translang == XXX1:
+			if self.translang == LLL1:
  				# Relax spellings.
 				accepted_answers = [force_unicode(item) for item in accepted_answers]
 				forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
@@ -1030,7 +1029,7 @@ class LeksaSettings(OahpaSettings):
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
 
-	default_data = {'gametype' : 'bare', 'language' : XXX1, 'dialect' : 'main',
+	default_data = {'gametype' : 'bare', 'language' : LLL1, 'dialect' : 'main',
 			'syll' : [],
 			'bisyllabic': False,
 			'trisyllabic': False,
@@ -1211,7 +1210,7 @@ class MorfaQuestion(OahpaQuestion):
 				conneg_agr = False
 
 		conneg_widget = forms.HiddenInput(attrs={'value': conneg_agr})
-		self.translang = XXX1
+		self.translang = LLL1
 		kwargs['correct_val'] = correct_val
 		super(MorfaQuestion, self).__init__(*args, **kwargs)
 
@@ -1370,7 +1369,7 @@ class NumSettings(OahpaSettings):
 	numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
 	#numlanguage = forms.ChoiceField(initial='sms', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
 	# TODO: remove mandatory need to set default data, should be done through 'initial' field setting.
-	default_data = {'language' : 'rus', 'numlanguage' : XXX1, 'dialect' : 'main', 'maxnum' : '10', 'numgame': 'numeral'}
+	default_data = {'language' : 'rus', 'numlanguage' : LLL1, 'dialect' : 'main', 'maxnum' : '10', 'numgame': 'numeral'}
 
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1381,7 +1380,7 @@ class NumOrdSettings(OahpaSettings):
 	numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
 	#numlanguage = forms.ChoiceField(initial='sms', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
 	# TODO: remove mandatory need to set default data, should be done through 'initial' field setting.
-	default_data = {'language' : 'rus', 'numlanguage' : XXX1, 'dialect' : 'main', 'maxnum' : '10', 'numgame': 'numeral'}
+	default_data = {'language' : 'rus', 'numlanguage' : LLL1, 'dialect' : 'main', 'maxnum' : '10', 'numgame': 'numeral'}
 
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1488,7 +1487,7 @@ class NumQuestion(OahpaQuestion):
 class KlokkaSettings(NumSettings):
 	numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES_PL, widget=forms.RadioSelect)
 	gametype = forms.ChoiceField(initial='kl1', choices=KLOKKA_CHOICES, widget=forms.RadioSelect)
-	default_data = {'language' : 'rus', 'numlanguage' : XXX1, 'dialect' : 'main', 'gametype' : 'kl1', 'numgame': 'string'}
+	default_data = {'language' : 'rus', 'numlanguage' : LLL1, 'dialect' : 'main', 'gametype' : 'kl1', 'numgame': 'string'}
 
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1637,7 +1636,7 @@ class KlokkaQuestion(NumQuestion):
 class DatoSettings(KlokkaSettings):
 	gametype = None # Disable gametype (easy, medium, hard)
 
-	default_data = {'language' : 'rus', 'numlanguage' : XXX1, 'numgame': 'string'}
+	default_data = {'language' : 'rus', 'numlanguage' : LLL1, 'numgame': 'string'}
 
 
 class DatoQuestion(KlokkaQuestion):
