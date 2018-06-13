@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404
 from django.utils.translation import ugettext_lazy as _
 
-from sms_oahpa.conf.tools import switch_language_code
+from conf.tools import switch_language_code
 
 from random import randint
 
@@ -15,7 +15,7 @@ from sahka import *
 from cealkka import *
 
 # comment this out
-# DEBUG = open('/dev/ttys001', 'w')
+DEBUG = open('/dev/ttys001', 'w')
 
 # This is some crazy voodoo for course tracking
 
@@ -27,18 +27,19 @@ from courses.views import render_to_response
 from courses.decorators import trackGrade
 
 def index(request):
-	c = RequestContext(request, {
-		'jee': "joku arvo",
-		})
-	return render_to_response('sms_oahpa_main.html', c,
-				context_instance=RequestContext(request))
+	c = {'jee': "joku arvo"}
+        return render_to_response(request, 'sms_oahpa_main.html', c)
+	#return render_to_response('sms_oahpa_main.html', c,
+	#			context_instance=RequestContext(request))
 
 def updating(request):
-	c = RequestContext(request, {
-		'jee': "joku arvo",
-		})
-	return render_to_response('updating.html', c,
-				context_instance=RequestContext(request))
+	c = {'jee': "joku arvo"}
+	#c = RequestContext(request, {
+	#	'jee': "joku arvo",
+	#	})
+        return render_to_response(request, 'updating.html', c)
+	#return render_to_response('updating.html', c,
+	#			context_instance=RequestContext(request))
 
 class Gameview(object):
 	""" Gameview is instantiated with a Settings object and a Game object,

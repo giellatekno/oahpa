@@ -9,9 +9,11 @@ def render_to_response(*args, **kwargs):
 	doesn't depend on the function returning the response to be decorated by
 	@trackGrade to get proper output. """
 
-	from django.shortcuts import render_to_response
+	#from django.shortcuts import render_to_response
+        from django.shortcuts import render
 
-	response = render_to_response(*args, **kwargs)
+	#response = render_to_response(*args, **kwargs)
+        response = render(*args)
 	# response.response_args = args
 	response.context = args[1]
 
@@ -151,9 +153,11 @@ def courses_main(request):
 								 .distinct(),
 	}
 
-	return render_to_response(template, 
-							  c, 
-							  context_instance=RequestContext(request))
+        return render_to_response(request, template, c)
+        #return render_to_response(template, c, request)
+	#return render_to_response(template, 
+	#						  c, 
+	#						  context_instance=RequestContext(request))
 
 from django.contrib.auth.decorators import user_passes_test
 
@@ -180,8 +184,9 @@ def instructor_student_detail(request, uid):
 	template = 'courses/instructor_student_detail.html'
 	c = {}
 	c['student'] = UserProfile.objects.get(user__id=uid)
-	return render_to_response(template,
-							  c,
-							  context_instance=RequestContext(request))
-
+        return render_to_response(request, template, c)
+        #return render_to_response(template, c, request)
+	#return render_to_response(template,
+	#						  c,
+	#						  context_instance=RequestContext(request))
 

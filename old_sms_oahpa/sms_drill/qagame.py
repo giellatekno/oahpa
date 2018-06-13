@@ -8,18 +8,20 @@ from models import *
 from forms import *
 from game import Game
 
-import sms_oahpa.settings as settings
+import settings
 
 try:
 	DEFAULT_DIALECT = settings.DEFAULT_DIALECT
 except:
 	DEFAULT_DIALECT = None
-class CealkkaGame(Game):
+
+class QAGame(Game):
 
 	test = 0
 	
 	def __init__(self, *args, **kwargs):
-		super(CealkkaGame, self).__init__(*args, **kwargs)
+		self.generated_syntaxes = list()
+		super(QAGame, self).__init__(*args, **kwargs)
 		self.init_tags()
 	
 	def init_tags(self):
@@ -27,14 +29,14 @@ class CealkkaGame(Game):
 		Initialize the grammatical information.
 		This information should be moved to parameters
 		"""
-		self.num_fields = 3
+		self.num_fields = 6
 		self.syntax =('MAINV','SUBJ','HAB')
 		self.qtype_verbs = set(['V-COND','V-IMPRT','V-POT', 'PRS','PRT', 'V-PRS', 'V-PRT', 'V-GER', 'V-PRF'])
 
 		# Default tense and mood for testing
 		self.tense = "Prs"
 		self.mood = "Ind"
-		self.gametype = "cealkka" 
+		self.gametype = "morfa" # why morfa? it is "qa"
 				
 		# TODO: check this in smeoahpa, possible source of error.
 		# Values for pairs QPN-APN
@@ -91,6 +93,7 @@ class CealkkaGame(Game):
 			Note: attempting to reduce amount of queries run here, there are still some that are repeated,
 				  but these should reduced once we come along to testing numbers.
 		"""
+
 		if self.settings.has_key('dialect'):
 			dialect = self.settings['dialect']
 		else:
@@ -99,33 +102,23 @@ class CealkkaGame(Game):
 		word=None
 		if tag_el.pos=="Num" and self.settings.has_key('num_level') and str(self.settings['num_level'])=="1":
 			smallnum = ["1","2","3","4","5","6","7","8","9","10"]
-		word = Word.objects.filter(wordqelement__qelement=qelement,
+			word = Word.objects.filter(wordqelement__qelement=qelement,
 									 form__tag=tag_el.id)
-		if word.count() > 0:
-			word = word.order_by('?')[0]
+			if word.count() > 0:
+				word = word.order_by('?')[0]
 		else:
-			# Dialect is commented out still because we're only getting
-			# dialectical form variants, not word variants.
+			# Do not filter dialect here
 			possible_words = Word.objects.filter(wordqelement__qelement=qelement,
-												# dialects__dialect=dialect,
 												form__tag=tag_el.id)
 			if possible_words.count() > 0:
 				word = possible_words.order_by('?')[0]
 
-		form_set_filter = word.form_set.filter(tag=tag_el.id)
-
-		# filter forms by dialect
-		form_set_filter_dial = form_set_filter\
-									.exclude(dialects__dialect='NG')\
-									.filter(dialects__dialect=dialect)
-
-		if form_set_filter_dial.count() > 0:
-			form_set_filter = form_set_filter_dial
-
+		form_set_filter = self.filter_forms_by_dialect(
+							word.form_set.filter(tag=tag_el.id))
+		
 		if word and form_set_filter.count()>0:
 			form = form_set_filter[0] 
-		else: raise Form.DoesNotExist("No words found.")
-		# return None
+		else: return None
 		# TODO: better error handling here-- this needs to point out
 		# that the DB is not installing properly, but I need to check
 		# first that the code doesn't depend on returning None
@@ -144,20 +137,12 @@ class CealkkaGame(Game):
 		"""
 		words = []
 
-		if self.settings.has_key('dialect'):
-			dialect = self.settings['dialect']
-		else:
-			dialect = DEFAULT_DIALECT
-		
 		# If there are no information available for these elements, try to use other info.
 		word = None
 		form = None
 				
 		if lemma and tag_el:
-			form_set = tag_el.form_set.exclude(dialects__dialect='NG')
-			dialect_forms = form_set.filter(dialects__dialect=dialect)
-			if dialect_forms.count() > 0:
-				form_set = dialect_forms
+			form_set = self.filter_forms_by_dialect(tag_el.form_set.all())
 
 			if qelement:
 				if qelement.semtype:
@@ -178,19 +163,10 @@ class CealkkaGame(Game):
 
 				# word = word_set[0]
 
-				form_set = word.form_set.filter(tag=tag_el)
-
-				excl = form_set.exclude(dialects__dialect='NG')
-
-				if excl.count() > 0:
-					form_set = excl
-
-				dialect_forms = form_set.filter(dialects__dialect=dialect)
-
-				if dialect_forms.count() > 0:
-					form_set = dialect_forms
+				form_set = self.filter_forms_by_dialect(word.form_set.filter(tag=tag_el))
 
 				form = form_set[0]
+
 
 		
 		if form:
@@ -198,12 +174,7 @@ class CealkkaGame(Game):
 			info = {'word': form.word.id, 'tag': tag_el.id, 'fullform': [ fullform ]}
 			words.append(info)
 		elif word:
-			form_list = word.form_set.exclude(dialects__dialect='NG')
-
-			filtered = form_list.filter(dialects__dialect=dialect)
-			
-			if filtered.count() > 0:
-				form_list = filtered
+			form_list = self.filter_forms_by_dialect(word.form_set.all())
 
 			if tag_el:
 				form_list = form_list.filter(tag=tag_el)
@@ -273,11 +244,13 @@ class CealkkaGame(Game):
 			# Get number information for subject
 			subjword = {}
 			if tag_el.pos == "Pron":
+				# NOTE: mii is interrogative and mii is personal
+				# filtering by 'pronbase' isn't enough here.
 				subjnumber = tag_el.personnumber
 				if not subjnumber:
 					raise Http404("Tag Element missing personnumber. Database may be improperly installed for tags.")
 				pronbase = self.PronPNBase[subjnumber]
-				word_el = Word.objects.filter(lemma=pronbase)[0]
+				word_el = Word.objects.filter(lemma=pronbase, form__tag=tag_el)[0]
 				words_ = self.get_words(None, tag_el, None, word_el.id)
 				try:
 					info = words_[0]
@@ -433,9 +406,11 @@ class CealkkaGame(Game):
 								anumber = agr_tag.personnumber
 							else:
 								anumber = agr_tag.number
-							tag_count = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber)).count()
-							if tag_count>0:
-								tag_el = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber))[randint(0, tag_count-1)]
+
+							_tag_query = Q(personnumber=anumber) | Q(number=anumber)
+							tags = element.tags.filter(_tag_query)
+							if tags.count() > 0:
+								tag_el = choice(tags)
 				if not tag_el: 
 					tag_el_count = element.tags.count()
 					if tag_el_count > 0:
@@ -457,6 +432,106 @@ class CealkkaGame(Game):
 
 		# Return the ready qwords list.			
 		return qwords
+
+	def filter_forms_by_dialect(self, form_set):
+		""" Filters forms by the current session dialect
+		"""
+
+		if self.settings.has_key('dialect'):
+			dialect = self.settings['dialect']
+		else:
+			dialect = DEFAULT_DIALECT
+
+		excl = form_set.exclude(dialects__dialect='NG')
+
+		if excl.count() > 0:
+			form_set = excl
+
+		dialect_forms = form_set.filter(dialects__dialect=dialect)
+
+		if dialect_forms.count() > 0:
+			form_set = dialect_forms
+
+		return form_set
+
+		
+	def select_reciprocative_forms(self, answer, awords, target):
+		""" Follows user selection of reciprocative type and returns the relevant
+		wordform.
+		"""
+		wordform_type = self.settings['wordform_type']
+		if not wordform_type:
+			wordform_type = 'goabbat'
+
+		_recipr_qelement = answer.qelement_set.get(identifier=target)
+
+		_recipr_tag = _recipr_qelement.tags.all().order_by('?')[0]
+
+		if target == 'P-REC':
+			# P-REC needs to search by word stem, which should be set
+			# to guoibmi or nubb
+			if wordform_type == 'goabbat':
+				stem_type = 'guoibmi'
+			else:
+				stem_type = 'nubbi'
+			_recipr_forms = _recipr_tag.form_set.filter(word__stem=stem_type)
+		else:
+			_recipr_forms = _recipr_tag.form_set.filter(word__lemma=wordform_type)
+
+		_recipr_word = _recipr_forms[0].word
+		_recipr_fullforms = [a.fullform for a in _recipr_forms]
+
+		awords[target] = [{
+			'tag': _recipr_tag.id, 
+			'word': _recipr_word.id, 
+			'fullform': _recipr_fullforms, 
+		}]
+
+		return awords
+	
+	def generate_answers_reflexive(self, answer, question, awords, qwords):
+		""" Checks reflexive agreement on RPRON with a specified agreement
+		element, returns awords. If agreement isn't specified, default behavior
+		is MAINV.
+			
+		Task element should be specified like this to get RPRON agreement
+		from MAINV.
+
+			<element game='morfa' id="RPRON" task="yes">
+				<grammar tag="Pron+Refl+Ill+Possessive"/>
+				<agreement id="MAINV" />
+			</element>
+
+		"""
+
+		# Get corresponding RPRON tag
+		_refl_qelement = answer.qelement_set.get(identifier='RPRON')
+		try:
+			_refl_agreement_head = _refl_qelement.agreement.identifier
+		except AttributeError:
+			_refl_agreement_head = 'MAINV'
+
+		# Find agreement head's person (MAINV)
+		_head = choice(awords[_refl_agreement_head])
+		_head_tag = Tag.objects.get(id=_head['tag'])
+		_head_person = _head_tag.personnumber
+
+		# Get agreeing tag
+		_refl_person = 'Px%s' % _head_person
+		_refl_tag = _refl_qelement.tags.get(possessive=_refl_person)
+
+		# Get RPRON forms, tags, word element
+		_refl_forms = self.filter_forms_by_dialect(_refl_tag.form_set.all())
+		_refl_word = _refl_forms.order_by('?')[0].word
+		_refl_fullforms = _refl_forms.values_list('fullform', flat=True)
+
+		awords['RPRON'] = [{
+			'tag': _refl_tag.id, 
+			'word': _refl_word.id, 
+			'fullform': _refl_fullforms, 
+		}]
+
+		return awords
 
 	def generate_answers_subject(self, answer, question, awords, qwords, element="SUBJ"):
 		""" Can be used to generate answers for habitive, just supply element="HAB"
@@ -538,9 +613,9 @@ class CealkkaGame(Game):
 		return awords
 
 	
-	def generate_answers_mainv(self, answer, question, awords, qwords):
+	def generate_answers_mainv(self, answer, question, awords, qwords, element="MAINV"):
 
-		mainv_elements = self.get_elements(answer,"MAINV")
+		mainv_elements = self.get_elements(answer, element)
 		# print '--'
 		# print question.qid
 		# print mainv_elements
@@ -568,8 +643,8 @@ class CealkkaGame(Game):
 			va_number=self.SVPN[a_number]
 			# print 'va_number: ', va_number
 		else:
-            # No SUBJ defined, MAINV is a copy of the question MAINV
-            # and needs to have Question-Answer subject change
+			# No SUBJ defined, MAINV is a copy of the question MAINV
+			# and needs to have Question-Answer subject change
 			if qwords.has_key(copy_syntax):
 				qmainv = qwords[copy_syntax]
 				q_number = qmainv['number']
@@ -577,12 +652,22 @@ class CealkkaGame(Game):
 					va_number = self.QAPN[q_number]
 			else:
 				# No SUBJ defined, and MAINV is defined (and not a copy from Q)
-                # but MAINV still needs to have Question-Answer subject change
-				if qwords.has_key('MAINV'):
-					qmainv = qwords['MAINV']
+				# but MAINV still needs to have Question-Answer subject change
+				if qwords.has_key(element):
+					qmainv = qwords[element]
 					q_number = qmainv['number']
 					if q_number:
 						va_number = self.QAPN[q_number]
+
+				# The element we're looking at is not present in qwords, 
+				# but it is present in awords; which means that it's probably NEG
+				if awords.has_key(element) and not qwords.has_key(element):
+					qmainv = qwords.get("MAINV", False)
+					if qmainv:
+						q_number = qmainv['number']
+						if q_number:
+							va_number = self.QAPN[q_number]
+					
 					
 		# If there is no subject, then the number of the question
 		# mainverb determines the number.
@@ -622,7 +707,7 @@ class CealkkaGame(Game):
 			mainv_fullform = mainv_form.fullform
 
 		# If the main verb is under question, then generate full list.
-		if answer.task == "MAINV":
+		if answer.task in ["MAINV", "NEG"]:
 			mainv_words = []
 			if mainv_elements:
 				for mainv_el in mainv_elements:
@@ -647,8 +732,6 @@ class CealkkaGame(Game):
 			else:
 				if mainv_word:
 					mainv_words.extend(self.get_words(mainv_el, mainv_tag, None, mainv_word))
-					
-		# Otherwise take only one element
 		else:
 			if mainv_elements:
 				mainv_element = mainv_elements[0]
@@ -664,17 +747,17 @@ class CealkkaGame(Game):
 					info = { 'tag' : mainv_tag.id, 'word' : mainv_word }
 					mainv_words.append(info)
 					
-		if not mainv_words and qwords.has_key("MAINV"):
-			mainv_words.append(qwords["MAINV"])
+		if not mainv_words and qwords.has_key(element):
+			mainv_words.append(qwords[element])
 		
-		awords["MAINV"] = mainv_words
+		awords[element] = mainv_words
 		
 		return awords
 
 	def generate_syntax(self, answer, question, awords, qwords, s):
-
 		
-		if s in ["SUBJ", "MAINV", "HAB"]: return awords
+		if s in self.generated_syntaxes: 
+			return awords
 		
 		if not awords.has_key(s):
 			awords[s] = []
@@ -717,9 +800,9 @@ class CealkkaGame(Game):
 						anumber = agr_tag.personnumber
 					else:
 						anumber = agr_tag.number
-					tag_count = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber)).count()
-					if tag_count>0:
-						tag_elements = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber))
+
+					_tag_query = Q(personnumber=anumber) | Q(number=anumber)
+					tags_elements = element.tags.filter(_tag_query)
 
 		# if no agreement, take all tags.
 		else:
@@ -748,22 +831,16 @@ class CealkkaGame(Game):
 
 		return awords
 
-	######### Cealkka questions
-	def get_question_cealkka(self,db_info,qtype):
+	######### Vasta questions
+	def get_question_qa(self,db_info,qtype):
 
 		qwords = {}
-                if self.settings.has_key('level') and self.settings['level'] not in ['All','all']: 
-                    level=int(self.settings['level'])
-                else: # default level was set to 'all', but I could not find where
-                    level=1
-                #if self.settings.has_key('lemmacount'):  # added by Heli
-                 #   lemmacount=int(self.settings['lemmacount'])
-                #else:
-                 #   lemmacount=2		
-		q_count = Question.objects.filter(gametype="cealkka", level__lte=level).count()
-		question = Question.objects.filter(gametype="cealkka", level__lte=level)[randint(0,q_count-1)]  # removed lemmacount filter lemmacount=lemmacount
-		#print level
-		#print lemmacount 
+		# if self.settings.has_key('level'): level=int(self.settings['level'])
+		# else: # default level was set to 'all', but I could not find where
+		level='1'
+		
+		q_count = Question.objects.filter(gametype="qa", level__lte=level).count()
+		question = Question.objects.filter(gametype="qa", level__lte=level)[randint(0,q_count-1)] 
 		#question = Question.objects.get(id="107")
 	   
 		qtype = question.qtype
@@ -772,23 +849,77 @@ class CealkkaGame(Game):
 		db_info['qwords'] = qwords
 
 		db_info['question_id'] = question.id
-		return db_info,question
+		return db_info
 
-	########### Cealkka answers (like morfa)
+	######## Morfa questions
+	def get_question_morfa(self, db_info, qtype):
+		qwords = {}
+		
+		pos = self.settings.get('pos', False)
+		
+		qtype_wordform = False
+
+		# Get qtype from settings.
+		if not qtype:
+			if pos == "N":
+				qtype = self.settings['case_context']
+			if pos == "V":
+				qtype = self.settings['vtype_context']
+			if pos == "Num":
+				qtype = self.settings['num_context']
+			if pos == "A":
+				qtype = self.settings['adj_context']
+			if pos == "Pron":
+				qtype = self.settings['pron_context']
+			if pos == "Der":
+				qtype = self.settings['derivation_type_context']
+
+		books = self.settings.get('book', None)
+
+		question_query = Q(qtype__contains=qtype) & Q(gametype="morfa")
+		if books:
+			question_query = question_query & (Q(source__name__in=books) | Q(source__name="all" ))
+
+		### Generate question. If it fails, select another one.
+		i, max_ = 0, 20
+		while not qwords and i < max_:
+			i += 1
+			question = Question.objects.filter(question_query)
+
+			if question.count() > 0:
+				question = question.order_by('?')[0]
+			else:
+				errormsg = 'Database may not be properly loaded. No questions found for query.'
+				errormsg += '\n qtype: %s' % repr(qtype)
+				raise Http404(errormsg)
+
+			qwords = None
+			qwords = self.generate_question(question, qtype)
+
+		db_info['qwords'] = qwords
+		db_info['question_id'] = question.id
+		
+		return db_info, question
+
+
+	########### Morfa answers
 	def get_answer_morfa(self,db_info,question):
 		
-		# Select answer that is related to the question.
+		# Select answer using the id from the interface.
+		# Otherwise select answer that is related to the question.
 		awords = {}
 		if db_info.has_key('answer_id'):
-			answer=Question.objects.get(id=db_info['answer_id'])
+			answer = Question.objects.get(id=db_info['answer_id'])
 		else:
-			answer=question.answer_set.all().order_by('?')[0]
+			try:
+				answer = question.answer_set.all().order_by('?')[0]
+			except IndexError:
+				raise Http404("No answer found for qid %s, check that questions are properly installed." % question.qid)
 
 		# Generate the set of possible answers if they are not coming from the interface
 		# Or if the gametype is qa.
-		if db_info.has_key('answer_id') and self.settings['gametype'] == 'cealkka':
+		if db_info.has_key('answer_id') and self.settings['gametype'] == 'context':
 			awords=db_info['awords']
-			print awords
 		else:
 			# Generate the set of possible answers
 			# Here only the text of the first answer is considered!!
@@ -803,16 +934,46 @@ class CealkkaGame(Game):
 			# There is subject-verb agreement and correspondence with question elements.
 			if 'SUBJ' in words_strings:
 				awords = self.generate_answers_subject(answer, question, awords, db_info['qwords'])
+				self.generated_syntaxes.append('SUBJ')
 				
 			if 'HAB' in words_strings:
 				awords = self.generate_answers_subject(answer, question, awords, db_info['qwords'], element="HAB")
+				self.generated_syntaxes.append('HAB')
+
+			# NOTE: seems to be generating correct negative number...
+			if 'NEG' in words_strings:
+				try:
+					awords = self.generate_answers_mainv(answer, question, awords, db_info['qwords'], element="NEG")
+				except AttributeError:
+					if self.test: raise Http404("problem")
+					return "error"
+				self.generated_syntaxes.append('NEG')
 
 			if 'MAINV' in words_strings:
 				try:
 					awords = self.generate_answers_mainv(answer, question, awords, db_info['qwords'])
+					self.generated_syntaxes.append('MAINV')
 				except AttributeError:
 					if self.test: raise Http404("problem")
 					return "error"
+
+			# RPRON needs to be processed after MAINV and SUBJ so that person information is available
+			if 'RPRON' in words_strings:
+				awords = self.generate_answers_reflexive(answer, question, awords, db_info['qwords'])
+				self.generated_syntaxes.append('RPRON')
+
+			# RECPL, RECDU, P-REC processing here?
+			if 'RECPL' in words_strings:
+				awords = self.select_reciprocative_forms(answer, awords, target='RECPL')
+				self.generated_syntaxes.append('RECPL')
+			
+			if 'RECDU' in words_strings:
+				awords = self.select_reciprocative_forms(answer, awords, target='RECDU')
+				self.generated_syntaxes.append('RECDU')
+
+			if 'P-REC' in words_strings:
+				awords = self.select_reciprocative_forms(answer, awords, target='P-REC')
+				self.generated_syntaxes.append('P-REC')
 
 			# Rest of the syntax
 			#if self.test: raise Http404(words_strings)
@@ -850,9 +1011,14 @@ class CealkkaGame(Game):
 
 			# If no default information select question
 			else:
-				db_info,question = self.get_question_cealkka(db_info,qtype)
-				
-		db_info = self.get_answer_morfa(db_info,question)
+				if not self.gametype == "qa":
+					db_info,question = self.get_question_morfa(db_info,qtype)
+				else:
+					db_info = self.get_question_qa(db_info,qtype)
+
+		# If Vasta, store and return:
+		if not self.gametype == "qa":
+			db_info = self.get_answer_morfa(db_info,question)
 
 		return db_info
 
@@ -869,16 +1035,22 @@ class CealkkaGame(Game):
 		language = "nob"
 		if self.settings.has_key('language'):
 			language = self.settings['language']
-
-		answer = Question.objects.get(Q(id=db_info['answer_id']))
-		#print answer.string
-
-		form = (CealkkaQuestion(question, answer, db_info['qwords'], db_info['awords'], dialect, language, db_info['userans'], db_info['correct'], data, prefix=n))  # added the answer part
+		if not self.gametype == "qa":
+			answer = Question.objects.get(Q(id=db_info['answer_id']))
+			# print answer.string
+			form = (ContextMorfaQuestion(question, answer, \
+										 db_info['qwords'], db_info['awords'], dialect, language,\
+										 db_info['userans'], db_info['correct'], data, prefix=n))
+		else:
+			form = (VastaQuestion(question, \
+								  db_info['qwords'], language, \
+								  db_info['userans'], db_info['correct'], data, prefix=n))
 			
-		print "awords:", db_info['awords']
+		#print "awords:", db_info['awords']
 		#print "awords ...................."
 		#print "qwords:", db_info['qwords']
 		#print "qwords ...................."
 
 		return form, None
+
 

@@ -1,6 +1,12 @@
-from sms_oahpa.sms_drill.models import Log, Word, Semtype, Source, Form, Tag, Feedbackmsg, Feedbacktext, Question, QElement, WordQElement, WordTranslation
+from sms_drill.models import Log, Word, Semtype, Source, Form, Tag, Feedbackmsg, Feedbacktext, Question, QElement, WordQElement, WordTranslation
 from django.contrib import admin
-from django.contrib.contenttypes import generic
+
+# OLD django
+#from django.contrib.contenttypes import generic
+
+# NEW django
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 
 class LogAdmin(admin.ModelAdmin):
 	list_display = ('example','userinput','iscorrect','correct','game','date')
