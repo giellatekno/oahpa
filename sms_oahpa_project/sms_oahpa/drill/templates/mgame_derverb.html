@@ -1,0 +1,26 @@
+{% extends "mgame.html" %}
+{% load i18n %}
+
+{% block gamename %}{{ settings.gamename }}{% endblock %}
+{% block instructions %}
+  {% ifequal settings.derived_verb_type "V-DER-Inc" %}
+    {% trans "Enter the appropriate form of the inchoative verb (e.g. põõssâd -> Jåhtta mij põzškueʹđiim)." %}
+  {% else %}
+    {% trans "Enter the appropriate form of the diminutive verb." %}
+  {% endifequal %}
+{% endblock %}
+
+
+{% block subsetting %}
+
+{% ifequal settings.gametype "bare" %}
+	<li><label for="id_{{ settingsform.derived_verb_type.name }}">{% trans "Derivation type" %}</label>
+		{{ settingsform.derived_verb_type }}</li>
+{% else %}
+	<li><label for="id_{{ settingsform.derivation_type_context.name }}">{% trans "Case" %}</label>
+		{{ settingsform.derivation_type_context }}</li>
+{% endifequal %}
+
+
+{% endblock %}
+

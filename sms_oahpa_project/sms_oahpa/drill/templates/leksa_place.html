@@ -1,0 +1,44 @@
+{% extends "leksa.html" %}
+{% load i18n %}
+
+{% block navbar %}
+<ul class="sidelist">
+	<li><a href="{% url 'leksa' %}">{% trans 'Words' %}</a></li>
+	<li class="selected"><a href="{% url 'leksa.sted' %}">{% trans 'Names' %}</a></li>
+</ul>
+{% endblock %}
+
+{% block instructions %}{% trans "Give translations for placenames." %}{% endblock %}
+
+{% block settings %}
+<div class="grammarlinks">
+    {% include 'grammar_links_menu.html' %}
+</div>
+
+<ul id="settingsform">
+<!---	<li><label for="{{ settingsform.geography.name }}">{% trans "Geography" %}</label>
+		{{ settingsform.geography }}</li>
+    <li><label>{% trans "Frequency" %}</label>
+    <ul>
+        <li>{{ settingsform.common }} <label for="id_{{ settingsform.common.name }}">{% trans settingsform.common.name %}</label></li>
+        <li>{{ settingsform.rare }} <label for="id_{{ settingsform.rare.name }}">{% trans settingsform.rare.name %}</label></li>
+    </ul> --->
+   <!--- <li><label for="id_{{ settingsform.frequency.name }}">{% trans "Frequency" %}</label> -->
+	<li><label for="{{ settingsform.transtype.name }}">{% trans "Select the language pair" %}</label>
+		{{ settingsform.transtype }}</li>
+</ul>
+
+{# {{ settingsform.sapmi }}{% trans "sapmi" %}<br/> #}
+{# {{ settingsform.world }}{% trans "world" %}<br/> #}
+{# {{ settingsform.suopma }}{% trans "suopma" %}<br/> #}
+
+<input type="hidden" name="semtype" value="PLACE_NAME" />
+<input type="hidden" name="source" value="all" />
+<!--- <input type="hidden" name="frequency" value="common" /> --->
+<!---<input type="hidden" name="common" value=TRUE /> --->
+<!---<input type="hidden" name="rare" value=FALSE /> --->
+
+<ul id="submittable">
+    <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
+</ul>
+{% endblock %}

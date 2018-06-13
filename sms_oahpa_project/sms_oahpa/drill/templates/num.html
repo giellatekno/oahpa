@@ -1,0 +1,80 @@
+{% extends "game.html" %}
+{% load i18n %}
+
+{% block helpaddress %}
+{% ifequal LANGUAGE_CODE "no" %}
+<a href="http://giellatekno.uit.no/{{ lll1_oahpa }}/numra.nno.html"
+{% else %}
+<a href="http://giellatekno.uit.no/{{ lll1_oahpa }}/numra.html"
+{% endifequal %}
+{% endblock %}
+
+{% block gametitlename %}NUMRA{% endblock %}
+{% block imgprefix %}numra{% endblock %}
+
+{% block veiledning %}
+{% ifequal LANGUAGE_CODE "sme" %}
+http://oahpa.no/index.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "fi" %}
+http://oahpa.no/{{ lll1 }}/index.fin.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "en" %}
+http://oahpa.no/{{ lll1 }}/index.eng.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "no" %}
+http://oahpa.no/{{ lll1 }}/index.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "ru" %}
+http://oahpa.no/{{ lll1 }}/index.rus.html
+{% endifequal %}
+{% endblock %}
+
+{% block navbar %}
+	{% with "numra_cardinal" as gamename_nav %}
+        {% include 'numra_submenu.html' %}
+	{% endwith %}
+{% endblock %}
+
+{% block name %}{% trans "Numerals" %}{% endblock %}
+{% block pagename %}/{{ URL_PREFIX }}/numra/{% endblock %}
+
+{% block instructions %}
+  {# TODO: strings for instructions. #}
+  {% block gamename %}{% endblock %}
+  {% ifequal gametype "string" %}
+    {% trans "Enter the numeral. (Ex. 8)" %}
+  {% else %}
+    {% trans "Enter the Skolt Sámi number. (Ex. kääuˊc)." %}
+  {% endifequal %}
+{% endblock %}
+
+
+{% block settings %}
+    <div class="grammarlinks">
+        {% include 'grammar_links_menu.html' %}
+    </div>
+    
+    <ul id="settingsform">
+        {% block setting_items %}
+    	<li><label for="id_{{ settingsform.maxnum.name }}">{% trans "Select the range of numerals." %}</label>
+    		{{ settingsform.maxnum }}</li>
+    	<li><label for="id_{{ settingsform.numgame.name }}">{% trans "Select the direction" %}</label>{{ settingsform.numgame }}</li>
+        {% endblock %}
+    </ul>
+    
+    <ul id="submittable">
+        <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
+    </ul>
+{% endblock %}
+
+
+{% block question %}
+{% if form.numstring %}
+{{ form.numstring }} 
+{% else %}
+{{ form.numeral }} 
+{% endif %}
+{{ form.numeral_id }}
+{% endblock %}
+

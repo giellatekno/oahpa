@@ -1,0 +1,30 @@
+{% extends "mgame.html" %}
+{% load i18n %}
+
+{% block gamename %}{{ settings.gamename }}{% endblock %}
+{% block instructions %}
+  {% ifequal settings.derivation_type "V-DER-N-Act" %}
+    {% trans "Enter the Skolt Sámi noun for doing (e.g. raajjâd >> raajjmõš)." %}
+  {% else %}
+    {% trans "Enter the Skolt Sámi noun for doer (e.g. raajjâd >> raajji)." %}
+  {% endifequal %}
+{% endblock %}
+
+
+{% block subsetting %}
+
+{% ifequal settings.gametype "bare" %}
+	<li><label for="id_{{ settingsform.derivation_type.name }}">{% trans "Derivation type" %}</label>
+		{{ settingsform.derivation_type }}</li>
+	<li><label for="id_{{ settingsform.derivation_case.name }}">{% trans "Case" %}</label>
+		{{ settingsform.derivation_case }}</li>
+    <li><label for="id_{{ settingsform.number.name }}">{% trans "Number" %}</label>
+		{{ settingsform.number }}</li>		
+{% else %}
+	<li><label for="id_{{ settingsform.derivation_type_context.name }}">{% trans "Case" %}</label>
+		{{ settingsform.derivation_type_context }}</li>
+{% endifequal %}
+
+
+{% endblock %}
+
