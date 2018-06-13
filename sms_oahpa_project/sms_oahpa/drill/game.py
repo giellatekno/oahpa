@@ -20,7 +20,7 @@ import re
 import itertools
 
 settings = oahpa_module.settings
-XXX1 = settings.XXX1
+LLL1 = settings.LLL1
 
 # DEBUG = open('/dev/ttys001', 'w')
 
@@ -848,7 +848,7 @@ class BareGame(Game):
 				if tag.pos == 'Pron':
 					tag = tags.order_by('?')[0]
 
-				random_word = tag.form_set.filter(word__language=XXX1)
+				random_word = tag.form_set.filter(word__language=LLL1)
 
 				if tag.pos == 'Pron':
 					random_word = random_word\
@@ -1217,9 +1217,9 @@ class NumGame(Game):
 	def create_form(self, db_info, n, data=None):
 
 		if self.settings['gametype'] in ["ord", "card"]:
-			language = XXX1
+			language = LLL1
 		else:
-			language = XXX1
+			language = LLL1
 
 		numstring = ""
 
@@ -1351,7 +1351,7 @@ class Klokka(NumGame):
 
 	def create_form(self, db_info, n, data=None):
 		if self.settings['gametype'] in ["kl1", "kl2", "kl3"]:
-			language = XXX1
+			language = LLL1
 
 		numstring = ""
 
