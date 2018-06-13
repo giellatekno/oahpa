@@ -1,0 +1,33 @@
+
+#container {
+  padding-left: 190px;   /* LC width */
+  padding-right: 20px;  /* RC width */
+}
+#container .column {
+  position: relative;
+  float: left;
+}
+
+#center {
+  width: 100%;
+  padding: 10px 0px 10px 10px;
+  background-color: white;
+  border: 1px solid #150517;
+  font-family: Times;
+  overflow: scroll;  
+}
+#left {
+  width: 180px;          /* LC width */
+  padding: 0px 10px 0px 0px;
+  right: 200px;          /* LC width */
+  margin-left: -100%;
+  background-image: url(/oahpa/media/bakgrunn12.jpg);
+  font-family: Arial Pro;
+  color: #150517;
+
+  border-right: 1px solid #150517;
+}
+#right {
+  width: 150px;          /* RC width */
+  margin-right: -150px;  /* RC width */
+}
