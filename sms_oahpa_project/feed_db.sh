@@ -1,6 +1,6 @@
 #!/bin/sh
 
-P="python2.7"
+P="python"
 DATA="sms_data"
 META="$DATA/meta_data"
 SMS="$DATA/src"
@@ -24,21 +24,21 @@ do
     POS=${fl%_*}
     PARA_FILE="${META}/${POS}_paradigms.txt"
 
-    
+
     echo "feeding db with: $xfile"
-    
+
 
     if [ -e "$PARA_FILE" ]; then
 	echo "File exists $PARA_FILE"
-	
+
 	$P install.py --file $xfile --tagfile $META/tags.txt --paradigmfile $PARA_FILE 2>>error.log
-	
-    else 
+
+    else
 	echo "File does not exist $PARA_FILE"
-	
+
 	$P install.py --file $xfile 2>>error.log
-	
-    fi 
+
+    fi
     echo " "
     echo "done"
 done
