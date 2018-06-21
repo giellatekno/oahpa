@@ -1232,8 +1232,9 @@ class MorfaQuestion(OahpaQuestion):
 		if not self.pron:
 			self.pron = False
 
-		print self.lemma, correct
-		print baseform.tag, correct.tag
+        # Commenting the printing lines because to fix error on server
+		#print self.lemma, correct
+		#print baseform.tag, correct.tag
 		#print "conneg_agr: ", conneg_agr
 
 		# Retrieve feedback information
