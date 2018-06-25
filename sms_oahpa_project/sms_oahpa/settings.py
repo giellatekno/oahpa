@@ -21,24 +21,20 @@ LLL1 = MAIN_LANGUAGE[0]
 os.environ['PYTHON_EGG_CACHE'] = '/tmp'
 os.environ['DJANGO_SETTINGS_MODULE'] = LLL1+'_oahpa.settings'
 
-# Confirm this is in path.
-path = '/home/oahpa/'+LLL1+'_oahpa_project'
-if path not in sys.path:
-    sys.path.append(path)
-
 # This flag triggers now the URL patterns in url.py file.
 # The production_setting.py is triggered now by os name.
 DEV = True
 
+# Chiara note: this is probably never used, so for now comment out and after testing will be removed
 # Can just list the media or template dirs as here('templates') instead of '/home/me/.../smaoahpa/templates/
-here = lambda x: os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), x)
-here_cross = lambda x: os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), *x)
+#here = lambda x: os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), x)
+#here_cross = lambda x: os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), *x)
 
-INTERNAL_IPS = ('127.0.0.1',
-)
+INTERNAL_IPS = ('127.0.0.1',)
 
+# Chiara note: this is probably never used, so for now comment out and after testing will be removed
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -120,13 +116,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
-
-LOCALE_PATHS = (
-    '/home/oahpa/'+LLL1+'_oahpa_project/locale',
-)
 
 LANGUAGE_CODE = 'nb'
 
@@ -183,35 +174,15 @@ DIALECTS = {
 DEFAULT_DIALECT = 'main'
 NONGEN_DIALECT = 'NG'
 
-if os.uname()[1] == 'gtoahpa-01.uit.no':
-    LOOKUP_TOOL = '/usr/local/bin/lookup'  # xfst
-    HFST_LOOKUP = '/bin/hfst-lookup' # hfst
-    #LOOKUP_TOOL = '/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup'
-else:
-    LOOKUP_TOOL = '/usr/local/bin/lookup'  # xfst
-    HFST_LOOKUP = '/usr/local/bin/hfst-lookup'
-
-FST_DIRECTORY = '/opt/smi/'+LLL1+'/bin'
-LOG_FILE = path + '/drill/vastaF_log.txt'
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 URL_PREFIX = 'nuorti'
 
-# Absolute path to the directory that holds media.
-MEDIA_ROOT = '/home/oahpa/media/'
-
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-
 MEDIA_URL = '/%s/media/' % URL_PREFIX
-
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-STATIC_URL = '/home/oahpa/admin_media/'
 
 # #
 #
@@ -222,13 +193,6 @@ STATIC_URL = '/home/oahpa/admin_media/'
 AUTH_PROFILE_MODULE = LLL1+'_oahpa.courses.UserProfile'
 LOGIN_REDIRECT_URL = '/%s/courses/' % URL_PREFIX
 LOGIN_URL = '/%s/courses/login/' % URL_PREFIX
-
-CACHES = {
-        'default': {
-                'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-                'LOCATION': '/var/tmp/'+LLL1+'_oahpa_cache'
-        },
-}
 
 # Import all var from settings that are not in svn for security reasons
 from settings_not_in_svn import *
