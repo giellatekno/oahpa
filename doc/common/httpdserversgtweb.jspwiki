@@ -121,3 +121,15 @@ Eventual malfunctioning here is due to errors in the pipeline being used by the 
 
 The documentation is found on [the cgi-bin documentation page|/doc/infra/docu-cgi-bin.html]
 
+
+!!!If jorgal is down
+
+The jorgal.uit.no page may give the message {{Oversettelse ikke tilgjengelig!}}
+
+This command should help:
+
+{{{
+  ssh -t gtweb
+  sudo systemctl restart apy
+}}}
+
