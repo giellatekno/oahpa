@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<!DOCTYPE lexicon  PUBLIC '-//XMLmind//DTD lexicon//FI'  '../../dtd/questions.dtd'>
+-->
+<questions>
+	<q id="vprt19">
+		<qtype>V-PRT</qtype>
+		<question>
+			<text>HAB lij naan THING</text>
+			<element id="HAB">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="THING">
+				<grammar tag="N+Sg+Nom"/>
+				<sem class="ANIMAL_PET"/>
+			</element>
+		</question>
+		<answer>
+			<text>Ijje, NEG lij HAB naan THING</text>
+			<element game="morfa" id="NEG" task="yes">
+				<grammar tag="V+Neg+Ind+Prs+Sg3"/>
+				<id>ij</id>
+			</element>
+		</answer>
+		<answer>
+			<text>Ijje, ij VERB HAB naan THING</text>
+			<element game="morfa" id="VERB" task="yes">
+				<grammar tag="V+Ind+Prt+Sg3"/>
+				<id>lea</id>
+			</element>
+		</answer>
+	</q>  
+	<q id="vprt20">
+		<qtype>V-PRT</qtype>
+		<question>
+			<text>HAB lij naan THING</text>
+			<element id="HAB">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="THING">
+				<grammar tag="N+Sg+Nom"/>
+				<sem class="VEHICLE"/>
+			</element>
+		</question>
+		<answer>
+			<text>Ijje, NEG lij HAB naan THING</text>
+			<element game="morfa" id="NEG" task="yes">
+				<grammar tag="V+Neg+Ind+Prs+Sg3"/>
+				<id>ij</id>
+			</element>
+		</answer>
+		<answer>
+			<text>Ijje, ij VERB HAB naan THING</text>
+			<element game="morfa" id="VERB" task="yes">
+				<grammar tag="V+Ind+Prt+Sg3"/>
+				<id>lea</id>
+			</element>
+		</answer>
+	</q>  
+	<q id="vprt21">
+		<qtype>V-PRT</qtype>
+		<question>
+			<text>SUBJ jååktan OBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="THING">
+				<grammar tag="N+Sg+Acc"/>
+				<sem class="VEHICLE"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Prt+Person-Number"/>
+				<id>åestedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>MAINV åestieh</text>
+			<element game="morfa" id="MAINV" task="yes">
+				<grammar tag="V+Neg+Ind+Prt+Person-Number"/>
+				<id>ij</id>
+			</element>
+		</answer>
+		<answer>
+			<text>MAINV VERB</text>
+			<element game="morfa" id="VERB" task="yes">
+				<grammar tag="V+ConNeg"/>
+				<id>åestedh</id>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Prt+Person-Number"/>
+				<id>ij</id>
+			</element>
+		</answer>
+	</q>  
+	<q id="vprt22">
+		<qtype>V-PRT</qtype>
+		<question>
+			<text>SUBJ jååktan staarese MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Prt+Person-Number"/>
+				<sem class="TRAVELLING_V"/>
+			</element>
+		</question>
+		<answer>
+			<text>MAINV jååktan VERB , men GEN</text>
+			<element game="morfa" id="MAINV" task="yes">
+				<grammar tag="V+Neg+Ind+Prt+Person-Number"/>
+				<id>ij</id>
+			</element>
+			<element id="VERB" content="MAINV">
+				<grammar tag="V+ConNeg"/>
+			</element>
+			<element id="GEN">
+				<grammar tag="N+Sg+Gen"/>
+				<sem class="TIME_DAY"/>
+			</element>
+		</answer>
+		<answer>
+			<text>MAINV jååktan VERB , men GEN</text>
+			<element game="morfa" id="VERB" content="MAINV" task="yes">
+				<grammar tag="V+ConNeg"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Neg+Ind+Prt+Person-Number"/>
+				<id>ij</id>
+			</element>
+			<element id="VERB" content="MAINV">
+				<grammar tag="V+ConNeg"/>
+			</element>
+			<element id="GEN">
+				<grammar tag="N+Sg+Gen"/>
+				<sem class="TIME_DAY"/>
+			</element>
+		</answer>
+	</q>  
+	<q id="vprs26">
+		<qtype>V-PRS</qtype>
+		<question>
+			<text>HAB naan THING</text>
+			<element id="HAB">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="THING">
+				<grammar tag="N+Sg+Nom"/>
+				<sem class="VEHICLE"/>
+			</element>
+		</question>
+		<answer>
+			<text>Ijje, NEG leah HAB naan THING</text>
+			<element game="morfa" id="NEG" task="yes">
+				<grammar tag="V+Neg+Ind+Prs+Sg3"/>
+				<id>ij</id>
+			</element>
+		</answer>
+		<answer>
+			<text>Ijje, ij VERB HAB naan THING</text>
+			<element game="morfa" id="VERB" task="yes">
+				<grammar tag="V+ConNeg"/>
+				<id>lea</id>
+			</element>
+		</answer>
+	</q>  
+	<q id="vprs27">
+		<qtype>V-PRS</qtype>
+		<question>
+			<text>SUBJ OBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="OBJ">
+				<grammar tag="N+Sg+Acc"/>
+				<sem class="VEHICLE"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Prs+Person-Number"/>
+				<id>åestedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>MAINV åestieh</text>
+			<element game="morfa" id="MAINV" task="yes">
+				<grammar tag="V+Neg+Ind+Prs+Person-Number"/>
+				<id>ij</id>
+			</element>
+		</answer>
+		<answer>
+			<text>MAINV VERB</text>
+			<element game="morfa" id="VERB" task="yes">
+				<grammar tag="V+ConNeg"/>
+				<id>åestedh</id>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Prs+Person-Number"/>
+				<id>ij</id>
+			</element>
+		</answer>
+	</q>  
+	<q id="vprs28">
+		<qtype>V-PRS</qtype>
+		<question>
+			<text>SUBJ daan biejjien staarese MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Prs+Person-Number"/>
+				<sem class="TRAVELLING_V"/>
+			</element>
+		</question>
+		<answer>
+			<text>MAINV daan biejjien VERB , men GEN</text>
+			<element game="morfa" id="MAINV" task="yes">
+				<grammar tag="V+Neg+Ind+Prs+Person-Number"/>
+				<id>ij</id>
+			</element>
+			<element id="VERB" content="MAINV">
+				<grammar tag="V+ConNeg"/>
+			</element>
+			<element id="GEN">
+				<grammar tag="N+Sg+Gen"/>
+				<sem class="TIME_DAY"/>
+			</element>
+		</answer>
+		<answer>
+			<text>MAINV daan biejjien VERB , men GEN</text>
+			<element game="morfa" id="VERB" content="MAINV" task="yes">
+				<grammar tag="V+ConNeg"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Neg+Ind+Prs+Person-Number"/>
+				<id>ij</id>
+			</element>
+			<element id="VERB" content="MAINV">
+				<grammar tag="V+ConNeg"/>
+			</element>
+			<element id="GEN">
+				<grammar tag="N+Sg+Gen"/>
+				<sem class="TIME_DAY"/>
+			</element>
+		</answer>
+	</q>  
+</questions>

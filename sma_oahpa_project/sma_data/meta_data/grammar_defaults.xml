@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- default grammatical information for elements in question files -->
+
+<definitions>
+  <tags>
+    <element id="SUBJ">
+      <grammar pos="Pron" tag="Pron+Pers+Person-Number+Nom"/>
+      <grammar pos="N" tag="N+NumberN+Nom"/>
+      <!-- Including Num here instead means that we end up with Du -->
+    </element>
+    <element id="HAB">
+      <grammar pos="Pron" tag="Pron+Pers+Person-Number+Gen"/>
+      <grammar pos="N" tag="N+NumberN+Gen"/>
+    </element>
+    <element id="MAINV">
+      <grammar pos="V" tag="V+Mood+Tense+Person-Number"/>
+    </element>  
+    <element id="N-ILL">
+      <grammar pos="N" tag="N+NumberN+Ill"/>
+    </element>
+    <element id="N-INE">
+      <grammar pos="N" tag="N+NumberN+Ine"/>
+    </element>
+    <element id="N-ELA">
+      <grammar pos="N" tag="N+NumberN+Ela"/>
+    </element>
+    <element id="N-COM">
+      <grammar pos="N" tag="N+NumberN+Com"/>
+    </element>
+    <element id="N-ACC">
+      <grammar pos="N" tag="N+NumberN+Acc"/>
+    </element>
+    <element id="N-GEN">
+      <grammar pos="N" tag="N+NumberN+Gen"/>
+    </element>
+    <element id="OBJ">
+      <grammar pos="N" tag="N+NumberN+Acc"/>
+    </element>
+    <element id="NEG">
+      <id>ij</id>
+    </element>
+  </tags>
+  <!-- These tags replace information from question files -->
+  <partitions>
+    <part name="ANSWERSUBJECT">
+      <select>
+	<element id="SUBJ">
+	  <grammar pos="N" tag="N+NumberN+Nom"/>
+	  <grammar pos="Pron" tag="Pron+Pers+3p+Nom"/>
+	  <grammar pos="Pron" tag="Pron+Pers+3p+Nom"/>
+	  <grammar pos="Pron" tag="Pron+Pers+3p+Nom"/>
+	</element>
+      </select>
+      <select>
+	<element id="SUBJ" optional="1">
+          <grammar pos="Pron" tag="Pron+Pers+Sg1+Nom"/>
+          <grammar pos="Pron" tag="Pron+Pers+Sg2+Nom"/>
+          <grammar pos="Pron" tag="Pron+Pers+Pl1+Nom"/>
+          <grammar pos="Pron" tag="Pron+Pers+Pl2+Nom"/>
+          <grammar pos="Pron" tag="Pron+Pers+Du1+Nom"/>
+          <grammar pos="Pron" tag="Pron+Pers+Du2+Nom"/>
+	</element>
+      </select>
+    </part>
+  </partitions>
+</definitions>
