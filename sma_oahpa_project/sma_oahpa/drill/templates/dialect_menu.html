@@ -1,0 +1,29 @@
+{% load cache %}
+{% load i18n %}
+
+<form action="/{{ URL_PREFIX }}/dialect/" method="post">
+  {% csrf_token %}
+    <dl>
+        <dt>
+            <label for="dialect">{% trans "Southern Sami dialect" %}</label>
+        </dt>
+        <dd>
+            <!---<input name="next" type="hidden" value="/{{ URL_PREFIX }}/" />  --->
+            <select name="dialect" onChange="javascript:this.form.submit();">
+            {% if dialect %}
+				{% ifequal dialect "SH" %}
+				    <option value="SH" selected="selected">{% trans 'SH' %}</option>
+				    <option value="L">{% trans 'L' %}</option>
+				{% else %}
+				    <option value="SH">{% trans 'SH' %}</option>
+				    <option value="L" selected="selected">{% trans 'L' %}</option>
+				{% endifequal %}
+            {% else %}
+				<option value="SH">{% trans 'SH' %}</option>
+				<option value="L">{% trans 'L' %}</option>
+            {% endif %}
+            </select>
+        </dd>
+    </dl>
+   <input type="submit" class="hide" value="submit" />
+</form>

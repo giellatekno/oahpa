@@ -1,0 +1,21 @@
+﻿{% load i18n %}
+
+{% if request.session.is_mobile %}
+	<span class="tooltip" id='tooltip-{{ forloop.counter }}' style="display:none;">
+{% else %}	
+	<div class="tooltip" id='tooltip-{{ forloop.counter }}' style="display:none;">
+{% endif %}
+
+	{% ifequal settings.pos "V" %}
+		{% if form.translations %}{{ form.translations }} <span style="font-size: 80%"><br />{% endif %}({% ifnotequal form.wordclass 'Odd' %}{% trans "Verbgruppe" %} {% endifnotequal %}{% trans form.wordclass %})</span>
+	{% else %}
+		{% if form.translations %}{{ form.translations }}{% endif %}
+	{% endifequal %}
+	{% if not request.session.is_mobile %}
+	{% ifequal settings.gametype "context" %}<br /><br /><span style="color: #888; font-size:80%; font-style: italic;">{{ form.tooltip_question_id }}</span>{% endifequal %}
+	{% endif %}
+{% if request.session.is_mobile %}
+	</span>
+{% else %}	
+	</div>
+{% endif %}

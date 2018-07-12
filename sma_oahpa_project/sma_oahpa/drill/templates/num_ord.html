@@ -1,0 +1,18 @@
+{% extends "num.html" %}
+{% load i18n %}
+
+{% block navbar %}
+	{% with "numra_ordinal" as gamename_nav %}
+        {% include 'numra_submenu.html' %}
+	{% endwith %}
+{% endblock %}
+
+{% block instructions %}
+  {# TODO: strings for instructions. #}
+  {% ifequal gametype "string" %}
+    {% trans "Enter a numeral followed by a period. (Ex. 32.)" %}
+  {% else %}
+    {% trans "Enter the South Sámi ordinal number. (Ex. luhkievïjhtede)" %}
+  {% endifequal %}
+{% endblock %}
+

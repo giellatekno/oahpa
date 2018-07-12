@@ -1,0 +1,251 @@
+{% comment %}
+Template inheritance structure.
+
+templates/sma_oahpa_main.html
+	templates/sma_oahpa.html
+		drill/templates/game.html
+			drill/templates/leksa.html
+				drill/templates/leksa_place.html
+
+			drill/templates/mgame.html
+				drill/templates/mgame_a.html
+				drill/templates/mgame_l.html
+				drill/templates/mgame_n.html
+				drill/templates/mgame_p.html
+				drill/templates/mgame_v.html
+				drill/templates/morfa_tooltip.html
+
+			drill/templates/num.html
+				drill/templates/num_ord.html
+				drill/templates/clock.html
+				drill/templates/dato.html
+
+{% endcomment %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta http-equiv="cache-control" content="no-cache" />
+
+	    <title>{% block title %}{% endblock %}</title>
+
+		{% if request.session.is_mobile %}
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<link href="{{ MEDIA_URL }}/css/mobile.css" type="text/css" rel="stylesheet" /> {# media="handheld, screen and max-width: 320px" /> #}
+		{% else %}
+			<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main.css"/>
+			<!--[if gte IE 7]>
+			<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/ie_fixes.css"/>
+			<![endif]-->
+		{% endif %}
+
+
+		{% block extracss %}
+		{% endblock %}
+
+		{% block extrajs %}
+			<script src="{{ MEDIA_URL }}/js/jquery-1.6.4.min.js" type="text/javascript"></script>
+			<script type="text/javascript">
+				$(document).ready(function(){
+					var userAgent = navigator.userAgent.toLowerCase();
+					if (userAgent.search('iphone') > -1 || userAgent.search('android') > -1 || userAgent.search('mobile') > -1) {
+    					$('body').prepend('<div id="view-mobile"><a href="/{{ URL_PREFIX }}/mobil/">Mobil?</a></div>');
+					}
+				});
+			</script>
+		{% endblock %}
+
+		<!--[if lt IE 7.]>
+		<script defer type="text/javascript" src="{{ MEDIA_URL }}/js/pngfix.js"></script>
+		<![endif]-->
+	</head>
+
+	{% load i18n %}
+
+<body class="{% block bodyclass %}main{% endblock %}">
+
+	<div id="page" class="{% block pageclass %}{% endblock %}">
+		<div id="headerimg"><a href="/{{ URL_PREFIX }}/"><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!"/></a></div>
+		<a class="hide" href="#content">Skip to content</a>
+
+		{% comment %}
+		{% if not request.session.is_mobile %}
+			<a class="mobile_link" href="/{{ URL_PREFIX }}/mobile/">{% trans "On a mobile?" %}</a>
+		{% endif %}
+		{% endcomment %}
+
+		{% block language_select %}
+		<div id="language_options">
+			{% get_current_language as LANGUAGE_CODE %}
+			<form action="/{{ URL_PREFIX }}/i18n/setlang/" method="post" name="newlang">
+				{% csrf_token %}
+				<dl>
+					<dt><label for="language_select">{% trans "Interface language" %}</label></dt>
+					<dd>
+						<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
+						<select id="language_select" name="language" onChange="javascript:this.form.submit();">
+
+						{% ifequal LANGUAGE_CODE "no" %}
+							<option value="no" selected="selected">Norsk</option>
+						{% else %}
+							<option value="no">Norsk</option>
+						{% endifequal %}
+
+						{% ifequal LANGUAGE_CODE "sma" %}
+							<option value="sma" selected="selected">Åarjelsaemien</option>
+						{% else %}
+							<option value="sma">Åarjelsaemien</option>
+						{% endifequal %}
+
+						{% ifequal LANGUAGE_CODE "en" %}
+							<option value="en" selected="selected">English</option>
+						{% else %}
+							<option value="en">English</option>
+						{% endifequal %}
+
+						{% ifequal LANGUAGE_CODE "sv" %}
+							<option value="sv" selected="selected">Svenska</option>
+						{% else %}
+							<option value="sv">Svenska</option>
+						{% endifequal %}
+
+						{% ifequal LANGUAGE_CODE "fi" %}
+						 	<option value="fi" selected="selected">Suomi</option>
+						{% else %}
+						 	<option value="fi">Suomi</option>
+						{% endifequal %}
+
+					</select>
+					</dd>
+				</dl>
+				<input type="submit" class="hide" value="submit" />
+			</form>
+			<form action="/{{ URL_PREFIX }}/dialect/" method="post">
+				{% csrf_token %}
+				<dl>
+					<dt><label for="dialect">{% trans "Southern Sami dialect" %}</label></dt>
+					<dd>
+						<input name="next" type="hidden" value="/{{ URL_PREFIX }}/" />
+						<select name="dialect" onChange="javascript:this.form.submit();">
+						{% if dialect %}
+							{% ifequal dialect "SH" %}
+								<option value="SH" selected="selected">{% trans 'SH' %}</option>
+								<option value="L">{% trans 'L' %}</option>
+							{% else %}
+								<option value="SH">{% trans 'SH' %}</option>
+								<option value="L" selected="selected">{% trans 'L' %}</option>
+							{% endifequal %}
+						{% else %}
+							<option value="SH">{% trans 'SH' %}</option>
+							<option value="L">{% trans 'L' %}</option>
+						{% endif %}
+					</select>
+					</dd>
+				</dl>
+				<input type="submit" class="hide" value="submit" />
+			</form>
+		</div>
+		{% endblock %}
+
+		<div id="header">
+			{% block header_content %}
+			<h1><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.jpg" alt="OAHPA!" /></h1>
+			<h2>Buerie båeteme!</h2>
+			{% endblock %}
+		</div>
+
+		<div id="content">
+			{% block main_content %}
+			{% if request.session.is_mobile %}
+			<ul class="games_table">
+				<li>
+			{% endif %}
+			<ul id="games_menu">
+				<li class="game">
+					<a href="{% url 'morfa_c.noun' %}">
+						<span>MORFA-R</span><br />
+						<img src="{{ MEDIA_URL }}/images/morfac.png" alt="MORFA-R" /><br />
+						<span>{% trans "Practise morphology in context" %}</span>
+					</a>
+				</li>
+				<li class="game">
+					<a href="{% url 'morfa_s.noun' %}">
+						<span>MORFA-B</span><br />
+						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-B" /><br />
+						<span>{% trans "Practise morphology" %}</span>
+					</a>
+				</li>
+				{% if request.session.is_mobile %}
+			</ul>
+			</li>
+			<li>
+			<ul id="games_menu">
+				{% endif %}
+				<li class="game">
+					<a href="{% url 'leksa' %}">
+						<span>LEKSA</span><br />
+						<img src="{{ MEDIA_URL }}/images/leksa.png" alt="LEKSA" /><br />
+						<span>{% trans "Words and translations" %}</span>
+					</a>
+				</li>
+				<li class="game">
+					<a href="{% url 'numra' %}">
+						<span>NUMRA</span><br />
+						<img src="{{ MEDIA_URL }}/images/numra.png" alt="NUMRA" /><br />
+						<span>{% trans "Practise numerals" %}</span>
+					</a>
+				</li>
+			</ul>
+				{% if request.session.is_mobile %}
+			</li>
+		</ul>
+		{% endif %}
+
+			<ul id="games_menu_row2">
+
+				<li class="game">
+				</li>
+				<li class="game">
+				</li>
+			</ul>
+			{% comment %}
+			<h3>{% trans "Online reference materials" %}</h3>
+			{% endcomment %}
+			<p class="intro">{% trans "Åarjel-Oahpa is an internet program for youth and grownups learning South Sámi. The program can be adjusted to different themes and levels of difficulty, and it generates new task sets automatically." %}</p>
+			{% comment %}
+			<p>{% trans "Oahpa is connected with online reference materials." %}</p>
+			{% endcomment %}
+			<ul class="linklist">
+				<li><a href="http://oahpa.no/sma/index.html">{% trans "Veiledning" %}</a></li>
+				<li><a href="http://baakoeh.oahpa.no/sma/nob">{% trans "South Sámi" %}-{% trans "Norwegian" %} {% trans "dictionary" %}</a></li>
+				<li><a href="http://oahpa.no/sma/gramm/grammatikk.nob.html">{% trans "South Sámi grammar" %}</a></li>
+			</ul>
+
+			{# <p>Are you visiting this site as part of a course? <a href="{% url 'courses.views.courses_main' %}">Log in here</a></p> #}
+			{% endblock %}
+		</div>
+
+		<div id="footer">
+			<div id="copyright">
+			{% block deeplink %}
+			{% if deeplink %}
+			<div id="deeplink">
+				<a href="{{ deeplink }}" class="interface" style="color:#0000FF">{% trans 'Link to this exercise' %}</a>
+			</div>
+			{% endif %}
+			{% endblock %}
+
+			  <p>
+				  {% trans "Copyright 2011 Universitetet i Troms&oslash; og Aajege Saemien g&iuml;ele- j&iuml;h maahtoejarnge" %}<br />
+			{% trans "Contact" %} oahpa@hum.uit.no</p>
+			{% if request.session.is_mobile %}
+				<a class="mobile_link" href="/{{ URL_PREFIX }}/mobile/off/">{% trans "Leave mobile version?" %}</a>
+			{% endif %}
+			</div>
+		</div>
+	</div>
+	{% include 'google_analytics_snippet.html' %}
+</body>
+</html>

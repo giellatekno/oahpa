@@ -1,0 +1,38 @@
+{% extends "mgame.html" %}
+{% load i18n %}
+
+{% block language_select %}{% endblock %}
+{% block gamename %}{{ settings.gamename }}{% endblock %}
+{% block instructions %}
+  {% ifequal settings.gametype "bare" %}
+    {% trans "Add adjectives in correct forms. You get translation into Norwegian if you click the word." %}
+  {% else %}
+    {% trans "Add adjectives in correct forms." %}
+  {% endifequal %}
+{% endblock %}
+
+
+{% block subsetting %}
+{# TODO: something funky here. #}
+{# {% trans "Stem" %} #}
+
+{% ifequal settings.gametype "bare" %}
+	<li><label for="id_{{ settingsform.adj_context.name }}">{% trans "Type" %}</label>
+		{{ settingsform.adjcase }}</li>
+	<li><label>{% trans "Stem" %}</label>
+		<ul>
+			<li>{{ settingsform.bisyllabic }} <label for="id_{{ settingsform.bisyllabic.name }}">{% trans "bisyllabic" %}</label></li>
+			<li>{{ settingsform.trisyllabic }} <label for="id_{{ settingsform.trisyllabic.name }}">{% trans "trisyllabic" %}</label></li>
+			<li>{{ settingsform.xsyllabic }} <label for="id_{{ settingsform.xsyllabic.name }}">{% trans "xsyllabic" %}</label></li>
+		</ul>
+	</li>
+
+	{# <li><label for="id_{{ settingsform.grade.name }}">{% trans "Stem" %}</label> #}
+		{#	{{ settingsform.grade }}</li> #}
+{% else %}
+	<li><label for="id_{{ settingsform.adj_context.name }}">{% trans "Type" %}</label>
+		{{ settingsform.adj_context }}</li>
+{% endifequal %}
+
+{% endblock %}
+

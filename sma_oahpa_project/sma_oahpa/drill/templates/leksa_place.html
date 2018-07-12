@@ -1,0 +1,42 @@
+{% extends "leksa.html" %}
+{% load i18n %}
+
+{% block navbar %}
+<ul class="sidelist" id="subgames">
+	<li><a href="{% url 'leksa' %}">{% trans 'Words' %}</a></li>
+	<li class="selected"><a href="{% url 'leksa.sted' %}">{% trans 'Placenames' %}</a></li>
+</ul>
+{% endblock %}
+
+{% block instructions %}{% trans "Give translations for placenames." %}{% endblock %}
+
+{% block settings %}
+<div class="grammarlinks">
+    {% include 'grammar_links_menu.html' %}
+</div>
+
+<ul id="settingsform">
+	<li><label for="{{ settingsform.geography.name }}">{% trans "Geography" %}</label>
+		{{ settingsform.geography }}</li>
+	<li><label for="{{ settingsform.transtype.name }}">{% trans "Select the language pair" %}</label>
+		{{ settingsform.transtype }}</li>
+</ul>
+
+{# {{ settingsform.sapmi }}{% trans "sapmi" %}<br/> #}
+{# {{ settingsform.world }}{% trans "world" %}<br/> #}
+{# {{ settingsform.suopma }}{% trans "suopma" %}<br/> #}
+
+<input type="hidden" name="semtype" value="PLACE_NAME" />
+<input type="hidden" name="source" value="all" />
+<input type="hidden" name="frequency" value="common" />
+
+{% if request.session.is_mobile %}
+<ul id="opensettingsform">
+	<a href="#">{% trans "Change game" %}</a>
+</ul>
+{% endif %}
+
+<ul id="submittable">
+    <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
+</ul>
+{% endblock %}

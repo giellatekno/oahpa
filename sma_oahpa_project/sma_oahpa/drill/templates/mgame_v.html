@@ -1,0 +1,77 @@
+{% extends "mgame.html" %}
+{% load i18n %}
+
+{% block language_select %}
+        <div class="dialect_selection">
+          {% include 'dialect_menu.html' %}
+        </div>
+{% endblock %}
+{% block gamename %}{{ settings.gamename }}{% endblock %}
+{% block instructions %}
+  {% ifequal settings.gametype "bare" %}
+    {% trans "Add verbs in correct forms. You get translation if you click the word." %}
+  {% else %}
+    {% trans "Add verbs in correct forms." %}
+  {% endifequal %}
+{% endblock %}
+
+{% block subsetting %}
+	{% ifequal settings.gametype "bare" %}
+		<li><label for="id_{{ settingsform.vtype.name }}">{% trans "Type" %}</label>
+			{{ settingsform.vtype }}</li>
+    <li><label for="id_{{ settingsform.verb_number.name }}">{% trans "Number" %}</label>
+			{{ settingsform.verb_number }}</li>
+	<li><label>{% trans "Verbclass" %}</label>
+	    <span id="wordclass">
+	        <ul>
+            <li>
+                {{ settingsform.wordclass_i }}
+                <label for="id_{{ settingsform.wordclass_i.name }}">
+                    {{ settingsform.wordclass_i.label }}
+                </label>
+            </li>
+            <li>
+                {{ settingsform.wordclass_ii }}
+                <label for="id_{{ settingsform.wordclass_ii.name }}">
+                    {{ settingsform.wordclass_ii.label }}
+                </label>
+            </li>
+            <li>
+                {{ settingsform.wordclass_iii }}
+                <label for="id_{{ settingsform.wordclass_iii.name }}">
+                    {{ settingsform.wordclass_iii.label }}
+                </label>
+            </li>
+            <li>
+                {{ settingsform.wordclass_iv }}
+                <label for="id_{{ settingsform.wordclass_iv.name }}">
+                    {{ settingsform.wordclass_iv.label }}
+                </label>
+            </li>
+            <li>
+                {{ settingsform.wordclass_v }}
+                <label for="id_{{ settingsform.wordclass_v.name }}">
+                    {{ settingsform.wordclass_v.label }}
+                </label>
+            </li>
+            <li>
+                {{ settingsform.wordclass_vi }}
+                <label for="id_{{ settingsform.wordclass_vi.name }}">
+                    {{ settingsform.wordclass_vi.label }}
+                </label>
+            </li>
+            <li>
+                {{ settingsform.wordclass_odd }}
+                <label for="id_{{ settingsform.wordclass_odd.name }}">
+                    {{ settingsform.wordclass_odd.label }}
+                </label>
+            </li>
+	        </ul>
+	    </span>
+	</li>
+	{% else %}
+		<li><label for="id_{{ settingsform.vtype_context.name }}">{% trans "Type" %}</label>
+			{{ settingsform.vtype_context }}</li>
+	{% endifequal %}
+{% endblock %}
+

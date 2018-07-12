@@ -1,0 +1,85 @@
+{% extends 'sma_oahpa_main.html' %}
+{% load i18n %}
+{{ lang_switch }}
+{% get_available_languages as LANGUAGES %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}{% endblock %}
+
+{% block bodyclass %} {% endblock %}
+{% block pageclass %}game{% endblock %}
+
+{% block header_content %} {% endblock %}
+
+
+{% block main_content %}
+<ul id="games_menu" class="small">
+
+	<li class="game">
+		<a href="{% url 'morfa_c.noun' %}">
+			<img src="{{ MEDIA_URL }}/images/morfac_small.png" alt="MORFA-R"/><br/>
+			<span class="gamename">MORFA-R</span>
+		</a>
+	</li>
+
+	<li class="game">
+		<a href="{% url 'morfa_s.noun' %}">
+			<img src="{{ MEDIA_URL }}/images/morfa_small.png" alt="MORFA-B"/><br/>
+			<span class="gamename">MORFA-B</span>
+		</a>
+	</li>
+
+	<li class="game">
+		<a href="{% url 'leksa' %}">
+			<img src="{{ MEDIA_URL }}/images/leksa_small.png" alt="LEKSA"/><br/>
+			<span class="gamename">LEKSA</span>
+		</a>
+	</li>
+
+	<li class="game">
+		<a href="{% url 'numra' %}">
+			<img src="{{ MEDIA_URL }}/images/numra_small.png" alt="NUMRA"/><br/>
+			<span class="gamename">NUMRA</span>
+		</a>
+	</li>
+
+
+</ul>
+<div id="leftcontent">
+	<div id="navbar">
+		<img width="120" height="120" border="0" src="{{ MEDIA_URL }}/images/{% block imgprefix %}{% endblock %}_big.png" alt="Game logo" />
+		<div class="bigheader">{% block gametitlename %}{% endblock %}</div>
+		{% block navbar %}{% endblock %}
+	</div>
+
+	<strong id="reference_label">{% trans "Reference materials" %}</strong>
+	<ul class="sidelist small" id="reference">
+		<li><a target="_blank" href="{% block veiledning %}{% endblock %}">{% trans "Veiledning" %}</a></li>
+		<li><a target="_blank" href="http://baakoeh.oahpa.no/sma/nob">{% trans "Dictionary" %}</a></li>
+		<li><a target="_blank" href="http://giellatekno.uit.no/oahpa/sma/gramm/grammatikk.nob.html">{% trans "Grammar" %}</a></li>
+	</ul>
+</div>
+
+{% comment %}
+<a href="/smaoahpa/feedback/">{% trans 'Feedback' %}</a><br/>
+{% endcomment %}
+
+<div id="rightcontent">
+	{% block rightcontent %}
+	<a name="content" class="hide">&nbsp;</a>
+	<form novalidate action="" method="post" id="gameform" name="gameform">
+		{% csrf_token %}
+
+	<div id="settings">
+		{% block settings %}{% endblock %}
+	</div>
+
+	<div id="game">
+	    {% block content %}{% endblock %}
+	</div>
+
+	</form>
+	{% endblock %}
+</div>
+
+{% endblock %}

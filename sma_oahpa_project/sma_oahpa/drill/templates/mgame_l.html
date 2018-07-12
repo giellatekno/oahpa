@@ -1,0 +1,35 @@
+{% extends "mgame.html" %}
+{% load i18n %}
+
+{% block language_select %}{% endblock %}
+{% block gamename %}{{ settings.gamename }}{% endblock %}
+{% block instructions %}
+  {% ifequal settings.gametype "bare" %}
+    {% trans "Add numerals in correct forms." %}
+  {% else %}
+    {% trans "Add numerals in correct forms." %}
+  {% endifequal %}
+{% endblock %}
+
+
+{% block subsetting %}
+
+	<li><label for="id_{{ settingsform.case.name }}">{% trans "Case" %}</label>
+		{{ settingsform.case }}</li>
+
+{% ifequal settings.gametype "bare" %}
+	<li><label for="id_{{ settingsform.num_level.name }}">{% trans "Level" %}</label>
+		{{ settingsform.num_level }}</li>
+{% endifequal %}
+
+{% comment %}
+{% ifequal settings.gametype "bare" %}
+	{{ settingsform.num_bare }}
+	{{ settingsform.num_level }}
+{% else %}
+    {{ settingsform.num_context }} 
+{% endifequal %}
+{% endcomment %}
+
+
+{% endblock %}

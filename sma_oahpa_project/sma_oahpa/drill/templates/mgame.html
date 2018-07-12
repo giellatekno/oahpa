@@ -1,0 +1,71 @@
+{% extends "game.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block questionsetclass %}{% ifequal settings.gametype "bare" %}morfa{% else %}morfac{% endifequal %}{% endblock %}
+{% block gametitlename %}{% ifequal settings.gametype "bare" %}MORFA-B{% else %}MORFA-R{% endifequal %}{% endblock %}
+{% block imgprefix %}{% ifequal settings.gametype "bare" %}morfa{% else %}morfac{% endifequal %}{% endblock %}
+
+{% block veiledning %}http://giellatekno.uit.no/oahpa/sma/useoahpa/morfa.nob.html{% endblock %}
+
+{% block navbar %}
+	<ul class="sidelist" id="subgames">
+{% ifequal settings.gametype "bare" %}
+		{% ifequal settings.pos "N" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url 'morfa_s.noun' %}">{% trans 'Nouns' %}</a></li>
+		{% ifequal settings.pos "V" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url 'morfa_s.verb' %}">{% trans 'Verbs' %}</a></li>
+		{% ifequal settings.pos "A" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url 'morfa_s.adj' %}">{% trans 'Adjectives' %}</a></li>
+		{% ifequal settings.pos "Pron" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url 'morfa_s.pron' %}">{% trans 'Pronouns' %}</a></li>
+{% else %}
+		{% ifequal settings.pos "N" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url 'morfa_c.noun' %}">{% trans 'Nouns' %}</a></li>
+		{% ifequal settings.pos "V" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url 'morfa_c.verb' %}">{% trans 'Verbs' %}</a></li>
+		{% ifequal settings.pos "A" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url 'morfa_c.adj' %}">{% trans 'Adjectives' %}</a></li>
+		{% ifequal settings.pos "Pron" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url 'morfa_c.pron' %}">{% trans 'Pronouns' %}</a></li>
+{% endifequal %}
+	</ul>
+{% endblock %}
+
+{% block name %}{% trans "Morphology" %}{% endblock %}
+{% block pagename %}/{{ URL_PREFIX }}/morfa/{% endblock %}
+
+{% block settings %}
+    <div class="grammarlinks">
+        {% include 'grammar_links_menu.html' %}
+    </div>
+
+	<ul id="settingsform">
+		{% block subsetting %}{% endblock %}
+
+		{% block book %}
+        {% ifequal settings.gametype "bare" %}
+		<li><label for="id_{{ settingsform.book.name }}">{% trans "Book" %}</label>
+			{{ settingsform.book }}</li>
+		{% endifequal %}
+		{% endblock %}
+
+	</ul>
+
+	{% if request.session.is_mobile %}
+	<ul id="opensettingsform">
+		<a href="#">{% trans "Change game" %}</a>
+	</ul>
+	{% endif %}
+
+	<ul id="submittable">
+	    <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
+	</ul>
+
+{% endblock %}
+
+{% block question %}
+	{% ifequal settings.gametype "bare" %}
+		<a href="#" class="link_tooltip" id="link_tooltip-{{ forloop.counter }}">{{ form.lemma }}</a>{% if request.session.is_mobile %}{% include 'morfa_tooltip.html' %}{% endif %}
+	{% else %} {# Morfa-C #}
+	{{ form.question }} {% if form.lemma %} ({% if request.session.is_mobile %}{% include 'morfa_tooltip.html' %}{% endif %}<a href="#" class="link_tooltip" id="link_tooltip-{{ forloop.counter }}">{{ form.lemma }}</a>){% endif %}
+	{% endifequal %}
+{% endblock %}
+
+{% block tooltip %}
+	{% if not request.session.is_mobile %}
+	{% include 'morfa_tooltip.html' %}
+	{% endif %}
+{% endblock %}
