@@ -826,22 +826,21 @@ class NumGame(Game):
 									stdin=subprocess.PIPE,
 									stdout=subprocess.PIPE,
 									stderr=subprocess.PIPE)
-
-		def kill_proc(proc=num_proc):
-			""" Kill a process, raise an error if it does not respond. Error
-			is very very rarely raised, and probably never will be except in
-			situations of extreme load.
-			"""
-
-			try:
-				proc.kill()
-				raise Http404("Process for %s took too long." % ' '.join(gen_norm_command))
-			except OSError:
-				pass
-			return
-
-		t = Timer(5, kill_proc)
-		t.start()
+		# Chiara: This was causing same uwsgi bug as for sms_oahpa
+		#def kill_proc(proc=num_proc):
+		#	""" Kill a process, raise an error if it does not respond. Error
+		#	is very very rarely raised, and probably never will be except in
+		#	situations of extreme load.
+		#	"""
+		#	try:
+		#		proc.kill()
+		#		raise Http404("Process for %s took too long." % ' '.join(gen_norm_command))
+		#	except OSError:
+		#		pass
+		#	return
+		#t = Timer(5, kill_proc)
+		#t.start()
+		
 		output, err = num_proc.communicate(forms)
 
 		return output, err
