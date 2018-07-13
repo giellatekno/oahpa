@@ -1,0 +1,508 @@
+/* @override http://localhost:8888/aarjel/media//css/mobile.css */
+
+/* CSS Mobile Reset */
+html, body
+{
+ margin: 0;
+ padding: 0; 
+ border: 0;
+}
+
+body 
+{
+ margin: 0 auto;
+ font-family:Arial,  sans-serif;
+ line-height:1.5;
+ font-size:16px;
+ background: url(../images/grey_orange_grey.png) repeat-x;
+ color: #000;
+ word-wrap: break-word;
+ -webkit-text-size-adjust: none;
+ 
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+
+p img { float: left; margin: 0 10px 5px 0; padding: 0; }
+
+img { border: 0; max-width: 100%; }
+
+table { width:auto; border-collapse: collapse;border-spacing: 0; }
+
+a {
+	text-decoration: none;
+}
+
+ul, li {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	list-style: none;
+	list-style-type: none;
+}
+
+.hide {
+	position: absolute;
+	left: -6000px;
+	top: -6000px;
+}
+
+div#settings {
+	position: relative;
+	margin: 0 auto 0 auto;
+}
+
+
+/* TODO: toggle */
+
+#language_options {
+	position: absolute;
+	display: table-row;
+	margin: 0 0;
+	right: 0;
+	font-size: 80%;
+}
+
+#language_options dl {
+	display: table-cell;
+	margin-top: 0;
+	margin-bottom: .5em;
+}
+
+#language_options form {
+	position: relative;
+	right: 0;
+}
+
+#header {
+	text-align: left;
+}
+
+#header h1 {
+	margin: 0 0;
+}
+
+#header img {
+	width: 45%;
+	margin: 0 auto;
+}
+
+#header h2 {
+	text-align: center;
+	margin-top: 2em;
+	margin-bottom: 1.5em;
+}
+
+#content p.intro {
+	margin: 1em 2em;
+	background-color: #FFF;
+	padding: 5px;
+	-webkit-border-radius: 5px;
+}
+
+ul#opensettingsform {
+	display: none;
+	font-size: 125%;
+	text-align: center;
+	background-color: #DDD;
+	-webkit-border-radius: 5px;
+	width: 50%;
+	margin: .25em 0;
+}
+
+ul#opensettingsform a {
+	color: #33F;
+}
+div.grammarlinks {
+	position: relative;
+}
+
+#page.game {
+	width: 90%;
+	margin: 0 auto;
+	border: 1px solid #999;
+	background: #FFF;
+	padding: 15px;
+	position: relative;
+	top: 4em;
+}
+
+#page.game #headerimg {
+	display: block;
+	position: absolute;
+	top: -55px;
+	left: 5px;
+	width: 80px;
+}
+
+.main #headerimg {
+	display: none;
+}
+
+#page.game .games_menu {
+	list-style: none;
+	list-style-type: none;
+	
+	display: table;
+	margin: 0 auto;
+	padding: 0 0 0 0;
+}
+
+ul.games_menu {
+	display: block;
+	margin: 0 aut;
+	top: -4em;
+	right: 0;
+}
+
+ul.games_menu.small {
+	position: absolute;
+	
+}
+
+ul.games_menu.small a {
+	font-size: 90%;
+}
+
+.main ul.games_table {
+	display: table-row;
+	margin: 0 auto;
+	width: 80%;
+}
+
+.main ul.games_table > li {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+.games_menu li {
+	display: table-cell;
+	margin: 0 0 0 0;
+	padding: 0 .25em 0 0;
+	text-align: center;
+	line-height: 1em;
+}
+
+.main .games_menu {
+	margin: 0 auto;
+	width: 80%;
+}
+
+.main .games_menu li {
+	display: table-cell;
+	padding: 15px 5px;
+	font-size: 95%;
+}
+.main .games_menu img {
+	width: 55px;
+}
+
+.games_menu.small img {
+	width: 40px;
+	height: 40px;
+}
+
+#page.game #leftcontent {
+	display: block;
+}
+
+#leftcontent #navbar img {
+	width: 50px;
+	height: 50px;
+}
+
+#navbar {
+	position: relative;
+}
+
+#subgames {
+	position: absolute;
+	display: table-row;
+	top: .5em;
+	right: 00px;
+	width: 240px;
+}
+
+#reference {
+	display: table-row;
+}
+
+ul.sidelist li {
+	display: inline;
+	padding: 0px 5px;
+	float: right;
+}
+
+ul.sidelist li a {
+	padding:  3px;
+	-webkit-border-radius: 2px;
+}
+
+#page.game #settingsform {
+	margin: .25em 0 .25em 0;
+	padding: .25em 0 .25em 0;
+	
+	border-top: 3px double #CCC;
+	border-bottom: 3px double #CCC;
+	width: 100%;
+}
+
+#page.game #settingsform > li {
+	display: table-row;
+	padding: 0 10px;
+}
+
+#page.game #settingsform > li > label {
+	display: table-cell;
+	padding-right: 20px;
+	text-align: right;
+}
+
+#page.game #settingsform > li > select {
+	display: table-cell;
+	text-align: left;
+}
+
+#page.game #settingsform > li > ul {
+	display: table-row;
+}
+
+#instructions {
+	position: relative;
+	width: 45%;
+	margin: 0 0 0 auto;
+	top: -4em;
+	height: 0px;
+}
+
+#tooltips {
+	position: relative;
+	width: 45%;
+	margin: 0 0 0 auto;
+	top: -6em;
+	height:  20px;
+}
+
+span.tooltip {
+	position: absolute;
+	top: -1.3em;
+	right: 0px;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	font-size: 90%;
+	font-style: italic;
+}
+
+.morfa span.tooltip {
+	position: relative;
+	display: block;
+	float: right;
+	height: 0;
+	top: 0em;
+	right: .75em;
+}
+
+.morfac span.tooltip {
+	right: .5em;
+}
+
+#instructions p:first-child {
+	font-size: 115%;
+	font-style: italic;
+}
+
+hr {
+	display: none;
+}
+
+#instructions p {
+	font-size: 90%;
+	line-height: 1.2em;
+	margin-top: 0;
+	margin-bottom: .25em;
+}
+
+/* gameform */
+
+#page.game #settings input[type='submit'] {
+	position: relative;
+	margin: 0 auto;
+	top: 0;
+	right: 0;
+}
+
+#question_set {
+	margin-top: .75em;
+	font-size: 140%;
+}
+
+#question_set dd {
+	margin-left: 0;
+	margin-bottom: .5em;
+}
+
+#question_set {
+	position: relative;
+	font-size: 115%;
+}
+
+#question_set.morfa {
+	font-size: 120%;
+}
+
+#question_set.morfac {
+	font-size: 105%;
+}
+
+
+
+span.leftpart, span.rightpart {
+	position: relative;
+	display: table-cell;
+}
+
+span.leftpart {
+	display: block;
+	width: 100%;
+	position: relative;
+	margin-bottom: .2em;
+
+}
+
+span.rightpart {
+	position: relative;
+	top: -2em;
+}
+
+#question_set .correctanswertext {
+	margin-top: -1.6em;
+	position: absolute;
+	width: 100%;
+	text-align: right;
+	border-bottom: 1px dashed #666;
+	padding-bottom: 2px;
+}
+
+
+.correct, .correct {
+	color: #090;
+}
+
+.incorrect, .incorrect input {
+	color: #900;
+}
+
+.morfac .blankentry, .morfa .blankentry {
+	padding-bottom: 2px;
+	border-bottom: 2px solid #888;
+	color: #977;
+	font-style: italic;
+}
+
+.morfac .rightpart {
+	position: inherit;
+}
+
+.morfac .correctanswertext, .morfa .correctanswertext {
+	display: none;
+}
+
+#question_set input[type='text'] {
+	font-size: 105%;
+	width: 95%;
+}
+
+#game_left input[type='submit'] {
+	float: right;
+}
+
+/* TODO: questionset morfa-c */
+#question_set.morfac input {
+	display: inline;
+	width: 7em;
+}
+
+.morfac dt {
+	position: relative;
+}
+
+.morfac dd {
+	padding-bottom: 1em;
+	padding-left: 1em;
+}
+
+#page.game #settingsform li ul {
+	list-style-type: none;
+}
+
+#page.game #settingsform li ul li {
+	margin-left: .75em;
+}
+
+#page.game #footer {
+	font-size: 80%;
+	margin-top: 3em;
+}
+
+
+
+ul.games_menu.small li.game {
+	display: block;
+	float: left;
+}
+
+/* TODO: */
+/* TODO: tooltips in morfa */
+div.grammarlinks {
+	display: block;
+	width: 100%;
+	text-align: right;
+	margin-bottom: .75em;
+	z-index: 5;
+}
+
+#reference, #reference_label {
+	display: none;
+}
+
+#copyright p {
+	margin: 0 ;
+}
+
+div.keys_align {
+	position: relative;
+	display: inline;
+}
+
+ul.keys {
+	display: none;
+	position: relative;
+	float: right;
+	clear: both;
+	top: -1.4em;
+	right: 25px;
+}
+
+.morfac .keys {
+	float: none;
+	top: .3em;
+	left: 3em;
+}
+
+
+ul.keys li {
+	display: table-cell;
+	padding: 0 5px;
+	
+}
+
+ul.keys a.key {
+	background-color: #DDD;
+	padding: 1px 4px;
+	font-size: 80%;
+	-webkit-border-radius: 2px;
+	color: #33F;
+}
+
+#footer, .main ul.linklist {
+	margin: .5em 2em;
+}

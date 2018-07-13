@@ -1,7 +1,6 @@
-/* @override 
-	http://localhost:8000/media/css/sms_oahpa.css
-	http://localhost:8000/nuorti/media/css/main.css
-	http://localhost:8000/sms_oahpa/media//css/main.css
+/* @override
+	http://localhost:8000/media/css/lll1_oahpa.css
+	http://localhost:8000/media/css/main.css
 */
 
 /* @group CSS Reset */
@@ -27,7 +26,7 @@ table {
 	border-collapse:collapse;
 	border-spacing:0;
 }
-fieldset,img { 
+fieldset,img {
 	border:0;
 }
 address,caption,cite,code,dfn,em,strong,th,var {
@@ -52,9 +51,27 @@ abbr,acronym { border:0;
 
 /* @end */
 
+/* needed for sma_oahpa */
+a.mobile_link {
+	position: fixed;
+	font-size: 135%;
+	top: 4.5em;
+	left: .5em;
+	letter-spacing: -1px;
+	font-weight: bolder;
+	text-decoration: none;
+	opacity: .2;
+	line-height: 0em;
+
+}
+/* needed for sma_oahpa */
+#opensettingsform {
+	display: none;
+}
+
 body {
   overflow: scroll;
-  font-family: "Helvetica Neue", sans-serif; 
+  font-family: "Helvetica Neue", sans-serif;
   padding: 0;
   margin: 0;
   width: 100%;
@@ -142,10 +159,10 @@ h3 {
 
 #language_options dl {
 	margin-bottom: 10px;
-} 
+}
 
 #page p {
-	margin: 0 1em;	
+	margin: 0 1em;
 }
 
 #page p.intro {
@@ -159,6 +176,7 @@ h3 {
 ul#games_menu {
 	display: table;
 	margin: 1em auto;
+	/* margin: 3.5em auto; in sma_oahpa */
 }
 
 #page.game ul#games_menu {
@@ -195,7 +213,7 @@ ul#games_menu li {
 #games_menu.small img {
 	width: 60px;
 	height: 60px;
-	
+
 }
 
 #games_menu.small a {
@@ -204,7 +222,7 @@ ul#games_menu li {
 }
 
 #games_menu a {
-	display: block;	
+	display: block;
 	width: inherit;
 	text-decoration: none;
 	text-align: center;
@@ -214,7 +232,7 @@ ul#games_menu li {
 	margin-top: 1.5em;
 	margin-bottom: .75em;
 	font-size: 80%;
-	
+
 }
 
 #page.game #footer {
@@ -284,6 +302,7 @@ ul.linklist a {
 
 #page.game #rightcontent {
 	margin: 15px 15px;
+	/* margin: 15px 20px; in sma_oahpa */
 }
 
 #game_header {
@@ -323,6 +342,18 @@ div#settings {
 	right: .5em;
 }
 
+/* needed for sma_oahpa */
+.dialect_selection {
+	position: absolute;
+	top: 4em;
+	right: -7.5em;
+	font-size: 75%;
+	font-style: italic;
+	line-height: 1.5em;
+	text-align: right;
+        z-index: 20;
+}
+
 
 #submittable select {
 	padding: 0 0 0 0;
@@ -351,7 +382,7 @@ div#instructions {
 	margin-top: 1.25em;
 	margin-bottom: 1em;
 
-	font-size: 95%;	
+	font-size: 95%;
 }
 
 div#instructions p {
@@ -367,7 +398,7 @@ div#tooltips {
 div.tooltip {
 	border: 1px solid #CCC;
 	padding: 10px;
-	
+
 	font-size: 95%;
 }
 
@@ -504,10 +535,10 @@ dl#question_set dt {
 div#game {
 	display: table;
 	position: relative;
-	
+
 	width: 100%;
 	font-size: 85%;
-	
+
 	margin-top: .5em;
 	padding-top: .5em;
 }
@@ -516,8 +547,8 @@ div#game {
 	display: table-cell;
 	position: relative;
 	float: right;
-	
-	width: 25%;	
+
+	width: 25%;
 }
 
 #game_left {
@@ -621,6 +652,37 @@ span.incorrect input {
 	height:  425px ;
 }
 
+/* needed for sma_oahpa */
+#view-mobile {
+	position: absolute;
+	display: block;
+	width: 100%;
+	top: 0;
+	z-index: 5;
+	background-color: #eff271;
+	border-bottom: 2px solid #bcc271;
+}
+/* needed for sma_oahpa */
+#view-mobile a {
+	padding: 5px 15px;
+	display: block;
+	font-size: 130%;
+	color: #e98300;
+	font-weight: bold;
+	text-decoration: none;
+	letter-spacing: 1px;
+}
+/* needed for sma_oahpa */
+#wordclass ul {
+	width: 150px; // was 280px
+}
+/* needed for sma_oahpa */
+#wordclass ul li {
+	float: left;
+	width: 50px;
+	height: 20px;
+}
+
 #login p {
 	padding: 0;
 	margin: 0;
@@ -681,7 +743,7 @@ span.incorrect input {
 }
 
 #courses h3 {
-	font-weight: bold ; 
+	font-weight: bold ;
 	font-size: 110% ;
 }
 
@@ -701,7 +763,7 @@ span.incorrect input {
 }
 
 ul.courselist {
-	margin: 1em 2em; 
+	margin: 1em 2em;
 }
 
 ul.courselist li {
