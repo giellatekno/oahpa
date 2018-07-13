@@ -1,4 +1,4 @@
-// jQuery-only functions
+﻿// jQuery-only functions
 
 // TODO: tooltip links does not show link cursor if you hover.
 
@@ -8,10 +8,13 @@ $(document).ready(function(){
 	$('.feedback').hide();
 	set_tooltip_hrefs();
 
+	hide_settings_after_delay();
+
 	$('input[type="text"]').keydown(next_field);
+	$('input[type="text"]').click(insert_keys);
 	$('a.link_tooltip').click(reveal_tooltip);
 	$('a.feedback_link').click(reveal_feedback);
-
+	
 	$('select#id_semtype').change(function (e) {
 			$('select#id_source').val('all') ;
 			return false;
@@ -21,25 +24,62 @@ $(document).ready(function(){
 			$('select#id_semtype').val('all') ;
 			return false;
 	});
-
+	
 	$('select#grammarlink').change(function (e) {
 			link = $('select#grammarlink#').val();
 			window.open(link);
 	});
 
 	$('div#settings select').change(formsubmit);
-
-	//Needed for sma_oahpa
-	// Numra radio buttons
-	$('div#settings input[type="radio"]').click(formsubmit);
-
-	// Checkboxes should probably not be included in the auto-refresh because
-	// clicking a checkbox does not constitute making one choice, users may
-	// want to check one and un-check another without being refreshed.
+	
+	$('ul#opensettingsform a').click(toggle_settings);
 
 	disable_autocomplete();
+
+	$('.key').click(insertChar);
 });
 
+function insertChar(a) {
+	character = $(a.target).html();
+
+	target = $(a.target).parent().parent().parent().children('input[type="text"]');
+
+	val = $(target).val();
+	$(target).val(val + character);
+	return false;
+}
+
+function insert_keys(e) {
+	$('ul.keys').hide();
+	// id_1-answer
+	cur_id = e.target.id.match(/\d+/)[0];
+	$('#keys-' + cur_id).show();
+
+	return false;
+}
+
+function hide_settings_after_delay() {
+	// #settingsform ul, #settingsform label
+	$('#navbar').toggle();
+	$('ul#settingsform').toggle();
+	$('ul#opensettingsform').toggle();
+}
+
+function hide_settings() {
+	$('#navbar').hide();
+	$('ul#settingsform').hide();
+	$('ul#opensettingsform').hide();
+	$('#instructions').hide();
+	$('div.grammarlinks').hide();
+}
+
+function toggle_settings() {
+	$('#navbar').toggle();
+	$('ul#settingsform').toggle();
+	$('ul#opensettingsform').toggle();
+	$('#instructions').toggle();
+	$('div.grammarlinks').toggle();
+}
 
 function disable_autocomplete() {
 	$('form#gameform')[0].setAttribute('autocomplete', 'off') ;
@@ -49,7 +89,7 @@ function disable_autocomplete() {
 		elem.setAttribute('autocomplete', 'off') ;
 	};
 
-	return true;
+	return true; 
 }
 
 function set_tooltip_hrefs() {
@@ -66,30 +106,26 @@ function set_tooltip_hrefs() {
 	return false;
 }
 
-//function disable_submit(e) {
-	//$('input[type="submit"]').attr('disabled', 'true');
-	//e.target.submit() ;
-//}
-
-
-function formsubmit (e) {
+function formsubmit (e) { 
 	$('div#settings input[type="submit"]').click();
 	$('input[type="submit"]').attr('disabled', 'disabled');
 	return false;
 }
 
 function reveal_tooltip (event) {
+	// $('#instructions').hide();
 	reveal_id = event.target.id.match(/(tooltip-\d)/);
 	$('.tooltip').hide();
 	$('#' + reveal_id).show();
-	return false;
+	return false; 
 }
 
 function reveal_feedback (event) {
+	$('#instructions').hide() ;
 	reveal_id = event.target.id.match(/(feedback-\d)/)[0];
 	$('.tooltip').hide();
 	$('#' + reveal_id).show();
-	return false;
+	return false; 
 }
 
 // Switch to next field on enter, at end, go back to first empty field
@@ -99,15 +135,15 @@ function next_field (event) {
 		function first_empty (inputs) {
 			return inputs[0];
 		}
-
+	
 		current_id = event.target.id;
 		match = current_id.match(/id_(\d)-answer/);
 		count = parseFloat(match[1]) - 1;
 		inputs = $('input[type="text"]');
-
+	
 		// Focus next
 		$(inputs[count+1]).focus();
-
+	
 		if(count == 4){
 			open_inputs = $("input:visible:enabled[type='text'][value='']").not(".nofocus");
 			if (open_inputs.length == 0) {
@@ -115,29 +151,29 @@ function next_field (event) {
 				return false;
 			} else {
 				open_inputs.slice(0, 1).focus();
-
+				
 			}
 		}
-
+		
 		return false;
 	}
-
+	
 }
 
 function SetIndex(list,value) {
     if (value == "all") {
 	   return;
     }
-	if(list && list.options.length){
-		for(var i=0; i<list.options.length; i++){
-		if(list.options[i].value == "all"){
-			list.selectedIndex = i;
-			return;
-			}
-		}
-	}
+	if(list && list.options.length){ 
+		for(var i=0; i<list.options.length; i++){ 
+		if(list.options[i].value == "all"){ 
+			list.selectedIndex = i; 
+			return; 
+			} 
+		} 
+	} 
 }
-
+	
 
 
 // Non-jQuery functions that should probably be rewritten if they come into use.
@@ -170,27 +206,27 @@ function SetIndex(list,value) {
 //   }
 
 // function sahkaSetFocus(){
-//
+// 
 //   document.getElementByName('test').focus();
 //   var node_list = document.getElementsByTagName('input');
-//
+// 	
 //   for (var i = 0; i < node_list.length; i++) {
 //     var node = node_list[i];
 //     if (node.getAttribute('type') == 'text') {
 //       node.focus();
 //       }
 //    }
-//
-// }
+// 
+// } 
 
 // function setFocus(form){
-//
+// 
 //   if (form.gametype == "sahka") {
 //     sahkaSetFocus();
 //     return;
 //   }
 //   var node_list = document.getElementsByTagName('input');
-//   var i=0;
+//   var i=0;	
 //   var found=0;
 //   while (i < node_list.length & found==0) {
 //     i++;
@@ -200,4 +236,6 @@ function SetIndex(list,value) {
 //       found=1;
 //     }
 //   }
-// }
+// } 
+
+
