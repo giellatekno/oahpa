@@ -2,7 +2,7 @@
 
 P="python"
 META="sma_data/meta_data"
-SMA="sma_data/sma"
+SRC="sma_data/src"
 NOB="sma_data/nob"
 FIN="sma_data/fin"
 SWE="sma_data/swe"
@@ -13,7 +13,7 @@ rm -fv error.log
 ##  sma->X
 ##
 
-for xfile in $(ls $SMA/*.xml)
+for xfile in $(ls $SRC/*.xml)
 do
     fl=$(basename $xfile)
     POS=${fl%_*}
