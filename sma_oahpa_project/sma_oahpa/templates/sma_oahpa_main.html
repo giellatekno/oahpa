@@ -84,7 +84,7 @@ templates/sma_oahpa_main.html
 				<dl>
 					<dt><label for="language_select">{% trans "Interface language" %}</label></dt>
 					<dd>
-						<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
+						<input name="next" type="hidden" value="{{ request.path }}" />
 						<select id="language_select" name="language" onChange="javascript:this.form.submit();">
 
 						{% ifequal LANGUAGE_CODE "no" %}
