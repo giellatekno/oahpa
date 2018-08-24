@@ -5,17 +5,18 @@
 
 The core of Konteaksta is implemented as a Java servlet on Apache Tomcat web server.
 
-Updating the code on gtoahpa
+Updating the code on gtoahpa-01
 
-* cd /home/teaksta
+* sudo su teaksta
+* cd
 * svn up
 * ./make_teaksta.sh
 
 Sometimes the restart of the Tomcat web server is needed as well:
 
-* cd $CATALINA_HOME
-* sudo bin/shutdown.sh
-* sudo bin/startup.sh
+* cd $CATALINA_HOME/bin
+* ./shutdown.sh
+* ./startup.sh
 
 The logs of running Konteaksta can be found in the directory {{$CATALINA_HOME/logs/}}.
 
@@ -26,10 +27,11 @@ The pipeline is:
 
 {{{
 cat text | \
-/opt/smi/sme/bin/preprocess --abbr=/opt/smi/sme/bin/abbr.txt --corr=/opt/smi/sme/bin/corr.txt | \
+/opt/smi/sme/bin/preprocess --abbr=/opt/smi/sme/bin/abbr.txt | \
 /usr/bin/lookup -flags mbTT /opt/smi/sme/bin/analyser-disamb-gt-desc.xfst | \
 /opt/smi/sme/bin/lookup2cg | \
-/usr/local/bin/vislcg3 -g /opt/smi/sme/bin/disambiguator.cg3
+/usr/local/bin/vislcg3 -g /opt/smi/sme/bin/disambiguator.cg3 | \
+/usr/local/bin/vislcg3 -g /opt/smi/sme/bin/konteaksta.cg3
 }}}
 
 As of Mar-2018 tests have been performed using xfst vs hfst in the pipeline (see [FSTs tests| konteakstaFstTests.html]).
@@ -58,7 +60,7 @@ For each folder, there are three files:
 
 * activity.xml
 * help.jsp
-* recommended_pages.html
+* recommended_pages.html (optional)
 
 {{activity.xml}} defines preprossessing and post-processing pipelines (those are defined in separate xml-files that can be found under the {{desc/}}-folder) and tag sequences that identify the words that are relevant for the exercise.
 
@@ -70,7 +72,7 @@ Instructions of how to add a new exercise topic are [here|KonteakstaAddingNewTop
 
 !!!How the program works
 
-Konteaksta front page is {{src/main/webapp/index.html}}. It is written in HTML and Javascript. When pressing the button "Go!" the Java servlet will be run that does the following:
+Konteaksta front page is {{src/main/webapp/index.html}}. It is written in HTML and Javascript, and uses Bootstrap framework (v4.0.0) and Font Awesome icons (v5.0.8). When pressing the button "Go!" the Java servlet will be run that does the following:
 
 # preprocessing:
 ## extracting the textual content from the webpage
@@ -82,8 +84,16 @@ Konteaksta front page is {{src/main/webapp/index.html}}. It is written in HTML a
 ### shallow syntactic parsing (CG)
 # postprocessing (one of the ''Topic''Enhancer.java files in {{src/main/java/werti/uima/enhancer/}}):
 ## Selection of the tokens that are relevant for the topic
-## Enhancement - enriching the HTML code with additional attributes. The relevant tokens will be marked and provided with attributes as __lemma__, __distractors__ and __answer__.
+## Enhancement - enriching the HTML code with additional attributes. The relevant tokens will be marked and provided with attributes as __lemma__, __distractors__ and __possibleforms__.
 # Loads the enhanced page to the browser. The four different exercise types (color, click, multiple choice, cloze) are implemented in Javascript.
+
+Since the process can be quite slow, the preprocessing step has been run once for each text in the recommended_pages list and the output has been saved in .xmi file, so that only the postprocessing step is executed each time (the process is now twice as fast).
+To analyze again the texts (new FST, or other reason) on gtoahpa-01:
+
+* sudo su teaksta
+* cd ~/analyzedTexts/
+* rm cas_*
+
 
 !!!Example of enhanced HTML code
 
@@ -92,7 +102,7 @@ Konteaksta front page is {{src/main/webapp/index.html}}. It is written in HTML a
       class="wertiviewtoken  wertiviewVerbConjugation"
       lemma="leat"
       distractors="leat lean leat leahkit leame leamen leahkime lea "
-      answer="lei leai ">  lei
+      possibleforms="lei leai ">  lei
 </span>
 }}}
 
