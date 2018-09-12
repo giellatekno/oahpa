@@ -56,22 +56,22 @@ http://oahpa.no/sme/useoahpa/numra.nob.html
     <div class="grammarlinks">
         {% include 'grammar_links_menu.html' %}
     </div>
-    
+
     <ul id="settingsform">
-<!-- emergency tag starts -->    
+<!-- emergency tag starts -->
     <!--<li>
 {% trans "NB! NB! The Numra game is not working properly, due to technical problems! NB! NB!" %}
-</li>-->    
+</li>-->
 <!-- emergency tag ends -->
         {% block setting_items %}
     	<li><label for="id_{{ settingsform.maxnum.name }}" class="interface">{% trans_to "Select the range of numerals." "sme" %}<span class="invisible">{% trans "Select the range of numerals." %}</span></label>
     		{{ settingsform.maxnum }} </li>
     	<li><label for="id_{{ settingsform.numgame.name }}" class="interface">{% trans_to "Select the direction" "sme" %}<span class="invisible">{% trans "Select the direction" %}</span></label>
-       {% blocktrans %} Numerals {{ settingsform.numgame }} {% endblocktrans %}
+				{{ settingsform.numgame }}
         </li>
         {% endblock %}
     </ul>
-    
+
     <ul id="submittable">
         <li><t class="interface"> <input type="submit" name="settings" value="{% trans_to "New set" "sme" %}" /><span class="invisible">{% trans "New set" %}</span></t></li>
     </ul>
@@ -80,10 +80,9 @@ http://oahpa.no/sme/useoahpa/numra.nob.html
 
 {% block question %}
 {% if form.numstring %}
-{{ form.numstring }} 
+{{ form.numstring }}
 {% else %}
-{{ form.numeral }} 
+{{ form.numeral }}
 {% endif %}
 {{ form.numeral_id }}
 {% endblock %}
-
