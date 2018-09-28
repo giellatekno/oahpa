@@ -6,46 +6,56 @@
 
 Studentene skal arbeide med autentiske tekster på internett, nye og aktuelle tekster valgt etter interesse.
 
-Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for studenten, men kan også gjøre tekster om til interaktive oppgaver på ulike måter, f.eks.: 
-# gramatiske kategorier blir markert med farge for å gjøre studenten oppmerksom på dem 
-# studenten skal selv finne dem i teksten og klikke på dem 
+Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for studenten, men kan også gjøre tekster om til interaktive oppgaver på ulike måter, f.eks.:
+# gramatiske kategorier blir markert med farge for å gjøre studenten oppmerksom på dem
+# studenten skal selv finne dem i teksten og klikke på dem
 # studenten skal velge riktig ordform av flere mulige (flervalgsoppgave)
 ## vi må lage en algoritme for å generere "distractors" og samtidig unngå homonymi
 # studenten skal skrive riktig ordform fra oppgitt lemma, evt skrive riktig CC/CS, adposisjon osv.
 
 !!Vi bygger på
-* [WERTi|http://www.purl.org/net/WERTi/]. 
-* [Nyare url|http://sifnos.sfs.uni-tuebingen.de/WERTi/index.jsp?content=intro] - 
+* [WERTi|http://www.purl.org/net/WERTi/].
+* [Nyare url|http://sifnos.sfs.uni-tuebingen.de/WERTi/index.jsp?content=intro] -
 * ny Firefox-versjon [View|http://sifnos.sfs.uni-tuebingen.de/VIEW/index.jsp?content=intro]
 
 !!Oppgavetyper
 
 !! For alle Practise:
 * Vi bruker ikke ord med Der/* tag, eller Qst
+* Vi fjerner tagger som kommer i analyse (analyser-disamb-gt-desc.xfst) men er ikke i generator (generator-dict-gt-norm.xfst)
+** Err/Orth",
+** Err/Orth-a-á",
+** Err/Orth-nom-gen",
+** Err/Orth-nom-acc",
+** Err/CmpSub",
+** Err/MissingSpace",
+** Err/MissingHyph",
+** Err/Hyph",
+** Err/SpaceCmp",
+** Err/Spellrelax",
+** Allegro",
+** regex som matcher tagger: <xxx_xxx>
 
-!! ConNeg form av verb - med trigger
-* Oppgavene inneholder taggene Ind+Prs+ConNeg og Ind+Prt+ConNeg 
-* Trigger (blå farge?): ii+V+IV+Neg+Ind+?
+!! ConNeg form av verb
+* Oppgavene inneholder taggene Ind+Prs+ConNeg og Ind+Prt+ConNeg
 * Distractors av samme lemma:
-** V+Ind+Prs+Sg1 
+** V+Ind+Prs+Sg1
 ** V+Ind+Prs+Sg2  
 ** V+Ind+Prs+Sg3  
 ** V+Ind+Prt+Sg1  
-** V+Ind+Prt+Sg2 
+** V+Ind+Prt+Sg2
 ** V+Ind+Prt+Sg3
 ! Anbefalte linker
-* http://kursa.oahpa.no/2011/09/21/bardni-gii-ii-aigon-skuvlii-vuolgit/
 * http://kursa.oahpa.no/2011/11/04/maid-don-barget-ikte/
-* http://www.samimuseum.fi/maahisweb/sapmi/sa_poikajastaalo.html - men gir ikke alle i pracise/choose
-* http://kursa.oahpa.no/2013/12/30/ipmilmeahttun-dalki/
+* http://kursa.oahpa.no/2011/09/21/bardni-gii-ii-aigon-skuvlii-vuolgit/
+* http://kursa.oahpa.no/2013/05/15/2-4-buohcame/
 
-!! Finitte verb 
-* Oppgavene inneholder en av disse taggene: Ind Prs, Ind Prt, Imprt, Cond Prs, Pot Prs, Neg Ind
-* Vi satser på å ikke oppgi tiden (Prt, Prs), studenten skal finne ut selv hva hun trur er best. 
-* Distractors av samme lemma __Ind__: 
-** V+Ind+Prs+ConNeg 
+!! Finitte verb
+* Oppgavene inneholder en av disse taggene: Sg1, Sg2, Sg3, Du1, Du2, Du3, Pl1, Pl2, Pl3
+* Vi satser på å ikke oppgi tiden (Prt, Prs), studenten skal finne ut selv hva hun trur er best.
+* Distractors av samme lemma __Ind__:
+** V+Ind+Prs+ConNeg
 ** V+Ind+Prt+ConNeg
-** V+Inf  
 ** V+Actio+Ess  
 ** V+Ind+Prt+Sg1  
 ** V+Ind+Prt+Sg2  
@@ -58,8 +68,8 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 ** V+Ind+Prt+Du3  
 ** V+Ind+Prs+Du1  
 ** V+Ind+Prs+Du2  
-** V+Ind+Prs+Du3 
-* Distractors av samme lemma __Imprt__: 
+** V+Ind+Prs+Du3
+* Distractors av samme lemma __Imprt__:
 ** V+Imprt+Sg1  
 ** V+Imprt+Sg2  
 ** V+Imprt+Sg3  
@@ -68,8 +78,8 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 ** V+Imprt+Du3  
 ** V+Imprt+Pl1  
 ** V+Imprt+Pl2  
-** V+Imprt+Pl3 
-* Distractors av samme lemma __Cond__: 
+** V+Imprt+Pl3
+* Distractors av samme lemma __Cond__:
 ** V+Cond+Prs+Sg1  
 ** V+Cond+Prs+Sg2  
 ** V+Cond+Prs+Sg3  
@@ -78,8 +88,8 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 ** V+Cond+Prs+Du3  
 ** V+Cond+Prs+Pl1  
 ** V+Cond+Prs+Pl2  
-** V+Cond+Prs+Pl3 
-* Distractors av samme lemma __Pot__: 
+** V+Cond+Prs+Pl3
+* Distractors av samme lemma __Pot__:
 ** V+Pot+Prs+Sg1  
 ** V+Pot+Prs+Sg2  
 ** V+Pot+Prs+Sg3  
@@ -88,7 +98,7 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 ** V+Pot+Prs+Du3  
 ** V+Pot+Prs+Pl1  
 ** V+Pot+Prs+Pl2  
-* Distractors for __Neg__: 
+* Distractors for __Neg__:
 ** ii+V+Neg+Ind+Sg1  
 ** ii+V+Neg+Ind+Sg2  
 ** ii+V+Neg+Ind+Sg3  
@@ -97,10 +107,13 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 ** ii+V+Neg+Ind+Du3  
 ** ii+V+Neg+Ind+Pl1  
 ** ii+V+Neg+Ind+Pl2  
-** ii+V+Neg+Ind+Pl3 
+** ii+V+Neg+Ind+Pl3
 ! Anbefalte linker
-* http://www.samimuseum.fi/maahisweb/sapmi/sa_poikajastaalo.html - men gir ikke alle i pracise/choose
-
+* http://kursa.oahpa.no/2011/11/01/mearragattis/
+* http://www.samimuseum.fi/maahisweb/sapmi/sa_poikajastaalo.html
+* http://kursa.oahpa.no/2013/12/30/meahcis-3/
+* http://kursa.oahpa.no/2013/12/30/ipmilmeahttun-dalki/
+* http://kursa.oahpa.no/2014/12/10/darfegoahti/
 
 !! Infinitte verb
 * Oppgavene inneholder: PrfPrc, VGen, VAbess, Ger, Actio Ess, Inf, ConNeg
@@ -119,48 +132,53 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 ** V+Ind+Prs+Du3  
 ! Anbefalte linker
 * http://kursa.oahpa.no/2013/05/15/2-4-buohcame/
+* http://kursa.oahpa.no/2013/12/30/ipmilmeahttun-dalki/
+* http://kursa.oahpa.no/2013/12/30/ruovttus-leat-ollu-barggut/
+* http://kursa.oahpa.no/2012/10/12/boazodoallu/
 
-!! Skriv substantiv entall i riktig kasus (pluss Ess)
-* Oppgavene inneholder N+Sg+Nom, N+Sg+Acc, N+Sg+Gen, N+Sg+Ill, N+Sg+Loc, N+Sg+Com, N+Ess
+!! Velg substantiv (entall+flertall) i riktig kasus (pluss Ess)
+* Oppgavene inneholder N+Sg+Nom, N+Sg+Acc, N+Sg+Gen, N+Sg+Ill, N+Sg+Loc, N+Sg+Com, N+Ess, N+Pl+Nom, N+Pl+Acc, N+Pl+Gen, N+Pl+Ill, N+Pl+Loc, N+Pl+Com
 * Distractors av samme lemma (samme lista):
-** N+Sg+Nom 
-** N+Sg+Acc 
-** N+Sg+Gen 
-** N+Sg+Ill 
-** N+Sg+Loc 
-** N+Sg+Com
+** Hvis target +Sg+Nom, distractors: +Sg+Acc, +Sg+Ill, +Sg+Loc, +Sg+Com
+** Hvis target +Sg+Acc, distractors: +Sg+Nom, +Sg+Ill, +Sg+Loc, +Sg+Com
+** Hvis target +Sg+Gen, distractors: +Sg+Nom, +Sg+Ill, +Sg+Loc, +Sg+Com
+** Hvis target +Sg+Ill, distractors: +Sg+Nom, +Sg+Com, +Ess, +Sg+Acc
+** Hvis target +Sg+Loc, distractors: +Sg+Nom, +Sg+Com, +Ess, +Sg+Acc
+** Hvis target +Sg+Com, distractors: +Sg+Nom, +Sg+Ill, +Ess, +Sg+Acc
+** Hvis target +Ess, distractors: +Pl+Nom, +Sg+Ill, +Sg+Loc, +Pl+Acc
+** Hvis target +Pl+Nom, distractors: +Pl+Acc, +Pl+Ill, +Pl+Loc, +Pl+Com
+** Hvis target +Pl+Acc, distractors: +Pl+Nom, +Pl+Ill, +Pl+Loc, +Pl+Com
+** Hvis target +Pl+Gen, distractors: +Pl+Nom, +Pl+Ill, +Pl+Loc, +Pl+Com
+** Hvis target +Pl+Ill, distractors: +Pl+Nom, +Pl+Com, +Ess, +Pl+Acc
+** Hvis target +Pl+Loc, distractors: +Pl+Nom, +Pl+Ill, +Ess, +Pl+Acc
+** Hvis target +Pl+Com, distractors: +Pl+Nom, +Pl+Ill, +Ess, +Sg+Acc
 ! Anbefalte sider
+* http://kursa.oahpa.no/2011/11/01/mearragattis/
 * http://kursa.oahpa.no/2011/09/21/bardni-gii-ii-aigon-skuvlii-vuolgit/
 * http://www.samimuseum.fi/maahisweb/sapmi/sa_poikajastaalo.html
-
-!! Skriv substantiv flertall i riktig kasus
-* Oppgavene inneholder N+Pl+Nom, N+Pl+Acc, N+Pl+Gen, N+Pl+Ill, N+Pl+Loc, N+Pl+Com
-* Distractors av samme lemma (samme former som i linja over):
-** N+Pl+Nom 
-** N+Pl+Acc 
-** N+Pl+Gen
-** N+Pl+Ill 
-** N+Pl+Loc 
-** N+Pl+Com
-! Anbefalte sider
+* http://kursa.oahpa.no/2014/12/10/darfegoahti/
+* http://kursa.oahpa.no/2012/10/12/boazodoallu/
+* http://kursa.oahpa.no/2013/12/30/ruovttus-leat-ollu-barggut/
+* http://kursa.oahpa.no/2013/12/30/meahcis-3/
 * http://kursa.oahpa.no/2013/12/30/ipmilmeahttun-dalki/
 
-!! Skriv adjektivet i riktig form
-* Oppgavene inneholder A Sg, A Pl, A Attr
-* Distractors av samme lemma (samme former som i linja over):
-** A+Sg+Nom 
-** A+Pl+Nom 
-** A+Attr
-** A+Sg+Acc 
-** A+Pl+Acc 
-** A+Sg+Loc 
-
+!! Skriv substantiv (entall+flertall) i riktig kasus (pluss Ess)
+* Oppgavene inneholder N+Sg+Nom, N+Sg+Acc, N+Sg+Gen, N+Sg+Ill, N+Sg+Loc, N+Sg+Com, N+Pl+Nom, N+Pl+Acc, N+Pl+Gen, N+Pl+Ill, N+Pl+Loc, N+Pl+Com, N+Ess
+** Hvis target +Sg+Acc, godta også +Pl+Acc
+** Hvis target +Sg+Gen, godta også +Pl+Gen
+** Hvis target +Sg+Ill, godta også +Pl+Ill
+** Hvis target +Sg+Com, godta også +Pl+Com
+** Hvis target +Sg+Loc, godta også +Pl+Loc
+** Hvis target +Pl+Acc, godta også +Sg+Acc
+** Hvis target +Pl+Gen, godta også +Sg+Gen
+** Hvis target +Pl+Ill, godta også +Sg+Ill
+** Hvis target +Pl+Com, godta også +Sg+Com
+** Hvis target +Pl+Loc, godta også +Sg+Loc
 
 !! Finn substantivet (både Pl og Sg) – colorize og click
 * innholder taggen N
-!Anbefalte sider:
-* http://www.samimuseum.fi/maahisweb/sapmi/sa_poikajastaalo.html
 
+!! TODO
 
 !! Finn konjunksjon – colorize og click
 * innholder taggene CS og CC
@@ -174,69 +192,39 @@ Programmet skal analysere tekster og gjør dem slik lettere tilgjengelig for stu
 !! Finn adverbialet – colorize og click
 * Oppgavene inneholder ( @ADVL @<ADVL @ADVL> @-FADVL> @-F<ADVL  @ADVL>CS @ADVL>SUBJ  @SUBJ<ADVL ) pluss N eller Pron
 
-
-!!Testing
-Konteaksta finnes for testing [her|http://gtlab.uit.no:8080/teaksta]. Bruk Firefox som nettleser om du har den. Dessverre fungerer Konteaksta ikke så bra i Safari.
-
 !!Grensesnitt
-Konteaksta-ikon på oahpa-hovedside? Link til Konteaksta-siden
+Konteaksta-ikon på oahpa-hovedside?
 * Ferdige linker med tekst og oppgavetype, studenten velger colorize, click, Practice, multiple choice. Slik sikrer vi at det er relevante tekster i forhold til oppgaver.
 * Studenten kan også kopiere inn url og velger oppgavetype
-* Lokalisering
+* TODO?: Lokalisering
 
 !!Konteaksta
 
+Menyen (blå linje) inneholder:
+* Mo bargat
+* Birra
+* Grammatihkka
 
-Under menyen til venstre
+Til venstre, finnes det Fáttát liste:
+* Substantiivvat
+* Finihtta vearbbat
+* Vearbba biehttalanhápmi
+* Infinihtta vearbbat
 
+I midten, finnes det Hárjehusat liste:
+* Geahča ivdnejuvvon sániid
+* Coahkkal rivttes sániid!
+* Vállje rivttes sániid!
+* Čále rivttes sániid!
 
-Oahpa-oransjfargen, samme som i horisontal linje
-
-{{{
-Reference materials
-Dictionary
-Grammar
-Oahpa giela
-About Konteaksta -->
-
-+-------------------+
-| About Konteaksta  |
-| -------------     |
-| blabla filosofi   |
-| Laga på grunnlag  |
-| av View (lenkje) |
-| -------------     |
-| ein del av oahpa  |
-| og kursa og ...   |
-|                   |
-+-------------------+
-
-
-            +---------------------------+
-            |%%%%%%%%%%%%%%%%%%%%%%%%%%%|
-     o      |%%%%%%%%%%%%%%%%%%%%%oahpa%|
-    /|\     |%%% konteaksta %%%%%%%%%%%%|
-    / \     |%%%%%%%%%%%%%%%%%%%%%%%%%%%|
-%%%%%%%%%%%%|%%%%%%%%%%%%%%%%%%%%%%%%%%%|%%%%%%%%%%
-  Fáttát    |  Hárjehus: XXXX           |
-  ------    |                           |
-  Subjeakta |                           |
-  ...       |  Fáttát til v             |
-            |                           |
- Resources  |                           |
- ...        |                           |
- t birra    |                           |
- about t    +---------------------------+
-
-}}}
-
-
+Til høyre, finnes det Materiálat liste:
+* Her kan man velge en av de anbefalte tekster fra oss
+* Kopiere inn url
+* Laste opp .html fil
 
 Nytt namn på universitetet:
 
 UiT Norgga árktalaš universitehta
-
-
 
 !!Uppdatering av koden på gtlab
 (må gjøres av Heli enn så lenge)
@@ -246,15 +234,15 @@ cd /home/teaksta
 svn up
 
 ./make_teaksta.sh
- 
+
 !!Nettsteder
 * http://skuvla.info/
 
-* Stuorra Sarvva bivddus \\ 
+* Stuorra Sarvva bivddus \\
 http://www.samimuseum.fi/maahisweb/sapmi/sa_tahtitaivastarina.htm
 * Gánda ja stállu \\
 http://www.samimuseum.fi/maahisweb/sapmi/sa_poikajastaalo.html
- 
+
 !!Linker til sápmi.uit.no tekster
 {{{
 * Čállingiella \\
@@ -285,7 +273,7 @@ http://sapmi.uit.no/sapmi/TopicSearch.do?search=D%E1idda.&collection=%2Fdb%2Fsap
 http://sapmi.uit.no/sapmi/TopicSearch.do?search=D%E1iddasearvvit&collection=%2Fdb%2Fsapmi&structure=topic&id=1099477849783-6&testt=&searchpath=metadata%2Ftitle%5B%40language%3D%27samisk%27%5D---description%5B%40language%3D%27samisk%27%5D%2Ftext%2Fpara
 * Dáruiduhttin \\
 http://sapmi.uit.no/sapmi/TopicSearch.do?search=D%E1ruiduhttin&collection=%2Fdb%2Fsapmi&structure=topic&id=1096963785521-33&testt=&searchpath=metadata%2Ftitle%5B%40language%3D%27samisk%27%5D---description%5B%40language%3D%27samisk%27%5D%2Ftext%2Fpara
-* Eamiálbmogat \\ 
+* Eamiálbmogat \\
 http://sapmi.uit.no/sapmi/TopicSearch.do?search=Eami%E1lbmogat&collection=%2Fdb%2Fsapmi&structure=topic&id=1102548852927-53&testt=&searchpath=metadata%2Ftitle%5B%40language%3D%27samisk%27%5D---description%5B%40language%3D%27samisk%27%5D%2Ftext%2Fpara
 * Eamiálbmotnissonolbmot organiseren \\
 http://sapmi.uit.no/sapmi/TopicSearch.do?search=Eami%E1lbmotnissonolbmot+organiserego&collection=%2Fdb%2Fsapmi&structure=topic&id=1129160101393-4&testt=&searchpath=metadata%2Ftitle%5B%40language%3D%27samisk%27%5D---description%5B%40language%3D%27samisk%27%5D%2Ftext%2Fpara
