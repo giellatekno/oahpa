@@ -108,3 +108,18 @@ To analyze again the texts (new FST, or other reason) on gtoahpa-01:
 }}}
 
 If the enhancement does not work as expected we usually can find out why by looking at the page's source.
+
+!!!How to create a new topic Xxx
+
+# in {{src/main/webapp/index.html}}, add new topic as new element in fáttát_list
+# in {{src/main/resources/firefox-extension/werti/chrome/content/wertiview.css}}, add style for new class named .colorizeStyleXxx
+# in {{src/main/webapp/activities}}
+## create folder named Xxx
+## copy files from a similar activity folder
+## edit files as necessary
+# in {{src/main/java/werti/util/HTMLEnhancer.java}}, add new topic Xxx in dict
+# in {{src/main/java/werti/uima/enhancer/}}, create file named {{Vislcg3XxxEnhancer.java}} (best start is copying content from similar topic and edit as necessary)
+# in {{src/main/resources/firefox-extension/werti/chrome/content/}}, create file named {{xxx.js}} (best start as above)
+# in {{desc/enhancers}}, create file named {{vislcg3XxxEnhancer.xml}} (best start as above)
+# in {{desc/operators}}, create file named {{vislcg3PostProc_Xxx.xml.xml}} (best start as above)
+# in {{pom.xml}}, add {{xxx.js}} in {{<filesToInclude>}}
