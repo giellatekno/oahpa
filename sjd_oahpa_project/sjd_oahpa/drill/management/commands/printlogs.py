@@ -6,7 +6,7 @@ from optparse import make_option
 
 import sys
 
-from sjd_drill.models import Log
+from smadrill.models import Log
 
 def printLogs(queryset, csv=False, delimiter=False, attrs=False):
 	""" Print filtered queryset.
@@ -34,7 +34,7 @@ def printLogs(queryset, csv=False, delimiter=False, attrs=False):
 		delimiter = pkwargs['delimiter'] = '|'
 
 		class csv_out:
-			escapechar = ''
+			escapechar = '\\'
 			doublequote = False
 			skipinitialspace = False
 			lineterminator = '\n'

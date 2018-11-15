@@ -1,18 +1,21 @@
+# -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+tls = importlib.import_module(LLL1+'_oahpa.conf.tools')
+
 from django.template import Context, RequestContext, loader
 from django.db.models import Q
 from django.http import HttpResponse, Http404
-from django.shortcuts import get_list_or_404
+from django.shortcuts import get_list_or_404, render_to_response, render
 from django.utils.translation import ugettext_lazy as _
 
-from sjd_oahpa.conf.tools import switch_language_code
+switch_language_code = tls.switch_language_code
 
 from random import randint
 
 from game import *
 from forms import *
-from qagame import *
-from sahka import *
-from cealkka import *
 
 # comment this out
 # DEBUG = open('/dev/ttys001', 'w')
@@ -27,11 +30,10 @@ from courses.views import render_to_response
 from courses.decorators import trackGrade
 
 def index(request):
-	c = RequestContext(request, {
+	c = {
 		'jee': "joku arvo",
-		})
-	return render_to_response('sjd_oahpa_main.html', c,
-				context_instance=RequestContext(request))
+		}
+	return render(request, LLL1+'_oahpa_main.html', c)
 
 def updating(request):
 	c = RequestContext(request, {
@@ -392,12 +394,12 @@ def leksa_game(request, place=False):
 
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
-		if sess_lang == 'sjd':  # was: sme
+		if sess_lang == LLL1:  # was: sme
 			sess_lang = 'rus'  # was: nob
 	else:
 		sess_lang = 'nob'
 
-	default_langpair = 'sjd%s' % sess_lang  # was: sme
+	default_langpair = LLL1+'%s' % sess_lang  # was: sme
 
 	c = leksagame.create_game(request, initial_transtype=default_langpair)
 
