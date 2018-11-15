@@ -1,34 +1,42 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import settings
+
+import django
+django.setup()
 from os import environ
+
+from local_conf import LLL1
+import importlib
+settings = importlib.import_module(LLL1+'_oahpa.settings')
+sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
+
 import os, sys
-print " * Correcting paths"	
+print " * Correcting paths"
 cur_path = os.getcwd()
 parent_path = '/' + '/'.join([a for a in cur_path.split('/') if a][0:-1]) + '/'
 sys.path.insert(0, parent_path)
-environ['DJANGO_SETTINGS_MODULE'] = 'sjd_oahpa.settings'
 
-settings.DEBUG = False
+settings.DEBUG = True
+environ['DJANGO_SETTINGS_MODULE'] = LLL1+'_oahpa.settings'
 
-from sjd_drill.models import *
 from optparse import OptionParser, make_option
-import sys
 from ling import Paradigm
 from words_install import Words
 from extra_install import Extra
 from feedback_install import Feedback_install
 from questions_install import Questions
-from sahka_install import Sahka  # added by Heli
 
-# TODO: option for oa="yes" only, for sjd_
+import codecs
+#sys.stdout = codecs.getwriter('utf8')(sys.stdout)
+from kitchen.text.converters import getwriter
+UTF8Writer = getwriter('utf8')
+sys.stdout = UTF8Writer(sys.stdout)
+
+# TODO: option for oa="yes" only, for sjd
 # ota lemma jos on name="oahpa"
 # jos on lemma, niin ota käännös jos on oa="yes"
 
 OPTION_LIST = (
-	make_option("-a", "--append-words", dest="append",
-					  action="store_true", default=False,
-					  help="Add wordforms to words without deleting existing wordforms"),
 	make_option("-b", "--db", dest="add_db",
 					  action="store_true", default=False,
 					  help="Used for adding tag infoformation to database"),
@@ -53,8 +61,6 @@ OPTION_LIST = (
                   help="XML-file for feedback messages"),
 	make_option("-q", "--questionfile", dest="questionfile",
 	              help="XML-file that contains questions"),
-	make_option("-k", "--sahka", dest="sahkafile",
-                  help="XML-file for Dialogues"),  # added
 	make_option("-w", "--wid", dest="wordid",
 					  help="delete word using id or lemma"),
 	make_option("-p", "--pos", dest="pos",
@@ -65,9 +71,10 @@ OPTION_LIST = (
 from django.core.management.base import BaseCommand, CommandError
 
 class Command(BaseCommand):
-	option_list = BaseCommand.option_list + OPTION_LIST
+        can_import_settings = True
+	#option_list = BaseCommand.option_list + OPTION_LIST
 	help = 'Help text goes here'
-		
+
 	def handle(self, **options):
 		main(opts=option_list)
 
@@ -76,13 +83,12 @@ def main(opts):
 		parser = OptionParser(option_list=opts)
 	else:
 		parser = OptionParser(option_list=OPTION_LIST)
-	
+
 	(options, args) = parser.parse_args()
 
 	linginfo = Paradigm()
 	words = Words()
 	extra = Extra()
-	sahka = Sahka() # added by Heli
 	feedback = Feedback_install()
 	questions = Questions()
 
@@ -99,39 +105,25 @@ def main(opts):
 	if options.questionfile and options.grammarfile:
 	    questions.read_questions(options.questionfile,options.grammarfile)
 	    sys.exit()
-	
+
 	if options.semtypefile:
 		extra.read_semtypes(options.semtypefile)
 		sys.exit()
-	
+
 	if options.messagefile:
 	    feedback.read_messages(options.messagefile)
 	    sys.exit()
-	    
-	if options.sahkafile:
-		sahka.read_dialogue(options.sahkafile)
-		sys.exit()
 
 	if options.feedbackfile and options.infile:
 	    feedback.read_feedback(options.feedbackfile,options.infile)
 	    sys.exit()
-	
+
 	if options.linkfile:
 		extra.read_address(options.linkfile)
 		sys.exit()
 
 	if options.infile:
-
-		if options.append:
-			append_only = True
-		else:
-			append_only = False
-
-		words.install_lexicon(infile=options.infile,
-								linginfo=linginfo,
-								delete=options.delete,
-								paradigmfile=options.paradigmfile,
-								append_only=append_only)
+		words.install_lexicon(infile=options.infile,linginfo=linginfo,delete=options.delete,paradigmfile=options.paradigmfile)
 		sys.exit()
 
 
