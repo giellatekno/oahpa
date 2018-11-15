@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
 
-from sjd_oahpa.sjd_drill.models import *
-from sjd_oahpa.sjd_drill.forms import *
+from models import *
+from forms import *
 
-from sjd_oahpa.conf.tools import switch_language_code
+switch_language_code = oahpa_module.conf.tools.switch_language_code
 
-from django.db.models import Q, Count
+from django.db.models import Q
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404, render_to_response
 from django.core.exceptions import ObjectDoesNotExist
@@ -15,31 +18,27 @@ import os
 import re
 import itertools
 
-import sjd_oahpa.settings
+settings = oahpa_module.settings
+LLL1 = settings.LLL1
 
 # DEBUG = open('/dev/ttys001', 'w')
 
 from random import choice
-from .forms import PRONOUNS_LIST
+from forms import PRONOUNS_LIST
 
 try:
-	L1 = sjd_oahpa.settings.L1
-except:
-	L1 = 'sjd'  # was: sme
-
-try:
-	LOOKUP_TOOL = sjd_oahpa.settings.LOOKUP_TOOL
+	LOOKUP_TOOL = settings.LOOKUP_TOOL
 except:
 	LOOKUP_TOOL = 'lookup'
 
 
 try:
-	FST_DIRECTORY = sjd_oahpa.settings.FST_DIRECTORY
+	FST_DIRECTORY = settings.FST_DIRECTORY
 except:
 	FST_DIRECTORY = False
 
 try:
-	DEFAULT_DIALECT = sjd_oahpa.settings.DEFAULT_DIALECT
+	DEFAULT_DIALECT = settings.DEFAULT_DIALECT
 except:
 	DEFAULT_DIALECT = None
 
@@ -766,7 +765,7 @@ class BareGame(Game):
 				if tag.pos == 'Pron':
 					tag = tags.order_by('?')[0]
 
-				random_word = tag.form_set.filter(word__language=L1)
+				random_word = tag.form_set.filter(word__language=LLL1)
 
 				if not tag.pos in ['Pron', 'Num'] and \
 					tag.string.find('Der') < 0:
@@ -993,8 +992,8 @@ class BareGame(Game):
 
 
 class NumGame(Game):
-	generate_fst = 'sjd-num.fst'
-	answers_fst = 'sjd-inum.fst'
+	generate_fst = LLL1+'-num.fst'
+	answers_fst = LLL1+'-inum.fst'
 	
 	def get_db_info(self, db_info):
 		""" Options supplied by views
@@ -1118,9 +1117,9 @@ class NumGame(Game):
 	def create_form(self, db_info, n, data=None):
 		
 		if self.settings['gametype'] in ["ord", "card"]:
-			language = L1
+			language = LLL1
 		else:
-			language = L1
+			language = LLL1
 
 		numstring = ""
 		
@@ -1166,8 +1165,8 @@ class Klokka(NumGame):
 
 	QuestionForm = KlokkaQuestion
 	
-	generate_fst = 'iclock-sjd.fst'
-	answers_fst = 'clock-sjd.fst'
+	generate_fst = LLL1+'-iclock.fst'
+	answers_fst = LLL1+'-clock.fst'
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1250,7 +1249,7 @@ class Klokka(NumGame):
 
 	def create_form(self, db_info, n, data=None):
 		if self.settings['gametype'] in ["kl1", "kl2", "kl3"]:
-			language = L1
+			language = LLL1
 
 		numstring = ""
 
@@ -1302,8 +1301,8 @@ class Dato(Klokka):
 
 	# QuestionForm = DatoQuestion
 	
-	generate_fst = 'idate-sjd.fst'
-	answers_fst = 'date-sjd.fst'
+	generate_fst = LLL1+'-idate.fst'
+	answers_fst = LLL1+'-date.fst'
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
 					 or Dato is unable to look up forms."

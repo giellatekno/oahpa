@@ -1,26 +1,23 @@
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 from django import forms
 from django.db.models import Q
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
-import sjd_oahpa.settings as settings
 
-from sjd_oahpa.conf.tools import switch_language_code
+settings = oahpa_module.settings
+switch_language_code = oahpa_module.conf.tools.switch_language_code
+#relax = oahpa_module.drill.game.relax
 
 from models import *
-#from game import * 
-#from sjd_oahpa.sjd_drill.game import relax
-import datetime
-import socket
-import sys, os
-import itertools
-from random import choice
+sdg = importlib.import_module(LLL1+'_oahpa.drill.game')
 
-try:
-        LOG_FILE = sjd_oahpa.settings.LOG_FILE
-except:
-        LOG_FILE = False
+import datetime
+import sys
 
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
