@@ -1,3 +1,9 @@
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+settings = oahpa_module.settings
+URL_PREFIX = settings.URL_PREFIX
+
 from django.template import RequestContext
 # from django.utils.translation import ugettext as _
 from django.http import HttpResponseRedirect, HttpResponseForbidden, Http404
@@ -9,11 +15,13 @@ def render_to_response(*args, **kwargs):
 	doesn't depend on the function returning the response to be decorated by
 	@trackGrade to get proper output. """
 
-	from django.shortcuts import render_to_response
+	#from django.shortcuts import render_to_response
+	from django.shortcuts import render
 
-	response = render_to_response(*args, **kwargs)
+	#response = render_to_response(*args, **kwargs)
+	response = render(*args, **kwargs)
 	# response.response_args = args
-	response.context = args[1]
+	response.context = args[2]
 
 	return response
 
@@ -26,7 +34,7 @@ def cookie_login(request, next_page=None, required=False, **kwargs):
 	"""
 
 	if not next_page:
-		next_page = '/sjd_oahpa/courses/' # TODO: change next url for deep links
+		next_page = '/'+URL_PREFIX+'/courses/' # TODO: change next url for deep links
 	if request.user.is_authenticated():
 		message = "You are logged in as %s." % request.user.username
 		request.user.message_set.create(message=message)
@@ -51,7 +59,7 @@ def cookie_login(request, next_page=None, required=False, **kwargs):
 			error = "<h1>Forbidden</h1><p>Login failed.</p>"
 			return HttpResponseForbidden(error)
 	else:
-		return HttpResponseRedirect('/sjd_oahpa/courses/standard_login/') # TODO: check
+		return HttpResponseRedirect('/'+URL_PREFIX+'/courses/standard_login/') # TODO: check
 
 
 def cookie_logout(request, next_page=None, **kwargs):
@@ -66,8 +74,8 @@ def cookie_logout(request, next_page=None, **kwargs):
 	# redirects.
 
 	if not next_page:
-		next_page = '/sjd_oahpa/courses/logout/'
-	
+		next_page = '/'+URL_PREFIX+'/courses/logout/'
+
 	return HttpResponseRedirect(next_page)
 
 
@@ -91,13 +99,13 @@ def trackGrade(gamename, request, c):
 				Morfa - PRS - Trisyllabic
 	"""
 	SETTINGS = c['settingsform'].data
-	
+
 	if c['show_correct'] == 1 or c['all_correct'] == 1:
 		if request.user.is_authenticated() and not request.user.is_anonymous():
 			game_type = ''
 			if 'gamename_key' in c['settings']:
 				game_type = c['settings']['gamename_key']
-					
+
 			gamename = gamename + ' - ' + game_type
 
 			points, _, total = c['score'].partition('/')
@@ -116,7 +124,7 @@ def courses_main(request):
 		that they have records in.
 	"""
 	template = 'courses/courses_main.html'
-	
+
 	c = {}
 	new_profile = None
 	is_student = None
@@ -126,20 +134,20 @@ def courses_main(request):
 	except UserProfile.DoesNotExist:
 		profile = UserProfile.objects.create(user=request.user)
 		new_profile = True
-	
+
 	summary = False
-	
+
 	if profile.is_student:
 		summary = profile.usergradesummary_set.all()
 		if summary.count() == 0:
 			new_profile = True
 		is_student = True
-	
+
 	if profile.is_student:
 		template = 'courses/courses_main.html'
 	elif profile.is_instructor:
 		template = 'courses/courses_main_instructor.html'
-	
+
 	c = {
 		'user':  request.user,
 		'profile':  profile,
@@ -150,10 +158,7 @@ def courses_main(request):
 									courserelationship__user=request.user)\
 								 .distinct(),
 	}
-
-	return render_to_response(template, 
-							  c, 
-							  context_instance=RequestContext(request))
+	return render_to_response(request, template, c)
 
 from django.contrib.auth.decorators import user_passes_test
 
@@ -162,7 +167,7 @@ def instructor_group(user):
 		return True
 	else:
 		return False
-	
+
 @user_passes_test(instructor_group)
 def instructor_student_detail(request, uid):
 	student = UserProfile.objects.get(user__id=uid)
@@ -176,12 +181,8 @@ def instructor_student_detail(request, uid):
 	if len(intersection) == 0:
 		error = 'Student not found.'
 		return HttpResponseForbidden(error)
-	
+
 	template = 'courses/instructor_student_detail.html'
 	c = {}
 	c['student'] = UserProfile.objects.get(user__id=uid)
-	return render_to_response(template,
-							  c,
-							  context_instance=RequestContext(request))
-
-
+	return render_to_response(request, template, c)
