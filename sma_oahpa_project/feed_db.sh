@@ -1,11 +1,12 @@
 #!/bin/sh
 
 P="python"
-META="sma_data/meta_data"
-SRC="sma_data/src"
-NOB="sma_data/nob"
-FIN="sma_data/fin"
-SWE="sma_data/swe"
+LLL1="sma"
+META="${LLL1}_data/meta_data"
+SRC="${LLL1}_data/src"
+NOB="${LLL1}_data/nob"
+FIN="${LLL1}_data/fin"
+SWE="${LLL1}_data/swe"
 
 rm -fv error.log
 
@@ -107,6 +108,7 @@ echo " "
 echo "done"
 echo " "
 
+# LLL1="sma"
 echo "installing Morfa-C word fillings"
 $P install.py -f $META/fillings_smanob.xml --paradigmfile $META/paradigms.txt --tagfile $META/tags.txt 2>>error.log
 echo " "

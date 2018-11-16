@@ -1,10 +1,11 @@
 #!/bin/sh
 
 P="python"
-DATA="sms_data"
+LLL1="sms"
+DATA="${LLL1}_data"
 META="$DATA/meta_data"
 SMS="$DATA/src"
-XXX="$DATA/*2sms"
+XXX="$DATA/*2${LLL1}"
 
 rm -fv error.log
 
