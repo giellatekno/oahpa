@@ -10,6 +10,121 @@ from django.utils.encoding import smart_unicode
 
 # TODO: abstract from  'sjd' to LLL1
 
+class BulkManager(models.Manager):
+	""" This Manager adds additional methods to Feedback.objects. That allows
+	for bulk inserting via custom SQL query (calling INSERT INTO on a list of
+	dictionaries), this is much faster than using the standard .create() if
+	many objects need to be added.
+
+		.create() -> .bulk_insert()
+		.messages.add() -> .bulk_add_messages()
+		.dialects.add() -> .bulk_add_dialects()
+
+
+	"""
+
+	@transaction.atomic
+	def bulk_insert(self, fields, objs):
+		""" Takes a list of fields and a list dictionaries of fields and values,
+		iterates and inserts. @transaction.atomic is active, and the
+		transaction is committed after insert.
+		"""
+		qn = connection.ops.quote_name
+		cursor = connection.cursor()
+
+		flds = ', '.join([qn(f) for f in fields])
+		values_list = [ r[f] for r in objs for f in fields]
+		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(objs))
+		sql = "INSERT INTO %s (%s) VALUES %s" % (self.model._meta.db_table, flds, arg_string,)
+		cursor.execute(sql, values_list)
+		transaction.commit()
+
+	@transaction.atomic
+	def bulk_add_form_messages(self, objs):
+		""" Takes a list of IDs, (feedback_id, feedback_message_id) and inserts
+		these to the many-to-many table, committing on complete.  """
+		qn = connection.ops.quote_name
+		cursor = connection.cursor()
+
+		fields = ['form_id', 'feedbackmsg_id']
+
+		vals = [dict(zip(fields, a)) for a in objs]
+		flds = ', '.join([qn(f) for f in fields])
+		values_list = [ r[f] for r in vals for f in fields]
+
+		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(vals))
+
+		# postgres seems to automatically ignore, mysql does not
+		try:
+			postgres = connection.ops._postgres_version
+			ignore = ''
+		except AttributeError:
+			postgres = False
+			ignore = 'IGNORE'
+
+		sql = "INSERT %s INTO %s (%s) VALUES %s" % (ignore, "drill_form_feedback", flds, arg_string,)
+
+		cursor.execute(sql, values_list)
+		transaction.commit()
+
+	@transaction.atomic
+	def bulk_remove_form_messages(self, form_qs):
+		""" Takes a form queryset, bulk removes all feedbacks for words with those ids """
+
+		form_ids = form_qs.values_list('id', flat=True)
+
+		qn = connection.ops.quote_name
+		cursor = connection.cursor()
+
+		table = "drill_form_feedback"
+		fld = qn('form_id')
+		args = ', '.join([str(f) for f in form_ids])
+
+		sql = "DELETE FROM %s WHERE %s in (%s)" % (table, fld, args)
+
+		cursor.execute(sql)
+		transaction.commit()
+
+
+	@transaction.atomic
+	def bulk_add_messages(self, objs):
+		""" Takes a list of IDs, (feedback_id, feedback_message_id) and inserts
+		these to the many-to-many table, committing on complete.  """
+		qn = connection.ops.quote_name
+		cursor = connection.cursor()
+
+		fields = ['feedback_id', 'feedbackmsg_id']
+
+		vals = [dict(zip(fields, a)) for a in objs]
+		flds = ', '.join([qn(f) for f in fields])
+		values_list = [ r[f] for r in vals for f in fields]
+
+		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(vals))
+		sql = "INSERT INTO %s (%s) VALUES %s" % ("drill_feedback_messages", flds, arg_string,)
+
+		cursor.execute(sql, values_list)
+		transaction.commit()
+
+	@transaction.atomic
+	def bulk_add_dialects(self, objs):
+		""" Takes a list of IDs, (feedback_id, dialect_id) and inserts these to
+		the many-to-many table, committing on complete.  """
+		qn = connection.ops.quote_name
+		cursor = connection.cursor()
+
+		fields = ['feedback_id', 'dialect_id']
+
+		vals = [dict(zip(fields, a)) for a in objs]
+		flds = ', '.join([qn(f) for f in fields])
+		values_list = [ r[f] for r in vals for f in fields]
+
+		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(vals))
+		sql = "INSERT INTO %s (%s) VALUES %s" % ("drill_feedback_dialects", flds, arg_string,)
+
+		cursor.execute(sql, values_list)
+		transaction.commit()
+
+
 class Comment(models.Model):
 	lang = models.CharField(max_length=5)	
 	comment = models.CharField(max_length=100)	
