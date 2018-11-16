@@ -37,7 +37,7 @@ def index(request):
 	c = {
 		'jee': "joku arvo",
 		}
-	return render(request, LLL1+'_oahpa_main.html', c)
+	return render(request, 'oahpa_main.html', c)
 
 class Gameview(object):
 	""" Gameview is instantiated with a Settings object and a Game object,
