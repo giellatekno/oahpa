@@ -1,4 +1,4 @@
-from models import Log, Word, Semtype, Source, Form, Tag, Feedback, Feedbackmsg, Feedbacktext, Question, QElement, WordQElement, WordTranslation
+from models import Log, Word, Semtype, Source, Form, Tag, Question, QElement, WordQElement, WordTranslation
 from django.contrib import admin
 
 # OLD django
@@ -46,8 +46,8 @@ admin.site.register(Semtype)
 admin.site.register(Question)
 admin.site.register(QElement)
 admin.site.register(WordQElement)
-admin.site.register(Feedback, FeedbackAdmin)
-admin.site.register(Feedbacktext)
-admin.site.register(Feedbackmsg)
+#admin.site.register(Feedback, FeedbackAdmin)
+#admin.site.register(Feedbacktext)
+#admin.site.register(Feedbackmsg)
 admin.site.register(Word, WordAdmin)
 admin.site.register(Log, LogAdmin)
