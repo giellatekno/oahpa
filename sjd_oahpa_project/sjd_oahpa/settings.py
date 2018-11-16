@@ -52,6 +52,8 @@ ALLOWED_HOSTS = ['.gtoahpa-01.uit.no','127.0.0.1','localhost']
 
 INSTALLED_APPS = [
     LLL1+'_oahpa.drill',
+    LLL1+'_oahpa.courses',
+    LLL1+'_oahpa.conf',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -134,7 +136,7 @@ USE_TZ = True
 
 LANGUAGES = (
 	('sjd', 'Kildin Saami'),
-        ('ru', 'Russian'),    
+        ('ru', 'Russian'),
         ('sme', 'North Sami'),
 	('no', 'Norwegian'),
 	('en', 'English'),
