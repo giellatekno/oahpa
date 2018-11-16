@@ -6,9 +6,6 @@
 	    <title>{% block title %}{% endblock %}</title>
 
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main.css"/>
-		<!--[if gte IE 7]>
-		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/ie_fixes.css"/>
-		<![endif]-->
 
 		{% comment %}
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/mobile.css"/>
@@ -20,9 +17,6 @@
 		{% block extrajs %}
 		{% endblock %}
 
-		<!--[if lt IE 7.]>
-		<script defer type="text/javascript" src="{{ MEDIA_URL }}/js/pngfix.js"></script>
-		<![endif]-->
 	</head>
 
 	{% load i18n %}
@@ -35,7 +29,7 @@
 		{% block language_select %}
 		<div id="language_options">
 			{% get_current_language as LANGUAGE_CODE %}
-			<form action="/{{ URL_PREFIX }}/i18n/setlang/" method="post" name="newlang">
+			<form action="/{{ URL_PREFIX }}/i18n/setlang/" method="post" name="newlang">		
 				<dl>
 					<dt><label for="language_select">{% trans "Interface language" %}</label></dt>
 					<dd>
