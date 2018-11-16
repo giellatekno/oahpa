@@ -38,7 +38,7 @@ def index(request):
 	c = {
 		'jee': "joku arvo",
 		}
-	return render_to_response(request, LLL1+'_oahpa_main.html', c)
+	return render_to_response(request, 'oahpa_main.html', c)
 
 def updating(request):
 	c = {
