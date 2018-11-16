@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import *
 
 # import os, sys
 # here = lambda x: os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), x)
@@ -26,4 +26,3 @@ urlpatterns += patterns('sjd_oahpa.courses.views',
 	(r'^(?P<uid>\d+)/$', instructor_student_detail),
 	(r'^$', courses_main),
 )
-
