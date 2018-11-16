@@ -4,16 +4,16 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	    <title>{% block title %}{% endblock %}</title>
-		
+
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main.css"/>
 		<!--[if gte IE 7]>
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/ie_fixes.css"/>
 		<![endif]-->
-		
+
 		{% comment %}
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/mobile.css"/>
 		{% endcomment %}
-		
+
 		{% block extracss %}
 		{% endblock %}
 
@@ -25,13 +25,13 @@
 		<![endif]-->
 	</head>
 
-	{% load i18n %}			
+	{% load i18n %}
 
 <body class="{% block bodyclass %}main{% endblock %}">
 	<div id="page" class="{% block pageclass %}{% endblock %}">
 		<div id="headerimg"><a href="/{{ URL_PREFIX }}/"><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!"/></a></div>
 		<a class="hide" href="#content">Skip to content</a>
-		
+
 		{% block language_select %}
 		<div id="language_options">
 			{% get_current_language as LANGUAGE_CODE %}
@@ -41,19 +41,19 @@
 					<dd>
 						<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
 						<select id="language_select" name="language" onChange="javascript:this.form.submit();">
-						
+
 						{% ifequal LANGUAGE_CODE "ru" %}
 							<option value="ru" selected="selected">Pусский язык</option>
 						{% else %}
 							<option value="ru">Pусский язык</option>
 						{% endifequal %}
-						
+
 						{% ifequal LANGUAGE_CODE "sjd" %}
 							<option value="sjd" selected="selected">Kildin Sámi</option>
 						{% else %}
 							<option value="sjd">Kildin Sámi</option>
 						{% endifequal %}
-						
+
 						{% ifequal LANGUAGE_CODE "en" %}
 							<option value="en" selected="selected">English</option>
 						{% else %}
@@ -65,18 +65,18 @@
 						{% else %}
 							<option value="no">Norsk</option>
 						{% endifequal %}
-							  
+
 						{% ifequal LANGUAGE_CODE "fi" %}
-						 	<option value="fi" selected="selected">Suomi</option> 
+						 	<option value="fi" selected="selected">Suomi</option>
 						{% else %}
-						 	<option value="fi">Suomi</option> 
+						 	<option value="fi">Suomi</option>
 						{% endifequal %}
                         {% ifequal LANGUAGE_CODE "sme" %}
 							<option value="sme" selected="selected">Davvisámi</option>
 						{% else %}
 							<option value="sme">Davvisámi</option>
 						{% endifequal %}
-						 
+
 					</select>
 					</dd>
 				</dl>
@@ -96,7 +96,7 @@
 							{% else %}
 								<option value="GG">{% trans 'GG' %}</option>
 								<option value="KJ" selected="selected">{% trans 'KJ' %}</option>
-							{% endifequal %}  
+							{% endifequal %}
 						{% else %}
 							<option value="GG">{% trans 'GG' %}</option>
 							<option value="KJ">{% trans 'KJ' %}</option>
@@ -109,7 +109,7 @@
 			-->
 		</div>
 		{% endblock %}
-		
+
 		<div id="header">
 			{% block header_content %}
 			<h1><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!" /></h1>
@@ -120,47 +120,15 @@
 		<div id="content">
 			{% block main_content %}
 			<ul id="games_menu">
-        <!---        <li class="game">
-					<a href="{% url morfa_s.noun %}">
-						<span>MORFA-S</span><br />
-						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-S" /><br />
-						<span>{% trans "Practise morphology" %}</span>
-					</a>
-				</li>
-				
-                <li class="game">
-					<a href="{% url vasta_s %}">
-						<span>VASTA</span><br />
-						<img src="{{ MEDIA_URL }}/images/vasta.png" alt="VASTA" /><br />
-						<span>{% trans "Answer to questions" %}<font color="#FF0000" size="3pt"> (under construction) </font></span>
-					</a>
-				</li>  --->
 				<li class="game">
-					<a href="{% url leksa %}">
+					<a href="{% url 'leksa' %}">
 						<span>LEKSA</span><br />
 						<img src="{{ MEDIA_URL }}/images/leksa.png" alt="LEKSA" /><br />
 						<span>{% trans "Words and translations" %}</span>
 					</a>
 				</li>
-			
-<!---			<ul id="games_menu">
-
-				<li class="game">
-                    <a href="{% url morfa_c.noun %}">
-						<span>MORFA-C</span><br />
-						<img src="{{ MEDIA_URL }}/images/morfac.png" alt="MORFA-C" /><br />
-						<span>{% trans "Practise morphology in context" %}</span>
-					</a>
-				</li>
-				<li class="game">
-                    <a href="{% url sahka %}">
-						<span>SAHKA</span><br />
-						<img src="{{ MEDIA_URL }}/images/sahka.png" alt="SAHKA" /><br />
-						<span>{% trans "Dialogue game" %} <font color="#FF0000" size="3pt"> (under construction) </font></span>
-					</a>
-				</li>   ---->
                 <li class="game">
-                    <a href="{% url numra %}">
+                    <a href="{% url 'numra' %}">
 						<span>NUMRA</span><br />
 						<img src="{{ MEDIA_URL }}/images/numra.png" alt="NUMRA" /><br />
 						<span>{% trans "Practise numerals" %}</span>
@@ -220,11 +188,9 @@
             -->
                 <li><a href="http://oahpa.no/davvi" style="font-size:13px">North Saami Oahpa</a></li>
 			</ul>
-
-<!---			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p> -->
 			{% endblock %}
 		</div>
-		
+
 		<div id="footer">
 			<div id="copyright">
 			{% block deeplink %}
