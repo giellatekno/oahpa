@@ -33,7 +33,7 @@ def index(request):
 	c = {
 		'jee': "joku arvo",
 		}
-	return render(request, LLL1+'_oahpa_main.html', c)
+	return render(request, 'oahpa_main.html', c)
 
 def updating(request):
 	c = RequestContext(request, {
