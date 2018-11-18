@@ -4,7 +4,7 @@ P="python"
 LLL1="sjd"
 DATA="${LLL1}_data"
 META="$DATA/meta_data"
-SMS="$DATA/src"
+SRC="$DATA/src"
 XXX="$DATA/*2${LLL1}"
 
 rm -fv error.log
@@ -19,7 +19,7 @@ echo "==================================================="
 # NB:
 #sms_oahpa>export DJANGO_SETTINGS_MODULE=sms_oahpa.settings
 
-for xfile in $(ls $SMS/*.xml)
+for xfile in $(ls $SRC/*.xml)
 do
     fl=$(basename $xfile)
     POS=${fl%_*}
