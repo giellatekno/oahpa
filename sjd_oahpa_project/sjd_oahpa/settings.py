@@ -92,6 +92,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.static',
+                LLL1+'_oahpa.courses.context_processors.request_user',
                 LLL1+'_oahpa.conf.context_processors.dialect',
                 LLL1+'_oahpa.conf.context_processors.site_root',
                 LLL1+'_oahpa.conf.context_processors.grammarlinks',
@@ -176,6 +177,16 @@ INFINITIVE_ADD = {
 	'eng': ur'to \g<lemma>',
 	'deu': ur'zu \g<lemma>',
 }
+
+DIALECTS = {
+	'main': ('generator-oahpa-gt-norm.xfst', 'Unrestricted'),
+	#'GG': ('isme-GG.restr.fst', 'Western'),
+	#'KJ': ('isme-KJ.restr.fst', 'Eastern'),
+	'NG': (None, 'Non-Presented forms'),
+}
+
+DEFAULT_DIALECT = 'main'
+NONGEN_DIALECT = 'NG'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
