@@ -23,8 +23,8 @@ from optparse import OptionParser, make_option
 from ling import Paradigm
 from words_install import Words
 from extra_install import Extra
-from feedback_install import Feedback_install
-from questions_install import Questions
+#from feedback_install import Feedback_install
+#from questions_install import Questions
 
 import codecs
 #sys.stdout = codecs.getwriter('utf8')(sys.stdout)
@@ -37,6 +37,9 @@ sys.stdout = UTF8Writer(sys.stdout)
 # jos on lemma, niin ota käännös jos on oa="yes"
 
 OPTION_LIST = (
+	make_option("-a", "--append-words", dest="append",
+				  action="store_true", default=False,
+				  help="Add wordforms to words without deleting existing wordforms"),
 	make_option("-b", "--db", dest="add_db",
 					  action="store_true", default=False,
 					  help="Used for adding tag infoformation to database"),
@@ -89,8 +92,8 @@ def main(opts):
 	linginfo = Paradigm()
 	words = Words()
 	extra = Extra()
-	feedback = Feedback_install()
-	questions = Questions()
+	#feedback = Feedback_install()
+	#questions = Questions()
 
 	if options.tagfile:
 		linginfo.handle_tags(options.tagfile, options.add_db)
@@ -102,21 +105,21 @@ def main(opts):
 		words.delete_word(options.wordid,options.pos)
 		sys.exit()
 
-	if options.questionfile and options.grammarfile:
-	    questions.read_questions(options.questionfile,options.grammarfile)
-	    sys.exit()
+	#if options.questionfile and options.grammarfile:
+	#    questions.read_questions(options.questionfile,options.grammarfile)
+	#    sys.exit()
 
 	if options.semtypefile:
 		extra.read_semtypes(options.semtypefile)
 		sys.exit()
 
-	if options.messagefile:
-	    feedback.read_messages(options.messagefile)
-	    sys.exit()
+	#if options.messagefile:
+	#    feedback.read_messages(options.messagefile)
+	#    sys.exit()
 
-	if options.feedbackfile and options.infile:
-	    feedback.read_feedback(options.feedbackfile,options.infile)
-	    sys.exit()
+	#if options.feedbackfile and options.infile:
+	#    feedback.read_feedback(options.feedbackfile,options.infile)
+	#    sys.exit()
 
 	if options.linkfile:
 		extra.read_address(options.linkfile)
