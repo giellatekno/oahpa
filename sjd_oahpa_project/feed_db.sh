@@ -32,7 +32,7 @@ do
     if [ -e "$PARA_FILE" ]; then
 	echo "File exists $PARA_FILE"
 
-	$P install.py --file $xfile --tagfile $META/tags.txt --paradigmfile $PARA_FILE 2>>error.log
+	$P install.py --file $xfile #--tagfile $META/tags.txt --paradigmfile $PARA_FILE 2>>error.log
 
     else
 	echo "File does not exist $PARA_FILE"
