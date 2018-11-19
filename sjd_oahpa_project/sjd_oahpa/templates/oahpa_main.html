@@ -5,6 +5,7 @@
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	    <title>{% block title %}{% endblock %}</title>
 
+
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main.css"/>
 
 		{% comment %}
@@ -29,7 +30,7 @@
 		{% block language_select %}
 		<div id="language_options">
 			{% get_current_language as LANGUAGE_CODE %}
-			<form action="/{{ URL_PREFIX }}/i18n/setlang/" method="post" name="newlang">		
+			<form action="/{{ URL_PREFIX }}/i18n/setlang/" method="post" name="newlang">
 				<dl>
 					<dt><label for="language_select">{% trans "Interface language" %}</label></dt>
 					<dd>
@@ -76,31 +77,6 @@
 				</dl>
 				<input type="submit" class="hide" value="submit" />
 			</form>
-			<!--
-			<form action="/{{ URL_PREFIX }}/dialect/" method="post">
-				<dl>
-					<dt><label for="dialect">{% trans "Kildin Sami dialect" %}</label></dt>
-					<dd>
-						<input name="next" type="hidden" value="/{{ URL_PREFIX }}/" />
-						<select name="dialect" onChange="javascript:this.form.submit();">
-						{% if dialect %}
-							{% ifequal dialect "GG" %}
-								<option value="GG" selected="selected">{% trans 'GG' %}</option>
-								<option value="KJ">{% trans 'KJ' %}</option>
-							{% else %}
-								<option value="GG">{% trans 'GG' %}</option>
-								<option value="KJ" selected="selected">{% trans 'KJ' %}</option>
-							{% endifequal %}
-						{% else %}
-							<option value="GG">{% trans 'GG' %}</option>
-							<option value="KJ">{% trans 'KJ' %}</option>
-						{% endif %}
-					</select>
-					</dd>
-				</dl>
-				<input type="submit" class="hide" value="submit" />
-			</form>
-			-->
 		</div>
 		{% endblock %}
 
@@ -160,26 +136,6 @@
             {% else %}
 				<li><a href="http://gtweb.uit.no/webdict/index_sjd-rus.html">{% trans "Kildin Sámi" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
             {% endifequal %}
-            <!--
-            {% ifequal LANGUAGE_CODE "sme" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.html">{% trans "Kildin Sámi grammar" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "fi" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.html">{% trans "Kildin Sámi grammar" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "en" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.eng.html">{% trans "Kildin Sámi grammar" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "no" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.nob.html">{% trans "Kildin Sámi grammar" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "ru" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.rus.html">{% trans "Kildin Sámi grammar" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "sv" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.nob.html">{% trans "Kildin Sámi grammar" %}</a></li>
-            {% endifequal %}
-            -->
                 <li><a href="http://oahpa.no/davvi" style="font-size:13px">North Saami Oahpa</a></li>
 			</ul>
 			{% endblock %}
