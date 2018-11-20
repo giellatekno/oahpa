@@ -1,0 +1,78 @@
+{% extends "game.html" %}
+{% load i18n %}
+
+{% block helpaddress %}
+{% ifequal LANGUAGE_CODE "no" %}
+<a href="http://giellatekno.uit.no/oahpa/leksa.nno.html"
+{% else %}
+<a href="http://giellatekno.uit.no/oahpa/leksa.html"
+{% endifequal %}
+{% endblock %}
+
+{% block gametitlename %}LEKSA{% endblock %}
+{% block imgprefix %}leksa{% endblock %}
+
+{% block navbar %}
+<ul class="sidelist">
+	<li class="selected"><a href="{% url leksa %}">{% trans 'Words' %}</a></li>
+	<li><a href="{% url leksa.sted %}">{% trans 'Names' %}</a></li>
+</ul>
+{% endblock %}
+
+{% block veiledning %}
+{% ifequal LANGUAGE_CODE "sme" %}
+http://oahpa.no/index.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "fi" %}
+http://oahpa.no/smn/index.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "en" %}
+http://oahpa.no/smn/index.eng.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "no" %}
+http://oahpa.no/smn/index.nob.html
+{% endifequal %}
+{% endblock %}
+
+{% block instructions %}
+	{% trans "Give translations for words. You can choose set or level, not both." %}
+{% endblock %}
+
+{% block name %}{% trans "Quizz" %}{% endblock %}
+{% block pagename %}/{{ URL_PREFIX }}/leksa/{% endblock %}
+
+{% block settings %}
+    <div class="grammarlinks">
+        {% include 'grammar_links_menu.html' %}
+    </div>
+
+    <ul id="settingsform">
+    	<li><label for="id_{{ settingsform.semtype.name }}">{% trans "Set" %}</label>
+    		{{ settingsform.semtype }}</li>
+    	<li><label for="id_{{ settingsform.transtype.name }}">{% trans "Select the language pair" %}</label>
+    		{{ settingsform.transtype }}</li>
+    	<li><label for="id_{{ settingsform.source.name }}">{% trans "Book" %}</label>
+    		{{ settingsform.source }}</li>
+    </ul>
+    
+    <ul id="submittable">
+        <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
+    </ul>
+{% endblock %}
+<input type="submit" name="settings" value="{% trans "New set" %}" />
+
+{% block question %}
+{{ form.lemma }}
+{% endblock %}
+
+{% block submit %}
+{% if not all_correct %}
+   {% if not show_correct %}
+   <input type="submit" name="test" value="{% trans "Test answers" %}"/>
+   {% endif %}
+   {% ifequal count 1 %}
+   <input type="submit" name="show_correct" value="{% trans "Show the correct answers" %}" />
+   {% endifequal %}
+{% endif %}
+{% endblock %}
+
