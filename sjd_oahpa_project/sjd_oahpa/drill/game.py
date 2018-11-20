@@ -1036,17 +1036,18 @@ class NumGame(Game):
 									stdin=subprocess.PIPE, 
 									stdout=subprocess.PIPE, 
 									stderr=subprocess.PIPE)
-		
-		def kill_proc(proc=num_proc):
-			try:
-				proc.kill()
-				raise Http404("Process for %s took too long." % ' '.join(gen_norm_command))
-			except OSError:
-				pass
-			return
-		
-		t = Timer(5, kill_proc)
-		t.start()
+		#@cip: Do not create zombi processes!
+		#def kill_proc(proc=num_proc):
+		#	try:
+		#		proc.kill()
+		#		raise Http404("Process for %s took too long." % ' '.join(gen_norm_command))
+		#	except OSError:
+		#		pass
+		#	return
+		#
+		#t = Timer(5, kill_proc)
+		#t.start()
+
 		output, err = num_proc.communicate(forms)
 
 		return output, err
