@@ -96,7 +96,7 @@ TEMPLATES = [
                 LLL1+'_oahpa.conf.context_processors.dialect',
                 LLL1+'_oahpa.conf.context_processors.site_root',
                 LLL1+'_oahpa.conf.context_processors.grammarlinks',
-				LLL1+"_oahpa.geo.resolver.session_country",
+                #LLL1+"_oahpa.geo.resolver.session_country",
             ],
         },
     },
