@@ -62,8 +62,8 @@ echo "==================================================="
 
 
 
-#$P manage.py mergetags
-#$P manage.py fixtagattributes
+$P manage.py mergetags
+$P manage.py fixtagattributes
 
 
 
