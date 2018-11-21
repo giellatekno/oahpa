@@ -1,3 +1,7 @@
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 ﻿from django.core.management.base import BaseCommand, CommandError
 
 # from_yaml(cls, loader, node)
@@ -7,14 +11,14 @@ from optparse import make_option
 import sys
 
 
-# # # 
-# 
+# # #
+#
 #  Command class
 #
 # # #
 
 def fixtags():
-	from sjd_drill.models import Tag
+	Tag = oahpa_module.drill.models.Tag
 	tags = Tag.objects.all()
 
 	print 'Fixing attributes...'
@@ -22,7 +26,7 @@ def fixtags():
 		print tag.string
 		tag.fix_attributes()
 		tag.save()
-	
+
 	print 'Done'
 
 class Command(BaseCommand):
@@ -34,4 +38,3 @@ class Command(BaseCommand):
 
 	def handle(self, *args, **options):
 		fixtags()
-
