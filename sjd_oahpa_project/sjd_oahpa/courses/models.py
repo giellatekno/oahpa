@@ -4,6 +4,8 @@ from django.utils.translation import gettext_lazy as _
 
 from django.contrib.auth.models import User, Group
 
+from local_conf import LLL1
+
 # TODO: need to create fixtures of groups and permissions
 # TODO: hide delete course admin actions for Instructors group
 # TODO: site-uit-no-default course added to fixtures
@@ -198,13 +200,13 @@ from django.db.models.signals import post_save, pre_save
 from signals import create_profile, aggregate_grades, user_presave, course_relationship_postsave
 
 post_save.connect(create_profile, sender=User,
-	dispatch_uid="sjd_oahpa.courses.models.post_save")
+	dispatch_uid=LLL1+"_oahpa.courses.models.post_save")
 
 post_save.connect(aggregate_grades, sender=UserGrade,
-	dispatch_uid="sjd_oahpa.courses.models.post_save")
+	dispatch_uid=LLL1+"_oahpa.courses.models.post_save")
 
 post_save.connect(course_relationship_postsave, sender=CourseRelationship,
-	dispatch_uid="sjd_oahpa.courses.models.post_save")
+	dispatch_uid=LLL1+"_oahpa.courses.models.post_save")
 
 pre_save.connect(user_presave, sender=User,
-	dispatch_uid="sjd_oahpa.courses.models.pre_save")
+	dispatch_uid=LLL1+"_oahpa.courses.models.pre_save")
