@@ -71,7 +71,7 @@ OPTION_LIST = (
 from django.core.management.base import BaseCommand, CommandError
 
 class Command(BaseCommand):
-    can_import_settings = True
+	can_import_settings = True
 	#option_list = BaseCommand.option_list + OPTION_LIST
 	help = 'Help text goes here'
 
@@ -128,17 +128,10 @@ def main(opts):
 		sys.exit()
 
 	if options.infile:
-
-		if options.append:
-			append_only = True
-		else:
-			append_only = False
-
 		words.install_lexicon(infile=options.infile,
 								linginfo=linginfo,
 								delete=options.delete,
-								paradigmfile=options.paradigmfile,
-								append_only=append_only)
+								paradigmfile=options.paradigmfile)
 		sys.exit()
 
 
