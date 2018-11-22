@@ -815,7 +815,7 @@ class Words(object):
 		# NG - main, NG; but not L and SH
 
 		main_dialect = sdm.Dialect.objects.get(dialect='main')
-		ng_dialect = Dialect.objects.get(dialect=NG_DIALECT)
+		ng_dialect = sdm.Dialect.objects.get(dialect=NG_DIALECT)
 
 		if entry.dial:
 			dialect, created = sdm.Dialect.objects.get_or_create(dialect=entry.dial)
