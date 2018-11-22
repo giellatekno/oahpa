@@ -7,12 +7,14 @@ XXX="$DATA/*2${LLL1}"
 
 rm -fv error.log
 
+'''
 echo "==================================================="
 echo "installing tags and paradigms for Morfa-C"
 $P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
+'''
 
 # NB:
 #sms_oahpa>export DJANGO_SETTINGS_MODULE=sms_oahpa.settings
