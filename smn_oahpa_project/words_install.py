@@ -13,8 +13,7 @@ from kitchen.text.converters import getwriter
 UTF8Writer = getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
 
-import conf.ordereddict
-#from collections import OrderedDict
+from collections import OrderedDict
 
 
 # For easier debugging.
