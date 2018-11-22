@@ -162,7 +162,7 @@ class Course(models.Model):
 	identifier = models.CharField(max_length=12, default="SAM-1234")
 	# instructors = models.ManyToManyField(User, related_name='instructorships')
 	# students = models.ManyToManyField(User, related_name='studentships')
-	site_link = models.URLField(verify_exists=False, max_length=200, blank=True, null=True)
+	site_link = models.URLField(max_length=200, blank=True, null=True)
 	end_date = models.DateTimeField(null=True, default=None)
 
 	@property
