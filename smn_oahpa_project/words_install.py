@@ -452,7 +452,7 @@ class Words(object):
 
 
 	@transaction.atomic
-	def install_lexicon(self,infile,linginfo,delete=None,paradigmfile=False, verbose=True,append_only=False):
+	def install_lexicon(self,infile,linginfo,delete=None,paradigmfile=False, verbose=True):
 		global VERBOSE
 		VERBOSE = verbose
 
@@ -524,8 +524,7 @@ class Words(object):
 								linginfo=linginfo,
 								mainlang=mainlang,
 								delete=delete,
-								paradigmfile=paradigmfile,
-								append_only=append_only)
+								paradigmfile=paradigmfile)
 
 			else:
 				try:
@@ -650,7 +649,7 @@ class Words(object):
 			w.source.add(book_entry)
 			w.save()
 
-	def store_word(self,entry,linginfo,mainlang,paradigmfile,delete,append_only=False):
+	def store_word(self,entry,linginfo,mainlang,paradigmfile,delete):
 		OUT_STRS = []
 		ERR_STRS = []
 
@@ -848,7 +847,7 @@ class Words(object):
 				form.save()
 
 				if dialect:
-					if type(dialect) != Dialect:
+					if type(dialect) != sdm.Dialect:
 						dialect = sdm.Dialect.objects.get(dialect=dialect)
 					form.dialects.add(dialect)
 
@@ -943,7 +942,7 @@ class Words(object):
 						'attributive': 		g.get('Attributive',""),
 					}
 
-					t,created=Tag.objects.get_or_create(**tag_kwargs)
+					t,created=sdm.Tag.objects.get_or_create(**tag_kwargs)
 
 					t.save()
 
