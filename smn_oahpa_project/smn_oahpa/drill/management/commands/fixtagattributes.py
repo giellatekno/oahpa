@@ -35,7 +35,7 @@ class Command(BaseCommand):
 	Sometimes during the install process attributes on tag objects are not
 	properly set. This corrects that issue.
 	"""
-	option_list = BaseCommand.option_list
+	can_import_settings = True
 
 	def handle(self, *args, **options):
 		fixtags()
