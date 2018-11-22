@@ -404,7 +404,7 @@ def leksa_game(request, place=False):
 	else:
 		sess_lang = 'fin'
 
-	default_langpair = LLL1'%s' % sess_lang  # was: sme
+	default_langpair = LLL1+'%s' % sess_lang  # was: sme
 
 	c = leksagame.create_game(request, initial_transtype=default_langpair)
 
