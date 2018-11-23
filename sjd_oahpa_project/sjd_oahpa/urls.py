@@ -33,13 +33,11 @@ MEDIA_ROOT = oahpa_module.settings.MEDIA_ROOT
 admin_url = r'^%s/admin/' % prefix
 
 urlpatterns = [
-    #url(r'^kiilt/$', sdv.index, name='index'),
     url(r'^%s/$' % prefix, sdv.index, name='index'),
-	url(r'^%s/i18n/' % prefix, include('django.conf.urls.i18n')),
-	#url(r'^kiilt/', include(LLL1+'_oahpa.drill.urls')),
-	url(r'^%s/' % prefix, include(LLL1+'_oahpa.drill.urls')),
-	#url(r'^kiilt/courses/', include(LLL1+'_oahpa.courses.urls')),
-	url(r'^%s/courses/' % prefix, include(LLL1+'_oahpa.courses.urls')),
+    url(r'^%s/i18n/' % prefix, include('django.conf.urls.i18n')),
+    url(r'^%s/' % prefix, include(LLL1+'_oahpa.drill.urls')),
+    url(r'^%s/courses/' % prefix, include(LLL1+'_oahpa.courses.urls')),
     url(r'^%s/media/(?P<path>.*)$' % prefix, serve, {'document_root': MEDIA_ROOT}),
+    url(r'^%s/dialect/$' % prefix, scv.dialect),
     url(admin_url, admin.site.urls),
 ]
