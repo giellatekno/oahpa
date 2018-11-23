@@ -13,9 +13,6 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
-from django.contrib import admin
-
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.static import serve
@@ -34,11 +31,8 @@ admin_url = r'^%s/admin/' % prefix
 
 urlpatterns = [
     url(r'^kiilt/$', sdv.index),
-    #url(r'^%s/$' % prefix, sdv.index, name='index'),
     url(r'^%s/i18n/' % prefix, include('django.conf.urls.i18n')),
-    #url(r'^%s/' % prefix, include(LLL1+'_oahpa.drill.urls')),
 	url(r'^kiilt/', include(LLL1+'_oahpa.drill.urls')),
-    #url(r'^%s/courses/' % prefix, include(LLL1+'_oahpa.courses.urls')),
 	url(r'^kiilt/courses/', include(LLL1+'_oahpa.courses.urls')),
     url(r'^%s/media/(?P<path>.*)$' % prefix, serve, {'document_root': MEDIA_ROOT}),
     url(r'^%s/dialect/$' % prefix, scv.dialect),
