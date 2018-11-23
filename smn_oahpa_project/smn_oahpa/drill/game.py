@@ -1356,8 +1356,9 @@ class QuizzGame(Game):
 
 		source_language = self.settings['transtype'][0:3]
 		target_language = self.settings['transtype'][-3::]
-		if target_language == 'nb':
-			target_language = 'nob'
+
+		if (target_language == 'nb')|(target_language == 'nnb')|(target_language == 'nob')|(target_language == 'eng'):
+			target_language = 'fin'
 		QueryModel = Word
 
 		# Excludes
