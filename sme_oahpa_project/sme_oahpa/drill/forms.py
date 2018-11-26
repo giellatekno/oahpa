@@ -1,15 +1,19 @@
 # -*- encoding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 from django import forms
 from django.db.models import Q
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
-import univ_oahpa.settings as settings
 
-from univ_oahpa.conf.tools import switch_language_code
+settings = oahpa_module.settings
+switch_language_code = oahpa_module.conf.tools.switch_language_code
 
 from models import *
-#from game import * 
+#from game import *
 #from univ_oahpa.univ_drill.game import relax
 import datetime
 import socket
@@ -137,9 +141,9 @@ CASE_CONTEXT_CHOICES = (
 	('N-MIX', _('mix')),
 )
 
-# 
+#
 # No inessive or essive, and no choice between nom sg. and pl, but nom sg and pl come together.
-# 
+#
 PRON_CONTEXT_CHOICES = (
 	#('P-NOM', _('nominative')), Morfa C pronomen nominativ skal fjernes fra menyen dersom oppgavene har ingen hensikt.
 	('P-PERS', _('personal')),
@@ -181,7 +185,7 @@ ADJECTIVE_FILTER_DEFINITION = ['grade', 'stem', 'source']
 
 ADJEX_CHOICES = (
 	('A-ATTR', _('attributive')),	# A+Nom+Sg -> A+Attr
-	('A-COMP', _('comparative')),		# A+Nom+Sg -> Comp	
+	('A-COMP', _('comparative')),		# A+Nom+Sg -> Comp
 	('A-SUPERL', _('superlative')),	# A+Nom+Sg -> Superl
 
 )
@@ -441,7 +445,7 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
-	('FAMILY', _('family')), 
+	('FAMILY', _('family')),
 	('HUMAN', _('human')),
 	('HUMAN-LIKE', _('human-like')),
 	('ANIMAL', _('animal')),
@@ -451,7 +455,7 @@ SEMTYPE_CHOICES = (
 	('BODY', _('body')),
 	('CLOTHES', _('clothes')),
 	('BUILDINGS/ROOMS', _('buildings/rooms')),
-	('CITY', _('city')), 
+	('CITY', _('city')),
 	('NATUREWORDS', _('naturewords')),
 	('LEISURETIME/AT_HOME', _('leisuretime/at_home')),
 	('CHRISTMAS', _('christmas')),
@@ -528,40 +532,40 @@ SYLLABLE_VALUES = (
 )
 
 ALL_CHOICES = [
-	ADJCASE_CHOICES, 
-	ADJEX_CHOICES, 
+	ADJCASE_CHOICES,
+	ADJEX_CHOICES,
 	ADJ_CONTEXT_CHOICES,
-	BOOK_CHOICES, 
-	CASE_CHOICES, 
-	CASE_CHOICES_PRONOUN, 
+	BOOK_CHOICES,
+	CASE_CHOICES,
+	CASE_CHOICES_PRONOUN,
 	CASE_CONTEXT_CHOICES,
-	DIALOGUE_CHOICES, 
-	FREQUENCY_CHOICES, 
-	GEOGRAPHY_CHOICES, 
+	DIALOGUE_CHOICES,
+	FREQUENCY_CHOICES,
+	GEOGRAPHY_CHOICES,
 	GRADE_CHOICES,
-	KLOKKA_CHOICES, 
-	LEVEL_CHOICES, 
-	NUMGAME_CHOICES, 
+	KLOKKA_CHOICES,
+	LEVEL_CHOICES,
+	NUMGAME_CHOICES,
 	NUMGAME_CHOICES_PL,
-	NUMLANGUAGE_CHOICES, 
-	NUM_BARE_CHOICES, 
-	NUM_CHOICES, 
+	NUMLANGUAGE_CHOICES,
+	NUM_BARE_CHOICES,
+	NUM_CHOICES,
 	NUM_CONTEXT_CHOICES,
 	NUM_LEVEL_CHOICES,
-	NUM_TYPE_CHOICES, 
+	NUM_TYPE_CHOICES,
 	POS_CHOICES,
-	POSSESSIVE_CONTEXT_CHOICES, 
-	PRONOUN_SUBCLASSES, 
+	POSSESSIVE_CONTEXT_CHOICES,
+	PRONOUN_SUBCLASSES,
 	PRON_CONTEXT_CHOICES,
-	RECIP_REFL_CHOICES, 
-	SEMTYPE_CHOICES, 
+	RECIP_REFL_CHOICES,
+	SEMTYPE_CHOICES,
 	SYLLABLE_VALUES,
-	TRANS_CHOICES, 
+	TRANS_CHOICES,
 	VASTA_LEVELS,
 	VASTAS_LEVELS,
-	VASTAS_NR_OF_TASKWORDS, 
+	VASTAS_NR_OF_TASKWORDS,
 	VERB_CLASSES,
-	VTYPE_CHOICES, 
+	VTYPE_CHOICES,
 	VTYPE_CONTEXT_CHOICES]
 
 
@@ -600,31 +604,31 @@ from univ_oahpa.settings import INFINITIVE_ADD as infinitives_add
 
 def relax(strict):
 	"""Returns a list of relaxed possibilities, making changes by relax_pairs.
-		
+
 		Many possibilities are generated in the event that users are
-		inconsistent in terms of substituting one letter but not substituting 
+		inconsistent in terms of substituting one letter but not substituting
 		another, however, *all* possibilities are not generated.
-		
+
 		E.g., *ryøjnesjäjja is accepted for ryöjnesjæjja
 				(user types ø instead of ö consistently)
-				
+
 				... but ...
-			  
+
 			  *töølledh is not accepted for töölledh
 				(user mixes the two in one word)
-		
+
 		Similarly, directionality is included. <i> is accepted for <ï>, but
 		not vice versa.
-		
-		E.g.:  *ååjmedïdh is not accepted for ååjmedidh, 
+
+		E.g.:  *ååjmedïdh is not accepted for ååjmedidh,
 				... but ...
 				*miele is accepted for mïele.
 	"""
 	from django.utils.encoding import force_unicode
-	
+
 	relaxed = strict
 	sub_str = lambda _string, _target, _sub: _string.replace(_target, _sub)
-	
+
 	relax_pairs = {
 		# key: value
 		# key is accepted for value
@@ -632,21 +636,21 @@ def relax(strict):
 		u'ä': u'æ',
 		u'i': u'ï'
 	}
-	
-	# Create an iterator. We want to generate as many possibilities as 
+
+	# Create an iterator. We want to generate as many possibilities as
 	# possible (very fast), so more relaxed options are available.
 	searches = relax_pairs.items()
 	permutations = itertools.chain(itertools.permutations(searches))
 	perms_flat = sum([list(a) for a in permutations], [])
-	
+
 	# Individual possibilities
 	relaxed_perms = [sub_str(relaxed, R, S) for S, R in perms_flat]
-	
+
 	# Possibilities applied one by one
 	for S, R in perms_flat:
 		relaxed = sub_str(relaxed, R, S)
 		relaxed_perms.append(relaxed)
-	
+
 	# Return list of unique possibilities
 	relaxed_perms = list(set(relaxed_perms))
 	relaxed_perms = [force_unicode(item) for item in relaxed_perms]
@@ -662,25 +666,25 @@ def is_correct(self, game, example=None):
 
 	if not self.is_valid():
 		return False
-		
+
 	self.userans = self.cleaned_data['answer']
-	
+
 	self.answer = self.userans.strip()
-	
+
 	if not game == "numra":
 		self.answer = self.answer.rstrip('.!?,')
-	
+
 	self.error = "error"
 	self.iscorrect = False
-	
+
 	if self.answer in set(self.correct_anslist) or \
 			self.answer.lower() in set(self.correct_anslist) or \
 			self.answer.upper() in set(self.correct_anslist):
 		self.error = "correct"
 		self.iscorrect = True
-	
+
 	# Log information about user answers.
-	
+
 	correctlist = u",".join([a for a in self.correct_anslist])
 	self.correctlist = correctlist
 	self.log_response()
@@ -693,41 +697,41 @@ def set_correct(self):
 		self.correct_answers = self.correct_ans[:]
 		if type(self.correct_answers) == list:
 			self.correct_answers = ', '.join(self.correct_answers)
-	
-	
+
+
 
 def set_settings(self):
-	# self.levels = { 
+	# self.levels = {
 	#		'l1':  ['l1'],
-	#		'l2':  ['l2', 'l1'], 
-	#		'l3':  ['l3', 'l2', 'l1'], 
-	#		'all': ['l3', 'l2', 'l1', 'all'], 
+	#		'l2':  ['l2', 'l1'],
+	#		'l3':  ['l3', 'l2', 'l1'],
+	#		'all': ['l3', 'l2', 'l1', 'all'],
 	#	}
-	
+
 	# Construct arrays for level choices.
-	
+
 	# Commenting this out because I don't see yet why this needs to be constructed this way.
 	# If it's done automatically so that more levels can be added, the code here will still need
 	# to be altered... So it seems easiest to just hard-code this for now.
-	
+
 	# self.levels = {}
-	# self.levels['all'] = [] 
+	# self.levels['all'] = []
 	# for b in LEVEL_CHOICES:
 	#	if b[0] != 'all':
-	#		self.levels[b[0]] = [] 
+	#		self.levels[b[0]] = []
 	#		self.levels['all'].append(b[0])
-	#		
+	#
 	#	self.levels[b[0]].append(b[0])
-	# 
+	#
 	# self.levels['l2'].append('l1')
 	# for b in ['l1', 'l2']:
 	#	self.levels['l3'].append(b)
-	
-	
-	# Turning these into dictionary type means there's no need to iterate to 
-	# get the first tuple item. Also makes it easier to read. And, there are 
+
+
+	# Turning these into dictionary type means there's no need to iterate to
+	# get the first tuple item. Also makes it easier to read. And, there are
 	# no many-to-many relationships in these tuples of tuples
-	
+
 	self.allsem = dict(SEMTYPE_CHOICES).keys()
 	self.allcase = dict(CASE_CHOICES).keys()
 	self.allcase_context = dict(CASE_CONTEXT_CHOICES).keys()
@@ -758,19 +762,19 @@ def nearest_matching_level(wf_feedbacks, level):
 	levels = wf_feedbacks.values_list('feedbacktext__user_level', flat=True)
 	if levels.count() > 0:
 		_max_lev = max(levels)
-	
+
 		matching_level = level in levels
 		_match = [l for l in levels if l < level]
 		if len(_match) > 0:
 			highest_non_matching = max(_match)
 		else:
 			highest_non_matching = 1
-	
+
 		if matching_level:
 			matching_feedbacks.extend( wf_feedbacks.filter(feedbacktext__user_level=level) )
 		else:
 			matching_feedbacks.extend( wf_feedbacks.filter(feedbacktext__user_level=highest_non_matching) )
-	
+
 
 	return matching_feedbacks
 
@@ -808,7 +812,7 @@ def get_feedback(self, wordform, language):
 	if feedbacks.count() == 0:
 		feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
 						.order_by('feedbacktext__order')
-	
+
 	feedback_messages = []
 	feedback_ids = []
 
@@ -825,14 +829,14 @@ def get_feedback(self, wordform, language):
 		baseform = wordform.getBaseform(match_num=True)
 	except:
 		baseform = wordform
-	
+
 	message_list = []
 	if feedback_messages:
 		for text in feedback_messages:
 			fenc = lambda x: force_unicode(x)
 			text = text.replace('WORDFORM', '"%s"' % fenc(baseform.fullform)) # was fenc(baseform.word.lemma) but in this case the baseform can never be Pl+Nom.
 			message_list.append(text)
-	
+
 	self.feedback = ' \n '.join(list(message_list))
 	self.feedback_ids = ','.join(feedback_ids)
 
@@ -859,7 +863,7 @@ def select_words(self, qwords, awords):
 	"""
 	from random import choice
 	selected_awords = {}
-	
+
 	for syntax in awords.keys():
 		word = None
 		tag = None
@@ -870,15 +874,15 @@ def select_words(self, qwords, awords):
 			aword = choice(awords[syntax])
 			if aword.has_key('tag'):
 				selected_awords[syntax]['tag'] = aword['tag']
-			if aword.has_key('task'): 
+			if aword.has_key('task'):
 				selected_awords[syntax]['task'] = aword['task']
 			if aword.has_key('taskword'):
 				selected_awords[syntax]['taskword'] = aword['taskword']
 			if aword.has_key('qelement'):
 				qelem = aword['qelement']
-				if isinstance(qelem, QElement):  # to exclude MorfaC 
+				if isinstance(qelem, QElement):  # to exclude MorfaC
 					if qelem.task:  # words in VastaS answer frame where task="yes".
-						selected_awords[syntax]['taskword'] = qelem.task   
+						selected_awords[syntax]['taskword'] = qelem.task
 			if aword.has_key('word') and aword['word']:
 				selected_awords[syntax]['word'] = aword['word']
 			else:
@@ -890,7 +894,7 @@ def select_words(self, qwords, awords):
 					# Some WordQElements are associated with words that have no
 					# Forms, as such we have to randomly select one until we
 					# find an element with forms. This is faster than filtering
-					# by annotating and Count() 
+					# by annotating and Count()
 
 					if wqelems.count() > 0:
 
@@ -925,7 +929,7 @@ def select_words(self, qwords, awords):
 								word__id=selected_awords[syntax]['word'],
 								tag__id=selected_awords[syntax]['tag'],
 							)
-				
+
 				form_list = filter_set_by_dialect(form_list, self.dialect)
 				if form_list.count() > 0:
 					fullf = []
@@ -956,12 +960,12 @@ class OahpaSettings(forms.Form):
 		The metaform for game settings. Various games subclass from this form.
 	"""
 	set_settings = set_settings
-	
+
 	def clean(self):
 		# x = self.cleaned_data.get('bisyllabic'
 		# print 'clean: ', x
 		return self.cleaned_data
-	
+
 	def set_default_data(self):
 		self.default_data = {
 					'language' : 'sme', # why rus ?
@@ -1013,12 +1017,12 @@ class OahpaQuestion(forms.Form):
 	is_correct = is_correct
 	set_correct = set_correct
 	get_feedback = get_feedback
-	
-	# Set answer widget. Can this JS actually be moved to templates? 
+
+	# Set answer widget. Can this JS actually be moved to templates?
 	KEYDOWN = 'javascript:return process(this, event, document.gameform);'
 	answer_attrs = {'size': 45} # , 'onkeydown': KEYDOWN}
 	answer = forms.CharField(max_length=45, widget=forms.TextInput(attrs=answer_attrs))
-	
+
 	def log_response(self):
 		import datetime
 
@@ -1040,7 +1044,7 @@ class OahpaQuestion(forms.Form):
 
 		log = Log.objects.create(**log_kwargs)
 		self.last_log = log
-	
+
 	def __init__(self, *args, **kwargs):
 		correct_val = False
 		if 'correct_val' in kwargs:
@@ -1056,13 +1060,13 @@ class OahpaQuestion(forms.Form):
 			self.user_country = kwargs.pop('user_country')
 		else:
 			self.user_country = False
-		
+
 		super(OahpaQuestion, self).__init__(*args, **kwargs)
-		
+
 		# set correct and error values
 		if correct_val == "correct":
 			self.error = "correct"
-			
+
 	def init_variables(self, possible, userans_val, accepted_answers, preferred=False):
 		# Get lemma and feedback
 		self.feedback = ""
@@ -1104,7 +1108,7 @@ class OahpaQuestion(forms.Form):
 						accepted_answers = infins + accepted_answers
 
 				forms = accepted_answers
-		
+
 		self.correct_anslist = [force_unicode(item) for item in accepted_answers] + \
 							   [force_unicode(f) for f in forms]
 		self.relaxings = relaxings
@@ -1133,9 +1137,9 @@ class LeksaSettings(OahpaSettings):
 	# suopma = forms.BooleanField(required=False,initial=0)
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
-	
-	default_data = {'gametype' : 'bare', 'language' : 'sme', 'dialogue' : 'GG', 
-			'syll' : [], 
+
+	default_data = {'gametype' : 'bare', 'language' : 'sme', 'dialogue' : 'GG',
+			'syll' : [],
 			'bisyllabic': False,
 			'trisyllabic': False,
 			'contracted': False,
@@ -1145,7 +1149,7 @@ class LeksaSettings(OahpaSettings):
 			'frequency' : ['common'] # added
 			}
 
-	
+
 	# set default language pair from session language setting.
 	def __init__(self, *args, **kwargs):
 		if 'initial_transtype' in kwargs:
@@ -1159,20 +1163,20 @@ class LeksaSettings(OahpaSettings):
 		if initial_transtype:
 			self.fields['transtype'].initial = initial_transtype
 			self.default_data['transtype'] = initial_transtype
-	
+
 
 class LeksaQuestion(OahpaQuestion):
 	"""
 	Questions for word quizz
 	"""
-	
+
 	def __init__(self, tcomms, stat_pref, preferred, possible, transtype, word, correct, translations, question, userans_val, correct_val, *args, **kwargs):
 		lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
 		self.translang = transtype[-3::]
 		self.word = word
 		kwargs['correct_val'] = correct_val
 		super(LeksaQuestion, self).__init__(*args, **kwargs)
-				
+
 		self.tcomm = None
 		if tcomms:
 			if userans_val in tcomms:
@@ -1180,14 +1184,14 @@ class LeksaQuestion(OahpaQuestion):
 			else:
 				self.tcomm = None
 
-		
+
 		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
-		
+
 		if type(word) == Word:
 			self.lemma = word.lemma
 		else:
 			self.lemma = word.definition
-		
+
 		if word.pos.upper() == 'V':
 			if word.language in infinitives_sub and infinitives_add:
 				infin_s = infinitives_sub[word.language]
@@ -1197,11 +1201,11 @@ class LeksaQuestion(OahpaQuestion):
 				lemmax = lemma.sub(infin_a, force_unicode(self.lemma))
 				self.lemma = force_unicode(lemmax)
 
-		self.init_variables(possible=translations, 
-							userans_val=userans_val, 
-							accepted_answers=possible, 
+		self.init_variables(possible=translations,
+							userans_val=userans_val,
+							accepted_answers=possible,
 							preferred=preferred)
-		
+
 		self.is_correct("leksa", self.lemma)
 		# set correct and error values
 		if correct_val:
@@ -1213,7 +1217,7 @@ class LeksaQuestion(OahpaQuestion):
 				self.strict = 'Strict form'
 			else:
 				self.is_relaxed = ""
-		
+
 		if stat_pref:
 			self.correct_ans = stat_pref
 
@@ -1223,18 +1227,18 @@ class LeksaQuestion(OahpaQuestion):
 			if self.translang in infinitives_sub and infinitives_add:
 				infin_s = infinitives_sub[self.translang]
 				infin_a = infinitives_add[self.translang]
-		
+
 				lemma = re.compile(infin_s)
-				
+
 				self.correct_ans = [lemma.sub(infin_a, force_unicode(ax)) for ax in self.correct_ans]
 				self.correct_ans = [force_unicode(ax) for ax in self.correct_ans]
-		
-	
+
+
 
 
 # #
 #
-# Morfa Forms 
+# Morfa Forms
 #
 # #
 
@@ -1242,7 +1246,7 @@ class MorfaSettings(OahpaSettings):
 	"""
 		A form for the settings part of the game form, e.g., the form used to
 		set case, stem and source books for quiz questions.
-		
+
 		This is a separate form from the one which validates questions and
 		answers.
 	"""
@@ -1269,14 +1273,14 @@ class MorfaSettings(OahpaSettings):
 	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
 	pron_context = forms.ChoiceField(initial='P-PERS', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)
 	wordform_type = forms.ChoiceField(initial='goabbat', choices=WORDFORM_TYPE_CHOICES, widget=forms.Select)  # Reciprocative pronouns only
-	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select) 
+	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
 	bisyllabic = forms.BooleanField(required=False, initial=True)
 	trisyllabic = forms.BooleanField(required=False, initial=True)
 	contracted = forms.BooleanField(required=False, initial=True)
 	grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
 	singular_only = forms.BooleanField(required=False, initial=False)
-	sg2_only = forms.BooleanField(required=False, initial=False) 
-	
+	sg2_only = forms.BooleanField(required=False, initial=False)
+
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
 		self.set_default_data()
@@ -1335,13 +1339,13 @@ class MorfaSettings(OahpaSettings):
 
 class MorfaQuestion(OahpaQuestion):
 	"""
-	Questions for morphology game. 
+	Questions for morphology game.
 	"""
-	
+
 	def __init__(self, word, tag, baseform, correct, accepted_answers,
 					answer_presentation, translations, question, dialect, language,
 					userans_val, correct_val, conneg, *args, **kwargs):
-		
+
 		lemma_widget = forms.HiddenInput(attrs={'value': word.id})
 		tag_widget = forms.HiddenInput(attrs={'value': tag.id})
 		self.translang = 'sme'
@@ -1357,10 +1361,10 @@ class MorfaQuestion(OahpaQuestion):
 		elif tag.pos == 'V':
 			self.user_task = tag.string
 
-		
+
 		# initialize variables
-		self.init_variables(possible=[], 
-							userans_val=userans_val, 
+		self.init_variables(possible=[],
+							userans_val=userans_val,
 							accepted_answers=accepted_answers)
 
 		if tag.string.lower().find('conneg') > -1:
@@ -1385,17 +1389,17 @@ class MorfaQuestion(OahpaQuestion):
 		self.wordclass = word.wordclass
 		if not self.pron:
 			self.pron = False
-		
+
 		#print self.lemma, correct
 		#print baseform.tag, correct.tag
-		
+
 		# Retrieve feedback information
 		self.get_feedback(correct, language)
-		
+
 		# Take only the first translation for the tooltip
 		if len(translations) > 0:
 			self.translations = translations[0]
-			
+
 		if tag.pos == "N":
 			self.case = tag.case
 			if tag.possessive:
@@ -1410,10 +1414,10 @@ class MorfaQuestion(OahpaQuestion):
 
 		if tag.pos == 'Pron':
 			self.case = tag.case
-					
+
 		self.tag = tag.string
-		
-		if tag.pos == "V": 
+
+		if tag.pos == "V":
 			_pronoun_presentation = False
 			_tense_presentation = False
 			_neg_presentation = False
@@ -1424,7 +1428,7 @@ class MorfaQuestion(OahpaQuestion):
 					pers = conneg_agr
 					pronoun = self.PronPNBase[pers]
 					neg_verb = NEGATIVE_VERB_PRES[pers]
-					
+
 					_pronoun_presentation = pronoun
 					_neg_presentation = neg_verb
 				elif tag.personnumber:
@@ -1432,17 +1436,17 @@ class MorfaQuestion(OahpaQuestion):
 					pronoun = pronbase
 					_pronoun_presentation = pronoun
 					self.pron = pronoun
-					
+
 					if self.pron and tag.mood == "Imprt":
 						self.pron_imp = "(" + self.pron + ")"
 						self.pron = ""
 						_pronoun_presentation = False
 					# TODO: conneg only in Prs
-			
+
 			# Odne 'today', ikte 'yesterday'
-			
-			# All pres? 
-			
+
+			# All pres?
+
 			# son -> dat (okta), sii -> dat (máŋga)
 			# because some verbs are not suitable to use with a human as object:
 
@@ -1462,14 +1466,14 @@ class MorfaQuestion(OahpaQuestion):
 			elif ("+Der/Pass" in tag.string) and ("+V" in tag.string):
 				# Odne mun ___
 				# Ikte mun ___
-				# Ikte dat (okta) ___ 
+				# Ikte dat (okta) ___
 
 				# Choose one if not set, if set then game is in progress, and
 				# do not choose another
 				pers = tag.personnumber
 				if not pers:
 					pers = conneg_agr
-				time = TENSE_PRESENTATION.get(tag.tense, False) 
+				time = TENSE_PRESENTATION.get(tag.tense, False)
 				_tense_presentation = time
 				pronoun = PASSIVE_PRONOUNS_LIST[pers]
 				_pronoun_presentation = pronoun
@@ -1484,10 +1488,10 @@ class MorfaQuestion(OahpaQuestion):
 											  _number_presentation,
 											  _neg_presentation] if a])
 
-			
+
 		if tag.pos == "Pron":
 			# Various display alternations for pronouns.
-			
+
 			# Reciprocative:
 			#	guhtet guoibmámet
 			#	goabbat guoibmámet
@@ -1528,15 +1532,15 @@ class MorfaQuestion(OahpaQuestion):
 						self.lemma = force_unicode(self.lemma).encode('utf-8')
 						#self.lemma += u' (%s)' % noun_pres
 						#self.lemma = force_unicode(self.lemma).encode('utf-8')
-						
-		
+
+
 		log_name = "morfa_%s" % tag.pos
 		self.tag = force_unicode(self.tag).encode('utf-8')
 		try:
 			self.is_correct(log_name, self.lemma + "+" + self.tag)
 		except TypeError:
 			self.is_correct(log_name, self.lemma.lemma + "+" + self.tag)
-		
+
 		# set correct and error values
 		if correct_val:
 			if correct_val == "correct":
@@ -1547,7 +1551,7 @@ class MorfaQuestion(OahpaQuestion):
 				self.strict = 'Strict form'
 			else:
 				self.is_relaxed = ""
-		
+
 		self.correct_ans = answer_presentation
 # #
 #
@@ -1562,7 +1566,7 @@ class NumSettings(OahpaSettings):
 	numlanguage = forms.ChoiceField(initial='sme', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
 	# TODO: remove mandatory need to set default data, should be done through 'initial' field setting.
 	default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'dialect' : 'GG', 'maxnum' : '10', 'numgame': 'string'}  # dialogue = 'GG' ???
-					
+
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
 		super(NumSettings, self).__init__(*args, **kwargs)
@@ -1593,18 +1597,18 @@ class NumQuestion(OahpaQuestion):
 		self.error = "error"
 		self.iscorrect = False
 
-		correct_test = self.game_obj.check_answer(self.question_str, 
-													self.userans, 
+		correct_test = self.game_obj.check_answer(self.question_str,
+													self.userans,
 													self.correct_anslist)
 		if correct_test:
 			self.error = "correct"
 			self.iscorrect = True
 
 		self.correctlist = u",".join(list(set(self.correct_anslist)))
-		
+
 		self.log_response()
 
-	
+
 	def __init__(self, numeral, num_string, num_list, gametype, userans_val, correct_val, game, *args, **kwargs):
 		numeral_widget = forms.HiddenInput(attrs={'value' : numeral})
 		kwargs['correct_val'] = correct_val
@@ -1619,7 +1623,7 @@ class NumQuestion(OahpaQuestion):
 		super(NumQuestion, self).__init__(*args, **kwargs)
 		wforms = []
 		self.relaxings = []
-		
+
 		# Initialize variables
 		if gametype == "string":
 			self.init_variables(force_unicode(numeral), userans_val, [ numeral ])
@@ -1632,20 +1636,20 @@ class NumQuestion(OahpaQuestion):
 			self.relaxings = [item for item in wforms if item not in num_list]
 			example = numeral
 			self.question_str = numeral
-		
+
 		self.correct_anslist = self.correct_anslist + [force_unicode(f) for f in wforms]
-		
+
 		self.fields['numeral_id'] = forms.CharField(widget=numeral_widget, required=False)
-		
+
 		if gametype == "string":
 			self.numstring = num_string
 		self.numeral = numeral
-		
-		# Correctness not evaluated here but in child class. Short fix 
-		
+
+		# Correctness not evaluated here but in child class. Short fix
+
 		if not no_eval_correct:
 			self.is_correct(self.game_log_name, example)
-		
+
 		if correct_val:
 			if correct_val == "correct":
 				self.error = "correct"
@@ -1655,8 +1659,8 @@ class NumQuestion(OahpaQuestion):
 				self.strict = 'Strict form'
 			else:
 				self.is_relaxed = ""
-		
-		
+
+
 # #
 #
 # Klokka Forms
@@ -1668,7 +1672,7 @@ class KlokkaSettings(NumSettings):
 	numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES_PL, widget=forms.RadioSelect)
 	gametype = forms.ChoiceField(initial='kl1', choices=KLOKKA_CHOICES, widget=forms.RadioSelect)
 	default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'string'}
-					
+
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
 		super(KlokkaSettings, self).__init__(*args, **kwargs)
@@ -1702,7 +1706,7 @@ class KlokkaQuestion(NumQuestion):
 
 		options = [number]
 		hh, _, mm = number.partition(':')
-		
+
 		try:
 			switched = '%s:%s' % (military_dict[hh], mm)
 			return switched
@@ -1714,7 +1718,7 @@ class KlokkaQuestion(NumQuestion):
 		accept_list = kwargs.get('accept_list')
 		kwargs.pop('present_list')
 		kwargs.pop('accept_list')
-		
+
 		numeral = kwargs.get('numeral')
 		num_string = kwargs.get('num_string')
 		correct_val = kwargs.get('correct_val')
@@ -1727,7 +1731,7 @@ class KlokkaQuestion(NumQuestion):
 		numeral_widget = forms.HiddenInput(attrs={'value' : numeral})
 		kwargs['correct_val'] = correct_val
 		self.userans_val = self.userans = userans_val
-		
+
 		kwargs['num_list'] = present_list
 		# Prevent double evaluation of correctness
 
@@ -1740,22 +1744,22 @@ class KlokkaQuestion(NumQuestion):
 		if gametype == "string":
 			self.init_variables(force_unicode(numeral), userans_val, [ numeral ])
 			example = num_string
-			
+
 		else:
 			self.init_variables(force_unicode(accept_list), userans_val, present_list)
 			wforms = sum([relax(force_unicode(item)) for item in accept_list], [])
 			# need to subtract legal answers and make an only relaxed list.
 			self.relaxings = [item for item in wforms if item not in accept_list]
 			example = numeral
-		
+
 		self.correct_anslist = self.correct_anslist + [force_unicode(f) for f in wforms]
 
-		
+
 		self.fields['numeral_id'] = forms.CharField(widget=numeral_widget, required=False)
-		
+
 		self.numstring = num_string
 
-		# Need to change presentation of certain numerals to avoid 
+		# Need to change presentation of certain numerals to avoid
 		if gametype == "string":
 			relaxed_presentation = [self.relax_military(a) for a in self.correct_anslist[:]]
 			self.correct_ans = relaxed_presentation + self.correct_anslist
@@ -1764,11 +1768,11 @@ class KlokkaQuestion(NumQuestion):
 			# Clear numstring to switch presentation
 			self.numstring = None
 
-		
+
 		self.numeral = numeral
 
 		self.is_correct(self.game_log_name, example)
-		
+
 		if correct_val:
 			if correct_val == "correct":
 				self.error = "correct"
@@ -1781,7 +1785,7 @@ class KlokkaQuestion(NumQuestion):
 				self.strict = 'Strict form'
 			else:
 				self.is_relaxed = ""
-	
+
 	def is_correct(self, game, example=None):
 		self.game = game
 		self.example = example
@@ -1795,15 +1799,15 @@ class KlokkaQuestion(NumQuestion):
 		self.error = "error"
 		self.iscorrect = False
 
-		correct_test = self.game_obj.check_answer(self.question_str, 
-													self.userans, 
+		correct_test = self.game_obj.check_answer(self.question_str,
+													self.userans,
 													self.correct_anslist)
 		if correct_test:
 			self.error = "correct"
 			self.iscorrect = True
 
 		self.correctlist = u",".join(list(set(self.correct_anslist)))
-		
+
 		self.log_response()
 
 
@@ -1820,7 +1824,7 @@ class DatoSettings(KlokkaSettings):
 
 
 class DatoQuestion(KlokkaQuestion):
-	
+
 	game_log_name = "dato"
 
 	def answer_relax(self, answer):
@@ -1851,9 +1855,9 @@ class ContextMorfaQuestion(OahpaQuestion):
 		self.fields['answer'] = forms.CharField(max_length = maxlength, \
 												widget=forms.TextInput(\
 			attrs={'size': answer_size,}))
-			
+
 			# 'onkeydown':'javascript:return process(this, event,document.gameform);'
-	
+
 	def __init__(self, question, qanswer, question_words, answer_words,
 				dialect, language, userans_val, correct_val, *args, **kwargs):
 		# TODO: userans_val and accept_list, something here.
@@ -1893,13 +1897,13 @@ class ContextMorfaQuestion(OahpaQuestion):
 
 		relaxed = []
 		form_list = []
-		
+
 		if not selected_awords.has_key(task):
-			raise Http404(task + " " + atext + " " + str(qanswer.id))			
+			raise Http404(task + " " + atext + " " + str(qanswer.id))
 		if len(selected_awords[task]['fullform'])>0:
 			for f in selected_awords[task]['fullform']:
 				self.correct_anslist.append(force_unicode(f))
-			
+
 			accepted = sum([relax(force_unicode(item)) for item in self.correct_anslist], [])
 			self.relaxings = [item for item in accepted if item not in self.correct_anslist]
 			# add NG forms to relaxings
@@ -1947,7 +1951,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 				self.aattrs['answer_tag_' + syntax] = selected_awords[syntax]['tag']
 			if selected_awords[syntax].has_key('fullform') and len(selected_awords[syntax]['fullform']) == 1:
 				self.aattrs['answer_fullform_' + syntax] = selected_awords[syntax]['fullform'][0]
-		
+
 		# Forms question string and answer string out of grammatical elements and other strings.
 		qstring = ""
 		astring= ""
@@ -1964,8 +1968,8 @@ class ContextMorfaQuestion(OahpaQuestion):
 					qstring = qstring + " " + force_unicode(w)
 		qstring = qstring.replace(" -","-")
 		qstring = qstring.replace(" .",".")
-		
-		
+
+
 		try:
 			answer_word = selected_awords[task]['word']
 		except KeyError:
@@ -1978,7 +1982,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 			# self.lemma = question.qid
 		answer_tag = selected_awords[task]['tag']
 		selected_awords[task]['fullform'][0] = 'Q'
-		
+
 		# Get lemma for contextual morfa
 		# lemma is displayed as the 'task' word in parentheses after the question
 		answer_word_el = Word.objects.get(id=answer_word)
@@ -1993,10 +1997,10 @@ class ContextMorfaQuestion(OahpaQuestion):
 		if len(transl) > 0:
 			xl = transl[0]
 			self.translations = xl.definition
-		
+
 		if answer_word_el.pos == 'V':
 			self.wordclass = answer_word_el.wordclass
-	
+
 		# If the asked word is in Pl, generate nominal form
 
 		if answer_tag_el.pos == "N":
@@ -2011,7 +2015,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 						self.lemma = nplforms[0].fullform
 					else:
 						self.lemma = answer_word_el.lemma + " (plural) fix this"
-		
+
 		if qtype == "ORD-NUM":
 			self.lemma = answer_word_el.lemma
 
@@ -2024,13 +2028,13 @@ class ContextMorfaQuestion(OahpaQuestion):
 		try:
 			answer_word_forms = Form.objects.filter(word__pk=answer_word,
 													tag=answer_tag_el)
-													
+
 			answer_word_forms = filter_set_by_dialect(answer_word_forms, self.dialect)
-												
-			answer_word_form = answer_word_forms[0] 
+
+			answer_word_form = answer_word_forms[0]
 		except:
-			answer_word_form = False 
-		
+			answer_word_form = False
+
 		if answer_word_form:
 			self.get_feedback(answer_word_form, language)
 
@@ -2038,12 +2042,12 @@ class ContextMorfaQuestion(OahpaQuestion):
 		for w in atext.split():
 			if w.count("(") > 0:
 			  continue
-			
+
 			if not selected_awords.has_key(w) or not selected_awords[w].has_key('fullform'):
 				astring = astring + " " + force_unicode(w)
 			else:
 				astring = astring + " " + force_unicode(selected_awords[w]['fullform'][0])
-					
+
 		# Remove leading whitespace and capitalize.
 		astring = astring.lstrip()
 		qstring = qstring.lstrip()
@@ -2121,24 +2125,24 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	lookup2cg = " | " + settings.LOOKUP2CG
 	cg3 = settings.CG3
 	preprocess = " | " + settings.PREPROCESS
-	#preprocess = " | /Users/mslm/main/gt/script/preprocess "	
+	#preprocess = " | /Users/mslm/main/gt/script/preprocess "
 	dis_bin = settings.FST_DIRECTORY + "/sme-ped.cg3" # on the server
 	#dis_bin = settings.CG_RULES_DIRECTORY + "/sme-ped.cg3"
 
 	vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
-	
+
 	self.userans = self.cleaned_data['answer']
 	answer = self.userans.rstrip()
 	answer = answer.lstrip()
 	answer = answer.rstrip('.!?,')
 
 	self.error = "error"
-				
+
 	qtext = question
 	qtext = qtext.rstrip('.!?,')
 
 	logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastaF_and_Sahka_CGanalysis_log.txt','w')
-	
+
 	host = 'localhost'
 	port = settings.LOOKUPSERV_PORT
 	size = 1024
@@ -2156,7 +2160,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 			w = qword.lstrip().rstrip()
 			s.send(w)  # on victorio
 			cohort = s.recv(size)
-		  
+
 			if not cohort or cohort == w:
 				cohort = w + "\n"
 			if cohort=="error":
@@ -2204,14 +2208,14 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 			analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
 		logfile.write(analysis+"\n")
-		
+
 		# analyse words in the answer
-		
+
 		data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
 		words = os.popen(data_lookup).readlines()
 		analyzed=""
 		for w in words:
-			w=w.strip()	
+			w=w.strip()
 			word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
 			morfanal = os.popen(word_lookup).readlines()
 			ans_cohort=""
@@ -2219,7 +2223,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 				ans_cohort = ans_cohort + row
 			analyzed = analyzed + ans_cohort
    # except socket.timeout:
-	#	raise Http404("Technical error, please try again later.")			
+	#	raise Http404("Technical error, please try again later.")
 
 	logfile.write(analyzed+"\n")
 	print "morph. analysis:\n",analyzed
@@ -2235,7 +2239,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
 	messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
 	targetObj=re.compile(r'^.*\"(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\".*dia-.*$', re.U)
-	# Extract the lemma	
+	# Extract the lemma
 	constantObj=re.compile(r'^.*\"\<(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\>\".*$', re.U)
 	diaObj=re.compile(r'^.*(?P<targetString>&dia-[\w]*)\s*$', re.U)
 
@@ -2258,7 +2262,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 		if matchObj:
 			wordform = matchObj.expand(r'\g<msgString>')
 			msgstrings[wordform] = {}
-			
+
 		#grammatical/semantic/other error
 		matchObj=messageObj.search(line)
 		if matchObj:
@@ -2279,8 +2283,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 		if matchObj:
 			msgstring = matchObj.expand(r'\g<targetString>')
 			msgstrings[wordform][msgstring] = 1
-			diastring=msgstring			
-			
+			diastring=msgstring
+
 
 	msg=[]
 	message_ids=[]
@@ -2289,7 +2293,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	variable=""
 	constant=""
 	found=False
-	#Interface language	
+	#Interface language
 	if not language: language = "no"
 	language = switch_language_code(language)
 	#if language == "no" : language = "nob"
@@ -2300,7 +2304,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 		if found: break
 		for m in msgstrings[w].keys():
 			if spelling and m.count("nonword") == 0: continue
-			m = m.replace("&","") 
+			m = m.replace("&","")
 			if Feedbackmsg.objects.filter(msgid=m).count() > 0:
 				msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
 				message = Feedbacktext.objects.filter(feedbackmsg=msg_el,language=language)[0].message
@@ -2308,11 +2312,11 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 				print msg_id
 				message_ids.append(msg_id)  # added
 				#w = force_unicode(w).encode('utf-8')
-				message = message.replace("WORDFORM","\"" + force_unicode(w) + "\"") 
+				message = message.replace("WORDFORM","\"" + force_unicode(w) + "\"")
 				msg.append(message)
 				if not spelling:
 					found=True
-					break				
+					break
 			else:
 				if m.count("dia-") == 0:
 					msg.append(m)
@@ -2327,8 +2331,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 		if msgstrings[w].has_key('dia-unknown'):
 			constant = msgstrings[w]['dia-lemma']
 			variable = msgstrings[w]['dia-unknown']
-			
-    
+
+
 	#iscorrect is used only in logging
 	iscorrect=False
 	if not msg:
@@ -2360,8 +2364,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 		log_kwargs['user_country'] = self.user_country
 	log = Log.objects.create(**log_kwargs)
 	self.last_log = log
-	#log.save()		   
-	
+	#log.save()
+
 	variables = []
 	variables.append(variable)
 	variables.append(constant)
@@ -2389,11 +2393,11 @@ class VastaQuestion(OahpaQuestion):
 
 	select_words = select_words
 	vasta_is_correct = vasta_is_correct
-		
-	def __init__(self, question, qwords, language, userans_val, correct_val, *args, **kwargs):				 
+
+	def __init__(self, question, qwords, language, userans_val, correct_val, *args, **kwargs):
 
 		self.init_variables("", userans_val, [])
-		
+
 		question_widget = forms.HiddenInput(attrs={'value' : question.id})
 
 		super(VastaQuestion, self).__init__(*args, **kwargs)
@@ -2431,7 +2435,7 @@ class VastaQuestion(OahpaQuestion):
 		# this is for -guovttos
 		qstring=qstring.replace(" -","-");
 		qstring=qstring.replace("- ","-");
-					
+
 		# Remove leading whitespace and capitalize.
 		qstring = qstring.lstrip()
 		qstring = qstring[0].capitalize() + qstring[1:]
@@ -2443,7 +2447,7 @@ class VastaQuestion(OahpaQuestion):
 		# In qagame, all words are considered as answers.
 		self.gametype="vasta"
 		self.messages, jee, joo  = self.vasta_is_correct(qstring.encode('utf-8'), qwords, language, question_id)
-		
+
 		# set correct and error values
 		if correct_val == "correct":
 			self.error="correct"
@@ -2478,11 +2482,11 @@ def sahka_is_correct(self,utterance,targets,language):
 			self.target = answer
 	self.log_response()
 
-	
+
 class SahkaSettings(OahpaSettings):
 
 	#dialogue = forms.ChoiceField(initial='firstmeeting', choices=DIALOGUE_CHOICES, widget=forms.Select)
-	
+
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
 		self.set_default_data()
@@ -2501,7 +2505,7 @@ class SahkaSettings(OahpaSettings):
 		self.grammarlinksno = Grammarlinks.objects.filter(language="nob")
 
 	def init_hidden(self, topicnumber, num_fields, dialogue, image, wordlist, attempts):
-		
+
 		# Store topicnumber as hidden input to keep track of topics.
 		#print "topicnumber", topicnumber
 		#print "num_fields", num_fields
@@ -2545,12 +2549,12 @@ class SahkaQuestion(OahpaQuestion):
 		log = Log.objects.create(**log_kwargs)
 		self.last_log = log
 
-	def __init__(self, utterance, qwords, targets, global_targets, language, userans_val, correct_val, *args, **kwargs):				 
-		
+	def __init__(self, utterance, qwords, targets, global_targets, language, userans_val, correct_val, *args, **kwargs):
+
 		self.init_variables("", userans_val, [])
 
 		utterance_widget = forms.HiddenInput(attrs={'value' : utterance.id})
-		facit_widget = forms.HiddenInput(attrs={'value' : utterance.facit})		
+		facit_widget = forms.HiddenInput(attrs={'value' : utterance.facit})
 
 		if 'user' in kwargs:
 			self.user = kwargs.pop('user')
@@ -2561,7 +2565,7 @@ class SahkaQuestion(OahpaQuestion):
 			self.user_country = kwargs.pop('user_country')
 		else:
 			self.user_country = False
-		
+
 		super(SahkaQuestion, self).__init__(*args, **kwargs)
 
 		if utterance.utttype == "question":
@@ -2582,10 +2586,10 @@ class SahkaQuestion(OahpaQuestion):
 		if utterance:
 			self.utterance_id=utterance.id
 			#self.utterance=utterance.utterance
-						
+
 			# Forms question string and answer string out of grammatical elements and other strings.
 			qstring = ""
-			
+
 			# Format question string
 			qtext = utterance.utterance
 			for w in qtext.split():
@@ -2603,7 +2607,7 @@ class SahkaQuestion(OahpaQuestion):
 			# this is for -guovttos
 			qstring=qstring.replace(" -","-");
 			qstring=qstring.replace("- ","-");
-					
+
 			# Remove leading whitespace and capitalize.
 			qstring=qstring.replace(" .",".");
 			qstring=qstring.replace(" ?","?");
@@ -2617,7 +2621,7 @@ class SahkaQuestion(OahpaQuestion):
 
 		self.target=""
 		self.constant=""
-		self.dia_messages = ""		
+		self.dia_messages = ""
 		self.gametype="sahka"
 		self.variables = []
 		self.variables.append("")
@@ -2646,7 +2650,7 @@ class SahkaQuestion(OahpaQuestion):
 
 		if correct_val == "correct":
 			self.error="correct"
-			
+
 
 ###########
 ## Vasta-S (Cealkka)
@@ -2659,14 +2663,14 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		return None, None, None
 
 	noanalysis=False
-	
+
 	fstdir = settings.FST_DIRECTORY
 	fst = fstdir + "/ped-sme.fst"
 	print fst
 	lo = settings.LOOKUP_TOOL
 	lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst
 	print lookup
-	#lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine   
+	#lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine
 	#lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
 	lookup2cg = " | " + settings.LOOKUP2CG
 	cg3 = settings.CG3
@@ -2674,7 +2678,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	dis_bin = settings.FST_DIRECTORY + "/sme-ped.cg3"
 
 	vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
-	
+
 	self.userans = self.cleaned_data['answer']
 	answer = self.userans.rstrip()
 	answer = answer.lstrip()
@@ -2682,7 +2686,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	#print answer
 
 	self.error = "error"
-				
+
 	qtext = question
 	qtext = qtext.rstrip('.!?,')
 
@@ -2721,8 +2725,8 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 			analysis = analysis + force_unicode(cohort).encode('utf-8')
 		logfile.write(analysis+"\n")
 			#print analysis
-		### Lemmas and POS tags of task words are gathered into the variables 
-		### tasklemmas and taskpos respectively. Tasklemmas and taskpos will be 
+		### Lemmas and POS tags of task words are gathered into the variables
+		### tasklemmas and taskpos respectively. Tasklemmas and taskpos will be
 		### sent to CG together with the morph. analysed question and answer.
 		tasklemmas = ""
 		logtasklemmas = ""
@@ -2773,7 +2777,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 						tasklemmas = force_unicode(tasklemmas).encode('utf-8') + "\n\t\"" + force_unicode(malemma).encode('utf-8') + "\" "+ force_unicode(taskpos).encode('utf-8')
 				logtasklemmas = logtasklemmas + " " + force_unicode(malemma_without_hash).encode('utf-8') + " " + force_unicode(taskpos).encode('utf-8')
 				morfanal = morfanal + force_unicode(ans_cohort).encode('utf-8')  # END
-					
+
 		analysis = force_unicode(analysis).encode('utf-8') + "\"<^vastas>\"\n\t\"^vastas\" QDL " + force_unicode(question_id).encode('utf-8') + " " + force_unicode(tasklemmas).encode('utf-8') + "\n"
 		#####
 		#print analysis
@@ -2782,12 +2786,12 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		word = os.popen(data_lookup).readlines()
 		#print word
 		analyzed=""
-		for c in word:		
+		for c in word:
 			c=c.strip()
 			print c
 			s.send(c) # on vic
 			analyzed = analyzed + s.recv(size)
-			
+
 		s.send("q")  # on vic
 		s.close()  # on vic
 
@@ -2855,15 +2859,15 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 						tasklemmas = tasklemmas + "\n\t\"" + force_unicode(malemma).encode('utf-8') + "\" "+taskpos
 						logtasklemmas = logtasklemmas + " " + malemma_without_hash + " " + taskpos
 					morfanal = morfanal + ans_cohort  # END
-					
+
 		analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + force_unicode(tasklemmas).encode('utf-8') + "\n"
 		# analyse the user's answer
 		data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
 		word = os.popen(data_lookup).readlines()
 		#print word
 		analyzed=""
-		for c in word:		
-			c=c.strip()	
+		for c in word:
+			c=c.strip()
 			word_lookup = "echo \"" + force_unicode(c).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
 			morfanal = os.popen(word_lookup).readlines()
 			ans_cohort=""
@@ -2874,9 +2878,9 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		#print Exception
 		#print e
 	"""
-	
 
-	
+
+
 	analysis = analysis + analyzed
 	analysis = analysis + "\"<.>\"\n\t\".\" CLB"
 	analysis = analysis.rstrip()
@@ -2891,7 +2895,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
 	messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
 	targetObj=re.compile(r'^.*\"(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\".*dia-.*$', re.U)
-	# Extract the lemma	
+	# Extract the lemma
 	constantObj=re.compile(r'^.*\"\<(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\>\".*$', re.U)
 	diaObj=re.compile(r'^.*(?P<targetString>&dia-[\w]*)\s*$', re.U)
 
@@ -2914,7 +2918,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		if matchObj:
 			wordform = matchObj.expand(r'\g<msgString>')
 			msgstrings[wordform] = {}
-			
+
 		#grammatical/semantic/other error
 		matchObj=messageObj.search(line)
 		if matchObj:
@@ -2935,8 +2939,8 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		if matchObj:
 			msgstring = matchObj.expand(r'\g<targetString>')
 			msgstrings[wordform][msgstring] = 1
-			diastring=msgstring			
-			
+			diastring=msgstring
+
 
 	msg=[]
 	dia_msg = []
@@ -2945,7 +2949,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	variable=""
 	constant=""
 	found=False
-	#Interface language	
+	#Interface language
 	if not language: language = "no"
 	language = switch_language_code(language)
 	#if language == "no" : language = "nob"
@@ -2958,7 +2962,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		if found: break
 		for m in msgstrings[w].keys():
 			if spelling and m.count("nonword") == 0: continue  # was: spelling
-			m = m.replace("&","") 
+			m = m.replace("&","")
 			if Feedbackmsg.objects.filter(msgid=m).count() > 0:
 				msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
 				#print msg_el
@@ -2966,12 +2970,12 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 				#print message
 				msg_id = msg_el.msgid  # added
 				#print msg_id
-				message = message.replace("WORDFORM","\"" + force_unicode(w) + "\"") 
+				message = message.replace("WORDFORM","\"" + force_unicode(w) + "\"")
 				msg.append(message)
 				message_ids.append(msg_id)  # added
 				if not spelling:
 					found=True
-					break				
+					break
 			else:
 				if m.count("dia-") == 0:
 					msg.append(m)
@@ -3022,8 +3026,8 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	log = Log.objects.create(**log_kwargs)
 	self.last_log = log
 	# was Log.objects.create()
-	#log.save() # not needed?		  
-		
+	#log.save() # not needed?
+
 	variables = []
 	variables.append(variable)
 	variables.append(constant)
@@ -3049,8 +3053,8 @@ class CealkkaQuestion(OahpaQuestion):
 
 	select_words = select_words
 	cealkka_is_correct = cealkka_is_correct
-		
-	def __init__(self, question, qanswer, qwords, awords, dialect, language, userans_val, correct_val, *args, **kwargs):				 
+
+	def __init__(self, question, qanswer, qwords, awords, dialect, language, userans_val, correct_val, *args, **kwargs):
 
 		self.init_variables("", userans_val, [])
 		self.dialect = dialect
@@ -3067,7 +3071,7 @@ class CealkkaQuestion(OahpaQuestion):
 		maxlength=70
 		answer_size=70
 		self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
-		
+
 		self.fields['answer_id'] = forms.CharField(widget=answer_widget, required=False)
 
 		self.fields['answer'] = forms.CharField(max_length = maxlength, \
@@ -3079,12 +3083,12 @@ class CealkkaQuestion(OahpaQuestion):
 		print "awords that come in CealkkaQuestion as parameter: "
 		print awords
 		selected_awords = self.select_words(qwords, awords)
-					
+
 		awords = []
 		for token in atext.split():	   # det här har jag (Heli) hittat på
 			if token.isupper():  # added because of keyerror
 				word = selected_awords[token]
-				if word.has_key('fullform') and word['fullform']:					
+				if word.has_key('fullform') and word['fullform']:
 					word['fullform'] = force_unicode(word['fullform'][0])
 			else:
 				word = {}
@@ -3095,12 +3099,12 @@ class CealkkaQuestion(OahpaQuestion):
 
 		astring = astring.lstrip()
 		#print astring
-		
+
 		self.awords=awords
-		
+
 		relaxed = []
 		form_list=[]
-				
+
 		self.qattrs= {}
 		self.aattrs = {}
 		for syntax in qwords.keys():
@@ -3110,7 +3114,7 @@ class CealkkaQuestion(OahpaQuestion):
 			if qword.has_key('tag') and qword['tag']:
 				self.qattrs['question_tag_' + syntax] = qword['tag']
 			if qword.has_key('fullform') and qword['fullform']:
-				self.qattrs['question_fullform_' + syntax] = qword['fullform'][0]			
+				self.qattrs['question_fullform_' + syntax] = qword['fullform'][0]
 		for syntax in selected_awords.keys():
 			if selected_awords[syntax].has_key('word'):
 				self.aattrs['answer_word_' + syntax] = selected_awords[syntax]['word']
@@ -3121,7 +3125,7 @@ class CealkkaQuestion(OahpaQuestion):
 			if selected_awords[syntax].has_key('taskword'):
 				self.aattrs['answer_taskword_' + syntax] = selected_awords[syntax]['taskword']  # to track the taskword attribute
 		print question.qid
-		print self.awords		
+		print self.awords
 		# Forms question string and answer string out of grammatical elements and other strings.
 		qstring = ""
 
@@ -3137,18 +3141,17 @@ class CealkkaQuestion(OahpaQuestion):
 		# this is for -guovttos
 		qstring=qstring.replace(" -","-");
 		qstring=qstring.replace("- ","-");
-					
+
 		# Remove leading whitespace and capitalize.
 		qstring = qstring.lstrip()
 		qstring = qstring[0].capitalize() + qstring[1:]
 
 		qstring = qstring + "?"
 		self.question=qstring
-	
+
 		self.gametype="cealkka"
 		self.messages, jee, joo  = self.cealkka_is_correct(qstring.encode('utf-8'), qwords, awords, language, question.qid)   # was astring, awords for VastaS before
-		
+
 		# set correct and error values
 		if correct_val == "correct":
 			self.error="correct"
-			
