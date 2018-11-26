@@ -17,11 +17,11 @@ from django.views.generic import TemplateView
 # up being logged in.
 
 urlpatterns = [
-	url(r'^standard_login/$', TemplateView.as_view(template_name="auth/login.html"), name='login_template'),
-	url(r'^logout/$', TemplateView.as_view(template_name="auth/logout.html"), name='logout_template'),
+	url(r'^standard_login/$', TemplateView.as_view(template_name="auth/login.html"), name='standard_login'),
+	url(r'^logout/$', TemplateView.as_view(template_name="auth/logout.html"), name='courses_logout'),
     url(r'^login/$', split_login, name="courses_login"),
     url(r'^cookie_login/$', cookie_login, name="cookie_login"),
-	url(r'^cookie_logout/$', cookie_logout, name='cookie_logout_template'),
+	url(r'^cookie_logout/$', cookie_logout),
 ]
 
 from views import ( courses_main
@@ -57,7 +57,7 @@ router.register(r'notifications', NotificationsView, base_name='notifications')
 router.register(r'feedback', FeedbackLogView)
 router.register(r'submission', SubmissionView)
 
-urlpatterns += ['views',
+urlpatterns += [
     url(r'^goal/history/(?P<goal_id>\d+)/(?P<user_id>\d+)/$', goal_history,
         name="goal_history"),
     url(r'^goal/history/(?P<goal_id>\d+)/$', goal_history,
