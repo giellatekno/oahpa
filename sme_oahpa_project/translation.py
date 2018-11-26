@@ -28,7 +28,7 @@
 
         $ python manage.py schemamigration APPNAME --initial
 
-    (Where APPNAME is f.ex. survey, courses, univ_drill, etc.)
+    (Where APPNAME is f.ex. survey, courses, drill, etc.)
 
     Alter translation file here to add new fields that will be translated. When done, update the migration in progress:
 
