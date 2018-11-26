@@ -415,7 +415,10 @@ from schematics.models import Model as SchematicsModel
 from schematics.types import StringType, DecimalType, BooleanType
 from schematics.exceptions import ModelValidationError
 
-from univ_drill.models import Log
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+Log = oahpa_module.drill.models.Log
 
 class SubmissionMixin(object):
     """ This contains some helper functions not immediately related to
@@ -543,7 +546,7 @@ class SubmissionMixin(object):
     def get_or_create_goal_instance(self):
 
         if self.request.method == 'POST':
-            prev = UserGoalInstance.objects.filter(goal=self.task, 
+            prev = UserGoalInstance.objects.filter(goal=self.task,
                                                    opened=True)
             prev.update(opened=False)
 
@@ -556,7 +559,7 @@ class SubmissionMixin(object):
 
         elif self.request.method == 'PUT':
             self.current_user_goal = self.request.session['current_user_goal']
-            ugi = UserGoalInstance.objects.get(id=self.current_user_goal, 
+            ugi = UserGoalInstance.objects.get(id=self.current_user_goal,
                                                opened=True)
             self.request.session['rounds'] += 1
             ugi.attempt_count += 1
@@ -576,7 +579,7 @@ class SubmissionView(SubmissionMixin, viewsets.ModelViewSet):
     construct the list of Tasks available from any given page.
 
     In constructing the reporting system on the client side, using
-    JavaScript, a typical workflow would be the following: 
+    JavaScript, a typical workflow would be the following:
 
         1.) a GET request to the submission endpoint to determine what
         activities are available for the page.
