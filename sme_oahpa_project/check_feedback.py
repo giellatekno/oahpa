@@ -7,11 +7,11 @@ USAGE
 Specify each file name as a separate argument
 
 
-	python2.7 check_feedback.py ../sme/meta/messages_vasta.xml \
-   						   	   ../sme/meta/messages_vasta.fin.xml \
-   						   	   ../sme/meta/messages_vasta.sme.xml \
-   						   	   ../sme/meta/messages_vasta.eng.xml \
-   						   	   ../sme/meta/messages_vasta.swe.xml
+	python2.7 check_feedback.py sme_data/meta_data/messages_vasta.xml \
+   						   	   sme_data/meta_data/messages_vasta.fin.xml \
+   						   	   sme_data/meta_data/messages_vasta.sme.xml \
+   						   	   sme_data/meta_data/messages_vasta.eng.xml \
+   						   	   sme_data/meta_data/messages_vasta.swe.xml
 
 Script will check all permutations of these files to figure out which msgids
 are missing from one or many, missing items are printed to stderr (for
