@@ -1,6 +1,8 @@
-from univ_oahpa.univ_drill.models import Log, Word, Semtype, Source, Form, Tag, Feedbackmsg, Feedbacktext, Question, QElement, WordQElement, WordTranslation
+from models import Log, Word, Semtype, Source, Form, Tag, Feedbackmsg, Feedbacktext, Question, QElement, WordQElement, WordTranslation
 from django.contrib import admin
-from django.contrib.contenttypes import generic
+
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 
 class LogAdmin(admin.ModelAdmin):
 	list_display = ('example','userinput','iscorrect','correct','game','date')
@@ -16,7 +18,7 @@ class FormInline(admin.TabularInline):
 
 class WordAdmin(admin.ModelAdmin):
 	list_display = ('lemma','wordid','pos','stem', 'sem_types_admin', 'source_admin','soggi','valency')
-	list_filter = ['pos','stem','semtype','source', 'soggi'] 
+	list_filter = ['pos','stem','semtype','source', 'soggi']
 	search_fields = ['lemma', 'semtype__semtype']
 	inlines = [FormInline] # TODO: , WordTranslationInline]
 	# raw_id_fields = ('wordtranslation_set', )
@@ -44,4 +46,3 @@ admin.site.register(Feedbacktext)
 admin.site.register(Feedbackmsg)
 admin.site.register(Word, WordAdmin)
 admin.site.register(Log, LogAdmin)
-
