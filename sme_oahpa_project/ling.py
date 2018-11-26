@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
-import settings
-from univ_drill.models import *
+from local_conf import LLL1
+import importlib
+settings = importlib.import_module(LLL1+'_oahpa.settings')
+sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
+
 # from xml.dom import minidom as _dom
 # from django.db.models import Q
 import sys
@@ -11,7 +14,7 @@ import codecs
 
 # Using django settings paths, need to make these more central.
 
-# 
+#
 # _D = open('/dev/ttys005', 'w')
 _D = open('/dev/null', 'w')
 
@@ -54,7 +57,7 @@ def Popen(cmd, data=False, ret_err=False, ret_proc=False):
 		string.
 	"""
 	PIPE = sp.PIPE
-	proc = sp.Popen(cmd.split(' '), shell=False, 
+	proc = sp.Popen(cmd.split(' '), shell=False,
 					stdout=PIPE, stderr=PIPE, stdin=PIPE)
 	if data:
 		if type(data) == str:
@@ -78,7 +81,7 @@ def Popen(cmd, data=False, ret_err=False, ret_proc=False):
 		kwargs = {}
 
 	output, err = proc.communicate(**kwargs)
-	
+
 	try:
 		if err:
 			raise Exception(cmd + err)
@@ -92,10 +95,10 @@ def Popen(cmd, data=False, ret_err=False, ret_proc=False):
 
 
 def FSTLookup(data, fst_file):
-	gen_fst = fstdir + "/%s" % fst_file 
+	gen_fst = fstdir + "/%s" % fst_file
 	# cmd = 'hfst-optimized-lookup /opt/local/share/omorfi/mor-omorfi.apertium.hfst.ol'
 	cmd = lookup + " -flags mbTT -utf8 -d " + gen_fst
-	
+
 	if type(data) == list:
 		data = [a.strip() for a in list(set(data)) if a.strip()]
 		data = u'\n'.join(data).encode('utf-8')
@@ -106,7 +109,7 @@ def FSTLookup(data, fst_file):
 		print >> STDERR, "Problem in command: %s" % cmd
 		sys.exit(2)
 	lookups = lookups.decode('utf-8')
-	
+
 	return lookups
 
 
@@ -126,7 +129,7 @@ class Paradigm:
 		self.paradigms = {}
 		self.paradigm = []
 		self.generate_data = []
-		
+
 
 	def handle_tags(self, tagfile, add_db):
 		""" This installs all tags if add_db=True, otherwise it reads
@@ -149,11 +152,11 @@ class Paradigm:
 					if add_db and tagclass and string:
 						string = string.replace('%', '')
 						#print "adding " + tagclass + " " + string
-						tagset, created = Tagset.objects.get_or_create(tagset=tagclass)
-						pos, created = Tagname.objects.get_or_create(tagname=string, tagset=tagset)
+						tagset, created = sdm.Tagset.objects.get_or_create(tagset=tagclass)
+						pos, created = sdm.Tagname.objects.get_or_create(tagname=string, tagset=tagset)
 						print "%s added to %s" % (string, tagclass)
 		else:
-			tagname_tagset = Tagname.objects.all().values_list('tagname', 'tagset__tagset')
+			tagname_tagset = sdm.Tagname.objects.all().values_list('tagname', 'tagset__tagset')
 			tagset_dict = dict()
 			for k, v in tagname_tagset:
 				if k in tagset_dict:
@@ -169,15 +172,15 @@ class Paradigm:
 
 		fileObj = codecs.open(paradigmfile, "r", "utf-8" )
 		posObj = re.compile(r'^(?:\+)?(?P<posString>[\w]+)\+.*$', re.U)
-		
+
 		while True:
 			line = fileObj.readline()
-			
+
 			if not line: break
 			if not line.strip(): continue
-			
+
 			matchObj = posObj.search(line)
-			
+
 			if matchObj:
 				pos = matchObj.expand(r'\g<posString>')
 			try:
@@ -193,10 +196,10 @@ class Paradigm:
 		""" Creates paradigm objects as does create_paradigm, but using data
 			stored in XML. This data is already parsed in words_install, for the
 			most part, but passed off here. Best way for least work.
-		""" 
-		
+		"""
+
 		pos = pos.upper()
-		
+
 		if pos == 'PROP':
 			pos = 'N'
 
@@ -204,9 +207,9 @@ class Paradigm:
 			self.handle_tags()
 
 		self.paradigm = []
-		
+
 		# instead of lookups, we have wordforms
-		
+
 		for wordform in wordforms:
 			g = Entry()
 			g.classes = {}
@@ -219,7 +222,7 @@ class Paradigm:
 					for tagclass in tagclasses:
 						g.classes[tagclass] = t
 			self.paradigm.append(g)
-			
+
 	def collect_gen_data(self, lemma, pos, hid, wordtype, gen_only, forms):
 		"""
 			Collects tags and paradigms to be passed off to the FST for generation.
@@ -232,11 +235,11 @@ class Paradigm:
 		"""
 
 		pos = pos.capitalize()
-		
+
 		# if context is defined as one of these, then we only generate
 		# forms that have a tag with one of the following items as a
 		# substring of that tag.
-		
+
 		# E.g., context='upers' abrodh
 		# abrodh	+V+Prs+Sg1	=> NO
 		# abrodh	+V+Prs+Sg2	=> NO
@@ -250,7 +253,7 @@ class Paradigm:
 		# }
 
 		# Using gen_only now
-		
+
 		if not gen_only.strip():
 			gen_only = False
 		else:
@@ -272,7 +275,7 @@ class Paradigm:
 			hid = ""
 		else:
 			hid = '+' + hid
-		
+
 		# If wordtype is defined, then the wordtype is inserted after
 		# the first tag element, which should be the part of speech.
 		# If hid is defined simultaneously, this should not mess with that.
@@ -291,7 +294,7 @@ class Paradigm:
 						tag = "%s%s+%s" % (_pos, wordtype, _rest)
 				else:
 					tag = a
-				
+
 				if gen_only:
 					for c in gen_only:
 						if c in tag:
@@ -304,15 +307,15 @@ class Paradigm:
 		lookups += '\n\n\n'
 		self.generate_data.append(lookups)
 
-	
-	def generate_all(self, dialects):		
-		
+
+	def generate_all(self, dialects):
+
 		if not self.tagset:
 			print >> STDERR, 'No tags generated or supplied'
 			self.handle_tags()
-		
+
 		data = self.generate_data[:]
-		
+
 		# concatenate all data to be run through one gen command
 		# isma-SH.restr.fst
 		# isma-norm.fst
@@ -326,7 +329,7 @@ class Paradigm:
 		for dialect, gen_file in gen_dialects.items():
 			lookups = FSTLookup(data, fst_file=gen_file[0])
 			lookup_dictionary = {}
-			
+
 			for line in lookups.split('\n\n'):
 				items = line.split('\n')
 				for item in items:
@@ -336,14 +339,14 @@ class Paradigm:
 						lookup_dictionary[lemma] += item + '\n'
 					except KeyError:
 						lookup_dictionary[lemma] = item + '\n'
-		
+
 			self.master_paradigm[dialect] = lookup_dictionary
-		
-		
+
+
 	def get_paradigm(self, lemma, pos, forms, dialect=False, wordtype=None):
 		if not dialect:
 			dialect = 'main'
-		
+
 		extraforms = {}
 
 		try:
@@ -364,17 +367,17 @@ class Paradigm:
 					print >> STDOUT, "adding extra wordform..", wordform.encode('utf-8')
 		# HIDCHANGES
 		if lines_tmp:
-			
+
 			self.paradigm = []
-			
+
 			for line in lines_tmp:
-				
+
 				if not line.strip():
 					continue
-				else: 
+				else:
 					line = line.strip()
-				
-				# line: 
+
+				# line:
 				# govledh+2+V+Ind+Prt+Pl3\tgovlin
 				# lea+V+Ind+Prt+Pl3\tlij
 
@@ -399,7 +402,7 @@ class Paradigm:
 				except ValueError:
 					hid = ''
 					tag = ''.join(hid_test)
-				
+
 				tag = tag.partition('\t')[0]
 				# 'V+Ind+Prt+Pl3'
 				# Never gets hid number, due to testing above
@@ -456,29 +459,29 @@ class Paradigm:
 
 		return self.paradigm
 
-	
+
 	def create_paradigm(self, lemma, pos, forms, dialect=False):
-		
+
 		pos = pos.capitalize()
-		
+
 		if not self.tagset:
 			self.handle_tags()
-		
+
 		self.paradigm = []
-		
+
 		# TODO: is this preventing matching south sámi forms?
 		# How can we do this so we don't need to constantly rewrite this to specify a new alphabet?
-		
+
 		# genObj_re = r'^(?P<lemmaString>[\wáŋčžšđŧ]+)\+(?P<tagString>[\w\+]+)[\t\s]+(?P<formString>[\wáŋčžšđŧ]*)$'
 		genObj_re = r'^(?P<lemmaString>[\w]+)\+(?P<tagString>[\w\+]+)[\t\s]+(?P<formString>[\w]*)$'
-		
+
 		genObj=re.compile(genObj_re, re.U)
 		lookups = ""
-		
+
 		if self.paradigms.has_key(pos):
 			for a in self.paradigms[pos]:
 				lookups = lookups + lemma + "+" + a
-		
+
 		# generator call
 		# Moving paths up
 		# fstdir = "/opt/smi/sme/bin"
@@ -486,19 +489,19 @@ class Paradigm:
 
 		# gen_norm_fst = fstdir + "/i%s-norm.fst" % language # old infra
                 gen_norm_fst = fstdir + "generator-oahpa-gt-norm.xfst"
-		
+
 		# None of these dialects in sma. Obs! Dialects! sme-specific!!!
-		# gen_gg_restr_fst = fstdir + "/isme-KJ.restr.fst"			
-		# gen_kj_restr_fst = fstdir + "/isme-GG.restr.fst"			
+		# gen_gg_restr_fst = fstdir + "/isme-KJ.restr.fst"
+		# gen_kj_restr_fst = fstdir + "/isme-GG.restr.fst"
 		print >> _D, lookups.encode('utf-8')
 		gen_norm_lookup = "echo \"" + lookups.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_norm_fst
-		
+
 		# gen_gg_restr_lookup = "echo \"" + lookups.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_gg_restr_fst
 		# gen_kj_restr_lookup = "echo \"" + lookups.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_kj_restr_fst
-		
+
 		# TODO: check where de/code is?
 		lines_tmp = [a.decode('utf-8') for a in os.popen(gen_norm_lookup).readlines()]
-		
+
 		# lines_gg_restr_tmp = os.popen(gen_gg_restr_lookup).readlines()
 		# lines_kj_restr_tmp = os.popen(gen_kj_restr_lookup).readlines()
 
@@ -543,15 +546,15 @@ class Paradigm:
 		Create paradigms and store to db
 		"""
 		print >> _D, 'generate_numerals called'
-		
+
 		# Moving paths up
 		# language = "sme"
 		# #fstdir = "/opt/smi/" + language + "/bin"
 		# #lookup = /usr/local/bin/lookup
-		# 
-		# fstdir = "/Users/saara/gt/" + language + "/bin"		
+		#
+		# fstdir = "/Users/saara/gt/" + language + "/bin"
 		# lookup = "/Users/saara/bin/lookup"
-		# 
+		#
 		# numfst = fstdir + "/" + language + "-num.fst"
 
 		for num in range(1,20):
@@ -585,9 +588,7 @@ class Paradigm:
 													tense=g.get('Tense',""),mood=g.get('Mood',""), \
 													subclass=g.get('Subclass',""), \
 													attributive=g.get('Attributive',""))
-				
+
 				t.save()
 				form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w)
 				form.save()
-
-
