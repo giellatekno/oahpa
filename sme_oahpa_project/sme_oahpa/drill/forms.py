@@ -599,8 +599,8 @@ GAME_FILTER_DEFINITIONS = {
 
 import re
 
-from univ_oahpa.settings import INFINITIVE_SUBTRACT as infinitives_sub
-from univ_oahpa.settings import INFINITIVE_ADD as infinitives_add
+infinitives_sub = oahpa_module.settings.INFINITIVE_SUBTRACT
+infinitives_add = oahpa_module.settings.INFINITIVE_ADD
 
 def relax(strict):
 	"""Returns a list of relaxed possibilities, making changes by relax_pairs.
