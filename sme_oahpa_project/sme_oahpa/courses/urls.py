@@ -6,20 +6,23 @@ from django.conf.urls.defaults import *
 # @login_required decorator
 
 from django.contrib.auth.views import login, logout
-from courses.auth_views import cookie_login, cookie_logout, split_login
+from auth_views import cookie_login, cookie_logout, split_login
+
+from django.views.generic import TemplateView
+
 
 # Have to rename login/ to standard_login/ so that the cookie login falls back
 # to standard login without unlimited redirects.  users who go to login/ and do
 # not have the cookie, will be redirected here, users with the cookie will end
 # up being logged in.
 
-urlpatterns = patterns('django.contrib.auth.views',
-    url(r'^standard_login/$', login, {'template_name': 'auth/login.html'}, name="standard_login"),
-    url(r'^logout/$', logout, {'template_name': 'auth/logout.html'}, name="courses_logout"),
+urlpatterns = [
+	url(r'^standard_login/$', TemplateView.as_view(template_name="auth/login.html"), name='login_template'),
+	url(r'^logout/$', TemplateView.as_view(template_name="auth/logout.html"), name='logout_template'),
     url(r'^login/$', split_login, name="courses_login"),
     url(r'^cookie_login/$', cookie_login, name="cookie_login"),
-    url(r'^cookie_logout/$', cookie_logout),
-)
+	url(r'^cookie_logout/$', cookie_logout, name='cookie_logout_template'),
+]
 
 from views import ( courses_main
                   , instructor_student_detail
@@ -54,7 +57,7 @@ router.register(r'notifications', NotificationsView, base_name='notifications')
 router.register(r'feedback', FeedbackLogView)
 router.register(r'submission', SubmissionView)
 
-urlpatterns += patterns('univ_oahpa.courses.views',
+urlpatterns += ['views',
     url(r'^goal/history/(?P<goal_id>\d+)/(?P<user_id>\d+)/$', goal_history,
         name="goal_history"),
     url(r'^goal/history/(?P<goal_id>\d+)/$', goal_history,
@@ -82,6 +85,6 @@ urlpatterns += patterns('univ_oahpa.courses.views',
     url(r'^$', courses_main, name="courses_index"),
 
     url(r"^recipient-search/$", recipient_search, name="recipient_search"),
-)
+]
 
 # vim: set ts=4 sw=4 tw=72 syntax=python :
