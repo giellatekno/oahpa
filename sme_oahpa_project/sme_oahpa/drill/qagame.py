@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
 
 from django.http import HttpResponse, Http404
 from django.db.models import Q, Count
@@ -8,7 +11,7 @@ from models import *
 from forms import *
 from game import Game
 
-import univ_oahpa.settings
+settings = oahpa_module.settings
 
 try:
 	DEFAULT_DIALECT = settings.DEFAULT_DIALECT
@@ -18,13 +21,13 @@ except:
 class QAGame(Game):
 
 	test = 0
-	
+
 	def __init__(self, *args, **kwargs):
 		self.generated_syntaxes = list()
 		super(QAGame, self).__init__(*args, **kwargs)
 		self.init_tags()
-		
-	
+
+
 	def init_tags(self):
 		"""
 		Initialize the grammatical information.
@@ -38,42 +41,42 @@ class QAGame(Game):
 		self.tense = "Prs"
 		self.mood = "Ind"
 		self.gametype = "morfa"
-				
+
 		# TODO: check this in smeoahpa, possible source of error.
 		# Values for pairs QPN-APN
-		
+
 		# spørsmål:   svar:
 		# mun         don
 		# don         mun
 		# son         son
-        # 
+        #
 		# moai 		  doai
 		# doai        moai
 		# soai        soai
-        # 
+        #
 		# mii         dii
 		# dii         mii
 		# sii		  sii
-        # 
+        #
 		# Noun Sg 	son
 		# Noun Pl   sii
-		
-		self.QAPN={	'Sg':'Sg',			#  
-					'Pl':'Pl',			#  
-					
+
+		self.QAPN={	'Sg':'Sg',			#
+					'Pl':'Pl',			#
+
 					'Sg1':'Sg2',		# Mun? Don.
 					'Sg2':'Sg1',		# Don? Mun.
 					'Sg3':'Sg3',		# Son? Son.
-					
+
 					'Du1':'Du2',		# Moai? Doai.
 					'Du2':'Du1',		# Doai? Moai.
 					'Du3':'Du3',		# Soai? Soai.
-					
+
 					'Pl1':'Pl2',		# Mii? Dii.
 					'Pl2':'Pl1',		# Dii? Mii.
 					'Pl3':'Pl3'}		# Sii? Sii.
-					
-					
+
+
 
 		# Values for subject-verb agreement:
 		# e.g. Subject with N+Sg+Nom requires verb with Sg3.
@@ -117,21 +120,21 @@ class QAGame(Game):
 
 		form_set_filter = self.filter_set_by_session_dialect(
 							word.form_set.filter(tag=tag_el.id))
-		
+
 		if word and form_set_filter.count()>0:
-			form = form_set_filter[0] 
+			form = form_set_filter[0]
 		else: return None
 		# TODO: better error handling here-- this needs to point out
 		# that the DB is not installing properly, but I need to check
 		# first that the code doesn't depend on returning None
 		# sometimes.
-		# Test by raising Form.DoesNotExist? 
+		# Test by raising Form.DoesNotExist?
 		word_id = word.id
 		fullform = form.fullform
-			
+
 		info = { 'word' : word_id, 'tag' : tag_el.id, 'fullform' : [ fullform ], 'qelement' : qelement }
 		return info
-	
+
 	# Select a word matching semtype and return full form.
 	def get_words(self, qelement, tag_el=None, lemma=None, word_id=None):
 		"""
@@ -142,7 +145,7 @@ class QAGame(Game):
 		# If there are no information available for these elements, try to use other info.
 		word = None
 		form = None
-				
+
 		if lemma and tag_el:
 			form_set = self.filter_set_by_session_dialect(tag_el.form_set.all())
 
@@ -170,7 +173,7 @@ class QAGame(Game):
 				form = form_set[0]
 
 
-		
+
 		if form:
 			fullform = form.fullform
 			info = {'word': form.word.id, 'tag': tag_el.id, 'fullform': [ fullform ]}
@@ -189,21 +192,21 @@ class QAGame(Game):
 			fullform = form_list[0].fullform
 
 			info = {'word': word.id, 'tag' : tag_el.id, 'fullform' : [ fullform ] }
-			words.append(info)					
+			words.append(info)
 		else:
-			if self.test: raise Http404("not word " + str(qelement.id))			
+			if self.test: raise Http404("not word " + str(qelement.id))
 			return []
-		
+
 		return words
 
 	def get_elements(self, question_element, identifier):
-		elements = QElement.objects.filter(question=question_element, 
+		elements = QElement.objects.filter(question=question_element,
 											identifier=identifier)
 		if elements.count() > 0:
 			return elements
 		else:
 			return None
-		
+
 
 	def generate_question(self, question, qtype):
 		"""
@@ -213,7 +216,7 @@ class QAGame(Game):
 		qtext=question.string
 		#print "QUESTION " + str(question.id) + " " + qtext
 		qwords = {}
-	
+
 		# Find out syntax elements
 		qwords_list=[]
 		for w in qtext.split():
@@ -226,22 +229,22 @@ class QAGame(Game):
 		# print qwords_list
 		if 'SUBJ' in set(qwords_list):
 			qwords['SUBJ'] = {}
-			
+
 			# Select randomly an element, if there are more than one available.
 			# This way there is only one subject and tag for each question.
 			subj_elements=self.get_elements(question, 'SUBJ')
-			
+
 			if not subj_elements:
 				return None
 			subj_el = subj_elements[randint(0, len(subj_elements)-1)]
 			tag_el_count = subj_el.tags.count()
-			
+
 			# If there was no tag elements, there is nothing to do.
-			# Subject tag is needed for everything else. 
+			# Subject tag is needed for everything else.
 			if tag_el_count == 0:
 				if self.test: raise Http404("0 tag count" + " " + qwords_list)
 				return None
-			
+
 			tag_el = subj_el.tags.all()[randint(0, tag_el_count-1)]
 			# Get number information for subject
 			subjword = {}
@@ -270,33 +273,33 @@ class QAGame(Game):
 			if not info:
 				if self.test: raise Http404("not info " + " ".join(qwords_list))
 				return None
-			
+
 			subjword = info
 			subjword['number'] = subjnumber
 			qwords['SUBJ'] = subjword
 			# print qwords['SUBJ']
 
 		if 'HAB' in set(qwords_list):
-			
+
 			qwords['HAB'] = {}
-			
+
 			# Select randomly an element, if there are more than one available.
 			# This way there is only one habect and tag for each question.
 			hab_elements = self.get_elements(question, 'HAB')
-			
+
 			if not hab_elements:
 				return None
 			hab_el = hab_elements[randint(0, len(hab_elements)-1)]
 			tag_el_count = hab_el.tags.count()
-			
+
 			# If there was no tag elements, there is nothing to do.
-			# Subject tag is needed for everything else. 
+			# Subject tag is needed for everything else.
 			if tag_el_count == 0:
 				if self.test: raise Http404("0 tag count" + " " + qwords_list)
 				return None
-			
+
 			tag_el = hab_el.tags.all()[randint(0, tag_el_count-1)]
-			
+
 			# Get number information for habect
 			habword = {}
 			if tag_el.pos == "Pron":
@@ -329,12 +332,12 @@ class QAGame(Game):
 
 			qwords['MAINV'] = {}
 			mainv_word = None
-			
+
 			# Select one mainverb element for question.
 			mainv_elements = self.get_elements(question,'MAINV')
 			if mainv_elements:
 				mainv_el = mainv_elements[randint(0, len(mainv_elements)-1)]
-				
+
 				# If there is only on tag element, then there are no choices for agreement.
 				tag_el_count = mainv_el.tags.count()
 				if tag_el_count == 1:
@@ -375,7 +378,7 @@ class QAGame(Game):
 			if not mainv_word:
 				if self.test: raise Http404("not mainv" + " " + " ".join(qwords_list))
 				return None
-				
+
 		# 2. Other grammatical elements
 		# At the moment, agreement is not taken into account
 		for s in qwords_list:
@@ -383,7 +386,7 @@ class QAGame(Game):
 
 			tag_el=None
 			word = {}
-			anumber = ""			
+			anumber = ""
 			elements = self.get_elements(question,s)
 			if elements:
 				element = elements[randint(0, len(elements)-1)]
@@ -391,7 +394,7 @@ class QAGame(Game):
 				if copy_id:
 					copy = QElement.objects.filter(id=copy_id)[0]
 					copy_syntax = copy.syntax
-					
+
 					if qwords.has_key(copy_syntax):
 						word = qwords[copy_syntax]
 
@@ -413,7 +416,7 @@ class QAGame(Game):
 							tags = element.tags.filter(_tag_query)
 							if tags.count() > 0:
 								tag_el = choice(tags)
-				if not tag_el: 
+				if not tag_el:
 					tag_el_count = element.tags.count()
 					if tag_el_count > 0:
 						tag_el = element.tags.order_by('?')[0]
@@ -421,7 +424,7 @@ class QAGame(Game):
 				if tag_el:
 					# Select random word
 					info = self.get_qword(element, tag_el)
-					word = info					
+					word = info
 			else:
 				word = {}
 				info = {'fullform' : [ s ] }
@@ -432,7 +435,7 @@ class QAGame(Game):
 				return None
 			qwords[s] = word
 
-		# Return the ready qwords list.			
+		# Return the ready qwords list.
 		return qwords
 
 	def filter_set_by_session_dialect(self, form_set):
@@ -448,7 +451,7 @@ class QAGame(Game):
 
 		return filter_set_by_dialect(form_set, dialect)
 
-		
+
 	def select_reciprocative_forms(self, answer, awords, target):
 		""" Follows user selection of reciprocative type and returns the relevant
 		wordform.
@@ -479,18 +482,18 @@ class QAGame(Game):
 		_recipr_fullforms = [a.fullform for a in _recipr_forms]
 
 		awords[target] = [{
-			'tag': _recipr_tag.id, 
-			'word': _recipr_word.id, 
-			'fullform': _recipr_fullforms, 
+			'tag': _recipr_tag.id,
+			'word': _recipr_word.id,
+			'fullform': _recipr_fullforms,
 		}]
 
 		return awords
-	
+
 	def generate_answers_reflexive(self, answer, question, awords, qwords):
 		""" Checks reflexive agreement on RPRON with a specified agreement
 		element, returns awords. If agreement isn't specified, default behavior
 		is MAINV.
-			
+
 		Task element should be specified like this to get RPRON agreement
 		from MAINV.
 
@@ -523,9 +526,9 @@ class QAGame(Game):
 		_refl_fullforms = _refl_forms.values_list('fullform', flat=True)
 
 		awords['RPRON'] = [{
-			'tag': _refl_tag.id, 
-			'word': _refl_word.id, 
-			'fullform': _refl_fullforms, 
+			'tag': _refl_tag.id,
+			'word': _refl_word.id,
+			'fullform': _refl_fullforms,
 		}]
 
 		return awords
@@ -544,9 +547,9 @@ class QAGame(Game):
 		subj_elements = self.get_elements(answer,element)
 		if subj_elements:
 			subj_el = subj_elements[0]
-		
+
 		copy_id = subj_el.copy_id
-		
+
 		if subj_el.copy:
 			subj_copy = subj_el.copy
 			copy_syntax = subj_copy.syntax
@@ -561,19 +564,19 @@ class QAGame(Game):
 					subjnumber = subjtag.personnumber
 				else:
 					subjnumber = subjtag.number
-				
+
 				# this should only happen if there's subj person
 				a_number = self.QAPN[subjnumber]
 				asubjtag = subjtag.string.replace(subjnumber, a_number)
 				asubjtag_el = Tag.objects.get(string=asubjtag)
-				
+
 				# If pronoun, get the correct form
 				if self.PronPNBase.has_key(a_number):
 					pronbase = self.PronPNBase[a_number]
 					words = self.get_words(None, asubjtag_el, pronbase)
 					for word in words:
 						word['number'] = a_number
-					
+
 				if not words and not len(words)>0:
 					words = self.get_words(subj_copy, asubjtag_el, None, subjword_id)
 					words[0]['number'] = a_number
@@ -583,7 +586,7 @@ class QAGame(Game):
 			if subj_el:
 				tag_el_count = subj_el.tags.count()
 				word_el_count = subj_el.wordqelement_set.count()
-				
+
 				if tag_el_count > 0:
 					tag_el = subj_el.tags.all().order_by('?')[0]
 
@@ -591,7 +594,7 @@ class QAGame(Game):
 					a_number = tag_el.personnumber
 				else:
 					a_number = tag_el.number
-				
+
 				if not subjword:
 					subjword = subj_el.wordqelement_set\
 									.filter(word__form__tag=tag_el)\
@@ -602,14 +605,14 @@ class QAGame(Game):
 
 				for word in words:
 					word['number'] = a_number
-		
+
 		awords[element] = words[:]
-		
+
 		# If SUBJ is appearing in the output, this means subjword is set to none for some reason.
 		# subjword is set to none because subj_el.copy_id is none
 		return awords
 
-	
+
 	def generate_answers_mainv(self, answer, question, awords, qwords, element="MAINV"):
 
 		mainv_elements = self.get_elements(answer, element)
@@ -656,7 +659,7 @@ class QAGame(Game):
 					if q_number:
 						va_number = self.QAPN[q_number]
 
-				# The element we're looking at is not present in qwords, 
+				# The element we're looking at is not present in qwords,
 				# but it is present in awords; which means that it's probably NEG
 				if awords.has_key(element) and not qwords.has_key(element):
 					qmainv = qwords.get("MAINV", False)
@@ -664,8 +667,8 @@ class QAGame(Game):
 						q_number = qmainv['number']
 						if q_number:
 							va_number = self.QAPN[q_number]
-					
-					
+
+
 		# If there is no subject, then the number of the question
 		# mainverb determines the number.
 		mainv_fullform = False
@@ -684,15 +687,15 @@ class QAGame(Game):
 				amainvtag_string = qmainvtag_string.replace(v_number,va_number)
 			else:
 				amainvtag_string = qmainvtag_string
-				
+
 			mainv_tag = Tag.objects.get(string=amainvtag_string)
 			mainv_tags.append(mainv_tag)
-			
+
 			mainv_word_obj = Word.objects.get(id=mainv_word)
 			try:
 				mainv_form = mainv_word_obj.form_set.filter(tag__string=mainv_tag).order_by('?')[0]
 			except IndexError:
-				error_vars = ('generate_answers_mainv', 
+				error_vars = ('generate_answers_mainv',
 								mainv_word_obj,
 								mainv_word_obj.pk,
 								mainv_tag.string,
@@ -715,7 +718,7 @@ class QAGame(Game):
 						else:
 							mainv_tags = mainv_el.tags.all()
 						for t in mainv_tags:
-							info = {'qelement': mainv_el.id, 
+							info = {'qelement': mainv_el.id,
 									'tag': t.id}
 							if mainv_fullform and mainv_word and mainv_tag:
 								info['fullform'] = [mainv_fullform]
@@ -743,24 +746,24 @@ class QAGame(Game):
 				for tag in mainv_tags:
 					info = { 'tag' : mainv_tag.id, 'word' : mainv_word }
 					mainv_words.append(info)
-					
+
 		if not mainv_words and qwords.has_key(element):
 			mainv_words.append(qwords[element])
-		
+
 		awords[element] = mainv_words
-		
+
 		return awords
 
 	def generate_syntax(self, answer, question, awords, qwords, s):
-		
-		if s in self.generated_syntaxes: 
+
+		if s in self.generated_syntaxes:
 			return awords
-		
+
 		if not awords.has_key(s):
 			awords[s] = []
 
 		word_id=None
-		
+
 		tag_elements = []
 		swords = []
 		elements = self.get_elements(answer,s)
@@ -806,7 +809,7 @@ class QAGame(Game):
 			tag_count = element.tags.count()
 			if tag_count > 0:
 				tag_elements = element.tags.all()
-		
+
 		# Take word forms for all tags
 		info=None
 		for tag_el in tag_elements:
@@ -835,11 +838,11 @@ class QAGame(Game):
 		# if self.settings.has_key('level'): level=int(self.settings['level'])
 		# else: # default level was set to 'all', but I could not find where
 		level='1'
-		
+
 		q_count = Question.objects.filter(gametype="qa", level__lte=level).count()
-		question = Question.objects.filter(gametype="qa", level__lte=level)[randint(0,q_count-1)] 
+		question = Question.objects.filter(gametype="qa", level__lte=level)[randint(0,q_count-1)]
 		#question = Question.objects.get(id="107")
-	   
+
 		qtype = question.qtype
 		qwords = None
 		qwords= self.generate_question(question, qtype)
@@ -851,9 +854,9 @@ class QAGame(Game):
 	######## Morfa questions
 	def get_question_morfa(self, db_info, qtype):
 		qwords = {}
-		
+
 		pos = self.settings.get('pos', False)
-		
+
 		qtype_wordform = False
 
 		# Get qtype from settings.
@@ -900,13 +903,13 @@ class QAGame(Game):
 		db_info['qwords'] = qwords
 		db_info['question_id'] = question.id
 		db_info['possible_question_count'] = possible_count
-		
+
 		return db_info, question
 
 
 	########### Morfa answers
 	def get_answer_morfa(self,db_info,question):
-		
+
 		# Select answer using the id from the interface.
 		# Otherwise select answer that is related to the question.
 		awords = {}
@@ -937,7 +940,7 @@ class QAGame(Game):
 			if 'SUBJ' in words_strings:
 				awords = self.generate_answers_subject(answer, question, awords, db_info['qwords'])
 				self.generated_syntaxes.append('SUBJ')
-				
+
 			if 'HAB' in words_strings:
 				awords = self.generate_answers_subject(answer, question, awords, db_info['qwords'], element="HAB")
 				self.generated_syntaxes.append('HAB')
@@ -968,7 +971,7 @@ class QAGame(Game):
 			if 'RECPL' in words_strings:
 				awords = self.select_reciprocative_forms(answer, awords, target='RECPL')
 				self.generated_syntaxes.append('RECPL')
-			
+
 			if 'RECDU' in words_strings:
 				awords = self.select_reciprocative_forms(answer, awords, target='RECDU')
 				self.generated_syntaxes.append('RECDU')
@@ -1006,7 +1009,7 @@ class QAGame(Game):
 			qwords=db_info['qwords']
 		else:
 			if default_qid:
-				question = Question.objects.get(qid=default_qid)	  
+				question = Question.objects.get(qid=default_qid)
 				qwords = None
 				qwords= self.generate_question(question, qtype)
 				db_info['qwords'] = qwords
@@ -1033,7 +1036,7 @@ class QAGame(Game):
 			dialect = self.settings['dialect']
 		else:
 			dialect = DEFAULT_DIALECT
-			
+
 		# TODO: language setting
 		language = "nob"
 		if self.settings.has_key('language'):
@@ -1050,12 +1053,10 @@ class QAGame(Game):
 								  db_info['qwords'], language, \
 								  db_info['userans'], db_info['correct'], data, prefix=n, user=self.settings['user'],
 								  user_country=self.settings["user_country"]))
-			
+
 		#print "awords:", db_info['awords']
 		#print "awords ...................."
 		#print "qwords:", db_info['qwords']
 		#print "qwords ...................."
 
 		return form, None
-
-
