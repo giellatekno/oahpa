@@ -7,6 +7,7 @@ print " * Correcting paths"
 cur_path = os.getcwd()
 parent_path = '/' + '/'.join([a for a in cur_path.split('/') if a][0:-1]) + '/'
 sys.path.insert(0, parent_path)
+# why use the smaoahpa settings?
 environ['DJANGO_SETTINGS_MODULE'] = 'smaoahpa.settings'
 
 settings.DEBUG = False
@@ -15,6 +16,7 @@ from smadrill.models import *
 from optparse import OptionParser, make_option
 import sys
 from ling_new import Paradigm
+# there is no words_install_new class, yet a words_install_test
 from words_install_new import Words
 from extra_install import Extra
 from feedback_install import Feedback_install
