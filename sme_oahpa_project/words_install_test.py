@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
-import settings
+from local_conf import LLL1
+import importlib
+settings = importlib.import_module(LLL1+'_oahpa.settings')
+sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
+
 from django.db.models import Q
 from xml.dom import minidom as _dom
 from django.utils.encoding import force_unicode
 import sys
 
-from univ_drill.models import * 
 from collections import OrderedDict
 
 
@@ -17,11 +20,11 @@ COUNT_ONLY = False
 
 supported_langs = ['sme', 'nob', 'sme', 'swe', 'deu', 'eng']
 
-# # # 
-# 
-#  Settings variables 
-# 
-# # # 
+# # #
+#
+#  Settings variables
+#
+# # #
 
 _STDERR = sys.stderr
 _STDIN = sys.stdin
@@ -31,7 +34,7 @@ try:
 	DIALECTS = settings.DIALECTS
 	NG_DIALECT = settings.NONGEN_DIALECT
 except:
-	print """Dialects not defined in settings.py... 
+	print """Dialects not defined in settings.py...
 		DIALECTS = {
 			'main': ('isma-norm.fst', 'Unrestricted'),
 			'SH': ('isma-SH.restr.fst', 'Short forms'),
@@ -55,7 +58,7 @@ except:
 		 		'eng': ur'^(?P<inf>to )?(?P<lemma>.*)$',
 		 		'deu': ur'^(?P<inf>zu )?(?P<lemma>.*)$',
 		 	}
-		 	
+
 		 	INFINITIVE_ADD = {
 		 		'nob': ur'å \g<lemma>',
 		 		'swe': ur'att \g<lemma>',
@@ -68,16 +71,16 @@ except:
 
 from django.db import transaction
 
-# # # 
-# 
+# # #
+#
 #  Some XML shortcuts
-# 
-# # # 
+#
+# # #
 
 _elements = lambda e, x: e.getElementsByTagName(x)
 _attribute = lambda e, x: e.getAttribute(x)
 def _data(e):
-	try: 
+	try:
 		return e.firstChild.data
 	except AttributeError:
 		return False
@@ -89,16 +92,16 @@ def _firstelement(e, x):
 	except IndexError:
 		return None
 
-# # # 
-# 
+# # #
+#
 #  Handy objects
-# 
-# # # 
+#
+# # #
 
 class Analysis(object):
 
 	def getTag(self):
-		
+
 		tag_kwargs = {
 			'string': self.tags,
 			'pos': self.classes.get('Wordclass', ""),
@@ -106,16 +109,16 @@ class Analysis(object):
 			'case': self.classes.get('Case',""),
 			'possessive': self.classes.get('Possessive',""),
 			'grade': self.classes.get('Grade',""),
-			'infinite': self.classes.get('Infinite',""), 
+			'infinite': self.classes.get('Infinite',""),
 			'personnumber': self.classes.get('Person-Number',""),
 			'polarity': self.classes.get('Polarity',""),
 			'tense': self.classes.get('Tense',""),
-			'mood': self.classes.get('Mood',""), 
+			'mood': self.classes.get('Mood',""),
 			'subclass': self.classes.get('Subclass',""),
 			'attributive': self.classes.get('Attributive',"")
 		}
 
-		t, created = Tag.objects.get_or_create(**tag_kwargs)
+		t, created = sdm.Tag.objects.get_or_create(**tag_kwargs)
 		t.save()
 
 		return t
@@ -125,23 +128,23 @@ class Analysis(object):
 		self.classes = {}
 
 		self.form, self.tags = analysis
-		
+
 		for t in self.tags.split('+'):
 			if linginfo.tagset.has_key(t):
 				tagclass = linginfo.tagset[t]
 				self.classes[tagclass] = t
 
 class Entry(object):
-	""" The beginning of a class for parsing entry nodes. 
+	""" The beginning of a class for parsing entry nodes.
 		This makes it much easier to read the code below, so well worth it. Potential
 		gotchas are with indexes.
 
 		Next step is to add some methods that create the django Word or WordTranslation objects...
-	""" 
-	
+	"""
+
 	def processMiniParadigm(self, mini_paradigm):
 		""" Processes a mini_paradigm
-         
+
             <mini_paradigm>
 				<analysis ms="Pron_Pers_Sg2_Acc">
             	   <wordform>datnem</wordform>
@@ -163,14 +166,14 @@ class Entry(object):
 			ms = ms.split('_')
 			dial = _attribute(analysis, 'dial')
 			wordforms = [_data(an) for an in _elements(analysis, 'wordform')]
-			
+
 			paradigm_forms += [(word, ms, dial) for word in wordforms]
 
 		return paradigm_forms
 
 	def processLG(self):
 		""" Handles nodes such as...
-			
+
 			<lg>
       		   <l pos="n" soggi="oe" stem="2syll">aajroe</l>
       		</lg>
@@ -184,11 +187,11 @@ class Entry(object):
 			</lg>
 
 		"""
-		
+
 		n = self.node
 		lg = _elements(n, "lg")[0]
 		l = _elements(lg, "l")[0]
-		
+
 		# first item is xml attribute, second is what to set it to on
 		# the python object, if None, then it is the same
 		l_attrs = [
@@ -213,7 +216,7 @@ class Entry(object):
 			("xml:lang", None),
 
 		]
-		
+
 		analysis = _firstelement(lg, "analysis")
 		miniparadigm = _firstelement(lg, "mini_paradigm")
 		lemma_ref = _firstelement(lg, "lemma_ref")
@@ -227,7 +230,7 @@ class Entry(object):
 			self.lemma_analyses = self.processMiniParadigm(miniparadigm)
 		else:
 			self.lemma_analyses = False
-		
+
 		if lemma_ref:
 			self.lemma_ref = _data(lemma_ref)
 		else:
@@ -239,7 +242,7 @@ class Entry(object):
 			self.__setattr__(objattr, _attribute(l, xmlattr))
 
 		self.lemma = _data(l)
-	
+
 	def processSources(self):
 		""" Handles nodes such as...
             <sources>
@@ -261,9 +264,9 @@ class Entry(object):
 			self.sources = False
 			return
 		books = _elements(sources, "book")
-		
+
 		book_names = [_attribute(b, "name") for b in books]
-		
+
 		self.sources = book_names
 
 		frequency = _elements(sources, "frequency")
@@ -279,8 +282,8 @@ class Entry(object):
         	   <sem class="FISHING" />
         	   <sem class="mLONG_SHORT" />
         	</semantics>
-        """ 
-		
+        """
+
 		try:
 			semantics = _elements(node, "semantics")[0]
 		except IndexError:
@@ -289,7 +292,7 @@ class Entry(object):
 
 		semclasses = [_attribute(b, 'class') for b in sems]
 
-		return semclasses 
+		return semclasses
 
 	def _handleTranslations(self, node):
 		""" Handles nodes such as...
@@ -309,7 +312,7 @@ class Entry(object):
 
 		for tg in tgs:
 			lang = _attribute(tg, "xml:lang")
-			
+
 			trans_list = []
 			Ts = _elements(tg, "t")
 			# tf = phrase, te = explanation, t = lemma
@@ -370,7 +373,7 @@ class Entry(object):
          	<mg>
 				etc...
 			</mg>
-			
+
 		"""
 		self.meanings = []
 
@@ -395,7 +398,7 @@ class Entry(object):
 		"""
 
 		self.node = e_node
-		
+
 		try:
 			self.exclude = _attribute(e_node, 'exclude')
 			self.processLG()
@@ -406,12 +409,12 @@ class Entry(object):
 			import traceback
 			message = 'Traceback:\n%s' % (
 							'\n'.join(traceback.format_exception(*sys.exc_info())),)
-			
+
 			print >> _STDERR, e_node.toxml().encode('utf-8')
 			print >> _STDERR, "Error while handling XML:"
 			print >> _STDERR, Exception, e
 			print >> _STDERR, message
-			print >> _STDERR, "Exiting." 
+			print >> _STDERR, "Exiting."
 			sys.exit(2)
 
 
@@ -419,7 +422,7 @@ class Entry(object):
 class Words(object):
 
 	def paradigm_is_changed(self, key, paradigm):
-		# TODO: only run this when update setting is present 
+		# TODO: only run this when update setting is present
 		return True
 		from diff.models import ParadigmDiff
 		import hashlib
@@ -428,12 +431,12 @@ class Words(object):
 		checksum = hashlib.md5(hashable.encode('utf-8')).hexdigest()
 
 		try:
-			diff = ParadigmDiff.objects.get(key=key)
+			diff = sdm.ParadigmDiff.objects.get(key=key)
 		except ParadigmDiff.DoesNotExist:
-			diff = ParadigmDiff.objects.create(key=key, checksum=checksum)
+			diff = sdm.ParadigmDiff.objects.create(key=key, checksum=checksum)
 			diff.save()
 			return True
-		
+
 		if checksum == diff.checksum:
 			return False
 		else:
@@ -441,7 +444,7 @@ class Words(object):
 			diff.save()
 			return True
 
-	
+
 	@transaction.commit_on_success
 	def install_lexicon(self,infile,linginfo,delete=None,paradigmfile=False, verbose=True):
 		global VERBOSE
@@ -449,7 +452,7 @@ class Words(object):
 
 		# xmlfile = file(infile) # never used
 		tree = _dom.parse(infile)
-		
+
 		lex = tree.getElementsByTagName("r")[0]
 		mainlang = lex.getAttribute("xml:lang")
 		print >> _STDOUT, "Mainlang defined ", mainlang.encode('utf-8')
@@ -458,14 +461,14 @@ class Words(object):
 			sys.exit()
 
 		self.all_wordids = []
-		
+
 		es = tree.getElementsByTagName("e")
 		total = len(es)
 		count = 0
-		
+
 		# Collect data to generate words, or skip if they are already
 		# provided
-		
+
 		entries = []
 		for e in es:
 			entry = Entry(e)
@@ -489,15 +492,15 @@ class Words(object):
 						print e.toxml()
 						print >> sys.stderr, "XML file contains an empty <l /> element."
 						print >> sys.stderr, "... Exiting."
-						
+
 						sys.exit(2)
 
 			entries.append(entry)
-		
+
 
 		if paradigmfile:
 			linginfo.generate_all(dialects=DIALECTS)
-		
+
 		for entry in entries:
 
 			# Uppercase POS.
@@ -516,7 +519,7 @@ class Words(object):
 								mainlang=mainlang,
 								delete=delete,
 								paradigmfile=paradigmfile)
-				
+
 			else:
 				try:
 					__data = e.getElementsByTagName("lg")[0]\
@@ -528,41 +531,41 @@ class Words(object):
 				if not COUNT_ONLY:
 					if VERBOSE:
 						print >> _STDOUT, "undefined pos for ", __data.encode('utf-8')
-			
+
 			count += 1
 			print >> _STDOUT, '--- %d/%d entries processed' % (count, total)
-			
-			
+
+
 		if delete and pos:
-			allids = Word.objects.filter(pos=pos)\
+			allids = sdm.Word.objects.filter(pos=pos)\
 									.exclude(semtype__semtype="PLACE-NAME-LEKSA")\
 									.values_list('wordid',flat=True)
 
 			for a in allids:
 				if force_unicode(a) not in set(self.all_wordids):
 					print >> _STDOUT, "Word id not found from xml. Deleting:", a.encode('utf-8')
-					word = Word.objects.get(pos=pos,wordid=a)
+					word = sdm.Word.objects.get(pos=pos,wordid=a)
 					word.delete()
-		
+
 		# transaction.commit()
 
 
 	def add_translation(self, language, txdata, w, entry, semantics):
 		translation = lemma = phrase = explanation = False
-		
+
 		if txdata['lemma']:
 			translation = lemma = txdata['lemma']
-		
+
 		if txdata['phrase']:
 			translation = phrase = txdata['phrase']
-		
+
 		if txdata['explanation']:
 			translation = explanation = txdata['explanation']
-		
+
 		if not translation:
 			print >> _STDERR, " *** No translation lemma given in word translation elements for <%s>. Skipping this translation." % entry.lemma.encode('utf-8')
 			return
-		
+
 		pos = entry.pos.upper()
 		if pos == 'PROP':
 			pos = 'N'
@@ -575,7 +578,7 @@ class Words(object):
 			'tcomm': txdata['tcomm'],
 			'tcomm_pref': txdata['stat']
 		}
-		
+
 		if lemma:
 			wt_kwargs['lemma'] = lemma
 		elif phrase:
@@ -584,18 +587,18 @@ class Words(object):
 			wt_kwargs['explanation'] = explanation
 
 		try:
-			transl, created = WordTranslation.objects.get_or_create(**wt_kwargs)
+			transl, created = sdm.WordTranslation.objects.get_or_create(**wt_kwargs)
 			if semantics:
 				for item in semantics:
 					transl.semtype.add(item)
 		except WordTranslation.MultipleObjectsReturned:
 			print >> _STDERR, "Extra similar translation objects found, deleting extras..."
-			transls = list(WordTranslation.objects.filter(**wt_kwargs))
+			transls = list(sdm.WordTranslation.objects.filter(**wt_kwargs))
 			for t in transls[1::]:
 				t.delete()
 
 		# Add reference to the new word object as translation.
-		w.save()				   
+		w.save()
 
 		if VERBOSE:
 			print >> _STDOUT, "Translation for <%s> added: %s" % (language.encode('utf-8'), translation.encode('utf-8'))
@@ -605,14 +608,14 @@ class Words(object):
 			excl = entry.exclude
 			exclusions = [a.strip() for a in excl.split(',') if a.strip()]
 			for exclusion in exclusions:
-				exclude_type, _ = Semtype.objects.get_or_create(semtype='exclude_' + exclusion)
+				exclude_type, _ = sdm.Semtype.objects.get_or_create(semtype='exclude_' + exclusion)
 				w.semtype.add(exclude_type)
 				direction = (exclusion[0:3], exclusion[3:6])
 				if VERBOSE:
 					print >> _STDOUT, ' *** This word will be excluded in %s->%s' % direction
-		
+
 		mg_semtypes = []
-		
+
 		if semantics:
 			for semclass in semantics:
 				if not COUNT_ONLY:
@@ -620,19 +623,19 @@ class Words(object):
 						print >> _STDOUT, "Semantic cls: ", semclass.encode('utf-8')
 				# Add semantics entry if not found.
 				# Leave this if DTD is used.
-				sem_entry, created = Semtype.objects.get_or_create(semtype=semclass)
+				sem_entry, created = sdm.Semtype.objects.get_or_create(semtype=semclass)
 				if created:
 					if VERBOSE:
 						print >> _STDOUT, "Created semtype entry with name ", semclass.encode('utf-8')
 				w.semtype.add(sem_entry)
 
 				mg_semtypes.append(sem_entry)
-				w.save()		
+				w.save()
 		return mg_semtypes
 
 	def add_sources(self,entry,w):
 		for bookname in entry.sources:
-			book_entry, created = Source.objects.get_or_create(name=bookname)
+			book_entry, created = sdm.Source.objects.get_or_create(name=bookname)
 			if created:
 				if VERBOSE:
 					print >> _STDOUT, "Created book entry with name ", bookname.encode('utf-8')
@@ -653,7 +656,7 @@ class Words(object):
 		compare, frequency, geography, presentationform 	= 	[""]*4
 
 		diphthong = "no"
-		
+
 		exist_kwargs = {}
 
 		# Store first unique fields
@@ -667,18 +670,18 @@ class Words(object):
 
 		if not wid:
 			wid = lemma
-		
+
 		exist_kwargs['language'] = mainlang
 
 		self.all_wordids.append(wid)
-		
-		
+
+
 		if entry.wordclass:
 			wordclass = entry.wordclass
 			if not COUNT_ONLY:
 				OUT_STRS.append(wordclass)
-		
-		
+
+
 		if entry.frequency:
 			frequency = entry.frequency[0]
 
@@ -688,7 +691,7 @@ class Words(object):
 		# Part of speech information
 		pos = entry.pos
 		hid = entry.hid
-		
+
 		if entry.hid:
 			hid = int(entry.hid)
 			exist_kwargs['hid'] = hid
@@ -699,12 +702,12 @@ class Words(object):
 		if pos.startswith('PHRASE'):
 			pos = pos.replace('PHRASE', '') # Just incase we have longer POS.
 			pos = pos.replace('_', '')
-		
+
 		if pos == 'PROP':
 			pos = 'N'
 
 		exist_kwargs['pos'] = pos
-		
+
 		soggi = entry.soggi
 		diphthong = entry.diphthong
 		gradation = entry.gradation
@@ -720,7 +723,7 @@ class Words(object):
 
 		# Search for existing word in the database.
 		w = None
-		
+
 		if entry.lemma_ref:
 			# For entries with lemma ref, we need to
 			# actually fetch an existing word entry,
@@ -731,13 +734,13 @@ class Words(object):
 			exist_kwargs['lemma'] = lemma
 			exist_kwargs['wordid'] = lemma
 
-		
+
 		try:
-			w, created = Word.objects.get_or_create(**exist_kwargs)
-		except Word.MultipleObjectsReturned:
-			w = Word.objects.filter(**exist_kwargs)
+			w, created = sdm.Word.objects.get_or_create(**exist_kwargs)
+		except sdm.Word.MultipleObjectsReturned:
+			w = sdm.Word.objects.filter(**exist_kwargs)
 			w.delete()
-			w = Word.objects.create(**exist_kwargs)
+			w = sdm.Word.objects.create(**exist_kwargs)
 
 		# Check if there are changes to the word's XML element, and if not, skip
 		changes_to_xml = True
@@ -749,7 +752,7 @@ class Words(object):
 			# diff = w.worddiff_set.create(checksum=entry.checksum)
 			# diff.save()
 			# changes_to_xml = True
-		
+
 		# if not changes_to_xml:
 		# 	print >> sys.stdout, ' * No changes detected to word XML, skipping... '
 		# 	return
@@ -775,24 +778,24 @@ class Words(object):
 		w.save()
 
 		dialect_objects = []
-		
+
 		# Create dialect forms
 		for dialect, dial_data in DIALECTS.items():
-			dial, created = Dialect.objects.get_or_create(dialect=dialect)
+			dial, created = sdm.Dialect.objects.get_or_create(dialect=dialect)
 			if created:
 				dial.name = dial_data[1]
 				dial.save()
 			if dialect != NG_DIALECT:
 				dialect_objects.append(dial)
-		
+
 		# additional dialect mappings
 		# NG - main, NG; but not L and SH
 
-		main_dialect = Dialect.objects.get(dialect='main')
-		ng_dialect = Dialect.objects.get(dialect=NG_DIALECT)
+		main_dialect = sdm.Dialect.objects.get(dialect='main')
+		ng_dialect = sdm.Dialect.objects.get(dialect=NG_DIALECT)
 
 		if entry.dial:
-			dialect, created = Dialect.objects.get_or_create(dialect=entry.dial)
+			dialect, created = sdm.Dialect.objects.get_or_create(dialect=entry.dial)
 			if created:
 				dialect.name = DIALECTS[entry.dial][1]
 				dialect.save()
@@ -812,20 +815,20 @@ class Words(object):
 				analyses = entry.lemma_analyses
 				# Join tags
 				analyses = [(form, '+'.join(tags), dial) for form, tags, dial in analyses]
-			
+
 			for analysis in analyses:
 				analysis, dialect = (analysis[0], analysis[1]), analysis[2]
 				g = Analysis(linginfo, analysis)
-				tag = g.getTag()					
-				
-				form, _ = Form.objects.get_or_create(fullform=g.form, tag=tag, word=w)
+				tag = g.getTag()
+
+				form, _ = sdm.Form.objects.get_or_create(fullform=g.form, tag=tag, word=w)
 				form.save()
 
 				if dialect:
 					if type(dialect) != Dialect:
-						dialect = Dialect.objects.get(dialect=dialect)
+						dialect = sdm.Dialect.objects.get(dialect=dialect)
 					form.dialects.add(dialect)
-				
+
 				# form.dialects.add(main_dialect)
 				del form
 				if not COUNT_ONLY:
@@ -852,13 +855,13 @@ class Words(object):
 
 				generated_forms = linginfo.get_paradigm(lemma=lemma,
 										pos=pos,
-										forms=forms, 
+										forms=forms,
 										dialect=dialect.dialect)
 
 				if not generated_forms:
 					continue
 
-				for form in generated_forms: 
+				for form in generated_forms:
 					tag = form.tags
 					wform = form.form
 					key = '%s|%s' % (tag, wform)
@@ -874,7 +877,7 @@ class Words(object):
 						form_info['dialects'] = [dialect]
 
 					paradigms_to_create[key] = form_info
-						
+
 			paradigms_to_create = OrderedDict(sorted(paradigms_to_create.items(), key=lambda t: t[0]))
 
 			changes_to_paradigm = False
@@ -883,7 +886,7 @@ class Words(object):
 
 			if changes_to_paradigm:
 
-				existing = Form.objects.filter(word=w)
+				existing = sdm.Form.objects.filter(word=w)
 
 				if existing.count() > 0:
 					existing.delete()
@@ -905,22 +908,22 @@ class Words(object):
 						'case': 			g.get('Case',""),
 						'possessive': 		g.get('Possessive',""),
 						'grade': 			g.get('Grade',""),
-						'infinite': 		g.get('Infinite',""), 
+						'infinite': 		g.get('Infinite',""),
 						'personnumber': 	g.get('Person-Number',""),
 						'polarity': 		g.get('Polarity',""),
 						'tense': 			g.get('Tense',""),
-						'mood': 			g.get('Mood',""), 
+						'mood': 			g.get('Mood',""),
 						'subclass': 		g.get('Subclass',""),
 						'attributive': 		g.get('Attributive',""),
 					}
 
-					t,created=Tag.objects.get_or_create(**tag_kwargs)
+					t,created = sdm.Tag.objects.get_or_create(**tag_kwargs)
 
 					t.save()
 
-					# form = Form(fullform=f.form,tag=t,word=w)	
+					# form = Form(fullform=f.form,tag=t,word=w)
 
-					form, _ = Form.objects.get_or_create(fullform=f.form, tag=t, word=w)
+					form, _ = sdm.Form.objects.get_or_create(fullform=f.form, tag=t, word=w)
 					form.save()
 
 					names = set()
@@ -930,10 +933,10 @@ class Words(object):
 
 					if not COUNT_ONLY:
 						if VERBOSE:
-							fmt = (t.string, 
-									f.form, 
+							fmt = (t.string,
+									f.form,
 									', '.join(list(names)))
-							
+
 							_outstr = u"Created form: %s\t%s\t\t%s" % fmt
 							OUT_STRS.append(_outstr)
 
@@ -943,36 +946,36 @@ class Words(object):
 		# the other dialects.
 
 		if changes_to_paradigm:
-			non_main = Dialect.objects.exclude(dialect='main').exclude(dialect='NG')
+			non_main = sdm.Dialect.objects.exclude(dialect='main').exclude(dialect='NG')
 
 			for form in w.form_set.filter(dialects=main_dialect):
 				ng = False
 				for nm in non_main:
 					if nm in form.dialects.all():
 						ng = True
-				
+
 				if ng:
 					continue
 				else:
 					form.dialects.add(ng_dialect)
 
 
-		
+
 		if changes_to_xml:
 			if entry.sources:
 				self.add_sources(entry, w)
-		
+
 		if changes_to_xml:
 			for mgroup in entry.meanings:
 				# Semantics goes first, might copy to WordTranslation objects
 				mg_semantics = self.add_semantics(mgroup['semantics'], w, entry)
-				
+
 				for language, translations in mgroup['translations'].items():
 					for translation in translations:
-						self.add_translation(language=language, 
-												txdata=translation, 
-												w=w, 
-												entry=entry, 
+						self.add_translation(language=language,
+												txdata=translation,
+												w=w,
+												entry=entry,
 												semantics=mg_semantics)
 
 		if not changes_to_xml:
@@ -997,12 +1000,10 @@ class Words(object):
 			# 		print "Removing", w.wordid
 			#		w.delete()
 		if wid and pos:
-			words = Word.objects.filter(wordid=wid,pos=pos)
+			words = sdm.Word.objects.filter(wordid=wid,pos=pos)
 			for w in words:
 				if not COUNT_ONLY:
 					print >> _STDOUT, "Removing", w.wordid.encode('utf-8')
 				w.delete()
 		if not words:
 			print wid, "not found"
-
-
