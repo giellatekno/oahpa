@@ -1,0 +1,102 @@
+{% extends "game.html" %}
+{% load i18n %}
+{% load trans_to %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block questionsetclass %}{% ifequal settings.gametype "bare" %}morfa{% else %}morfac{% endifequal %}{% endblock %}
+{% block gametitlename %}{% ifequal settings.gametype "bare" %}MORFA-S{% else %}MORFA-C{% endifequal %}{% endblock %}
+{% block imgprefix %}{% ifequal settings.gametype "bare" %}morfa{% else %}morfac{% endifequal %}{% endblock %}
+
+{% block veiledning %}
+{% ifequal LANGUAGE_CODE "sme" %}
+http://oahpa.no/sme/useoahpa/morfa.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "fi" %}
+http://oahpa.no/sme/useoahpa/morfa.fin.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "en" %}
+http://oahpa.no/sme/useoahpa/morfa.eng.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "no" %}
+http://oahpa.no/sme/useoahpa/morfa.nob.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "sv" %}
+http://oahpa.no/sme/useoahpa/morfa.nob.html
+{% endifequal %}
+{% endblock %}
+
+{% block navbar %}
+{% ifequal settings.gametype "bare" %}
+	<ul class="sidelist"> 
+	<!-- emergency tag starts -->    
+    <!--<li>
+{% trans "NB! NB! The Morfa game is not working properly, due to technical problems! NB! NB!" %}
+</li>-->    
+<!-- emergency tag ends -->
+		{% ifequal settings.pos "N" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.noun %}" class="interface">{% trans_to 'Nouns' "sme" %}<span class="invisible">{% trans 'Nouns' %}</span></a></li>
+		{% ifequal settings.pos "V" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.verb %}" class="interface">{% trans_to 'Verbs' "sme" %}<span class="invisible">{% trans 'Verbs' %}</span></a></li>
+		{% ifequal settings.pos "A" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.adj %}" class="interface">{% trans_to 'Adjectives' "sme" %}<span class="invisible">{% trans 'Adjectives' %}</span></a></li>
+		{% ifequal settings.pos "Pron" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.pron %}" class="interface">{% trans 'Pronouns' %}<span class="invisible">{% trans 'Pronouns' %}</span></a></li>
+        {% ifequal settings.pos "Num" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.num %}" class="interface">{% trans_to 'Numerals' "sme" %}<span class="invisible">{% trans 'Numerals' %}</span></a></li>
+        {% ifequal settings.pos "Der" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.der %}" class="interface">{% trans_to 'Derivations' "sme" %}<span class="invisible">{% trans 'Derivations' %}</span></a></li>
+	<!--	{% ifequal settings.pos "Px" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.px %}" class="interface">{% trans_to 'Possessives' "sme" %}<span class="invisible">{% trans 'Possessives' %}</span></a></li> --> 
+{% ifequal settings.pos "Px" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_s.px %}" class="interface">{% trans_to 'Testing' "sme" %}<span class="invisible">{% trans 'Testing' %}</span></a></li>  
+	</ul>        
+{% else %}
+	<ul class="sidelist"> 
+		{% ifequal settings.pos "N" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_c.noun %}" class="interface">{% trans_to 'Nouns' "sme" %}<span class="invisible">{% trans 'Nouns' %}</span></a></li>
+		{% ifequal settings.pos "V" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_c.verb %}" class="interface">{% trans_to 'Verbs' "sme" %}<span class="invisible">{% trans 'Verbs' %}</span></a></li>
+		{% ifequal settings.pos "A" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_c.adj %}" class="interface">{% trans_to 'Adjectives' "sme" %}<span class="invisible">{% trans 'Adjectives' %}</span></a></li>
+		{% ifequal settings.pos "Pron" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_c.pron %}" class="interface">{% trans_to 'Pronouns' "sme" %}<span class="invisible">{% trans 'Pronouns' %}</span></a></li>
+        {% ifequal settings.pos "Num" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_c.num %}" class="interface">{% trans_to 'Numerals' "sme" %}<span class="invisible">{% trans 'Numerals' %}</span></a></li>
+        {% ifequal settings.pos "Der" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_c.der %}" class="interface">{% trans_to 'Derivations' "sme" %}<span class="invisible">{% trans 'Derivations' %}</span></a></li>
+        {% ifequal settings.pos "Px" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url morfa_c.px %}" class="interface">{% trans_to 'Testing' "sme" %}<span class="invisible">{% trans 'Testing' %}</span></a></li> 
+
+	</ul>              
+{% endifequal %}
+{% endblock %}
+
+{% block name %}{% trans "Morphology" %}{% endblock %}
+{% block pagename %}/{{ URL_PREFIX }}/morfa/{% endblock %}
+
+
+{% block settings %}
+    <div class="grammarlinks">
+        {% include 'grammar_links_menu.html' %}
+    </div>
+	
+	<ul id="settingsform">
+		{% block subsetting %}{% endblock %}
+        {% if settings.pos != "Num" %}
+            {% block book %}
+            {% ifequal settings.gametype "bare" %} 
+            <li><label for="id_{{ settingsform.book.name }}" class="interface">{% trans_to "Book" "sme" %}<span class="invisible">{% trans 'Book' %}</span></label>
+                {{ settingsform.book }}</li>
+            {% endifequal %}
+            {% endblock %}
+        {% endif %}		
+	</ul>
+	
+	<ul id="submittable">
+	    <li><t class="interface"> <input type="submit" name="settings" value="{% trans_to "New set" "sme" %}" /><span class="invisible">{% trans "New set" %}</span></t>
+        </li>	
+    </ul>
+
+{% endblock %}
+
+{% block question %}
+	{% ifequal settings.gametype "bare" %}
+	         {% if settings.pos == "Pron" or settings.pos == "Num" %}
+		      {{ form.lemma }}
+		 {% else %} {# pos = N,V,A - link to translation #}
+		      <a href="#" class="link_tooltip" id="link_tooltip-{{ forloop.counter }}">{{ form.lemma }}</a>
+		 {% endif %}
+	{% else %} {# Morfa-C #}
+		{{ form.question }} {% if form.lemma %} (<a href="#" class="link_tooltip" id="link_tooltip-{{ forloop.counter }}">{{ form.lemma }}</a>) {% endif %}
+	{% endifequal %}
+{% endblock %}
+
+{% block tooltip %}
+    {% include 'morfa_tooltip.html' %}
+{% endblock %}
+

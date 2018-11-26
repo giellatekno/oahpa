@@ -1,0 +1,75 @@
+{% extends 'univ_oahpa.html' %}
+{% load i18n %}
+{% load goal_filters %}
+{% load staticfiles %}
+
+{% get_current_language as LANGUAGE_CODE %}
+
+{% comment %}
+TODO: link in user interface
+
+{% endcomment %}
+
+{% block main_js %}{% endblock %}
+
+{% block extrajs %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap_namespaced.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/courses.css" %}"/>
+
+	<script src="{% static "js/angular.min.js" %}" type="text/javascript"></script>
+	<script src="{% static "js/angular-cookies.js" %}" type="text/javascript"></script>
+	<script src="{% static "js/coursepage.js" %}" type="text/javascript"></script> 
+{% endblock %}
+
+{% block page_class %}fixed{% endblock %}
+{% block imgprefix %}numra{% endblock %}
+
+{% block content %}
+	{# Add blocktrans and trans tags #}
+	<div id="courses" class="bootstrap-styles" ng-app="CoursePage">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-md-7 col-sm-7 col-lg-7">
+
+	                <div class="row">
+	                    <br />
+		                <ul id="subnav" class="nav nav-tabs">
+		                    {% include 'student_course_nav_items.html' %}
+		                </ul>
+	                </div>
+
+		            <div class="row">
+		                <div class="col-md-12 col-sm-12 col-lg-12">
+		                    <div class="col-md-7 col-sm-7 col-lg-7">
+		                        <h4>&nbsp;</h4>
+		                    </div>
+		                    <div class="col-md-5 col-sm-5 col-lg-5">
+                                {% include 'user_notifications_block.html' %}
+                            </div>
+                        </div>
+                    </div>
+
+		            <div class="row">
+		                {% if is_student %}
+			                <div class="courselist bootstrap-styles">
+			                    {% for course in courses %}
+			                        {% include 'courses_course_block.html' %}
+			                    {% endfor %}
+			                </div>
+		                {% else %}
+		                    <div class="instructor_block">
+		                        <p>{% trans "You are a course instructor." %} {% trans "To view your own grade summary," %} <a href="/{{ URL_PREFIX }}/courses/?student_view=True">{% trans "click here" %}</a></p>
+			                        <p><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "View students' grades" %}</a></p>
+			                </div>
+		                {% endif %}
+		            </div>
+
+		        </div>
+	        </div>
+		</div>
+	</div>
+
+{% endblock %}
+
+{# vim: set ts=4 sw=4 tw=0 syntax=htmldjango : #}

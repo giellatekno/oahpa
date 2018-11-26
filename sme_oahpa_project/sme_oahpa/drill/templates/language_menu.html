@@ -1,0 +1,54 @@
+{% load cache %}
+{% load i18n %}
+{% load trans_to %}
+
+{% get_current_language as LANGUAGE_CODE %}
+<form action="/{{ URL_PREFIX }}/i18n/setlang/" method="post" name="newlang">
+	{% csrf_token %}
+    <dl>
+        <dt><label for="language_select" class="interface">{% trans_to "Interface language" "sme" %}<span class="invisible">{% trans "Interface language" %}</span></label></dt>
+        <dd></dd>
+        <dd style="text-align:right;">
+        <input name="next" type="hidden" value="{{ redirect_to }}" /> <!-- On some reason selecting the interface language causes redirect to the page http://oahpa.no. ??? When I commented out this redirect command, the same thing still happened. -->
+        <select id="language_select" name="language" onChange="this.form.submit();"> 
+						
+            {% ifequal LANGUAGE_CODE "nb" %}
+                <option value="nb" selected="selected">Norsk</option>
+            {% else %}
+		{% ifequal LANGUAGE_CODE "no" %}
+		     <option value="no" selected="selected">Norsk</option>
+		{% else %}
+		     <option value="nb">Norsk</option>
+		{% endifequal %}
+            {% endifequal %}
+	   						
+            {% ifequal LANGUAGE_CODE "sme" %}
+                <option value="sme" selected="selected">Davvisámi</option>
+            {% else %}
+                <option value="sme">Davvisámi</option>
+            {% endifequal %}
+						
+            {% ifequal LANGUAGE_CODE "en" %}
+                <option value="en" selected="selected">English</option>
+            {% else %}
+                <option value="en">English</option>
+            {% endifequal %}
+
+            {% ifequal LANGUAGE_CODE "sv" %}
+                <option value="sv" selected="selected">Svenska</option>
+            {% else %}
+                <option value="sv">Svenska</option>
+            {% endifequal %}
+							  
+            {% ifequal LANGUAGE_CODE "fi" %}
+                <option value="fi" selected="selected">Suomi</option> 
+            {% else %}
+                <option value="fi">Suomi</option> 
+            {% endifequal %}
+						 
+        </select>
+        </dd>
+    </dl>
+    <input type="submit" class="hide" value="submit" /> 
+</form>
+    

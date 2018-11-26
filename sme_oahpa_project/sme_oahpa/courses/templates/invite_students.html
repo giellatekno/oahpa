@@ -1,0 +1,100 @@
+{% extends 'univ_oahpa.html' %}
+{% load i18n %}
+{% load cache %}
+{% load goal_filters %}
+{% get_current_language as LANGUAGE_CODE %}
+{% load staticfiles %}
+
+
+{% comment %}
+TODO: internationalization strings
+
+{% endcomment %}
+
+{% block main_js %}{% endblock %}
+
+{% block extrajs %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap_namespaced.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/courses.css" %}" />
+{% endblock %}
+
+{% block imgprefix %}numra{% endblock %}
+
+{% block page_class %}fixed{% endblock %}
+
+{% block content %}
+    {# Add blocktrans and trans tags #}
+	<div id="courses" class="bootstrap-styles" ng-app="CoursePage">
+        <div class="row">
+	        <div class="col-md-3 col-sm-3 col-lg-3">
+                <h4>{% trans 'Welcome' %}, {{ user.username }}!</h4>
+                <ul id="subnav">
+                    {#  <li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li> #}
+                    {% if user.is_staff %}
+                    <li><a href="/{{ URL_PREFIX }}/courses/?student_view=True">{% trans "Grade summary" %}</a></li>
+                    <li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
+                    <li><a href="/{{ URL_PREFIX }}/courses/invite/">{% trans "Invite students" %}</a></li>
+			        <li><a href="/{{ URL_PREFIX }}/messages/inbox/">messages</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+	        <div class="col-md-9 col-sm-9 col-lg-9">
+	            <h3>Course invitation</h3>
+                {# cache 300 courses user.username #}
+                {% for course in course_invites %}
+                    <div class="row">
+	                    <div class="col-md-12 col-sm-12 col-lg-12">
+		                    <h3 class="course_name">{{ course.identifier }} &ndash; {{ course.name }}</h3>
+                        </div>
+                    </div>
+
+                    <!-- <p class="goal_note">You have not defined any goals for this course.</p> -->
+
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-lg-8">
+                            <p>{% blocktrans %}Share this link with students to invite them to
+                                your course. When they click on it, they may be
+                                required to log in through Kursa first, but
+                                after doing so, they will be enrolled and you
+                                will see them in your grade summary.{% endblocktrans %}</p>
+                            <br />
+                            <form role="form">
+                                <div class="form-group">
+                                    <blockquote>{{ course.invitation_link }}
+                                    </blockquote>
+                                </div>
+                            </form>
+                            <br />
+                        </div>
+
+                    </div>
+                    <br class="clearfix" />
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-lg-8">
+                            <div class="well well-sm">
+                                <a class="btn btn-danger btn-sm" href="/{{ URL_PREFIX }}/courses/reset_token/{{ course.id }}/">{% trans "Reset invitation link" %}</a>
+                                <br />
+                                <br />
+                                <p><strong>{% blocktrans %}Why?{% endblocktrans %}</strong> {% blocktrans %}You may need to reset
+                                    the invitation link, if you're reusing this
+                                    course as a new one, or, if someone has
+                                    shared the invitation link somewhere and
+                                    you did not wish them to do so. This will
+                                    break the old links.{% endblocktrans %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+                {# endcache #}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{# vim: set ts=4 sw=4 tw=0 syntax=htmldjango : #}
+
+

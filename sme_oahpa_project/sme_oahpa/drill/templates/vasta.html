@@ -1,0 +1,109 @@
+{% extends "game.html" %}
+{% load i18n %}
+{% load trans_to %}
+
+{% block helpaddress %}
+{% ifequal LANGUAGE_CODE "no" %}
+<a href="http://oahpa.no/vasta.nob.html"
+{% else %}
+<a href="http://oahpa.no/vasta.html"
+{% endifequal %}
+{% endblock %}
+{% block imgprefix %}vasta{% endblock %}
+{% block gametitlename %}<a href="{% url vasta_s %}">VASTA</a>{% endblock %}
+
+{% block navbar %}
+<ul class="sidelist"> 
+{% ifequal gametype "cealkka" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url vasta_s %}">{% trans 'Vasta-S' %}</a></li>
+{% ifequal gametype "qa" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url vasta_f %}">{% trans 'Vasta-F' %}</a></li>
+</ul>
+{% endblock %}
+
+{% block veiledning %}
+{% ifequal LANGUAGE_CODE "sme" %}
+http://oahpa.no/sme/useoahpa/vasta.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "fi" %}
+http://oahpa.no/sme/useoahpa/vasta.fin.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "en" %}
+http://oahpa.no/sme/useoahpa/vasta.eng.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "no" %}
+http://oahpa.no/sme/useoahpa/vasta.nob.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "sv" %}
+http://oahpa.no/sme/useoahpa/vasta.nob.html
+{% endifequal %}
+{% endblock %}
+
+{% block name %}{% trans "Vasta" %}{% endblock %}
+{% block pagename %}/{{ URL_PREFIX }}/vasta/{% endblock %}
+{% block instructions %}
+{% ifequal gametype "cealkka" %}
+    <t class="interface">{% trans_to "Answer to the questions with full sentences. Remember big initial letter in names. The blue words are given in the primary form. Your task is to write them in the correct grammatical form." "sme" %}<span class="invisible">{% trans "Answer to the questions with full sentences. Remember big initial letter in names. The blue words are given in the primary form. Your task is to write them in the correct grammatical form." %}</span></t>
+{% else %}
+    <t class="interface">{% trans_to "Answer to the questions with full sentences. Remember big initial letter in names." "sme" %}<span class="invisible">{% trans "Answer to the questions with full sentences. Remember big initial letter in names." %}</span></t>
+{% endifequal %}
+{% endblock %}
+
+{% block settings %}
+<div class="grammarlinks">
+        {% include 'grammar_links_menu.html' %}
+</div>
+<table width="700">
+<!-- emergency tag starts -->
+<tr><font color="#FF0000" size="3pt">
+<!--{% trans "NB! NB! The VastaS game is not working properly, due to technical problems! NB! NB!" %} -->
+<!--{% trans "NB! NB! The Vasta game is temporarily out of order, due to technical maintenance! NB! NB!" %} -->
+</font></tr>
+<!-- emergency tag ends -->
+<tr>
+<td class="interface">{% trans_to "Level" "sme" %}<span class="invisible">{% trans "Level" %}</span></td>
+<!-- {% ifequal gametype "cealkka" %}<td>{% trans "Number of task words" %}</td>{% endifequal %} -->
+</tr>
+<tr>
+<td>{{ settingsform.level }}</td>
+<!--  {% ifequal gametype "cealkka" %}<td>{{ settingsform.lemmacount }}</td>{% endifequal %}  -->
+</tr>
+</table>
+</br>
+<t class="interface"> <input type="submit" name="settings" value="{% trans_to "New set" "sme" %}" /><span class="invisible">{% trans "New set" %}</span></t>
+<!----<input type="hidden" name="gametype" value="qa" /> --->
+
+
+{% endblock %}
+
+{% block question %}
+
+{{ form.question }}
+
+    {% for w in form.awords %}
+        {% if w.taskword %}
+            <span style="color:#0000FF">{{ w.fullform }}</span>
+        {% else %}
+            {{ w.fullform }}
+        {% endif %}
+        {% if forloop.last %}
+            &#46;
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
+
+{% block submit %}
+  {% if not all_correct %}
+  <t class="interface"><input type="submit" name="test" value="{% trans_to "Test answers" "sme" %}"/><span class="invisible">{% trans "Test answers" %}</span></t>
+  {% endif %}
+
+{% if messages %}
+</br>
+<table border='1' cellpadding='20' bgcolor='#F9F9F9'>
+<tr><td>
+{% for m in messages %}{{ m|safe }}<br/>{% endfor %}
+</td></tr>
+</table>
+{% endif %}
+
+{% endblock %}
+

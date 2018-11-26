@@ -1,0 +1,57 @@
+{% extends 'courses_main.html' %}
+
+{% load staticfiles %}
+
+{% block extrajs %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap_namespaced.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/courses.css" %}"/>
+{% endblock %}
+
+{% load i18n %}
+{% load url from future %} 
+
+{% block disable_form_start %}{% endblock %}
+{% block disable_form_end %}{% endblock %}
+
+{% block content %}  
+	<div id="courses" class="bootstrap-styles">
+	    {% if courses_user_profile.is_student %}
+	    <div class="container col-md-12 col-sm-12 col-lg-12">
+	        <div class="row">
+		        <ul id="subnav" class="nav nav-tabs">
+		            {% include 'student_course_nav_items.html' %}
+		        </ul>
+	        </div>
+	    </div>
+	    {% endif %}
+
+	    {% if courses_user_profile.is_instructor %}
+	    <div class="container col-md-12 col-sm-12 col-lg-12">
+	        <div class="row">
+		        <ul id="subnav" class="nav nav-tabs">
+		            {% include 'instructor_course_nav_items.html' %}
+		        </ul>
+	        </div>
+	    </div>
+	    {% endif %}
+
+	    <div class="container col-md-12 col-sm-12 col-lg-12">
+	        <div class="row">
+	            <div class="col-md-4 col-sm-4 col-lg-4">
+                    <ul id="subnav" class="nav nav-stacked">
+	                    <li class="disabled heading"><a href="#">Messages: {% block messages_subtitle %}{% endblock %}</a></li>
+                        <li><a href="{% url 'messages_inbox' %} ">{% trans "Inbox" %}</a></li>
+                        <li><a href="{% url 'messages_compose' %} ">{% trans "New Message" %}</a></li>
+                        <li><a href="{% url 'messages_outbox' %} ">{% trans "Sent Messages" %}</a></li>
+                        <li><a href="{% url 'messages_trash' %} ">{% trans "Trash" %}</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 col-sm-8 col-lg-8">
+	                {% block messages_content %}
+	                {% endblock %}
+                </div>
+	        </div>
+	    </div>
+	</div>
+{% endblock %}

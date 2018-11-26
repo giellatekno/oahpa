@@ -1,0 +1,87 @@
+{% extends "game.html" %}
+{% load i18n %}
+{% load trans_to %}
+
+{% block helpaddress %}
+{% ifequal LANGUAGE_CODE "no" %}
+<a href="http://oahpa.no/leksa.nob.html"
+{% else %}
+<a href="http://oahpa.no/leksa.html"
+{% endifequal %}
+{% endblock %}
+
+{% block gametitlename %}LEKSA{% endblock %}
+{% block imgprefix %}leksa{% endblock %}
+
+{% block navbar %}
+<ul class="sidelist">
+	<li class="selected"><a href="{% url leksa %}" class="interface">{% trans_to 'Words' "sme" %}<span class="invisible">{% trans "Words" %}</span></a></li>
+	<li><a href="{% url leksa.sted %}" class="interface">{% trans_to 'Placenames' "sme" %}<span class="invisible">{% trans "Placenames" %}</span></a></li>
+</ul>
+{% endblock %}
+
+{% block veiledning %}
+{% ifequal LANGUAGE_CODE "sme" %}
+http://oahpa.no/sme/useoahpa/leksa.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "fi" %}
+http://oahpa.no/sme/useoahpa/leksa.fin.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "en" %}
+http://oahpa.no/sme/useoahpa/leksa.eng.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "no" %}
+http://oahpa.no/sme/useoahpa/leksa.nob.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "sv" %}
+http://oahpa.no/sme/useoahpa/leksa.nob.html
+{% endifequal %}
+{% endblock %}
+
+{% block instructions %}
+	<t class="interface">{% trans_to "Give translations for words. You can choose set or level, not both." "sme" %}<span class="invisible">{% trans "Give translations for words. You can choose set or level, not both." %}</span></t>
+{% endblock %}
+
+{% block name %}{% trans "Quizz" %}{% endblock %}
+{% block pagename %}/{{ URL_PREFIX }}/leksa/{% endblock %}
+
+{% block settings %}
+    <div class="grammarlinks">
+        {% include 'grammar_links_menu.html' %}
+    </div>
+
+    <ul id="settingsform">
+<!-- emergency tag starts -->    
+    <!--<li>
+{% trans "NB! NB! The Leksa game is not working properly, due to technical problems! NB! NB!" %}
+</li>-->    
+<!-- emergency tag ends -->
+    	<li><label for="id_{{ settingsform.semtype.name }}" class="interface"> {% trans_to "Set" "sme" %}<span class="invisible">{% trans "Set" %}</span></label>
+    		{{ settingsform.semtype }}</li>
+    	<li><label for="id_{{ settingsform.transtype.name }}" class="interface"> {% trans_to "Select the language pair" "sme" %}<span class="invisible">{% trans "Select the language pair" %}</span></label>
+    		{{ settingsform.transtype }}</li>
+    	<li><label for="id_{{ settingsform.source.name }}" class="interface"> {% trans_to "Book" "sme" %}<span class="invisible">{% trans "Book" %}</span></label>
+    		{{ settingsform.source }}</li>
+    </ul>
+    
+    <ul id="submittable">
+        <li><t class="interface"> <input type="submit" name="settings" value="{% trans_to "New set" "sme" %}" /><span class="invisible">{% trans "New set" %}</span></t></li>
+    </ul>
+{% endblock %}
+<input type="submit" name="settings" value="{% trans "New set" %}" />
+
+{% block question %}
+{{ form.lemma }}
+{% endblock %}
+
+{% block submit %}
+{% if not all_correct %}
+   {% if not show_correct %}
+   <t class="interface"><input type="submit" name="test" value="{% trans_to "Test answers" "sme" %}"/><span class="invisible">{% trans "Test answers" %}</span></t>
+   {% endif %}
+   {% ifequal count 1 %}
+   <t class="interface"><input type="submit" name="show_correct" value="{% trans_to "Show the correct answers" "sme" %}" /><span class="invisible">{% trans "Show the correct answers" %}</span></t>
+   {% endifequal %}
+{% endif %}
+{% endblock %}
+

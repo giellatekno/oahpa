@@ -1,0 +1,70 @@
+{% load i18n %}
+{% load goal_filters %}
+
+<div class="row">
+	<div class="col-md-8 col-sm-8 col-lg-8">
+		<h3 class="course_name">{{ course.identifier }} &ndash; {{ course.name }}</h3>
+        <ul class="nav nav-pills">
+		{% if course.site_link %}
+			<li><a class="course_link" href="{{ course.site_link }}" target="BLANK">{% trans "Course pages" %}</a></li>
+			{% if profile.is_instructor %}
+			    <li><a id="" class="" href="{% url courses.views.courses_coursegoal_construction %}">Create a course goal</a></li>
+                <li><a id="" class="" href="{% url courses.views.courses_goal_construction %}">Create a task</a></li>
+			{% endif %}
+		{% endif %}
+        </ul>
+    </div>
+	<div class="col-md-4 col-sm-4 col-lg-4">
+	{% comment %}
+	    {% if course|course_completion_rate:user > 0.0 %}
+	    {% endif %}
+	{% endcomment %}
+	    <ul class="course_completion">
+		    <li class="course_completion_rate">{{ course|course_completion_rate:user|floatformat }}%</li>
+		</ul>
+    </div>
+</div>
+
+<div class="clearfix visible-xs visible-md visible-lg"></div>
+
+<div class="row">
+	<div class="course_block">
+		{% if course.coursegoal_set.all|length > 0 %}
+			{% for coursegoal in course.coursegoal_set.all %}
+				{% if coursegoal|goals|length > 0 %}
+				    <div class="coursegoal row">
+				        <div class="col-md-4 col-sm-4 col-lg-4">
+				            <h4>{{ forloop.counter }}. {{ coursegoal.short_name }}</h4>
+				            <h5 class="cumulative_progress">{{ coursegoal|cumulative_progress:user }}
+				                {% if coursegoal|complete_for:user %}
+				                    <span class="complete">Complete!</span>
+				                {% else %}
+				                    <span class="not_complete">Not complete</span>
+				                {% endif %}
+                            </h5>
+				            {% if coursegoal.description %}
+				                <div class="well">
+				                    <p class="goal_description">{{ coursegoal.description }}</p>
+				                </div>
+				            {% endif %}
+				        </div>
+				        <div class="col-md-8 col-sm-8 col-lg-8">
+				            {% with coursegoal|goals as goal_set and forloop.counter as goal_number%}
+				                {% include 'goal_table_list.html' %}
+				            {% endwith %}
+				        </div>
+                    </div>
+                    <div class="clearfix visible-xs visible-md visible-lg"></div>
+                {% endif %}
+			{% endfor %}
+		{% else %}
+			<div class="col-md-12 col-sm-12 col-lg-12">
+			    <p class="goal_note">
+			        {% blocktrans %}Your instructor has not yet defined any goals for this
+			        course.{% endblocktrans %}
+			    </p>
+			</div>
+		{% endif %}
+
+	</div>
+</div>

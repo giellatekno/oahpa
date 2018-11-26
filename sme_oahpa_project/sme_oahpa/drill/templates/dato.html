@@ -1,0 +1,29 @@
+{% extends "num.html" %}
+{% load i18n %}
+{% load trans_to %}
+
+{% block navbar %}
+{% with "dato" as gamename_nav %}
+    {% include 'numra_submenu.html' %}
+{% endwith %}
+{% endblock %}
+
+
+
+{% block instructions %}
+  {# TODO: strings for instructions. #}
+  {% ifequal gametype "string" %}
+    <t class="interface">{% trans_to "Enter the date in numeric format (ex. 17.8.)" "sme" %}<span class="invisible">{% trans "Enter the date in numeric format (ex. 17.8.)" %}</span></t>
+  {% else %}
+    <t class="interface">{% trans_to "Write the date in North Sámi (ex. geassemánu goalmmát beaivi)." "sme" %}<span class="invisible">{% trans "Write the date in North Sámi (ex. geassemánu goalmmát beaivi)." %}</span></t>
+  {% endifequal %}
+{% endblock %}
+
+
+{% block setting_items %}
+	<li><label for="id_{{ settingsform.numgame.name }}" class="interface">{% trans_to "Expression of dates numeric to words or vice versa." "sme" %}<span class="invisible">{% trans "Expression of dates numeric to words or vice versa." %}</span></label>
+	    {{ settingsform.numgame }}</li>
+</ul>
+{% endblock %}
+
+

@@ -1,0 +1,539 @@
+﻿#courses h2 {
+	text-align: left;
+	margin-top: .5em;
+}
+
+#courses .goal_intro {
+    font-weight: 100;
+    font-size: 120%;
+    margin-bottom: .75em;
+}
+
+#courses .step_number {
+    font-size: 250%;
+    color: #AAA;
+    margin-top: .5em;
+    display: block;
+}
+
+#courses p {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+#courses {
+	padding: 0 2em;
+	min-height: 340px;
+}
+
+#courses #create_self_goal {
+    color: #FFF;
+    font-size: 110%;
+    margin-left: 1em;
+}
+
+#courses > p {
+	margin: .5em 0em;
+	width: 60%;
+	font-size: 95%;
+	text-align: justify;
+}
+
+#courses h2 {
+	font-size: 1.5em;
+	width: 60%;
+	margin: .5em 0;
+	font-weight: bold;
+}
+
+#courses h3.course_name {
+	font-weight: bold ; 
+	font-size: 100% ;
+	margin-top: 1em;
+	margin-left: 0em !important;
+	border-bottom: none;
+	text-indent: 0 !important;
+}
+
+#courses .section_header {
+    margin: 1em 0 .5em 0;
+    font-variant: small-caps;
+    text-transform: lowercase;
+    color: #333;
+    font-size: 150%;
+}
+
+#courses .course_block {
+    margin-bottom: 2em;
+    padding-left: 1em;
+}
+
+#courses .course_block .coursegoal {
+    margin-bottom: 2em;
+}
+
+.coursegoal .cumulative_progress {
+    font-weight: 200;
+    font-size: 175%;
+}
+
+#course_goal div.progress.progress-striped > div {
+    color: #333;
+    text-shadow: 2px 2px 1px #CCC;
+}
+
+#courses .course_block table {
+    margin-top: 0em;
+    margin-left: 0em;
+    margin-bottom: 1.5em;
+}
+
+#courses .source-region, #courses .target-region {
+    min-height: 250px;
+    padding-bottom: 15px;
+    max-height: 350px;
+    overflow: scroll;
+}
+
+
+#courses .source-region li a, #courses .target-region  li a {
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 7px 10px;
+    margin-bottom: 10px;
+    margin-left: 7px;
+    margin-right: 7px;
+    margin-top: 4px;
+    display: block;
+    background-color: #FFF;
+    box-shadow: 1px 1px 5px #999;
+    color: #222;
+}
+
+#courses .target-region {
+    background-color: #EFE;
+    border: 3px #CCF dashed;
+}
+
+#courses .source-region {
+    background-color: #FEE;
+    border: 3px #CCC dashed;
+}
+
+#courses .sortable-placeholder {
+    background-color: #F00;
+    padding: 2px 5px;
+    border: 1px solid #CCC;
+}
+
+#courses .source-region .add-task a {
+    background-color: #8A8;
+    color: #FFF;
+    border-color: #555;
+}
+
+#courses .complete , #courses .not_complete {
+    font-size: 70%;
+    font-weight: 200;
+    margin-left: .5em;
+    margin-top: .25em;
+    float: right;
+}
+
+#courses .complete {
+    color: #090;
+}
+
+#courses .not_complete {
+    color: #900;
+}
+
+#courses dl.course_progress {
+	margin: .5em auto 0 2em;
+	width: 60%;
+}
+
+#courses dl.course_progress dt {
+	border-bottom: 1px solid #AAA;
+	font-style: italic;
+}
+
+#courses dl.course_progress dd {
+	margin-left: 2em;
+	margin-bottom: 1em;
+}
+
+#courses dl.goal_definition  {
+    margin: 1em 0 ;
+    width: 100%;
+    display: block;
+}
+
+#courses dl.goal_definition dt {
+    width: 40%;
+}
+
+#courses dl.goal_definition dd {
+    width: 60%;
+}
+
+#courses .course_goals {
+    margin: .5em 1.5em;
+}
+
+#courses .course_students {
+    margin-left: 0 !important;
+    margin-bottom: 2em;
+}
+
+#courses .course_goals th {
+    font-weight: bold;
+    font-size: 90%;
+    padding:2px 5px;
+    border-bottom: 1px solid #CCC
+}
+
+#courses .course_goals td {
+    padding:2px 5px;
+}
+
+#courses .course_goals .description {
+    width: 12em;
+}
+
+#courses .invite_link {
+    font-size: 100%;
+    width: 20em;
+    height: 5em;
+    padding: .5em .5em;
+}
+
+/* This is the goal block thingy that shows up while playing */
+
+#game #course_goal {
+    border: 1px solid #ccc;
+    padding: 5px 7px;
+}
+
+#game #course_goal .correct_rate {
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-bottom: .5em;
+}
+
+#game #course_goal .stat_value {
+    font-size: 180%;
+    font-weight: 200;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#game #course_goal .stat_total {
+    font-size: 120%;
+    font-weight: 200;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#course_goal .stat_title {
+    font-weight: bold;
+    font-size: 90%;
+}
+
+#course_goal h2 {
+    margin-top: 0;
+    font-size: 110%;
+    color: #333;
+}
+
+#course_goal div.progress {
+    margin-bottom: .75em;
+}
+
+#course_goal h2.complete {
+    width:100%;
+    text-align: center;
+    color: #494 !important;
+    font-size: 140% !important;
+    border-radius: 2px;
+    padding: 5px 0
+}
+
+
+#course_goal .stat_value {
+    font-size: 90%;
+}
+
+
+ul.courselist {
+	margin: 1em 2em; 
+}
+
+ul.courselist li {
+
+}
+
+
+#courses h3 {
+	font-size: 150%;
+	font-weight: light;
+	letter-spacing: 1px;
+	font-family: "Helvetica Neue", "Helvetica", Arial,  sans-serif;
+	margin-bottom: .25em;
+}
+
+#courses .star, #course_goal .star {
+    color: goldenrod;
+    text-shadow: 1px 1px 3px #333;
+    font-size: 150%;
+}
+
+.pie_label_first_try , .pie_label_correct {
+    display: block;
+    width: 7px;
+    line-height: 7px;
+    float: left;
+    margin-top: 5px;
+    margin-right: 2px;
+}
+
+.align-bottom {
+    text-align: bottom;
+}
+
+.pie_label_first_try {
+    background-color: #FFB331;
+}
+
+.pie_label_correct {
+    background-color: #0058B2;
+}
+
+#courses .star.clear {
+    color: transparent;
+    text-shadow: 1px 1px 1px transparent;
+    font-size: 150%;
+}
+
+/* Instructor view */
+
+.course_students > li {
+	margin-bottom: .5em;
+}
+
+.course_students > li > ul.row {
+	margin-top: .25em;
+}
+
+.course_students > li {
+	margin-left: 1.75em;
+}
+
+table.grades {
+	margin-top: .75em;
+	margin-bottom: .5em;
+	border: 1px solid #CCC;
+}
+
+table.grades td {
+	padding: 7px 5px;
+}
+
+table.grades th {
+	padding: 2px;
+	padding-left: 5px;
+}
+
+ul.course_students > li {
+	padding-bottom: 2em;
+}
+
+
+strong.student_name {
+	font-size: 120%;
+	font-weight: bold;
+	margin-left: -1.5em;
+}
+table.grades th {
+	font-weight: bold;
+	color: #333;
+}
+
+table.grades tr.odd {
+	background-color: #EEE;
+}
+
+.instructor_course h3 {
+	margin-left: 0px;
+	margin-top: 1em;
+	padding-left: 0px;
+}
+
+ul.row li {
+	padding-bottom: .25em;
+}
+
+
+#user_goal_history table th {
+    border-bottom: 1px solid #ccc;
+}
+
+#user_goal_history .correct_checking strong {
+    font-weight: 500;
+    color: #C00;
+}
+
+#user_goal_history table th , #user_goal_history table td {
+    padding: 5px;
+}
+
+#user_goal_history table .even {
+    background-color: #eee;
+}
+
+#split_login .jumbotron  {
+    background-color: #FFF;
+}
+
+#split_login .jumbotron h3 {
+    font-weight: 300;
+}
+
+#courses .btn-danger {
+    color: #FFF;
+    text-shadow: 0px 0px 1px #333;
+}
+
+#split_login .jumbotron a.btn {
+    color: #FFF;
+    font-weight: bold;
+    text-shadow: 0px 0px 2px #333;
+}
+
+#split_login .login_button {
+    margin-right: 1em;
+}
+
+#notifications {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.notification {
+    margin-bottom: 5px;
+    font-size: 85%;
+    position: relative;
+    display: block;
+    min-height: 25px;
+}
+
+.notification p.text {
+    margin-top: 1em;
+}
+
+/* Messaging */
+
+#courses .nav li.disabled.heading a {
+    font-weight: 300;
+    color: #777 !important;
+    border-bottom: 1px solid #CCC;
+}
+
+#courses table.messages th {
+    font-size: 95%;
+    color: #555;
+    border-bottom: 1px solid #AAA;
+}
+
+#courses table.messages tbody td, #courses table.messages th {
+    padding: 3px 6px;
+}
+
+#courses table.messages {
+    margin-bottom: 2em;
+}
+
+#courses a.btn {
+    color: #FFF !important;
+}
+
+#courses span.median_illustration_arrow {
+    font-size: 200%;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    line-height: 9em;
+    color: #555;
+}
+
+#courses ul.history_list {
+    margin: 1em 0;
+}
+#courses ul.history_list li a {
+    font-size: 120%;
+}
+
+#courses ul.history_list li ul {
+    margin: .75em 1em;
+    font-size: 110%;
+}
+
+ul.course_completion {
+    position: absolute;
+    right: .75em;
+    color: #CCC;
+}
+
+.course_completion .course_completion_rate {
+    background-color: #EFE;
+    color: #090;
+    border-radius: 75%;
+    display: block;
+    height: 75px;
+    width: 75px;
+    font-weight: 100;
+    
+    line-height: 75px;
+    text-align: center;
+ 	text-shadow: 0px 0px 5px #FFF;
+ 	font-size: 170%;
+}
+
+
+div#add_goal_container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(100,100,100,.5);
+    z-index: 5;
+}
+
+div#add_goal_target {
+    margin: 0 auto;
+    padding: 1em 2em;
+    background-color: #FFF;
+    height: 70%;
+    width: 55%;
+    overflow: scroll;
+    z-index: 5;
+}
+
+.errorapi_messages a {
+    color: #559 !important;
+    font-weight: 500 !important;
+}
+
+.ngdialog .inner_container {
+    height: 400px;
+    overflow: scroll;
+    width: 500px;
+    display: block;
+}
+
+.ngdialog p {
+    width: 350px;
+    margin: 0 1em;
+
+}

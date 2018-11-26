@@ -1,0 +1,25 @@
+{% extends "num.html" %}
+{% load i18n %}
+{% load trans_to %}
+
+{% block navbar %}
+{% with "klokka" as gamename_nav %}
+    {% include 'numra_submenu.html' %}
+{% endwith %}
+{% endblock %}
+
+{% block instructions %}
+  {% ifequal gametype "string" %}
+    <t class="interface">{% trans_to "Enter the time in the digital clock format. (Ex. 10:21)" "sme" %}<span class="invisible">{% trans "Enter the time in the digital clock format. (Ex. 10:21)" %}</span></t>
+  {% else %}
+    <t class="interface">{% trans_to "Enter the time in North Sámi. (Ex. beal guokte)." "sme" %}<span class="invisible">{% trans "Enter the time in North Sámi. (Ex. beal guokte)." %}</span></t>
+  {% endifequal %}
+{% endblock %}
+
+
+{% block setting_items %}
+	<li><label for="id_{{ settingsform.gametype.name }}" class="interface">{% trans_to "Select how many points of time to include." "sme" %}<span class="invisible">{% trans "Select how many points of time to include." %}</span></label>
+		{{ settingsform.gametype }}</li>
+	<li><label for="id_{{ settingsform.numgame.name }}" class="interface">{% trans_to "Select the direction" "sme" %}<span class="invisible">{% trans "Select the direction" %}</span></label>{{ settingsform.numgame }}</li>
+{% endblock %}
+

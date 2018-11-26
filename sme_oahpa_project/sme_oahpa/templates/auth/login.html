@@ -1,0 +1,70 @@
+{% extends "univ_oahpa.html" %}
+{% load i18n %} 
+{% load bootstrap_tags %}
+{% load staticfiles %}
+
+{# clear sidebar #}
+{% block sidebar %}{% endblock %}
+
+{% block extrajs %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap_namespaced.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/courses.css" %}"/>
+{% endblock %}
+
+
+{% block content %}
+<div id="login" class="bootstrap-styles">
+
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-6">
+
+            <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12">
+                    {% if user.is_authenticated %}
+                    <p class="lead">{% trans "You are currently logged in." %} <a href="{% url univ_oahpa.courses.urls.logout %}">{% trans "Log out?" %}</a></p>
+                    {% else %}
+                        {% if not form.errors %}
+                        {% else %}
+                            <br />
+                        {% endif %}
+                    {% endif %}
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <form method="post" action="{% url django.contrib.auth.views.login %}" role="form" class="form-horizontal">
+                      {% csrf_token %}
+                      {{ form|as_bootstrap }}
+
+                      <div class="form-actions pull-right">
+                          <button type="submit" class="btn btn-success">Submit</button>
+                          <input type="hidden" name="next" value="{{ next }}" />
+                      </div>
+                    </form>
+                </div>
+            </div>
+            <br class="clearfix" />
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div id="loginnotice" class="well">
+                        <p>{% blocktrans %}If you are participating in a course at <a href="http://kursa.oahpa.no/">http://kursa.oahpa.no/</a> and are seeing this page, you must log in there first, and then come back here and log in. If this does not work, make sure that your browser allows cookies.{% endblocktrans %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+</div>
+{% endblock %}

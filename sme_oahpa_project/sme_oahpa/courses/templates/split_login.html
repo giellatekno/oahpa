@@ -1,0 +1,38 @@
+﻿{% extends "univ_oahpa.html" %}
+{% load i18n %} 
+{% load staticfiles %}
+
+{# clear sidebar #}
+{% block sidebar %}{% endblock %}
+
+{% block extrajs %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap_namespaced.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/courses.css" %}" />
+{% endblock %}
+
+
+{% block content %}
+<div id="split_login" class="bootstrap-styles">
+{% if form.errors %}
+<p style="color: red; font-size: 90%;">{% trans "Your username and password didn't match. Please try again." %}</p>
+{% endif %}
+
+{% if user.is_authenticated %}
+<p>{% trans "You are currently logged in." %} <a href="{% url univ_oahpa.courses.urls.logout %}">{% trans "Log out?" %}</a></p>
+{% else %}
+    <div class="row">
+        <div class="col-md-10">
+        </div>
+    </div>
+    <div class="jumbotron">
+      <h3>{% trans "Login to continue" %}</h3>
+      <a href="{% url courses.auth_views.cookie_login %}?next={{ next_page }}" class="btn btn-success login_button">{% trans "Log in with Kursa" %}</a>
+      <a href="/{{ URL_PREFIX }}/courses/standard_login/?next={{ next_page }}" class="btn btn-info login_button">{% trans "Log in with a password" %}</a>
+    </div>
+{% endif %}
+
+</div>
+
+{% endblock %}
+

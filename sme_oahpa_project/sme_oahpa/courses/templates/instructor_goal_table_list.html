@@ -1,0 +1,48 @@
+﻿{% load goal_filters %}
+{% load i18n %}
+
+<table class="course_goals">
+    <tr>
+        <th>&nbsp;</th>
+        <th>{% trans "Goal" %}</th>
+        <th>{% trans "Description" %}</th>
+        <th>{% trans "Score" %}</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+    </tr>
+{% for goal in goal_set %}
+    <tr>
+        {% comment %}TODO: test if it's already in progress or
+        been done and restyle, or sort by completed
+        date? {% endcomment %}
+        <td>
+            {% if goal|complete_for:student.user %}
+                <span class="star">&#9733;</span>
+            {% else %}
+                &nbsp;
+            {% endif %}
+        </td>
+        <td>{{ goal.short_name }}</td>
+        {% if goal|goal_instances_for:student.user %}
+            {% with goal|goal_instances_for:student.user|first as g %}
+            <td class="current_progress">
+                {{ g.progress|format_percent }}
+            </td>
+            <td class="current_progress sets">
+                {{ g.rounds }}
+            </td>
+            <td class="current_progress sets">
+                <a class="goal_history" href="{% url courses.views.goal_history goal.id, student.user.id %}">{% trans "History" %}</a>
+            </td>
+            {% endwith %}
+        {% else %}
+            <td></td>
+            <td></td>
+            <td></td>
+        {% endif %}
+    </tr>
+{% endfor %}
+</table>
+
+

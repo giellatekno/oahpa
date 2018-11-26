@@ -1,0 +1,62 @@
+﻿{% load i18n %}
+
+{% comment %}
+    This is a chunk of angularjs (see courses.js), which
+    simply displays the user's current course status. It is
+    a simple HTTP GET request, and the part below is the
+    template snippet.
+
+    Here's the sample results key from the JSON, in case
+    more is required in the template.
+    {
+        "results": [
+            {
+                "progress": "0.89", 
+                "rounds": 1, 
+                "total_answered": 9, 
+                "correct": 8, 
+                "completed_date": null, 
+                "grade": null
+            }
+        ]
+    }
+
+    TODO: hide with css manually until we know that JS request works
+
+    NB: template tags here are <% %>. Typically it's a bad idea to mix
+    templating things, client/server-wise, but this is so minimal and
+    for the purposes of display only, so it shouldn't provide problems.
+
+{% endcomment %}
+
+<div id="course_goal" class="bootstrap-styles">
+    <div class="goal_in_progress"
+        ng-controller="GoalController" ng-source="/{{ URL_PREFIX }}/courses/api/stats/">
+        <div ng-if="navigated_away">
+            <h2>Goal progress</h2>
+            <p class="error" ng-show="navigated_away">{% blocktrans %}You left the page, so your progress will no longer be tracked towards goals.{% endblocktrans %} <a href="/{{ URL_PREFIX }}/courses/">{% blocktrans %}Begin again?{% endblocktrans %}</a></p>
+        </div>
+        <div ng-if="success">
+            <h2 ng-hide="goal.is_complete">Goal progress</h2>
+            <h2 ng-show="goal.is_complete" class="complete">Complete!</h2>
+            <div class="progress progress-striped" ng-show="max_rounds" ng-hide="complete">
+                <div class="progress-bar <% progress_class %>" 
+                    role="progressbar" 
+                    aria-valuenow="<% current_set_count %>"
+                    aria-valuemin="1" 
+                    aria-valuemax="<% max_rounds %>"
+                    style="width: <% progress_percent %>%;">
+                <% current_set_count %> / <% max_rounds %> {% blocktrans %}rounds{% endblocktrans %}
+              </div>
+            </div>
+            <div class="correct_rate">
+                <span class="stat_value"><% goal.rounded %>%</span> <span ng-hide="above" class="stat_total">of <% correct_threshold %>%</span> <span ng-show="above" class="star">&#9733;</span></span>
+            </div>
+            <ul>
+                <li ng-if="goal.is_complete">{% blocktrans %}You can keep playing, or {% endblocktrans %}<a
+                        href="/{{ URL_PREFIX }}/courses/">{% blocktrans %}work on a new goal{% endblocktrans %}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
