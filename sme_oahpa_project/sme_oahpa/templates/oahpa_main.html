@@ -6,18 +6,18 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	    <title>{% block title %}{% endblock %}</title>
-		
-		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main.css"/>
+
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main_sme.css"/>
 		<!--[if gte IE 7]>
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/ie_fixes.css"/>
 		<![endif]-->
-		
+
 		{% comment %}
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/mobile.css"/>
 		{% endcomment %}
 		{% block main_js %}
 		<script src="{{ MEDIA_URL }}/js/jquery-1.6.4.min.js" type="text/javascript"></script>
-		<script src="{{ MEDIA_URL }}/js/main.js" type="text/javascript"></script>
+		<script src="{{ MEDIA_URL }}/js/main_sme.js" type="text/javascript"></script>
 		{% endblock %}
 		{% block extracss %}
 		{% endblock %}
@@ -32,13 +32,13 @@
 
 	{% load i18n %}
     {% load trans_to %}
-    {{ lang_switch }}			
+    {{ lang_switch }}
 
 <body class="{% block bodyclass %}main{% endblock %}">
 	<div id="page" class="{% block pageclass %}{% endblock %}">
 		<div id="headerimg"><a href="/{{ URL_PREFIX }}/"><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!"/></a></div>
 		<a class="hide" href="#content">Skip to content</a>
-		
+
 		<div id="header">
 			{% block header_content %}
 			<h1><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!" /></h1>
@@ -49,8 +49,8 @@
 		<div id="content">
 			{% block main_content %}
 
-			{% block language_select %} 
-			     {% include 'language_menu.html' %} 
+			{% block language_select %}
+			     {% include 'language_menu.html' %}
 			{% endblock %}
         </div>
 <!---			<p align="center"><b><span style="color: #993366">Hjelp oss å utvikle Oahpa – svar på et lite <span style="color: #9933FF"><a href="http://kursa.oahpa.no/2012/03/27/sporreskjema/">spørreskjema </a></span>om bruk av noen av programmene.</span></b></p>
@@ -63,7 +63,7 @@
 						<span class="interface">{% trans_to "Practise morphology" "sme" %}<span class="invisible">{% trans "Practise morphology" %}</span></span>
 					</a>
 				</li>
-				
+
                 <li class="game">
 					<a href="{% url vasta_s %}">
 						<span>VASTA</span><br />
@@ -79,7 +79,7 @@
 					</a>
 				</li>
 			</ul>
-			
+
 			<ul id="games_menu">
 
 				<li class="game">
@@ -153,7 +153,7 @@
 			<p><t class="interface">{% trans_to "Are you visiting this site as part of a course?" "sme" %}<span class="invisible">{% trans "Are you visiting this site as part of a course?" %}</span></t> <a href="{% url courses.views.courses_main %}" class="interface">{% trans_to "Log in here" "sme" %}<span class="invisible">{% trans "Log in here" %}</span></a></p>
 			{% endblock %}
 		</div>
-		
+
 		<div id="footer">
 			<div id="copyright">
 			{% block deeplink %}
@@ -170,14 +170,14 @@
 			</div>
             {% block tooltip_help %}
             <div class="language_help_frontpage">
-    <a class="helptext" href="#"><!--<img src="/univ_oahpa/media/images/littleman.png" alt="HELP"/></br>-->{% trans "HELP" %}<span class="shortinfo">{% trans "To get the translation of the user interface text to " %} 
+    <a class="helptext" href="#"><!--<img src="/univ_oahpa/media/images/littleman.png" alt="HELP"/></br>-->{% trans "HELP" %}<span class="shortinfo">{% trans "To get the translation of the user interface text to " %}
     {% for lc,la in LANGUAGES %}
         {% ifequal lc LANGUAGE_CODE %} {% trans la|lower %}{% endifequal %}
     {% endfor %}
     {% trans "hold down the [Alt] key while pointing at the text with the mouse." %}</span></a>
             </div>
-            {% endblock %} 
-		</div>        
+            {% endblock %}
+		</div>
 	</div>
 	{% include 'google_analytics_snippet.html' %}
 
