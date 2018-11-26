@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+settings = importlib.import_module(LLL1+'_oahpa.settings')
+sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
 
-from settings import *
-from univ_drill.models import *
 from xml.dom import minidom as _dom
 from optparse import OptionParser
 from django import db
@@ -29,12 +31,12 @@ def monitor(function):
 		print '    ' + repr(result)
 		print '--\n'
 		return result
-	
+
 	return wrapper
 
 
 class TagError(Exception):
-	
+
 	def __init__(self, filename, additional_messages=False):
 		self.additional_messages = additional_messages
 		self.filename = filename
@@ -63,7 +65,7 @@ class TagError(Exception):
 		# if self.id_forms:
 			# msg += ("\n"
 					# "    Word in <id /> has forms matching:\n")
-			
+
 			# for item in self.id_forms:
 				# msg += "     %s\n" % item
 
@@ -72,9 +74,9 @@ class TagError(Exception):
 class Questions:
 
 	def read_element(self,qaelement,el,el_id,qtype):
-		
+
 		semclass = False
-		
+
 		elemt_id_msg = "\tCreating element %s (%s)" % (el_id, qaelement.qatype)
 		print >> sys.stdout, elemt_id_msg.encode('utf-8')
 
@@ -83,7 +85,7 @@ class Questions:
 			syntax = self.grammar_defaults[el_id].syntax
 		else:
 			syntax = el_id
-		
+
 		if not el:
 			_msg = '\t%s - %s' % (syntax, "No element given.")
 			print _msg.encode('utf-8')
@@ -97,26 +99,26 @@ class Questions:
 		# If there is no element given in the answer, the element
 		# is a copy of the question.
 		question_qelements = None
-		
-		qelems = QElement.objects.filter(question__id=qaelement.question_id,
+
+		qelems = sdm.QElement.objects.filter(question__id=qaelement.question_id,
 								identifier=content_id)
 
 		if (not el or el.getAttribute("content")) and \
-			QElement.objects.filter(question__id=qaelement.question_id,
+			sdm.QElement.objects.filter(question__id=qaelement.question_id,
 									identifier=content_id).count() > 0:
-			question_qelements = QElement.objects.filter(question__id=qaelement.question_id,
+			question_qelements = sdm.QElement.objects.filter(question__id=qaelement.question_id,
 														 identifier=content_id)
 		else:
 			if el and el.getAttribute("content"):
-				if QElement.objects.filter(question__id=qaelement.id,
+				if sdm.QElement.objects.filter(question__id=qaelement.id,
 										   identifier=content_id).count() > 0:
-					question_qelements = QElement.objects.filter(question__id=qaelement.id,
+					question_qelements = sdm.QElement.objects.filter(question__id=qaelement.id,
 																 identifier=content_id)
-		
+
 		# Hmm, maybe not detecting copy correctly
 		if not el and question_qelements:
 			for q in question_qelements:
-				qe = QElement.objects.create(question=qaelement,
+				qe = sdm.QElement.objects.create(question=qaelement,
 											 identifier=el_id,
 											 syntax=q.syntax,
 											 gametype=qaelement.gametype)  # added by Heli
@@ -128,49 +130,49 @@ class Questions:
 				qe.save()
 				q.save()
 				return
-			
+
 		############### AGREEMENT
 		# Search for elementes that agree
 		agr_elements=None
 		if syntax=="MAINV":
 			agr_id="SUBJ"
 			print "\tTRYING verb agreement " + agr_id + " " + qaelement.qatype
-			if QElement.objects.filter(question=qaelement, syntax=agr_id,
+			if sdm.QElement.objects.filter(question=qaelement, syntax=agr_id,
 									   question__qatype=qaelement.qatype).count() > 0:
-				agr_elements = QElement.objects.filter(question=qaelement,
+				agr_elements = sdm.QElement.objects.filter(question=qaelement,
 													   syntax=agr_id,
 													   question__qatype=qaelement.qatype)
-		
+
 
 		agreement = ""
 		if el: agreement = el.getElementsByTagName("agreement")
 		if agreement: print "\tAgreement:", agreement[0].getAttribute("id")
-		
+
 		# Agreement from xml-files
 		# Try first inside question or answer
 		# Then in answer-question level
 		if agreement:
 			agr_id=agreement[0].getAttribute("id")
-			if QElement.objects.filter(question=qaelement, syntax=agr_id,
+			if sdm.QElement.objects.filter(question=qaelement, syntax=agr_id,
 									   question__qatype=qaelement.qatype).count() > 0:
-				agr_elements = QElement.objects.filter(question=qaelement,
+				agr_elements = sdm.QElement.objects.filter(question=qaelement,
 													   syntax=agr_id,
 													   question__qatype=qaelement.qatype)
-				
+
 			else:
-				if Question.objects.filter(id=qaelement.question_id).count() > 0:
-					q=Question.objects.filter(id=qaelement.question_id)[0]
-					if QElement.objects.filter(question__id=qaelement.question_id,
+				if sdm.Question.objects.filter(id=qaelement.question_id).count() > 0:
+					q = sdm.Question.objects.filter(id=qaelement.question_id)[0]
+					if sdm.QElement.objects.filter(question__id=qaelement.question_id,
 											   syntax=agr_id).count() > 0:
-						agr_elements = QElement.objects.filter(question__id=qaelement.question_id,
+						agr_elements = sdm.QElement.objects.filter(question__id=qaelement.question_id,
 															   syntax=agr_id)
 
 			if not agr_elements:
 				print "* ERROR: no agreement elements found"
-				
+
 		############ WORDS
 		# Search for existing word in the database.
-		if el: 
+		if el:
 			ids = el.getElementsByTagName("id")
 		else:
 			ids = list()
@@ -183,14 +185,14 @@ class Questions:
 			if word_id:
 				if word_id_hid:
 					print "\tfound word %s/%s" % (word_id, word_id_hid)
-					word_elements = Word.objects.filter(wordid=word_id, hid=int(word_id_hid))
+					word_elements = sdm.Word.objects.filter(wordid=word_id, hid=int(word_id_hid))
 				else:
 					print "\tfound word %s" % word_id
-					word_elements = Word.objects.filter(wordid=word_id)
+					word_elements = sdm.Word.objects.filter(wordid=word_id)
 				# Add pos information here!
 				if not word_elements:
 					print "\tWord not found! " + word_id
-					
+
 		# Search for existing semtype
 		# Semtype overrides the word id selection
 		if not word_elements:
@@ -199,22 +201,22 @@ class Questions:
 				semclasses = el.getElementsByTagName("sem")
 				if semclasses:
 					semclass = semclasses[0].getAttribute("class")
-					word_elements = Word.objects.filter(semtype__semtype=semclass)
+					word_elements = sdm.Word.objects.filter(semtype__semtype=semclass)
 			elif qaelement.question:
 				# check question for copy, grab semclasses
-				has_copies = QElement.objects.filter(question=qaelement.question,
+				has_copies = sdm.QElement.objects.filter(question=qaelement.question,
 								identifier=el_id)
 				if has_copies:
 					semclasses = has_copies.values_list('semtype__semtype', flat=True)
 					semclass = semclasses[0]
-					word_elements = Word.objects.filter(semtype__semtype=semclass)
+					word_elements = sdm.Word.objects.filter(semtype__semtype=semclass)
 
-			if el: 
+			if el:
 				valclasses = el.getElementsByTagName("val")
 
 				if valclasses:
 					valclass = valclasses[0].getAttribute("class")
-					word_elements = Word.objects.filter(valency=valclass)
+					word_elements = sdm.Word.objects.filter(valency=valclass)
 
 		# If still no words, get the default words for this element:
 		if not word_elements:
@@ -233,7 +235,7 @@ class Questions:
 		grammars = list()
 		not_found = []
 
-		if el: 
+		if el:
 			grammars = el.getElementsByTagName("grammar")
 
 		if not el or not grammars:
@@ -252,11 +254,11 @@ class Questions:
 			# they are copied from the grammar, which is not what should
 			# happen.
 
-			preceding = QElement.objects.filter(question=qaelement, 
+			preceding = sdm.QElement.objects.filter(question=qaelement,
 												identifier=el_id,)
-			
+
 			if qaelement.question:
-				has_copies = QElement.objects.filter(question=qaelement.question,
+				has_copies = sdm.QElement.objects.filter(question=qaelement.question,
 												 identifier=el_id,)
 			else:
 				has_copies = False
@@ -288,10 +290,10 @@ class Questions:
 			if tags:
 				tagstrings = self.get_tagvalues(tags)
 				if tagelements:
-					tagelements = tagelements or Tag.objects.filter(string__in=tagstrings)
+					tagelements = tagelements or sdm.Tag.objects.filter(string__in=tagstrings)
 				else:
-					tagelements = Tag.objects.filter(string__in=tagstrings)
-				
+					tagelements = sdm.Tag.objects.filter(string__in=tagstrings)
+
 				# print tagelements
 				# raw_input()
 
@@ -303,7 +305,7 @@ class Questions:
 					if not words.has_key('Pron'): break
 					found = False
 					for w in words['Pron'][:]:
-						corresponding_forms = Form.objects.filter(tag__in=tagelements,
+						corresponding_forms = sdm.Form.objects.filter(tag__in=tagelements,
 																	word=w)
 						if corresponding_forms.count() > 0:
 							found = True
@@ -315,7 +317,7 @@ class Questions:
 							possible_forms = [repr(w.lemma) + '+' + form.tag.string
 												for form in w.form_set.all()]
 							not_found.append(
-								(list(set(possible_forms)), 
+								(list(set(possible_forms)),
 								t.string)
 							)
 							words['Pron'].pop(words['Pron'].index(w))
@@ -323,16 +325,16 @@ class Questions:
 						tagelements = tagelements.exclude(id=t.id)
 
 			# Remove those words which do not have any forms with the tags.
-			if words.has_key('N'): 
+			if words.has_key('N'):
 				for w in words['N']:
 					found = False
 					for t in tagelements:
 						if t.pos == 'N':
-							if Form.objects.filter(tag=t, word=w).count()>0:
+							if sdm.Form.objects.filter(tag=t, word=w).count()>0:
 								found = True
 					if not found:
 						words['N'].remove(w)
-			
+
 		# Find different pos-values in tagelements
 		posvalues = {}
 		task = ""
@@ -350,7 +352,7 @@ class Questions:
 				raise TagError(self.infile_name, additional_messages)
 			return
 
-		if not tagelements: 
+		if not tagelements:
 			posvalues[""] = 1
 		else:
 			for t in tagelements:
@@ -389,7 +391,7 @@ class Questions:
 				# qaelement.task = syntax
 				# qaelement.save()
 				# attempt = True
-		
+
 		# if task:
 			# if qaelement.task != syntax:
 				# print 'TASK NOT SAVED'
@@ -405,11 +407,11 @@ class Questions:
 		print '\t' + repr(posvalues.keys())
 		# Add an element for each pos:
 		for p in posvalues.keys():
-			qe = QElement.objects.create(question=qaelement,\
+			qe = sdm.QElement.objects.create(question=qaelement,\
 										 identifier=el_id,\
-										 syntax=syntax)  
+										 syntax=syntax)
 			if semclass:
-				semty, _ = Semtype.objects.get_or_create(semtype=semclass)
+				semty, _ = sdm.Semtype.objects.get_or_create(semtype=semclass)
 				qe.semtype = semty
 				qe.save()
 			else:
@@ -417,7 +419,7 @@ class Questions:
 			if task:
 				qe.task=task
 				qe.save()
-			
+
 			print '\t\tsemtype: ', semclass
 			# Add links to corresponding question elements.
 			if question_qelements:
@@ -429,11 +431,11 @@ class Questions:
 			if tagelements:
 				for t in tagelements:
 					if semty:
-						ws_ = Word.objects.filter(semtype=semty)
+						ws_ = sdm.Word.objects.filter(semtype=semty)
 					elif word_elements:
 						ws_ = word_elements
 					else:
-						ws_ = Word.objects.all()
+						ws_ = sdm.Word.objects.all()
 
 					if ws_.filter(form__tag=t).count() == 0:
 						err_ = "tag:  %s" % t.string
@@ -453,13 +455,13 @@ class Questions:
 				word_pks = None
 				print "\tlooking for words..", el_id, p
 				# word_elements = Word.objects.filter(form__tag__in=qe.tags.all()) # pos=p)
-				
-				# Just filtering isn't enough; .filter() doesn't return a list of unique items with this kind of query. 
-				
+
+				# Just filtering isn't enough; .filter() doesn't return a list of unique items with this kind of query.
+
 				if semclass:
-					word_pks = Word.objects.filter(form__tag__in=qe.tags.all()).filter(semtype=qe.semtype).values_list('pk', flat=True)
+					word_pks = sdm.Word.objects.filter(form__tag__in=qe.tags.all()).filter(semtype=qe.semtype).values_list('pk', flat=True)
 				else:
-					word_pks = Word.objects.filter(form__tag__in=qe.tags.all()).values_list('pk', flat=True)
+					word_pks = sdm.Word.objects.filter(form__tag__in=qe.tags.all()).values_list('pk', flat=True)
 
 				word_pks = list(set(word_pks))
 				if len(word_pks) == 0:
@@ -470,9 +472,9 @@ class Questions:
 					print ' > semtypes: %s' % repr(qe.semtype)
 					sys.exit(2)
 				print '\t%d elements available. ' % len(word_pks)
-				
-				word_elements_gen = (Word.objects.get(pk=int(b)) for b in word_pks)
-				
+
+				word_elements_gen = (sdm.Word.objects.get(pk=int(b)) for b in word_pks)
+
 				if not word_elements:
 					word_elements = []
 				else:
@@ -486,7 +488,7 @@ class Questions:
 							words[w.pos] = []
 						words[w.pos].append(w)
 						word_elements.append(w)
-			
+
 			# print 'Creating elements for %d words' % word_elements.count()
 			for w in word_elements:
 				qe.wordqelement_set.create(word=w)
@@ -561,12 +563,12 @@ class Questions:
 			print "\n##"
 			print "### INSTALLING QUESTION: %s" % qid.encode('utf-8')
 			print "##\n"
-				
+
 			level = q.getAttribute('level')
 			if not level: level="1"
 			lemmacount = q.getAttribute('lemmacount')  # added by Heli
 			if not lemmacount: lemmacount="0"
-			
+
 			# Store question
 			qtype=""
 			qtype_els = q.getElementsByTagName("qtype")
@@ -579,17 +581,17 @@ class Questions:
 
 			#If there exists already a question with that name, delete all the references to it.
 			if qid:
-				questions = Question.objects.filter(qid=qid)
+				questions = sdm.Question.objects.filter(qid=qid)
 				if questions:
 					questions[0].delete()
 
-			question_element,created = Question.objects.get_or_create(qid=qid, \
+			question_element,created = sdm.Question.objects.get_or_create(qid=qid, \
 																	  level=int(level),lemmacount=int(lemmacount), \
 																	  string=text, \
 																	  qtype=qtype, \
 																	  gametype=gametype,\
 																	  qatype="question")
-			
+
 			# Add source information if present
 			if q.getElementsByTagName("sources"):
 				sources = q.getElementsByTagName("sources")[0]
@@ -599,38 +601,38 @@ class Questions:
 					if book:
 						# Add book to the database
 						# Leave this if DTD is used
-						book_entry, created = Source.objects.get_or_create(name=book)
+						book_entry, created = sdm.Source.objects.get_or_create(name=book)
 						if created:
 							print "\tCreated book entry with name ", book
 					question_element.source.add(book_entry)
-					question_element.save()					
+					question_element.save()
 
 			else:
 				book = "all"
 				# Add book to the database
-				book_entry, created = Source.objects.get_or_create(name=book)
+				book_entry, created = sdm.Source.objects.get_or_create(name=book)
 				if created:
 					print "\tCreated book entry with name ", book
 				question_element.source.add(book_entry)
 				question_element.save()
 
 			# Read the elements
-			self.read_elements(question, question_element,qtype)	
+			self.read_elements(question, question_element,qtype)
 
 			# There can be more than one answer for each question,
 			# Store them separately.
 			answers=q.getElementsByTagName("answer")
-			for ans in answers:				
+			for ans in answers:
 				text=ans.getElementsByTagName("text")[0].firstChild.data
-				answer_element = Question.objects.create(string=text,qatype="answer",question=question_element,level=1,lemmacount=0)
+				answer_element = sdm.Question.objects.create(string=text,qatype="answer",question=question_element,level=1,lemmacount=0)
 
 				answer_element.save()
 				self.read_elements(ans, answer_element, qtype)
-			db.reset_queries() 
+			db.reset_queries()
 
 
 	def read_grammar_defaults(self, infile):
-		""" Read a grammar file and make the results accessible in 
+		""" Read a grammar file and make the results accessible in
 		self.grammar_defaults
 
 		This has the structure:
@@ -651,7 +653,7 @@ class Questions:
 			</element>
 
 			{
-				'SUBJ': 
+				'SUBJ':
 			}
 		"""
 
@@ -672,7 +674,7 @@ class Questions:
 				if self.tagstrings:
 					msg += "    with the following expanded tag strings:\n"
 					msg += "      " + "      ".join(self.tagstrings)
-				
+
 				msg += "\n    Check that these words/forms are installed"
 				return msg
 
@@ -680,10 +682,10 @@ class Questions:
 
 			Error = GrammarDefaultError
 
-			def __init__(self, 
-						poses=False, 
-						tags=False, 
-						words=False, 
+			def __init__(self,
+						poses=False,
+						tags=False,
+						words=False,
 						syntax=False):
 
 				self.tags = tags or list()
@@ -712,35 +714,35 @@ class Questions:
 
 			def __repr__(self):
 				return '<GrammarDefault: %s>' % str(self)
-	
+
 		xmlfile = file(infile)
 		tree = _dom.parse(infile)
 
 		self.grammar_defaults = {}
-		
+
 		tags = tree.getElementsByTagName("tags")[0]
 		elements = tags.getElementsByTagName("element")
 
 		for el in elements:
 			identifier = el.getAttribute("id")
-			
+
 			grammar_default = GrammarDefault()
-			
+
 			word_id = None
 			word = None
-			
+
 			syntax = ""
 			syntaxes = el.getElementsByTagName("syntax")
 			if syntaxes:
 				syntax = syntaxes[0].firstChild.data
 				grammar_default.syntax = syntax
-				
+
 			word_ids = el.getElementsByTagName("id")
 			if word_ids:
 				word_id = word_ids[0].firstChild.data
 				word_id_hid = word_ids[0].getAttribute("hid").strip()
 				if word_id:
-					words = Word.objects.filter(wordid=word_id)
+					words = sdm.Word.objects.filter(wordid=word_id)
 					if word_id_hid:
 						words = words.filter(hid=int(word_id_hid))
 					grammar_default.words = words
@@ -757,18 +759,18 @@ class Questions:
 				tagstrings.extend(self.get_tagvalues([tag]))
 
 			if len(tagstrings) > 0:
-				tags = Tag.objects.filter(string__in=tagstrings)
+				tags = sdm.Tag.objects.filter(string__in=tagstrings)
 				if tags.count() == 0:
 					tag_elements = ', '.join([e.toprettyxml() for e in grammars])
 					raise GrammarDefault.Error(element=tag_elements,
 												tagstrings=tagstrings)
 				else:
 					grammar_default.tags = tags
-				
+
 			self.grammar_defaults[identifier] = grammar_default
 
 	def get_tagvalues(self, tags):
-		""" This alters state of things without returning objects 
+		""" This alters state of things without returning objects
 
 			Recurses through set of supplied tags to ensure that each element
 			is represented in tags.txt and paradigms.txt. """
@@ -790,10 +792,10 @@ class Questions:
 
 			tag_string = []
 			for item in tag.split('+'):
-				if Tagname.objects.filter(tagname=item).count() > 0:
+				if sdm.Tagname.objects.filter(tagname=item).count() > 0:
 					tag_string.append(item)
-				elif Tagset.objects.filter(tagset=item).count() > 0:
-					tagnames = Tagname.objects.filter(tagset__tagset=item)
+				elif sdm.Tagset.objects.filter(tagset=item).count() > 0:
+					tagnames = sdm.Tagname.objects.filter(tagset__tagset=item)
 					tag_string.append([t.tagname for t in tagnames])
 				else:
 					tag_string.append(item)
@@ -812,14 +814,14 @@ class Questions:
 			return False
 
 	def delete_question(self, qid=None):
-		
+
 		if qid:
-			questions = Question.objects.filter(qid=qid)
+			questions = sdm.Question.objects.filter(qid=qid)
 			if questions:
 				for q in questions:
 					q.delete()
 
-			questions = Question.objects.filter(string=qid)
+			questions = sdm.Question.objects.filter(string=qid)
 			if questions:
 				for q in questions:
 					q.delete()
