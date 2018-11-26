@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+settings = importlib.import_module(LLL1+'_oahpa.settings')
+sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
 
 import sys
-from univ_drill.models import *
 from xml.dom import minidom as _dom
 from django.db.models import Q
 from django.utils.encoding import force_unicode
@@ -17,7 +20,7 @@ class Sahka:
     def add_wordlist(self,word,t):
         #cgfile="/opt/smi/sme/bin/sme-ped.cg3"  # on victorio
         #cgfile="../sme/src/sme-ped.cg3" # relative path, for local use
-        cgfile = settings.FST_DIRECTORY + "/sme-ped.cg3"
+        cgfile = settings.FST_DIRECTORY + '/'+LLL1+'ped.cg3'
 
         wordclass = word.getAttribute("class")
         print wordclass
@@ -34,8 +37,8 @@ class Sahka:
                     w = w.strip("\"")
                     w = w.replace('#','')
                     print w
-                    if Form.objects.filter(fullform=w).count()>0:
-                        word = Form.objects.filter(fullform=w)[0]
+                    if sdm.Form.objects.filter(fullform=w).count()>0:
+                        word = sdm.Form.objects.filter(fullform=w)[0]
                         t.formlist.add(word)
                         t.save()
                     else:
@@ -52,7 +55,7 @@ class Sahka:
         tree = _dom.parse(infile)
 
         dialogue_name = tree.getElementsByTagName("dialogue")[0].getAttribute("name")
-        d, created = Dialogue.objects.get_or_create(name=dialogue_name)
+        d, created = sdm.Dialogue.objects.get_or_create(name=dialogue_name)
         
         #If there exists already a dialogue with that name, delete all the references to it.
         if not created:
@@ -66,7 +69,7 @@ class Sahka:
             topicname = topic.getAttribute("name")
             image = topic.getAttribute("image")
 
-            t, created = Topic.objects.get_or_create(topicname=topicname,dialogue=d)
+            t, created = sdm.Topic.objects.get_or_create(topicname=topicname,dialogue=d)
             t.number=topicnum
             t.image=image
             t.save()
@@ -146,7 +149,7 @@ class Sahka:
                 utts.append(utterance)
                 
             for u in utts:
-                utt, created = Utterance.objects.get_or_create(utterance=u['text'], utttype=u['type'], topic=t, name=u['name'], facit=u['facit'])
+                utt, created = sdm.Utterance.objects.get_or_create(utterance=u['text'], utttype=u['type'], topic=t, name=u['name'], facit=u['facit'])
                 if u['word']:
                     _msg = "Adding wordlist " + u['text']
                     print >> sys.stdout, _msg.encode('utf-8')
@@ -157,11 +160,11 @@ class Sahka:
                 if u.has_key('elements'):
                     tag=None
                     if u['elements']['tag']:
-                        if Tag.objects.filter(string=u['elements']['tag']).count()>0:
-                            tag = Tag.objects.filter(string=u['elements']['tag'])[0]
+                        if sdm.Tag.objects.filter(string=u['elements']['tag']).count()>0:
+                            tag = sdm.Tag.objects.filter(string=u['elements']['tag'])[0]
                         else:
                             print "*******ERRROR: tag not found", u['elements']['tag'] 
-                    uelement, created = UElement.objects.get_or_create(syntax=u['elements']['id'],\
+                    uelement, created = sdm.UElement.objects.get_or_create(syntax=u['elements']['id'],\
                                                                        tag=tag,\
                                                                        utterance=utt)
 
@@ -169,12 +172,12 @@ class Sahka:
 
             # create an opening or closing if not exist:
             if not opening: 
-                utt, created = Utterance.objects.get_or_create(utterance="",\
+                utt, created = sdm.Utterance.objects.get_or_create(utterance="",\
                                                                utttype="opening",\
                                                                topic=t,)
                 utt.save()
             if not closing: 
-                utt, created = Utterance.objects.get_or_create(utterance="",\
+                utt, created = sdm.Utterance.objects.get_or_create(utterance="",\
                                                                utttype="closing",\
                                                                topic=t,)
                 utt.save()
@@ -182,19 +185,19 @@ class Sahka:
             topicutts[topicname] = utts
 
         for tname in topicutts:
-            t = Topic.objects.get(topicname=tname,dialogue=d)
+            t = sdm.Topic.objects.get(topicname=tname,dialogue=d)
             for u in topicutts[tname]:
                 utterance2=None
                 next_utterance=None
                 linkutt0=None
                 linkutt=None
                 linkutt2=None
-                utterance = Utterance.objects.get(name=u['name'],topic=t)
+                utterance = sdm.Utterance.objects.get(name=u['name'],topic=t)
                 print utterance.utterance
                 if u['link']:
-                    next_utterance = Utterance.objects.get(Q(name=u['link']) & Q(topic__dialogue=t.dialogue))
+                    next_utterance = sdm.Utterance.objects.get(Q(name=u['link']) & Q(topic__dialogue=t.dialogue))
                     print "..linking to", next_utterance.utterance
-                    linkutt0, created = LinkUtterance.objects.get_or_create(link=next_utterance,target="default")
+                    linkutt0, created = sdm.LinkUtterance.objects.get_or_create(link=next_utterance,target="default")
                     linkutt0.save()
                     utterance.links.add(linkutt0)
                     utterance.save()
@@ -205,11 +208,11 @@ class Sahka:
                         #print t.dialogue.name
                         #print t.dialogue.id
                         #print utterance.id
-                        next_utterance = Utterance.objects.get(Q(name=a['link']) & Q(topic__dialogue=t.dialogue))
+                        next_utterance = sdm.Utterance.objects.get(Q(name=a['link']) & Q(topic__dialogue=t.dialogue))
                         #print next_utterance.topic.dialogue.id
 
                     if a['text']:
-                        utterance2, created = Utterance.objects.get_or_create(utterance=a['text'],\
+                        utterance2, created = sdm.Utterance.objects.get_or_create(utterance=a['text'],\
                                                                               utttype='text',\
                                                                               topic=t)
                         utterance2.save()
@@ -218,25 +221,25 @@ class Sahka:
                         if a.has_key('elements'):
                             tag=None
                             if a['elements']['tag']:
-                                if Tag.objects.filter(string=a['elements']['tag']).count()>0:
-                                    tag = Tag.objects.filter(string=a['elements']['tag'])[0]
+                                if sdm.Tag.objects.filter(string=a['elements']['tag']).count()>0:
+                                    tag = sdm.Tag.objects.filter(string=a['elements']['tag'])[0]
                                 else:
                                     print "*******ERRROR: tag not found", a['elements']['tag'] 
-                            uelement, created = UElement.objects.get_or_create(syntax=a['elements']['id'],\
+                            uelement, created = sdm.UElement.objects.get_or_create(syntax=a['elements']['id'],\
                                                                                tag=tag,\
                                                                                utterance=utterance2)
                             uelement.save()
 
                             
                         if a['link']:
-                            linkutt2, created = LinkUtterance.objects.get_or_create(link=next_utterance,\
+                            linkutt2, created = sdm.LinkUtterance.objects.get_or_create(link=next_utterance,\
                                                                                     target="default")
                             linkutt2.save()
                             utterance2.links.add(linkutt2)
                             utterance2.save()
                         
                         # If the alternative contains text, create a new utterance out of it:
-                        linkutt, created = LinkUtterance.objects.get_or_create(link=utterance2,\
+                        linkutt, created = sdm.LinkUtterance.objects.get_or_create(link=utterance2,\
                                                                                target=a['target'], \
                                                                                variable=a['variable'],\
                                                                                constant=a['constant'])
@@ -247,7 +250,7 @@ class Sahka:
 
                     else:
                         if a ['link']:
-                            linkutt, created = LinkUtterance.objects.get_or_create(link=next_utterance,\
+                            linkutt, created = sdm.LinkUtterance.objects.get_or_create(link=next_utterance,\
                                                                                    target=a['target'], \
                                                                                    variable=a['variable'], \
                                                                                    constant=a['constant'])
