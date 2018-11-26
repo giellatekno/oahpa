@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
 
-from univ_oahpa.univ_drill.models import *
-from univ_oahpa.univ_drill.forms import *
+from models import *
+from forms import *
 
-from univ_oahpa.conf.tools import switch_language_code
+switch_language_code = oahpa_module.conf.tools.switch_language_code
 
 from django.db.models import Q, Count
 from django.http import HttpResponse, Http404
@@ -16,30 +19,27 @@ import os
 import re
 import itertools
 
-import univ_oahpa.settings
+settings = oahpa_module.settings
+LLL1 = settings.LLL1
 
 from random import choice
 from .forms import PRONOUNS_LIST
 
-try:
-	L1 = univ_oahpa.settings.L1
-except:
-	L1 = 'sme'
 
 try:
-	LOOKUP_TOOL = univ_oahpa.settings.LOOKUP_TOOL
+	LOOKUP_TOOL = settings.LOOKUP_TOOL
 except:
 	LOOKUP_TOOL = 'lookup'
 
 
 
 try:
-	FST_DIRECTORY = univ_oahpa.settings.FST_DIRECTORY
+	FST_DIRECTORY = settings.FST_DIRECTORY
 except:
 	FST_DIRECTORY = False
 
 try:
-	DEFAULT_DIALECT = univ_oahpa.settings.DEFAULT_DIALECT
+	DEFAULT_DIALECT = settings.DEFAULT_DIALECT
 except:
 	DEFAULT_DIALECT = None
 
@@ -95,12 +95,12 @@ class Game(object):
 		# .has_key deprecated, is there a way to use in with this?
 		if not self.settings.has_key('gametype'):
 			self.settings['gametype'] = "bare"
-		
+
 		if self.settings['gametype'] == "bare" and self.settings.has_key('pron_type') and self.settings['pron_type'] in ['Rel', 'Dem']:
 			self.num_fields = 4
-            
-		
-		if self.settings['gametype'] == "bare" and self.settings['pos'] == 'A' and self.settings.has_key('book'): 
+
+
+		if self.settings['gametype'] == "bare" and self.settings['pos'] == 'A' and self.settings.has_key('book'):
 			if self.settings['book'] == "d1":
 				self.num_fields = 4
 
@@ -126,7 +126,7 @@ class Game(object):
 				# db_info = {}
 				# db_info['userans'] = ""
 				# db_info['correct'] = ""
-				
+
 				# errormsg = self.get_db_info(db_info)
 
 				# form, word_id = self.create_form(db_info, i, 0)
@@ -136,26 +136,26 @@ class Game(object):
 		# Use this to make sure that pronouns don't have repeated
 		# pronouns
 		existing_tags = []
-		
+
 		# Can this be changed? Self.create_form should go without fail.
 		tries = 0
-		maxtries = 40 
-		
+		maxtries = 40
+
 		while i < self.num_fields and len(self.form_list) < 5 and tries < maxtries:
 			tries += 1
 			db_info = {}
 			db_info['userans'] = ""
 			db_info['correct'] = ""
-			
+
 			errormsg = self.get_db_info(db_info)
-			
+
 			if errormsg and errormsg == "error":
 				# i = i+1
 				continue
 				# raise Http404(errormsg)
-			
+
 			form = None
-			
+
 			try:
 				form, word_id = self.create_form(db_info, i, 0)
 			except Http404, e:
@@ -164,7 +164,7 @@ class Game(object):
 				continue
 			possible_max = db_info.get('possible_question_count', 50)
 			print possible_max
-						
+
 			# Do not generate same question twice for Morfa-S
 			if word_id:
 				num = num + 1
@@ -190,42 +190,42 @@ class Game(object):
 					q_ids.append(q_id)
 			self.form_list.append(form)
 			i = i+1
-		
+
 		# print len(self.form_list)
 		if tries == maxtries:
 			raise Http404('No questions were able to be generated.')
 		if not self.form_list:
 			# No questions found, so the quiz_id must have been bad.
 			raise Http404('Invalid quiz id.')
-		
+
 	def search_info(self, reObj, string, value, words, t_type):
 		matchObj = reObj.search(string)
 		if matchObj:
 			syntax = matchObj.expand(r'\g<syntaxString>')
 			if not words.has_key(syntax):
 				words[syntax] = {}
-			
+
 			words[syntax][t_type] = value
 		return words
-	
-				
+
+
 	def check_game(self, data=None):
 		db_info = {}
-		
+
 		question_tagObj = re.compile(r'^question_tag_(?P<syntaxString>[\w\-]*)$', re.U)
 		question_wordObj = re.compile(r'^question_word_(?P<syntaxString>[\w\-]*)$', re.U)
 		question_fullformObj = re.compile(r'^question_fullform_(?P<syntaxString>[\w\-]*)$', re.U)
 		answer_tagObj = re.compile(r'^answer_tag_(?P<syntaxString>[\w\-]*)$', re.U)
 		answer_wordObj = re.compile(r'^answer_word_(?P<syntaxString>[\w\-]*)$', re.U)
 		answer_fullformObj = re.compile(r'^answer_fullform_(?P<syntaxString>[\w\-]*)$', re.U)
-		
+
 		answer_taskwordObj = re.compile(r'^answer_taskword_(?P<syntaxString>[\w\-]*)$', re.U)  # added by Heli
-		
+
 		targetObj = re.compile(r'^target_(?P<syntaxString>[\w\-]*)$', re.U)
-		
+
 		# Collect all the game targets as global variables
 		self.global_targets = {}
-		
+
 		# If POST data was data check, regenerate the form using ids.
 		# This iterates through forms in list of forms
 		for n in range (1, self.num_fields):
@@ -233,14 +233,14 @@ class Game(object):
 			qwords = {}
 			awords = {}
 			tmpawords = {}
-			
+
 			# This compiles a dictionary from all of the form fields
-				# {u'answer': u'', 
-				# u'userans': u'empty', 
-				# u'correct': u'empty', 
-				# u'tag_id': u'66', 
+				# {u'answer': u'',
+				# u'userans': u'empty',
+				# u'correct': u'empty',
+				# u'tag_id': u'66',
 				# u'word_id': u'628'}
-			
+
 			for fieldname, value in data.items():
 				# print >> DEBUG, d, value
 				if fieldname.count(str(n) + '-') > 0:
@@ -248,25 +248,25 @@ class Game(object):
 					qwords = self.search_info(question_tagObj, fieldname, value, qwords, 'tag')
 					qwords = self.search_info(question_wordObj, fieldname, value, qwords, 'word')
 					qwords = self.search_info(question_fullformObj, fieldname, value, qwords, 'fullform')
-					
+
 					tmpawords = self.search_info(answer_tagObj, fieldname, value, tmpawords, 'tag')
 					tmpawords = self.search_info(answer_wordObj, fieldname, value, tmpawords, 'word')
-					tmpawords = self.search_info(answer_fullformObj, fieldname, value, tmpawords, 'fullform')					
+					tmpawords = self.search_info(answer_fullformObj, fieldname, value, tmpawords, 'fullform')
 					tmpawords = self.search_info(answer_taskwordObj, fieldname, value, tmpawords, 'taskword')  # added by Heli
-					
+
 					self.global_targets = self.search_info(targetObj, fieldname, value, self.global_targets, 'target')
-					
+
 					db_info[fieldname] = value
-					
-			
-			
+
+
+
 			# This appears to not be used for leksa and morfa
 			# Or if it is to be used with morfa, last stanza has problem.
 			# Furthermore, qwords has no keys, and thus doesn't iterate.
 			for syntax in qwords.keys():
 				if qwords[syntax].has_key('fullform'):
 					qwords[syntax]['fullform'] = [qwords[syntax]['fullform']]
-			
+
 			# This also appears to not be used for leksa and morfa
 			# Or else there's a problem in the initial forloop.
 			# Dictionary here comes out empty.
@@ -289,9 +289,9 @@ class Game(object):
 			db_info['global_targets'] = self.global_targets
 			#print "db_info['awords'] in check_game "
 			#print db_info['awords']
-			
+
 			new_db_info = {}
-			
+
 			# Generate possible answers for contextual Morfa.
 			if self.settings.has_key('gametype') and self.settings['gametype'] == 'context':
 				new_db_info = self.get_db_info(db_info)
@@ -301,32 +301,32 @@ class Game(object):
 			if form:
 				self.form_list.append(form)
                         #print form
-	
+
 	def get_score(self, data):
-		
+
 		# Add correct forms for words to the page
 		if "show_correct" in data:
 			self.show_correct = 1
-			
+
 			for form in self.form_list:
 				form.set_correct()
-				
+
 				self.count = 2
-		
+
 		# Count correct answers:
 		self.all_correct = 0
 		self.score = ""
 		self.comment = ""
 		i = 0
-		
+
 		points = sum([1 for form in self.form_list if form.error == "correct"])
-		
+
 		if points == len(self.form_list):
 			self.all_correct = 1
-		
+
 		if self.show_correct or self.all_correct:
 			self.score = self.score.join([repr(i), "/", repr(len(self.form_list))])
-		
+
 		if (self.show_correct or self.all_correct) and not self.settings['gametype'] == 'qa' :
 			if i == 2:
 				i = 3
@@ -334,25 +334,25 @@ class Game(object):
 				i = 2
 			if self.settings.has_key('language'):
 				language = switch_language_code(self.settings['language'])
-				
+
 				com_count = Comment.objects.filter(Q(level=i) & Q(lang=language)).count()
 				if com_count > 0:
 					self.comment = Comment.objects.filter(Q(level=i) & Q(lang=language))[randint(0,com_count-1)].comment
-		
+
 		self.score = '%d/%d' % (points, len(self.form_list))
 
 
 class BareGame(Game):
-	
+
 	casetable = {
-		'NOMPL': 'Nom', 
+		'NOMPL': 'Nom',
 		'ATTR': 'Attr',
-		'PRED': 'Pred', 
-		'N-ILL': 'Ill', 
-		'N-ESS': 'Ess', 
+		'PRED': 'Pred',
+		'N-ILL': 'Ill',
+		'N-ESS': 'Ess',
 		'N-GEN': 'Gen',
 		'N-LOC': 'Loc',
-		'N-ACC': 'Acc', 
+		'N-ACC': 'Acc',
 		'N-COM': 'Com',
 		'N-NOM': 'Nom',
 		'A-ATTR': 'Attr',
@@ -362,9 +362,9 @@ class BareGame(Game):
 		'CARD': '', # CARD, ORD, COLL added for implementing num_type choice
 		'ORD': 'A+Ord',
 		'COLL': 'N+Coll',
-		'N-PX-GROUP1': 'Nom', # TODO: populate case in similar way to pronouns 
-		'N-PX-GROUP2': 'Acc', # was: Nom TODO: populate case in similar way to pronouns 
-		'N-PX-GROUP3': 'Nom', # TODO: populate case in similar way to pronouns 
+		'N-PX-GROUP1': 'Nom', # TODO: populate case in similar way to pronouns
+		'N-PX-GROUP2': 'Acc', # was: Nom TODO: populate case in similar way to pronouns
+		'N-PX-GROUP3': 'Nom', # TODO: populate case in similar way to pronouns
 		'pers1': '1',
 		'pers2': '2',
 		'pers3': '3',
@@ -372,7 +372,7 @@ class BareGame(Game):
 		'V-DER-PASS': '',
 		'': '',
 	}
-	
+
 	def get_db_info_new(self, db_info):
 
 		from .forms import GAME_TYPE_DEFINITIONS
@@ -404,7 +404,7 @@ class BareGame(Game):
 
 		game_types = GAME_TYPE_DEFINITIONS.get(pos, False)
 		game_filters = GAME_FILTER_DEFINITIONS.get(pos, False)
-		
+
 		if not game_types:
 			raise Http404("Undefined POS in game_type_definitions")
 
@@ -453,7 +453,7 @@ class BareGame(Game):
 					if possessive_type:
 						semtypes = POSSESSIVE_CHOICE_SEMTYPES[possessive_type]
 						random_form = random_form.filter(word__semtype_semtype__in=semtypes)
-					
+
 				if filter_ == 'source':
 					source = True and self.settings.get('book') or False
 					if source:
@@ -476,8 +476,8 @@ class BareGame(Game):
 							sylls.append('Csyll')
 
 					random_form = random_form.filter(word__stem__in=sylls)
-					
-			# If there are forms left, we select one 
+
+			# If there are forms left, we select one
 			if random_form.count() > 0:
 				no_forms = False
 				break
@@ -488,7 +488,7 @@ class BareGame(Game):
 				random_form = tag.form_set.order_by('?')
 				failure_count += 1
 				continue
-		
+
 		random_form = random_form[0]
 		db_info['word_id'] = random_form.word.id
 		db_info['tag_id'] = tag.id
@@ -538,7 +538,7 @@ class BareGame(Game):
 		if self.settings.has_key('num_level'):
 			num_level = self.settings['num_level']
 		if self.settings.has_key('num_type'):  # added by Heli
-			num_type = self.settings['num_type']	
+			num_type = self.settings['num_type']
 		if self.settings.has_key('grade'):
 			grade = self.settings['grade']
 
@@ -566,19 +566,19 @@ class BareGame(Game):
 				sylls.append('3syll')
 			if item in Csyl:
 				sylls.append('Csyll')
-		
+
 		if pos == 'Pron':
 			syll = ['']
 
 		if pos == 'Px':
 			syll = bisyl + trisyl + Csyl
-		
+
 		if pos == 'Px':
 			# Hacky, if possessive_case is not set, then we can assume
 			# it's nominative for the one type where nominative exists (FAMILY)
 			if not possessive_case:
-			     possessive_case = 'N-NOM' 
-			elif possessive_case == 'N-NOM' and possessive_type == 'N-PX-GROUP2':   # to avoid the crash with case=NOM, type=OTHER 
+			     possessive_case = 'N-NOM'
+			elif possessive_case == 'N-NOM' and possessive_type == 'N-PX-GROUP2':   # to avoid the crash with case=NOM, type=OTHER
 				possessive_case = 'N-ACC'
 			case = self.casetable[possessive_case]
 			possessive_person = self.casetable[possessive_person]
@@ -587,7 +587,7 @@ class BareGame(Game):
 
 		grade = self.casetable[grade]
 		num_type = self.casetable[num_type] # added by Heli
-		
+
 		pos_mood_tense = {
 			"PRS":	("Ind", "Prs", ""),
 			"PRT":	("Ind", "Prt", ""),
@@ -597,10 +597,10 @@ class BareGame(Game):
 			"IMPRT":  ("Imprt", "", ""),
 			"POT":	("Pot", "Prs", "")
 		}
-		
+
 		if pos == "V" and self.settings.has_key('vtype'):
 			mood, tense, infinite = pos_mood_tense[self.settings['vtype']]
-		
+
 		pos2 = ''
 		subclass = ''
 		if pos == "Num":
@@ -614,18 +614,18 @@ class BareGame(Game):
 				#self.settings['pos'] = 'N'
 				pos2 = 'Num'
 				subclass='Coll'
-		
+
 		number = ["Sg","Pl",""]
-		
+
 		if case == "Ess":
-			number = [""] 
+			number = [""]
 		elif case == "Nom" and pos != "Pron":
 			number = ["Pl"]
 		else:
 			number = ["Sg","Pl"]
-		
+
 		# A+Sg+Nom
-		
+
 		# following values are in grade
 		# A+Comp+Sg+Nom
 		# A+Superl+Sg+Nom
@@ -633,19 +633,19 @@ class BareGame(Game):
 		# following value is in case
 		# A+Attr
 		if pos == 'A':
-			if "Attr" in [attributive, case]: 
+			if "Attr" in [attributive, case]:
 				attributive = "Attr"
-				case = "" 
-				number = [""]  	
-		
+				case = ""
+				number = [""]
+
 		maxnum, i = 20, 0
-		
+
 		TAG_QUERY = Q(pos=pos)
-		
+
 		# Exclude derivations by default
 		TAG_EXCLUDES = Q(subclass__contains='Der')
 		# TODO: Px ?
-		
+
 		FORM_FILTER = False
 
 		# Query filtering on words
@@ -668,7 +668,7 @@ class BareGame(Game):
 				# 'Der/AV': parse_tag("A+Der/AV+V+Mood+Tense+Person-Number"),
 				#'A-DER-V': parse_tag("A+Der/AV+V+Ind+Prs+Person-Number-ConNeg"),
 				# generalisation: Tense to enable both Prs and Prt
-				'A-DER-V': parse_tag("A+Der/AV+V+Mood+Tense+Person-Number"), 
+				'A-DER-V': parse_tag("A+Der/AV+V+Mood+Tense+Person-Number"),
 				'V-DER-PASS': parse_tag("V+Der/PassL+V+Ind+Tense+Person-Number-ConNeg"),
 			}
 
@@ -706,7 +706,7 @@ class BareGame(Game):
 				TAG_EXCLUDES = False
 			#TAG_QUERY = Q(string__in=p_type)
 			TAG_QUERY = Q(possessive__endswith=possessive_person, number__in=p_number)
-			
+
 			sylls = False
 			source = False
 
@@ -718,7 +718,7 @@ class BareGame(Game):
 			if pos == 'N':
 				if singular_only:   # if the user has checked the box "singular only"
 					TAG_QUERY = TAG_QUERY & Q(number='Sg') & Q(possessive="")
-				else:		
+				else:
 					TAG_QUERY = TAG_QUERY & \
 							Q(possessive="") & \
 							Q(number__in=number) # number sg or pl; exclude possessive forms
@@ -732,14 +732,14 @@ class BareGame(Game):
 				sylls = False
 				TAG_QUERY = TAG_QUERY & Q(subclass=subclass)
 			else:
-				TAG_QUERY = TAG_QUERY & Q(subclass='')  
-			
+				TAG_QUERY = TAG_QUERY & Q(subclass='')
+
 		if pos == 'Num' or pos2 == 'Num':
 			if num_level == '1':  # Numerals in Sg on level 1
 				TAG_QUERY = TAG_QUERY & Q(number='Sg')
 			else:  # Numerals in both Sg and Pl on level 1-2
 				TAG_QUERY = TAG_QUERY & Q(number__in=['Sg','Pl'])
-								
+
 		if pos == 'V':
 			TAG_QUERY =  TAG_QUERY & \
 							Q(tense=tense) & \
@@ -753,7 +753,7 @@ class BareGame(Game):
 
 			if tense != 'Prs':
 				TAG_EXCLUDES = Q(string__contains='ConNeg')
-			
+
 		if pos == 'A':
 			if pos2 == 'Num':
 				sylls = False
@@ -768,7 +768,7 @@ class BareGame(Game):
 		if pos == 'Px':
 			TAG_QUERY = TAG_QUERY & Q(case=case)
 			morfas_log.info(pos+" "+case+" ")
-		
+
 		# filter can include several queries, exclude must have only one
 		# to work successfully
 		if pos != 'Der':
@@ -783,7 +783,7 @@ class BareGame(Game):
 
 		if TAG_EXCLUDES:
 			tags = tags.exclude(TAG_EXCLUDES)
-		
+
 		if pos == 'Px':
 			tags = tags.annotate(pxc=Count('form')).exclude(pxc=0)
 
@@ -800,7 +800,7 @@ class BareGame(Game):
 				error += "\nexcludes: %s" % TAG_EXCLUDES
 
 			raise Http404(error)
-		
+
 		if pos == 'Num' or pos2 == 'Num':
 			QUERY = Q(pos__iexact=pos) & Q(form__tag__subclass=subclass)
 		else:
@@ -808,21 +808,21 @@ class BareGame(Game):
 			QUERY = Q(pos__iexact=pos) & Q(stem__in=syll)
 			if source and source not in ['all', 'All']:
 				QUERY = QUERY & Q(source__name=source)
-			
-		
+
+
 		smallnum = ["okta", "guokte", "golbma", "njeallje", "vihtta", "guhtta",
 					"čieža", "gávcci","ovcci","logi"]
 		smallnum_ord = ["vuosttaš", "nubbi", "goalmmát", "njealját", "viđát",
 						"guđát", "čihččet", "gávccát", "ovccát", "logát"]
 		smallnum_coll = ["guovttis", "guovttes", "golmmas", "njealjis",
 						"viđás", "guđás", "čiežas", "gávccis","ovccis","logis"]
-		
+
 		if pos == 'Num' and subclass == '':
 			QUERY = QUERY & Q(lemma__in=smallnum)
-			  
+
 		if pos2 == 'Num' and subclass == 'Ord':
 			QUERY = QUERY & Q(lemma__in=smallnum_ord)
-					  				
+
 		error = """Morfa.get_db_info: Database is improperly loaded.
 		There are no Words, Tags or Forms, or the query
 		is not returning any."""
@@ -845,7 +845,7 @@ class BareGame(Game):
 				if tag.pos == 'Pron':
 					tag = tags.order_by('?')[0]
 
-				random_word = tag.form_set.filter(word__language=L1)
+				random_word = tag.form_set.filter(word__language=LLL1)
 
 				if not tag.pos in ['Pron', 'Num'] and \
 					tag.string.find('Der') < 0:
@@ -861,7 +861,7 @@ class BareGame(Game):
 					random_word = random_word.filter(word__semtype__semtype__in=semtypes)
 				if pos2 == 'Num':
 					if subclass == 'Ord':
-						random_word = random_word.filter(word__lemma__in=smallnum_ord)  # added to constrain the set of ordinal numerals 
+						random_word = random_word.filter(word__lemma__in=smallnum_ord)  # added to constrain the set of ordinal numerals
 					elif subclass == 'Coll':
 						random_word = random_word.filter(word__lemma__in=smallnum_coll) # constrains the set of collective numerals
 
@@ -901,8 +901,8 @@ class BareGame(Game):
 				error += "\n  Tag Query: %s" % repr(TAG_QUERY)
 				raise Http404(error)
 		return
-	
-	
+
+
 	def create_form(self, db_info, n, data=None):
 		if not db_info.has_key('word_id'):
 			return None, None
@@ -924,7 +924,7 @@ class BareGame(Game):
 		tag = Tag.objects.get(id=db_info['tag_id'])
 
 		# A little exception for derivation, we want to be able to accept PassS
-		# and PassL, but show only PassL in the answers. 
+		# and PassL, but show only PassL in the answers.
 
 		# Get the initial form list of forms matching the tag and word id
 		if pos == 'Pron':
@@ -944,9 +944,9 @@ class BareGame(Game):
 		# TODO: Px
 		else:
 			form_list = word.form_set.filter(tag=tag)
-        
+
 		form_list = form_list.exclude(word__dialects__dialect=wrong_dialect)  # take into account the dialect information attached to the Word objects
-		
+
 		if not form_list:
 			raise Form.DoesNotExist
 
@@ -956,34 +956,34 @@ class BareGame(Game):
 		# TODO: Px
 
 		correct = form_list[0]
-		
-		# Due to the pronoun ambiguity potential (gii 'who', gii 'which'), 
+
+		# Due to the pronoun ambiguity potential (gii 'who', gii 'which'),
 		# we need to make sure that the word is the right one.
 		if pos == 'Pron':
 			word = correct.word
-		
-		
+
+
 		# Get baseform, matching number; except for in essive where
 		# there is no number, and with Nominative, where the test is
-		# about turning nominative singular into nominative plural, 
+		# about turning nominative singular into nominative plural,
 		# thus all baseforms should be singular.
 
 		if tag.case in ['Ess', 'Nom'] or tag.attributive:
 			match_number = False
 		else:
 			match_number = True
-		
+
 		def baseformFilter(form):
 			#   Get baseforms, and filter based on dialects.
-				
-			#	NOTE: Need to use getBaseform on Form object, not Word, 
+
+			#	NOTE: Need to use getBaseform on Form object, not Word,
 			#	because Word.getBaseform doesn't pay attention to number.
-			
+
 			if self.settings.has_key('dialect'):
 				UI_Dialect = self.settings['dialect']
 			else:
 				UI_Dialect = DEFAULT_DIALECT
-						
+
 			# Derived forms need return_all=False otherwise derived infinitive
 			# forms may be returned, and we need them to be underived in
 			# presentation of the question wordform.
@@ -993,7 +993,7 @@ class BareGame(Game):
 				except:
 					bfs = [form.word]
 				return bfs
-			
+
 			if pos == 'Px':
 				try:
 					bfs = form.getBaseform(match_num=match_number, return_all=False)
@@ -1008,15 +1008,15 @@ class BareGame(Game):
 			     excluded = excluded.exclude(tag__string__icontains="Px")  # added to avoid possessive forms N+Sg+Nom+PxSg1 as base forms
 			if excluded.count() == 0:
 				excluded = bfs
-			#print excluded	
+			#print excluded
 			filtered = excluded.filter(dialects__dialect=UI_Dialect)
-		
+
 			# If no non-NG forms are found, then we have to display those.
 			if filtered.count() == 0 and excluded.count() > 0:
 				return list(excluded)
 			else:
 				return list(filtered)
-		
+
 		base_forms = map(baseformFilter, form_list)
 
 		# Flatten the lists, but if this isn't an iterateable object, don't worry
@@ -1035,7 +1035,7 @@ class BareGame(Game):
 
 		# All possible form presentations
 		accepted_answers = form_list.values_list('fullform', flat=True)
-		
+
 		presentation = filter_set_by_dialect(form_list, Q_DIALECT)
 
 		if pos == 'Der':
@@ -1045,11 +1045,11 @@ class BareGame(Game):
 		#if pos == 'Px':
 		#	print 'presentation'
 		#	print presentation
-		
-		# Unless there aren't any ... 
+
+		# Unless there aren't any ...
 		if presentation.count() == 0:
 			presentation = form_list
-		
+
 		presentation_ng = presentation.values_list('fullform',flat=True)
 
 		# Get word translations for the tooltip
@@ -1080,7 +1080,7 @@ class BareGame(Game):
 			ws = word.translations2(target_key).all()
 
 		translations = sum([w.word_answers for w in ws],[])
-		
+
 		# Check if the form is connegative, if not, set to false.
 
 		# NB: this is part of making sure that since the connegative form is
@@ -1093,7 +1093,7 @@ class BareGame(Game):
 		morph = (MorfaQuestion(
 					word=word,
 					tag=tag,
-					baseform=baseform, 
+					baseform=baseform,
 					correct=correct,
 					accepted_answers=accepted_answers,
 					answer_presentation=presentation_ng,
@@ -1110,14 +1110,14 @@ class BareGame(Game):
 					user_country=self.settings["user_country"])
 				)
 		return morph, word.id
-		
-	
+
+
 
 
 class NumGame(Game):
 	generate_fst = 'sme-num.fst'
 	answers_fst = 'sme-inum.fst'
-	
+
 	def get_db_info(self, db_info):
 		""" Options supplied by views
 			ord, card - obvious
@@ -1127,39 +1127,39 @@ class NumGame(Game):
 		"""
 		numeral=""
 		num_list = []
-		
+
 		random_num = randint(1, int(self.settings['maxnum']))
-		
+
 		db_info['numeral_id'] = str(random_num)
-		
+
 		if self.settings['gametype'] == 'ord':
 			db_info['numeral_id'] += "."
-		
+
 		return db_info
-		
+
 	def generate_forms(self, forms, fstfile):
 		import subprocess
 		from threading import Timer
-		
+
 		lookup = LOOKUP_TOOL
 		gen_norm_fst = FST_DIRECTORY + "/" + fstfile
 		try:
 			open(gen_norm_fst)
 		except IOError:
 			raise Http404("File %s does not exist." % gen_norm_fst)
-		
+
 		gen_norm_command = [lookup, "-flags", "mbTT", "-utf8", "-d", gen_norm_fst]
-		
+
 		try:
 			forms.encode('utf-8')
 		except UnicodeDecodeError:
 			pass
-	
-		num_proc = subprocess.Popen(gen_norm_command, 
-									stdin=subprocess.PIPE, 
-									stdout=subprocess.PIPE, 
+
+		num_proc = subprocess.Popen(gen_norm_command,
+									stdin=subprocess.PIPE,
+									stdout=subprocess.PIPE,
 									stderr=subprocess.PIPE)
-		
+
 		def kill_proc(proc=num_proc):
 			try:
 				proc.kill()
@@ -1167,13 +1167,13 @@ class NumGame(Game):
 			except OSError:
 				pass
 			return
-		
+
 		t = Timer(5, kill_proc)
 		t.start()
 		output, err = num_proc.communicate(forms)
 
 		return output, err
-	
+
 	def clean_fst_output(self, output):
 		num_tmp = output.decode('utf-8').splitlines()
 		cleaned = []
@@ -1188,32 +1188,32 @@ class NumGame(Game):
 					nums = tuple(nums)
 			cleaned.append(nums)
 		return cleaned
-	
+
 	def strip_unknown(self, analyses):
 		return [a for a in analyses if a[1] != '?']
-	
+
 	def check_answer(self, question, useranswer, formanswer):
 		gametype = self.settings['numgame']
 		# print gametype
 		if useranswer.strip():
 			forms = useranswer.encode('utf-8')
-			
+
 			if gametype == 'string':
 				fstfile = self.generate_fst
 			elif gametype == 'numeral':
 				fstfile = self.answers_fst
-			
+
 			output, err = self.generate_forms(forms, fstfile)
-			
+
 			num_list = self.clean_fst_output(output)
 			num_list = self.strip_unknown(num_list)
 			# print repr([question, useranswer, num_list])
-			
+
 			# 'string' refers to the question here, not the answer
 			if gametype == 'string':
 				# user answer must match with numeral generated from
 				# the question
-				
+
 				if useranswer in [a[0] for a in num_list] and \
 					question in [a[1] for a in num_list]:
 					return True
@@ -1235,24 +1235,24 @@ class NumGame(Game):
 				else:
 					return False
 
-			
+
 
 	def create_form(self, db_info, n, data=None):
-		
+
 		if self.settings['gametype'] in ["ord", "card"]:
-			language = L1
+			language = LLL1
 		else:
-			language = L1
+			language = LLL1
 
 		numstring = ""
-		
+
 		fstfile = self.generate_fst
 		q, a = 0, 1
 
 		# production paths
 		lookup = "%s\n" % db_info['numeral_id']
 		output, err = self.generate_forms(lookup, fstfile)
-		
+
 		num_tmp = output.splitlines()
 		num_list = []
 		for num in num_tmp:
@@ -1267,7 +1267,7 @@ class NumGame(Game):
 			error = "Morfa.NumGame.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
 			raise Http404(error)
-		
+
 		form = (NumQuestion(
 					numeral=db_info['numeral_id'],
 					num_string=numstring,
@@ -1281,7 +1281,7 @@ class NumGame(Game):
 					user=self.settings["user"],
 					user_country=self.settings["user_country"])
 				)
-		
+
 		return form, numstring
 
 from forms import KlokkaQuestion
@@ -1289,7 +1289,7 @@ from forms import KlokkaQuestion
 class Klokka(NumGame):
 
 	QuestionForm = KlokkaQuestion
-	
+
 	generate_fst = 'iclock-sme.fst'
 	answers_fst = 'clock-sme.fst'
 
@@ -1297,9 +1297,9 @@ class Klokka(NumGame):
 					 or Numra is unable to look up words."
 
 	def get_db_info(self, db_info):
-		
+
 		hour = str(randint(0, 23))
-		
+
 		if len(hour) == 1:
 			hour = '0' + hour
 		else:
@@ -1321,31 +1321,31 @@ class Klokka(NumGame):
 		db_info['numeral_id'] = str(random_num)
 
 		return db_info
-	
-	
+
+
 	def check_answer(self, question, useranswer, formanswer):
 		# TODO: in string->num, need to display the corresponding numeral if
 		# it is one that can be 14 hour time
 		gametype = self.settings['numgame']
 		if useranswer.strip():
 			forms = useranswer.encode('utf-8')
-			
+
 			if gametype == 'string':
 				fstfile = self.generate_fst
 			elif gametype == 'numeral':
 				fstfile = self.answers_fst
-			
+
 			output, err = self.generate_forms(forms, fstfile)
-			
+
 			num_list = self.clean_fst_output(output)
 			num_list = self.strip_unknown(num_list)
 			# print repr([question, useranswer, num_list])
-			
+
 			# 'string' refers to the question here, not the answer
 			if gametype == 'string':
 				# user answer must match with numeral generated from
 				# the question
-				
+
 				if useranswer in [a[0] for a in num_list] and \
 					question in [a[1] for a in num_list]:
 					return True
@@ -1356,7 +1356,7 @@ class Klokka(NumGame):
 				# Numbers generated from user answer must match up
 				# with numeral in the question
 
-				# Bug in numeral game seems to be presenting wrong set of numerals, 
+				# Bug in numeral game seems to be presenting wrong set of numerals,
 				# so if answerset contains 13+, need to remove and take the lower.
 				# Or 'militaryrelax' the answer
 
@@ -1374,20 +1374,20 @@ class Klokka(NumGame):
 
 	def create_form(self, db_info, n, data=None):
 		if self.settings['gametype'] in ["kl1", "kl2", "kl3"]:
-			language = L1
+			language = LLL1
 
 		numstring = ""
 
 		fstfile = self.generate_fst
 		q, a = 0, 1
-	
+
 		lookup = "%s\n" % db_info['numeral_id']
 
 		# lookup = "%s\n" % db_info['numeral_id']
 		output, err = self.generate_forms(lookup, fstfile)
-		
+
 		# norm, allnum = output.split('\n\n')[0:2]
-		
+
 		norm_list = []
 		for num in output.decode('utf-8').splitlines():
 			line = num.strip()
@@ -1399,7 +1399,7 @@ class Klokka(NumGame):
 			numstring = norm_list[0]
 		except IndexError:
 			raise Http404(self.error_msg)
-		
+
 		form = (self.QuestionForm(
 					numeral=db_info['numeral_id'],
 					num_string=numstring,
@@ -1412,7 +1412,7 @@ class Klokka(NumGame):
 					prefix=n,
 					game=self)
 				)
-		
+
 		return form, numstring
 
 ##
@@ -1425,7 +1425,7 @@ class Dato(Klokka):
 	from forms import DatoQuestion as QuestionForm
 
 	# QuestionForm = DatoQuestion
-	
+
 	generate_fst = 'idate-sme.fst'
 	answers_fst = 'date-sme.fst'
 
@@ -1443,7 +1443,7 @@ class Dato(Klokka):
 
 		def dayrange(x):
 			return range(1,x+1)
-		
+
 		# List of tuples with all possible days
 		# built from (month, maxdays)
 
@@ -1463,7 +1463,7 @@ class Dato(Klokka):
 		month, days = choice(months)
 
 		date = '%d.%d.' % (choice(days), month)
-		
+
 		db_info['numeral_id'] = str(date)
 
 
@@ -1477,37 +1477,37 @@ class QuizzGame(Game):
 		geography = self.settings['geography']
 		frequency = True and self.settings['frequency'] or False # frequency value or False
 		source = self.settings['source']
-		
+
 		source_language = self.settings['transtype'][0:3]
 		target_language = self.settings['transtype'][-3::]
 		QueryModel = Word
-				
+
 		if self.settings.has_key('dialect'):
 			UI_Dialect = self.settings['dialect']
 		else:
 			UI_Dialect = DEFAULT_DIALECT
-				
+
 		if UI_Dialect == 'KJ':
 			wrong_dialect = 'GG'
 		else:
 			wrong_dialect = 'KJ'
-		 	
+
 		# Excludes
 		excl = ['exclude_' + self.settings['transtype']]
-		
+
 		error = "QuizzGame.get_db_info: Database may be improperly loaded. \
 		Query for semantic type %s and book %s returned zero results." % ((semtypes, source))
-		
+
 		# This query is fairly expensive, and must be run once per game-form generation. Thus,
 		# on the first generation it is run, and the results are stored to a list.
 		# Each successive time this is run after the first query, a word is selected from the list
 		# and popped off.
-		
+
 		if not self.query_set:
-			leksa_kwargs = {'lang': source_language, 
+			leksa_kwargs = {'lang': source_language,
 							'tx_lang': target_language,
 							'wrong_dialect': wrong_dialect}
-			
+
 			excl.append('mPERSNAME')
 
 			if semtypes and semtypes not in ['all', 'All']:
@@ -1515,8 +1515,8 @@ class QuizzGame(Game):
 
 			if source and source not in ['all', 'All']:
 				leksa_kwargs['source'] = source
-				leksa_kwargs['semtype_incl'] = False 
-			
+				leksa_kwargs['semtype_incl'] = False
+
 			if geography:
 				leksa_kwargs['geography'] = geography
 
@@ -1538,12 +1538,12 @@ class QuizzGame(Game):
 						kw_frequency.extend(common)
 					if item in rare:
 						kw_frequency.extend(rare)
-				
+
 				leksa_kwargs['frequency'] = list(set(kw_frequency))
 
 			word_set = leksa_filter(QueryModel, **leksa_kwargs)
 			self.query_set = word_set
-		
+
 		try:
 			while True:
 				random_word = choice(self.query_set)
@@ -1556,27 +1556,27 @@ class QuizzGame(Game):
 		except IndexError:
 			if len(self.query_set) == 0:
 				raise Http404(error + "  " + repr(leksa_kwargs))
-		
+
 		db_info['word_id'] = random_word[0]
 		db_info['question_id'] = ""
-		
+
 		return db_info
-			
+
 	def create_form(self, db_info, n, data=None):
 		tr_lemmas = []
 		# This is producing an unnecessary query, but it takes a lot of work to switch this
 		# to just passing a word model instead of the ID.
 		# Ideally should pass the model, so there's no need to query it again.
 		word_id = db_info['word_id']
-		
+
 		target_language = self.settings['transtype'][-3::]
 		source_language = self.settings['transtype'][0:3]
-				
+
 		word = Word.objects.get(Q(id=word_id))
-		
+
 		translations = word.wordtranslation_set.filter(language=target_language)
 		tr_lemmas.extend([w.definition for w in translations])
-		
+
 
 		# Get correct answers; pick the first (oho!)
 		# Need to not pick the first one.
@@ -1589,10 +1589,10 @@ class QuizzGame(Game):
 			trans_obj = word.translations2(self.settings['transtype']).all()
 			possible = [t.definition for t in trans_obj.filter(tcomm=False)]
 			trans = [t.definition for t in trans_obj]
-			
+
 			tcomms = [t.definition for t in trans_obj.filter(tcomm=True)]
 			stat_pref = [t.definition for t in trans_obj.filter(tcomm_pref=True)]
-			
+
 			if len(tcomms) > 0:
 				preferred = [t.definition for t in trans_obj.filter(tcomm=False)]
 			if not correct:
@@ -1603,20 +1603,20 @@ class QuizzGame(Game):
 			trans = [trans_obj.lemma]
 			if not correct:
 				correct = trans
-		
+
 		question_list = []
-		
+
 		userans_val = ''
 		try:
 			userans_val = db_info['answer'].strip()
 		except KeyError:
 			userans_val = db_info['userans']
-		
+
 		form = (LeksaQuestion(
 					tcomms,
 					stat_pref,
 					preferred,
-					possible, 
+					possible,
 					self.settings['transtype'],
 					word,
 					correct,
@@ -1629,5 +1629,3 @@ class QuizzGame(Game):
 					user=self.settings["user"],
 					user_country=self.settings["user_country"]))
 		return form, word.id
-
-
