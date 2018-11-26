@@ -5,7 +5,7 @@ Moving stuff to trello
 # Added installation notes:
 
     Context processors:
-        "univ_oahpa.courses.context_processors.courses_user",
+        "sme_oahpa.courses.context_processors.courses_user",
         "django.core.context_processors.csrf",
 
     Middleware:
@@ -15,7 +15,7 @@ Moving stuff to trello
     installed apps:
         'django.contrib.staticfiles',
 
-        'univ_oahpa.courses',
+        'sme_oahpa.courses',
         'rest_framework',
         # ... 
         'notifications',
