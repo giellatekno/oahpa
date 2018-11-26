@@ -1,0 +1,178 @@
+{% load staticfiles %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Error API Test Page</title>
+    {% load errorapi_tags %}
+
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap_namespaced.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/errorapi_test-page.css" %}"/>
+
+    {% header_js_includes %}
+</head>
+
+<body lang="{% if session_locale %}{{ session_locale }}{% endif %}" class="bootstrap-styles" id="errorapi_test_page">
+
+    <!-- TODO:
+        * ng-error-watch - directive for specifying what elements to watch for
+        clicks.
+
+        TODO: loading spinner
+    -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Demo</a></li>
+                    <li><a href="#">Installing</a></li>
+                    <li><a href="#">API</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-9 col-md-9">
+
+                <h2>Error lookup service</h2>
+                <p>This page is intended to be a bare demo and documentation of the
+                    essentials to implement the Error service on a page. For
+                    documentation on the API endpoint, see the auto-generated
+                    docuemntation at /davvi/errorapi/lookup/</p>
+
+                <h3>Demo</h3>
+
+            <div ng-app="ErrorAPI">
+                <div ng-controller="ErrorRequester" 
+                     data-error-watch=".samples a"
+                     data-lookup-url="/davvi/errorapi/lookup/">
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <h3>Test words</h3>
+
+                            <p>Try some test words</p>
+                            <ul class="samples">
+                                <li>Basic lookup either specified in content of link, or with data-input-form attribute: <a href="#">viessui</a></li>
+                                <li>Constrain to lemma with data-lemma attr: <a href="#" data-lemma="viessu" data-input-form="viessui">viessui</a></li>
+                                <li>Constrain to task with data-task attr: <a href="#" data-task="Pl+Acc">viessuide</a></li>
+                                <li>Constrain to task and lemma: <a href="#" data-lemma="viessu" data-task="Pl+Acc">viessuide</a></li>
+                                <li>tag2 test: <a href="#" data-task="Sg+Acc" data-lemma="girjji">girji</a></li>
+                            </ul>
+                            <p> ... or enter one </p>
+
+                            <form>
+                                <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6">
+                                        <input type="lookup" ng-model="text_input" class="form-control" id="lookupExample" placeholder="Enter a word">
+                                    </div>
+                                    <div class="col-md-4 col-sm-6">
+                                        <input type="lookup" ng-model="task" class="form-control" id="lookupExample" placeholder="Optional: enter task">
+                                    </div>
+                                    <div class="col-md-4 col-sm-6">
+                                        <input type="lookup" ng-model="lemma" class="form-control" id="lookupExample" placeholder="Optional: enter expected lemma">
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <button type="submit" class="btn btn-default">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        <br />
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <h3>API output</h3>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <p ng-show="no_errors">No errors :)</p>
+                            <ul class="messages" ng-repeat="message in messages">
+                                <li ng-repeat="m in message.message">(<% m.tags.join(', ') %>), <% m.task %>.<br ng-if="m.title" /> <em ng-if="m.title"><% m.title %></em> <br /> <% m.description %> <br ng-if="m.article" /> <a href="<% m.article %>" ng-if="m.article">{% blocktrans %}Click to read more.{% endblocktrans %}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <blockquote>
+                                <table class="fst_output">
+                                    <tr><td><% analyzer[0] %></td></tr>
+                                    <tr ng-repeat="analysis in analyzer[1]">
+                                        <td class="lemma"><% analysis[0] %></td>
+                                        <td class="tag"><% analysis[1].join('+') %></td>
+                                    </tr>
+                                </table>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                <h3>Click-to-lookup service installation</h3>
+                <p>Accessing the service requires <code>ng-app="ErrorAPI"</code>,
+                    <code>ng-controller="ErrorRequester"</code> on the container that
+                    will be watched for links, as well as some attribute, or class
+                    to define the kinds of links that will be clickable. Whatever
+                    unique attribute it is needs to be marked on the
+                    <code>ng-controller="ErrorRequester"</code> element with the
+                    attribute <code>data-error-watch</code> and a CSS selector to
+                    target those elements.</p>
+
+            <blockquote>
+                <code><pre>{% filter force_escape %}<div ng-app="ErrorAPI">
+    <div ng-controller="ErrorRequester" 
+         data-error-watch=".samples a"
+         data-lookup-url="/davvi/errorapi/lookup/">
+
+        <ul class="samples">
+            <li>Basic lookup: <a href="#">viessui</a></li>
+            <li>Constrain to lemma with data-lemma attr: <a href="#" data-lemma="viessu">viessui</a></li>
+        </ul>
+
+            </div>
+        </div>
+    {% endfilter %}</pre></code></blockquote>
+
+                <h3>Rendering output</h3>
+
+                <p>Output uses Angular.js snippets. The template used below, for example is: </p>
+            
+<blockquote><code><pre>{% filter force_escape %}
+<ul class="messages" ng-repeat="message in messages">
+    <li ng-repeat="m in message.message">(<% m.tags.join(', ') %>), <% m.task %>: <% m.string %></li>
+</ul>
+{% endfilter %}</pre></code></blockquote>
+                
+            <p>Individual links that are intended to trigger the lookup can
+                optionally be marked with <code>data-lemma</code> or
+                <code>data-task</code> attributes to constrain morphological
+                feedback messages. This is intended to make it easier to
+                integrate with existing, complex systems within Oahpa with
+                least disturbance.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+{# vim: set ts=4 sw=4 tw=0 syntax=htmldjango : #}
