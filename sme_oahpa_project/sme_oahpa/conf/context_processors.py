@@ -30,7 +30,7 @@ def grammarlinks(request):
 		lang = default_lang
 
 	if lang == 'fin':
-		lang = 'sme'  # If interface language is Finnish then the grammar explanations will be in North Sami.
+		lang = LLL1  # If interface language is Finnish then the grammar explanations will be in North Sami.
 	links = Grammarlinks.objects.filter(language=lang).order_by('name')
 
 	if links.count() == 0:
