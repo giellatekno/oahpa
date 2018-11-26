@@ -21,6 +21,16 @@ import sys, os, re
 import itertools
 from random import choice
 
+try:
+        LOG_FILE_VS = settings.LOG_FILE_VS
+except:
+        LOG_FILE_VS = False
+
+try:
+        LOG_FILE_V = settings.LOG_FILE_V
+except:
+        LOG_FILE_V = False
+
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
 PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'son',
@@ -2141,7 +2151,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	qtext = question
 	qtext = qtext.rstrip('.!?,')
 
-	logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastaF_and_Sahka_CGanalysis_log.txt','w')
+    logfile = open(LOG_FILE_VS, 'w')
 
 	host = 'localhost'
 	port = settings.LOOKUPSERV_PORT
@@ -2690,7 +2700,8 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	qtext = question
 	qtext = qtext.rstrip('.!?,')
 
-	logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastas_log.txt', 'w')
+    logfile = open(LOG_FILE_V, 'w')
+
 	#logfile.write(question)
 	#logfile.write(answer)
 	host = 'localhost'
