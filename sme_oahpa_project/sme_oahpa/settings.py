@@ -156,7 +156,7 @@ USE_L10N = True
 USE_TZ = True
 
 LANGUAGES = (
-	('sme', 'North Sami'),
+    ('sme', 'North Sami'),
     ('no', 'Norwegian'),
     ('nb', 'Norwegian'),
     ('sv', 'Swedish'),
@@ -165,7 +165,7 @@ LANGUAGES = (
 )
 
 OLD_NEW_ISO_CODES = {
-	"fi": "fin",
+    "fi": "fin",
     "ru": "rus",
     "en": "eng",
     "no": "nob",
