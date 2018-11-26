@@ -1,4 +1,7 @@
-﻿import logging
+﻿# -*- coding: utf-8 -*-
+from local_conf import LLL1
+
+import logging
 import os
 import sys
 
@@ -21,7 +24,7 @@ def initialize_loggers():
     if not _logging_initialized:
         MORFAS_FORMATTER = logging.Formatter('%(asctime)-15s - %(message)s')
         MORFAS_LOG_FILE_PATH = os.path.join(os.getcwd(),
-                                            'univ_drill/morfas_log.txt')
+                                            LLL1+'_oahpa/drill/morfas_log.txt')
 
         SCRATCH_LOG_PATH = os.path.join(os.getcwd(),
                                             'dev_log.txt')
@@ -41,4 +44,3 @@ def initialize_loggers():
 
         _logging_initialized = True
         print >> sys.stderr, "Loggers initialized."
-
