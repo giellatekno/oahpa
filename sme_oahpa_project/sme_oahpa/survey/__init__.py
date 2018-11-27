@@ -27,13 +27,13 @@ in the admin, via the actions dropdown menu.
 
     INSTALLED_APPS = (
         ...
-        'univ_oahpa.survey',
+        LLL1+'_oahpa.survey',
         ...
     )
 
     TEMPLATE_CONTEXT_PROCESSORS = (
         ...
-        'univ_oahpa.survey.context_processors.display_survey_notice',
+        LLL1+'_oahpa.survey.context_processors.display_survey_notice',
         ...
     )
 
