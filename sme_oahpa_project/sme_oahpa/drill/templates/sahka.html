@@ -96,7 +96,7 @@ function submitSahka(dia) {
 </script>
 
 <script src="{{ MEDIA_URL }}/js/prototype.js" type="text/javascript"></script>
-<script src="{{ MEDIA_URL }}/js/univ_oahpa.js" type="text/javascript"></script>
+<script src="{{ MEDIA_URL }}/js/oahpa_sme.js" type="text/javascript"></script>
 <!--[if lt IE 7]>
 <script defer type="text/javascript" src="{{ MEDIA_URL }}/js/pngfix.js"></script>
 <![endif]-->
@@ -149,7 +149,7 @@ http://oahpa.no/sme/useoahpa/sahka.nob.html
 
 
 {% block name %}Sahka{% endblock %}
-{% block pagename %}/univ_oahpa/sahka/{% endblock %}
+{% block pagename %}/{{ URL_PREFIX }}/sahka/{% endblock %}
 
 
 {% block settings %}
@@ -245,16 +245,16 @@ http://oahpa.no/sme/useoahpa/sahka.nob.html
 <input type="hidden" name="attempts" value="{{ attempts }}" />
 {% endblock %}
 
-{% for form in forms %} 
+{% for form in forms %}
 {% block question %}
 {% if form.utterance %}
     {{ form.utterance }}
 {% endif %}
   {% if show_correct %}
-		{% ifequal form.error "error" %}			
-            <span style="margin-top:10px; margin-bottom:10px; display:table; border-style:solid; border-width:2px; border-color:#00FF99; border-radius:7px; padding:5px;">{{ form.correct_answers }}</span> 
+		{% ifequal form.error "error" %}
+            <span style="margin-top:10px; margin-bottom:10px; display:table; border-style:solid; border-width:2px; border-color:#00FF99; border-radius:7px; padding:5px;">{{ form.correct_answers }}</span>
             {{ form.answer }}
-            
+
         {% endifequal %}
   {% endif %}
  {% endblock %}
@@ -266,7 +266,7 @@ http://oahpa.no/sme/useoahpa/sahka.nob.html
 <span align="right">
   {% if not all_correct %}
     <t class="interface"><input type="submit" id="test" name="test" value="{% trans_to "Answer" "sme" %}"/><span class="invisible">{% trans "Answer" %}</span></t>
-  {% if not show_correct %}  
+  {% if not show_correct %}
   {% if attempts > 1 %}
 	   <t class="interface"><input type="submit" name="show_correct" value="{% trans_to "Show an example of the correct answer" "sme" %}" /><span class="invisible">{% trans "Show an example of the correct answer" %}</span></t>
   {% endif %}
@@ -288,5 +288,3 @@ http://oahpa.no/sme/useoahpa/sahka.nob.html
 
 {% endblock submit %}
 {% endfor %}
-
-
