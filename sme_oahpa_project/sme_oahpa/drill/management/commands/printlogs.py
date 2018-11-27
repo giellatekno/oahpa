@@ -1,3 +1,7 @@
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 from django.core.management.base import BaseCommand, CommandError
 
 # from_yaml(cls, loader, node)
@@ -6,28 +10,28 @@ from optparse import make_option
 from django.utils.encoding import force_unicode
 import sys
 
-from univ_drill.models import Log
+Log = oahpa_module.drill.models.Log
 
 def printLogs(queryset, csv=False, delimiter=False, attrs=False):
 	""" Print filtered queryset.
 	"""
-	
+
 	import csv as _csv
 	_OUT = sys.stdout
-	
+
 	pkwargs = {'printattrs': attrs}
-	
+
 	# csv dialects
 	if csv:
 		class csv_out:
 			delimiter = ','
 			quotechar = '"'
-			escapechar = '\\' 
+			escapechar = '\\'
 			doublequote = True
 			skipinitialspace = False
 			lineterminator = '\n'
 			quoting = _csv.QUOTE_ALL
-		
+
 		# This delimiter is only used for outputEntry method
 		pkwargs['delimiter'] = '|'
 	else:
@@ -39,10 +43,10 @@ def printLogs(queryset, csv=False, delimiter=False, attrs=False):
 			skipinitialspace = False
 			lineterminator = '\n'
 			quoting = _csv.QUOTE_NONE
-		
+
 		csv_out.delimiter = delimiter
-	
-	_fmt = lambda x: [force_unicode(a).encode('utf-8') for a in 
+
+	_fmt = lambda x: [force_unicode(a).encode('utf-8') for a in
 						x.outputEntry(**pkwargs).split(pkwargs['delimiter'])]  # added force_unicode() because there seemed to be a decoding problem
 
 	printlines = (_fmt(item) for item in queryset)
@@ -52,10 +56,10 @@ def printLogs(queryset, csv=False, delimiter=False, attrs=False):
 	# WriteCSV
 	if csv:
 		W.writerow(attrs)
-	
+
 	for r in printlines:
 		W.writerow(r)
-	
+
 	return True
 
 
@@ -69,11 +73,11 @@ def filterLogs(filters=False):
 
 
 ##
- # 
+ #
  #  Command class
  #
  #
- 
+
 class Command(BaseCommand):
 	args = ''
 	help = '''
@@ -82,8 +86,8 @@ class Command(BaseCommand):
 
 		./manage.py printlogs --game morfa_N --display-values "date,userinput"
 		./manage.py printlogs --game 'contextual morfa'
-	'''	
-	
+	'''
+
 	GAMENAMES = list(set(Log.objects.all().values_list('game', flat=True)))
 	GAMENAMES = ', '.join(GAMENAMES)
 	_ATTRS = ['game',
@@ -110,7 +114,7 @@ class Command(BaseCommand):
 
 		make_option("-g", "--game", dest="filter_game", default=False,
 			  help="Display output only from a specific game. Options: %s." % GAMENAMES),
-		
+
 	)
 
 	def handle(self, *args, **options):
@@ -128,10 +132,10 @@ class Command(BaseCommand):
 
 		if all([filter_game,]) == False:
 			filters = False
-		
+
 		# Prepare for display
 		plogs = {}
-		
+
 		if csv:
 			plogs['csv'] = True
 			plogs['delimiter'] = False
@@ -148,9 +152,7 @@ class Command(BaseCommand):
 			queryset = filterLogs(filters)
 		else:
 			queryset = filterLogs()
-		
+
 		plogs['queryset'] = queryset
-		
+
 		printLogs(**plogs)
-
-

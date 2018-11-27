@@ -1,5 +1,9 @@
 # -*- encoding: utf-8 -*-
 # from_yaml(cls, loader, node)
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 from django.core.management.base import BaseCommand
 from django.utils.encoding import force_unicode
 
@@ -35,7 +39,11 @@ def _firstelement(e, x):
         return None
 
 
-from univ_drill.models import Tagname, Tagset, Form, filter_set_by_dialect
+Tagname = oahpa_module.drill.models.Tagname
+Tagset = oahpa_module.drill.models.Tagset
+Form = oahpa_module.drill.models.Form
+filter_set_by_dialect = oahpa_module.drill.models.filter_set_by_dialect
+
 
 def parse_tag(tag):
     """ Iterate through a tag string by chunks, and check for tag sets
@@ -1080,7 +1088,7 @@ class Command(BaseCommand):
     )
 
     def test_agreement(self):
-        fname = 'univ_drill/management/commands/testquestions_agreement_defs.yaml'
+        fname = 'drill/management/commands/testquestions_agreement_defs.yaml'
 
         agr = Agreement(fname)
 
@@ -1157,7 +1165,7 @@ class Command(BaseCommand):
 
         qpath = options['questionfile']
         gpath = options['grammarfile']
-        agreement_defs = 'univ_drill/management/commands/testquestions_agreement_defs.yaml'
+        agreement_defs = 'drill/management/commands/testquestions_agreement_defs.yaml'
 
         iterations = int(options['itercount'])
         test_qid = options['qid']
@@ -1268,4 +1276,3 @@ class Command(BaseCommand):
 
 
 # vim: set ts=4 sw=4 tw=0 syntax=python expandtab :
-

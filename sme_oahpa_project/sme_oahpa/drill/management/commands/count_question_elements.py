@@ -1,3 +1,7 @@
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 from django.core.management.base import BaseCommand, CommandError
 from optparse import make_option
 
@@ -9,7 +13,8 @@ import sys
 #
 # # #
 
-from univ_drill.models import Question, Word
+Question = oahpa_module.drill.models.Question
+Word = oahpa_module.drill.models.Word
 
 def count_activities(gametype='morfa'):
     from operator import mul

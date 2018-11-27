@@ -1,3 +1,7 @@
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 from django.core.management.base import BaseCommand, CommandError
 
 # from_yaml(cls, loader, node)
@@ -8,23 +12,23 @@ from django.utils.encoding import force_unicode
 import sys
 
 
-# # # 
-# 
+# # #
+#
 #  Command class
 #
 # # #
 
 def testbaseforms(tfilter=False, tag_string=False):
-	from univ_drill.models import Form
+	Form = oahpa_module.drill.models.Form
 	from django.db.models import Count
 
 	if tag_string:
 		missing = Form.objects.filter(tag__string=tag_string)
 	else:
 		missing = Form.objects.all()
-	
+
 	missing = missing.only('word__lemma', 'fullform', 'tag__string')
-	
+
 	def fmtform(f):
 		fs = {
 			'word__lemma': f.word.lemma,
@@ -33,7 +37,7 @@ def testbaseforms(tfilter=False, tag_string=False):
 		}
 
 		return "%(word__lemma)s\t%(fullform)s\t%(tag__string)s" % fs
-	
+
 	for m in missing.iterator():
 		s = "Form:     " + fmtform(m)
 		try:
@@ -58,13 +62,13 @@ class Command(BaseCommand):
 
 	View all baseforms:
 		python manage.py testbaseforms
-	
+
 	View only A+Attr baseforms:
-		python manage.py testbaseforms -t A+Attr | grep Baseform | grep A+Attr 
+		python manage.py testbaseforms -t A+Attr | grep Baseform | grep A+Attr
 
 	View only A+Attr, find baseforms returning A+Attr instead of A+Sg+Nom
-		python manage.py testbaseforms -t A+Attr | grep Baseform | grep A+Attr 
-	
+		python manage.py testbaseforms -t A+Attr | grep Baseform | grep A+Attr
+
 	Also, search for MISSING, which will reveal places where .getBaseform can't
 	actually return anything.
 	"""
@@ -77,8 +81,5 @@ class Command(BaseCommand):
 		import sys, os
 
 		tag_string = options['tag_string']
-		
+
 		testbaseforms(tag_string=tag_string)
-
-
-

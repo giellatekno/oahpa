@@ -1,10 +1,14 @@
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 from django.core.management.base import BaseCommand, CommandError
 from optparse import make_option
 
 import sys
 
-# # # 
-# 
+# # #
+#
 #  Command class
 #
 # # #
@@ -37,7 +41,7 @@ word_attrs = [
 ### TODO: translations
 
 def printword(word_key):
-	from univ_drill.models import Word
+	Word = oahpa_module.drill.models.Word
 	ws = Word.objects.filter(lemma=word_key)
 
 	if ws.count() == 0:
@@ -70,7 +74,7 @@ def printword(word_key):
 		print '\nQuestion membership:'
 		question_memberships = w.wordqelement_set.all().values_list(
 			'qelement__question__qid',
-			'qelement__question__question__qid', 
+			'qelement__question__question__qid',
 			'qelement__question__qatype')
 
 		ordered_qms = []
@@ -100,5 +104,3 @@ class Command(BaseCommand):
 		import sys, os
 
 		printword(options['word_key'])
-
-
