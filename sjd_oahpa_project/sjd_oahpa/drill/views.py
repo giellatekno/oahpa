@@ -307,7 +307,7 @@ class Leksaview(Gameview):
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
 			'deeplink': self.create_deeplink(game, settings_form),
-			'lll1_oahpa': 'oahpa.html',
+			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
 			}
 
@@ -379,7 +379,7 @@ class LeksaPlaceview(Gameview):
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
 			'deeplink': self.create_deeplink(game, settings_form),
-			'lll1_oahpa': 'oahpa.html',
+			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
 			}
 
@@ -436,7 +436,7 @@ class Numview(Gameview):
 			'show_correct': game.show_correct,
 			'gametype': self.settings['numgame'],
 			'deeplink': self.create_deeplink(game, settings_form),
-			'lll1_oahpa': 'oahpa.html',
+			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
 		 #   'numstring': numstring,
 			}
