@@ -1,4 +1,4 @@
-{% extends 'univ_oahpa.html' %}
+{% extends 'oahpa.html' %}
 {% load i18n %}
 {% load cache %}
 {% load goal_filters %}
@@ -19,7 +19,7 @@ TODO: internationalization strings
 
 	<script src="{% static "js/angular.min.js" %}" type="text/javascript"></script>
 	<script src="{% static "js/angular-cookies.js" %}" type="text/javascript"></script>
-	<script src="{% static "js/coursepage.js" %}" type="text/javascript"></script> 
+	<script src="{% static "js/coursepage.js" %}" type="text/javascript"></script>
 {% endblock %}
 
 {% block imgprefix %}numra{% endblock %}
@@ -55,8 +55,8 @@ TODO: internationalization strings
                         <div class="col-md-3 col-sm-3 col-lg-3">
                             <ul class="nav nav-stacked">
                                 <li><a href="/{{ URL_PREFIX }}/courses/invite/{{ course.id }}/">{% trans "Invite students" %}</a></li>
-                                <li><a href="{% url courses.views.courses_coursegoal_construction %}">{% trans "Create a course goal" %}</a></li>
-                                <li><a href="{% url courses.views.courses_goal_construction %}">{% trans "Create a task" %}</a></li>
+                                <li><a href="{% url 'courses_coursegoal_construction' %}">{% trans "Create a course goal" %}</a></li>
+                                <li><a href="{% url 'courses_goal_construction' %}">{% trans "Create a task" %}</a></li>
                                 <li><a href="/{{ URL_PREFIX }}/messages/compose/">{% trans "Send message" %}</a></li>
                             </ul>
                         </div>
@@ -81,4 +81,3 @@ TODO: internationalization strings
 {% endblock %}
 
 {# vim: set ts=4 sw=4 tw=0 syntax=htmldjango : #}
-

@@ -1,4 +1,4 @@
-{% extends 'univ_oahpa.html' %}
+{% extends 'oahpa.html' %}
 {% load i18n %}
 {% load cache %}
 {% load goal_filters %}
@@ -30,7 +30,7 @@ TODO: internationalization strings
 	        <div class="col-md-3 col-sm-3 col-lg-3">
                 <h4>{% trans 'Welcome' %}, {{ user.username }}!</h4>
                 <ul id="subnav">
-                    {#  <li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li> #}
+                    {#  <li><a href="{% url 'logout' %}">Log out</a></li> #}
                     {% if user.is_staff %}
                     <li><a href="/{{ URL_PREFIX }}/courses/?student_view=True">{% trans "Grade summary" %}</a></li>
                     <li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
@@ -96,5 +96,3 @@ TODO: internationalization strings
 {% endblock %}
 
 {# vim: set ts=4 sw=4 tw=0 syntax=htmldjango : #}
-
-

@@ -1,4 +1,4 @@
-﻿{% extends 'univ_oahpa.html' %}
+﻿{% extends 'oahpa.html' %}
 
 {% load i18n %}
 {% load goal_filters %}
@@ -17,14 +17,14 @@
             $('.inlinesparkline').sparkline('html', {
             	'width': '85px',
             	'height': '30px',
-            }); 
+            });
             $('.piechart').sparkline('html', {
             	'type': 'pie',
             	'width': '25px',
             	'height': '25px',
             	             // correct, correct on first try
             	'sliceColors': ['#0058B2', '#FFB331']
-            }); 
+            });
         });
     </script>
 {% endblock %}
@@ -37,8 +37,8 @@
 
 {% block content %}
     <div id="courses" class="bootstrap-styles">
-        <br /> 
-        <br /> 
+        <br />
+        <br />
     <div id="user_goal_history">
         <div class="row">
             <div class="col-lg-8 col-md-8">

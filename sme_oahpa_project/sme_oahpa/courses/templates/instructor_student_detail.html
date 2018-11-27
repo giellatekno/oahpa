@@ -1,4 +1,4 @@
-{% extends 'univ_oahpa.html' %}
+{% extends 'oahpa.html' %}
 {% load i18n %}
 {% load cache %}
 {% load goal_filters %}
@@ -26,7 +26,7 @@ TODO: internationalization strings
 	{# Add blocktrans and trans tags #}
 	<div id="courses" class="bootstrap-styles">
 		<ul id="subnav">
-			<li><a href="{% url univ_oahpa.courses.urls.logout %}">{% trans "Log out" %}</a></li>
+			<li><a href="{% url 'logout' %}">{% trans "Log out" %}</a></li>
 		</ul>
 		<h2>{{ student }}</h2>
 
@@ -96,5 +96,3 @@ TODO: internationalization strings
 {% endblock %}
 
 {# vim: set ts=4 sw=4 tw=0 syntax=htmldjango : #}
-
-
