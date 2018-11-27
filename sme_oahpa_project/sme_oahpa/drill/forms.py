@@ -13,8 +13,6 @@ settings = oahpa_module.settings
 switch_language_code = oahpa_module.conf.tools.switch_language_code
 
 from models import *
-#from game import *
-#from univ_oahpa.univ_drill.game import relax
 import datetime
 import socket
 import sys, os, re
