@@ -4,7 +4,7 @@ the work on the source files for all languages.
 * src contains the smeX source files
 * nobsme contains the reverted data from smeX
 * finsme contains the reverted data from smeX
-* meta contains addition data for feeding the db for univ_oahpa
+* meta contains addition data for feeding the db for sme_oahpa
 
 
 Issues:
