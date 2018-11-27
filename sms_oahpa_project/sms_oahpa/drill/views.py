@@ -310,7 +310,7 @@ class Leksaview(Gameview):
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
 			'deeplink': self.create_deeplink(game, settings_form),
-			'lll1_oahpa': LLL1+'_oahpa.html',
+			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
 			}
 
@@ -382,7 +382,7 @@ class LeksaPlaceview(Gameview):
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
 			'deeplink': self.create_deeplink(game, settings_form),
-			'lll1_oahpa': LLL1+'_oahpa.html',
+			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
 			}
 
@@ -411,8 +411,6 @@ def leksa_game(request, place=False):
 
 	c = leksagame.create_game(request, initial_transtype=default_langpair)
 
-	#return render_to_response(template, c,
-				#context_instance=RequestContext(request))
 	return render_to_response(request, template, c)
 
 
@@ -443,7 +441,7 @@ class Numview(Gameview):
 			'show_correct': game.show_correct,
 			'gametype': self.settings['numgame'],
 			'deeplink': self.create_deeplink(game, settings_form),
-			'lll1_oahpa': LLL1+'_oahpa.html',
+			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
 		 #   'numstring': numstring,
 			}
@@ -456,9 +454,6 @@ def num_clock(request):
 	# numgame.settings['gametype'] = clocktype
 
 	c = numgame.create_game(request)
-
-	#return render_to_response('clock.html', c,
-	#			context_instance=RequestContext(request))
 
 	return render_to_response(request, 'clock.html', c)
 
@@ -479,8 +474,6 @@ def num(request):
 	numgame.settings['gametype'] = "card"
 
 	c = numgame.create_game(request)
-	#return render_to_response('num.html', c,
-	#			context_instance=RequestContext(request))
 	return render_to_response(request, 'num.html', c)
 
 
@@ -491,8 +484,6 @@ def dato(request):
 
 	c = datogame.create_game(request)
 
-	#return render_to_response('dato.html', c,
-	#			context_instance=RequestContext(request))
 	return render_to_response(request, 'dato.html', c)
 
 
@@ -693,7 +684,7 @@ class Morfaview(Gameview):
 			'show_correct': game.show_correct,
 			'language' : self.settings['language'],
 			'deeplink': self.create_deeplink(game, settings_form),
-			'lll1_oahpa': LLL1+'_oahpa.html',
+			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
 			}
 
@@ -817,8 +808,6 @@ def morfa_game(request, pos):
 
 	#print "game created and ready for rendering..."
 
-	#return render_to_response(template, c,
-	#			context_instance=RequestContext(request))
 	return render_to_response(request, template, c)
 
 
@@ -844,9 +833,6 @@ def cmgame(request, pos):
 
 	template = "mgame_%s.html" % p
 	c = mgame.create_game(request)
-
-	#return render_to_response(template, c,
-	#			context_instance=RequestContext(request))
 
 	return render_to_response(request, template, c)
 
@@ -960,7 +946,6 @@ def vasta(request):
 
 	c = vastagame.create_vastagame(request)
 
-	#return render_to_response('vasta.html', c, context_instance=RequestContext(request))
 	return render_to_response(request, 'vasta.html', c)
 
 
@@ -999,7 +984,7 @@ class Cealkkaview(Gameview):
 			'show_correct': game.show_correct,
 			'gametype': "cealkka",
 			'deeplink': self.create_deeplink(game, settings_form),
-			'lll1_oahpa': LLL1+'_oahpa.html',
+			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
 			}
 		return c
@@ -1014,7 +999,6 @@ def cealkka(request):
 
 	c = cealkkagame.create_game(request)
 
-	#return render_to_response('vasta.html', c, context_instance=RequestContext(request))
 	return render_to_response(request, 'vasta.html', c)
 
 
@@ -1137,5 +1121,4 @@ def sahka(request):
 
 	c = sahkagame.create_game(request)
 
-	#return render_to_response('sahka.html', c, context_instance=RequestContext(request))
 	return render_to_response(request, 'sahka.html', c)
