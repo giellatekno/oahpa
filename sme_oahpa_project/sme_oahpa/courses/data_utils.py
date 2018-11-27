@@ -1,4 +1,4 @@
-from univ_drill.forms import *
+from drill.forms import *
 
 __all__ = [
     'prepare_goal_params',
