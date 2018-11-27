@@ -57,7 +57,7 @@
 			<hr color="#CCCCCC">  --->
 			<ul id="games_menu">
                 <li class="game">
-					<a href="{% url morfa_s.noun %}">
+					<a href="{% url 'morfa_s.noun' %}">
 						<span>MORFA-S</span><br />
 						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-S" /><br />
 						<span class="interface">{% trans_to "Practise morphology" "sme" %}<span class="invisible">{% trans "Practise morphology" %}</span></span>
@@ -65,14 +65,14 @@
 				</li>
 
                 <li class="game">
-					<a href="{% url vasta_s %}">
+					<a href="{% url 'vasta_s' %}">
 						<span>VASTA</span><br />
 						<img src="{{ MEDIA_URL }}/images/vasta.png" alt="VASTA" /><br />
 						<span class="interface">{% trans_to "Answer to questions" "sme" %}<span class="invisible">{% trans "Answer to questions" %}</span></span>
 					</a>
 				</li>
 				<li class="game">
-					<a href="{% url leksa %}">
+					<a href="{% url 'leksa' %}">
 						<span>LEKSA</span><br />
 						<img src="{{ MEDIA_URL }}/images/leksa.png" alt="LEKSA" /><br />
 						<span class="interface">{% trans_to "Words and translations" "sme" %}<span class="invisible">{% trans "Words and translations" %}</span></span>
@@ -83,21 +83,21 @@
 			<ul id="games_menu">
 
 				<li class="game">
-                    <a href="{% url morfa_c.noun %}">
+                    <a href="{% url 'morfa_c.noun' %}">
 						<span>MORFA-C</span><br />
 						<img src="{{ MEDIA_URL }}/images/morfac.png" alt="MORFA-C" /><br />
 						<span class="interface">{% trans_to "Practise morphology in context" "sme" %}<span class="invisible">{% trans "Practise morphology in context" %}</span></span>
 					</a>
 				</li>
 				<li class="game">
-                    <a href="{% url sahka %}">
+                    <a href="{% url 'sahka' %}">
 						<span>SAHKA</span><br />
 						<img src="{{ MEDIA_URL }}/images/sahka.png" alt="SAHKA" /><br />
 						<span class="interface">{% trans_to "Dialogue game" "sme" %}<span class="invisible">{% trans "Dialogue game" %} </span></span>
 					</a>
 				</li>
                 <li class="game">
-                    <a href="{% url numra %}">
+                    <a href="{% url 'numra' %}">
 						<span>NUMRA</span><br />
 						<img src="{{ MEDIA_URL }}/images/numra.png" alt="NUMRA" /><br />
 						<span class="interface">{% trans_to "Practise numerals" "sme" %}<span class="invisible">{% trans "Practise numerals" %}</span></span>
@@ -150,7 +150,7 @@
             <li><a target="_blank" href="http://giellatekno.uit.no/ped/oahpapublications.html" class="interface">Research papers</a></li>
 			</ul>
 
-			<p><t class="interface">{% trans_to "Are you visiting this site as part of a course?" "sme" %}<span class="invisible">{% trans "Are you visiting this site as part of a course?" %}</span></t> <a href="{% url courses.views.courses_main %}" class="interface">{% trans_to "Log in here" "sme" %}<span class="invisible">{% trans "Log in here" %}</span></a></p>
+			<p><t class="interface">{% trans_to "Are you visiting this site as part of a course?" "sme" %}<span class="invisible">{% trans "Are you visiting this site as part of a course?" %}</span></t> <a href="{% url 'courses_main' %}" class="interface">{% trans_to "Log in here" "sme" %}<span class="invisible">{% trans "Log in here" %}</span></a></p>
 			{% endblock %}
 		</div>
 
@@ -170,7 +170,7 @@
 			</div>
             {% block tooltip_help %}
             <div class="language_help_frontpage">
-    <a class="helptext" href="#"><!--<img src="/univ_oahpa/media/images/littleman.png" alt="HELP"/></br>-->{% trans "HELP" %}<span class="shortinfo">{% trans "To get the translation of the user interface text to " %}
+    <a class="helptext" href="#">{% trans "HELP" %}<span class="shortinfo">{% trans "To get the translation of the user interface text to " %}
     {% for lc,la in LANGUAGES %}
         {% ifequal lc LANGUAGE_CODE %} {% trans la|lower %}{% endifequal %}
     {% endfor %}

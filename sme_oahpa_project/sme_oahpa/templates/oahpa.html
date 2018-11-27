@@ -1,10 +1,10 @@
-{% extends 'univ_oahpa_main.html' %}
+{% extends 'oahpa_main.html' %}
 {% load i18n %}
 {% load trans_to %}
 {{ lang_switch }}
 {% get_available_languages as LANGUAGES %}
 {% get_current_language as LANGUAGE_CODE %}
-   
+
 {% block title %}{% endblock %}
 
 {% block bodyclass %} {% endblock %}
@@ -13,7 +13,7 @@
 
 {% block language_select %}
 <div id="interface_language">
-    {% include 'language_menu.html' %} 
+    {% include 'language_menu.html' %}
 </div>
 {% if gametype != 'sahka' and gametype != 'string' and gametype != 'numeral' and gametype != 'k1' and gametype != 'k2' and gametype != 'k3' %}
 <div id="dialect_selection">
@@ -31,47 +31,47 @@
 <ul id="games_menu" class="small">
 
 	<li class="game">
-		<a href="{% url morfa_c.noun %}">
+		<a href="{% url 'morfa_c.noun' %}">
 			<img src="{{ MEDIA_URL }}/images/morfac_small.png" alt="MORFA-C"/><br/>
 			<span class="gamename">MORFA-C</span>
 		</a>
 	</li>
 
 	<li class="game">
-		<a href="{% url morfa_s.noun %}">
+		<a href="{% url 'morfa_s.noun' %}">
 			<img src="{{ MEDIA_URL }}/images/morfa_small.png" alt="MORFA-S"/><br/>
 			<span class="gamename">MORFA-S</span>
 		</a>
 	</li>
 
     <li class="game">
-		<a href="{% url vasta_s %}">
+		<a href="{% url 'vasta_s' %}">
 			<img src="{{ MEDIA_URL }}/images/vasta_small.png" alt="VASTA"/><br/>
 			<span class="gamename">VASTA</span>
 		</a>
 	</li>
-    
+
     <li class="game">
-		<a href="{% url sahka %}">
+		<a href="{% url 'sahka' %}">
 			<img src="{{ MEDIA_URL }}/images/sahka_small.png" alt="SAHKA"/><br/>
 			<span class="gamename">SAHKA</span>
 		</a>
 	</li>
-    
+
 	<li class="game">
-		<a href="{% url leksa %}">
+		<a href="{% url 'leksa' %}">
 			<img src="{{ MEDIA_URL }}/images/leksa_small.png" alt="LEKSA"/><br/>
 			<span class="gamename">LEKSA</span>
 		</a>
 	</li>
 
 	<li class="game">
-		<a href="{% url numra %}">
+		<a href="{% url 'numra' %}">
 			<img src="{{ MEDIA_URL }}/images/numra_small.png" alt="NUMRA"/><br/>
 			<span class="gamename">NUMRA</span>
 		</a>
 	</li>
-	
+
 
 </ul>
 <div id="leftcontent">
@@ -88,7 +88,7 @@
 		<div class="bigheader">{% block gametitlename %}{% endblock %}</div>
 		{% block navbar %}{% endblock %}
 	</div>
-	
+
 	<strong class="interface">{% trans_to "Reference materials" "sme" %}<span class="invisible">{% trans "Reference materials" %}</span></strong>
 	<ul class="sidelist small">
 		<li><a target="_blank" href="{% block veiledning %}{% endblock %}" class="interface">{% trans_to "Veiledning" "sme" %}<span class="invisible">{% trans "Veiledning" %}</span></a></li>
@@ -117,39 +117,39 @@
 	<strong class="interface">{% trans_to "Online courses" "sme" %}<span class="invisible">{% trans "Online courses" %}</span></strong>
 	<ul class="sidelist small">
 		{% if user.is_authenticated %}
-			<li><a href="{% url univ_oahpa.courses.views.courses_main %}" class="interface">{% trans_to "View progress" "sme" %}<span class="invisible">{% trans "View progress" %}</span></a></li>
-			<li><a href="{% url univ_oahpa.courses.urls.logout %}" class="interface">{% trans_to "Log out" "sme" %}<span class="invisible">{% trans "Log out" %}</span></a></li>
+			<li><a href="{% url 'courses_main' %}" class="interface">{% trans_to "View progress" "sme" %}<span class="invisible">{% trans "View progress" %}</span></a></li>
+			<li><a href="{% url 'logout' %}" class="interface">{% trans_to "Log out" "sme" %}<span class="invisible">{% trans "Log out" %}</span></a></li>
 		{% else %}
-    	<li><a href="{% url courses_login %}" class="interface"> {% trans_to "Log in" "sme" %}<span class="invisible">{% trans "Log in" %}</span></a></li>
+    	<li><a href="{% url 'courses_login' %}" class="interface"> {% trans_to "Log in" "sme" %}<span class="invisible">{% trans "Log in" %}</span></a></li>
     	{% endif %}
     </ul>
-	
-	
+
+
 </div>
 
 {% comment %}
-<a href="/univ_oahpa/univ_feedback/">{% trans 'Feedback' %}</a><br/>
+<a href="/sme_oahpa/feedback/">{% trans 'Feedback' %}</a><br/>
 {% endcomment %}
 
 <div id="rightcontent">
 	{% block rightcontent %}
 	<a name="content" class="hide">&nbsp;</a>
 
-    
+
 
     {% block disable_form_start %}
 	    <form action="" method="post" id="gameform" name="gameform">
             {% csrf_token %}
     {% endblock %}
-	
+
 	<div id="settings">
 		{% block settings %}{% endblock %}
 	</div>
-	
+
 	<div id="game">
 	    {% block content %}{% endblock %}
 	</div>
-	
+
     {% block disable_form_end %}
 	    </form>
     {% endblock %}
@@ -160,11 +160,10 @@
 
 {% block tooltip_help %}{% endblock %}
 <div class="language_help">
-    <a class="helptext" href="#"><!--<img src="/univ_oahpa/media/images/littleman.png" alt="HELP"/></br>-->{% trans "HELP" %}<span class="shortinfo">{% trans "To get the translation of the user interface text to " %} 
+    <a class="helptext" href="#">{% trans "HELP" %}<span class="shortinfo">{% trans "To get the translation of the user interface text to " %}
     {% for lc,la in LANGUAGES %}
         {% ifequal lc LANGUAGE_CODE %} {% trans la|lower %}{% endifequal %}
     {% endfor %}
     {% trans "hold down the [Alt] key while pointing at the text with the mouse." %}</span></a>
-</div>    
+</div>
 {% endblock %}
-
