@@ -33,7 +33,7 @@ from kitchen.text.converters import getwriter
 UTF8Writer = getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
 
-# TODO: option for oa="yes" only, for univ_
+# TODO: option for oa="yes" only, for sme_oahpa
 # ota lemma jos on name="oahpa"
 # jos on lemma, niin ota käännös jos on oa="yes"
 
