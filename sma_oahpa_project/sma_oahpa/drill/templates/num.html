@@ -1,19 +1,11 @@
 {% extends "game.html" %}
 {% load i18n %}
 
-{% block helpaddress %}
-{% ifequal LANGUAGE_CODE "no" %}
-<a href="http://giellatekno.uit.no/smaoahpa/numra.nno.html"
-{% else %}
-<a href="http://giellatekno.uit.no/smaoahpa/numra.html"
-{% endifequal %}
-{% endblock %}
-
 {% block gametitlename %}NUMRA{% endblock %}
 {% block imgprefix %}numra{% endblock %}
 {% block language_select %}{% endblock %}
 
-{% block veiledning %}http://giellatekno.uit.no/oahpa/sma/useoahpa/numra.nob.html{% endblock %}
+{% block veiledning %}http://oahpa.no/sma/useoahpa/numra.nob.html{% endblock %}
 
 {% block navbar %}
 	{% with "numra_cardinal" as gamename_nav %}

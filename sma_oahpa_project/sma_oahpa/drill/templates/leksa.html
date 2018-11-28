@@ -1,14 +1,6 @@
 {% extends "game.html" %}
 {% load i18n %}
 
-{% block helpaddress %}
-{% ifequal LANGUAGE_CODE "no" %}
-<a href="http://giellatekno.uit.no/smaoahpa/leksa.nno.html"
-{% else %}
-<a href="http://giellatekno.uit.no/smaoahpa/leksa.html"
-{% endifequal %}
-{% endblock %}
-
 {% block gametitlename %}LEKSA{% endblock %}
 {% block imgprefix %}leksa{% endblock %}
 {% block language_select %}{% endblock %}
@@ -23,7 +15,7 @@
 {% block name %}{% trans "Quizz" %}{% endblock %}
 {% block pagename %}/{{ URL_PREFIX }}/leksa/{% endblock %}
 
-{% block veiledning %}http://giellatekno.uit.no/oahpa/sma/useoahpa/leksa.nob.html{% endblock %}
+{% block veiledning %}http://oahpa.no/sma/useoahpa/leksa.nob.html{% endblock %}
 
 {% block instructions %}
 	{% trans "Give translations for words. You can choose set or level, not both." %}
