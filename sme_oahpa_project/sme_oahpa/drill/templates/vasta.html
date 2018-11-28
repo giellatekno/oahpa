@@ -2,13 +2,6 @@
 {% load i18n %}
 {% load trans_to %}
 
-{% block helpaddress %}
-{% ifequal LANGUAGE_CODE "no" %}
-<a href="http://oahpa.no/vasta.nob.html"
-{% else %}
-<a href="http://oahpa.no/vasta.html"
-{% endifequal %}
-{% endblock %}
 {% block imgprefix %}vasta{% endblock %}
 {% block gametitlename %}<a href="{% url vasta_s %}">VASTA</a>{% endblock %}
 
