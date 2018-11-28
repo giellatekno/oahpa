@@ -3,23 +3,35 @@ For the other servers, see [Restarting Gtweb|httpdserversgtweb.html]
 and [Restarting gtoahpa|httpdserver.html]
 
 
+!!!Status
+
+We are in the middle of moving from gtlab.uit.no to gtlab-01.uit.no.
+
+
+!!!Probably obsolete information:
+
 On {{gtoahpa}}, {{gtweb}} and {{gtlab}}, we use nginx for serving HTML
 and other applications. See [how to restart nginx itself|RestartingNginx.html] 
 if needed (after an ordinary update is often is not).
 
-Some Oahpa versions are on gtoahpa, others are on gtlab. To find them, write
-{{ls -l /home/|grep oahpa}} on the respective machines (or check the table below).
+The __Oahpa__ versions on gtlab are not functioning, the code will
+either be moved to the new gtoahpa-01.uit.no, or just deleted orkept for reference.
 
+Current list (2018-11-28) of folders named xxx_oahpa  on gtlab is:
+bxr,crk,est,fkv,izh,liv,mdf,mhr,mrj,olo,udm,univ,vep,vro
+bxr,crk,davvi,est,fkv,izh,liv,mdf,mhr,mrj,oahpa,olo,rusoahpa,udm,univ,vep,vro
+(names: bxr_oahpa, etc).
 
-Current list (2016) on gtlab is bxr,crk,est,fkv,izh,liv,mdf,mhr,mrj,olo,udm,univ,vep,vro (names: bxr_oahpa, etc).
 
 
 !! In case of emergencies... 
 
 !The test versions of Oahpa (on testing.oahpa.no)
 
-If all the Oahpa instances on gtlab are down (for example after server reboot) then you can start all the Oahpas at once, using the script {{{start_all_oahpas.sh}}} located in the directory {{{/home/oahpa_scripts}}} (requires sudo rights).
+__These versions are not online__ The info here is kept for
+reference and will be revised when the versions have been moved.
 
+If all the Oahpa instances on gtlab are down (for example after server reboot) then you can start all the Oahpas at once, using the script {{{start_all_oahpas.sh}}} located in the directory {{{/home/oahpa_scripts}}} (requires sudo rights).
 
 If an Oahpa on __gtlab__ (e.g. testing.oahpa.no/izh_oahpa) gives "__404 Not found__" error then it means that nginx is running but the Oahpa (fastcgi) process has been stopped. For checking if the particular Oahpa process is running give the command:
 
@@ -33,26 +45,6 @@ If this command does not output 5-6 lines of fastcgi processes then you need to 
     sudo ./izh_oahpa.sh --run
 }}}
 
-For making sure the Oahpas are online, you may click these links:
-
-|| Oahpa-name   ||  URLs for the oahpa versions on gtlab
-| bxr_oahpa     | [http://testing.oahpa.no/bxr_oahpa]
-| est_oahpa     | [http://testing.oahpa.no/eesti]  
-| izh_oahpa     | [http://testing.oahpa.no/izh_oahpa]
-| liv_oahpa     | [http://testing.oahpa.no/livokel]
-| mdf_oahpa     | [http://testing.oahpa.no/mdf_oahpa]
-| mhr_oahpa     | [http://testing.oahpa.no/mhr_oahpa]
-| mrj_oahpa     | [http://testing.oahpa.no/mrj_oahpa]
-| olo_oahpa     | [http://testing.oahpa.no/olo_oahpa]
-| ruskonteaksta | [http://testing.oahpa.no/ruskonteaksta]
-| rus_oahpa     | [http://testing.oahpa.no/rusoahpa]
-| udm_oahpa     | [http://testing.oahpa.no/udm_oahpa]
-| liv_oahpa     | [http://testing.oahpa.no/vep_oahpa]
-| vro_oahpa     | [http://testing.oahpa.no/voro]
-
-(The following Oahpas and Konteakstas are still listed on gtlab, 
-but have been moved to gtoahpa: crk_oahpa, fkv_oahpa, 
-sme Konteaksta (teaksta), univ_oahpa)
  
 !!Restarting Nginx
 
