@@ -1,14 +1,6 @@
 {% extends "game.html" %}
 {% load i18n %}
 
-{% block helpaddress %}
-{% ifequal LANGUAGE_CODE "no" %}
-<a href="http://giellatekno.uit.no/smaoahpa/numra.nno.html"
-{% else %}
-<a href="http://giellatekno.uit.no/smaoahpa/numra.html"
-{% endifequal %}
-{% endblock %}
-
 {% block gametitlename %}NUMRA{% endblock %}
 {% block imgprefix %}numra{% endblock %}
 
