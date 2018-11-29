@@ -139,59 +139,33 @@ $P manage.py fixtagattributes
 # installing question files for MorfaC, Vasta and VastaS
 for q_file in $(ls $META/*_questions.xml)
 do
-  echo "installing questions: $q_file"
-  $P install.py -g $META/grammar_defaults.xml -q $META/$q_file 2>>$log_file
-  echo "done"
-  echo "   "
+    echo "installing questions: $q_file"
+    $P install.py -g $META/grammar_defaults.xml -q $META/$q_file 2>>$log_file
+    echo "done"
+    echo "   "
 done
 
-### below this line no abstraction: TODO
+# installing message files for Vasta
+vasta_message_files=$(ls $META/messages_vasta*.xml)
 
-echo "==================================================="
-echo "Installing feedback messages for vasta"
-$P install.py --messagefile $META/messages_vasta.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "Installing feedback messages for vasta - in English"
-$P install.py --messagefile $META/messages_vasta.eng.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "Installing feedback messages for vasta - in Finnish"
-$P install.py --messagefile $META/messages_vasta.fin.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "Installing feedback messages for vasta - in North Sámi"
-$P install.py --messagefile $META/messages_vasta.sme.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "Installing feedback messages for vasta - in Swedish"
-$P install.py --messagefile $META/messages_vasta.swe.xml
-echo " "
-echo "done"
-echo "==================================================="
+for mv_file in $vasta_message_files
+do
+    echo "installing vasta messages: $mv_file"
+    $P install.py --messagefile $META/$mv_file 2>>$log_file
+    echo "done"
+    echo "   "
+done
 
 echo "==================================================="
 echo "Checking for differences in feedback files"
-$P check_feedback.py $META/messages_vasta.xml \
-    $META/messages_vasta.fin.xml \
-    $META/messages_vasta.sme.xml \
-    $META/messages_vasta.eng.xml \
-    $META/messages_vasta.swe.xml
+$P check_feedback.py $vasta_message_files
 echo " "
 echo "done"
 echo "==================================================="
+
+
+
+### below this line no abstraction: TODO
 
 #####
 # Sahka
