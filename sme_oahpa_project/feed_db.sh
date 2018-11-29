@@ -50,22 +50,19 @@ do
 
     echo "feeding db with: $xfile and para_file $PARA_FILE and pos $POS"
 
-    if [ "$xfile" != "" or ]; then
-
-	if [ -e "$PARA_FILE" ]; then
-	    echo "File exists $PARA_FILE"
-
-	    $P install.py --file $xfile --tagfile $META/tags.txt --paradigmfile $PARA_FILE 2>>$log_file
-
-	else
-	    echo "File does not exist $PARA_FILE"
-
-	    $P install.py --file $xfile 2>>$log_file
-
-	fi
-	echo " "
-	echo "done"
+    if [ -e "$PARA_FILE" ]; then
+	echo "File exists $PARA_FILE"
+	
+	$P install.py --file $xfile --tagfile $META/tags.txt --paradigmfile $PARA_FILE 2>>$log_file
+	
+    else
+	echo "File does not exist $PARA_FILE"
+	
+	$P install.py --file $xfile 2>>$log_file
+	
     fi
+    echo " "
+    echo "done"
 done
 
 
