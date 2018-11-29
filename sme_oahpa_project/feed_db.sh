@@ -99,7 +99,6 @@ do
   echo "   "
 done
 
-### below this line no abstraction: TODO
 
 echo "==================================================="
 echo "feeding db with $META/semantic_sets.xml"
@@ -108,41 +107,23 @@ echo " "
 echo "done"
 echo "==================================================="
 
-echo "==================================================="
-echo "feeding db with messages to feedback"
-$P install.py --messagefile $META/messages.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
+MESSAGE_FILES="messages.xml
+messages.sme.xml
+messages.eng.xml
+messages.swe.xml
+messages.fin.xml"
 
-echo "==================================================="
-echo "feeding db with messages to feedback"
-$P install.py --messagefile $META/messages.sme.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
+for mf in $MESSAGE_FILES
+do
+    echo "==================================================="
+    echo "messages to feedback: $META/$mf"
+    $P install.py --messagefile $META/$mf 2>>$log_file
+    echo " "
+    echo "done"
+    echo "==================================================="
+done
 
-echo "==================================================="
-echo "feeding db with messages to feedback"
-$P install.py --messagefile $META/messages.eng.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "feeding db with messages to feedback"
-$P install.py --messagefile $META/messages.swe.xml 2>>$log_file
-echo " "
-echo "done"
-cho "==================================================="
-
-echo "==================================================="
-echo "feeding db with messages to feedback"
-$P install.py --messagefile $META/messages.fin.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
+### below this line no abstraction: TODO
 
 #  ... for eastern dialect there are additional feedback files feedback_verbs_eastern, feedback_adjectives_eastern that we ignore right now
 
