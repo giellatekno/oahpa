@@ -47,23 +47,29 @@ do
     # the first substring before the first '_' in the xml file name is the POS ('prop' for both pers and geo)
     POS=${fl%%_*}
     PARA_FILE="${META}/${POS}_paradigms.txt"
-
-    echo "feeding db with: $xfile and para_file $PARA_FILE and pos $POS"
-
-    if [ -e "$PARA_FILE" ]; then
-	echo "File exists $PARA_FILE"
+    echo "feeding db with $xfile: pos $POS"
+    if [ "$fl" != "derverb_sme.xml" ] && [ "$fl" != "pron_sme.xml" ] ; then
 	
-	$P install.py --file $xfile --tagfile $META/tags.txt --paradigmfile $PARA_FILE 2>>$log_file
-	
-    else
-	echo "File does not exist $PARA_FILE"
-	
-	$P install.py --file $xfile 2>>$log_file
-	
+	if [ -e "$PARA_FILE" ]; then
+	    echo "... both w paradime and w tags"
+	    $P install.py --file $xfile --tagfile $META/tags.txt --paradigmfile $PARA_FILE 2>>$log_file
+	else
+	    echo "... both w/o paradime and w/o tags"
+	    $P install.py --file $xfile 2>>$log_file
+	fi
+    # special treatment
+    elif [ "$fl" == "derverb_sme.xml" ] ; then
+    	 echo "... w tags but w/o paradime: append derverb_"
+    	 $P install.py --file $xfile --tagfile $META/tags.txt --append  2>>error.log # TODO: test append with this
+    elif [ "$fl" == "pron_sme.xml" ] ; then
+    	 echo "... w tags but w/o paradime: pron_"
+    	 $P install.py --file $xfile --tagfile $META/tags.txt 2>>error.log
     fi
-    echo " "
     echo "done"
+    echo " "
 done
+
+
 
 
 
