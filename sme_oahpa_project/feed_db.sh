@@ -70,6 +70,21 @@ do
 done
 
 
+# NOTE: --append here, so that the install only adds the forms, but doesn't delete existing ones.
+echo "==================================================="
+echo "appending forms from $DPS/n_px.xml"
+$P install.py --file $META/n_px.xml --tagfile $META/tags.txt --paradigmfile $META/n_px_paradigms.txt --append 2>>error.log
+echo "done"
+echo " "
+echo "==================================================="
+
+# NOTE: --append here, so that the install only adds the forms, but doesn't delete existing ones.
+echo "==================================================="
+echo "appending forms from $DPS/v_pass.xml"
+$P install.py --file $META/v_pass.xml --tagfile $META/tags.txt --paradigmfile $META/v_pass_paradigms.txt --append 2>>error.log
+echo "done"
+echo " "
+echo "==================================================="
 
 
 
