@@ -123,13 +123,8 @@ do
     echo "==================================================="
 done
 
-### below this line no abstraction: TODO
 
 #  ... for eastern dialect there are additional feedback files feedback_verbs_eastern, feedback_adjectives_eastern that we ignore right now
-
-# Morfa-C 
-
-
 echo "==================================================="
 echo "installing Morfa-C word fillings"
 $P install.py -f $META/fillings_smenob.xml --paradigmfile $META/paradigms_all.txt --tagfile $META/tags.txt 2>>$log_file
@@ -140,72 +135,17 @@ echo "==================================================="
 $P manage.py mergetags
 $P manage.py fixtagattributes
 
-echo "==================================================="
-echo "installing Morfa-C questions for nouns"
-$P install.py -g $META/grammar_defaults.xml -q $META/noun_questions.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
 
-echo "==================================================="
-echo "installing Morfa-C questions for verbs"
-$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
+# installing question files for MorfaC, Vasta and VastaS
+for q_file in $(ls $META/*_questions.xml)
+do
+  echo "installing questions: $q_file"
+  $P install.py -g $META/grammar_defaults.xml -q $META/$q_file 2>>$log_file
+  echo "done"
+  echo "   "
+done
 
-echo "==================================================="
-echo "installing Morfa-C questions for pronoun"
-$P install.py -g $META/grammar_defaults.xml -q $META/pron_questions.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "installing Morfa-C questions for adjectives"
-$P install.py -g $META/grammar_defaults.xml -q $META/adjective_questions.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "installing Morfa-C questions for numerals"
-$P install.py -g $META/grammar_defaults.xml -q $META/numeral_questions.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "installing Morfa-C questions for derivation"
-$P install.py -g $META/grammar_defaults.xml -q $META/derivation_questions.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "installing Morfa-C questions for noun possessive suffixes"
-$P install.py -g $META/grammar_defaults.xml -q $META/px_questions.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-###################
-# Vasta and VastaS
-###################
-echo "==================================================="
-echo "installing Vasta questions"
-$P install.py -g $META/grammar_defaults.xml -q $META/questions_vasta.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "installing Vasta-S questions"
-$P install.py -g $META/grammar_defaults.xml -q $META/vastas_questions.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
+### below this line no abstraction: TODO
 
 echo "==================================================="
 echo "Installing feedback messages for vasta"
@@ -256,6 +196,7 @@ echo "==================================================="
 #####
 # Sahka
 #####
+
 echo "==================================================="
 echo "Installing dialogues for Sahka - firstmeeting"
 $P install.py -k $META/dialogue_firstmeeting.xml 2>>$log_file
