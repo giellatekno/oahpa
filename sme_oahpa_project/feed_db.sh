@@ -11,6 +11,8 @@ META="$DATA/meta_data"
 SRC="$DATA/src"
 XXX="$DATA/*2${LLL1}"
 
+# perhaps an error file per task would be
+# better (install sme2x, install x2sme, install messages, etc.)
 rm -fv $log_file
 
 echo "==================================================="
@@ -24,7 +26,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "installing tags and paradigms for Morfa-C"
-$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>>error.log
+$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>>$log_file
 echo " "
 echo "done"
 echo "==================================================="
@@ -48,7 +50,7 @@ do
     POS=${fl%%_*}
     PARA_FILE="${META}/${POS}_paradigms.txt"
     echo "feeding db with $xfile: pos $POS"
-    if [ "$fl" != "derverb_sme.xml" ] && [ "$fl" != "pron_sme.xml" ] ; then
+    if [ "$fl" != "derverb_sme2x.xml" ] && [ "$fl" != "pron_sme2x.xml" ] && [ "$fl" != "npx_sme2x.xml" ]  && [ "$fl" != "vpass_sme2x.xml" ] ; then
 	
 	if [ -e "$PARA_FILE" ]; then
 	    echo "... both w paradime and w tags"
@@ -58,32 +60,22 @@ do
 	    $P install.py --file $xfile 2>>$log_file
 	fi
     # special treatment
-    elif [ "$fl" == "derverb_sme.xml" ] ; then
-    	 echo "... w tags but w/o paradime: append derverb_"
-    	 $P install.py --file $xfile --tagfile $META/tags.txt --append  2>>$log_file # TODO: test append with this
-    elif [ "$fl" == "pron_sme.xml" ] ; then
-    	 echo "... w tags but w/o paradime: pron_"
-    	 $P install.py --file $xfile --tagfile $META/tags.txt 2>>$log_file
+    elif [ "$fl" == "derverb_sme2x.xml" ] ; then
+    	echo "... append w tags but w/o paradime: append derverb_"
+	# NOTE: --append here, so that the install only adds the forms, but doesn't delete existing ones.
+    	$P install.py --file $xfile --tagfile $META/tags.txt --append  2>>$log_file 
+    elif [ "$fl" == "npx_sme2x.xml" ] || [ "$fl" == "vpass_sme2x.xml" ] ; then
+	# NOTE: --append here, so that the install only adds the forms, but doesn't delete existing ones.
+    	echo "... append both w tags and w paradime: append npx_ or vpass_"
+    	$P install.py --file $xfile --tagfile $META/tags.txt  --paradigmfile $PARA_FILE --append  2>>$log_file
+    elif [ "$fl" == "pron_sme2x.xml" ] ; then
+    	echo "... w tags but w/o paradime: pron_"
+    	$P install.py --file $xfile --tagfile $META/tags.txt 2>>$log_file
     fi
     echo "done"
     echo " "
 done
 
-# NOTE: --append here, so that the install only adds the forms, but doesn't delete existing ones.
-echo "==================================================="
-echo "appending forms from $DPS/n_px.xml"
-$P install.py --file $META/n_px.xml --tagfile $META/tags.txt --paradigmfile $META/n_px_paradigms.txt --append 2>>$log_file
-echo "done"
-echo " "
-echo "==================================================="
-
-# NOTE: --append here, so that the install only adds the forms, but doesn't delete existing ones.
-echo "==================================================="
-echo "appending forms from $DPS/v_pass.xml"
-$P install.py --file $META/v_pass.xml --tagfile $META/tags.txt --paradigmfile $META/v_pass_paradigms.txt --append 2>>$log_file
-echo "done"
-echo " "
-echo "==================================================="
 
 
 ##
@@ -124,7 +116,9 @@ do
 done
 
 
-#  ... for eastern dialect there are additional feedback files feedback_verbs_eastern, feedback_adjectives_eastern that we ignore right now
+#  ... for eastern dialect there are additional feedback files feedback_verbs_eastern,
+# feedback_adjectives_eastern that we ignore right now
+
 echo "==================================================="
 echo "installing Morfa-C word fillings"
 $P install.py -f $META/fillings_smenob.xml --paradigmfile $META/paradigms_all.txt --tagfile $META/tags.txt 2>>$log_file
@@ -137,7 +131,9 @@ $P manage.py fixtagattributes
 
 
 # installing question files for MorfaC, Vasta and VastaS
-for q_file in $(ls $META/*_questions.xml)
+question_files=$(ls $META/*_questions.xml)
+
+for q_file in $question_files
 do
     echo "installing questions: $q_file"
     $P install.py -g $META/grammar_defaults.xml -q $META/$q_file 2>>$log_file
@@ -171,57 +167,19 @@ echo "==================================================="
 # Sahka
 #####
 
-echo "==================================================="
-echo "Installing dialogues for Sahka - firstmeeting"
-$P install.py -k $META/dialogue_firstmeeting.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
+# installing dialogue files for Sahka
+sahka_dialogue_files=$(ls $META/dialogue_*.xml)
 
-echo "==================================================="
-echo "Installing dialogues for Sahka - hello"
-$P install.py -k $META/dialogue_hello.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
+for sd_file in $sahka_dialogue_files
+do
+    echo "installing sahka dialogue: $sd_file"
+    $P install.py -k $META/$sd_file 2>>$log_file
+    echo "done"
+    echo "   "
+done
 
-echo "==================================================="
-echo "Installing dialogues for Sahka - car"
-$P install.py -k $META/dialogue_car.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "Installing dialogues for Sahka - coffee break"
-$P install.py -k $META/dialogue_coffee.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "Installing dialogues for Sahka - grocery shop"
-$P install.py -k $META/dialogue_grocery.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "Installing dialogues for Sahka - adjectives in shop"
-$P install.py -k $META/dialogue_shopadj.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "Installing dialogues for Sahka - visit"
-$P install.py -k $META/dialogue_visit.xml 2>>$log_file
-echo " "
-echo "done"
-echo "==================================================="
-
-
-# TODO: 
+# @cip 20181130: why todo?
+# TODO:
 # fixtagattributes
 # mergetags
 
@@ -232,11 +190,6 @@ $P manage.py fixattributes
 echo "==================================================="
 echo "adding feedback to nouns"
 $P install.py -f $DPS/n_smenob.xml --feedbackfile $META/feedback_nouns.xml
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
 echo "adding feedback to verbs"
 $P install.py -f $DPS/v_smenob.xml --feedbackfile $META/feedback_verbs.xml
 echo " "
