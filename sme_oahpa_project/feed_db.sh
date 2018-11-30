@@ -115,7 +115,6 @@ do
     echo "==================================================="
 done
 
-
 #  ... for eastern dialect there are additional feedback files feedback_verbs_eastern,
 # feedback_adjectives_eastern that we ignore right now
 
@@ -209,42 +208,28 @@ $P manage.py fixattributes
 $P manage.py mergetags
 $P manage.py fixattributes
 
-echo "==================================================="
-echo "adding feedback to nouns"
-$P install.py -f $DPS/n_smenob.xml --feedbackfile $META/feedback_nouns.xml
-echo "adding feedback to verbs"
-$P install.py -f $DPS/v_smenob.xml --feedbackfile $META/feedback_verbs.xml
-echo " "
-echo "done"
-echo "==================================================="
+FB_FILE_PREFIX="n
+v
+a
+num"
 
-echo "==================================================="
+for fbfp in $FB_FILE_PREFIX
+do
+    echo "==================================================="
+    echo "adding feedback to: $fbfp"
+    $P install.py -f $SRC/${fbfp}_sme2x.xml --feedbackfile $META/${fbfp}_feedback.xml
+    echo " "
+    echo "done"
+    echo "==================================================="
+done
+
+# appending the passive verbs to the already installed ones
 echo "adding feedback to passive verbs"
-$P install.py -f $DPS/v_smenob.xml --feedbackfile $META/feedback_passiveverbs.xml --append
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "adding feedback to adjectives"
-$P install.py -f $DPS/a_smenob.xml --feedbackfile $META/feedback_adjectives.xml 
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "adding feedback to numerals"
-$P install.py -f $DPS/num_smenob.xml --feedbackfile $META/feedback_numerals.xml 
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
+$P install.py -f $SRC/v_sme2x.xml --feedbackfile $META/vpass_feedback.xml --append
 echo "adding feedback to possessives"
-$P install.py -f $META/n_px.xml --feedbackfile $META/feedback_n_px.xml --append
-echo " "
-echo "done"
-echo "==================================================="
+$P install.py -f $SRC/npx_sme2x.xml --feedbackfile $META/npx_feedback.xml --append
+
+# ... for eastern dialect there are additional feedback files feedback_verbs_eastern, feedback_adjectives_eastern that we ignore right now
 
 #echo "==================================================="
 #echo "Optimizing tables"
