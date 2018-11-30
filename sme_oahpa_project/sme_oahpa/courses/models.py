@@ -943,7 +943,9 @@ post_delete.connect(course_relationship_postdelete, sender=CourseRelationship,
 pre_save.connect(user_presave, sender=User,
     dispatch_uid=LLL1+"_oahpa.courses.models.pre_save")
 
-import settings
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+settings = oahpa_module.settings
 # Not using notification, but using notifications-hq
 if "notification" not in settings.INSTALLED_APPS and "notifications" in settings.INSTALLED_APPS:
     from django_messages.models import Message
