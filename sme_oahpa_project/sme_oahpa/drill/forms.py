@@ -2149,7 +2149,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	qtext = question
 	qtext = qtext.rstrip('.!?,')
 
-    logfile = open(LOG_FILE_VS, 'w')
+	logfile = open(LOG_FILE_VS, 'w')
 
 	host = 'localhost'
 	port = settings.LOOKUPSERV_PORT
@@ -2698,7 +2698,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	qtext = question
 	qtext = qtext.rstrip('.!?,')
 
-    logfile = open(LOG_FILE_V, 'w')
+        logfile = open(LOG_FILE_V, 'w')
 
 	#logfile.write(question)
 	#logfile.write(answer)
