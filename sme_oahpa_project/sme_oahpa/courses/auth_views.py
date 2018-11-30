@@ -5,7 +5,11 @@ from django.conf import settings
 from .models import Goal, UserGoalInstance
 from .views import render_to_response
 
-from settings import URL_PREFIX
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
+URL_PREFIX = oahpa_module.settings.URL_PREFIX
 
 def split_login(request):
 
@@ -37,7 +41,7 @@ def cookie_login(request, next_page=None, required=False, **kwargs):
         # request.user.message_set.create(message=message)
         return HttpResponseRedirect(next_page)
 
-    matching_cookies = [(c, v) for c, v in request.COOKIES.iteritems() 
+    matching_cookies = [(c, v) for c, v in request.COOKIES.iteritems()
                                 if c.startswith(settings.COOKIE_NAME_STARTSWITH)]
 
     try:
