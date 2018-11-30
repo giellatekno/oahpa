@@ -133,6 +133,17 @@ $P manage.py fixtagattributes
 # installing question files for MorfaC, Vasta and VastaS
 question_files=$(ls $META/*_questions.xml)
 
+# adjective_questions.xml
+# derivation_questions.xml
+# noun_questions.xml
+# numeral_questions.xml
+# pron_questions.xml
+# pron_reflexive_questions.xml ==> not installed in the older version of the script: why?
+# px_questions.xml
+# vasta_questions.xml
+# vastas_questions.xml
+# verb_questions.xml
+
 for q_file in $question_files
 do
     echo "installing questions: $q_file"
@@ -169,6 +180,17 @@ echo "==================================================="
 
 # installing dialogue files for Sahka
 sahka_dialogue_files=$(ls $META/dialogue_*.xml)
+
+# dialogue_car.xml
+# dialogue_coffee.xml
+# dialogue_firstmeeting.xml
+# dialogue_firstmeeting_boy.xml ==> not installed in the older version of the script: why?
+# dialogue_firstmeeting_girl.xml ==> not installed in the older version of the script: why?
+# dialogue_firstmeeting_man.xml ==> not installed in the older version of the script: why?
+# dialogue_grocery.xml
+# dialogue_hello.xml
+# dialogue_shopadj.xml
+# dialogue_visit.xml
 
 for sd_file in $sahka_dialogue_files
 do
