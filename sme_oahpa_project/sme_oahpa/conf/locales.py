@@ -25,7 +25,7 @@ EXTRA_LANG_INFO = {
 }
 
 # Add ISO codes here
-RIGHT_TO_LEFT_LANGUAGES = ()
+RIGHT_TO_LEFT_LANGUAGES = []
 
 import django.conf.locale
 
