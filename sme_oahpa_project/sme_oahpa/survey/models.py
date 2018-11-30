@@ -5,6 +5,10 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User, Group
 
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 ##
 ## Survey
 ##
@@ -23,7 +27,8 @@ TARGET = "If you wish to make this visble only to users in a certain course, sel
 class Survey(models.Model):
     """ Main survey object
     """
-    from courses.models import Course
+    Course = oahpa_module.courses.models.Course
+
 
     title = models.CharField(max_length=50)
     description = models.TextField()
@@ -123,7 +128,7 @@ class SurveyQuestion(models.Model):
 
 #   https://github.com/deschler/django-modeltranslation
 #        - no changes to model structure required
-#        - use this one, unless it's unsupported (which it may somehow 
+#        - use this one, unless it's unsupported (which it may somehow
 #        be)
 
 # class SurveyQuestionTranslations(models.Model):
