@@ -65,7 +65,7 @@ class UserProfile(models.Model):
 
 	@property
 	def open_id_link(self):
-		return 'http://oahpa.no/sjd_oahpa/openid/%s' % self.user.username
+		return 'http://gtoahpa-01.uit.no/sjd_oahpa/openid/%s' % self.user.username
 
 	@property
 	def grades(self):
