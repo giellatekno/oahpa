@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
     'openid_provider',
+    'notifications',
     # LLL1+'_oahpa.testing',
     'django_messages',
     'django_extensions',
