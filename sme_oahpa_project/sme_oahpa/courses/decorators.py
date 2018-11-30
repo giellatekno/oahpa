@@ -87,7 +87,7 @@ class trackGrade(object):
         """
 
         def decorated_function(*args, **kwargs):
-			trackGrade =  oahpa_module.courses.views.trackGrade
+	    trackGrade =  oahpa_module.courses.views.trackGrade
 
             # grab the request, and execute the view function as normal
             request = args[0]
