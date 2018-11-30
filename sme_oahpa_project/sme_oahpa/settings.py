@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     LLL1+'_oahpa.errorapi',
     LLL1+'_oahpa.feedback',
     LLL1+'_oahpa.management',
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,7 +73,6 @@ INSTALLED_APPS = [
     'django_messages',
     'django_extensions',
     'django_forms_bootstrap',
-    'modeltranslation',
 ]
 
 MIDDLEWARE = [
@@ -231,5 +231,10 @@ MEDIA_URL = '/%s/media/' % URL_PREFIX
 AUTH_PROFILE_MODULE = LLL1+'_oahpa.courses.UserProfile'
 LOGIN_REDIRECT_URL = '/%s/courses/' % URL_PREFIX
 LOGIN_URL = '/%s/courses/login/' % URL_PREFIX
+
+MODELTRANSLATION_TRANSLATION_FILES = (
+    'translation',
+)
+
 
 from settings_not_in_svn import *
