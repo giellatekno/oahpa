@@ -15,13 +15,13 @@ XXX="$DATA/*2${LLL1}"
 # better (install sme2x, install x2sme, install messages, etc.)
 rm -fv $log_file
 
-echo "==================================================="
-echo "fixing collation to utf-8"
-cat fix_collation.sql | $P manage.py dbshell
-echo "==================================================="
-echo " "
-echo "done"
-echo "==================================================="
+# echo "==================================================="
+# echo "fixing collation to utf-8"
+# cat fix_collation.sql | $P manage.py dbshell
+# echo "==================================================="
+# echo " "
+# echo "done"
+# echo "==================================================="
 
 
 echo "==================================================="
