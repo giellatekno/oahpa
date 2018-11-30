@@ -79,12 +79,19 @@
         $ python manage.py update_translation_fields
 
 """
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
 
 from modeltranslation.translator import translator, TranslationOptions, AlreadyRegistered
 
-from survey.models import Survey, SurveyQuestion, SurveyQuestionAnswerValue
+Survey = oahpa_module.survey.models.Survey
+SurveyQuestion = oahpa_module.survey.models.SurveyQuestion
+SurveyQuestionAnswerValue = oahpa_module.survey.models.SurveyQuestionAnswerValue
 
-from courses.models import Goal, CourseGoal
+Goal = oahpa_module.courses.models.Goal
+CourseGoal = oahpa_module.courses.models.CourseGoal
+
 
 class SurveyOptions(TranslationOptions):
     fields = ('title', 'description', )
