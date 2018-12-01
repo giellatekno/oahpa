@@ -390,8 +390,8 @@ def equal_url_base(a, b):
     library. For a URL to match, the scheme, location, and path must all
     be the same, i.e., the following will be equivalent:
 
-        http://oahpa.no/path/to/page/
-        http://oahpa.no/path/to/page/?param=foo
+        http://gtoahpa-01.uit.no/path/to/page/
+        http://gtoahpa-01.uit.no/path/to/page/?param=foo
 
     TODO: do we require a.query == b.query as option?
     """

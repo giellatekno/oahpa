@@ -461,7 +461,7 @@ def course_enroll(request):
     from django.core.urlresolvers import reverse
 
     # invite stored in 'key' parameter.
-    # http://oahpa.no/davvi/courses/enroll/?key=NDg.BioJAg.E2-Y6uBwr6_35Qhk03uBamTTnHc
+    # http://gtoahpa-01.uit.no/davvi/courses/enroll/?key=NDg.BioJAg.E2-Y6uBwr6_35Qhk03uBamTTnHc
 
 
     # TODO: if user isn't logged in, store the invite key in the session
