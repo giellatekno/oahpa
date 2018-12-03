@@ -101,7 +101,8 @@ class TaggedObjectRelatedField(serializers.RelatedField):
 
 class NotificationSerializer(serializers.ModelSerializer):
 
-    actor = TaggedObjectRelatedField('actor')
+    actor = TaggedObjectRelatedField(read_only=True)
+
 
     class Meta:
         model = Notification
