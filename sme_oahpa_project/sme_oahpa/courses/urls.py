@@ -50,12 +50,12 @@ from .data_api import ( UserStatsViewSet
                       )
 
 router = routers.DefaultRouter()
-router.register(r'stats', UserStatsViewSet)
+router.register(r'stats', UserStatsViewSet, base_name='stats')
 router.register(r'goals', GoalParametersView, base_name='params')
 router.register(r'coursegoals', CourseGoalView, base_name='coursegoals')
 router.register(r'notifications', NotificationsView, base_name='notifications')
-router.register(r'feedback', FeedbackLogView)
-router.register(r'submission', SubmissionView)
+router.register(r'feedback', FeedbackLogView, base_name='feedback')
+router.register(r'submission', SubmissionView, base_name='submission')
 
 urlpatterns += [
     url(r'^goal/history/(?P<goal_id>\d+)/(?P<user_id>\d+)/$', goal_history,
