@@ -1,4 +1,9 @@
-from drill.forms import *
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
+odf = oahpa_module.drill.forms
+from odf import *
 
 __all__ = [
     'prepare_goal_params',
