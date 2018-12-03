@@ -40,7 +40,7 @@ class SurveySerializer(serializers.ModelSerializer):
 
 class UserQASerializer(serializers.ModelSerializer):
 
-    question = serializers.PrimaryKeyRelatedField()
+    question = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = UserSurveyQuestionAnswer
