@@ -11,6 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
+from settings import LLL1
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", LLL1+"_oahpa.settings")
 
 application = get_wsgi_application()
