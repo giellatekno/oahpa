@@ -51,7 +51,7 @@ do
     PARA_FILE="${META}/${POS}_paradigms.txt"
     echo "feeding db with $xfile: pos $POS"
     if [ "$fl" != "derverb_sme2x.xml" ] && [ "$fl" != "pron_sme2x.xml" ] && [ "$fl" != "npx_sme2x.xml" ]  && [ "$fl" != "vpass_sme2x.xml" ] ; then
-	
+
 	if [ -e "$PARA_FILE" ]; then
 	    echo "... both w paradime and w tags"
 	    $P install.py --file $xfile --tagfile $META/tags.txt --paradigmfile $PARA_FILE 2>>$log_file
@@ -63,7 +63,7 @@ do
     elif [ "$fl" == "derverb_sme2x.xml" ] ; then
     	echo "... append w tags but w/o paradime: append derverb_"
 	# NOTE: --append here, so that the install only adds the forms, but doesn't delete existing ones.
-    	$P install.py --file $xfile --tagfile $META/tags.txt --append  2>>$log_file 
+    	$P install.py --file $xfile --tagfile $META/tags.txt --append  2>>$log_file
     elif [ "$fl" == "npx_sme2x.xml" ] || [ "$fl" == "vpass_sme2x.xml" ] ; then
 	# NOTE: --append here, so that the install only adds the forms, but doesn't delete existing ones.
     	echo "... append both w tags and w paradime: append npx_ or vpass_"
@@ -146,7 +146,7 @@ question_files=$(ls $META/*_questions.xml)
 for q_file in $question_files
 do
     echo "installing questions: $q_file"
-    $P install.py -g $META/grammar_defaults.xml -q $META/$q_file 2>>$log_file
+    $P install.py -g $META/grammar_defaults.xml -q $q_file 2>>$log_file
     echo "done"
     echo "   "
 done
@@ -157,7 +157,7 @@ vasta_message_files=$(ls $META/messages_vasta*.xml)
 for mv_file in $vasta_message_files
 do
     echo "installing vasta messages: $mv_file"
-    $P install.py --messagefile $META/$mv_file 2>>$log_file
+    $P install.py --messagefile $mv_file 2>>$log_file
     echo "done"
     echo "   "
 done
@@ -194,7 +194,7 @@ sahka_dialogue_files=$(ls $META/dialogue_*.xml)
 for sd_file in $sahka_dialogue_files
 do
     echo "installing sahka dialogue: $sd_file"
-    $P install.py -k $META/$sd_file 2>>$log_file
+    $P install.py -k $sd_file 2>>$log_file
     echo "done"
     echo "   "
 done
@@ -240,4 +240,3 @@ $P install.py -f $SRC/npx_sme2x.xml --feedbackfile $META/npx_feedback.xml --appe
 
 echo "stopped at: "
 date '+%T'
-

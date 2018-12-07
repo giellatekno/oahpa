@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import settings
+import django
 django.setup()
 from os import environ
 import os, sys
@@ -77,7 +77,7 @@ OPTION_LIST = (
 from django.core.management.base import BaseCommand, CommandError
 
 class Command(BaseCommand):
-	option_list = BaseCommand.option_list + OPTION_LIST
+	can_import_settings = True
 	help = 'Help text goes here'
 
 	def handle(self, **options):

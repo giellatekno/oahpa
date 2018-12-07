@@ -3,6 +3,7 @@ from local_conf import LLL1
 import importlib
 settings = importlib.import_module(LLL1+'_oahpa.settings')
 sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
+sco = importlib.import_module(LLL1+'_oahpa.conf.ordereddict')
 
 from django.db.models import Q
 from xml.dom import minidom as _dom
@@ -10,8 +11,11 @@ from django.utils.encoding import force_unicode
 import sys
 
 #from collections import OrderedDict
-from conf.ordereddict import *
 from django.db.utils import IntegrityError
+
+from kitchen.text.converters import getwriter
+UTF8Writer = getwriter('utf8')
+sys.stdout = UTF8Writer(sys.stdout)
 
 # For easier debugging.
 # _D = open('/dev/ttys005', 'w')
@@ -464,7 +468,7 @@ class Words(object):
 			return True
 
 
-	@transaction.commit_on_success
+	@transaction.atomic
 	def install_lexicon(self,infile,linginfo,delete=None,paradigmfile=False, verbose=True,append_only=False):
 		global VERBOSE
 		VERBOSE = verbose
@@ -878,7 +882,7 @@ class Words(object):
 				form.save()
 
 				if dialect:
-					if type(dialect) != Dialect:
+					if type(dialect) != sdm.Dialect:
 						dialect = sdm.Dialect.objects.get(dialect=dialect)
 					form.dialects.add(dialect)
 
@@ -933,7 +937,7 @@ class Words(object):
 
 					paradigms_to_create[key] = form_info
 
-			paradigms_to_create = OrderedDict(sorted(paradigms_to_create.items(), key=lambda t: t[0]))
+			paradigms_to_create = sco.OrderedDict(sorted(paradigms_to_create.items(), key=lambda t: t[0]))
 
 			changes_to_paradigm = False
 			paradigm_key = '%s|%s|%s' % (lemma, pos, dialect.dialect)
@@ -975,7 +979,7 @@ class Words(object):
 
 					try:
 						t = sdm.Tag.objects.get(string=f.tags)
-					except Tag.DoesNotExist:
+					except sdm.Tag.DoesNotExist:
 						t = sdm.Tag.objects.create(**tag_kwargs)
 
 					t.save()

@@ -12,6 +12,10 @@ import re
 # import string
 import codecs
 
+from kitchen.text.converters import getwriter
+UTF8Writer = getwriter('utf8')
+sys.stdout = UTF8Writer(sys.stdout)
+
 # Using django settings paths, need to make these more central.
 
 #
@@ -188,7 +192,8 @@ class Paradigm:
 					self.paradigms[pos]=[]
 			except UnboundLocalError:
 				print >> STDERR, ' * Could not match pos. Check format of paradigm file.'
-				print >> STDERR, ' * Error on line: %s' % line
+		    	#Chiara's note, this throws unicode error without .encode
+				print >> STDERR, ' * Error on line: %s' % line.encode('utf-8')
 				sys.exit()
 			self.paradigms[pos].append(line)
 
@@ -287,6 +292,7 @@ class Paradigm:
 			wordtype = '+' + w.capitalize() + rest
 
 		if self.paradigms.has_key(pos):
+			tag = ""
 			for a in self.paradigms[pos]:
 				if wordtype.strip():
 					if not wordtype in a:

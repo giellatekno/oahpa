@@ -12,6 +12,12 @@ import re
 import string
 import codecs
 from django.utils.encoding import force_unicode
+
+from kitchen.text.converters import getwriter
+UTF8Writer = getwriter('utf8')
+sys.stdout = UTF8Writer(sys.stdout)
+
+
 def monitor(function):
 	from functools import wraps
 

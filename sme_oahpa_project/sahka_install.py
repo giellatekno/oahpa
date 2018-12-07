@@ -12,15 +12,17 @@ from django.utils.encoding import force_unicode
 import re
 import string
 import codecs
-import settings
 
+from kitchen.text.converters import getwriter
+UTF8Writer = getwriter('utf8')
+sys.stdout = UTF8Writer(sys.stdout)
 
 class Sahka:
 
     def add_wordlist(self,word,t):
         #cgfile="/opt/smi/sme/bin/sme-ped.cg3"  # on victorio
         #cgfile="../sme/src/sme-ped.cg3" # relative path, for local use
-        cgfile = settings.FST_DIRECTORY + '/'+LLL1+'ped.cg3'
+        cgfile = settings.FST_DIRECTORY + '/'+LLL1+'-ped.cg3'
 
         wordclass = word.getAttribute("class")
         print wordclass
@@ -30,7 +32,7 @@ class Sahka:
             line = cgfileObj.readline()
             if not line: break
             if not line.strip(): continue
-            matchObj=listObj.search(line) 
+            matchObj=listObj.search(line)
             if matchObj:
                 list = matchObj.expand(r'\g<listString>')
                 for w in list.split():
@@ -42,10 +44,10 @@ class Sahka:
                         t.formlist.add(word)
                         t.save()
                     else:
-                        print "***ERROR: no word found from database:", w 
+                        print "***ERROR: no word found from database:", w
         if t.formlist.all().count()==0:
             print "***ERROR: no words found for", wordclass
-        cgfileObj.close()                        
+        cgfileObj.close()
 
     def read_dialogue(self,infile):
 
@@ -56,11 +58,11 @@ class Sahka:
 
         dialogue_name = tree.getElementsByTagName("dialogue")[0].getAttribute("name")
         d, created = sdm.Dialogue.objects.get_or_create(name=dialogue_name)
-        
+
         #If there exists already a dialogue with that name, delete all the references to it.
         if not created:
             d.delete()
-        d.save()        
+        d.save()
         topicutts={}
         topicnum=0
         image=""
@@ -101,16 +103,16 @@ class Sahka:
 
                 if utt.getElementsByTagName("word"):
                     utt_word = utt.getElementsByTagName("word")[0]
-                    
+
                 if utt.getElementsByTagName("facit"):
                     utt_facit = utt.getElementsByTagName("facit")[0].firstChild.data
-                
+
                 if utt.getElementsByTagName("element"):
                     uttelement = utt.getElementsByTagName("element")[0]
                     el_id = uttelement.getAttribute("id")
                     tag = ""
                     if  uttelement.getElementsByTagName("grammar"):
-                        grammar = uttelement.getElementsByTagName("grammar")[0] 
+                        grammar = uttelement.getElementsByTagName("grammar")[0]
                         tag = grammar.getAttribute("tag")
                     utterance['elements'] = { 'id' : el_id, 'tag' : tag }
 
@@ -123,7 +125,7 @@ class Sahka:
                 utterance['number'] = i
                 i=i+1
                 utterance['alts'] = []
-                
+
                 for alt in utt.getElementsByTagName("alt"):
                     alter = {}
                     alter['target'] = alt.getAttribute("target")
@@ -140,14 +142,14 @@ class Sahka:
                         el_id = altelement.getAttribute("id")
                         tag = ""
                         if  altelement.getElementsByTagName("grammar"):
-                            grammar = altelement.getElementsByTagName("grammar")[0] 
+                            grammar = altelement.getElementsByTagName("grammar")[0]
                             tag = grammar.getAttribute("tag")
                         alter['elements'] = { 'id' : el_id, 'tag' : tag }
 
                     utterance['alts'].append(alter)
 
                 utts.append(utterance)
-                
+
             for u in utts:
                 utt, created = sdm.Utterance.objects.get_or_create(utterance=u['text'], utttype=u['type'], topic=t, name=u['name'], facit=u['facit'])
                 if u['word']:
@@ -163,7 +165,7 @@ class Sahka:
                         if sdm.Tag.objects.filter(string=u['elements']['tag']).count()>0:
                             tag = sdm.Tag.objects.filter(string=u['elements']['tag'])[0]
                         else:
-                            print "*******ERRROR: tag not found", u['elements']['tag'] 
+                            print "*******ERRROR: tag not found", u['elements']['tag']
                     uelement, created = sdm.UElement.objects.get_or_create(syntax=u['elements']['id'],\
                                                                        tag=tag,\
                                                                        utterance=utt)
@@ -171,12 +173,12 @@ class Sahka:
                     uelement.save()
 
             # create an opening or closing if not exist:
-            if not opening: 
+            if not opening:
                 utt, created = sdm.Utterance.objects.get_or_create(utterance="",\
                                                                utttype="opening",\
                                                                topic=t,)
                 utt.save()
-            if not closing: 
+            if not closing:
                 utt, created = sdm.Utterance.objects.get_or_create(utterance="",\
                                                                utttype="closing",\
                                                                topic=t,)
@@ -224,27 +226,27 @@ class Sahka:
                                 if sdm.Tag.objects.filter(string=a['elements']['tag']).count()>0:
                                     tag = sdm.Tag.objects.filter(string=a['elements']['tag'])[0]
                                 else:
-                                    print "*******ERRROR: tag not found", a['elements']['tag'] 
+                                    print "*******ERRROR: tag not found", a['elements']['tag']
                             uelement, created = sdm.UElement.objects.get_or_create(syntax=a['elements']['id'],\
                                                                                tag=tag,\
                                                                                utterance=utterance2)
                             uelement.save()
 
-                            
+
                         if a['link']:
                             linkutt2, created = sdm.LinkUtterance.objects.get_or_create(link=next_utterance,\
                                                                                     target="default")
                             linkutt2.save()
                             utterance2.links.add(linkutt2)
                             utterance2.save()
-                        
+
                         # If the alternative contains text, create a new utterance out of it:
                         linkutt, created = sdm.LinkUtterance.objects.get_or_create(link=utterance2,\
                                                                                target=a['target'], \
                                                                                variable=a['variable'],\
                                                                                constant=a['constant'])
-                        linkutt.save()                                                
-                    
+                        linkutt.save()
+
                         utterance.links.add(linkutt)
                         utterance.save()
 
@@ -254,8 +256,7 @@ class Sahka:
                                                                                    target=a['target'], \
                                                                                    variable=a['variable'], \
                                                                                    constant=a['constant'])
-                            linkutt.save()                        
-                            
+                            linkutt.save()
+
                             utterance.links.add(linkutt)
                             utterance.save()
-                        
