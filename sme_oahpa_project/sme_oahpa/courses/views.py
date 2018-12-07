@@ -1,10 +1,15 @@
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+settings = oahpa_module.settings
+URL_PREFIX = settings.URL_PREFIX
+
 from django.template import RequestContext
 from django.http import HttpResponseRedirect, HttpResponseForbidden, Http404
 
 from django.conf import settings
 from .models import Goal, UserGoalInstance
 
-URL_PREFIX = settings.URL_PREFIX
 
 def render_to_response(*args, **kwargs):
     """ Append an attribute onto the response so that we can grab the context
@@ -12,10 +17,12 @@ def render_to_response(*args, **kwargs):
     doesn't depend on the function returning the response to be decorated by
     @trackGrade to get proper output. """
 
-    from django.shortcuts import render_to_response
+    #from django.shortcuts import render_to_response
+    from django.shortcuts import render
 
-    response = render_to_response(*args, **kwargs)
-    response.context = args[1]
+    #response = render_to_response(*args, **kwargs)
+    response = render(*args, **kwargs)
+    response.context = args[2]
 
     return response
 
@@ -66,9 +73,7 @@ def trackGrade(gamename, request, c):
 def courses_coursegoal_sub_goal_add(request):
     template = 'course_goal_constructor_iframe.html'
     c = {'dialog': True}
-    return render_to_response(template,
-                              c,
-                              context_instance=RequestContext(request))
+    return render_to_response(request, template, c)
 
 @login_required
 def courses_goal_construction(request):
@@ -76,9 +81,7 @@ def courses_goal_construction(request):
     c = {'coursegoal': False,
          'for_iframe': False
         }
-    return render_to_response(template,
-                              c,
-                              context_instance=RequestContext(request))
+    return render_to_response(request, template, c)
 
 @login_required
 def courses_coursegoal_construction(request):
@@ -86,9 +89,7 @@ def courses_coursegoal_construction(request):
     c = {'coursegoal': True,
          'for_iframe': False
         }
-    return render_to_response(template,
-                              c,
-                              context_instance=RequestContext(request))
+    return render_to_response(request, template, c)
 
 @login_required
 def courses_stats(request):
@@ -138,10 +139,7 @@ def courses_stats(request):
         'courses': profile.studentships,
         'user_defined_goals': user_defined_goals
     }
-
-    return render_to_response(template,
-                              c,
-                              context_instance=RequestContext(request))
+    return render_to_response(request, template, c)
 
 @login_required
 def personal_goals(request):
@@ -176,10 +174,7 @@ def personal_goals(request):
         'is_student':  is_student,
         'user_defined_goals': user_defined_goals
     }
-
-    return render_to_response(template,
-                              c,
-                              context_instance=RequestContext(request))
+    return render_to_response(request, template, c)
 
 
 @login_required
@@ -242,10 +237,7 @@ def courses_main(request):
         'courses': profile.studentships,
         'user_defined_goals': user_defined_goals
     }
-
-    return render_to_response(template, 
-                              c, 
-                              context_instance=RequestContext(request))
+    return render_to_response(request, template, c)
 
 from django.contrib.auth.decorators import user_passes_test
 
@@ -260,7 +252,7 @@ def instructor_can_see_student(instructor, student):
     instructor_p = instructor.get_profile()
     instructor_courses = list([a.id for a in instructor_p.instructorships])
 
-    # Student's ... 
+    # Student's ...
     student_p = student.get_profile()
     student_courses = list([a.id for a in student_p.courses])
     intersection = list(set(instructor_courses) & set(student_courses))
@@ -296,9 +288,7 @@ def instructor_student_detail(request, uid, cid):
     c = {}
     c['student'] = UserProfile.objects.get(user__id=uid)
     c['course'] = course
-    return render_to_response(template,
-                              c,
-                              context_instance=RequestContext(request))
+    return render_to_response(request, template, c)
 
 def goal_history(request, goal_id, user_id=None):
     from django.contrib.auth.models import User
@@ -331,10 +321,7 @@ def goal_history(request, goal_id, user_id=None):
     c['goal_instances'] = instances
     c['incorrects'] = incorrects_by_frequency(u, goal=goal)
     c['spark_data'] = ','.join(map(str, instances_rev.values_list('correct', flat=True)))
-
-    return render_to_response(template,
-                              c,
-                              context_instance=RequestContext(request))
+    return render_to_response(request, template, c)
 
 def begin_course_task(request, task_id):
     """ Mark the session with the goal ID, and redirect the user to the
@@ -395,7 +382,7 @@ def begin_course_task(request, task_id):
     goal = Goal.objects.get(id=task_id)
 
     # Reset goal progress
-    # TODO: will this need to be connected to a usergoalinstance? 
+    # TODO: will this need to be connected to a usergoalinstance?
     # UserActivityLog.objects.filter(user=request.user, goal=goal)
 
     UserGoalInstance.objects.filter(user=request.user, goal=goal).update(opened=False)
@@ -423,9 +410,7 @@ def course_invite(request, c_id=None):
     c['profile'] = profile
     c['course_invites'] = filter(by_id, profile.instructorships)
     template = 'invite_students.html'
-    return render_to_response(template,
-                              c,
-                              context_instance=RequestContext(request))
+    return render_to_response(request, template, c)
 
 @user_passes_test(instructor_group)
 def reset_invite_link(request, cid):
@@ -452,10 +437,7 @@ def reset_invite_link(request, cid):
 
         new_link = 'TODO'
         c['new_link'] = new_link
-
-    return render_to_response(template,
-                              c,
-                              context_instance=RequestContext(request))
+	return render_to_response(request, template, c)
 
 def course_enroll(request):
     from django.core.urlresolvers import reverse
@@ -516,10 +498,7 @@ def course_enroll(request):
     else:
         c['error'] = error
 
-
-    return render_to_response('course_enroll.html',
-                              c,
-                              context_instance=RequestContext(request))
+	return render_to_response(request, 'course_enroll.html', c)
 
 @login_required
 def recipient_search(request):
