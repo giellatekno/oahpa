@@ -41,12 +41,12 @@ INTERNAL_IPS = ('127.0.0.1',)
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-ALLOWED_HOSTS = ['.gtoahpa-01.uit.no','127.0.0.1','localhost']
+#DEBUG = False
+#ALLOWED_HOSTS = ['.gtoahpa-01.uit.no','127.0.0.1','localhost']
 
 # Development mode
-#DEBUG = True
-#ALLOWED_HOSTS = []
+DEBUG = True
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -107,7 +107,6 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.static',
-                "django.core.context_processors.csrf",
                 LLL1+'_oahpa.courses.context_processors.request_user',
                 LLL1+"_oahpa.courses.context_processors.courses_user",
                 LLL1+"_oahpa.survey.context_processors.display_survey_notice",
