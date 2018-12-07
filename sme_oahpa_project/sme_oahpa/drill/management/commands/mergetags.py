@@ -59,7 +59,7 @@ class Command(BaseCommand):
 	help = """
 	Strips tags of an element and then merges them all.
 	"""
-    def add_arguments(self, parser):
+	def add_arguments(self, parser):
 		parser.add_argument(
         	'-t', '--tagelement',
         	dest='tagelement',
