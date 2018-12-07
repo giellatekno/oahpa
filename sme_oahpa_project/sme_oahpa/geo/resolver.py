@@ -1,3 +1,29 @@
+'''
+## Install geoip2 Python library
+
+The Python library is required for the geodjango GeoIP2 object to be able to perform lookups.
+(ref. https://docs.djangoproject.com/en/1.11/ref/contrib/gis/geoip2/)
+
+    pip install geoip2
+    mkdir geo/data
+    Download GeoLite2 City and Country db, unzip and mv them to geo/data
+	(https://dev.maxmind.com/geoip/geoip2/geolite2/, download MaxMind DB binary, gzipped)
+
+
+
+## settings.py
+
+The paths to db and names are included in settings_not_in_svn.py.
+
+## Install the libmaxminddb C library
+
+Add the context processor to add country to user session info
+
+	LLL1+"_oahpa.geo.resolver.session_country"
+
+'''
+
+
 from django.contrib.gis.geoip2 import GeoIP2
 
 
