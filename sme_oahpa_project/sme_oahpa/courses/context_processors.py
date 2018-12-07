@@ -1,10 +1,14 @@
-﻿from django.conf import settings
+# -*- encoding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+from django.conf import settings
 
 def request_user(request):
     return {'rquser': request.user}
 
 def courses_user(request):
-    from survey.models import Survey
+    Survey = oahpa_module.survey.models.Survey
     from django.db.models import Q
 
     user_has_surveys = False
