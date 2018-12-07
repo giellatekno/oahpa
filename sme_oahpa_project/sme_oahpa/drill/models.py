@@ -270,7 +270,7 @@ class Log(models.Model):
     lang = models.CharField(max_length=3) # added
     tasklemmas = models.CharField(max_length=100, null=True)  # VastaS only, added
     username = models.CharField(max_length=64, null=True)
-    user_ip = models.IPAddressField(blank=True, null=True)
+    user_ip = models.GenericIPAddressField(blank=True, null=True)
     user_country = models.CharField(max_length=8, blank=True, null=True)
     # user_city = models.CharField(max_length=30, blank=True, null=True)
 
