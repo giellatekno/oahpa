@@ -38,7 +38,11 @@ def session_country(request):
 		except KeyError:
 			_ip = request.META['REMOTE_ADDR']
 
-		result = getCountryFromIP(_ip)
+		try:
+			result = getCountryFromIP(_ip)
+		except Exception:
+			result = False
+
 		if result:
 			user_country = result.get('country_code')
 			request.session['country'] = user_country
