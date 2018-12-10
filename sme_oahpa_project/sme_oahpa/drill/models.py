@@ -35,7 +35,7 @@ class BulkManager(models.Manager):
         arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(objs))
         sql = "INSERT INTO %s (%s) VALUES %s" % (self.model._meta.db_table, flds, arg_string,)
         cursor.execute(sql, values_list)
-        transaction.commit()
+        #transaction.commit()
 
     @transaction.atomic
     def bulk_add_form_messages(self, objs):
@@ -63,7 +63,7 @@ class BulkManager(models.Manager):
         sql = "INSERT %s INTO %s (%s) VALUES %s" % (ignore, "drill_form_feedback", flds, arg_string,)
 
         cursor.execute(sql, values_list)
-        transaction.commit()
+        #transaction.commit()
 
     @transaction.atomic
     def bulk_remove_form_messages(self, form_qs):
@@ -91,10 +91,10 @@ class BulkManager(models.Manager):
             print 'exception'
             print e
 
-        if fail:
-            transaction.rollback()
-        else:
-            transaction.commit()
+        #if fail:
+            #transaction.rollback()
+        #else:
+            #transaction.commit()
 
 
     @transaction.atomic
@@ -114,7 +114,7 @@ class BulkManager(models.Manager):
         sql = "INSERT INTO %s (%s) VALUES %s" % ("drill_feedback_messages", flds, arg_string,)
 
         cursor.execute(sql, values_list)
-        transaction.commit()
+        #transaction.commit()
 
     @transaction.atomic
     def bulk_add_dialects(self, objs):
@@ -133,7 +133,7 @@ class BulkManager(models.Manager):
         sql = "INSERT INTO %s (%s) VALUES %s" % ("drill_feedback_dialects", flds, arg_string,)
 
         cursor.execute(sql, values_list)
-        transaction.commit()
+        #transaction.commit()
 
 # Should insert some indexes here, should improve search time since a lot of these have repeated values
 
