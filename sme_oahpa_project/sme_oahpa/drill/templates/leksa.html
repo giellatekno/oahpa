@@ -7,8 +7,8 @@
 
 {% block navbar %}
 <ul class="sidelist">
-	<li class="selected"><a href="{% url leksa %}" class="interface">{% trans_to 'Words' "sme" %}<span class="invisible">{% trans "Words" %}</span></a></li>
-	<li><a href="{% url leksa.sted %}" class="interface">{% trans_to 'Placenames' "sme" %}<span class="invisible">{% trans "Placenames" %}</span></a></li>
+	<li class="selected"><a href="{% url 'leksa' %}" class="interface">{% trans_to 'Words' "sme" %}<span class="invisible">{% trans "Words" %}</span></a></li>
+	<li><a href="{% url 'leksa.sted' %}" class="interface">{% trans_to 'Placenames' "sme" %}<span class="invisible">{% trans "Placenames" %}</span></a></li>
 </ul>
 {% endblock %}
 
@@ -43,10 +43,10 @@ http://gtoahpa-01.uit.no/sme/useoahpa/leksa.nob.html
     </div>
 
     <ul id="settingsform">
-<!-- emergency tag starts -->    
+<!-- emergency tag starts -->
     <!--<li>
 {% trans "NB! NB! The Leksa game is not working properly, due to technical problems! NB! NB!" %}
-</li>-->    
+</li>-->
 <!-- emergency tag ends -->
     	<li><label for="id_{{ settingsform.semtype.name }}" class="interface"> {% trans_to "Set" "sme" %}<span class="invisible">{% trans "Set" %}</span></label>
     		{{ settingsform.semtype }}</li>
@@ -55,7 +55,7 @@ http://gtoahpa-01.uit.no/sme/useoahpa/leksa.nob.html
     	<li><label for="id_{{ settingsform.source.name }}" class="interface"> {% trans_to "Book" "sme" %}<span class="invisible">{% trans "Book" %}</span></label>
     		{{ settingsform.source }}</li>
     </ul>
-    
+
     <ul id="submittable">
         <li><t class="interface"> <input type="submit" name="settings" value="{% trans_to "New set" "sme" %}" /><span class="invisible">{% trans "New set" %}</span></t></li>
     </ul>
@@ -76,4 +76,3 @@ http://gtoahpa-01.uit.no/sme/useoahpa/leksa.nob.html
    {% endifequal %}
 {% endif %}
 {% endblock %}
-

@@ -4,8 +4,8 @@
 
 {% block navbar %}
 <ul class="sidelist">
-	<li><a href="{% url leksa %}" class="interface">{% trans_to 'Words' "sme" %}<span class="invisible">{% trans "Words" %}</span></a></li>
-	<li class="selected"><a href="{% url leksa.sted %}" class="interface">{% trans_to 'Placenames' "sme" %}<span class="invisible">{% trans "Placenames" %}</span></a></li>
+	<li><a href="{% url 'leksa' %}" class="interface">{% trans_to 'Words' "sme" %}<span class="invisible">{% trans "Words" %}</span></a></li>
+	<li class="selected"><a href="{% url 'leksa.sted' %}" class="interface">{% trans_to 'Placenames' "sme" %}<span class="invisible">{% trans "Placenames" %}</span></a></li>
 </ul>
 {% endblock %}
 
@@ -24,7 +24,7 @@
         <li>{{ settingsform.common }} <label for="id_{{ settingsform.common.name }}" class="interface">{% trans_to settingsform.common.name "sme" %}<span class="invisible">{% trans settingsform.common.name %}</span></label></li>
         <li>{{ settingsform.rare }} <label for="id_{{ settingsform.rare.name }}" class="interface">{% trans_to settingsform.rare.name "sme" %}<span class="invisible">{% trans settingsform.rare.name %}</span></label></li>
     </ul>
-   <!--- <li><label for="id_{{ settingsform.frequency.name }}">{% trans "Frequency" %}</label> -->    
+   <!--- <li><label for="id_{{ settingsform.frequency.name }}">{% trans "Frequency" %}</label> -->
 	<li><label for="{{ settingsform.transtype.name }}" class="interface">{% trans_to "Select the language pair" "sme" %}<span class="invisible">{% trans "Select the language pair" %}</span></label>
 		{{ settingsform.transtype }}</li>
 </ul>
@@ -44,4 +44,3 @@
     </li>
 </ul>
 {% endblock %}
-

@@ -3,12 +3,12 @@
 {% load trans_to %}
 
 {% block imgprefix %}vasta{% endblock %}
-{% block gametitlename %}<a href="{% url vasta_s %}">VASTA</a>{% endblock %}
+{% block gametitlename %}<a href="{% url 'vasta_s' %}">VASTA</a>{% endblock %}
 
 {% block navbar %}
-<ul class="sidelist"> 
-{% ifequal gametype "cealkka" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url vasta_s %}">{% trans 'Vasta-S' %}</a></li>
-{% ifequal gametype "qa" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url vasta_f %}">{% trans 'Vasta-F' %}</a></li>
+<ul class="sidelist">
+{% ifequal gametype "cealkka" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url 'vasta_s' %}">{% trans 'Vasta-S' %}</a></li>
+{% ifequal gametype "qa" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url 'vasta_f' %}">{% trans 'Vasta-F' %}</a></li>
 </ul>
 {% endblock %}
 
@@ -99,4 +99,3 @@ http://gtoahpa-01.uit.no/sme/useoahpa/vasta.nob.html
 {% endif %}
 
 {% endblock %}
-
