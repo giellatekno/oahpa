@@ -8,9 +8,6 @@
 	    <title>{% block title %}{% endblock %}</title>
 
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main_sme.css"/>
-		<!--[if gte IE 7]>
-		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/ie_fixes.css"/>
-		<![endif]-->
 
 		{% comment %}
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/mobile.css"/>
@@ -25,9 +22,6 @@
 		{% block extrajs %}
 		{% endblock %}
 
-		<!--[if lt IE 7.]>
-		<script defer type="text/javascript" src="{{ MEDIA_URL }}/js/pngfix.js"></script>
-		<![endif]-->
 	</head>
 
 	{% load i18n %}
@@ -53,8 +47,7 @@
 			     {% include 'language_menu.html' %}
 			{% endblock %}
         </div>
-<!---			<p align="center"><b><span style="color: #993366">Hjelp oss å utvikle Oahpa – svar på et lite <span style="color: #9933FF"><a href="http://kursa.oahpa.no/2012/03/27/sporreskjema/">spørreskjema </a></span>om bruk av noen av programmene.</span></b></p>
-			<hr color="#CCCCCC">  --->
+
 			<ul id="games_menu">
                 <li class="game">
 					<a href="{% url 'morfa_s.noun' %}">
