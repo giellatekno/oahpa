@@ -11,19 +11,6 @@
 {% block pageclass %}game{% endblock %}
 
 
-{% block language_select %}
-<div id="interface_language">
-    {% include 'language_menu.html' %}
-</div>
-{% if gametype != 'sahka' and gametype != 'string' and gametype != 'numeral' and gametype != 'k1' and gametype != 'k2' and gametype != 'k3' %}
-<div id="dialect_selection">
-    {% include 'dialect_menu.html' %}
-</div>
-{% endif %}
-{% endblock %}
-
-
-
 {% block header_content %} {% endblock %}
 
 
@@ -135,7 +122,16 @@
 	{% block rightcontent %}
 	<a name="content" class="hide">&nbsp;</a>
 
-
+    {% block language_select %}
+    <div id="language_options">
+       {% include 'language_menu.html' %}
+    </div>
+    {% if gametype != 'sahka' and gametype != 'string' and gametype != 'numeral' and gametype  != 'k1' and gametype != 'k2' and gametype != 'k3' %}
+        <div id="dialect_selection">
+           {% include 'dialect_menu.html' %}
+        </div>
+    {% endif %}
+    {% endblock %}
 
     {% block disable_form_start %}
 	    <form novalidate action="" method="post" id="gameform" name="gameform">
