@@ -10,6 +10,10 @@ import datetime
 
 from local_conf import LLL1
 
+import importlib
+settings = importlib.import_module(LLL1+'_oahpa.settings')
+hst = settings.hostname
+
 # TODO: need to create fixtures of groups and permissions
 # TODO: hide delete course admin actions for Instructors group
 # TODO: site-uit-no-default course added to fixtures
@@ -222,7 +226,7 @@ class Course(models.Model):
             URL_PREFIX,
             self.token,
         )
-        return "http://gtoahpa-01.uit.no/%s/courses/enroll/?key=%s" % parts
+        return "http://"+hst+"/%s/courses/enroll/?key=%s" % parts
 
     def generate_new_key(self):
         from itsdangerous import URLSafeTimedSerializer

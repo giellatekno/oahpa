@@ -3,6 +3,7 @@ import importlib
 oahpa_module = importlib.import_module(LLL1+'_oahpa')
 settings = oahpa_module.settings
 URL_PREFIX = settings.URL_PREFIX
+hst = settings.hostname
 
 from django.template import RequestContext
 from django.http import HttpResponseRedirect, HttpResponseForbidden, Http404
@@ -443,7 +444,7 @@ def course_enroll(request):
     from django.core.urlresolvers import reverse
 
     # invite stored in 'key' parameter.
-    # http://gtoahpa-01.uit.no/davvi/courses/enroll/?key=NDg.BioJAg.E2-Y6uBwr6_35Qhk03uBamTTnHc
+    # "http://"+hst+"/davvi/courses/enroll/?key=NDg.BioJAg.E2-Y6uBwr6_35Qhk03uBamTTnHc"
 
 
     # TODO: if user isn't logged in, store the invite key in the session
