@@ -44,7 +44,6 @@
 			{% block main_content %}
 
 			{% block language_select %}
-			     {% include 'language_menu.html' %}
 			{% endblock %}
         </div>
 
@@ -114,6 +113,9 @@
             {% ifequal LANGUAGE_CODE "en" %}
                 <li><a href="http://{{hst}}/sme/useoahpa/OAHPAveiledning.eng.html" class="interface">{% trans_to "Veiledning" "sme" %}<span class="invisible">{% trans "Veiledning" %}</span></a></li>
             {% endifequal %}
+						{% ifequal LANGUAGE_CODE "nb" %}
+                <li><a href="http://{{hst}}/sme/useoahpa/OAHPAveiledning.nob.html" class="interface">{% trans_to "Veiledning" "sme" %}<span class="invisible">{% trans "Veiledning" %}</span></a></li>
+            {% endifequal %}
             {% ifequal LANGUAGE_CODE "no" %}
                 <li><a href="http://{{hst}}/sme/useoahpa/OAHPAveiledning.nob.html" class="interface">{% trans_to "Veiledning" "sme" %}<span class="invisible">{% trans "Veiledning" %}</span></a></li>
             {% endifequal %}
@@ -133,6 +135,9 @@
         {% endifequal %}
         {% ifequal LANGUAGE_CODE "en" %}
             <li><a target="_blank" href="http://{{hst}}/sme/gramm/grammatihkka.eng.html" class="interface">{% trans_to "North Sámi grammar" "sme" %}<span class="invisible">{% trans "North Sámi grammar" %}</span></a></li>
+        {% endifequal %}
+				{% ifequal LANGUAGE_CODE "nb" %}
+            <li><a target="_blank" href="http://{{hst}}/sme/gramm/grammatihkka.nob.html" class="interface">{% trans_to "North Sámi grammar" "sme" %}<span class="invisible">{% trans "North Sámi grammar" %}</span></a></li>
         {% endifequal %}
         {% ifequal LANGUAGE_CODE "no" %}
             <li><a target="_blank" href="http://{{hst}}/sme/gramm/grammatihkka.nob.html" class="interface">{% trans_to "North Sámi grammar" "sme" %}<span class="invisible">{% trans "North Sámi grammar" %}</span></a></li>
