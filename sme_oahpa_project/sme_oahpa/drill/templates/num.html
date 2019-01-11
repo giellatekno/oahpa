@@ -8,19 +8,19 @@
 
 {% block veiledning %}
 {% ifequal LANGUAGE_CODE "sme" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/numra.html
+http://{{hst}}/sme/useoahpa/numra.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/numra.fin.html
+http://{{hst}}/sme/useoahpa/numra.fin.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "en" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/numra.eng.html
+http://{{hst}}/sme/useoahpa/numra.eng.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/numra.nob.html
+http://{{hst}}/sme/useoahpa/numra.nob.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sv" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/numra.nob.html
+http://{{hst}}/sme/useoahpa/numra.nob.html
 {% endifequal %}
 {% endblock %}
 

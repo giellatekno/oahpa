@@ -123,19 +123,19 @@ function submitSahka(dia) {
 
 {% block veiledning %}
 {% ifequal LANGUAGE_CODE "sme" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/sahka.html
+http://{{hst}}/sme/useoahpa/sahka.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/sahka.fin.html
+http://{{hst}}/sme/useoahpa/sahka.fin.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "en" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/sahka.eng.html
+http://{{hst}}/sme/useoahpa/sahka.eng.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/sahka.nob.html
+http://{{hst}}/sme/useoahpa/sahka.nob.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sv" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/sahka.nob.html
+http://{{hst}}/sme/useoahpa/sahka.nob.html
 {% endifequal %}
 {% endblock %}
 

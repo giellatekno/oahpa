@@ -13,6 +13,8 @@ from django.utils.translation import ugettext_lazy as _
 
 switch_language_code = tls.switch_language_code
 
+hostname = oahpa_module.settings.hostname
+
 from random import randint
 
 from game import *
@@ -37,12 +39,14 @@ trackGrade = cds.trackGrade
 def index(request):
 	c = {
 		'jee': "joku arvo",
+		'hst': hostname,
 		}
 	return render_to_response(request, 'oahpa_main.html', c)
 
 def updating(request):
 	c = {
 		'jee': "joku arvo",
+		'hst': hostname,
 		}
 	return render_to_response(request, 'updating.html', c)
 
@@ -358,6 +362,7 @@ class Leksaview(Gameview):
 			'gametype': self.settings['gametype'],
 			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
+			'hst': hostname,
 			}
 
 
@@ -432,6 +437,7 @@ class LeksaPlaceview(Gameview):
 			'deeplink': self.create_deeplink(game, settings_form),
 			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
+			'hst': hostname,
 			}
 
 
@@ -494,6 +500,7 @@ class Numview(Gameview):
 			'deeplink': self.create_deeplink(game, settings_form),
 			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
+			'hst': hostname,
 		 #   'numstring': numstring,
 			}
 
@@ -725,6 +732,7 @@ class Morfaview(Gameview):
 			'deeplink': self.create_deeplink(game, settings_form),
 			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
+			'hst': hostname,
 			}
 
 	def additional_settings(self, settings_form):
@@ -863,6 +871,7 @@ def cmgame(request, pos):
 		p = pos.lower()[0]
 
 	template = "mgame_%s.html" % p
+
 	c = mgame.create_game(request)
 
 	return render_to_response(request, template, c)
@@ -898,7 +907,8 @@ class Vastaview(Gameview):
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
 			'gametype': "qa",
-			'deeplink': self.create_deeplink(game, settings_form)
+			'deeplink': self.create_deeplink(game, settings_form),
+			'hst': hostname,
 			}
 		return c
 
@@ -949,6 +959,7 @@ class Cealkkaview(Gameview):
 			'show_correct': game.show_correct,
 			'gametype': "cealkka",
 			'deeplink': self.create_deeplink(game, settings_form),
+			'hst': hostname,
 			}
 		return c
 
@@ -1087,6 +1098,7 @@ class Sahkaview(Cealkkaview):
 			'deeplink': self.create_deeplink(game, settings_form),
 			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
+			'hst': hostname,
 			}
 		return c
 

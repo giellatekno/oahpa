@@ -9,19 +9,19 @@
 
 {% block veiledning %}
 {% ifequal LANGUAGE_CODE "sme" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/morfa.html
+http://{{hst}}/sme/useoahpa/morfa.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/morfa.fin.html
+http://{{hst}}/sme/useoahpa/morfa.fin.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "en" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/morfa.eng.html
+http://{{hst}}/sme/useoahpa/morfa.eng.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/morfa.nob.html
+http://{{hst}}/sme/useoahpa/morfa.nob.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sv" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/morfa.nob.html
+http://{{hst}}/sme/useoahpa/morfa.nob.html
 {% endifequal %}
 {% endblock %}
 

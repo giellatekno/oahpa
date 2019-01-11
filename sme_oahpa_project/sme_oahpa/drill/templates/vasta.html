@@ -14,19 +14,19 @@
 
 {% block veiledning %}
 {% ifequal LANGUAGE_CODE "sme" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/vasta.html
+http://{{hst}}/sme/useoahpa/vasta.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/vasta.fin.html
+http://{{hst}}/sme/useoahpa/vasta.fin.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "en" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/vasta.eng.html
+http://{{hst}}/sme/useoahpa/vasta.eng.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/vasta.nob.html
+http://{{hst}}/sme/useoahpa/vasta.nob.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sv" %}
-http://gtoahpa-01.uit.no/sme/useoahpa/vasta.nob.html
+http://{{hst}}/sme/useoahpa/vasta.nob.html
 {% endifequal %}
 {% endblock %}
 
