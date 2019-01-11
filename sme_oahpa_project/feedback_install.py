@@ -129,6 +129,8 @@ import importlib
 settings = importlib.import_module(LLL1+'_oahpa.settings')
 sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
 
+hst = settings.hostname
+
 from xml.dom import minidom as _dom
 from django.db.models import Q
 import sys
@@ -322,6 +324,7 @@ class Feedback_install(object):
             # When XML contains <![CDATA[]]> there is no need to treat the data
             # differently, as <a /> nodes will be treated as text
             message = el.firstChild.data
+            message = message.replace('href="/', 'href="http://'+hst+"/")
             # links = []
             # for node in el.childNodes:
                 # if node.nodeType == node.TEXT_NODE:
