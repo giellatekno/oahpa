@@ -1442,6 +1442,7 @@ class MorfaQuestion(OahpaQuestion):
 				elif tag.personnumber:
 					pronbase = self.PronPNBase[tag.personnumber]
 					pronoun = pronbase
+                    logging.debug("pronoun for the verb exercise: ", pronoun)
 					_pronoun_presentation = pronoun
 					self.pron = pronoun
 
@@ -1459,10 +1460,14 @@ class MorfaQuestion(OahpaQuestion):
 			# because some verbs are not suitable to use with a human as object:
 
 			if tag.subclass in ["Der/AV","Der/PassL"]:
-				if pronoun == 'son':
+                logging.debug("passive verb ")
+				if tag.personnumber == 'Sg3':
+				#if pronoun == 'son':
 					pronoun = "dat (okta)"
-				elif pronoun == 'sii':
+				elif tag.personnumber == 'Pl3':
+				#elif pronoun == 'sii':
 					pronoun = force_unicode("dat (máŋga)")
+				logging.debug("pronoun: ", pronoun)
 
 			if tag.string.find("Der/AV") > -1 or tag.tense in ['Prs','Prt'] and tag.mood == 'Ind':
 				time = TENSE_PRESENTATION.get(tag.tense, False)
@@ -1471,7 +1476,7 @@ class MorfaQuestion(OahpaQuestion):
 				time = TENSE_PRESENTATION.get(tag.infinite, False)
 				_tense_presentation = time
 
-			elif ("+Der/Pass" in tag.string) and ("+V" in tag.string):
+			if ("+Der/Pass" in tag.string) and ("+V" in tag.string):
 				# Odne mun ___
 				# Ikte mun ___
 				# Ikte dat (okta) ___
@@ -1485,6 +1490,7 @@ class MorfaQuestion(OahpaQuestion):
 				_tense_presentation = time
 				pronoun = PASSIVE_PRONOUNS_LIST[pers]
 				_pronoun_presentation = pronoun
+                logging.debug("passive pronoun: ", pronoun)
 
 				number = ''
 				if pers in ['Sg3', 'Pl3']:
@@ -1495,6 +1501,7 @@ class MorfaQuestion(OahpaQuestion):
 											  _pronoun_presentation,
 											  _number_presentation,
 											  _neg_presentation] if a])
+            logging.debug("composed pronoun: ", self.pron)
 
 
 		if tag.pos == "Pron":
