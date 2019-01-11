@@ -20,6 +20,11 @@ from .data_permissions import *
 from .data_serializers import *
 from .data_utils import *
 
+from local_conf import LLL1
+import importlib
+settings = importlib.import_module(LLL1+'_oahpa.settings')
+hst = settings.hostname
+
 
 class UserStatsViewSet(viewsets.ModelViewSet):
     """ This view powers the display of goal progress when the user is
@@ -390,8 +395,8 @@ def equal_url_base(a, b):
     library. For a URL to match, the scheme, location, and path must all
     be the same, i.e., the following will be equivalent:
 
-        http://gtoahpa-01.uit.no/path/to/page/
-        http://gtoahpa-01.uit.no/path/to/page/?param=foo
+        "http://"+hst+"/path/to/page/"
+        "http://"+hst+"/path/to/page/?param=foo"
 
     TODO: do we require a.query == b.query as option?
     """
