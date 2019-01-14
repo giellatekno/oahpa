@@ -1,4 +1,9 @@
-﻿class FeedbackMessageStore(object):
+from local_conf import LLL1
+import importlib
+settings = importlib.import_module(LLL1+'_oahpa.settings')
+hst = settings.hostname
+
+class FeedbackMessageStore(object):
     """ Reads and stores messages in memory.
     """
 
@@ -127,6 +132,7 @@
             task = m.getAttribute('task')
             _article = m.getAttribute('article')
             if _article.strip():
+                _article = "http://"+hst+_article
                 article = _article.strip()
             else:
                 article = False
