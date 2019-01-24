@@ -1,4 +1,4 @@
-""" Authentication and Middleware for site.uit.no cookie. 
+""" Authentication and Middleware for site.uit.no cookie.
 
 Changes required to settings (will elaborate on this more later):
 
@@ -8,6 +8,9 @@ Changes required to settings (will elaborate on this more later):
 
  * see also: views in courses views for cookie_login and cookie_logout
 """
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
 
 from urllib import urlencode
 
@@ -17,8 +20,9 @@ from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.contrib.auth.views import login, logout
 from django.core.urlresolvers import reverse
 
-from courses.views import cookie_login, cookie_logout
-from courses.models import Course
+cookie_login = oahpa_module.courses.views.cookie_login
+cookie_logout = oahpa_module.courses.views.cookie_logout
+Course = oahpa_module.courses.models.Course
 
 __all__ = ['CookieAuthMiddleware', 'CookieAuth']
 
@@ -53,14 +57,14 @@ class CookieAuthMiddleware(object):
 		return HttpResponseRedirect(reverse(cookie_login) + '?' + params)
 
 
-from courses.models import UserProfile
+UserProfile = oahpa_module.courses.models.UserProfile
 from django.contrib.auth.models import User
 
 class CookieAuth(object):
 	""" A class for authenticating by the site.uit.no cookie.
 
-		Add this to settings.AUTHENTICATION_BACKENDS 
-		
+		Add this to settings.AUTHENTICATION_BACKENDS
+
 		AUTHENTICATION_BACKENDS = (
 			'courses.authentication.CookieAuth',
 			'django.contrib.auth.backends.ModelBackend',
@@ -125,5 +129,3 @@ class CookieAuth(object):
 		site.save()
 
 		return U
-
-

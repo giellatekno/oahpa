@@ -1,5 +1,8 @@
 """ Replacement authentication decorators that work around redirection loops,
 as well as the trackGrade decorator. """
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
 
 try:
 	from functools import wraps
@@ -59,7 +62,7 @@ class trackGrade(object):
 	""" This decorator expects that an HttpResponse has a context attribute,
 	which it uses to retrieve the context. This is passed on to trackGrade.
 
-	In order to use this import the following things 
+	In order to use this import the following things
 
 		from courses.views import render_to_response
 		from courses.decorators import trackGrade
@@ -78,13 +81,13 @@ class trackGrade(object):
 
 	def __init__(self, log_name):
 		self.log_name = log_name
-	
+
 	def __call__(self, view_function):
 		""" This must return the HttpResponse from the original function
 		"""
 
 		def decorated_function(*args, **kwargs):
-			from crk_oahpa.courses.views import trackGrade
+	    	trackGrade = oahpa_module.courses.views.trackGrade
 
 			# grab the request, and execute the view function as normal
 			request = args[0]
@@ -103,6 +106,4 @@ class trackGrade(object):
 
 			return response
 
-		return decorated_function 
-
-
+		return decorated_function
