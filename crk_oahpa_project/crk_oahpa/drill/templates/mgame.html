@@ -35,25 +35,25 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
         {% include 'grammar_links_menu.html' %}
     </div>
 
-	
+
 	<ul id="settingsform">
 	    <li id="pos_menu">
 	        <label>Part of Speech</label>
-	        <select class="exclude_form_update"> 
+	        <select class="exclude_form_update">
                 {% ifequal settings.gametype "bare" %}
-		            <option {% ifequal settings.pos "N" %} selected{% else %}{% endifequal %} value="{% url "morfa_s.noun" %}">{% trans 'Nouns' %}</option>
-		            <option {% ifequal settings.pos "V" %} selected{% else %}{% endifequal %}  value="{% url "morfa_s.verb" %}">{% trans 'Verbs' %}</option>
+		            <option {% ifequal settings.pos "N" %} selected{% else %}{% endifequal %} value="{% url 'morfa_s.noun' %}">{% trans 'Nouns' %}</option>
+		            <option {% ifequal settings.pos "V" %} selected{% else %}{% endifequal %}  value="{% url 'morfa_s.verb' %}">{% trans 'Verbs' %}</option>
                 {% else %}
-		            <option {% ifequal settings.pos "N" %} selected{% else %}{% endifequal %} value="{% url "morfa_c.noun" %}">{% trans 'Nouns' %}</option>
-		            <option {% ifequal settings.pos "V" %} selected{% else %}{% endifequal %} value="{% url "morfa_c.verb" %}">{% trans 'Verbs' %}</option>
-		            <option {% ifequal settings.pos "Pron" %} selected{% else %}{% endifequal %} value="{% url "morfa_c.pron" %}">{% trans 'Pronouns' %}</option>
+		            <option {% ifequal settings.pos "N" %} selected{% else %}{% endifequal %} value="{% url 'morfa_c.noun' %}">{% trans 'Nouns' %}</option>
+		            <option {% ifequal settings.pos "V" %} selected{% else %}{% endifequal %} value="{% url 'morfa_c.verb' %}">{% trans 'Verbs' %}</option>
+		            <option {% ifequal settings.pos "Pron" %} selected{% else %}{% endifequal %} value="{% url 'morfa_c.pron' %}">{% trans 'Pronouns' %}</option>
 
                 {% endifequal %}
 
             {% comment %}
-            <option 	{% ifequal settings.pos "A" %} selected{% else %}{% endifequal %} value="{% url "morfa_c.adj" %}">{% trans 'Adjectives' %}</option>
-                    <option {% ifequal settings.pos "Num" %} selected{% else %}{% endifequal %} value="{% url "morfa_c.num" %}">{% trans 'Numerals' %}</option>
-                    <option {% ifequal settings.pos "Der" %} selected{% else %}{% endifequal %} value="{% url "morfa_c.der" %}">{% trans 'Derivations' %}</option>
+            <option 	{% ifequal settings.pos "A" %} selected{% else %}{% endifequal %} value="{% url 'morfa_c.adj' %}">{% trans 'Adjectives' %}</option>
+                    <option {% ifequal settings.pos "Num" %} selected{% else %}{% endifequal %} value="{% url 'morfa_c.num' %}">{% trans 'Numerals' %}</option>
+                    <option {% ifequal settings.pos "Der" %} selected{% else %}{% endifequal %} value="{% url 'morfa_c.der' %}">{% trans 'Derivations' %}</option>
             {% endcomment %}
 
 	        </select>
@@ -61,14 +61,14 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
 		{% block subsetting %}{% endblock %}
         {% if settings.pos != "Num" %}
             {% block book %}
-            {% ifequal settings.gametype "bare" %} 
+            {% ifequal settings.gametype "bare" %}
             <li><label for="id_{{ settingsform.book.name }}">{% trans "Book" %}</label>
                 {{ settingsform.book }}</li>
             {% endifequal %}
             {% endblock %}
-        {% endif %}		
+        {% endif %}
 	</ul>
-	
+
 	<ul id="submittable">
 	    <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
 	</ul>
@@ -77,14 +77,14 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
 
 {% block question %}
 	{% ifequal settings.gametype "bare" %}
-		          {{ form.lemma }}   
+		          {{ form.lemma }}
 		    {% comment %}
 		    using NDS for this now
 	      {% if settings.pos == "Pron" or settings.pos == "Num" %}
 		      {{ form.lemma }}
 		  {% else %} {# pos = N,V,A - link to translation #}
 		      <a href="#" class="link_tooltip" id="link_tooltip-{{ forloop.counter }}">
-		      </a>		      
+		      </a>
 		  {% endif %}
 		      {% endcomment %}
 	{% else %} {# Morfa-C #}
@@ -99,4 +99,3 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/morfa.nno.html
 {% block tooltip %}
     {% include 'morfa_tooltip.html' %}
 {% endblock %}
-

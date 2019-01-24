@@ -1,4 +1,4 @@
-{% extends "crk_oahpa.html" %}
+{% extends "oahpa.html" %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
@@ -150,14 +150,14 @@
 		{% ifequal form.error "error" %}
 		    <img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
 		    {% if not show_correct %}
-            
+
 			<!-- Feedback -->
 			{% if form.feedback %}
 			<a href="#" class="feedback_link" id="link_feedback-{{ forloop.counter }}">
-					
+
 					{% trans "help" %}
 				</a>
-			{% endif %}	
+			{% endif %}
 			{% else %}
 				{% if form.tcomm %}{% trans "This is almost correct!" %}{% endif %}
 			{% endif %}
@@ -166,7 +166,7 @@
 			<a href="#" class="feedback_link" id="link_feedback-{{ forloop.counter }}">
 				{% trans "help" %}
 			</a>
-		{% endif %}	
+		{% endif %}
 
 	</span>
 	{% endif %}

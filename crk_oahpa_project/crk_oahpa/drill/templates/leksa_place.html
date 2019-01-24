@@ -3,8 +3,8 @@
 
 {% block navbar %}
 <ul class="sidelist">
-	<li><a href="{% url "leksa" %}">{% trans 'Words' %}</a></li>
-	<li class="selected"><a href="{% url "leksa.sted" %}">{% trans 'Names' %}</a></li>
+	<li><a href="{% url 'leksa' %}">{% trans 'Words' %}</a></li>
+	<li class="selected"><a href="{% url 'leksa.sted' %}">{% trans 'Names' %}</a></li>
 </ul>
 {% endblock %}
 
@@ -23,7 +23,7 @@
         <li>{{ settingsform.common }} <label for="id_{{ settingsform.common.name }}">{% trans settingsform.common.name %}</label></li>
         <li>{{ settingsform.rare }} <label for="id_{{ settingsform.rare.name }}">{% trans settingsform.rare.name %}</label></li>
     </ul> --->
-   <!--- <li><label for="id_{{ settingsform.frequency.name }}">{% trans "Frequency" %}</label> -->    
+   <!--- <li><label for="id_{{ settingsform.frequency.name }}">{% trans "Frequency" %}</label> -->
 	<li><label for="{{ settingsform.transtype.name }}">{% trans "Select the language pair" %}</label>
 		{{ settingsform.transtype }}</li>
 </ul>
@@ -42,4 +42,3 @@
     <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
 </ul>
 {% endblock %}
-
