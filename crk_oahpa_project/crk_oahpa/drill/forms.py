@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 from django import forms
 from django.db.models import Q
 from django.http import Http404
@@ -6,7 +10,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
 import crk_oahpa.settings as settings
 
-from crk_oahpa.conf.tools import switch_language_code
+settings = oahpa_module.settings
+switch_language_code = oahpa_module.conf.tools.switch_language_code
 
 from models import *
 #from game import *
@@ -441,14 +446,14 @@ DERIVATION_CHOICES_CONTEXT = (
 
 BOOK_CHOICES = (
     ('all', _(u'all')),
-    ('Intr1', _('Introductory 1')), 
-    ('Intr2', _('Introductory 2')), 
-    ('Intr3', _('Introductory 3')), 
-    ('Intr4', _('Introductory 4')), 
-    ('Intr1_2', _('Introductory 1-2')), 
-    ('Intr1_3', _('Introductory 1-3')), 
-    ('Intr1_4', _('Introductory 1-4')), 
-    ('advan', _('Advanced')), 
+    ('Intr1', _('Introductory 1')),
+    ('Intr2', _('Introductory 2')),
+    ('Intr3', _('Introductory 3')),
+    ('Intr4', _('Introductory 4')),
+    ('Intr1_2', _('Introductory 1-2')),
+    ('Intr1_3', _('Introductory 1-3')),
+    ('Intr1_4', _('Introductory 1-4')),
+    ('advan', _('Advanced')),
     ('Audio', _('Audiofiles')),
 
 )
@@ -1021,7 +1026,7 @@ class OahpaSettings(forms.Form):
 					'possessive_type': 'N-PX-GROUP1',
 					'possessive_number': 'N-SG',
 					'possessive_case': "N-2SG",
-					
+
 					'geography': 'world',
 					'frequency' : [],
 					'num_bare' : 'N-NOM', # Need a new default case here
@@ -1095,9 +1100,9 @@ class OahpaQuestion(forms.Form):
 		forms = []
 		relaxings = []
 		if hasattr(self, 'translang'): # commented out these two lines, because otherwise relax was not working in Morfa
-			if self.translang == 'crk': # caused a problem in Numra, as NumQuestion does not have the attribute translang 
+			if self.translang == 'crk': # caused a problem in Numra, as NumQuestion does not have the attribute translang
 				# Relax spellings.
-			
+
 				accepted_answers = [force_unicode(item) for item in accepted_answers]
 				forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
                                 #print "relaxed forms: ", forms
@@ -1144,7 +1149,7 @@ class LeksaSettings(OahpaSettings):
 	# suopma = forms.BooleanField(required=False,initial=0)
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
-	
+
 	default_data = {'gametype' : 'leksa', 'language' : 'crk', 'dialogue' : 'GG',
 			#'syll' : [],
 			#'bisyllabic': False,
@@ -1201,8 +1206,8 @@ class LeksaQuestion(OahpaQuestion):
 		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
 
         # If we want stress marks in Leksa then we have to use lemma_stressed instead of lemma.
-		
-		if type(word) == Word: 
+
+		if type(word) == Word:
                     if self.sourcelang == 'rus':
                         self.lemma = word.lemma_stressed  # for Russian the words will be presented with stress marks
                     else:
@@ -1804,7 +1809,7 @@ class DatoQuestion(KlokkaQuestion):
 		"""
 
 		return answer
-		
+
 # #
 #
 # Money Forms
@@ -1984,7 +1989,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 		          self.lemma = False
 		      else:
 			     self.lemma = answer_word_el.lemma
-				
+
 		if answer_tag_el.pos == "V":
 		      self.lemma = False
 		if answer_tag_el.pos == "Pron":

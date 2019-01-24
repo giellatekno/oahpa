@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
 
-from crk_oahpa.crk_drill.models import *
-from crk_oahpa.crk_drill.forms import *
+from models import *
+from forms import *
 
-from crk_oahpa.conf.tools import switch_language_code
+switch_language_code = oahpa_module.conf.tools.switch_language_code
 
 from django.db.models import Q, Count
 from django.http import HttpResponse, Http404
@@ -16,23 +19,22 @@ import os
 import re
 import itertools
 
-import crk_oahpa.settings
+settings = oahpa_module.settings
 
 # DEBUG = open('/dev/ttys001', 'w')
 
 from random import choice
 from .forms import PRONOUNS_LIST
 
-L1 = crk_oahpa.settings.L1
-LOOKUP_TOOL = crk_oahpa.settings.LOOKUP_TOOL
-FST_DIRECTORY = crk_oahpa.settings.FST_DIRECTORY
-DEFAULT_DIALECT = crk_oahpa.settings.DEFAULT_DIALECT
-LOOKUP_OPTS = crk_oahpa.settings.LOOKUP_OPTS
-GAME_FSTS = crk_oahpa.settings.GAME_FSTS
+LOOKUP_TOOL = settings.LOOKUP_TOOL
+FST_DIRECTORY = settings.FST_DIRECTORY
+DEFAULT_DIALECT = settings.DEFAULT_DIALECT
+LOOKUP_OPTS = settings.LOOKUP_OPTS
+GAME_FSTS = settings.GAME_FSTS
 
-from crk_oahpa.errorapi.messages import *
-from crk_oahpa.errorapi.processes import FeedbackFST
-from crk_oahpa.errorapi.log import ERROR_FST_LOG
+cem = importlib.import_module(LLL1+'_oahpa.errorapi')
+FeedbackFST = cem.processes.FeedbackFST
+ERROR_FST_LOG = cem.log.ERROR_FST_LOG
 
 ERROR_FST_SETTINGS = settings.ERROR_FST_SETTINGS
 
@@ -478,7 +480,7 @@ class BareGame(Game):
 		trans_anim = self.settings.get('trans_anim', False)
 
 		num_bare = ""
-		
+
 		if 'num_bare' in self.settings:
 			num_bare = self.settings['num_bare']
 		if 'num_level' in self.settings:
@@ -497,7 +499,7 @@ class BareGame(Game):
 			"Der": derivation_type,
 			"Px": possessive_case, # or possessive_type?
 		}
-		
+
 		# sylls = []
 		# bisyl = ['2syll', 'bisyllabic']
 		# trisyl = ['3syll', 'trisyllabic']
@@ -647,7 +649,7 @@ class BareGame(Game):
 			TAG_EXCLUDES = False
 			sylls = False
 			source = False
-		
+
 		if pos in ['Pron', 'N', 'Num']:
 			TAG_QUERY = TAG_QUERY & \
 						Q(case=case)
@@ -655,7 +657,7 @@ class BareGame(Game):
 
 		if self.settings.get('case') == 'N-REVDIM':
 			TAG_QUERY = Q(derivation=derivation, possessive='', case='', number='Sg')
-			
+
 		elif pos in ['N', 'Px']:
 			#if singular_only:   # if the user has checked the box "singular only"
 			#	TAG_QUERY = TAG_QUERY & Q(number='Sg')
@@ -719,7 +721,7 @@ class BareGame(Game):
 								#.exclude(subclass='Prop')\
 		#else:
 		tags = Tag.objects.filter(TAG_QUERY)
-		# 
+		#
 		# 	.exclude(subclass='Prop')\
 		# 	.exclude(polarity='Neg')
 
@@ -780,8 +782,8 @@ class BareGame(Game):
 		# else:
 		# 	UI_Dialect = DEFAULT_DIALECT
 
-		try: 
-			
+		try:
+
 			WORD_FILTER = Q()
 			if pos == 'Px':
 					WORD_FILTER = Q(word__semtype__semtype='MORFAPOSS')
@@ -789,11 +791,11 @@ class BareGame(Game):
 			# 	WORD_FILTER = Q(word__trans_anim__in=['AI', 'TI'])
 
 			tag = tags.order_by('?')[0]
-			
-			if source and source not in ['all', 'All']: 
+
+			if source and source not in ['all', 'All']:
 				# SOURCE_FILTER = Q(word__source__name=source)
 				if source in CHAPTER_CHOICES:
-					SOURCE_FILTER = Q(word__chapter__in=CHAPTER_CHOICES[source]) 
+					SOURCE_FILTER = Q(word__chapter__in=CHAPTER_CHOICES[source])
 				else:
 					SOURCE_FILTER = Q(word__source__name=source)
 			else:
@@ -807,9 +809,9 @@ class BareGame(Game):
 				if tag.pos == 'Pron':
 					tag = tags.order_by('?')[0]
 
-				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)\
+				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=LLL1)\
 											.exclude(word__semtype__semtype="NOTMORFA")
-				
+
 
 				# if not tag.pos in ['Pron', 'Num'] and \
 				# 	tag.string.find('Der') < 0:
@@ -938,7 +940,7 @@ class BareGame(Game):
 		#else:
 		#	match_number = True
 		match_number = False # it is different for crk
-		
+
 
 		def baseformFilter(form):
 			#   Get baseforms, and filter based on dialects.
@@ -963,7 +965,7 @@ class BareGame(Game):
 
 			bfs = form.getBaseform(match_num=match_number, return_all=True)
 			#if (bfs.count() == 0):  # the word does not have a diminutive
-			#	return [form.word]  
+			#	return [form.word]
 
 			#excluded = bfs.exclude(dialects__dialect='NG')
 			#if excluded.count() == 0:
@@ -985,7 +987,7 @@ class BareGame(Game):
 			base_forms = sum(base_forms, [])
 		except TypeError:
 			pass
-				
+
 		# Just in case multiple are returned, get the first.
 		# TODO: make sure no forms that are needed are being lost here.
 		try:
@@ -999,7 +1001,7 @@ class BareGame(Game):
 
 		# Just the ones we want to present for just one dialect
 		#presentation = form_list.filter(dialects=Q_DIALECT)
-		
+
 		if pos == 'Der':
 			presentation = presentation.filter(tag__string__contains='PassL')
 
@@ -1036,7 +1038,7 @@ class BareGame(Game):
 				baseform = tmp[0]
 				accepted_answers = [correct]
 				presentation_ng = [correct.fullform]
-				
+
 		morph = (MorfaQuestion(
 					word=word,
 					tag=tag,
@@ -1158,7 +1160,7 @@ class NumGame(Game):
 			num_list = self.clean_fst_output(output)
 			num_list = self.strip_unknown(num_list)
 			# print repr([question, useranswer, num_list])
-			
+
 			task = 'word2text'
 			intended_lemma = 'asdf'
 
@@ -1213,9 +1215,9 @@ class NumGame(Game):
 	def create_form(self, db_info, n, data=None):
 
 		if self.settings['gametype'] in ["ord", "card"]:
-			language = L1
+			language = LLL1
 		else:
-			language = L1
+			language = LLL1
 
 		numstring = ""
 
@@ -1231,7 +1233,7 @@ class NumGame(Game):
 		for num in num_tmp:
 			line = num.strip()
 			# line = line.replace(' ','')
-			
+
 			if line:
 				nums = line.split('\t')
 				num_list.append(nums[a].decode('utf-8'))
@@ -1342,7 +1344,7 @@ class Klokka(NumGame):
 
 	def create_form(self, db_info, n, data=None):
 		if self.settings['gametype'] in ["kl1", "kl2", "kl3"]:
-			language = L1
+			language = LLL1
 
 		numstring = ""
 
@@ -1429,9 +1431,9 @@ class Dato(Klokka):
 												('December', 31)]]
 
 		month, days = choice(months)
-		
+
 		day = str(choice(days))
-		
+
 		if day in ['11', '12', '13']:
 			ord_suffix = 'th'
 		elif day[-1:] == '1':
@@ -1446,7 +1448,7 @@ class Dato(Klokka):
 		date = '%s of %s' % (day+ord_suffix, month)
 
 		db_info['numeral_id'] = str(date)
-		
+
 ##
 #
 #  Money
@@ -1472,7 +1474,7 @@ class Money(Klokka):
 
 			Money has no difficulty options.
 		"""
-			
+
 		dollars = randint(0, 99)
 
 		if dollars < 100:
