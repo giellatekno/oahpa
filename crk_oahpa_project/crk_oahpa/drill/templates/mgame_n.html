@@ -1,0 +1,64 @@
+﻿{% extends "mgame.html" %}
+{% load i18n %}
+
+{% block gamename %}
+{% if settings.gametype == "bare" %}{{ settings.gamename }}{% endif %}
+{% endblock %}
+{% block instructions %}
+    {% if settings.gametype == "bare" %}
+
+      {% if settings.case == 'N-PL' %}
+
+            Enter the <a class="helptext" href="#">{% trans "plural form" %}<span class="shortinfo">Ex. If you are given "nêhiyaw", answer "nêhiyawak".</span></a> of the given noun.
+
+      {% elif settings.case == 'N-LOC' %}
+
+            Enter the <a class="helptext" href="#">{% trans "locative form" %}<span class="shortinfo">Ex. If you are given "mîcisowikamik", answer "mîcisowikamikohk".</span></a> of the given noun.
+
+      {% elif settings.case == 'N-REVDIM' %}
+
+            Enter the <a class="helptext" href="#">baseform<span class=shortinfo> Ex. "sikâk" is the baseform of "sikâkos"</span></a> of the given diminutive noun.
+
+      {% elif settings.case == 'N-PX' %}
+
+            {% if settings.possessive_case == 'N-2SG' %}
+                Enter the 2S possessive form of the <a class="helptext" href="#">{% trans "given noun" %}<span class="shortinfo">The noun is given in the 1S possessive form.</span></a>.
+            {% elif settings.possessive_case == 'N-3SG' %}
+                Enter the 3S possessive form of the <a class="helptext" href="#">{% trans "given noun" %}<span class="shortinfo">The noun is given in the 1S possessive form.</span></a>.
+            {% endif %}
+
+      {% else %}
+        {% trans "Add nouns in correct forms." %}
+      {% endif %}
+
+    {% elif settings.gametype == "context" %}
+
+      <b>{% trans "Complete the response to the question." %}</b>
+      {% if settings.case_context == 'N-PL' %}
+        Enter the <a class="helptext" href="#">{% trans "plural form" %}<span class="shortinfo">Ex. If you are given "(nêhiyaw)", answer "nêhiyawak".</span></a> of the noun given in brackets.
+      {% elif settings.case_context == 'N-LOC' %} 
+        Enter the <a class="helptext" href="#">{% trans "locative form" %}<span class="shortinfo">Ex. If you are given "(mîcisowikamik)", answer "mîcisowikamikohk".</span></a> of the noun given in brackets.
+      {% elif settings.case_context == 'N-PX' %}
+        Enter the correct <a class="helptext" href="#">possessive form<span class="shortinfo">Answer with the 1S form of the noun in question.</span></a> of the noun.
+      {% else %}
+        {% trans 'The noun is given in the 1S possessive form. Select which type (2S or 3S) you want to practice in the drop down menu above and then enter the correct possessive form of each noun.' %}
+      {% endif %}
+  {% endif %}
+<a class="helptext" href="#">Translate<span class="shortinfo">{% trans "Hold the ALT key and click on any word for its translation." %}</span></a> this page.
+{% endblock %}
+
+{% block subsetting %}
+    {% ifequal settings.gametype "bare" %}
+            <li><label for="id_{{ settingsform.case.name }}">{% trans "Type" %}</label>
+                {{ settingsform.case }}</li>
+        {% if settings.case == 'N-PX' %}
+            <li><label for="id_{{ settingsform.possessive_case.name }}">{% trans "Set" %}</label>
+                {{ settingsform.possessive_case }}</li>
+        {% endif %}
+    {% else %}
+    <li><label for="id_{{ settingsform.case_context.name }}">{% trans "Set" %}</label>
+        {{ settingsform.case_context }}</li>
+
+    {% endifequal %}
+{% endblock %}
+

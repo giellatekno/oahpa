@@ -1,0 +1,16 @@
+{% load i18n %}
+
+    {% comment %}
+    <option {% ifequal gamename_nav "numra_ordinal" %} selected{% endifequal %}value="{% url "numra.ord" %}">{% trans 'Ordinals' %}</option>
+    {% endcomment %}
+
+<li id="pos_menu">
+	<label>Part of Speech</label>
+	<select class="exclude_form_update"> 
+	    <option {% ifequal numra_gametype "numra_cardinal" %} selected {% endifequal %}value="{% url "numra" %}">{% trans 'Cardinals' %}</option>
+	    <option {% ifequal numra_gametype 'clock' %} selected {% endifequal %}value="{% url "numra.klokka" %}">{% trans 'Time' %}</option>
+	    <option {% ifequal numra_gametype 'dato' %} selected {% endifequal %}value="{% url "numra.dato" %}">{% trans 'Date' %}</option>
+	    <option {% ifequal numra_gametype 'money' %} selected {% endifequal %}value="{% url "numra.money" %}">{% trans 'Money' %}</option>
+
+	</select>
+</li>
