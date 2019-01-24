@@ -1,16 +1,25 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import settings
+
+import django
+django.setup()
+from os import environ
+
+from local_conf import LLL1
+import importlib
+settings = importlib.import_module(LLL1+'_oahpa.settings')
+sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
+
 from os import environ
 import os, sys
 print " * Correcting paths"
 cur_path = os.getcwd()
 parent_path = '/' + '/'.join([a for a in cur_path.split('/') if a][0:-1]) + '/'
 sys.path.insert(0, parent_path)
-environ['DJANGO_SETTINGS_MODULE'] = 'crk_oahpa.settings'
+environ['DJANGO_SETTINGS_MODULE'] = LLL1+'_oahpa.settings'
 
 settings.DEBUG = False
 
-from crk_drill.models import *
 from optparse import OptionParser, make_option
 import sys
 from ling import Paradigm
@@ -19,6 +28,10 @@ from extra_install import Extra
 from feedback_install import Feedback_install
 from questions_install import Questions
 from sahka_install import Sahka  # added by Heli
+
+from kitchen.text.converters import getwriter
+UTF8Writer = getwriter('utf8')
+sys.stdout = UTF8Writer(sys.stdout)
 
 # TODO: option for oa="yes" only, for crk_
 # ota lemma jos on name="oahpa"
@@ -66,7 +79,8 @@ OPTION_LIST = (
 from django.core.management.base import BaseCommand, CommandError
 
 class Command(BaseCommand):
-	option_list = BaseCommand.option_list + OPTION_LIST
+    can_import_settings = True
+	#option_list = BaseCommand.option_list + OPTION_LIST
 	help = 'Help text goes here'
 
 	def handle(self, **options):
