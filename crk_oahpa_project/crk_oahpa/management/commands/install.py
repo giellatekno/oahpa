@@ -1,17 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 import settings
 from os import environ
 import os, sys
-print " * Correcting paths"	
+print " * Correcting paths"
 cur_path = os.getcwd()
 parent_path = '/' + '/'.join([a for a in cur_path.split('/') if a][0:-1]) + '/'
 sys.path.insert(0, parent_path)
-environ['DJANGO_SETTINGS_MODULE'] = 'crk_oahpa.settings'
+environ['DJANGO_SETTINGS_MODULE'] = LLL1+'_oahpa.settings'
 
 settings.DEBUG = False
 
-from crk_drill.models import *
+from drill.models import *
 from optparse import OptionParser, make_option
 import sys
 from ling import Paradigm
@@ -67,7 +71,7 @@ from django.core.management.base import BaseCommand, CommandError
 class Command(BaseCommand):
 	option_list = BaseCommand.option_list + OPTION_LIST
 	help = 'Help text goes here'
-		
+
 	def handle(self, **options):
 		main(opts=option_list)
 
@@ -76,7 +80,7 @@ def main(opts):
 		parser = OptionParser(option_list=opts)
 	else:
 		parser = OptionParser(option_list=OPTION_LIST)
-	
+
 	(options, args) = parser.parse_args()
 
 	linginfo = Paradigm()
@@ -99,15 +103,15 @@ def main(opts):
 	if options.questionfile and options.grammarfile:
 	    questions.read_questions(options.questionfile,options.grammarfile)
 	    sys.exit()
-	
+
 	if options.semtypefile:
 		extra.read_semtypes(options.semtypefile)
 		sys.exit()
-	
+
 	if options.messagefile:
 	    feedback.read_messages(options.messagefile)
 	    sys.exit()
-	    
+
 	if options.sahkafile:
 		sahka.read_dialogue(options.sahkafile)
 		sys.exit()
@@ -115,7 +119,7 @@ def main(opts):
 	if options.feedbackfile and options.infile:
 	    feedback.read_feedback(options.feedbackfile,options.infile)
 	    sys.exit()
-	
+
 	if options.linkfile:
 		extra.read_address(options.linkfile)
 		sys.exit()
