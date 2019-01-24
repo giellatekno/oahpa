@@ -1,4 +1,8 @@
 # -*- encoding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 from django.core.management.base import BaseCommand, CommandError
 
 # from_yaml(cls, loader, node)
@@ -7,7 +11,10 @@ from optparse import make_option
 
 import sys
 
-from crk_drill.models import Form, Word, Tag
+Form = oahpa_module.drill.models.Form
+Word = oahpa_module.drill.models.Word
+Tag = oahpa_module.drill.models.Tag
+
 
 def install_file(filename, pos):
     from collections import defaultdict
@@ -48,8 +55,8 @@ def install_file(filename, pos):
 
 
 
-# # # 
-# 
+# # #
+#
 #  Command class
 #
 # # #
@@ -59,7 +66,7 @@ def mergetags(tfilter=False):
         qset = Tag.objects.filter(string=tfilter)
     else:
         qset = Tag.objects.all()
-    
+
     strings = qset.values_list('string', flat=True)
     strings = list(set(strings))
 
@@ -70,7 +77,7 @@ def mergetags(tfilter=False):
         if tag.count() > 1:
             print 'Merging conflict in %s' % tag[0].string
             merge(tag)
-    
+
 
 class Command(BaseCommand):
     args = '--tagelement'
@@ -95,4 +102,3 @@ class Command(BaseCommand):
         pos = options['pos']
 
         install_file(filename=filename, pos=pos)
-
