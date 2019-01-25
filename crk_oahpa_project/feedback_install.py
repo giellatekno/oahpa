@@ -131,7 +131,13 @@ sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
 
 hst = settings.hostname
 
-from crk_drill.models import Feedbackmsg,Feedbacktext,Dialect,Comment,Tag
+Feedbackmsg = sdm.Feedbackmsg
+Feedbacktext = sdm.Feedbacktext
+Dialect = sdm.Dialect
+Comment = sdm.Comment
+Tag = sdm.Tag
+Form = sdm.Form
+
 from xml.dom import minidom as _dom
 from django.db.models import Q
 import sys
@@ -139,8 +145,6 @@ import re
 import string
 import codecs
 import operator
-
-from crk_drill.models import Form
 
 from django.db import transaction
 from itertools import product
