@@ -1,4 +1,4 @@
-{% extends 'crk_oahpa.html' %}
+{% extends 'oahpa.html' %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
@@ -14,7 +14,7 @@ TODO: link in user interface
 	{# Add blocktrans and trans tags #}
 	<div id="courses">
 		<ul id="subnav">
-			<li><a href="{% url "crk_oahpa.courses.urls.logout" %}">Log out</a></li>
+			<li><a href="{% url 'logout' %}">Log out</a></li>
 		</ul>
 		<h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
 		{% if is_student %}
@@ -55,7 +55,7 @@ TODO: link in user interface
 								<li>{% trans "Highest score" %} &mdash; {{ summary.maximum }}</li>
 								<li>{% trans "Lowest score" %} &mdash; {{ summary.minimum }}</li>
 								<li>{% trans "Number of tries" %} &mdash; {{ summary.count }}</li>
-							</ul>		
+							</ul>
 						</dd>
 					{% endfor %}
 				</dl>
@@ -68,4 +68,3 @@ TODO: link in user interface
 	</div>
 
 {% endblock %}
-

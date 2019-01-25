@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	    <title>{% block title %}{% endblock %}</title>
 
-        <link rel="stylesheet" 
+        <link rel="stylesheet"
               href="{{ MEDIA_URL }}/css/neahttadigisanit.css"></link>
 
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main.css"/>
@@ -18,7 +18,7 @@
 		{% endcomment %}
 
 
-        
+
 		{% block extracss %}
 		{% endblock %}
 
@@ -59,7 +59,7 @@
 						{% else %}
 							<option value="fi">Suomi</option>
 						{% endifequal %} -->
-						
+
 
 						{% ifequal LANGUAGE_CODE "en" %}
 							<option value="en" selected="selected">English</option>
@@ -111,13 +111,6 @@
 			{% block main_content %}
 			<ul id="games_menu">
 
-        <!--        <li class="game">
-					<a href="{% url "vasta_s" %}">
-						<span>VASTA</span><br />
-						<img src="{{ MEDIA_URL }}/images/vasta.png" alt="VASTA" /><br />
-						<span>{% trans "Answer to questions" %}<font color="#FF0000" size="3pt"> (under construction) </font></span>
-					</a>
-				</li>  --->
 				<li class="game">
 					<a href="{% url "leksa" %}">
 						<span>itwêwina êkwa itwêstamâkêwina</span><br />
@@ -125,9 +118,9 @@
 						<span>{% trans "Words and translations" %}</span>
 					</a>
 				</li>
-				
+
 				<li class="game">
-					<a href="{% url "morfa_s.noun" %}">
+					<a href="{% url 'morfa_s.noun' %}">
 						<span>itwêwinihkêwin</span><br />
 						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-S" /><br />
 						<span>{% trans "Inflect words" %}</span>
@@ -135,22 +128,15 @@
 				</li>
 
 				<li class="game">
-                    <a href="{% url "morfa_c.noun" %}">
+                    <a href="{% url 'morfa_c.noun' %}">
 						<span>kakwêcihkêmowina </span><br />
 						<img src="{{ MEDIA_URL }}/images/morfac.png" alt="MORFA-C" /><br />
 						<span>{% trans "Inflect words in sentences" %}</span>
 					</a>
 				</li>
-				
-<!--            <li class="game">
-                        <a href="{% url "sahka" %}">
-						<span>SAHKA</span><br />
-						<img src="{{ MEDIA_URL }}/images/sahka.png" alt="SAHKA" /><br />
-						<span>{% trans "Dialogue game" %} <font color="#FF0000" size="3pt"> (under construction) </font></span>
-					</a>
-				</li>   ---->
+
                 <li class="game">
-                    <a href="{% url "numra" %}">
+                    <a href="{% url 'numra' %}">
 						<span>akihtâsona</span><br />
 						<img src="{{ MEDIA_URL }}/images/numra.png" alt="NUMRA" /><br />
 						<span>{% trans "Practice numerals" %}</span>
@@ -162,56 +148,11 @@
 			<h3>{% trans "Online reference materials" %}</h3>
 			{% endcomment %}
 			<p class="intro" align="centre">{% trans "nêhiyawêtân is an internet program for learners of Plains Cree. The program can be adjusted to different topics and levels of difficulty, and it generates new task sets automatically. This is a beta demo version." %}</p>
-			
-		<!--	<p>{% trans "Oahpa is connected with online reference materials." %}</p> -->
-			<ul class="linklist">
-           <!-- {% ifequal LANGUAGE_CODE "sme" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "fi" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "en" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "no" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "ru" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "sv" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "fi" %} -->
 
+			<ul class="linklist">
                 <li><a target="_blank" href="http://pikiskwewina.oahpa.no/">{% trans "Plains Cree" %}-{% trans "English" %} {% trans "web dictionary" %}</a></li>
-            <!--{% else %}
-				<li><a href="http://victorio.uit.no/webdict/index_sjd-rus.html">{% trans "Norwegian" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
-            {% endifequal %} -->
-            <!--
-            {% ifequal LANGUAGE_CODE "sme" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.html">{% trans "Russian grammar" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "fi" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.html">{% trans "Russian grammar" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "en" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.eng.html">{% trans "Russian grammar" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "no" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.nob.html">{% trans "Russian grammar" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "ru" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.rus.html">{% trans "Russian grammar" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "sv" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.nob.html">{% trans "Russian grammar" %}</a></li>
-            {% endifequal %}
-            -->
 			</ul>
 
-<!---			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url "courses.views.courses_main" %}">{% trans "Log in here" %}</a></p> -->
 			{% endblock %}
 		</div>
 
@@ -232,7 +173,7 @@
 		</div>
 	</div>
     {% block disable_nds %}
-    <script type="text/javascript" 
+    <script type="text/javascript"
             src="{{ MEDIA_URL }}/js/neahttadigisanit.jquery.min.js"></script>
 
     <script type="text/javascript">
@@ -242,7 +183,7 @@
 
             // Initialize and configure NDS
             $(document).selectToLookup({
-                // This specifies the dictionary set to 
+                // This specifies the dictionary set to
                 api_host: 'http://altlab.ualberta.ca/itwewina/',
             });
         });
