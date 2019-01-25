@@ -27,7 +27,6 @@ from words_install import Words
 from extra_install import Extra
 from feedback_install import Feedback_install
 from questions_install import Questions
-from sahka_install import Sahka  # added by Heli
 
 from kitchen.text.converters import getwriter
 UTF8Writer = getwriter('utf8')
@@ -80,11 +79,11 @@ from django.core.management.base import BaseCommand, CommandError
 
 class Command(BaseCommand):
     can_import_settings = True
-	#option_list = BaseCommand.option_list + OPTION_LIST
-	help = 'Help text goes here'
+    #option_list = BaseCommand.option_list + OPTION_LIST
+    help = 'Help text goes here'
 
-	def handle(self, **options):
-		main(opts=option_list)
+    def handle(self, **options):
+	main(opts=option_list)
 
 def main(opts):
 	if opts:
@@ -97,7 +96,6 @@ def main(opts):
 	linginfo = Paradigm()  # class Paradigm in ling.py
 	words = Words() # class Words in words_install.py
 	extra = Extra()
-	sahka = Sahka() # added by Heli
 	feedback = Feedback_install()
 	questions = Questions()
 
@@ -123,9 +121,9 @@ def main(opts):
 	    feedback.read_messages(options.messagefile)
 	    sys.exit()
 
-	if options.sahkafile:
-		sahka.read_dialogue(options.sahkafile)
-		sys.exit()
+	#if options.sahkafile:
+	#	sahka.read_dialogue(options.sahkafile)
+	#	sys.exit()
 
 	if options.feedbackfile and options.infile:
 	    if options.append:
