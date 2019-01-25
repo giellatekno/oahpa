@@ -51,7 +51,7 @@ ALLOWED_HOSTS = ['.gtoahpa-01.uit.no','127.0.0.1','localhost']
 # Application definition
 
 INSTALLED_APPS = [
-    'errorapi',
+    LLL1+'_oahpa.errorapi',
     LLL1+'_oahpa.drill',
     LLL1+'_oahpa.courses',
     LLL1+'_oahpa.conf',
