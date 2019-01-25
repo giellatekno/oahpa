@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import *
 
 # import os, sys
 # here = lambda x: os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), x)
@@ -6,7 +6,8 @@ from django.conf.urls.defaults import *
 # @login_required decorator
 
 from django.contrib.auth.views import login, logout
-from courses.views import cookie_login, cookie_logout
+from views import cookie_login, cookie_logout
+from django.views.generic import TemplateView
 
 # Have to rename login/ to standard_login/ so that the cookie login falls back
 # to standard login without unlimited redirects.  users who go to login/ and do

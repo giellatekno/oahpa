@@ -13,16 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
-
+from django.views.static import serve
+from django.conf.urls import i18n
 
 from settings import LLL1
 import importlib
 oahpa_module = importlib.import_module(LLL1+'_oahpa')
 sdv = importlib.import_module(LLL1+'_oahpa.drill.views')
 scv = importlib.import_module(LLL1+'_oahpa.conf.views')
-sav = importlib.import_module(LLL1+'_oahpa.courses.auth_views')
 
 prefix = oahpa_module.settings.URL_PREFIX
 MEDIA_ROOT = oahpa_module.settings.MEDIA_ROOT
