@@ -479,7 +479,7 @@ class Word(models.Model):
 	audio = models.CharField(max_length=20) # audio file name
 	wordclass = models.CharField(max_length=8)
 	# valency = models.CharField(max_length=10)
-	hid = models.IntegerField(max_length=3, null=True, default=None) # PI: what's this?
+	hid = models.IntegerField(null=True, default=None) # PI: what's this?
 	semtype = models.ManyToManyField(Semtype)
 	source = models.ManyToManyField(Source) # The textbook(s) where the word is introduced
 	chapter = models.CharField(max_length=10)
@@ -496,7 +496,7 @@ class Word(models.Model):
 	tcomm = models.BooleanField(default=False)
 	# nob = Nob()
 	morphophon = models.ForeignKey(MorphPhonTag, null=True)
-	dialects = models.ManyToManyField(Dialect, null=True)
+	dialects = models.ManyToManyField(Dialect)
 	aspect = models.CharField(max_length=20) # aspect partner (verbs only)
 	motion = models.CharField(max_length=20) # motion partner (verbs only)
 	rime = models.CharField(max_length=8)
@@ -788,8 +788,8 @@ class Form(models.Model):
 	word = models.ForeignKey(Word)
 	tag = models.ForeignKey(Tag)
 	fullform = models.CharField(max_length=200)
-	dialects = models.ManyToManyField(Dialect, null=True)
-	feedback = models.ManyToManyField('Feedbackmsg', null=True)
+	dialects = models.ManyToManyField(Dialect)
+	feedback = models.ManyToManyField('Feedbackmsg')
 	objects = BulkManager()
 
  	@property
@@ -998,7 +998,7 @@ class Feedbacktext(models.Model):
 
 class Question(models.Model):
 	qid = models.CharField(max_length=200)
-	level = models.IntegerField(max_length=3)
+	level = models.IntegerField()
 	task = models.CharField(max_length=20)
 	string = models.CharField(max_length=200)
 	qtype = models.CharField(max_length=20)
@@ -1008,7 +1008,7 @@ class Question(models.Model):
 								 null=True,
 								 related_name='answer_set')
 	gametype = models.CharField(max_length=7)
-	lemmacount = models.IntegerField(max_length=3)
+	lemmacount = models.IntegerField()
 	source = models.ManyToManyField(Source)
 	def __unicode__(self):
 		return self.qid + ': ' + self.string
@@ -1034,7 +1034,7 @@ class QElement(models.Model):
 								  null=True,
 								  related_name='agreement_set')
 
-	semtype = models.ManyToManyField(Semtype, null=True)
+	semtype = models.ManyToManyField(Semtype)
 	tags = models.ManyToManyField(Tag)
 	game = models.CharField(max_length=20)
 	copy = models.ForeignKey('self',
@@ -1080,7 +1080,7 @@ class LinkUtterance(models.Model):
 class Topic(models.Model):
     topicname = models.CharField(max_length=50,blank=True,null=True)
     dialogue = models.ForeignKey(Dialogue)
-    number = models.IntegerField(max_length=3,null=True)
+    number = models.IntegerField(null=True)
     image = models.CharField(max_length=50,null=True,blank=True)
     formlist = models.ManyToManyField(Form)
 
