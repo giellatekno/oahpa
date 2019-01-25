@@ -32,9 +32,11 @@ DEFAULT_DIALECT = settings.DEFAULT_DIALECT
 LOOKUP_OPTS = settings.LOOKUP_OPTS
 GAME_FSTS = settings.GAME_FSTS
 
-cem = importlib.import_module(LLL1+'_oahpa.errorapi')
-FeedbackFST = cem.processes.FeedbackFST
-ERROR_FST_LOG = cem.log.ERROR_FST_LOG
+cem = importlib.import_module(LLL1+'_oahpa.errorapi.messages')
+cep = importlib.import_module(LLL1+'_oahpa.errorapi.processes')
+FeedbackFST = cep.FeedbackFST
+cel = importlib.import_module(LLL1+'_oahpa.errorapi.log')
+ERROR_FST_LOG = cel.ERROR_FST_LOG
 
 ERROR_FST_SETTINGS = settings.ERROR_FST_SETTINGS
 
@@ -45,7 +47,7 @@ if not os.path.isfile(_fst_file):
     print >> sys.stderr, "Check the path in settings.py and try again."
 
 error_files = ERROR_FST_SETTINGS.get('error_message_files', {}).values()
-feedback_messages = FeedbackMessageStore(*error_files)
+feedback_messages = cem.FeedbackMessageStore(*error_files)
 feedback_api = FeedbackFST(feedback_messages)
 
 # FST_DIRECTORY = '/opt/smi/sme/bin' #Just testing. Hardcoded here because it looks like looking it up in settings.py failed

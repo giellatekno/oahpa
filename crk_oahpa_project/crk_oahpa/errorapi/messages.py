@@ -157,4 +157,4 @@
             self.parse(x)
 
 if __name__ == "__main__":
-    m = FeedbackMessageStore('../sme/meta/morfaerrorfstmessages.xml')
+    m = FeedbackMessageStore('../../sme_oahpa_project/sme_data/meta_data/morfaerrorfstmessages.xml')
