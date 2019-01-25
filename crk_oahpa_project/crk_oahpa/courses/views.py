@@ -97,7 +97,10 @@ def trackGrade(gamename, request, c):
 				Morfa - N-ILL - Bisyllabic
 				Morfa - PRS - Trisyllabic
 	"""
-	SETTINGS = c['settingsform'].data
+	try:
+		SETTINGS = c['settingsform'].data
+    	except TypeError:
+        	return
 
 	if c['show_correct'] == 1 or c['all_correct'] == 1:
 		if request.user.is_authenticated() and not request.user.is_anonymous():
@@ -158,9 +161,7 @@ def courses_main(request):
 								 .distinct(),
 	}
 
-	return render_to_response(template,
-							  c,
-							  context_instance=RequestContext(request))
+	return render_to_response(request, template, c)
 
 from django.contrib.auth.decorators import user_passes_test
 
@@ -187,6 +188,4 @@ def instructor_student_detail(request, uid):
 	template = 'courses/instructor_student_detail.html'
 	c = {}
 	c['student'] = UserProfile.objects.get(user__id=uid)
-	return render_to_response(template,
-							  c,
-							  context_instance=RequestContext(request))
+    	return render_to_response(request, template, c)
