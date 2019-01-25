@@ -3,24 +3,19 @@
 P="python2.7"
 
 LANGDIR="crk"
-if [ -n $INSTALL_SRC ] 
-then
-  DATA=$INSTALL_SRC
-else
-  DATA=/home/crk_oahpa/$LANGDIR
-fi
+DATA="crk_data"
 
 DPS="$DATA/src"
 INC="$DATA/inc"
-META="$DATA/meta"
-DPN="$DATA/nobcrk"
+META="$DATA/meta_data"
+#DPN="$DATA/nobcrk"
 DPF="$DATA/fracrk"
-DPW="$DATA/engcrk"
+DPW="$DATA/eng2crk"
 ENG="$DATA/engsrc"
-DPE="$DATA/estcrk"
-DPL="$DATA/latcrk"
-DPR="$DATA/ruscrk"
-DPD="$DATA/smecrk"
+#DPE="$DATA/estcrk"
+#DPL="$DATA/latcrk"
+#DPR="$DATA/ruscrk"
+#DPD="$DATA/smecrk"
 #WORDS=$PED_PATH/words/dicts/smenob/src
 
 echo "==================================================="
@@ -160,7 +155,7 @@ $P manage.py fixtagattributes
  #echo " "
  #echo "done"
  #echo "==================================================="
- 
+
  #echo "==================================================="
  #echo "feeding db with $DPN/A_nobcrk.xml"
  #$P install.py --file $DPN/A_nobcrk.xml 2>>error.log
