@@ -16,6 +16,26 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+
+from settings import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+sdv = importlib.import_module(LLL1+'_oahpa.drill.views')
+scv = importlib.import_module(LLL1+'_oahpa.conf.views')
+sav = importlib.import_module(LLL1+'_oahpa.courses.auth_views')
+
+prefix = oahpa_module.settings.URL_PREFIX
+MEDIA_ROOT = oahpa_module.settings.MEDIA_ROOT
+
+admin_url = r'^%s/admin/' % prefix
+
+
 urlpatterns = [
+    url(r'^%s/$' % prefix, sdv.index),
+    url(r'^%s/i18n/' % prefix, include('django.conf.urls.i18n')),
+    url(r'^%s/' % prefix, include(LLL1+'_oahpa.drill.urls')),
+    url(r'^%s/courses/' % prefix, include(LLL1+'_oahpa.courses.urls')),
+    url(r'^%s/dialect/$' % prefix, scv.dialect),
+    url(r'^%s/media/(?P<path>.*)$' % prefix, serve, {'document_root': MEDIA_ROOT}),
     url(r'^admin/', admin.site.urls),
 ]
