@@ -84,16 +84,18 @@ class Command(BaseCommand):
     help = """
     Strips tags of an element and then merges them all.
     """
-    option_list = BaseCommand.option_list + (
-        make_option("-f", "--filename", dest="filename", default=False,
-                          help="Static file to read from"),
-        make_option("-p", "--pos", dest="pos", default=False,
-                          help="Part of speech"),
-        # make_option("-d", "--dryrun", dest="dryrun", default="True",
-        #                   help="List tags matching element instead of merging"),
-
-        # TODO: question iterations count
-    )
+    def add_arguments(self, parser):
+	parser.add_argument(
+		"-f", "--filename",
+            	dest="filename",
+            	default=False,
+            	help="Static file to read from")
+	parser.add_argument(
+            	"-p", "--pos",
+                dest="pos",
+                default=False,
+         	help="Part of speech")
+    
 
     def handle(self, *args, **options):
         import sys, os
