@@ -59,14 +59,19 @@ class Command(BaseCommand):
 	help = """
 	Strips tags of an element and then merges them all.
 	"""
-	option_list = BaseCommand.option_list + (
-		make_option("-t", "--tagelement", dest="tagelement", default=False,
-						  help="Tag element to search for"),
-		make_option("-d", "--dryrun", dest="dryrun", default="True",
-						  help="List tags matching element instead of merging"),
+    def add_arguments(self, parser):
+		parser.add_argument(
+        	'-t', '--tagelement',
+        	dest='tagelement',
+        	default=False,
+        	help="Tag element to search for")
 
-		# TODO: question iterations count
-	)
+        	parser.add_argument(
+            	'-d', '--dryrun',
+            	dest='dryrun',
+            	default=True,
+            	help="List tags matching element instead of merging")
+
 
 	def handle(self, *args, **options):
 		import sys, os
