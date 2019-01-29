@@ -987,7 +987,7 @@ class Words(object):
 
 					paradigms_to_create[key] = form_info
 
-			paradigms_to_create = OrderedDict(sorted(paradigms_to_create.items(), key=lambda t: t[0]))
+			paradigms_to_create = sco.OrderedDict(sorted(paradigms_to_create.items(), key=lambda t: t[0]))
 
 			changes_to_paradigm = False
 			paradigm_key = '%s|%s|%s' % (lemma, pos, dialect.dialect)
