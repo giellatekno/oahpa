@@ -8,14 +8,12 @@ from django.db.models import Q
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
-import crk_oahpa.settings as settings
 
 settings = oahpa_module.settings
 switch_language_code = oahpa_module.conf.tools.switch_language_code
 
 from models import *
 #from game import *
-#from crk_oahpa.crk_drill.game import relax
 import datetime
 import socket
 import sys, os
@@ -652,8 +650,8 @@ GAME_FILTER_DEFINITIONS = {
 
 import re
 
-from crk_oahpa.settings import INFINITIVE_SUBTRACT as infinitives_sub
-from crk_oahpa.settings import INFINITIVE_ADD as infinitives_add
+infinitives_sub = settings.INFINITIVE_SUBTRACT
+infinitives_add = settings.INFINITIVE_ADD
 
 def relax(strict):
 	"""Returns a list of relaxed possibilities, making changes by relax_pairs.
