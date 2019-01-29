@@ -70,7 +70,7 @@ class BulkManager(models.Manager):
 			postgres = False
 			ignore = 'IGNORE'
 
-		sql = "INSERT %s INTO %s (%s) VALUES %s" % (ignore, "crk_drill_form_feedback", flds, arg_string,)
+		sql = "INSERT %s INTO %s (%s) VALUES %s" % (ignore, "drill_form_feedback", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
 		#transaction.commit()
@@ -84,7 +84,7 @@ class BulkManager(models.Manager):
 		qn = connection.ops.quote_name
 		cursor = connection.cursor()
 
-		table = "crk_drill_form_feedback"
+		table = "drill_form_feedback"
 		fld = qn('form_id')
 		args = ', '.join([str(f) for f in form_ids])
 
@@ -108,7 +108,7 @@ class BulkManager(models.Manager):
 		values_list = [ r[f] for r in vals for f in fields]
 
 		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(vals))
-		sql = "INSERT INTO %s (%s) VALUES %s" % ("crk_drill_feedback_messages", flds, arg_string,)
+		sql = "INSERT INTO %s (%s) VALUES %s" % ("drill_feedback_messages", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
 		#transaction.commit()
@@ -127,7 +127,7 @@ class BulkManager(models.Manager):
 		values_list = [ r[f] for r in vals for f in fields]
 
 		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(vals))
-		sql = "INSERT INTO %s (%s) VALUES %s" % ("crk_drill_feedback_dialects", flds, arg_string,)
+		sql = "INSERT INTO %s (%s) VALUES %s" % ("drill_feedback_dialects", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
 		#transaction.commit()
