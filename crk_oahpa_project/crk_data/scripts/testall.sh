@@ -1,7 +1,7 @@
-# sh scripts/testall.sh
+# sh testall.sh
 
 
-sh scripts/checksemclasses.sh
-sh scripts/checkgrammartags.sh
-sh scripts/testlexicon.sh
-sh scripts/checktasks.sh 
+sh checksemclasses.sh
+sh checkgrammartags.sh
+sh testlexicon.sh
+sh checktasks.sh 
