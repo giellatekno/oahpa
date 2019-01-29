@@ -20,7 +20,7 @@
 
 	<li class="game">
 		<a href="{% url 'numra' %}">
-			<img src="{{ MEDIA_URL }}/images/numra_small.png" alt="akihtâsona"/><br/>
+			<img src="{{ MEDIA_URL }}/images/numra_small_crk.png" alt="akihtâsona"/><br/>
 			<span class="gamename">akihtâsona</span>
 		</a>
 	</li>
@@ -62,7 +62,7 @@
 </ul>
 <div id="leftcontent">
 	<div id="navbar">
-		<img width="120" height="120" border="0" src="{{ MEDIA_URL }}/images/{% block imgprefix %}{% endblock %}_big.png" alt="Game logo" />
+			<img width="120" height="120" border="0" src="{{ MEDIA_URL }}/images/{% block imgprefix %}{% endblock %}_big.png" alt="Game logo" />
 		<div class="bigheader">{% block gametitlename %}{% endblock %}</div>
 		{% block navbar %}{% endblock %}
 	</div>
@@ -81,6 +81,7 @@
 	{% block rightcontent %}
 	<a name="content" class="hide">&nbsp;</a>
 	<form action="" method="post" id="gameform" name="gameform">
+		{% csrf_token %}
 
 	<div id="settings">
 		{% block settings %}{% endblock %}
