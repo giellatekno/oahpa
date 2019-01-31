@@ -1,7 +1,9 @@
-import vro_oahpa.settings
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
 
 try:
-	default = vro_oahpa.settings.DEFAULT_DIALECT
+	default = oahpa_module.settings.DEFAULT_DIALECT
 except:
 	default = 'GG'
 
@@ -11,29 +13,28 @@ def dialect(request):
     return {'dialect': request.session.get('dialect')}
 
 def site_root(request):
-	return {'URL_PREFIX': vro_oahpa.settings.URL_PREFIX}
+	return {'URL_PREFIX': oahpa_module.settings.URL_PREFIX}
 
 def grammarlinks(request):
-	from vro_drill.models import Grammarlinks
-	from conf.tools import switch_language_code
-	
+	Grammarlinks = oahpa_module.drill.models.Grammarlinks
+	from tools import switch_language_code
+
 	default_lang = 'nob'
-	
+
 	try:
 		lang = switch_language_code(request.session.get('django_language'))
 	except:
 		lang = default_lang
-	
+
 	if lang == 'fin':
 		lang = 'sme'  # If interface language is Finnish then the grammar explanations will be in North Sami.
 	links = Grammarlinks.objects.filter(language=lang).order_by('name')
-	
+
 	if links.count() == 0:
 		lang = default_lang
 		links = Grammarlinks.objects.filter(language=lang).order_by('name')
-	
+
 	if links.count () > 0:
 		return {'grammarlinks': links, 'cache_language': lang}
 	else:
 		return {'grammarlinks': False, 'cache_language': 'x'}
-
