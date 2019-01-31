@@ -38,7 +38,8 @@ else:
     lookup = settings.LOOKUP_TOOL
     #numfst = fstdir + "/" + language + "-num.fst"
     numfst = fstdir + "/" + "transcriptor-numbers-digit2text.filtered.lookup.xfst"
-    gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.hfstol" # this is xfst
+    #gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.hfstol" # this is xfst
+    gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst" # this is xfst
     # gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.hfstol" # this is hfst
 
 STDERR = sys.stderr
