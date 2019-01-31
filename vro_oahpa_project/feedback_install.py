@@ -11,13 +11,13 @@ FEEDBACK AND XML-SOURCE
 Feedback message files have the following structure:
 
 	<?xml version="1.0" encoding="utf-8"?>
-	<messages xml:lang="fin"> 
-		<message order="A" id="case1">WORDFORM has ... </message>  
-		<message order="A" id="case2">WORDFORM has ... </message>  
-		<message order="A" id="case3">WORDFORM has ... </message>  
-		<message order="A" id="case4">WORDFORM has ... </message>  
-		<message order="B" id="number1"> and is in singular.</message>  
-		<message order="B" id="number2"> and is in plural.</message>  
+	<messages xml:lang="fin">
+		<message order="A" id="case1">WORDFORM has ... </message>
+		<message order="A" id="case2">WORDFORM has ... </message>
+		<message order="A" id="case3">WORDFORM has ... </message>
+		<message order="A" id="case4">WORDFORM has ... </message>
+		<message order="B" id="number1"> and is in singular.</message>
+		<message order="B" id="number2"> and is in plural.</message>
 	</messages>
 
 In this case the id attribute corresponds to the message id, and the
@@ -30,11 +30,11 @@ Nouns: attributes required: pos, soggi, stem, case/case2, number
 
 	<l> nodes in messages.xml and n_smanob must match for
 		pos, soggi, stem
-	
+
 	Remaining inflectional items, case and number, come from the tag.
-				
-	feedback_nouns.xml: 
-	
+
+	feedback_nouns.xml:
+
 	<feedback pos="N">
 	  <stems>
 		<l stem="2syll">
@@ -54,17 +54,17 @@ Nouns: attributes required: pos, soggi, stem, case/case2, number
 		</l>
 	 </stems>
 	</feedback>
-	
-	
+
+
 	n_smanob.xml:
-	
+
 	<e>
 	  <lg>
 		 <l margo="e" pos="n" soggi="e" stem="3syll">aagkele</l>
 	  </lg>
 	  { ... SNIP ... }
 	</e>
-	
+
 Verbs: Mostly the same. <l/>s match for class, stem, pos
 inflectional information from Tag object pertaining to mood, tense, personnumber.
 
@@ -85,7 +85,7 @@ Feedback.messages.all()
 INSTALL PROCESS
 ------- -------
 
-The install process is invoked with a lexicon file and a feedback file: 
+The install process is invoked with a lexicon file and a feedback file:
 
     python feedback_install.py -f word_file.xml --feedbackfile feedback_file.xml
 
@@ -108,7 +108,7 @@ EDITING
 
 In order to add new morphosyntactic classes, there are several places that may
 need to be checked. Usually it's a good idea to pick a feature that is similar
-to the one being implemented, and search through the file. 
+to the one being implemented, and search through the file.
 
 Some comments are marked with #NEW_ATTRIBUTES, so search through the file for
 these for a hint at where to start.
@@ -124,9 +124,20 @@ various permutations of morphosyntactic features.
 
 
 """
+from local_conf import LLL1
+import importlib
+settings = importlib.import_module(LLL1+'_oahpa.settings')
+sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
 
-from settings import *
-from vro_drill.models import Feedbackmsg,Feedbacktext,Dialect,Comment,Tag
+hst = settings.hostname
+
+Feedbackmsg = sdm.Feedbackmsg
+Feedbacktext = sdm.Feedbacktext
+Dialect = sdm.Dialect
+Comment = sdm.Comment
+Tag = sdm.Tag
+Form = sdm.Form
+
 from xml.dom import minidom as _dom
 from django.db.models import Q
 import sys
@@ -135,7 +146,6 @@ import string
 import codecs
 import operator
 
-from vro_drill.models import Form
 
 from django.db import transaction
 from itertools import product
@@ -147,7 +157,7 @@ def fix_encoding(s):
 		s = s.decode('utf-8')
 	except:
 		pass
-	
+
 	return force_unicode(s)
 
 try:
@@ -178,7 +188,7 @@ def render_kwargs(D):
 	for k, vs in D.iteritems():
 		line = ' %s = %s ' % (k, ', '.join(vs))
 		lines.append(line)
-	
+
 	return '\n'.join(lines)
 
 def get_attrs_with_defaults(element, attr_list, defaults):
@@ -200,7 +210,7 @@ def get_attrs_with_defaults(element, attr_list, defaults):
 		else:
 			val = [fix_encoding(val)]
 		vals.append(val)
-			
+
 	x = OrderedDict(zip(attr_list, vals))
 	grade = x.get('grade', False)
 	if grade:
@@ -211,7 +221,7 @@ def get_attrs_with_defaults(element, attr_list, defaults):
 	if subclass:
 		if x['subclass'] == ['Active']:
 			x['subclass'] == ['']
-	
+
 	return x
 
 
@@ -221,7 +231,7 @@ class Entry(object):
 
 		self.word_kwargs = word
 		self.tag_kwargs = tag
-	
+
 	@property
 	def permutations(self):
 		from itertools import product
@@ -241,8 +251,8 @@ class Entry(object):
 				args.append(list(arg))
 			else:
 				args.append([arg])
-		
-		
+
+
 		return product(*args)
 
 
@@ -254,7 +264,7 @@ class Feedback_install(object):
 	# Each part of speech followed by relevant word/lemma attributes
 	word_attribute_names = OrderedDict([
 		("N", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
-		("A", ['stem', 'gradation', 'diphthong', 'rime', 'soggi', 
+		("A", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',
 										'attrsuffix', 'compsuffix',]),
 		("Num", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
 		("V", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
@@ -297,7 +307,7 @@ class Feedback_install(object):
 		xmlfile = file(infile)
 		tree = _dom.parse(infile)
 		lex = tree.getElementsByTagName("messages")[0]
-		lang = lex.getAttribute("xml:lang")		
+		lang = lex.getAttribute("xml:lang")
 
 		for el in tree.getElementsByTagName("message"):
 			mid=el.getAttribute("id")
@@ -306,14 +316,14 @@ class Feedback_install(object):
 			# message = ""
 			# When XML contains <![CDATA[]]> there is no need to treat the data
 			# differently, as <a /> nodes will be treated as text
-			message = el.firstChild.data  
+			message = el.firstChild.data
 			# links = []
 			# for node in el.childNodes:
 				# if node.nodeType == node.TEXT_NODE:
 					# message = message + node.data
 				# else:
 					# link = node.toxml(encoding="utf-8") # in case the feedback contains a link
-					# message = message + link  
+					# message = message + link
 			print >> sys.stdout, message.encode('utf-8')
 			fm, created = Feedbackmsg.objects.get_or_create(msgid=mid)
 			fm.save()
@@ -342,7 +352,7 @@ class Feedback_install(object):
 			stems = self.feedbacktree.getElementsByTagName("stems")[0]
 			self._feedback_msg_elements = stems.getElementsByTagName("msg")
 		return self._feedback_msg_elements
-	
+
 	@property
 	def wordtree(self):
 		if not self._wordtree:
@@ -354,14 +364,14 @@ class Feedback_install(object):
 		if not self._word_elements:
 			self._word_elements = self.wordtree.getElementsByTagName("l")
 		return self._word_elements
-	
+
 	@property
 	def file_pos(self):
 		if not self._file_pos:
 			root = self.feedbacktree.getElementsByTagName("feedback")[0]
 			self._file_pos = root.getAttribute("pos").capitalize()
 		return self._file_pos
-	
+
 	@property
 	def global_form_filter(self):
 		if not self._global_form_filter:
@@ -372,7 +382,7 @@ class Feedback_install(object):
 			else:
 				self._global_form_filter = False
 		return self._global_form_filter
-	
+
 	@property
 	def feedback_global_dialect(self):
 		if not self._feedback_global_dialect:
@@ -385,7 +395,7 @@ class Feedback_install(object):
 		if not self._form_objects:
 			self._form_objects = Form.objects.filter(tag__pos=self.file_pos)
 		return self._form_objects
-	
+
 	@property
 	def word_attr_names(self):
 		return self.word_attribute_names.get(self.file_pos)
@@ -393,14 +403,14 @@ class Feedback_install(object):
 	@property
 	def tag_attr_names(self):
 		return self.tag_attribute_names.get(self.file_pos)
-	
+
 
 	def find_intersection(self):
 		""" Find the intersection of lexicon and feedback attribute values,
 		return intersection, but also print it """
 
 		def get_word_argument_and_lemma(el, attr_names_list=self.word_attr_names):
-			" For a lexicon word element, get all of the morphological attributes " 
+			" For a lexicon word element, get all of the morphological attributes "
 			vals = [el.getAttribute(attr) for attr in attr_names_list]
 			# attributes and lemma
 			return (OrderedDict(zip(attr_names_list, vals)), el.firstChild.data)
@@ -409,11 +419,11 @@ class Feedback_install(object):
 			return get_word_argument_and_lemma(el)[0]
 
 		def get_msg_argument(el):
-			" For a lexicon word element, get all of the morphological attributes " 
+			" For a lexicon word element, get all of the morphological attributes "
 			vals = [el.getAttribute(attr) for attr in self.tag_attr_names]
 			# attributes and lemma
 			return OrderedDict(zip(self.tag_attr_names, vals))
-		
+
 		def get_tag_argument(attr_):
 			" For a Tag object, get all of the morphological attributes "
 			vals = list(set(Tag.objects.filter(pos=self.file_pos).values_list(attr_, flat=True)))
@@ -426,9 +436,9 @@ class Feedback_install(object):
 
 		# Fetch all word attributes for all entries in the lexicon
 		word_attributes = map(get_word_argument_and_lemma, self.lexicon_word_elements)
-		
+
 		# Collate all the possible values in a dictionary
-		# {'rime': ['a', 'e', 'i', 'o', 'u', etc ... ], 
+		# {'rime': ['a', 'e', 'i', 'o', 'u', etc ... ],
 		#  'soggi': ['a', 'b', 'c', etc ..]}
 		#
 		self.word_possible_values = OrderedDict([
@@ -437,7 +447,7 @@ class Feedback_install(object):
 		])
 
 		# Do the same for Tag objects.
-		# 
+		#
 		self.tag_possible_values = OrderedDict(map(get_tag_argument, self.tag_attr_names))
 
 		# Collect Feedback <l /> attributes
@@ -458,7 +468,7 @@ class Feedback_install(object):
 
 		# Get the intersection of feedback word attributes and lexicon word
 		# attributes
-		# 
+		#
 		def diff(attribute):
 			return set(self.feedback_possible_values.get(attribute)) | \
 					set(self.word_possible_values.get(attribute))
@@ -472,17 +482,17 @@ class Feedback_install(object):
 			d = set(self.feedback_msg_possible_values.get(attribute)) | \
 					set(self.tag_possible_values.get(attribute))
 			return d
-			
+
 		self.tag_attributes_intersection = OrderedDict([
 			(attr_name, tag_diff(attr_name))
 			for attr_name in self.tag_attr_names
 		])
 
 		self.default_attributes = OrderedDict(
-			list(self.attributes_intersection.iteritems()) + 
+			list(self.attributes_intersection.iteritems()) +
 			list(self.tag_attributes_intersection.iteritems())
 		)
-		
+
 		return self.attributes_intersection
 
 	def print_intersection(self):
@@ -503,7 +513,7 @@ class Feedback_install(object):
 		print >> sys.stdout, "    Attributes in word file:"
 		print >> sys.stdout, fmt_dict(self.word_possible_values).encode('utf-8')
 
-		print >> sys.stdout, "    Tag attributes in lexicon for %s:" % self.file_pos 
+		print >> sys.stdout, "    Tag attributes in lexicon for %s:" % self.file_pos
 		print >> sys.stdout, fmt_dict(self.tag_possible_values)
 
 		print >> sys.stdout, "\n  FEEDBACK"
@@ -577,7 +587,7 @@ class Feedback_install(object):
 					['dialects__dialect', 'id', 'word__lemma', 'tag__string']
 
 		print >> sys.stdout, "Fetching wordform attributes."
-		
+
 		forms = self.form_objects.only(*values) # Get only the things we need.
 		if self.global_form_filter:
 			forms = forms.filter(tag__string__contains=self.global_form_filter)
@@ -614,7 +624,7 @@ class Feedback_install(object):
 
 			w_keys = tuple(w_key_vals.values())
 
-			dialects = [''] + [d.dialect for d in f.dialects.all() 
+			dialects = [''] + [d.dialect for d in f.dialects.all()
 						if d.dialect in self.dialects]
 
 			# TODO: global dialects?
@@ -627,7 +637,7 @@ class Feedback_install(object):
 				form_keys[w_keys] = [w_vals]
 
 			if total%1000 == 0:
-				print "  Fetching wordform attributes: %d left" % total 
+				print "  Fetching wordform attributes: %d left" % total
 
 		form_keys_key_set = set(form_keys.keys())
 		# print list(form_keys_key_set)[0:20]
@@ -644,9 +654,9 @@ class Feedback_install(object):
 		#   (c) if a lemma is specified in <l />, then a similar pattern is
 		#       used to dialect filtering to remove words not matching the
 		#       lemma.
-		# 
-		# Feedback attribute permutations are defined as such: 
-		# 
+		#
+		# Feedback attribute permutations are defined as such:
+		#
 		# Each feedback <l /> has some attributes which correspond to
 		# attributes of Word objects, and <msg /> elements if they exist have
 		# attributes which correspond to attributes of Form objects. For either
@@ -661,16 +671,16 @@ class Feedback_install(object):
 		# more or less depending on which attributes have and have not been
 		# defined. Each permutation is then associated with a message id
 		# (n-suffix, etc.)
-		# 
+		#
 		print >> sys.stdout, "Compiling word/tag attribute permutations and msg names"
 		attrs_and_messages = {}
 		# collect form and msg ids here
 		form_infos = []
 		for el in self.feedback_elements:
-			kwargs = get_attrs_with_defaults(el, 
-											self.word_attr_names, 
+			kwargs = get_attrs_with_defaults(el,
+											self.word_attr_names,
 											self.default_attributes)
-			
+
 			msgs = el.getElementsByTagName("msg")
 
 			lemma = el.getAttribute("lemma")
@@ -681,8 +691,8 @@ class Feedback_install(object):
 
 			for msg in msgs:
 				m = msg.firstChild.data
-				tagkwargs = get_attrs_with_defaults(msg, 
-													self.tag_attr_names, 
+				tagkwargs = get_attrs_with_defaults(msg,
+													self.tag_attr_names,
 													self.default_attributes)
 
 				# TODO: global dialects
@@ -690,10 +700,10 @@ class Feedback_install(object):
 
 				if dial and not self.feedback_global_dialect:
 					if dial.startswith('NOT-'):
-						# Get all other dialects 
+						# Get all other dialects
 						feedback_dialects = [
-							d 
-							for d in self.dialects 
+							d
+							for d in self.dialects
 							if d != dial.replace('NOT-', '')
 						]
 					else:
@@ -704,15 +714,15 @@ class Feedback_install(object):
 				if self.feedback_global_dialect:
 					feedback_dialects = [self.feedback_global_dialect]
 
-				print >> sys.stderr, "\nSearching for Wordforms matching ... " 
+				print >> sys.stderr, "\nSearching for Wordforms matching ... "
 				print >> sys.stderr, render_kwargs(kwargs)
 				print >> sys.stderr, render_kwargs(tagkwargs)
 
 				prod_count = reduce(
-					operator.mul, 
+					operator.mul,
 					[len(a) for a in kwargs.values() + tagkwargs.values()]
 				)
-				
+
 				def intersect_param_set(param_set):
 					print >> sys.stderr, "Intersecting..."
 
@@ -730,7 +740,7 @@ class Feedback_install(object):
 							# Filter out entries not matching the dialect, these
 							# will not be inserted later.
 							form_keys[item] = [
-								[a, b, c, d] 
+								[a, b, c, d]
 								for a, b, c, d in form_keys[item][:]
 								if len(set(d) & set(feedback_dialects)) > 0
 							]
@@ -747,7 +757,7 @@ class Feedback_install(object):
 
 					print >> sys.stdout, "Identified %d\n" % len(intersection)
 					del param_set
-				
+
 				param_set_ = set()
 				print >> sys.stderr, "Permutation count: %d" % prod_count
 				perm_count = 0
@@ -777,7 +787,7 @@ class Feedback_install(object):
 		# TODO: store words with no matches somewhere?
 
 		# Prefetch all feedback ids and msgids: {'bisyllabic_stem': 4, etc ...}
-		feedbackmsg_ids = dict([(fix_encoding(msg.msgid), msg.id) 
+		feedbackmsg_ids = dict([(fix_encoding(msg.msgid), msg.id)
 								for msg in Feedbackmsg.objects.iterator()])
 
 		total_forms = self.form_objects.count()
@@ -788,7 +798,7 @@ class Feedback_install(object):
 		# set of form attributes. Some of this does not really need to be here,
 		# but is left for debugging purposes, so it is easy to run through the
 		# attribute sets that have made it through previous iterations.
-		# 
+		#
 		# Form ID and message IDs will later be expanded and used to insert
 		# into the database in bulk.
 		#
@@ -801,12 +811,12 @@ class Feedback_install(object):
 			form_id_msg_id.append((f_id, msg_id))
 
 
-		# Expand (id, [msgid, msgid, msgid]) into 
+		# Expand (id, [msgid, msgid, msgid]) into
 		#        [(id, msgid), (id, msgid), (id, msgid)]
 		# Produce a set to avoid duplicates for bulk insert.
-		# 
+		#
 		# form_id_msg_ids = list(set([
-			# (id, msgid) 
+			# (id, msgid)
 			# for _, _, _, id, msgids in form_to_msgs
 			# for msgid in msgids
 		# ]))
@@ -829,7 +839,7 @@ class Feedback_install(object):
 				Form.objects.bulk_add_form_messages(chunk)
 			except Exception, e:
 				print >> sys.stderr, Exception, e
-				print >> sys.stderr, repr(chunk[0:10]) + " ... " 
+				print >> sys.stderr, repr(chunk[0:10]) + " ... "
 				print >> sys.stderr, "Chunk contains null values, are messages.xml files installed?"
 				print >> sys.stderr, "Removing null values and inserting..."
 				chunk = [(a, b) for a, b in chunk if a and b]
@@ -839,4 +849,3 @@ class Feedback_install(object):
 				print '%d/%d Form-Feedbackmsg relations' % (progress, total_objs)
 
 		print >> sys.stdout, "Done!"
-
