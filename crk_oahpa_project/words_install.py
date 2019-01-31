@@ -837,7 +837,7 @@ class Words(object):
 
 		try:
 			w, created = sdm.Word.objects.get_or_create(**exist_kwargs)
-		except Word.MultipleObjectsReturned:
+		except sdm.Word.MultipleObjectsReturned:
 			w = sdm.Word.objects.filter(**exist_kwargs)
 			w.delete()
 			w = sdm.Word.objects.create(**exist_kwargs)
@@ -1035,7 +1035,7 @@ class Words(object):
 
 					try:
 						t = sdm.Tag.objects.get(string=f.tags)
-					except Tag.DoesNotExist:
+					except sdm.Tag.DoesNotExist:
 						t = sdm.Tag.objects.create(**tag_kwargs)
 
 					t.save()
