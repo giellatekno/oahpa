@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 	'django.contrib.sites',
 	LLL1+'_oahpa.drill',
     LLL1+'_oahpa.conf',
-	# 'vro_oahpa.courses',
+	LLL1+'_oahpa.courses',
     #'vro_oahpa.vro_feedback',
     LLL1+'_oahpa.management',
     #'gunicorn',
