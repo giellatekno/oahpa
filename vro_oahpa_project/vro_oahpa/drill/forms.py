@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 from django import forms
 from django.db.models import Q
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
-import vro_oahpa.settings as settings
 
-from vro_oahpa.conf.tools import switch_language_code
+settings = oahpa_module.settings
+switch_language_code = oahpa_module.conf.tools.switch_language_code
 
 from models import *
 #from game import *
@@ -372,7 +376,7 @@ TRANS_CHOICES = (
 	    ('vrofin', _(u'Võro to Finnish')),
         ('finvro', _(u'Finnish to Võro')),
         ('vroeng', _(u'Võro to English')),
-	    ('engvro', _(u'English to Võro')),           
+	    ('engvro', _(u'English to Võro')),
         ('vrodeu', _(u'Võro to German')),
         ('deuvro', _(u'German to Võro')),
         ('vrosme', _(u'Võro to North Saami')),
@@ -380,7 +384,7 @@ TRANS_CHOICES = (
         ('vroswe', _(u'Võro to Swedish')),
         ('swevro', _(u'Swedish to Võro')),
         ('vronob', _(u'Võro to Norwegian')),
-        ('nobvro', _(u'Norwegian to Võro')), 
+        ('nobvro', _(u'Norwegian to Võro')),
 )
 
 NUMLANGUAGE_CHOICES = (
@@ -388,7 +392,7 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
-    ('FAMILY', _('family')), 
+    ('FAMILY', _('family')),
 	('HUMAN', _('human')),
 	('HUMAN-LIKE', _('human-like')),
 	('ANIMAL', _('animal')),
@@ -398,7 +402,7 @@ SEMTYPE_CHOICES = (
 	('BODY', _('body')),
 	('CLOTHES', _('clothes')),
 	('BUILDINGS/ROOMS', _('buildings/rooms')),
-	('CITY', _('city')), 
+	('CITY', _('city')),
 	('NATUREWORDS', _('nature')),
 	('LEISURETIME/AT_HOME', _('leisuretime/at_home')),
 	('CHRISTMAS', _('christmas')),
@@ -579,7 +583,7 @@ def relax(strict):
 	sub_str = lambda _string, _target, _sub: _string.replace(_target, _sub)
 
 	# The spell-relax rules for Võro
-	
+
 	PALAT_LETTERS = {'b', 'd', 'f', 'g', 'h', 'k', 'l', 'm', 'n', 'p' ,'r', 's', 't', 'v'}
 	#Different apostrophe-like symbols are accepted instead of modifier apostrophe:
 	relax1 = {c + u'\'' : c + u'ʼ' for c in PALAT_LETTERS} # the regular apostrophe
@@ -589,15 +593,15 @@ def relax(strict):
 	relax_pairs = {
 		# key: value
 		# key is accepted for value
-	   
-	   u'b́' : u'bʼ',  # combined b and ´  
+
+	   u'b́' : u'bʼ',  # combined b and ´
 	   u'b' : u'bʼ',  # It is also allowed to completely skip the palatalisation mark.
 	   u'd́': u'dʼ',  # similarly for the rest of palatalised consonants...
 	   u'd': u'dʼ',
 	   u'f ́': u'fʼ',
 	   u'f': u'fʼ',
 	   u'ǵ': u'gʼ',
-	   u'g': u'gʼ', 
+	   u'g': u'gʼ',
 	   u'h́': u'hʼ',
 	   u'h': u'hʼ',
 	   u'ḱ': u'kʼ',
@@ -627,9 +631,9 @@ def relax(strict):
 	   u'’' : u'q', # right single apostrophy
 
 	}
-	
+
 	#Join all the sets of the symbol pairs:
-	relax_pairs.update(relax1)  
+	relax_pairs.update(relax1)
 	relax_pairs.update(relax2)
 	relax_pairs.update(relax3)
 	relax_pairs.update(relax4)
@@ -648,7 +652,7 @@ def relax(strict):
 	# Count the number of "relaxable" characters in the form:
 	nr_q = strict.count('q')
 	nr_palatalised = strict.count(u'ʼ')
-	nr_relaxable = nr_q + nr_palatalised 
+	nr_relaxable = nr_q + nr_palatalised
 
 	# Possibilities applied one by one
 	relaxed_perms = [strict]
@@ -661,7 +665,7 @@ def relax(strict):
 					#print "relaxed form: ", relaxed
 					relaxed_perms.append(relaxed)
 		i=i+1
-		  
+
 
 	# Return list of unique possibilities
 	relaxed_perms = list(set(relaxed_perms))
@@ -1020,9 +1024,9 @@ class OahpaQuestion(forms.Form):
 		forms = []
 		relaxings = []
 		if hasattr(self, 'translang'): # commented out these two lines, because otherwise relax was not working in Morfa
-			if self.translang == 'vro': # caused a problem in Numra, as NumQuestion does not have the attribute translang 
+			if self.translang == 'vro': # caused a problem in Numra, as NumQuestion does not have the attribute translang
 				# Relax spellings.
-			
+
 				accepted_answers = [force_unicode(item) for item in accepted_answers]
 				forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
                                 #print "relaxed forms: ", forms
@@ -1069,7 +1073,7 @@ class LeksaSettings(OahpaSettings):
 	# suopma = forms.BooleanField(required=False,initial=0)
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
-	
+
 	default_data = {'gametype' : 'leksa', 'language' : 'vro', 'dialogue' : 'GG',
 			#'syll' : [],
 			#'bisyllabic': False,
@@ -1124,8 +1128,8 @@ class LeksaQuestion(OahpaQuestion):
 		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
 
         # If we want stress marks in Leksa then we have to use lemma_stressed instead of lemma.
-		
-		if type(word) == Word: 
+
+		if type(word) == Word:
                     if self.sourcelang == 'rus':
                         self.lemma = word.lemma_stressed  # for Rusian the words will be presented with stress marks
                     else:
@@ -1151,7 +1155,7 @@ class LeksaQuestion(OahpaQuestion):
 			for transl_word in translations:
 				transl_obj = Word.objects.filter(lemma=transl_word)[0]
 				self.transl_audio = transl_obj.audio
-		
+
 		self.is_correct("leksa", self.lemma)
 		# set correct and error values
 		if correct_val:
@@ -1743,7 +1747,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 		question_widget = forms.HiddenInput(attrs={'value' : question.id})
 		answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})
 		atext = qanswer.string
-		#print "atext:", atext 
+		#print "atext:", atext
 		task = qanswer.task
 		print "task:", task
 		if not task:
@@ -1804,7 +1808,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 				self.aattrs['answer_tag_' + syntax] = selected_awords[syntax]['tag']
 			if selected_awords[syntax].has_key('taskword'):
 				self.aattrs['answer_taskword_' + syntax] = selected_awords[syntax]['taskword']
-				
+
 			if selected_awords[syntax].has_key('fullform') and len(selected_awords[syntax]['fullform']) == 1:
 				self.aattrs['answer_fullform_' + syntax] = selected_awords[syntax]['fullform'][0]
 
