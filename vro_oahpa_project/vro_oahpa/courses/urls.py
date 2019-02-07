@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import *
 
 # import os, sys
 # here = lambda x: os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), x)
@@ -6,24 +6,26 @@ from django.conf.urls.defaults import *
 # @login_required decorator
 
 from django.contrib.auth.views import login, logout
-from courses.views import cookie_login, cookie_logout
+from views import cookie_login, cookie_logout
+
+from django.views.generic import TemplateView
+
 
 # Have to rename login/ to standard_login/ so that the cookie login falls back
 # to standard login without unlimited redirects.  users who go to login/ and do
 # not have the cookie, will be redirected here, users with the cookie will end
 # up being logged in.
 
-urlpatterns = patterns('django.contrib.auth.views',
-	(r'^standard_login/$', login, {'template_name': 'auth/login.html'}),
-	(r'^logout/$', logout, {'template_name': 'auth/logout.html'}),
-	(r'^login/$', cookie_login),
-	(r'^cookie_logout/$', cookie_logout),
-)
+urlpatterns = [
+	url(r'^standard_login/$', TemplateView.as_view(template_name="auth/login.html")),
+	url(r'^logout/$', TemplateView.as_view(template_name="auth/logout.html")),
+    url(r'^login/$', cookie_login),
+	url(r'^cookie_logout/$', cookie_logout),
+]
 
 from views import courses_main, instructor_student_detail
 
-urlpatterns += patterns('liv_oahpa.courses.views',
-	(r'^(?P<uid>\d+)/$', instructor_student_detail),
-	(r'^$', courses_main),
-)
-
+urlpatterns += [
+    url(r'^(?P<cid>\d+)/(?P<uid>\d+)/$', instructor_student_detail),
+    url(r'^$', courses_main),
+]
