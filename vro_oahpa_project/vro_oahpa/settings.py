@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 """
 Django settings for lll1_oahpa project.
 
@@ -98,7 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'no'
+LANGUAGE_CODE = 'nb'
 
 TIME_ZONE = 'UTC'
 
@@ -119,7 +120,7 @@ URL_PREFIX = 'voro'
 
 # Absolute path to the directory that holds media.
 #MEDIA_ROOT = "/home/vro_oahpa/vro_oahpa/media/"
-MEDIA_ROOT = here('media')
+#MEDIA_ROOT = here('media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -189,3 +190,5 @@ DIALECTS = {
 
 DEFAULT_DIALECT = 'GG'
 NONGEN_DIALECT = 'NG'
+
+from settings_not_in_svn import *
