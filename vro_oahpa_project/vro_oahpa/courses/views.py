@@ -9,11 +9,11 @@ def render_to_response(*args, **kwargs):
 	doesn't depend on the function returning the response to be decorated by
 	@trackGrade to get proper output. """
 
-	from django.shortcuts import render_to_response
+	from django.shortcuts import render
 
-	response = render_to_response(*args, **kwargs)
+	response = render(*args, **kwargs)
 	# response.response_args = args
-	response.context = args[1]
+	response.context = args[2]
 
 	return response
 
@@ -67,7 +67,7 @@ def cookie_logout(request, next_page=None, **kwargs):
 
 	if not next_page:
 		next_page = '/liv_oahpa/courses/logout/'
-	
+
 	return HttpResponseRedirect(next_page)
 
 
@@ -91,13 +91,13 @@ def trackGrade(gamename, request, c):
 				Morfa - PRS - Trisyllabic
 	"""
 	SETTINGS = c['settingsform'].data
-	
+
 	if c['show_correct'] == 1 or c['all_correct'] == 1:
 		if request.user.is_authenticated() and not request.user.is_anonymous():
 			game_type = ''
 			if 'gamename_key' in c['settings']:
 				game_type = c['settings']['gamename_key']
-					
+
 			gamename = gamename + ' - ' + game_type
 
 			points, _, total = c['score'].partition('/')
@@ -116,7 +116,7 @@ def courses_main(request):
 		that they have records in.
 	"""
 	template = 'courses/courses_main.html'
-	
+
 	c = {}
 	new_profile = None
 	is_student = None
@@ -126,20 +126,20 @@ def courses_main(request):
 	except UserProfile.DoesNotExist:
 		profile = UserProfile.objects.create(user=request.user)
 		new_profile = True
-	
+
 	summary = False
-	
+
 	if profile.is_student:
 		summary = profile.usergradesummary_set.all()
 		if summary.count() == 0:
 			new_profile = True
 		is_student = True
-	
+
 	if profile.is_student:
 		template = 'courses/courses_main.html'
 	elif profile.is_instructor:
 		template = 'courses/courses_main_instructor.html'
-	
+
 	c = {
 		'user':  request.user,
 		'profile':  profile,
@@ -151,9 +151,7 @@ def courses_main(request):
 								 .distinct(),
 	}
 
-	return render_to_response(template, 
-							  c, 
-							  context_instance=RequestContext(request))
+	return render_to_response(request, template, c)
 
 from django.contrib.auth.decorators import user_passes_test
 
@@ -162,7 +160,7 @@ def instructor_group(user):
 		return True
 	else:
 		return False
-	
+
 @user_passes_test(instructor_group)
 def instructor_student_detail(request, uid):
 	student = UserProfile.objects.get(user__id=uid)
@@ -176,12 +174,8 @@ def instructor_student_detail(request, uid):
 	if len(intersection) == 0:
 		error = 'Student not found.'
 		return HttpResponseForbidden(error)
-	
+
 	template = 'courses/instructor_student_detail.html'
 	c = {}
 	c['student'] = UserProfile.objects.get(user__id=uid)
-	return render_to_response(template,
-							  c,
-							  context_instance=RequestContext(request))
-
-
+    	return render_to_response(request, template, c)

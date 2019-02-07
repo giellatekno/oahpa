@@ -36,18 +36,16 @@ render_to_response = cvs.render_to_response
 trackGrade = cds.trackGrade
 
 def index(request):
-	c = RequestContext(request, {
+	c = {
 		'jee': "joku arvo",
-		})
-	return render_to_response('vro_oahpa_main.html', c,
-				context_instance=RequestContext(request))
+		}
+	return render_to_response(request, 'oahpa_main.html', c)
 
 def updating(request):
-	c = RequestContext(request, {
+	c = {
 		'jee': "joku arvo",
-		})
-	return render_to_response('updating.html', c,
-				context_instance=RequestContext(request))
+		}
+	return render_to_response(request, 'updating.html', c)
 
 class Gameview(object):
 	""" Gameview is instantiated with a Settings object and a Game object,
@@ -339,7 +337,7 @@ class Leksaview(Gameview):
 	def context(self, request, game, settings_form):
 		self.register_logs(request, game, settings_form)
 
-		return Context({
+		return {
 			'settingsform': settings_form,
 			'settings' : self.settings,
 			'forms': game.form_list,
@@ -349,7 +347,7 @@ class Leksaview(Gameview):
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
 			'deeplink': self.create_deeplink(game, settings_form),
-			})
+			}
 
 
 class LeksaPlaceview(Gameview):
@@ -411,7 +409,7 @@ class LeksaPlaceview(Gameview):
 	def context(self, request, game, settings_form):
 		self.register_logs(request, game, settings_form)
 
-		return Context({
+		return {
 			'settingsform': settings_form,
 			'settings' : self.settings,
 			'forms': game.form_list,
@@ -421,7 +419,7 @@ class LeksaPlaceview(Gameview):
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
 			'deeplink': self.create_deeplink(game, settings_form),
-			})
+			}
 
 
 
@@ -448,8 +446,7 @@ def leksa_game(request, place=False):
 
 	c = leksagame.create_game(request, initial_transtype=default_langpair)
 
-	return render_to_response(template, c,
-				context_instance=RequestContext(request))
+	return render_to_response(request, template, c)
 
 
 class Numview(Gameview):
@@ -468,7 +465,7 @@ class Numview(Gameview):
 	def context(self, request, game, settings_form):
 		self.register_logs(request, game, settings_form)
 
-		return Context({
+		return {
 			'settingsform': settings_form,
 			'settings' : self.settings,
 			'forms': game.form_list,
@@ -480,7 +477,7 @@ class Numview(Gameview):
 			'gametype': self.settings['numgame'],
 			'deeplink': self.create_deeplink(game, settings_form),
 		 #   'numstring': numstring,
-			})
+			}
 
 
 @trackGrade("Numra clock")
@@ -491,8 +488,7 @@ def num_clock(request):
 
 	c = numgame.create_game(request)
 
-	return render_to_response('clock.html', c,
-				context_instance=RequestContext(request))
+	return render_to_response(request, 'clock.html', c)
 
 @trackGrade("Numra ordinal")
 def num_ord(request):
@@ -502,9 +498,7 @@ def num_ord(request):
 
 	c = numgame.create_game(request)
 
-	return render_to_response('num_ord.html', c,
-				context_instance=RequestContext(request))
-
+	return render_to_response(request, 'num_ord.html', c)
 
 @trackGrade("Numra cardinal")
 def num(request):
@@ -513,8 +507,7 @@ def num(request):
 
 	c = numgame.create_game(request)
 
-	return render_to_response('num.html', c,
-				context_instance=RequestContext(request))
+	return render_to_response(request, 'num.html', c)
 
 @trackGrade("Numra dato")
 def dato(request):
@@ -523,8 +516,7 @@ def dato(request):
 
 	c = datogame.create_game(request)
 
-	return render_to_response('dato.html', c,
-				context_instance=RequestContext(request))
+	return render_to_response(request, 'dato.html', c)
 
 
 # Translation of gamenames takes place in the templates mgame_n.html etc.
@@ -721,7 +713,7 @@ class Morfaview(Gameview):
 	def context(self, request, game, settings_form):
 		self.register_logs(request, game, settings_form)
 
-		return RequestContext(request, {
+		return {
 			'settingsform': settings_form,
 			'settings' : self.settings,
 			'forms': game.form_list,
@@ -732,7 +724,7 @@ class Morfaview(Gameview):
 			'show_correct': game.show_correct,
 			'language' : self.settings['language'],
 			'deeplink': self.create_deeplink(game, settings_form),
-			})
+			}
 
 	def additional_settings(self, settings_form):
 
@@ -846,9 +838,7 @@ def morfa_game(request, pos):
 
 	c = mgame.create_game(request)
 
-	return render_to_response(template, c,
-				context_instance=RequestContext(request))
-
+	return render_to_response(request, template, c)
 
 
 ### Contextual Morfas
@@ -874,8 +864,7 @@ def cmgame(request, pos):
 	template = "mgame_%s.html" % p
 	c = mgame.create_game(request)
 
-	return render_to_response(template, c,
-				context_instance=RequestContext(request))
+	return render_to_response(request, template, c)
 
 
 class Vastaview(Gameview):
@@ -897,7 +886,7 @@ class Vastaview(Gameview):
 	def context(self, request, game, settings_form):
 		self.register_logs(request, game, settings_form)
 
-		c = Context({
+		c = {
 			'settingsform': settings_form,
 			'settings': self.settings,
 			'forms': game.form_list,
@@ -909,7 +898,7 @@ class Vastaview(Gameview):
 			'show_correct': game.show_correct,
 			'gametype': "qa",
 			'deeplink': self.create_deeplink(game, settings_form)
-			})
+			}
 		return c
 
 
@@ -919,8 +908,7 @@ def vasta(request):
 	vastagame = Vastaview(VastaSettings, QAGame)
 
 	c = vastagame.create_game(request)
-	return render_to_response('vasta.html', c,
-								context_instance=RequestContext(request))
+	return render_to_response(request, 'vasta.html', c)
 
 
 class Cealkkaview(Gameview):
@@ -948,7 +936,7 @@ class Cealkkaview(Gameview):
 		# TODO: seems to be fine, but settings['level'] on the first visit is
 		# all, not 1, even though the menu shows level 1
 
-		c = Context({
+		c = {
 			'settingsform': settings_form,
 			'settings': self.settings,
 			'forms': game.form_list,
@@ -960,7 +948,7 @@ class Cealkkaview(Gameview):
 			'show_correct': game.show_correct,
 			'gametype': "cealkka",
 			'deeplink': self.create_deeplink(game, settings_form),
-			})
+			}
 		return c
 
 
@@ -972,7 +960,7 @@ def cealkka(request):
 	cealkkagame.init_settings()
 
 	c = cealkkagame.create_game(request)
-	return render_to_response('vasta.html', c, context_instance=RequestContext(request))
+	return render_to_response(request, 'vasta.html', c)
 
 
 class Sahkaview(Cealkkaview):
@@ -1075,7 +1063,7 @@ class Sahkaview(Cealkkaview):
 		for f in game.form_list:
 			errormsg = errormsg + f.errormsg
 
-		c = Context({
+		c = {
 			'settingsform': settings_form,
 			'settings': self.settings,
 			'forms': game.form_list,
@@ -1094,7 +1082,7 @@ class Sahkaview(Cealkkaview):
 			'wordlist' : game.settings['wordlist'],
 			'dialogue' : game.settings['dialogue'],
 			# 'deeplink': self.create_deeplink(game, settings_form),
-			})
+			}
 		return c
 
 
@@ -1107,4 +1095,4 @@ def sahka(request):
 	sahkagame.init_settings()
 
 	c = sahkagame.create_game(request)
-	return render_to_response('sahka.html', c, context_instance=RequestContext(request))
+	return render_to_response(request, 'sahka.html', c)

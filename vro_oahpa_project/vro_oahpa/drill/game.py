@@ -29,23 +29,23 @@ from random import choice
 from .forms import PRONOUNS_LIST
 
 try:
-	LOOKUP_TOOL = vro_oahpa.settings.LOOKUP_TOOL
+	LOOKUP_TOOL = settings.LOOKUP_TOOL
 except:
 	LOOKUP_TOOL = 'lookup'
 
 try:
-	HFST_LOOKUP_TOOL = vro_oahpa.settings.HFST_LOOKUP_TOOL
+	HFST_LOOKUP_TOOL = settings.HFST_LOOKUP_TOOL
 except:
 	HFST_LOOKUP_TOOL = 'hfst-lookup'
 
 
 try:
-	FST_DIRECTORY = vro_oahpa.settings.FST_DIRECTORY
+	FST_DIRECTORY = settings.FST_DIRECTORY
 except:
 	FST_DIRECTORY = False
 
 try:
-	DEFAULT_DIALECT = vro_oahpa.settings.DEFAULT_DIALECT
+	DEFAULT_DIALECT = settings.DEFAULT_DIALECT
 except:
 	DEFAULT_DIALECT = None
 
