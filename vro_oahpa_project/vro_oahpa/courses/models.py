@@ -8,7 +8,7 @@ from django.contrib.auth.models import User, Group
 # TODO: hide delete course admin actions for Instructors group
 # TODO: site-uit-no-default course added to fixtures
 
-#### 
+####
 ##
 ##		User data
 ##
@@ -16,7 +16,7 @@ from django.contrib.auth.models import User, Group
 
 
 class UserProfile(models.Model):
-	""" This is more of a handy organizational object for now, 
+	""" This is more of a handy organizational object for now,
 		and makes some things easier. Unfortunately, some other models
 		here need to use the User model, and some need to use the
 		UserProfile model. Would like to change this to make extending
@@ -27,21 +27,21 @@ class UserProfile(models.Model):
 	login_count = models.IntegerField(default=0)
 	last_login = models.DateTimeField(null=True)
 	site_cookie = models.IntegerField(null=True)
-	
+
 	def __unicode__(self):
 		return self.user.username.encode('utf-8')
-	
+
 	@property
 	def courses(self):
 		return [a.course for a in self.user.courserelationship_set.all()]
-	
+
 	@property
 	def instructorships(self):
 		crs = self.user.courserelationship_set\
 					.filter(relationship_type__name='Instructors')
 
 		return [a.course for a in crs]
-	
+
 	@property
 	def is_instructor(self):
 		grs = self.user.groups.values_list('name', flat=True)
@@ -49,7 +49,7 @@ class UserProfile(models.Model):
 			return True
 		else:
 			return False
-	
+
 	@property
 	def is_student(self):
 		grs = self.user.courserelationship_set\
@@ -59,12 +59,12 @@ class UserProfile(models.Model):
 			return True
 		else:
 			return False
-		
-	
+
+
 	@property
 	def open_id_link(self):
 		return 'http://oahpa.uit.no/liv_oahpa/openid/%s' % self.user.username
-	
+
 	@property
 	def grades(self):
 
@@ -74,16 +74,16 @@ class UserProfile(models.Model):
 			return grades
 		else:
 			return None
-	
+
 
 
 class UserLogin(models.Model):
 	""" Tracking user logins. Model can be counted per user to check login counts,
 		but also times are available.
-		
+
 	"""
-	
-	user = models.ForeignKey(UserProfile) 
+
+	user = models.ForeignKey(UserProfile)
 	timestamp = models.DateTimeField()
 
 class UserGradeSummary(models.Model):
@@ -96,11 +96,11 @@ class UserGradeSummary(models.Model):
 	minimum = models.FloatField(null=True)
 	maximum = models.FloatField(null=True)
 	count = models.IntegerField(default=0)
-	
+
 	class Meta:
 		verbose_name_plural = 'User grade summaries'
 		ordering = ['average']
-	
+
 	@property
 	def game_name(self):
 		return self.game.name
@@ -110,7 +110,7 @@ class UserGradeSummary(models.Model):
 
 class UserGrade(models.Model):
 	""" This model tracks individual user scores by game and date.
-		For now we're not going to track any more than this data, 
+		For now we're not going to track any more than this data,
 		but answers and input could be possible.
 		TODO: admin isn't displaying date.
 	"""
@@ -120,7 +120,7 @@ class UserGrade(models.Model):
 	datetime = models.DateTimeField(auto_now_add=True)
 	score = models.IntegerField()
 	total = models.IntegerField(default=5)
-	
+
 	def __unicode__(self):
 		return u'Summary for %s from %s' % (self.user.user.username, self.game.name)
 
@@ -133,17 +133,17 @@ class UserGrade(models.Model):
 class Activity(models.Model):
 	""" Activity object for agregating course statistics.
 	"""
-	
+
 	name = models.CharField(max_length=50)
-	
+
 	class Meta:
 		verbose_name = 'activity'
 		verbose_name_plural = 'activities'
-	
+
 	def __unicode__(self):
 		return self.name
 
-#### 
+####
 ##
 ##		Course data
 ##
@@ -160,7 +160,7 @@ class Course(models.Model):
 	identifier = models.CharField(max_length=12, default="SAM-1234")
 	# instructors = models.ManyToManyField(User, related_name='instructorships')
 	# students = models.ManyToManyField(User, related_name='studentships')
-	site_link = models.URLField(verify_exists=False, max_length=200, blank=True, null=True)
+	site_link = models.URLField(max_length=200, blank=True, null=True)
 	end_date = models.DateTimeField(null=True, default=None)
 
 	@property
@@ -179,7 +179,7 @@ class CourseRelationship(models.Model):
 
 		On creation of the relationship, the date is copied from the course.
 	"""
-	DATE_HELP = ("Leave this blank to copy the course end date." 
+	DATE_HELP = ("Leave this blank to copy the course end date."
 				 "If you wish to specify no end date, you will need to come back, "
 				 "and remove it after adding the instructor.")
 
@@ -197,7 +197,7 @@ class CourseRelationship(models.Model):
 from django.db.models.signals import post_save, pre_save
 from signals import create_profile, aggregate_grades, user_presave, course_relationship_postsave
 
-post_save.connect(create_profile, sender=User, 
+post_save.connect(create_profile, sender=User,
 	dispatch_uid="liv_oahpa.courses.models.post_save")
 
 post_save.connect(aggregate_grades, sender=UserGrade,
@@ -208,4 +208,3 @@ post_save.connect(course_relationship_postsave, sender=CourseRelationship,
 
 pre_save.connect(user_presave, sender=User,
 	dispatch_uid="liv_oahpa.courses.models.pre_save")
-
