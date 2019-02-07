@@ -1,3 +1,7 @@
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 from django import template
 from django.utils.translation import ugettext_lazy as _
 
@@ -8,7 +12,7 @@ FILTER_EXCEPTIONS = dict([
 	(u'Contextual Morfa', u'Morfa C'),
 ])
 
-from liv_drill.forms import ALL_CHOICES
+ALL_CHOICES = oahpa_module.drill.forms.ALL_CHOICES
 
 key_to_string = {}
 
@@ -57,6 +61,5 @@ def filter_log(value):
 
 
 		substituted.extend(sub_subs)
-	
-	return substituted
 
+	return substituted
