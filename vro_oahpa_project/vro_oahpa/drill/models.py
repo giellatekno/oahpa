@@ -10,20 +10,20 @@ from django.utils.encoding import smart_unicode
 class BulkManager(models.Manager):
 	""" This Manager adds additional methods to Feedback.objects. That allows
 	for bulk inserting via custom SQL query (calling INSERT INTO on a list of
-	dictionaries), this is much faster than using the standard .create() if 
+	dictionaries), this is much faster than using the standard .create() if
 	many objects need to be added.
 
 		.create() -> .bulk_inesrt()
 		.messages.add() -> .bulk_add_messages()
 		.dialects.add() -> .bulk_add_dialects()
 
-	
+
 	"""
 
-	@transaction.commit_manually
+	@transaction.atomic
 	def bulk_insert(self, fields, objs):
 		""" Takes a list of fields and a list dictionaries of fields and values,
-		iterates and inserts. @transaction.commit_manually is active, and the 
+		iterates and inserts. @transaction.atomic is active, and the
 		transaction is committed after insert.
 		"""
 		qn = connection.ops.quote_name
@@ -31,12 +31,12 @@ class BulkManager(models.Manager):
 
 		flds = ', '.join([qn(f) for f in fields])
 		values_list = [ r[f] for r in objs for f in fields]
-		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(objs))		   
-		sql = "INSERT INTO %s (%s) VALUES %s" % (self.model._meta.db_table, flds, arg_string,)	     
+		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(objs))
+		sql = "INSERT INTO %s (%s) VALUES %s" % (self.model._meta.db_table, flds, arg_string,)
 		cursor.execute(sql, values_list)
-		transaction.commit()
+		#transaction.commit()
 
-	@transaction.commit_manually
+	@transaction.atomic
 	def bulk_add_form_messages(self, objs):
 		""" Takes a list of IDs, (feedback_id, feedback_message_id) and inserts
 		these to the many-to-many table, committing on complete.  """
@@ -62,9 +62,9 @@ class BulkManager(models.Manager):
 		sql = "INSERT %s INTO %s (%s) VALUES %s" % (ignore, "vro_drill_form_feedback", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
-		transaction.commit()
-	
-	@transaction.commit_manually
+		#transaction.commit()
+
+	@transaction.atomic
 	def bulk_remove_form_messages(self, form_qs):
 		""" Takes a form queryset, bulk removes all feedbacks for words with those ids """
 
@@ -80,10 +80,10 @@ class BulkManager(models.Manager):
 		sql = "DELETE FROM %s WHERE %s in (%s)" % (table, fld, args)
 
 		cursor.execute(sql)
-		transaction.commit()
+		#transaction.commit()
 
-	
-	@transaction.commit_manually
+
+	@transaction.atomic
 	def bulk_add_messages(self, objs):
 		""" Takes a list of IDs, (feedback_id, feedback_message_id) and inserts
 		these to the many-to-many table, committing on complete.  """
@@ -100,9 +100,9 @@ class BulkManager(models.Manager):
 		sql = "INSERT INTO %s (%s) VALUES %s" % ("vro_drill_feedback_messages", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
-		transaction.commit()
-		
-	@transaction.commit_manually
+		#transaction.commit()
+
+	@transaction.atomic
 	def bulk_add_dialects(self, objs):
 		""" Takes a list of IDs, (feedback_id, dialect_id) and inserts these to
 		the many-to-many table, committing on complete.  """
@@ -119,7 +119,7 @@ class BulkManager(models.Manager):
 		sql = "INSERT INTO %s (%s) VALUES %s" % ("vro_drill_feedback_dialects", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
-		transaction.commit()
+		#transaction.commit()
 
 # Should insert some indexes here, should improve search time since a lot of these have repeated values
 
@@ -127,7 +127,7 @@ class BulkManager(models.Manager):
 ### 	messages = models.ManyToManyField(Feedbackmsg)
 ### 	# TODO: pos = models.CharField(max_length=12)
 ### 	# tag = models.ForeignKey(Tag)
-### 	
+###
 ### 	# Word morphology / classes
 ### 	attrsuffix = models.CharField(max_length=10,null=True,blank=True,db_index=True)
 ### 	dialects = models.ManyToManyField(Dialect)
@@ -137,8 +137,8 @@ class BulkManager(models.Manager):
 ### 	soggi = models.CharField(max_length=10,null=True,blank=True,db_index=True)
 ### 	stem = models.CharField(max_length=20,blank=True,null=True,db_index=True)
 ### 	wordclass = models.CharField(max_length=20,blank=True,null=True,db_index=True)
-### 
-### 	# Tag / inflection 
+###
+### 	# Tag / inflection
 ### 	attributive = models.CharField(max_length=10,null=True,blank=True,db_index=True)
 ### 	case2 = models.CharField(max_length=5,null=True,blank=True,db_index=True)
 ### 	grade = models.CharField(max_length=10,null=True,blank=True,db_index=True)
@@ -147,9 +147,9 @@ class BulkManager(models.Manager):
 ### 	personnumber = models.CharField(max_length=6,null=True,blank=True,db_index=True)
 ### 	pos = models.CharField(max_length=12,blank=True,null=True,db_index=True)
 ### 	tense = models.CharField(max_length=6,null=True,blank=True,db_index=True)
-### 
+###
 ### 	objects = BulkManager()
-### 
+###
 ### 	class Meta:
 ### 		# Sma doesn't have "diphthong","gradation"
 ### 		# Sma doesn't have "rime"
@@ -163,15 +163,15 @@ class BulkManager(models.Manager):
 ### 				    "rime",
 ### 				    "case2",
 ### 				    "number",
-### 						
+###
 ### 				    "personnumber",
 ### 				    "tense",
 ### 				    "mood",
-### 						
+###
 ### 				    "grade",
 ### 				    "attrsuffix",
 ### 				    "attributive", )
-### 
+###
 ### 	def __unicode__(self):
 ### 		attrs = [
 ### 				self.stem,
@@ -179,20 +179,20 @@ class BulkManager(models.Manager):
 ### 				self.diphthong, # added for sme
 ### 				self.gradation,  # added for sme
 ### 				self.pos,
-### 				self.case2, 
-### 				self.grade, 
-### 				self.mood, 
-### 				self.number, 
+### 				self.case2,
+### 				self.grade,
+### 				self.mood,
+### 				self.number,
 ### 				self.personnumber,
 ### 				self.tense,
 ### 				self.attrsuffix,
-### 				self.attributive, 
+### 				self.attributive,
 ### 				self.soggi
 ### 			]
 ### 		attrs = [a for a in attrs if a]
 ### 		S = unicode('/'.join([a for a in attrs if a.strip()])).encode('utf-8')
 ### 		return S
-	
+
 	# def save(self, *args, **kwargs):
 	# 	"""
 	# 		Normalize syllables.
@@ -204,19 +204,19 @@ class BulkManager(models.Manager):
 	# 		'trisyllabic': '3syll',
 	# 		'': '',
 	# 	}
-	# 	
+	#
 	# 	if self.stem in syllables.keys():
 	# 		self.stem = syllables[self.stem]
-	# 	
+	#
 	# 	super(Feedback, self).save(*args, **kwargs)
 
 def filter_set_by_dialect(form_set, dialect):
 	from django.db.models import Q
 
-	QUERY = Q(~Q(dialects__dialect='NG'), 
+	QUERY = Q(~Q(dialects__dialect='NG'),
 			Q(dialects__dialect=dialect) | \
 			Q(dialects__isnull=True))
-	
+
 	result = form_set.filter(QUERY)
 
 	if result.count() == 0:
@@ -225,7 +225,7 @@ def filter_set_by_dialect(form_set, dialect):
 		return result
 
 	# excl = form_set.exclude(dialects__dialect='NG')
-	# 
+	#
 	# if excl.count() > 0:
 	# 	form_set = excl
 
@@ -419,14 +419,14 @@ def leksa_filter(Model,
     # word mode, but problematically we need PLACES as an option. If
     # this results in some odd behavior, will have to comment it back in
     # and revise it.
-    # 
+    #
     # else:
     #     a = 'semtype__semtype__in'
     #     if a in EXCL:
     #         EXCL[a].append('PLACES')
     #     else:
     #         EXCL[a] = ['PLACES']
-    # 
+    #
 
 	if semtype_incl:
 		QUERY['semtype__semtype__in'] = list(semtype_incl)
@@ -476,7 +476,7 @@ class Word(models.Model):
 	hid = models.IntegerField(max_length=3, null=True, default=None) # PI: what's this?
 	semtype = models.ManyToManyField(Semtype)
 	source = models.ManyToManyField(Source) # The textbook(s) where the word is introduced
-	chapter = models.CharField(max_length=10) 
+	chapter = models.CharField(max_length=10)
 	compare = models.CharField(max_length=5) # PI: what's this?
 	# translations2nob = models.ManyToManyField('Wordnob')
 	# translations2swe = models.ManyToManyField('Wordswe')
@@ -903,7 +903,7 @@ class Form(models.Model):
 													tag__grade='',
 													tag__attributive='')
 													#tag__subclass=subclass,
-													
+
 			# print baseform
 			if baseform.count() == 0:
 				baseform = self.word.form_set.all()
