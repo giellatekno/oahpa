@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from vro_oahpa.vro_drill.models import *
-from vro_oahpa.vro_drill.forms import *
+from models import *
+from forms import *
 from django.db.models import Q
-from vro_oahpa.vro_drill.game import Game
+from game import Game
 from random import randint
 
 class SahkaGame(Game):
@@ -19,10 +19,10 @@ class SahkaGame(Game):
                 wlist.append(word)
             self.settings['wordlist'] = ", ".join(wlist)
             #print wlist
-            
+
     def update_topic(self, topic):
         if topic.image:
-            self.settings['image'] = topic.image			
+            self.settings['image'] = topic.image
         self.update_formlist(topic)
 
 
@@ -47,10 +47,10 @@ class SahkaGame(Game):
                     word['fullform'].append(wstring)
             else:
                 word['fullform'].append(w)
-                
+
             qwords[w] = word
         return qwords
-    
+
     def update_game(self, counter, prev_form=None):
 
         new_topic=False
@@ -71,9 +71,9 @@ class SahkaGame(Game):
             prev_utterance = Utterance.objects.get(id=prev_utterance_id)
             prev_utttype =  prev_utterance.utttype
             self.global_targets = prev_form.global_targets
-            
+
         ####### 1. part: Start or end a new topic
-            
+
         # If previous utterance was opening, then go to next utterance
         if prev_form and prev_utttype == "opening" and topic.utterance_set.filter(utttype="question").count()>0:
             utterance = topic.utterance_set.filter(utttype="question").order_by('id')[0]
@@ -93,7 +93,7 @@ class SahkaGame(Game):
             dia = Dialogue.objects.get(name=self.settings['dialogue'])
             self.settings['dialogue']=dia.name
             utterance = topic.utterance_set.all().filter(utttype="opening")[0]
-            
+
         # If the utterance was found create it and return
         if utterance:
             db_info = {}
@@ -104,17 +104,17 @@ class SahkaGame(Game):
             db_info['qwords'] = qwords
 
             db_info['global_targets'] = self.global_targets
-                
+
             form, jee  = self.create_form(db_info, counter, 0)
             self.form_list.append(form)
 
             self.num_fields = self.num_fields+1
             if not utterance.utttype == "question":
-                self.update_game(counter+1, form)               
+                self.update_game(counter+1, form)
             return
-        
+
         #### 2. part Follow the link from previous question
-        
+
         # If the last question was correctly answered, proceed to next question/utterance
         # According to the type of the answer
         if prev_form:
@@ -137,7 +137,7 @@ class SahkaGame(Game):
                 topic=utterance.topic
                 self.settings['topicnumber'] = topic.number
                 self.update_topic(topic)
-				
+
                 db_info = {}
                 db_info['userans'] = ""
                 db_info['correct'] = ""
@@ -146,14 +146,14 @@ class SahkaGame(Game):
                 db_info['qwords'] = qwords
 
                 db_info['global_targets'] = self.global_targets
-                
+
                 form, jee  = self.create_form(db_info, counter, 0)
                 self.form_list.append(form)
                 self.num_fields = self.num_fields+1
                 if utterance.utttype == "closing":
                     self.settings['topicnumber'] = int(utterance.topic.number) + 1
                 if not utterance.utttype == "question":
-                    self.update_game(counter+1, form)               
+                    self.update_game(counter+1, form)
                 return
 
             else:
@@ -177,7 +177,7 @@ class SahkaGame(Game):
                 self.settings['topicnumber'] = int(utterance.topic.number) + 1
                 self.update_game(counter+1, form)
                 return
-            
+
         if not self.form_list:
             # No questions found, so the quiz_id must have been bad.
             raise Http404('Invalid quiz id.')
