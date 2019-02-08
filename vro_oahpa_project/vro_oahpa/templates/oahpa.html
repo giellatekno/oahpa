@@ -107,7 +107,8 @@
 	{% endblock %}
 
 	<a name="content" class="hide">&nbsp;</a>
-	<form action="" method="post" id="gameform" name="gameform">
+	<form novalidate action="" method="post" id="gameform" name="gameform">
+		{% csrf_token %}
 
 	<div id="settings">
 		{% block settings %}{% endblock %}
