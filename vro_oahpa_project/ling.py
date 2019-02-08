@@ -33,9 +33,13 @@ try:
 except:
 	language = "vro"
 
-numfst = fstdir + "/transcriptions/" + "transcriptor-numbers-digit2text.filtered.lookup.hfstol"
-gen_norm_fst = fstdir + "/" + "generator-gt-norm.hfstol" # excl +Err/Orth forms
-gen_all_fst = fstdir + "/" + "generator-gt-desc.hfstol" # incl +Err/Orth forms
+#numfst = fstdir + "/transcriptions/" + "transcriptor-numbers-digit2text.filtered.lookup.hfstol"
+#gen_norm_fst = fstdir + "/" + "generator-gt-norm.hfstol" # excl +Err/Orth forms
+#gen_all_fst = fstdir + "/" + "generator-gt-desc.hfstol" # incl +Err/Orth forms
+numfst = fstdir + "/" + "transcriptor-numbers-digit2text.filtered.lookup.xfst"
+gen_norm_fst = fstdir + "/" + "generator-gt-norm.xfst" # excl +Err/Orth forms
+gen_all_fst = fstdir + "/" + "generator-gt-desc.xfst" # incl +Err/Orth forms
+
 #gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm-dial_main.hfstol" # excl +Use/NG forms
 #gen_all_fst = fstdir + "/" + "generator-oahpa-gt-norm.hfstol" # incl +Use/NG forms
 #gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm-dial_main.xfst"
@@ -177,7 +181,7 @@ class Paradigm:
 		""" The function is called from install.py and its aim is to install the contents of the paradigm file (e.g. paradigms.txt) into the database.
 		"""
 		if not self.tagset:
-			self.handle_tags(tagfile)
+			self.handle_tags(tagfile, add_database)
 
 		fileObj = codecs.open(paradigmfile, "r", "utf-8" )
 		posObj = re.compile(r'^(?:\+)?(?P<posString>[\w]+)\+.*$', re.U)
