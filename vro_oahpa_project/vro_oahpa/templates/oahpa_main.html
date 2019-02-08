@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	    <title>{% block title %}{% endblock %}</title>
 
-		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main.css"/>
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main_vro.css"/>
 		<!--[if gte IE 7]>
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/ie_fixes.css"/>
 		<![endif]-->
@@ -28,21 +28,21 @@
 	{% load i18n %}
 
 <body class="{% block bodyclass %}main{% endblock %}">
-	<div id="page" class="{% block pageclass %}{% endblock %}">				
+	<div id="page" class="{% block pageclass %}{% endblock %}">
 		<div id="headerimg"><a href="/{{ URL_PREFIX }}/"><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!"/></a>
         </div>
-		<a class="hide" href="#content">Skip to content</a>		
-		
+		<a class="hide" href="#content">Skip to content</a>
+
 		<div id="header">
 			{% block header_content %}
 			<h1><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!" /></h1>
 			<h2>Opiq võro kiilt!</h2>
 			{% endblock %}
 		</div>
-		
+
 		<div id="content">
 			{% block main_content %}
-			
+
 			 {% block language_select %}
 		<div id="language_options">
 			{% get_current_language as LANGUAGE_CODE %}
@@ -63,13 +63,13 @@
 						{% else %}
 							<option value="fi">Suomi</option>
 						{% endifequal %}
-						
+
 						{% ifequal LANGUAGE_CODE "et" %}
 							<option value="et" selected="selected">Eesti</option>
 						{% else %}
 							<option value="et">Eesti</option>
 						{% endifequal %}
-						
+
 			<!--			{% ifequal LANGUAGE_CODE "lv" %}
 							<option value="lv" selected="selected">Latviešu</option>
 						{% else %}
@@ -91,24 +91,16 @@
 		{% endblock %}
 
 						<ul id="games_menu">
-
-        <!--        <li class="game">
-					<a href="{% url vasta_s %}">
-						<span>VASTA</span><br />
-						<img src="{{ MEDIA_URL }}/images/vasta.png" alt="VASTA" /><br />
-						<span>{% trans "Answer to questions" %}<font color="#FF0000" size="3pt"> (under construction) </font></span>
-					</a>
-				</li>  --->
 				<li class="game">
-					<a href="{% url leksa %}">
+					<a href="{% url 'leksa' %}">
 						<span>LEKSA</span><br />
 						<img src="{{ MEDIA_URL }}/images/leksa.png" alt="LEKSA" /><br />
 						<span>{% trans "Words and translations" %}</span>
 					</a>
 				</li>
-				
+
 				<li class="game">
-					<a href="{% url morfa_s.noun %}">
+					<a href="{% url 'morfa_s.noun' %}">
 						<span>MORFA-S</span><br />
 						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-S" /><br />
 						<span>{% trans "Practice morphology" %}</span>
@@ -116,22 +108,15 @@
 				</li>
 
 				<li class="game">
-                    <a href="{% url morfa_c.noun %}">
+                    <a href="{% url 'morfa_c.noun' %}">
 						<span>MORFA-C</span><br />
 						<img src="{{ MEDIA_URL }}/images/morfac.png" alt="MORFA-C" /><br />
 						<span>{% trans "Practice morphology in context" %}</span>
 					</a>
 				</li>
-				
-<!--            <li class="game">
-                        <a href="{% url sahka %}">
-						<span>SAHKA</span><br />
-						<img src="{{ MEDIA_URL }}/images/sahka.png" alt="SAHKA" /><br />
-						<span>{% trans "Dialogue game" %} <font color="#FF0000" size="3pt"> (under construction) </font></span>
-					</a>
-				</li>   ---->
+
                 <li class="game">
-                    <a href="{% url numra %}">
+                    <a href="{% url 'numra' %}">
 						<span>NUMRA</span><br />
 						<img src="{{ MEDIA_URL }}/images/numra.png" alt="NUMRA" /><br />
 						<span>{% trans "Practice numerals" %}</span>
@@ -139,12 +124,12 @@
                 </li>
 			</ul>
 			</br>
-			
+
 			<p class="intro" align="centre">{% trans "Oahpa is an internet program for learners of Võro. The program can be adjusted to different topics and levels of difficulty, and it generates new task sets automatically." %}</p>
 			</br>
 			<p> <font color="#FF0000" size="2pt">{% trans "NB! This is a test version. The games Leksa and Numra are working properly but Morfa-S and Morfa-C can still contain some errors." %}</font></p>
 		<!--	<h3>{% trans "Online reference materials" %}</h3> -->
-		
+
                </br>
                <p class="intro"> {% trans "Võro" %}&nbsp;-&nbsp;{% trans "Estonian" %} {% trans "web dictionaries" %}:</p>
                 <ul style="padding-left:40px">
@@ -157,9 +142,9 @@
                 <li><a target="_blank" href="http://umakiil.eu/grammatika"  style="font-size:14px">umakiil.eu</a> <span style="font-size:13px">({% trans "Phonetics and orthography of Võro" %})</span></li>
                 <li><a target="_blank" href="http://edlv.planet.ee/meinZimmer"  style="font-size:14px">edlv.planet.ee/meinZimmer</a> <span style="font-size:13px">({% trans "Exercises on Võro adpositions as Find-the-key-game" %})</span></li>
 		</ul>
-                
+
 {% comment %}
-            
+
             {% ifequal LANGUAGE_CODE "sme" %}
 				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.html">{% trans "Russian grammar" %}</a></li>
             {% endifequal %}
@@ -181,9 +166,8 @@
  {% endcomment %}
             </br>
             <p class="intro"><a href="http://oahpa.no/davvi" style="font-size:13px">{% trans "North Saami Oahpa" %}</a></p>
-            
 
-<!---			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p> -->
+
 			{% endblock %}
 		</div>
 

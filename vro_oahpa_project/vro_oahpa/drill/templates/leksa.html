@@ -14,8 +14,7 @@
 
 {% block navbar %}
 <ul class="sidelist">
-	<li class="selected"><a href="{% url leksa %}">{% trans 'Words' %}</a></li>
-	<!-- <li><a href="{% url leksa.sted %}">{% trans 'Names' %}</a></li> -->
+	<li class="selected"><a href="{% url 'leksa' %}">{% trans 'Words' %}</a></li>
 </ul>
 {% endblock %}
 
@@ -57,7 +56,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.nno.html
     	<li><label for="id_{{ settingsform.source.name }}">{% trans "Book" %}</label>
     		{{ settingsform.source }}</li>
     </ul>
-    
+
     <ul id="submittable">
         <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
     </ul>
@@ -73,9 +72,9 @@ function playSound(soundfile) {
 }
 </script>
 {{ form.lemma }}
-    <audio id="pronounce{{ forloop.counter }}"></audio> 
+    <audio id="pronounce{{ forloop.counter }}"></audio>
    <!-- <a onclick=playSound("{{ MEDIA_URL }}/audio/{{ form.audio }}.wav") href="#"> -->
-    <a onclick=playSound("{{ form.audio }}") href="#">  
+    <a onclick=playSound("{{ form.audio }}") href="#">
     {% if form.audio %}
         <img src="{{ MEDIA_URL }}/images/loudspeaker.jpg" heigth="15px" width="20px"/>
     {% endif %}
@@ -92,4 +91,3 @@ function playSound(soundfile) {
    {% endifequal %}
 {% endif %}
 {% endblock %}
-

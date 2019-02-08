@@ -9,12 +9,12 @@
 {% endifequal %}
 {% endblock %}
 {% block imgprefix %}vasta{% endblock %}
-{% block gametitlename %}<a href="{% url vasta_s %}">VASTA</a>{% endblock %}
+{% block gametitlename %}<a href="{% url 'vasta_s' %}">VASTA</a>{% endblock %}
 
 {% block navbar %}
-<ul class="sidelist"> 
-{% ifequal gametype "cealkka" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url vasta_s %}">{% trans 'Vasta-S' %}</a></li>
-{% ifequal gametype "qa" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url vasta_f %}">{% trans 'Vasta-F' %}</a></li>
+<ul class="sidelist">
+{% ifequal gametype "cealkka" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url 'vasta_s' %}">{% trans 'Vasta-S' %}</a></li>
+{% ifequal gametype "qa" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url 'vasta_f' %}">{% trans 'Vasta-F' %}</a></li>
 </ul>
 {% endblock %}
 
@@ -40,7 +40,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/vasta.nno.html
 {% block pagename %}/rus_oahpa/vasta/{% endblock %}
 {% block instructions %}
 {% ifequal gametype "cealkka" %}
-{% trans "Answer the questions with full sentences." %} </br> 
+{% trans "Answer the questions with full sentences." %} </br>
 {% trans "The blue words are given in the primary form. Your task is to write them in the correct grammatical form." %}
 {% else %}
 {% trans "Answer to the questions with full sentences. Be aware of that if there is moai/mii in the question, you have to answer with doai/dii. " %}
@@ -116,4 +116,3 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/vasta.nno.html
 {% endif %}
 
 {% endblock %}
-
