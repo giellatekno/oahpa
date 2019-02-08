@@ -21,6 +21,10 @@ import sys, os
 import itertools
 from random import choice
 
+from kitchen.text.converters import getwriter
+UTF8Writer = getwriter('utf8')
+sys.stdout = UTF8Writer(sys.stdout)
+
 media_dir = settings.MEDIA_DIR
 tts_dir = settings.TTS_DIR
 
