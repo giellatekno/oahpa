@@ -7,7 +7,6 @@ META="$DATA/meta_data"
 
 DPS="$DATA/src"
 INC="$DATA/inc"
-META="$DATA/meta"
 DPN="$DATA/nobvro"
 DPF="$DATA/finvro"
 DPW="$DATA/engvro"
@@ -15,6 +14,13 @@ DPE="$DATA/estvro"
 DPL="$DATA/swevro"
 DPR="$DATA/deuvro"
 DPD="$DATA/smevro"
+
+
+echo "==================================================="
+y|rm error.log
+echo "error.log removed"
+echo "==================================================="
+
 
 echo "==================================================="
 echo "installing tags and paradigms for Morfa"
