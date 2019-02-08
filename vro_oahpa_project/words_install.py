@@ -452,7 +452,7 @@ class Words(object):
 
 		try:
 			diff = sdm.ParadigmDiff.objects.get(key=key)
-		except ParadigmDiff.DoesNotExist:
+		except sdm.ParadigmDiff.DoesNotExist:
 			diff = sdm.ParadigmDiff.objects.create(key=key, checksum=checksum)
 			diff.save()
 			return True
@@ -984,7 +984,7 @@ class Words(object):
 
 					try:
 						t = sdm.Tag.objects.get(string=f.tags)
-					except Tag.DoesNotExist:
+					except sdm.Tag.DoesNotExist:
 						t = sdm.Tag.objects.create(**tag_kwargs)
 
 					t.save()
