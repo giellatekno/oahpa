@@ -1,12 +1,17 @@
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 from django import forms
 from django.db.models import Q
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
-import fkv_oahpa.settings as settings
 
-from fkv_oahpa.conf.tools import switch_language_code
+settings = oahpa_module.settings
+switch_language_code = oahpa_module.conf.tools.switch_language_code
+#relax = oahpa_module.drill.game.relax
 
 from models import *
 #from game import *
@@ -307,9 +312,9 @@ DERIVATION_CHOICES_CONTEXT = (
 
 BOOK_CHOICES = (
     ('all', _(u'all')),
-    ('Alku1', _('Alku 1')), 
-    ('Alku2', _('Alku 2')), 
-    ('Alku3', _('Alku 3')), 
+    ('Alku1', _('Alku 1')),
+    ('Alku2', _('Alku 2')),
+    ('Alku3', _('Alku 3')),
 )
 
 CHAPTER_CHOICES = {
@@ -918,9 +923,9 @@ class OahpaQuestion(forms.Form):
 		forms = []
 		relaxings = []
 		if hasattr(self, 'translang'): # commented out these two lines, because otherwise relax was not working in Morfa
-			if self.translang == 'fkv': # caused a problem in Numra, as NumQuestion does not have the attribute translang 
+			if self.translang == 'fkv': # caused a problem in Numra, as NumQuestion does not have the attribute translang
 				# Relax spellings.
-			
+
 				accepted_answers = [force_unicode(item) for item in accepted_answers]
 				forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
                                 #print "relaxed forms: ", forms
@@ -961,7 +966,7 @@ class LeksaSettings(OahpaSettings):
 	# suopma = forms.BooleanField(required=False,initial=0)
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
-	
+
 	default_data = {'gametype' : 'leksa', 'language' : 'fkv', 'dialect' : 'main',
 			#'syll' : [],
 			#'bisyllabic': False,
@@ -1015,8 +1020,8 @@ class LeksaQuestion(OahpaQuestion):
 		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
 
         # If we want stress marks in Leksa then we have to use lemma_stressed instead of lemma.
-		
-		if type(word) == Word: 
+
+		if type(word) == Word:
                     if self.sourcelang == 'rus':
                         self.lemma = word.lemma_stressed  # for Rusian the words will be presented with stress marks
                     else:

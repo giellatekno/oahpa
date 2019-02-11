@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
 
-from fkv_oahpa.fkv_drill.models import *
-from fkv_oahpa.fkv_drill.forms import *
+from models import *
+from forms import *
 
-from fkv_oahpa.conf.tools import switch_language_code
+switch_language_code = oahpa_module.conf.tools.switch_language_code
+
 
 from django.db.models import Q, Count
 from django.http import HttpResponse, Http404
@@ -16,17 +20,13 @@ import os
 import re
 import itertools
 
-import fkv_oahpa.settings
+settings = oahpa_module.settings
+LLL1 = settings.LLL1
 
 # DEBUG = open('/dev/ttys001', 'w')
 
 from random import choice
 from .forms import PRONOUNS_LIST
-
-try:
-	L1 = fkv_oahpa.settings.L1
-except:
-	L1 = 'fkv'  # was: sme
 
 try:
 	LOOKUP_TOOL = fkv_oahpa.settings.LOOKUP_TOOL
@@ -331,7 +331,7 @@ class BareGame(Game):
 		'N-ESS': ('Ess', ['Sg','Pl']),
 		'': '',
 	}
-	
+
 	casetable_adj = {
 		'A-NOM-PL': ('Nom', ['Pl']),
 		'A-GEN': ('Gen', ['Sg','Pl']),
@@ -489,7 +489,7 @@ class BareGame(Game):
 		mood, tense, infinite, attributive = "", "", "", ""
 
 		num_bare = ""
-		
+
 		if 'num_bare' in self.settings:
 			num_bare = self.settings['num_bare']
 		if 'num_level' in self.settings:
@@ -647,7 +647,7 @@ class BareGame(Game):
 			TAG_EXCLUDES = False
 			sylls = False
 			source = False
-		
+
 		if pos in ['Pron', 'N', 'Num']:
 			TAG_QUERY = TAG_QUERY & \
 						Q(case=case)
@@ -699,7 +699,7 @@ class BareGame(Game):
 						Q(grade=grade) & \
 						Q(case=case) & \
 						Q(number__in=number)
-						
+
 		# filter can include several queries, exclude must have only one
 		# to work successfully
 		if pos != 'Der':
@@ -769,19 +769,19 @@ class BareGame(Game):
 		# else:
 		# 	UI_Dialect = DEFAULT_DIALECT
 
-		try: 
-			
+		try:
+
 			WORD_FILTER = Q()
 			tag = tags.order_by('?')[0]
-				    
+
 			# Process the selection from the noun_type menu (can incorporate e.g. inflection type):
 			"""if noun_type == "N-NEUT":
 				WORD_FILTER = WORD_FILTER & Q(word__gender='nt') """
-				
-			SOURCE_FILTER = Q() 
+
+			SOURCE_FILTER = Q()
 			if source.lower() != 'all':
-				SOURCE_FILTER = Q(word__chapter__in=CHAPTER_CHOICES[source]) 
-				                           			
+				SOURCE_FILTER = Q(word__chapter__in=CHAPTER_CHOICES[source])
+
 			no_form = True
 			count = 0
 			while no_form and count < 10:
@@ -791,7 +791,7 @@ class BareGame(Game):
 				if tag.pos == 'Pron':
 					tag = tags.order_by('?')[0]
 
-				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)
+				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=LLL1)
 
 				#if not tag.pos in ['Pron', 'Num'] and tag.string.find('Der') < 0:
 				# 	random_word = random_word.filter(word__semtype__semtype="MORFA") # gen_only="none" is used instead of missing "semantic class" MORFA if we want to exclude some words from Morfa.
@@ -917,7 +917,7 @@ class BareGame(Game):
 			match_number = False
 		else:
 			match_number = True
-		
+
 
 		def baseformFilter(form):
 			#   Get baseforms, and filter based on dialects.
@@ -1150,9 +1150,9 @@ class NumGame(Game):
 	def create_form(self, db_info, n, data=None):
 
 		if self.settings['gametype'] in ["ord", "card"]:
-			language = L1
+			language = LLL1
 		else:
-			language = L1
+			language = LLL1
 
 		numstring = ""
 
@@ -1168,7 +1168,7 @@ class NumGame(Game):
 		for num in num_tmp:
 			line = num.strip()
 			# line = line.replace(' ','')
-			
+
 			if line:
 				nums = line.split('\t')
 				num_list.append(nums[a].decode('utf-8'))
@@ -1200,7 +1200,7 @@ class Klokka(NumGame):
 	QuestionForm = KlokkaQuestion
 
         generate_fst = 'transcriptor-clock-digit2text.filtered.lookup.xfst'
-        answers_fst = 'transcriptor-clock-text2digit.filtered.lookup.xfst'        
+        answers_fst = 'transcriptor-clock-text2digit.filtered.lookup.xfst'
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1283,7 +1283,7 @@ class Klokka(NumGame):
 
 	def create_form(self, db_info, n, data=None):
 		if self.settings['gametype'] in ["kl1", "kl2", "kl3"]:
-			language = L1
+			language = LLL1
 
 		numstring = ""
 
@@ -1382,7 +1382,7 @@ class QuizzGame(Game):
 	def __init__(self, *args, **kwargs):
 		super(QuizzGame, self).__init__(*args, **kwargs)
 		self.init_tags()
-        
+
 	def init_tags(self):
 		self.settings['gametype'] = "leksa"
 
