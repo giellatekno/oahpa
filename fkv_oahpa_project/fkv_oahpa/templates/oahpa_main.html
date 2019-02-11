@@ -108,24 +108,16 @@
 		<div id="content">
 			{% block main_content %}
 			<ul id="games_menu">
-
-        <!--        <li class="game">
-					<a href="{% url vasta_s %}">
-						<span>VASTA</span><br />
-						<img src="{{ MEDIA_URL }}/images/vasta.png" alt="VASTA" /><br />
-						<span>{% trans "Answer to questions" %}<font color="#FF0000" size="3pt"> (under construction) </font></span>
-					</a>
-				</li>  --->
 				<li class="game">
-					<a href="{% url leksa %}">
+					<a href="{% url 'leksa' %}">
 						<span>LEKSA</span><br />
 						<img src="{{ MEDIA_URL }}/images/leksa.png" alt="LEKSA" /><br />
 						<span>{% trans "Words and translations" %}</span>
 					</a>
 				</li>
-				
+
 				<li class="game">
-					<a href="{% url morfa_s.noun %}">
+					<a href="{% url 'morfa_s.noun' %}">
 						<span>MORFA-S</span><br />
 						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-S" /><br />
 						<span>{% trans "Practice morphology" %}</span>
@@ -133,22 +125,14 @@
 				</li>
 
 				<li class="game">
-                    <a href="{% url morfa_c.noun %}">
+                    <a href="{% url 'morfa_c.noun' %}">
 						<span>MORFA-C</span><br />
 						<img src="{{ MEDIA_URL }}/images/morfac.png" alt="MORFA-C" /><br />
 						<span>{% trans "Practice morphology in context" %}</span>
 					</a>
 				</li>
-				
-<!--            <li class="game">
-                        <a href="{% url sahka %}">
-						<span>SAHKA</span><br />
-						<img src="{{ MEDIA_URL }}/images/sahka.png" alt="SAHKA" /><br />
-						<span>{% trans "Dialogue game" %} <font color="#FF0000" size="3pt"> (under construction) </font></span>
-					</a>
-				</li>   ---->
                 <li class="game">
-                    <a href="{% url numra %}">
+                    <a href="{% url 'numra' %}">
 						<span>NUMRA</span><br />
 						<img src="{{ MEDIA_URL }}/images/numra.png" alt="NUMRA" /><br />
 						<span>{% trans "Practice numerals" %}</span>
@@ -160,7 +144,7 @@
 			<h3>{% trans "Online reference materials" %}</h3>
 			{% endcomment %}
 			<p class="intro" align="centre">{% trans "Oahpa is an internet program for learners of Kven. The program can be adjusted to different topics and levels of difficulty, and it generates new task sets automatically." %}</p>
-			
+
 		<!--	<p>{% trans "Oahpa is connected with online reference materials." %}</p> -->
 			<ul class="linklist">
            <!-- {% ifequal LANGUAGE_CODE "sme" %}
@@ -209,7 +193,6 @@
             -->
 			</ul>
 
-<!---			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p> -->
 			{% endblock %}
 		</div>
 
