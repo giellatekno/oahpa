@@ -1,0 +1,128 @@
+﻿
+#
+##  Agreement definitions
+ #
+
+# Each item in Agreements contains the following keys:
+#     name, elements, agreements.
+#
+# `elements` is a list of elements which participate in agreement each item in
+# element must contain the key element and tag, where element corresponds to
+# the MorfaC element name, and tag corresponds to a pattern that the tag must
+# match.
+
+# Here is where it is slightly tricky. In order for agreement to work, one part
+# of the tag will be used to determine what the part of the other tag in the
+# relationship will be, thus one must determine an agreement head, which may
+# not correspond to linguistic theory surrounding what heads of agreement are,
+# however in this case, head shall be defined as a word form with a tag that we
+# know, and agreeing elements will match this tag.
+
+# Thus, one of the elements must be marked as 'head', by inserting the
+# key-value pair head: True. This element will be obligatory in order for the
+# agreement to occur, and many other agreeing items may be listed that are not
+# heads. On the elements that agree, the part of the tag that is determined
+# based on features of the head must be replaced with AGR.
+
+# Once these items are defined, the `agreements` key must be specified. It
+# contain a list of key-value pairs listing what parts of the tag must
+# correspond.
+
+#     elements: 
+#       - element: "P-REC"
+#         tag: "Pron+Recipr+Acc+AGR"
+#         head: True
+#       - element: "REC"
+#         tag: "Pron+Recipr+AGR+Nom"
+#     agreements:
+#       - "P-REC": "PxDu1"
+#         "REC": "Du"
+#       - "P-REC": "PxPl1"
+#         "REC": "Pl"
+
+# Thus what this means is that P-REC is the head, and the part of the tag with
+# AGR will match up with the AGR in the element REC. Furthermore, the kinds of
+# matches that will occur are defined in `agreements`. If P-REC contains PxDu1,
+# then AGR in REC will be substituted with Du, and so on. The match only checks
+# for substrings within the tag, nothing more complicated at the moment.
+
+# Reference to membership in Question and Answer may also be included
+
+#	elements:
+#	  - element: "Question/SUBJ"
+#	    head: True
+#	  - element: "Answer/SUBJ"
+
+Agreements:
+  - name: "Question-Answer agreement"
+    elements:
+      - element: "Question/SUBJ"
+        tag: 
+          - "N+AGR+Nom"
+          - "Pron+Pers+AGR+Nom"
+        head: True
+      - element: "Answer/SUBJ"
+        tag: 
+          - "N+AGR+Nom"
+          - "Pron+Pers+AGR+Nom"
+    agreements:
+      - "Question/SUBJ": "Sg"
+        "Answer/SUBJ": "Sg"
+      - "Question/SUBJ": "Pl"
+        "Answer/SUBJ": "Pl"
+      - "Question/SUBJ": "Sg1"
+        "Answer/SUBJ": "Sg2"
+      - "Question/SUBJ": "Sg2"
+        "Answer/SUBJ": "Sg1"
+      - "Question/SUBJ": "Sg3"
+        "Answer/SUBJ": "Sg3"
+      - "Question/SUBJ": "Pl1"
+        "Answer/SUBJ": "Pl2"
+      - "Question/SUBJ": "Pl2"
+        "Answer/SUBJ": "Pl1"
+      - "Question/SUBJ": "Pl3"
+        "Answer/SUBJ": "Pl3"
+
+  - name: "Reciprocative Agreement"
+    elements: 
+      - element: "P-REC"
+        tag: "Pron+Recipr+Case+AGR"
+        head: True
+      - element: "RECPL"
+        tag: "Pron+Recipr+AGR+Nom"
+    agreements:
+      - "P-REC": "PxPl1"
+        "RECPL": "Pl"
+      - "P-REC": "PxPl2"
+        "RECPL": "Pl"
+      - "P-REC": "PxPl3"
+        "RECPL": "Pl"
+ 
+  - name: "SUBJ-MAINV agreement"
+    elements: 
+      - element: "SUBJ"
+        tag: 
+          - "N+AGR+Nom"
+          - "N+Subclass+AGR+Nom"
+          - "Pron+Pers+AGR+Nom"
+        head: True
+      - element: "MAINV"
+        tag: "V+Mood+Tense+AGR"
+    agreements:
+      - "SUBJ": "Sg"
+        "MAINV": "Sg3"
+      - "SUBJ": "Pl"
+        "MAINV": "Pl3"
+      - "SUBJ": "Sg1"
+        "MAINV": "Sg1"
+      - "SUBJ": "Sg2"
+        "MAINV": "Sg2"
+      - "SUBJ": "Sg3"
+        "MAINV": "Sg3"
+      - "SUBJ": "Pl1"
+        "MAINV": "Pl1"
+      - "SUBJ": "Pl2"
+        "MAINV": "Pl2"
+      - "SUBJ": "Pl3"
+        "MAINV": "Pl3"
+

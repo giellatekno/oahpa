@@ -1,0 +1,7 @@
+{% load i18n %}
+<ul class="sidelist">
+	<li {% ifequal gamename_nav "numra_cardinal" %} class="selected"{% endifequal %}><a href="{% url numra %}">{% trans 'Cardinals' %}</a></li>
+	<li {% ifequal gamename_nav "numra_ordinal" %} class="selected"{% endifequal %}><a href="{% url numra.ord %}">{% trans 'Ordinals' %}</a></li>
+	<li {% ifequal gamename_nav 'klokka' %} class="selected"{% endifequal %}><a href="{% url numra.klokka %}">{% trans 'Time' %}</a></li>
+	<li {% ifequal gamename_nav 'dato' %} class="selected"{% endifequal %}><a href="{% url numra.dato %}">{% trans 'Date' %}</a></li>
+</ul>
