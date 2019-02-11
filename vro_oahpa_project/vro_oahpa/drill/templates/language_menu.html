@@ -6,7 +6,8 @@
 				<dl>
 					<dt><label for="language_select">{% trans "Interface language" %}</label></dt>
 					<dd>
-						<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" /> <!-- For some reason on server this redirects to gtoahpa-01.uit.no ?? There is a similar comment in old_univ_oahpa! Locally no redirect but localization points always to eng ??-->
+						<!--input name="next" type="hidden" value="{% block pagename %}{% endblock %}" /> < For some reason on server this redirects to gtoahpa-01.uit.no ?? There is a similar comment in old_univ_oahpa! Locally no redirect but localization points always to eng ??-->
+						<input name="next" type="hidden" value="{{ request.path }}" />
 						<select id="language_select" name="language" onChange="javascript:this.form.submit();">
 
 						{% ifequal LANGUAGE_CODE "vro" %}
