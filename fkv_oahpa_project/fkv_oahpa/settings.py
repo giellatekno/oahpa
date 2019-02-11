@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
 ]
 
 ROOT_URLCONF = LLL1+'_oahpa.urls'
@@ -70,7 +71,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
                 'django.template.context_processors.i18n',
+                'django.template.context_processors.static',
                 LLL1+"_oahpa.courses.context_processors.request_user",
 				LLL1+"_oahpa.conf.context_processors.dialect",
 				LLL1+"_oahpa.conf.context_processors.site_root",
