@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import settings
+import django
+django.setup()
 from os import environ
 import os, sys
 
