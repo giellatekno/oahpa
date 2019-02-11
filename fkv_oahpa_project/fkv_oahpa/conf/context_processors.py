@@ -17,7 +17,7 @@ def site_root(request):
 
 def grammarlinks(request):
 	Grammarlinks = oahpa_module.drill.models.Grammarlinks
-	from conf.tools import switch_language_code
+	from tools import switch_language_code
 
 	default_lang = 'nob'
 
