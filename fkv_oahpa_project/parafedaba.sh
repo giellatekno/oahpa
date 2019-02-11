@@ -1,16 +1,15 @@
 #!/bin/sh
 
 P="python2.7"
-GTHOME="/Users/mslm/main/ped"
-LANGDIR="fkv"
-DATA=$GTHOME/$LANGDIR
+DATA="sme_data"
+DPS="$DATA/src"
+META="$DATA/meta_data"
+
 DPS="$DATA/src"
 INC="$DATA/inc"
-META="$DATA/meta"
 DPN="$DATA/nobfkv"
 DPF="$DATA/finfkv"
 DPW="$DATA/engfkv"
-#WORDS=$GTHOME/words/dicts/smenob/src
 
 echo "==================================================="
 echo "installing tags and paradigms for Morfa"
@@ -117,7 +116,7 @@ echo "==================================================="
  echo " "
  echo "done"
  echo "==================================================="
- 
+
  echo "==================================================="
  echo "feeding db with $DPN/A_nobfkv.xml"
  $P install.py --file $DPN/A_nobfkv.xml 2>>error.log
