@@ -5,10 +5,7 @@
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	    <title>{% block title %}{% endblock %}</title>
 
-		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main.css"/>
-		<!--[if gte IE 7]>
-		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/ie_fixes.css"/>
-		<![endif]-->
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main_fkv.css"/>
 
 		{% comment %}
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/mobile.css"/>
@@ -19,10 +16,6 @@
 
 		{% block extrajs %}
 		{% endblock %}
-
-		<!--[if lt IE 7.]>
-		<script defer type="text/javascript" src="{{ MEDIA_URL }}/js/pngfix.js"></script>
-		<![endif]-->
 	</head>
 
 	{% load i18n %}
@@ -36,6 +29,7 @@
 		<div id="language_options">
 			{% get_current_language as LANGUAGE_CODE %}
 			<form action="/{{ URL_PREFIX }}/i18n/setlang/" method="post" name="newlang">
+				{% csrf_token %}
 				<dl>
 					<dt><label for="language_select">{% trans "Interface language" %}</label></dt>
 					<dd>
@@ -70,31 +64,6 @@
 				</dl>
 				<input type="submit" class="hide" value="submit" />
 			</form>
-			<!--
-			<form action="/{{ URL_PREFIX }}/dialect/" method="post">
-				<dl>
-					<dt><label for="dialect">{% trans "Russian dialect" %}</label></dt>
-					<dd>
-						<input name="next" type="hidden" value="/{{ URL_PREFIX }}/" />
-						<select name="dialect" onChange="javascript:this.form.submit();">
-						{% if dialect %}
-							{% ifequal dialect "GG" %}
-								<option value="GG" selected="selected">{% trans 'GG' %}</option>
-								<option value="KJ">{% trans 'KJ' %}</option>
-							{% else %}
-								<option value="GG">{% trans 'GG' %}</option>
-								<option value="KJ" selected="selected">{% trans 'KJ' %}</option>
-							{% endifequal %}
-						{% else %}
-							<option value="GG">{% trans 'GG' %}</option>
-							<option value="KJ">{% trans 'KJ' %}</option>
-						{% endif %}
-					</select>
-					</dd>
-				</dl>
-				<input type="submit" class="hide" value="submit" />
-			</form>
-			-->
 		</div>
 		{% endblock %}
 
@@ -145,52 +114,10 @@
 			{% endcomment %}
 			<p class="intro" align="centre">{% trans "Oahpa is an internet program for learners of Kven. The program can be adjusted to different topics and levels of difficulty, and it generates new task sets automatically." %}</p>
 
-		<!--	<p>{% trans "Oahpa is connected with online reference materials." %}</p> -->
 			<ul class="linklist">
-           <!-- {% ifequal LANGUAGE_CODE "sme" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "fi" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "en" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "no" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "ru" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "sv" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "fi" %} -->
 
                 <li><a href="http://gtweb.uit.no/webdict/index_fkv-nob.html">{% trans "Kven" %}-{% trans "Norwegian" %} {% trans "web dictionary" %}</a></li>
-            <!--{% else %}
-				<li><a href="http://victorio.uit.no/webdict/index_sjd-rus.html">{% trans "Norwegian" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
-            {% endifequal %} -->
-            <!--
-            {% ifequal LANGUAGE_CODE "sme" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.html">{% trans "Russian grammar" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "fi" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.html">{% trans "Russian grammar" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "en" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.eng.html">{% trans "Russian grammar" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "no" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.nob.html">{% trans "Russian grammar" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "ru" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.rus.html">{% trans "Russian grammar" %}</a></li>
-            {% endifequal %}
-            {% ifequal LANGUAGE_CODE "sv" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.nob.html">{% trans "Russian grammar" %}</a></li>
-            {% endifequal %}
-            -->
+        
 			</ul>
 
 			{% endblock %}
