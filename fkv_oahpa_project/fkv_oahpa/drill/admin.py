@@ -1,7 +1,9 @@
 from models import Log, Word, Semtype, Source, Form, Tag, Question, QElement, WordQElement, WordTranslation, Feedbackmsg, Feedbacktext
-
 from django.contrib import admin
-from django.contrib.contenttypes import generic
+
+
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 
 class LogAdmin(admin.ModelAdmin):
 	list_display = ('example','userinput','iscorrect','correct','game','date')
