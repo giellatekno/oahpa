@@ -467,7 +467,7 @@ class Words(object):
 			return True
 
 
-	@transaction.commit_on_success
+	@transaction.atomic
 	def install_lexicon(self,infile,linginfo,delete=None,paradigmfile=False, verbose=True,append_only=False):
 		global VERBOSE
 		VERBOSE = verbose
@@ -800,7 +800,7 @@ class Words(object):
 
 		try:
 			w, created = sdm.Word.objects.get_or_create(**exist_kwargs)
-		except Word.MultipleObjectsReturned:
+		except sdm.Word.MultipleObjectsReturned:
 			w = sdm.Word.objects.filter(**exist_kwargs)
 			w.delete()
 			w = sdm.Word.objects.create(**exist_kwargs)
