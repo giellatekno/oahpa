@@ -2,6 +2,7 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 			<form action="/{{ URL_PREFIX }}/i18n/setlang/" method="post" name="newlang">
+				{% csrf_token %}
 				<dl>
 					<dt><label for="language_select">{% trans "Interface language" %}</label></dt>
 					<dd>
@@ -18,13 +19,13 @@
 						{% else %}
 							<option value="fi">Suomi</option>
 						{% endifequal %}
-						
+
 						{% ifequal LANGUAGE_CODE "et" %}
 							<option value="et" selected="selected">Eesti</option>
 						{% else %}
 							<option value="et">Eesti</option>
 						{% endifequal %}
-						
+
 			<!--			{% ifequal LANGUAGE_CODE "lv" %}
 							<option value="lv" selected="selected">Latviešu</option>
 						{% else %}
@@ -41,4 +42,4 @@
 					</dd>
 				</dl>
 				<input type="submit" class="hide" value="submit" />
-			</form>    
+			</form>
