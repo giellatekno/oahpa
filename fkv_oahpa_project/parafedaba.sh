@@ -1,7 +1,7 @@
 #!/bin/sh
 
 P="python2.7"
-DATA="sme_data"
+DATA="fkv_data"
 DPS="$DATA/src"
 META="$DATA/meta_data"
 
