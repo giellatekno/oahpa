@@ -29,6 +29,11 @@ INTERNAL_IPS = ('127.0.0.1',)
 # Application definition
 
 INSTALLED_APPS = [
+    LLL1+'_oahpa.drill',
+    LLL1+'_oahpa.conf',
+    LLL1+'_oahpa.courses',
+    #'vro_oahpa.vro_feedback',
+    LLL1+'_oahpa.management',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -36,11 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'django.contrib.sites',
-	LLL1+'_oahpa.drill',
-    LLL1+'_oahpa.conf',
-	LLL1+'_oahpa.courses',
-    #'vro_oahpa.vro_feedback',
-    LLL1+'_oahpa.management',
     #'gunicorn',
 ]
 
@@ -51,9 +51,9 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.contrib.admindocs.middleware.XViewMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.locale.LocaleMiddleware'
+    'django.middleware.locale.LocaleMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
 ]
 
 ROOT_URLCONF = LLL1+'_oahpa.urls'
@@ -73,6 +73,10 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.static',
+                LLL1+'_oahpa.courses.context_processors.request_user',
+                LLL1+'_oahpa.conf.context_processors.dialect',
+                LLL1+'_oahpa.conf.context_processors.site_root',
+                LLL1+'_oahpa.conf.context_processors.grammarlinks',
             ],
         },
     },
@@ -150,6 +154,7 @@ OLD_NEW_ISO_CODES = {
 	"en": "eng",
 	"et": "est",
 	"no": "nob",
+    "nb": "nob",
     "da": "dan",
 	"de": "deu",
 	"sv": "swe",
