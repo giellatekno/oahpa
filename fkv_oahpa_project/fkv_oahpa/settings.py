@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for fkv_oahpa project.
 
@@ -31,10 +32,10 @@ INTERNAL_IPS = ('127.0.0.1',)
 # Application definition
 
 INSTALLED_APPS = [
-    LLL1+'_oahpa.fkv_drill',
+    LLL1+'_oahpa.drill',
     LLL1+'_oahpa.conf',
     LLL1+'_oahpa.courses',
-    LLL1+'_oahpa.fkv_feedback',
+    LLL1+'_oahpa.feedback',
     LLL1+'_oahpa.management',
     'django.contrib.admin',
     'django.contrib.auth',
