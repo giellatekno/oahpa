@@ -27,10 +27,10 @@ class BulkManager(models.Manager):
 
 	"""
 
-	@transaction.commit_manually
+	@transaction.atomic
 	def bulk_insert(self, fields, objs):
 		""" Takes a list of fields and a list dictionaries of fields and values,
-		iterates and inserts. @transaction.commit_manually is active, and the
+		iterates and inserts. @transaction.atomic is active, and the
 		transaction is committed after insert.
 		"""
 		qn = connection.ops.quote_name
@@ -41,9 +41,9 @@ class BulkManager(models.Manager):
 		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(objs))
 		sql = "INSERT INTO %s (%s) VALUES %s" % (self.model._meta.db_table, flds, arg_string,)
 		cursor.execute(sql, values_list)
-		transaction.commit()
+		#transaction.commit()
 
-	@transaction.commit_manually
+	@transaction.atomic
 	def bulk_add_form_messages(self, objs):
 		""" Takes a list of IDs, (feedback_id, feedback_message_id) and inserts
 		these to the many-to-many table, committing on complete.  """
@@ -69,9 +69,9 @@ class BulkManager(models.Manager):
 		sql = "INSERT %s INTO %s (%s) VALUES %s" % (ignore, "drill_form_feedback", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
-		transaction.commit()
+		#transaction.commit()
 
-	@transaction.commit_manually
+	@transaction.atomic
 	def bulk_remove_form_messages(self, form_qs):
 		""" Takes a form queryset, bulk removes all feedbacks for words with those ids """
 
@@ -87,10 +87,10 @@ class BulkManager(models.Manager):
 		sql = "DELETE FROM %s WHERE %s in (%s)" % (table, fld, args)
 
 		cursor.execute(sql)
-		transaction.commit()
+		#transaction.commit()
 
 
-	@transaction.commit_manually
+	@transaction.atomic
 	def bulk_add_messages(self, objs):
 		""" Takes a list of IDs, (feedback_id, feedback_message_id) and inserts
 		these to the many-to-many table, committing on complete.  """
@@ -107,9 +107,9 @@ class BulkManager(models.Manager):
 		sql = "INSERT INTO %s (%s) VALUES %s" % ("drill_feedback_messages", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
-		transaction.commit()
+		#transaction.commit()
 
-	@transaction.commit_manually
+	@transaction.atomic
 	def bulk_add_dialects(self, objs):
 		""" Takes a list of IDs, (feedback_id, dialect_id) and inserts these to
 		the many-to-many table, committing on complete.  """
@@ -126,7 +126,7 @@ class BulkManager(models.Manager):
 		sql = "INSERT INTO %s (%s) VALUES %s" % ("drill_feedback_dialects", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
-		transaction.commit()
+		#transaction.commit()
 
 # Should insert some indexes here, should improve search time since a lot of these have repeated values
 
