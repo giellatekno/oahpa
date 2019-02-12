@@ -33,7 +33,7 @@
 				<dl>
 					<dt><label for="language_select">{% trans "Interface language" %}</label></dt>
 					<dd>
-						<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
+						<input name="next" type="hidden" value="{{ request.path }}" />
 						<select id="language_select" name="language" onChange="javascript:this.form.submit();">
 
 						{% ifequal LANGUAGE_CODE "fkv" %}
@@ -117,7 +117,7 @@
 			<ul class="linklist">
 
                 <li><a href="http://gtweb.uit.no/webdict/index_fkv-nob.html">{% trans "Kven" %}-{% trans "Norwegian" %} {% trans "web dictionary" %}</a></li>
-        
+
 			</ul>
 
 			{% endblock %}
