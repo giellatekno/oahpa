@@ -6,7 +6,7 @@ from django.conf.urls import *
 # @login_required decorator
 
 from django.contrib.auth.views import login, logout
-from courses.views import cookie_login, cookie_logout
+from views import cookie_login, cookie_logout
 
 from django.views.generic import TemplateView
 

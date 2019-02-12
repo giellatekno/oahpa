@@ -17,7 +17,7 @@ def render_to_response(*args, **kwargs):
 
 	from django.shortcuts import render
 
-	response = render_to_response(*args, **kwargs)
+	response = render(*args, **kwargs)
 	# response.response_args = args
 	response.context = args[2]
 

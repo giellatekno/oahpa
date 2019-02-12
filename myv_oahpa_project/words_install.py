@@ -900,7 +900,7 @@ class Words(object):
 			# dialects, rather than iterating through dialects and going
 			# through wordforms once for each dialect.
 
-			paradigms_to_create = OrderedDict() # OrderedDict()
+			paradigms_to_create = sco.OrderedDict() # OrderedDict()
 			# TODO: sorted by tag
 			for dialect in dialect_objects:
 				if VERBOSE:
@@ -934,7 +934,7 @@ class Words(object):
 
 					paradigms_to_create[key] = form_info
 
-			paradigms_to_create = OrderedDict(sorted(paradigms_to_create.items(), key=lambda t: t[0]))
+			paradigms_to_create = sco.OrderedDict(sorted(paradigms_to_create.items(), key=lambda t: t[0]))
 
 			changes_to_paradigm = False
 			paradigm_key = '%s|%s|%s' % (lemma, pos, dialect.dialect)
