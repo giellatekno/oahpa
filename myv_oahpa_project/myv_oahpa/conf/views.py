@@ -1,5 +1,10 @@
 # Functions for global configuration in oahpa-project.
 # At the moment, only dialect settings.
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
+settings = oahpa_module.settings
 
 from django import http
 from django.core.cache import cache
@@ -21,4 +26,3 @@ def dialect(request):
             else:
                 response.set_cookie(settings.DIALECT_COOKIE_NAME, dialect)
     return response
-
