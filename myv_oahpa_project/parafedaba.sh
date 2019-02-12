@@ -1,9 +1,11 @@
 #!/bin/sh
 
 P="python2.7"
-DATA="/Users/mslm/main/ped/myv"
+DATA="myv_data"
 DPS="$DATA/src"
-META="$DATA/meta"
+META="$DATA/meta_data"
+
+DPS="$DATA/src"
 DPN="$DATA/nobmyv"
 DPF="$DATA/finmyv"
 DPW="$DATA/engmyv"
@@ -217,7 +219,7 @@ echo "done"
 echo "==================================================="
 
 ##
-## engmyv 
+## engmyv
 ##
 
  echo "==================================================="
@@ -261,9 +263,9 @@ echo "==================================================="
  echo " "
  echo "done"
  echo "==================================================="
- 
+
  ##
-## rusmyv 
+## rusmyv
 ##
 
  echo "==================================================="
@@ -309,7 +311,7 @@ echo "==================================================="
  echo "==================================================="
 
  ##
-## smemyv 
+## smemyv
 ##
 
  echo "==================================================="
@@ -421,7 +423,7 @@ echo "==================================================="
 
 #  ... for eastern dialect there are additional feedback files feedback_verbs_eastern, feedback_adjectives_eastern that we ignore right now
 
-# Morfa-C 
+# Morfa-C
 
 
 #echo "==================================================="
@@ -558,7 +560,7 @@ echo "==================================================="
 #echo "==================================================="
 
 
-# TODO: 
+# TODO:
 # fixtagattributes
 # mergetags
 
@@ -584,4 +586,3 @@ echo "==================================================="
 
 echo "stopped at: "
 date '+%T'
-
