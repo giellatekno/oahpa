@@ -12,16 +12,14 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 import sys
-os.environ['PYTHON_EGG_CACHE'] = '/tmp'
-os.environ['DJANGO_SETTINGS_MODULE'] = 'fkv_oahpa.settings'
+
 
 MAIN_LANGUAGE = ('fkv', 'Kven')
 LLL1 = MAIN_LANGUAGE[0]
+
+os.environ['PYTHON_EGG_CACHE'] = '/tmp'
+os.environ['DJANGO_SETTINGS_MODULE'] = LLL1+'_oahpa.settings'
 
 
 DEV = True
@@ -43,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -143,6 +142,7 @@ OLD_NEW_ISO_CODES = {
 	"ru": "rus",
 	"en": "eng",
 	"no": "nob",
+	"nb": "nob",
 	"de": "deu",
 	"sv": "swe",
 	"sma": "sma",
