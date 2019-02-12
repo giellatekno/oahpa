@@ -14,8 +14,7 @@
 
 {% block navbar %}
 <ul class="sidelist">
-	<li class="selected"><a href="{% url leksa %}">{% trans 'Words' %}</a></li>
-	<!-- <li><a href="{% url leksa.sted %}">{% trans 'Names' %}</a></li> -->
+	<li class="selected"><a href="{% url 'leksa' %}">{% trans 'Words' %}</a></li>
 </ul>
 {% endblock %}
 
@@ -54,7 +53,7 @@ http://oahpa.no/myv/index.nob.html
     	<li><label for="id_{{ settingsform.source.name }}">{% trans "Book" %}</label>
     		{{ settingsform.source }}</li>
     </ul>
-    
+
     <ul id="submittable">
         <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
     </ul>
@@ -75,4 +74,3 @@ http://oahpa.no/myv/index.nob.html
    {% endifequal %}
 {% endif %}
 {% endblock %}
-

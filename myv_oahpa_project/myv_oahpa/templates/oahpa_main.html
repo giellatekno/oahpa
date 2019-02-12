@@ -4,16 +4,16 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	    <title>{% block title %}{% endblock %}</title>
-		
+
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main.css"/>
 		<!--[if gte IE 7]>
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/ie_fixes.css"/>
 		<![endif]-->
-		
+
 		{% comment %}
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/mobile.css"/>
 		{% endcomment %}
-		
+
 		{% block extracss %}
 		{% endblock %}
 
@@ -25,13 +25,13 @@
 		<![endif]-->
 	</head>
 
-	{% load i18n %}			
+	{% load i18n %}
 
 <body class="{% block bodyclass %}main{% endblock %}">
 	<div id="page" class="{% block pageclass %}{% endblock %}">
 		<div id="headerimg"><a href="/{{ URL_PREFIX }}/"><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!"/></a></div>
 		<a class="hide" href="#content">Skip to content</a>
-		
+
 		{% block language_select %}
 		<div id="language_options">
 			{% get_current_language as LANGUAGE_CODE %}
@@ -42,38 +42,38 @@
 						<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
 						<select id="language_select" name="language" onChange="javascript:this.form.submit();">
 
-						  
+
 						{% ifequal LANGUAGE_CODE "no" %}
 							<option value="no" selected="selected">Norsk</option>
 						{% else %}
 							<option value="no">Norsk</option>
-						{% endifequal %} 
-						
+						{% endifequal %}
+
 						{% ifequal LANGUAGE_CODE "myv" %}
 							<option value="myv" selected="selected">Erzya</option>
 						{% else %}
 							<option value="myv">Erzya</option>
 						{% endifequal %}
 
-							  
+
 						{% ifequal LANGUAGE_CODE "ru" %}
 							<option value="ru" selected="selected">Pусский язык</option>
 						{% else %}
 							<option value="ru">Pусский язык</option>
 						{% endifequal %}
-							  
+
 						{% ifequal LANGUAGE_CODE "fi" %}
-						 	<option value="fi" selected="selected">Suomi</option> 
+						 	<option value="fi" selected="selected">Suomi</option>
 						{% else %}
-						 	<option value="fi">Suomi</option> 
+						 	<option value="fi">Suomi</option>
 						{% endifequal %}
-							  
+
 						{% ifequal LANGUAGE_CODE "en" %}
 							<option value="en" selected="selected">English</option>
 						{% else %}
 							<option value="en">English</option>
-						{% endifequal %} 
-						
+						{% endifequal %}
+
 					</select>
 					</dd>
 				</dl>
@@ -93,7 +93,7 @@
 							{% else %}
 								<option value="GG">{% trans 'GG' %}</option>
 								<option value="KJ" selected="selected">{% trans 'KJ' %}</option>
-							{% endifequal %}  
+							{% endifequal %}
 						{% else %}
 							<option value="GG">{% trans 'GG' %}</option>
 							<option value="KJ">{% trans 'KJ' %}</option>
@@ -106,7 +106,7 @@
 			-->
 		</div>
 		{% endblock %}
-		
+
 		<div id="header">
 			{% block header_content %}
 			<h1><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!" /></h1>
@@ -117,47 +117,33 @@
 		<div id="content">
 			{% block main_content %}
 			<ul id="games_menu">
-				
-              <!--  <li class="game">
-					<a href="{% url vasta_s %}">
-						<span>VASTA</span><br />
-						<img src="{{ MEDIA_URL }}/images/vasta.png" alt="VASTA" /><br />
-						<span>{% trans "Answer to questions" %}<font color="#FF0000" size="3pt"> (under construction) </font></span>
-					</a>
-				</li>  --->
+
 				<li class="game">
-					<a href="{% url leksa %}">
+					<a href="{% url 'leksa' %}">
 						<span>LEKSA</span><br />
 						<img src="{{ MEDIA_URL }}/images/leksa.png" alt="LEKSA" /><br />
 						<span>{% trans "Words and translations" %}</span>
 					</a>
 				</li>
-			
-			
+
+
                 <li class="game">
-					<a href="{% url morfa_s.noun %}">
+					<a href="{% url 'morfa_s.noun' %}">
 						<span>MORFA-S</span><br />
 						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-S" /><br />
 						<span>{% trans "Practise morphology" %}</span>
 					</a>
 				</li>
-				
+
 				<li class="game">
-                    <a href="{% url morfa_c.noun %}">
+                    <a href="{% url 'morfa_c.noun' %}">
 						<span>MORFA-C</span><br />
 						<img src="{{ MEDIA_URL }}/images/morfac.png" alt="MORFA-C" /><br />
 						<span>{% trans "Practise morphology in context" %}</span>
 					</a>
 				</li>
-		<!--		<li class="game">
-                    <a href="{% url sahka %}">
-						<span>SAHKA</span><br />
-						<img src="{{ MEDIA_URL }}/images/sahka.png" alt="SAHKA" /><br />
-						<span>{% trans "Dialogue game" %} <font color="#FF0000" size="3pt"> (under construction) </font></span>
-					</a>
-				</li>   ---->
                 <li class="game">
-                    <a href="{% url numra %}">
+                    <a href="{% url 'numra' %}">
 						<span>NUMRA</span><br />
 						<img src="{{ MEDIA_URL }}/images/numra.png" alt="NUMRA" /><br />
 						<span>{% trans "Practise numerals" %}</span>
@@ -172,7 +158,7 @@
 			<p>{% trans "Oahpa is connected with online reference materials." %}</p>
 			{% endcomment %}
 			<ul class="linklist">
-			
+
             {% ifequal LANGUAGE_CODE "fi" %}
                 <li><a href="http://oahpa.no/sms/index.fin.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
@@ -185,7 +171,7 @@
             {% ifequal LANGUAGE_CODE "ru" %}
                 <li><a href="http://oahpa.no/sms/index.rus.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
-        
+
             {% ifequal LANGUAGE_CODE "fi" %}
             <li><a target="_blank" href="http://valks.oahpa.no/myv/fin">{% trans "Erzya" %}-{% trans "Finnish" %} {% trans "web dictionary" %}</a></li>
             {% endifequal %}
@@ -198,7 +184,7 @@
             {% ifequal LANGUAGE_CODE "no" %}
             <li><a target="_blank" href="http://valks.oahpa.no/myv/eng">{% trans "Dictionary" %}</a></li>
             {% endifequal %}
-        
+
                     <!--please check, whether or not the following code is correct; if it is, please remove the comment, and let this part compile as well (during the next compilation, it is not important now)
             {% ifequal LANGUAGE_CODE "sme" %}
 				<li><a href="http://oahpa.no/sms/grammar/grammar.eng.html">{% trans "Skolt Sámi grammar" %}</a></li>
@@ -222,10 +208,9 @@
                 <li><a href="http://oahpa.no/davvi" style="font-size:13px">North Saami Oahpa</a></li>
 			</ul>
 
-<!---			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p> -->
 			{% endblock %}
 		</div>
-		
+
 		<div id="footer">
 			<div id="copyright">
 			{% block deeplink %}
