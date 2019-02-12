@@ -20,10 +20,10 @@ class BulkManager(models.Manager):
 
 	"""
 
-	@transaction.commit_manually
+	@transaction.atomic
 	def bulk_insert(self, fields, objs):
 		""" Takes a list of fields and a list dictionaries of fields and values,
-		iterates and inserts. @transaction.commit_manually is active, and the
+		iterates and inserts. @transaction.atomic is active, and the
 		transaction is committed after insert.
 		"""
 		qn = connection.ops.quote_name
@@ -34,9 +34,9 @@ class BulkManager(models.Manager):
 		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(objs))
 		sql = "INSERT INTO %s (%s) VALUES %s" % (self.model._meta.db_table, flds, arg_string,)
 		cursor.execute(sql, values_list)
-		transaction.commit()
+		#transaction.commit()
 
-	@transaction.commit_manually
+	@transaction.atomic
 	def bulk_add_form_messages(self, objs):
 		""" Takes a list of IDs, (feedback_id, feedback_message_id) and inserts
 		these to the many-to-many table, committing on complete.  """
@@ -62,9 +62,9 @@ class BulkManager(models.Manager):
 		sql = "INSERT %s INTO %s (%s) VALUES %s" % (ignore, "drill_form_feedback", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
-		transaction.commit()
+		#transaction.commit()
 
-	@transaction.commit_manually
+	@transaction.atomic
 	def bulk_remove_form_messages(self, form_qs):
 		""" Takes a form queryset, bulk removes all feedbacks for words with those ids """
 
@@ -80,10 +80,10 @@ class BulkManager(models.Manager):
 		sql = "DELETE FROM %s WHERE %s in (%s)" % (table, fld, args)
 
 		cursor.execute(sql)
-		transaction.commit()
+		#transaction.commit()
 
 
-	@transaction.commit_manually
+	@transaction.atomic
 	def bulk_add_messages(self, objs):
 		""" Takes a list of IDs, (feedback_id, feedback_message_id) and inserts
 		these to the many-to-many table, committing on complete.  """
@@ -100,9 +100,9 @@ class BulkManager(models.Manager):
 		sql = "INSERT INTO %s (%s) VALUES %s" % ("drill_feedback_messages", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
-		transaction.commit()
+		#transaction.commit()
 
-	@transaction.commit_manually
+	@transaction.atomic
 	def bulk_add_dialects(self, objs):
 		""" Takes a list of IDs, (feedback_id, dialect_id) and inserts these to
 		the many-to-many table, committing on complete.  """
@@ -119,7 +119,7 @@ class BulkManager(models.Manager):
 		sql = "INSERT INTO %s (%s) VALUES %s" % ("drill_feedback_dialects", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
-		transaction.commit()
+		#transaction.commit()
 
 # Should insert some indexes here, should improve search time since a lot of these have repeated values
 
@@ -467,7 +467,7 @@ class Word(models.Model):
 
 	wordclass = models.CharField(max_length=8)
 	# valency = models.CharField(max_length=10)
-	hid = models.IntegerField(max_length=3, null=True, default=None) # PI: what's this?
+	hid = models.IntegerField(null=True, default=None) # PI: what's this?
 	semtype = models.ManyToManyField(Semtype)
 	source = models.ManyToManyField(Source) # The textbook(s) where the word is introduced
 	chapter = models.CharField(max_length=10)
@@ -484,7 +484,7 @@ class Word(models.Model):
 	tcomm = models.BooleanField(default=False)
 	# nob = Nob()
 	morphophon = models.ForeignKey(MorphPhonTag, null=True)
-	dialects = models.ManyToManyField(Dialect, null=True)
+	dialects = models.ManyToManyField(Dialect)
 	#aspect = models.CharField(max_length=20) # aspect partner (verbs only)
 	#motion = models.CharField(max_length=20) # motion partner (verbs only)
 
@@ -758,8 +758,8 @@ class Form(models.Model):
 	word = models.ForeignKey(Word)
 	tag = models.ForeignKey(Tag)
 	fullform = models.CharField(max_length=200)
-	dialects = models.ManyToManyField(Dialect, null=True)
-	feedback = models.ManyToManyField('Feedbackmsg', null=True)
+	dialects = models.ManyToManyField(Dialect)
+	feedback = models.ManyToManyField('Feedbackmsg')
 	objects = BulkManager()
 
  	@property
@@ -961,7 +961,7 @@ class Feedbacktext(models.Model):
 
 class Question(models.Model):
 	qid = models.CharField(max_length=200)
-	level = models.IntegerField(max_length=3)
+	level = models.IntegerField()
 	task = models.CharField(max_length=20)
 	string = models.CharField(max_length=200)
 	qtype = models.CharField(max_length=20)
@@ -971,7 +971,7 @@ class Question(models.Model):
 								 null=True,
 								 related_name='answer_set')
 	gametype = models.CharField(max_length=7)
-	lemmacount = models.IntegerField(max_length=3)
+	lemmacount = models.IntegerField()
 	source = models.ManyToManyField(Source)
 	def __unicode__(self):
 		return self.qid + ': ' + self.string
@@ -1043,7 +1043,7 @@ class LinkUtterance(models.Model):
 class Topic(models.Model):
     topicname = models.CharField(max_length=50,blank=True,null=True)
     dialogue = models.ForeignKey(Dialogue)
-    number = models.IntegerField(max_length=3,null=True)
+    number = models.IntegerField(null=True)
     image = models.CharField(max_length=50,null=True,blank=True)
     formlist = models.ManyToManyField(Form)
 
