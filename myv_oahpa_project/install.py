@@ -18,7 +18,6 @@ environ['DJANGO_SETTINGS_MODULE'] = LLL1+'_oahpa.settings'
 
 settings.DEBUG = False
 
-from myv_drill.models import *
 from optparse import OptionParser, make_option
 import sys
 from ling import Paradigm
