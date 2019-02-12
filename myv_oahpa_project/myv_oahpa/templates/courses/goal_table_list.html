@@ -1,0 +1,49 @@
+﻿{% load goal_filters %}
+
+<table class="course_goals">
+    <tr>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th>Goal</th>
+        <th>Description</th>
+        <th>Progress</th>
+        <th>Sets answered</th>
+    </tr>
+{% for goal in goal_set %}
+    <tr>
+        {% comment %}TODO: test if it's already in progress or
+        been done and restyle, or sort by completed
+        date? {% endcomment %}
+        <td>
+            {% if goal|complete_for:user %}
+                &#9734;
+            {% else %}
+                &nbsp;
+            {% endif %}
+        </td>
+        <td>
+            {% if goal.usergoalinstance_set.all|goal_instances_for:user.username|length > 0 %}
+                <a class="begin_goal" href="{% url courses.views.begin_course_goal goal.id %}">Redo</a>
+            {% else %}
+                <a class="begin_goal" href="{% url courses.views.begin_course_goal goal.id %}">Begin!</a>
+            {% endif %}
+        </td>
+        <td>{{ goal.short_name }}</td>
+        <td class="description">{{ goal.description }}</td>
+        {% if goal.usergoalinstance_set.all|goal_instances_for:user.username|length > 0 %}
+            {% for g in goal.usergoalinstance_set.all|goal_instances_for:user.username %}
+            <td class="current_progress">
+                {{ g.progress|format_percent }}
+            </td>
+            <td class="current_progress sets">
+                {{ g.rounds }}
+            </td>
+            {% endfor %}
+        {% else %}
+            <td></td>
+            <td></td>
+        {% endif %}
+    </tr>
+{% endfor %}
+</table>
+

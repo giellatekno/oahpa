@@ -1,0 +1,46 @@
+{% extends "oahpa.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<table>
+<tr>
+<td>
+{% trans "Message:" %}<br/>
+{{ form.message }}
+</td>
+</tr>
+<td>
+</td>
+</tr>
+<tr><td>
+<p>{% trans "The following information is optional." %} <br/>
+{% trans "An email address is required if you would like us to contact you about the feedback." %}</p>
+</td>
+</tr>
+<tr>
+<td>
+{% trans "Your name:" %}<br/>
+{{ form.name }}
+</td>
+</tr>
+<tr>
+<td>
+{% trans "Institution/language course:" %}<br/>
+{{ form.place }}
+</td></tr>
+<tr>
+<td>
+{% trans "email:" %}<br/>
+{{ form.email }}
+</td>
+</tr>
+<tr>
+<td>
+<p>{% trans "I would like to be contacted about my question:" %} {{ form.confirmation }}</p>
+   <input type="submit" name="test" value="{% trans "Send message" %}"/>
+
+</td>
+</tr>
+</table>
+{% endblock %}

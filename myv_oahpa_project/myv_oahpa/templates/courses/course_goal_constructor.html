@@ -1,0 +1,351 @@
+﻿{# TODO: hide each main game type depending on what the user has selected (possible to avoid form submission of hidden things?) #}
+
+<div id="course_goal_constructor" ng-app="Courses" class="bootstrap-styles">
+    <div class="col-lg-9 col-sm-9 col-md-9">
+
+    <div class="goal_in_progress"
+        ng-controller="GoalConstructorController" ng-source="/{{ URL_PREFIX }}/courses/api/goals/">
+
+        <select class="form-control"
+                id="selectToEdit"
+                name="edit_goal"
+                ng-change="populateGoal()"
+                ng-show="!form_success"
+                ng-options="g.id as g.short_name for g in existing_goals"
+                ng-model="edit_goal_id">
+            <option value="">Edit an existing goal</option>
+        </select>
+
+        <br />
+        <div id="delete_msg" ng-show="goal_deleted">
+            <p class="lead">You successfully deleted the goal "<% goal.short_name %>".</p>
+            <a type="button" class="btn btn-info" href="{{ URL_PREFIX }}/courses/">Course overview</a>
+        </div>
+        <div id="success_msg" ng-show="form_success">
+            <p ng-hide="editing_existing" class="lead">You successfully created the goal "<% goal.short_name %>".</p>
+            <p ng-show="editing_existing" class="lead">You successfully
+                edited the goal "<% goal.short_name %>".</p>
+            <button ng-click="beginGoal()" type="button" class="btn btn-success">Begin</button>
+            <button type="button" class="btn btn-info">Course overview</button>
+        </div>
+
+        <form novalidate ng-if="results" ng-submit="submitForm()"
+            id="new_goal" ng-hide="form_success" role="form">
+            {% csrf_token %}
+            <fieldset ng-disabled="{{ form_submitted }}">
+            {# TODO: for which course? for now self-defined #}
+
+            {# Here we define meta info, name, description, etc. #}
+            <div class="row">
+                <div class="col-md-11 col-md-offset-1">
+                    <p class="lead goal_intro">Create a goal to track your progress on a feature of
+                        grammar.</p>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-1">
+                    <span class="step_number">1</span>
+                </div>
+
+                <div class="col-md-11">
+
+                    <div class="form-group" ng-show="instructor_courses">
+                        <div class="">
+                            <label for="goal_name" class="control-label">Course name</label>
+                        </div>
+
+                        {# Loop the main set of options #}
+
+                        <div class="">
+                            <select class="form-control"
+                                    id="selectCourseID"
+                                    name="course_id"
+                                    ng-change="reset()"
+                                    ng-options="opt[0] as opt[1] for opt in instructor_courses"
+                                    ng-model="user_goal.course_id">
+
+                                <option value="">Select a course</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="">
+                            <label for="goal_name" class="control-label">Goal name</label>
+                        </div>
+
+                        {# Loop the main set of options #}
+
+                        <div class="">
+                            <input class="form-control"
+                                    id="goal_name"
+                                    name="goal_name"
+                                    required
+                                    ng-model="user_goal.short_name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="">
+                            <label for="goal_description" class="control-label">Goal description</label>
+                        </div>
+
+                        {# Loop the main set of options #}
+
+                        <div class="">
+                            <textarea class="form-control"
+                                    id="goal_name"
+                                    name="goal_name"
+                                    required
+                                    ng-model="user_goal.description">
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <div class="">
+                                    <label for="goal_percent_correct"
+                                        class="control-label">Percent correct</label>
+                                </div>
+
+                                {# Loop the main set of options #}
+
+                                <div class="input-group">
+                                    <input class="form-control"
+                                            id="goal_percent"
+                                            name="goal_percent"
+                                            type="number"
+                                            ng-min="20"
+                                            ng-max="100"
+                                            required
+                                            ng-model="user_goal.threshold">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <div class="">
+                                    <label for="goal_minimum_tried"
+                                        class="control-label">Minimum sets sets
+                                        tried</label>
+                                </div>
+
+                                {# Loop the main set of options #}
+
+                                <div class="input-group">
+                                    <input class="form-control"
+                                            id="goal_minimum_tried"
+                                            name="goal_minimum_tried"
+                                            type="number"
+                                            ng-min="2"
+                                            ng-model="user_goal.minimum_sets_attempted">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="">
+                        </div>
+
+                        {# Loop the main set of options #}
+
+                        <div class="input-group">
+                            <div class="checkbox">
+                                <label>
+                                    Only count answers that are
+                                    correct on the first try?
+                                    <input class="form-control"
+                                            id="goal_correct_first_try"
+                                            name="goal_correct_first_try"
+                                            type="checkbox"
+                                            ng-model="user_goal.correct_first_try"
+                                    >
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            {# Here's the selection for the course type #}
+            <div class="row">
+
+                <div class="col-md-1">
+                    <span class="step_number">2</span>
+                </div>
+
+                <div class="col-md-11">
+                    <div class="form-group">
+                        <div class="">
+                            <label for="selectMainType" class="control-label">Game type</label>
+                        </div>
+
+                        {# Loop the main set of options #}
+
+                        <div class="">
+                            <select class="form-control"
+                                    id="selectMainType"
+                                    name="main_type"
+                                    ng-change="reset()"
+                                    ng-options="opt.value as opt.label for opt in main_types"
+                                    ng-model="user_goal.main_type">
+
+                                <option value="">Select a type</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            {# Here's the selection for the course parameters #}
+            <div class="row" ng-show="user_goal.main_type">
+
+                <div class="col-md-1">
+                    <span class="step_number">3</span>
+                </div>
+
+                <div class="col-md-11">
+
+                    {# Loop the main set of options #}
+                    <div class="form-section" 
+                         ng-repeat="(key, data) in tree"
+                         ng-show="user_goal.main_type == key">
+
+                        {# each type available within the main type #}
+                        {# TODO: need a subselector for each type #}
+
+                            <select class="form-control"
+                                    id="selectSubType"
+                                    name="sub_type"
+                                    ng-options="type.value as type.label for type in data.subtypes"
+                                    ng-show="data.subtypes.length > 1"
+                                    ng-model="user_goal.sub_type">
+
+                                <option value="">Subtype</option>
+
+                            </select>
+
+                        <div class="form-sub-section" 
+                             ng-show="user_goal.sub_type == type.value"
+                             ng-repeat="type in data.subtypes">
+
+                            <h4><% type.label %></h4>
+
+                            {# loop parameters available within the type #}
+                            <div class="form-group" ng-repeat="p in type.params">
+
+                                <div class="">
+                                    <p><% option_values[p].name %></p>
+                                </div>
+
+                                <!-- TODO: no value when not selected?
+                                    also, somehow tricky when selected
+                                    and unselected unselected values
+                                    need to not be stored
+                                -->
+                                {% comment %}
+                                <input class="form-control"
+                                        id="goal_correct_first_try"
+                                        ng-if="option_values[p].boolean"
+                                        name="user_goal.params[p]"
+                                        ng-true-value="on"
+                                        type="checkbox"
+                                        ng-model="user_goal.params[p]"
+                                >
+                                {% endcomment %}
+
+                                <select class="form-control"
+                                        id="selectMainType"
+                                        name="main_type"
+                                        ng-if="option_values[p].select"
+                                        ng-options="value as label for (value, label) in option_values[p].options"
+                                        ng-model="user_goal.params[p]">
+
+                                    <option value="">Select a type</option>
+                                </select>
+
+                            </div>
+
+                            <div class="form-sub-sub-section"
+                                 ng-show="type.conditional">
+
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <div ng-repeat="additional in type.conditional"
+                                             ng-show="user_goal.params[additional.key] == additional.value">
+
+                                            <h4>Additional settings</h4>
+                                             {# TODO: loop additional parameters #}
+                                            <div ng-repeat="p in additional.params">
+                                                <div class="">
+                                                    <p><% option_values[p].name %></p>
+                                                </div>
+
+                                                <!-- TODO: no value when not selected?
+                                                    also, somehow tricky when selected
+                                                    and unselected unselected values
+                                                    need to not be stored
+                                                -->
+                                                {% comment %}
+                                                <input class="form-control"
+                                                        id="goal_correct_first_try"
+                                                        ng-if="option_values[p].boolean"
+                                                        name="user_goal.params[p]"
+                                                        ng-true-value="on"
+                                                        type="checkbox"
+                                                        ng-model="user_goal.params[p]"
+                                                >
+                                                {% endcomment %}
+
+                                                <select class="form-control"
+                                                        id="selectMainType"
+                                                        name="main_type"
+                                                        ng-if="option_values[p].select"
+                                                        ng-options="value as label for (value, label) in option_values[p].options"
+                                                        ng-model="user_goal.params[p]">
+
+                                                    <option value="">Select a type</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" ng-show="user_goal.main_type">
+
+                <div class="col-md-1">
+                    <span class="step_number">&nbsp;</span>
+                </div>
+
+                <div class="col-md-11">
+                    <button type="button" ng-click="submitForm()" class="btn btn-info">Submit</button>
+                    <button type="button" class="btn btn-warning">Reset</button>
+                    <button type="button" ng-click="deleteGoal()" ng-show="editing_existing" class="btn
+                        btn-danger">Delete this goal</button>
+                </div>
+            </div>
+            </fieldset>
+        </form>
+
+    </div>
+
+    </div>
+
+</div>
