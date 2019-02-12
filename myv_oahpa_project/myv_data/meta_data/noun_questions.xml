@@ -24,7 +24,7 @@
         <id>ярсамс</id>
       </element>
     </question>
-    <answer> 
+    <answer>
       <text>SUBJ MAINV N-ABL</text>
       <element game='morfa' id="N-ABL" task="yes">
         <grammar tag="N+SP+Abl+Indef"/>
@@ -45,7 +45,7 @@
         <id>симемс</id>
       </element>
     </question>
-    <answer> 
+    <answer>
       <text>SUBJ MAINV N-ABL</text>
       <element game='morfa' id="N-ABL" task="yes">
         <grammar tag="N+SP+Abl+Indef"/>
@@ -66,7 +66,7 @@
         <id>рамамс</id>
       </element>
     </question>
-    <answer> 
+    <answer>
       <text>Сон MAINV N-NOM</text>
       <element game='morfa' id="N-NOM" task="yes">
         <grammar tag="N+Sg+Nom+Indef"/>
@@ -78,83 +78,4 @@
         </element>
     </answer>
   </q>
-<!--
-<q id="nnom1">
-    <qtype>N-DATIV</qtype>
-    <question>
-      <text> Кинень SUBJ MAINV ярмункасто </text> &lt;!-- What does X buy? X buys Y.
- THIS will require an object as well, i.e. For whom does X buy Y at the market  --&gt;
-      <element id="SUBJ">
-            <grammar tag="N+Sg+Nom+PxSg1"/>
-        <sem class="FAMILY"/>
-      </element>
-      <element id="MAINV">
-        <grammar tag="V+TV+Ind+Prt1+ScSg3"/>
-        <id>рамамс</id>
-      </element>
-    </question>
-    <answer> 
-      <text>Сон MAINV N-DATIV</text>
-      <element game='morfa' id="N-NOM" task="yes">
-        <grammar tag="N+Sg+Nom+Indef"/>
-        <sem class="FAMILY"/>
-      </element>
-<element id="MAINV">
-        <grammar tag="V+TV+Ind+Prt1+ScSg3"/>
-        <id>рамамс</id>
-</element>
-<element game='morfa' id="N-DATIV" task="yes">
-        <grammar tag="N+Sg+Dat+Indef"/>
-        <sem class="FAMILY"/>
-</element>
-    </answer>
-  </q>
--->
-  <q id="nill1">
-    <qtype>N-ILL</qtype>
-    <qtype>N-MIX</qtype>
-    <question>
-      <text>Козонь SUBJ MAINV</text> <!-- Where did X go? X went (in)to Y. -->
-      <element id="SUBJ">
-		<grammar tag="N+Sg+Nom+DefSg1"/><!-- Should this be N+Sg+Nom+Def ? -->
-      </element>
-      <element id="MAINV">
-	<grammar tag="V+Ind+Prt1+Sg"/>
-	<id>совамс</id>
-      </element>
-    </question>
-    <answer> 
-      <text>Сон MAINV N-ILL</text>
-      <element game='morfa' id="N-ILL" task="yes">
-	<grammar tag="N+SP+Ill+Indef"/> <!-- non-core cases in the indef declension take +SP, i.e. singular and plural -->
-	<sem class="HOUSE"/>
-      </element>
-    </answer>
-  </q>
-  <q id="nill1">
-    <qtype>N-LAT</qtype>
-    <qtype>N-MIX</qtype>
-    <question>
-      <text>Ков SUBJ MAINV</text> <!-- Where are X going? X are going to Y. -->
-      <element id="SUBJ">
-	<grammar tag="N+Pl+Nom+Def"/>
-      </element>
-      <element id="MAINV">
-	<grammar tag="V+Ind+Prs+ScPl3"/> <!-- prs=present subject conjugation -->
-	<id>молемс</id>
-      </element>
-    </question>
-    <answer> 
-      <text>Сынь MAINV N-LAT</text>
-      <element game='morfa' id="N-LAT" task="yes">
-	<grammar tag="N+SP+Lat+Indef"/>
-	<sem class="HOUSE"/>
-      </element>
-    </answer>
-  </q> 
--->
 </questions>
-
-
-
-
