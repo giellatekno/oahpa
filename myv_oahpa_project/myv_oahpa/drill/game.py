@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
 
-from myv_oahpa.myv_drill.models import *
-from myv_oahpa.myv_drill.forms import *
 
-from myv_oahpa.conf.tools import switch_language_code
+from models import *
+from forms import *
+
+switch_language_code = oahpa_module.conf.tools.switch_language_code
 
 from django.db.models import Q, Count
 from django.http import HttpResponse, Http404
@@ -16,7 +20,8 @@ import os
 import re
 import itertools
 
-import myv_oahpa.settings
+settings = oahpa_module.settings
+LLL1 = settings.LLL1
 
 # DEBUG = open('/dev/ttys001', 'w')
 
@@ -24,23 +29,18 @@ from random import choice
 from .forms import PRONOUNS_LIST
 
 try:
-	L1 = myv_oahpa.settings.L1
-except:
-	L1 = 'myv'  # was: sme
-
-try:
-	LOOKUP_TOOL = myv_oahpa.settings.LOOKUP_TOOL
+	LOOKUP_TOOL = settings.LOOKUP_TOOL
 except:
 	LOOKUP_TOOL = 'lookup'
 
 
 try:
-	FST_DIRECTORY = myv_oahpa.settings.FST_DIRECTORY
+	FST_DIRECTORY = settings.FST_DIRECTORY
 except:
 	FST_DIRECTORY = False
 
 try:
-	DEFAULT_DIALECT = myv_oahpa.settings.DEFAULT_DIALECT
+	DEFAULT_DIALECT = settings.DEFAULT_DIALECT
 except:
 	DEFAULT_DIALECT = None
 
@@ -328,14 +328,14 @@ class BareGame(Game):
 		'N-ABL-DEF': ('Abl', ['Sg'], 'Def'),
 		'N-PL-ABL-DEF': ('Abl', ['Pl'], 'Def'),
 		'N-ELA-DEF': ('Ela', ['Sg'], 'Def'),
-		'N-PL-ELA-DEF': ('Ela', ['Pl'], 'Def'),    
+		'N-PL-ELA-DEF': ('Ela', ['Pl'], 'Def'),
 		'N-INE-DEF': ('Ine', ['Sg'], 'Def'),
-		'N-PL-INE-DEF': ('Ine', ['Pl'], 'Def'),    
-		'N-PRL-DEF': ('Prl', ['Sg'], 'Def'), 
-		'N-PL-PRL-DEF': ('Prl', ['Pl'], 'Def'),    
+		'N-PL-INE-DEF': ('Ine', ['Pl'], 'Def'),
+		'N-PRL-DEF': ('Prl', ['Sg'], 'Def'),
+		'N-PL-PRL-DEF': ('Prl', ['Pl'], 'Def'),
 		'N-CMPR-DEF': ('CompCx', ['Sg'], 'Def'),
 		'N-PL-CMPR-DEF': ('CompCx', ['Pl'], 'Def'),
-		'N-PL-TRA-DEF': ('Tra', ['Pl'], 'Def'),    
+		'N-PL-TRA-DEF': ('Tra', ['Pl'], 'Def'),
 		'N-ABE-DEF': ('Abe', ['Sg'], 'Def'),
 		'N-PL-ABE-DEF': ('Abe', ['Pl'], 'Def'),
         'N-NOM-PL': ('Nom', ['Pl'], 'Indef'),
@@ -345,7 +345,7 @@ class BareGame(Game):
 		'N-ILL': ('Ill', ['SP'], 'Indef'),
 		'N-INE': ('Ine', ['SP'], 'Indef'),
 		'N-ELA': ('Ela', ['SP'], 'Indef'),
-		'N-ABL': ('Abl', ['SP'], 'Indef'),	
+		'N-ABL': ('Abl', ['SP'], 'Indef'),
 		'N-ABE': ('Abe', ['SP'], 'Indef'),
 		'N-COM': ('Com', ['SP'], 'Indef'),
 		'N-CMPR': ('CompCx', ['SP'], 'Indef'),
@@ -496,7 +496,7 @@ class BareGame(Game):
 		mood, tense, infinite, attributive = "", "", "", ""
 
 		num_bare = ""
-		
+
 		if 'num_bare' in self.settings:
 			num_bare = self.settings['num_bare']
 		if 'num_level' in self.settings:
@@ -656,7 +656,7 @@ class BareGame(Game):
 			TAG_EXCLUDES = False
 			sylls = False
 			source = False
-		
+
 		if pos in ['Pron', 'N', 'Num']:
 			TAG_QUERY = TAG_QUERY & \
 						Q(case=case)
@@ -694,7 +694,7 @@ class BareGame(Game):
 							Q(tense=tense) & \
 							Q(mood=mood) & \
 							Q(infinite=infinite)
-			if tense in ['Prs', 'Prt1', 'Prt2'] and mood == 'Ind': # Only intransitive verbs in the games PRS, PRT1 and PRT2 
+			if tense in ['Prs', 'Prt1', 'Prt2'] and mood == 'Ind': # Only intransitive verbs in the games PRS, PRT1 and PRT2
 				TAG_QUERY = TAG_QUERY & Q(string__contains='+IV+')
 
 			if tense != 'Prs':
@@ -781,14 +781,14 @@ class BareGame(Game):
 		# else:
 		# 	UI_Dialect = DEFAULT_DIALECT
 
-		try: 
-			
+		try:
+
 			WORD_FILTER = Q()
 			tag = tags.order_by('?')[0]
-				    
+
 			# Process the selection from book chapters:
-							
-			SOURCE_FILTER = Q() 
+
+			SOURCE_FILTER = Q()
 			"""if source.lower() != 'all':
 				if source == "l1":
 				    SOURCE_FILTER = Q(word__chapter__in=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5'])
@@ -797,7 +797,7 @@ class BareGame(Game):
 				elif source == "l3":
 				    SOURCE_FILTER = Q(word__chapter__in=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5','L6','L7','L8','L9','L10','L11','L12','L13','L14','L15','L16','L17'])"""
 
-                           
+
 			""" commented out for testing without noun_class
 			normalized_noun_class = [item.lower().capitalize() for item in noun_class.split('-')]
 			for item in normalized_noun_class:
@@ -812,7 +812,7 @@ class BareGame(Game):
 					WORD_FILTER = WORD_FILTER & Q(word__gender=tagname.tagname.lower())
             """
 
-			
+
 			no_form = True
 			count = 0
 			while no_form and count < 10:
@@ -822,8 +822,8 @@ class BareGame(Game):
 				if tag.pos == 'Pron':
 					tag = tags.order_by('?')[0]
 
-				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=L1)
-				
+				random_word = tag.form_set.filter(WORD_FILTER, SOURCE_FILTER, word__language=LLL1)
+
 
 				# PI: commented out, b/c at this stage
 				# where the Morfa-S semtype has not
@@ -956,7 +956,7 @@ class BareGame(Game):
 		match_number = False
 		#else:
 		#	match_number = True
-		
+
 
 		def baseformFilter(form):
 			#   Get baseforms, and filter based on dialects.
@@ -1190,9 +1190,9 @@ class NumGame(Game):
 	def create_form(self, db_info, n, data=None):
 
 		if self.settings['gametype'] in ["ord", "card"]:
-			language = L1
+			language = LLL1
 		else:
-			language = L1
+			language = LLL1
 
 		numstring = ""
 
@@ -1208,7 +1208,7 @@ class NumGame(Game):
 		for num in num_tmp:
 			line = num.strip()
 			# line = line.replace(' ','')
-			
+
 			if line:
 				nums = line.split('\t')
 				num_list.append(nums[a].decode('utf-8'))
@@ -1240,7 +1240,7 @@ class Klokka(NumGame):
 	QuestionForm = KlokkaQuestion
 
         generate_fst = 'transcriptor-clock-digit2text.filtered.lookup.xfst'
-        answers_fst = 'transcriptor-clock-text2digit.filtered.lookup.xfst'        
+        answers_fst = 'transcriptor-clock-text2digit.filtered.lookup.xfst'
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1323,7 +1323,7 @@ class Klokka(NumGame):
 
 	def create_form(self, db_info, n, data=None):
 		if self.settings['gametype'] in ["kl1", "kl2", "kl3"]:
-			language = L1
+			language = LLL1
 
 		numstring = ""
 
@@ -1422,7 +1422,7 @@ class QuizzGame(Game):
 	def __init__(self, *args, **kwargs):
 		super(QuizzGame, self).__init__(*args, **kwargs)
 		self.init_tags()
-        
+
 	def init_tags(self):
 		self.settings['gametype'] = "leksa"
 

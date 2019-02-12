@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 from django import forms
 from django.db.models import Q
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
-import myv_oahpa.settings as settings
 
-from myv_oahpa.conf.tools import switch_language_code
+settings = oahpa_module.settings
+switch_language_code = oahpa_module.conf.tools.switch_language_code
 
 from models import *
 #from game import *
@@ -79,7 +83,7 @@ CASE_CHOICES = (
     ('N-GEN', _('Indefinite genitive')),
     ('N-DAT', _('Indefinite dative')),
     ('N-ABL', _('Indefinite ablative')),
-    ('N-ILL', _('Indefinite illative')), 
+    ('N-ILL', _('Indefinite illative')),
     ('N-INE', _('Indefinite inessive')),
     ('N-ELA', _('Indefinite elative')),
     ('N-PRL', _('Indefinite prolative')),
@@ -87,7 +91,7 @@ CASE_CHOICES = (
     ('N-ABE', _('Indefinite abessive')),
     ('N-TRA', _('Indefinite translative')),
     ('N-LAT', _('Indefinite lative')),
-    ('N-COM', _('Indefinite comitative')), 
+    ('N-COM', _('Indefinite comitative')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -300,8 +304,8 @@ VERB_FILTER_DEFINITION = ['stem', 'source']
 
 VTYPE_CONTEXT_CHOICES = (
 	#('V-PRS', _('present')),
-	('V-PRT1', _('pret1')), 
-	('V-PRT2', _('pret2')), 
+	('V-PRT1', _('pret1')),
+	('V-PRT2', _('pret2')),
 #	('V-PRF', _('perfect')),
 #	('V-GER', _('gerund')),
 #	('V-COND', _('conditional')),
@@ -938,9 +942,9 @@ class OahpaQuestion(forms.Form):
 		forms = []
 		relaxings = []
 		if hasattr(self, 'translang'): # commented out these two lines, because otherwise relax was not working in Morfa
-			if self.translang == 'myv': # caused a problem in Numra, as NumQuestion does not have the attribute translang 
+			if self.translang == 'myv': # caused a problem in Numra, as NumQuestion does not have the attribute translang
 				# Relax spellings.
-			
+
 				accepted_answers = [force_unicode(item) for item in accepted_answers]
 				forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
                                 #print "relaxed forms: ", forms
@@ -987,7 +991,7 @@ class LeksaSettings(OahpaSettings):
 	# suopma = forms.BooleanField(required=False,initial=0)
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
-	
+
 	default_data = {'gametype' : 'leksa', 'language' : 'myv', 'dialect' : 'main',
 			#'syll' : [],
 			#'bisyllabic': False,
@@ -1039,8 +1043,8 @@ class LeksaQuestion(OahpaQuestion):
 
 
 		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
-		
-		if type(word) == Word: 
+
+		if type(word) == Word:
                         self.lemma = word.lemma
 		else:
 			self.lemma = word.definition
@@ -1308,7 +1312,7 @@ class MorfaQuestion(OahpaQuestion):
 			#	self.is_relaxed = ""
 
 		self.correct_ans = answer_presentation
-		
+
 # #
 #
 # Numra Forms

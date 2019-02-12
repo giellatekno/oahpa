@@ -1,10 +1,15 @@
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+tls = importlib.import_module(LLL1+'_oahpa.conf.tools')
+cvs = importlib.import_module(LLL1+'_oahpa.courses.views')
+cds = importlib.import_module(LLL1+'_oahpa.courses.decorators')
+
 from django.template import Context, RequestContext, loader
 from django.db.models import Q
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404
-from django.utils.translation import ugettext_lazy as _ 
-
-from myv_oahpa.conf.tools import switch_language_code
+from django.utils.translation import ugettext_lazy as _
 
 from random import randint
 
@@ -23,29 +28,27 @@ from cealkka import *
 # applies a context attribute to the returned response so that
 # the trackGrade decorator can work.
 
-from courses.views import render_to_response
-from courses.decorators import trackGrade
+render_to_response = cvs.render_to_response
+trackGrade = cds.trackGrade
 
 def index(request):
-	c = RequestContext(request, {
+	c = {
 		'jee': "joku arvo",
-		})
-	return render_to_response('myv_oahpa_main.html', c,
-				context_instance=RequestContext(request))
+		}
+	return render_to_response(request, 'oahpa_main.html', c)
 
 def updating(request):
-	c = RequestContext(request, {
+	c = {
 		'jee': "joku arvo",
-		})
-	return render_to_response('updating.html', c,
-				context_instance=RequestContext(request))
+		}
+	return render_to_response(request, 'updating.html', c)
 
 class Gameview(object):
 	""" Gameview is instantiated with a Settings object and a Game object,
 	then called with create_game()
-	
+
 		game = GameView(drill.forms.Settings, drill.game.Game)
-		
+
 		Alter settings as necessary...
 
 		game.settings['pos'] = pos.capitalize8)
@@ -56,7 +59,7 @@ class Gameview(object):
 		drill.game/drill.$qagame objects, and returns a context.
 
 		c = game.create_game(request)
-	
+
 	If there are any additional settings which are always set, these may be
 	set by overriding the additional_settings method. (See documentation on
 	that method.)
@@ -133,11 +136,11 @@ class Gameview(object):
 		return '?' + '&'.join(key_values)
 
 	def change_game_settings(self, game):
-		""" If any settings need to be set before Game.new_game is called, 
+		""" If any settings need to be set before Game.new_game is called,
 		they are set here. """
 
 		return game
-	
+
 	def additional_settings(self, settings_form):
 		""" Override this method if any additional settings need to be applied
 		to the game before it returns a context. This is called within the
@@ -152,7 +155,7 @@ class Gameview(object):
 		selects through the user interface.  """
 
 		pass
-	
+
 	def set_gamename(self):
 		""" Sets the courses log name subtype for the game.
 		"""
@@ -165,7 +168,7 @@ class Gameview(object):
 		instance) and is_new_game, a boolean value that is True if a user has
 		just landed on the particular game, or whether the user has adjusted
 		the settings and created a new set.
-		
+
 		Goal here is to deal with all of the GET/POST differences, such that
 		other methods can act on the resulting data without worrying about
 		whether has come via POST or GET.
@@ -191,7 +194,7 @@ class Gameview(object):
 			settings_form = self.SettingsClass(data_src, **initial_kwargs)
 		else:
 			settings_form = self.SettingsClass(data_src)
-		
+
 		# If the settings form has any data in it, the user has modified
 		# settings or just come to Oahpa via a link with GET data. It is most
 		# likely that the user has come by link, and thus we need to fill out
@@ -222,9 +225,9 @@ class Gameview(object):
 				settings_form = self.SettingsClass()
 			settings_source = settings_form.default_data
 			new_game = True
-		
+
 		# All form creation operations are complete, so now we copy form values
-		# to the game settings object. 
+		# to the game settings object.
 		for k in settings_source.keys():
 			if k not in self.settings:
 				self.settings[k] = settings_source[k]
@@ -245,10 +248,10 @@ class Gameview(object):
 			if not self.settings['language']:
 				self.settings['language'] = request.LANGUAGE_CODE
 				request.session['django_language'] = request.LANGUAGE_CODE
-        
+
                 print "get_settings_form language: "+self.settings['language']
-				
-				
+
+
 		if request.user.is_authenticated():
 			request_user = request.user
 		else:
@@ -259,7 +262,7 @@ class Gameview(object):
 		#if hasattr(request, 'LANGUAGE_CODE'):
 		#	self.settings['language'] = request.LANGUAGE_CODE
 
-		# TODO: should probably be moved out 
+		# TODO: should probably be moved out
 		# to individual game object self.syll_settings(settings_form)
 
 		# If 'settings' exists in data, user has clicked 'new set'
@@ -267,7 +270,7 @@ class Gameview(object):
 			new_game = True
 
 		return settings, settings_form, new_game
-	
+
 	def create_game(self, request, **init_kwargs):
 		""" Instantiate the Game object, check answers and return the context
 		for the view. """
@@ -326,11 +329,11 @@ class Leksaview(Gameview):
 			semtype = ', '.join(semtype)
 
 		self.settings['gamename_key'] = "%s - %s" % (semtype, transtype)
-		
+
 	def context(self, request, game, settings_form):
 		self.register_logs(request, game, settings_form)
 
-		return Context({
+		return {
 			'settingsform': settings_form,
 			'settings' : self.settings,
 			'forms': game.form_list,
@@ -340,13 +343,13 @@ class Leksaview(Gameview):
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
 			'deeplink': self.create_deeplink(game, settings_form),
-			})
+			}
 
 
 class LeksaPlaceview(Gameview):
 
 	def additional_settings(self, settings_form):
-		
+
 		def true_false_filter(val):
 			if val in ['on', 'On', u'on', u'On']:
 				return True
@@ -381,11 +384,11 @@ class LeksaPlaceview(Gameview):
 				settings_form.data['rare'] = 'on'
 			else:
 				settings_form.data['rare'] = None
-		
-		
+
+
 # 		if len(self.settings['frequency']) == 0:
 # 			self.settings['frequency'].append('common')
-			
+
 		self.settings['geography'] = []
 
 		if 'geography' in settings_form.data:
@@ -393,7 +396,7 @@ class LeksaPlaceview(Gameview):
 
 	def deeplink_keys(self, game, settings_form):
 		return ['semtype', 'geography', 'common', 'rare', 'transtype', 'source']
-	
+
 	def set_gamename(self):
 		geog = self.settings['geography']
 		freq = ', '.join(self.settings['frequency'])
@@ -402,7 +405,7 @@ class LeksaPlaceview(Gameview):
 	def context(self, request, game, settings_form):
 		self.register_logs(request, game, settings_form)
 
-		return Context({
+		return {
 			'settingsform': settings_form,
 			'settings' : self.settings,
 			'forms': game.form_list,
@@ -412,9 +415,9 @@ class LeksaPlaceview(Gameview):
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
 			'deeplink': self.create_deeplink(game, settings_form),
-			})
+			}
 
-	
+
 
 @trackGrade("Leksa")
 def leksa_game(request, place=False):
@@ -439,15 +442,13 @@ def leksa_game(request, place=False):
 
 	c = leksagame.create_game(request, initial_transtype=default_langpair)
 
-	return render_to_response(template, c,
-				context_instance=RequestContext(request))
-
+	return render_to_response(request, template, c)
 
 class Numview(Gameview):
-	
+
 	def set_gamename(self):
 		self.settings['gamename_key'] = ''
-	
+
 	def deeplink_keys(self, game, settings_form):
 		keys = ['numgame', 'maxnum']
 
@@ -459,7 +460,7 @@ class Numview(Gameview):
 	def context(self, request, game, settings_form):
 		self.register_logs(request, game, settings_form)
 
-		return Context({
+		return {
 			'settingsform': settings_form,
 			'settings' : self.settings,
 			'forms': game.form_list,
@@ -471,7 +472,7 @@ class Numview(Gameview):
 			'gametype': self.settings['numgame'],
 			'deeplink': self.create_deeplink(game, settings_form),
 		 #   'numstring': numstring,
-			})
+			}
 
 
 @trackGrade("Numra clock")
@@ -482,8 +483,7 @@ def num_clock(request):
 
 	c = numgame.create_game(request)
 
-	return render_to_response('clock.html', c,
-				context_instance=RequestContext(request))
+	return render_to_response(request, 'clock.html', c)
 
 @trackGrade("Numra ordinal")
 def num_ord(request):
@@ -493,9 +493,7 @@ def num_ord(request):
 
 	c = numgame.create_game(request)
 
-	return render_to_response('num_ord.html', c,
-				context_instance=RequestContext(request))
-
+	return render_to_response(request, 'num_ord.html', c)
 
 @trackGrade("Numra cardinal")
 def num(request):
@@ -504,8 +502,7 @@ def num(request):
 
 	c = numgame.create_game(request)
 
-	return render_to_response('num.html', c,
-				context_instance=RequestContext(request))
+	return render_to_response(request, 'num.html', c)
 
 @trackGrade("Numra dato")
 def dato(request):
@@ -514,13 +511,11 @@ def dato(request):
 
 	c = datogame.create_game(request)
 
-	return render_to_response('dato.html', c,
-				context_instance=RequestContext(request))
+	return render_to_response(request, 'dato.html', c)
 
-
-# Translation of gamenames takes place in the templates mgame_n.html etc. 
-# because they have to be available in two different languages - in Saami on the 
-# interface and in the interface language chosen by the user in the translation 
+# Translation of gamenames takes place in the templates mgame_n.html etc.
+# because they have to be available in two different languages - in Saami on the
+# interface and in the interface language chosen by the user in the translation
 # tooltips.
 class Morfaview(Gameview):
 	gamenames = {
@@ -658,9 +653,9 @@ class Morfaview(Gameview):
 		if 'syll' not in self.settings:
 			self.settings['syll'] = []
 
-		# Special treatment of settings_form.data['bisyllabic'] since 
+		# Special treatment of settings_form.data['bisyllabic'] since
 		# it is set by default.
-		
+
 		if true_false_filter(bisyl):
 			self.settings['syll'].append('2syll')
 			settings_form.data['bisyllabic'] = 'on'
@@ -672,7 +667,7 @@ class Morfaview(Gameview):
 			settings_form.data['trisyllabic'] = 'on'
 		else:
 			settings_form.data['trisyllabic'] = None
-	
+
 		if true_false_filter(cont):
 			self.settings['syll'].append('Csyll')
 			settings_form.data['contracted'] = 'on'
@@ -684,7 +679,7 @@ class Morfaview(Gameview):
 
 		self.settings['syll'] = list(set(self.settings['syll']))
 
-	
+
 	def deeplink_keys(self, game, settings_form):
 		""" The MorfaSettings form has a lot of values in it, so we need to
 		prune the deeplink values down a bit. The reason there is a need for
@@ -722,7 +717,7 @@ class Morfaview(Gameview):
 	def context(self, request, game, settings_form):
 		self.register_logs(request, game, settings_form)
 
-		return RequestContext(request, {
+		return {
 			'settingsform': settings_form,
 			'settings' : self.settings,
 			'forms': game.form_list,
@@ -733,8 +728,8 @@ class Morfaview(Gameview):
 			'show_correct': game.show_correct,
 			'language' : self.settings['language'],
 			'deeplink': self.create_deeplink(game, settings_form),
-			})
-	
+			}
+
 	def additional_settings(self, settings_form):
 
 		self.settings['allcase'] = settings_form.allcase
@@ -817,10 +812,10 @@ class Morfaview(Gameview):
 		# Append syllable types if set
 		if sylls and self.settings['pos'] not in ["Pron", "Num"]:
 			names.append(sylls)
-			
+
 		#if 'num_type' in self.settings:  # added by Heli. I am not sure if it works.
 		#	num_type = self.settings['num_type']
-		#	names.append(num_type) 
+		#	names.append(num_type)
 
 		self.settings['gamename_key'] = ' - '.join(names)
 
@@ -847,9 +842,7 @@ def morfa_game(request, pos):
 
 	c = mgame.create_game(request)
 
-	return render_to_response(template, c,
-				context_instance=RequestContext(request))
-
+	return render_to_response(request, template, c)
 
 
 ### Contextual Morfas
@@ -875,9 +868,7 @@ def cmgame(request, pos):
 	template = "mgame_%s.html" % p
 	c = mgame.create_game(request)
 
-	return render_to_response(template, c,
-				context_instance=RequestContext(request))
-
+	return render_to_response(request, template, c)
 
 class Vastaview(Gameview):
 
@@ -889,7 +880,7 @@ class Vastaview(Gameview):
 		game.gametype = "qa"
 		game.num_fields = 2
 		return game
-	
+
 	def set_gamename(self):
 		if 'gamename_key' not in self.settings:
 			gamename = 'level %s' % self.settings['level']
@@ -898,7 +889,7 @@ class Vastaview(Gameview):
 	def context(self, request, game, settings_form):
 		self.register_logs(request, game, settings_form)
 
-		c = Context({
+		c = {
 			'settingsform': settings_form,
 			'settings': self.settings,
 			'forms': game.form_list,
@@ -910,7 +901,7 @@ class Vastaview(Gameview):
 			'show_correct': game.show_correct,
 			'gametype': "qa",
 			'deeplink': self.create_deeplink(game, settings_form)
-			})
+			}
 		return c
 
 
@@ -920,15 +911,13 @@ def vasta(request):
 	vastagame = Vastaview(VastaSettings, QAGame)
 
 	c = vastagame.create_game(request)
-	return render_to_response('vasta.html', c,
-								context_instance=RequestContext(request))
-
+	return render_to_response(request, 'vasta.html', c)
 
 class Cealkkaview(Gameview):
 	""" View for Cealkka, main difference here is context, and cealkka requires
 	one form set.
 	"""
-	
+
 	def deeplink_keys(self, game, settings_form):
 		return ['level']  # removed lemmacount
 
@@ -940,16 +929,16 @@ class Cealkkaview(Gameview):
 		"""
 		game.num_fields = 2
 		return game
-		
+
 	def set_gamename(self):
 		self.settings['gamename_key'] = 'level %s' % str(self.settings['level'])
-	
+
 	def context(self, request, game, settings_form):
 		self.register_logs(request, game, settings_form)
 		# TODO: seems to be fine, but settings['level'] on the first visit is
 		# all, not 1, even though the menu shows level 1
 
-		c = Context({
+		c = {
 			'settingsform': settings_form,
 			'settings': self.settings,
 			'forms': game.form_list,
@@ -961,7 +950,7 @@ class Cealkkaview(Gameview):
 			'show_correct': game.show_correct,
 			'gametype': "cealkka",
 			'deeplink': self.create_deeplink(game, settings_form),
-			})
+			}
 		return c
 
 
@@ -973,7 +962,7 @@ def cealkka(request):
 	cealkkagame.init_settings()
 
 	c = cealkkagame.create_game(request)
-	return render_to_response('vasta.html', c, context_instance=RequestContext(request))
+	return render_to_response(request, 'vasta.html', c)
 
 
 class Sahkaview(Cealkkaview):
@@ -981,7 +970,7 @@ class Sahkaview(Cealkkaview):
 	has separate methods to call the creation of a new game and to continue
 	with an existing game. There are also some attributes that must always be
 	set, such as the image, and wordlist.  """
-	
+
 	def deeplink_keys(self, game, settings_form):
 		return ['dialogue', 'topicnumber']
 
@@ -991,7 +980,7 @@ class Sahkaview(Cealkkaview):
 									self.settings['dialogue']])
 
 			self.settings['gamename_key'] = game_name
-	
+
 	def additional_settings(self, settings_form):
 		self.settings['gametype'] = 'sahka'
 		self.settings['image'] = settings_form.data.get('image')
@@ -1020,7 +1009,7 @@ class Sahkaview(Cealkkaview):
 		# and check whether or not the answers are correct or incorrect.
 		#
 		game = self.GameClass(self.settings)
-		
+
 		self.set_gamename()
 
 		if is_new_game:
@@ -1042,15 +1031,15 @@ class Sahkaview(Cealkkaview):
 				game.show_correct = 1
 
 			# If the last answer was correct, add new field
-			# 
+			#
 			if game.form_list[game.num_fields-2].error == "correct":
 				game.update_game(
-					len(game.form_list)+1, 
+					len(game.form_list)+1,
 					game.form_list[game.num_fields-2])
 				game.settings['attempts'] = 0
 			else:
 				game.settings['attempts'] = game.settings['attempts'] + 1
-		
+
 		settings_form.init_hidden(
 			game.settings['topicnumber'],
 			game.num_fields,
@@ -1075,8 +1064,8 @@ class Sahkaview(Cealkkaview):
 		errormsg = ""
 		for f in game.form_list:
 			errormsg = errormsg + f.errormsg
-		
-		c = Context({
+
+		c = {
 			'settingsform': settings_form,
 			'settings': self.settings,
 			'forms': game.form_list,
@@ -1095,7 +1084,7 @@ class Sahkaview(Cealkkaview):
 			'wordlist' : game.settings['wordlist'],
 			'dialogue' : game.settings['dialogue'],
 			# 'deeplink': self.create_deeplink(game, settings_form),
-			})
+			}
 		return c
 
 
@@ -1108,5 +1097,4 @@ def sahka(request):
 	sahkagame.init_settings()
 
 	c = sahkagame.create_game(request)
-	return render_to_response('sahka.html', c, context_instance=RequestContext(request))
-
+	return render_to_response(request, 'sahka.html', c)
