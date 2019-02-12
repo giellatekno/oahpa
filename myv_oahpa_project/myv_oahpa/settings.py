@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for LLL1_oahpa project.
 
@@ -13,7 +14,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 MAIN_LANGUAGE = ('myv', 'Erzya')
-L1 = MAIN_LANGUAGE[0]
+LLL1 = MAIN_LANGUAGE[0]
 
 os.environ['PYTHON_EGG_CACHE'] = '/tmp'
 os.environ['DJANGO_SETTINGS_MODULE'] = LLL1+'_oahpa.settings'
@@ -30,7 +31,7 @@ INSTALLED_APPS = [
     LLL1+'_oahpa.conf',
 	LLL1+'_oahpa.courses',
     LLL1+'_oahpa.feedback',
-    LLL1+'_oahpa.management'
+    LLL1+'_oahpa.management',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
