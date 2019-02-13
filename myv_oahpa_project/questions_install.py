@@ -468,7 +468,7 @@ class Questions:
 			# print 'Creating elements for %d words' % word_elements.count()
 			for w in word_elements:
 				qe.wordqelement_set.create(word=w)
-				# we = Wordsdm.QElement.objects.create(qelement=qe,\
+				# we = sdm.WordQElement.objects.create(qelement=qe,\
 												 # word=w)
 
 			# add agreement info.
