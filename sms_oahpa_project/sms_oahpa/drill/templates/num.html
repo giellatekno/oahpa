@@ -6,19 +6,19 @@
 
 {% block veiledning %}
 {% ifequal LANGUAGE_CODE "sme" %}
-http://gtoahpa-01.uit.no/index.html
+http://{{hst}}/index.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-http://gtoahpa-01.uit.no/{{ lll1 }}/index.fin.html
+http://{{hst}}/{{ lll1 }}/index.fin.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "en" %}
-http://gtoahpa-01.uit.no/{{ lll1 }}/index.eng.html
+http://{{hst}}/{{ lll1 }}/index.eng.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-http://gtoahpa-01.uit.no/{{ lll1 }}/index.html
+http://{{hst}}/{{ lll1 }}/index.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "ru" %}
-http://gtoahpa-01.uit.no/{{ lll1 }}/index.rus.html
+http://{{hst}}/{{ lll1 }}/index.rus.html
 {% endifequal %}
 {% endblock %}
 
@@ -46,7 +46,7 @@ http://gtoahpa-01.uit.no/{{ lll1 }}/index.rus.html
     <div class="grammarlinks">
         {% include 'grammar_links_menu.html' %}
     </div>
-    
+
     <ul id="settingsform">
         {% block setting_items %}
     	<li><label for="id_{{ settingsform.maxnum.name }}">{% trans "Select the range of numerals." %}</label>
@@ -54,7 +54,7 @@ http://gtoahpa-01.uit.no/{{ lll1 }}/index.rus.html
     	<li><label for="id_{{ settingsform.numgame.name }}">{% trans "Select the direction" %}</label>{{ settingsform.numgame }}</li>
         {% endblock %}
     </ul>
-    
+
     <ul id="submittable">
         <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
     </ul>
@@ -63,10 +63,9 @@ http://gtoahpa-01.uit.no/{{ lll1 }}/index.rus.html
 
 {% block question %}
 {% if form.numstring %}
-{{ form.numstring }} 
+{{ form.numstring }}
 {% else %}
-{{ form.numeral }} 
+{{ form.numeral }}
 {% endif %}
 {{ form.numeral_id }}
 {% endblock %}
-

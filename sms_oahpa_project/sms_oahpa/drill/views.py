@@ -14,6 +14,8 @@ from django.utils.translation import ugettext_lazy as _
 
 switch_language_code = tls.switch_language_code
 
+hostname = oahpa_module.settings.hostname
+
 from random import randint
 
 from game import *
@@ -37,12 +39,14 @@ trackGrade = cds.trackGrade
 def index(request):
 	c = {
 		'jee': "joku arvo",
+		'hst': hostname,
 		}
 	return render_to_response(request, 'oahpa_main.html', c)
 
 def updating(request):
 	c = {
 		'jee': "joku arvo",
+		'hst': hostname,
 		}
 	return render_to_response(request, 'updating.html', c)
 
@@ -312,6 +316,7 @@ class Leksaview(Gameview):
 			'deeplink': self.create_deeplink(game, settings_form),
 			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
+			'hst': hostname,
 			}
 
 
@@ -384,6 +389,7 @@ class LeksaPlaceview(Gameview):
 			'deeplink': self.create_deeplink(game, settings_form),
 			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
+			'hst': hostname,
 			}
 
 
@@ -443,6 +449,7 @@ class Numview(Gameview):
 			'deeplink': self.create_deeplink(game, settings_form),
 			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
+			'hst': hostname,
 		 #   'numstring': numstring,
 			}
 
@@ -686,6 +693,7 @@ class Morfaview(Gameview):
 			'deeplink': self.create_deeplink(game, settings_form),
 			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
+			'hst': hostname,
 			}
 
 	def additional_settings(self, settings_form):
@@ -934,6 +942,7 @@ class Vastaview:
 			'comment': game.comment,
 			'all_correct': all_correct,
 			'gametype': "qa",
+			'hst': hostname,
 			}
 		return c
 
@@ -986,6 +995,7 @@ class Cealkkaview(Gameview):
 			'deeplink': self.create_deeplink(game, settings_form),
 			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
+			'hst': hostname,
 			}
 		return c
 
@@ -1106,6 +1116,7 @@ class Sahkaview(Cealkkaview):
 			'all_correct': game.all_correct,
 			'wordlist' : game.settings['wordlist'],
 			'dialogue' : game.settings['dialogue'],
+			'hst': hostname,
 			# 'deeplink': self.create_deeplink(game, settings_form),
 			}
 		return c

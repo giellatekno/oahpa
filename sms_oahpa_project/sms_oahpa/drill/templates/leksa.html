@@ -7,25 +7,25 @@
 
 {% block navbar %}
 <ul class="sidelist">
-	
+
 </ul>
 {% endblock %}
 
 {% block veiledning %}
 {% ifequal LANGUAGE_CODE "sme" %}
-http://gtoahpa-01.uit.no/index.html
+http://{{hst}}/index.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-http://gtoahpa-01.uit.no/{{ lll1 }}/index.fin.html
+http://{{hst}}/{{ lll1 }}/index.fin.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "en" %}
-http://gtoahpa-01.uit.no/{{ lll1 }}/index.eng.html
+http://{{hst}}/{{ lll1 }}/index.eng.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-http://gtoahpa-01.uit.no/{{ lll1 }}/index.html
+http://{{hst}}/{{ lll1 }}/index.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "ru" %}
-http://gtoahpa-01.uit.no/{{ lll1 }}/index.rus.html
+http://{{hst}}/{{ lll1 }}/index.rus.html
 {% endifequal %}
 {% endblock %}
 
