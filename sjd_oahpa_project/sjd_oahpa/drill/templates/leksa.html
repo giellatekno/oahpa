@@ -13,19 +13,19 @@
 
 {% block veiledning %}
 {% ifequal LANGUAGE_CODE "sme" %}
-http://gtoahpa-01.uit.no/index.html
+http://{{hst}}/index.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-http://gtoahpa-01.uit.no/sjd/index.fin.html
+http://{{hst}}/sjd/index.fin.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "en" %}
-http://gtoahpa-01.uit.no/sjd/index.eng.html
+http://{{hst}}/sjd/index.eng.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-http://gtoahpa-01.uit.no/sjd/index.nob.html
+http://{{hst}}/sjd/index.nob.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "ru" %}
-http://gtoahpa-01.uit.no/sjd/index.html
+http://{{hst}}/sjd/index.html
 {% endifequal %}
 {% endblock %}
 

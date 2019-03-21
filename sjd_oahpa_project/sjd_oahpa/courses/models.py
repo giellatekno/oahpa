@@ -6,6 +6,10 @@ from django.contrib.auth.models import User, Group
 
 from local_conf import LLL1
 
+import importlib
+settings = importlib.import_module(LLL1+'_oahpa.settings')
+hst = settings.hostname
+
 # TODO: need to create fixtures of groups and permissions
 # TODO: hide delete course admin actions for Instructors group
 # TODO: site-uit-no-default course added to fixtures
@@ -65,7 +69,7 @@ class UserProfile(models.Model):
 
 	@property
 	def open_id_link(self):
-		return 'http://gtoahpa-01.uit.no/sjd_oahpa/openid/%s' % self.user.username
+		return 'http://'+hst+'/sjd_oahpa/openid/%s' % self.user.username
 
 	@property
 	def grades(self):

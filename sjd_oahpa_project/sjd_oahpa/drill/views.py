@@ -14,6 +14,8 @@ from django.utils.translation import ugettext_lazy as _
 
 switch_language_code = tls.switch_language_code
 
+hostname = oahpa_module.settings.hostname
+
 from random import randint
 
 from game import *
@@ -34,12 +36,14 @@ trackGrade = cds.trackGrade
 def index(request):
 	c = {
 		'jee': "joku arvo",
+		'hst': hostname,
 		}
 	return render_to_response(request, 'oahpa_main.html', c)
 
 def updating(request):
 	c = {
 		'jee': "joku arvo",
+		'hst': hostname,
 		}
 	return render_to_response(request, 'updating.html', c)
 
@@ -309,6 +313,7 @@ class Leksaview(Gameview):
 			'deeplink': self.create_deeplink(game, settings_form),
 			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
+			'hst': hostname,
 			}
 
 
@@ -381,6 +386,7 @@ class LeksaPlaceview(Gameview):
 			'deeplink': self.create_deeplink(game, settings_form),
 			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
+			'hst': hostname,
 			}
 
 
@@ -438,6 +444,7 @@ class Numview(Gameview):
 			'deeplink': self.create_deeplink(game, settings_form),
 			'oahpa': 'oahpa.html',
 			'lll1': LLL1,
+			'hst': hostname,
 		 #   'numstring': numstring,
 			}
 
