@@ -39,7 +39,7 @@ TODO: link in user interface
 				<ul class="courselist">
 					{# TODO: generalize this #}
 					<li>{% trans 'Copy and paste this link into the OpenID field to log in.' %}</li>
-					<li><img src="/sms_oahpa/media/images/openid.png" /> <a href="http://gtoahpa-01.uit.no/sms_oahpa/openid/{{ user.username }}/">http://gtoahpa-01.uit.no/sms_oahpa/openid/{{ user.username }}/</a></li>
+					<li><img src="/sms_oahpa/media/images/openid.png" /> <a href="http://{{hst}}/sms_oahpa/openid/{{ user.username }}/">http://oahpa.no/sms_oahpa/openid/{{ user.username }}/</a></li>
 				</ul>
 				{% endcomment %}
 
@@ -55,7 +55,7 @@ TODO: link in user interface
 								<li>{% trans "Highest score" %} &mdash; {{ summary.maximum }}</li>
 								<li>{% trans "Lowest score" %} &mdash; {{ summary.minimum }}</li>
 								<li>{% trans "Number of tries" %} &mdash; {{ summary.count }}</li>
-							</ul>		
+							</ul>
 						</dd>
 					{% endfor %}
 				</dl>
@@ -68,4 +68,3 @@ TODO: link in user interface
 	</div>
 
 {% endblock %}
-
