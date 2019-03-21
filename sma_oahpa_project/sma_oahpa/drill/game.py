@@ -828,6 +828,7 @@ class NumGame(Game):
 									stderr=subprocess.PIPE)
 		# Chiara: This was causing same uwsgi bug as for sms_oahpa
 		#def kill_proc(proc=num_proc):
+		#@cip: Do not create zombi processes!
 		#	""" Kill a process, raise an error if it does not respond. Error
 		#	is very very rarely raised, and probably never will be except in
 		#	situations of extreme load.
@@ -840,7 +841,7 @@ class NumGame(Game):
 		#	return
 		#t = Timer(5, kill_proc)
 		#t.start()
-		
+
 		output, err = num_proc.communicate(forms)
 
 		return output, err
