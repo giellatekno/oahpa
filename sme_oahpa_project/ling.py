@@ -578,14 +578,14 @@ class Paradigm:
 					num_list.append(nums[1].decode('utf-8'))
 			numstring = num_list[0]
 
-			w, created = Word.objects.get_or_create(wordid=num, lemma=numstring, pos="Num")
+			w, created = sdm.Word.objects.get_or_create(wordid=num, lemma=numstring, pos="Num")
 			w.save()
 
 			self.create_paradigm(numstring, "Num")
 			for form in self.paradigm:
 				form.form = form.form.replace("#","")
-				g=form.classes
-				t,created=Tag.objects.get_or_create(string=form.tags,pos=g.get('Wordclass', ""),\
+				g = form.classes
+				t,created = sdm.Tag.objects.get_or_create(string=form.tags,pos=g.get('Wordclass', ""),\
 													number=g.get('Number',""),case=g.get('Case',""),\
 													possessive=g.get('Possessive',""),grade=g.get('Grade',""),\
 													infinite=g.get('Infinite',""), \
@@ -596,5 +596,5 @@ class Paradigm:
 													attributive=g.get('Attributive',""))
 
 				t.save()
-				form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w)
+				form, created = sdm.Form.objects.get_or_create(fullform=form.form,tag=t,word=w)
 				form.save()
