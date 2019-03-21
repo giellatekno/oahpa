@@ -13,16 +13,16 @@
 
 {% block veiledning %}
 {% ifequal LANGUAGE_CODE "sme" %}
-http://gtoahpa-01.uit.no/index.html
+http://{{hst}}/index.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-http://gtoahpa-01.uit.no/smn/index.html
+http://{{hst}}/smn/index.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "en" %}
-http://gtoahpa-01.uit.no/smn/index.eng.html
+http://{{hst}}/smn/index.eng.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-http://gtoahpa-01.uit.no/smn/index.nob.html
+http://{{hst}}/smn/index.nob.html
 {% endifequal %}
 {% endblock %}
 
