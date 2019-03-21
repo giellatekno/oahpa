@@ -5,7 +5,7 @@
 {% block imgprefix %}numra{% endblock %}
 {% block language_select %}{% endblock %}
 
-{% block veiledning %}http://gtoahpa-01.uit.no/sma/useoahpa/numra.nob.html{% endblock %}
+{% block veiledning %}http://{{hst}}/sma/useoahpa/numra.nob.html{% endblock %}
 
 {% block navbar %}
 	{% with "numra_cardinal" as gamename_nav %}
@@ -31,7 +31,7 @@
     <div class="grammarlinks">
         {% include 'grammar_links_menu.html' %}
     </div>
-    
+
     <ul id="settingsform">
         {% block setting_items %}
     	<li><label for="id_{{ settingsform.maxnum.name }}">{% trans "Select the range of numerals." %}</label>
@@ -39,7 +39,7 @@
     	<li><label for="id_{{ settingsform.numgame.name }}">{% trans "Select the direction" %}</label>{{ settingsform.numgame }}</li>
         {% endblock %}
     </ul>
-    
+
 	{% if request.session.is_mobile %}
 	<ul id="opensettingsform">
 		<a href="#">{% trans "Change game" %}</a>
@@ -54,10 +54,9 @@
 
 {% block question %}
 {% if form.numstring %}
-{{ form.numstring }} 
+{{ form.numstring }}
 {% else %}
-{{ form.numeral }} 
+{{ form.numeral }}
 {% endif %}
 {{ form.numeral_id }}
 {% endblock %}
-

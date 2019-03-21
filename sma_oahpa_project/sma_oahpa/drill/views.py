@@ -11,6 +11,8 @@ from django.utils.translation import ugettext_lazy as _
 
 switch_language_code = tls.switch_language_code
 
+hostname = oahpa_module.settings.hostname
+
 from random import randint
 
 from game import *
@@ -36,6 +38,7 @@ from qagame import *
 def index(request):
 	c = {
 		'jee': "joku arvo",
+		'hst': hostname,
 		}
 	return render(request, 'oahpa_main.html', c)
 
@@ -333,6 +336,7 @@ class Leksaview(Gameview):
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
 			'deeplink': self.create_deeplink(game, settings_form),
+			'hst': hostname,
 			}
 
 
@@ -403,6 +407,7 @@ class LeksaPlaceview(Gameview):
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
 			'deeplink': self.create_deeplink(game, settings_form),
+			'hst': hostname,
 			}
 
 
@@ -463,6 +468,7 @@ class Numview(Gameview):
 			'show_correct': game.show_correct,
 			'gametype': self.settings['numgame'],
 			'deeplink': self.create_deeplink(game, settings_form),
+			'hst': hostname,
 		 #   'numstring': numstring,
 			}
 
@@ -651,6 +657,7 @@ class Morfaview(Gameview):
 			'show_correct': game.show_correct,
 			'language' : self.settings['language'],
 			'deeplink': self.create_deeplink(game, settings_form),
+			'hst': hostname,
 			}
 
 	### def wordclass_settings(self, settings_form):
