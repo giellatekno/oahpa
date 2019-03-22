@@ -4,6 +4,8 @@ import importlib
 settings = importlib.import_module(LLL1+'_oahpa.settings')
 sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
 
+hst = settings.hostname
+
 from django.db.models import Q
 from xml.dom import minidom as _dom
 from django.utils.encoding import force_unicode
@@ -23,9 +25,9 @@ languages = [
 'sjd',
 'rus',
 'sme',
-'nob', # was: 'nob' But in the documentation url-s the abbreviation nno is used to mark the Norwegian version of a help page. 
+'nob', # was: 'nob' But in the documentation url-s the abbreviation nno is used to mark the Norwegian version of a help page.
 'eng',
-'fin', 
+'fin',
 'deu',
 ]
 
@@ -56,7 +58,7 @@ class Link(object):
 
 		keyword, _, link = S.partition('\t')
 		self.keyword = keyword
-		self.url = link
+		self.url = "http://"+hst+link
 
 		self.get_lang()
 

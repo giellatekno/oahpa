@@ -4,6 +4,8 @@ from local_conf import LLL1
 import importlib
 sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
 
+hst = settings.hostname
+
 from django.db.models import Q
 from xml.dom import minidom as _dom
 from django.utils.encoding import force_unicode
@@ -18,16 +20,16 @@ languages = [
     'sms',
     'rus',
 	'sme',
-	'nob', # was: 'nob' But in the documentation url-s the abbreviation nno is used to mark the Norwegian version of a help page. 
+	'nob', # was: 'nob' But in the documentation url-s the abbreviation nno is used to mark the Norwegian version of a help page.
 	'eng',
-	'fin', 
+	'fin',
 	'deu',
 ]
 
 class Link(object):
 	def get_lang(self):
 		""" Assumes that the file language is stored as part of the
-			file name in the link, e.g., 
+			file name in the link, e.g.,
 
 			substantiv.nob.html
 					   ^
@@ -41,19 +43,19 @@ class Link(object):
 			language = 'sme'
 		if language == 'nno':
 			language = 'nob' # added this
-		
+
 		self.language = language
 
 	def __init__(self, S):
 		S = S.strip()
 		self.S = S
-		
+
 		keyword, _, link = S.partition('\t')
 		self.keyword = keyword
-		self.url = link
+		self.url = "http://"+hst+link
 
 		self.get_lang()
-	
+
 	def create_obj(self):
 		kwargs = {'name': self.keyword,
 					'address': self.url,
@@ -62,20 +64,20 @@ class Link(object):
 		self.obj, _  = Grammarlinks.objects.get_or_create(**kwargs)
 
 
-	
+
 
 
 class Extra:
 
 	# Installs links to the grammatical information under giellatekno.
 	# The link list appears to the upper right corner of the oahpa-pages.
-	# The links are in the file sme/meta/grammarlinks.txt 
+	# The links are in the file sme/meta/grammarlinks.txt
 	def read_address(self,linkfile):
 
-		
+
 		linkfileObj = open(linkfile, "r")
 		data = [l for l in linkfileObj.readlines() if l.strip()]
-		
+
 		links = [Link(l) for l in data]
 		languages = list(set([link.language for link in links]))
 
@@ -92,11 +94,11 @@ class Extra:
 
 
 
-				
+
 	#The comments presented to the user after completing the game.
 	def read_comments(self, commentfile):
 		xmlfile=file(commentfile)
-		tree = _dom.parse(commentfile)		
+		tree = _dom.parse(commentfile)
 
 		comments_el = tree.getElementsByTagName("comments")[0]
 		lang = comments_el.getAttribute("xml:lang")
@@ -134,5 +136,3 @@ class Extra:
 				   w.semtype.add(s)
 				   print u"\t%s added to %d" % (s, w.id)
 				   w.save()
-
-
