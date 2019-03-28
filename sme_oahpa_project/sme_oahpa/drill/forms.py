@@ -13,6 +13,7 @@ settings = oahpa_module.settings
 switch_language_code = oahpa_module.conf.tools.switch_language_code
 
 from models import *
+import logging
 import datetime
 import socket
 import sys, os, re
