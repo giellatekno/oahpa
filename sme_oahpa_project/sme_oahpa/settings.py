@@ -41,12 +41,12 @@ INTERNAL_IPS = ('127.0.0.1',)
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = False
-#ALLOWED_HOSTS = ['.gtoahpa-01.uit.no','127.0.0.1','localhost']
+DEBUG = False
+ALLOWED_HOSTS = ['.gtoahpa-01.uit.no','127.0.0.1','localhost']
 
 # Development mode
-DEBUG = True
-ALLOWED_HOSTS = []
+#DEBUG = True
+#ALLOWED_HOSTS = []
 
 # Application definition
 
