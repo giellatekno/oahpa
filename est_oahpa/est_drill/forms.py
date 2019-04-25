@@ -2081,7 +2081,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
             if Feedbackmsg.objects.filter(msgid=m).count() > 0:
                 msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
                 message = Feedbacktext.objects.filter(feedbackmsg=msg_el,language=language)[0].message
-                message = message.replace("WORDFORM","\"" + w + "\"")
+                message = message.replace("WORDFORM","\"" + unicode(w, 'utf-8') + "\"")
                 msg.append(message)
                 if not spelling:
                     found=True
@@ -2614,7 +2614,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
             if Feedbackmsg.objects.filter(msgid=m).count() > 0:
                 msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
                 message = Feedbacktext.objects.filter(feedbackmsg=msg_el,language=language)[0].message
-                message = message.replace("WORDFORM","\"" + w.encode('utf-8') + "\"")
+                message = message.replace("WORDFORM","\"" + unicode(w,'utf-8') + "\"")
                 msg.append(message)
                 if not spelling:
                     found=True
