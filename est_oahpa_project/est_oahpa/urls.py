@@ -23,7 +23,6 @@ import importlib
 oahpa_module = importlib.import_module(LLL1+'_oahpa')
 sdv = importlib.import_module(LLL1+'_oahpa.drill.views')
 scv = importlib.import_module(LLL1+'_oahpa.conf.views')
-sav = importlib.import_module(LLL1+'_oahpa.courses.auth_views')
 
 from django.views.generic import RedirectView
 

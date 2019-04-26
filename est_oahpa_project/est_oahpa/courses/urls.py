@@ -6,7 +6,7 @@ from django.conf.urls import *
 # @login_required decorator
 
 from django.contrib.auth.views import login, logout
-from auth_views import cookie_login, cookie_logout
+from views import cookie_login, cookie_logout
 
 from django.views.generic import TemplateView
 
@@ -17,7 +17,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
 	url(r'^standard_login/$', TemplateView.as_view(template_name="auth/login.html")),
 	url(r'^logout/$', TemplateView.as_view(template_name="auth/logout.html")),
-    url(r'^login/$', split_login, name="courses_login"),
+    url(r'^login/$', cookie_login),
 	url(r'^cookie_logout/$', cookie_logout),
 ]
 
