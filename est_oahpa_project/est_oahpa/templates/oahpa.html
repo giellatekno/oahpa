@@ -1,4 +1,4 @@
-{% extends 'est_oahpa_main.html' %}
+{% extends 'oahpa_main.html' %}
 {% load i18n %}
 {{ lang_switch }}
 {% get_available_languages as LANGUAGES %}
@@ -75,7 +75,7 @@
 	<a name="content" class="hide">&nbsp;</a>
 	<form novalidate action="" method="post" id="gameform" name="gameform">
  {% csrf_token %}
- 
+
 	<div id="settings">
 		{% block settings %}{% endblock %}
 	</div>
