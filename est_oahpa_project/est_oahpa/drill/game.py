@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
 
-from est_oahpa.est_drill.models import *
-from est_oahpa.est_drill.forms import *
+from models import *
+from forms import *
 
-from est_oahpa.conf.tools import switch_language_code
+switch_language_code = oahpa_module.conf.tools.switch_language_code
 
 from django.db.models import Q, Count
 from django.http import HttpResponse, Http404
@@ -16,7 +19,9 @@ import os
 import re
 import itertools
 
-import est_oahpa.settings
+settings = oahpa_module.settings
+LLL1 = settings.LLL1
+
 
 # DEBUG = open('/dev/ttys001', 'w')
 
@@ -24,23 +29,17 @@ from random import choice
 from .forms import PRONOUNS_LIST
 
 try:
-	L1 = est_oahpa.settings.L1
-except:
-	L1 = 'est'  # was: sme
-
-try:
-	LOOKUP_TOOL = est_oahpa.settings.LOOKUP_TOOL
+	LOOKUP_TOOL = settings.LOOKUP_TOOL
 except:
 	LOOKUP_TOOL = 'lookup'
 
-
 try:
-	FST_DIRECTORY = est_oahpa.settings.FST_DIRECTORY
+	FST_DIRECTORY = settings.FST_DIRECTORY
 except:
 	FST_DIRECTORY = False
 
 try:
-	DEFAULT_DIALECT = est_oahpa.settings.DEFAULT_DIALECT
+	DEFAULT_DIALECT = settings.DEFAULT_DIALECT
 except:
 	DEFAULT_DIALECT = None
 
@@ -160,7 +159,7 @@ class Game(object):
 			except ObjectDoesNotExist:
 				continue
 
-			# Do not generate same question twice			
+			# Do not generate same question twice
 			if word_id:
 				num = num + 1
 				if word_id in set(word_ids): #and not (self.settings['gametype'] == "bare" and self.settings['pron_type'] in ['Rel','Dem']): # If there are less than 5 different lemmas to choose from then this causes a "No questions were able to be generated."
@@ -200,7 +199,7 @@ class Game(object):
 		answer_fullformObj = re.compile(r'^answer_fullform_(?P<syntaxString>[\w\-]*)$', re.U)
 
 		answer_taskwordObj = re.compile(r'^answer_taskword_(?P<syntaxString>[\w\-]*)$', re.U)  # added by Heli
-		
+
 		facit_tagObj = re.compile(r'^facit_tag_(?P<syntaxString>[\w\-]*)$', re.U)
 		facit_wordObj = re.compile(r'^facit_word_(?P<syntaxString>[\w\-]*)$', re.U)
 		facit_fullformObj = re.compile(r'^facit_fullform_(?P<syntaxString>[\w\-]*)$', re.U)
@@ -282,9 +281,9 @@ class Game(object):
 						info['tag'] = tmpfwords[syntax]['tag']
 					if tmpfwords[syntax].has_key('fullform'):
 						info['fullform'] = [ tmpfwords[syntax]['fullform']]
-				
+
 				fwords[syntax].append(info)
-				
+
 			db_info['awords'] = awords
 			db_info['qwords'] = qwords
 			db_info['fwords'] = fwords
@@ -507,7 +506,7 @@ class BareGame(Game):
 		mood, tense, infinite, attributive = "", "", "", ""
 
 		num_bare = ""
-		
+
 		if 'num_bare' in self.settings:
 			num_bare = self.settings['num_bare']
 		if 'num_level' in self.settings:
@@ -666,7 +665,7 @@ class BareGame(Game):
 			TAG_EXCLUDES = False
 			sylls = False
 			source = False
-		
+
 		if pos in ['Pron', 'N', 'Num']:
 			TAG_QUERY = TAG_QUERY & \
 						Q(case=case)
@@ -677,7 +676,7 @@ class BareGame(Game):
 				TAG_QUERY = TAG_QUERY & Q(number='Sg')
 			else:
 				TAG_QUERY = TAG_QUERY & Q(number__in=number)
-				
+
 			if source.lower() != 'all':
 				TAG_EXCLUDES = Q(string__contains='Prop')
 
@@ -791,16 +790,16 @@ class BareGame(Game):
 		# else:
 		# 	UI_Dialect = DEFAULT_DIALECT
 
-		try: 
-			
+		try:
+
 			WORD_FILTER = Q()
-			
+
 			tag = tags.order_by('?')[0]
 			print "tag: ", tag
 
 			if tag.pos == 'V' and tag.personnumber != 'Sg3':
 				    WORD_FILTER = WORD_FILTER & Q(word__semtype__semtype__contains="ACTION")  # Verbs that cannot be used together with personal pronouns, e.g. "sadama", "kestma", "toimuma" will have the pronoun "see" (it) as subject, thus only Sg3 form is suitable. The semantic set ACTION_V is defined so the verbs can take personal pronouns as subject.
-	    
+
 			# Process the selection from the noun_type menu (incorporates gender, animacy and inflection type):
 			"""if noun_type == "N-NEUT":
 				WORD_FILTER = WORD_FILTER & Q(word__gender='nt')
@@ -812,15 +811,15 @@ class BareGame(Game):
 				WORD_FILTER = WORD_FILTER & Q(word__gender='f', word__inflection_class__contains='8')
 			elif noun_type == "N-FEM-other":
 				WORD_FILTER = WORD_FILTER & Q(word__gender='f') & (Q(word__lemma__endswith='а') | Q(word__lemma__endswith='я'))"""
-				
-			SOURCE_FILTER = Q() 
+
+			SOURCE_FILTER = Q()
 			if source.lower() != 'all':
 				SOURCE_FILTER = Q(word__chapter=source)
 				"""elif source == "l2":
 				    SOURCE_FILTER =  Q(word__chapter__in=['B1','B2','B3','B4','B5','B6','B7','B8','B9','L1','L2','L3','L4','L5','L6','L7','L8','L9','L10','L11','L12'])
 				"""
 
-                           
+
 			""" commented out for testing without noun_class
 			normalized_noun_class = [item.lower().capitalize() for item in noun_class.split('-')]
 			for item in normalized_noun_class:
@@ -835,7 +834,7 @@ class BareGame(Game):
 					WORD_FILTER = WORD_FILTER & Q(word__gender=tagname.tagname.lower())
             """
 
-			
+
 			no_form = True
 			count = 0
 			while no_form and count < 10:
@@ -851,7 +850,7 @@ class BareGame(Game):
 				print "Word filter: ", WORD_FILTER
 				random_word = tag.form_set.filter(SOURCE_FILTER).filter(WORD_FILTER)
 				print random_word
-				
+
 				# PI: commented out, b/c at this stage
 				# where the Morfa-S semtype has not
 				# been set up we just end up whacking
@@ -866,7 +865,7 @@ class BareGame(Game):
 				# 					.exclude(word__stem='nubbi')
 				# # if sylls:
 				# # 	random_word = random_word.filter(word__stem__in=sylls)
-				
+
 				#if source != 'all':
 				# 	random_word = random_word.filter(word__source__in=source)
 
@@ -964,7 +963,7 @@ class BareGame(Game):
 			correct = form_list.filter(tag__string__contains='PassL')
 
 		correct = form_list[0]
-		
+
 		# Due to the pronoun ambiguity potential (gii 'who', gii 'which'),
 		# we need to make sure that the word is the right one.
 		if pos == 'Pron':
@@ -984,7 +983,7 @@ class BareGame(Game):
 		#else:
 		#	match_number = True
 		match_number = False # no number matching. the presented form will always be sg+nom
-		
+
 
 		def baseformFilter(form):
 			#   Get baseforms, and filter based on dialects.
@@ -1217,9 +1216,9 @@ class NumGame(Game):
 	def create_form(self, db_info, n, data=None):
 
 		if self.settings['gametype'] in ["ord", "card"]:
-			language = L1
+			language = LLL1
 		else:
-			language = L1
+			language = LLL1
 
 		numstring = ""
 
@@ -1235,7 +1234,7 @@ class NumGame(Game):
 		for num in num_tmp:
 			line = num.strip()
 			# line = line.replace(' ','')
-			
+
 			if line:
 				nums = line.split('\t')
 				num_list.append(nums[a].decode('utf-8'))
@@ -1267,7 +1266,7 @@ class Klokka(NumGame):
 	QuestionForm = KlokkaQuestion
 
         generate_fst = 'transcriptor-clock2text-desc.xfst'
-        answers_fst = 'transcriptor-text2clock-desc.xfst'        
+        answers_fst = 'transcriptor-text2clock-desc.xfst'
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1350,7 +1349,7 @@ class Klokka(NumGame):
 
 	def create_form(self, db_info, n, data=None):
 		if self.settings['gametype'] in ["kl1", "kl2", "kl3"]:
-			language = L1
+			language = LLL1
 
 		numstring = ""
 
@@ -1449,7 +1448,7 @@ class QuizzGame(Game):
 	def __init__(self, *args, **kwargs):
 		super(QuizzGame, self).__init__(*args, **kwargs)
 		self.init_tags()
-        
+
 	def init_tags(self):
 		self.settings['gametype'] = "leksa"
 

@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+from local_conf import LLL1
+import importlib
+oahpa_module = importlib.import_module(LLL1+'_oahpa')
+
 from django import forms
 from django.db.models import Q
 from django.http import Http404
@@ -6,7 +10,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
 import est_oahpa.settings as settings
 
-from est_oahpa.conf.tools import switch_language_code
+settings = oahpa_module.settings
+switch_language_code = oahpa_module.conf.tools.switch_language_code
 
 from models import *
 #from game import *
@@ -359,7 +364,7 @@ FREQUENCY_CHOICES = (
 
 GEOGRAPHY_CHOICES = (
 	('world', _('world')),
-	('eesti', _('eesti')), 
+	('eesti', _('eesti')),
 )
 
 VASTA_LEVELS = (
@@ -382,13 +387,13 @@ TRANS_CHOICES = (
         ('estfin', _('Estonian to Finnish')),
         ('finest', _('Finnish to Estonian')),
         ('estswe', _('Estonian to Swedish')),
-        ('sweest', _('Swedish to Estonian')),     
+        ('sweest', _('Swedish to Estonian')),
         ('estdeu', _('Estonian to German')),
         ('deuest', _('German to Estonian')),
         #('estlat', _('Estonian to Latvian')),
         #('latest', _('Latvian to Estonian')),
         #('estnob', _('Estonian to Norwegian')),
-        #('nobest', _('Norwegian to Estonian')),        
+        #('nobest', _('Norwegian to Estonian')),
 )
 
 NUMLANGUAGE_CHOICES = (
@@ -396,7 +401,7 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
-    ('FAMILY', _('family')), 
+    ('FAMILY', _('family')),
     ('HUMAN', _('people')),
     ('ANIMAL', _('animal')),
     ('BODY', _('body')),
@@ -968,9 +973,9 @@ class OahpaQuestion(forms.Form):
 		forms = []
 		relaxings = []
 		if hasattr(self, 'translang'): # commented out these two lines, because otherwise relax was not working in Morfa
-			if self.translang == 'est': # caused a problem in Numra, as NumQuestion does not have the attribute translang 
+			if self.translang == 'est': # caused a problem in Numra, as NumQuestion does not have the attribute translang
 				# Relax spellings.
-			
+
 				accepted_answers = [force_unicode(item) for item in accepted_answers]
 				forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
                                 #print "relaxed forms: ", forms
@@ -985,7 +990,7 @@ class OahpaQuestion(forms.Form):
 				        infin_a = infinitives_add[self.translang]
 				        inf = infinitive[self.translang]
 				        lemma = re.compile(infin_s)
-				        
+
 				        infins = [lemma.sub(infin_a, force_unicode(ax)) for ax in accepted_answers]
 				        infins_without_marker = [re.sub(inf, '', force_unicode(ax)) for ax in infins] # If the verbs are given with the infinitive marker in the dictionary.
 				        accepted_answers = infins + infins_without_marker + accepted_answers
@@ -1020,7 +1025,7 @@ class LeksaSettings(OahpaSettings):
 	# suopma = forms.BooleanField(required=False,initial=0)
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
-	
+
 	default_data = {'gametype' : 'leksa', 'language' : 'et', 'dialogue' : 'GG',
 			#'syll' : [],  # was: language : est
 			#'bisyllabic': False,
@@ -1074,8 +1079,8 @@ class LeksaQuestion(OahpaQuestion):
 		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
 
         # If we want stress marks in Leksa then we have to use lemma_stressed instead of lemma.
-		
-		if type(word) == Word: 
+
+		if type(word) == Word:
                     #if self.sourcelang == 'rus':
                      #   self.lemma = word.lemma_stressed  # for Russian the words will be presented with stress marks
                     #else:
@@ -1272,11 +1277,11 @@ class MorfaQuestion(OahpaQuestion):
 						pronoun = self.PronPNBase[pers]
 					else:
 						pronoun = "see"  # Verbs that cannot be used together with personal pronouns, e.g. "sadama", "kestma", "toimuma" will have the pronoun "see" (it) as subject.
-				        
+
 					neg_verb = NEGATIVE_VERB_PRES[pers]
 
 					self.pron = '%s %s' % (pronoun, neg_verb)
-									    
+
 				elif tag.personnumber:
 					if is_actionverb:
 						pronbase = self.PronPNBase[tag.personnumber]
@@ -1899,7 +1904,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     preprocess = " | " + settings.SCRIPT_DIRECTORY + "/preprocess "
     #preprocess = " | /Users/mslm/main/gt/script/preprocess "
     disamb = fstdir + "/disambiguation.cg3"
-    synt_funcs = fstdir + "/functions.cg3" 
+    synt_funcs = fstdir + "/functions.cg3"
 
     vislcg3 = " | " + toolsdir + "/tagger " + toolsdir + "/addlex.lx stdin stdout | perl " + toolsdir + "/pron.pl | " + cg3 + " --grammar " + disamb + " | " + cg3 + " --grammar " + synt_funcs
 
@@ -1913,7 +1918,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    logfile = open('est_drill/vastaF_log.txt','w')
+    logfile = open('vastaF_log.txt','w')
     logfile.write(lookup+"\n");
     logfile.write(lookup2cg+"\n");
     logfile.write(vislcg3+"\n");
@@ -1982,7 +1987,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
             analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
     else:
             analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
-    logfile.write(analysis+"\n") 
+    logfile.write(analysis+"\n")
 
     # analyse words in the answer
     """data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
@@ -2365,13 +2370,13 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     fst = fstdir + "/analyser-forcg-desc.hfst" # hfst
     #fst = fstdir + "/analyser-gt-desc.xfst" # xfst
     lo = settings.LOOKUP_TOOL
-    #lo="/Users/mslm/bin/lookup" # xfst on Heli's machine                  
-    lookup = " | " + lo + " -q -p " + fst # hfst                          
-    #lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # xfst           
-    lookup2cg = " | cut -f1-2 | " + settings.SCRIPT_DIRECTORY + "/lookup2cg " # hfst                                                                  
+    #lo="/Users/mslm/bin/lookup" # xfst on Heli's machine
+    lookup = " | " + lo + " -q -p " + fst # hfst
+    #lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # xfst
+    lookup2cg = " | cut -f1-2 | " + settings.SCRIPT_DIRECTORY + "/lookup2cg " # hfst
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = settings.SCRIPT_DIRECTORY + "/preprocess "
-    #preprocess = " | /Users/mslm/main/gt/script/preprocess "              
+    #preprocess = " | /Users/mslm/main/gt/script/preprocess "
     disamb = settings.SYNTAX_DIRECTORY + "/disambiguation.cg3"
     synt_funcs = settings.SYNTAX_DIRECTORY + "/functions.cg3"
     oahpa_funcs = settings.SYNTAX_DIRECTORY + "/oahpa.cg3"
@@ -2391,7 +2396,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    logfile = open('/home/est_oahpa/est_oahpa/est_drill/vastas_log.txt', 'w')
+    logfile = open('vastas_log.txt', 'w')
     """host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024
@@ -2488,7 +2493,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     """
     # analysis = force_unicode(analysis).encode('utf-8') + "\"<^vastas>\"\n\t\"^vastas\" QDL " + force_unicode(question_id).encode('utf-8') + " " + tasklemmas + "\n"
     analysis = force_unicode(analysis).encode('utf-8') + "\"<^vastas>\" \n\t\"^vastas\"  QDL \n"
-    
+
     # analyse the facit
     data_lookup = "echo \"" + force_unicode(facit).encode('utf-8') + "\"" + preprocess
     word = os.popen(data_lookup).readlines()
@@ -2502,7 +2507,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
         for row in morfanal:
                 facit_cohort = facit_cohort + row
         analyzed_facit = analyzed_facit + facit_cohort
-        
+
     # analyse the user's answer
     data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
     word = os.popen(data_lookup).readlines()
@@ -2526,11 +2531,11 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
     print analysis """
-    input_for_pipeline = force_unicode(qtext).encode('utf-8') + "?" + " ^vastas " + force_unicode(facit).encode('utf-8') + "." + " ^vastas " + force_unicode(answer).encode('utf-8') + "." 
+    input_for_pipeline = force_unicode(qtext).encode('utf-8') + "?" + " ^vastas " + force_unicode(facit).encode('utf-8') + "." + " ^vastas " + force_unicode(answer).encode('utf-8') + "."
     #logfile.write(input_for_pipeline)
     ped_cg3 = "echo \"" + input_for_pipeline + "\" | " + preprocess + lookup + lookup2cg + vislcg3
     logfile.write(ped_cg3)
-    process = subprocess.Popen(ped_cg3, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True) 
+    process = subprocess.Popen(ped_cg3, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     logfile.write("\n Parsed text: \n");
     checked, errors = process.communicate()
     logfile.write(checked)
@@ -2688,7 +2693,7 @@ class CealkkaQuestion(OahpaQuestion):
         question_widget = forms.HiddenInput(attrs={'value' : question.id})
         answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})  #was: qanswer.id
         facit_widget = forms.HiddenInput(attrs={'value' : qfacit.id})
-        
+
         super(CealkkaQuestion, self).__init__(*args, **kwargs)
 
         maxlength=50
@@ -2696,7 +2701,7 @@ class CealkkaQuestion(OahpaQuestion):
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
         self.fields['answer_id'] = forms.CharField(widget=answer_widget, required=False)
-        
+
         self.fields['facit_id'] = forms.CharField(widget=facit_widget, required=False)
 
         self.fields['answer'] = forms.CharField(max_length = maxlength, \
@@ -2728,7 +2733,7 @@ class CealkkaQuestion(OahpaQuestion):
         #print astring
 
         self.awords=awords
-        
+
         # Select words for the facit
         if fwords:
             fstring = ""
@@ -2756,7 +2761,7 @@ class CealkkaQuestion(OahpaQuestion):
 
         fstring_widget = forms.HiddenInput(attrs={'value': self.fstring})  # provar mig fram
         self.fields['fstring'] = forms.CharField(widget=fstring_widget, required=False)
-        
+
         relaxed = []
         form_list=[]
 
