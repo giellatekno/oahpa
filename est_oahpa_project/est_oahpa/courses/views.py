@@ -16,7 +16,7 @@ def render_to_response(*args, **kwargs):
 	doesn't depend on the function returning the response to be decorated by
 	@trackGrade to get proper output. """
 
-	from django.shortcuts import render_to_response
+	from django.shortcuts import render
 
 	#response = render_to_response(*args, **kwargs)
 	# response.response_args = args
