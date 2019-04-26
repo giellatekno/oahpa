@@ -1,0 +1,25 @@
+{% extends "mgame.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block gamename %}{{ settings.gamename }}{% endblock %}
+{% block instructions %}
+    {% trans "Add substantives in correct forms." %}
+    {% ifnotequal LANGUAGE_CODE "et" %} 
+        {% trans "You get translation if you click the word." %}
+    {% endifnotequal %}
+{% endblock %}
+
+{% block subsetting %}
+	{% ifequal settings.gametype "bare" %}
+	<li><label for="id_{{ settingsform.case.name }}">{% trans "Case" %}</label>
+		{{ settingsform.case }}</li>
+    <!-- <li><label>{{ settingsform.singular_only }}{% trans " singular only" %}</label></li>
+	 <li><label for="id_{{ settingsform.noun_type.name }}">{% trans "Type" %}</label>
+	        {{ settingsform.noun_type }}</li>
+	</li> --> 
+	{% else %}
+	<li><label for="id_{{ settingsform.case_context.name }}">{% trans "Case" %}</label>
+		{{ settingsform.case_context }}</li>
+	{% endifequal %}
+{% endblock %}

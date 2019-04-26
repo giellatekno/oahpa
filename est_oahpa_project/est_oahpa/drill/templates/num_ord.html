@@ -1,0 +1,17 @@
+{% extends "num.html" %}
+{% load i18n %}
+
+{% block navbar %}
+	{% with "numra_ordinal" as gamename_nav %}
+        {% include 'numra_submenu.html' %}
+	{% endwith %}
+{% endblock %}
+
+{% block instructions %}
+  {# TODO: strings for instructions. #}
+  {% ifequal gametype "string" %}
+    {% trans "Write a number followed by fullstop (for example, 30.). Please keep to this format." %}
+  {% else %}
+    {% trans "Write the ordinal numbers with words (for example, kolmekümnes)." %}
+  {% endifequal %}
+{% endblock %}
