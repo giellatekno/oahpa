@@ -449,7 +449,7 @@ class Word(models.Model):
 	lemma_stressed = models.CharField(max_length=200, db_index=True)  # added by HU
 	presentationform = models.CharField(max_length=5) # PI: what's this?
 	pos = models.CharField(max_length=12) # Accomodate larger PoS
-	hid = models.IntegerField(max_length=3, null=True, default=None) # The id of the homonym (1, 2, etc.)
+	hid = models.IntegerField(null=True, default=None) # The id of the homonym (1, 2, etc.)
 	hom = models.CharField(max_length=4) # The tag indicating which of the homonyms it is (Hom1, Hom2 etc.)
 	stem = models.CharField(max_length=20)
 	animate = models.CharField(max_length=20) # PI: could be boolean?
@@ -479,7 +479,7 @@ class Word(models.Model):
 	tcomm = models.BooleanField(default=False)
 	# nob = Nob()
 	morphophon = models.ForeignKey(MorphPhonTag, null=True)
-	dialects = models.ManyToManyField(Dialect, null=True)
+	dialects = models.ManyToManyField(Dialect)
 	aspect = models.CharField(max_length=20) # aspect partner (verbs only)
 	motion = models.CharField(max_length=20) # motion partner (verbs only)
 
@@ -751,8 +751,8 @@ class Form(models.Model):
 	word = models.ForeignKey(Word)
 	tag = models.ForeignKey(Tag)
 	fullform = models.CharField(max_length=200)
-	dialects = models.ManyToManyField(Dialect, null=True)
-	feedback = models.ManyToManyField('Feedbackmsg', null=True)
+	dialects = models.ManyToManyField(Dialect)
+	feedback = models.ManyToManyField('Feedbackmsg')
 	objects = BulkManager()
 
  	@property
@@ -958,7 +958,7 @@ class Feedbacktext(models.Model):
 
 class Question(models.Model):
 	qid = models.CharField(max_length=200)
-	level = models.IntegerField(max_length=3)
+	level = models.IntegerField()
 	task = models.CharField(max_length=20)
 	string = models.CharField(max_length=200)
 	qtype = models.CharField(max_length=20)
@@ -968,7 +968,7 @@ class Question(models.Model):
 								 null=True,
 								 related_name='answer_set')
 	gametype = models.CharField(max_length=7)
-	lemmacount = models.IntegerField(max_length=3)
+	lemmacount = models.IntegerField()
 	source = models.ManyToManyField(Source)
 	def __unicode__(self):
 		return self.qid + ': ' + self.string
@@ -1044,7 +1044,7 @@ class LinkUtterance(models.Model):
 class Topic(models.Model):
     topicname = models.CharField(max_length=50,blank=True,null=True)
     dialogue = models.ForeignKey(Dialogue)
-    number = models.IntegerField(max_length=3,null=True)
+    number = models.IntegerField(null=True)
     image = models.CharField(max_length=50,null=True,blank=True)
     formlist = models.ManyToManyField(Form)
 
