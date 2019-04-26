@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	    <title>{% block title %}{% endblock %}</title>
 
-		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main.css"/>
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main_est.css"/>
 		<!--[if gte IE 7]>
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/ie_fixes.css"/>
 		<![endif]-->
@@ -57,13 +57,13 @@
                                                 {% else %}
                                                         <option value="sv">Svenska</option>
                                                 {% endifequal %}
-						
+
 						{% ifequal LANGUAGE_CODE "ru" %}
 							<option value="ru" selected="selected">Pусский язык</option>
 						{% else %}
 							<option value="ru">Pусский язык</option>
 						{% endifequal %}
-						
+
 						<!-- {% ifequal LANGUAGE_CODE "de" %}
 							<option value="de" selected="selected">Deutsch</option>
 						{% else %}
@@ -126,7 +126,7 @@
 						<span>{% trans "Words and translations" %}</span>
 					</a>
 				</li>
-				
+
 				<li class="game">
 					<a href="{% url morfa_s.noun %}">
 						<span>MORFA-S</span><br />
@@ -143,7 +143,7 @@
 					</a>
 				</li>
 				</ul>
-			
+
 			    <ul id="games_menu">
 <!--            <li class="game">
                         <a href="{% url sahka %}">
@@ -152,7 +152,7 @@
 						<span>{% trans "Dialogue game" %} <font color="#FF0000" size="3pt"> (under construction) </font></span>
 					</a>
 				</li>   ---->
-				
+
 				<li class="game">
 					<a href="{% url vasta_s %}">
 						<span>VASTA</span><br />
@@ -172,7 +172,7 @@
 			<h3>{% trans "Online reference materials" %}</h3>
 			{% endcomment %}
 			<p class="intro" align="centre">{% trans "Oahpa is an internet program for learners of Estonian. The program can be adjusted to different topics and levels of difficulty, and it generates new task sets automatically." %}</p>
-			
+
 		<!--	<p>{% trans "Oahpa is connected with online reference materials." %}</p> -->
 			<ul class="linklist">
            <!-- {% ifequal LANGUAGE_CODE "sme" %}
@@ -193,7 +193,7 @@
             {% ifequal LANGUAGE_CODE "sv" %}
                 <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Instructions" %}</a></li>
             {% endifequal %}
-            {% ifequal LANGUAGE_CODE "fi" %} 
+            {% ifequal LANGUAGE_CODE "fi" %}
 
                 <li><a target="_blank" href="http://sanat.oahpa.no/liv/fin">{% trans "Livonian" %}-{% trans "Finnish" %} {% trans "web dictionary" %}</a></li>
             {% else %}
