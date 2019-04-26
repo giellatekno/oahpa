@@ -16,7 +16,7 @@ import os.path
 import sys
 
 MAIN_LANGUAGE = ('et', 'Estonian')
-LLL1 = MAIN_LANGUAGE[0]
+LLL1 = 'est'
 
 os.environ['PYTHON_EGG_CACHE'] = '/tmp'
 os.environ['DJANGO_SETTINGS_MODULE'] = LLL1+'_oahpa.settings'
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     LLL1+'_oahpa.drill',
     LLL1+'_oahpa.conf',
     LLL1+'_oahpa.management',
-    'gunicorn',
+    LLL1+'_oahpa.courses',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
