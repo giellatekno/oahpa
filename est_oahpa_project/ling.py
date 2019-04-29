@@ -28,15 +28,16 @@ try:
 except:
 	lookup = "/usr/local/bin/lookup"
 
-try:
-	language = settings.MAIN_LANGUAGE[0]
-except:
-	language = "est"
+#try:
+#	language = settings.MAIN_LANGUAGE[0]
+#except:
+language = "est"
 
 #numfst = fstdir + "/" + language + "-num.fst"
-numfst = fstdir + "/" + "transcriptor-numbers2text-desc.xfst"
+numfst = fstdir + "/" + "transcriptor-numbers-digit2text.filtered.lookup.xfst"
 #gen_norm_fst = fstdir + "/" + "generator-oahpa-gt-norm.xfst" # this is xfst
-gen_norm_fst = fstdir + "/" + "generator-gt-norm.hfstol" # this is hfst
+#gen_norm_fst = fstdir + "/" + "generator-gt-norm.hfstol" # this is hfst
+gen_norm_fst = fstdir + "/" + "generator-gt-norm.xfst" # this is hfst
 
 
 STDERR = sys.stderr
