@@ -471,8 +471,7 @@ class Words(object):
 			diff.save()
 			return True
 
-
-	@transaction.commit_on_success
+	@transaction.atomic
 	def install_lexicon(self,infile,linginfo,delete=None,paradigmfile=False, verbose=True,append_only=False):
 		global VERBOSE
 		VERBOSE = verbose
@@ -953,7 +952,7 @@ class Words(object):
 
 					paradigms_to_create[key] = form_info
 
-			paradigms_to_create = OrderedDict(sorted(paradigms_to_create.items(), key=lambda t: t[0]))
+			paradigms_to_create = sco.OrderedDict(sorted(paradigms_to_create.items(), key=lambda t: t[0]))
 
 			changes_to_paradigm = False
 			paradigm_key = '%s|%s|%s' % (lemma, pos, dialect.dialect)
