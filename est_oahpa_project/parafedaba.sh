@@ -1,18 +1,18 @@
 #!/bin/sh
 
 P="python2.7"
-EST_HOME="/home/est_oahpa"
-LANGDIR="est"
-DATA=$EST_HOME/$LANGDIR
+
+DATA="est_data"
 DPS="$DATA/src"
-INC="$DATA/inc"
-META="$DATA/meta"
-DPN="$DATA/deuest"
-DPF="$DATA/finest"
-DPE="$DATA/engest"
-DPW="$DATA/sweest"
-DPR="$DATA/rusest"
+META="$DATA/meta_data"
+DPN="$DATA/deu2est"
+DPF="$DATA/fin2est"
+DPE="$DATA/eng2est"
+DPW="$DATA/swe2est"
+DPR="$DATA/rus2est"
 #WORDS=$GTHOME/words/dicts/smenob/src
+
+rm -f error.log
 
 echo "==================================================="
 echo "installing tags and paradigms for Morfa"
@@ -31,12 +31,12 @@ echo "==================================================="
 
 #echo "==================================================="
  #echo "feeding db with $DPS/E_nagu_Eesti.xml"
- #$P install.py --file $DPS/E_nagu_Eesti.xml 
+   #$P install.py --file $DPS/E_nagu_Eesti.xml
  #--tagfile $META/tags.txt --paradigmfile $META/N_paradigms.txt 2>error.log
  #echo " "
  #echo "done"
  #echo "==================================================="
- 
+
  echo "==================================================="
  echo "feeding db with $DPS/N_est.xml"
  $P install.py --file $DPS/N_est.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>error.log
@@ -107,7 +107,7 @@ echo "==================================================="
  echo " "
  echo "done"
  echo "==================================================="
- 
+
   echo "==================================================="
  echo "feeding db with $DPS/X_est.xml"
  $P install.py --file $DPS/X_est.xml 2>>error.log
@@ -146,7 +146,7 @@ echo "==================================================="
  echo " "
  echo "done"
  echo "==================================================="
- 
+
  echo "==================================================="
  echo "feeding db with $DPN/A_deuest.xml"
  $P install.py --file $DPN/A_deuest.xml 2>>error.log
@@ -170,7 +170,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPN/Prop_deuest.xml"
-$P install.py --file $DPN/Prop_deuest.xml 2>>error.log
+#$P install.py --file $DPN/Prop_deuest.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -347,9 +347,9 @@ echo " "
 echo "done"
 echo "==================================================="
 
-##       
-## latest                                                                         
-##                                                                                     
+##
+## latest
+##
 
 #echo "==================================================="
 #echo "feeding db with $DPL/N_latest.xml"
@@ -372,9 +372,9 @@ echo "==================================================="
 #echo "done"
 #echo "==================================================="
 
-##                                                                                
-## rusest                                                                        
-##                                                                                                                                                           
+##
+## rusest
+##
 
 echo "==================================================="
 echo "feeding db with $DPR/N_rusest.xml"
@@ -432,10 +432,10 @@ echo " "
 echo "done"
 echo "==================================================="
 
-##                                                                                
-## sweest                                                                         
-##                                                                                
-                                                                                   
+##
+## sweest
+##
+
 
 echo "==================================================="
 echo "feeding db with $DPW/N_sweest.xml"
@@ -628,7 +628,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "Installing feedback messages for vasta"
-$P install.py --messagefile $META/messages_vasta.xml 2>>error.log
+#$P install.py --messagefile $META/messages_vasta.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -642,7 +642,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "Installing feedback messages for vasta - in Finnish"
-$P install.py --messagefile $META/messages_vasta.fin.xml 2>>error.log
+#$P install.py --messagefile $META/messages_vasta.fin.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
