@@ -894,7 +894,8 @@ class Words(object):
 				tag = g.getTag()
 
 				form, _ = sdm.Form.objects.get_or_create(fullform=g.form, tag=tag, word=w)
-				form.save()
+				if not '+' in form.fullform:
+					form.save()
 
 				if dialect:
 					if type(dialect) != Dialect:
@@ -938,19 +939,20 @@ class Words(object):
 				for form in generated_forms:
 					tag = form.tags
 					wform = form.form
-					key = '%s|%s' % (tag, wform)
+					if not '+' in wform:
+						key = '%s|%s' % (tag, wform)
 
-					if key in paradigms_to_create:
-						form_info = paradigms_to_create[key]
-					else:
-						form_info = {'class': form}
+						if key in paradigms_to_create:
+							form_info = paradigms_to_create[key]
+						else:
+							form_info = {'class': form}
 
-					if 'dialects' in form_info:
-						form_info['dialects'].append(dialect)
-					else:
-						form_info['dialects'] = [dialect]
+						if 'dialects' in form_info:
+							form_info['dialects'].append(dialect)
+						else:
+							form_info['dialects'] = [dialect]
 
-					paradigms_to_create[key] = form_info
+						paradigms_to_create[key] = form_info
 
 			paradigms_to_create = sco.OrderedDict(sorted(paradigms_to_create.items(), key=lambda t: t[0]))
 
@@ -994,7 +996,7 @@ class Words(object):
 
 					try:
 						t = sdm.Tag.objects.get(string=f.tags)
-					except Tag.DoesNotExist:
+					except sdm.Tag.DoesNotExist:
 						t = sdm.Tag.objects.create(**tag_kwargs)
 
 					t.save()
@@ -1002,7 +1004,8 @@ class Words(object):
 					# form = Form(fullform=f.form,tag=t,word=w)
 
 					form, _ = sdm.Form.objects.get_or_create(fullform=f.form, tag=t, word=w)
-					form.save()
+					if not '+' in form.fullform:
+						form.save()
 
 					names = set()
 					for dialect in f_dialects:
