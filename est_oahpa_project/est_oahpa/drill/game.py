@@ -1091,8 +1091,8 @@ class BareGame(Game):
 
 
 class NumGame(Game):
-	generate_fst = 'transcriptor-numbers2text-desc.xfst'
-	answers_fst = 'transcriptor-text2numbers-desc.xfst'
+	generate_fst = 'transcriptor-numbers-digit2text.filtered.lookup.xfst'
+	answers_fst = 'transcriptor-numbers-text2digit.filtered.lookup.xfst'
 
 	def get_db_info(self, db_info):
 		""" Options supplied by views
@@ -1166,6 +1166,8 @@ class NumGame(Game):
 		return cleaned
 
 	def strip_unknown(self, analyses):
+		for a in analyses:
+			print 'a=', a
 		return [a for a in analyses if a[1] != '?']
 
 	def check_answer(self, question, useranswer, formanswer):
@@ -1180,10 +1182,13 @@ class NumGame(Game):
 				fstfile = self.answers_fst
 
 			output, err = self.generate_forms(smart_unicode(forms), fstfile)
+			print 'output=', output
 
 			num_list = self.clean_fst_output(output)
 			num_list = self.strip_unknown(num_list)
 			# print repr([question, useranswer, num_list])
+			print "question, useranswer, correct answer: "
+			print repr([question, useranswer, num_list])
 
 			# 'string' refers to the question here, not the answer
 			if gametype == 'string':
@@ -1200,6 +1205,7 @@ class NumGame(Game):
 				# Numbers generated from user answer must match up
 				# with numeral in the question
 				num_list = num_list + formanswer
+				print 'num_list_num=', num_list
 				try:
 					_ = int(useranswer)
 					return False
@@ -1265,8 +1271,8 @@ class Klokka(NumGame):
 
 	QuestionForm = KlokkaQuestion
 
-        generate_fst = 'transcriptor-clock2text-desc.xfst'
-        answers_fst = 'transcriptor-text2clock-desc.xfst'
+        generate_fst = 'transcriptor-clock-digit2text.filtered.lookup.xfst'
+        answers_fst = 'transcriptor-clock-text2digit.filtered.lookup.xfst '
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1402,7 +1408,7 @@ class Dato(Klokka):
 	# QuestionForm = DatoQuestion
 
         generate_fst = 'transcriptor-date-digit2text.filtered.lookup.xfst'
-        answers_fst = 'transcriptor-text2date-desc.xfst'
+        answers_fst = 'transcriptor-date-text2digit.filtered.lookup.xfst'
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
 					 or Dato is unable to look up forms."

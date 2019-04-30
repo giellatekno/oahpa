@@ -103,9 +103,11 @@ class QAGame(Game):
 			# Do not filter dialect here
 			random_word = Word.objects.filter(wordqelement__qelement=qelement,form__tag=tag_el.id)
 
-			word = random_word.order_by('?')[0]
+			if random_word.count() > 0:
+				word = random_word.order_by('?')[0]
 
-		form_set_filter = self.filter_forms_by_dialect(
+		if word:
+			form_set_filter = self.filter_forms_by_dialect(
 							word.form_set.filter(tag=tag_el.id))
 
 		if word and form_set_filter.count()>0:
