@@ -582,7 +582,7 @@ class BareGame(Game):
 			no_form = True
 			count = 0
 			while no_form and count < 10:
-				random_word = tag.form_set.filter(WORD_QUERY)
+				random_word = tag.form_set.filter(word__language=L1)
 				if random_word.count() > 0:
 					random_form = random_word.order_by('?')[0]
 					random_word = random_form.word
