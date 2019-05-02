@@ -380,7 +380,7 @@ TREEBANK</a>
 <table>
 <tr><td>
 {% trans "Page language" %}
-<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
+<input name="next" type="hidden" value="{{ request.path }}" />
 <select name="language" onChange="javascript:this.form.submit();">
 
 {% ifequal LANGUAGE_CODE "en" %}
