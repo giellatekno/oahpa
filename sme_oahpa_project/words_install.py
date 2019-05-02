@@ -455,7 +455,7 @@ class Words(object):
 
 		try:
 			diff = sdm.ParadigmDiff.objects.get(key=key)
-		except ParadigmDiff.DoesNotExist:
+		except sdm.ParadigmDiff.DoesNotExist:
 			diff = sdm.ParadigmDiff.objects.create(key=key, checksum=checksum)
 			diff.save()
 			return True
@@ -615,7 +615,7 @@ class Words(object):
 			if semantics:
 				for item in semantics:
 					transl.semtype.add(item)
-		except WordTranslation.MultipleObjectsReturned:
+		except sdm.WordTranslation.MultipleObjectsReturned:
 			print >> _STDERR, "Extra similar translation objects found, deleting extras..."
 			transls = list(sdm.WordTranslation.objects.filter(**wt_kwargs))
 			for t in transls[1::]:
