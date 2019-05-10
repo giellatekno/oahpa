@@ -228,7 +228,6 @@ NUM_CONTEXT_CHOICES = (
 NUM_BARE_CHOICES = (
 	('NOMPL', _('plural')),
 	('N-ACC', _('accusative')),
-	('N-ILL', _('illative')),
 	('N-LOC', _('locative')),
 	('N-COM', _('comitative')),
 )
