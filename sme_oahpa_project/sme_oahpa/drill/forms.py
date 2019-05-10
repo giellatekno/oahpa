@@ -218,7 +218,6 @@ NUM_CONTEXT_CHOICES = (
 	('NUM-ATTR', _('attributive')),
 	('NUM-NOM-PL', _('plural')),
 	('NUM-ACC', _('accusative')),
-	('NUM-ILL', _('illative')),
 	('NUM-LOC', _('locative')),
 	('NUM-COM', _('comitative')),
 	('COLL-NUM', _('collective')),
