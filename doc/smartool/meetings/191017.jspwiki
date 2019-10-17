@@ -1,0 +1,214 @@
+Meeting about future of SMARTool on 17.10.2019
+ 
+!!! Agenda
+
+* Migration of SMARTool to Giellatekno
+** Overview
+** Questions
+* SMARTool spin-offs for learning of languages other than Russian
+* SMARTool with non-English interfaces for learners of Russian
+* Other issues
+
+
+!!! Migration of SMARTool to Giellatekno
+
+Current set-up run by
+* Laura Janda
+* Valentina Zhukova
+* Evgeniia Sudarikova
+* Lisa Kibisova
+ 
+Current practice:
+
+Janda, Zhukova, Sudarikova, Kibisova create and edit content in googlesheets. 
+
+* Zhukova regularly (in principle weekly) copies googlesheets to github address
+* Github copy serves as source file for SMARTool
+* SMARTool code is also on github
+ 
+Approximately two-thirds of the content is in place now. We hope to complete content by end of 2019.We plan to work on editing and de-bugging in 2020.
+            
+!!! Questions: 
+
+!!  URL
+
+Will SMARTool retain original URL? If not, will there be a redirect? 
+
+The code is, with appr 30 other projects, under [https://github.com/uit-no]
+The data itself is in [https://github.com/valentina-zh/SMARTool-data]
+
+The content and the code should be at the same github. 
+
+We do it as follows: Radovan will move the code and data to a  repository of its own [https://github.com/smartool] and add persons to organization.
+
+
+!! Changes
+
+ What changes should be made to current practice, especially in terms of github location? Other changes? 
+ 
+ __Radovan__ will write a paragraph on how to contribute in the github README. And inform Valentina.
+
+Language choice is now hardcoded to RUS and ENG. This should be generalised as variables. __Radovan__ will look into that. We generalised the spreadsheet columns during the meeting (see below).
+
+!! Debugging
+
+Who will be in charge of helping with de-bugging? 
+
+__Radovan__ will abstract the "hardcoded" language choice to make it easier to plug in other languages. He is also happy to help with debugging questions. 
+
+!! Payment
+Radovan: has your unit taken payment for creation of SMARTool?
+__Laura__ will look into this.
+
+!!Content
+
+__CLEAR__ is working on proposals to create a suite of on-line materials for teaching first-year Russian. The SMARTool is part of the package. We will want to have the possibility to access miniature versions of the SMARTool that present only the vocabulary for given lessons. How can we organize this? E.g., if you are in lesson  3, can you pull out the vocabulary from lesson 3? 
+
+In order to achieve this, the vocabulary base must then contain a slot for marking lesson(s).
+
+!!Documentation
+
+Objectively, there are 3 different audiences, here with web pages for Oahpa as an example: 
+
+* [http://oahpa.no] - pupils, students
+* [https://giellalt.uit.no/ped/index.html] - internal (and external?) developers
+* [http://giellatekno.uit.no/icall.sme.html] - external researchers
+
+We want the same for SMARTool. The first of these is today's SMARTool page. The second will be an overview page on Github, ,linking, for now, to the different README.md files. __Chiara__ will make that.  __Laura__ will provide additional content. We will link to that page from the SMARTool user page, and from our respective CLEAR and Giellateno pages. As for the page for external researchers, we will do that when we have some content for it.
+
+!! Vocabulary
+ We would like to have the option of adding more vocabulary over time, and possibly adding items also at the C1 and C2 levels (these levels are not currently in the SMARTool).
+ 
+In order to do this we should ensure the procedures for going from spreadsheet via csv to functioning program is kept automatic, run via scripts.
+
+!! Buttons
+
+Do we want to have buttons that direct users also to the spin-offs and other interfaces? Or should there be a separate page that gathers all those together? Since these secondary items are not functional yet, maybe this question can be put off?
+ 
+We will return to this.
+
+
+!!! SMARTool spin-offs for learning of languages other than Russian
+
+!! Czech
+Contact persons
+* Adrian Zasina
+* Václav Cvrček
+ 
+!! Polish
+Contact persons
+* Marek Łaziński
+* Jacopo Saturno
+                        
+Laura can help with content.
+ 
+!!! SMARTool with non-English interfaces for learners of Russian
+
+!!Languages
+
+! Spanish
+Contact persons
+* Benami Barros
+* Andres Cuéllar
+ 
+! Finnish
+Contact person 
+* Viimaranta, L Johanna
+
+! Norwegian
+We should do this for Norwegian as well.
+
+!! Work to do on adding content 
+ 
+The contact persons have been provided with a miniature version of the googlesheets (one-third of A1) in order to get started. The Spanish contact persons have already added some content, but the Finns haven’t started yet. These persons will eventually need help with turning data into csv in github. We must look at how to set up a procedure so that these versions (or at least the Spanish ones) can be updated and start running.
+
+The contact persons are adding their translations in column N (or should I have them just put those in place of the English translations in column K?). Should they just replace the English glosses in column C or put those in a new column? Should I give them a copy of the rest of the googlesheet and have them continue to add content? 
+
+As to the columns, we today have the following ones in Google spreadsheet:
+
+{{{
+Lemma        
+ID        
+Eng Gloss        
+POS        
+Level        
+Word source        
+Ex. ID        
+Form        
+Analysis        
+Example Sentence        
+Translation        
+Reference        
+Topic(s)        
+}}}
+
+We want a generalised version of this:
+
+{{{
+Target Language Lemma        
+ID        
+User Language Gloss
+English Gloss # this is empty if user lg = eng        
+POS        
+Level        
+Word source        
+Ex. ID        
+Form        
+Analysis        
+Target Language Example Sentence        
+User Language Translation        
+Eng translation # empty if user lg = eng
+Reference        
+Topic(s)        
+}}}
+
+This will have consequences for the numbering of the colums in the input transition from csv to smartool (__Radovan__ will have to look into that).
+
+!! Documentation, teaching
+
+__Radovan__ will adjust the export routine from csv to smartool to accomodate the new columns (above), and change the spreadsheets. The export routine from csv should be documented.
+
+Original questions
+* Who will be in charge of assisting with programming?
+* We need to make sure that the data is in the same columns in the source files.
+* We need documentation for internal developers, describing how these files are structured.
+
+Given the present setup and the extension sketched here, the actual programming is in place. What is needed is documentation and eventually instructions (documentation and teaching) for translators as to how to transfer spreadsheets to github, or eventually a routine for that. The two other questions are answered above.
+
+
+!!! Other issues
+
+!! Grant citation
+
+__Radovan__ plans an article about the code. Please cite the grant in both the publication and in the Cristin registration, and please link the Cristin registration to the CLEAR group (or send Laura the postnummer so that she can link it). Here is grant citation information. Grant agency: Direktoratet for internasjonalisering og kvalitetsutvikling i høyere utdanning Grant number: CPRU-2017/10027
+
+!! Financing
+
+We should consider looking for some kind of grant funding to support extension of the original SMARTool, plus the spin-offs and additional interfaces.
+
+Possible sources: DIKU, EU, Norgesuniversitetet, 
+
+The application should contain financing both for content production, interface and testing.
+
+The first step should still be to make the tool, its content and documentation better based on current resources, and to discuss the situation for programmers at the departments.
+
+!! Internal communication
+
+Do we need to set up some kind of communication system for all SMARToolers?
+
+(This was not discussed on the meeting. At Giellatekno, we use Zulip, so consider that). 
+
+!! Accessibility 
+
+E.g. visual impairment, for lynx-friendliness. Cf. best practices published out there, e.g. from the Norwegian government.
+
+We should keep that in mind when making web pages.
+
+!! Logo/avatar for GitHub organization
+
+Laura will look into getting a logo.
+
+This would be nice to have for github, and elsewhere.
+
+
+
