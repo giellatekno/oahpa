@@ -166,7 +166,7 @@ ul#games_menu {
 #page.game ul#games_menu {
 	position: absolute;
 	margin: 0 0 0 0;
-	right: 0;
+	right: -2.5em; /* was 0; */
 	top: -7em;
 }
 
@@ -181,11 +181,11 @@ ul#games_menu li {
 
 
 #games_menu.small li {
-	width: 100px;
+	width: 95px; /* was 100px; */
 }
 
 #games_menu img {
-	width: 80px;
+	width: auto;
 	height: 80px;
 }
 
@@ -195,7 +195,7 @@ ul#games_menu li {
 
 #games_menu.small img {
 	width: 60px;
-	height: 60px;	
+	height: auto;	
 }
 
 span.game_explanation {
@@ -408,7 +408,7 @@ div#game hr {
 }
 
 #leftcontent .bigheader {
-	text-align: left;
+	text-align: center; /* left; */
 	font-weight: light;
 	margin-bottom: .75em;
 	font-size: 125%;
@@ -419,6 +419,8 @@ div#game hr {
 #leftcontent img {
 	display: block;
 	margin: 0 auto;
+	height: auto;
+	width: 100px;
 }
 
 #leftcontent strong {
@@ -429,6 +431,7 @@ div#game hr {
 #leftcontent ul.sidelist {
 	margin-bottom: 1.75em;
 	margin-top: .25em;
+	margin-left: .5em;
 }
 
 #leftcontent ul.sidelist li {
@@ -625,6 +628,10 @@ span.click-to-stress {
 
 span.incorrect input {
 	color: #900;
+}
+
+span.almostcorrect {  /* almost correct = yellow / light green */
+	color: #9ACD32; 
 }
 
 span.click-to-stress {
