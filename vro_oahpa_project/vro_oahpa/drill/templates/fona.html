@@ -1,0 +1,86 @@
+{% extends "game.html" %}
+{% load i18n %}
+
+{% block helpaddress %}
+{% endblock %}
+
+{% block gametitlename %}FONA{% endblock %}
+{% block imgprefix %}fona{% endblock %}
+
+{% block navbar %}
+<ul class="sidelist">
+	<li class="selected"><a href="{% url 'fona' %}">{% trans 'Vowel harmony' %}</a></li>
+</ul>
+{% endblock %}
+
+{% block veiledning %}
+    {% ifequal LANGUAGE_CODE "vro" %}
+        <a href="http://fiu-vro.wikipedia.org/wiki/Vabahelle_kokkokõla">Wikipedia</a>
+    {% endifequal %}
+    {% ifequal LANGUAGE_CODE "et" %}
+        <a href="http://fiu-vro.wikipedia.org/wiki/Vabahelle_kokkokõla">Wikipedia</a>
+    {% endifequal %}
+    {% ifequal LANGUAGE_CODE "fi" %}
+        <a href="http://fiu-vro.wikipedia.org/wiki/Vabahelle_kokkokõla">Wikipedia</a>
+    {% endifequal %}
+{% endblock %}
+
+{% block instructions %}
+    {% ifequal score "" %} 
+	   {% trans "The given words might be misspelled. Please correct the spelling errors. Pay attention to vowel harmony." %}
+    {% else %}
+        {% trans "Colors:" %}
+        </br> </br>
+        <span style="color:green"> {% trans "correct answer" %}
+        </span> </br></br>
+        <span style="color:#9ACD32"> {% trans "almost correct answer" %}
+        </span>
+        </br></br>
+        {% if show_correct %}
+            <span style="color:red"> {% trans "incorrect answer" %}</span>
+        {% else %}
+            <span style="color:#900"> {% trans "incorrect answer" %}</span>     
+        {% endif %}
+    {% endifequal %}
+{% endblock %}
+
+{% block name %}{% trans "Fona" %}{% endblock %}
+{% block pagename %}/{{ URL_PREFIX }}/fona/{% endblock %}
+
+{% block settings %}
+    <div class="grammarlinks">
+        {% include 'grammar_links_menu.html' %}
+    </div>
+
+    <ul id="settingsform">
+ <!--   	<li><label for="id_{{ settingsform.semtype.name }}">{% trans "Set" %}</label>
+    		{{ settingsform.semtype }}</li>
+    	<li><label for="id_{{ settingsform.transtype.name }}">{% trans "Select the language pair" %}</label>
+    		{{ settingsform.transtype }}</li>
+    	<li><label for="id_{{ settingsform.source.name }}">{% trans "Book" %}</label>
+    		{{ settingsform.source }}</li> -->
+    </ul>
+    
+    <ul id="submittable">
+        <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
+    </ul>
+{% endblock %}
+<input type="submit" name="settings" value="{% trans "New set" %}" />
+
+{% block question %}
+
+{{ form.lemma_without_harmony }}
+
+{% endblock %}
+
+{% block submit %}
+{% if not all_correct %}
+   {% if not show_correct %}
+   <input type="submit" name="test" value="{% trans "Test answers" %}"/>
+   {% endif %}
+   {% ifequal count 1 %}
+   <input type="submit" name="show_correct" value="{% trans "Show the correct answers" %}" />
+   {% endifequal %}
+{% endif %}
+{% endblock %}
+

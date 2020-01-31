@@ -1585,3 +1585,93 @@ class QuizzGame(Game):
 					data,
 					prefix=n,))
 		return form, word.id
+
+class FonaGame(Game):
+
+	def __init__(self, *args, **kwargs):
+		super(FonaGame, self).__init__(*args, **kwargs)
+		self.init_tags()
+        
+	def init_tags(self):
+		self.settings['gametype'] = "fona"
+
+	def get_db_info(self, db_info):
+
+		# levels = self.settings['level']
+		#semtypes = self.settings['semtype']
+		#geography = self.settings['geography']
+		#frequency = True and self.settings['frequency'] or False # frequency value or False
+		#source = self.settings['source']
+
+		QueryModel = Word
+
+		error = "FonaGame.get_db_info: Database may be improperly loaded."
+
+		# This query is fairly expensive, and must be run once per game-form generation. Thus,
+		# on the first generation it is run, and the results are stored to a list.
+		# Each successive time this is run after the first query, a word is selected from the list
+		# and popped off.
+
+		if not self.query_set:
+
+			word_set = QueryModel.objects.filter(language='vro')
+			
+			word_set = word_set.exclude(lemma_without_harmony__isnull=True)
+
+			self.query_set = word_set.values_list('id', 'lemma')
+
+		try:
+			while True:
+				random_word = choice(self.query_set)
+				print "random_word: ", random_word
+				if random_word[1] not in self.lemmas_selected:
+					break
+				else:
+					continue
+			self.lemmas_selected.append(random_word[1])
+			# self.query_set.pop(self.query_set.index(random_word))
+		except IndexError:
+			if len(self.query_set) == 0:
+				raise Http404(error)
+
+		db_info['word_id'] = random_word[0]
+		db_info['question_id'] = ""
+
+		return db_info
+
+	def create_form(self, db_info, n, data=None):
+		# This is producing an unnecessary query, but it takes a lot of work to switch this
+		# to just passing a word model instead of the ID.
+		# Ideally should pass the model, so there's no need to query it again.
+		word_id = db_info['word_id']
+		word = Word.objects.get(Q(id=word_id))
+
+		# Get the correct answer.
+		correct = ""
+		preferred = False
+		possible = False
+		stat_pref = False
+		tcomms = False
+		if type(word) == Word:
+			possible = [word.lemma]
+			correct = possible	 
+
+		question_list = []
+
+		userans_val = ''
+		try:
+			userans_val = db_info['answer'].strip()
+		except KeyError:
+			userans_val = db_info['userans']
+		
+		form = (FonaQuestion(
+					possible,
+					word,
+					correct,
+					question_list,
+					userans_val,
+					db_info['correct'],
+					data,
+					prefix=n,))
+		return form, word.id
+

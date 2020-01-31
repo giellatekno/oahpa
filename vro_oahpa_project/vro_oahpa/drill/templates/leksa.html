@@ -18,26 +18,25 @@
 </ul>
 {% endblock %}
 
-{% block veiledning %}
-{% ifequal LANGUAGE_CODE "sme" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.html
-{% endifequal %}
-{% ifequal LANGUAGE_CODE "fi" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.fin.html
-{% endifequal %}
-{% ifequal LANGUAGE_CODE "en" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.eng.html
-{% endifequal %}
-{% ifequal LANGUAGE_CODE "no" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.nno.html
-{% endifequal %}
-{% ifequal LANGUAGE_CODE "sv" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.nno.html
-{% endifequal %}
-{% endblock %}
+{% block veiledning %}{% endblock %}
 
 {% block instructions %}
-	{% trans "Give translations for words. You can choose a semantic set or part of the textbook but not both." %}
+	{% ifequal score "" %}
+			{% trans "Give translations for words. You can choose a semantic set or part of the textbook but not both." %}
+	{% else %}
+            {% trans "Colors:" %}
+            </br> </br>
+            <span style="color:green"> {% trans "correct answer" %}
+            </span> </br></br>
+            <span style="color:#9ACD32"> {% trans "almost correct answer" %}
+            </span>
+            </br></br>
+            {% if show_correct %}
+                <span style="color:red"> {% trans "incorrect answer" %}</span>
+            {% else %}
+                <span style="color:#900"> {% trans "incorrect answer" %}</span>     
+            {% endif %}
+    {% endifequal %}
 {% endblock %}
 
 {% block name %}{% trans "Quizz" %}{% endblock %}

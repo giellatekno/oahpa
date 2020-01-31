@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
-		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	    <title>{% block title %}{% endblock %}</title>
 
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main_vro.css"/>
@@ -100,7 +100,24 @@
 						<span>{% trans "Words and translations" %}</span>
 					</a>
 				</li>
+ 				<li class="game">
+                    <a href="{% url 'numra' %}">
+						<span>NUMRA</span><br />
+						<img src="{{ MEDIA_URL }}/images/numra.png" alt="NUMRA" /><br />
+						<span>{% trans "Practice numerals" %}</span>
+					</a>
+                </li>
+                
+				<li class="game">
+                    <a href="{% url 'fona' %}">
+						<span>FONA</span><br />
+						<img src="{{ MEDIA_URL }}/images/fona.png" alt="FONA" /><br />
+						<span>{% trans "Practice phonology" %}</span>
+					</a>
+                </li>
+            </ul>
 
+			<ul id="games_menu">
 				<li class="game">
 					<a href="{% url 'morfa_s.noun' %}">
 						<span>MORFA-S</span><br />
@@ -117,19 +134,12 @@
 					</a>
 				</li>
 
-                <li class="game">
-                    <a href="{% url 'numra' %}">
-						<span>NUMRA</span><br />
-						<img src="{{ MEDIA_URL }}/images/numra.png" alt="NUMRA" /><br />
-						<span>{% trans "Practice numerals" %}</span>
-					</a>
-                </li>
 			</ul>
 			</br>
 
 			<p class="intro" align="centre">{% trans "Oahpa is an internet program for learners of Võro. The program can be adjusted to different topics and levels of difficulty, and it generates new task sets automatically." %}</p>
 			</br>
-			<p> <font color="#FF0000" size="2pt">{% trans "NB! This is a test version. The games Leksa and Numra are working properly but Morfa-S and Morfa-C can still contain some errors." %}</font></p>
+			<p> <font color="#FF0000" size="2pt">{% trans "NB! This is a test version. The games Leksa, Numra and Fona are working properly but Morfa-S and Morfa-C can still contain some errors." %}</font></p>
 		<!--	<h3>{% trans "Online reference materials" %}</h3> -->
 
                </br>

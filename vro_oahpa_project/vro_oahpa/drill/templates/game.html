@@ -81,11 +81,15 @@ function playSound(soundfile) {
 		{% ifequal form.error "correct" %}
 			<span class="correct">{{ form.userans }}</span>
 		{% else %}
+            {%ifequal form.error "almost correct" %}
+                <span class="almostcorrect">{{ form.userans }}</span>
+		    {% else %}
 			{% ifequal form.error "error" %}
 				<span class="incorrect">{{ form.userans }}</span>
 			{% else %}
 				<span class="blankentry">________________</span>{# Blank answer, this gets hidden via CSS in leksa and morfa, but not morfac #}
 			{% endifequal %}
+		{% endifequal %}
 		{% endifequal %}
 
 		{% if form.pron_imp %}
@@ -106,8 +110,12 @@ function playSound(soundfile) {
 			{% ifequal form.error "correct" %}
 				<span class="correct">{{ form.userans }}</span>
 			{% else %}
+                {%ifequal form.error "almost correct" %}
+                    <span class="almostcorrect">{{ form.userans }}</span>
+			    {% else %}
 				<!-- Answer field -->
 				<span class="incorrect">{{ form.answer }}</span>
+			{% endifequal %}
 			{% endifequal %}
 
 			{% if form.pron_imp %}

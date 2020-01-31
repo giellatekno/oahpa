@@ -136,7 +136,6 @@ URL_PREFIX = 'voro'
 MEDIA_URL = '/%s/media/' % URL_PREFIX
 
 
-
 LANGUAGES = (
     ('ru', 'Russian'),
     ('sme', 'North Sami'),

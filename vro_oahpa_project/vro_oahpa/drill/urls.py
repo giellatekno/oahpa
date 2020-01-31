@@ -13,6 +13,7 @@ urlpatterns = [
 
 	url(r'^leksa/$', views.leksa_game, name="leksa"),
 	url(r'^leksa/names/$', views.leksa_game, {'place': True}, name="leksa.sted"),
+	url(r'^fona/$', views.fona_game, name="fona"),
 
 	url(r'^numra/$', views.num, name="numra"),
 	url(r'^numra/ord/$', views.num_ord, name="numra.ord"),

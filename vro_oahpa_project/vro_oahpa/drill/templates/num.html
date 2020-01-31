@@ -13,26 +13,7 @@
 {% block imgprefix %}numra{% endblock %}
 
 
-{% block veiledning %}
-{% ifequal LANGUAGE_CODE "sme" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.html
-{% endifequal %}
-{% ifequal LANGUAGE_CODE "fi" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.fin.html
-{% endifequal %}
-{% ifequal LANGUAGE_CODE "en" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.eng.html
-{% endifequal %}
-{% ifequal LANGUAGE_CODE "no" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.nno.html
-{% endifequal %}
-{% ifequal LANGUAGE_CODE "ru" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.rus.html
-{% endifequal %}
-{% ifequal LANGUAGE_CODE "sv" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.nno.html
-{% endifequal %}
-{% endblock %}
+{% block veiledning %}{% endblock %}
 
 {% block navbar %}
 	{% with "numra_cardinal" as gamename_nav %}
@@ -74,11 +55,29 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.nno.html
 
 
 {% block question %}
+<script>
+function playSound(url) {
+    var audio="";
+    audio=document.getElementById("pronounce{{ forloop.counter }}");
+    audio.src=url+"?cb="+new Date().getTime();
+    audio.play();
+}
+</script>
 {% if form.numstring %}
 {{ form.numstring }} 
 {% else %}
 {{ form.numeral }} 
 {% endif %}
+<audio id="pronounce{{ forloop.counter }}"></audio>
+
+<a onclick=playSound("{{ MEDIA_URL }}/audio/audio_out{{ forloop.counter }}.wav") href="#"> 
+    {% ifequal gametype "string" %} 
+        {% if form.audio %}
+            <img src="{{ MEDIA_URL }}/images/loudspeaker.jpg" heigth="15px" width="20px"/>
+        {% endif %}
+    {% endifequal %}
+</a>
+
 {{ form.numeral_id }}
 {% endblock %}
 

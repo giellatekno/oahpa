@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-19 16:30+0200\n"
+"POT-Creation-Date: 2020-01-31 16:46+0100\n"
 "PO-Revision-Date: 2016-11-14 HO:MI+ZONE\n"
 "Last-Translator: Heli Uibo <heli1401@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,103 +16,771 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/404.html:8 templates/500.html:8
-msgid "Error"
-msgstr "Viga"
+#: vro_oahpa/drill/forms.py:62
+msgid "noun"
+msgstr "nimisõna"
 
-#: templates/404.html:9
-msgid "Page not found."
-msgstr "Lehekülge ei leitud."
+#: vro_oahpa/drill/forms.py:63
+msgid "verb"
+msgstr "tegusõna"
 
-#: templates/500.html:9
-msgid "There has been a technical error, please try again."
-msgstr "Tehniline viga. Proovige uuesti."
+#: vro_oahpa/drill/forms.py:67
+msgid "singular"
+msgstr "ainsus"
 
-#: templates/500.html:10
-msgid "We are developing the program."
-msgstr "Programm on alles arendusjärgus. Vabandame!"
+#: vro_oahpa/drill/forms.py:68 vro_oahpa/drill/forms.py:108
+#: vro_oahpa/drill/forms.py:248 vro_oahpa/drill/forms.py:258
+msgid "plural"
+msgstr "mitmus"
 
-#: templates/grammar_links_menu.html:5
-#: vro_drill/templates/grammar_links_menu.html:5
+#: vro_oahpa/drill/forms.py:74 vro_oahpa/drill/forms.py:109
+#: vro_oahpa/drill/forms.py:201
+msgid "Genitive"
+msgstr "Omastav (kelle? mille?)"
+
+#: vro_oahpa/drill/forms.py:75 vro_oahpa/drill/forms.py:110
+#: vro_oahpa/drill/forms.py:202
+msgid "Partitive"
+msgstr "Osastav (keda? mida?)"
+
+#: vro_oahpa/drill/forms.py:76 vro_oahpa/drill/forms.py:111
+#: vro_oahpa/drill/forms.py:203
+msgid "Illative"
+msgstr "Sisseütlev (kellesse? millesse? kuhu?)"
+
+#: vro_oahpa/drill/forms.py:77 vro_oahpa/drill/forms.py:112
+#: vro_oahpa/drill/forms.py:204
+msgid "Inessive"
+msgstr "Seesütlev (kelles? milles? kus?)"
+
+#: vro_oahpa/drill/forms.py:78 vro_oahpa/drill/forms.py:113
+#: vro_oahpa/drill/forms.py:205
+msgid "Elative"
+msgstr "Seestütlev (kellest? millest? kust?)"
+
+#: vro_oahpa/drill/forms.py:79 vro_oahpa/drill/forms.py:208
+msgid "Allative"
+msgstr "Alaleütlev (kellele? millele? kuhu?)"
+
+#: vro_oahpa/drill/forms.py:80 vro_oahpa/drill/forms.py:206
+msgid "Adessive"
+msgstr "Alalütlev (kellel? millel? kus?)"
+
+#: vro_oahpa/drill/forms.py:81 vro_oahpa/drill/forms.py:207
+msgid "Ablative"
+msgstr "Alaltütlev (kellelt? millelt? kust?)"
+
+#: vro_oahpa/drill/forms.py:82
+msgid "Translative"
+msgstr "Saav (kelleks? milleks?)"
+
+#: vro_oahpa/drill/forms.py:83
+msgid "Terminative"
+msgstr "Rajav (kelleni? milleni?)"
+
+#: vro_oahpa/drill/forms.py:84
+msgid "Abessive"
+msgstr "Ilmaütlev (kelleta? milleta?)"
+
+#: vro_oahpa/drill/forms.py:85
+msgid "Comitative"
+msgstr "Kaasaütlev (kellega? millega?)"
+
+#: vro_oahpa/drill/forms.py:141
+msgid "illative"
+msgstr "illatiivi"
+
+#: vro_oahpa/drill/forms.py:142 vro_oahpa/drill/forms.py:251
+#: vro_oahpa/drill/forms.py:261
+msgid "locative"
+msgstr "lokatiivi"
+
+#: vro_oahpa/drill/forms.py:143
+msgid "comitative"
+msgstr "komitatiivi"
+
+#: vro_oahpa/drill/forms.py:147 vro_oahpa/drill/forms.py:185
+msgid "personal"
+msgstr "isikulised asesõnad"
+
+#: vro_oahpa/drill/forms.py:148 vro_oahpa/drill/forms.py:186
+msgid "demonstrative"
+msgstr "näitavad asesõnad"
+
+#: vro_oahpa/drill/forms.py:149 vro_oahpa/drill/forms.py:187
+msgid "reciprocative"
+msgstr "vastastikused asesõnad"
+
+#: vro_oahpa/drill/forms.py:150 vro_oahpa/drill/forms.py:188
+msgid "reflexive"
+msgstr "enesekohased asesõnad"
+
+#: vro_oahpa/drill/forms.py:151 vro_oahpa/drill/forms.py:189
+msgid "relative"
+msgstr "küsivad-siduvad asesõnad"
+
+#: vro_oahpa/drill/forms.py:156
+msgid "Partitive (Midä?)"
+msgstr "Osastav (Kedä? Midä?)"
+
+#: vro_oahpa/drill/forms.py:157
+msgid "Genitive/Nominative (Minka?)"
+msgstr "Omastav/mitmuse nimetav (Minka?)"
+
+#: vro_oahpa/drill/forms.py:158
+msgid "Illative/Allative (Kohe?)"
+msgstr "Sisseütlev/alaleütlev (Kohe?)"
+
+#: vro_oahpa/drill/forms.py:159
+msgid "Inessive/Adessive (Kon?)"
+msgstr "Seesütlev/alalütlev (Kon?)"
+
+#: vro_oahpa/drill/forms.py:160
+msgid "Translative (Kinkas?)"
+msgstr "Saav (Kinkas? Minkas?)"
+
+#: vro_oahpa/drill/forms.py:161
+msgid "Comitative (Minka?)"
+msgstr "Kaasaütlev (Kinka? Minka?)"
+
+#: vro_oahpa/drill/forms.py:172
+msgid "feminine in -a/-я"
+msgstr ""
+
+#: vro_oahpa/drill/forms.py:173
+msgid "feminine in -ь"
+msgstr ""
+
+#: vro_oahpa/drill/forms.py:174
+msgid "masculine inanimate"
+msgstr ""
+
+#: vro_oahpa/drill/forms.py:175
+msgid "masculine animate"
+msgstr ""
+
+#: vro_oahpa/drill/forms.py:176
+msgid "neuter"
+msgstr ""
+
+#: vro_oahpa/drill/forms.py:177 vro_oahpa/drill/forms.py:327
+msgid "All"
+msgstr "Kõik"
+
+#: vro_oahpa/drill/forms.py:193
+msgid "goabbat/guhtet"
+msgstr "goabbat/guhtet"
+
+#: vro_oahpa/drill/forms.py:194
+msgid "nubbi/nuppit"
+msgstr "nubbi/nuppit"
+
+#: vro_oahpa/drill/forms.py:200
+msgid "Nominative"
+msgstr "Nimetav (kes? mis?)"
+
+#: vro_oahpa/drill/forms.py:225 vro_oahpa/drill/forms.py:247
+msgid "attributive"
+msgstr "attribuuttimuoto"
+
+#: vro_oahpa/drill/forms.py:226 vro_oahpa/drill/forms.py:242
+msgid "comparative"
+msgstr "komparatiiv"
+
+#: vro_oahpa/drill/forms.py:227
+msgid "superlative"
+msgstr "superlatiiv"
+
+#: vro_oahpa/drill/forms.py:232
+msgid "attributive positive"
+msgstr "positiivin attributti"
+
+#: vro_oahpa/drill/forms.py:233
+msgid "attributive comparative"
+msgstr "komparatiivin attribuuttimuoto"
+
+#: vro_oahpa/drill/forms.py:234
+msgid "attributive superlative"
+msgstr "superlatiivin attribuuttimuoto"
+
+#: vro_oahpa/drill/forms.py:235
+msgid "predicative positive"
+msgstr "positivinen predikatiivi"
+
+#: vro_oahpa/drill/forms.py:236
+msgid "predicative comparative"
+msgstr "komparatiivin predikatiivi"
+
+#: vro_oahpa/drill/forms.py:237
+msgid "predicative superlative"
+msgstr "superlatiivin predikatiivi"
+
+#: vro_oahpa/drill/forms.py:241
+msgid "positive"
+msgstr "positiiv"
+
+#: vro_oahpa/drill/forms.py:249 vro_oahpa/drill/forms.py:259
+msgid "accusative"
+msgstr "akkusatiivi"
+
+#: vro_oahpa/drill/forms.py:253 vro_oahpa/drill/forms.py:282
+msgid "collective"
+msgstr "Kollektiivsed arvsõnad"
+
+#: vro_oahpa/drill/forms.py:254
+msgid "ordinals"
+msgstr "Järgarvsõnad"
+
+#: vro_oahpa/drill/forms.py:275 vro_oahpa/drill/forms.py:366
+msgid "First level"
+msgstr "Tase 1"
+
+#: vro_oahpa/drill/forms.py:276 vro_oahpa/drill/forms.py:367
+msgid "Second level"
+msgstr "Tase 1-2"
+
+#: vro_oahpa/drill/forms.py:280
+msgid "cardinal"
+msgstr "Põhiarvsõnad"
+
+#: vro_oahpa/drill/forms.py:281
+msgid "ordinal"
+msgstr "Järgarvsõnad"
+
+#: vro_oahpa/drill/forms.py:286 vro_oahpa/drill/forms.py:311
+msgid "present"
+msgstr "olevik"
+
+#: vro_oahpa/drill/forms.py:287 vro_oahpa/drill/forms.py:312
+msgid "past"
+msgstr "minevik"
+
+#: vro_oahpa/drill/forms.py:313
+msgid "back negation present tense"
+msgstr "tagaeitus olevikus"
+
+#: vro_oahpa/drill/forms.py:324
+msgid "Level 1"
+msgstr "Tase 1"
+
+#: vro_oahpa/drill/forms.py:325
+msgid "Level 1-2"
+msgstr "Tase 1-2"
+
+#: vro_oahpa/drill/forms.py:326
+msgid "Level 1-3"
+msgstr "Tase 1-3"
+
+#: vro_oahpa/drill/forms.py:332 vro_oahpa/drill/forms.py:345
+msgid "passive derivation"
+msgstr "Passivijohtaminen"
+
+#: vro_oahpa/drill/forms.py:333 vro_oahpa/drill/forms.py:344
+msgid "adjective->verb derivation"
+msgstr "Adjektiivi->verbi-johtaminen"
+
+#: vro_oahpa/drill/forms.py:349
+msgid "Tüüpsõnaq"
+msgstr "Tüüpsõnad"
+
+#: vro_oahpa/drill/forms.py:350 vro_oahpa/drill/forms.py:419
+msgid "all"
+msgstr "Kõik"
+
+#: vro_oahpa/drill/forms.py:355
+msgid "rare"
+msgstr "harvad"
+
+#: vro_oahpa/drill/forms.py:356
+msgid "common"
+msgstr "tavalised"
+
+#: vro_oahpa/drill/forms.py:360
+msgid "world"
+msgstr "maailm"
+
+#: vro_oahpa/drill/forms.py:361
+msgid "sapmi"
+msgstr "Saamen maa"
+
+#: vro_oahpa/drill/forms.py:362
+msgid "suopma"
+msgstr "Suomi"
+
+#: vro_oahpa/drill/forms.py:368
+msgid "Third level"
+msgstr "Tase 1-3"
+
+#: vro_oahpa/drill/forms.py:372
+msgid "2"
+msgstr "2"
+
+#: vro_oahpa/drill/forms.py:373
+msgid "3"
+msgstr "3"
+
+#: vro_oahpa/drill/forms.py:374
+msgid "4"
+msgstr "4"
+
+#: vro_oahpa/drill/forms.py:378
+msgid "Võro to Estonian"
+msgstr "Võru - eesti"
+
+#: vro_oahpa/drill/forms.py:379
+msgid "Estonian to Võro"
+msgstr "Eesti - võru"
+
+#: vro_oahpa/drill/forms.py:380
+msgid "Võro to Finnish"
+msgstr "Võru - soome"
+
+#: vro_oahpa/drill/forms.py:381
+msgid "Finnish to Võro"
+msgstr "Soome - võru"
+
+#: vro_oahpa/drill/forms.py:382
+msgid "Võro to English"
+msgstr "Võru - inglise"
+
+#: vro_oahpa/drill/forms.py:383
+msgid "English to Võro"
+msgstr "Inglise - võru"
+
+#: vro_oahpa/drill/forms.py:384
+msgid "Võro to German"
+msgstr "Võru - saksa"
+
+#: vro_oahpa/drill/forms.py:385
+msgid "German to Võro"
+msgstr "Saksa - võru"
+
+#: vro_oahpa/drill/forms.py:386
+msgid "Võro to North Saami"
+msgstr "Võru - põhjasaami"
+
+#: vro_oahpa/drill/forms.py:387
+msgid "North Saami to Võro"
+msgstr "Põhjasaami - võru"
+
+#: vro_oahpa/drill/forms.py:388
+msgid "Võro to Swedish"
+msgstr "Võru -  rootsi"
+
+#: vro_oahpa/drill/forms.py:389
+msgid "Swedish to Võro"
+msgstr "Rootsi - võru"
+
+#: vro_oahpa/drill/forms.py:390
+msgid "Võro to Norwegian"
+msgstr "Võru - norra"
+
+#: vro_oahpa/drill/forms.py:391
+msgid "Norwegian to Võro"
+msgstr "Norra - võru"
+
+#: vro_oahpa/drill/forms.py:395 vro_oahpa/templates/oahpa_main.html:147
+#: vro_oahpa/templates/oahpa_main.html:150
+#: vro_oahpa/templates/oahpa_main.html:151
+msgid "Võro"
+msgstr "võru"
+
+#: vro_oahpa/drill/forms.py:399
+msgid "family"
+msgstr "Perekond"
+
+#: vro_oahpa/drill/forms.py:400
+msgid "human"
+msgstr "Inimesed"
+
+#: vro_oahpa/drill/forms.py:401
+msgid "human-like"
+msgstr "Inimesega seotud"
+
+#: vro_oahpa/drill/forms.py:402
+msgid "animal"
+msgstr "Loomad"
+
+#: vro_oahpa/drill/forms.py:403
+msgid "food/drink"
+msgstr "Toit ja jook"
+
+#: vro_oahpa/drill/forms.py:404
+msgid "time"
+msgstr "Aeg"
+
+#: vro_oahpa/drill/forms.py:405
+msgid "concretes"
+msgstr "Konkreetsed esemed"
+
+#: vro_oahpa/drill/forms.py:406
+msgid "body"
+msgstr "Keha"
+
+#: vro_oahpa/drill/forms.py:407
+msgid "clothes"
+msgstr "Riided"
+
+#: vro_oahpa/drill/forms.py:408
+msgid "buildings/rooms"
+msgstr "Ehitised/toad"
+
+#: vro_oahpa/drill/forms.py:409
+msgid "city"
+msgstr "Linnas"
+
+#: vro_oahpa/drill/forms.py:410
+msgid "nature"
+msgstr "Loodus"
+
+#: vro_oahpa/drill/forms.py:411
+msgid "leisuretime/at_home"
+msgstr "Vaba aeg/kodu"
+
+#: vro_oahpa/drill/forms.py:412
+msgid "christmas"
+msgstr "Jõulud"
+
+#: vro_oahpa/drill/forms.py:413
+msgid "places"
+msgstr "Kohad/reisimine"
+
+#: vro_oahpa/drill/forms.py:414
+msgid "literature"
+msgstr "Kirjandus/tekst"
+
+#: vro_oahpa/drill/forms.py:415
+msgid "school/education"
+msgstr "Kool ja haridus"
+
+#: vro_oahpa/drill/forms.py:416
+msgid "abstracts"
+msgstr "Abstraktsed sõnad"
+
+#: vro_oahpa/drill/forms.py:417
+msgid "work/economy/tools"
+msgstr "Töö/majandus/tööriistad"
+
+#: vro_oahpa/drill/forms.py:418
+msgid "Multiword"
+msgstr "Mitmesõnalised väljendid"
+
+#: vro_oahpa/drill/forms.py:424
+msgid "0-10"
+msgstr "0-10"
+
+#: vro_oahpa/drill/forms.py:425
+msgid "0-20"
+msgstr "0-20"
+
+#: vro_oahpa/drill/forms.py:426
+msgid "0-100"
+msgstr "0-100"
+
+#: vro_oahpa/drill/forms.py:427
+msgid "0-1000"
+msgstr "0-1000"
+
+#: vro_oahpa/drill/forms.py:432
+msgid "1-10"
+msgstr ""
+
+#: vro_oahpa/drill/forms.py:433
+msgid "1-20"
+msgstr ""
+
+#: vro_oahpa/drill/forms.py:434
+msgid "1-100"
+msgstr "0-100"
+
+#: vro_oahpa/drill/forms.py:435
+msgid "1-1000"
+msgstr "0-1000"
+
+#: vro_oahpa/drill/forms.py:441
+msgid "String to numeral"
+msgstr "Sõnast arvuks"
+
+#: vro_oahpa/drill/forms.py:442
+msgid "Numeral to string"
+msgstr "Arvust sõnaks"
+
+#: vro_oahpa/drill/forms.py:446
+msgid "Strings to numerals"
+msgstr "Sõnadest arvudeks"
+
+#: vro_oahpa/drill/forms.py:447
+msgid "Numerals to strings"
+msgstr "Arvudest sõnadeks"
+
+#: vro_oahpa/drill/forms.py:455
+msgid "I"
+msgstr "I"
+
+#: vro_oahpa/drill/forms.py:456
+msgid "II"
+msgstr "II"
+
+#: vro_oahpa/drill/forms.py:457
+msgid "III"
+msgstr "III"
+
+#: vro_oahpa/drill/forms.py:458
+msgid "IV"
+msgstr "IV"
+
+#: vro_oahpa/drill/forms.py:459
+msgid "V"
+msgstr "V"
+
+#: vro_oahpa/drill/forms.py:460
+msgid "VI"
+msgstr "VI"
+
+#: vro_oahpa/drill/forms.py:461
+msgid "Odd"
+msgstr "Paaritu"
+
+#: vro_oahpa/drill/forms.py:465
+msgid "easy"
+msgstr "lihtne"
+
+#: vro_oahpa/drill/forms.py:466
+msgid "medium"
+msgstr "keskmine"
+
+#: vro_oahpa/drill/forms.py:467
+msgid "hard"
+msgstr "raske"
+
+#: vro_oahpa/drill/forms.py:471
+msgid "Firstmeeting"
+msgstr "Oahpásmuva Kárii"
+
+#: vro_oahpa/drill/forms.py:472
+msgid "Firstmeeting boy"
+msgstr "Oahpásmuva Lemehii"
+
+#: vro_oahpa/drill/forms.py:473
+msgid "Firstmeeting girl"
+msgstr "Oahpásmuva Liisái"
+
+#: vro_oahpa/drill/forms.py:474
+msgid "Firstmeeting man"
+msgstr "Oahpásmuva Hánsii"
+
+#: vro_oahpa/drill/forms.py:475 vro_oahpa/drill/templates/sahka.html:199
+msgid "Visit"
+msgstr "Guossis"
+
+#: vro_oahpa/drill/forms.py:476 vro_oahpa/drill/templates/sahka.html:204
+msgid "Grocery"
+msgstr "Borramušgávppis"
+
+#: vro_oahpa/drill/forms.py:477
+msgid "Shopadj"
+msgstr "Veardideapmi rámbuvrris"
+
+#: vro_oahpa/drill/forms.py:490 vro_oahpa/drill/templates/mgame_a.html:20
+#: vro_oahpa/drill/templates/mgame_v.html:20
+msgid "bisyllabic"
+msgstr "paritavulliset"
+
+#: vro_oahpa/drill/forms.py:491 vro_oahpa/drill/templates/mgame_a.html:21
+#: vro_oahpa/drill/templates/mgame_v.html:21
+msgid "trisyllabic"
+msgstr "paritontavulliset"
+
+#: vro_oahpa/drill/forms.py:492 vro_oahpa/drill/templates/mgame_a.html:22
+#: vro_oahpa/drill/templates/mgame_v.html:22
+msgid "contracted"
+msgstr "supistumavartalot"
+
+#: vro_oahpa/drill/templates/clock.html:12
+msgid "Enter the time in the digital clock format. (Ex. 10:21)"
+msgstr "Kirjuta kellaaeg arvudega (näiteks 10:21)."
+
+#: vro_oahpa/drill/templates/clock.html:14
+msgid "Enter the time in Võro."
+msgstr "Kirjuta kellaaeg sõnadega (näiteks pool kümme)."
+
+#: vro_oahpa/drill/templates/clock.html:20
+msgid "Select how many points of time to include."
+msgstr "Vali kellaaja ülesande raskusaste."
+
+#: vro_oahpa/drill/templates/clock.html:22
+#: vro_oahpa/drill/templates/num.html:66
+msgid "Select the direction"
+msgstr "Vali harjutus"
+
+#: vro_oahpa/drill/templates/dato.html:15
+msgid "Enter the date in numeric format (ex. 17.8.)"
+msgstr "Kirjuta kuupäev arvudega (näiteks 17.8.)."
+
+#: vro_oahpa/drill/templates/dato.html:17
+msgid "Write the date in Võro."
+msgstr "Kirjuta kuupäev sõnadega (näiteks seitsmeteistkümnes august)."
+
+#: vro_oahpa/drill/templates/dato.html:23
+msgid "Expression of dates numeric to words or vice versa."
+msgstr "Vali harjutus: arvulise kuupäeva kirjutamine sõnadega või vastupidi."
+
+#: vro_oahpa/drill/templates/fona.html:12
+msgid "Vowel harmony"
+msgstr "Vokaalharmoonia"
+
+#: vro_oahpa/drill/templates/fona.html:30
+msgid ""
+"The given words might be misspelled. Please correct the spelling errors. Pay "
+"attention to vowel harmony."
+msgstr ""
+"Antud sõnades võib leiduda vigu. Paranda õigekirjavead, võttes arvesse "
+"vokaalharmoonia reegleid."
+
+#: vro_oahpa/drill/templates/fona.html:32
+msgid "Colors:"
+msgstr "Värvid:"
+
+#: vro_oahpa/drill/templates/fona.html:34
+msgid "correct answer"
+msgstr "Õige vastus"
+
+#: vro_oahpa/drill/templates/fona.html:36
+msgid "almost correct answer"
+msgstr "Peaaegu õige vastus"
+
+#: vro_oahpa/drill/templates/fona.html:40
+#: vro_oahpa/drill/templates/fona.html:42
+msgid "incorrect answer"
+msgstr "Vale või õigekirjavigadega vastus"
+
+#: vro_oahpa/drill/templates/fona.html:47
+msgid "Fona"
+msgstr "Fona"
+
+#: vro_oahpa/drill/templates/fona.html:56
+#: vro_oahpa/drill/templates/leksa.html:52
+msgid "Set"
+msgstr "Teema"
+
+#: vro_oahpa/drill/templates/fona.html:58
+#: vro_oahpa/drill/templates/leksa.html:54
+#: vro_oahpa/drill/templates/leksa_place.html:27
+msgid "Select the language pair"
+msgstr "Vali keeltepaar"
+
+#: vro_oahpa/drill/templates/fona.html:60
+#: vro_oahpa/drill/templates/leksa.html:56
+#: vro_oahpa/drill/templates/mgame.html:60
+msgid "Book"
+msgstr "Õpik / peatükid"
+
+#: vro_oahpa/drill/templates/fona.html:65
+#: vro_oahpa/drill/templates/fona.html:68
+#: vro_oahpa/drill/templates/leksa.html:61
+#: vro_oahpa/drill/templates/leksa.html:64
+#: vro_oahpa/drill/templates/leksa_place.html:42
+#: vro_oahpa/drill/templates/mgame.html:68
+#: vro_oahpa/drill/templates/num.html:71
+#: vro_oahpa/drill/templates/vasta.html:70
+msgid "New set"
+msgstr "Uus test"
+
+#: vro_oahpa/drill/templates/fona.html:79
+#: vro_oahpa/drill/templates/game.html:215
+#: vro_oahpa/drill/templates/leksa.html:87
+#: vro_oahpa/drill/templates/vasta.html:103
+msgid "Test answers"
+msgstr "Kontrolli vastuseid"
+
+#: vro_oahpa/drill/templates/fona.html:82
+#: vro_oahpa/drill/templates/game.html:218
+#: vro_oahpa/drill/templates/leksa.html:90
+msgid "Show the correct answers"
+msgstr "Näita õigeid vastuseid"
+
+#: vro_oahpa/drill/templates/game.html:151
+msgid "help"
+msgstr "abi"
+
+#: vro_oahpa/drill/templates/game.html:155
+msgid "This is almost correct!"
+msgstr "See on peaaegu õige!"
+
+#: vro_oahpa/drill/templates/game.html:226
+msgid "Congratulations!"
+msgstr "Suurepärane!"
+
+#: vro_oahpa/drill/templates/game.html:229
+msgid "Your score:"
+msgstr "Sinu tulemus:"
+
+#: vro_oahpa/drill/templates/grammar_links_menu.html:5
+#: vro_oahpa/templates/grammar_links_menu.html:5
 msgid "Grammar explanations"
 msgstr "Grammatikaseletused"
 
-#: templates/vro_oahpa.html:82
-msgid "Reference materials"
-msgstr "Abimaterjalid"
-
-#: templates/vro_oahpa.html:84
-msgid "Instructions"
-msgstr "Juhised"
-
-#: templates/vro_oahpa.html:85
-msgid "Dictionary"
-msgstr "Veebisõnastik"
-
-#: templates/vro_oahpa.html:92 templates/vro_oahpa.html.py:95
-#: templates/vro_oahpa.html:98 templates/vro_oahpa.html.py:101
-#: templates/vro_oahpa.html:104
-msgid "Grammar"
-msgstr "Grammatika"
-
-#: templates/vro_oahpa.html:108
-msgid "Online courses"
-msgstr "Online-kursused"
-
-#: templates/vro_oahpa.html:111
-msgid "View progress"
-msgstr "Näita infot edasijõudmise kohta"
-
-#: templates/vro_oahpa.html:112 templates/admin/base.html:48
-#: templates/registration/password_change_done.html:3
-#: templates/registration/password_change_form.html:4
-msgid "Log out"
-msgstr "Logi välja"
-
-#: templates/vro_oahpa.html:114 templates/admin/login.html:26
-#: templates/registration/password_reset_complete.html:14
-msgid "Log in"
-msgstr "Logi sisse"
-
-#: templates/vro_oahpa_main.html:52 vro_drill/templates/language_menu.html:6
+#: vro_oahpa/drill/templates/language_menu.html:7
+#: vro_oahpa/templates/oahpa_main.html:53
 msgid "Interface language"
 msgstr "Kasutajaliidese keel"
 
-#: templates/vro_oahpa_main.html:100
-msgid "Answer to questions"
-msgstr "Vasta küsimustele"
+#: vro_oahpa/drill/templates/leksa.html:17
+#: vro_oahpa/drill/templates/leksa_place.html:6
+msgid "Words"
+msgstr "Sõnad"
 
-#: templates/vro_oahpa_main.html:107
-msgid "Words and translations"
-msgstr "Sõnad ja tõlked"
-
-#: templates/vro_oahpa_main.html:115
-msgid "Practice morphology"
-msgstr "Harjuta sõnade käänamist ja pööramist"
-
-#: templates/vro_oahpa_main.html:123
-msgid "Practice morphology in context"
-msgstr "Harjuta sõnade käänamist ja pööramist lause kontekstis"
-
-#: templates/vro_oahpa_main.html:131
-msgid "Dialogue game"
-msgstr "Dialoogid"
-
-#: templates/vro_oahpa_main.html:138
-msgid "Practice numerals"
-msgstr "Harjuta arve ja ajaväljendeid"
-
-#: templates/vro_oahpa_main.html:144
+#: vro_oahpa/drill/templates/leksa.html:40
 msgid ""
-"Oahpa is an internet program for learners of Võro. The program can be "
-"adjusted to different topics and levels of difficulty, and it generates new "
-"task sets automatically."
+"Give translations for words. You can choose a semantic set or part of the "
+"textbook but not both."
 msgstr ""
-"OAHPA on võru keele õppijatele mõeldud üle veebi vabalt kasutatav programm. "
-"Programmi saab kohandada erinevatele teemadele ja raskusastmetele ja see "
-"võib genereerida lugematul hulgal sama tüüpi, kuid veidi erinevaid harjutusi."
+"Tõlgi sõnad. Soovi korral võid valida sõnu ühest teemast (semantilisest "
+"hulgast) või ühest õpikust (või õpikupeatükist). Mõlemast menüüst korraga "
+"kitsendavat valikut teha ei saa."
 
-#: templates/vro_oahpa_main.html:146 vro_drill/templates/mgame.html:56
+#: vro_oahpa/drill/templates/leksa.html:43
+msgid "Quizz"
+msgstr "Test"
+
+#: vro_oahpa/drill/templates/leksa_place.html:7
+msgid "Names"
+msgstr "Kohanimed"
+
+#: vro_oahpa/drill/templates/leksa_place.html:11
+msgid "Give translations for placenames."
+msgstr ""
+"Käännä paikannimet. Voit valita sanat yleisyyden ja maantieteellisen "
+"sijainnin mukaan."
+
+#: vro_oahpa/drill/templates/leksa_place.html:19
+msgid "Geography"
+msgstr "Sijainti"
+
+#: vro_oahpa/drill/templates/leksa_place.html:21
+#: vro_oahpa/drill/templates/leksa_place.html:26
+msgid "Frequency"
+msgstr "Frekvenssi"
+
+#: vro_oahpa/drill/templates/mgame.html:31
+#: vro_oahpa/drill/templates/mgame.html:37
+msgid "Nouns"
+msgstr "Nimisõnad"
+
+#: vro_oahpa/drill/templates/mgame.html:32
+#: vro_oahpa/drill/templates/mgame.html:38
+msgid "Verbs"
+msgstr "Tegusõnad"
+
+#: vro_oahpa/drill/templates/mgame.html:33
+msgid "Adjectives"
+msgstr "Omadussõnad"
+
+#: vro_oahpa/drill/templates/mgame.html:43
+msgid "Morphology"
+msgstr "Morfoloogia"
+
+#: vro_oahpa/drill/templates/mgame.html:49
 msgid ""
 "NB! This is a test version. The games Leksa and Numra are working properly "
 "but Morfa-S and Morfa-C can still contain some errors."
@@ -120,98 +788,714 @@ msgstr ""
 "NB! Tegemist on testversiooniga. Leksa ja Numra töötavad korralikult, kuid "
 "morfoloogia õppemängudes Morfa-S ja Morfa-C võib olla veel üksikuid vigu!"
 
-#: templates/vro_oahpa_main.html:147
-msgid "Online reference materials"
-msgstr "Abimaterjalid veebis"
+#: vro_oahpa/drill/templates/mgame_a.html:7
+msgid ""
+"Add adjectives in correct forms. You get translation if you click the word."
+msgstr ""
+"Kirjuta õige omadussõna vorm. Sõnal klikkides näed selle eestikeelset tõlget."
 
-#: templates/vro_oahpa_main.html:150 templates/vro_oahpa_main.html.py:153
-#: templates/vro_oahpa_main.html:154 vro_drill/forms.py:387
-msgid "Võro"
-msgstr "võru"
+#: vro_oahpa/drill/templates/mgame_a.html:14
+#: vro_oahpa/drill/templates/mgame_der.html:20
+#: vro_oahpa/drill/templates/mgame_l.html:17
+#: vro_oahpa/drill/templates/mgame_l.html:20
+#: vro_oahpa/drill/templates/mgame_n.html:15
+#: vro_oahpa/drill/templates/mgame_n.html:24
+#: vro_oahpa/drill/templates/mgame_p.html:15
+msgid "Case"
+msgstr "Kääne"
 
-#: templates/vro_oahpa_main.html:150 templates/vro_oahpa_main.html.py:153
-#: templates/vro_oahpa_main.html:154
-msgid "Estonian"
-msgstr "eesti"
+#: vro_oahpa/drill/templates/mgame_a.html:16
+msgid "Grade"
+msgstr "Võrdlusaste"
 
-#: templates/vro_oahpa_main.html:150
-msgid "web dictionaries"
-msgstr "veebisõnastikud"
+#: vro_oahpa/drill/templates/mgame_a.html:18
+#: vro_oahpa/drill/templates/mgame_v.html:18
+msgid "Stem"
+msgstr "Tüvi"
 
-#: templates/vro_oahpa_main.html:156
-msgid "Other online materials:"
-msgstr "Muid võru keele veebimaterjale:"
+#: vro_oahpa/drill/templates/mgame_a.html:27
+#: vro_oahpa/drill/templates/mgame_l.html:30
+#: vro_oahpa/drill/templates/mgame_n.html:20
+#: vro_oahpa/drill/templates/mgame_v.html:16
+#: vro_oahpa/drill/templates/mgame_v.html:26
+msgid "Type"
+msgstr "Tüüp"
 
-#: templates/vro_oahpa_main.html:158
-msgid "Phonetics and orthography of Võro"
-msgstr "Võru keele foneetika ja ortograafia"
+#: vro_oahpa/drill/templates/mgame_der.html:7
+#: vro_oahpa/drill/templates/mgame_der.html:9
+msgid "Write the derived form."
+msgstr "Kirjuta tuletatud sõnavorm."
 
-#: templates/vro_oahpa_main.html:159
-msgid "Exercises on Võro adpositions as Find-the-key-game"
-msgstr "Kaassõnaharjutused võtmepeituse mänguna"
+#: vro_oahpa/drill/templates/mgame_der.html:17
+msgid "Derivation type"
+msgstr "Sõnatuletuse tüüp"
 
-#: templates/vro_oahpa_main.html:185
-msgid "North Saami Oahpa"
-msgstr "Põhjasaami Oahpa"
+#: vro_oahpa/drill/templates/mgame_l.html:7
+#: vro_oahpa/drill/templates/mgame_l.html:9
+msgid "Add numerals in correct forms."
+msgstr "Kirjuta arvsõnad õiges vormis."
 
-#: templates/vro_oahpa_main.html:188
-msgid "Are you visiting this site as part of a course?"
-msgstr "Kas osaled kursusel ning Sul on kasutajatunnus ja parool?"
+#: vro_oahpa/drill/templates/mgame_l.html:25
+#: vro_oahpa/drill/templates/vasta.html:62
+msgid "Level"
+msgstr "Tase"
 
-#: templates/vro_oahpa_main.html:188
-msgid "Log in here"
-msgstr "Logi sisse"
+#: vro_oahpa/drill/templates/mgame_n.html:7
+msgid ""
+"Put the nouns in the correct forms. You get a translation if you click on a "
+"word."
+msgstr ""
+"Kirjuta nimisõnad õiges vormis. Sõnal klikkides näed selle eestikeelset "
+"tõlget."
 
-#: templates/vro_oahpa_main.html:197
-msgid "Link to this exercise"
-msgstr "Otselink sellele harjutusele"
+#: vro_oahpa/drill/templates/mgame_n.html:9
+msgid "Add nouns in correct forms."
+msgstr "Kirjuta nimisõnad õiges vormis."
 
-#: templates/vro_oahpa_main.html:203
-msgid "Copyright 2011-2026 The Arctic University of Norway"
-msgstr "Copyright 2014 UiT Norra Arktika Ülikool"
+#: vro_oahpa/drill/templates/mgame_n.html:17
+msgid "Number"
+msgstr "Arv"
 
-#: templates/vro_oahpa_main.html:204
-msgid "Contact"
-msgstr "Kontakt"
+#: vro_oahpa/drill/templates/mgame_n.html:19
+msgid " singular only"
+msgstr "ainult ainsus"
 
-#: templates/admin/404.html:4 templates/admin/404.html.py:8
+#: vro_oahpa/drill/templates/mgame_p.html:7
+msgid "Add pronouns in correct forms."
+msgstr "Kirjuta asesõnad õiges vormis."
+
+#: vro_oahpa/drill/templates/mgame_p.html:13
+#: vro_oahpa/drill/templates/mgame_p.html:19
+msgid "Pronoun type"
+msgstr "Asesõna liik"
+
+#: vro_oahpa/drill/templates/mgame_p.html:22
+msgid "Reciprocative type"
+msgstr "Vastastikused asesõnad"
+
+#: vro_oahpa/drill/templates/mgame_v.html:7
+msgid "Add verbs in correct forms. You get translation if you click the word."
+msgstr ""
+"Kirjuta tegusõnad õiges vormis. Sõnal klikkides näed selle eestikeelset "
+"tõlget."
+
+#: vro_oahpa/drill/templates/mgame_v.html:9
+msgid "Add verbs in correct forms."
+msgstr "Kirjuta tegusõnad õiges vormis."
+
+#: vro_oahpa/drill/templates/num.html:43
+msgid "Numerals"
+msgstr "Arvsõnad"
+
+#: vro_oahpa/drill/templates/num.html:50
+msgid "Enter the numeral. (Ex. 72)"
+msgstr "Kirjuta arv (näiteks 72)."
+
+#: vro_oahpa/drill/templates/num.html:52
+msgid "Enter the Võro number. (Ex. säidsekümmend katś)."
+msgstr "Kirjuta arv sõnadega (näiteks säidsekümmend katś)."
+
+#: vro_oahpa/drill/templates/num.html:64
+msgid "Select the range of numerals."
+msgstr "Vali arvude vahemik."
+
+#: vro_oahpa/drill/templates/num_ord.html:13
+msgid ""
+"Write a numeral followed by fullstop (for example, 32.). Please keep to this "
+"format."
+msgstr "Kirjuta järgarv (lõpeb punktiga), näiteks 32."
+
+#: vro_oahpa/drill/templates/num_ord.html:15
+msgid "Write the ordinal numbers in Võro (for example, katsas)."
+msgstr "Kirjuta järgarv sõnadega (näiteks katsas)."
+
+#: vro_oahpa/drill/templates/numra_submenu.html:3
+msgid "Cardinals"
+msgstr "Põhiarvsõnad"
+
+#: vro_oahpa/drill/templates/numra_submenu.html:4
+msgid "Ordinals"
+msgstr "Järgarvsõnad"
+
+#: vro_oahpa/drill/templates/numra_submenu.html:5
+msgid "Time"
+msgstr "Kellaajad"
+
+#: vro_oahpa/drill/templates/numra_submenu.html:6
+msgid "Date"
+msgstr "Kuupäevad"
+
+#: vro_oahpa/drill/templates/sahka.html:107
+msgid "Select a dialogue"
+msgstr "Vali dialoog"
+
+#: vro_oahpa/drill/templates/sahka.html:156
+msgid ""
+"Answer to the questions with full sentences. Remember big initial letter in "
+"placenames."
+msgstr ""
+"Vasta kysymyksiin täydellisellä lauseella. Muista iso alkukirjain nimissä."
+
+#: vro_oahpa/drill/templates/sahka.html:167
+msgid ""
+"NB! NB! The Sahka game is not working properly, due to technical problems! "
+"NB! NB!"
+msgstr ""
+"NB! NB! The Sahka game is not working properly, due to technical problems! "
+"NB! NB!"
+
+#: vro_oahpa/drill/templates/sahka.html:168
+msgid ""
+"NB! NB! The Sahka game is temporarily out of order, due to technical "
+"maintenance! NB! NB!"
+msgstr ""
+"NB! NB! The Sahka game is temporarily out of order, due to technical "
+"maintenance! NB! NB!"
+
+#: vro_oahpa/drill/templates/sahka.html:179
+msgid "Meeting with Kare"
+msgstr "Oahpásmuva Kárii"
+
+#: vro_oahpa/drill/templates/sahka.html:184
+msgid "Meeting with Hansa"
+msgstr "Oahpásmuva Hánsii"
+
+#: vro_oahpa/drill/templates/sahka.html:188
+msgid "Meeting with Lisa"
+msgstr "Oahpásmuva Liisái"
+
+#: vro_oahpa/drill/templates/sahka.html:192
+msgid "Meeting with Lemet"
+msgstr "Oahpásmuva Lemehii"
+
+#: vro_oahpa/drill/templates/sahka.html:209
+msgid "Shop"
+msgstr "Veardideapmi rámbuvrris"
+
+#: vro_oahpa/drill/templates/sahka.html:239
+msgid "Answer"
+msgstr "Vastaus"
+
+#: vro_oahpa/drill/templates/vasta.html:16
+msgid "Vasta-S"
+msgstr "Vasta-S"
+
+#: vro_oahpa/drill/templates/vasta.html:17
+msgid "Vasta-F"
+msgstr "Vasta-F"
+
+#: vro_oahpa/drill/templates/vasta.html:39
+msgid "Vasta"
+msgstr "Vasta"
+
+#: vro_oahpa/drill/templates/vasta.html:43
+msgid "Answer the questions with full sentences."
+msgstr "Vasta kysymyksiin täydellisellä lauseella."
+
+#: vro_oahpa/drill/templates/vasta.html:44
+msgid ""
+"The blue words are given in the primary form. Your task is to write them in "
+"the correct grammatical form."
+msgstr ""
+"Vasta küsimustele täislausega. Ära unusta kirjutada nimesid suure "
+"algustähega. Sinised sõnad on antud algvormis. Sinu ülesandeks on need "
+"kirjutada õiges vormis."
+
+#: vro_oahpa/drill/templates/vasta.html:46
+msgid ""
+"Answer to the questions with full sentences. Be aware of that if there is "
+"moai/mii in the question, you have to answer with doai/dii. "
+msgstr ""
+"Vasta kysymyksiin täydellisella lauseella. Huomaa, että jos kysymyksessä on "
+"moai/mii, niin vastauksessa pitää olla doai/dii. "
+
+#: vro_oahpa/drill/templates/vasta.html:57
+#, fuzzy
+msgid ""
+"NB! NB! The Vasta game is not working properly, due to technical problems! "
+"NB! NB!"
+msgstr ""
+"NB! NB! The VastaS game is not working properly, due to technical problems! "
+"NB! NB!"
+
+#: vro_oahpa/drill/templates/vasta.html:58
+msgid ""
+"NB! NB! The Vasta game is temporarily out of order, due to technical "
+"maintenance! NB! NB!"
+msgstr ""
+"NB! NB! The Vasta game is temporarily out of order, due to technical "
+"maintenance! NB! NB!"
+
+#: vro_oahpa/drill/templates/vasta.html:63
+msgid "Number of task words"
+msgstr "Tehtäväsanojen määrä"
+
+#: vro_oahpa/drill/templates/visl_main.html:37
+#, fuzzy
+msgid ""
+"is a collection of grammar games developed for grammar learning by Syddansk "
+"Universitet. Here are the VISL games for North Sami. Note! Some of the games "
+"require the latest Java version, and do not function on Mac computers."
+msgstr ""
+"on kokoelma pelejä kielenopiskelijoille. VISL-pelit on kehittänyt Syddansk "
+"vroersitet. Alta löydät linkit pohjoissaamen peleihin. HUOM! Osa peleistä "
+"tarvitse viimeistä Java-versiota, eikä sen takia toimi Mac-tietokoneissa."
+
+#: vro_oahpa/drill/templates/visl_main.html:85
+msgid "Paint nouns, verbs and other words."
+msgstr "Maalaa nomineja, verbejä ja muita sanoja."
+
+#: vro_oahpa/drill/templates/visl_main.html:105
+#: vro_oahpa/drill/templates/visl_main.html:131
+#: vro_oahpa/drill/templates/visl_main.html:156
+#: vro_oahpa/drill/templates/visl_main.html:218
+#: vro_oahpa/drill/templates/visl_main.html:244
+#: vro_oahpa/drill/templates/visl_main.html:270
+#: vro_oahpa/drill/templates/visl_main.html:329
+#: vro_oahpa/drill/templates/visl_main.html:338
+#: vro_oahpa/drill/templates/visl_main.html:364
+msgid "(instructions)"
+msgstr "(ohjeita)"
+
+#: vro_oahpa/drill/templates/visl_main.html:111
+msgid "Nouns, verbs and other words shall be put into the right place."
+msgstr "Sijoita paikalleen nominit, verbit ja muut sanat."
+
+#: vro_oahpa/drill/templates/visl_main.html:136
+msgid "Shoot nouns, verbs and other words flying through the air."
+msgstr "Ammuskele nomineja, verbejä ja muita sanoja."
+
+#: vro_oahpa/drill/templates/visl_main.html:198
+msgid "Hurry through the labyrinth to the right part of speech."
+msgstr "Kiirehdi labyrintin läpi oikean sanaluokan luokse."
+
+#: vro_oahpa/drill/templates/visl_main.html:224
+msgid "Sentence members shall fall into right place - a Tetris game."
+msgstr "Lausejäsenten pitää läytää oikean paikkansa - Tetris-peli"
+
+#: vro_oahpa/drill/templates/visl_main.html:250
+msgid "You shall save the parts of speech. (NOT for Mac!)"
+msgstr "Pelasta sanaluokat. (EI Macissa!)"
+
+#: vro_oahpa/drill/templates/visl_main.html:309
+msgid "Write the correct wordform for the lemma."
+msgstr "Etsi oikea sanamuoto."
+
+#: vro_oahpa/drill/templates/visl_main.html:335
+msgid "Guess the right animal."
+msgstr "Arvaa mikä eläin on kyseessä."
+
+#: vro_oahpa/drill/templates/visl_main.html:344
+msgid "Examine and build sentence trees."
+msgstr "Rakenna ja tarkastele lausepuita."
+
+#: vro_oahpa/drill/templates/visl_main.html:382
+msgid "Page language"
+msgstr "Käyttöliittymäkieli"
+
+#: vro_oahpa/drill/templates/visl_main.html:435
+msgid "Teachers and students guide"
+msgstr "VISL for nordsamisk"
+
+#: vro_oahpa/drill/templates/visl_main.html:445
+msgid "Main page"
+msgstr "Pääsivu"
+
+#: vro_oahpa/drill/templates/visl_main.html:449
+msgid "About OAHPA!"
+msgstr "OAHPAsta!"
+
+#: vro_oahpa/drill/templates/visl_main.html:452
+msgid "Feedback"
+msgstr "Palaute"
+
+#: vro_oahpa/drill/views.py:568 vro_oahpa/drill/views.py:569
+msgid "Practise attributes"
+msgstr "Harjoittele attribuuttimuotoja."
+
+#: vro_oahpa/drill/views.py:570
+msgid "Practise adjectives in nominative"
+msgstr "Harjoittele adjektiivin nominatiivimuotoja."
+
+#: vro_oahpa/drill/views.py:571
+msgid "Practise adjectives in illative"
+msgstr "Harjoittele adjektiivien illatiivia."
+
+#: vro_oahpa/drill/views.py:572
+msgid "Practise adjectives in accusative"
+msgstr "Harjoittele akkusatiivien akkusatiivia."
+
+#: vro_oahpa/drill/views.py:573
+msgid "Practise adjectives in comitative"
+msgstr "Harjoittele adjektiivien komitatiivimuotoja."
+
+#: vro_oahpa/drill/views.py:574
+msgid "Practise adjectives in essive"
+msgstr "Harjoittele adjektiivien predikatiivimuotoja."
+
+#: vro_oahpa/drill/views.py:575
+msgid "Practise adjectives in genitive"
+msgstr "Harjoittele adjektiivien genetiiviä."
+
+#: vro_oahpa/drill/views.py:576
+msgid "Practise adjectives in plural"
+msgstr "Harjoittele adjektiivien monikkoa."
+
+#: vro_oahpa/drill/views.py:577
+msgid "Practise adjectives in locative"
+msgstr "Harjoittele adjektiivien lokatiivia."
+
+#: vro_oahpa/drill/views.py:578
+msgid "Practise comparative"
+msgstr "Harjoittele komparatiivia."
+
+#: vro_oahpa/drill/views.py:579
+msgid "Practise superlative"
+msgstr "Harjoittele superlatiivia."
+
+#: vro_oahpa/drill/views.py:580
+msgid "Practise verb derivation"
+msgstr "Harjoittele verbien johtamista."
+
+#: vro_oahpa/drill/views.py:581 vro_oahpa/drill/views.py:582
+msgid "Practise verb passive derivation"
+msgstr "Harjoittele verbien johtamista passiiviverbeiksi."
+
+#: vro_oahpa/drill/views.py:583
+msgid "Practise adjective to verb derivation"
+msgstr "Harjoittele adjektiivien johtamista verbeiksi."
+
+#: vro_oahpa/drill/views.py:584 vro_oahpa/drill/views.py:585
+#: vro_oahpa/drill/views.py:586
+msgid "Practise noun possessive suffixes"
+msgstr "Harjoittele kollektiivisten lukujen akkusatiivia."
+
+#: vro_oahpa/drill/views.py:587
+msgid "Practise noun possessive suffixes in accusative"
+msgstr "Harjoittele possessiivisuffiksien akkusatiivia."
+
+#: vro_oahpa/drill/views.py:588
+msgid "Practise noun possessive suffixes in illative"
+msgstr "Harjoittele kollektiivisten lukujen akkusatiivia."
+
+#: vro_oahpa/drill/views.py:589
+msgid "Practise noun possessive suffixes in locative"
+msgstr "Harjoittele kollektiivisten lukujen akkusatiivia."
+
+#: vro_oahpa/drill/views.py:590
+msgid "Practise noun possessive suffixes in genitive"
+msgstr "Harjoittele kollektiivisten lukujen akkusatiivia."
+
+#: vro_oahpa/drill/views.py:591
+msgid "Practise noun possessive suffixes in comitative"
+msgstr "Harjoittele kollektiivisten lukujen akkusatiivia."
+
+#: vro_oahpa/drill/views.py:592
+msgid "Practise attributes in positive"
+msgstr "Harjoittele positiivin attribuuttimuotoja."
+
+#: vro_oahpa/drill/views.py:593
+msgid "Practise attributes in comparative"
+msgstr "Harjoittele komparatiivin attribuuttimuotoja."
+
+#: vro_oahpa/drill/views.py:594
+msgid "Practise attributes in superlative"
+msgstr "Harjoittele superlatiivin attribuuttimuotoja."
+
+#: vro_oahpa/drill/views.py:595
+msgid "Practise predicative in positive"
+msgstr "Harjoittele positiivin predikatiivimuotoja."
+
+#: vro_oahpa/drill/views.py:596
+msgid "Practise predicative in comparative"
+msgstr "Harjoittele komparatiivin predikatiivimuotoja."
+
+#: vro_oahpa/drill/views.py:597
+msgid "Practise predicative in superlative"
+msgstr "Harjoittele superlatiivin predikatiivimuotoja."
+
+#: vro_oahpa/drill/views.py:598
+msgid "Practise numeral attributes"
+msgstr "Harjoittele lukusanojen attribuuttimuotoja."
+
+#: vro_oahpa/drill/views.py:599 vro_oahpa/drill/views.py:614
+msgid "Practise plural"
+msgstr "Harjoittele nominatiivin monikkoa."
+
+#: vro_oahpa/drill/views.py:600 vro_oahpa/drill/views.py:615
+msgid "Practise nominative"
+msgstr "Harjuta nominatiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:601 vro_oahpa/drill/views.py:616
+msgid "Practise genitive"
+msgstr "Harjuta genitiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:602 vro_oahpa/drill/views.py:617
+msgid "Practise partitive"
+msgstr "Harjuta partitiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:603 vro_oahpa/drill/views.py:618
+msgid "Practise illative"
+msgstr "Harjuta illatiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:604 vro_oahpa/drill/views.py:619
+msgid "Practise inessive"
+msgstr "Harjuta inessiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:605 vro_oahpa/drill/views.py:620
+msgid "Practise elative"
+msgstr "Harjuta elatiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:606 vro_oahpa/drill/views.py:621
+msgid "Practise allative"
+msgstr "Harjuta allatiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:607 vro_oahpa/drill/views.py:622
+msgid "Practise adessive"
+msgstr "Harjuta adessiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:608 vro_oahpa/drill/views.py:623
+msgid "Practise ablative"
+msgstr "Harjuta ablatiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:609 vro_oahpa/drill/views.py:624
+msgid "Practise translative"
+msgstr "Harjuta translatiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:610
+msgid "Practise terminative"
+msgstr "Harjuta terminatiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:611
+msgid "Practise essive"
+msgstr "Harjuta essiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:612
+msgid "Practise abessive"
+msgstr "Harjuta abessiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:613
+msgid "Practise comitative"
+msgstr "Harjuta komitatiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:625
+msgid "Choose between illative and allative"
+msgstr "Kas sisseütlev või alaleütlev kääne?"
+
+#: vro_oahpa/drill/views.py:626
+msgid "Choose between inessive and adessive"
+msgstr "Kas seesütlev või alalütlev kääne?"
+
+#: vro_oahpa/drill/views.py:627
+msgid "Practice object. Choose between genitive and nominative"
+msgstr "Harjuta sihitise käänete kasutamist."
+
+#: vro_oahpa/drill/views.py:628 vro_oahpa/drill/views.py:629
+#: vro_oahpa/drill/views.py:630 vro_oahpa/drill/views.py:631
+msgid "Practise a mix"
+msgstr "Harjuta erinevate vormide moodustamist."
+
+#: vro_oahpa/drill/views.py:632
+msgid "Practise numerals in illative"
+msgstr "Harjuta arvsõnade illatiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:633
+msgid "Practise numerals in accusative"
+msgstr "Harjoittele lukusanojen akkusatiivia."
+
+#: vro_oahpa/drill/views.py:634
+msgid "Practise numerals in comitative"
+msgstr "Harjuta arvsõnade komitatiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:635
+msgid "Practise numerals in essive"
+msgstr "Harjuta arvsõnade essiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:636
+msgid "Practise numerals in genitive"
+msgstr "Harjuta arvsõnade genitiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:637
+msgid "Practise numerals in plural"
+msgstr "Harjuta arvsõnade mitmuse moodustamist."
+
+#: vro_oahpa/drill/views.py:638
+msgid "Practise numerals in locative"
+msgstr "Harjoittele lukusanojen lokatiivia."
+
+#: vro_oahpa/drill/views.py:639
+msgid "Practise collective numerals"
+msgstr "Harjuta kollektiivsete arvsõnade käänamist."
+
+#: vro_oahpa/drill/views.py:640
+msgid "Practise ordinal numbers"
+msgstr "Harjuta järgarvsõnade käänamist."
+
+#: vro_oahpa/drill/views.py:641
+msgid "Practise ordinal numerals in illative"
+msgstr "Harjuta järgarvsõnade illatiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:642
+msgid "Practise ordinal numerals in accusative"
+msgstr "Harjoittele järjestyslukujen akkusatiivia."
+
+#: vro_oahpa/drill/views.py:643
+msgid "Practise ordinal numerals in comitative"
+msgstr "Harjuta arvsõnade komitatiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:644
+msgid "Practise ordinal numerals in essive"
+msgstr "Harjuta arvsõnade essiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:645
+msgid "Practise ordinal numerals in genitive"
+msgstr "Harjuta arvsõnade genitiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:646
+msgid "Practise ordinal numerals in plural"
+msgstr "Harjuta arvsõnade mitmuse moodustamist."
+
+#: vro_oahpa/drill/views.py:647
+msgid "Practise ordinal numerals in locative"
+msgstr "Harjoittele järjestyslukujen lokatiivia."
+
+#: vro_oahpa/drill/views.py:648
+msgid "Practise collective numerals in illative"
+msgstr "Harjuta kollektiivsete arvsõnade illatiivi moodustamist."
+
+#: vro_oahpa/drill/views.py:649
+msgid "Practise collective numerals in accusative"
+msgstr "Harjoittele kollektiivisten lukujen lokatiivia."
+
+#: vro_oahpa/drill/views.py:650
+msgid "Practise collective numerals in comitative"
+msgstr "Harjoittele kollektiivisten lukujen komitatiivia."
+
+#: vro_oahpa/drill/views.py:651
+msgid "Practise collective numerals in essive"
+msgstr "Harjoittele kollektiivisten lukujen essiiviä."
+
+#: vro_oahpa/drill/views.py:652
+msgid "Practise collective numerals in genitive"
+msgstr "Harjoittele kollektiivisten lukujen genetiiviä."
+
+#: vro_oahpa/drill/views.py:653
+msgid "Practise collective numerals in plural"
+msgstr "Harjoittele kollektiivisten lukujen monikkoa."
+
+#: vro_oahpa/drill/views.py:654
+msgid "Practise collective numerals in locative"
+msgstr "Harjoittele kollektiivisten lukujen lokatiivia."
+
+#: vro_oahpa/drill/views.py:655 vro_oahpa/drill/views.py:663
+msgid "Practise present"
+msgstr "Harjuta oleviku moodustamist."
+
+#: vro_oahpa/drill/views.py:656 vro_oahpa/drill/views.py:664
+msgid "Practise past"
+msgstr "Harjuta mineviku moodustamist."
+
+#: vro_oahpa/drill/views.py:657
+msgid "Practise back negation"
+msgstr "Harjuta tagaeituse moodustamist."
+
+#: vro_oahpa/drill/views.py:658 vro_oahpa/drill/views.py:665
+msgid "Practise perfect"
+msgstr "Harjuta täismineviku moodustamist."
+
+#: vro_oahpa/drill/views.py:659 vro_oahpa/drill/views.py:666
+msgid "Practise gerund"
+msgstr "Harjuta des-vormi moodustamist."
+
+#: vro_oahpa/drill/views.py:660 vro_oahpa/drill/views.py:667
+msgid "Practise conditional"
+msgstr "Harjuta tingiva kõneviisi vormide moodustamist."
+
+#: vro_oahpa/drill/views.py:661 vro_oahpa/drill/views.py:668
+msgid "Practise imperative"
+msgstr "Harjuta käskiva kõneviisi vormide moodustamist."
+
+#: vro_oahpa/drill/views.py:662 vro_oahpa/drill/views.py:669
+msgid "Practise potential"
+msgstr "Harjoittele potentiaalia."
+
+#: vro_oahpa/drill/views.py:670
+msgid "Practise personal pronouns"
+msgstr "Harjuta isikuliste asesõnade käänamist."
+
+#: vro_oahpa/drill/views.py:671
+msgid "Practise reciprocative pronouns"
+msgstr "Harjuta vastastikuste asesõnade käänamist."
+
+#: vro_oahpa/drill/views.py:672
+msgid "Practise reflexive pronouns"
+msgstr "Harjuta enesekohaste asesõnade käänamist."
+
+#: vro_oahpa/drill/views.py:673
+msgid "Practise relative pronouns"
+msgstr "Harjuta küsivate-siduvate asesõnade käänamist."
+
+#: vro_oahpa/drill/views.py:674
+msgid "Practise demonstrative pronouns"
+msgstr "Harjuta näitavate asesõnade käänamist."
+
+#: vro_oahpa/templates/404.html:8 vro_oahpa/templates/500.html:8
+msgid "Error"
+msgstr "Viga"
+
+#: vro_oahpa/templates/404.html:9
+msgid "Page not found."
+msgstr "Lehekülge ei leitud."
+
+#: vro_oahpa/templates/500.html:9
+msgid "There has been a technical error, please try again."
+msgstr "Tehniline viga. Proovige uuesti."
+
+#: vro_oahpa/templates/500.html:10
+msgid "We are developing the program."
+msgstr "Programm on alles arendusjärgus. Vabandame!"
+
+#: vro_oahpa/templates/admin/404.html:4 vro_oahpa/templates/admin/404.html:8
 msgid "Page not found"
 msgstr "Lehekülge ei leitud."
 
-#: templates/admin/404.html:10
+#: vro_oahpa/templates/admin/404.html:10
 msgid "We're sorry, but the requested page could not be found."
 msgstr "Vabandage, lehekülge ei leitud."
 
-#: templates/admin/500.html:4 templates/admin/app_index.html:8
-#: templates/admin/base.html:55 templates/admin/change_form.html:18
-#: templates/admin/change_list.html:42
-#: templates/admin/delete_confirmation.html:6
-#: templates/admin/delete_selected_confirmation.html:6
-#: templates/admin/invalid_setup.html:4 templates/admin/object_history.html:6
-#: templates/admin/auth/user/change_password.html:11
-#: templates/registration/logged_out.html:4
-#: templates/registration/password_change_done.html:4
-#: templates/registration/password_change_form.html:5
-#: templates/registration/password_reset_complete.html:4
-#: templates/registration/password_reset_confirm.html:4
-#: templates/registration/password_reset_done.html:4
-#: templates/registration/password_reset_form.html:4
+#: vro_oahpa/templates/admin/500.html:4
+#: vro_oahpa/templates/admin/app_index.html:8
+#: vro_oahpa/templates/admin/auth/user/change_password.html:11
+#: vro_oahpa/templates/admin/base.html:55
+#: vro_oahpa/templates/admin/change_form.html:18
+#: vro_oahpa/templates/admin/change_list.html:42
+#: vro_oahpa/templates/admin/delete_confirmation.html:6
+#: vro_oahpa/templates/admin/delete_selected_confirmation.html:6
+#: vro_oahpa/templates/admin/invalid_setup.html:4
+#: vro_oahpa/templates/admin/object_history.html:6
+#: vro_oahpa/templates/registration/logged_out.html:4
+#: vro_oahpa/templates/registration/password_change_done.html:4
+#: vro_oahpa/templates/registration/password_change_form.html:5
+#: vro_oahpa/templates/registration/password_reset_complete.html:4
+#: vro_oahpa/templates/registration/password_reset_confirm.html:4
+#: vro_oahpa/templates/registration/password_reset_done.html:4
+#: vro_oahpa/templates/registration/password_reset_form.html:4
 msgid "Home"
-msgstr "Pealeht"
+msgstr "Esileht"
 
-#: templates/admin/500.html:4
+#: vro_oahpa/templates/admin/500.html:4
 msgid "Server error"
 msgstr "Serveri viga"
 
-#: templates/admin/500.html:6
+#: vro_oahpa/templates/admin/500.html:6
 msgid "Server error (500)"
 msgstr "Serveri viga (500)"
 
-#: templates/admin/500.html:9
+#: vro_oahpa/templates/admin/500.html:9
 msgid "Server Error <em>(500)</em>"
 msgstr "Serveri viga <em>(500)</em>"
 
-#: templates/admin/500.html:10
+#: vro_oahpa/templates/admin/500.html:10
 msgid ""
 "There's been an error. It's been reported to the site administrators via e-"
 "mail and should be fixed shortly. Thanks for your patience."
@@ -219,95 +1503,135 @@ msgstr ""
 "Viga programmis. Administraatorit on teavitatud e-posti teel. Täname "
 "kannatlikkuse eest."
 
-#: templates/admin/actions.html:4
+#: vro_oahpa/templates/admin/actions.html:4
 msgid "Run the selected action"
 msgstr "Käivita valitud tegevus"
 
-#: templates/admin/actions.html:4
+#: vro_oahpa/templates/admin/actions.html:4
 msgid "Go"
 msgstr "Mine"
 
-#: templates/admin/actions.html:11
+#: vro_oahpa/templates/admin/actions.html:11
 msgid "Click here to select the objects across all pages"
 msgstr "Kliki siin, kui soovid valida objekte kõikidelt lehekülgedelt"
 
-#: templates/admin/actions.html:11
+#: vro_oahpa/templates/admin/actions.html:11
 #, python-format
 msgid "Select all %(total_count)s %(module_name)s"
 msgstr "Vali kõik %(total_count)s %(module_name)s"
 
-#: templates/admin/actions.html:13
+#: vro_oahpa/templates/admin/actions.html:13
 msgid "Clear selection"
 msgstr "Tühista valik"
 
-#: templates/admin/app_index.html:10 templates/admin/index.html:19
+#: vro_oahpa/templates/admin/app_index.html:10
+#: vro_oahpa/templates/admin/index.html:19
 #, python-format
 msgid "%(name)s"
 msgstr "%(name)s"
 
-#: templates/admin/base.html:28
-msgid "Welcome,"
-msgstr "Tere tulemast,"
+#: vro_oahpa/templates/admin/auth/user/add_form.html:6
+msgid ""
+"First, enter a username and password. Then, you'll be able to edit more user "
+"options."
+msgstr ""
+"Først oppgir du brukernavn og passord. Deretter vil du være i stand til å "
+"redigere flere brukervalg."
 
-#: templates/admin/base.html:33
-#: templates/registration/password_change_done.html:3
-#: templates/registration/password_change_form.html:4
-msgid "Documentation"
-msgstr "Dokumentatsioon"
+#: vro_oahpa/templates/admin/auth/user/add_form.html:8
+msgid "Enter a username and password."
+msgstr "Oppgi brukernavn og passord."
 
-#: templates/admin/base.html:41
-#: templates/admin/auth/user/change_password.html:15
-#: templates/admin/auth/user/change_password.html:48
-#: templates/registration/password_change_done.html:3
-#: templates/registration/password_change_form.html:4
+#: vro_oahpa/templates/admin/auth/user/change_password.html:15
+#: vro_oahpa/templates/admin/auth/user/change_password.html:48
+#: vro_oahpa/templates/admin/base.html:41
+#: vro_oahpa/templates/registration/password_change_done.html:3
+#: vro_oahpa/templates/registration/password_change_form.html:4
 msgid "Change password"
 msgstr "Parooli vahetus"
 
-#: templates/admin/base_site.html:4
-msgid "Django site admin"
-msgstr "Django administraator"
-
-#: templates/admin/base_site.html:7
-msgid "Django administration"
-msgstr "Django administreerimine"
-
-#: templates/admin/change_form.html:21 templates/admin/index.html:29
-msgid "Add"
-msgstr "Lisa"
-
-#: templates/admin/change_form.html:28 templates/admin/object_history.html:10
-msgid "History"
-msgstr "Ajalugu"
-
-#: templates/admin/change_form.html:29
-#: templates/admin/edit_inline/stacked.html:9
-#: templates/admin/edit_inline/tabular.html:28
-msgid "View on site"
-msgstr "Näita veebilehte"
-
-#: templates/admin/change_form.html:39 templates/admin/change_list.html:71
-#: templates/admin/auth/user/change_password.html:24
-#: templates/registration/password_change_form.html:15
+#: vro_oahpa/templates/admin/auth/user/change_password.html:24
+#: vro_oahpa/templates/admin/change_form.html:39
+#: vro_oahpa/templates/admin/change_list.html:71
+#: vro_oahpa/templates/registration/password_change_form.html:15
 msgid "Please correct the error below."
 msgid_plural "Please correct the errors below."
 msgstr[0] "Palun paranda järgnev viga."
 msgstr[1] "Palun paranda järgnevad vead."
 
-#: templates/admin/change_list.html:63
+#: vro_oahpa/templates/admin/auth/user/change_password.html:28
+#, python-format
+msgid "Enter a new password for the user <strong>%(username)s</strong>."
+msgstr "Lag et nytt passord for brukeren <strong>%(username)s</strong>"
+
+#: vro_oahpa/templates/admin/auth/user/change_password.html:35
+msgid "Password"
+msgstr "Salasana"
+
+#: vro_oahpa/templates/admin/auth/user/change_password.html:41
+#: vro_oahpa/templates/registration/password_change_form.html:37
+msgid "Password (again)"
+msgstr "Salasana (uudestaan)"
+
+#: vro_oahpa/templates/admin/auth/user/change_password.html:42
+msgid "Enter the same password as above, for verification."
+msgstr "Oppgi det samme passordet som ovenfor, for verifisering"
+
+#: vro_oahpa/templates/admin/base.html:28
+msgid "Welcome,"
+msgstr "Tere tulemast,"
+
+#: vro_oahpa/templates/admin/base.html:33
+#: vro_oahpa/templates/registration/password_change_done.html:3
+#: vro_oahpa/templates/registration/password_change_form.html:4
+msgid "Documentation"
+msgstr "Dokumentatsioon"
+
+#: vro_oahpa/templates/admin/base.html:48
+#: vro_oahpa/templates/registration/password_change_done.html:3
+#: vro_oahpa/templates/registration/password_change_form.html:4
+msgid "Log out"
+msgstr "Logi välja"
+
+#: vro_oahpa/templates/admin/base_site.html:4
+msgid "Django site admin"
+msgstr "Django administraator"
+
+#: vro_oahpa/templates/admin/base_site.html:7
+msgid "Django administration"
+msgstr "Django administreerimine"
+
+#: vro_oahpa/templates/admin/change_form.html:21
+#: vro_oahpa/templates/admin/index.html:29
+msgid "Add"
+msgstr "Lisa"
+
+#: vro_oahpa/templates/admin/change_form.html:28
+#: vro_oahpa/templates/admin/object_history.html:10
+msgid "History"
+msgstr "Ajalugu"
+
+#: vro_oahpa/templates/admin/change_form.html:29
+#: vro_oahpa/templates/admin/edit_inline/stacked.html:9
+#: vro_oahpa/templates/admin/edit_inline/tabular.html:28
+msgid "View on site"
+msgstr "Näita veebilehte"
+
+#: vro_oahpa/templates/admin/change_list.html:63
 #, python-format
 msgid "Add %(name)s"
 msgstr "Lisa  %(name)s"
 
-#: templates/admin/change_list.html:82
+#: vro_oahpa/templates/admin/change_list.html:82
 msgid "Filter"
 msgstr "Filter"
 
-#: templates/admin/delete_confirmation.html:10
-#: templates/admin/submit_line.html:4
+#: vro_oahpa/templates/admin/delete_confirmation.html:10
+#: vro_oahpa/templates/admin/submit_line.html:4
 msgid "Delete"
 msgstr "Kustuta"
 
-#: templates/admin/delete_confirmation.html:16
+#: vro_oahpa/templates/admin/delete_confirmation.html:16
 #, python-format
 msgid ""
 "Deleting the %(object_name)s '%(escaped_object)s' would result in deleting "
@@ -318,7 +1642,7 @@ msgstr ""
 "av beslekta objekt, men brukerkontoen din har ikke tilgangsrettigheter til å "
 "slette følgende objekttyper:"
 
-#: templates/admin/delete_confirmation.html:23
+#: vro_oahpa/templates/admin/delete_confirmation.html:23
 #, python-format
 msgid ""
 "Are you sure you want to delete the %(object_name)s \"%(escaped_object)s\"? "
@@ -327,16 +1651,16 @@ msgstr ""
 "Oletko varma, että haluat poistaa %(object_name)s:n \"%(escaped_object)s\"? "
 "Kaikki tässä listatut siihen liittyvät aiheet poistetaan samalla:"
 
-#: templates/admin/delete_confirmation.html:28
-#: templates/admin/delete_selected_confirmation.html:33
+#: vro_oahpa/templates/admin/delete_confirmation.html:28
+#: vro_oahpa/templates/admin/delete_selected_confirmation.html:33
 msgid "Yes, I'm sure"
 msgstr "Kyllä, olen varma"
 
-#: templates/admin/delete_selected_confirmation.html:9
+#: vro_oahpa/templates/admin/delete_selected_confirmation.html:9
 msgid "Delete multiple objects"
 msgstr "Poista monta objektia"
 
-#: templates/admin/delete_selected_confirmation.html:15
+#: vro_oahpa/templates/admin/delete_selected_confirmation.html:15
 #, python-format
 msgid ""
 "Deleting the %(object_name)s would result in deleting related objects, but "
@@ -347,7 +1671,7 @@ msgstr ""
 "men brukerkontoen din har ikke tilgangsrettigheter til å slette følgende "
 "objekttyper:"
 
-#: templates/admin/delete_selected_confirmation.html:22
+#: vro_oahpa/templates/admin/delete_selected_confirmation.html:22
 #, python-format
 msgid ""
 "Are you sure you want to delete the selected %(object_name)s objects? All of "
@@ -356,41 +1680,56 @@ msgstr ""
 "Er du sikker på at du vil slette %(object_name)s elementer? Alle beslektede "
 "elementer som er vist her vil bli slettet:"
 
-#: templates/admin/filter.html:2
+#: vro_oahpa/templates/admin/edit_inline/stacked.html:64
+#: vro_oahpa/templates/admin/edit_inline/tabular.html:110
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr "Oppgi nok et %(verbose_name)s"
+
+#: vro_oahpa/templates/admin/edit_inline/stacked.html:67
+#: vro_oahpa/templates/admin/edit_inline/tabular.html:113
+msgid "Remove"
+msgstr "Poista"
+
+#: vro_oahpa/templates/admin/edit_inline/tabular.html:15
+msgid "Delete?"
+msgstr "Poista?"
+
+#: vro_oahpa/templates/admin/filter.html:2
 #, python-format
 msgid " By %(filter_title)s "
 msgstr " Ved %(filter_title)s "
 
-#: templates/admin/index.html:18
+#: vro_oahpa/templates/admin/index.html:18
 #, python-format
 msgid "Models available in the %(name)s application."
 msgstr "Modeller tilgjengelig i %(name)s program"
 
-#: templates/admin/index.html:35
+#: vro_oahpa/templates/admin/index.html:35
 msgid "Change"
 msgstr "Muuda"
 
-#: templates/admin/index.html:45
+#: vro_oahpa/templates/admin/index.html:45
 msgid "You don't have permission to edit anything."
 msgstr "Sul ei ole juurdepääsuõigusi, et midagi muuta."
 
-#: templates/admin/index.html:53
+#: vro_oahpa/templates/admin/index.html:53
 msgid "Recent Actions"
 msgstr "Viimased tegevused"
 
-#: templates/admin/index.html:54
+#: vro_oahpa/templates/admin/index.html:54
 msgid "My Actions"
 msgstr "Minu tegevused"
 
-#: templates/admin/index.html:58
+#: vro_oahpa/templates/admin/index.html:58
 msgid "None available"
 msgstr "Ühtegi ei ole saadaval"
 
-#: templates/admin/index.html:72
+#: vro_oahpa/templates/admin/index.html:72
 msgid "Unknown content"
 msgstr "Tundmatu sisu"
 
-#: templates/admin/invalid_setup.html:7
+#: vro_oahpa/templates/admin/invalid_setup.html:7
 msgid ""
 "Something's wrong with your database installation. Make sure the appropriate "
 "database tables have been created, and make sure the database is readable by "
@@ -399,27 +1738,32 @@ msgstr ""
 "Andmebaasi installeerimise viga. Kontrolli, kas andmebaasi tabelid on olemas "
 "ja kas andmebaasile on määratud sobivad juurdepääsuõigused."
 
-#: templates/admin/login.html:19
+#: vro_oahpa/templates/admin/login.html:19
 msgid "Username:"
 msgstr "Kasutajanimi:"
 
-#: templates/admin/login.html:22
+#: vro_oahpa/templates/admin/login.html:22
 msgid "Password:"
 msgstr "Parool:"
 
-#: templates/admin/object_history.html:22
+#: vro_oahpa/templates/admin/login.html:26
+#: vro_oahpa/templates/registration/password_reset_complete.html:14
+msgid "Log in"
+msgstr "Logi sisse"
+
+#: vro_oahpa/templates/admin/object_history.html:22
 msgid "Date/time"
 msgstr "Kuupäev/kellaaeg"
 
-#: templates/admin/object_history.html:23
+#: vro_oahpa/templates/admin/object_history.html:23
 msgid "User"
 msgstr "Kasutaja"
 
-#: templates/admin/object_history.html:24
+#: vro_oahpa/templates/admin/object_history.html:24
 msgid "Action"
 msgstr "Tegevus"
 
-#: templates/admin/object_history.html:38
+#: vro_oahpa/templates/admin/object_history.html:38
 msgid ""
 "This object doesn't have a change history. It probably wasn't added via this "
 "admin site."
@@ -427,104 +1771,60 @@ msgstr ""
 "Objektet har ingen endringshistorikk. Det ble sannsynligvis ikke lagt til "
 "via denne adminsida."
 
-#: templates/admin/pagination.html:10
+#: vro_oahpa/templates/admin/pagination.html:10
 msgid "Show all"
 msgstr "Näita kõiki"
 
-#: templates/admin/pagination.html:11 templates/admin/submit_line.html:3
+#: vro_oahpa/templates/admin/pagination.html:11
+#: vro_oahpa/templates/admin/submit_line.html:3
 msgid "Save"
 msgstr "Salvesta"
 
-#: templates/admin/search_form.html:8
+#: vro_oahpa/templates/admin/search_form.html:8
 msgid "Search"
 msgstr "Otsi"
 
-#: templates/admin/search_form.html:10
+#: vro_oahpa/templates/admin/search_form.html:10
 #, python-format
 msgid "1 result"
 msgid_plural "%(counter)s results"
 msgstr[0] "1 resultat"
 msgstr[1] "1 resultat"
 
-#: templates/admin/search_form.html:10
+#: vro_oahpa/templates/admin/search_form.html:10
 #, python-format
 msgid "%(full_result_count)s total"
 msgstr "%(full_result_count)s resultater"
 
-#: templates/admin/submit_line.html:5
+#: vro_oahpa/templates/admin/submit_line.html:5
 msgid "Save as new"
 msgstr "Salvesta kui"
 
-#: templates/admin/submit_line.html:6
+#: vro_oahpa/templates/admin/submit_line.html:6
 msgid "Save and add another"
 msgstr "Salvesta ja lisa veel üks"
 
-#: templates/admin/submit_line.html:7
+#: vro_oahpa/templates/admin/submit_line.html:7
 msgid "Save and continue editing"
 msgstr "Salvesta ja jätka redigeerimist"
 
-#: templates/admin/auth/user/add_form.html:6
-msgid ""
-"First, enter a username and password. Then, you'll be able to edit more user "
-"options."
-msgstr ""
-"Først oppgir du brukernavn og passord. Deretter vil du være i stand til å "
-"redigere flere brukervalg."
-
-#: templates/admin/auth/user/add_form.html:8
-msgid "Enter a username and password."
-msgstr "Oppgi brukernavn og passord."
-
-#: templates/admin/auth/user/change_password.html:28
-#, python-format
-msgid "Enter a new password for the user <strong>%(username)s</strong>."
-msgstr "Lag et nytt passord for brukeren <strong>%(username)s</strong>"
-
-#: templates/admin/auth/user/change_password.html:35
-msgid "Password"
-msgstr "Salasana"
-
-#: templates/admin/auth/user/change_password.html:41
-#: templates/registration/password_change_form.html:37
-msgid "Password (again)"
-msgstr "Salasana (uudestaan)"
-
-#: templates/admin/auth/user/change_password.html:42
-msgid "Enter the same password as above, for verification."
-msgstr "Oppgi det samme passordet som ovenfor, for verifisering"
-
-#: templates/admin/edit_inline/stacked.html:64
-#: templates/admin/edit_inline/tabular.html:110
-#, python-format
-msgid "Add another %(verbose_name)s"
-msgstr "Oppgi nok et %(verbose_name)s"
-
-#: templates/admin/edit_inline/stacked.html:67
-#: templates/admin/edit_inline/tabular.html:113
-msgid "Remove"
-msgstr "Poista"
-
-#: templates/admin/edit_inline/tabular.html:15
-msgid "Delete?"
-msgstr "Poista?"
-
-#: templates/auth/login.html:11
+#: vro_oahpa/templates/auth/login.html:11
 msgid "Your username and password didn't match. Please try again."
 msgstr "Käyttäjätunnus ja salasana eivät täsmänneet. Kokeile uudestaan."
 
-#: templates/auth/login.html:15
+#: vro_oahpa/templates/auth/login.html:15
 msgid "Log out?"
 msgstr "Kas logida välja?"
 
-#: templates/auth/login.html:17
+#: vro_oahpa/templates/auth/login.html:17
 msgid "Please log in to continue..."
 msgstr "Jätkamiseks logi sisse..."
 
-#: templates/auth/login.html:33
+#: vro_oahpa/templates/auth/login.html:33
 msgid "log in"
 msgstr "Logi sisse"
 
-#: templates/auth/login.html:38
+#: vro_oahpa/templates/auth/login.html:38
 msgid ""
 "If you are participating in a course at <a href=\"http://site.uit.no/"
 "\">http://site.uit.no/</a> and are seeing this page, you must log in at site."
@@ -537,24 +1837,24 @@ msgstr ""
 "siihen ensin, ja sen jälkeen tulla takaisin tännä sisäänkirjautumista "
 "varten. Jos ei vieläkään toimi voit tarkista, että evästeet ei ole estetty."
 
-#: templates/courses/courses_main.html:19
-#: templates/courses/courses_main_instructor.html:21
+#: vro_oahpa/templates/courses/courses_main.html:19
+#: vro_oahpa/templates/courses/courses_main_instructor.html:21
 msgid "Welcome"
 msgstr "Tere tulemast"
 
-#: templates/courses/courses_main.html:21
+#: vro_oahpa/templates/courses/courses_main.html:21
 msgid "Enrolled in…"
 msgstr "Osallistujana kurssissa…"
 
-#: templates/courses/courses_main.html:26
+#: vro_oahpa/templates/courses/courses_main.html:26
 msgid "View course lessons"
 msgstr "Mene Oahpa giela!-kurssiin"
 
-#: templates/courses/courses_main.html:33
+#: vro_oahpa/templates/courses/courses_main.html:33
 msgid "You don't have any scores yet, go play some games!"
 msgstr "Sinulle ei vielä ole mitään tuloksia. Mene ottamaan Oahpa käyttöön!"
 
-#: templates/courses/courses_main.html:35
+#: vro_oahpa/templates/courses/courses_main.html:35
 msgid ""
 "The following scores represent your progress in the games available in "
 "Oahpa. Instructors will see your scores as shown below, but will also be "
@@ -564,103 +1864,198 @@ msgstr ""
 "Kurssin opettaja pysty näkemään tuloksesi, myös tulokset joka ohjelmassa. "
 "Onnea opiskeluun!"
 
-#: templates/courses/courses_main.html:49
+#: vro_oahpa/templates/courses/courses_main.html:49
 msgid "Course progress"
 msgstr "Edasijõudmine"
 
-#: templates/courses/courses_main.html:55
+#: vro_oahpa/templates/courses/courses_main.html:55
 msgid "Average"
 msgstr "Keskitulos"
 
-#: templates/courses/courses_main.html:56
+#: vro_oahpa/templates/courses/courses_main.html:56
 msgid "Highest score"
 msgstr "Korkein tulos"
 
-#: templates/courses/courses_main.html:57
+#: vro_oahpa/templates/courses/courses_main.html:57
 msgid "Lowest score"
 msgstr "Matalin tulos:"
 
-#: templates/courses/courses_main.html:58
+#: vro_oahpa/templates/courses/courses_main.html:58
 msgid "Number of tries"
 msgstr "Kokeilujen määrä"
 
-#: templates/courses/courses_main.html:66
-#: templates/courses/courses_main_instructor.html:23
+#: vro_oahpa/templates/courses/courses_main.html:66
+#: vro_oahpa/templates/courses/courses_main_instructor.html:23
 msgid "You are a course instructor."
 msgstr "Sinä olet kurssin opettaja"
 
-#: templates/courses/courses_main.html:67
+#: vro_oahpa/templates/courses/courses_main.html:67
 msgid "View students' grades"
 msgstr "Katso opiskelijoiden tuloksia"
 
-#: templates/courses/courses_main_instructor.html:28
+#: vro_oahpa/templates/courses/courses_main_instructor.html:28
 msgid "Course content is available online"
 msgstr "Kurssisisältö on saatavana netissä"
 
-#: templates/courses/courses_main_instructor.html:35
-#: templates/courses/instructor_student_detail.html:24
+#: vro_oahpa/templates/courses/courses_main_instructor.html:35
+#: vro_oahpa/templates/courses/instructor_student_detail.html:24
 msgid "last login"
 msgstr "Viimeinen sisäänkirjautuminen"
 
-#: templates/courses/courses_main_instructor.html:36
-#: templates/courses/instructor_student_detail.html:25
+#: vro_oahpa/templates/courses/courses_main_instructor.html:36
+#: vro_oahpa/templates/courses/instructor_student_detail.html:25
 msgid "login count"
 msgstr "Sisänkirjautumisten määrä"
 
-#: templates/courses/courses_main_instructor.html:42
-#: templates/courses/instructor_student_detail.html:31
+#: vro_oahpa/templates/courses/courses_main_instructor.html:42
+#: vro_oahpa/templates/courses/instructor_student_detail.html:31
 msgid "exercise"
 msgstr "Harjoitus"
 
-#: templates/courses/courses_main_instructor.html:43
-#: templates/courses/instructor_student_detail.html:32
+#: vro_oahpa/templates/courses/courses_main_instructor.html:43
+#: vro_oahpa/templates/courses/instructor_student_detail.html:32
 msgid "average"
 msgstr "Keskitulos"
 
-#: templates/courses/courses_main_instructor.html:44
-#: templates/courses/instructor_student_detail.html:33
+#: vro_oahpa/templates/courses/courses_main_instructor.html:44
+#: vro_oahpa/templates/courses/instructor_student_detail.html:33
 msgid "minimum"
 msgstr "Minimitulos"
 
-#: templates/courses/courses_main_instructor.html:45
-#: templates/courses/instructor_student_detail.html:34
+#: vro_oahpa/templates/courses/courses_main_instructor.html:45
+#: vro_oahpa/templates/courses/instructor_student_detail.html:34
 msgid "maximum"
 msgstr "Maksimitulos"
 
-#: templates/courses/courses_main_instructor.html:46
-#: templates/courses/instructor_student_detail.html:35
+#: vro_oahpa/templates/courses/courses_main_instructor.html:46
+#: vro_oahpa/templates/courses/instructor_student_detail.html:35
 msgid "game count"
 msgstr "Pelattujen pelien määrä"
 
-#: templates/courses/courses_main_instructor.html:58
+#: vro_oahpa/templates/courses/courses_main_instructor.html:58
 msgid "More information about this student"
 msgstr "Lisätietoja tästä opiskelijasta"
 
-#: templates/registration/logged_out.html:8
+#: vro_oahpa/templates/oahpa.html:78
+msgid "Reference materials"
+msgstr "Abimaterjalid"
+
+#: vro_oahpa/templates/oahpa.html:81
+msgid "Dictionary"
+msgstr "Veebisõnastik"
+
+#: vro_oahpa/templates/oahpa.html:88 vro_oahpa/templates/oahpa.html:91
+#: vro_oahpa/templates/oahpa.html:94 vro_oahpa/templates/oahpa.html:97
+#: vro_oahpa/templates/oahpa.html:100
+msgid "Grammar"
+msgstr "Grammatika"
+
+#: vro_oahpa/templates/oahpa_main.html:101
+msgid "Words and translations"
+msgstr "Sõnad ja tõlked"
+
+#: vro_oahpa/templates/oahpa_main.html:108
+msgid "Practice numerals"
+msgstr "Harjuta arve ja ajaväljendeid"
+
+#: vro_oahpa/templates/oahpa_main.html:116
+msgid "Practice phonology"
+msgstr "Harjuta fonoloogiat"
+
+#: vro_oahpa/templates/oahpa_main.html:126
+msgid "Practice morphology"
+msgstr "Harjuta sõnade käänamist ja pööramist"
+
+#: vro_oahpa/templates/oahpa_main.html:134
+msgid "Practice morphology in context"
+msgstr "Harjuta sõnade käänamist ja pööramist lause kontekstis"
+
+#: vro_oahpa/templates/oahpa_main.html:141
+msgid ""
+"Oahpa is an internet program for learners of Võro. The program can be "
+"adjusted to different topics and levels of difficulty, and it generates new "
+"task sets automatically."
+msgstr ""
+"OAHPA on võru keele õppijatele mõeldud üle veebi vabalt kasutatav programm. "
+"Programmi saab kohandada erinevatele teemadele ja raskusastmetele ja see "
+"võib genereerida lugematul hulgal sama tüüpi, kuid veidi erinevaid harjutusi."
+
+#: vro_oahpa/templates/oahpa_main.html:143
+msgid ""
+"NB! This is a test version. The games Leksa, Numra and Fona are working "
+"properly but Morfa-S and Morfa-C can still contain some errors."
+msgstr ""
+"NB! Tegemist on testversiooniga. Leksa, Numra ja Fona töötavad korralikult, "
+"kuid morfoloogia õppemängudes Morfa-S ja Morfa-C võib olla veel üksikuid "
+"vigu!"
+
+#: vro_oahpa/templates/oahpa_main.html:144
+msgid "Online reference materials"
+msgstr "Abimaterjalid veebis"
+
+#: vro_oahpa/templates/oahpa_main.html:147
+#: vro_oahpa/templates/oahpa_main.html:150
+#: vro_oahpa/templates/oahpa_main.html:151
+msgid "Estonian"
+msgstr "eesti"
+
+#: vro_oahpa/templates/oahpa_main.html:147
+msgid "web dictionaries"
+msgstr "veebisõnastikud"
+
+#: vro_oahpa/templates/oahpa_main.html:153
+msgid "Other online materials:"
+msgstr "Muid võru keele veebimaterjale:"
+
+#: vro_oahpa/templates/oahpa_main.html:155
+msgid "Phonetics and orthography of Võro"
+msgstr "Võru keele foneetika ja ortograafia"
+
+#: vro_oahpa/templates/oahpa_main.html:156
+msgid "Exercises on Võro adpositions as Find-the-key-game"
+msgstr "Kaassõnaharjutused võtmepeituse mänguna"
+
+#: vro_oahpa/templates/oahpa_main.html:182
+msgid "North Saami Oahpa"
+msgstr "Põhjasaami Oahpa"
+
+#: vro_oahpa/templates/oahpa_main.html:193
+msgid "Link to this exercise"
+msgstr "Otselink sellele harjutusele"
+
+#: vro_oahpa/templates/oahpa_main.html:199
+msgid "Copyright 2011-2026 The Arctic University of Norway"
+msgstr "Copyright 2014 UiT Norra Arktika Ülikool"
+
+#: vro_oahpa/templates/oahpa_main.html:200
+msgid "Contact"
+msgstr "Kontakt"
+
+#: vro_oahpa/templates/registration/logged_out.html:8
 msgid "Thanks for spending some quality time with the Web site today."
 msgstr "Kiitos, että olet käyttänyt laatuaikaa tässä nettipaikassa tänään."
 
-#: templates/registration/logged_out.html:10
+#: vro_oahpa/templates/registration/logged_out.html:10
 msgid "Log in again"
 msgstr "Kirjaudu sisään uudestaan"
 
-#: templates/registration/password_change_done.html:4
-#: templates/registration/password_change_form.html:5
-#: templates/registration/password_change_form.html:7
-#: templates/registration/password_change_form.html:19
+#: vro_oahpa/templates/registration/password_change_done.html:4
+#: vro_oahpa/templates/registration/password_change_form.html:5
+#: vro_oahpa/templates/registration/password_change_form.html:7
+#: vro_oahpa/templates/registration/password_change_form.html:19
 msgid "Password change"
 msgstr "Salasanan vaihto"
 
-#: templates/registration/password_change_done.html:6
-#: templates/registration/password_change_done.html:10
+#: vro_oahpa/templates/registration/password_change_done.html:6
+#: vro_oahpa/templates/registration/password_change_done.html:10
 msgid "Password change successful"
 msgstr "Salasanan vaihto onnistui"
 
-#: templates/registration/password_change_done.html:12
+#: vro_oahpa/templates/registration/password_change_done.html:12
 msgid "Your password was changed."
 msgstr "Salasanasi on muuttunut."
 
-#: templates/registration/password_change_form.html:21
+#: vro_oahpa/templates/registration/password_change_form.html:21
 msgid ""
 "Please enter your old password, for security's sake, and then enter your new "
 "password twice so we can verify you typed it in correctly."
@@ -669,46 +2064,46 @@ msgstr ""
 "Deretter må du oppgi det nye passordet to ganger, så vi kan forsikre oss om "
 "at du har skrevet det inn korrekt."
 
-#: templates/registration/password_change_form.html:27
+#: vro_oahpa/templates/registration/password_change_form.html:27
 msgid "Old password"
 msgstr "Vanha salasana"
 
-#: templates/registration/password_change_form.html:32
+#: vro_oahpa/templates/registration/password_change_form.html:32
 msgid "New password"
 msgstr "Uusi salasana"
 
-#: templates/registration/password_change_form.html:43
-#: templates/registration/password_reset_confirm.html:21
+#: vro_oahpa/templates/registration/password_change_form.html:43
+#: vro_oahpa/templates/registration/password_reset_confirm.html:21
 msgid "Change my password"
 msgstr "Vaihda salasanani"
 
-#: templates/registration/password_reset_complete.html:4
-#: templates/registration/password_reset_confirm.html:6
-#: templates/registration/password_reset_done.html:4
-#: templates/registration/password_reset_form.html:4
-#: templates/registration/password_reset_form.html:6
-#: templates/registration/password_reset_form.html:10
+#: vro_oahpa/templates/registration/password_reset_complete.html:4
+#: vro_oahpa/templates/registration/password_reset_confirm.html:6
+#: vro_oahpa/templates/registration/password_reset_done.html:4
+#: vro_oahpa/templates/registration/password_reset_form.html:4
+#: vro_oahpa/templates/registration/password_reset_form.html:6
+#: vro_oahpa/templates/registration/password_reset_form.html:10
 msgid "Password reset"
 msgstr "Aseta uusi salasana."
 
-#: templates/registration/password_reset_complete.html:6
-#: templates/registration/password_reset_complete.html:10
+#: vro_oahpa/templates/registration/password_reset_complete.html:6
+#: vro_oahpa/templates/registration/password_reset_complete.html:10
 msgid "Password reset complete"
 msgstr "Salasanan uusiminen on valmis."
 
-#: templates/registration/password_reset_complete.html:12
+#: vro_oahpa/templates/registration/password_reset_complete.html:12
 msgid "Your password has been set.  You may go ahead and log in now."
 msgstr "Passordet ditt har blitt registrert. Nå kan du logge inn."
 
-#: templates/registration/password_reset_confirm.html:4
+#: vro_oahpa/templates/registration/password_reset_confirm.html:4
 msgid "Password reset confirmation"
 msgstr "Bekreftelse av passordskifte"
 
-#: templates/registration/password_reset_confirm.html:12
+#: vro_oahpa/templates/registration/password_reset_confirm.html:12
 msgid "Enter new password"
 msgstr "Anna uusi salasana"
 
-#: templates/registration/password_reset_confirm.html:14
+#: vro_oahpa/templates/registration/password_reset_confirm.html:14
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
@@ -716,19 +2111,19 @@ msgstr ""
 "Vær så snill og skriv inn det nye passordet to ganger, så vi kan forsikre "
 "oss om at du har skrevet det inn riktig."
 
-#: templates/registration/password_reset_confirm.html:18
+#: vro_oahpa/templates/registration/password_reset_confirm.html:18
 msgid "New password:"
 msgstr "Uusi salasana:"
 
-#: templates/registration/password_reset_confirm.html:20
+#: vro_oahpa/templates/registration/password_reset_confirm.html:20
 msgid "Confirm password:"
 msgstr "Vahvista salasana:"
 
-#: templates/registration/password_reset_confirm.html:26
+#: vro_oahpa/templates/registration/password_reset_confirm.html:26
 msgid "Password reset unsuccessful"
 msgstr "Salasanan vaihto epäonnistui."
 
-#: templates/registration/password_reset_confirm.html:28
+#: vro_oahpa/templates/registration/password_reset_confirm.html:28
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used.  Please request a new password reset."
@@ -736,12 +2131,12 @@ msgstr ""
 "Lenka for å skifte passord var ugyldig, sannsynligvis fordi den allerede har "
 "vært brukt. Vær så snill og be om et nytt passordskifte."
 
-#: templates/registration/password_reset_done.html:6
-#: templates/registration/password_reset_done.html:10
+#: vro_oahpa/templates/registration/password_reset_done.html:6
+#: vro_oahpa/templates/registration/password_reset_done.html:10
 msgid "Password reset successful"
 msgstr "Salasanan vaihto onnistui."
 
-#: templates/registration/password_reset_done.html:12
+#: vro_oahpa/templates/registration/password_reset_done.html:12
 msgid ""
 "We've e-mailed you instructions for setting your password to the e-mail "
 "address you submitted. You should be receiving it shortly."
@@ -750,33 +2145,33 @@ msgstr ""
 "passordet ditt til den e-postadressa du har oppgitt. Du burde få brevet "
 "snart (sjekk i søppelfilteret hvis det ikke dukker opp)."
 
-#: templates/registration/password_reset_email.html:2
+#: vro_oahpa/templates/registration/password_reset_email.html:2
 msgid "You're receiving this e-mail because you requested a password reset"
 msgstr "Saat tämän sähkäpostin koska olet pyytänyt uutta salasanaa "
 
-#: templates/registration/password_reset_email.html:3
+#: vro_oahpa/templates/registration/password_reset_email.html:3
 #, python-format
 msgid "for your user account at %(site_name)s"
 msgstr "käyttäjällesi %(site_name)s"
 
-#: templates/registration/password_reset_email.html:5
+#: vro_oahpa/templates/registration/password_reset_email.html:5
 msgid "Please go to the following page and choose a new password:"
 msgstr "Vær så snill og gå til følgende side og velg et nytt passord:"
 
-#: templates/registration/password_reset_email.html:9
+#: vro_oahpa/templates/registration/password_reset_email.html:9
 msgid "Your username, in case you've forgotten:"
 msgstr "Her er brukernavnet ditt, i tilfelle du skulle ha glemt det også:"
 
-#: templates/registration/password_reset_email.html:11
+#: vro_oahpa/templates/registration/password_reset_email.html:11
 msgid "Thanks for using our site!"
 msgstr "Kiitos, että käytät sivuamme!"
 
-#: templates/registration/password_reset_email.html:13
+#: vro_oahpa/templates/registration/password_reset_email.html:13
 #, python-format
 msgid "The %(site_name)s team"
 msgstr "%(site_name)s-gjengen"
 
-#: templates/registration/password_reset_form.html:12
+#: vro_oahpa/templates/registration/password_reset_form.html:12
 msgid ""
 "Forgotten your password? Enter your e-mail address below, and we'll e-mail "
 "instructions for setting a new one."
@@ -784,1394 +2179,71 @@ msgstr ""
 "Har du glemt passordet ditt? Oppgi e-post-adressa di nedafor, så vil vi "
 "sende deg instrukser for hvordan du kan skaffe deg et nytt."
 
-#: templates/registration/password_reset_form.html:16
+#: vro_oahpa/templates/registration/password_reset_form.html:16
 msgid "E-mail address:"
 msgstr "E-post-adresse"
 
-#: templates/registration/password_reset_form.html:16
+#: vro_oahpa/templates/registration/password_reset_form.html:16
 msgid "Reset my password"
 msgstr "Endre passordet mitt"
 
-#: vro_drill/forms.py:54
-msgid "noun"
-msgstr "nimisõna"
+#~ msgid "Online courses"
+#~ msgstr "Online-kursused"
 
-#: vro_drill/forms.py:55
-msgid "verb"
-msgstr "tegusõna"
+#~ msgid "View progress"
+#~ msgstr "Näita infot edasijõudmise kohta"
 
-#: vro_drill/forms.py:59
-msgid "singular"
-msgstr "ainsus"
+#~ msgid "Answer to questions"
+#~ msgstr "Vasta küsimustele"
 
-#: vro_drill/forms.py:60 vro_drill/forms.py:100 vro_drill/forms.py:240
-#: vro_drill/forms.py:250
-msgid "plural"
-msgstr "mitmus"
+#~ msgid "Dialogue game"
+#~ msgstr "Dialoogid"
 
-#: vro_drill/forms.py:66 vro_drill/forms.py:101 vro_drill/forms.py:193
-msgid "Genitive"
-msgstr "Omastav (kelle? mille?)"
+#~ msgid "Are you visiting this site as part of a course?"
+#~ msgstr "Kas osaled kursusel ning Sul on kasutajatunnus ja parool?"
 
-#: vro_drill/forms.py:67 vro_drill/forms.py:102 vro_drill/forms.py:194
-msgid "Partitive"
-msgstr "Osastav (keda? mida?)"
+#~ msgid "Log in here"
+#~ msgstr "Logi sisse"
 
-#: vro_drill/forms.py:68 vro_drill/forms.py:103 vro_drill/forms.py:195
-msgid "Illative"
-msgstr "Sisseütlev (kellesse? millesse? kuhu?)"
+#~ msgid "Pronouns"
+#~ msgstr "Asesõnad"
 
-#: vro_drill/forms.py:69 vro_drill/forms.py:104 vro_drill/forms.py:196
-msgid "Inessive"
-msgstr "Seesütlev (kelles? milles? kus?)"
+#~ msgid "Derivations"
+#~ msgstr "Sõnatuletus"
 
-#: vro_drill/forms.py:70 vro_drill/forms.py:105 vro_drill/forms.py:197
-msgid "Elative"
-msgstr "Seestütlev (kellest? millest? kust?)"
+#~ msgid "Message:"
+#~ msgstr "Lähetä palaute:"
 
-#: vro_drill/forms.py:71 vro_drill/forms.py:200
-msgid "Allative"
-msgstr "Alaleütlev (kellele? millele? kuhu?)"
+#~ msgid "The following information is optional."
+#~ msgstr "Nämä tiedot ovat vapaaehtoisia."
 
-#: vro_drill/forms.py:72 vro_drill/forms.py:198
-msgid "Adessive"
-msgstr "Alalütlev (kellel? millel? kus?)"
+#~ msgid ""
+#~ "An email address is required if you would like us to contact you about "
+#~ "the feedback."
+#~ msgstr ""
+#~ "Jos haluat että otamme yhteyttä palautteeseen liittyen, anna "
+#~ "sähköpostiosoitteesi."
 
-#: vro_drill/forms.py:73 vro_drill/forms.py:199
-msgid "Ablative"
-msgstr "Alaltütlev (kellelt? millelt? kust?)"
+#~ msgid "Your name:"
+#~ msgstr "Nimesi:"
 
-#: vro_drill/forms.py:74
-msgid "Translative"
-msgstr "Saav (kelleks? milleks?)"
+#~ msgid "Institution/language course:"
+#~ msgstr "Laitos/kielikurssi"
 
-#: vro_drill/forms.py:75
-msgid "Terminative"
-msgstr "Rajav (kelleni? milleni?)"
+#~ msgid "email:"
+#~ msgstr "sähköpostiosoite"
 
-#: vro_drill/forms.py:76
-msgid "Abessive"
-msgstr "Ilmaütlev (kelleta? milleta?)"
+#~ msgid "I would like to be contacted about my question:"
+#~ msgstr "Voitte ottaa minuun yhteyttä:"
 
-#: vro_drill/forms.py:77
-msgid "Comitative"
-msgstr "Kaasaütlev (kellega? millega?)"
+#~ msgid "Send message"
+#~ msgstr "Lähetä viesti"
 
-#: vro_drill/forms.py:133
-msgid "illative"
-msgstr "illatiivi"
+#~ msgid "Thank you for you feedback!"
+#~ msgstr "Kiitos palautteestasi"
 
-#: vro_drill/forms.py:134 vro_drill/forms.py:243 vro_drill/forms.py:253
-msgid "locative"
-msgstr "lokatiivi"
-
-#: vro_drill/forms.py:135
-msgid "comitative"
-msgstr "komitatiivi"
-
-#: vro_drill/forms.py:139 vro_drill/forms.py:177
-msgid "personal"
-msgstr "isikulised asesõnad"
-
-#: vro_drill/forms.py:140 vro_drill/forms.py:178
-msgid "demonstrative"
-msgstr "näitavad asesõnad"
-
-#: vro_drill/forms.py:141 vro_drill/forms.py:179
-msgid "reciprocative"
-msgstr "vastastikused asesõnad"
-
-#: vro_drill/forms.py:142 vro_drill/forms.py:180
-msgid "reflexive"
-msgstr "enesekohased asesõnad"
-
-#: vro_drill/forms.py:143 vro_drill/forms.py:181
-msgid "relative"
-msgstr "küsivad-siduvad asesõnad"
-
-#: vro_drill/forms.py:148
-msgid "Partitive (Midä?)"
-msgstr "Osastav (Kedä? Midä?)"
-
-#: vro_drill/forms.py:149
-msgid "Genitive/Nominative (Minka?)"
-msgstr "Omastav/mitmuse nimetav (Minka?)"
-
-#: vro_drill/forms.py:150
-msgid "Illative/Allative (Kohe?)"
-msgstr "Sisseütlev/alaleütlev (Kohe?)"
-
-#: vro_drill/forms.py:151
-msgid "Inessive/Adessive (Kon?)"
-msgstr "Seesütlev/alalütlev (Kon?)"
-
-#: vro_drill/forms.py:152
-msgid "Translative (Kinkas?)"
-msgstr "Saav (Kinkas? Minkas?)"
-
-#: vro_drill/forms.py:153
-msgid "Comitative (Minka?)"
-msgstr "Kaasaütlev (Kinka? Minka?)"
-
-#: vro_drill/forms.py:164
-msgid "feminine in -a/-я"
-msgstr ""
-
-#: vro_drill/forms.py:165
-msgid "feminine in -ь"
-msgstr ""
-
-#: vro_drill/forms.py:166
-msgid "masculine inanimate"
-msgstr ""
-
-#: vro_drill/forms.py:167
-msgid "masculine animate"
-msgstr ""
-
-#: vro_drill/forms.py:168
-msgid "neuter"
-msgstr ""
-
-#: vro_drill/forms.py:169 vro_drill/forms.py:319
-msgid "All"
-msgstr "Kõik"
-
-#: vro_drill/forms.py:185
-msgid "goabbat/guhtet"
-msgstr "goabbat/guhtet"
-
-#: vro_drill/forms.py:186
-msgid "nubbi/nuppit"
-msgstr "nubbi/nuppit"
-
-#: vro_drill/forms.py:192
-msgid "Nominative"
-msgstr "Nimetav (kes? mis?)"
-
-#: vro_drill/forms.py:217 vro_drill/forms.py:239
-msgid "attributive"
-msgstr "attribuuttimuoto"
-
-#: vro_drill/forms.py:218 vro_drill/forms.py:234
-msgid "comparative"
-msgstr "komparatiiv"
-
-#: vro_drill/forms.py:219
-msgid "superlative"
-msgstr "superlatiiv"
-
-#: vro_drill/forms.py:224
-msgid "attributive positive"
-msgstr "positiivin attributti"
-
-#: vro_drill/forms.py:225
-msgid "attributive comparative"
-msgstr "komparatiivin attribuuttimuoto"
-
-#: vro_drill/forms.py:226
-msgid "attributive superlative"
-msgstr "superlatiivin attribuuttimuoto"
-
-#: vro_drill/forms.py:227
-msgid "predicative positive"
-msgstr "positivinen predikatiivi"
-
-#: vro_drill/forms.py:228
-msgid "predicative comparative"
-msgstr "komparatiivin predikatiivi"
-
-#: vro_drill/forms.py:229
-msgid "predicative superlative"
-msgstr "superlatiivin predikatiivi"
-
-#: vro_drill/forms.py:233
-msgid "positive"
-msgstr "positiiv"
-
-#: vro_drill/forms.py:241 vro_drill/forms.py:251
-msgid "accusative"
-msgstr "akkusatiivi"
-
-#: vro_drill/forms.py:245 vro_drill/forms.py:274
-msgid "collective"
-msgstr "Kollektiivsed arvsõnad"
-
-#: vro_drill/forms.py:246
-msgid "ordinals"
-msgstr "Järgarvsõnad"
-
-#: vro_drill/forms.py:267 vro_drill/forms.py:358
-msgid "First level"
-msgstr "Tase 1"
-
-#: vro_drill/forms.py:268 vro_drill/forms.py:359
-msgid "Second level"
-msgstr "Tase 1-2"
-
-#: vro_drill/forms.py:272
-msgid "cardinal"
-msgstr "Põhiarvsõnad"
-
-#: vro_drill/forms.py:273
-msgid "ordinal"
-msgstr "Järgarvsõnad"
-
-#: vro_drill/forms.py:278 vro_drill/forms.py:303
-msgid "present"
-msgstr "olevik"
-
-#: vro_drill/forms.py:279 vro_drill/forms.py:304
-msgid "past"
-msgstr "minevik"
-
-#: vro_drill/forms.py:305
-msgid "back negation present tense"
-msgstr "tagaeitus olevikus"
-
-#: vro_drill/forms.py:316
-msgid "Level 1"
-msgstr "Tase 1"
-
-#: vro_drill/forms.py:317
-msgid "Level 1-2"
-msgstr "Tase 1-2"
-
-#: vro_drill/forms.py:318
-msgid "Level 1-3"
-msgstr "Tase 1-3"
-
-#: vro_drill/forms.py:324 vro_drill/forms.py:337
-msgid "passive derivation"
-msgstr "Passivijohtaminen"
-
-#: vro_drill/forms.py:325 vro_drill/forms.py:336
-msgid "adjective->verb derivation"
-msgstr "Adjektiivi->verbi-johtaminen"
-
-#: vro_drill/forms.py:341
-msgid "Tüüpsõnaq"
-msgstr ""
-
-#: vro_drill/forms.py:342 vro_drill/forms.py:411
-msgid "all"
-msgstr "Kõik"
-
-#: vro_drill/forms.py:347
-msgid "rare"
-msgstr "harvad"
-
-#: vro_drill/forms.py:348
-msgid "common"
-msgstr "tavalised"
-
-#: vro_drill/forms.py:352
-msgid "world"
-msgstr "maailm"
-
-#: vro_drill/forms.py:353
-msgid "sapmi"
-msgstr "Saamen maa"
-
-#: vro_drill/forms.py:354
-msgid "suopma"
-msgstr "Suomi"
-
-#: vro_drill/forms.py:360
-msgid "Third level"
-msgstr "Tase 1-3"
-
-#: vro_drill/forms.py:364
-msgid "2"
-msgstr "2"
-
-#: vro_drill/forms.py:365
-msgid "3"
-msgstr "3"
-
-#: vro_drill/forms.py:366
-msgid "4"
-msgstr "4"
-
-#: vro_drill/forms.py:370
-msgid "Võro to Estonian"
-msgstr "Võru - eesti"
-
-#: vro_drill/forms.py:371
-msgid "Estonian to Võro"
-msgstr "Eesti - võru"
-
-#: vro_drill/forms.py:372
-msgid "Võro to Finnish"
-msgstr "Võru - soome"
-
-#: vro_drill/forms.py:373
-msgid "Finnish to Võro"
-msgstr "Soome - võru"
-
-#: vro_drill/forms.py:374
-msgid "Võro to English"
-msgstr "Võru - inglise"
-
-#: vro_drill/forms.py:375
-msgid "English to Võro"
-msgstr "Inglise - võru"
-
-#: vro_drill/forms.py:376
-msgid "Võro to German"
-msgstr "Võru - saksa"
-
-#: vro_drill/forms.py:377
-msgid "German to Võro"
-msgstr "Saksa - võru"
-
-#: vro_drill/forms.py:378
-msgid "Võro to North Saami"
-msgstr "Võru - põhjasaami"
-
-#: vro_drill/forms.py:379
-msgid "North Saami to Võro"
-msgstr "Põhjasaami - võru"
-
-#: vro_drill/forms.py:380
-msgid "Võro to Swedish"
-msgstr "Võru -  rootsi"
-
-#: vro_drill/forms.py:381
-msgid "Swedish to Võro"
-msgstr "Rootsi - võru"
-
-#: vro_drill/forms.py:382
-msgid "Võro to Norwegian"
-msgstr "Võru - norra"
-
-#: vro_drill/forms.py:383
-msgid "Norwegian to Võro"
-msgstr "Norra - võru"
-
-#: vro_drill/forms.py:391
-msgid "family"
-msgstr "Perekond"
-
-#: vro_drill/forms.py:392
-msgid "human"
-msgstr "Inimesed"
-
-#: vro_drill/forms.py:393
-msgid "human-like"
-msgstr "Inimesega seotud"
-
-#: vro_drill/forms.py:394
-msgid "animal"
-msgstr "Loomad"
-
-#: vro_drill/forms.py:395
-msgid "food/drink"
-msgstr "Toit ja jook"
-
-#: vro_drill/forms.py:396
-msgid "time"
-msgstr "Aeg"
-
-#: vro_drill/forms.py:397
-msgid "concretes"
-msgstr "Konkreetsed esemed"
-
-#: vro_drill/forms.py:398
-msgid "body"
-msgstr "Keha"
-
-#: vro_drill/forms.py:399
-msgid "clothes"
-msgstr "Riided"
-
-#: vro_drill/forms.py:400
-msgid "buildings/rooms"
-msgstr "Ehitised/toad"
-
-#: vro_drill/forms.py:401
-msgid "city"
-msgstr "Linnas"
-
-#: vro_drill/forms.py:402
-msgid "nature"
-msgstr "Loodus"
-
-#: vro_drill/forms.py:403
-msgid "leisuretime/at_home"
-msgstr "Vaba aeg/kodu"
-
-#: vro_drill/forms.py:404
-msgid "christmas"
-msgstr "Jõulud"
-
-#: vro_drill/forms.py:405
-msgid "places"
-msgstr "Kohad/reisimine"
-
-#: vro_drill/forms.py:406
-msgid "literature"
-msgstr "Kirjandus/tekst"
-
-#: vro_drill/forms.py:407
-msgid "school/education"
-msgstr "Kool ja haridus"
-
-#: vro_drill/forms.py:408
-msgid "abstracts"
-msgstr "Abstraktsed sõnad"
-
-#: vro_drill/forms.py:409
-msgid "work/economy/tools"
-msgstr "Töö/majandus/tööriistad"
-
-#: vro_drill/forms.py:410
-msgid "Multiword"
-msgstr "Mitmesõnalised väljendid"
-
-#: vro_drill/forms.py:416
-msgid "0-10"
-msgstr "0-10"
-
-#: vro_drill/forms.py:417
-msgid "0-20"
-msgstr "0-20"
-
-#: vro_drill/forms.py:418
-msgid "0-100"
-msgstr "0-100"
-
-#: vro_drill/forms.py:419
-msgid "0-1000"
-msgstr "0-1000"
-
-#: vro_drill/forms.py:424
-msgid "1-10"
-msgstr ""
-
-#: vro_drill/forms.py:425
-msgid "1-20"
-msgstr ""
-
-#: vro_drill/forms.py:426
-msgid "1-100"
-msgstr "0-100"
-
-#: vro_drill/forms.py:427
-msgid "1-1000"
-msgstr "0-1000"
-
-#: vro_drill/forms.py:433
-msgid "String to numeral"
-msgstr "Sõnast arvuks"
-
-#: vro_drill/forms.py:434
-msgid "Numeral to string"
-msgstr "Arvust sõnaks"
-
-#: vro_drill/forms.py:438
-msgid "Strings to numerals"
-msgstr "Sõnadest arvudeks"
-
-#: vro_drill/forms.py:439
-msgid "Numerals to strings"
-msgstr "Arvudest sõnadeks"
-
-#: vro_drill/forms.py:447
-msgid "I"
-msgstr "I"
-
-#: vro_drill/forms.py:448
-msgid "II"
-msgstr "II"
-
-#: vro_drill/forms.py:449
-msgid "III"
-msgstr "III"
-
-#: vro_drill/forms.py:450
-msgid "IV"
-msgstr "IV"
-
-#: vro_drill/forms.py:451
-msgid "V"
-msgstr "V"
-
-#: vro_drill/forms.py:452
-msgid "VI"
-msgstr "VI"
-
-#: vro_drill/forms.py:453
-msgid "Odd"
-msgstr "Paaritu"
-
-#: vro_drill/forms.py:457
-msgid "easy"
-msgstr "lihtne"
-
-#: vro_drill/forms.py:458
-msgid "medium"
-msgstr "keskmine"
-
-#: vro_drill/forms.py:459
-msgid "hard"
-msgstr "raske"
-
-#: vro_drill/forms.py:463
-msgid "Firstmeeting"
-msgstr "Oahpásmuva Kárii"
-
-#: vro_drill/forms.py:464
-msgid "Firstmeeting boy"
-msgstr "Oahpásmuva Lemehii"
-
-#: vro_drill/forms.py:465
-msgid "Firstmeeting girl"
-msgstr "Oahpásmuva Liisái"
-
-#: vro_drill/forms.py:466
-msgid "Firstmeeting man"
-msgstr "Oahpásmuva Hánsii"
-
-#: vro_drill/forms.py:467 vro_drill/templates/sahka.html:199
-msgid "Visit"
-msgstr "Guossis"
-
-#: vro_drill/forms.py:468 vro_drill/templates/sahka.html:204
-msgid "Grocery"
-msgstr "Borramušgávppis"
-
-#: vro_drill/forms.py:469
-msgid "Shopadj"
-msgstr "Veardideapmi rámbuvrris"
-
-#: vro_drill/forms.py:482 vro_drill/templates/mgame_a.html:20
-#: vro_drill/templates/mgame_v.html:20
-msgid "bisyllabic"
-msgstr "paritavulliset"
-
-#: vro_drill/forms.py:483 vro_drill/templates/mgame_a.html:21
-#: vro_drill/templates/mgame_v.html:21
-msgid "trisyllabic"
-msgstr "paritontavulliset"
-
-#: vro_drill/forms.py:484 vro_drill/templates/mgame_a.html:22
-#: vro_drill/templates/mgame_v.html:22
-msgid "contracted"
-msgstr "supistumavartalot"
-
-#: vro_drill/views.py:528 vro_drill/views.py:529
-msgid "Practise attributes"
-msgstr "Harjoittele attribuuttimuotoja."
-
-#: vro_drill/views.py:530
-msgid "Practise adjectives in nominative"
-msgstr "Harjoittele adjektiivin nominatiivimuotoja."
-
-#: vro_drill/views.py:531
-msgid "Practise adjectives in illative"
-msgstr "Harjoittele adjektiivien illatiivia."
-
-#: vro_drill/views.py:532
-msgid "Practise adjectives in accusative"
-msgstr "Harjoittele akkusatiivien akkusatiivia."
-
-#: vro_drill/views.py:533
-msgid "Practise adjectives in comitative"
-msgstr "Harjoittele adjektiivien komitatiivimuotoja."
-
-#: vro_drill/views.py:534
-msgid "Practise adjectives in essive"
-msgstr "Harjoittele adjektiivien predikatiivimuotoja."
-
-#: vro_drill/views.py:535
-msgid "Practise adjectives in genitive"
-msgstr "Harjoittele adjektiivien genetiiviä."
-
-#: vro_drill/views.py:536
-msgid "Practise adjectives in plural"
-msgstr "Harjoittele adjektiivien monikkoa."
-
-#: vro_drill/views.py:537
-msgid "Practise adjectives in locative"
-msgstr "Harjoittele adjektiivien lokatiivia."
-
-#: vro_drill/views.py:538
-msgid "Practise comparative"
-msgstr "Harjoittele komparatiivia."
-
-#: vro_drill/views.py:539
-msgid "Practise superlative"
-msgstr "Harjoittele superlatiivia."
-
-#: vro_drill/views.py:540
-msgid "Practise verb derivation"
-msgstr "Harjoittele verbien johtamista."
-
-#: vro_drill/views.py:541 vro_drill/views.py:542
-msgid "Practise verb passive derivation"
-msgstr "Harjoittele verbien johtamista passiiviverbeiksi."
-
-#: vro_drill/views.py:543
-msgid "Practise adjective to verb derivation"
-msgstr "Harjoittele adjektiivien johtamista verbeiksi."
-
-#: vro_drill/views.py:544 vro_drill/views.py:545 vro_drill/views.py:546
-msgid "Practise noun possessive suffixes"
-msgstr "Harjoittele kollektiivisten lukujen akkusatiivia."
-
-#: vro_drill/views.py:547
-msgid "Practise noun possessive suffixes in accusative"
-msgstr "Harjoittele possessiivisuffiksien akkusatiivia."
-
-#: vro_drill/views.py:548
-msgid "Practise noun possessive suffixes in illative"
-msgstr "Harjoittele kollektiivisten lukujen akkusatiivia."
-
-#: vro_drill/views.py:549
-msgid "Practise noun possessive suffixes in locative"
-msgstr "Harjoittele kollektiivisten lukujen akkusatiivia."
-
-#: vro_drill/views.py:550
-msgid "Practise noun possessive suffixes in genitive"
-msgstr "Harjoittele kollektiivisten lukujen akkusatiivia."
-
-#: vro_drill/views.py:551
-msgid "Practise noun possessive suffixes in comitative"
-msgstr "Harjoittele kollektiivisten lukujen akkusatiivia."
-
-#: vro_drill/views.py:552
-msgid "Practise attributes in positive"
-msgstr "Harjoittele positiivin attribuuttimuotoja."
-
-#: vro_drill/views.py:553
-msgid "Practise attributes in comparative"
-msgstr "Harjoittele komparatiivin attribuuttimuotoja."
-
-#: vro_drill/views.py:554
-msgid "Practise attributes in superlative"
-msgstr "Harjoittele superlatiivin attribuuttimuotoja."
-
-#: vro_drill/views.py:555
-msgid "Practise predicative in positive"
-msgstr "Harjoittele positiivin predikatiivimuotoja."
-
-#: vro_drill/views.py:556
-msgid "Practise predicative in comparative"
-msgstr "Harjoittele komparatiivin predikatiivimuotoja."
-
-#: vro_drill/views.py:557
-msgid "Practise predicative in superlative"
-msgstr "Harjoittele superlatiivin predikatiivimuotoja."
-
-#: vro_drill/views.py:558
-msgid "Practise numeral attributes"
-msgstr "Harjoittele lukusanojen attribuuttimuotoja."
-
-#: vro_drill/views.py:559 vro_drill/views.py:574
-msgid "Practise plural"
-msgstr "Harjoittele nominatiivin monikkoa."
-
-#: vro_drill/views.py:560 vro_drill/views.py:575
-msgid "Practise nominative"
-msgstr "Harjuta nominatiivi moodustamist."
-
-#: vro_drill/views.py:561 vro_drill/views.py:576
-msgid "Practise genitive"
-msgstr "Harjuta genitiivi moodustamist."
-
-#: vro_drill/views.py:562 vro_drill/views.py:577
-msgid "Practise partitive"
-msgstr "Harjuta partitiivi moodustamist."
-
-#: vro_drill/views.py:563 vro_drill/views.py:578
-msgid "Practise illative"
-msgstr "Harjuta illatiivi moodustamist."
-
-#: vro_drill/views.py:564 vro_drill/views.py:579
-msgid "Practise inessive"
-msgstr "Harjuta inessiivi moodustamist."
-
-#: vro_drill/views.py:565 vro_drill/views.py:580
-msgid "Practise elative"
-msgstr "Harjuta elatiivi moodustamist."
-
-#: vro_drill/views.py:566 vro_drill/views.py:581
-msgid "Practise allative"
-msgstr "Harjuta allatiivi moodustamist."
-
-#: vro_drill/views.py:567 vro_drill/views.py:582
-msgid "Practise adessive"
-msgstr "Harjuta adessiivi moodustamist."
-
-#: vro_drill/views.py:568 vro_drill/views.py:583
-msgid "Practise ablative"
-msgstr "Harjuta ablatiivi moodustamist."
-
-#: vro_drill/views.py:569 vro_drill/views.py:584
-msgid "Practise translative"
-msgstr "Harjuta translatiivi moodustamist."
-
-#: vro_drill/views.py:570
-msgid "Practise terminative"
-msgstr "Harjuta terminatiivi moodustamist."
-
-#: vro_drill/views.py:571
-msgid "Practise essive"
-msgstr "Harjuta essiivi moodustamist."
-
-#: vro_drill/views.py:572
-msgid "Practise abessive"
-msgstr "Harjuta abessiivi moodustamist."
-
-#: vro_drill/views.py:573
-msgid "Practise comitative"
-msgstr "Harjuta komitatiivi moodustamist."
-
-#: vro_drill/views.py:585
-msgid "Choose between illative and allative"
-msgstr ""
-
-#: vro_drill/views.py:586
-msgid "Choose between inessive and adessive"
-msgstr ""
-
-#: vro_drill/views.py:587
-msgid "Practice object. Choose between genitive and nominative"
-msgstr "Harjuta sihitise käänete kasutamist."
-
-#: vro_drill/views.py:588 vro_drill/views.py:589 vro_drill/views.py:590
-#: vro_drill/views.py:591
-msgid "Practise a mix"
-msgstr "Harjuta erinevate vormide moodustamist."
-
-#: vro_drill/views.py:592
-msgid "Practise numerals in illative"
-msgstr "Harjuta arvsõnade illatiivi moodustamist."
-
-#: vro_drill/views.py:593
-msgid "Practise numerals in accusative"
-msgstr "Harjoittele lukusanojen akkusatiivia."
-
-#: vro_drill/views.py:594
-msgid "Practise numerals in comitative"
-msgstr "Harjuta arvsõnade komitatiivi moodustamist."
-
-#: vro_drill/views.py:595
-msgid "Practise numerals in essive"
-msgstr "Harjuta arvsõnade essiivi moodustamist."
-
-#: vro_drill/views.py:596
-msgid "Practise numerals in genitive"
-msgstr "Harjuta arvsõnade genitiivi moodustamist."
-
-#: vro_drill/views.py:597
-msgid "Practise numerals in plural"
-msgstr "Harjuta arvsõnade mitmuse moodustamist."
-
-#: vro_drill/views.py:598
-msgid "Practise numerals in locative"
-msgstr "Harjoittele lukusanojen lokatiivia."
-
-#: vro_drill/views.py:599
-msgid "Practise collective numerals"
-msgstr "Harjuta kollektiivsete arvsõnade käänamist."
-
-#: vro_drill/views.py:600
-msgid "Practise ordinal numbers"
-msgstr "Harjuta järgarvsõnade käänamist."
-
-#: vro_drill/views.py:601
-msgid "Practise ordinal numerals in illative"
-msgstr "Harjuta järgarvsõnade illatiivi moodustamist."
-
-#: vro_drill/views.py:602
-msgid "Practise ordinal numerals in accusative"
-msgstr "Harjoittele järjestyslukujen akkusatiivia."
-
-#: vro_drill/views.py:603
-msgid "Practise ordinal numerals in comitative"
-msgstr "Harjuta arvsõnade komitatiivi moodustamist."
-
-#: vro_drill/views.py:604
-msgid "Practise ordinal numerals in essive"
-msgstr "Harjuta arvsõnade essiivi moodustamist."
-
-#: vro_drill/views.py:605
-msgid "Practise ordinal numerals in genitive"
-msgstr "Harjuta arvsõnade genitiivi moodustamist."
-
-#: vro_drill/views.py:606
-msgid "Practise ordinal numerals in plural"
-msgstr "Harjuta arvsõnade mitmuse moodustamist."
-
-#: vro_drill/views.py:607
-msgid "Practise ordinal numerals in locative"
-msgstr "Harjoittele järjestyslukujen lokatiivia."
-
-#: vro_drill/views.py:608
-msgid "Practise collective numerals in illative"
-msgstr "Harjuta kollektiivsete arvsõnade illatiivi moodustamist."
-
-#: vro_drill/views.py:609
-msgid "Practise collective numerals in accusative"
-msgstr "Harjoittele kollektiivisten lukujen lokatiivia."
-
-#: vro_drill/views.py:610
-msgid "Practise collective numerals in comitative"
-msgstr "Harjoittele kollektiivisten lukujen komitatiivia."
-
-#: vro_drill/views.py:611
-msgid "Practise collective numerals in essive"
-msgstr "Harjoittele kollektiivisten lukujen essiiviä."
-
-#: vro_drill/views.py:612
-msgid "Practise collective numerals in genitive"
-msgstr "Harjoittele kollektiivisten lukujen genetiiviä."
-
-#: vro_drill/views.py:613
-msgid "Practise collective numerals in plural"
-msgstr "Harjoittele kollektiivisten lukujen monikkoa."
-
-#: vro_drill/views.py:614
-msgid "Practise collective numerals in locative"
-msgstr "Harjoittele kollektiivisten lukujen lokatiivia."
-
-#: vro_drill/views.py:615 vro_drill/views.py:623
-msgid "Practise present"
-msgstr "Harjuta oleviku moodustamist."
-
-#: vro_drill/views.py:616 vro_drill/views.py:624
-msgid "Practise past"
-msgstr "Harjuta mineviku moodustamist."
-
-#: vro_drill/views.py:617
-msgid "Practise back negation"
-msgstr "Harjuta tagaeituse moodustamist."
-
-#: vro_drill/views.py:618 vro_drill/views.py:625
-msgid "Practise perfect"
-msgstr "Harjuta täismineviku moodustamist."
-
-#: vro_drill/views.py:619 vro_drill/views.py:626
-msgid "Practise gerund"
-msgstr "Harjuta des-vormi moodustamist."
-
-#: vro_drill/views.py:620 vro_drill/views.py:627
-msgid "Practise conditional"
-msgstr "Harjuta tingiva kõneviisi vormide moodustamist."
-
-#: vro_drill/views.py:621 vro_drill/views.py:628
-msgid "Practise imperative"
-msgstr "Harjuta käskiva kõneviisi vormide moodustamist."
-
-#: vro_drill/views.py:622 vro_drill/views.py:629
-msgid "Practise potential"
-msgstr "Harjoittele potentiaalia."
-
-#: vro_drill/views.py:630
-msgid "Practise personal pronouns"
-msgstr "Harjuta isikuliste asesõnade käänamist."
-
-#: vro_drill/views.py:631
-msgid "Practise reciprocative pronouns"
-msgstr "Harjuta vastastikuste asesõnade käänamist."
-
-#: vro_drill/views.py:632
-msgid "Practise reflexive pronouns"
-msgstr "Harjuta enesekohaste asesõnade käänamist."
-
-#: vro_drill/views.py:633
-msgid "Practise relative pronouns"
-msgstr "Harjuta küsivate-siduvate asesõnade käänamist."
-
-#: vro_drill/views.py:634
-msgid "Practise demonstrative pronouns"
-msgstr "Harjuta näitavate asesõnade käänamist."
-
-#: vro_drill/templates/clock.html:12
-msgid "Enter the time in the digital clock format. (Ex. 10:21)"
-msgstr "Kirjuta kellaaeg arvudega (näiteks 10:21)."
-
-#: vro_drill/templates/clock.html:14
-msgid "Enter the time in Võro."
-msgstr "Kirjuta kellaaeg sõnadega (näiteks pool kümme)."
-
-#: vro_drill/templates/clock.html:20
-msgid "Select how many points of time to include."
-msgstr "Vali kellaaja ülesande raskusaste."
-
-#: vro_drill/templates/clock.html:22 vro_drill/templates/num.html:66
-msgid "Select the direction"
-msgstr "Vali harjutus"
-
-#: vro_drill/templates/dato.html:15
-msgid "Enter the date in numeric format (ex. 17.8.)"
-msgstr "Kirjuta kuupäev arvudega (näiteks 17.8.)."
-
-#: vro_drill/templates/dato.html:17
-msgid "Write the date in Võro."
-msgstr "Kirjuta kuupäev sõnadega (näiteks seitsmeteistkümnes august)."
-
-#: vro_drill/templates/dato.html:23
-msgid "Expression of dates numeric to words or vice versa."
-msgstr "Vali harjutus: arvulise kuupäeva kirjutamine sõnadega või vastupidi."
-
-#: vro_drill/templates/game.html:143
-msgid "help"
-msgstr "abi"
-
-#: vro_drill/templates/game.html:147
-msgid "This is almost correct!"
-msgstr "See on peaaegu õige!"
-
-#: vro_drill/templates/game.html:207 vro_drill/templates/leksa.html:88
-#: vro_drill/templates/vasta.html:103
-msgid "Test answers"
-msgstr "Kontrolli vastuseid"
-
-#: vro_drill/templates/game.html:210 vro_drill/templates/leksa.html:91
-msgid "Show the correct answers"
-msgstr "Näita õigeid vastuseid"
-
-#: vro_drill/templates/game.html:218
-msgid "Congratulations!"
-msgstr "Suurepärane!"
-
-#: vro_drill/templates/game.html:221
-msgid "Your score:"
-msgstr "Sinu tulemus:"
-
-#: vro_drill/templates/leksa.html:17 vro_drill/templates/leksa_place.html:6
-msgid "Words"
-msgstr "Sõnad"
-
-#: vro_drill/templates/leksa.html:18 vro_drill/templates/leksa_place.html:7
-msgid "Names"
-msgstr "Kohanimed"
-
-#: vro_drill/templates/leksa.html:41
-msgid ""
-"Give translations for words. You can choose a semantic set or part of the "
-"textbook but not both."
-msgstr ""
-"Tõlgi sõnad. Soovi korral võid valida sõnu ühest teemast (semantilisest "
-"hulgast) või ühest õpikust (või õpikupeatükist). Mõlemast menüüst korraga "
-"kitsendavat valikut teha ei saa."
-
-#: vro_drill/templates/leksa.html:44
-msgid "Quizz"
-msgstr "Test"
-
-#: vro_drill/templates/leksa.html:53
-msgid "Set"
-msgstr "Teema"
-
-#: vro_drill/templates/leksa.html:55 vro_drill/templates/leksa_place.html:27
-msgid "Select the language pair"
-msgstr "Vali keeltepaar"
-
-#: vro_drill/templates/leksa.html:57 vro_drill/templates/mgame.html:67
-msgid "Book"
-msgstr "Õpik / peatükid"
-
-#: vro_drill/templates/leksa.html:62 vro_drill/templates/leksa.html.py:65
-#: vro_drill/templates/leksa_place.html:42 vro_drill/templates/mgame.html:75
-#: vro_drill/templates/num.html:71 vro_drill/templates/vasta.html:70
-msgid "New set"
-msgstr "Uus test"
-
-#: vro_drill/templates/leksa_place.html:11
-msgid "Give translations for placenames."
-msgstr ""
-"Käännä paikannimet. Voit valita sanat yleisyyden ja maantieteellisen "
-"sijainnin mukaan."
-
-#: vro_drill/templates/leksa_place.html:19
-msgid "Geography"
-msgstr "Sijainti"
-
-#: vro_drill/templates/leksa_place.html:21
-#: vro_drill/templates/leksa_place.html:26
-msgid "Frequency"
-msgstr "Frekvenssi"
-
-#: vro_drill/templates/mgame.html:31 vro_drill/templates/mgame.html.py:40
-msgid "Nouns"
-msgstr "Nimisõnad"
-
-#: vro_drill/templates/mgame.html:32 vro_drill/templates/mgame.html.py:41
-msgid "Verbs"
-msgstr "Tegusõnad"
-
-#: vro_drill/templates/mgame.html:33 vro_drill/templates/mgame.html.py:42
-msgid "Adjectives"
-msgstr "Omadussõnad"
-
-#: vro_drill/templates/mgame.html:34 vro_drill/templates/mgame.html.py:43
-msgid "Pronouns"
-msgstr "Asesõnad"
-
-#: vro_drill/templates/mgame.html:35 vro_drill/templates/mgame.html.py:44
-#: vro_drill/templates/num.html:43
-msgid "Numerals"
-msgstr "Arvsõnad"
-
-#: vro_drill/templates/mgame.html:36 vro_drill/templates/mgame.html.py:45
-msgid "Derivations"
-msgstr "Sõnatuletus"
-
-#: vro_drill/templates/mgame.html:50
-msgid "Morphology"
-msgstr "Morfoloogia"
-
-#: vro_drill/templates/mgame_a.html:7
-msgid ""
-"Add adjectives in correct forms. You get translation if you click the word."
-msgstr ""
-"Kirjuta õige omadussõna vorm. Sõnal klikkides näed selle eestikeelset tõlget."
-
-#: vro_drill/templates/mgame_a.html:14 vro_drill/templates/mgame_der.html:20
-#: vro_drill/templates/mgame_l.html:17 vro_drill/templates/mgame_l.html:20
-#: vro_drill/templates/mgame_n.html:15 vro_drill/templates/mgame_n.html:24
-#: vro_drill/templates/mgame_p.html:15
-msgid "Case"
-msgstr "Kääne"
-
-#: vro_drill/templates/mgame_a.html:16
-msgid "Grade"
-msgstr "Võrdlusaste"
-
-#: vro_drill/templates/mgame_a.html:18 vro_drill/templates/mgame_v.html:18
-msgid "Stem"
-msgstr "Tüvi"
-
-#: vro_drill/templates/mgame_a.html:27 vro_drill/templates/mgame_l.html:30
-#: vro_drill/templates/mgame_n.html:20 vro_drill/templates/mgame_v.html:16
-#: vro_drill/templates/mgame_v.html:26
-msgid "Type"
-msgstr "Tüüp"
-
-#: vro_drill/templates/mgame_der.html:7 vro_drill/templates/mgame_der.html:9
-msgid "Write the derived form."
-msgstr "Kirjuta tuletatud sõnavorm."
-
-#: vro_drill/templates/mgame_der.html:17
-msgid "Derivation type"
-msgstr "Sõnatuletuse tüüp"
-
-#: vro_drill/templates/mgame_l.html:7 vro_drill/templates/mgame_l.html.py:9
-msgid "Add numerals in correct forms."
-msgstr "Kirjuta arvsõnad õiges vormis."
-
-#: vro_drill/templates/mgame_l.html:25 vro_drill/templates/vasta.html:62
-msgid "Level"
-msgstr "Tase"
-
-#: vro_drill/templates/mgame_n.html:7
-msgid ""
-"Put the nouns in the correct forms. You get a translation if you click on a "
-"word."
-msgstr ""
-"Kirjuta nimisõnad õiges vormis. Sõnal klikkides näed selle eestikeelset "
-"tõlget."
-
-#: vro_drill/templates/mgame_n.html:9
-msgid "Add nouns in correct forms."
-msgstr "Kirjuta nimisõnad õiges vormis."
-
-#: vro_drill/templates/mgame_n.html:17
-msgid "Number"
-msgstr "Arv"
-
-#: vro_drill/templates/mgame_n.html:19
-msgid " singular only"
-msgstr "ainult ainsus"
-
-#: vro_drill/templates/mgame_p.html:7
-msgid "Add pronouns in correct forms."
-msgstr "Kirjuta asesõnad õiges vormis."
-
-#: vro_drill/templates/mgame_p.html:13 vro_drill/templates/mgame_p.html:19
-msgid "Pronoun type"
-msgstr "Asesõna liik"
-
-#: vro_drill/templates/mgame_p.html:22
-msgid "Reciprocative type"
-msgstr "Vastastikused asesõnad"
-
-#: vro_drill/templates/mgame_v.html:7
-msgid "Add verbs in correct forms. You get translation if you click the word."
-msgstr ""
-"Kirjuta tegusõnad õiges vormis. Sõnal klikkides näed selle eestikeelset "
-"tõlget."
-
-#: vro_drill/templates/mgame_v.html:9
-msgid "Add verbs in correct forms."
-msgstr "Kirjuta tegusõnad õiges vormis."
-
-#: vro_drill/templates/num.html:50
-msgid "Enter the numeral. (Ex. 72)"
-msgstr "Kirjuta arv (näiteks 72)."
-
-#: vro_drill/templates/num.html:52
-msgid "Enter the Võro number. (Ex. säidsekümmend katś)."
-msgstr "Kirjuta arv sõnadega (näiteks säidsekümmend katś)."
-
-#: vro_drill/templates/num.html:64
-msgid "Select the range of numerals."
-msgstr "Vali arvude vahemik."
-
-#: vro_drill/templates/num_ord.html:13
-msgid ""
-"Write a numeral followed by fullstop (for example, 32.). Please keep to this "
-"format."
-msgstr "Kirjuta järgarv (lõpeb punktiga), näiteks 32."
-
-#: vro_drill/templates/num_ord.html:15
-msgid "Write the ordinal numbers in Võro (for example, katsas)."
-msgstr "Kirjuta järgarv sõnadega (näiteks katsas)."
-
-#: vro_drill/templates/numra_submenu.html:3
-msgid "Cardinals"
-msgstr "Põhiarvsõnad"
-
-#: vro_drill/templates/numra_submenu.html:4
-msgid "Ordinals"
-msgstr "Järgarvsõnad"
-
-#: vro_drill/templates/numra_submenu.html:5
-msgid "Time"
-msgstr "Kellaajad"
-
-#: vro_drill/templates/numra_submenu.html:6
-msgid "Date"
-msgstr "Kuupäevad"
-
-#: vro_drill/templates/sahka.html:107
-msgid "Select a dialogue"
-msgstr "Vali dialoog"
-
-#: vro_drill/templates/sahka.html:156
-msgid ""
-"Answer to the questions with full sentences. Remember big initial letter in "
-"placenames."
-msgstr ""
-"Vasta kysymyksiin täydellisellä lauseella. Muista iso alkukirjain nimissä."
-
-#: vro_drill/templates/sahka.html:167
-msgid ""
-"NB! NB! The Sahka game is not working properly, due to technical problems! "
-"NB! NB!"
-msgstr ""
-"NB! NB! The Sahka game is not working properly, due to technical problems! "
-"NB! NB!"
-
-#: vro_drill/templates/sahka.html:168
-msgid ""
-"NB! NB! The Sahka game is temporarily out of order, due to technical "
-"maintenance! NB! NB!"
-msgstr ""
-"NB! NB! The Sahka game is temporarily out of order, due to technical "
-"maintenance! NB! NB!"
-
-#: vro_drill/templates/sahka.html:179
-msgid "Meeting with Kare"
-msgstr "Oahpásmuva Kárii"
-
-#: vro_drill/templates/sahka.html:184
-msgid "Meeting with Hansa"
-msgstr "Oahpásmuva Hánsii"
-
-#: vro_drill/templates/sahka.html:188
-msgid "Meeting with Lisa"
-msgstr "Oahpásmuva Liisái"
-
-#: vro_drill/templates/sahka.html:192
-msgid "Meeting with Lemet"
-msgstr "Oahpásmuva Lemehii"
-
-#: vro_drill/templates/sahka.html:209
-msgid "Shop"
-msgstr "Veardideapmi rámbuvrris"
-
-#: vro_drill/templates/sahka.html:239
-msgid "Answer"
-msgstr "Vastaus"
-
-#: vro_drill/templates/vasta.html:16
-msgid "Vasta-S"
-msgstr "Vasta-S"
-
-#: vro_drill/templates/vasta.html:17
-msgid "Vasta-F"
-msgstr "Vasta-F"
-
-#: vro_drill/templates/vasta.html:39
-msgid "Vasta"
-msgstr "Vasta"
-
-#: vro_drill/templates/vasta.html:43
-msgid "Answer the questions with full sentences."
-msgstr "Vasta kysymyksiin täydellisellä lauseella."
-
-#: vro_drill/templates/vasta.html:44
-#, fuzzy
-msgid ""
-"The blue words are given in the primary form. Your task is to write them in "
-"the correct grammatical form."
-msgstr ""
-"Vasta kysymyksiin täydellisella lauseella. Muista iso alkukirjain nimissä. "
-"Siniset sanat on kirjoitettu perusmuodossa. Sinun tehtäväsi on kirjoittaa ne "
-"oikeiseen muotoon."
-
-#: vro_drill/templates/vasta.html:46
-msgid ""
-"Answer to the questions with full sentences. Be aware of that if there is "
-"moai/mii in the question, you have to answer with doai/dii. "
-msgstr ""
-"Vasta kysymyksiin täydellisella lauseella. Huomaa, että jos kysymyksessä on "
-"moai/mii, niin vastauksessa pitää olla doai/dii. "
-
-#: vro_drill/templates/vasta.html:57
-#, fuzzy
-msgid ""
-"NB! NB! The Vasta game is not working properly, due to technical problems! "
-"NB! NB!"
-msgstr ""
-"NB! NB! The VastaS game is not working properly, due to technical problems! "
-"NB! NB!"
-
-#: vro_drill/templates/vasta.html:58
-msgid ""
-"NB! NB! The Vasta game is temporarily out of order, due to technical "
-"maintenance! NB! NB!"
-msgstr ""
-"NB! NB! The Vasta game is temporarily out of order, due to technical "
-"maintenance! NB! NB!"
-
-#: vro_drill/templates/vasta.html:63
-msgid "Number of task words"
-msgstr "Tehtäväsanojen määrä"
-
-#: vro_drill/templates/visl_main.html:37
-#, fuzzy
-msgid ""
-"is a collection of grammar games developed for grammar learning by Syddansk "
-"Universitet. Here are the VISL games for North Sami. Note! Some of the games "
-"require the latest Java version, and do not function on Mac computers."
-msgstr ""
-"on kokoelma pelejä kielenopiskelijoille. VISL-pelit on kehittänyt Syddansk "
-"vroersitet. Alta löydät linkit pohjoissaamen peleihin. HUOM! Osa peleistä "
-"tarvitse viimeistä Java-versiota, eikä sen takia toimi Mac-tietokoneissa."
-
-#: vro_drill/templates/visl_main.html:85
-msgid "Paint nouns, verbs and other words."
-msgstr "Maalaa nomineja, verbejä ja muita sanoja."
-
-#: vro_drill/templates/visl_main.html:105
-#: vro_drill/templates/visl_main.html:131
-#: vro_drill/templates/visl_main.html:156
-#: vro_drill/templates/visl_main.html:218
-#: vro_drill/templates/visl_main.html:244
-#: vro_drill/templates/visl_main.html:270
-#: vro_drill/templates/visl_main.html:329
-#: vro_drill/templates/visl_main.html:338
-#: vro_drill/templates/visl_main.html:364
-msgid "(instructions)"
-msgstr "(ohjeita)"
-
-#: vro_drill/templates/visl_main.html:111
-msgid "Nouns, verbs and other words shall be put into the right place."
-msgstr "Sijoita paikalleen nominit, verbit ja muut sanat."
-
-#: vro_drill/templates/visl_main.html:136
-msgid "Shoot nouns, verbs and other words flying through the air."
-msgstr "Ammuskele nomineja, verbejä ja muita sanoja."
-
-#: vro_drill/templates/visl_main.html:198
-msgid "Hurry through the labyrinth to the right part of speech."
-msgstr "Kiirehdi labyrintin läpi oikean sanaluokan luokse."
-
-#: vro_drill/templates/visl_main.html:224
-msgid "Sentence members shall fall into right place - a Tetris game."
-msgstr "Lausejäsenten pitää läytää oikean paikkansa - Tetris-peli"
-
-#: vro_drill/templates/visl_main.html:250
-msgid "You shall save the parts of speech. (NOT for Mac!)"
-msgstr "Pelasta sanaluokat. (EI Macissa!)"
-
-#: vro_drill/templates/visl_main.html:309
-msgid "Write the correct wordform for the lemma."
-msgstr "Etsi oikea sanamuoto."
-
-#: vro_drill/templates/visl_main.html:335
-msgid "Guess the right animal."
-msgstr "Arvaa mikä eläin on kyseessä."
-
-#: vro_drill/templates/visl_main.html:344
-msgid "Examine and build sentence trees."
-msgstr "Rakenna ja tarkastele lausepuita."
-
-#: vro_drill/templates/visl_main.html:382
-msgid "Page language"
-msgstr "Käyttöliittymäkieli"
-
-#: vro_drill/templates/visl_main.html:435
-msgid "Teachers and students guide"
-msgstr "VISL for nordsamisk"
-
-#: vro_drill/templates/visl_main.html:445
-msgid "Main page"
-msgstr "Pääsivu"
-
-#: vro_drill/templates/visl_main.html:449
-msgid "About OAHPA!"
-msgstr "OAHPAsta!"
-
-#: vro_drill/templates/visl_main.html:452
-msgid "Feedback"
-msgstr "Palaute"
-
-#: vro_feedback/templates/feedback.html:9
-msgid "Message:"
-msgstr "Lähetä palaute:"
-
-#: vro_feedback/templates/feedback.html:17
-msgid "The following information is optional."
-msgstr "Nämä tiedot ovat vapaaehtoisia."
-
-#: vro_feedback/templates/feedback.html:18
-msgid ""
-"An email address is required if you would like us to contact you about the "
-"feedback."
-msgstr ""
-"Jos haluat että otamme yhteyttä palautteeseen liittyen, anna "
-"sähköpostiosoitteesi."
-
-#: vro_feedback/templates/feedback.html:23
-msgid "Your name:"
-msgstr "Nimesi:"
-
-#: vro_feedback/templates/feedback.html:29
-msgid "Institution/language course:"
-msgstr "Laitos/kielikurssi"
-
-#: vro_feedback/templates/feedback.html:34
-msgid "email:"
-msgstr "sähköpostiosoite"
-
-#: vro_feedback/templates/feedback.html:40
-msgid "I would like to be contacted about my question:"
-msgstr "Voitte ottaa minuun yhteyttä:"
-
-#: vro_feedback/templates/feedback.html:41
-msgid "Send message"
-msgstr "Lähetä viesti"
-
-#: vro_feedback/templates/thankyou.html:6
-msgid "Thank you for you feedback!"
-msgstr "Kiitos palautteestasi"
+#~ msgid "Instructions"
+#~ msgstr "Juhised"
 
 #~ msgid ""
 #~ "NB! This is a test version. The games Leksa and Numra are working "
@@ -2774,9 +2846,6 @@ msgstr "Kiitos palautteestasi"
 #~ msgid ""
 #~ "Add pronouns in correct forms. You get translation if you click the word."
 #~ msgstr "Kirjoita eteläsaamen pronominit oikeassa muodossa."
-
-#~ msgid "Show correct answers"
-#~ msgstr "Näytä oikeat vastaukset"
 
 #~ msgid "All correct!"
 #~ msgstr "Kaikki on oikein!"

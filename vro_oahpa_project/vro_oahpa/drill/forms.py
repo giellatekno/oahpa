@@ -697,10 +697,27 @@ def is_correct(self, game, example=None):
 	self.error = "error"
 	self.iscorrect = False
 
+	almost_correct_answers = []
+	for corrans in self.correct_anslist:
+	   if corrans.find('q') > -1:
+	       without_q = corrans.replace('q','')
+	       almost_correct_answers.append(without_q)
+	   if corrans.find(u'ʼ') > -1:
+	       unpalatalised = corrans.replace(u'ʼ','')
+	       almost_correct_answers.append(unpalatalised)
+	       apostrophe = corrans.replace(u'ʼ','\'')
+	       almost_correct_answers.append(apostrophe)
+
+	print "peaaegu õiged vastused: ", almost_correct_answers
+
 	if self.answer in set(self.correct_anslist) or \
 			self.answer.lower() in set(self.correct_anslist) or \
 			self.answer.upper() in set(self.correct_anslist):
 		self.error = "correct"
+		self.iscorrect = True
+
+	elif self.answer in almost_correct_answers:
+		self.error = "almost correct"
 		self.iscorrect = True
 
 	# Log information about user answers.
@@ -1006,6 +1023,9 @@ class OahpaQuestion(forms.Form):
 		if correct_val == "correct":
 			self.error = "correct"
 
+		if correct_val == "almost correct":  # Added the option "almost correct"
+			self.error = "almost correct"
+
 	def init_variables(self, possible, userans_val, accepted_answers, preferred=False):
 		# Get lemma and feedback
 		self.feedback = ""
@@ -1135,7 +1155,7 @@ class LeksaQuestion(OahpaQuestion):
 
 		if type(word) == Word:
                     if self.sourcelang == 'rus':
-                        self.lemma = word.lemma_stressed  # for Rusian the words will be presented with stress marks
+                        self.lemma = word.lemma_stressed  # for Russian the words will be presented with stress marks
                     else:
                         self.lemma = word.lemma # for other languages 'lemma_stressed' does not exist
 		else:
@@ -1165,6 +1185,7 @@ class LeksaQuestion(OahpaQuestion):
 		if correct_val:
 			if correct_val == "correct":
 				self.error = "correct"
+
 			# always accept relaxed spelling
 			#if userans_val in self.relaxings:
 				self.is_relaxed = "relaxed"
@@ -1187,7 +1208,67 @@ class LeksaQuestion(OahpaQuestion):
 				self.correct_ans = [lemma.sub(infin_a, force_unicode(ax)) for ax in self.correct_ans]
 				self.correct_ans = [force_unicode(ax) for ax in self.correct_ans]
 
+# #
+#
+# Fona Forms
+#
+# #
 
+class FonaSettings(OahpaSettings):
+	#semtype = forms.ChoiceField(initial='all', choices=SEMTYPE_CHOICES) # was: HUMAN
+	#common = forms.BooleanField(required=False, initial='1')
+	#rare = forms.BooleanField(required=False,initial=0)
+	# sapmi = forms.BooleanField(required=False, initial='1')
+	# world = forms.BooleanField(required=False,initial=0)
+	# suopma = forms.BooleanField(required=False,initial=0)
+	# source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
+	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
+	
+	default_data = {'gametype' : 'fona', 'language' : 'vro'}
+
+
+	def __init__(self, *args, **kwargs):
+
+		self.set_settings()
+		super(FonaSettings, self).__init__(*args, **kwargs)
+
+
+class FonaQuestion(OahpaQuestion):
+	"""
+	Questions for vowel harmony drill
+	"""
+
+	def __init__(self, possible, word, correct, question, userans_val, correct_val, *args, **kwargs):
+		lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
+		self.word = word
+		self.gametype = 'fona'
+		kwargs['correct_val'] = correct_val
+		super(FonaQuestion, self).__init__(*args, **kwargs)
+
+		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
+
+		# If we want stress marks in Leksa then we have to use lemma_stressed instead of lemma.
+
+		self.lemma = word.lemma
+		self.lemma_without_harmony = word.lemma_without_harmony  # this is an erroneous word form that has to be corrected by the user
+
+		self.init_variables(possible=word.lemma,
+							userans_val=userans_val,
+							accepted_answers=possible)
+		
+		self.is_correct("fona", self.lemma)
+		# set correct and error values
+		if correct_val:
+			if correct_val == "correct":
+				self.error = "correct"
+			if correct_val == "almost correct":
+				self.error = "almost correct"
+			# always accept relaxed spelling
+			#if userans_val in self.relaxings:
+				self.is_relaxed = "relaxed"
+				self.strict = 'Strict form'
+			#else:
+			#	self.is_relaxed = ""
 
 
 # #
@@ -1438,6 +1519,7 @@ class NumSettings(OahpaSettings):
 		self.set_settings()
 		super(NumSettings, self).__init__(*args, **kwargs)
 
+
 class NumOrdSettings(OahpaSettings):
 	maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES_ORD, widget=forms.RadioSelect)
 	numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
@@ -1489,6 +1571,8 @@ class NumQuestion(OahpaQuestion):
 		kwargs['correct_val'] = correct_val
 		self.userans_val = self.userans = userans_val
 		self.game_obj = game
+		prefix = kwargs.get('prefix')
+		self.audio = True # Added to show the loudspeaker icon in the template
 
 		if 'no_eval_correct' in kwargs:
 			no_eval_correct = kwargs.pop('no_eval_correct')
@@ -1506,6 +1590,7 @@ class NumQuestion(OahpaQuestion):
 			self.init_variables(force_unicode(numeral), userans_val, [ numeral ])
 			example = num_string
 			self.question_str = num_string
+			# self.audio = num_string.audio # pronunciation - does not work because num_string is just a string, not a Word object.
 		else:
 			self.init_variables(force_unicode(num_list[0]), userans_val, num_list)
 			wforms = sum([relax(force_unicode(item)) for item in num_list], [])
@@ -1521,6 +1606,16 @@ class NumQuestion(OahpaQuestion):
 		if gametype == "string":
 			self.numstring = num_string
 		self.numeral = numeral
+
+        # Creation of the audio file for the question using speech synthesis.
+		audiofilename = media_dir + '/audio/audio_out' + str(prefix) + '.wav'
+		audiofile = open(audiofilename,'w')
+		questionfilename = media_dir + '/audio/audio_in.txt'
+		questionfile = open(questionfilename,'w')
+		questionfile.write((num_string).encode('utf8'))  # The question is written to the file audio_in.txt
+		questionfile.close()
+		# Speech synthesis is run and the result is saved as audio_outN.wav where N=1..5:
+		os.system(tts_dir +'/bin/synthts_vr -o ' + audiofilename + ' -f ' + questionfilename + ' -m ' + tts_dir + '/htsvoices/eki_et_hll.htsvoice -r 1.1')
 
 		# Correctness not evaluated here but in child class. Short fix
 
@@ -1635,6 +1730,7 @@ class KlokkaQuestion(NumQuestion):
 		self.fields['numeral_id'] = forms.CharField(widget=numeral_widget, required=False)
 
 		self.numstring = num_string
+
 
 		# Need to change presentation of certain numerals to avoid
 		if gametype == "string":

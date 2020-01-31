@@ -449,6 +449,46 @@ def leksa_game(request, place=False):
 	return render_to_response(request, template, c)
 
 
+class Fonaview(Gameview):
+
+	def set_gamename(self):
+
+		self.settings['gamename_key'] = 'fona'
+		
+	def context(self, request, game, settings_form):
+		self.register_logs(request, game, settings_form)
+
+		return {
+			'settingsform': settings_form,
+			'settings' : self.settings,
+			'forms': game.form_list,
+			'count': game.count,
+			'score': game.score,
+			'comment': game.comment,
+			'all_correct': game.all_correct,
+			'show_correct': game.show_correct,
+			'deeplink': self.create_deeplink(game, settings_form),
+			}
+
+@trackGrade("Fona")
+def fona_game(request):
+
+    fonagame = Fonaview(FonaSettings, FonaGame)
+    template = 'fona.html'
+
+    sess_lang = request.session.get('django_language')
+
+    if sess_lang:
+	    sess_lang = switch_language_code(sess_lang)
+	    if sess_lang in ['vro', 'eng']: # maybe need to remove 'eng' from this list later on 
+		    sess_lang = 'est' # was: nob
+	    else:
+			sess_lang = 'est' # was: nob
+
+    c = fonagame.create_game(request)
+
+    return render_to_response(request, template, c)
+
 class Numview(Gameview):
 
 	def set_gamename(self):
