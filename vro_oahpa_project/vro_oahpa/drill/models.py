@@ -459,7 +459,7 @@ class Word(models.Model):
 	language = models.CharField(max_length=5, default='vro', db_index=True)
 	lemma = models.CharField(max_length=200, db_index=True)
 	lemma_stressed = models.CharField(max_length=200, db_index=True)  # added by HU
-	lemma_without_harmony = models.CharField(max_length=200, db_index=True) # lemma without vowel harmony
+	lemma_without_harmony = models.CharField(max_length=200,NULL=True,db_index=True) # lemma without vowel harmony
 	presentationform = models.CharField(max_length=5) # PI: what's this?
 	pos = models.CharField(max_length=12) # Accomodate larger PoS
 	stem = models.CharField(max_length=20)
