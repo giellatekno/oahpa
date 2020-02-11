@@ -1616,7 +1616,7 @@ class FonaGame(Game):
 
 			word_set = QueryModel.objects.filter(language='vro')
 			
-			word_set = word_set.exclude(lemma_without_harmony__isnull=True)
+			word_set = word_set.exclude(lemma_without_harmony='')
 
 			self.query_set = word_set.values_list('id', 'lemma')
 

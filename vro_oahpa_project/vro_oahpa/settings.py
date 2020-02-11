@@ -173,7 +173,7 @@ OLD_NEW_ISO_CODES = {
 
 
 INFINITIVE_SUBTRACT = {
-	'nob': ur'^(?P<inf>책 )?(?P<lemma>.*)$',
+	'nob': ur'^(?P<inf>å )?(?P<lemma>.*)$',
 	'swe': ur'^(?P<inf>att )?(?P<lemma>.*)$',
 	'eng': ur'^(?P<inf>to )?(?P<lemma>.*)$',
 	'deu': ur'^(?P<inf>zu )?(?P<lemma>.*)$',
@@ -181,7 +181,7 @@ INFINITIVE_SUBTRACT = {
 }
 
 INFINITIVE_ADD = {
-	'nob': ur'책 \g<lemma>',
+	'nob': ur'å \g<lemma>',
 	'swe': ur'att \g<lemma>',
 	'eng': ur'to \g<lemma>',
 	'deu': ur'zu \g<lemma>',

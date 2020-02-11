@@ -1,6 +1,6 @@
 #!/bin/sh
 
-P="python2.7"
+P="python"
 DATA="vro_data"
 DPS="$DATA/src"
 META="$DATA/meta_data"
@@ -17,7 +17,7 @@ DPD="$DATA/smevro"
 
 
 echo "==================================================="
-y|rm error.log
+rm error.log
 echo "error.log removed"
 echo "==================================================="
 
@@ -38,25 +38,25 @@ echo "==================================================="
 ##
 
 echo "==================================================="
- echo "installing substantives from $INC/n_tyypsonad.xml"
+echo "installing substantives from $INC/n_tyypsonad.xml"
  $P install.py --file $INC/n_tyypsonad.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
 
  echo "==================================================="
- echo "installing substantives from $DPS/oahpa_lexicon_new.xml"
+ echo "installing substantives from $DPS/oahpa_lexicon_audio_ready.xml"
  $P install.py --file $DPS/oahpa_lexicon_audio_ready.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt --append 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with $META/names.xml"
-# $P install.py --file $DPS/names.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
-# echo " "
-# echo "done"
-# echo "==================================================="
+ echo "==================================================="
+ echo "feeding db with $DPS/N_people.xml"
+ $P install.py --file $DPS/N_people.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt --append 2>>error.log
+ echo " "
+ echo "done"
+ echo "==================================================="
 
 # echo "==================================================="
 # echo "feeding db with $DPS/prop_vronob.xml"
@@ -74,14 +74,15 @@ echo "==================================================="
 # echo "==================================================="
 
  echo "==================================================="
- echo "installing adjectives from $DPS/oahpa_lexicon_new.xml"
+ echo "installing adjectives from $DPS/oahpa_lexicon_audio_ready.xml"
  $P install.py --file $DPS/oahpa_lexicon_audio_ready.xml --tagfile $META/tags.txt --paradigmfile $META/a_paradigms.txt --append 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
 
  echo "==================================================="
- echo "installing verbs from $DPS/oahpa_lexicon_new.xml"
+ echo "installing verbs from $DPS/oahpa_lexicon_audio_ready.xml"
+ 
  $P install.py --file $DPS/oahpa_lexicon_audio_ready.xml --tagfile $META/tags.txt --paradigmfile $META/v_paradigms.txt --append 2>>error.log
  echo " "
  echo "done"

@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
-import django
-django.setup()
-from os import environ
 import os, sys
-
+import os.path
+from os import environ
 from local_conf import LLL1
 import importlib
+
+environ['DJANGO_SETTINGS_MODULE'] = LLL1+'_oahpa.settings'
+
+import django
+django.setup()
+
 settings = importlib.import_module(LLL1+'_oahpa.settings')
 sdm = importlib.import_module(LLL1+'_oahpa.drill.models')
 
@@ -13,7 +17,6 @@ print " * Correcting paths"
 cur_path = os.getcwd()
 parent_path = '/' + '/'.join([a for a in cur_path.split('/') if a][0:-1]) + '/'
 sys.path.insert(0, parent_path)
-environ['DJANGO_SETTINGS_MODULE'] = LLL1+'_oahpa.settings'
 
 settings.DEBUG = False
 

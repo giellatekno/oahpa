@@ -217,6 +217,7 @@ class Entry(object):
 			("type", "wordtype"),
 			("umlaut", None),
 			("vow", None),
+			("nonharmonic", None),
 			("xml:lang", None),
 
 		]
@@ -684,7 +685,7 @@ class Words(object):
 		changes_to_xml = True
 		changes_to_paradigm = True
 		# Intialize null variables
-		stem, forms, gradation, rime, audio						=	[""]*5
+		stem, forms, gradation, rime, audio, nonharmonic	=	[""]*6
 		wordclass, attrsuffix, compsuffix, soggi, valency	=	[""]*5
 		compare, frequency, geography, presentationform, excl_dialect	=	[""]*5
 
@@ -768,6 +769,9 @@ class Words(object):
 
 		if entry.audio:
 			audio = entry.audio
+        
+		if entry.nonharmonic:
+			nonharmonic = entry.nonharmonic
 
 		if entry.rime:
 			rime = entry.rime
@@ -825,6 +829,7 @@ class Words(object):
 			w.stem = stem
 			w.rime = rime
 			w.audio = audio
+			w.lemma_without_harmony = nonharmonic
 			w.compare = compare
 			w.attrsuffix = attrsuffix
 			w.compsuffix = compsuffix
