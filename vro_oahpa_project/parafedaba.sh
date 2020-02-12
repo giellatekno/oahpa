@@ -52,8 +52,8 @@ echo "installing substantives from $INC/n_tyypsonad.xml"
  echo "==================================================="
 
  echo "==================================================="
- echo "feeding db with $DPS/N_people.xml"
- $P install.py --file $DPS/N_people.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt --append 2>>error.log
+ echo "feeding db with $INC/N_people.xml"
+ $P install.py --file $INC/N_people.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt --append 2>>error.log
  echo " "
  echo "done"
  echo "==================================================="
