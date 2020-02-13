@@ -1493,10 +1493,13 @@ class MorfaQuestion(OahpaQuestion):
 		if correct_val:
 			if correct_val == "correct":
 				self.error="correct"
+			elif correct_val == "almost correct":
+				self.error="almost correct"
 			# relax
 			#if userans_val in self.relaxings: let's make the spelling always relaxed
                 self.is_relaxed = "relaxed"
                 self.strict = 'Strict form'
+
 			#else:
 			#	self.is_relaxed = ""
 
@@ -2042,6 +2045,8 @@ class ContextMorfaQuestion(OahpaQuestion):
 		if correct_val:
 			if correct_val == "correct":
 				self.error="correct"
+			elif correct_val == "almost correct":
+				self.error="almost correct"
 			# relax
 			if userans_val in self.relaxings:
 				self.is_relaxed = "relaxed"
