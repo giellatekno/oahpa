@@ -1889,7 +1889,14 @@ class ContextMorfaQuestion(OahpaQuestion):
 			log_name = "contextual_morfa_" + w_pos
 			log_value = '%s+%s' % (w_str, t_str)
 			self.is_correct(log_name, log_value)
-			self.correct_ans = self.correct_anslist[0]
+			if len(self.correct_anslist) > 1 and self.correct_anslist[0].find('-') > -1:    # To handle the post-negation exercise where we have three possible correct answers, e.g. süü-i, süü-üi, süü-üiq. The form that Oahpa recommends is süü-i but the others are accepted as correct.
+				for aa in self.correct_anslist:
+				    print "post negation answer: ", aa
+				    if aa[-2:] == '-i':
+					    self.correct_ans = aa
+                            
+			if not(self.correct_ans):
+				self.correct_ans = self.correct_anslist[0]
 
 		self.correct_anslist = [force_unicode(item) for item in accepted]
 
