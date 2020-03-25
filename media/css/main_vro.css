@@ -1,4 +1,4 @@
-/* @override 
+/* @override
 	http://localhost:8000/media/css/smaoahpa_main.css
 	http://localhost:8000/aarjel/media//css/main.css
 	http://localhost:8000/liv_oahpa/media//css/main.css
@@ -27,7 +27,7 @@ table {
 	border-collapse:collapse;
 	border-spacing:0;
 }
-fieldset,img { 
+fieldset,img {
 	border:0;
 }
 address,caption,cite,code,dfn,em,strong,th,var {
@@ -54,7 +54,7 @@ abbr,acronym { border:0;
 
 body {
   overflow: scroll;
-  font-family: "Helvetica Neue", sans-serif; 
+  font-family: "Helvetica Neue", sans-serif;
   padding: 0;
   margin: 0;
   width: 100%;
@@ -143,10 +143,10 @@ h3 {
 
 #language_options dl {
 	margin-bottom: 10px;
-} 
+}
 
 #page p {
-	margin: 0 1em;	
+	margin: 0 1em;
 }
 
 #page p.intro {
@@ -195,7 +195,7 @@ ul#games_menu li {
 
 #games_menu.small img {
 	width: 60px;
-	height: auto;	
+	height: auto;
 }
 
 span.game_explanation {
@@ -209,7 +209,7 @@ span.game_explanation {
 }
 
 #games_menu a {
-	display: block;	
+	display: block;
 	width: inherit;
 	text-decoration: none;
 	text-align: center;
@@ -219,7 +219,7 @@ span.game_explanation {
 	margin-top: 1.5em;
 	margin-bottom: .75em;
 	font-size: 80%;
-	
+
 }
 
 #page.game #footer {
@@ -279,7 +279,8 @@ li.game {
 
 #headerimg img {
 	width: 200px;
-	height: 70px;
+	max-width: 100%;
+	height: auto;
 }
 
 #page.game #content {
@@ -300,7 +301,7 @@ li.game {
 	top: 0px;
 	right: 0px;
 }
-    
+
 
 /* settings form */
 div#settings {
@@ -361,7 +362,7 @@ div#instructions {
 	margin-top: 1.25em;
 	margin-bottom: 1em;
 
-	font-size: 95%;	
+	font-size: 95%;
 }
 
 div#instructions p {
@@ -377,7 +378,7 @@ div#tooltips {
 div.tooltip {
 	border: 1px solid #CCC;
 	padding: 10px;
-	
+
 	font-size: 95%;
 }
 
@@ -517,10 +518,10 @@ dl#question_set dt {
 div#game {
 	display: table;
 	position: relative;
-	
+
 	width: 100%;
 	font-size: 85%;
-	
+
 	margin-top: .5em;
 	padding-top: .5em;
 }
@@ -529,8 +530,8 @@ div#game {
 	display: table-cell;
 	position: relative;
 	float: right;
-	
-	width: 25%;	
+
+	width: 25%;
 }
 
 #game_left {
@@ -564,10 +565,10 @@ span.rightpart a.feedback_link {
 }
 
 span.click-to-stress {
-    border: 1px solid #AAA; 
-    padding: 3px; 
-    font-size: 75%; 
-    color: #0000ff; 
+    border: 1px solid #AAA;
+    padding: 3px;
+    font-size: 75%;
+    color: #0000ff;
     background-color: #ddd;
 }
 
@@ -631,13 +632,13 @@ span.incorrect input {
 }
 
 span.almostcorrect {  /* almost correct = yellow / light green */
-	color: #9ACD32; 
+	color: #9ACD32;
 }
 
 span.click-to-stress {
     border: 1px solid #AAA;
-    padding: 3px; 
-    color: #0000ff; 
+    padding: 3px;
+    color: #0000ff;
     background-color: #ddd;
 }
 
@@ -712,7 +713,7 @@ span.click-to-stress {
 }
 
 #courses h3 {
-	font-weight: bold ; 
+	font-weight: bold ;
 	font-size: 110% ;
 }
 
@@ -732,7 +733,7 @@ span.click-to-stress {
 }
 
 ul.courselist {
-	margin: 1em 2em; 
+	margin: 1em 2em;
 }
 
 ul.courselist li {
