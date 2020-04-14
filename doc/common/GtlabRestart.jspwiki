@@ -1,56 +1,14 @@
-This document deals with restarting services on ''gtlab.uit.no''.
-For the other servers, see [Restarting Gtweb|httpdserversgtweb.html]
-and [Restarting gtoahpa|httpdserver.html]
-
-
 !!!Status
-
-We are in the middle of moving from gtlab.uit.no to gtlab-01.uit.no.
-
-
-!!!Probably obsolete information:
-
-On {{gtoahpa}}, {{gtweb}} and {{gtlab}}, we use nginx for serving HTML
-and other applications. See [how to restart nginx itself|RestartingNginx.html] 
-if needed (after an ordinary update is often is not).
-
-The __Oahpa__ versions on gtlab are not functioning, the code will
-either be moved to the new gtoahpa-01.uit.no, or just deleted orkept for reference.
-
-Current list (2018-11-28) of folders named xxx_oahpa  on gtlab is:
-bxr,crk,est,fkv,izh,liv,mdf,mhr,mrj,olo,udm,univ,vep,vro
-bxr,crk,davvi,est,fkv,izh,liv,mdf,mhr,mrj,oahpa,olo,rusoahpa,udm,univ,vep,vro
-(names: bxr_oahpa, etc).
+As of 14.04.2020 there are no services running on gtlab.
+All Oahpa instances and Konteaksta have been moved to gtoahpa-01.
 
 
+!! In case of emergencies...
 
-!! In case of emergencies... 
-
-!The test versions of Oahpa (on testing.oahpa.no)
-
-__These versions are not online__ The info here is kept for
-reference and will be revised when the versions have been moved.
-
-If all the Oahpa instances on gtlab are down (for example after server reboot) then you can start all the Oahpas at once, using the script {{{start_all_oahpas.sh}}} located in the directory {{{/home/oahpa_scripts}}} (requires sudo rights).
-
-If an Oahpa on __gtlab__ (e.g. testing.oahpa.no/izh_oahpa) gives "__404 Not found__" error then it means that nginx is running but the Oahpa (fastcgi) process has been stopped. For checking if the particular Oahpa process is running give the command:
-
-{{{
-    ps -ef | grep 'izh_oahpa'
-}}}
-
-If this command does not output 5-6 lines of fastcgi processes then you need to start the Oahpa process again. For doing that, go to the respective Oahpa's home directory, e.g. {{{/home/izh_oahpa/izh_oahpa}}} and give the command (as sudo, if needed):
-
-{{{
-    sudo ./izh_oahpa.sh --run
-}}}
-
- 
 !!Restarting Nginx
 
-Updates to the Oahpa code do not require restarting nginx, unless updating configuration
-files specifically for nginx. However, should the system reboot and nginx not 
-survive this reboot, see [how to restart nginx itself|RestartingNginx.html]. 
+Should the system reboot and nginx not
+survive this reboot, see [how to restart nginx itself|RestartingNginx.html].
 
 There have been problems with rebooting gtlab. If you after (re)starting nginx do not see the nginx test page when opening [testing.oahpa.no|http://testing.oahpa.no] then try restarting iptables as well:
 
@@ -59,25 +17,12 @@ There have been problems with rebooting gtlab. If you after (re)starting nginx d
 }}}
 
 If for some reason the system is running slowly, inspect processes running,
-using {{{top}}} or {{{htop}}}, the latter of which is a more updated and easier
-to interpret tool.
-
-!!Restarting Tomcat web server
-
-This is where the instances of Konteaksta are running. After upgrade of the server, as well as adding new components to Konteaksta, it is always recommended to restart Tomcat. It is also the first thing to try if Konteaksta gives "server error". To restart Tomcat:
-
+using
 {{{
-    sudo $CATALINA_HOME/bin/shutdown.sh
-    sudo $CATALINA_HOME/bin/startup.sh
+    top
 }}}
-
-For compiling and redeploying Konteaksta (if needed):
-
+or
 {{{
-    cd /home/teaksta
-    svn up
-    ./make_teaksta.sh
+    htop
 }}}
-
-
-
+, the latter of which is a more updated and easier to interpret tool.
