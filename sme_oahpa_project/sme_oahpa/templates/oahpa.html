@@ -101,17 +101,6 @@
         {% endifequal %}
     </ul>
 
-	<strong class="interface">{% trans_to "Online courses" "sme" %}<span class="invisible">{% trans "Online courses" %}</span></strong>
-	<ul class="sidelist small">
-		{% if user.is_authenticated %}
-			<li><a href="{% url 'courses_main' %}" class="interface">{% trans_to "View progress" "sme" %}<span class="invisible">{% trans "View progress" %}</span></a></li>
-			<li><a href="{% url 'logout' %}" class="interface">{% trans_to "Log out" "sme" %}<span class="invisible">{% trans "Log out" %}</span></a></li>
-		{% else %}
-    	<li><a href="{% url 'courses_login' %}" class="interface"> {% trans_to "Log in" "sme" %}<span class="invisible">{% trans "Log in" %}</span></a></li>
-    	{% endif %}
-    </ul>
-
-
 </div>
 
 {% comment %}
