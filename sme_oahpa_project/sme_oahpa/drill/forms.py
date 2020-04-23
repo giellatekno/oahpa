@@ -2143,7 +2143,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	dis_bin = settings.FST_DIRECTORY + "/sme-ped.cg3" # on the server
 	#dis_bin = settings.CG_RULES_DIRECTORY + "/sme-ped.cg3"
 
-	vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
+	vislcg3 = " | " + cg3 + " --grammar " + dis_bin
 
 	self.userans = self.cleaned_data['answer']
 	answer = self.userans.rstrip()
@@ -2691,7 +2691,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	preprocess = " | " + settings.PREPROCESS
 	dis_bin = settings.FST_DIRECTORY + "/sme-ped.cg3"
 
-	vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
+	vislcg3 = " | " + cg3 + " --grammar " + dis_bin 
 
 	self.userans = self.cleaned_data['answer']
 	answer = self.userans.rstrip()
