@@ -6,14 +6,14 @@ function tillatpopup() {
     //document.write(navigator.userAgent)
     var browser ;
     browser = navigator.userAgent;
-    if (browser.search("Safari")>0 && browser.search("Version/5.1")>0) 
+    if (browser.search("Safari")>0 && browser.search("Version/5.1")>0)
     {
-        var mine; 
+        var mine;
         mine = window.open('','','width=1, height=1, left=0, top=0, scrollbars=no, titlebar=no, toolbar=no,status=no,resizable=no');
         if (!mine) {
             alert('Tillat popup-vinduer for å se grammatikkforklaringer.');
         } else {
-        	mine.close();    
+        	mine.close();
         }
     }
     return true ;
@@ -47,7 +47,7 @@ $(document).ready(function(){
 	$('input[type="text"]').keydown(next_field);
 	$('a.link_tooltip').click(reveal_tooltip);
 	$('a.feedback_link').click(reveal_feedback);
-	
+
 	$('select#id_semtype').change(function (e) {
 			$('select#id_source').val('all') ;
 			return false;
@@ -57,7 +57,7 @@ $(document).ready(function(){
 			$('select#id_semtype').val('all') ;
 			return false;
 	});
-	
+
 	$('select#grammarlink').change(function (e) {
 			link = $('select#grammarlink').val();
 			window.open(link);
@@ -69,7 +69,7 @@ $(document).ready(function(){
 	});
 
 	$('div#settings select').change(formsubmit);
-    
+
     $('.interface').mouseenter(translate);
     $('.interface').mouseleave(restore_attr);
 
@@ -89,7 +89,7 @@ function disable_autocomplete() {
 		elem.setAttribute('autocomplete', 'off') ;
 	};
 
-	return true; 
+	return true;
 }
 
 function set_tooltip_hrefs() {
@@ -112,7 +112,7 @@ function set_tooltip_hrefs() {
 //}
 
 
-function formsubmit (e) { 
+function formsubmit (e) {
 	$('div#settings input[type="submit"]').click();
 	$('input[type="submit"]').attr('disabled', 'disabled');
 	return false;
@@ -122,7 +122,7 @@ function reveal_tooltip (event) {
 	reveal_id = event.target.id.match(/(tooltip-\d)/);
 	$('.tooltip').hide();
 	$('#' + reveal_id).show();
-	return false; 
+	return false;
 }
 
 
@@ -179,7 +179,7 @@ function reveal_feedback (event) {
     }
 
     if (typeof morfas_elem !== "undefined" && morfas_elem !== null) {
-        
+
         var game_type = morfas_elem.val()
           , game_name = "MorfaS"
           ;
@@ -189,29 +189,29 @@ function reveal_feedback (event) {
           ;
     }
 
-    var event_title = game_name + " " + game_type 
-      ,  event_type = "FeedbackClick" 
+    var event_title = game_name + " " + game_type
+      ,  event_type = "FeedbackClick"
       ;
 
     var google_event_args = ['_trackEvent', event_type, event_title, feedback_event_desc];
 
     _gaq.push(google_event_args)
 
-	return false; 
+	return false;
 }
 
-// Create a localisation tooltip for the text on HTML elements with class 
+// Create a localisation tooltip for the text on HTML elements with class
 // "interface" when ALT key is hold down and mouse enteres the HTML element
-function translate(event) {  
+function translate(event) {
     if (event.altKey || event.altLeft) {
         $(this).children('span').removeAttr('class');
-        $(this).children('span').setAttribute('class',"shortinfo_lang");      
+        $(this).children('span').setAttribute('class',"shortinfo_lang");
     }
 }
 
 function restore_attr(event) {
-    $(this).children('span').setAttribute('class',"invisible");
-    this.setAttribute('class',"interface");    
+    $(this).children('span')[0].setAttribute('class',"invisible");
+    this.setAttribute('class',"interface");
 }
 
 
@@ -222,15 +222,15 @@ function next_field (event) {
 		function first_empty (inputs) {
 			return inputs[0];
 		}
-	
+
 		current_id = event.target.id;
 		match = current_id.match(/id_(\d)-answer/);
 		count = parseFloat(match[1]) - 1;
 		inputs = $('input[type="text"]');
-	
+
 		// Focus next
 		$(inputs[count+1]).focus();
-	
+
 		if(count == 4){
 			open_inputs = $("input:visible:enabled[type='text'][value='']").not(".nofocus");
 			if (open_inputs.length == 0) {
@@ -238,30 +238,30 @@ function next_field (event) {
 				return false;
 			} else {
 				open_inputs.slice(0, 1).focus();
-				
+
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 }
 
 function SetIndex(list,value) {
     if (value == "all") {
 	   return;
     }
-	if(list && list.options.length){ 
-		for(var i=0; i<list.options.length; i++){ 
-		if(list.options[i].value == "all"){ 
-			list.selectedIndex = i; 
-			return; 
-			} 
-		} 
-	} 
+	if(list && list.options.length){
+		for(var i=0; i<list.options.length; i++){
+		if(list.options[i].value == "all"){
+			list.selectedIndex = i;
+			return;
+			}
+		}
+	}
 }
 
-	
+
 
 
 // Non-jQuery functions that should probably be rewritten if they come into use.
@@ -294,27 +294,27 @@ function SetIndex(list,value) {
 //   }
 
 // function sahkaSetFocus(){
-// 
+//
 //   document.getElementByName('test').focus();
 //   var node_list = document.getElementsByTagName('input');
-// 	
+//
 //   for (var i = 0; i < node_list.length; i++) {
 //     var node = node_list[i];
 //     if (node.getAttribute('type') == 'text') {
 //       node.focus();
 //       }
 //    }
-// 
-// } 
+//
+// }
 
 // function setFocus(form){
-// 
+//
 //   if (form.gametype == "sahka") {
 //     sahkaSetFocus();
 //     return;
 //   }
 //   var node_list = document.getElementsByTagName('input');
-//   var i=0;	
+//   var i=0;
 //   var found=0;
 //   while (i < node_list.length & found==0) {
 //     i++;
@@ -324,6 +324,4 @@ function SetIndex(list,value) {
 //       found=1;
 //     }
 //   }
-// } 
-
-
+// }
