@@ -5922,7 +5922,7 @@ MAP (&grm-incorr-pers-nr) TARGET (Pers Nom)  (NOT 0 Pl1)(*-1 QDL BARRIER S-BOUND
 
 
 # Answer with the correct pronoun:
-MAP (&grm-incorr-persnr-pron) TARGET (Pers Sg1 Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Sg2)(NEGATE *-1 QDL LINK **-1 (Pers Nom Sg2))(NEGATE *-1 ACCEPT-EVERYTHING);
+MAP (&grm-incorr-persnr-pron) TARGET (Pers Sg1 Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Sg2)(NEGATE *-1 QDL LINK *-1 (Pers Nom Sg2))(NEGATE *-1 ACCEPT-EVERYTHING);
 MAP (&grm-incorr-persnr-pron) TARGET (Pers Sg2 Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Sg1)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 MAP (&grm-incorr-persnr-pron) TARGET (Pers Sg3 Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Sg3)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 MAP (&grm-incorr-persnr-pron) TARGET (Pers Du1 Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 SAHKA LINK *-1 (Pers Nom) LINK NOT 0 Du2)(NEGATE *-1 ACCEPT-EVERYTHING) ;
