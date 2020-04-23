@@ -1843,7 +1843,7 @@ SET S-BOUNDARY  = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR ("
 SET S-BOUNDARY1  = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR QDL ;
 	# includes not CS because of "go" in questions, before it is disambugated.
 	
-SET S-BOUNDARY2 = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR QDL ;
+SET S-BOUNDARY2 = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR QDL OR CP ;
  
 	# includes CP
 	# this one includes @CVP, the conjunction which actually connects two sentences (each with a finite verb) to each other, 
@@ -5273,7 +5273,6 @@ REMOVE:r1432 N IF (-1 Gen)(NOT 0 QDL)(0 ("vuostái"));
 	## Min vuostái.
 	# (more general 0?)
 	
-LIST CASE = Nom Acc Gen Ill Loc Com Ess ;
 
 
 SELECT:DemAttr $$CASE + (Dem Sg) (0 DAT-PRON + (Dem Sg))(*1 $$CASE + (N Sg) BARRIER NPNH OR (Time) LINK NOT 0 VFIN OR ("leat") OR (Actio Ess))(NEGATE 0 Acc LINK *-1 STV-NOT-ACT BARRIER Acc LINK *1 Dem LINK NOT *1 Acc BARRIER NPNH)  ; 
