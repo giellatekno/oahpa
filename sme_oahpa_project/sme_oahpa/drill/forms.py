@@ -2778,6 +2778,8 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 					malemmas = row.split("\"")
 					if row:
 						 malemma = force_unicode(malemmas[1]).encode('utf-8')
+					else:
+						malemma = ''
 					malemma_without_hash = malemma.replace('#','')
 					taglist = ttag.split()
 					tag_match = 1
