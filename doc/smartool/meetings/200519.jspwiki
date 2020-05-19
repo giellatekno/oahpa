@@ -1,0 +1,123 @@
+
+Tilstede: Chiara, Berit Merete, Trond, Lene
+
+
+!!!Presentasjon
+
+BM og Chiara har laga ein demo med 30 setninger.
+Libre Office egner seg til dette arbeidet.
+
+!!!Ting å sjå på
+
+!!Felles datafil for grammatiske taggar
+
+I dag inneheld ''Search by analysis'' fulle taggstrengar. Vi diskuterte ulike alternativ:
+
+# Full spesifisering, som i dag. __Ulempe:__ Pedagogisk irrelevant, og få treff
+# Spesifisering på POS og enkeltkagetori (velje berre lokativ, berre preteritum, ...). __Ulempe:__ Det inneber 
+# Kryssval: Sg gjev alle eintalsformer, Acc alle akkusativ, Sg.Acc snittet mellom dei to __Ulempe:__ Det vil gje tomme søk
+
+Ein variant av (2) vil vere å ha ei totrinnsliste: Først velje __verb__, og deretter alle verbkategoriane.
+
+__Konklusjon:__ Vi prøver ut (2), men utan totrinnsliste.
+
+
+!!Menyen ''Search by dictionary''
+
+Denne lista gjev orda lista i {{data/SMARTool_data.csv}}. Vi vil heller ha dei utan omsetjing i lista, men med lenkje til NDS.
+
+
+!!Syntetisk tale
+__Chiara__ tar kontakt med riktig person/melde til Orakel for å få konto på Divvun-server
+
+!!Legge til NDS
+
+klikk-i-tekst i grensesnittet 
+
+!!oversettelse av lemma
+
+Ett og samme lemma ha flere oversettinger, f.eks. leat = ha, være. I dag ligger både "ha" og "være" som oversetting i {{SMARTool_data.csv}}, men bare "ha" kommer fram i ordlista.
+
+Skal vi ha oversettelse med? 
+
+Konklusjon: Vi gjør det heller på den måten at vi ikke gir oversettelse under ''Search by dictionary'', men gjør det mulig å finne oversettelse med å klikke på ordet.
+
+!!Search by dictionary -> Search by word
+
+Om dette?
+
+!!Nivå
+
+SMARTool er delt inn i nivå __A1, A2, B1, B2__. Kjeldefilene er delt etter nivå, og kvart nivå inneheld par {{oppslagsord : setning}}.
+
+Jf. russisk:
+
+* [https://github.com/valentina-zh/SMARTool-data/blob/master/SMARTool_data_A1_LIZA.csv]
+* [https://github.com/valentina-zh/SMARTool-data/blob/master/SMARTool_data_B2_LIZA.csv]
+
+D1
+SAM-1031
+C1
+
+__Chiara__ lager en skript for å konvertere oahpa filene i csv format
+
+Nivåene må defineres. Hva betyr A1 og hva kan man forvente å finne på det nivået? osv.
+
+Rammeverket er definert her:
+
+* [https://no.wikipedia.org/wiki/Det_felles_europeiske_rammeverket_for_språk]
+* [https://en.wikipedia.org/wiki/Common_European_Framework_of_Reference_for_Languages]
+* [https://fi.wikipedia.org/wiki/Eurooppalainen_kielitaidon_viitekehys]
+
+Nivåinndelinga er styrt av den europeiske standarden for nivåinndeling. For SMARTool 
+inneber det at orda blir styrt etter kva nivå det konseptet er sett til. Morfologiske 
+grunnar kan overstyre desse prinsippa, slik at eit semantisk sett sentralt ord (A1) 
+kan bli lagt til eit høgare nivå (B1) fordi det som regel opptrer i ei morfologisk 
+kompleks form.
+
+Drøfting av samisk og nivå:
+Sari Ahola 2012: Yleisten kielitutkintojen laatijoiden käsityksiä kielestä ja tehtävien laadinnasta. Soveltavan kielentutkimuksen keskus Jyväskylän yliopisto
+
+
+[https://jyx.jyu.fi/bitstream/handle/123456789/40753/1/URN%3ANBN%3Afi%3Ajyu-201301241110.pdf]
+
+(drøfting av samisk omsett frå finsk vs. samisk henta frå Noreg, sjå s. 137)
+
+"Laatijat kertoivat muokkaavansa materiaali paljon, varsinkin Norjan puolelta lainattua materiaalia, koska sanavalinnat ja sanajärjestys ovat Norjassa käytettävässä pohjoissaamessa erilaiset kuin Suomen puolella käytetyssä pohjoissaamessa."
+
+Tommelfingerregel frå E-skuvla:
+
+* A1 = Davvin 1
+* A2 = Davvin 2
+
+__BM__ lagar eit framlegg.
+
+!!Valg av former
+
+Vi drøfta dette.
+
+!!Word source
+Skriv inn hvor setninger er hentet ifra, og merke hvis dem er modifisert (kanskje med "mod")
+
+
+!!Søk i kommaseparerte lister
+
+Sett at dei er tabbseparert
+
+
+{{{
+cat SMARTool_data.csv |tail +2|cut -d "," -f11-|sed 's/","/_/g;'|sed 's/\.,/\._/g;'|sed 's/\?,/\?_/g;'|cut -d "_" -f1|sed 's/\([.,;:?!"]\)/ \1/g;'| sed 's/\"/\" /g;'|tr ' ' '\n'|usmeNorm |grep '?'|l
+}}}
+
+Kortare versjon (føreset at fila er tabseparert og ikkje kommaseparert):
+{{{
+cat fil | cut -f11| preprocess|usmeNorm|grep "?"|less
+}}}
+
+
+!!!Neste møte
+
+Fredag 5.6. kl. 10.00 på Zoom. __BM__ kallar inn.
+
+
+
