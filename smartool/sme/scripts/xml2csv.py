@@ -61,7 +61,11 @@ for e in root.findall("e"):
     else: line += " - " + "\t"
     trans = ""
     for tg in e.findall("mg/tg"):
-        trans += tg.find("t").text + "\t"
+        trans_xxx = ""
+        for t in tg.findall("t"):
+            if t.text:
+                trans_xxx += t.text + ", "
+        trans += trans_xxx + "\t"
     line += trans
     write_file.write(line + "\n")
 
