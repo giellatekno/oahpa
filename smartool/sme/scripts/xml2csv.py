@@ -54,7 +54,9 @@ for e in root.findall("e"):
     else: line += " - " + "\t"
     books = ""
     for book in e.findall("sources/book"):
-        books += book.get("name") + ", "
+        if book != e.findall("sources/book")[-1]:
+            books += book.get("name") + ", "
+        else: books += book.get("name")
     line += books + "\t"
     if e.find("mg/semantics/sem"):
         line += e.find("mg/semantics/sem").get("class") + "\t"
@@ -64,7 +66,9 @@ for e in root.findall("e"):
         trans_xxx = ""
         for t in tg.findall("t"):
             if t.text:
-                trans_xxx += t.text + ", "
+                if t != tg.findall("t")[-1]:
+                    trans_xxx += t.text + ", "
+                else: trans_xxx += t.text
         trans += trans_xxx + "\t"
     line += trans
     write_file.write(line + "\n")
