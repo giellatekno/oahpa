@@ -18,24 +18,24 @@
          <title>Числа (количественные и порядковые) </title>
          <p> Задача состоит в том, чтобы соответствовать числу к слову. Порядок частей в слове может быть тем же самым как в числе (как в Мари: <code> вит = 5, латвит = 15 </code>, или это может отличаться (как на английском языке: <code> five = 5, fifteen = 15 </code>). Вы можете построить систему "с нуля" или на основе преобразователя имей числительных некоторого другого языка. </p>
          <p> В Giellatekno у нас есть автоматы числителных для различных языков: <a
-         href="https://victorio.uit.no/langtech/trunk/langs/sjd/src/transcriptions/numbers.lexc">кильдин саамский</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/sje/src/transcriptions/numbers.lexc">Пите саами</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/sma/src/transcriptions/numbers.lexc">юго саами</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/sme/src/transcriptions/numbers.lexc">северный саамский</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/smj/src/transcriptions/numbers.lexc">Луле саами</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/smn/src/transcriptions/numbers.lexc">инари</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/sms/src/transcriptions/numbers.lexc">Сколт саами</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/fin/src/transcriptions/numbers.lexc">Финский</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/fkv/src/transcriptions/numbers.lexc">квенский</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/kom/src/transcriptions/numbers.lexc">коми</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/mhr/src/transcriptions/numbers.lexc">луговой марийский</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/mrj/src/transcriptions/numbers.lexc">горномарийский</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/myv/src/transcriptions/numbers.lexc">эрзянский</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/mdf/src/transcriptions/numbers.lexc">мокшанский</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/liv/src/transcriptions/numbers.lexc">ливонский</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/yrk/src/transcriptions/numbers.lexc">ненецкий</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/nno/src/transcriptions/numbers.lexc">норвежский</a> и <a
-         href="https://victorio.uit.no/langtech/trunk/langs/rus/src/transcriptions/numbers.lexc">русский</a>.</p>
+         href="https://gtsvn.uit.no/langtech/trunk/langs/sjd/src/transcriptions/numbers.lexc">кильдин саамский</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/sje/src/transcriptions/numbers.lexc">Пите саами</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/sma/src/transcriptions/numbers.lexc">юго саами</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/sme/src/transcriptions/numbers.lexc">северный саамский</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/smj/src/transcriptions/numbers.lexc">Луле саами</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/smn/src/transcriptions/numbers.lexc">инари</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/sms/src/transcriptions/numbers.lexc">Сколт саами</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/fin/src/transcriptions/numbers.lexc">Финский</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/fkv/src/transcriptions/numbers.lexc">квенский</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/kom/src/transcriptions/numbers.lexc">коми</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/mhr/src/transcriptions/numbers.lexc">луговой марийский</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/mrj/src/transcriptions/numbers.lexc">горномарийский</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/myv/src/transcriptions/numbers.lexc">эрзянский</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/mdf/src/transcriptions/numbers.lexc">мокшанский</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/liv/src/transcriptions/numbers.lexc">ливонский</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/yrk/src/transcriptions/numbers.lexc">ненецкий</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/nno/src/transcriptions/numbers.lexc">норвежский</a> и <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/rus/src/transcriptions/numbers.lexc">русский</a>.</p>
          <p> Обратите внимание на то, что некоторые из них находятся на стадии испытаний и могут содержать ошибки. </p>
          <p> Выберите один из существуюших преобразователей, или начните с ноля и сделайте свой преобразователь. Включайте и количественные и порядковые числительные. В Oahpa, наибольшее число 1000, таким образом, в этом контексте нет потребности продолжаться и после 1000.</p>
       </section>
@@ -43,12 +43,12 @@
          <title>Время (Clock)</title>
          <p> Задача состоит в том, что соответствовать выражению времени написанному числами (11:45) к словесному выражению (без четверти двенадцать). </p>
          <p> В Giellatekno у нас есть автоматы времени для различных языков: <a
-         href="https://victorio.uit.no/langtech/trunk/langs/sma/src/transcriptions/clock.lexc">юго саами</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/sme/src/transcriptions/clock.lexc">северный саамский</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/smj/src/transcriptions/clock.lexc">Луле саами</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/fin/src/transcriptions/clock.lexc">Финский</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/fkv/src/transcriptions/clock.lexc">квенский</a> и <a
-         href="https://victorio.uit.no/langtech/trunk/langs/rus/src/transcriptions/clock.lexc">русский</a>.</p>
+         href="https://gtsvn.uit.no/langtech/trunk/langs/sma/src/transcriptions/clock.lexc">юго саами</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/sme/src/transcriptions/clock.lexc">северный саамский</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/smj/src/transcriptions/clock.lexc">Луле саами</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/fin/src/transcriptions/clock.lexc">Финский</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/fkv/src/transcriptions/clock.lexc">квенский</a> и <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/rus/src/transcriptions/clock.lexc">русский</a>.</p>
          <p> Мы используем технику "flag diacritics". Причина этой техники состоит в том, что часы написаны в час заказа - минута, но
          говоривший в минуту заказа - часы (семнадцать прошлых десять = 10:17). Чтобы получить это, мы помещаем отметку на час
          число. Когда слово часа добавлено позже, мы проверяем его против отметки. Мы таким образом производим двенадцать версий
@@ -58,11 +58,11 @@
          <title>Дата </title>
          <p> Задача состоит в том, чтобы соответствовать численно написанному выражению даты (18/9) к словесному выражению (восемнадцатого сентября). </p>
          <p> В Giellatekno у нас есть автоматы даты для, по крайней мере, этих языков: <a
-         href="https://victorio.uit.no/langtech/trunk/langs/sma/src/transcriptions/date.lexc ">юго саами</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/sme/src/transcriptions/date.lexc ">северный саамский</a>, <a
-         href="https://victorio.uit.no/langtech/trunk/langs/smn/src/transcriptions/date.lexc ">инари</a> Saami, and <a
-         href="https://victorio.uit.no/langtech/trunk/langs/fkv/src/transcriptions/date.lexc ">квенский</a> and  <a
-         href="https://victorio.uit.no/langtech/trunk/langs/rus/src/transcriptions/date.lexc ">русский</a>.</p>
+         href="https://gtsvn.uit.no/langtech/trunk/langs/sma/src/transcriptions/date.lexc ">юго саами</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/sme/src/transcriptions/date.lexc ">северный саамский</a>, <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/smn/src/transcriptions/date.lexc ">инари</a> Saami, and <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/fkv/src/transcriptions/date.lexc ">квенский</a> and  <a
+         href="https://gtsvn.uit.no/langtech/trunk/langs/rus/src/transcriptions/date.lexc ">русский</a>.</p>
       </section>
       <section>
          <title>Компилирование файлов</title>
