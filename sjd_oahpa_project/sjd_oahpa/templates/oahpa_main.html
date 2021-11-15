@@ -132,11 +132,7 @@
             {% ifequal LANGUAGE_CODE "sv" %}
                 <li><a href="http://{{hst}}/sjd/index.nob.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
-            {% ifequal LANGUAGE_CODE "fi" %}
-                <li><a href="http://gtweb.uit.no/webdict/index_sjd-rus.html">{% trans "Kildin Sámi" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
-            {% else %}
-				<li><a href="http://gtweb.uit.no/webdict/index_sjd-rus.html">{% trans "Kildin Sámi" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
-            {% endifequal %}
+                <li><a href="https://sanj.oahpa.no/">{% trans "Kildin Sámi" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
                 <li><a href="http://{{hst}}/davvi" style="font-size:13px">North Saami Oahpa</a></li>
 			</ul>
 			{% endblock %}
