@@ -73,7 +73,7 @@ CASE_CHOICES_PRONOUN = (
 )
 
 CASE_CONTEXT_CHOICES = (
-	('N-NOM-PL', _('plural')),
+	('NOMPL', _('plural')),
 	('N-ACC', _('accusative')),
 	('N-GEN', _('genitive')),
 	('N-ILL', _('illative')),
@@ -1461,7 +1461,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 			if qtype=="COLL-NUM":
 				self.lemma = answer_word_el.presentationform
 			else:
-				if answer_tag_el.number=="Sg" or answer_tag_el.case=="Ess" or qtype=="N-NOM-PL":
+				if answer_tag_el.number=="Sg" or answer_tag_el.case=="Ess" or qtype=="NOMPL":
 					self.lemma = answer_word_el.lemma
 				else:
 					nplforms = Form.objects.filter(word__pk=answer_word, tag__string='N+Pl+Nom')
