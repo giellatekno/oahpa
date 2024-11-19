@@ -811,7 +811,7 @@ class NumGame(Game):
 		import subprocess
 		from threading import Timer
 
-		lookup = "hfst-lookup"
+		lookup = "/usr/bin/hfst-lookup"
 		gen_norm_fst = FST_DIRECTORY + "/" + fstfile
 
 		try:
