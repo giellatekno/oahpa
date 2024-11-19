@@ -63,9 +63,14 @@ RUN cp -r bin include lib share /usr
 # also install packages we need: uwsgi, supervisord, nginx, and mariadb-server
 # also gettext, to compile translation messages
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
     libssl-dev libssl3 build-essential \
     gettext \
     uwsgi supervisor nginx mariadb-server
+
+RUN curl https://apertium.projectjj.com/apt/install-nightly.sh | bash
+
+RUN apt-get update && apt-get install -y --no-install-recommends hfst
 
 RUN python -m ensurepip
 
@@ -113,8 +118,8 @@ COPY containerized_deploy/lookup /usr/local/bin/lookup
 COPY media /var/www/html
 
 # fsts are expected to be in a certain directory
-COPY containerized_deploy/ped-sme.fst /opt/smi/sme/bin/ped-sme.fst
-COPY containerized_deploy/sme-num.fst /opt/smi/sme/bin/sme-num.fst
+#COPY containerized_deploy/ped-sme.fst /opt/smi/sme/bin/ped-sme.fst
+#COPY containerized_deploy/sme-num.fst /opt/smi/sme/bin/sme-num.fst
 
 COPY containerized_deploy/uwsgi_vassals /etc/uwsgi/vassals
 

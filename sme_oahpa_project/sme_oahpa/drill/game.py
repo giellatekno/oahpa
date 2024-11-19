@@ -31,7 +31,10 @@ try:
 except:
 	LOOKUP_TOOL = 'lookup'
 
-
+try:
+    HFST_LOOKUP = settings.HFST_LOOKUP
+except:
+    HFST_LOOKUP = "/usr/bin/hfst-lookup"
 
 try:
 	FST_DIRECTORY = settings.FST_DIRECTORY
@@ -1115,8 +1118,8 @@ class BareGame(Game):
 
 
 class NumGame(Game):
-	generate_fst = 'sme-num.fst'
-	answers_fst = 'sme-inum.fst'
+	generate_fst = "transcriptor-numbers-digit2text.filtered.lookup.hfstol"
+	answers_fst = "transcriptor-numbers-text2digit.filtered.lookup.hfstol"
 
 	def get_db_info(self, db_info):
 		""" Options supplied by views
@@ -1141,14 +1144,14 @@ class NumGame(Game):
 		import subprocess
 		from threading import Timer
 
-		lookup = LOOKUP_TOOL
+		lookup = "/usr/bin/hfst-lookup"
 		gen_norm_fst = FST_DIRECTORY + "/" + fstfile
 		try:
 			open(gen_norm_fst)
 		except IOError:
 			raise Http404("File %s does not exist." % gen_norm_fst)
 
-		gen_norm_command = [lookup, "-flags", "mbTT", "-utf8", "-d", gen_norm_fst]
+		gen_norm_command = [lookup, "-q", gen_norm_fst]
 
 		try:
 			forms.encode('utf-8')
@@ -1190,50 +1193,78 @@ class NumGame(Game):
 			cleaned.append(nums)
 		return cleaned
 
+	def clean_hfst_output(self, output):
+		lines = output.decode("utf-8").splitlines()
+		cleaned = []
+		for line in lines:
+			line = line.strip()
+			if not line:
+				continue
+			cols = line.split("\t")
+			if len(cols) != 3:
+				continue
+			cleaned.append((cols[0], cols[1]))
+		return cleaned
+
 	def strip_unknown(self, analyses):
 		return [a for a in analyses if a[1] != '?']
 
 	def check_answer(self, question, useranswer, formanswer):
+		print useranswer
+		print formanswer
 		gametype = self.settings['numgame']
 		# print gametype
 		if useranswer.strip():
+			print "d: 3"
 			forms = useranswer.encode('utf-8')
 
+			print "gametype = %s" % gametype
 			if gametype == 'string':
 				fstfile = self.generate_fst
 			elif gametype == 'numeral':
 				fstfile = self.answers_fst
 
 			output, err = self.generate_forms(forms, fstfile)
+			print output
 
-			num_list = self.clean_fst_output(output)
+			num_list = self.clean_hfst_output(output)
+			print num_list
 			num_list = self.strip_unknown(num_list)
+			print num_list
 			# print repr([question, useranswer, num_list])
 
 			# 'string' refers to the question here, not the answer
 			if gametype == 'string':
+				print "d: 4"
 				# user answer must match with numeral generated from
 				# the question
 
 				if useranswer in [a[0] for a in num_list] and \
 					question in [a[1] for a in num_list]:
+					print "d: 5"
 					return True
 				else:
+					print "d: 6"
 					return False
 
 			elif gametype == 'numeral':
+				print "d: 7"
 				# Numbers generated from user answer must match up
 				# with numeral in the question
 				num_list = num_list + formanswer
 				try:
 					_ = int(useranswer)
+					print "d: 8"
 					return False
 				except ValueError:
+					print "d: 9"
 					pass
 				if question in [a[1] for a in num_list] or \
 					useranswer in num_list:
+					print "d: 10"
 					return True
 				else:
+					print "d: 11"
 					return False
 
 
@@ -1291,8 +1322,8 @@ class Klokka(NumGame):
 
 	QuestionForm = KlokkaQuestion
 
-	generate_fst = 'iclock-sme.fst'
-	answers_fst = 'clock-sme.fst'
+	generate_fst = "transcriptor-clock-digit2text.filtered.lookup.hfstol"
+	answers_fst = "transcriptor-clock-text2digit.filtered.lookup.hfstol"
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1427,8 +1458,8 @@ class Dato(Klokka):
 
 	# QuestionForm = DatoQuestion
 
-	generate_fst = 'idate-sme.fst'
-	answers_fst = 'date-sme.fst'
+	generate_fst = "transcriptor-date-digit2text.filtered.lookup.hfstol"
+	answers_fst = "transcriptor-date-text2digit.filtered.lookup.hfstol"
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
 					 or Dato is unable to look up forms."

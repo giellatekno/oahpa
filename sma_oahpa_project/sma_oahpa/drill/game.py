@@ -776,8 +776,8 @@ class NumGame(Game):
 	object.
 	"""
 
-	generate_fst = 'sma-num.fst'
-	answers_fst = 'sma-inum.fst'
+	generate_fst = "transcriptor-numbers-digit2text.filtered.lookup.hfstol"
+	answers_fst = "transcriptor-numbers-text2digit.filtered.lookup.hfstol"
 
 	def oneUp(self):
 		""" Generate a random number
@@ -811,7 +811,7 @@ class NumGame(Game):
 		import subprocess
 		from threading import Timer
 
-		lookup = LOOKUP_TOOL
+		lookup = "hfst-lookup"
 		gen_norm_fst = FST_DIRECTORY + "/" + fstfile
 
 		try:
@@ -819,7 +819,7 @@ class NumGame(Game):
 		except IOError:
 			raise Http404("File %s does not exist." % gen_norm_fst)
 
-		gen_norm_command = [lookup, "-flags", "mbTT", "-utf8", "-d", gen_norm_fst]
+		gen_norm_command = [lookup, "-q", gen_norm_fst]
 
 		try:
 			forms.encode('utf-8')
@@ -867,6 +867,19 @@ class NumGame(Game):
 			cleaned.append(nums)
 		return cleaned
 
+	def clean_hfst_output(self, output):
+		lines = output.decode("utf-8").splitlines()
+		cleaned = []
+		for line in lines:
+			line = line.strip()
+			if not line:
+				continue
+			cols = line.split("\t")
+			if len(cols) != 3:
+				continue
+			cleaned.append((cols[0], cols[1]))
+		return cleaned
+
 	def strip_unknown(self, analyses):
 		""" Remove unknown analyses (those with +?)
 		"""
@@ -890,7 +903,7 @@ class NumGame(Game):
 
 			output, err = self.generate_forms(forms, fstfile)
 
-			num_list = self.clean_fst_output(output)
+			num_list = self.clean_hfst_output(output)
 			num_list = self.strip_unknown(num_list)
 			# print repr([question, useranswer, num_list])
 
@@ -984,8 +997,8 @@ class Klokka(NumGame):
 
 	QuestionForm = KlokkaQuestion
 
-	generate_fst = 'iclock-sma.fst'
-	answers_fst = 'clock-sma.fst'
+	generate_fst = "transcriptor-clock-digit2text.filtered.lookup.hfstol"
+	answers_fst = "transcriptor-clock-text2digit.filtered.lookup.hfstol"
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1075,8 +1088,8 @@ class Dato(Klokka):
 
 	# QuestionForm = DatoQuestion
 
-	generate_fst = 'idate-sma.fst'
-	answers_fst = 'date-sma.fst'
+	generate_fst = "transcriptor-date-digit2text.filtered.lookup.hfstol"
+	answers_fst = "transcriptor-date-text2digit.filtered.lookup.hfstol"
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
 					 or Dato is unable to look up forms."
