@@ -16,7 +16,7 @@ SECRET_KEY = 'k32t9e#$@%*s)7zij+8k0qzhpve^8t-i#zamww^ii-)-j8c-q-'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['.gtoahpa-01.uit.no','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['.gtoahpa-01.uit.no','.gtoahpa-02.uit.no','127.0.0.1','localhost']
 
 DATABASES = {
     'default': {
@@ -39,8 +39,7 @@ DEFAULT_CHARSET = 'utf8'
 DATABASE_CHARSET =  'utf8'
 
 
-
-if os.uname()[1] == 'gtoahpa-01.uit.no':
+if os.uname()[1] == 'gtoahpa-01.uit.no' or os.uname()[1] == 'gtoahpa-02.uit.no':
     LOOKUP_TOOL = '/usr/local/bin/lookup'
     FST_DIRECTORY = '/opt/smi/'+LLL1+'/bin'
 else:

@@ -123,6 +123,14 @@ COPY media /var/www/html
 
 COPY containerized_deploy/uwsgi_vassals /etc/uwsgi/vassals
 
+# TODO anders: there are many paths in various config files that
+# defines /home/oahpa/ as the root directory for the application.
+# However, further down, these paths should all be rewritten, but
+# there could still be things that doesnt work because of wrong paths...
+# (it's hard to know what it may affect) -- so it's maybe better
+# and easier to use /home/oahpa instead of /app inside the image.
+# besides, inside the image, the path really doesn't matter anyway.
+# IF CHANGING THIS, MAKE SURE TO FIND ALL PLACES WHERE /app IS USED!
 WORKDIR /app
 
 # Copy in files we need to run the project vessels

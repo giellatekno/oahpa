@@ -32,7 +32,7 @@ LOCALE_PATHS = (
     '/home/oahpa/'+LLL1+'_oahpa_project/locale',
 )
 
-if os.uname()[1] == 'gtoahpa-01.uit.no':
+if os.uname()[1] == 'gtoahpa-01.uit.no' or os.uname()[1] == 'gtoahpa-02.uit.no':
     LOOKUP_TOOL = '/usr/local/bin/lookup'  # xfst
     HFST_LOOKUP = '/bin/hfst-lookup' # hfst
     #LOOKUP_TOOL = '/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup'

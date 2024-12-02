@@ -35,9 +35,9 @@ LOCALE_PATHS = ('/home/oahpa/'+LLL1+'_oahpa_project/locale',)
 
 LOOKUP_OPTS = ''
 
-if os.uname()[1] == 'gtoahpa-01.uit.no':
+if os.uname()[1] == 'gtoahpa-01.uit.no' or os.uname()[1] == 'gtoahpa-02.uit.no':
     LOOKUP_TOOL = '/usr/local/bin/lookup'  # xfst
-    #HFST_LOOKUP = '/usr/bin/hfst-lookup' # hfst
+    HFST_LOOKUP = '/usr/bin/hfst-lookup' # hfst
     LOOKUP_OPTS = '-flags mbTT'
 
     # when installing ...
@@ -46,7 +46,7 @@ if os.uname()[1] == 'gtoahpa-01.uit.no':
     #    LOOKUP_OPTS = '-qx'
 else:
     LOOKUP_TOOL = '/usr/local/bin/lookup'  # xfst
-    #HFST_LOOKUP = '/usr/bin/hfst-lookup'
+    HFST_LOOKUP = '/usr/bin/hfst-lookup'
 
 ENG_FST_DIRECTORY = '../crk_data/englexc/'
 ENG_DIALECTS = {
@@ -61,20 +61,20 @@ LOG_FILE = path + '/drill/vastaF_log.txt'
 
 GAME_FSTS = {
     'dato': {
-        'generate': FST_DIRECTORY + '/transcriptor-date-digit2text.filtered.lookup.xfst',
-        'answers': FST_DIRECTORY + '/transcriptor-date-text2digit.filtered.lookup.xfst',
+        'generate': FST_DIRECTORY + '/transcriptor-date-digit2text.filtered.lookup.hfstol',
+        'answers': FST_DIRECTORY + '/transcriptor-date-text2digit.filtered.lookup.hfstol',
     },
     'numbers': {
-        'generate': FST_DIRECTORY + '/transcriptor-numbers-digit2text.filtered.lookup.xfst',
-        'answers': FST_DIRECTORY + '/transcriptor-numbers-text2digit.filtered.lookup.xfst',
+        'generate': FST_DIRECTORY + '/transcriptor-numbers-digit2text.filtered.lookup.hfstol',
+        'answers': FST_DIRECTORY + '/transcriptor-numbers-text2digit.filtered.lookup.hfstol',
     },
     'clock': {
-        'generate': FST_DIRECTORY + '/transcriptor-clock-digit2text.filtered.lookup.xfst',
-        'answers': FST_DIRECTORY + '/transcriptor-clock-text2digit.filtered.lookup.xfst',
+        'generate': FST_DIRECTORY + '/transcriptor-clock-digit2text.filtered.lookup.hfstol',
+        'answers': FST_DIRECTORY + '/transcriptor-clock-text2digit.filtered.lookup.hfstol',
     },
     'money': {
-        'generate': FST_DIRECTORY + '/transcriptor-money-digit2text.filtered.lookup.xfst',
-        'answers': FST_DIRECTORY + '/transcriptor-money-text2digit.filtered.lookup.xfst',
+        'generate': FST_DIRECTORY + '/transcriptor-money-digit2text.filtered.lookup.hfstol',
+        'answers': FST_DIRECTORY + '/transcriptor-money-text2digit.filtered.lookup.hfstol',
     },
 }
 
@@ -97,10 +97,10 @@ _join_path = lambda x: os.path.join(os.getcwd(), x)
 
 ERROR_FST_SETTINGS = {
     #'lookup_tool': 'hfst-optimised-lookup',
-    'lookup_tool': 'lookup',
+    'lookup_tool': 'hfst-lookup',
     #'fst_path': '/opt/smi/crk/bin/transcriptor-numbers-text2digit.filtered.lookup.hfstol',
     #'fst_path': FST_DIRECTORY +'/transcriptor-numbers-text2digit.filtered.lookup.hfstol',
-    'fst_path': FST_DIRECTORY +'/transcriptor-numbers-text2digit.filtered.lookup.xfst',
+    'fst_path': FST_DIRECTORY +'/transcriptor-numbers-text2digit.filtered.lookup.hfstol',
     'error_log_path': _join_path('error_fst_log.txt'),
     'error_message_files': {
         'eng': _join_path('crk_data/meta_data/errorfstmessages.xml'),

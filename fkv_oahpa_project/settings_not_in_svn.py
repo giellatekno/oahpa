@@ -40,7 +40,7 @@ DEFAULT_CHARSET = 'utf8'
 DATABASE_CHARSET =  'utf8'
 
 
-if os.uname()[1] == 'gtoahpa-01.uit.no':
+if os.uname()[1] == 'gtoahpa-01.uit.no' or os.uname()[1] == 'gtoahpa-02.uit.no':
     LOOKUP_TOOL = '/usr/local/bin/lookup'
     FST_DIRECTORY = '/opt/smi/'+LLL1+'/bin/'
 else:

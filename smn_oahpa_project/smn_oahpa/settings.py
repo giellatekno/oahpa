@@ -42,7 +42,7 @@ INTERNAL_IPS = ('127.0.0.1',)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['.gtoahpa-01.uit.no','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['.gtoahpa-01.uit.no','.gtoahpa-02.uit.no','127.0.0.1','localhost']
 
 # Development mode
 #DEBUG = True

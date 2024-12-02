@@ -993,8 +993,8 @@ class BareGame(Game):
 
 
 class NumGame(Game):
-	generate_fst = LLL1+'-num.fst'
-	answers_fst = LLL1+'-inum.fst'
+	generate_fst = "transcriptor-numbers-digit2text.filtered.lookup.hfstol"
+	answers_fst = "transcriptor-numbers-text2digit.filtered.lookup.hfstol"
 
 	def get_db_info(self, db_info):
 		""" Options supplied by views
@@ -1019,14 +1019,14 @@ class NumGame(Game):
 		import subprocess
 		from threading import Timer
 
-		lookup = LOOKUP_TOOL
+		lookup = "/usr/bin/hfst-lookup"
 		gen_norm_fst = FST_DIRECTORY + "/" + fstfile
 		try:
 			open(gen_norm_fst)
 		except IOError:
 			raise Http404("File %s does not exist." % gen_norm_fst)
 
-		gen_norm_command = [lookup, "-flags", "mbTT", "-utf8", "-d", gen_norm_fst]
+		gen_norm_command = [lookup, "-q", gen_norm_fst]
 
 		try:
 			forms.encode('utf-8')
@@ -1067,6 +1067,19 @@ class NumGame(Game):
 			cleaned.append(nums)
 		return cleaned
 
+	def clean_hfst_output(self, output):
+		lines = output.decode("utf-8").splitlines()
+		cleaned = []
+		for line in lines:
+			line = line.strip()
+			if not line:
+				continue
+			cols = line.split("\t")
+			if len(cols) != 3:
+				continue
+			cleaned.append((cols[0], cols[1]))
+		return cleaned
+
 	def strip_unknown(self, analyses):
 		return [a for a in analyses if a[1] != '?']
 
@@ -1083,7 +1096,7 @@ class NumGame(Game):
 
 			output, err = self.generate_forms(forms, fstfile)
 
-			num_list = self.clean_fst_output(output)
+			num_list = self.clean_hfst_output(output)
 			num_list = self.strip_unknown(num_list)
 			# print repr([question, useranswer, num_list])
 
@@ -1166,8 +1179,8 @@ class Klokka(NumGame):
 
 	QuestionForm = KlokkaQuestion
 
-	generate_fst = LLL1+'-iclock.fst'
-	answers_fst = LLL1+'-clock.fst'
+	generate_fst = "transcriptor-clock-digit2text.filtered.lookup.hfstol"
+	answers_fst = "transcriptor-clock-text2digit.filtered.lookup.hfstol"
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1213,7 +1226,7 @@ class Klokka(NumGame):
 
 			output, err = self.generate_forms(forms, fstfile)
 
-			num_list = self.clean_fst_output(output)
+			num_list = self.clean_hfst_output(output)
 			num_list = self.strip_unknown(num_list)
 			# print repr([question, useranswer, num_list])
 
@@ -1302,8 +1315,8 @@ class Dato(Klokka):
 
 	# QuestionForm = DatoQuestion
 
-	generate_fst = LLL1+'-idate.fst'
-	answers_fst = LLL1+'-date.fst'
+	generate_fst = "transcriptor-date-digit2text.filtered.lookup.hfstol"
+	answers_fst = "transcriptor-date-text2digit.filtered.lookup.hfstol"
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
 					 or Dato is unable to look up forms."

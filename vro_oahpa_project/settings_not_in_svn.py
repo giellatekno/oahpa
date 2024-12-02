@@ -11,7 +11,7 @@ import sys
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.gtoahpa-01.uit.no','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['.gtoahpa-01.uit.no','.gtoahpa-02.uit.no','127.0.0.1','localhost']
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '36^i%$$ss0f&jp6djm7co&5)wt6gvlo-p0azsg1rjib%0vf+tl'
@@ -56,7 +56,7 @@ STATIC_URL = '/home/oahpa/admin_media/'
     #LOOKUP_TOOL = '/usr/local/bin/lookup'
  #   LOOKUP_TOOL = '/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup'
 
-if os.uname()[1] == 'gtoahpa-01.uit.no':
+if os.uname()[1] == 'gtoahpa-01.uit.no' or os.uname()[1] == 'gtoahpa-02.uit.no':
     FST_DIRECTORY = '/opt/smi/'+LLL1+'/bin/'
     #LOOKUP_TOOL = '/usr/local/bin/lookup' # xfst
     LOOKUP_TOOL = '/usr/bin/hfst-lookup' # We are using hfst now for the generation of the word forms.

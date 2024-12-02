@@ -1091,8 +1091,8 @@ class BareGame(Game):
 
 
 class NumGame(Game):
-	generate_fst = 'transcriptor-numbers-digit2text.filtered.lookup.xfst'
-	answers_fst = 'transcriptor-numbers-text2digit.filtered.lookup.xfst'
+	generate_fst = 'transcriptor-numbers-digit2text.filtered.lookup.hfstol'
+	answers_fst = 'transcriptor-numbers-text2digit.filtered.lookup.hfstol'
 
 	def get_db_info(self, db_info):
 		""" Options supplied by views
@@ -1268,11 +1268,9 @@ class NumGame(Game):
 from forms import KlokkaQuestion
 
 class Klokka(NumGame):
-
 	QuestionForm = KlokkaQuestion
-
-        generate_fst = 'transcriptor-clock-digit2text.filtered.lookup.xfst'
-        answers_fst = 'transcriptor-clock-text2digit.filtered.lookup.xfst '
+	generate_fst = 'transcriptor-clock-digit2text.filtered.lookup.hfstol'
+	answers_fst = 'transcriptor-clock-text2digit.filtered.lookup.hfstol '
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1407,8 +1405,8 @@ class Dato(Klokka):
 
 	# QuestionForm = DatoQuestion
 
-        generate_fst = 'transcriptor-date-digit2text.filtered.lookup.xfst'
-        answers_fst = 'transcriptor-date-text2digit.filtered.lookup.xfst'
+	generate_fst = 'transcriptor-date-digit2text.filtered.lookup.hfstol'
+	answers_fst = 'transcriptor-date-text2digit.filtered.lookup.hfstol'
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
 					 or Dato is unable to look up forms."
