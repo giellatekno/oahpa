@@ -23,9 +23,56 @@
   <tab href="https://oahpa.no/nuorti/" label="OAHPA nuõrti" /> 
   <tab href="https://oahpa.no/kiilt/" label="OAHPA kildin" /> 
   <tab href="https://oahpa.no/aanaar/" label="OAHPA aanaar" /> 
-  <tab href="sme/usevisl/VISL_spealut.nob.html" label="VISL davvi" />
+  <tab id="VISL_inNorwegian" href="sme/usevisl/VISL_spealut.nob.html" label="VISL davvi" />
   <tab href="https://dicts.uit.no" label="Dicts" /> 
   <tab href="https://giellatekno.uit.no/" label="Giellatekno" /> 
+
+  <!-- Hidden tabs connect the menu groups in site.xml to their entry pages. -->
+  <tab id="OAHPA_inSami" label="OAHPA!" href="index.html" type="hidden"/>
+  <tab id="OAHPA!" label="Intro" href="index.html" type="hidden"/>
+  <tab id="Bálgát" label="Veahkkeneavvut" href="sme/oversikt.sme.html" type="hidden"/>
+  <tab id="forNorthSami_inNorthSami" label="OAHPA-davvi" href="sme/index.html" type="hidden"/>
+  <tab id="gramm_inNorthSami" label="Grammatihkka" href="sme/gramm/grammatihkka.html" type="hidden"/>
+  <tab id="VISL_inSami" label="VISL davvi" href="sme/usevisl/VISL_spealut.html" type="hidden"/>
+
+  <tab id="forNorthSami_inNorwegian" label="OAHPA-davvi" href="sme/index.nob.html" type="hidden"/>
+  <tab id="sme-stier" label="Nordsamiske hjelpemidler" href="sme/oversikt.nob.html" type="hidden"/>
+  <tab id="sma-stier" label="Sørsamiske hjelpemidler" href="sma/oversikt.nob.html" type="hidden"/>
+  <tab id="smj-stier" label="Lulesamiske hjelpemidler" href="smj/oversikt.nob.html" type="hidden"/>
+  <tab id="gramm_inNorwegian" label="Grammatikk" href="sme/gramm/grammatihkka.nob.html" type="hidden"/>
+  <tab id="forSouthSami_inNorwegian" label="OAHPA-åarjel" href="sma/index.html" type="hidden"/>
+  <tab id="smagramm_inNorwegian" label="Grammatikk" href="sma/gramm/grammatikk.nob.html" type="hidden"/>
+
+  <tab id="OAHPAdavvi_suomeksi" label="OAHPA-davvi" href="sme/index.fin.html" type="hidden"/>
+  <tab id="forNorthSami_inFinnish" label="Pohjoissaamen oppimateriaalit" href="sme/oversikt.fin.html" type="hidden"/>
+  <tab id="forSouthSami_inFinnish" label="Eteläsaamen oppimateriaalit" href="sma/oversikt.fin.html" type="hidden"/>
+  <tab id="gramm_inFinnish" label="Kielioppi" href="sme/gramm/grammatihkka.fin.html" type="hidden"/>
+
+  <tab id="OAHPAdavvi_svenska" label="OAHPA-davvi" href="sme/index.swe.html" type="hidden"/>
+  <tab id="OAHPAdavvi_inEnglish" label="OAHPA-davvi" href="sme/index.eng.html" type="hidden"/>
+  <tab id="gramm_English" label="Grammar" href="sme/gramm/grammatihkka.eng.html" type="hidden"/>
+  <tab id="VISL_inEnglish" label="VISL davvi" href="sme/usevisl/VISL_spealut.eng.html" type="hidden"/>
+
+  <tab id="OAHPAkildin_inRussian" label="OAHPA-kildin" href="sjd/index.html" type="hidden"/>
+  <tab id="OAHPAkildin_inEnglish" label="OAHPA-kildin" href="sjd/index.eng.html" type="hidden"/>
+  <tab id="OAHPAkildin_inFinnish" label="OAHPA-kildin" href="sjd/index.fin.html" type="hidden"/>
+  <tab id="OAHPAkildin_inNorwegian" label="OAHPA-kildin" href="sjd/index.nob.html" type="hidden"/>
+
+  <tab id="OAHPAnuorti_inRussian" label="OAHPA-nuõrti" href="sms/index.rus.html" type="hidden"/>
+  <tab id="OAHPAnuorti_inEnglish" label="OAHPA-nuõrti" href="sms/index.eng.html" type="hidden"/>
+  <tab id="OAHPAnuorti_inFinnish" label="OAHPA-nuõrti" href="sms/index.fin.html" type="hidden"/>
+  <tab id="OAHPAnuorti_inNorwegian" label="OAHPA-nuõrti" href="sms/index.nob.html" type="hidden"/>
+  <tab id="smsgramm_inRussian" label="Грамматика" href="sms/grammar/grammar.rus.html" type="hidden"/>
+  <tab id="smsgramm_inEnglish" label="Grammar" href="sms/grammar/grammar.eng.html" type="hidden"/>
+  <tab id="smsgramm_inFinnish" label="Kielioppi" href="sms/grammar/grammar.fin.html" type="hidden"/>
+  <tab id="smsgramm_inNorwegian" label="Grammatikk" href="sms/grammar/grammar.nob.html" type="hidden"/>
+
+  <tab id="OAHPAaanaar_inEnglish" label="OAHPA-aanaar" href="smn/index.eng.html" type="hidden"/>
+  <tab id="OAHPAaanaar_inFinnish" label="OAHPA-aanaar" href="smn/index.html" type="hidden"/>
+  <tab id="OAHPAaanaar_inNorwegian" label="OAHPA-aanaar" href="smn/index.nob.html" type="hidden"/>
+
+  <tab id="For developers" label="For developers" href="addlang/index.html" type="hidden"/>
+  <tab id="Plains Cree" label="Plains Cree" href="crk/useoahpa/aboutOahpa.html" type="hidden"/>
 
   <!-- Add new tabs here, eg:
   <tab label="How-Tos" dir="community/howto/"/>
